@@ -6,14 +6,14 @@ PALS unifies PAUL (project lifecycle), CARL (context rules), TODD (TDD enforceme
 ## Current Milestone
 **v0.1 Fork & Unify** (v0.1.0)
 Status: In progress
-Phases: 1 of 6 complete
+Phases: 2 of 6 complete
 
 ## Phases
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 1 | Architecture & Design | 2 | Complete | 2026-03-11 |
-| 2 | Fork & Restructure | 3 | Not started | - |
+| 2 | Fork & Restructure | 3 | Complete | 2026-03-11 |
 | 3 | Merge TODD/WALT | 2 | Not started | - |
 | 4 | CARL Integration | 2 | Not started | - |
 | 5 | Install & Distribution | 2 | Not started | - |
@@ -52,9 +52,9 @@ Phases: 1 of 6 complete
 - Migrate PAUL skill commands
 
 **Plans:**
-- [ ] 02-01: Create directory structure and migrate core workflows
-- [ ] 02-02: Migrate templates, references, and rules
-- [ ] 02-03: Migrate and rewire skill commands
+- [x] 02-01: Create directory structure and migrate core workflows
+- [x] 02-02: Migrate templates, references, and rules
+- [x] 02-03: Migrate and rewire skill commands
 
 ### Phase 3: Merge TODD/WALT
 

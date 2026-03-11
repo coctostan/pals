@@ -26,6 +26,9 @@ The ultimate user friendly end-to-end Claude Code software development framework
 ### Validated
 - ✓ Architecture fully mapped (111 files across 4 components) — Phase 1
 - ✓ Unified structure designed (105 destinations, 6 consolidations) — Phase 1
+- ✓ PALS repo structure created with 96 PAUL files migrated — Phase 2
+- ✓ /pals:* command namespace replacing /paul:* — Phase 2
+- ✓ All @-references rewritten to ~/.pals/ paths — Phase 2
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
