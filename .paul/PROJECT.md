@@ -30,6 +30,7 @@ The ultimate user friendly end-to-end Claude Code software development framework
 - ✓ /pals:* command namespace replacing /paul:* — Phase 2
 - ✓ All @-references rewritten to ~/.pals/ paths — Phase 2
 - ✓ TODD/WALT integrated as named subsystems (no indirection) — Phase 3
+- ✓ CARL as native component with /carl:* namespace retained — Phase 4
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -65,4 +66,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 3*
+*Last updated: 2026-03-11 after Phase 4*

@@ -5,22 +5,23 @@
 See: .paul/PROJECT.md (updated 2026-03-11)
 
 **Core value:** The ultimate user friendly end-to-end Claude Code software development framework
-**Current focus:** v0.1 Fork & Unify — Phase 4: CARL Integration
+**Current focus:** v0.1 Fork & Unify — Phase 5: Install & Distribution
 
 ## Current Position
 
 Milestone: v0.1 Fork & Unify
-Phase: 4 of 6 (CARL Integration)
+Phase: 5 of 6 (Install & Distribution)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-11 — Phase 3 complete, transitioned to Phase 4
+Last activity: 2026-03-11 — Phase 4 complete, transitioned to Phase 5
 
 Progress:
-- Milestone: [█████░░░░░] 50%
+- Milestone: [███████░░░] 67%
 - Phase 1: [██████████] 100% ✓
 - Phase 2: [██████████] 100% ✓
 - Phase 3: [██████████] 100% ✓
-- Phase 4: [░░░░░░░░░░] 0%
+- Phase 4: [██████████] 100% ✓
+- Phase 5: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
@@ -52,8 +53,8 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: Phase 3 complete, ready to plan Phase 4
-Next action: /paul:plan for Phase 4 (CARL Integration)
+Stopped at: Phase 4 complete, ready to plan Phase 5
+Next action: /paul:plan for Phase 5 (Install & Distribution)
 Resume file: .paul/ROADMAP.md
 
 ---

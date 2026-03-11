@@ -6,7 +6,7 @@ PALS unifies PAUL (project lifecycle), CARL (context rules), TODD (TDD enforceme
 ## Current Milestone
 **v0.1 Fork & Unify** (v0.1.0)
 Status: In progress
-Phases: 3 of 6 complete
+Phases: 4 of 6 complete
 
 ## Phases
 
@@ -15,7 +15,7 @@ Phases: 3 of 6 complete
 | 1 | Architecture & Design | 2 | Complete | 2026-03-11 |
 | 2 | Fork & Restructure | 3 | Complete | 2026-03-11 |
 | 3 | Merge TODD/WALT | 2 | Complete | 2026-03-11 |
-| 4 | CARL Integration | 2 | Not started | - |
+| 4 | CARL Integration | 2 | Complete | 2026-03-11 |
 | 5 | Install & Distribution | 2 | Not started | - |
 | 6 | End-to-End Validation | 1 | Not started | - |
 
@@ -70,7 +70,7 @@ Phases: 3 of 6 complete
 
 **Plans:**
 - [x] 03-01: Merge TODD (TDD) into plan/apply workflows
-- [ ] 03-02: Merge WALT (quality) into unify workflow
+- [x] 03-02: Merge WALT (quality) into unify workflow
 
 ### Phase 4: CARL Integration
 
@@ -85,8 +85,8 @@ Phases: 3 of 6 complete
 - Update CARL commands to work within PALS namespace
 
 **Plans:**
-- [ ] 04-01: Migrate CARL core (manifest, domains, global rules)
-- [ ] 04-02: Wire CARL hooks and commands into PALS namespace
+- [x] 04-01: Migrate CARL core (manifest, domains, global rules)
+- [x] 04-02: Wire CARL hooks and commands into PALS namespace
 
 ### Phase 5: Install & Distribution
 
