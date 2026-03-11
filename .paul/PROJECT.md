@@ -4,9 +4,15 @@
 PALS - Project Automation & Lifecycle System. Based on PAUL and CARL along with their pals TODD and WALT. They team up to give users the agentic coding framework that makes development friendly.
 
 ## Core Value
-The ultimate user friendly end-to-end Claude Code software development framework
+The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
 
 ## Requirements
+
+### Active (v0.4)
+- [ ] Kernel/module/driver architecture implemented
+- [ ] CARL, TODD, WALT refactored as loadable modules
+- [ ] Module-aware installer with pals.yaml config
+- [ ] Agent SDK driver proof-of-concept
 
 ### Must Have
 All validated — see below.
@@ -33,11 +39,15 @@ All validated — see below.
 - ✓ Install/uninstall scripts updated for /paul:* namespace — Phase 7
 - ✓ Upgrade-aware installer with legacy ~/.claude/paul-framework/ cleanup — Phase 8
 - ✓ Auto context cycling researched — not feasible (no programmatic /clear) — Phase 9
+- ✓ Kernel/module/driver architecture designed (4 spec documents) — Phase 10
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
 - TODD/WALT have no standalone operation — always PALS-native
 - /carl:* namespace preserved (not merged into /paul:*)
+- Kernel must remain platform-agnostic (no Claude Code assumptions in core)
+- Module interface must be simple enough to build a new pal in one session
+- Existing functionality must not regress during kernelization
 
 ## Key Decisions
 
@@ -53,6 +63,9 @@ All validated — see below.
 | Revert /pals:* → /paul:* namespace | 7 | PAUL is the subsystem name; /pals:* adds confusion |
 | Interactive y/N prompt for legacy cleanup (default No) | 8 | Safe default prevents accidental deletion during install |
 | Auto context cycling deferred | 9 | No programmatic /clear exists; 3→2 step improvement not worth building |
+| "Linux of Harness Engineering" vision | 10 | Minimal kernel, modular pals, universal drivers — platform-agnostic |
+| Three-layer stack: Modules → Kernel → Drivers | 10 | Each layer only talks to neighbors; missing modules = no-op |
+| Delegated workflows stay in kernel | 10 | Only named pals become modules; fork kernel for different tools |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -71,4 +84,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 9 — v0.3 milestone complete*
+*Last updated: 2026-03-11 after Phase 10 — v0.4 architecture designed*

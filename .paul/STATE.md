@@ -4,27 +4,27 @@
 
 See: .paul/PROJECT.md (updated 2026-03-11)
 
-**Core value:** The ultimate user friendly end-to-end Claude Code software development framework
-**Current focus:** v0.3 Smart Context & Migration
+**Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
+**Current focus:** v0.4 Kernel & Modules
 
 ## Current Position
 
-Milestone: v0.3 Smart Context & Migration — Complete
-Phase: 9 of 9 (Auto Context Cycling) — Research complete, implementation deferred
-Plan: 09-01 complete (research), 09-02 cancelled
-Status: Milestone complete
-Last activity: 2026-03-11 — v0.3 milestone complete
+Milestone: v0.4 Kernel & Modules
+Phase: 11 of 13 (Kernel Extraction & Module Refactor)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-11 — Phase 10 complete, transitioned to Phase 11
 
 Progress:
-- v0.3 Smart Context & Migration: [██████████] 100%
-- Phase 9: [██████████] 100% (research only — implementation deferred)
+- v0.4 Kernel & Modules: [██░░░░░░░░] 25%
+- Phase 11: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Milestone complete]
+  ○        ○        ○     [Ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -32,27 +32,25 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| CARL is fully independent (hook-level integration) | Phase 1 | Phase 4 focuses on hook wiring |
-| TODD/WALT are integrated PALS subsystems, retain naming | Phase 1 (revised) | Phase 3 removes indirection but keeps TODD:/WALT: labels |
-| Flat workflows/ dir, no TODD/WALT subdirs | Phase 1 | Phase 3 merges inline |
-| /paul:* namespace, /carl:* retained | Phase 1 | Phase 2 does batch rename |
-| TODD workflows merge inline into parents | Phase 1 | Phase 3 reclassifies as references (revised from full inline) |
-| Reclassify TDD overlays as references instead of inlining | Phase 3 | Keeps files readable, matches quality-runner.md pattern |
-| Preserve all subsystem names (TODD, WALT, PAUL, CARL) | Phase 3 | Integration not erasure — TODD:/WALT: labels kept in workflows |
-| Interactive y/N prompt for legacy cleanup (default No) | Phase 8 | Safe default prevents accidental deletion |
-| Auto context cycling deferred — not worth 3→2 step improvement | Phase 9 | Revisit when Claude Code adds programmatic /clear |
+| "Linux of Harness Engineering" — minimal kernel, modular pals, universal drivers | Phase 10 | Foundational architecture for v0.4+ |
+| Naming: Kernel, Modules, Drivers (not plugins/adapters) | Phase 10 | Consistent terminology throughout |
+| Delegated workflows stay in kernel (kernel-utils) | Phase 10 | Only named pals become modules; fork kernel for different tools |
+| Three-layer stack: Modules → Kernel → Drivers | Phase 10 | Each layer only talks to neighbors |
+| 8 lifecycle hooks with priority ordering | Phase 10 | pre/post for plan, apply, unify + pre-test, post-task |
+| 5 driver methods: workflow_invoke, hook_register, state_read/write, user_interact, command_register | Phase 10 | Platform abstraction contract |
 
 ### Deferred Issues
-None yet.
+- ci-generation.md and sonarqube-integration.md unclassified (future module candidates)
+- plan-phase-tdd.md may need extraction as standalone file during Phase 11
 
 ### Blockers/Concerns
-None yet.
+None.
 
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: v0.3 milestone complete
-Next action: /paul:milestone or /paul:discuss-milestone for v0.4
+Stopped at: Phase 10 complete, ready to plan Phase 11
+Next action: /paul:plan for Phase 11
 Resume file: .paul/ROADMAP.md
 
 ---
