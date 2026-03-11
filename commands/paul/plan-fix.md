@@ -8,7 +8,7 @@ allowed-tools: [Read, Bash, Write, Glob, Grep, AskUserQuestion]
 <objective>
 Create FIX.md plan from UAT issues found during verify.
 
-**When to use:** After `/pals:verify` logs issues to phase-scoped UAT file.
+**When to use:** After `/paul:verify` logs issues to phase-scoped UAT file.
 
 **Output:** `{plan}-FIX.md` in the phase directory, ready for execution.
 </objective>
@@ -37,7 +37,7 @@ If no argument provided:
 ```
 Error: Plan number required.
 
-Usage: /pals:plan-fix 04-02
+Usage: /paul:plan-fix 04-02
 
 This creates a fix plan from .paul/phases/XX-name/{plan}-UAT.md
 ```
@@ -56,7 +56,7 @@ If not found:
 ```
 No UAT.md found for plan {plan}.
 
-UAT.md files are created by /pals:verify when testing finds issues.
+UAT.md files are created by /paul:verify when testing finds issues.
 If no issues were found during testing, no fix plan is needed.
 ```
 Exit.
@@ -169,7 +169,7 @@ Before declaring plan complete:
 
 <success_criteria>
 - All UAT issues from {plan}-UAT.md addressed
-- Ready for re-verification with /pals:verify
+- Ready for re-verification with /paul:verify
 </success_criteria>
 
 <output>
@@ -203,7 +203,7 @@ Continue to APPLY?
 ```
 
 Use AskUserQuestion to get response.
-If approved: `/pals:apply .paul/phases/XX-name/{plan}-FIX.md`
+If approved: `/paul:apply .paul/phases/XX-name/{plan}-FIX.md`
 </step>
 
 </process>

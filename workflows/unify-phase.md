@@ -222,7 +222,7 @@ Continue to next plan?
 ════════════════════════════════════════
 ```
 
-**Accept:** "1", "yes", "continue" → run `/pals:plan` for next plan in same phase
+**Accept:** "1", "yes", "continue" → run `/paul:plan` for next plan in same phase
 </step>
 
 <step name="execute_transition" priority="required" gate="blocking">
@@ -248,7 +248,7 @@ Continue to next plan?
 
 4. **Only after transition completes** → offer next phase routing
 
-**Anti-pattern:** Closing UNIFY and immediately offering `/pals:plan` for next phase WITHOUT running transition. This breaks system cohesion and skips git commits.
+**Anti-pattern:** Closing UNIFY and immediately offering `/paul:plan` for next phase WITHOUT running transition. This breaks system cohesion and skips git commits.
 </step>
 
 </process>

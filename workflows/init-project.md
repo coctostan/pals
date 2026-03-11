@@ -35,7 +35,7 @@ After init, project is ready for first PLAN.
    ```
 2. If exists:
    - "PAUL already initialized in this project."
-   - Route to `/pals:resume` or `/pals:progress`
+   - Route to `/paul:resume` or `/paul:progress`
    - Exit this workflow
 3. If not exists: proceed with initialization
 </step>
@@ -155,7 +155,7 @@ Phases: 0 of TBD complete
 
 ## Phase Details
 
-Phases will be defined during `/pals:plan`.
+Phases will be defined during `/paul:plan`.
 
 ---
 *Roadmap created: [timestamp]*
@@ -211,7 +211,7 @@ None yet.
 
 Last session: [timestamp]
 Stopped at: Project initialization complete
-Next action: Run /pals:plan to define phases and first plan
+Next action: Run /paul:plan to define phases and first plan
 Resume file: .paul/PROJECT.md
 
 ---
@@ -298,7 +298,7 @@ Do you have specialized skills or commands for this project?
 (e.g., /revops-expert, /frontend-design, custom workflows)
 
 [1] Yes, configure now
-[2] Skip for now (add later via /pals:flows)
+[2] Skip for now (add later via /paul:flows)
 ```
 
 Wait for user response.
@@ -313,7 +313,7 @@ Wait for user response.
 **If "2" or "skip" or "no":**
 
 Store `specialized_flows_enabled = false`
-(User can add later via /pals:flows)
+(User can add later via /paul:flows)
 </step>
 
 <step name="confirm_and_route">
@@ -338,7 +338,7 @@ Created:
   .paul/phases/       ✓
 
 ────────────────────────────────────────
-▶ NEXT: /pals:plan
+▶ NEXT: /paul:plan
   Define your phases and create your first plan.
 ────────────────────────────────────────
 
@@ -361,7 +361,7 @@ If neither was enabled, show the minimal version without those lines.
 - `.paul/config.md` (if integrations enabled)
 - `.paul/SPECIAL-FLOWS.md` (if specialized flows enabled)
 - `.paul/phases/` (empty directory)
-- Clear routing to `/pals:plan`
+- Clear routing to `/paul:plan`
 </output>
 
 <error_handling>

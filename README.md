@@ -18,12 +18,12 @@ Then start a new Claude Code session.
 
 | Command | What it does |
 |---------|-------------|
-| `/pals:init` | Initialize PALS in your project |
-| `/pals:plan` | Create an executable plan for your next task |
-| `/pals:apply` | Execute an approved plan |
-| `/pals:unify` | Reconcile results and close the loop |
-| `/pals:progress` | See current status and suggested next action |
-| `/pals:help` | Show all available commands |
+| `/paul:init` | Initialize PALS in your project |
+| `/paul:plan` | Create an executable plan for your next task |
+| `/paul:apply` | Execute an approved plan |
+| `/paul:unify` | Reconcile results and close the loop |
+| `/paul:progress` | See current status and suggested next action |
+| `/paul:help` | Show all available commands |
 
 ## Components
 

@@ -159,10 +159,10 @@ When intentional deviation becomes the norm:
 ## Integration Points
 
 ### With Init
-During `/pals:init`, optionally configure specialized flows:
+During `/paul:init`, optionally configure specialized flows:
 - "Do you have specialized skills for this project?"
 - If yes, route to configuration workflow
-- If no, skip (can add later via `/pals:flows`)
+- If no, skip (can add later via `/paul:flows`)
 
 ### With UNIFY
 During UNIFY, audit skill usage:

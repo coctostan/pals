@@ -98,7 +98,7 @@ mcp__sonarqube__sonar_scan
 
 Or use PAUL workflow:
 ```
-/pals:quality-gate
+/paul:quality-gate
 ```
 
 ### Step 4: Verify Integration
@@ -117,7 +117,7 @@ mcp__sonarqube__sonar_get_metrics
 
 Run quality checks anytime:
 ```
-/pals:quality-gate
+/paul:quality-gate
 ```
 
 This will:

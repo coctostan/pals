@@ -124,7 +124,7 @@ Config saved to: .paul/config.md
 
 ────────────────────────────────────────
 [If SonarQube just enabled:]
-▶ NEXT: /pals:quality-gate
+▶ NEXT: /paul:quality-gate
   Run your first code quality scan.
 
 [Otherwise:]

@@ -19,9 +19,14 @@ rm -rf "$HOME/.pals"
 echo "  [ok] Removed ~/.pals/"
 
 # ── 2. Remove commands ──────────────────────────────────────────
-rm -rf "$HOME/.claude/commands/pals"
+rm -rf "$HOME/.claude/commands/paul"
 rm -rf "$HOME/.claude/commands/carl"
-echo "  [ok] Removed ~/.claude/commands/pals/ and carl/"
+# Clean up stale old-namespace path (from pre-v0.2 installs)
+if [ -d "$HOME/.claude/commands/pals" ]; then
+  rm -rf "$HOME/.claude/commands/pals"
+  echo "  [ok] Removed stale ~/.claude/commands/pals/"
+fi
+echo "  [ok] Removed ~/.claude/commands/paul/ and carl/"
 
 # ── 3. Remove hook ──────────────────────────────────────────────
 rm -f "$HOME/.claude/hooks/carl-hook.py"

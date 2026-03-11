@@ -280,7 +280,7 @@ After all tasks attempted:
 
    [1] Yes, run UNIFY | [2] Pause here
    ```
-4. **Accept quick inputs:** "1", "yes", "continue", "go" → run `/pals:unify [plan-path]`
+4. **Accept quick inputs:** "1", "yes", "continue", "go" → run `/paul:unify [plan-path]`
 </step>
 
 </process>

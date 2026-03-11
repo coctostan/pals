@@ -35,7 +35,7 @@ The workflow implements conversational setup:
 4. Ask: "What are you building?"
 5. Confirm project name (infer from directory)
 6. Populate PROJECT.md, ROADMAP.md, STATE.md from answers
-7. Display ONE next action: `/pals:plan`
+7. Display ONE next action: `/paul:plan`
 
 **Key behaviors:**
 - Ask ONE question at a time

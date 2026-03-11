@@ -30,5 +30,5 @@ Follow workflow: @~/.pals/workflows/discuss-phase.md
 <success_criteria>
 - [ ] CONTEXT.md created in phase directory
 - [ ] Goals and approach articulated
-- [ ] Ready for /pals:plan command
+- [ ] Ready for /paul:plan command
 </success_criteria>

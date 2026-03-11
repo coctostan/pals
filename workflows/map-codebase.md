@@ -428,14 +428,14 @@ Created .paul/codebase/:
 
 **Initialize PAUL project** — use codebase context for planning
 
-`/pals:init`
+`/paul:init`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- Re-run mapping: `/pals:map-codebase`
+- Re-run mapping: `/paul:map-codebase`
 - Review specific file: `cat .paul/codebase/STACK.md`
 - Edit any document before proceeding
 

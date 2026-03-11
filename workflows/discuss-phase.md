@@ -9,13 +9,13 @@ Facilitate vision articulation before planning a phase. Acts as a thinking partn
 <when_to_use>
 - User starting a new phase and wants to think through approach
 - User has rough ideas but needs to articulate them before planning
-- Before /pals:plan when discussion is desired
+- Before /paul:plan when discussion is desired
 - Phase scope is unclear or has multiple possible approaches
 </when_to_use>
 
 <loop_context>
 N/A - This is a pre-planning workflow, not a loop phase.
-After discussion, routes to /pals:plan (plan-phase).
+After discussion, routes to /paul:plan (plan-phase).
 </loop_context>
 
 <required_reading>
@@ -37,8 +37,8 @@ After discussion, routes to /pals:plan (plan-phase).
 ```
 Error: Phase number required.
 
-Usage: /pals:discuss <phase-number>
-Example: /pals:discuss 10
+Usage: /paul:discuss <phase-number>
+Example: /paul:discuss 10
 ```
 Exit workflow.
 
@@ -165,14 +165,14 @@ Status: Ready for planning
 Context saved for handoff.
 
 ────────────────────────────────────────
-▶ NEXT: /pals:plan
+▶ NEXT: /paul:plan
   Create the plan structure from this context
 ────────────────────────────────────────
 
 Type "yes" to proceed, or continue discussing.
 ```
 
-**Accept:** "yes", "go", "plan" → run `/pals:plan`
+**Accept:** "yes", "go", "plan" → run `/paul:plan`
 </step>
 
 </process>
@@ -180,7 +180,7 @@ Type "yes" to proceed, or continue discussing.
 <output>
 - .paul/phases/{NN}-{name}/CONTEXT.md created (handoff file)
 - Goals and approach articulated
-- Ready for /pals:plan to consume
+- Ready for /paul:plan to consume
 </output>
 
 <success_criteria>
@@ -190,7 +190,7 @@ Type "yes" to proceed, or continue discussing.
 - [ ] Approach discussed
 - [ ] Context synthesized and confirmed
 - [ ] CONTEXT.md written to phase directory
-- [ ] Clear handoff to /pals:plan
+- [ ] Clear handoff to /paul:plan
 </success_criteria>
 
 <anti_patterns>
@@ -212,7 +212,7 @@ DO: Always write the file so /clear doesn't lose progress.
 
 **Duplicating assumptions workflow:**
 DON'T: Surface Claude's assumptions here.
-DO: Focus on user input. Use /pals:assumptions for Claude's analysis.
+DO: Focus on user input. Use /paul:assumptions for Claude's analysis.
 </anti_patterns>
 
 <error_handling>
@@ -226,6 +226,6 @@ DO: Focus on user input. Use /pals:assumptions for Claude's analysis.
 - Ask: "What's the most critical part?"
 
 **User wants to skip discussion:**
-- Route directly to /pals:plan
+- Route directly to /paul:plan
 - Note: "Going straight to planning — no discussion context will be available"
 </error_handling>

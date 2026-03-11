@@ -130,7 +130,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 1. Read `.paul/STATE.md` for latest position
 2. Check loop position
-3. Run `/pals:resume` or `/pals:progress`
+3. Run `/paul:resume` or `/paul:progress`
 
 ---
 
@@ -230,7 +230,7 @@ Current State:
   Loop: [PLAN/APPLY/UNIFY position]
 
 To resume later:
-  /pals:resume
+  /paul:resume
 
 ════════════════════════════════════════
 ```

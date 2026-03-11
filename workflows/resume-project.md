@@ -38,7 +38,7 @@ No multiple options. Prevents decision fatigue. User can redirect if needed.
    ls .paul/STATE.md 2>/dev/null
    ```
 2. If not found:
-   - "No PAUL project found. Run /pals:init first."
+   - "No PAUL project found. Run /paul:init first."
    - Exit workflow
 3. If found: proceed with resume
 </step>
@@ -98,10 +98,10 @@ Based on loop position, determine **exactly ONE** next action:
 
 | Loop State | Single Next Action |
 |------------|-------------------|
-| PLAN ○ (no plan yet) | `/pals:plan` |
-| PLAN ✓, APPLY ○ (plan awaiting approval) | `/pals:apply [plan-path]` |
-| PLAN ✓, APPLY ✓, UNIFY ○ (executed, not reconciled) | `/pals:unify [plan-path]` |
-| All ✓ (loop complete) | `/pals:plan` (next phase) |
+| PLAN ○ (no plan yet) | `/paul:plan` |
+| PLAN ✓, APPLY ○ (plan awaiting approval) | `/paul:apply [plan-path]` |
+| PLAN ✓, APPLY ✓, UNIFY ○ (executed, not reconciled) | `/paul:unify [plan-path]` |
+| All ✓ (loop complete) | `/paul:plan` (next phase) |
 | Blocked | "Address blocker: [specific issue]" |
 
 **Do NOT offer multiple options.** Pick the ONE correct action.
@@ -182,7 +182,7 @@ When user confirms next action (e.g., "yes", "1", "approved"):
 <error_handling>
 **STATE.md corrupted or incomplete:**
 - Report what's missing
-- Suggest: `/pals:init` to reinitialize (destructive) or manual repair
+- Suggest: `/paul:init` to reinitialize (destructive) or manual repair
 
 **Conflicting information:**
 - STATE.md says X, but files suggest Y

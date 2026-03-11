@@ -29,5 +29,5 @@ Follow workflow: @~/.pals/workflows/discuss-milestone.md
 <success_criteria>
 - [ ] MILESTONE-CONTEXT.md created with vision
 - [ ] Key themes and goals articulated
-- [ ] Ready for /pals:milestone command
+- [ ] Ready for /paul:milestone command
 </success_criteria>

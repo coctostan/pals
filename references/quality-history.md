@@ -32,7 +32,7 @@ Types: 0→0→0→0
 | 13-01 | 2026-03-10 | 21 pass | 82% | 0 | 0 | ▲ improved |
 
 ---
-*Updated after every /pals:unify*
+*Updated after every /paul:unify*
 ```
 
 ### Column Definitions
@@ -55,7 +55,7 @@ Types: 0→0→0→0
 
 ### When to Append
 
-Append a new row to QUALITY-HISTORY.md every time `/pals:unify` runs, after the `audit_quality_delta` step has captured the quality snapshot.
+Append a new row to QUALITY-HISTORY.md every time `/paul:unify` runs, after the `audit_quality_delta` step has captured the quality snapshot.
 
 ### Steps
 
@@ -102,7 +102,7 @@ Types: {types}
 | {plan-id} | {date} | {tests} pass | {coverage} | {lint} | {types} | ◆ baseline |
 
 ---
-*Updated after every /pals:unify*
+*Updated after every /paul:unify*
 ```
 
 </append_logic>

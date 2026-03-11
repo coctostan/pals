@@ -9,36 +9,33 @@ The ultimate user friendly end-to-end Claude Code software development framework
 ## Requirements
 
 ### Must Have
-- Unified ~/.pals/ directory structure housing all components
-- /pals:* command namespace replacing /paul:*
-- CARL as native component with /carl:* namespace retained
-- TODD/WALT integrated as named subsystems (no indirection)
-- Single install script from git clone
+All validated — see below.
 
 ### Should Have
-- Clean migration path from existing PAUL/CARL installs
-- Complete @-reference rewiring across all files
+All validated — see below.
 
 ### Nice to Have
-- ✓ Uninstall/cleanup script — Phase 5
-- ✓ Getting-started documentation — Phase 5
+All validated — see below.
 
 ### Validated
 - ✓ Architecture fully mapped (111 files across 4 components) — Phase 1
 - ✓ Unified structure designed (105 destinations, 6 consolidations) — Phase 1
 - ✓ PALS repo structure created with 96 PAUL files migrated — Phase 2
-- ✓ /pals:* command namespace replacing /paul:* — Phase 2
+- ✓ /paul:* command namespace replacing /paul:* — Phase 2
 - ✓ All @-references rewritten to ~/.pals/ paths — Phase 2
 - ✓ TODD/WALT integrated as named subsystems (no indirection) — Phase 3
 - ✓ CARL as native component with /carl:* namespace retained — Phase 4
 - ✓ Single install script from git clone — Phase 5
 - ✓ Uninstall/cleanup script — Phase 5
 - ✓ Getting-started documentation (README.md) — Phase 5
+- ✓ /paul:* namespace standardized (removed /pals:* duplication) — Phase 7
+- ✓ Cleanup artifacts removed (test-lifecycle.sh) — Phase 7
+- ✓ Install/uninstall scripts updated for /paul:* namespace — Phase 7
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
 - TODD/WALT have no standalone operation — always PALS-native
-- /carl:* namespace preserved (not merged into /pals:*)
+- /carl:* namespace preserved (not merged into /paul:*)
 
 ## Key Decisions
 
@@ -48,9 +45,10 @@ The ultimate user friendly end-to-end Claude Code software development framework
 | TODD/WALT are named integrated subsystems, retain identity | 1 (revised) | Steps labeled TODD:/WALT: in workflows, no separate directories |
 | Flat workflows/ directory (no TODD/WALT subdirs) | 1 | TODD/WALT steps inline in parent workflows |
 | CARL gets own subdirectory (~/.pals/carl/) | 1 | Independent runtime config, not docs |
-| /pals:* namespace, /carl:* retained | 1 | Unified brand + CARL independence |
+| /paul:* namespace, /carl:* retained | 1 | Unified brand + CARL independence |
 | TODD workflows reclassified as references | 1 (revised) | TDD specs stay self-contained, referenced natively from plan/apply |
 | Preserve all subsystem names (TODD, WALT, PAUL, CARL) | 3 | User directive — integration not erasure |
+| Revert /pals:* → /paul:* namespace | 7 | PAUL is the subsystem name; /pals:* adds confusion |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -69,4 +67,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 6 — v0.1 milestone complete*
+*Last updated: 2026-03-11 after Phase 7 — v0.2 milestone complete*

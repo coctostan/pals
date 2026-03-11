@@ -139,7 +139,7 @@ Create `.paul/HANDOFF-{date}-{context}.md`:
 
 **Current:** {phase, plan, loop position}
 **Next:** {recommended next action}
-**Resume:** `/pals:resume` then read this handoff
+**Resume:** `/paul:resume` then read this handoff
 
 ---
 
@@ -160,7 +160,7 @@ Includes:
 - {N} gaps with your decisions
 - {N} prioritized next actions
 
-Next session: /pals:resume → read handoff
+Next session: /paul:resume → read handoff
 ════════════════════════════════════════
 ```
 </step>

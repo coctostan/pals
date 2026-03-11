@@ -68,7 +68,7 @@ When a checkpoint task is reached:
 
 <step name="complete">
 After all tasks complete:
-- Report: "APPLY complete. Run /pals:unify to close loop."
+- Report: "APPLY complete. Run /paul:unify to close loop."
 - Show files modified
 - Show SUMMARY path to create
 </step>
@@ -79,5 +79,5 @@ After all tasks complete:
 - [ ] All tasks executed
 - [ ] All checkpoints handled
 - [ ] User informed of completion
-- [ ] Next action clear (run /pals:unify)
+- [ ] Next action clear (run /paul:unify)
 </success_criteria>

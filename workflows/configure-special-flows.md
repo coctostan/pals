@@ -4,7 +4,7 @@ Configure specialized skill integrations for a PAUL project. Discovers available
 
 <when_to_use>
 - During init when user has specialized skills/commands
-- Ad-hoc via `/pals:flows` command
+- Ad-hoc via `/paul:flows` command
 - When adding new skills to an existing project
 - When amending existing SPECIAL-FLOWS.md
 </when_to_use>
@@ -194,7 +194,7 @@ Repeat or ask "Add another asset? [y/n]"
 
    ────────────────────────────────────────
    Verification will occur during UNIFY.
-   Run /pals:flows audit to check current phase.
+   Run /paul:flows audit to check current phase.
    ────────────────────────────────────────
    ```
 </step>
@@ -274,7 +274,7 @@ Enter skill names (comma-separated) or "skip":
 **No .paul/ directory:**
 ```
 PAUL not initialized in this project.
-Run /pals:init first, or create .paul/ manually.
+Run /paul:init first, or create .paul/ manually.
 ```
 
 **User provides invalid skill name:**

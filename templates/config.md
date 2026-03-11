@@ -38,7 +38,7 @@ sonarqube:
 ```
 
 **When enabled:**
-- `/pals:quality-gate` runs scans and updates CONCERNS.md
+- `/paul:quality-gate` runs scans and updates CONCERNS.md
 - Quality metrics inform planning decisions
 - Issues feed into tech debt tracking
 
@@ -145,7 +145,7 @@ preferences:
 - Roadmap information (that's ROADMAP.md)
 
 **When to create config.md:**
-- During `/pals:init` if user enables integrations
+- During `/paul:init` if user enables integrations
 - Manually when adding integrations later
 - Not required for basic PAUL usage
 

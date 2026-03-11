@@ -160,7 +160,7 @@ Resume context:
 ```
 
 ### HANDOFF.md Document
-For zero-context sessions or complex multi-session work. Created by `/pals:pause`:
+For zero-context sessions or complex multi-session work. Created by `/paul:pause`:
 
 - Self-contained entry point (assumes no prior context)
 - What was accomplished this session
@@ -178,9 +178,9 @@ For zero-context sessions or complex multi-session work. Created by `/pals:pause
 
 | Command | Purpose |
 |---------|---------|
-| `/pals:pause` | Create HANDOFF, update STATE, prepare for break |
-| `/pals:resume` | Restore context from HANDOFF/STATE, suggest next action |
-| `/pals:progress` | Mid-session check, suggests ONE next action |
+| `/paul:pause` | Create HANDOFF, update STATE, prepare for break |
+| `/paul:resume` | Restore context from HANDOFF/STATE, suggest next action |
+| `/paul:progress` | Mid-session check, suggests ONE next action |
 
 ## Anti-Patterns
 

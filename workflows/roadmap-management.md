@@ -39,7 +39,7 @@ Can be invoked at any time during a milestone.
 3. Calculate next phase number = highest + 1
 
 **If no active milestone:**
-- Error: "No active milestone. Run /pals:milestone first."
+- Error: "No active milestone. Run /paul:milestone first."
 - Exit workflow
 </step>
 
@@ -81,7 +81,7 @@ Update ROADMAP.md:
    ### Phase {next_number}: {phase_name}
 
    Focus: {phase_description}
-   Plans: TBD (defined during /pals:plan)
+   Plans: TBD (defined during /paul:plan)
    Status: Not started
    ```
 
@@ -318,7 +318,7 @@ STATE.md updated ✓
 
 <error_handling>
 **No active milestone:**
-- Route to /pals:milestone or /pals:init
+- Route to /paul:milestone or /paul:init
 
 **Phase directory not empty:**
 - Preserve directory, warn user

@@ -46,15 +46,15 @@ for item in "$PALS_ROOT/carl/"*; do
 done
 
 # ── 3. Install commands ─────────────────────────────────────────
-mkdir -p ~/.claude/commands/pals ~/.claude/commands/carl
+mkdir -p ~/.claude/commands/paul ~/.claude/commands/carl
 
-cp -R "$PALS_ROOT/commands/pals/"* ~/.claude/commands/pals/
+cp -R "$PALS_ROOT/commands/paul/"* ~/.claude/commands/paul/
 # carl commands have subdirectories (tasks/, templates/)
 cp -R "$PALS_ROOT/commands/carl/"* ~/.claude/commands/carl/
 
-PALS_CMD_COUNT=$(find "$PALS_ROOT/commands/pals" -name "*.md" | wc -l | tr -d ' ')
+PALS_CMD_COUNT=$(find "$PALS_ROOT/commands/paul" -name "*.md" | wc -l | tr -d ' ')
 CARL_CMD_COUNT=$(find "$PALS_ROOT/commands/carl" -name "*.md" | wc -l | tr -d ' ')
-echo "  [ok] Commands installed: $PALS_CMD_COUNT pals, $CARL_CMD_COUNT carl"
+echo "  [ok] Commands installed: $PALS_CMD_COUNT paul, $CARL_CMD_COUNT carl"
 
 # ── 4. Install hooks ────────────────────────────────────────────
 mkdir -p ~/.claude/hooks
@@ -130,7 +130,7 @@ check_path ~/.pals/references
 check_path ~/.pals/templates
 check_path ~/.pals/rules
 check_path ~/.pals/carl
-check_path ~/.claude/commands/pals
+check_path ~/.claude/commands/paul
 check_path ~/.claude/commands/carl
 check_path ~/.claude/hooks/carl-hook.py
 check_path ~/.claude/settings.json
@@ -148,7 +148,7 @@ echo "PALS installed successfully!"
 echo "════════════════════════════════════════"
 echo ""
 echo "  ~/.pals/         Framework files"
-echo "  ~/.claude/commands/pals/  $PALS_CMD_COUNT commands"
+echo "  ~/.claude/commands/paul/  $PALS_CMD_COUNT commands"
 echo "  ~/.claude/commands/carl/  $CARL_CMD_COUNT commands"
 echo "  ~/.claude/hooks/          CARL hook (symlink)"
 echo ""

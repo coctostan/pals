@@ -12,7 +12,7 @@ Mark a milestone complete after all phases are done. Creates permanent milestone
 
 <loop_context>
 N/A - This is a milestone transition workflow, not a loop phase.
-After completion, project is ready for /pals:discuss-milestone or /pals:milestone.
+After completion, project is ready for /paul:discuss-milestone or /paul:milestone.
 </loop_context>
 
 <required_reading>
@@ -216,7 +216,7 @@ Update ROADMAP.md to collapse completed milestone:
 2. **Add Next Milestone placeholder:**
    ```markdown
    ## Next Milestone
-   Run /pals:discuss-milestone or /pals:milestone to define.
+   Run /paul:discuss-milestone or /paul:milestone to define.
    ```
 
 3. **Move completed phases to Completed section:**
@@ -273,7 +273,7 @@ Update STATE.md for post-milestone state:
 
    Last session: {timestamp}
    Stopped at: Milestone {milestone_name} complete
-   Next action: /pals:discuss-milestone or /pals:milestone
+   Next action: /paul:discuss-milestone or /paul:milestone
    Resume file: .paul/MILESTONES.md
    ```
 </step>
@@ -414,11 +414,11 @@ Updated:
   STATE.md (cleared)    ✓
 
 ────────────────────────────────────────
-▶ NEXT: /pals:discuss-milestone
+▶ NEXT: /paul:discuss-milestone
   Define the scope for the next milestone
 ────────────────────────────────────────
 
-Or /pals:milestone to create milestone directly.
+Or /paul:milestone to create milestone directly.
 ```
 </step>
 

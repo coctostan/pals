@@ -10,7 +10,7 @@ Surface Claude's assumptions about a phase to validate understanding before plan
 
 **When to use:** Before planning to catch misconceptions early.
 
-**Distinction from /pals:discuss:** This command shows what CLAUDE thinks. The discuss command gathers what USER wants.
+**Distinction from /paul:discuss:** This command shows what CLAUDE thinks. The discuss command gathers what USER wants.
 </objective>
 
 <execution_context>

@@ -4,7 +4,7 @@ Define a new milestone in the project. Creates milestone structure in ROADMAP.md
 
 <when_to_use>
 - User explicitly requests new milestone
-- Triggered after /pals:discuss-milestone (reads context)
+- Triggered after /paul:discuss-milestone (reads context)
 - Project completed previous milestone, needs next
 - Starting fresh project milestone planning
 </when_to_use>
@@ -106,7 +106,7 @@ Read current ROADMAP.md and update:
    ### Phase {N}: {name}
 
    Focus: {description}
-   Plans: TBD (defined during /pals:plan)
+   Plans: TBD (defined during /paul:plan)
    ```
 
 4. **Update footer timestamp**
@@ -161,7 +161,7 @@ Update STATE.md:
 
    Last session: {timestamp}
    Stopped at: Milestone created, ready to plan
-   Next action: /pals:plan for Phase {first_phase_number}
+   Next action: /paul:plan for Phase {first_phase_number}
    Resume file: .paul/ROADMAP.md
    ```
 </step>
@@ -200,7 +200,7 @@ ROADMAP.md updated ✓
 STATE.md updated ✓
 
 ────────────────────────────────────────
-▶ NEXT: /pals:plan
+▶ NEXT: /paul:plan
   Begin planning Phase {first_phase_number}: {first_phase_name}
 ────────────────────────────────────────
 
@@ -217,7 +217,7 @@ Type "yes" to proceed, or ask questions first.
 - Phase directories created in .paul/phases/
 - STATE.md updated with new position
 - MILESTONE-CONTEXT.md deleted (if existed)
-- Clear routing to /pals:plan
+- Clear routing to /paul:plan
 </output>
 
 <success_criteria>
@@ -242,5 +242,5 @@ Type "yes" to proceed, or ask questions first.
 
 **ROADMAP.md missing:**
 - Create basic structure
-- Or route to /pals:init if project not initialized
+- Or route to /paul:init if project not initialized
 </error_handling>

@@ -10,7 +10,7 @@ Execute discovery to inform planning decisions. Produces DISCOVERY.md with findi
 
 **When to use:** Before planning a phase with technical unknowns (library selection, architecture decisions, integration approaches).
 
-**Distinct from /pals:research:** Research is for gathering documentation/information. Discover is for making technical decisions.
+**Distinct from /paul:research:** Research is for gathering documentation/information. Discover is for making technical decisions.
 </objective>
 
 <execution_context>
@@ -44,5 +44,5 @@ The workflow implements:
 - [ ] Options researched with sources
 - [ ] DISCOVERY.md created (for standard/deep)
 - [ ] Recommendation provided with confidence
-- [ ] Ready for /pals:plan
+- [ ] Ready for /paul:plan
 </success_criteria>

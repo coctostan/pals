@@ -35,11 +35,11 @@ Research informs planning but doesn't gate it.
 ```
 Error: Topic required.
 
-Usage: /pals:research <topic> [--codebase | --web]
+Usage: /paul:research <topic> [--codebase | --web]
 Examples:
-  /pals:research "nextjs app router patterns"
-  /pals:research "auth patterns in this codebase" --codebase
-  /pals:research "prisma vs drizzle comparison" --web
+  /paul:research "nextjs app router patterns"
+  /paul:research "auth patterns in this codebase" --codebase
+  /paul:research "prisma vs drizzle comparison" --web
 ```
 Exit workflow.
 

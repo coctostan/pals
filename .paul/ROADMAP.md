@@ -3,12 +3,22 @@
 ## Overview
 PALS unifies PAUL (project lifecycle), CARL (context rules), TODD (TDD enforcement), and WALT (quality gating) into a single distributable framework for Claude Code. The journey goes from mapping the current scattered architecture, through restructuring and merging, to a clean installable package validated end-to-end.
 
-## Current Milestone
-**v0.1 Fork & Unify** (v0.1.0)
-Status: Complete
-Phases: 6 of 6 complete
+## Milestones
 
-## Phases
+### v0.1 Fork & Unify (Complete)
+Phases: 6 of 6 complete — 2026-03-11
+
+### v0.2 Polish (Complete)
+Status: Complete
+Phases: 1 of 1 complete — 2026-03-11
+
+## Phases (v0.2)
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 7 | Namespace & Cleanup | 1 | Complete | 2026-03-11 |
+
+## Phases (v0.1 — Complete)
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -20,6 +30,26 @@ Phases: 6 of 6 complete
 | 6 | End-to-End Validation | 1 | Complete | 2026-03-11 |
 
 ## Phase Details
+
+### Phase 7: Namespace & Cleanup
+
+**Goal:** Remove /paul:* command duplication, standardize on /paul:* namespace, clean up leftover artifacts
+**Depends on:** v0.1 complete
+**Research:** No
+
+**Scope:**
+- Rename commands/pals/ → commands/paul/ in repo
+- Batch replace /paul: → /paul: across all framework files
+- Update install.sh and uninstall.sh for paul/ command paths
+- Update README.md references
+- Remove test-lifecycle.sh
+
+**Plans:**
+- [x] 07-01: Namespace rename and cleanup
+
+---
+
+## Phase Details (v0.1 — Complete)
 
 ### Phase 1: Architecture & Design
 
