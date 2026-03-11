@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-11)
 
 **Core value:** The ultimate user friendly end-to-end Claude Code software development framework
-**Current focus:** v0.2 Polish complete — ready for next milestone
+**Current focus:** v0.3 Smart Context & Migration
 
 ## Current Position
 
-Milestone: v0.2 Polish (Complete)
-Phase: 7 of 7 (Namespace & Cleanup) — Complete
-Plan: 07-01 complete
-Status: Milestone complete
-Last activity: 2026-03-11 — Phase 7 complete, v0.2 milestone done
+Milestone: v0.3 Smart Context & Migration
+Phase: 8 of 9 (Smart Installer)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-11 — Milestone v0.3 created
 
 Progress:
-- v0.2 Polish: [██████████] 100%
-- Phase 7: [██████████] 100%
+- v0.3 Smart Context & Migration: [░░░░░░░░░░] 0%
+- Phase 8: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — milestone done]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -49,9 +49,14 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: v0.2 milestone complete
-Next action: /paul:milestone or /paul:discuss-milestone for next milestone
-Resume file: .paul/ROADMAP.md
+Stopped at: v0.3 milestone created, ready to plan Phase 8
+Next action: /paul:plan for Phase 8 (Smart Installer)
+Resume file: .paul/HANDOFF-2026-03-11-v03-created.md
+Resume context:
+- v0.2 complete (namespace cleanup done, commit 5d1ef1d)
+- v0.3 created with 2 phases: Smart Installer + Auto Context Cycling
+- Phase 8 scope: upgrade-aware install.sh with legacy ~/.claude/paul-framework/ cleanup
+- Phase 9 needs research on programmatic /clear mechanism
 
 ---
 *STATE.md — Updated after every significant action*

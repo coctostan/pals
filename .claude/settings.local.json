@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Agent",
+      "Skill(paul:plan)",
+      "Skill(paul:apply)",
+      "Skill(paul:unify)",
+      "Skill(*)",
+      "WebFetch",
+      "WebSearch",
+      "mcp__pencil__*",
+      "mcp__gemini-cli__*"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(sudo *)",
+      "Bash(chmod *)",
+      "Bash(chown *)",
+      "Bash(git push --force*)",
+      "Bash(git push * --force*)",
+      "Bash(git reset --hard*)"
+    ]
+  }
+}

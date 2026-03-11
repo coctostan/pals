@@ -12,6 +12,17 @@ Phases: 6 of 6 complete — 2026-03-11
 Status: Complete
 Phases: 1 of 1 complete — 2026-03-11
 
+### v0.3 Smart Context & Migration (Current)
+Status: Not started
+Phases: 0 of 2 complete
+
+## Phases (v0.3)
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 8 | Smart Installer | TBD | Not started | - |
+| 9 | Auto Context Cycling | TBD | Not started | - |
+
 ## Phases (v0.2)
 
 | Phase | Name | Plans | Status | Completed |
@@ -29,7 +40,41 @@ Phases: 1 of 1 complete — 2026-03-11
 | 5 | Install & Distribution | 2 | Complete | 2026-03-11 |
 | 6 | End-to-End Validation | 1 | Complete | 2026-03-11 |
 
-## Phase Details
+## Phase Details (v0.3)
+
+### Phase 8: Smart Installer
+
+**Goal:** Make install.sh upgrade-aware — detect and clean up legacy `~/.claude/paul-framework/` during install
+**Depends on:** v0.2 complete
+**Research:** No
+
+**Scope:**
+- Detect existing `~/.claude/paul-framework/` during install
+- Offer to remove legacy installation
+- Handle upgrade path cleanly (no data loss)
+
+**Plans:**
+- [ ] 08-01: Upgrade-aware installer with legacy cleanup
+
+### Phase 9: Auto Context Cycling
+
+**Goal:** Automate the pause → clear → resume cycle when context pressure reaches critical threshold
+**Depends on:** Phase 8 (installer updated)
+**Research:** Yes (need to determine if `/clear` can be triggered programmatically)
+
+**Scope:**
+- Research programmatic context clearing mechanism
+- Enhance CARL hook to trigger auto-cycle at ~40% remaining
+- Optimize handoff format for machine consumption (structured, minimal)
+- Ensure no data loss during automated cycling
+
+**Plans:**
+- [ ] 09-01: Research context clearing mechanism
+- [ ] 09-02: Implement auto context cycling
+
+---
+
+## Phase Details (v0.2 — Complete)
 
 ### Phase 7: Namespace & Cleanup
 
@@ -153,4 +198,4 @@ Phases: 1 of 1 complete — 2026-03-11
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-11*
+*Last updated: 2026-03-11 — v0.3 milestone created*
