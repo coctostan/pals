@@ -51,7 +51,11 @@ None.
 Last session: 2026-03-11
 Stopped at: Phase 10 complete, ready to plan Phase 11
 Next action: /paul:plan for Phase 11
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-11.md
+Resume context:
+- v0.4 milestone created, Phase 10 architecture complete
+- 4 spec docs in docs/ define kernel/module/driver contracts
+- Phase 11 next: extract kernel, refactor CARL/TODD/WALT into modules
 
 ---
 *STATE.md — Updated after every significant action*
