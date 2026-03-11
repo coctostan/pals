@@ -32,6 +32,7 @@ All validated — see below.
 - ✓ Cleanup artifacts removed (test-lifecycle.sh) — Phase 7
 - ✓ Install/uninstall scripts updated for /paul:* namespace — Phase 7
 - ✓ Upgrade-aware installer with legacy ~/.claude/paul-framework/ cleanup — Phase 8
+- ✓ Auto context cycling researched — not feasible (no programmatic /clear) — Phase 9
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -51,6 +52,7 @@ All validated — see below.
 | Preserve all subsystem names (TODD, WALT, PAUL, CARL) | 3 | User directive — integration not erasure |
 | Revert /pals:* → /paul:* namespace | 7 | PAUL is the subsystem name; /pals:* adds confusion |
 | Interactive y/N prompt for legacy cleanup (default No) | 8 | Safe default prevents accidental deletion during install |
+| Auto context cycling deferred | 9 | No programmatic /clear exists; 3→2 step improvement not worth building |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -69,4 +71,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 8 — Smart Installer complete*
+*Last updated: 2026-03-11 after Phase 9 — v0.3 milestone complete*
