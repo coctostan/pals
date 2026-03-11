@@ -190,10 +190,14 @@
 
 ### Component Identity
 
-TODD and WALT **lose their separate identity** in the file structure. Their concepts are preserved:
+TODD, WALT, PAUL, and CARL **retain their names** as subsystems within PALS. They are tightly integrated — no separate directories or delegation indirection — but their identity is preserved:
+- TODD steps are labeled "TODD:" in workflows (e.g., "TODD: detect TDD project")
+- WALT steps are labeled "WALT:" in workflows (e.g., "WALT: Capture baseline")
 - TDD files keep `tdd` prefix in names (e.g., `tdd.md`, `tdd-detection.md`)
 - Quality files keep `quality-` prefix (e.g., `quality-runner.md`, `quality-delta.md`)
-- No separate `todd/` or `walt/` directories — they're native PALS features
+- No separate `todd/` or `walt/` directories — they live inline in the core workflows
+- CARL keeps its own namespace (`/carl:*`) and subdirectory (`carl/`)
+- Future PALS subsystems ("friends") follow the same pattern: named identity, integrated execution
 
 ---
 

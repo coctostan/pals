@@ -252,7 +252,7 @@ Gate: SKIP (runner error — not blocking)
 - Only gate on new failures, not removed tests
 
 ### TDD plan type
-- If plan `type: tdd`, the TDD overlay (apply-phase-tdd.md) manages its own test execution within RED-GREEN-REFACTOR phases
+- If plan `type: tdd`, the TDD execution spec (tdd-execution.md) manages its own test execution within RED-GREEN-REFACTOR phases
 - WALT baseline capture still runs before TDD execution begins
 - WALT result capture still runs after TDD execution completes
 - This provides an outer quality gate around the TDD inner loop

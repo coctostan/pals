@@ -6,7 +6,7 @@
 ## Features to Build
 
 - Fork PAUL framework into standalone PALS (Project Automation & Lifecycle System)
-- Merge TODD (TDD enforcement) and WALT (quality gating) into core workflows — no more overlay pattern
+- Integrate TODD (TDD enforcement) and WALT (quality gating) as named subsystems in core workflows
 - Integrate CARL (context rules) as a native PALS component
 - Unified directory structure under `~/.pals/` or similar
 - Single install script (git clone + setup)
@@ -25,7 +25,7 @@
 |-------|-------|----------|
 | 1 | Architecture & Design | Map current structure, design unified layout, decide what stays/changes |
 | 2 | Fork & Restructure | Create PALS repo structure, reorganize framework files |
-| 3 | Merge TODD/WALT | Inline TDD and quality overlays into core workflows |
+| 3 | Merge TODD/WALT | Integrate TODD (TDD) and WALT (quality) as native workflow steps |
 | 4 | CARL Integration | Context rules as native PALS component |
 | 5 | Install & Distribution | Setup script, skill wiring, hook configuration |
 | 6 | End-to-End Validation | Full PLAN-APPLY-UNIFY loop on test project using PALS |
@@ -42,7 +42,7 @@
 
 - Current PAUL framework lives at ~/.claude/paul-framework/
 - CARL lives in .carl/ directories per project
-- TODD/WALT are overlays in paul-framework/references/ and paul-framework/workflows/
+- TODD/WALT are integrated subsystems within PALS workflows and references
 - The todd project (~/claude/todd/) has all TODD/WALT work and validation
 - User wants this to be the foundation for future enhancements: self-healing state, auto-resume, intelligence layer, plugin architecture
 - Future milestone roadmap: v0.2 (self-healing), v0.3 (intelligence), v0.4 (plugin arch), v1.0 (public release)

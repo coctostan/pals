@@ -12,7 +12,7 @@ The ultimate user friendly end-to-end Claude Code software development framework
 - Unified ~/.pals/ directory structure housing all components
 - /pals:* command namespace replacing /paul:*
 - CARL as native component with /carl:* namespace retained
-- TODD/WALT merged inline (not overlays)
+- TODD/WALT integrated as named subsystems (no indirection)
 - Single install script from git clone
 
 ### Should Have
@@ -29,6 +29,7 @@ The ultimate user friendly end-to-end Claude Code software development framework
 - ✓ PALS repo structure created with 96 PAUL files migrated — Phase 2
 - ✓ /pals:* command namespace replacing /paul:* — Phase 2
 - ✓ All @-references rewritten to ~/.pals/ paths — Phase 2
+- ✓ TODD/WALT integrated as named subsystems (no indirection) — Phase 3
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -40,11 +41,12 @@ The ultimate user friendly end-to-end Claude Code software development framework
 | Decision | Phase | Rationale |
 |----------|-------|-----------|
 | CARL is fully independent (hook-level integration) | 1 | No file-level refs between CARL and PAUL |
-| TODD/WALT are embedded subsets, not overlays | 1 | All files inside paul-framework/, behavioral not structural |
-| Flat workflows/ directory (no TODD/WALT subdirs) | 1 | Only 3 overlay files, all merge into parents |
+| TODD/WALT are named integrated subsystems, retain identity | 1 (revised) | Steps labeled TODD:/WALT: in workflows, no separate directories |
+| Flat workflows/ directory (no TODD/WALT subdirs) | 1 | TODD/WALT steps inline in parent workflows |
 | CARL gets own subdirectory (~/.pals/carl/) | 1 | Independent runtime config, not docs |
 | /pals:* namespace, /carl:* retained | 1 | Unified brand + CARL independence |
-| TODD workflows merge inline | 1 | TDD is a mode, not a system |
+| TODD workflows reclassified as references | 1 (revised) | TDD specs stay self-contained, referenced natively from plan/apply |
+| Preserve all subsystem names (TODD, WALT, PAUL, CARL) | 3 | User directive — integration not erasure |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -63,4 +65,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 1*
+*Last updated: 2026-03-11 after Phase 3*

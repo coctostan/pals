@@ -1,9 +1,7 @@
 <purpose>
-TDD overlay for plan-phase.md. Invoked when plan type is determined to be "tdd".
-Generates a TDD-specific PLAN.md with RED/GREEN/REFACTOR task structure, feature behavior specification, and 40% context budget.
+TDD plan generation specification. Defines how to create a TDD-specific PLAN.md with RED/GREEN/REFACTOR task structure, feature behavior specification, and 40% context budget.
 
-**This workflow is invoked by plan-phase.md when type: tdd is selected.**
-It does not replace plan-phase.md — it provides TDD-specific structure for the plan being created.
+**Referenced by plan-phase.md when plan type is "tdd".**
 </purpose>
 
 <when_to_use>

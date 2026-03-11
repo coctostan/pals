@@ -6,7 +6,7 @@ PALS unifies PAUL (project lifecycle), CARL (context rules), TODD (TDD enforceme
 ## Current Milestone
 **v0.1 Fork & Unify** (v0.1.0)
 Status: In progress
-Phases: 2 of 6 complete
+Phases: 3 of 6 complete
 
 ## Phases
 
@@ -14,7 +14,7 @@ Phases: 2 of 6 complete
 |-------|------|-------|--------|-----------|
 | 1 | Architecture & Design | 2 | Complete | 2026-03-11 |
 | 2 | Fork & Restructure | 3 | Complete | 2026-03-11 |
-| 3 | Merge TODD/WALT | 2 | Not started | - |
+| 3 | Merge TODD/WALT | 2 | Complete | 2026-03-11 |
 | 4 | CARL Integration | 2 | Not started | - |
 | 5 | Install & Distribution | 2 | Not started | - |
 | 6 | End-to-End Validation | 1 | Not started | - |
@@ -30,7 +30,7 @@ Phases: 2 of 6 complete
 **Scope:**
 - Audit all PAUL framework files (workflows, references, templates, rules)
 - Audit CARL structure (manifest, domains, hooks, commands)
-- Audit TODD/WALT overlays (TDD workflows, quality gates)
+- Audit TODD/WALT subsystems (TDD workflows, quality gates)
 - Design unified ~/.pals/ directory structure
 - Define file mapping: source → destination for every file
 
@@ -58,18 +58,18 @@ Phases: 2 of 6 complete
 
 ### Phase 3: Merge TODD/WALT
 
-**Goal:** Inline TDD enforcement and quality gating as native PALS workflows (not overlays)
+**Goal:** Integrate TODD (TDD) and WALT (quality) as native PALS workflow steps with names preserved
 **Depends on:** Phase 2 (core structure exists)
 **Research:** Unlikely (established patterns)
 
 **Scope:**
 - Merge TDD workflows into core plan/apply lifecycle
 - Merge quality gate into core unify lifecycle
-- Remove overlay indirection — direct integration
+- Remove indirection — TODD/WALT steps run directly in core workflows
 - Update references and detection heuristics
 
 **Plans:**
-- [ ] 03-01: Merge TODD (TDD) into plan/apply workflows
+- [x] 03-01: Merge TODD (TDD) into plan/apply workflows
 - [ ] 03-02: Merge WALT (quality) into unify workflow
 
 ### Phase 4: CARL Integration

@@ -22,7 +22,7 @@ Next phase: UNIFY (after execution completes)
 <references>
 @~/.pals/references/checkpoints.md (if plan has checkpoints)
 @~/.pals/references/loop-phases.md
-@~/.pals/workflows/apply-phase-tdd.md (if plan type is tdd)
+@~/.pals/references/tdd-execution.md (if plan type is tdd)
 </references>
 
 <process>
@@ -107,8 +107,8 @@ Next phase: UNIFY (after execution completes)
 
 <step name="execute_tasks">
 **If plan frontmatter type is "tdd":**
-Delegate task execution to @workflows/apply-phase-tdd.md
-- The TDD overlay handles RED-GREEN-REFACTOR sequencing with phase-gating
+Follow TDD execution spec at @~/.pals/references/tdd-execution.md
+- The TDD spec defines RED-GREEN-REFACTOR sequencing with phase-gating
 - Each phase produces an atomic commit (test/feat/refactor)
 - Results return here for the finalize step
 - Skip the standard task-by-task execution below

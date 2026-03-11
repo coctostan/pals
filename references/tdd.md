@@ -225,12 +225,12 @@ Single feature focus ensures full quality throughout the cycle.
 TDD is operationally integrated into PAUL's plan-apply-unify loop:
 
 **Planning (type: tdd):**
-- @workflows/plan-phase-tdd.md — TDD plan overlay, generates RED/GREEN/REFACTOR structure
+- @references/tdd-plan-generation.md — TDD plan generation spec, defines RED/GREEN/REFACTOR structure
 - @references/tdd-detection.md — Candidate detection heuristics (STRONG/MODERATE/SKIP)
-- Hooked into plan-phase.md via conditional delegation
+- Referenced by plan-phase.md when type is tdd
 
 **Execution (apply phase):**
-- @workflows/apply-phase-tdd.md — Phase-gated RED-GREEN-REFACTOR execution
+- @references/tdd-execution.md — Phase-gated RED-GREEN-REFACTOR execution spec
 - RED: write test, verify fails, commit `test({phase}-{plan}): ...`
 - GREEN: implement, verify passes, commit `feat({phase}-{plan}): ...`
 - REFACTOR: cleanup (optional), verify still passes, commit `refactor({phase}-{plan}): ...`

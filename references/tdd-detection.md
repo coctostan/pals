@@ -1,5 +1,5 @@
 <overview>
-TDD candidate detection heuristics for PAUL plan creation. Used by plan-phase-tdd.md to suggest or confirm TDD suitability during planning.
+TDD candidate detection heuristics for plan creation. Used by plan-phase.md (via tdd-plan-generation.md) to suggest or confirm TDD suitability during planning.
 
 **Core heuristic:** Can you write `expect(fn(input)).toBe(output)` before writing `fn`?
 If yes → TDD candidate. If no → standard plan.

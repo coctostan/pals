@@ -23,13 +23,13 @@
 
 ### TODD (Test-Driven Development)
 - **Scope:** TDD enforcement during APPLY phase — tests before implementation
-- **Overlay:** Integrated into PAUL's apply workflow
-- **Integration:** Validates test coverage, enforces red-green-refactor cycle
+- **Integration:** TODD steps run inline during APPLY phase (TDD detection, red-green-refactor cycle)
+- **References:** tdd.md, tdd-detection.md, tdd-plan-generation.md, tdd-execution.md
 
 ### WALT (Quality Assurance & Gating)
-- **Scope:** Quality validation during UNIFY phase — code review, standards checking
-- **Overlay:** Integrated into PAUL's unify workflow
-- **Integration:** Blocks completion if quality gates fail
+- **Scope:** Quality validation during APPLY and UNIFY phases — testing, linting, quality delta tracking
+- **Integration:** WALT steps run inline during APPLY (quality gates) and UNIFY (quality delta tracking)
+- **References:** quality-runner.md, quality-lint.md, quality-delta.md, quality-history.md, quality-detection.md
 
 ## Phase Overrides
 None configured.

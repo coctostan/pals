@@ -5,21 +5,22 @@
 See: .paul/PROJECT.md (updated 2026-03-11)
 
 **Core value:** The ultimate user friendly end-to-end Claude Code software development framework
-**Current focus:** v0.1 Fork & Unify — Phase 3: Merge TODD/WALT
+**Current focus:** v0.1 Fork & Unify — Phase 4: CARL Integration
 
 ## Current Position
 
 Milestone: v0.1 Fork & Unify
-Phase: 3 of 6 (Merge TODD/WALT)
+Phase: 4 of 6 (CARL Integration)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-11 — Phase 2 complete, transitioned to Phase 3
+Last activity: 2026-03-11 — Phase 3 complete, transitioned to Phase 4
 
 Progress:
-- Milestone: [███░░░░░░░] 33%
+- Milestone: [█████░░░░░] 50%
 - Phase 1: [██████████] 100% ✓
 - Phase 2: [██████████] 100% ✓
-- Phase 3: [░░░░░░░░░░] 0%
+- Phase 3: [██████████] 100% ✓
+- Phase 4: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
@@ -35,10 +36,12 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision | Phase | Impact |
 |----------|-------|--------|
 | CARL is fully independent (hook-level integration) | Phase 1 | Phase 4 focuses on hook wiring |
-| TODD/WALT are embedded PAUL subsets, not overlays | Phase 1 | Phase 3 removes conditional delegation |
+| TODD/WALT are integrated PALS subsystems, retain naming | Phase 1 (revised) | Phase 3 removes indirection but keeps TODD:/WALT: labels |
 | Flat workflows/ dir, no TODD/WALT subdirs | Phase 1 | Phase 3 merges inline |
 | /pals:* namespace, /carl:* retained | Phase 1 | Phase 2 does batch rename |
-| TODD workflows merge inline into parents | Phase 1 | Phase 3 inlines 2 files |
+| TODD workflows merge inline into parents | Phase 1 | Phase 3 reclassifies as references (revised from full inline) |
+| Reclassify TDD overlays as references instead of inlining | Phase 3 | Keeps files readable, matches quality-runner.md pattern |
+| Preserve all subsystem names (TODD, WALT, PAUL, CARL) | Phase 3 | Integration not erasure — TODD:/WALT: labels kept in workflows |
 
 ### Deferred Issues
 None yet.
@@ -49,8 +52,8 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: Phase 2 complete, transitioned to Phase 3
-Next action: /paul:plan for Phase 3 (Merge TODD/WALT)
+Stopped at: Phase 3 complete, ready to plan Phase 4
+Next action: /paul:plan for Phase 4 (CARL Integration)
 Resume file: .paul/ROADMAP.md
 
 ---

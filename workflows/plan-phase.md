@@ -26,7 +26,7 @@ Next phase: APPLY (after plan approval)
 @~/.pals/references/plan-format.md
 @~/.pals/references/checkpoints.md (if plan will have checkpoints)
 @~/.pals/templates/PLAN.md
-@~/.pals/workflows/plan-phase-tdd.md (if plan type is tdd)
+@~/.pals/references/tdd-plan-generation.md (if plan type is tdd)
 @~/.pals/references/tdd-detection.md (for TDD candidate detection)
 </references>
 
@@ -118,10 +118,10 @@ Required skills will BLOCK apply-phase until confirmed loaded.
    - phase: NN-name
    - plan: 01 (or next number if multiple plans in phase)
    - type: execute (or tdd/research)
-     **If type is "tdd":** Delegate plan structure to @workflows/plan-phase-tdd.md
-     - The TDD overlay generates the <feature>, <acceptance_criteria>, and <tasks> sections
+     **If type is "tdd":** Follow TDD plan generation spec at @~/.pals/references/tdd-plan-generation.md
+     - The TDD spec defines the <feature>, <acceptance_criteria>, and <tasks> sections
      - All other sections (frontmatter, context, boundaries, verification) follow standard format
-     - Return to this workflow after TDD overlay completes
+     - Continue this workflow after TDD sections are generated
    - wave: 1 (adjust if dependencies exist)
    - depends_on: [] (or prior plan IDs if genuine dependency)
    - files_modified: [list all files]
