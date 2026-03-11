@@ -10,14 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Milestone: v0.3 Smart Context & Migration
-Phase: 8 of 9 (Smart Installer)
+Phase: 9 of 9 (Auto Context Cycling)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-11 — Milestone v0.3 created
+Last activity: 2026-03-11 — Phase 8 complete, transitioned to Phase 9
 
 Progress:
-- v0.3 Smart Context & Migration: [░░░░░░░░░░] 0%
-- Phase 8: [░░░░░░░░░░] 0%
+- v0.3 Smart Context & Migration: [█████░░░░░] 50%
+- Phase 9: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
@@ -39,6 +39,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | TODD workflows merge inline into parents | Phase 1 | Phase 3 reclassifies as references (revised from full inline) |
 | Reclassify TDD overlays as references instead of inlining | Phase 3 | Keeps files readable, matches quality-runner.md pattern |
 | Preserve all subsystem names (TODD, WALT, PAUL, CARL) | Phase 3 | Integration not erasure — TODD:/WALT: labels kept in workflows |
+| Interactive y/N prompt for legacy cleanup (default No) | Phase 8 | Safe default prevents accidental deletion |
 
 ### Deferred Issues
 None yet.
@@ -49,14 +50,9 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: v0.3 milestone created, ready to plan Phase 8
-Next action: /paul:plan for Phase 8 (Smart Installer)
-Resume file: .paul/HANDOFF-2026-03-11-v03-created.md
-Resume context:
-- v0.2 complete (namespace cleanup done, commit 5d1ef1d)
-- v0.3 created with 2 phases: Smart Installer + Auto Context Cycling
-- Phase 8 scope: upgrade-aware install.sh with legacy ~/.claude/paul-framework/ cleanup
-- Phase 9 needs research on programmatic /clear mechanism
+Stopped at: Phase 8 complete, ready to plan Phase 9
+Next action: /paul:plan for Phase 9 (Auto Context Cycling)
+Resume file: .paul/ROADMAP.md
 
 ---
 *STATE.md — Updated after every significant action*

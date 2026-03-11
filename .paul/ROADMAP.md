@@ -13,14 +13,14 @@ Status: Complete
 Phases: 1 of 1 complete — 2026-03-11
 
 ### v0.3 Smart Context & Migration (Current)
-Status: Not started
-Phases: 0 of 2 complete
+Status: In progress
+Phases: 1 of 2 complete
 
 ## Phases (v0.3)
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 8 | Smart Installer | TBD | Not started | - |
+| 8 | Smart Installer | 1 | Complete | 2026-03-11 |
 | 9 | Auto Context Cycling | TBD | Not started | - |
 
 ## Phases (v0.2)
@@ -198,4 +198,4 @@ Phases: 0 of 2 complete
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-11 — v0.3 milestone created*
+*Last updated: 2026-03-11 — Phase 8 complete*

@@ -28,6 +28,12 @@ if [ -d "$HOME/.claude/commands/pals" ]; then
 fi
 echo "  [ok] Removed ~/.claude/commands/paul/ and carl/"
 
+# ── 2b. Remove legacy PAUL framework (pre-PALS installation) ────
+if [ -d "$HOME/.claude/paul-framework" ]; then
+  rm -rf "$HOME/.claude/paul-framework"
+  echo "  [ok] Removed legacy ~/.claude/paul-framework/"
+fi
+
 # ── 3. Remove hook ──────────────────────────────────────────────
 rm -f "$HOME/.claude/hooks/carl-hook.py"
 echo "  [ok] Removed ~/.claude/hooks/carl-hook.py"

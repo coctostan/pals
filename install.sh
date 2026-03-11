@@ -18,6 +18,24 @@ fi
 
 echo "Installing PALS from $PALS_ROOT ..."
 
+# ── 0. Detect and clean up legacy installation ────────────────────
+LEGACY_DIR="$HOME/.claude/paul-framework"
+if [ -d "$LEGACY_DIR" ]; then
+  echo ""
+  echo "  Legacy PAUL framework detected at ~/.claude/paul-framework/"
+  echo "  PALS replaces this at ~/.pals/ — the legacy copy is no longer needed."
+  echo ""
+  printf "  Remove legacy installation? [y/N] "
+  read -r REPLY < /dev/tty 2>/dev/null || REPLY="n"
+  if [ "$REPLY" = "y" ] || [ "$REPLY" = "Y" ]; then
+    rm -rf "$LEGACY_DIR"
+    echo "  [ok] Removed legacy ~/.claude/paul-framework/"
+  else
+    echo "  [skip] Legacy files left in place (can remove manually later)"
+  fi
+  echo ""
+fi
+
 # ── 1. Create ~/.pals/ directory structure ───────────────────────
 mkdir -p ~/.pals/workflows ~/.pals/references ~/.pals/templates ~/.pals/rules ~/.pals/carl
 
