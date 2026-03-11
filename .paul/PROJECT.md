@@ -20,8 +20,8 @@ The ultimate user friendly end-to-end Claude Code software development framework
 - Complete @-reference rewiring across all files
 
 ### Nice to Have
-- Uninstall/cleanup script
-- Getting-started documentation
+- ✓ Uninstall/cleanup script — Phase 5
+- ✓ Getting-started documentation — Phase 5
 
 ### Validated
 - ✓ Architecture fully mapped (111 files across 4 components) — Phase 1
@@ -31,6 +31,9 @@ The ultimate user friendly end-to-end Claude Code software development framework
 - ✓ All @-references rewritten to ~/.pals/ paths — Phase 2
 - ✓ TODD/WALT integrated as named subsystems (no indirection) — Phase 3
 - ✓ CARL as native component with /carl:* namespace retained — Phase 4
+- ✓ Single install script from git clone — Phase 5
+- ✓ Uninstall/cleanup script — Phase 5
+- ✓ Getting-started documentation (README.md) — Phase 5
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -66,4 +69,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 4*
+*Last updated: 2026-03-11 after Phase 5*

@@ -6,7 +6,7 @@ PALS unifies PAUL (project lifecycle), CARL (context rules), TODD (TDD enforceme
 ## Current Milestone
 **v0.1 Fork & Unify** (v0.1.0)
 Status: In progress
-Phases: 4 of 6 complete
+Phases: 5 of 6 complete
 
 ## Phases
 
@@ -16,7 +16,7 @@ Phases: 4 of 6 complete
 | 2 | Fork & Restructure | 3 | Complete | 2026-03-11 |
 | 3 | Merge TODD/WALT | 2 | Complete | 2026-03-11 |
 | 4 | CARL Integration | 2 | Complete | 2026-03-11 |
-| 5 | Install & Distribution | 2 | Not started | - |
+| 5 | Install & Distribution | 2 | Complete | 2026-03-11 |
 | 6 | End-to-End Validation | 1 | Not started | - |
 
 ## Phase Details
@@ -102,8 +102,8 @@ Phases: 4 of 6 complete
 - Uninstall/cleanup script
 
 **Plans:**
-- [ ] 05-01: Create install script and skill wiring
-- [ ] 05-02: Create getting-started docs and uninstall script
+- [x] 05-01: Create install script and skill wiring
+- [x] 05-02: Create getting-started docs and uninstall script
 
 ### Phase 6: End-to-End Validation
 
