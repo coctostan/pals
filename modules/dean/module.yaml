@@ -1,0 +1,27 @@
+name: dean
+display_name: DEAN
+description: >
+  Dependency Evaluation & Audit Notifier. Detects package managers, audits
+  for vulnerabilities and outdated packages, and provides dependency health
+  visibility via /paul:deps.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks: {}
+
+files:
+  references:
+    - references/dependency-principles.md
+    - references/dependency-detection.md
+    - references/vulnerability-audit.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
