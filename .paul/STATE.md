@@ -47,7 +47,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Last session: 2026-03-12
 Stopped at: Phase 15 complete, ready to plan Phase 16
 Next action: /paul:plan for Phase 16 (Module System Validation)
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-12-v05-phase16.md
 
 ---
 *STATE.md — Updated after every significant action*
