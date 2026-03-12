@@ -5,26 +5,25 @@
 See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v0.4 Kernel & Modules — ALL PHASES COMPLETE
+**Current focus:** Awaiting next milestone
 
 ## Current Position
 
-Milestone: v0.4 Kernel & Modules
-Phase: 13 of 13 (Driver Architecture & Agent SDK Stub) — Complete
-Plan: 13-02 complete, phase closed
-Status: v0.4 milestone ready for completion
-Last activity: 2026-03-12 — Phase 13 complete, all v0.4 phases done
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: Milestone v0.4 Kernel & Modules complete — ready for next
+Last activity: 2026-03-12 — Milestone completed
 
 Progress:
-- v0.4 Kernel & Modules: [██████████] 100%
-- Phase 13: [██████████] 100%
+- v0.4 Kernel & Modules: [██████████] 100% ✓
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 13 complete — milestone ready]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -50,13 +49,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 13 complete, v0.4 all phases done, context depleted
-Next action: Run /paul:complete-milestone to close v0.4
-Resume file: .paul/HANDOFF-2026-03-12-v04-complete.md
-Resume context:
-- All 4 v0.4 phases complete (10-13), all PROJECT.md requirements checked
-- Phase 13 work uncommitted — needs git commit before milestone close
-- PR #2 has Phases 11-12; Phase 13 needs to be added or new commit
+Stopped at: Milestone v0.4 Kernel & Modules complete
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 
 ---
 *STATE.md — Updated after every significant action*

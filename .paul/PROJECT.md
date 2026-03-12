@@ -8,11 +8,8 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Requirements
 
-### Active (v0.4)
-- [x] Kernel/module/driver architecture implemented
-- [x] CARL, TODD, WALT refactored as loadable modules
-- [x] Module-aware installer with pals.yaml config
-- [x] Agent SDK driver proof-of-concept
+### Active
+No active milestone — ready for v0.5 planning.
 
 ### Must Have
 All validated — see below.
@@ -40,6 +37,10 @@ All validated — see below.
 - ✓ Upgrade-aware installer with legacy ~/.claude/paul-framework/ cleanup — Phase 8
 - ✓ Auto context cycling researched — not feasible (no programmatic /clear) — Phase 9
 - ✓ Kernel/module/driver architecture designed (4 spec documents) — Phase 10
+- ✓ Kernel/module/driver architecture implemented — v0.4
+- ✓ CARL, TODD, WALT refactored as loadable modules with module.yaml manifests — v0.4
+- ✓ Module-aware installer with pals.yaml config and pals CLI — v0.4
+- ✓ Agent SDK driver proof-of-concept (headless kernel via query() API) — v0.4
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -66,6 +67,9 @@ All validated — see below.
 | "Linux of Harness Engineering" vision | 10 | Minimal kernel, modular pals, universal drivers — platform-agnostic |
 | Three-layer stack: Modules → Kernel → Drivers | 10 | Each layer only talks to neighbors; missing modules = no-op |
 | Delegated workflows stay in kernel | 10 | Only named pals become modules; fork kernel for different tools |
+| Claude Code driver is install-time wiring, not runtime code | 13 | The LLM IS the runtime driver |
+| Workflow-as-system-prompt for Agent SDK | 13 | Same .md drives both drivers |
+| Driver detection: PALS_DRIVER > ~/.claude/ > ANTHROPIC_AGENT_SDK > default | 13 | Install-time resolution |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -84,4 +88,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-11 after Phase 10 — v0.4 architecture designed*
+*Last updated: 2026-03-12 after v0.4 Kernel & Modules milestone complete*
