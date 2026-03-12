@@ -50,9 +50,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 12 complete, transitioned to Phase 13
-Next action: Run /paul:plan for Plan 13-01
-Resume file: .paul/phases/12-module-manager/12-02-SUMMARY.md
+Stopped at: Phase 13 ready (Phase 12 complete, context depleted)
+Next action: Run /paul:plan for Plan 13-01 (consider /paul:discover first)
+Resume file: .paul/HANDOFF-2026-03-12-phase13.md
+Resume context:
+- Phase 12 complete and committed (9b069e1), pushed to PR #2
+- Phase 13 scope: driver interface, Claude Code driver, Agent SDK stub
+- DRIVER-SPEC.md exists from Phase 10 — start there
+- Phase 13 is research-heavy — may want /paul:discover before planning
 
 ---
 *STATE.md — Updated after every significant action*
