@@ -47,16 +47,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Last commit: pending (feature branch merge)
+Last commit: b8e1387
 Branch: main
-Feature branches merged: feature/20-dean-module
+Feature branches merged: feature/20-dean-module, feature/21-iris-module
 
 ## Session Continuity
 
 Last session: 2026-03-12
 Stopped at: v0.6 milestone complete
 Next action: /paul:complete-milestone or /paul:milestone for v0.7
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-12-v06-complete.md
 Resume context:
 - v0.6 Enhance & Expand: all 5 phases complete (17-21)
 - 5 pals now: CARL, TODD, WALT, DEAN, IRIS
