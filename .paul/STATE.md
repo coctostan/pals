@@ -45,9 +45,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Milestone v0.5 TODD & WALT Go Live complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Stopped at: Milestone v0.5 complete, session paused
+Next action: /paul:discuss-milestone or /paul:milestone for next milestone
+Resume file: .paul/HANDOFF-2026-03-12-v05-complete.md
+Resume context:
+- v0.5 milestone fully complete (3 phases, 3 plans, git tag v0.5)
+- No active work — between milestones
+- Deferred: ci-generation, sonarqube-integration, Agent SDK hook dispatch
 
 ---
 *STATE.md — Updated after every significant action*
