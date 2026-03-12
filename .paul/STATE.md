@@ -5,25 +5,25 @@
 See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone
+**Current focus:** v0.6 Enhance & Expand
 
 ## Current Position
 
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: v0.5 TODD & WALT Go Live complete — ready for next
-Last activity: 2026-03-12 — Milestone v0.5 completed
+Milestone: v0.6 Enhance & Expand
+Phase: 18 of 21 (TODD Coverage Dashboard)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-12 — Phase 17 complete, transitioned to Phase 18
 
 Progress:
-- v0.5 TODD & WALT Go Live: [██████████] 100% ✓
+- v0.6 Enhance & Expand: [██░░░░░░░░] 20%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ○        ○        ○     [Ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -31,12 +31,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| Each hook maps to 2 specific refs (not all) | 15 | Efficient kernel dispatch |
-| Module system validated via audit (no code changes) | 16 | System confirmed production-ready |
+| YAML catalog pattern for extensible detection | 17 | rule-catalog.yaml drives *scan |
+| Scan delegates to existing CARL CRUD tasks | 17 | No duplicated logic |
 
 ### Deferred Issues
-- ci-generation.md and sonarqube-integration.md — future module candidates
-- plan-phase-tdd.md created in Phase 14 (resolved)
+- ci-generation.md and sonarqube-integration.md — future module candidates (may overlap with DAVE in v0.7)
 - Agent SDK hook dispatch not implemented (documented as future work)
 
 ### Blockers/Concerns
@@ -45,13 +44,12 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Milestone v0.5 complete, session paused
-Next action: /paul:discuss-milestone or /paul:milestone for next milestone
-Resume file: .paul/HANDOFF-2026-03-12-v05-complete.md
+Stopped at: Phase 17 complete, ready to plan Phase 18
+Next action: /paul:plan for Phase 18
+Resume file: .paul/ROADMAP.md
 Resume context:
-- v0.5 milestone fully complete (3 phases, 3 plans, git tag v0.5)
-- No active work — between milestones
-- Deferred: ci-generation, sonarqube-integration, Agent SDK hook dispatch
+- Phase 17 CARL Auto-Detection complete (rule catalog + *scan command)
+- 4 phases remaining in v0.6: TODD Coverage (18), WALT Trends (19), DEAN (20), IRIS (21)
 
 ---
 *STATE.md — Updated after every significant action*

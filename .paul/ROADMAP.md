@@ -26,9 +26,20 @@ Status: ✅ Complete
 Completed: 2026-03-12
 Phases: 3 of 3 complete
 
-## Next Milestone
+## Current Milestone
 
-Run `/paul:discuss-milestone` or `/paul:milestone` to define.
+### v0.6 Enhance & Expand
+Status: 🚧 In Progress
+Phases: 1 of 5 complete
+Focus: Evolve existing pals with smarter capabilities + add first two new pals to prove module system scales
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 17 | CARL Auto-Detection | 1 | ✅ Complete | 2026-03-12 |
+| 18 | TODD Coverage Dashboard | TBD | Not started | - |
+| 19 | WALT Quality Trends | TBD | Not started | - |
+| 20 | DEAN Module | TBD | Not started | - |
+| 21 | IRIS Module | TBD | Not started | - |
 
 ---
 
@@ -92,4 +103,4 @@ Run `/paul:discuss-milestone` or `/paul:milestone` to define.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — v0.5 TODD & WALT Go Live milestone complete*
+*Last updated: 2026-03-12 — v0.6 Enhance & Expand milestone created*
