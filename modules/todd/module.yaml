@@ -33,6 +33,7 @@ files:
     - references/tdd-detection.md
     - references/tdd-plan-generation.md
     - references/tdd-execution.md
+    - references/coverage-detection.md
   workflows:
     - workflows/plan-phase-tdd.md
   templates: []
