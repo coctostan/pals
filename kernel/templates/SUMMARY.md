@@ -69,32 +69,30 @@ completed: YYYY-MM-DDTHH:MM:SSZ
 | AC-2: [Name] | Pass / Fail | [Details] |
 | AC-3: [Name] | Pass / Fail | [Details] |
 
-## TDD Execution (only for type: tdd plans)
+## Module Execution Reports
 
+<!-- Populated during UNIFY from module hook annotations collected during apply/unify phases. -->
+<!-- Each module that contributed annotations adds its own subsection here. -->
+<!-- If no modules contributed annotations, omit this section entirely. -->
+
+<!-- Example subsection (from a test enforcement module):
+### Test Execution
 | Phase | Commit | Status |
 |-------|--------|--------|
 | RED | `{hash}` | ✓ Tests fail as expected |
 | GREEN | `{hash}` | ✓ All tests pass |
 | REFACTOR | `{hash}` / skipped | ✓ Tests still pass / N/A |
+-->
 
-**Tests at unify:** [N] passing, [M] failing
-**Discipline:** Clean / Gaps found ([details])
-
-## Quality (from WALT reports)
-
-<!-- Populated during UNIFY from apply-phase WALT reports. Omit if no quality tools detected. -->
-<!-- Coverage row only included if coverage tool detected. Omit if not available. -->
-<!-- See: ~/.pals/references/quality-delta.md for format details. -->
-
+<!-- Example subsection (from a quality gating module):
+### Quality
 | Metric | Before | After | Delta | Trajectory |
 |--------|--------|-------|-------|------------|
 | Tests passing | [N] | [N] | [+/-N] | [▲/●/▼] |
-| Tests failing | [N] | [N] | [+/-N] | [▲/●/▼] |
 | Coverage | [N]% | [N]% | [+/-N]% | [▲/●/▼] |
 | Lint issues | [N] | [N] | [+/-N] | [▲/●/▼] |
-| Type errors | [N] | [N] | [+/-N] | [▲/●/▼] |
-
 **Overall:** [▲ improved / ● stable / ▼ degraded / — not tracked]
+-->
 
 ## Accomplishments
 
@@ -228,11 +226,11 @@ The one-liner should tell someone what actually shipped.
 **Contains:** Each AC with pass/fail status and notes.
 **Requirement:** All must pass for plan to be complete.
 
-### TDD Execution
-**Purpose:** Audit trail for TDD plan execution.
-**Contains:** Commit hashes per phase, test status, discipline assessment.
-**When included:** Only for plans with `type: tdd` in frontmatter.
-**Update:** Created during UNIFY from audit_tdd_execution results.
+### Module Execution Reports
+**Purpose:** Consolidated reports from module hooks that ran during apply/unify.
+**Contains:** Module-specific subsections with annotations, metrics, audit results.
+**When included:** Only when modules contributed annotations via lifecycle hooks.
+**Update:** Populated during UNIFY from accumulated hook annotations.
 
 ### Deviations Section
 **Purpose:** Document unplanned work and its handling.

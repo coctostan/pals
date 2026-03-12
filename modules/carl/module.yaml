@@ -1,0 +1,57 @@
+name: carl
+display_name: CARL
+description: >
+  Context Augmentation & Reinforcement Layer. Manages domain-driven context
+  rules that inject into every Claude prompt via keyword matching. Operates
+  independently of the plan/apply/unify loop through Claude Code's native
+  hook system.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks: {}
+  # CARL does not use PAUL lifecycle hooks.
+  # It operates through the platform.claude_code.hooks mechanism below.
+
+files:
+  references: []
+  workflows: []
+  templates: []
+  config:
+    - config/manifest
+    - config/global
+    - config/context
+    - config/commands
+    - config/example-custom-domain
+  rules: []
+
+commands:
+  - name: carl:manager
+    file: commands/carl/manager.md
+    description: Manage CARL domains and rules
+  - name: carl:tasks:add-rule
+    file: commands/carl/tasks/add-rule.md
+    description: Add a rule to a domain
+  - name: carl:tasks:create-domain
+    file: commands/carl/tasks/create-domain.md
+    description: Create a new domain
+  - name: carl:tasks:create-command
+    file: commands/carl/tasks/create-command.md
+    description: Create a new command
+  - name: carl:tasks:edit-rule
+    file: commands/carl/tasks/edit-rule.md
+    description: Edit an existing rule
+  - name: carl:tasks:toggle-domain
+    file: commands/carl/tasks/toggle-domain.md
+    description: Toggle domain active state
+
+platform:
+  claude_code:
+    hooks:
+      - event: UserPromptSubmit
+        type: command
+        command: "python3 ~/.claude/hooks/carl-hook.py"
+        source: hooks/carl-hook.py
+    settings_patch: {}
