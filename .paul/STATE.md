@@ -2,29 +2,29 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-11)
+See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v0.4 Kernel & Modules
+**Current focus:** v0.4 Kernel & Modules — ALL PHASES COMPLETE
 
 ## Current Position
 
 Milestone: v0.4 Kernel & Modules
-Phase: 13 of 13 (Driver Architecture & Agent SDK Stub) — Not started
-Plan: 13-01 not yet created
-Status: Ready for planning
-Last activity: 2026-03-12 — Phase 12 complete, transitioned to Phase 13
+Phase: 13 of 13 (Driver Architecture & Agent SDK Stub) — Complete
+Plan: 13-02 complete, phase closed
+Status: v0.4 milestone ready for completion
+Last activity: 2026-03-12 — Phase 13 complete, all v0.4 phases done
 
 Progress:
-- v0.4 Kernel & Modules: [████████░░] 75%
-- Phase 12: [██████████] 100%
+- v0.4 Kernel & Modules: [██████████] 100%
+- Phase 13: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first plan in Phase 13]
+  ✓        ✓        ✓     [Phase 13 complete — milestone ready]
 ```
 
 ## Accumulated Context
@@ -32,32 +32,31 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| "Linux of Harness Engineering" — minimal kernel, modular pals, universal drivers | Phase 10 | Foundational architecture for v0.4+ |
-| Naming: Kernel, Modules, Drivers (not plugins/adapters) | Phase 10 | Consistent terminology throughout |
-| Delegated workflows stay in kernel (kernel-utils) | Phase 10 | Only named pals become modules; fork kernel for different tools |
 | Three-layer stack: Modules → Kernel → Drivers | Phase 10 | Each layer only talks to neighbors |
-| 8 lifecycle hooks with priority ordering | Phase 10 | pre/post for plan, apply, unify + pre-test, post-task |
 | 5 driver methods: workflow_invoke, hook_register, state_read/write, user_interact, command_register | Phase 10 | Platform abstraction contract |
+| Agent SDK driver via query() API (not raw Anthropic API) | Phase 13 | Discovery confirmed GA SDK, same agent loop |
+| Driver detection order: PALS_DRIVER env > ~/.claude/ > ANTHROPIC_AGENT_SDK > claude-code default | Phase 13 | Install-time driver resolution |
+| Claude Code driver is install-time wiring, not runtime code | Phase 13 | The LLM IS the runtime driver |
+| Workflow-as-system-prompt pattern for Agent SDK | Phase 13 | Same .md drives both drivers |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - plan-phase-tdd.md does not exist as standalone file — needs creation as TODD module workflow
+- Agent SDK hook dispatch not implemented (documented as future work)
 
 ### Blockers/Concerns
-- Plan 11-01 (big-bang file move) broke live infrastructure — reverted
-- New approach: migration script that moves files AND updates all live references atomically
+- None active
 
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 13 ready (Phase 12 complete, context depleted)
-Next action: Run /paul:plan for Plan 13-01 (consider /paul:discover first)
-Resume file: .paul/HANDOFF-2026-03-12-phase13.md
+Stopped at: Phase 13 complete, v0.4 all phases done, context depleted
+Next action: Run /paul:complete-milestone to close v0.4
+Resume file: .paul/HANDOFF-2026-03-12-v04-complete.md
 Resume context:
-- Phase 12 complete and committed (9b069e1), pushed to PR #2
-- Phase 13 scope: driver interface, Claude Code driver, Agent SDK stub
-- DRIVER-SPEC.md exists from Phase 10 — start there
-- Phase 13 is research-heavy — may want /paul:discover before planning
+- All 4 v0.4 phases complete (10-13), all PROJECT.md requirements checked
+- Phase 13 work uncommitted — needs git commit before milestone close
+- PR #2 has Phases 11-12; Phase 13 needs to be added or new commit
 
 ---
 *STATE.md — Updated after every significant action*

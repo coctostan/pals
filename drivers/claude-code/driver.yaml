@@ -1,0 +1,30 @@
+name: claude-code
+version: 0.4.0
+platform: claude-code
+description: PALS driver for Claude Code CLI
+
+# Which kernel version this driver targets
+kernel_version: ">=0.4.0"
+
+# Capabilities this driver supports
+capabilities:
+  workflow_invoke: true
+  hook_register: true
+  state_read: true
+  state_write: true
+  user_interact: true
+  command_register: true
+
+# Driver-specific configuration
+config:
+  # Where commands are installed
+  command_dir: "~/.claude/commands"
+  # Where hooks are registered
+  hook_config: "~/.claude/settings.json"
+  # Where framework files live
+  framework_dir: "~/.pals"
+
+# Files this driver provides (beyond the kernel)
+files:
+  - install.sh
+  - uninstall.sh

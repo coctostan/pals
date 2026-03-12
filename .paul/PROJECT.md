@@ -9,10 +9,10 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 ## Requirements
 
 ### Active (v0.4)
-- [ ] Kernel/module/driver architecture implemented
-- [ ] CARL, TODD, WALT refactored as loadable modules
-- [ ] Module-aware installer with pals.yaml config
-- [ ] Agent SDK driver proof-of-concept
+- [x] Kernel/module/driver architecture implemented
+- [x] CARL, TODD, WALT refactored as loadable modules
+- [x] Module-aware installer with pals.yaml config
+- [x] Agent SDK driver proof-of-concept
 
 ### Must Have
 All validated — see below.
