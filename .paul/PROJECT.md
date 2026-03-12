@@ -8,10 +8,8 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Requirements
 
-### Active (v0.5)
-- [ ] TODD TDD enforcement functional end-to-end (detection → plan restructuring → RED/GREEN/REFACTOR)
-- [ ] WALT quality gating functional end-to-end (baseline → regression detection → history)
-- [ ] Module system validated with both modules active simultaneously
+### Active
+None — v0.5 complete, all requirements validated.
 
 ### Must Have
 All validated — see below.
@@ -45,6 +43,9 @@ All validated — see below.
 - ✓ Agent SDK driver proof-of-concept (headless kernel via query() API) — v0.4
 - ✓ TODD hook-mapping workflow (plan-phase-tdd.md) with 5 kernel hook dispatch instructions — Phase 14
 - ✓ WALT hook-mapping workflow (apply-phase-quality.md) with 3 kernel hook dispatch instructions — Phase 15
+- ✓ TODD TDD enforcement functional end-to-end (detection → plan restructuring → RED/GREEN/REFACTOR) — v0.5
+- ✓ WALT quality gating functional end-to-end (baseline → regression detection → history) — v0.5
+- ✓ Module system validated with both modules active simultaneously — Phase 16
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -75,6 +76,7 @@ All validated — see below.
 | Workflow-as-system-prompt for Agent SDK | 13 | Same .md drives both drivers |
 | Driver detection: PALS_DRIVER > ~/.claude/ > ANTHROPIC_AGENT_SDK > default | 13 | Install-time resolution |
 | Each module hook maps to exactly 2 reference files | 15 | Minimize context per dispatch; specific refs per hook |
+| Module system validated via audit (no code changes needed) | 16 | All hooks, refs, priorities, and enable/disable verified clean |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -93,4 +95,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 15 WALT Integration complete*
+*Last updated: 2026-03-12 after Phase 16 Module System Validation complete — v0.5 milestone done*
