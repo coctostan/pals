@@ -1,0 +1,27 @@
+name: dave
+display_name: DAVE
+description: >
+  Deploy Automation & Verification Engine. Audits CI/CD pipelines, generates
+  platform-specific configurations, and guides post-deploy verification
+  via /paul:deploy.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks: {}
+
+files:
+  references:
+    - references/deploy-principles.md
+    - references/pipeline-generation.md
+    - references/deploy-verification.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
