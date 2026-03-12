@@ -13,6 +13,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] WALT quality trends — quality ledger tracking over time (Phase 19)
 - [x] DEAN module — dependency evaluation & audit notifier (Phase 20)
 - [x] IRIS module — intelligent review & inspection system (Phase 21)
+- [x] SKIP module — smart knowledge & information persistence (Phase 22)
 
 ### Must Have
 All validated — see below.
@@ -54,6 +55,7 @@ All validated — see below.
 - ✓ WALT quality trends with /paul:quality command (streak/regression/stall detection) — Phase 19
 - ✓ DEAN module — dependency evaluation & audit notifier with /paul:deps command (10 ecosystems) — Phase 20
 - ✓ IRIS module — intelligent review & inspection system with /paul:review command (25 patterns, 5 checklists) — Phase 21
+- ✓ SKIP module — smart knowledge & information persistence with /paul:knowledge command (5 knowledge types, multi-source search) — Phase 22
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -96,6 +98,8 @@ All validated — see below.
 | /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19: command + module reference |
 | IRIS has no hooks in v0.6 (read-only guidance) | 21 | Advisory first, enforcement later (same as DEAN) |
 | /paul:review in kernel, pattern/checklist refs in IRIS module | 21 | Same pattern as Phases 18-20: command + module reference |
+| SKIP follows DEAN/IRIS pattern (no hooks initially) | 22 | Read-only first, hooks in Phase 25 |
+| /paul:knowledge in kernel, knowledge refs in SKIP module | 22 | Same pattern as Phases 18-21: command + module reference |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -114,4 +118,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 21 IRIS Module complete (v0.6 milestone complete)*
+*Last updated: 2026-03-12 after Phase 22 SKIP Module complete*

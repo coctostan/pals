@@ -1,0 +1,27 @@
+name: skip
+display_name: SKIP
+description: >
+  Smart Knowledge & Information Persistence. Captures project decisions,
+  rationale, and context into a searchable knowledge base. Surfaces relevant
+  knowledge via /paul:knowledge.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks: {}
+
+files:
+  references:
+    - references/knowledge-principles.md
+    - references/knowledge-capture.md
+    - references/knowledge-search.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
