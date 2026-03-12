@@ -28,6 +28,7 @@ argument-hint: "[list|add|create|edit|toggle|view]"
 | edit | `*edit DOMAIN RULE_INDEX 'new text'` | Edit existing rule | `./tasks/edit-rule.md` |
 | toggle | `*toggle DOMAIN [active\|inactive]` | Toggle domain state in manifest | `./tasks/toggle-domain.md` |
 | view | `*view DOMAIN` | Show all rules in a domain | - |
+| scan | `*scan` | Scan codebase and suggest technology-specific rules | `./tasks/scan-codebase.md` |
 | suggest | `*suggest 'rule text'` | Suggest which domain a rule belongs in | - |
 | help | `*help` | Show this command reference | - |
 

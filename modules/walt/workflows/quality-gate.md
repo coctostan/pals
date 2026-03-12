@@ -23,9 +23,9 @@ SonarQube is not required. Workflow gracefully handles disabled state.
 </philosophy>
 
 <references>
-@src/references/sonarqube-integration.md
-@src/templates/config.md
-@src/templates/codebase/concerns.md
+<!-- SonarQube integration is optional — configured per-project in .paul/config.md -->
+@.paul/config.md
+@.paul/codebase/CONCERNS.md
 </references>
 
 <process>
