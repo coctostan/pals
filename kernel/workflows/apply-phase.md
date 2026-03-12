@@ -22,7 +22,7 @@ Next phase: UNIFY (after execution completes)
 <references>
 @~/.pals/references/checkpoints.md (if plan has checkpoints)
 @~/.pals/references/loop-phases.md
-@~/.pals/references/tdd-execution.md (if plan type is tdd)
+<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
 </references>
 
 <process>
@@ -48,9 +48,6 @@ Next phase: UNIFY (after execution completes)
 3. Extract tasks from <tasks> section
 4. Note boundaries from <boundaries> section
 5. Load acceptance criteria for verification reference
-6. If frontmatter type is "tdd":
-   - Set tdd_mode = true
-   - Log: "TDD plan detected — will use RED-GREEN-REFACTOR execution"
 </step>
 
 <step name="verify_required_skills" priority="blocking">
@@ -92,26 +89,23 @@ Next phase: UNIFY (after execution completes)
 **This check runs BEFORE any task execution, ensuring skills are in place.**
 </step>
 
-<step name="walt_baseline" priority="before-tasks">
-**WALT: Capture baseline test results (before task execution)**
-@~/.pals/references/quality-runner.md
+<step name="pre_apply_hooks" priority="before-tasks">
+**Dispatch pre-apply lifecycle hooks to registered modules.**
 
-1. Detect test runner using quality-detection.md heuristics
-2. If no test runner detected: log "WALT: No test runner detected — skipping", set walt_gate = SKIP
-3. If test runner detected: run test command, capture baseline counts (passed/failed/skipped) and exit code
-4. Store baseline results for post-apply comparison
-5. If test runner fails to execute: warn and set walt_gate = SKIP
-
-**Note:** Baseline failures are expected — they establish the "known state" before apply changes anything.
+1. Read `~/.pals/modules.yaml` (if it exists)
+2. Find modules with hooks registered for `pre-apply`
+3. Sort by priority (ascending — lower runs first)
+4. For each registered module:
+   a. Load the module's declared reference files as context
+   b. Follow the module's hook description for `pre-apply`
+   c. Collect `context_inject` data (e.g., test baselines, enforcement flags)
+   d. If module returns `action: block` — stop and surface the `reason` to the user
+5. If no modules registered for `pre-apply`: proceed (no-op, no warning)
+6. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
 </step>
 
 <step name="execute_tasks">
-**If plan frontmatter type is "tdd":**
-Follow TDD execution spec at @~/.pals/references/tdd-execution.md
-- The TDD spec defines RED-GREEN-REFACTOR sequencing with phase-gating
-- Each phase produces an atomic commit (test/feat/refactor)
-- Results return here for the finalize step
-- Skip the standard task-by-task execution below
+**Note:** Module-provided execution overlays (loaded via post-plan hooks during planning) may have modified the plan's task structure. Execute tasks as they appear in the approved plan — overlays are already applied.
 
 For each <task> in order:
 
@@ -200,28 +194,20 @@ For each <task> in order:
 5. Continue if verified, report if failed
 </step>
 
-<step name="walt_post_apply" priority="after-tasks">
-**WALT: Run post-apply tests and check for regressions**
-@~/.pals/references/quality-runner.md
+<step name="post_apply_hooks" priority="after-tasks">
+**Dispatch post-apply lifecycle hooks to registered modules.**
 
-1. If walt_gate = SKIP (from baseline step): skip test comparison, include SKIP report in summary
-2. Run test command again, capture result counts and exit code
-3. Compare against baseline using regression detection logic from quality-runner.md
-4. Determine test gate result:
-   - No regressions → test_gate = PASS
-   - Regressions + strict mode → test_gate = BLOCK (present report, offer fix/override/stop)
-   - Regressions + lenient mode → test_gate = WARN (display warning, continue)
-5. Store WALT test report for inclusion in finalize step
-
-**WALT: Run lint, typecheck, and format checks**
-@~/.pals/references/quality-lint.md
-
-6. Run format check → auto-fix → lint check → auto-fix → typecheck (order matters)
-7. Determine lint gate result per quality-lint.md gating rules (strict for types, lenient for lint)
-8. Combine gates: overall walt_gate = most restrictive of test_gate and lint_gate
-   - Either BLOCK → BLOCK | Both PASS → PASS | Otherwise WARN or SKIP
-9. If overall BLOCK: present combined report, offer fix/override/stop
-10. Store WALT lint report alongside test report for finalize step
+1. Read `~/.pals/modules.yaml` (if it exists)
+2. Find modules with hooks registered for `post-apply`
+3. Sort by priority (ascending — lower runs first)
+4. For each registered module:
+   a. Load the module's declared reference files as context
+   b. Follow the module's hook description for `post-apply`
+   c. Pass `context_inject` data accumulated from pre-apply hooks (e.g., baselines)
+   d. Collect `annotations` (e.g., quality gate results, refactor suggestions)
+   e. If module returns `action: block` — stop and surface the `reason` and optional `remediation` to the user, offer fix/override/stop
+5. If no modules registered for `post-apply`: proceed (no-op, no warning)
+6. Store accumulated `annotations` for inclusion in finalize step
 </step>
 
 <step name="handle_failures">
@@ -261,10 +247,9 @@ After all tasks attempted:
 2. Update STATE.md:
    - Loop position: PLAN ✓ → APPLY ✓ → UNIFY ○
    - Last activity: timestamp and completion status
-3. Include WALT reports in summary (if quality checks were run):
-   - Append WALT test report from quality-runner.md report format
-   - Append WALT lint report from quality-lint.md report format
-   - Show combined gate result (PASS/WARN/SKIP)
+3. Include module annotations from post-apply hooks (if any):
+   - Append reports collected from registered modules
+   - Show combined gate result if any module provided quality gates
 4. Report with quick continuation prompt:
    ```
    ════════════════════════════════════════
@@ -272,8 +257,7 @@ After all tasks attempted:
    ════════════════════════════════════════
    [execution summary]
 
-   [WALT test report if applicable]
-   [WALT lint report if applicable]
+   [module annotations if any]
 
    ---
    Continue to UNIFY?

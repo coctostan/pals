@@ -18,14 +18,14 @@ Phases: 2 of 2 complete — 2026-03-11
 
 ### v0.4 Kernel & Modules
 Status: In Progress
-Phases: 1 of 4 complete
+Phases: 2 of 4 complete
 
 ## Phases (v0.4)
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 10 | Architecture & Module Interface | 1 | Complete | 2026-03-11 |
-| 11 | Kernel Extraction & Module Refactor | 2+ | In Progress | - |
+| 11 | Kernel Extraction & Module Refactor | 2 | Complete | 2026-03-12 |
 | 12 | Module Manager & Installer | TBD | Not started | - |
 | 13 | Driver Architecture & Agent SDK Stub | TBD | Not started | - |
 
@@ -125,4 +125,4 @@ Phases: 1 of 4 complete
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-11 — Phase 10 complete*
+*Last updated: 2026-03-12 — Phase 11 complete*

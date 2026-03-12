@@ -26,8 +26,7 @@ Next phase: APPLY (after plan approval)
 @~/.pals/references/plan-format.md
 @~/.pals/references/checkpoints.md (if plan will have checkpoints)
 @~/.pals/templates/PLAN.md
-@~/.pals/references/tdd-plan-generation.md (if plan type is tdd)
-@~/.pals/references/tdd-detection.md (for TDD candidate detection)
+<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
 </references>
 
 <process>
@@ -50,6 +49,21 @@ Next phase: APPLY (after plan approval)
 3. Confirm phase selection before proceeding
 </step>
 
+<step name="pre_plan_hooks" priority="before-scope-analysis">
+**Dispatch pre-plan lifecycle hooks to registered modules.**
+
+1. Read `~/.pals/modules.yaml` (if it exists)
+2. Find modules with hooks registered for `pre-plan`
+3. Sort by priority (ascending — lower runs first)
+4. For each registered module:
+   a. Load the module's declared reference files as context
+   b. Follow the module's hook description for `pre-plan`
+   c. Collect `context_inject` data (e.g., type suggestions, candidate files)
+   d. If module returns `action: block` — stop and surface the `reason` to the user
+5. If no modules registered for `pre-plan`: proceed (no-op, no warning)
+6. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
+</step>
+
 <step name="analyze_scope">
 1. Review phase goals from ROADMAP.md
 2. Estimate number of tasks needed:
@@ -62,12 +76,10 @@ Next phase: APPLY (after plan approval)
    - Unavoidable manual action? → checkpoint:human-action (rare)
 5. Set autonomous flag: true if no checkpoints, false otherwise
 6. Determine plan type:
-   - Review phase scope against TDD detection heuristics (@references/tdd-detection.md)
-   - If work matches TDD positive signals → suggest type: tdd
-   - Display TDD assessment (STRONG/MODERATE/SKIP) with signals
-   - Ask user to confirm type selection
-   - If MODERATE: suggest splitting into TDD + execute plans
-   - If SKIP or user declines: use type: execute (default)
+   - Default type is `execute`
+   - Dispatch `pre-plan` hooks (see pre_plan_hooks step) — modules may suggest alternative types based on their own heuristics
+   - If a module suggests a non-default type via `context_inject`: present the suggestion to the user for confirmation
+   - User confirms or overrides the type selection
 </step>
 
 <step name="load_context">
@@ -117,11 +129,8 @@ Required skills will BLOCK apply-phase until confirmed loaded.
    **Frontmatter:**
    - phase: NN-name
    - plan: 01 (or next number if multiple plans in phase)
-   - type: execute (or tdd/research)
-     **If type is "tdd":** Follow TDD plan generation spec at @~/.pals/references/tdd-plan-generation.md
-     - The TDD spec defines the <feature>, <acceptance_criteria>, and <tasks> sections
-     - All other sections (frontmatter, context, boundaries, verification) follow standard format
-     - Continue this workflow after TDD sections are generated
+   - type: execute (or other type suggested by pre-plan hooks and confirmed by user)
+     **If type is non-default:** Post-plan hooks from the suggesting module will modify the plan structure accordingly. The kernel writes the standard plan, then dispatches post-plan hooks which may restructure tasks.
    - wave: 1 (adjust if dependencies exist)
    - depends_on: [] (or prior plan IDs if genuine dependency)
    - files_modified: [list all files]
@@ -153,6 +162,22 @@ Required skills will BLOCK apply-phase until confirmed loaded.
    - After automated work completes
    - Before dependent decisions
    - Not too frequent (avoid checkpoint fatigue)
+</step>
+
+<step name="post_plan_hooks" priority="after-plan-creation">
+**Dispatch post-plan lifecycle hooks to registered modules.**
+
+1. Read `~/.pals/modules.yaml` (if it exists)
+2. Find modules with hooks registered for `post-plan`
+3. Sort by priority (ascending — lower runs first)
+4. For each registered module:
+   a. Load the module's declared reference files as context
+   b. Follow the module's hook description for `post-plan`
+   c. Pass the plan path, plan content, and `context_from_pre_plan`
+   d. Collect `plan_modifications` (e.g., task restructuring)
+   e. Apply modifications to the plan in priority order
+5. If no modules registered for `post-plan`: proceed (no-op, no warning)
+6. If modifications were applied: note in plan that module overlays were applied
 </step>
 
 <step name="update_state" priority="required">

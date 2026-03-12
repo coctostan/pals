@@ -22,8 +22,8 @@ Next phase: PLAN (next plan or next phase)
 <references>
 @~/.pals/references/loop-phases.md
 @~/.pals/templates/SUMMARY.md
-@~/.pals/references/tdd.md (for TDD audit criteria)
 @~/.pals/workflows/transition-phase.md (loaded when last plan in phase)
+<!-- Module references are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
 </references>
 
 <process>
@@ -53,60 +53,19 @@ Next phase: PLAN (next plan or next phase)
    - Impact on outcomes
 </step>
 
-<step name="audit_tdd_execution">
-**Only runs if plan frontmatter type is "tdd". Skip for other types.**
+<step name="pre_unify_hooks" priority="before-reconciliation">
+**Dispatch pre-unify lifecycle hooks to registered modules.**
 
-1. Check for TDD commits in git log:
-   - RED commit: `git log --oneline --grep="test({phase}-{plan})"`
-   - GREEN commit: `git log --oneline --grep="feat({phase}-{plan})"`
-   - REFACTOR commit: `git log --oneline --grep="refactor({phase}-{plan})"` (optional)
-
-2. Verify commit sequence:
-   - RED must exist → if missing, flag: "RED commit not found — TDD discipline gap"
-   - GREEN must exist → if missing, flag: "GREEN commit not found — implementation not committed"
-   - REFACTOR: optional — note "skipped" or "applied"
-
-3. Run test suite to confirm all tests still pass:
-   - If pass: log "All tests passing at unify"
-   - If fail: flag "Tests failing at unify — investigate before closing loop"
-
-4. Prepare TDD results for SUMMARY.md:
-   ```
-   tdd_results:
-     red_commit: {hash} | missing
-     green_commit: {hash} | missing
-     refactor_commit: {hash} | skipped
-     tests_passing: yes | no
-     discipline: clean | gaps found
-   ```
-
-5. If gaps found, add to STATE.md Deferred Issues:
-   - "TDD discipline gap in {phase}-{plan}: {description}"
-</step>
-
-<step name="audit_quality_delta">
-**WALT: Collect quality delta from apply phase reports**
-@~/.pals/references/quality-delta.md
-
-1. Recall WALT test report and lint report from the apply phase
-2. Extract before/after metrics per quality-delta.md
-3. Calculate trajectory indicators for each metric (▲/●/▼)
-4. Determine overall quality verdict (improved/stable/degraded)
-5. Prepare Quality section content for SUMMARY.md
-6. If no WALT reports (tools not detected or pre-WALT plan): note "Quality: not tracked"
-</step>
-
-<step name="append_quality_history">
-**Append quality snapshot to persistent history file**
-@~/.pals/references/quality-history.md
-
-1. After quality delta is captured (from audit_quality_delta step above):
-   - Extract "after" values for tests, coverage, lint, types
-   - Determine overall verdict
-2. If `.paul/QUALITY-HISTORY.md` doesn't exist: create with header and first entry
-3. If exists: append new row to Plan History table, update Cumulative Trajectory
-4. If WALT reports were SKIP: append entry with "—" for all metrics
-5. Follow format and edge cases from quality-history.md reference
+1. Read `~/.pals/modules.yaml` (if it exists)
+2. Find modules with hooks registered for `pre-unify`
+3. Sort by priority (ascending — lower runs first)
+4. For each registered module:
+   a. Load the module's declared reference files as context
+   b. Follow the module's hook description for `pre-unify`
+   c. Pass `annotations_from_apply` accumulated during the apply phase
+   d. Collect `context_inject` data (e.g., quality trends, audit results)
+5. If no modules registered for `pre-unify`: proceed (no-op, no warning)
+6. Store accumulated context for inclusion in SUMMARY.md
 </step>
 
 <step name="audit_skill_invocations">
@@ -188,6 +147,21 @@ Next phase: PLAN (next plan or next phase)
    - Update stopped at
    - Update next action
    - Update resume file (point to SUMMARY)
+</step>
+
+<step name="post_unify_hooks" priority="after-state-update">
+**Dispatch post-unify lifecycle hooks to registered modules.**
+
+1. Read `~/.pals/modules.yaml` (if it exists)
+2. Find modules with hooks registered for `post-unify`
+3. Sort by priority (ascending — lower runs first)
+4. For each registered module:
+   a. Load the module's declared reference files as context
+   b. Follow the module's hook description for `post-unify`
+   c. Pass `annotations_from_apply` and summary path
+   d. Collect `side_effects` (e.g., "Recorded quality delta in history")
+5. If no modules registered for `post-unify`: proceed (no-op, no warning)
+6. Log any side_effects reported by modules
 </step>
 
 <step name="check_phase_completion">
