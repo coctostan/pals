@@ -18,7 +18,7 @@ Phases: 2 of 2 complete — 2026-03-11
 
 ### v0.4 Kernel & Modules
 Status: In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 ## Phases (v0.4)
 
@@ -26,7 +26,7 @@ Phases: 2 of 4 complete
 |-------|------|-------|--------|-----------|
 | 10 | Architecture & Module Interface | 1 | Complete | 2026-03-11 |
 | 11 | Kernel Extraction & Module Refactor | 2 | Complete | 2026-03-12 |
-| 12 | Module Manager & Installer | TBD | Not started | - |
+| 12 | Module Manager & Installer | 2 | Complete | 2026-03-12 |
 | 13 | Driver Architecture & Agent SDK Stub | TBD | Not started | - |
 
 ## Phase Details (v0.4)

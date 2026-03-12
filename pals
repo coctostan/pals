@@ -1,0 +1,597 @@
+#!/bin/bash
+set -e
+
+# ════════════════════════════════════════
+# PALS Module Manager
+# ════════════════════════════════════════
+# Usage: ./pals <command> [args]
+#   modules  — List installed and available modules
+#   install  — Install a single module
+#   remove   — Remove a single module
+#   help     — Show this help
+
+PALS_ROOT="$(cd "$(dirname "$0")" && pwd)"
+PALS_DIR="$HOME/.pals"
+CLAUDE_DIR="$HOME/.claude"
+MODULES_YAML="$PALS_DIR/modules.yaml"
+
+show_help() {
+  echo "PALS Module Manager"
+  echo ""
+  echo "Usage: ./pals <command> [args]"
+  echo ""
+  echo "Commands:"
+  echo "  modules          List installed and available modules"
+  echo "  install <name>   Install a module from modules/ directory"
+  echo "  remove <name>    Remove an installed module"
+  echo "  help             Show this help"
+  echo ""
+  echo "Run from the PALS repo root."
+}
+
+CMD="${1:-help}"
+
+case "$CMD" in
+  modules|list)
+    python3 - "$PALS_ROOT" "$HOME" <<'PYEOF'
+import sys, os
+
+pals_root = sys.argv[1]
+home = sys.argv[2]
+pals_dir = os.path.join(home, '.pals')
+modules_yaml = os.path.join(pals_dir, 'modules.yaml')
+modules_src = os.path.join(pals_root, 'modules')
+
+# Parse installed modules from modules.yaml
+installed = {}
+if os.path.exists(modules_yaml):
+    with open(modules_yaml) as f:
+        lines = f.readlines()
+    current = None
+    for line in lines:
+        stripped = line.strip()
+        if line.startswith('  ') and not line.startswith('    ') and ':' in stripped:
+            key = stripped.split(':')[0].strip()
+            if key not in ('kernel_version',):
+                current = key
+                installed[current] = {}
+        elif current and line.startswith('    ') and ':' in stripped:
+            k, v = stripped.split(':', 1)
+            installed[current][k.strip()] = v.strip().strip('"')
+
+# Discover available modules
+available = set()
+if os.path.isdir(modules_src):
+    for name in os.listdir(modules_src):
+        manifest = os.path.join(modules_src, name, 'module.yaml')
+        if os.path.isdir(os.path.join(modules_src, name)) and os.path.exists(manifest):
+            available.add(name)
+
+if not installed and not available:
+    print("PALS not installed. Run ./install.sh first.")
+    sys.exit(0)
+
+print("")
+print("PALS Modules")
+print("════════════════════════════════════════════════════════════════")
+print(f"{'Name':<10} {'Version':<10} {'Lifecycle Hooks':<35} {'Status'}")
+print(f"{'─'*10} {'─'*10} {'─'*35} {'─'*12}")
+
+for name in sorted(available):
+    if name in installed:
+        info = installed[name]
+        version = info.get('version', '?')
+        hooks = info.get('hooks', '[]')
+        ph = info.get('platform_hooks', '')
+        hook_str = hooks.strip('[]')
+        if ph:
+            hook_str += f" +platform:{ph.strip('[]')}" if hook_str else f"platform:{ph.strip('[]')}"
+        if not hook_str:
+            hook_str = "(none)"
+        print(f"{name:<10} {version:<10} {hook_str:<35} installed")
+    else:
+        print(f"{name:<10} {'—':<10} {'—':<35} available")
+
+print("")
+if installed:
+    kernel_ver = "0.4.0"
+    for line in open(modules_yaml) if os.path.exists(modules_yaml) else []:
+        if 'kernel_version' in line:
+            kernel_ver = line.split(':', 1)[1].strip().strip('"')
+            break
+    print(f"Kernel: v{kernel_ver} | Installed: {len(installed)} | Available: {len(available)}")
+print("")
+PYEOF
+    ;;
+
+  install)
+    MODULE_NAME="${2:-}"
+    if [ -z "$MODULE_NAME" ]; then
+      echo "Usage: ./pals install <module-name>"
+      echo ""
+      echo "Available modules:"
+      ls -1 "$PALS_ROOT/modules/" 2>/dev/null | while read -r d; do
+        [ -f "$PALS_ROOT/modules/$d/module.yaml" ] && echo "  $d"
+      done
+      exit 1
+    fi
+
+    MODULE_DIR="$PALS_ROOT/modules/$MODULE_NAME"
+    if [ ! -f "$MODULE_DIR/module.yaml" ]; then
+      echo "ERROR: Module '$MODULE_NAME' not found in modules/ directory."
+      exit 1
+    fi
+
+    if [ ! -d "$PALS_DIR" ]; then
+      echo "ERROR: PALS not installed. Run ./install.sh first."
+      exit 1
+    fi
+
+    python3 - "$PALS_ROOT" "$HOME" "$MODULE_NAME" <<'PYEOF'
+import sys, os, json, shutil
+from datetime import datetime, timezone
+
+pals_root = sys.argv[1]
+home = sys.argv[2]
+mod_name = sys.argv[3]
+pals_dir = os.path.join(home, '.pals')
+claude_dir = os.path.join(home, '.claude')
+mod_dir = os.path.join(pals_root, 'modules', mod_name)
+manifest_path = os.path.join(mod_dir, 'module.yaml')
+modules_yaml = os.path.join(pals_dir, 'modules.yaml')
+
+def parse_module_yaml(filepath):
+    """Parse module.yaml — handles scalars, nested maps, lists."""
+    with open(filepath, 'r') as f:
+        lines = f.readlines()
+    result = {}
+    path = []
+    indents = [0]
+    list_key = None
+    list_items = []
+
+    def flush_list():
+        nonlocal list_key, list_items
+        if list_key is not None:
+            d = result
+            for k in path:
+                d = d.setdefault(k, {})
+            d[list_key] = list_items
+            list_key = None
+            list_items = []
+
+    i = 0
+    while i < len(lines):
+        raw = lines[i]; stripped = raw.strip(); i += 1
+        if not stripped or stripped.startswith('#'): continue
+        indent = len(raw) - len(raw.lstrip())
+
+        if stripped.startswith('- '):
+            item = stripped[2:].strip()
+            if ':' in item:
+                entry = {}
+                k, v = item.split(':', 1)
+                entry[k.strip()] = v.strip().strip('"').strip("'")
+                while i < len(lines):
+                    nr = lines[i]; ns = nr.strip(); ni = len(nr) - len(nr.lstrip())
+                    if not ns or ns.startswith('#'): i += 1; continue
+                    if ni <= indent or ns.startswith('- '): break
+                    if ':' in ns:
+                        nk, nv = ns.split(':', 1)
+                        entry[nk.strip()] = nv.strip().strip('"').strip("'")
+                    i += 1
+                list_items.append(entry)
+            else:
+                list_items.append(item.strip('"').strip("'"))
+            continue
+
+        flush_list()
+        if ':' not in stripped: continue
+        cp = stripped.index(':')
+        key = stripped[:cp].strip()
+        value = stripped[cp+1:].strip()
+
+        while len(indents) > 1 and indent <= indents[-1]:
+            path.pop(); indents.pop()
+
+        if value in ('', '>', '|'):
+            j = i
+            while j < len(lines) and not lines[j].strip(): j += 1
+            if j < len(lines):
+                peek = lines[j].strip()
+                if peek.startswith('- '):
+                    list_key = key; list_items = []
+                elif ':' in peek and len(lines[j]) - len(lines[j].lstrip()) > indent:
+                    d = result
+                    for k in path: d = d.setdefault(k, {})
+                    d[key] = {}
+                    path.append(key); indents.append(indent)
+                else:
+                    parts = []
+                    while j < len(lines):
+                        nl = lines[j].strip(); ni = len(lines[j]) - len(lines[j].lstrip())
+                        if nl and ni <= indent: break
+                        if nl: parts.append(nl)
+                        j += 1
+                    d = result
+                    for k in path: d = d.setdefault(k, {})
+                    d[key] = ' '.join(parts); i = j
+            else:
+                d = result
+                for k in path: d = d.setdefault(k, {})
+                d[key] = {}
+        elif value == '[]':
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = []
+        elif value == '{}':
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = {}
+        elif value.startswith('[') and value.endswith(']'):
+            items = [x.strip().strip('"').strip("'") for x in value[1:-1].split(',') if x.strip()]
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = items
+        else:
+            v = value.strip('"').strip("'")
+            if v == 'true': v = True
+            elif v == 'false': v = False
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = v
+    flush_list()
+    return result
+
+def copy_file(src, dst):
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if os.path.isdir(src):
+        if os.path.exists(dst): shutil.rmtree(dst)
+        shutil.copytree(src, dst)
+    else:
+        shutil.copy2(src, dst)
+
+manifest = parse_module_yaml(manifest_path)
+display = manifest.get('display_name', mod_name.upper())
+version = manifest.get('version', 'unknown')
+files_section = manifest.get('files', {})
+
+print(f"Installing {display} module ...")
+
+# Install files per manifest
+for category, dest in [('references', 'references'), ('workflows', 'workflows'),
+                        ('templates', 'templates'), ('rules', 'rules')]:
+    for rel in files_section.get(category, []):
+        src = os.path.join(mod_dir, rel)
+        if os.path.exists(src):
+            copy_file(src, os.path.join(pals_dir, dest, os.path.basename(rel)))
+
+# Config (preserve existing)
+for rel in files_section.get('config', []):
+    src = os.path.join(mod_dir, rel)
+    if not os.path.exists(src): continue
+    dst = os.path.join(pals_dir, mod_name, os.path.basename(rel))
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if os.path.exists(dst):
+        print(f"  [skip] config preserved: {os.path.basename(rel)}")
+    else:
+        copy_file(src, dst)
+
+# Commands
+for cmd in manifest.get('commands', []):
+    if isinstance(cmd, dict) and cmd.get('file'):
+        src = os.path.join(mod_dir, cmd['file'])
+        if os.path.exists(src):
+            rel = cmd['file'][len('commands/'):] if cmd['file'].startswith('commands/') else cmd['file']
+            copy_file(src, os.path.join(claude_dir, 'commands', rel))
+
+# Platform hooks
+platform = manifest.get('platform', {})
+platform_hooks = []
+if isinstance(platform, dict):
+    cc = platform.get('claude_code', {})
+    if isinstance(cc, dict):
+        for hd in cc.get('hooks', []):
+            if not isinstance(hd, dict): continue
+            source = hd.get('source', '')
+            event = hd.get('event', '')
+            command = hd.get('command', '')
+            if source:
+                src = os.path.join(mod_dir, source)
+                bn = os.path.basename(source)
+                dst = os.path.join(claude_dir, 'hooks', bn)
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
+                if os.path.islink(dst) or os.path.exists(dst): os.remove(dst)
+                os.symlink(src, dst); os.chmod(src, 0o755)
+            if event and command:
+                hook_cmd = command.replace('~', home)
+                sp = os.path.join(claude_dir, 'settings.json')
+                settings = json.load(open(sp)) if os.path.exists(sp) else {}
+                settings.setdefault('hooks', {}).setdefault(event, [])
+                hook_id = os.path.basename(source).replace('.py', '') if source else mod_name
+                already = any(hook_id in h.get('command', '') for e in settings['hooks'][event] for h in e.get('hooks', []))
+                if not already:
+                    settings['hooks'][event].append({"hooks": [{"type": "command", "command": hook_cmd}]})
+                with open(sp, 'w') as f: json.dump(settings, f, indent=2); f.write('\n')
+                platform_hooks.append(event)
+
+# Regenerate modules.yaml
+lifecycle_hooks = list(manifest.get('hooks', {}).keys()) if isinstance(manifest.get('hooks'), dict) else []
+
+# Read existing modules.yaml
+existing = {}
+if os.path.exists(modules_yaml):
+    with open(modules_yaml) as f:
+        mlines = f.readlines()
+    cur = None
+    for ml in mlines:
+        ms = ml.strip()
+        if ml.startswith('  ') and not ml.startswith('    ') and ':' in ms:
+            k = ms.split(':')[0].strip()
+            if k != 'kernel_version': cur = k; existing[cur] = {}
+        elif cur and ml.startswith('    ') and ':' in ms:
+            mk, mv = ms.split(':', 1)
+            existing[cur][mk.strip()] = mv.strip()
+
+now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+existing[mod_name] = {
+    'version': f'"{version}"',
+    'installed_at': f'"{now}"',
+    'hooks': f'[{", ".join(lifecycle_hooks)}]',
+}
+if platform_hooks:
+    existing[mod_name]['platform_hooks'] = f'[{", ".join(platform_hooks)}]'
+
+out = ['kernel_version: "0.4.0"', 'installed_modules:']
+for n in sorted(existing):
+    out.append(f'  {n}:')
+    for k, v in existing[n].items():
+        out.append(f'    {k}: {v}')
+with open(modules_yaml, 'w') as f:
+    f.write('\n'.join(out) + '\n')
+
+print(f"  [ok] {display} module installed (v{version})")
+print(f"  [ok] modules.yaml updated")
+PYEOF
+    ;;
+
+  remove)
+    MODULE_NAME="${2:-}"
+    if [ -z "$MODULE_NAME" ]; then
+      echo "Usage: ./pals remove <module-name>"
+      exit 1
+    fi
+
+    if [ "$MODULE_NAME" = "kernel" ] || [ "$MODULE_NAME" = "paul" ]; then
+      echo "ERROR: Cannot remove the kernel. Use ./uninstall.sh to remove PALS entirely."
+      exit 1
+    fi
+
+    if [ ! -f "$MODULES_YAML" ]; then
+      echo "ERROR: PALS not installed or modules.yaml missing."
+      exit 1
+    fi
+
+    python3 - "$PALS_ROOT" "$HOME" "$MODULE_NAME" <<'PYEOF'
+import sys, os, json, shutil
+
+pals_root = sys.argv[1]
+home = sys.argv[2]
+mod_name = sys.argv[3]
+pals_dir = os.path.join(home, '.pals')
+claude_dir = os.path.join(home, '.claude')
+modules_yaml = os.path.join(pals_dir, 'modules.yaml')
+mod_dir = os.path.join(pals_root, 'modules', mod_name)
+manifest_path = os.path.join(mod_dir, 'module.yaml')
+
+# Check if installed
+with open(modules_yaml) as f:
+    content = f.read()
+if f'\n  {mod_name}:' not in content and not content.startswith(f'  {mod_name}:'):
+    # Check with proper prefix
+    found = False
+    for line in content.splitlines():
+        if line.strip().startswith(f'{mod_name}:') and line.startswith('  '):
+            found = True; break
+    if not found:
+        print(f"ERROR: Module '{mod_name}' is not installed.")
+        sys.exit(1)
+
+def parse_module_yaml(filepath):
+    """Minimal parser — extracts files and commands sections."""
+    with open(filepath, 'r') as f:
+        lines = f.readlines()
+    result = {}
+    path = []
+    indents = [0]
+    list_key = None
+    list_items = []
+
+    def flush_list():
+        nonlocal list_key, list_items
+        if list_key is not None:
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[list_key] = list_items
+            list_key = None; list_items = []
+
+    i = 0
+    while i < len(lines):
+        raw = lines[i]; stripped = raw.strip(); i += 1
+        if not stripped or stripped.startswith('#'): continue
+        indent = len(raw) - len(raw.lstrip())
+        if stripped.startswith('- '):
+            item = stripped[2:].strip()
+            if ':' in item:
+                entry = {}
+                k, v = item.split(':', 1)
+                entry[k.strip()] = v.strip().strip('"').strip("'")
+                while i < len(lines):
+                    nr = lines[i]; ns = nr.strip(); ni = len(nr) - len(nr.lstrip())
+                    if not ns or ns.startswith('#'): i += 1; continue
+                    if ni <= indent or ns.startswith('- '): break
+                    if ':' in ns:
+                        nk, nv = ns.split(':', 1)
+                        entry[nk.strip()] = nv.strip().strip('"').strip("'")
+                    i += 1
+                list_items.append(entry)
+            else:
+                list_items.append(item.strip('"').strip("'"))
+            continue
+        flush_list()
+        if ':' not in stripped: continue
+        cp = stripped.index(':')
+        key = stripped[:cp].strip()
+        value = stripped[cp+1:].strip()
+        while len(indents) > 1 and indent <= indents[-1]:
+            path.pop(); indents.pop()
+        if value in ('', '>', '|'):
+            j = i
+            while j < len(lines) and not lines[j].strip(): j += 1
+            if j < len(lines):
+                peek = lines[j].strip()
+                if peek.startswith('- '):
+                    list_key = key; list_items = []
+                elif ':' in peek and len(lines[j]) - len(lines[j].lstrip()) > indent:
+                    d = result
+                    for k in path: d = d.setdefault(k, {})
+                    d[key] = {}; path.append(key); indents.append(indent)
+            else:
+                d = result
+                for k in path: d = d.setdefault(k, {})
+                d[key] = {}
+        elif value in ('[]', '{}'):
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = [] if value == '[]' else {}
+        elif value.startswith('[') and value.endswith(']'):
+            items = [x.strip().strip('"').strip("'") for x in value[1:-1].split(',') if x.strip()]
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = items
+        else:
+            v = value.strip('"').strip("'")
+            if v == 'true': v = True
+            elif v == 'false': v = False
+            d = result
+            for k in path: d = d.setdefault(k, {})
+            d[key] = v
+    flush_list()
+    return result
+
+print(f"Removing {mod_name} module ...")
+
+# Read manifest for file lists
+if os.path.exists(manifest_path):
+    manifest = parse_module_yaml(manifest_path)
+    files_section = manifest.get('files', {})
+
+    # Remove references
+    for rel in files_section.get('references', []):
+        target = os.path.join(pals_dir, 'references', os.path.basename(rel))
+        if os.path.exists(target): os.remove(target)
+
+    # Remove workflows
+    for rel in files_section.get('workflows', []):
+        target = os.path.join(pals_dir, 'workflows', os.path.basename(rel))
+        if os.path.exists(target): os.remove(target)
+
+    # Remove templates
+    for rel in files_section.get('templates', []):
+        target = os.path.join(pals_dir, 'templates', os.path.basename(rel))
+        if os.path.exists(target): os.remove(target)
+
+    # Remove rules
+    for rel in files_section.get('rules', []):
+        target = os.path.join(pals_dir, 'rules', os.path.basename(rel))
+        if os.path.exists(target): os.remove(target)
+
+    # Remove commands
+    for cmd in manifest.get('commands', []):
+        if isinstance(cmd, dict) and cmd.get('file'):
+            rel = cmd['file'][len('commands/'):] if cmd['file'].startswith('commands/') else cmd['file']
+            target = os.path.join(claude_dir, 'commands', rel)
+            if os.path.exists(target): os.remove(target)
+    # Remove command directory if empty
+    cmd_dir = os.path.join(claude_dir, 'commands', mod_name)
+    if os.path.isdir(cmd_dir):
+        shutil.rmtree(cmd_dir)
+
+    # Remove platform hooks
+    platform = manifest.get('platform', {})
+    if isinstance(platform, dict):
+        cc = platform.get('claude_code', {})
+        if isinstance(cc, dict):
+            for hd in cc.get('hooks', []):
+                if isinstance(hd, dict) and hd.get('source'):
+                    bn = os.path.basename(hd['source'])
+                    link = os.path.join(claude_dir, 'hooks', bn)
+                    if os.path.islink(link) or os.path.exists(link):
+                        os.remove(link)
+                        print(f"  [ok] Removed hook: ~/.claude/hooks/{bn}")
+                    # Deregister from settings.json
+                    if hd.get('event'):
+                        sp = os.path.join(claude_dir, 'settings.json')
+                        if os.path.exists(sp):
+                            settings = json.load(open(sp))
+                            event = hd['event']
+                            if 'hooks' in settings and event in settings['hooks']:
+                                hook_id = bn.replace('.py', '')
+                                orig = len(settings['hooks'][event])
+                                settings['hooks'][event] = [
+                                    e for e in settings['hooks'][event]
+                                    if not any(hook_id in h.get('command', '') for h in e.get('hooks', []))
+                                ]
+                                if len(settings['hooks'][event]) < orig:
+                                    if not settings['hooks'][event]: del settings['hooks'][event]
+                                    if not settings['hooks']: del settings['hooks']
+                                    with open(sp, 'w') as f: json.dump(settings, f, indent=2); f.write('\n')
+                                    print(f"  [ok] Hook deregistered from settings.json")
+
+# Remove config directory
+config_dir = os.path.join(pals_dir, mod_name)
+if os.path.isdir(config_dir):
+    shutil.rmtree(config_dir)
+    print(f"  [ok] Removed config: ~/.pals/{mod_name}/")
+
+# Regenerate modules.yaml without this module
+existing = {}
+with open(modules_yaml) as f:
+    mlines = f.readlines()
+cur = None
+for ml in mlines:
+    ms = ml.strip()
+    if ml.startswith('  ') and not ml.startswith('    ') and ':' in ms:
+        k = ms.split(':')[0].strip()
+        if k != 'kernel_version': cur = k; existing[cur] = {}
+    elif cur and ml.startswith('    ') and ':' in ms:
+        mk, mv = ms.split(':', 1)
+        existing[cur][mk.strip()] = mv.strip()
+
+if mod_name in existing:
+    del existing[mod_name]
+
+out = ['kernel_version: "0.4.0"', 'installed_modules:']
+for n in sorted(existing):
+    out.append(f'  {n}:')
+    for k, v in existing[n].items():
+        out.append(f'    {k}: {v}')
+with open(modules_yaml, 'w') as f:
+    f.write('\n'.join(out) + '\n')
+
+print(f"  [ok] {mod_name} module removed")
+print(f"  [ok] modules.yaml updated")
+PYEOF
+    ;;
+
+  help|--help|-h)
+    show_help
+    ;;
+
+  *)
+    echo "Unknown command: $CMD"
+    echo ""
+    show_help
+    exit 1
+    ;;
+esac
