@@ -43,6 +43,8 @@ All validated — see below.
 - ✓ CARL, TODD, WALT refactored as loadable modules with module.yaml manifests — v0.4
 - ✓ Module-aware installer with pals.yaml config and pals CLI — v0.4
 - ✓ Agent SDK driver proof-of-concept (headless kernel via query() API) — v0.4
+- ✓ TODD hook-mapping workflow (plan-phase-tdd.md) with 5 kernel hook dispatch instructions — Phase 14
+- ✓ WALT hook-mapping workflow (apply-phase-quality.md) with 3 kernel hook dispatch instructions — Phase 15
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -72,6 +74,7 @@ All validated — see below.
 | Claude Code driver is install-time wiring, not runtime code | 13 | The LLM IS the runtime driver |
 | Workflow-as-system-prompt for Agent SDK | 13 | Same .md drives both drivers |
 | Driver detection: PALS_DRIVER > ~/.claude/ > ANTHROPIC_AGENT_SDK > default | 13 | Install-time resolution |
+| Each module hook maps to exactly 2 reference files | 15 | Minimize context per dispatch; specific refs per hook |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -90,4 +93,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after v0.5 TODD & WALT Go Live milestone created*
+*Last updated: 2026-03-12 after Phase 15 WALT Integration complete*
