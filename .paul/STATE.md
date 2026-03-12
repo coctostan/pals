@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v0.6 Enhance & Expand
+**Current focus:** v0.6 Enhance & Expand — COMPLETE
 
 ## Current Position
 
-Milestone: v0.6 Enhance & Expand
-Phase: 21 of 21 (IRIS Module) — Not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-12 — Phase 20 DEAN Module complete, transitioned to Phase 21
+Milestone: v0.6 Enhance & Expand — COMPLETE
+Phase: 21 of 21 (IRIS Module) — Complete
+Plan: 21-01 complete
+Status: Milestone complete, all 5 phases done
+Last activity: 2026-03-12 — Phase 21 IRIS Module complete, v0.6 milestone finished
 
 Progress:
-- v0.6 Enhance & Expand: [████████░░] 80%
-- Phase 21: [░░░░░░░░░░] 0%
+- v0.6 Enhance & Expand: [██████████] 100%
+- Phase 21: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN]
+  ✓        ✓        ✓     [Loop complete — milestone finished]
 ```
 
 ## Accumulated Context
@@ -33,10 +33,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision | Phase | Impact |
 |----------|-------|--------|
 | /paul:coverage in kernel, detection ref in TODD module | 18 | Clean separation: command + module reference |
-| /paul:quality in kernel, trends ref in WALT module | 19 | Same pattern as Phase 18: command + module reference |
+| /paul:quality in kernel, trends ref in WALT module | 19 | Same pattern as Phase 18 |
 | DEAN has no hooks in v0.6 (read-only visibility) | 20 | Visibility first, enforcement later |
-| Never auto-fix dependencies — only suggest commands | 20 | User controls all changes |
 | /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19 |
+| IRIS has no hooks in v0.6 (read-only guidance) | 21 | Advisory first, enforcement later |
+| /paul:review in kernel, pattern/checklist refs in IRIS module | 21 | Same pattern as Phases 18-20 |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates (may overlap with DAVE in v0.7)
@@ -45,16 +46,22 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - None active
 
+### Git State
+Last commit: pending (feature branch merge)
+Branch: main
+Feature branches merged: feature/20-dean-module
+
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 20 complete, ready to plan Phase 21
-Next action: /paul:plan for Phase 21 IRIS Module
+Stopped at: v0.6 milestone complete
+Next action: /paul:complete-milestone or /paul:milestone for v0.7
 Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 20 DEAN Module complete (PLAN → APPLY → UNIFY loop closed)
-- Created: modules/dean/ (module.yaml + 3 references), kernel/commands/paul/deps.md
-- 1 phase remaining in v0.6: IRIS (21) — last phase in milestone
+- v0.6 Enhance & Expand: all 5 phases complete (17-21)
+- 5 pals now: CARL, TODD, WALT, DEAN, IRIS
+- 6 milestones complete: v0.1 through v0.6
+- Ready for v0.7 planning
 
 ---
 *STATE.md — Updated after every significant action*
