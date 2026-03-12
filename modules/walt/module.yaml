@@ -28,6 +28,7 @@ files:
     - references/quality-lint.md
     - references/quality-delta.md
     - references/quality-history.md
+    - references/quality-trends.md
   workflows:
     - workflows/apply-phase-quality.md
     - workflows/quality-gate.md

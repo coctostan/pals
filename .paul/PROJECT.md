@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ### Active
 - [x] TODD coverage dashboard — visibility into untested code paths (Phase 18)
-- [ ] WALT quality trends — quality ledger tracking over time (Phase 19)
+- [x] WALT quality trends — quality ledger tracking over time (Phase 19)
 - [ ] DEAN module — dependency evaluation & audit notifier (Phase 20)
 - [ ] IRIS module — intelligent review & inspection system (Phase 21)
 
@@ -51,6 +51,7 @@ All validated — see below.
 - ✓ Module system validated with both modules active simultaneously — Phase 16
 - ✓ CARL auto-detection with rule catalog (11 technologies) and *scan command — Phase 17
 - ✓ TODD coverage dashboard with /paul:coverage command (9 frameworks) — Phase 18
+- ✓ WALT quality trends with /paul:quality command (streak/regression/stall detection) — Phase 19
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -86,6 +87,8 @@ All validated — see below.
 | Scan delegates to existing CARL CRUD tasks | 17 | No duplicated domain/rule creation logic |
 | /paul:coverage in kernel, detection ref in TODD module | 18 | Clean separation: project-level command + module-owned knowledge |
 | Advisory thresholds for coverage (not enforcement) | 18 | Visibility complements WALT's enforcement model |
+| /paul:quality in kernel, trends ref in WALT module | 19 | Same pattern as Phase 18: command + module reference |
+| Zero-value stalls treated as positive (clean code) | 19 | Lint/Types at 0 = clean, not concerning |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -104,4 +107,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 18 TODD Coverage Dashboard complete*
+*Last updated: 2026-03-12 after Phase 19 WALT Quality Trends complete*
