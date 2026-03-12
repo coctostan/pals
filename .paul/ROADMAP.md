@@ -25,7 +25,7 @@ Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 10 | Architecture & Module Interface | 1 | Complete | 2026-03-11 |
-| 11 | Kernel Extraction & Module Refactor | TBD | Not started | - |
+| 11 | Kernel Extraction & Module Refactor | 2+ | In Progress | - |
 | 12 | Module Manager & Installer | TBD | Not started | - |
 | 13 | Driver Architecture & Agent SDK Stub | TBD | Not started | - |
 

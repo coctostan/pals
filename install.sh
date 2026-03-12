@@ -10,9 +10,9 @@ set -e
 PALS_ROOT="$(cd "$(dirname "$0")" && pwd)"
 
 # ── Validate repo structure ──────────────────────────────────────
-if [ ! -d "$PALS_ROOT/workflows" ] || [ ! -d "$PALS_ROOT/carl" ]; then
+if [ ! -d "$PALS_ROOT/kernel/workflows" ] || [ ! -d "$PALS_ROOT/modules/carl" ]; then
   echo "ERROR: install.sh must be run from the PALS repo root."
-  echo "Expected directories: workflows/, carl/"
+  echo "Expected directories: kernel/workflows/, modules/carl/"
   exit 1
 fi
 
@@ -36,19 +36,39 @@ if [ -d "$LEGACY_DIR" ]; then
   echo ""
 fi
 
-# ── 1. Create ~/.pals/ directory structure ───────────────────────
+# ── 1. Install kernel files to ~/.pals/ ──────────────────────────
 mkdir -p ~/.pals/workflows ~/.pals/references ~/.pals/templates ~/.pals/rules ~/.pals/carl
 
-# Copy framework files (always overwrite on upgrade)
-cp -R "$PALS_ROOT/workflows/"* ~/.pals/workflows/
-cp -R "$PALS_ROOT/references/"* ~/.pals/references/
-cp -R "$PALS_ROOT/templates/"* ~/.pals/templates/
-cp -R "$PALS_ROOT/rules/"* ~/.pals/rules/
+# Kernel framework files (always overwrite on upgrade)
+cp -R "$PALS_ROOT/kernel/workflows/"* ~/.pals/workflows/
+cp -R "$PALS_ROOT/kernel/references/"* ~/.pals/references/
+cp -R "$PALS_ROOT/kernel/templates/"* ~/.pals/templates/
+cp -R "$PALS_ROOT/kernel/rules/"* ~/.pals/rules/
 
-echo "  [ok] Framework files installed to ~/.pals/"
+echo "  [ok] Kernel files installed to ~/.pals/"
 
-# ── 2. Install CARL domains (preserve user config) ──────────────
-for item in "$PALS_ROOT/carl/"*; do
+# ── 2. Install module files to ~/.pals/ ──────────────────────────
+
+# TODD module — references and workflows merge into ~/.pals/
+if [ -d "$PALS_ROOT/modules/todd/references" ] && ls "$PALS_ROOT/modules/todd/references/"* &>/dev/null; then
+  cp -R "$PALS_ROOT/modules/todd/references/"* ~/.pals/references/
+fi
+if [ -d "$PALS_ROOT/modules/todd/workflows" ] && ls "$PALS_ROOT/modules/todd/workflows/"* &>/dev/null; then
+  cp -R "$PALS_ROOT/modules/todd/workflows/"* ~/.pals/workflows/
+fi
+echo "  [ok] TODD module files installed"
+
+# WALT module — references and workflows merge into ~/.pals/
+if [ -d "$PALS_ROOT/modules/walt/references" ] && ls "$PALS_ROOT/modules/walt/references/"* &>/dev/null; then
+  cp -R "$PALS_ROOT/modules/walt/references/"* ~/.pals/references/
+fi
+if [ -d "$PALS_ROOT/modules/walt/workflows" ] && ls "$PALS_ROOT/modules/walt/workflows/"* &>/dev/null; then
+  cp -R "$PALS_ROOT/modules/walt/workflows/"* ~/.pals/workflows/
+fi
+echo "  [ok] WALT module files installed"
+
+# CARL module — config files (preserve user config)
+for item in "$PALS_ROOT/modules/carl/config/"*; do
   name="$(basename "$item")"
   dest="$HOME/.pals/carl/$name"
   if [ -e "$dest" ]; then
@@ -66,19 +86,19 @@ done
 # ── 3. Install commands ─────────────────────────────────────────
 mkdir -p ~/.claude/commands/paul ~/.claude/commands/carl
 
-cp -R "$PALS_ROOT/commands/paul/"* ~/.claude/commands/paul/
+cp -R "$PALS_ROOT/kernel/commands/paul/"* ~/.claude/commands/paul/
 # carl commands have subdirectories (tasks/, templates/)
-cp -R "$PALS_ROOT/commands/carl/"* ~/.claude/commands/carl/
+cp -R "$PALS_ROOT/modules/carl/commands/carl/"* ~/.claude/commands/carl/
 
-PALS_CMD_COUNT=$(find "$PALS_ROOT/commands/paul" -name "*.md" | wc -l | tr -d ' ')
-CARL_CMD_COUNT=$(find "$PALS_ROOT/commands/carl" -name "*.md" | wc -l | tr -d ' ')
+PALS_CMD_COUNT=$(find "$PALS_ROOT/kernel/commands/paul" -name "*.md" | wc -l | tr -d ' ')
+CARL_CMD_COUNT=$(find "$PALS_ROOT/modules/carl/commands/carl" -name "*.md" | wc -l | tr -d ' ')
 echo "  [ok] Commands installed: $PALS_CMD_COUNT paul, $CARL_CMD_COUNT carl"
 
 # ── 4. Install hooks ────────────────────────────────────────────
 mkdir -p ~/.claude/hooks
 
-ln -sf "$PALS_ROOT/hooks/carl-hook.py" ~/.claude/hooks/carl-hook.py
-chmod +x "$PALS_ROOT/hooks/carl-hook.py"
+ln -sf "$PALS_ROOT/modules/carl/hooks/carl-hook.py" ~/.claude/hooks/carl-hook.py
+chmod +x "$PALS_ROOT/modules/carl/hooks/carl-hook.py"
 
 echo "  [ok] Hook symlinked: ~/.claude/hooks/carl-hook.py"
 
@@ -165,7 +185,7 @@ echo "════════════════════════�
 echo "PALS installed successfully!"
 echo "════════════════════════════════════════"
 echo ""
-echo "  ~/.pals/         Framework files"
+echo "  ~/.pals/         Framework files (kernel + modules)"
 echo "  ~/.claude/commands/paul/  $PALS_CMD_COUNT commands"
 echo "  ~/.claude/commands/carl/  $CARL_CMD_COUNT commands"
 echo "  ~/.claude/hooks/          CARL hook (symlink)"

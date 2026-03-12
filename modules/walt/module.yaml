@@ -1,0 +1,39 @@
+name: walt
+display_name: WALT
+description: >
+  Quality gating. Captures test baselines before apply, runs tests and lint
+  after apply, detects regressions, and tracks quality trends across phases.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-apply:
+    priority: 100
+    description: Capture test baseline — run tests and record counts before changes
+  post-apply:
+    priority: 100
+    description: Run tests, lint, typecheck; compare against baseline; gate on regressions
+  post-unify:
+    priority: 100
+    description: Record quality delta in quality-history.md for trend tracking
+
+files:
+  references:
+    - references/quality-principles.md
+    - references/quality-runner.md
+    - references/quality-detection.md
+    - references/quality-lint.md
+    - references/quality-delta.md
+    - references/quality-history.md
+  workflows:
+    - workflows/quality-gate.md
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

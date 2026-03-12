@@ -1,0 +1,44 @@
+name: todd
+display_name: TODD
+description: >
+  Test-Driven Development enforcement. Detects TDD candidates during planning,
+  structures plans as RED-GREEN-REFACTOR, and enforces phase discipline during
+  apply execution.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 100
+    description: Detect TDD candidates via file heuristics and phase metadata
+  post-plan:
+    priority: 100
+    description: Restructure plan tasks as RED-GREEN-REFACTOR when TDD type detected
+  pre-apply:
+    priority: 50
+    description: Enforce RED phase — verify test files exist or will be created first
+  post-task:
+    priority: 100
+    description: Enforce GREEN phase — verify tests pass after each implementation task
+  post-apply:
+    priority: 200
+    description: Signal REFACTOR opportunity — suggest cleanup if all tests green
+
+files:
+  references:
+    - references/tdd.md
+    - references/tdd-detection.md
+    - references/tdd-plan-generation.md
+    - references/tdd-execution.md
+  workflows:
+    - workflows/plan-phase-tdd.md
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

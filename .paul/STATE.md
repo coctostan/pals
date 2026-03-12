@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Milestone: v0.4 Kernel & Modules
-Phase: 11 of 13 (Kernel Extraction & Module Refactor)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-11 — Phase 10 complete, transitioned to Phase 11
+Phase: 11 of 13 (Kernel Extraction & Module Refactor) — Re-planning
+Plan: 11-01 complete (migrate.sh + install.sh update)
+Status: Loop closed, ready for next PLAN (11-02)
+Last activity: 2026-03-11 — Unified Plan 11-01
 
 Progress:
-- v0.4 Kernel & Modules: [██░░░░░░░░] 25%
-- Phase 11: [░░░░░░░░░░] 0%
+- v0.4 Kernel & Modules: [███░░░░░░░] 30%
+- Phase 11: [█████░░░░░] 50%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -40,22 +40,23 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 5 driver methods: workflow_invoke, hook_register, state_read/write, user_interact, command_register | Phase 10 | Platform abstraction contract |
 
 ### Deferred Issues
-- ci-generation.md and sonarqube-integration.md unclassified (future module candidates)
-- plan-phase-tdd.md may need extraction as standalone file during Phase 11
+- ci-generation.md and sonarqube-integration.md — future module candidates
+- plan-phase-tdd.md does not exist as standalone file — needs creation as TODD module workflow
 
 ### Blockers/Concerns
-None.
+- Plan 11-01 (big-bang file move) broke live infrastructure — reverted
+- New approach: migration script that moves files AND updates all live references atomically
 
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: Phase 10 complete, ready to plan Phase 11
-Next action: /paul:plan for Phase 11
+Stopped at: Plan 11-01 loop closed, session paused
+Next action: Run /paul:plan for Plan 11-02 (decouple hardcoded TODD/WALT refs in kernel workflows)
 Resume file: .paul/HANDOFF-2026-03-11.md
 Resume context:
-- v0.4 milestone created, Phase 10 architecture complete
-- 4 spec docs in docs/ define kernel/module/driver contracts
-- Phase 11 next: extract kernel, refactor CARL/TODD/WALT into modules
+- Plan 11-01 complete: repo restructured into kernel/ + modules/ via migrate.sh
+- install.sh updated and validated, symlink updated
+- Next: Plan 11-02 — remove hardcoded TODD/WALT references from kernel workflows
 
 ---
 *STATE.md — Updated after every significant action*
