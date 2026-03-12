@@ -37,7 +37,7 @@ Focus: Evolve existing pals with smarter capabilities + add first two new pals t
 |-------|------|-------|--------|-----------|
 | 17 | CARL Auto-Detection | 1 | ✅ Complete | 2026-03-12 |
 | 18 | TODD Coverage Dashboard | 1 | ✅ Complete | 2026-03-12 |
-| 19 | WALT Quality Trends | TBD | Not started | - |
+| 19 | WALT Quality Trends | 1 | Planning | - |
 | 20 | DEAN Module | TBD | Not started | - |
 | 21 | IRIS Module | TBD | Not started | - |
 
