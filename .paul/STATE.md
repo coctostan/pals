@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-12)
 ## Current Position
 
 Milestone: v0.6 Enhance & Expand
-Phase: 20 of 21 (DEAN Module) — Applied
-Plan: 20-01 executed
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-12 — Executed 20-01-PLAN.md (2/2 tasks)
+Phase: 21 of 21 (IRIS Module) — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-12 — Phase 20 DEAN Module complete, transitioned to Phase 21
 
 Progress:
-- v0.6 Enhance & Expand: [██████░░░░] 65%
-- Phase 20: [████████░░] 80%
+- v0.6 Enhance & Expand: [████████░░] 80%
+- Phase 21: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Applied, ready for UNIFY]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Accumulated Context
@@ -32,12 +32,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| YAML catalog pattern for extensible detection | 17 | rule-catalog.yaml drives *scan |
-| Scan delegates to existing CARL CRUD tasks | 17 | No duplicated logic |
 | /paul:coverage in kernel, detection ref in TODD module | 18 | Clean separation: command + module reference |
-| Advisory thresholds for coverage (not enforcement) | 18 | Visibility complements WALT's enforcement |
 | /paul:quality in kernel, trends ref in WALT module | 19 | Same pattern as Phase 18: command + module reference |
-| Zero-value stalls treated as positive (clean code) | 19 | Lint/Types at 0 = clean, not concerning |
+| DEAN has no hooks in v0.6 (read-only visibility) | 20 | Visibility first, enforcement later |
+| Never auto-fix dependencies — only suggest commands | 20 | User controls all changes |
+| /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19 |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates (may overlap with DAVE in v0.7)
@@ -49,14 +48,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 20 apply complete, paused before UNIFY
-Next action: /paul:unify .paul/phases/20-dean-module/20-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-12-v06-phase20.md
+Stopped at: Phase 20 complete, ready to plan Phase 21
+Next action: /paul:plan for Phase 21 IRIS Module
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 19 WALT Quality Trends complete (commit e7d494e, merged to main)
-- Phase 20 DEAN Module APPLY complete: 2/2 tasks, UNIFY pending
+- Phase 20 DEAN Module complete (PLAN → APPLY → UNIFY loop closed)
 - Created: modules/dean/ (module.yaml + 3 references), kernel/commands/paul/deps.md
-- 2 phases remaining in v0.6: DEAN (20), IRIS (21)
+- 1 phase remaining in v0.6: IRIS (21) — last phase in milestone
 
 ---
 *STATE.md — Updated after every significant action*

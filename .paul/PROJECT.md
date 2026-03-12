@@ -11,7 +11,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 ### Active
 - [x] TODD coverage dashboard — visibility into untested code paths (Phase 18)
 - [x] WALT quality trends — quality ledger tracking over time (Phase 19)
-- [ ] DEAN module — dependency evaluation & audit notifier (Phase 20)
+- [x] DEAN module — dependency evaluation & audit notifier (Phase 20)
 - [ ] IRIS module — intelligent review & inspection system (Phase 21)
 
 ### Must Have
@@ -52,6 +52,7 @@ All validated — see below.
 - ✓ CARL auto-detection with rule catalog (11 technologies) and *scan command — Phase 17
 - ✓ TODD coverage dashboard with /paul:coverage command (9 frameworks) — Phase 18
 - ✓ WALT quality trends with /paul:quality command (streak/regression/stall detection) — Phase 19
+- ✓ DEAN module — dependency evaluation & audit notifier with /paul:deps command (10 ecosystems) — Phase 20
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -89,6 +90,9 @@ All validated — see below.
 | Advisory thresholds for coverage (not enforcement) | 18 | Visibility complements WALT's enforcement model |
 | /paul:quality in kernel, trends ref in WALT module | 19 | Same pattern as Phase 18: command + module reference |
 | Zero-value stalls treated as positive (clean code) | 19 | Lint/Types at 0 = clean, not concerning |
+| DEAN has no hooks in v0.6 (read-only visibility) | 20 | Visibility first, enforcement later (mirrors WALT's evolution) |
+| Never auto-fix dependencies — only suggest commands | 20 | Updates can break things; user controls all changes |
+| /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19: command + module reference |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -107,4 +111,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 19 WALT Quality Trends complete*
+*Last updated: 2026-03-12 after Phase 20 DEAN Module complete*
