@@ -120,6 +120,16 @@ For each <task> in order:
    - PASS: verification succeeded
    - FAIL: verification failed (stop and report)
 5. Note <done> criteria satisfied
+6. **Dispatch post-task hooks:**
+   a. Read `~/.pals/modules.yaml` (if it exists)
+   b. Find modules with hooks registered for `post-task`
+   c. Sort by priority (ascending — lower runs first)
+   d. For each registered module:
+      - Load the module's declared reference files as context
+      - Follow the module's hook description for `post-task`
+      - Pass task name, task result, and `context_inject` from pre-apply
+      - If module returns `action: block` — stop and surface the `reason` to the user
+   e. If no modules registered for `post-task`: proceed (no-op)
 
 **If type="checkpoint:human-verify":**
 1. Stop execution

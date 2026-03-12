@@ -8,8 +8,10 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Requirements
 
-### Active
-No active milestone — ready for v0.5 planning.
+### Active (v0.5)
+- [ ] TODD TDD enforcement functional end-to-end (detection → plan restructuring → RED/GREEN/REFACTOR)
+- [ ] WALT quality gating functional end-to-end (baseline → regression detection → history)
+- [ ] Module system validated with both modules active simultaneously
 
 ### Must Have
 All validated — see below.
@@ -88,4 +90,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after v0.4 Kernel & Modules milestone complete*
+*Last updated: 2026-03-12 after v0.5 TODD & WALT Go Live milestone created*

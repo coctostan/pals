@@ -21,8 +21,57 @@ Status: ✅ Complete
 Completed: 2026-03-12
 Phases: 4 of 4 complete
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+### v0.5 TODD & WALT Go Live
+Status: In Progress
+Phases: 0 of 3 complete
+
+## Phases (v0.5)
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 14 | TODD Integration | 1 | Planning | - |
+| 15 | WALT Integration | TBD | Not started | - |
+| 16 | Module System Validation | TBD | Not started | - |
+
+## Phase Details (v0.5)
+
+### Phase 14: TODD Integration
+
+**Goal:** Make TODD's TDD enforcement fully functional end-to-end
+**Depends on:** v0.4 complete (module system in place)
+**Research:** No
+
+**Scope:**
+- Create missing `plan-phase-tdd.md` workflow (declared in module.yaml but file doesn't exist)
+- Test TDD detection heuristics on real code (pre-plan hook)
+- Test plan restructuring into RED/GREEN/REFACTOR (post-plan hook)
+- Test execution enforcement: RED phase first, GREEN verification (pre-apply, post-task hooks)
+- Fix any gaps in reference files discovered during testing
+
+### Phase 15: WALT Integration
+
+**Goal:** Make WALT's quality gating fully functional end-to-end
+**Depends on:** Phase 14 (TODD working, shared module patterns proven)
+**Research:** No
+
+**Scope:**
+- Test quality tool auto-detection (zero-config heuristics)
+- Test baseline capture before apply (pre-apply hook)
+- Test regression detection after apply (post-apply hook)
+- Test quality history recording (post-unify hook)
+- Fix any gaps in reference files discovered during testing
+
+### Phase 16: Module System Validation
+
+**Goal:** Prove both modules work together through a full PAUL lifecycle loop
+**Depends on:** Phases 14-15 (both modules individually working)
+**Research:** No
+
+**Scope:**
+- Fresh install → run full PLAN/APPLY/UNIFY loop with TODD + WALT active
+- Verify hook priorities respected (TODD pre-apply at 50 fires before WALT pre-apply at 100)
+- Verify module enable/disable via pals.yaml works
+- Document any fixes or patterns discovered
 
 ---
 
@@ -75,4 +124,4 @@ Run /paul:discuss-milestone or /paul:milestone to define.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — v0.4 Kernel & Modules milestone complete*
+*Last updated: 2026-03-12 — v0.5 TODD & WALT Go Live milestone created*
