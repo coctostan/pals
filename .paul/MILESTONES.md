@@ -8,6 +8,40 @@ Completed milestone log for this project.
 | v0.2 Polish | 2026-03-11 | 1 day | 1 phase, 1 plan |
 | v0.3 Smart Context & Migration | 2026-03-11 | 1 day | 2 phases, 2 plans |
 | v0.4 Kernel & Modules | 2026-03-12 | 2 days | 4 phases, 7 plans |
+| v0.5 TODD & WALT Go Live | 2026-03-12 | 1 day | 3 phases, 3 plans |
+
+---
+
+## ✅ v0.5 TODD & WALT Go Live
+
+**Completed:** 2026-03-12
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 |
+| Plans | 3 |
+| Files changed | 5 (2 created, 3 modified) |
+
+### Key Accomplishments
+
+- Created TODD hook-mapping workflow (plan-phase-tdd.md) with 5 hook definitions covering full TDD lifecycle: detection → plan restructuring → RED/GREEN/REFACTOR enforcement
+- Created WALT hook-mapping workflow (apply-phase-quality.md) with 3 hook definitions: baseline capture → quality gate → history recording
+- Added missing post-task hook dispatch to kernel apply-phase.md (discovered during TODD integration)
+- Fixed broken @src/ references in WALT's quality-gate.md
+- Validated full module system: all 8 hooks dispatch correctly, all 10 reference files resolve, priority ordering verified, module enable/disable works
+- Documented complete hook dispatch trace for PLAN → APPLY → UNIFY lifecycle
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Dual-purpose workflow files (hook handler + standalone) | 14 | One file serves both kernel dispatch and direct invocation |
+| Each hook maps to exactly 2 reference files (not all) | 15 | Minimize context per dispatch; efficient kernel hook resolution |
+| quality-principles.md excluded from per-hook loading | 15 | Foundational context only, not execution-specific |
+| Module system validated via audit (no code changes needed) | 16 | All dimensions passed clean — system is production-ready |
 
 ---
 

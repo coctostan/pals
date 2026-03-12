@@ -26,57 +26,24 @@ Status: ✅ Complete
 Completed: 2026-03-12
 Phases: 3 of 3 complete
 
-## Phases (v0.5)
+## Next Milestone
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 14 | TODD Integration | 1 | Complete | 2026-03-12 |
-| 15 | WALT Integration | 1 | Complete | 2026-03-12 |
-| 16 | Module System Validation | 1 | Complete | 2026-03-12 |
-
-## Phase Details (v0.5)
-
-### Phase 14: TODD Integration
-
-**Goal:** Make TODD's TDD enforcement fully functional end-to-end
-**Depends on:** v0.4 complete (module system in place)
-**Research:** No
-
-**Scope:**
-- Create missing `plan-phase-tdd.md` workflow (declared in module.yaml but file doesn't exist)
-- Test TDD detection heuristics on real code (pre-plan hook)
-- Test plan restructuring into RED/GREEN/REFACTOR (post-plan hook)
-- Test execution enforcement: RED phase first, GREEN verification (pre-apply, post-task hooks)
-- Fix any gaps in reference files discovered during testing
-
-### Phase 15: WALT Integration
-
-**Goal:** Make WALT's quality gating fully functional end-to-end
-**Depends on:** Phase 14 (TODD working, shared module patterns proven)
-**Research:** No
-
-**Scope:**
-- Test quality tool auto-detection (zero-config heuristics)
-- Test baseline capture before apply (pre-apply hook)
-- Test regression detection after apply (post-apply hook)
-- Test quality history recording (post-unify hook)
-- Fix any gaps in reference files discovered during testing
-
-### Phase 16: Module System Validation
-
-**Goal:** Prove both modules work together through a full PAUL lifecycle loop
-**Depends on:** Phases 14-15 (both modules individually working)
-**Research:** No
-
-**Scope:**
-- Fresh install → run full PLAN/APPLY/UNIFY loop with TODD + WALT active
-- Verify hook priorities respected (TODD pre-apply at 50 fires before WALT pre-apply at 100)
-- Verify module enable/disable via pals.yaml works
-- Document any fixes or patterns discovered
+Run `/paul:discuss-milestone` or `/paul:milestone` to define.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.5 TODD & WALT Go Live - 2026-03-12 (3 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 14 | TODD Integration | 1 | 2026-03-12 |
+| 15 | WALT Integration | 1 | 2026-03-12 |
+| 16 | Module System Validation | 1 | 2026-03-12 |
+
+</details>
 
 <details>
 <summary>v0.4 Kernel & Modules - 2026-03-12 (4 phases)</summary>
