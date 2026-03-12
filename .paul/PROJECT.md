@@ -12,7 +12,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] TODD coverage dashboard — visibility into untested code paths (Phase 18)
 - [x] WALT quality trends — quality ledger tracking over time (Phase 19)
 - [x] DEAN module — dependency evaluation & audit notifier (Phase 20)
-- [ ] IRIS module — intelligent review & inspection system (Phase 21)
+- [x] IRIS module — intelligent review & inspection system (Phase 21)
 
 ### Must Have
 All validated — see below.
@@ -53,6 +53,7 @@ All validated — see below.
 - ✓ TODD coverage dashboard with /paul:coverage command (9 frameworks) — Phase 18
 - ✓ WALT quality trends with /paul:quality command (streak/regression/stall detection) — Phase 19
 - ✓ DEAN module — dependency evaluation & audit notifier with /paul:deps command (10 ecosystems) — Phase 20
+- ✓ IRIS module — intelligent review & inspection system with /paul:review command (25 patterns, 5 checklists) — Phase 21
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -93,6 +94,8 @@ All validated — see below.
 | DEAN has no hooks in v0.6 (read-only visibility) | 20 | Visibility first, enforcement later (mirrors WALT's evolution) |
 | Never auto-fix dependencies — only suggest commands | 20 | Updates can break things; user controls all changes |
 | /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19: command + module reference |
+| IRIS has no hooks in v0.6 (read-only guidance) | 21 | Advisory first, enforcement later (same as DEAN) |
+| /paul:review in kernel, pattern/checklist refs in IRIS module | 21 | Same pattern as Phases 18-20: command + module reference |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -111,4 +114,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 20 DEAN Module complete*
+*Last updated: 2026-03-12 after Phase 21 IRIS Module complete (v0.6 milestone complete)*

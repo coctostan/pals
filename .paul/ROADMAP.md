@@ -29,8 +29,9 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 ### v0.6 Enhance & Expand
-Status: 🚧 In Progress
-Phases: 4 of 5 complete
+Status: ✅ Complete
+Completed: 2026-03-12
+Phases: 5 of 5 complete
 Focus: Evolve existing pals with smarter capabilities + add first two new pals to prove module system scales
 
 | Phase | Name | Plans | Status | Completed |
@@ -39,7 +40,7 @@ Focus: Evolve existing pals with smarter capabilities + add first two new pals t
 | 18 | TODD Coverage Dashboard | 1 | ✅ Complete | 2026-03-12 |
 | 19 | WALT Quality Trends | 1 | ✅ Complete | 2026-03-12 |
 | 20 | DEAN Module | 1 | ✅ Complete | 2026-03-12 |
-| 21 | IRIS Module | TBD | Not started | - |
+| 21 | IRIS Module | 1 | ✅ Complete | 2026-03-12 |
 
 ---
 
@@ -103,4 +104,4 @@ Focus: Evolve existing pals with smarter capabilities + add first two new pals t
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — Phase 20 DEAN Module complete*
+*Last updated: 2026-03-12 — v0.6 Enhance & Expand milestone complete*

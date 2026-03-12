@@ -1,0 +1,27 @@
+name: iris
+display_name: IRIS
+description: >
+  Intelligent Review & Inspection System. Provides structured code review
+  guidance, pattern detection references, and inspection checklists for
+  thorough code review via /paul:review.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks: {}
+
+files:
+  references:
+    - references/review-principles.md
+    - references/review-patterns.md
+    - references/inspection-checklists.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
