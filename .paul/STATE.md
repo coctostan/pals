@@ -44,12 +44,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 17 complete, ready to plan Phase 18
+Stopped at: Phase 17 complete, session paused between phases
 Next action: /paul:plan for Phase 18
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-12-v06-phase17.md
 Resume context:
 - Phase 17 CARL Auto-Detection complete (rule catalog + *scan command)
 - 4 phases remaining in v0.6: TODD Coverage (18), WALT Trends (19), DEAN (20), IRIS (21)
+- v0.7 planned: SKIP, DAVE, RUBY + multi-project + headless
 
 ---
 *STATE.md — Updated after every significant action*
