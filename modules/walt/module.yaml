@@ -29,6 +29,7 @@ files:
     - references/quality-delta.md
     - references/quality-history.md
   workflows:
+    - workflows/apply-phase-quality.md
     - workflows/quality-gate.md
   templates: []
   config: []

@@ -1,0 +1,25 @@
+name: agent-sdk
+version: 0.4.0
+platform: anthropic-agent-sdk
+description: PALS driver for Anthropic Agent SDK
+
+# Which kernel version this driver targets
+kernel_version: ">=0.4.0"
+
+# Capabilities this driver supports
+capabilities:
+  workflow_invoke: true
+  hook_register: true
+  state_read: true
+  state_write: true
+  user_interact: true
+  command_register: false  # no slash command system on this platform
+
+# Driver-specific configuration
+config:
+  # State storage backend
+  state_backend: filesystem
+  # How workflow markdown is injected into the agent
+  system_prompt_injection: prepend
+  # Auto-approve interactions (for fully autonomous operation)
+  auto_approve: false
