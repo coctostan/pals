@@ -28,7 +28,28 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-No active milestone. Run `/paul:discuss-milestone` or `/paul:milestone` to define the next one.
+**v0.9.1 Release Readiness**
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
+Focus: Make PALS bulletproof and self-documenting before 1.0
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 31 | Seamless Git & GH | 1 | Planning | - |
+| 32 | PALS Documentation | TBD | Not started | - |
+| 33 | Doc Lifecycle Module | TBD | Not started | - |
+
+### Phase 31: Seamless Git & GH
+
+Focus: Zero-thought git workflow. Init git config, auto branching per phase, auto PRs on phase transition, auto push/release on milestone complete, CI check awareness. Stored in pals.json. Graceful degradation without GH repo.
+
+### Phase 32: PALS Documentation
+
+Focus: Audit and fill gaps in PALS' own docs for posterity. Operating manual (how to build a module), troubleshooting guide, auto-generated changelog from milestone history.
+
+### Phase 33: Doc Lifecycle Module
+
+Focus: New module managing documentation for any project PAUL runs on. Doc drift detection, auto-changelog generation, README currency checks, lifecycle hooks. Follows established module pattern.
 
 ---
 
@@ -139,4 +160,4 @@ No active milestone. Run `/paul:discuss-milestone` or `/paul:milestone` to defin
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — v0.9 Observability & Context Health complete*
+*Last updated: 2026-03-13 — v0.9.1 Release Readiness milestone created*

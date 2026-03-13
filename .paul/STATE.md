@@ -5,25 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-13)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone
+**Current focus:** v0.9.1 Release Readiness — bulletproof git/gh, own docs, doc lifecycle module
 
 ## Current Position
 
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v0.9 Observability & Context Health complete — ready for next
-Last activity: 2026-03-13 — Milestone completed
+Milestone: v0.9.1 Release Readiness
+Phase: 31 of 33 (Seamless Git & GH)
+Plan: 31-01 complete, ready for 31-02
+Status: Loop closed — ready for next PLAN
+Last activity: 2026-03-13 — Unified 31-01 (Git Config Infrastructure)
 
 Progress:
-- v0.9 Observability & Context Health: [██████████] 100% ✓
+- v0.9.1 Release Readiness: [█░░░░░░░░░] 10%
+- Phase 31: [█████░░░░░] 50%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -31,7 +32,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| Phase 30 skipped — context sustainable after Phase 28 optimization | 30 | No ongoing monitoring tool needed |
+| All git automation defaults to off (conservative) | 31 | Users must opt in during init |
+| Git config lives in pals.json (not separate file) | 31 | Single config source for Plan 02 |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -48,14 +50,13 @@ PR: None open
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: v0.9 complete, NORM project initialized
-Next action: Open ~/claude/norm and run /paul:milestone for v0.1 Foundation
-Resume file: None (PALS is between milestones)
+Stopped at: Plan 31-01 complete, session paused before 31-02
+Next action: /paul:plan for 31-02 (Workflow Automation)
+Resume file: .paul/HANDOFF-2026-03-13-v091-phase31.md
 Resume context:
-- v0.9 milestone complete, merged to main, tagged v0.9
-- All feature branches deleted, handoffs archived
-- NORM companion project created at ~/claude/norm with PAUL initialized
-- NORM ready for /paul:milestone to scaffold v0.1 Foundation (4 phases)
+- Plan 31-01 (Git Config Infrastructure) complete — pals.json git section, init configure_git step, git-strategy.md config section
+- Plan 31-02 needed: wire git config into transition-phase, complete-milestone, apply-phase, pause-work
+- Key features for 31-02: auto branching, gh pr create, auto push, CI check awareness
 
 ---
 *STATE.md — Updated after every significant action*

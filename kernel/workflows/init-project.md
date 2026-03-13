@@ -358,6 +358,13 @@ Wait for user response.
     "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
     "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
   },
+  "git": {
+    "remote": null,
+    "branching": "feature-per-phase",
+    "auto_push": false,
+    "auto_pr": false,
+    "ci_checks": false
+  },
   "integrations": {
     "sonarqube": { "enabled": false, "project_key": "" }
   },
@@ -370,8 +377,88 @@ Wait for user response.
 
 Adjust `enabled` values based on user's toggle selections.
 If SonarQube was enabled in the earlier integrations step, set `integrations.sonarqube.enabled: true` and populate `project_key`.
+Git section will be populated by the configure_git step (next).
 
 **Note:** This step is quick — accept defaults with Enter. Don't make it feel heavy.
+</step>
+
+<step name="configure_git">
+**Ask about git/GH configuration:**
+
+**1. Detect git repo:**
+```bash
+git rev-parse --git-dir 2>/dev/null
+```
+
+**If not a git repo:**
+```
+Not a git repo — git features disabled.
+Run `git init` to enable later, then update pals.json git section.
+```
+- Set all git config to defaults (remote: null, auto_push: false, auto_pr: false, ci_checks: false)
+- Skip remaining git questions
+- Store `git_enabled = false`
+
+**If git repo detected, ask ONE question at a time:**
+
+**Question 1 — GitHub repo:**
+```
+GitHub repository?
+
+[1] Yes — detect from remote
+[2] Enter URL manually
+[3] No GitHub repo (local only)
+```
+
+Wait for user response.
+
+- If "1": Run `git remote get-url origin 2>/dev/null`
+  - If remote found: Display "Detected: {URL}" and confirm
+  - If no remote: "No remote found. Enter URL or choose [3]"
+- If "2": Prompt for URL, store as `git_remote`
+- If "3": Set `git_remote = null`
+
+**Question 2 — Branching strategy (only if git repo detected):**
+```
+Branching strategy?
+
+[1] Feature branch per phase (recommended)
+    Creates feature/{phase-name}, merges on phase complete
+[2] Direct to main
+    All commits on main branch
+```
+
+Wait for user response.
+- If "1": Store `git_branching = "feature-per-phase"`
+- If "2": Store `git_branching = "direct-to-main"`
+
+**Question 3 — Automation (only if GH remote detected):**
+```
+Git automation? (Enter to accept defaults)
+
+Auto-push after phase complete:      [yes/NO]
+Auto-create PR on phase transition:  [yes/NO]
+Wait for CI checks before merge:     [yes/NO]
+```
+
+- Defaults are NO for all (conservative)
+- Accept "yes" or "y" to enable each
+- Store as `git_auto_push`, `git_auto_pr`, `git_ci_checks`
+
+**If no GH remote:** Skip Question 3, all automation defaults to false.
+
+**Update pals.json git section with gathered values:**
+```json
+"git": {
+  "remote": "{git_remote or null}",
+  "branching": "{git_branching}",
+  "auto_push": {git_auto_push},
+  "auto_pr": {git_auto_pr},
+  "ci_checks": {git_ci_checks}
+}
+```
+
+Store `git_enabled = true` and `git_remote` for confirmation display.
 </step>
 
 <step name="confirm_and_route">
@@ -395,6 +482,8 @@ Created:
   .paul/SPECIAL-FLOWS.md  ✓  (if specialized_flows_enabled: "[N] skills configured")
   .paul/phases/           ✓
 
+Git: [remote URL or "local only"] | [branching strategy] | push:[yes/no] PR:[yes/no] CI:[yes/no]
+
 ────────────────────────────────────────
 ▶ NEXT: /paul:plan
   Define your phases and create your first plan.
@@ -404,6 +493,7 @@ Type "yes" to proceed, or ask questions first.
 ```
 
 **Note:** Only show SPECIAL-FLOWS.md line if specialized flows were enabled.
+Only show Git line if `git_enabled = true`.
 Always show pals.json with module count.
 
 **Do NOT suggest multiple next steps.** ONE action only.
@@ -416,7 +506,7 @@ Always show pals.json with module count.
 - `.paul/PROJECT.md` (populated from conversation)
 - `.paul/ROADMAP.md` (skeleton for planning)
 - `.paul/STATE.md` (initialized state)
-- `pals.json` (module configuration with user's selections)
+- `pals.json` (module configuration, git config, and user's selections)
 - `.paul/SPECIAL-FLOWS.md` (if specialized flows enabled)
 - `.paul/phases/` (empty directory)
 - Clear routing to `/paul:plan`

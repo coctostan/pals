@@ -2,6 +2,31 @@
 Git integration for PAUL workflow.
 </overview>
 
+<configuration>
+## Git Configuration (pals.json)
+
+Git behavior is configured per-project in `pals.json` under the `git` key.
+Set during `/paul:init` or manually.
+
+| Field | Values | Default | Effect |
+|-------|--------|---------|--------|
+| remote | URL or null | null | GH repo for PRs and pushes |
+| branching | feature-per-phase, direct-to-main | feature-per-phase | Branch strategy per phase |
+| auto_push | true/false | false | Push after phase/milestone commits |
+| auto_pr | true/false | false | Create PR on phase transition |
+| ci_checks | true/false | false | Wait for CI before merge |
+
+**When config is absent:** All automation disabled. Commits are local-only.
+Feature branches still created/merged per workflow instructions,
+but no pushes, PRs, or CI checks.
+
+**Reading config in workflows:**
+```bash
+jq -r '.git.remote // empty' pals.json 2>/dev/null
+jq -r '.git.auto_pr // false' pals.json 2>/dev/null
+```
+</configuration>
+
 <core_principle>
 
 **Commit outcomes, not process.**

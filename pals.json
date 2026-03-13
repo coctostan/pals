@@ -9,6 +9,13 @@
     "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
     "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
   },
+  "git": {
+    "remote": null,
+    "branching": "feature-per-phase",
+    "auto_push": false,
+    "auto_pr": false,
+    "ci_checks": false
+  },
   "integrations": {
     "sonarqube": { "enabled": false, "project_key": "" }
   },
