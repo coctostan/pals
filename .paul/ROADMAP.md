@@ -28,35 +28,22 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v1.0 Production Ready**
-Status: ✅ Complete
-Phases: 3 of 3 complete
-Theme: Close critical competitive gaps — fix loop, brownfield support, resilience
-
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 35 | Lightweight Fix & Hotfix | 1 | ✅ Complete | 2026-03-13 |
-| 36 | Brownfield & Codebase Intelligence | 1 | ✅ Complete | 2026-03-13 |
-| 37 | Resilience & Isolation | 1 | ✅ Complete | 2026-03-13 |
-
-### Phase 35: Lightweight Fix & Hotfix
-
-Focus: `/paul:fix` command, `type: fix` plans, fast-forward mode, hotfix workflow, retroactive unify. Closes the #1 friction gap — full PLAN-APPLY-UNIFY for 1-file bugs drives users away.
-Research: Deep-dive OpenSpec's fast-forward implementation during planning.
-
-### Phase 36: Brownfield & Codebase Intelligence
-
-Focus: `/paul:map-codebase` v2 (graph-based), brownfield onboarding, existing-project adoption. Closes the #1 adoption barrier — PALS is currently greenfield-only.
-Research: Deep-dive OpenSpec brownfield onboarding + Aider repo map during planning.
-
-### Phase 37: Resilience & Isolation
-
-Focus: Git worktree isolation, AGENTS.md generation, robustness improvements. Prevents polluting main branch during APPLY, improves interoperability.
-Research: Deep-dive Superpowers worktree mechanics during planning.
+None active. Run `/paul:discuss-milestone` or `/paul:milestone` to define the next milestone.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v1.0 Production Ready - 2026-03-13 (3 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 35 | Lightweight Fix & Hotfix | 1 | 2026-03-13 |
+| 36 | Brownfield & Codebase Intelligence | 1 | 2026-03-13 |
+| 37 | Resilience & Isolation | 1 | 2026-03-13 |
+
+</details>
 
 <details>
 <summary>v0.9.2 Competitive Intelligence - 2026-03-13 (1 phase)</summary>
@@ -183,4 +170,4 @@ Research: Deep-dive Superpowers worktree mechanics during planning.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — Phase 37 Resilience & Isolation complete — v1.0 milestone complete*
+*Last updated: 2026-03-13 — v1.0 Production Ready milestone complete*

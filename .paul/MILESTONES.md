@@ -15,7 +15,42 @@ Completed milestone log for this project.
 | v0.9 Observability & Context Health | 2026-03-13 | 1 day | 2 phases, 3 plans |
 | v0.9.1 Release Readiness | 2026-03-13 | 1 day | 3 phases, 4 plans |
 | v0.9.2 Competitive Intelligence | 2026-03-13 | 1 day | 1 phase, 1 plan |
-| **v1.0 Production Ready** | 🚧 In Progress | - | 3 phases (35-37) |
+| v1.0 Production Ready | 2026-03-13 | 1 day | 3 phases, 3 plans |
+
+---
+
+## ✅ v1.0 Production Ready
+
+**Completed:** 2026-03-13
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 |
+| Plans | 3 |
+| Files created | 5 |
+| Files modified | 6 |
+
+### Key Accomplishments
+
+- **Fix loop** (`/paul:fix`): 3-mode fix system — standard (compressed loop), fast-forward (zero overhead), hotfix (execute-first with retroactive UNIFY) — closing the #1 competitive friction gap
+- **Brownfield adoption**: Init detects existing codebases, map-codebase v2 produces reference graph (GRAPH.md) with hub files and clusters, onboarding guide covers monorepo/legacy/mid-project scenarios
+- **Worktree isolation**: Optional git worktree during APPLY (config-driven, default off) — Superpowers' 27K-star feature now available as opt-in
+- Retroactive UNIFY support added to unify-phase.md for hotfix scenarios
+- AGENTS.md evaluated and deferred — duplicates CLAUDE.md, convention not yet standardized
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| 3 fix modes: standard/fast-forward/hotfix | 35 | All ad-hoc fix scenarios covered with appropriate overhead |
+| Fast-forward skips ALL hooks | 35 | Zero overhead for trivial fixes — users accept no quality gates |
+| Brownfield = AI-directed analysis, not automated tooling | 36 | Follows OpenSpec pattern; no new dependencies |
+| GRAPH.md as 8th additive document | 36 | Existing 7 templates unchanged; zero regression |
+| Worktree isolation defaults to off | 37 | Config-driven; zero behavior change for existing users |
+| AGENTS.md deferred to interoperability milestone | 37 | Convention not standardized; duplicates CLAUDE.md |
 
 ---
 
