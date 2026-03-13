@@ -49,7 +49,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Last commit: pending (phase 35 commit)
+Last commit: bde9f24
 Branch: main
 PR: None open
 
@@ -58,7 +58,7 @@ PR: None open
 Last session: 2026-03-13
 Stopped at: Phase 35 complete, ready to plan Phase 36
 Next action: /paul:plan for Phase 36
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-13-v10-phase35-complete.md
 Resume context:
 - Phase 35 complete: /paul:fix with 3 modes (standard/ff/hotfix), retroactive UNIFY
 - Phase 36 next: Brownfield & Codebase Intelligence
