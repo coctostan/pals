@@ -13,6 +13,39 @@ Completed milestone log for this project.
 | v0.7 Full Roster & Lifecycle Integration | 2026-03-12 | 1 day | 4 phases, 4 plans |
 | v0.8 Configuration & Polish | 2026-03-12 | 1 day | 2 phases, 2 plans |
 | v0.9 Observability & Context Health | 2026-03-13 | 1 day | 2 phases, 3 plans |
+| v0.9.1 Release Readiness | 2026-03-13 | 1 day | 3 phases, 4 plans |
+
+---
+
+## ✅ v0.9.1 Release Readiness
+
+**Completed:** 2026-03-13
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 |
+| Plans | 4 |
+| Files changed | ~20 (created modules, docs, configs) |
+
+### Key Accomplishments
+
+- Config-driven git automation: pals.json git config (5 fields), auto branching/PR/push/CI support with conservative defaults
+- Module builder's guide (7-step walkthrough + DEAN worked example), troubleshooting guide (5 categories, 19 entries), changelog (v0.1 through v0.9.1)
+- DOCS module — 9th pal providing documentation drift detection and currency checking via lifecycle hooks (advisory priority 200-250)
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| All git automation defaults to off | 31 | Users must opt in during init |
+| Git config in pals.json (not separate file) | 31 | Single config file |
+| DEAN as worked example in module builder's guide | 32 | Simplest real module for tutorial |
+| Keep Changelog format | 32 | Industry standard |
+| DOCS uses advisory priority (200-250) | 33 | Non-blocking doc awareness |
+| No kernel command for DOCS in v1 | 33 | Visibility via hooks first |
 
 ---
 
