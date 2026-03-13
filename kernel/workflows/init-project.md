@@ -316,6 +316,64 @@ Store `specialized_flows_enabled = false`
 (User can add later via /paul:flows)
 </step>
 
+<step name="configure_modules">
+**Ask about module configuration:**
+
+```
+Which PALS modules would you like to enable?
+(All enabled by default — enter numbers to toggle, or press Enter to accept)
+
+  [1] CARL   ✓  Context rules & domain configuration
+  [2] TODD   ✓  Test-driven development enforcement
+  [3] WALT   ✓  Quality gating & validation
+  [4] DEAN   ✓  Dependency evaluation & audit notifier
+  [5] IRIS   ✓  Intelligent review & inspection system
+  [6] SKIP   ✓  Smart knowledge & information persistence
+  [7] DAVE   ✓  Deploy automation & verification engine
+  [8] RUBY   ✓  Refactor utility & better-code yielder
+```
+
+Wait for user response.
+
+**If user presses Enter or says "all" or "defaults":**
+- All modules enabled (default)
+- Store `module_selections` with all enabled
+
+**If user provides numbers (e.g., "4 5 7"):**
+- Toggle those modules off (flip ✓ to ✗)
+- Show updated list and confirm
+- Store `module_selections` with updated states
+
+**After confirmation, create `pals.json` in project root:**
+
+```json
+{
+  "modules": {
+    "carl": { "enabled": true, "description": "Context rules & domain configuration" },
+    "todd": { "enabled": true, "description": "Test-driven development enforcement" },
+    "walt": { "enabled": true, "description": "Quality gating & validation" },
+    "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
+    "iris": { "enabled": true, "description": "Intelligent review & inspection system" },
+    "skip": { "enabled": true, "description": "Smart knowledge & information persistence" },
+    "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
+    "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
+  },
+  "integrations": {
+    "sonarqube": { "enabled": false, "project_key": "" }
+  },
+  "preferences": {
+    "auto_commit": false,
+    "verbose_output": false
+  }
+}
+```
+
+Adjust `enabled` values based on user's toggle selections.
+If SonarQube was enabled in the earlier integrations step, set `integrations.sonarqube.enabled: true` and populate `project_key`.
+
+**Note:** This step is quick — accept defaults with Enter. Don't make it feel heavy.
+</step>
+
 <step name="confirm_and_route">
 **Display confirmation with ONE next action:**
 
@@ -330,12 +388,12 @@ Project: [project_name]
 Core value: [core_value]
 
 Created:
-  .paul/PROJECT.md    ✓
-  .paul/ROADMAP.md    ✓
-  .paul/STATE.md      ✓
-  .paul/config.md     ✓  (if integrations_enabled: "SonarQube enabled")
+  .paul/PROJECT.md        ✓
+  .paul/ROADMAP.md        ✓
+  .paul/STATE.md          ✓
+  pals.json               ✓  ([N] modules enabled)
   .paul/SPECIAL-FLOWS.md  ✓  (if specialized_flows_enabled: "[N] skills configured")
-  .paul/phases/       ✓
+  .paul/phases/           ✓
 
 ────────────────────────────────────────
 ▶ NEXT: /paul:plan
@@ -345,8 +403,8 @@ Created:
 Type "yes" to proceed, or ask questions first.
 ```
 
-**Note:** Only show config.md and SPECIAL-FLOWS.md lines if those features were enabled.
-If neither was enabled, show the minimal version without those lines.
+**Note:** Only show SPECIAL-FLOWS.md line if specialized flows were enabled.
+Always show pals.json with module count.
 
 **Do NOT suggest multiple next steps.** ONE action only.
 </step>
@@ -358,7 +416,7 @@ If neither was enabled, show the minimal version without those lines.
 - `.paul/PROJECT.md` (populated from conversation)
 - `.paul/ROADMAP.md` (skeleton for planning)
 - `.paul/STATE.md` (initialized state)
-- `.paul/config.md` (if integrations enabled)
+- `pals.json` (module configuration with user's selections)
 - `.paul/SPECIAL-FLOWS.md` (if specialized flows enabled)
 - `.paul/phases/` (empty directory)
 - Clear routing to `/paul:plan`

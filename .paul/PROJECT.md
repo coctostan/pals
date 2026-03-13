@@ -17,6 +17,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] DAVE module — deploy automation & verification engine (Phase 23)
 - [x] RUBY module — refactor utility & better-code yielder (Phase 24)
 - [x] Lifecycle hooks — all 8 pals wired into plan/apply/unify (Phase 25)
+- [x] Module configuration — JSON config (pals.json), /paul:config command, init integration (Phase 26)
 
 ### Must Have
 All validated — see below.
@@ -62,6 +63,7 @@ All validated — see below.
 - ✓ DAVE module — deploy automation & verification engine with /paul:deploy command (4 modes, 12+ language detectors) — Phase 23
 - ✓ RUBY module — refactor utility & better-code yielder with /paul:refactor command (3 modes, 9 refactoring patterns) — Phase 24
 - ✓ Lifecycle hooks — all 8 pals integrated into plan/apply/unify with priority-based dispatch (16 hook registrations across 6 hook points) — Phase 25
+- ✓ Module configuration — pals.json with all 8 modules, /paul:config dashboard with toggle, module selection in /paul:init — Phase 26
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -114,6 +116,8 @@ All validated — see below.
 | 3 modes for refactor command (dashboard, scan, suggest) | 24 | Distinct concerns: overview vs analysis vs guidance |
 | Priority-based hook ordering (no conflicts per hook point) | 25 | Clean dispatch: lower priority runs first |
 | CARL excluded from lifecycle hooks (platform hooks only) | 25 | Per Phase 4 design: CARL is architecturally independent |
+| pals.json replaces pals.yaml (JSON over YAML) | 26 | Standard tooling (json.load, jq), no custom parser needed |
+| All 8 modules enabled by default in config | 26 | New users get full experience, can disable via /paul:config |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -132,4 +136,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 25 Lifecycle Hooks complete (v0.7 milestone complete)*
+*Last updated: 2026-03-12 after Phase 26 Module Configuration & Init complete (v0.8 in progress)*

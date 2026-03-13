@@ -1,141 +1,135 @@
 <objective>
-Manage PAUL project configuration and integrations. Create or update .paul/config.md at any point in the project lifecycle.
-</objective>
+Manage PALS module configuration and integrations. View, enable, and disable modules and integrations via pals.json.
 
-<when_to_use>
-- Enable SonarQube after project init
-- Disable an integration
+**When to use:**
+- Toggle modules on/off
+- Enable/disable SonarQube integration
 - View current configuration
-- Change project settings
-</when_to_use>
+- Change project preferences
+</objective>
 
 <process>
 
-**Step 1: Check for existing config**
+**Step 1: Locate and read config**
 
-```bash
-ls .paul/config.md 2>/dev/null
+Look for pals.json in this order:
+1. Current project root (if this is the PALS repo)
+2. `~/.pals/pals.json` (installed location)
+
+If not found, offer to create with defaults.
+
+Read pals.json and display the module dashboard:
+
 ```
+════════════════════════════════════════
+PALS CONFIGURATION
+════════════════════════════════════════
 
-**If config exists:**
-```
-Current configuration:
+Modules:
+  CARL   [on]   Context rules & domain configuration
+  TODD   [on]   Test-driven development enforcement
+  WALT   [on]   Quality gating & validation
+  DEAN   [on]   Dependency evaluation & audit notifier
+  IRIS   [on]   Intelligent review & inspection system
+  SKIP   [on]   Smart knowledge & information persistence
+  DAVE   [on]   Deploy automation & verification engine
+  RUBY   [on]   Refactor utility & better-code yielder
 
-[Display config.md contents]
+Integrations:
+  SonarQube  [off]
 
-What would you like to do?
-[1] Enable/disable integration
-[2] View full config
-[3] Reset to defaults
-```
+Preferences:
+  auto_commit: false
+  verbose_output: false
 
-**If config doesn't exist:**
-```
-No configuration found.
-
-Would you like to set up project configuration?
-[1] Yes, create config
-[2] Cancel
+────────────────────────────────────────
+[1] Toggle a module
+[2] Manage integrations
+[3] Edit preferences
+[4] View raw config
+[5] Done
 ```
 
 **Step 2: Handle user choice**
 
-**For new config or "Enable/disable integration":**
-
+**[1] Toggle a module:**
 ```
-Available integrations:
+Which module? (name or number)
 
-[1] SonarQube - Code quality scanning
-    Status: [enabled/disabled/not configured]
-
-[2] Done - save and exit
-```
-
-**If user selects SonarQube:**
-
-```
-SonarQube integration:
-
-Current: [enabled/disabled/not configured]
-
-[1] Enable
-[2] Disable
-[3] Back
+  [1] CARL   [on]
+  [2] TODD   [on]
+  [3] WALT   [on]
+  [4] DEAN   [on]
+  [5] IRIS   [on]
+  [6] SKIP   [on]
+  [7] DAVE   [on]
+  [8] RUBY   [on]
 ```
 
-**If enabling:**
-- Prompt for project_key (default: directory name)
-- Create/update config.md with sonarqube.enabled = true
+After user selects a module:
+- Flip its `enabled` boolean in pals.json
+- Write updated pals.json
+- Show confirmation: `TODD [on] → [off]`
+- Re-display dashboard
+- Note: Changes take effect after next `install.sh` run
 
-**If disabling:**
-- Update config.md with sonarqube.enabled = false
-
-**Step 3: Write config**
-
-Create or update `.paul/config.md`:
-
-```markdown
-# Project Config
-
-**Project:** [project_name]
-**Updated:** [timestamp]
-
-## Project Settings
-
-```yaml
-project:
-  name: [project_name]
-  version: [version or "0.0.0"]
+**[2] Manage integrations:**
 ```
-
-## Integrations
-
-### SonarQube
-
-```yaml
-sonarqube:
-  enabled: [true/false]
-  project_key: [key]
-```
-
-## Preferences
-
-```yaml
-preferences:
-  auto_commit: false
-  verbose_output: false
-```
-
----
-*Config updated: [timestamp]*
-```
-
-**Step 4: Confirm**
-
-```
-════════════════════════════════════════
-CONFIG UPDATED
-════════════════════════════════════════
-
 Integrations:
-  SonarQube: [enabled/disabled]
 
-Config saved to: .paul/config.md
+  [1] SonarQube  [off]
 
-────────────────────────────────────────
-[If SonarQube just enabled:]
-▶ NEXT: /paul:quality-gate
-  Run your first code quality scan.
+Select to toggle, or "back" to return.
+```
 
-[Otherwise:]
-Configuration complete.
-────────────────────────────────────────
+If toggling SonarQube on:
+- Prompt for project_key (default: directory name)
+- Update pals.json with enabled: true and project_key
+- Show: `SonarQube [off] → [on] (key: {project_key})`
+
+If toggling SonarQube off:
+- Update pals.json with enabled: false
+- Show: `SonarQube [on] → [off]`
+
+**[3] Edit preferences:**
+```
+Preferences:
+
+  [1] auto_commit: false
+  [2] verbose_output: false
+
+Select to toggle, or "back" to return.
+```
+
+Toggle the selected boolean and write pals.json.
+
+**[4] View raw config:**
+Display the full pals.json contents.
+
+**Step 3: Write changes**
+
+After any modification:
+1. Read current pals.json
+2. Update the changed field
+3. Write pals.json with `json.dumps(config, indent=2)`
+4. Show confirmation of what changed
+
+**Step 4: Completion**
+
+```
+════════════════════════════════════════
+CONFIG SAVED
+════════════════════════════════════════
+
+Changes saved to pals.json.
+
+Note: Run install.sh to apply module changes to your installation.
 ```
 
 </process>
 
 <output>
-- `.paul/config.md` created or updated
-- Integration status changed as requested
-- Clear next steps if applicable
+- pals.json updated with user's changes
+- Dashboard display of current configuration
+- Clear indication of what changed
 </output>

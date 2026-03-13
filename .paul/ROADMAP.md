@@ -28,34 +28,37 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-### v0.7 Full Roster & Lifecycle Integration
-Status: ✅ Complete
-Completed: 2026-03-12
-Phases: 4 of 4 complete
-Focus: Complete the pal roster with SKIP, DAVE, RUBY and integrate all pals into the PAUL lifecycle with hooks
+### v0.8 Configuration & Polish
+Status: 🚧 In Progress
+Phases: 1 of 2 complete
+Focus: User-facing module configuration system with JSON config and /paul:config command, wired into /paul:init, plus a publication-quality README
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 22 | SKIP Module | 1 | ✅ Complete | 2026-03-12 |
-| 23 | DAVE Module | 1 | ✅ Complete | 2026-03-12 |
-| 24 | RUBY Module | 1 | ✅ Complete | 2026-03-12 |
-| 25 | Lifecycle Hooks | 1 | ✅ Complete | 2026-03-12 |
+| 26 | Module Configuration & Init | 1 | ✅ Complete | 2026-03-12 |
+| 27 | README | TBD | Not started | - |
 
-### Phase 22: SKIP Module
-Focus: Smart Knowledge & Information Persistence — project memory pal that tracks why decisions were made, links code to requirements, builds searchable knowledge base
+### Phase 26: Module Configuration & Init
+Focus: JSON config file for enabling/disabling modules, /paul:config command to manage settings, and wire config setup into /paul:init for new projects
 
-### Phase 23: DAVE Module
-Focus: Deploy Automation & Verification Engine — CI/CD pal that generates GitHub Actions, validates pipelines, does post-deploy smoke tests
-
-### Phase 24: RUBY Module
-Focus: Refactor Utility & Better-code Yielder — proactive refactoring suggestions, tech debt scanning after milestones
-
-### Phase 25: Lifecycle Hooks
-Focus: Wire all pals (CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY) into plan/apply/unify lifecycle hooks
+### Phase 27: README
+Focus: Publication-quality README that sells PALS — architecture overview, quick start, module catalog, and contribution guide
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.7 Full Roster & Lifecycle Integration - 2026-03-12 (4 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 22 | SKIP Module | 1 | 2026-03-12 |
+| 23 | DAVE Module | 1 | 2026-03-12 |
+| 24 | RUBY Module | 1 | 2026-03-12 |
+| 25 | Lifecycle Hooks | 1 | 2026-03-12 |
+
+</details>
 
 <details>
 <summary>v0.6 Enhance & Expand - 2026-03-12 (5 phases)</summary>
@@ -129,4 +132,4 @@ Focus: Wire all pals (CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY) into plan/
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — v0.7 Full Roster & Lifecycle Integration milestone created*
+*Last updated: 2026-03-12 — Phase 26 Module Configuration & Init complete*
