@@ -28,23 +28,48 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-### v0.6 Enhance & Expand
+### v0.7 Full Roster & Lifecycle Integration
 Status: ✅ Complete
 Completed: 2026-03-12
-Phases: 5 of 5 complete
-Focus: Evolve existing pals with smarter capabilities + add first two new pals to prove module system scales
+Phases: 4 of 4 complete
+Focus: Complete the pal roster with SKIP, DAVE, RUBY and integrate all pals into the PAUL lifecycle with hooks
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 17 | CARL Auto-Detection | 1 | ✅ Complete | 2026-03-12 |
-| 18 | TODD Coverage Dashboard | 1 | ✅ Complete | 2026-03-12 |
-| 19 | WALT Quality Trends | 1 | ✅ Complete | 2026-03-12 |
-| 20 | DEAN Module | 1 | ✅ Complete | 2026-03-12 |
-| 21 | IRIS Module | 1 | ✅ Complete | 2026-03-12 |
+| 22 | SKIP Module | 1 | ✅ Complete | 2026-03-12 |
+| 23 | DAVE Module | 1 | ✅ Complete | 2026-03-12 |
+| 24 | RUBY Module | 1 | ✅ Complete | 2026-03-12 |
+| 25 | Lifecycle Hooks | 1 | ✅ Complete | 2026-03-12 |
+
+### Phase 22: SKIP Module
+Focus: Smart Knowledge & Information Persistence — project memory pal that tracks why decisions were made, links code to requirements, builds searchable knowledge base
+
+### Phase 23: DAVE Module
+Focus: Deploy Automation & Verification Engine — CI/CD pal that generates GitHub Actions, validates pipelines, does post-deploy smoke tests
+
+### Phase 24: RUBY Module
+Focus: Refactor Utility & Better-code Yielder — proactive refactoring suggestions, tech debt scanning after milestones
+
+### Phase 25: Lifecycle Hooks
+Focus: Wire all pals (CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY) into plan/apply/unify lifecycle hooks
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.6 Enhance & Expand - 2026-03-12 (5 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 17 | CARL Auto-Detection | 1 | 2026-03-12 |
+| 18 | TODD Coverage Dashboard | 1 | 2026-03-12 |
+| 19 | WALT Quality Trends | 1 | 2026-03-12 |
+| 20 | DEAN Module | 1 | 2026-03-12 |
+| 21 | IRIS Module | 1 | 2026-03-12 |
+
+</details>
+
 
 <details>
 <summary>v0.5 TODD & WALT Go Live - 2026-03-12 (3 phases)</summary>
@@ -104,4 +129,4 @@ Focus: Evolve existing pals with smarter capabilities + add first two new pals t
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — v0.6 Enhance & Expand milestone complete*
+*Last updated: 2026-03-12 — v0.7 Full Roster & Lifecycle Integration milestone created*
