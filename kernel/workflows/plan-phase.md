@@ -56,12 +56,13 @@ Next phase: APPLY (after plan approval)
 2. Find modules with hooks registered for `pre-plan`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
-   a. Load the module's declared reference files as context
+   a. Load the module's hook-specific `refs` (from module.yaml hooks section, NOT all module refs)
    b. Follow the module's hook description for `pre-plan`
    c. Collect `context_inject` data (e.g., type suggestions, candidate files)
    d. If module returns `action: block` — stop and surface the `reason` to the user
 5. If no modules registered for `pre-plan`: proceed (no-op, no warning)
-6. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
+6. Output dispatch log: `[dispatch] pre-plan: {MODULE(priority) → N inject keys | skip | block} | ...`
+7. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
 </step>
 
 <step name="analyze_scope">
@@ -171,13 +172,14 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 2. Find modules with hooks registered for `post-plan`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
-   a. Load the module's declared reference files as context
+   a. Load the module's hook-specific `refs` (from module.yaml hooks section)
    b. Follow the module's hook description for `post-plan`
    c. Pass the plan path, plan content, and `context_from_pre_plan`
    d. Collect `plan_modifications` (e.g., task restructuring)
    e. Apply modifications to the plan in priority order
 5. If no modules registered for `post-plan`: proceed (no-op, no warning)
-6. If modifications were applied: note in plan that module overlays were applied
+6. Output dispatch log: `[dispatch] post-plan: {MODULE(priority) → N modifications | skip} | ...`
+7. If modifications were applied: note in plan that module overlays were applied
 </step>
 
 <step name="update_state" priority="required">

@@ -13,10 +13,14 @@ dependencies:
 hooks:
   pre-plan:
     priority: 50
-    description: Check for outdated/vulnerable dependencies; inject warnings into plan context
+    description: Run dependency audit for detected package managers; inject dep_warnings with severity counts into plan context
+    refs:
+      - references/vulnerability-audit.md
   post-apply:
     priority: 150
-    description: Verify no new vulnerable dependencies were introduced by changes
+    description: Re-run dependency audit; compare against pre-plan baseline; block if new critical/high vulnerabilities introduced
+    refs:
+      - references/vulnerability-audit.md
 
 files:
   references:

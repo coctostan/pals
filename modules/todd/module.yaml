@@ -13,19 +13,30 @@ dependencies:
 hooks:
   pre-plan:
     priority: 100
-    description: Detect TDD candidates via file heuristics and phase metadata
+    description: Scan planned files for test files/frameworks; inject tdd_candidates and tdd_type into plan context
+    refs:
+      - references/tdd-detection.md
+      - references/tdd-plan-generation.md
   post-plan:
     priority: 100
-    description: Restructure plan tasks as RED-GREEN-REFACTOR when TDD type detected
+    description: If plan type is tdd, restructure tasks into RED-GREEN-REFACTOR sequence with phase gates
+    refs:
+      - references/tdd-plan-generation.md
   pre-apply:
     priority: 50
-    description: Enforce RED phase — verify test files exist or will be created first
+    description: Verify test files exist or are first in task order; block if RED phase would be skipped
+    refs:
+      - references/tdd-execution.md
   post-task:
     priority: 100
-    description: Enforce GREEN phase — verify tests pass after each implementation task
+    description: Run test suite after each task; block if tests regress from previous task's state
+    refs:
+      - references/tdd-execution.md
   post-apply:
     priority: 200
-    description: Signal REFACTOR opportunity — suggest cleanup if all tests green
+    description: Run full test suite; if all green, suggest REFACTOR candidates from changed files
+    refs:
+      - references/tdd.md
 
 files:
   references:

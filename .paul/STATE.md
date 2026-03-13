@@ -10,14 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-12)
 ## Current Position
 
 Milestone: v0.9 Observability & Context Health
-Phase: 28 of 30 (Context Audit & Optimization) — Complete
-Plan: 28-01 complete
-Status: Phase 28 complete, ready for Phase 29
-Last activity: 2026-03-13 — Phase 28 complete (43% context reduction, budgets established)
+Phase: 29 of 30 (Module Observability) — In Progress
+Plan: 29-01 complete, 29-02 pending
+Status: Loop closed for 29-01, ready for 29-02 PLAN
+Last activity: 2026-03-13 — Unified 29-01 (structural foundations)
 
 Progress:
-- v0.9 Observability & Context Health: [███░░░░░░░] 33%
-- Phase 28: [██████████] 100%
+- v0.9 Observability & Context Health: [██████░░░░] 60%
+- Phase 29: [█████░░░░░] 50%
 
 ## Loop Position
 
@@ -49,14 +49,13 @@ Branch: main
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 28 bolstering + system audit complete (context depleted)
-Next action: Discuss Phase 29 scope (audit findings may expand it), then /paul:plan
-Resume file: .paul/HANDOFF-2026-03-13-v09-phase28-bolster.md
+Stopped at: Plan 29-01 loop closed, session paused (context depleted)
+Next action: /paul:plan for 29-02 (robustness & safety) — CONTEXT.md already has scope
+Resume file: .paul/HANDOFF-2026-03-13-v09-phase29-01.md
 Resume context:
-- Phase 28 bolstered: restored ~57 lines of guardrails + philosophy across 8 reference files
-- System audit found 10 structural holes (hook dispatch clarity, context_inject schema, per-hook ref loading)
-- Phase 29 scope likely needs expanding to address audit findings (especially #1, #3, #6, #8)
-- All files still within 150-line budget after bolstering
+- 29-01 complete: per-hook refs, context_inject schema, SUMMARY docs, dispatch log (audit #1, #3, #6, #8)
+- 29-02 pending: failure cascading, adaptation, recovery, transition refs, partial failure (#2, #4, #5, #7, #9, #10)
+- Phase 29 is 1/2 plans complete, CONTEXT.md has full 29-02 scope
 
 ---
 *STATE.md — Updated after every significant action*

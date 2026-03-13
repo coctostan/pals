@@ -90,7 +90,8 @@ platform:                        # optional platform-specific configuration
 | `dependencies.modules` | list[string] | no | Names of other modules this one requires. Installer checks these are present. |
 | `hooks` | map | no | Keys are hook point names; values define priority and description. |
 | `hooks.<point>.priority` | integer | yes (if hook declared) | Execution priority. Lower numbers run first. Range: 1-999. |
-| `hooks.<point>.description` | string | yes (if hook declared) | What the module does at this hook point. |
+| `hooks.<point>.description` | string | yes (if hook declared) | Actionable instruction for what the module does at this hook point. |
+| `hooks.<point>.refs` | list[string] | yes (if hook declared) | Reference files to load for this specific hook (not all module refs). |
 | `files.references` | list[string] | no | Reference documents installed to `~/.pals/references/`. |
 | `files.workflows` | list[string] | no | Workflow files installed to `~/.pals/workflows/`. |
 | `files.templates` | list[string] | no | Template files installed to `~/.pals/templates/`. |
@@ -420,7 +421,42 @@ Hooks at the same hook point receive the same base payload from the kernel. They
 - `annotations` from `post-task` hooks accumulate and appear in `annotations_from_apply` at `post-apply`, `pre-unify`, and `post-unify`.
 - Within a single hook point, if multiple modules return `context_inject`, their values are merged. On key collision, the higher-priority-number (later-running) module's value wins.
 
-### 3.4 Data Flow Summary
+### 3.4 `context_inject` Schema
+
+Every hook that returns `context_inject` must follow this schema:
+
+```yaml
+context_inject:
+  <key>:                              # string key, unique per module per hook point
+    value: <any>                      # the injected data (scalar, list, or object)
+    format: key-value | structured | flag  # how the consumer should interpret it
+```
+
+**Format types:**
+| Format | Description | Example |
+|--------|-------------|---------|
+| `flag` | Boolean signal — presence means active | `tdd_enforced: true` |
+| `key-value` | Simple key with scalar/list value | `tdd_candidates: ["src/auth.ts"]` |
+| `structured` | Object with nested fields | `test_baseline: { total: 142, passing: 140, test_command: "npm test" }` |
+
+**Per-hook-point injection table:**
+
+| Hook Point | Who Injects | Keys | Format | Consumed By |
+|-----------|-------------|------|--------|-------------|
+| pre-plan | DEAN | `dep_warnings` | key-value | plan scope analysis |
+| pre-plan | TODD | `tdd_candidates`, `tdd_type` | key-value, flag | post-plan |
+| pre-plan | IRIS | `review_flags` | key-value | plan scope analysis |
+| pre-plan | DAVE | `deploy_warning` | flag | plan scope analysis |
+| pre-plan | RUBY | `debt_flags` | key-value | plan scope analysis |
+| pre-apply | TODD | `tdd_enforced` | flag | post-task, post-apply |
+| pre-apply | WALT | `test_baseline` | structured | post-apply |
+| post-task | TODD | `tdd_phase_completed` | key-value | accumulates → post-apply |
+| post-apply | WALT | `quality_gate` | structured | pre-unify, SUMMARY |
+| pre-unify | WALT | `quality_trend` | structured | reconciliation |
+
+**Merge rules:** When multiple modules inject at the same hook point, values are merged by key. On key collision, the later-running module (higher priority number) wins.
+
+### 3.5 Data Flow Summary
 
 ```
 pre-plan

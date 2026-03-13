@@ -13,10 +13,14 @@ dependencies:
 hooks:
   pre-plan:
     priority: 200
-    description: Check if planned changes affect CI/CD configs; flag for review
+    description: Check files_modified for CI/CD config patterns (.github/workflows, Dockerfile, etc.); inject deploy_warning if found
+    refs:
+      - references/pipeline-generation.md
   post-apply:
     priority: 175
-    description: Validate any modified pipeline configs remain syntactically valid
+    description: If pipeline configs were modified, validate YAML/Dockerfile syntax; block on parse errors
+    refs:
+      - references/deploy-verification.md
 
 files:
   references:

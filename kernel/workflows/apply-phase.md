@@ -96,12 +96,13 @@ Next phase: UNIFY (after execution completes)
 2. Find modules with hooks registered for `pre-apply`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
-   a. Load the module's declared reference files as context
+   a. Load the module's hook-specific `refs` (from module.yaml hooks section, NOT all module refs)
    b. Follow the module's hook description for `pre-apply`
    c. Collect `context_inject` data (e.g., test baselines, enforcement flags)
    d. If module returns `action: block` — stop and surface the `reason` to the user
 5. If no modules registered for `pre-apply`: proceed (no-op, no warning)
-6. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
+6. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → N inject keys | skip | block} | ...`
+7. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
 </step>
 
 <step name="execute_tasks">
@@ -125,11 +126,12 @@ For each <task> in order:
    b. Find modules with hooks registered for `post-task`
    c. Sort by priority (ascending — lower runs first)
    d. For each registered module:
-      - Load the module's declared reference files as context
+      - Load the module's hook-specific `refs` (from module.yaml hooks section)
       - Follow the module's hook description for `post-task`
       - Pass task name, task result, and `context_inject` from pre-apply
       - If module returns `action: block` — stop and surface the `reason` to the user
    e. If no modules registered for `post-task`: proceed (no-op)
+   f. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → outcome} | ...`
 
 **If type="checkpoint:human-verify":**
 1. Stop execution
@@ -211,13 +213,14 @@ For each <task> in order:
 2. Find modules with hooks registered for `post-apply`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
-   a. Load the module's declared reference files as context
+   a. Load the module's hook-specific `refs` (from module.yaml hooks section)
    b. Follow the module's hook description for `post-apply`
    c. Pass `context_inject` data accumulated from pre-apply hooks (e.g., baselines)
    d. Collect `annotations` (e.g., quality gate results, refactor suggestions)
    e. If module returns `action: block` — stop and surface the `reason` and optional `remediation` to the user, offer fix/override/stop
 5. If no modules registered for `post-apply`: proceed (no-op, no warning)
-6. Store accumulated `annotations` for inclusion in finalize step
+6. Output dispatch log: `[dispatch] post-apply: {MODULE(priority) → N annotations | skip | block} | ...`
+7. Store accumulated `annotations` for inclusion in finalize step
 </step>
 
 <step name="handle_failures">

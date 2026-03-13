@@ -36,7 +36,7 @@ Focus: Make the module system transparent and ensure context weight is sustainab
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 28 | Context Audit & Optimization | 1 | ✅ Complete | 2026-03-13 |
-| 29 | Module Observability | TBD | Not started | - |
+| 29 | Module Observability | 2 | Planning | - |
 | 30 | Context Monitor (conditional) | TBD | Not started | - |
 
 ### Phase 28: Context Audit & Optimization
