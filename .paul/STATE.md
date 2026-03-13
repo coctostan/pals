@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v0.8 Configuration & Polish — Complete
+**Current focus:** v0.9 Observability & Context Health
 
 ## Current Position
 
-Milestone: v0.8 Configuration & Polish — Complete
-Phase: 27 of 27 (README) — Complete
-Plan: 27-01 complete
-Status: v0.8 milestone complete, ready for next milestone
-Last activity: 2026-03-12 — Phase 27 complete, v0.8 milestone closed
+Milestone: v0.9 Observability & Context Health
+Phase: 28 of 30 (Context Audit & Optimization) — Complete
+Plan: 28-01 complete
+Status: Phase 28 complete, ready for Phase 29
+Last activity: 2026-03-13 — Phase 28 complete (43% context reduction, budgets established)
 
 Progress:
-- v0.8 Configuration & Polish: [██████████] 100%
-- Phase 27: [██████████] 100%
+- v0.9 Observability & Context Health: [███░░░░░░░] 33%
+- Phase 28: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v0.8 milestone done]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -32,9 +32,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| pals.json replaces pals.yaml (JSON over YAML) | 26 | Simpler parsing, standard tooling |
-| All 8 modules enabled by default | 26 | Full experience out of the box |
-| README grouped commands into 7 functional categories | 27 | Scannable reference |
+| Phase 30 conditional on Phase 28 findings | 28-30 | May cut scope if context stays lean |
+| Observability must not add significant context overhead | 29 | Self-constraint on new features |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -50,14 +49,14 @@ Branch: main
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: v0.8 milestone complete, session paused
-Next action: /paul:complete-milestone or /paul:discuss-milestone for v0.9
-Resume file: .paul/HANDOFF-2026-03-13-v08-complete.md
+Stopped at: Phase 28 complete, session paused (context depleted)
+Next action: /paul:plan for Phase 29 (Module Observability)
+Resume file: .paul/HANDOFF-2026-03-13-v09-phase28.md
 Resume context:
-- v0.8 Configuration & Polish: 100% complete (2 of 2 phases)
-- Phase 27 README: complete, PR #4 squash-merged
-- All milestones v0.1 → v0.8 complete
-- Ready to define next milestone (v0.9 or v1.0)
+- Phase 28 complete: 43% context reduction (4,507 → 2,550 lines)
+- Budgets: 150 lines/file, 750 core module, 350 standard module
+- Phase 29 next: dispatch log, activity reports, user-visible hook output
+- Phase 30 likely unnecessary — context stays lean after optimization
 
 ---
 *STATE.md — Updated after every significant action*

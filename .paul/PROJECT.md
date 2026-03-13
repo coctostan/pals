@@ -19,6 +19,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Lifecycle hooks — all 8 pals wired into plan/apply/unify (Phase 25)
 - [x] Module configuration — JSON config (pals.json), /paul:config command, init integration (Phase 26)
 - [x] Publication-quality README — architecture, module catalog, command reference, configuration guide (Phase 27)
+- [x] Context audit & optimization — measure and trim module reference context weight (Phase 28)
+- [ ] Module observability — dispatch log, activity reports, user-visible hook output (Phase 29)
+- [ ] Context monitor (conditional) — /paul:context command for ongoing budget monitoring (Phase 30)
 
 ### Must Have
 All validated — see below.
@@ -66,6 +69,7 @@ All validated — see below.
 - ✓ Lifecycle hooks — all 8 pals integrated into plan/apply/unify with priority-based dispatch (16 hook registrations across 6 hook points) — Phase 25
 - ✓ Module configuration — pals.json with all 8 modules, /paul:config dashboard with toggle, module selection in /paul:init — Phase 26
 - ✓ Publication-quality README — 3-layer architecture, 9-pal catalog, 40 commands, configuration guide — Phase 27
+- ✓ Context audit & optimization — 27 reference files measured, 15 trimmed, 43% reduction (4,507 → 2,550 lines), per-module budgets established — Phase 28
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -121,6 +125,8 @@ All validated — see below.
 | pals.json replaces pals.yaml (JSON over YAML) | 26 | Standard tooling (json.load, jq), no custom parser needed |
 | All 8 modules enabled by default in config | 26 | New users get full experience, can disable via /paul:config |
 | README grouped commands into 7 functional categories | 27 | Scannable reference aids command discovery |
+| 150-line hard cap per reference file | 28 | Bounded context load per hook dispatch |
+| Separate budgets: 750 lines core, 350 standard | 28 | TODD/WALT get more room due to deeper integration |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
