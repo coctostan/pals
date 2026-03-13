@@ -1,0 +1,27 @@
+name: ruby
+display_name: RUBY
+description: >
+  Refactor Utility & Better-code Yielder. Scans for tech debt, suggests
+  refactoring opportunities, and provides prioritized improvement guidance
+  via /paul:refactor.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks: {}
+
+files:
+  references:
+    - references/refactor-principles.md
+    - references/debt-detection.md
+    - references/refactor-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

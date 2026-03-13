@@ -10,14 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-12)
 ## Current Position
 
 Milestone: v0.7 Full Roster & Lifecycle Integration
-Phase: 23 of 25 (DAVE Module) — Complete
-Plan: 23-01 complete
+Phase: 24 of 25 (RUBY Module) — Complete
+Plan: 24-01 complete
 Status: Phase complete, ready for next phase
-Last activity: 2026-03-12 — Phase 23 DAVE Module complete
+Last activity: 2026-03-12 — Phase 24 RUBY Module complete
 
 Progress:
-- v0.7 Full Roster & Lifecycle Integration: [█████░░░░░] 50%
-- Phase 23: [██████████] 100%
+- v0.7 Full Roster & Lifecycle Integration: [███████░░░] 75%
+- Phase 24: [██████████] 100%
 
 ## Loop Position
 
@@ -42,6 +42,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /paul:knowledge in kernel, knowledge refs in SKIP module | 22 | Same pattern as Phases 18-21 |
 | DAVE follows established module pattern (no hooks initially) | 23 | Read-only first, hooks in Phase 25 |
 | /paul:deploy in kernel, deploy refs in DAVE module | 23 | Same pattern as Phases 18-22 |
+| RUBY follows established module pattern (no hooks initially) | 24 | Read-only first, hooks in Phase 25 |
+| /paul:refactor in kernel, detection/pattern refs in RUBY module | 24 | Same pattern as Phases 18-23 |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates (may overlap with DAVE in v0.7)
@@ -58,14 +60,13 @@ Feature branches merged: feature/20-dean-module, feature/21-iris-module
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 23 complete, session paused
-Next action: /paul:plan for Phase 24 (RUBY Module)
-Resume file: .paul/HANDOFF-2026-03-12-v07-phase23.md
+Stopped at: Phase 24 complete, ready for Phase 25
+Next action: /paul:plan for Phase 25 (Lifecycle Hooks)
+Resume file: .paul/phases/24-ruby-module/24-01-SUMMARY.md
 Resume context:
-- v0.7 Full Roster & Lifecycle Integration: 50% (2/4 phases)
-- 7 pals now: CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE
-- Phase 24 RUBY Module next, then Phase 25 Lifecycle Hooks
-- Branch: feature/v06-complete (needs rename or new branch for v0.7 work)
+- v0.7 Full Roster & Lifecycle Integration: 75% (3/4 phases)
+- 8 pals now: CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY
+- Phase 25 Lifecycle Hooks next — wire all 8 pals into plan/apply/unify hooks
 
 ---
 *STATE.md — Updated after every significant action*
