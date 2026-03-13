@@ -1,0 +1,37 @@
+name: docs
+display_name: DOCS
+description: >
+  Documentation Lifecycle & Oversight Companion System. Detects project
+  documentation, checks for drift against code changes, validates README
+  currency, and surfaces doc health visibility during the plan-apply-unify loop.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 200
+    description: Scan for project docs (README, CHANGELOG, API docs, config docs); inject doc_warnings with stale/missing doc counts into plan context
+    refs:
+      - references/doc-detection.md
+  post-apply:
+    priority: 250
+    description: Compare files_changed against doc catalog; warn if code changed but nearby docs not updated; surface drift warnings
+    refs:
+      - references/doc-drift.md
+
+files:
+  references:
+    - references/doc-principles.md
+    - references/doc-detection.md
+    - references/doc-drift.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

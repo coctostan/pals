@@ -1,13 +1,41 @@
 {
   "modules": {
-    "carl": { "enabled": true, "description": "Context rules & domain configuration" },
-    "todd": { "enabled": true, "description": "Test-driven development enforcement" },
-    "walt": { "enabled": true, "description": "Quality gating & validation" },
-    "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
-    "iris": { "enabled": true, "description": "Intelligent review & inspection system" },
-    "skip": { "enabled": true, "description": "Smart knowledge & information persistence" },
-    "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
-    "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
+    "carl": {
+      "enabled": true,
+      "description": "Context rules & domain configuration"
+    },
+    "dave": {
+      "enabled": true,
+      "description": "Deploy automation & verification engine"
+    },
+    "dean": {
+      "enabled": true,
+      "description": "Dependency evaluation & audit notifier"
+    },
+    "docs": {
+      "enabled": true,
+      "description": "Documentation lifecycle & oversight"
+    },
+    "iris": {
+      "enabled": true,
+      "description": "Intelligent review & inspection system"
+    },
+    "ruby": {
+      "enabled": true,
+      "description": "Refactor utility & better-code yielder"
+    },
+    "skip": {
+      "enabled": true,
+      "description": "Smart knowledge & information persistence"
+    },
+    "todd": {
+      "enabled": true,
+      "description": "Test-driven development enforcement"
+    },
+    "walt": {
+      "enabled": true,
+      "description": "Quality gating & validation"
+    }
   },
   "git": {
     "remote": null,
@@ -17,7 +45,10 @@
     "ci_checks": false
   },
   "integrations": {
-    "sonarqube": { "enabled": false, "project_key": "" }
+    "sonarqube": {
+      "enabled": false,
+      "project_key": ""
+    }
   },
   "preferences": {
     "auto_commit": false,

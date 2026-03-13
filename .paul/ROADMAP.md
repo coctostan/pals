@@ -28,32 +28,22 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v0.9.1 Release Readiness**
-Status: 🚧 In Progress
-Phases: 2 of 3 complete
-Focus: Make PALS bulletproof and self-documenting before 1.0
-
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 31 | Seamless Git & GH | 2 | Complete | 2026-03-13 |
-| 32 | PALS Documentation | 1 | Complete | 2026-03-13 |
-| 33 | Doc Lifecycle Module | TBD | Not started | - |
-
-### Phase 31: Seamless Git & GH
-
-Focus: Zero-thought git workflow. Init git config, auto branching per phase, auto PRs on phase transition, auto push/release on milestone complete, CI check awareness. Stored in pals.json. Graceful degradation without GH repo.
-
-### Phase 32: PALS Documentation
-
-Focus: Audit and fill gaps in PALS' own docs for posterity. Operating manual (how to build a module), troubleshooting guide, auto-generated changelog from milestone history.
-
-### Phase 33: Doc Lifecycle Module
-
-Focus: New module managing documentation for any project PAUL runs on. Doc drift detection, auto-changelog generation, README currency checks, lifecycle hooks. Follows established module pattern.
+None active — v0.9.1 complete, ready for next milestone.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.9.1 Release Readiness - 2026-03-13 (3 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 31 | Seamless Git & GH | 2 | 2026-03-13 |
+| 32 | PALS Documentation | 1 | 2026-03-13 |
+| 33 | Doc Lifecycle Module | 1 | 2026-03-13 |
+
+</details>
 
 <details>
 <summary>v0.9 Observability & Context Health - 2026-03-13 (2 phases)</summary>
@@ -160,4 +150,4 @@ Focus: New module managing documentation for any project PAUL runs on. Doc drift
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — Phase 32 complete*
+*Last updated: 2026-03-13 — v0.9.1 milestone complete*

@@ -24,6 +24,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [~] Context monitor (conditional) — skipped, Phase 28 optimization made this unnecessary (Phase 30)
 - [x] Seamless Git & GH — config-driven git automation in kernel workflows (Phase 31)
 - [x] PALS Documentation — module builder's guide, troubleshooting guide, changelog (Phase 32)
+- [x] DOCS module — documentation lifecycle & oversight companion (Phase 33)
 
 ### Must Have
 All validated — see below.
@@ -75,6 +76,7 @@ All validated — see below.
 - ✓ Module observability — per-hook refs in 7 modules, context_inject schema, dispatch log in 3 workflows, failure cascading + state recovery documentation — Phase 29
 - ✓ Seamless Git & GH — pals.json git config (5 fields), init configure_git step, config-driven auto PR/push/CI in transition-phase, auto push in complete-milestone, branching defaults in pause-work — Phase 31
 - ✓ PALS Documentation — module builder's guide (7-step walkthrough + DEAN example), troubleshooting guide (5 categories, 19 entries), changelog (v0.1 through v0.9.1) — Phase 32
+- ✓ DOCS module — documentation lifecycle & oversight (2 hooks, 3 references, advisory priority 200-250) — Phase 33
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -139,6 +141,9 @@ All validated — see below.
 | Git config in pals.json (not separate file) | 31 | Single config file, consistent with modules/integrations |
 | Git automation is kernel-level, not a module | 31 | Kernel already does git; config toggle is the disable mechanism |
 | All remote ops guard on remote != null | 31 | Graceful degradation for local-only projects |
+| DOCS uses advisory priority (200-250) | 33 | Non-blocking doc awareness, runs after enforcement modules |
+| No kernel command for DOCS in v1 | 33 | Visibility via hooks first, /paul:docs command later |
+| Proximity-based drift detection (not content parsing) | 33 | Content parsing too fragile, git blame too slow for hook context |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -157,4 +162,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 32 PALS Documentation complete*
+*Last updated: 2026-03-13 after Phase 33 Doc Lifecycle Module complete — v0.9.1 milestone complete*
