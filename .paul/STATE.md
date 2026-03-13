@@ -10,14 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-13)
 ## Current Position
 
 Milestone: v1.0 Production Ready
-Phase: 36 of 37 (Brownfield & Codebase Intelligence)
+Phase: 37 of 37 (Resilience & Isolation)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-13 — Phase 35 complete, transitioned to Phase 36
+Last activity: 2026-03-13 — Phase 36 complete, transitioned to Phase 37
 
 Progress:
-- v1.0 Production Ready: [███░░░░░░░] 33%
-- Phase 36: [░░░░░░░░░░] 0%
+- v1.0 Production Ready: [██████░░░░] 67%
+- Phase 37: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
@@ -33,17 +33,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision | Phase | Impact |
 |----------|-------|--------|
 | Brownfield support is #1 adoption barrier | 34 | Must address in v1.0 |
-| Lightweight fix loop critical for v1.0 | 34 | Full PLAN-APPLY-UNIFY for 1-file bugs drives users away |
 | Do NOT build full autonomous execution | 34 | Devin's 15% success proves supervised approach correct |
 | Superpowers is closest competitor | 34 | PALS differentiates with UNIFY, modules, session continuity |
 | 3 fix modes: standard/fast-forward/hotfix | 35 | Covers all ad-hoc fix scenarios with appropriate overhead |
-| Fast-forward skips ALL hooks by design | 35 | Zero overhead for trivial fixes |
-| Fixes are side-loops, not phase progression | 35 | Main loop integrity preserved |
 | Retroactive UNIFY via early branch | 35 | One workflow handles both normal and retroactive |
+| Brownfield = AI-directed analysis, not automated tooling | 36 | Follows OpenSpec pattern |
+| Reference graph via Explore agent, not tree-sitter | 36 | PALS is markdown-based |
+| GRAPH.md as 8th additive document | 36 | Existing 7 templates unchanged |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch not implemented (documented as future work)
+- Tree-sitter repo map deferred to future (Aider's approach requires Python tooling)
 
 ### Blockers/Concerns
 - None active
@@ -56,14 +57,14 @@ PR: None open
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 35 complete, ready to plan Phase 36
-Next action: /paul:plan for Phase 36
-Resume file: .paul/HANDOFF-2026-03-13-v10-phase35-complete.md
+Stopped at: Phase 36 complete, ready to plan Phase 37
+Next action: /paul:plan for Phase 37
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 35 complete: /paul:fix with 3 modes (standard/ff/hotfix), retroactive UNIFY
-- Phase 36 next: Brownfield & Codebase Intelligence
-- Research during planning: deep-dive OpenSpec brownfield + Aider repo map
-- v1.0 milestone 33% complete (1 of 3 phases)
+- Phase 36 complete: brownfield init, map-codebase v2 (GRAPH.md), onboarding guide
+- Phase 37 next: Resilience & Isolation (git worktrees, AGENTS.md)
+- Research during planning: deep-dive Superpowers worktree mechanics
+- v1.0 milestone 67% complete (2 of 3 phases)
 
 ---
 *STATE.md — Updated after every significant action*

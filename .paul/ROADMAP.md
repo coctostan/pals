@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v1.0 Production Ready**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 Theme: Close critical competitive gaps — fix loop, brownfield support, resilience
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 35 | Lightweight Fix & Hotfix | 1 | ✅ Complete | 2026-03-13 |
-| 36 | Brownfield & Codebase Intelligence | TBD | Not started | - |
+| 36 | Brownfield & Codebase Intelligence | 1 | ✅ Complete | 2026-03-13 |
 | 37 | Resilience & Isolation | TBD | Not started | - |
 
 ### Phase 35: Lightweight Fix & Hotfix
@@ -183,4 +183,4 @@ Research: Deep-dive Superpowers worktree mechanics during planning.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — Phase 35 Lightweight Fix & Hotfix complete*
+*Last updated: 2026-03-13 — Phase 36 Brownfield & Codebase Intelligence complete*

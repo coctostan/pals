@@ -27,6 +27,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] DOCS module — documentation lifecycle & oversight companion (Phase 33)
 - [x] Competitive analysis — 15 frameworks benchmarked, gaps/differentiators mapped, v1.0 priorities set (Phase 34)
 - [x] Lightweight fix loop — /paul:fix command with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY (Phase 35)
+- [x] Brownfield & codebase intelligence — brownfield init detection, map-codebase v2 with reference graph (GRAPH.md), onboarding guide (Phase 36)
 
 ### Must Have
 All validated — see below.
@@ -81,6 +82,7 @@ All validated — see below.
 - ✓ DOCS module — documentation lifecycle & oversight (2 hooks, 3 references, advisory priority 200-250) — Phase 33
 - ✓ Competitive analysis — 15 frameworks benchmarked, 3 critical gaps, 6 strong differentiators, v1.0 phase mapping — Phase 34
 - ✓ Lightweight fix loop — /paul:fix with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY, fix-types reference — Phase 35
+- ✓ Brownfield & codebase intelligence — brownfield init detection, map-codebase v2 with Agent 5 reference graph (GRAPH.md), brownfield onboarding guide — Phase 36
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -156,6 +158,10 @@ All validated — see below.
 | Fast-forward skips ALL hooks by design | 35 | Zero overhead for trivial fixes — users accept no quality gates |
 | Fixes are side-loops, not phase progression | 35 | Main loop integrity preserved — fixes tracked in STATE.md only |
 | Retroactive UNIFY via early branch | 35 | One workflow (unify-phase.md) handles both normal and retroactive |
+| Brownfield = AI-directed analysis, not automated tooling | 36 | Follows OpenSpec pattern: framework provides structure, AI does introspection |
+| Reference graph via Explore agent, not tree-sitter | 36 | PALS is markdown-based; Aider's graph insight adopted without Python dependencies |
+| GRAPH.md as 8th additive document | 36 | Existing 7 templates unchanged; zero regression risk |
+| Brownfield init is branch, not replacement | 36 | Greenfield flow untouched; brownfield detection is opt-in |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -174,4 +180,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 35 Lightweight Fix & Hotfix complete*
+*Last updated: 2026-03-13 after Phase 36 Brownfield & Codebase Intelligence complete*

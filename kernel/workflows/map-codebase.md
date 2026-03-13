@@ -79,7 +79,7 @@ Continue to spawn_agents.
 </step>
 
 <step name="spawn_agents">
-Spawn 4 parallel Explore agents to analyze codebase.
+Spawn 5 parallel Explore agents to analyze codebase.
 
 Use Task tool with `subagent_type="Explore"` and `run_in_background=true` for parallel execution.
 
@@ -162,6 +162,14 @@ Output findings for populating these sections:
 - ARCHITECTURE.md: Pattern, Layers, Data Flow, Abstractions, Entry Points
 - STRUCTURE.md: Directory layout, Organization, Key locations
 
+**Brownfield context (important for existing projects):**
+Also identify "Patterns to Preserve" — existing architectural decisions that should be respected in future work:
+- Established layer boundaries (e.g., "services never import from routes")
+- Dependency injection patterns, factory patterns, or other structural conventions
+- Configuration approaches (env vars vs config files vs constants)
+- Error handling patterns (custom error classes, error middleware)
+Output these as a "Brownfield Quick Start" subsection for ARCHITECTURE.md.
+
 For each finding, include the file path. Examples:
 - "CLI entry point: `bin/install.js`"
 - "Service layer: `src/services/*.ts` (UserService, ProjectService)"
@@ -205,6 +213,15 @@ Search for:
 Output findings for populating these sections:
 - CONVENTIONS.md: Code Style, Naming, Patterns, Documentation
 - TESTING.md: Framework, Structure, Coverage, Tools
+
+**Brownfield context (important for existing projects):**
+Also extract "Style Rules" — conventions that Claude should follow when writing new code in this project:
+- Naming conventions: file naming (kebab-case, PascalCase), variable naming (camelCase, snake_case)
+- Import ordering conventions (stdlib first, then external, then internal)
+- Export patterns (named vs default, barrel files)
+- Comment style (JSDoc, docstrings, inline)
+- Test naming patterns (describe/it, test blocks, file naming)
+Output these as a "Brownfield Quick Start" subsection for CONVENTIONS.md.
 
 For each finding, include file paths. Examples:
 - "Prettier config: `.prettierrc`"
@@ -260,11 +277,68 @@ Be constructive - focus on actionable concerns, not nitpicks.
 If codebase is clean, note that rather than inventing problems.
 ```
 
+**Agent 5: Reference Graph (Dependency Focus)**
+
+Task tool parameters:
+```
+subagent_type: "Explore"
+run_in_background: true
+description: "Build reference graph of file dependencies"
+```
+
+Prompt:
+```
+Analyze this codebase to build a reference graph showing how files depend on each other.
+
+IMPORTANT: Always include actual file paths in your findings. Use backtick formatting like `src/services/user.ts`. This makes the output actionable for planning.
+
+Focus areas:
+1. Import/require/include statements — which files import from which other files
+2. Entry points — files that start execution chains (main, index, server, CLI entry)
+3. Hub files — files that are imported by many other files (5+ importers = hub)
+4. Leaf files — files that import others but are not imported by anything
+5. Clusters — groups of files that heavily reference each other (tightly coupled)
+6. Key exports — for hub files, what symbols/functions/classes they export
+
+Analysis approach:
+- Scan import/require/include/from statements across all source files
+- For each file, list what it imports and from where
+- Count inbound references (how many files import this file)
+- Rank files by inbound reference count (most-referenced first)
+- Identify clusters by finding groups with mutual imports
+
+Output format:
+
+## Hub Files (most referenced, ranked by inbound count)
+| File | Inbound Refs | Key Exports |
+|------|-------------|-------------|
+| `src/lib/utils.ts` | 23 | formatDate, parseJSON, debounce |
+| `src/types/index.ts` | 18 | User, Project, Config |
+
+## Entry Points
+| File | Type | Description |
+|------|------|-------------|
+| `src/index.ts` | Application | Main app entry |
+| `bin/cli.js` | CLI | Command-line interface |
+
+## Reference Edges (top 30 most-connected files)
+- `src/api/users.ts` → [`src/lib/db.ts`, `src/types/index.ts`, `src/lib/auth.ts`]
+- `src/api/projects.ts` → [`src/lib/db.ts`, `src/types/index.ts`]
+
+## Clusters (tightly coupled groups)
+- **Auth cluster:** `src/lib/auth.ts`, `src/middleware/auth.ts`, `src/api/login.ts`
+- **Data cluster:** `src/lib/db.ts`, `src/models/*.ts`, `src/migrations/*.ts`
+
+Keep output concise — focus on the top 20-30 most-connected files.
+Hub files and clusters are most valuable for understanding codebase structure.
+If the codebase is small (<20 files), list all files with their imports.
+```
+
 Continue to collect_results.
 </step>
 
 <step name="collect_results">
-Wait for all 4 agents to complete.
+Wait for all 5 agents to complete.
 
 Use TaskOutput tool to collect results from each agent. Since agents were run with `run_in_background=true`, retrieve their output.
 
@@ -289,6 +363,9 @@ From Agent 3 output, extract:
 From Agent 4 output, extract:
 - CONCERNS.md sections: Technical Debt, Known Issues, Security, Performance, Missing
 
+From Agent 5 output, extract:
+- GRAPH.md sections: Hub Files, Entry Points, Reference Edges, Clusters
+
 **Handling missing findings:**
 
 If an agent didn't find information for a section, use placeholder:
@@ -300,7 +377,7 @@ Continue to write_documents.
 </step>
 
 <step name="write_documents">
-Write all 7 codebase documents using templates and agent findings.
+Write all 8 codebase documents using templates and agent findings.
 
 **Template filling process:**
 
@@ -345,6 +422,46 @@ Filled result:
 5. **CONVENTIONS.md** (from conventions.md template + Agent 3 findings)
 6. **TESTING.md** (from testing.md template + Agent 3 findings)
 7. **CONCERNS.md** (from concerns.md template + Agent 4 findings)
+8. **GRAPH.md** (from Agent 5 findings — no template, write directly)
+
+**GRAPH.md structure:**
+```markdown
+# Codebase Reference Graph
+
+*Generated: [YYYY-MM-DD]*
+
+## Hub Files
+
+Most-referenced files in the codebase, ranked by inbound reference count.
+These are the files that many other files depend on — high-impact change targets.
+
+| File | Inbound Refs | Key Exports |
+|------|-------------|-------------|
+[Agent 5 hub files data]
+
+## Entry Points
+
+Files that start execution chains.
+
+| File | Type | Description |
+|------|------|-------------|
+[Agent 5 entry points data]
+
+## Reference Edges
+
+How key files connect to each other (top 30 most-connected).
+
+[Agent 5 reference edges data]
+
+## Clusters
+
+Groups of tightly-coupled files that change together.
+
+[Agent 5 clusters data]
+
+---
+*Reference graph built by Explore agent analysis of import/require/include statements.*
+```
 
 After all documents written, continue to verify_output.
 </step>
@@ -358,9 +475,10 @@ wc -l .paul/codebase/*.md
 ```
 
 **Verification checklist:**
-- All 7 documents exist
+- All 8 documents exist (7 original + GRAPH.md)
 - No empty documents
 - Templates populated with findings
+- GRAPH.md has hub files, entry points, reference edges, clusters
 
 If any checks fail, report issues to user.
 
@@ -382,6 +500,7 @@ docs: map existing codebase
 - TESTING.md - Test structure
 - INTEGRATIONS.md - External services
 - CONCERNS.md - Technical debt and issues
+- GRAPH.md - Reference graph (hub files, entry points, clusters)
 
 Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
@@ -398,19 +517,21 @@ Add to Accumulated Context section:
 ```
 ### Codebase Mapped
 Date: [current date]
-Documents: .paul/codebase/ (7 files)
+Documents: .paul/codebase/ (8 files)
 ```
 
 Continue to offer_next.
 </step>
 
 <step name="offer_next">
-Present completion summary and next steps.
+Present completion summary and route based on project state.
 
 **Output format:**
 
 ```
-Codebase mapping complete.
+════════════════════════════════════════
+CODEBASE MAPPING COMPLETE
+════════════════════════════════════════
 
 Created .paul/codebase/:
 - STACK.md ([N] lines) - Technologies and dependencies
@@ -420,27 +541,37 @@ Created .paul/codebase/:
 - TESTING.md ([N] lines) - Test structure and practices
 - INTEGRATIONS.md ([N] lines) - External services and APIs
 - CONCERNS.md ([N] lines) - Technical debt and issues
+- GRAPH.md ([N] lines) - Reference graph (hub files, clusters)
 
-
----
-
-## ▶ Next Up
-
-**Initialize PAUL project** — use codebase context for planning
-
-`/paul:init`
-
-<sub>`/clear` first → fresh context window</sub>
-
----
-
-**Also available:**
-- Re-run mapping: `/paul:map-codebase`
-- Review specific file: `cat .paul/codebase/STACK.md`
-- Edit any document before proceeding
-
----
+Hub files: [top 3 most-referenced files from GRAPH.md]
 ```
+
+**Post-map routing (context-aware):**
+
+1. Check if `.paul/PROJECT.md` exists:
+   ```bash
+   ls .paul/PROJECT.md 2>/dev/null
+   ```
+
+2. **If .paul/ does NOT exist** (standalone mapping, brownfield adoption):
+   ```
+   ────────────────────────────────────────
+   ▶ NEXT: /paul:init
+     Initialize PAUL with codebase context.
+     Your codebase map will pre-populate project setup.
+   ────────────────────────────────────────
+
+   <sub>`/clear` first → fresh context window</sub>
+   ```
+
+3. **If .paul/ exists** (mapping within active project):
+   ```
+   ────────────────────────────────────────
+   ▶ Codebase context now available for planning.
+     Reference .paul/codebase/ in your next plan's <context> section.
+     GRAPH.md hub files are high-impact targets for first milestones.
+   ────────────────────────────────────────
+   ```
 
 End workflow.
 </step>
@@ -449,11 +580,13 @@ End workflow.
 
 <success_criteria>
 - .paul/codebase/ directory created
-- 4 parallel Explore agents spawned with run_in_background=true
-- Agent prompts are specific and actionable
+- 5 parallel Explore agents spawned with run_in_background=true
+- Agent prompts are specific and actionable (including brownfield context for Agents 2+3)
 - TaskOutput used to collect all agent results
-- All 7 codebase documents written using template filling
+- All 8 codebase documents written (7 template-based + GRAPH.md)
+- GRAPH.md contains hub files, entry points, reference edges, clusters
 - Documents follow template structure with actual findings
-- Clear completion summary with line counts
-- User offered clear next steps
+- Brownfield Quick Start subsections in ARCHITECTURE.md and CONVENTIONS.md
+- Clear completion summary with line counts and top hub files
+- Post-map routing: /paul:init if no .paul/, planning context if .paul/ exists
 </success_criteria>

@@ -6,6 +6,7 @@ Initialize PAUL structure in a new project. Creates .paul/ directory with PROJEC
 - Starting PAUL in a project that doesn't have .paul/ directory
 - User explicitly requests project initialization
 - Beginning a new project from scratch
+- Adopting PAUL into an existing codebase (brownfield)
 </when_to_use>
 
 <loop_context>
@@ -24,6 +25,7 @@ After init, project is ready for first PLAN.
 <references>
 @src/templates/config.md
 @src/references/sonarqube-integration.md
+@src/references/brownfield-onboarding.md
 </references>
 
 <process>
@@ -38,6 +40,45 @@ After init, project is ready for first PLAN.
    - Route to `/paul:resume` or `/paul:progress`
    - Exit this workflow
 3. If not exists: proceed with initialization
+</step>
+
+<step name="detect_existing_code">
+**Detect whether this is a brownfield (existing codebase) or greenfield project.**
+
+1. Check for common project indicators:
+   ```bash
+   ls package.json requirements.txt Cargo.toml go.mod pom.xml Gemfile pyproject.toml composer.json 2>/dev/null
+   ls -d src/ lib/ app/ cmd/ pkg/ 2>/dev/null
+   ```
+
+2. **If indicators found** (brownfield detected):
+   ```
+   ════════════════════════════════════════
+   Existing codebase detected:
+   ════════════════════════════════════════
+
+   Found: [list of detected files/directories]
+
+   Mapping your codebase first helps me understand your project's
+   architecture, conventions, and patterns before setting up PAUL.
+
+   Map codebase now? (Recommended for existing projects) [Y/n]
+   ```
+
+   Wait for user response.
+
+   **If yes (default):**
+   - Run `/paul:map-codebase` workflow
+   - After map completes, store `brownfield = true` and `codebase_mapped = true`
+   - Continue to create_structure with brownfield context available
+
+   **If no:**
+   - Store `brownfield = true` and `codebase_mapped = false`
+   - Continue to create_structure (user can map later via `/paul:map-codebase`)
+
+3. **If no indicators found** (greenfield):
+   - Store `brownfield = false`
+   - Continue to create_structure
 </step>
 
 <step name="create_structure">
@@ -76,6 +117,33 @@ What are you building? (1-2 sentences)
 ```
 
 Wait for user response. Store as `description`.
+</step>
+
+<step name="populate_from_codebase">
+**Only runs if `brownfield = true` AND `codebase_mapped = true`.**
+
+If codebase was mapped, read the findings to enrich the conversational flow:
+
+1. Read `.paul/codebase/STACK.md` — extract primary language, framework, key dependencies
+2. Read `.paul/codebase/ARCHITECTURE.md` — extract architectural pattern, entry points
+3. Read `.paul/codebase/CONVENTIONS.md` — extract naming conventions, code style
+
+4. When asking `gather_core_value` and `gather_description`, provide context hints:
+   ```
+   From your codebase, I can see:
+   - Language: [primary language from STACK.md]
+   - Framework: [framework from STACK.md]
+   - Architecture: [pattern from ARCHITECTURE.md]
+
+   With that context...
+   ```
+
+5. Pre-populate `create_project_md` with codebase findings:
+   - Add a `## Technology` section with stack summary
+   - Add discovered constraints to `## Constraints` (e.g., existing patterns to preserve)
+   - Reference `.paul/codebase/` in the PROJECT.md for detailed context
+
+**If `brownfield = false` or `codebase_mapped = false`:** skip this step entirely.
 </step>
 
 <step name="gather_project_name">
