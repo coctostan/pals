@@ -18,6 +18,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] RUBY module — refactor utility & better-code yielder (Phase 24)
 - [x] Lifecycle hooks — all 8 pals wired into plan/apply/unify (Phase 25)
 - [x] Module configuration — JSON config (pals.json), /paul:config command, init integration (Phase 26)
+- [x] Publication-quality README — architecture, module catalog, command reference, configuration guide (Phase 27)
 
 ### Must Have
 All validated — see below.
@@ -64,6 +65,7 @@ All validated — see below.
 - ✓ RUBY module — refactor utility & better-code yielder with /paul:refactor command (3 modes, 9 refactoring patterns) — Phase 24
 - ✓ Lifecycle hooks — all 8 pals integrated into plan/apply/unify with priority-based dispatch (16 hook registrations across 6 hook points) — Phase 25
 - ✓ Module configuration — pals.json with all 8 modules, /paul:config dashboard with toggle, module selection in /paul:init — Phase 26
+- ✓ Publication-quality README — 3-layer architecture, 9-pal catalog, 40 commands, configuration guide — Phase 27
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -118,6 +120,7 @@ All validated — see below.
 | CARL excluded from lifecycle hooks (platform hooks only) | 25 | Per Phase 4 design: CARL is architecturally independent |
 | pals.json replaces pals.yaml (JSON over YAML) | 26 | Standard tooling (json.load, jq), no custom parser needed |
 | All 8 modules enabled by default in config | 26 | New users get full experience, can disable via /paul:config |
+| README grouped commands into 7 functional categories | 27 | Scannable reference aids command discovery |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -136,4 +139,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 26 Module Configuration & Init complete (v0.8 in progress)*
+*Last updated: 2026-03-12 after Phase 27 README complete (v0.8 complete)*

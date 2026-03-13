@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v0.8 Configuration & Polish
+**Current focus:** v0.8 Configuration & Polish — Complete
 
 ## Current Position
 
-Milestone: v0.8 Configuration & Polish
-Phase: 26 of 27 (Module Configuration & Init) — Complete
-Plan: 26-01 complete
-Status: Phase 26 complete, ready for Phase 27
-Last activity: 2026-03-12 — Phase 26 complete (UNIFY closed)
+Milestone: v0.8 Configuration & Polish — Complete
+Phase: 27 of 27 (README) — Complete
+Plan: 27-01 complete
+Status: v0.8 milestone complete, ready for next milestone
+Last activity: 2026-03-12 — Phase 27 complete, v0.8 milestone closed
 
 Progress:
-- v0.8 Configuration & Polish: [█████░░░░░] 50%
-- Phase 26: [██████████] 100%
+- v0.8 Configuration & Polish: [██████████] 100%
+- Phase 27: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete — v0.8 milestone done]
 ```
 
 ## Accumulated Context
@@ -34,6 +34,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 |----------|-------|--------|
 | pals.json replaces pals.yaml (JSON over YAML) | 26 | Simpler parsing, standard tooling |
 | All 8 modules enabled by default | 26 | Full experience out of the box |
+| README grouped commands into 7 functional categories | 27 | Scannable reference |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -49,14 +50,14 @@ Branch: main
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 26 complete, session paused
-Next action: /paul:plan for Phase 27 (README)
-Resume file: .paul/HANDOFF-2026-03-12-v08-phase26.md
+Stopped at: v0.8 milestone complete
+Next action: /paul:complete-milestone or /paul:milestone for v0.9
+Resume file: .paul/phases/27-readme/27-01-SUMMARY.md
 Resume context:
-- v0.8 Configuration & Polish: 50% complete (1 of 2 phases)
-- Phase 26 Module Configuration & Init: complete (pals.json, /paul:config, init integration)
-- Phase 27 README: not started
-- 8 milestones of work: v0.1 → v0.8 in progress
+- v0.8 Configuration & Polish: 100% complete (2 of 2 phases)
+- Phase 26 Module Configuration & Init: complete
+- Phase 27 README: complete
+- 8 milestones of work: v0.1 → v0.8 complete
 
 ---
 *STATE.md — Updated after every significant action*

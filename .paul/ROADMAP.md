@@ -29,14 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 ### v0.8 Configuration & Polish
-Status: 🚧 In Progress
-Phases: 1 of 2 complete
+Status: ✅ Complete
+Completed: 2026-03-12
+Phases: 2 of 2 complete
 Focus: User-facing module configuration system with JSON config and /paul:config command, wired into /paul:init, plus a publication-quality README
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 26 | Module Configuration & Init | 1 | ✅ Complete | 2026-03-12 |
-| 27 | README | TBD | Not started | - |
+| 27 | README | 1 | ✅ Complete | 2026-03-12 |
 
 ### Phase 26: Module Configuration & Init
 Focus: JSON config file for enabling/disabling modules, /paul:config command to manage settings, and wire config setup into /paul:init for new projects
