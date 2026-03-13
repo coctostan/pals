@@ -23,6 +23,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Module observability — dispatch log, activity reports, user-visible hook output (Phase 29)
 - [~] Context monitor (conditional) — skipped, Phase 28 optimization made this unnecessary (Phase 30)
 - [x] Seamless Git & GH — config-driven git automation in kernel workflows (Phase 31)
+- [x] PALS Documentation — module builder's guide, troubleshooting guide, changelog (Phase 32)
 
 ### Must Have
 All validated — see below.
@@ -73,6 +74,7 @@ All validated — see below.
 - ✓ Context audit & optimization — 27 reference files measured, 15 trimmed, 43% reduction (4,507 → 2,550 lines), per-module budgets established — Phase 28
 - ✓ Module observability — per-hook refs in 7 modules, context_inject schema, dispatch log in 3 workflows, failure cascading + state recovery documentation — Phase 29
 - ✓ Seamless Git & GH — pals.json git config (5 fields), init configure_git step, config-driven auto PR/push/CI in transition-phase, auto push in complete-milestone, branching defaults in pause-work — Phase 31
+- ✓ PALS Documentation — module builder's guide (7-step walkthrough + DEAN example), troubleshooting guide (5 categories, 19 entries), changelog (v0.1 through v0.9.1) — Phase 32
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -155,4 +157,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 31 Seamless Git & GH complete*
+*Last updated: 2026-03-13 after Phase 32 PALS Documentation complete*
