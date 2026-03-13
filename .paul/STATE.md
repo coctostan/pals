@@ -2,7 +2,7 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-12)
+See: .paul/PROJECT.md (updated 2026-03-13)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
 **Current focus:** v0.9 Observability & Context Health
@@ -10,14 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-12)
 ## Current Position
 
 Milestone: v0.9 Observability & Context Health
-Phase: 29 of 30 (Module Observability) — In Progress
-Plan: 29-01 complete, 29-02 pending
-Status: Loop closed for 29-01, ready for 29-02 PLAN
-Last activity: 2026-03-13 — Unified 29-01 (structural foundations)
+Phase: 30 of 30 (Context Monitor — conditional) — Not started
+Plan: Not started
+Status: Ready to plan (Phase 30 is conditional — may skip)
+Last activity: 2026-03-13 — Phase 29 complete, transitioned
 
 Progress:
-- v0.9 Observability & Context Health: [██████░░░░] 60%
-- Phase 29: [█████░░░░░] 50%
+- v0.9 Observability & Context Health: [████████░░] 80%
+- Phase 30: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
@@ -34,6 +34,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 |----------|-------|--------|
 | Phase 30 conditional on Phase 28 findings | 28-30 | May cut scope if context stays lean |
 | Observability must not add significant context overhead | 29 | Self-constraint on new features |
+| Per-hook refs mapped per actual usage | 29 | Each hook loads only what it needs |
+| post-task block: remaining tasks skip, post-apply still fires | 29 | Cleanup/reporting always runs |
+| Three detection outcomes for modules | 29 | found-standard, found-non-standard, not-found |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -44,18 +47,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 Last commit: 314b402
-Branch: main
+Branch: feature/v09-observability
 
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Plan 29-01 loop closed, session paused (context depleted)
-Next action: /paul:plan for 29-02 (robustness & safety) — CONTEXT.md already has scope
-Resume file: .paul/HANDOFF-2026-03-13-v09-phase29-01.md
+Stopped at: Phase 29 complete, transitioned to Phase 30
+Next action: Decide Phase 30 — likely unnecessary per Phase 28 findings, consider /paul:complete-milestone
+Resume file: .paul/ROADMAP.md
 Resume context:
-- 29-01 complete: per-hook refs, context_inject schema, SUMMARY docs, dispatch log (audit #1, #3, #6, #8)
-- 29-02 pending: failure cascading, adaptation, recovery, transition refs, partial failure (#2, #4, #5, #7, #9, #10)
-- Phase 29 is 1/2 plans complete, CONTEXT.md has full 29-02 scope
+- Phase 29 complete: 2 plans, all 10 audit holes addressed
+- Phase 30 is conditional — /paul:context command only if Phase 28 revealed need
+- Phase 28 found context manageable after optimization, suggesting Phase 30 can be skipped
 
 ---
 *STATE.md — Updated after every significant action*

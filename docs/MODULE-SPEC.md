@@ -486,6 +486,59 @@ post-unify
   └─ side_effects ─────────────────► logged, no further processing
 ```
 
+### 3.6 Failure Cascading Across Hook Points
+
+When a blocking hook fires, it affects not just the current hook point but all downstream hook points in the loop iteration.
+
+**Cascade rules by blocking hook:**
+
+| Blocking Hook | Same-Point Effect | Downstream Effect |
+|---------------|-------------------|-------------------|
+| `pre-plan` | Remaining modules at pre-plan skip | No plan created → post-plan never fires |
+| `pre-apply` | Remaining modules at pre-apply skip | No tasks execute → post-task, post-apply never fire |
+| `post-task` | Remaining modules at post-task skip | Remaining tasks skip; post-apply **still fires** (for cleanup/reporting) |
+| `post-apply` | Remaining modules at post-apply skip | Pre-unify and post-unify never fire (apply not complete) |
+
+**Key distinction:** `post-task` blocks stop remaining *tasks* but do not skip `post-apply`. This allows quality gates (WALT) to report even when a task-level block (TODD) halted execution early.
+
+**Recovery:** The user resolves the blocking reason (e.g., fix failing tests, add missing dependencies), then re-runs the phase command (`/paul:apply`). The full hook chain re-executes from the beginning of that phase.
+
+### 3.7 Ordering Dependencies
+
+**Within a hook point:** Priority ordering is deterministic (section 3.1). Lower priority numbers run first.
+
+**Across hook points:** Ordering follows the kernel loop: `pre-plan → post-plan → pre-apply → pre-test → post-task → post-apply → pre-unify → post-unify`. This is fixed and cannot be changed by modules.
+
+**Cross-module data availability:**
+- A module's `context_inject` at hook point N is available to **all modules** at hook point N+1 (via `context_from_*` payload fields)
+- A module **cannot** read another module's `context_inject` at the **same** hook point — only at subsequent hook points
+- Example: TODD injects `tdd_type: true` at `pre-plan`. DEAN cannot see `tdd_type` during its own `pre-plan` hook. But `post-plan` hooks receive it in `context_from_pre_plan`.
+
+**Implication:** If module A needs data from module B at the same hook point, one must move to an earlier hook point or the data dependency must be restructured across hook points.
+
+### 3.8 Non-Standard Project Adaptation
+
+Modules that detect project artifacts (TODD detecting test files, DEAN detecting package managers, CARL scanning for technologies) should handle three detection outcomes:
+
+| Outcome | Description | Module Response |
+|---------|-------------|-----------------|
+| **found-standard** | Artifact exists in expected location/format | Proceed normally with full feature set |
+| **found-non-standard** | Artifact exists but in unexpected location/format | Warn via `context_inject`, adapt where possible |
+| **not-found** | Artifact does not exist | Skip gracefully (no-op, no warning) |
+
+**found-non-standard guidance:**
+- Inject a warning key via `context_inject` (e.g., `tdd_warning: "tests found in non-standard path: lib/specs/"`)
+- Do NOT block — non-standard does not mean broken
+- Adapt detection heuristics where feasible (e.g., accept alternate test directories)
+- Document the non-standard pattern in plan annotations so the user is aware
+
+**Examples:**
+- TODD finds test files in `lib/specs/` instead of `__tests__/` or `*.test.*` — warn, adapt test command
+- DEAN finds `package.json` with workspaces in an uncommon structure — warn, still audit dependencies
+- CARL scan finds a framework but configuration files are in non-default locations — warn, still suggest rules
+
+**Anti-pattern:** Treating found-non-standard as not-found. Silent skipping loses observability — the user never learns their project has detectable but non-standard patterns.
+
 ---
 
 ## 4. No-Op Behavior

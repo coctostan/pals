@@ -237,6 +237,15 @@ If a task verification fails:
    - Stop: halt execution, prepare for debugging
 4. **Record resolution to STATE.md:**
    - Add to `### Decisions` section: `| [date]: Task [N] [retry/skip/stop] - [reason] | Phase [N] | [impact] |`
+
+5. **Partial task failure** (multi-file task where some files were modified before failure):
+   - **Assess:** Run `git diff` to see which files were changed vs what the task planned
+   - **Preserve:** Files that were correctly modified and pass independent verification
+   - **Revert:** Files in broken/incomplete state — use `git checkout <file>` for specific files (not `git checkout .`)
+   - **Resume:** After fixing root cause, re-run only the remaining work — do not repeat already-verified changes
+   - **Record:** Note which files were preserved vs reverted in the deviation log for UNIFY
+
+6. **Never revert blindly:** Always check `git diff` before reverting. Partial work may include correct changes that should be kept. Reverting everything wastes completed work and may mask the actual failure point.
 </step>
 
 <step name="track_progress">

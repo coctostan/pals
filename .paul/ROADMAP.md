@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 ### v0.9 Observability & Context Health
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 Focus: Make the module system transparent and ensure context weight is sustainable
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 28 | Context Audit & Optimization | 1 | ✅ Complete | 2026-03-13 |
-| 29 | Module Observability | 2 | Planning | - |
+| 29 | Module Observability | 2 | ✅ Complete | 2026-03-13 |
 | 30 | Context Monitor (conditional) | TBD | Not started | - |
 
 ### Phase 28: Context Audit & Optimization
@@ -146,4 +146,4 @@ Focus: `/paul:context` command for ongoing context budget monitoring — only bu
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — Phase 28 Context Audit & Optimization complete*
+*Last updated: 2026-03-13 — Phase 29 Module Observability complete*

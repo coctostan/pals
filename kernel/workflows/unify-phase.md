@@ -22,7 +22,7 @@ Next phase: PLAN (next plan or next phase)
 <references>
 @~/.pals/references/loop-phases.md
 @~/.pals/templates/SUMMARY.md
-@~/.pals/workflows/transition-phase.md (loaded when last plan in phase)
+@~/.pals/workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
 <!-- Module references are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
 </references>
 
