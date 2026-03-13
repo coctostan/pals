@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-12)
 ## Current Position
 
 Milestone: v0.7 Full Roster & Lifecycle Integration
-Phase: 24 of 25 (RUBY Module) — Complete
-Plan: 24-01 complete
-Status: Phase complete, ready for next phase
-Last activity: 2026-03-12 — Phase 24 RUBY Module complete
+Phase: 25 of 25 (Lifecycle Hooks) — Complete
+Plan: 25-01 complete
+Status: v0.7 milestone complete
+Last activity: 2026-03-12 — Phase 25 Lifecycle Hooks complete, v0.7 milestone complete
 
 Progress:
-- v0.7 Full Roster & Lifecycle Integration: [███████░░░] 75%
-- Phase 24: [██████████] 100%
+- v0.7 Full Roster & Lifecycle Integration: [██████████] 100%
+- Phase 25: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete — milestone complete]
 ```
 
 ## Accumulated Context
@@ -44,6 +44,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /paul:deploy in kernel, deploy refs in DAVE module | 23 | Same pattern as Phases 18-22 |
 | RUBY follows established module pattern (no hooks initially) | 24 | Read-only first, hooks in Phase 25 |
 | /paul:refactor in kernel, detection/pattern refs in RUBY module | 24 | Same pattern as Phases 18-23 |
+| Priority-based hook ordering (no conflicts per hook point) | 25 | Clean dispatch: lower priority runs first |
+| CARL excluded from lifecycle hooks (platform hooks only) | 25 | Per Phase 4 design decision |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates (may overlap with DAVE in v0.7)
@@ -53,20 +55,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Last commit: b8e1387
-Branch: main
+Last commit: 85c48e3
+Branch: feature/v07-roster-hooks
 Feature branches merged: feature/20-dean-module, feature/21-iris-module
 
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 24 complete, ready for Phase 25
-Next action: /paul:plan for Phase 25 (Lifecycle Hooks)
-Resume file: .paul/phases/24-ruby-module/24-01-SUMMARY.md
+Stopped at: v0.7 milestone complete
+Next action: /paul:milestone or /paul:pause
+Resume file: .paul/phases/25-lifecycle-hooks/25-01-SUMMARY.md
 Resume context:
-- v0.7 Full Roster & Lifecycle Integration: 75% (3/4 phases)
-- 8 pals now: CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY
-- Phase 25 Lifecycle Hooks next — wire all 8 pals into plan/apply/unify hooks
+- v0.7 Full Roster & Lifecycle Integration: 100% complete
+- 8 pals: CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY
+- All pals integrated into lifecycle hooks (16 registrations across 6 hook points)
+- 7 milestones complete: v0.1 → v0.7
 
 ---
 *STATE.md — Updated after every significant action*

@@ -10,7 +10,13 @@ dependencies:
   kernel: ">=0.4.0"
   modules: []
 
-hooks: {}
+hooks:
+  pre-plan:
+    priority: 150
+    description: Scan planned files for known anti-patterns; inject review context
+  post-apply:
+    priority: 250
+    description: Run review patterns against changed files; report findings
 
 files:
   references:

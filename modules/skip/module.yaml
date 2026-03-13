@@ -10,7 +10,13 @@ dependencies:
   kernel: ">=0.4.0"
   modules: []
 
-hooks: {}
+hooks:
+  post-apply:
+    priority: 300
+    description: Identify decisions made during apply for potential knowledge capture
+  post-unify:
+    priority: 200
+    description: Extract key decisions from SUMMARY.md; suggest knowledge entries
 
 files:
   references:

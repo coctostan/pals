@@ -10,7 +10,13 @@ dependencies:
   kernel: ">=0.4.0"
   modules: []
 
-hooks: {}
+hooks:
+  pre-plan:
+    priority: 250
+    description: Check if high-debt files are being touched; inject refactoring context
+  post-unify:
+    priority: 300
+    description: Scan changed files for new tech debt introduced; suggest improvements
 
 files:
   references:

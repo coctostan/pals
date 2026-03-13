@@ -16,6 +16,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] SKIP module — smart knowledge & information persistence (Phase 22)
 - [x] DAVE module — deploy automation & verification engine (Phase 23)
 - [x] RUBY module — refactor utility & better-code yielder (Phase 24)
+- [x] Lifecycle hooks — all 8 pals wired into plan/apply/unify (Phase 25)
 
 ### Must Have
 All validated — see below.
@@ -60,6 +61,7 @@ All validated — see below.
 - ✓ SKIP module — smart knowledge & information persistence with /paul:knowledge command (5 knowledge types, multi-source search) — Phase 22
 - ✓ DAVE module — deploy automation & verification engine with /paul:deploy command (4 modes, 12+ language detectors) — Phase 23
 - ✓ RUBY module — refactor utility & better-code yielder with /paul:refactor command (3 modes, 9 refactoring patterns) — Phase 24
+- ✓ Lifecycle hooks — all 8 pals integrated into plan/apply/unify with priority-based dispatch (16 hook registrations across 6 hook points) — Phase 25
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -110,6 +112,8 @@ All validated — see below.
 | RUBY follows established module pattern (no hooks initially) | 24 | Read-only first, hooks in Phase 25 |
 | /paul:refactor in kernel, detection/pattern refs in RUBY module | 24 | Same pattern as Phases 18-23 |
 | 3 modes for refactor command (dashboard, scan, suggest) | 24 | Distinct concerns: overview vs analysis vs guidance |
+| Priority-based hook ordering (no conflicts per hook point) | 25 | Clean dispatch: lower priority runs first |
+| CARL excluded from lifecycle hooks (platform hooks only) | 25 | Per Phase 4 design: CARL is architecturally independent |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -128,4 +132,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 24 RUBY Module complete*
+*Last updated: 2026-03-12 after Phase 25 Lifecycle Hooks complete (v0.7 milestone complete)*

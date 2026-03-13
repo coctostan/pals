@@ -10,7 +10,13 @@ dependencies:
   kernel: ">=0.4.0"
   modules: []
 
-hooks: {}
+hooks:
+  pre-plan:
+    priority: 200
+    description: Check if planned changes affect CI/CD configs; flag for review
+  post-apply:
+    priority: 175
+    description: Validate any modified pipeline configs remain syntactically valid
 
 files:
   references:
