@@ -50,7 +50,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Last commit: bde9f24
+Last commit: 548c65b
 Branch: main
 PR: None open
 
@@ -59,12 +59,13 @@ PR: None open
 Last session: 2026-03-13
 Stopped at: Phase 36 complete, ready to plan Phase 37
 Next action: /paul:plan for Phase 37
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-13-v10-phase36-complete.md
 Resume context:
 - Phase 36 complete: brownfield init, map-codebase v2 (GRAPH.md), onboarding guide
 - Phase 37 next: Resilience & Isolation (git worktrees, AGENTS.md)
 - Research during planning: deep-dive Superpowers worktree mechanics
 - v1.0 milestone 67% complete (2 of 3 phases)
+- Phase 37 is the LAST phase — after it, run /paul:complete-milestone
 
 ---
 *STATE.md — Updated after every significant action*
