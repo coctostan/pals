@@ -6,6 +6,7 @@ Reconcile what was planned vs. what was built. Create SUMMARY.md documenting res
 - APPLY phase complete (all tasks executed or documented)
 - Ready to close the current loop
 - Need to record what was built for future reference
+- After a hotfix (retroactive documentation via /paul:fix hotfix mode)
 </when_to_use>
 
 <loop_context>
@@ -28,7 +29,94 @@ Next phase: PLAN (next plan or next phase)
 
 <process>
 
-<step name="gather_results" priority="first">
+<step name="detect_retroactive" priority="first">
+**Check for retroactive UNIFY (hotfix mode):**
+
+1. Read STATE.md — look for `Pending retroactive UNIFY` in Session Continuity
+2. If found:
+   - Switch to retroactive mode (skip gather_results, compare_plan_vs_actual)
+   - Extract hotfix description and commit hash from the pending flag
+   - Jump to `retroactive_unify` step
+3. If not found:
+   - Proceed with normal UNIFY (gather_results below)
+</step>
+
+<step name="retroactive_unify" condition="retroactive_flag_detected">
+**Generate SUMMARY from git history (no PLAN.md exists):**
+
+1. Read git log since last known commit in STATE.md:
+   ```bash
+   git log {last_commit}..HEAD --oneline
+   git diff {last_commit}..HEAD --stat
+   ```
+
+2. If description not already captured, ask user:
+   ```
+   Retroactive UNIFY for hotfix.
+
+   Changes since last commit:
+   {git diff --stat output}
+
+   What was fixed and why? (brief description)
+   ```
+
+3. Create SUMMARY in current phase directory:
+   `.paul/phases/{phase-dir}/{phase}-{NN}-HOTFIX-SUMMARY.md`:
+
+   ```markdown
+   ---
+   phase: {phase-slug}
+   plan: hotfix
+   type: hotfix
+   completed: {ISO timestamp}
+   ---
+
+   ## Hotfix Summary
+
+   **Issue:** {description}
+   **Mode:** Hotfix (retroactive UNIFY)
+   **Commit:** {hash}
+
+   ### Files Changed
+   | File | Change |
+   |------|--------|
+   {from git diff --stat}
+
+   ### Context
+   {user-provided description of what was fixed and why}
+
+   ### Result
+   Hotfix applied and documented retroactively.
+   ```
+
+4. Clear the retroactive flag from STATE.md:
+   - Remove `Pending retroactive UNIFY` line from Session Continuity
+   - Update Accumulated Context fix entry: remove "Pending retroactive UNIFY" note
+
+5. Dispatch post-unify hooks normally (quality history should track hotfixes too)
+
+6. Display completion:
+   ```
+   ════════════════════════════════════════
+   RETROACTIVE UNIFY COMPLETE
+   ════════════════════════════════════════
+
+   Hotfix: {description}
+   SUMMARY: {path}
+   Retroactive flag cleared.
+
+   Continue normal work.
+   ════════════════════════════════════════
+   ```
+
+7. Skip remaining normal UNIFY steps (no plan to reconcile)
+   - Do NOT run check_phase_completion or execute_transition for retroactive UNIFY
+   - Hotfixes are side-loops, not phase progression
+</step>
+
+<step name="gather_results">
+**Normal UNIFY path (not retroactive):**
+
 1. Recall execution from APPLY phase:
    - Which tasks completed successfully
    - Which tasks failed (if any)

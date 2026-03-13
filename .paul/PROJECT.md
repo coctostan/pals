@@ -26,6 +26,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] PALS Documentation — module builder's guide, troubleshooting guide, changelog (Phase 32)
 - [x] DOCS module — documentation lifecycle & oversight companion (Phase 33)
 - [x] Competitive analysis — 15 frameworks benchmarked, gaps/differentiators mapped, v1.0 priorities set (Phase 34)
+- [x] Lightweight fix loop — /paul:fix command with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY (Phase 35)
 
 ### Must Have
 All validated — see below.
@@ -79,6 +80,7 @@ All validated — see below.
 - ✓ PALS Documentation — module builder's guide (7-step walkthrough + DEAN example), troubleshooting guide (5 categories, 19 entries), changelog (v0.1 through v0.9.1) — Phase 32
 - ✓ DOCS module — documentation lifecycle & oversight (2 hooks, 3 references, advisory priority 200-250) — Phase 33
 - ✓ Competitive analysis — 15 frameworks benchmarked, 3 critical gaps, 6 strong differentiators, v1.0 phase mapping — Phase 34
+- ✓ Lightweight fix loop — /paul:fix with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY, fix-types reference — Phase 35
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -150,6 +152,10 @@ All validated — see below.
 | Lightweight fix loop critical for v1.0 | 34 | Full PLAN-APPLY-UNIFY for 1-file bugs drives users away |
 | Do NOT build full autonomous execution | 34 | Devin's 15% success rate proves supervised approach is correct |
 | Superpowers is closest competitor | 34 | PALS differentiates with UNIFY, modules, session continuity |
+| 3 fix modes: standard/fast-forward/hotfix | 35 | Covers all ad-hoc fix scenarios with appropriate overhead |
+| Fast-forward skips ALL hooks by design | 35 | Zero overhead for trivial fixes — users accept no quality gates |
+| Fixes are side-loops, not phase progression | 35 | Main loop integrity preserved — fixes tracked in STATE.md only |
+| Retroactive UNIFY via early branch | 35 | One workflow (unify-phase.md) handles both normal and retroactive |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -168,4 +174,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 34 Competitive Research complete*
+*Last updated: 2026-03-13 after Phase 35 Lightweight Fix & Hotfix complete*

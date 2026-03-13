@@ -28,7 +28,31 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-None active — v0.9.2 complete, ready for next milestone.
+**v1.0 Production Ready**
+Status: 🚧 In Progress
+Phases: 1 of 3 complete
+Theme: Close critical competitive gaps — fix loop, brownfield support, resilience
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 35 | Lightweight Fix & Hotfix | 1 | ✅ Complete | 2026-03-13 |
+| 36 | Brownfield & Codebase Intelligence | TBD | Not started | - |
+| 37 | Resilience & Isolation | TBD | Not started | - |
+
+### Phase 35: Lightweight Fix & Hotfix
+
+Focus: `/paul:fix` command, `type: fix` plans, fast-forward mode, hotfix workflow, retroactive unify. Closes the #1 friction gap — full PLAN-APPLY-UNIFY for 1-file bugs drives users away.
+Research: Deep-dive OpenSpec's fast-forward implementation during planning.
+
+### Phase 36: Brownfield & Codebase Intelligence
+
+Focus: `/paul:map-codebase` v2 (graph-based), brownfield onboarding, existing-project adoption. Closes the #1 adoption barrier — PALS is currently greenfield-only.
+Research: Deep-dive OpenSpec brownfield onboarding + Aider repo map during planning.
+
+### Phase 37: Resilience & Isolation
+
+Focus: Git worktree isolation, AGENTS.md generation, robustness improvements. Prevents polluting main branch during APPLY, improves interoperability.
+Research: Deep-dive Superpowers worktree mechanics during planning.
 
 ---
 
@@ -159,4 +183,4 @@ None active — v0.9.2 complete, ready for next milestone.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — v0.9.2 Competitive Intelligence complete*
+*Last updated: 2026-03-13 — Phase 35 Lightweight Fix & Hotfix complete*
