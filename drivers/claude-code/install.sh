@@ -213,10 +213,14 @@ def copy_file(src, dst):
         shutil.copy2(src, dst)
 
 
-# ── Read pals.yaml for active modules ─────────────────────────────
-pals_yaml = os.path.join(pals_root, 'pals.yaml')
-config = parse_module_yaml(pals_yaml) if os.path.exists(pals_yaml) else {}
-modules_config = config.get('modules', {})
+# ── Read pals.json for active modules ─────────────────────────────
+pals_json_path = os.path.join(pals_root, 'pals.json')
+if os.path.exists(pals_json_path):
+    with open(pals_json_path, 'r') as f:
+        pals_config = json.load(f)
+else:
+    pals_config = {}
+modules_config = pals_config.get('modules', {})
 
 # ── Discover and install modules ──────────────────────────────────
 installed = {}
@@ -229,10 +233,10 @@ for mod_name in sorted(os.listdir(modules_src)):
     if not os.path.isdir(mod_dir) or not os.path.exists(manifest_path):
         continue
 
-    # Check active status (default: true if not in config)
+    # Check enabled status (default: true if not in config)
     mod_cfg = modules_config.get(mod_name, {})
-    if isinstance(mod_cfg, dict) and mod_cfg.get('active') is False:
-        print(f"  [skip] {mod_name} module (disabled in pals.yaml)")
+    if isinstance(mod_cfg, dict) and mod_cfg.get('enabled') is False:
+        print(f"  [skip] {mod_name} module (disabled in pals.json)")
         continue
 
     manifest = parse_module_yaml(manifest_path)

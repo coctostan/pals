@@ -13,6 +13,12 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] WALT quality trends — quality ledger tracking over time (Phase 19)
 - [x] DEAN module — dependency evaluation & audit notifier (Phase 20)
 - [x] IRIS module — intelligent review & inspection system (Phase 21)
+- [x] SKIP module — smart knowledge & information persistence (Phase 22)
+- [x] DAVE module — deploy automation & verification engine (Phase 23)
+- [x] RUBY module — refactor utility & better-code yielder (Phase 24)
+- [x] Lifecycle hooks — all 8 pals wired into plan/apply/unify (Phase 25)
+- [x] Module configuration — JSON config (pals.json), /paul:config command, init integration (Phase 26)
+- [x] Publication-quality README — architecture, module catalog, command reference, configuration guide (Phase 27)
 
 ### Must Have
 All validated — see below.
@@ -54,6 +60,12 @@ All validated — see below.
 - ✓ WALT quality trends with /paul:quality command (streak/regression/stall detection) — Phase 19
 - ✓ DEAN module — dependency evaluation & audit notifier with /paul:deps command (10 ecosystems) — Phase 20
 - ✓ IRIS module — intelligent review & inspection system with /paul:review command (25 patterns, 5 checklists) — Phase 21
+- ✓ SKIP module — smart knowledge & information persistence with /paul:knowledge command (5 knowledge types, multi-source search) — Phase 22
+- ✓ DAVE module — deploy automation & verification engine with /paul:deploy command (4 modes, 12+ language detectors) — Phase 23
+- ✓ RUBY module — refactor utility & better-code yielder with /paul:refactor command (3 modes, 9 refactoring patterns) — Phase 24
+- ✓ Lifecycle hooks — all 8 pals integrated into plan/apply/unify with priority-based dispatch (16 hook registrations across 6 hook points) — Phase 25
+- ✓ Module configuration — pals.json with all 8 modules, /paul:config dashboard with toggle, module selection in /paul:init — Phase 26
+- ✓ Publication-quality README — 3-layer architecture, 9-pal catalog, 40 commands, configuration guide — Phase 27
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -96,6 +108,19 @@ All validated — see below.
 | /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19: command + module reference |
 | IRIS has no hooks in v0.6 (read-only guidance) | 21 | Advisory first, enforcement later (same as DEAN) |
 | /paul:review in kernel, pattern/checklist refs in IRIS module | 21 | Same pattern as Phases 18-20: command + module reference |
+| SKIP follows DEAN/IRIS pattern (no hooks initially) | 22 | Read-only first, hooks in Phase 25 |
+| /paul:knowledge in kernel, knowledge refs in SKIP module | 22 | Same pattern as Phases 18-21: command + module reference |
+| DAVE follows established module pattern (no hooks initially) | 23 | Read-only first, hooks in Phase 25 |
+| /paul:deploy in kernel, deploy refs in DAVE module | 23 | Same pattern as Phases 18-22 |
+| 4 modes for deploy command (dashboard, audit, generate, verify) | 23 | Deploy has distinct concerns requiring separate modes |
+| RUBY follows established module pattern (no hooks initially) | 24 | Read-only first, hooks in Phase 25 |
+| /paul:refactor in kernel, detection/pattern refs in RUBY module | 24 | Same pattern as Phases 18-23 |
+| 3 modes for refactor command (dashboard, scan, suggest) | 24 | Distinct concerns: overview vs analysis vs guidance |
+| Priority-based hook ordering (no conflicts per hook point) | 25 | Clean dispatch: lower priority runs first |
+| CARL excluded from lifecycle hooks (platform hooks only) | 25 | Per Phase 4 design: CARL is architecturally independent |
+| pals.json replaces pals.yaml (JSON over YAML) | 26 | Standard tooling (json.load, jq), no custom parser needed |
+| All 8 modules enabled by default in config | 26 | New users get full experience, can disable via /paul:config |
+| README grouped commands into 7 functional categories | 27 | Scannable reference aids command discovery |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -114,4 +139,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-12 after Phase 21 IRIS Module complete (v0.6 milestone complete)*
+*Last updated: 2026-03-12 after Phase 27 README complete (v0.8 complete)*

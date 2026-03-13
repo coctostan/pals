@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-12)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v0.6 Enhance & Expand — COMPLETE
+**Current focus:** v0.8 Configuration & Polish — Complete
 
 ## Current Position
 
-Milestone: v0.6 Enhance & Expand — COMPLETE
-Phase: 21 of 21 (IRIS Module) — Complete
-Plan: 21-01 complete
-Status: Milestone complete, all 5 phases done
-Last activity: 2026-03-12 — Phase 21 IRIS Module complete, v0.6 milestone finished
+Milestone: v0.8 Configuration & Polish — Complete
+Phase: 27 of 27 (README) — Complete
+Plan: 27-01 complete
+Status: v0.8 milestone complete, ready for next milestone
+Last activity: 2026-03-12 — Phase 27 complete, v0.8 milestone closed
 
 Progress:
-- v0.6 Enhance & Expand: [██████████] 100%
-- Phase 21: [██████████] 100%
+- v0.8 Configuration & Polish: [██████████] 100%
+- Phase 27: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — milestone finished]
+  ✓        ✓        ✓     [Loop complete — v0.8 milestone done]
 ```
 
 ## Accumulated Context
@@ -32,36 +32,32 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
-| /paul:coverage in kernel, detection ref in TODD module | 18 | Clean separation: command + module reference |
-| /paul:quality in kernel, trends ref in WALT module | 19 | Same pattern as Phase 18 |
-| DEAN has no hooks in v0.6 (read-only visibility) | 20 | Visibility first, enforcement later |
-| /paul:deps in kernel, detection refs in DEAN module | 20 | Same pattern as Phases 18-19 |
-| IRIS has no hooks in v0.6 (read-only guidance) | 21 | Advisory first, enforcement later |
-| /paul:review in kernel, pattern/checklist refs in IRIS module | 21 | Same pattern as Phases 18-20 |
+| pals.json replaces pals.yaml (JSON over YAML) | 26 | Simpler parsing, standard tooling |
+| All 8 modules enabled by default | 26 | Full experience out of the box |
+| README grouped commands into 7 functional categories | 27 | Scannable reference |
 
 ### Deferred Issues
-- ci-generation.md and sonarqube-integration.md — future module candidates (may overlap with DAVE in v0.7)
+- ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch not implemented (documented as future work)
 
 ### Blockers/Concerns
 - None active
 
 ### Git State
-Last commit: pending (feature branch merge)
+Last commit: ab55538
 Branch: main
-Feature branches merged: feature/20-dean-module
 
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: v0.6 milestone complete
-Next action: /paul:complete-milestone or /paul:milestone for v0.7
-Resume file: .paul/ROADMAP.md
+Stopped at: v0.8 milestone complete
+Next action: /paul:complete-milestone or /paul:milestone for v0.9
+Resume file: .paul/phases/27-readme/27-01-SUMMARY.md
 Resume context:
-- v0.6 Enhance & Expand: all 5 phases complete (17-21)
-- 5 pals now: CARL, TODD, WALT, DEAN, IRIS
-- 6 milestones complete: v0.1 through v0.6
-- Ready for v0.7 planning
+- v0.8 Configuration & Polish: 100% complete (2 of 2 phases)
+- Phase 26 Module Configuration & Init: complete
+- Phase 27 README: complete
+- 8 milestones of work: v0.1 → v0.8 complete
 
 ---
 *STATE.md — Updated after every significant action*

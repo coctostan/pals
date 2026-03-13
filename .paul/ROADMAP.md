@@ -28,23 +28,52 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-### v0.6 Enhance & Expand
+### v0.8 Configuration & Polish
 Status: ✅ Complete
 Completed: 2026-03-12
-Phases: 5 of 5 complete
-Focus: Evolve existing pals with smarter capabilities + add first two new pals to prove module system scales
+Phases: 2 of 2 complete
+Focus: User-facing module configuration system with JSON config and /paul:config command, wired into /paul:init, plus a publication-quality README
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 17 | CARL Auto-Detection | 1 | ✅ Complete | 2026-03-12 |
-| 18 | TODD Coverage Dashboard | 1 | ✅ Complete | 2026-03-12 |
-| 19 | WALT Quality Trends | 1 | ✅ Complete | 2026-03-12 |
-| 20 | DEAN Module | 1 | ✅ Complete | 2026-03-12 |
-| 21 | IRIS Module | 1 | ✅ Complete | 2026-03-12 |
+| 26 | Module Configuration & Init | 1 | ✅ Complete | 2026-03-12 |
+| 27 | README | 1 | ✅ Complete | 2026-03-12 |
+
+### Phase 26: Module Configuration & Init
+Focus: JSON config file for enabling/disabling modules, /paul:config command to manage settings, and wire config setup into /paul:init for new projects
+
+### Phase 27: README
+Focus: Publication-quality README that sells PALS — architecture overview, quick start, module catalog, and contribution guide
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.7 Full Roster & Lifecycle Integration - 2026-03-12 (4 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 22 | SKIP Module | 1 | 2026-03-12 |
+| 23 | DAVE Module | 1 | 2026-03-12 |
+| 24 | RUBY Module | 1 | 2026-03-12 |
+| 25 | Lifecycle Hooks | 1 | 2026-03-12 |
+
+</details>
+
+<details>
+<summary>v0.6 Enhance & Expand - 2026-03-12 (5 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 17 | CARL Auto-Detection | 1 | 2026-03-12 |
+| 18 | TODD Coverage Dashboard | 1 | 2026-03-12 |
+| 19 | WALT Quality Trends | 1 | 2026-03-12 |
+| 20 | DEAN Module | 1 | 2026-03-12 |
+| 21 | IRIS Module | 1 | 2026-03-12 |
+
+</details>
+
 
 <details>
 <summary>v0.5 TODD & WALT Go Live - 2026-03-12 (3 phases)</summary>
@@ -104,4 +133,4 @@ Focus: Evolve existing pals with smarter capabilities + add first two new pals t
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — v0.6 Enhance & Expand milestone complete*
+*Last updated: 2026-03-12 — Phase 26 Module Configuration & Init complete*
