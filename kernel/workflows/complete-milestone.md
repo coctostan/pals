@@ -367,19 +367,32 @@ All locations now show: {version}
 </step>
 
 <step name="git_tag">
-Create annotated git tag:
+**Read git config:**
+```bash
+GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
+GIT_AUTO_PUSH=$(jq -r '.git.auto_push // false' pals.json 2>/dev/null)
+```
 
+**Create annotated git tag:**
 ```bash
 git tag -a "{version}" -m "{milestone_name} complete - {accomplishment_summary}"
 ```
 
-Display:
+**Auto-push (if auto_push=true and remote set):**
+```bash
+git push origin main
+git push origin {version}
+```
+Display: `Tag and branch pushed to remote.`
+
+**If auto_push=false or no remote:**
+Display only:
 ```
 Git tag created: {version}
-(Push with: git push origin {version})
+Push when ready:
+  git push origin main
+  git push origin {version}
 ```
-
-**Note:** Do not push automatically — user controls when to push.
 </step>
 
 <step name="offer_next">

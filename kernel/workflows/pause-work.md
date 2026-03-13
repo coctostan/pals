@@ -160,6 +160,11 @@ Resume context:
 <step name="optional_commit">
 **If git repo, offer WIP commit with explicit two-question flow:**
 
+**Read git config for default:**
+```bash
+GIT_BRANCHING=$(jq -r '.git.branching // "feature-per-phase"' pals.json 2>/dev/null)
+```
+
 **Question 1 — Commit WIP?**
 ```
 ────────────────────────────────────────
@@ -172,17 +177,24 @@ This saves a checkpoint you can return to.
 
 **If no:** Skip to confirm step.
 
-**If yes — Question 2 — Branch choice:**
+**If yes — Question 2 — Branch choice (default from pals.json):**
+
+If `GIT_BRANCHING` = `direct-to-main`: default is option 1.
+If `GIT_BRANCHING` = `feature-per-phase` (or unset): default is option 2.
+
 ```
 ────────────────────────────────────────
 Where should this WIP commit go?
 
-[1] main — Commit directly to main branch
-[2] feature branch — Create feature/{phase-name} branch first
+[1] main — Commit directly to main branch {* if direct-to-main}
+[2] feature branch — Create feature/{phase-name} branch first {* if feature-per-phase}
 
-Note: Feature branch is useful if work isn't ready for main.
+Default matches your pals.json branching config.
+Press enter for default, or choose explicitly.
 ────────────────────────────────────────
 ```
+
+If user presses enter or says "default", use the config-driven default.
 
 **If main (option 1):**
 ```bash

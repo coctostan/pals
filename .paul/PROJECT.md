@@ -22,6 +22,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Context audit & optimization — measure and trim module reference context weight (Phase 28)
 - [x] Module observability — dispatch log, activity reports, user-visible hook output (Phase 29)
 - [~] Context monitor (conditional) — skipped, Phase 28 optimization made this unnecessary (Phase 30)
+- [x] Seamless Git & GH — config-driven git automation in kernel workflows (Phase 31)
 
 ### Must Have
 All validated — see below.
@@ -71,6 +72,7 @@ All validated — see below.
 - ✓ Publication-quality README — 3-layer architecture, 9-pal catalog, 40 commands, configuration guide — Phase 27
 - ✓ Context audit & optimization — 27 reference files measured, 15 trimmed, 43% reduction (4,507 → 2,550 lines), per-module budgets established — Phase 28
 - ✓ Module observability — per-hook refs in 7 modules, context_inject schema, dispatch log in 3 workflows, failure cascading + state recovery documentation — Phase 29
+- ✓ Seamless Git & GH — pals.json git config (5 fields), init configure_git step, config-driven auto PR/push/CI in transition-phase, auto push in complete-milestone, branching defaults in pause-work — Phase 31
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -131,6 +133,10 @@ All validated — see below.
 | Per-hook refs in module.yaml (not all module refs) | 29 | Each hook loads only what it needs, reducing context waste |
 | post-task block skips tasks but post-apply still fires | 29 | Allows quality gates to report even when task-level block halted execution |
 | Three detection outcomes: found-standard, found-non-standard, not-found | 29 | Non-standard should warn, not silently skip |
+| All git automation defaults to off (conservative) | 31 | Users must opt in during init |
+| Git config in pals.json (not separate file) | 31 | Single config file, consistent with modules/integrations |
+| Git automation is kernel-level, not a module | 31 | Kernel already does git; config toggle is the disable mechanism |
+| All remote ops guard on remote != null | 31 | Graceful degradation for local-only projects |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -149,4 +155,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after v0.9 Observability & Context Health complete*
+*Last updated: 2026-03-13 after Phase 31 Seamless Git & GH complete*
