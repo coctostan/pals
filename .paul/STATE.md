@@ -49,14 +49,14 @@ Branch: main
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 28 complete, session paused (context depleted)
-Next action: /paul:plan for Phase 29 (Module Observability)
-Resume file: .paul/HANDOFF-2026-03-13-v09-phase28.md
+Stopped at: Phase 28 bolstering + system audit complete (context depleted)
+Next action: Discuss Phase 29 scope (audit findings may expand it), then /paul:plan
+Resume file: .paul/HANDOFF-2026-03-13-v09-phase28-bolster.md
 Resume context:
-- Phase 28 complete: 43% context reduction (4,507 → 2,550 lines)
-- Budgets: 150 lines/file, 750 core module, 350 standard module
-- Phase 29 next: dispatch log, activity reports, user-visible hook output
-- Phase 30 likely unnecessary — context stays lean after optimization
+- Phase 28 bolstered: restored ~57 lines of guardrails + philosophy across 8 reference files
+- System audit found 10 structural holes (hook dispatch clarity, context_inject schema, per-hook ref loading)
+- Phase 29 scope likely needs expanding to address audit findings (especially #1, #3, #6, #8)
+- All files still within 150-line budget after bolstering
 
 ---
 *STATE.md — Updated after every significant action*

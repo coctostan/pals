@@ -32,7 +32,12 @@ One feature per plan. `type: tdd` in frontmatter. Sections: Objective, Context, 
 
 **REFACTOR:** Review for improvements → run tests (MUST still pass) → commit only if changes: `refactor({phase}-{plan}): ...`
 
-Result: 2-3 atomic commits per TDD plan.
+Result: 2-3 atomic commits per TDD plan. Example:
+```
+test(08-02): add failing test for email validation
+feat(08-02): implement email validation
+refactor(08-02): extract regex to constant (optional)
+```
 
 </execution_flow>
 

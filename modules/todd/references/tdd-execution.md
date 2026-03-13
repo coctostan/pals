@@ -21,14 +21,19 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 1. Read RED task and `<feature><behavior>` from plan
 2. Create test file (project conventions, descriptive names: "should [behavior] when [condition]")
 3. Run `test_command`:
-   - **Tests FAIL (expected):** Verify failure is correct reason (missing impl, not syntax/import error). Log success.
-   - **Tests PASS (unexpected):** STOP. Present options: fix test / feature exists / stop.
+   - **Tests FAIL (expected):** Classify failure reason:
+     - Missing module/function → correct (impl doesn't exist yet). Log success.
+     - Syntax error in test → STOP. Fix test before proceeding.
+     - Import error for framework → STOP. Configure framework before proceeding.
+   - **Tests PASS (unexpected):** STOP. Do NOT proceed. Present options: fix test / feature exists / stop.
 4. Commit: `git commit -m "test({phase}-{plan}): add failing test for [feature]"`
 5. Store `red_commit_hash`. Unlock GREEN.
 </step>
 
 <step name="execute_green" gate="red_complete">
-**GREEN: Implement to pass** (requires `red_commit_hash`)
+**GREEN: Implement to pass**
+
+**GATE:** `red_commit_hash` must exist. If not → STOP: "Cannot start GREEN without verified RED phase."
 
 1. Read GREEN task and `<feature><implementation>` from plan
 2. Write MINIMAL implementation — just make tests green, no cleverness
@@ -41,7 +46,9 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 </step>
 
 <step name="execute_refactor" gate="green_complete">
-**REFACTOR: Clean up** (requires `green_commit_hash`)
+**REFACTOR: Clean up**
+
+**GATE:** `green_commit_hash` must exist. If not → STOP: "Cannot start REFACTOR without verified GREEN phase."
 
 1. Review: extract constants, rename for clarity, remove duplication, simplify
 2. No improvements needed → log skip, proceed to results (no commit)

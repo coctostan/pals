@@ -126,6 +126,15 @@ jobs:
       - run: cargo test
 ```
 
+## GitLab CI Template (Node.js)
+
+```yaml
+stages: [lint, test, build]
+lint:  { stage: lint,  image: 'node:20', script: ['{install}', '{lint}'] }
+test:  { stage: test,  image: 'node:20', script: ['{install}', '{test}'] }
+build: { stage: build, image: 'node:20', script: ['{install}', '{build}'], artifacts: { paths: ['dist/'] } }
+```
+
 ## Generation Strategy
 
 1. Detect language, framework, package manager from indicator files

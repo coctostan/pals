@@ -42,11 +42,11 @@ done
 
 Degraded performance within bounds, partial feature failure, user reports.
 
-### Procedure
-1. Redeploy previous known-good version
-2. Re-run health checks
-3. Notify team with reason
-4. Post-mortem before re-attempting
+### Rollback Procedure (follow this order)
+1. **Revert** — redeploy previous known-good version immediately
+2. **Verify** — run same health checks against rolled-back version
+3. **Notify** — alert team with reason for rollback
+4. **Post-mortem** — investigate root cause before re-attempting deploy
 
 ## Verification by Environment
 

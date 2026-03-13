@@ -46,7 +46,7 @@ Coverage tool detection and output parsing. Maps frameworks to coverage commands
 
 1. Check Makefile for `coverage`/`test-coverage` target
 2. Check for `.nycrc`, `.c8rc`, `jest.config.*`, `vitest.config.*`
-3. Ask user: "No coverage tool detected. What command runs coverage?"
+3. Ask user: "No coverage tool detected. What command runs coverage?" Do NOT suggest installing coverage tools.
 
 </fallback>
 

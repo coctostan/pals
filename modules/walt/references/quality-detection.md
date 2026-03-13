@@ -115,10 +115,10 @@ tools:
 
 ## Fallback
 
-- **No tools for a category:** Skip silently. Don't suggest installing.
-- **No ecosystem detected:** Report "No recognized project configuration found". WALT is a no-op.
+- **No tools for a category:** Skip silently. Do NOT suggest installing tools — use what the project has.
+- **No ecosystem detected:** Report "No recognized project configuration found". WALT is a no-op — do NOT block workflow.
 - **Partial detection:** Run what's detected, skip what's missing.
-- **Detection errors:** Warn and skip: "WALT: {tool} detected but failed to run — skipping"
+- **Detection errors:** Warn and skip: "WALT: {tool} detected but failed to run — skipping". Do NOT retry or fix tool configuration.
 
 </fallback_behavior>
 

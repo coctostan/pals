@@ -7,6 +7,10 @@ RUBY's catalog of refactoring patterns — what to apply, when, and what smells 
 ### Extract Function
 **Smell:** Long function, duplicated logic, unclear intent
 **When:** A code block does one identifiable thing. If you need a comment to explain it, it should be a function.
+```
+BEFORE: function processOrder(order) { /* validate */ ... /* calculate */ ... /* save */ ... }
+AFTER:  function processOrder(order) { validateOrder(order); const totals = calculateTotals(order); db.save({...order, ...totals}); }
+```
 
 ### Extract Variable
 **Smell:** Complex expressions, magic numbers, unclear conditionals
@@ -22,7 +26,7 @@ RUBY's catalog of refactoring patterns — what to apply, when, and what smells 
 
 ### Consolidate Duplicates
 **Smell:** Copy-paste code in 2+ places
-**When:** Same logic appears multiple times AND represents the same concern. Warning: identical code serving different purposes should stay separate.
+**When:** Same logic appears multiple times AND represents the same concern. **WARNING:** Only consolidate if duplication represents the SAME concern. Two identical code blocks serving different purposes should remain separate — they may diverge later. Premature DRY creates coupling.
 
 ### Replace Conditional with Polymorphism
 **Smell:** Type-based switch/if chains in multiple places
