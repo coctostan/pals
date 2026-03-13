@@ -28,26 +28,39 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-### v0.8 Configuration & Polish
-Status: ✅ Complete
-Completed: 2026-03-12
-Phases: 2 of 2 complete
-Focus: User-facing module configuration system with JSON config and /paul:config command, wired into /paul:init, plus a publication-quality README
+### v0.9 Observability & Context Health
+Status: 🚧 In Progress
+Phases: 2 of 3 complete
+Focus: Make the module system transparent and ensure context weight is sustainable
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 26 | Module Configuration & Init | 1 | ✅ Complete | 2026-03-12 |
-| 27 | README | 1 | ✅ Complete | 2026-03-12 |
+| 28 | Context Audit & Optimization | 1 | ✅ Complete | 2026-03-13 |
+| 29 | Module Observability | 2 | ✅ Complete | 2026-03-13 |
+| 30 | Context Monitor (conditional) | TBD | Not started | - |
 
-### Phase 26: Module Configuration & Init
-Focus: JSON config file for enabling/disabling modules, /paul:config command to manage settings, and wire config setup into /paul:init for new projects
+### Phase 28: Context Audit & Optimization
+Focus: Measure token/line cost of all module references, identify bloat, trim and consolidate heavy files, establish per-module context budgets
 
-### Phase 27: README
-Focus: Publication-quality README that sells PALS — architecture overview, quick start, module catalog, and contribution guide
+### Phase 29: Module Observability
+Focus: Dispatch log showing which hooks fired, activity reports with module attribution in SUMMARY.md, user-visible hook output during plan/apply/unify
+
+### Phase 30: Context Monitor (conditional)
+Focus: `/paul:context` command for ongoing context budget monitoring — only built if Phase 28 reveals this is needed
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.8 Configuration & Polish - 2026-03-12 (2 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 26 | Module Configuration & Init | 1 | 2026-03-12 |
+| 27 | README | 1 | 2026-03-12 |
+
+</details>
 
 <details>
 <summary>v0.7 Full Roster & Lifecycle Integration - 2026-03-12 (4 phases)</summary>
@@ -133,4 +146,4 @@ Focus: Publication-quality README that sells PALS — architecture overview, qui
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-12 — Phase 26 Module Configuration & Init complete*
+*Last updated: 2026-03-13 — Phase 29 Module Observability complete*

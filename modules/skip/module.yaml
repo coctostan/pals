@@ -13,10 +13,15 @@ dependencies:
 hooks:
   post-apply:
     priority: 300
-    description: Identify decisions made during apply for potential knowledge capture
+    description: Scan STATE.md Decisions table and task outputs for new decisions; suggest /paul:knowledge entries
+    refs:
+      - references/knowledge-capture.md
   post-unify:
     priority: 200
-    description: Extract key decisions from SUMMARY.md; suggest knowledge entries
+    description: Extract decisions and rationale from SUMMARY.md; create knowledge entry suggestions with type classification
+    refs:
+      - references/knowledge-capture.md
+      - references/knowledge-search.md
 
 files:
   references:

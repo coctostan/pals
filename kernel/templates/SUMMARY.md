@@ -10,41 +10,40 @@ Template for `.paul/phases/{phase-number}-{name}/{phase}-{plan}-SUMMARY.md` — 
 
 ```markdown
 ---
-phase: XX-name
-plan: NN
-subsystem: [primary category: auth, payments, ui, api, database, infra, testing]
-tags: [searchable tech: jwt, stripe, react, postgres, prisma]
+phase: XX-name                    # Phase identifier matching ROADMAP.md (e.g., "29-module-observability")
+plan: NN                          # Plan number within phase (e.g., "01", "02")
+subsystem: name                   # Primary category affected (auth, payments, ui, api, database, infra, testing, kernel, modules)
+tags: []                          # Searchable keywords for knowledge retrieval (tech names, concepts, module names)
 
-# Dependency graph
-requires:
-  - phase: [prior phase this depends on]
-    provides: [what that phase built that this uses]
-provides:
-  - [what this plan built/delivered]
-  - [another deliverable]
-affects: [phase names or keywords that will need this context]
+# Dependency graph — tracks what this plan consumed and produces
+requires:                         # Plans whose output this plan used as input (not just "came before")
+  - phase: [prior phase ID]       #   Only list genuine data dependencies
+    provides: [specific artifact]  #   What from that phase was consumed
+provides:                         # Capabilities/artifacts this plan creates for downstream use
+  - [deliverable 1]               #   Be specific: "per-hook ref mapping in module.yaml" not "updates"
+  - [deliverable 2]
+affects:                          # Phase names or subsystems that will need this context in future plans
+  - [phase or subsystem name]
 
-# Tech tracking
+# Tech tracking — what was added or established
 tech-stack:
-  added: [libraries/tools added]
-  patterns: [architectural patterns established]
+  added: []                       # Libraries, tools, or frameworks introduced (empty if none)
+  patterns: []                    # Architectural patterns established (e.g., "per-hook ref loading")
 
 key-files:
-  created: [important files created]
-  modified: [important files modified]
+  created: []                     # Most important files created (not all files — just the key ones)
+  modified: []                    # Most important files modified
 
-key-decisions:
-  - "Decision 1: [brief]"
-  - "Decision 2: [brief]"
+key-decisions:                    # Quick-reference decisions (full detail in Decisions Made section)
+  - "Decision: [brief summary]"
 
-patterns-established:
-  - "Pattern 1: [description]"
-  - "Pattern 2: [description]"
+patterns-established:             # Conventions future plans should follow (feeds into project knowledge)
+  - "Pattern: [description]"      #   e.g., "Every hook entry must include refs array"
 
-# Metrics
-duration: Xmin
-started: YYYY-MM-DDTHH:MM:SSZ
-completed: YYYY-MM-DDTHH:MM:SSZ
+# Metrics — populated at completion
+duration: Xmin                    # Wall-clock time from apply start to completion
+started: YYYY-MM-DDTHH:MM:SSZ    # ISO timestamp when apply began
+completed: YYYY-MM-DDTHH:MM:SSZ  # ISO timestamp when apply finished
 ---
 
 # Phase [X] Plan [Y]: [Name] Summary

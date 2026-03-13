@@ -13,10 +13,14 @@ dependencies:
 hooks:
   pre-plan:
     priority: 250
-    description: Check if high-debt files are being touched; inject refactoring context
+    description: Check files_modified against debt detection heuristics; inject debt_flags with file paths and debt types
+    refs:
+      - references/debt-detection.md
   post-unify:
     priority: 300
-    description: Scan changed files for new tech debt introduced; suggest improvements
+    description: Scan SUMMARY.md files_modified for new debt patterns; report as annotations with refactor suggestions
+    refs:
+      - references/refactor-patterns.md
 
 files:
   references:

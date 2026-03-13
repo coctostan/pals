@@ -1,35 +1,16 @@
 <overview>
-TDD is about design quality, not coverage metrics. The red-green-refactor cycle forces you to think about behavior before implementation, producing cleaner interfaces and more testable code.
-
-**Principle:** If you can describe the behavior as `expect(fn(input)).toBe(output)` before writing `fn`, TDD improves the result.
-
-**Key insight:** TDD work is fundamentally heavier than standard tasks—it requires 2-3 execution cycles (RED → GREEN → REFACTOR), each with file reads, test runs, and potential debugging. TDD features get dedicated plans to ensure full context is available throughout the cycle.
+TDD is about design quality, not coverage metrics. Red-green-refactor forces behavior-first thinking, producing cleaner interfaces. TDD work is heavier (2-3 cycles per feature), so TDD features get dedicated plans with 40% context budget.
 </overview>
 
 <when_to_use_tdd>
 
-## When TDD Improves Quality
+## When to Use TDD
 
-**TDD candidates (create a TDD plan with `type: tdd`):**
-- Business logic with defined inputs/outputs
-- API endpoints with request/response contracts
-- Data transformations, parsing, formatting
-- Validation rules and constraints
-- Algorithms with testable behavior
-- State machines and workflows
-- Utility functions with clear specifications
+**TDD candidates (`type: tdd`):** Business logic with defined I/O, API endpoints, data transformations, validation rules, algorithms, state machines, utility functions.
 
-**Skip TDD (use standard plan with `type: execute`):**
-- UI layout, styling, visual components
-- Configuration changes
-- Glue code connecting existing components
-- One-off scripts and migrations
-- Simple CRUD with no business logic
-- Exploratory prototyping
+**Skip TDD (`type: execute`):** UI/styling, config changes, glue code, scripts/migrations, simple CRUD, exploratory prototyping.
 
-**Heuristic:** Can you write `expect(fn(input)).toBe(output)` before writing `fn`?
-→ Yes: Create a TDD plan
-→ No: Use standard plan, add tests after if needed
+**Heuristic:** Can you write `expect(fn(input)).toBe(output)` before writing `fn`? Yes → TDD. No → standard plan.
 
 </when_to_use_tdd>
 
@@ -37,57 +18,7 @@ TDD is about design quality, not coverage metrics. The red-green-refactor cycle 
 
 ## TDD Plan Structure
 
-Each TDD plan implements **one feature** through the full RED-GREEN-REFACTOR cycle.
-
-```yaml
----
-phase: XX-name
-plan: NN
-type: tdd
----
-```
-
-```markdown
-## Objective
-
-[What feature and why]
-Purpose: [Design benefit of TDD for this feature]
-Output: [Working, tested feature]
-
-## Context
-
-@.paul/PROJECT.md
-@.paul/ROADMAP.md
-@relevant/source/files.ts
-
-## Acceptance Criteria
-
-- AC-1: Failing test written and committed
-- AC-2: Implementation passes all tests
-- AC-3: Refactor complete (if needed)
-
-## Feature
-
-<feature>
-  <name>[Feature name]</name>
-  <files>[source file, test file]</files>
-  <behavior>
-    [Expected behavior in testable terms]
-    Cases: input → expected output
-  </behavior>
-  <implementation>[How to implement once tests pass]</implementation>
-</feature>
-
-## Verification
-
-[Test command that proves feature works]
-
-## Boundaries
-
-DO NOT CHANGE: [files outside TDD scope]
-```
-
-**One feature per TDD plan.** If features are trivial enough to batch, they're trivial enough to skip TDD.
+One feature per plan. `type: tdd` in frontmatter. Sections: Objective, Context, Acceptance Criteria (AC-1: failing test, AC-2: impl passes, AC-3: refactor), Feature (behavior spec), Verification, Boundaries.
 
 </tdd_plan_structure>
 
@@ -95,100 +26,37 @@ DO NOT CHANGE: [files outside TDD scope]
 
 ## Red-Green-Refactor Cycle
 
-**RED - Write failing test:**
-1. Create test file following project conventions
-2. Write test describing expected behavior
-3. Run test - it MUST fail
-4. If test passes: feature exists or test is wrong. Investigate.
-5. Commit: `test({phase}-{plan}): add failing test for [feature]`
+**RED:** Create test file → write behavior tests → run tests (MUST fail) → if passes, investigate → commit `test({phase}-{plan}): ...`
 
-**GREEN - Implement to pass:**
-1. Write minimal code to make test pass
-2. No cleverness, no optimization - just make it work
-3. Run test - it MUST pass
-4. Commit: `feat({phase}-{plan}): implement [feature]`
+**GREEN:** Write minimal code → run tests (MUST pass) → fix if existing tests break → commit `feat({phase}-{plan}): ...`
 
-**REFACTOR (if needed):**
-1. Clean up implementation if obvious improvements exist
-2. Run tests - MUST still pass
-3. Only commit if changes made: `refactor({phase}-{plan}): clean up [feature]`
+**REFACTOR:** Review for improvements → run tests (MUST still pass) → commit only if changes: `refactor({phase}-{plan}): ...`
 
-**Result:** Each TDD plan produces 2-3 atomic commits.
+Result: 2-3 atomic commits per TDD plan. Example:
+```
+test(08-02): add failing test for email validation
+feat(08-02): implement email validation
+refactor(08-02): extract regex to constant (optional)
+```
 
 </execution_flow>
 
 <test_quality>
 
-## Good Tests vs Bad Tests
+## Good Tests
 
-**Test behavior, not implementation:**
-- Good: "returns formatted date string"
-- Bad: "calls formatDate helper with correct params"
-- Tests should survive refactors
-
-**One concept per test:**
-- Good: Separate tests for valid input, empty input, malformed input
-- Bad: Single test checking all edge cases with multiple assertions
-
-**Descriptive names:**
-- Good: "should reject empty email", "returns null for invalid ID"
-- Bad: "test1", "handles error", "works correctly"
-
-**No implementation details:**
-- Good: Test public API, observable behavior
-- Bad: Mock internals, test private methods, assert on internal state
+- **Test behavior, not implementation:** "returns formatted date" not "calls formatDate helper"
+- **One concept per test:** Separate tests for valid, empty, malformed input
+- **Descriptive names:** "should reject empty email", not "test1"
+- **No implementation details:** Test public API, not private methods
 
 </test_quality>
 
-<commit_pattern>
-
-## PAUL Commit Pattern for TDD Plans
-
-TDD plans produce 2-3 atomic commits (one per phase):
-
-```
-test(08-02): add failing test for email validation
-
-- Tests valid email formats accepted
-- Tests invalid formats rejected
-- Tests empty input handling
-
-feat(08-02): implement email validation
-
-- Regex pattern matches RFC 5322
-- Returns boolean for validity
-- Handles edge cases (empty, null)
-
-refactor(08-02): extract regex to constant (optional)
-
-- Moved pattern to EMAIL_REGEX constant
-- No behavior changes
-- Tests still pass
-```
-
-**Format:** `{type}({phase}-{plan}): {description}`
-
-Types for TDD:
-- `test` - RED phase (failing test)
-- `feat` - GREEN phase (implementation)
-- `refactor` - REFACTOR phase (cleanup)
-
-</commit_pattern>
-
 <context_budget>
 
-## Context Budget
+## Context Budget: ~40%
 
-TDD plans target **~40% context usage** (lower than standard plans' ~50%).
-
-Why lower:
-- RED phase: write test, run test, potentially debug why it didn't fail
-- GREEN phase: implement, run test, potentially iterate on failures
-- REFACTOR phase: modify code, run tests, verify no regressions
-
-Each phase involves reading files, running commands, analyzing output. The back-and-forth is inherently heavier than linear task execution.
-
-Single feature focus ensures full quality throughout the cycle.
+Lower than standard 50% because RED/GREEN/REFACTOR each involve file reads, test runs, potential debugging. Single feature focus ensures full quality throughout.
 
 </context_budget>
 
@@ -196,50 +64,19 @@ Single feature focus ensures full quality throughout the cycle.
 
 ## Error Handling
 
-**Test doesn't fail in RED phase:**
-- Feature may already exist - investigate
-- Test may be wrong (not testing what you think)
-- Fix before proceeding
-
-**Test doesn't pass in GREEN phase:**
-- Debug implementation
-- Don't skip to refactor
-- Keep iterating until green
-
-**Tests fail in REFACTOR phase:**
-- Undo refactor
-- Commit was premature
-- Refactor in smaller steps
-
-**Unrelated tests break:**
-- Stop and investigate
-- May indicate coupling issue
-- Fix before proceeding
+- **RED passes:** Feature may exist or test is wrong. Investigate before proceeding.
+- **GREEN fails:** Debug implementation. Don't skip to refactor. Keep iterating.
+- **REFACTOR breaks tests:** Undo. Refactor in smaller steps.
+- **Unrelated tests break:** Stop and investigate coupling.
 
 </error_handling>
 
 <operational_workflows>
 
-## PAUL Workflow Integration
+## PAUL Integration
 
-TDD is operationally integrated into PAUL's plan-apply-unify loop:
-
-**Planning (type: tdd):**
-- @references/tdd-plan-generation.md — TDD plan generation spec, defines RED/GREEN/REFACTOR structure
-- @references/tdd-detection.md — Candidate detection heuristics (STRONG/MODERATE/SKIP)
-- Referenced by plan-phase.md when type is tdd
-
-**Execution (apply phase):**
-- @references/tdd-execution.md — Phase-gated RED-GREEN-REFACTOR execution spec
-- RED: write test, verify fails, commit `test({phase}-{plan}): ...`
-- GREEN: implement, verify passes, commit `feat({phase}-{plan}): ...`
-- REFACTOR: cleanup (optional), verify still passes, commit `refactor({phase}-{plan}): ...`
-- Hooked into apply-phase.md via conditional delegation
-
-**Auditing (unify phase):**
-- audit_tdd_execution step in unify-phase.md
-- Verifies RED/GREEN/REFACTOR commits exist via git log
-- Runs test suite to confirm all passing
-- Documents results in SUMMARY.md TDD Execution section
+- **Planning:** tdd-plan-generation.md (plan structure), tdd-detection.md (candidate detection)
+- **Execution:** tdd-execution.md (phase-gated RED→GREEN→REFACTOR)
+- **Auditing:** unify-phase.md audit_tdd_execution (verify commits via git log, run tests, document in SUMMARY.md)
 
 </operational_workflows>

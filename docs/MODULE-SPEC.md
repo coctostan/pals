@@ -90,7 +90,8 @@ platform:                        # optional platform-specific configuration
 | `dependencies.modules` | list[string] | no | Names of other modules this one requires. Installer checks these are present. |
 | `hooks` | map | no | Keys are hook point names; values define priority and description. |
 | `hooks.<point>.priority` | integer | yes (if hook declared) | Execution priority. Lower numbers run first. Range: 1-999. |
-| `hooks.<point>.description` | string | yes (if hook declared) | What the module does at this hook point. |
+| `hooks.<point>.description` | string | yes (if hook declared) | Actionable instruction for what the module does at this hook point. |
+| `hooks.<point>.refs` | list[string] | yes (if hook declared) | Reference files to load for this specific hook (not all module refs). |
 | `files.references` | list[string] | no | Reference documents installed to `~/.pals/references/`. |
 | `files.workflows` | list[string] | no | Workflow files installed to `~/.pals/workflows/`. |
 | `files.templates` | list[string] | no | Template files installed to `~/.pals/templates/`. |
@@ -420,7 +421,42 @@ Hooks at the same hook point receive the same base payload from the kernel. They
 - `annotations` from `post-task` hooks accumulate and appear in `annotations_from_apply` at `post-apply`, `pre-unify`, and `post-unify`.
 - Within a single hook point, if multiple modules return `context_inject`, their values are merged. On key collision, the higher-priority-number (later-running) module's value wins.
 
-### 3.4 Data Flow Summary
+### 3.4 `context_inject` Schema
+
+Every hook that returns `context_inject` must follow this schema:
+
+```yaml
+context_inject:
+  <key>:                              # string key, unique per module per hook point
+    value: <any>                      # the injected data (scalar, list, or object)
+    format: key-value | structured | flag  # how the consumer should interpret it
+```
+
+**Format types:**
+| Format | Description | Example |
+|--------|-------------|---------|
+| `flag` | Boolean signal — presence means active | `tdd_enforced: true` |
+| `key-value` | Simple key with scalar/list value | `tdd_candidates: ["src/auth.ts"]` |
+| `structured` | Object with nested fields | `test_baseline: { total: 142, passing: 140, test_command: "npm test" }` |
+
+**Per-hook-point injection table:**
+
+| Hook Point | Who Injects | Keys | Format | Consumed By |
+|-----------|-------------|------|--------|-------------|
+| pre-plan | DEAN | `dep_warnings` | key-value | plan scope analysis |
+| pre-plan | TODD | `tdd_candidates`, `tdd_type` | key-value, flag | post-plan |
+| pre-plan | IRIS | `review_flags` | key-value | plan scope analysis |
+| pre-plan | DAVE | `deploy_warning` | flag | plan scope analysis |
+| pre-plan | RUBY | `debt_flags` | key-value | plan scope analysis |
+| pre-apply | TODD | `tdd_enforced` | flag | post-task, post-apply |
+| pre-apply | WALT | `test_baseline` | structured | post-apply |
+| post-task | TODD | `tdd_phase_completed` | key-value | accumulates → post-apply |
+| post-apply | WALT | `quality_gate` | structured | pre-unify, SUMMARY |
+| pre-unify | WALT | `quality_trend` | structured | reconciliation |
+
+**Merge rules:** When multiple modules inject at the same hook point, values are merged by key. On key collision, the later-running module (higher priority number) wins.
+
+### 3.5 Data Flow Summary
 
 ```
 pre-plan
@@ -449,6 +485,59 @@ pre-unify
 post-unify
   └─ side_effects ─────────────────► logged, no further processing
 ```
+
+### 3.6 Failure Cascading Across Hook Points
+
+When a blocking hook fires, it affects not just the current hook point but all downstream hook points in the loop iteration.
+
+**Cascade rules by blocking hook:**
+
+| Blocking Hook | Same-Point Effect | Downstream Effect |
+|---------------|-------------------|-------------------|
+| `pre-plan` | Remaining modules at pre-plan skip | No plan created → post-plan never fires |
+| `pre-apply` | Remaining modules at pre-apply skip | No tasks execute → post-task, post-apply never fire |
+| `post-task` | Remaining modules at post-task skip | Remaining tasks skip; post-apply **still fires** (for cleanup/reporting) |
+| `post-apply` | Remaining modules at post-apply skip | Pre-unify and post-unify never fire (apply not complete) |
+
+**Key distinction:** `post-task` blocks stop remaining *tasks* but do not skip `post-apply`. This allows quality gates (WALT) to report even when a task-level block (TODD) halted execution early.
+
+**Recovery:** The user resolves the blocking reason (e.g., fix failing tests, add missing dependencies), then re-runs the phase command (`/paul:apply`). The full hook chain re-executes from the beginning of that phase.
+
+### 3.7 Ordering Dependencies
+
+**Within a hook point:** Priority ordering is deterministic (section 3.1). Lower priority numbers run first.
+
+**Across hook points:** Ordering follows the kernel loop: `pre-plan → post-plan → pre-apply → pre-test → post-task → post-apply → pre-unify → post-unify`. This is fixed and cannot be changed by modules.
+
+**Cross-module data availability:**
+- A module's `context_inject` at hook point N is available to **all modules** at hook point N+1 (via `context_from_*` payload fields)
+- A module **cannot** read another module's `context_inject` at the **same** hook point — only at subsequent hook points
+- Example: TODD injects `tdd_type: true` at `pre-plan`. DEAN cannot see `tdd_type` during its own `pre-plan` hook. But `post-plan` hooks receive it in `context_from_pre_plan`.
+
+**Implication:** If module A needs data from module B at the same hook point, one must move to an earlier hook point or the data dependency must be restructured across hook points.
+
+### 3.8 Non-Standard Project Adaptation
+
+Modules that detect project artifacts (TODD detecting test files, DEAN detecting package managers, CARL scanning for technologies) should handle three detection outcomes:
+
+| Outcome | Description | Module Response |
+|---------|-------------|-----------------|
+| **found-standard** | Artifact exists in expected location/format | Proceed normally with full feature set |
+| **found-non-standard** | Artifact exists but in unexpected location/format | Warn via `context_inject`, adapt where possible |
+| **not-found** | Artifact does not exist | Skip gracefully (no-op, no warning) |
+
+**found-non-standard guidance:**
+- Inject a warning key via `context_inject` (e.g., `tdd_warning: "tests found in non-standard path: lib/specs/"`)
+- Do NOT block — non-standard does not mean broken
+- Adapt detection heuristics where feasible (e.g., accept alternate test directories)
+- Document the non-standard pattern in plan annotations so the user is aware
+
+**Examples:**
+- TODD finds test files in `lib/specs/` instead of `__tests__/` or `*.test.*` — warn, adapt test command
+- DEAN finds `package.json` with workspaces in an uncommon structure — warn, still audit dependencies
+- CARL scan finds a framework but configuration files are in non-default locations — warn, still suggest rules
+
+**Anti-pattern:** Treating found-non-standard as not-found. Silent skipping loses observability — the user never learns their project has detectable but non-standard patterns.
 
 ---
 

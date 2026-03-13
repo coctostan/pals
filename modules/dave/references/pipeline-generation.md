@@ -1,25 +1,20 @@
 # Pipeline Generation
 
-Templates and heuristics for generating CI/CD pipeline configurations based on project structure.
+Templates and heuristics for CI/CD pipeline generation based on project structure.
 
 ## Project Detection
 
-### Language Detection Heuristics
+### Language Detection
 
-| Indicator File | Language/Framework | Pipeline Template |
-|---------------|-------------------|-------------------|
+| Indicator File | Language | Template |
+|---------------|----------|----------|
 | `package.json` | Node.js | node-ci |
-| `package-lock.json` | Node.js (npm) | node-ci (npm) |
-| `yarn.lock` | Node.js (yarn) | node-ci (yarn) |
-| `pnpm-lock.yaml` | Node.js (pnpm) | node-ci (pnpm) |
-| `pyproject.toml` | Python | python-ci |
-| `requirements.txt` | Python (pip) | python-ci (pip) |
-| `Pipfile` | Python (pipenv) | python-ci (pipenv) |
+| `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml` | Node.js (npm/yarn/pnpm) | node-ci |
+| `pyproject.toml`/`requirements.txt`/`Pipfile` | Python | python-ci |
 | `go.mod` | Go | go-ci |
 | `Cargo.toml` | Rust | rust-ci |
 | `Gemfile` | Ruby | ruby-ci |
-| `pom.xml` | Java (Maven) | java-ci (maven) |
-| `build.gradle` | Java/Kotlin (Gradle) | java-ci (gradle) |
+| `pom.xml`/`build.gradle` | Java | java-ci |
 
 ### Framework Detection
 
@@ -28,197 +23,128 @@ Templates and heuristics for generating CI/CD pipeline configurations based on p
 | `next.config.*` | Next.js | Build + SSR deploy |
 | `vite.config.*` | Vite | Build + static deploy |
 | `Dockerfile` | Docker | Container build + push |
-| `docker-compose.yml` | Docker Compose | Multi-service orchestration |
-| `serverless.yml` | Serverless Framework | Function deploy |
-| `vercel.json` | Vercel | Vercel CLI deploy |
-| `netlify.toml` | Netlify | Netlify CLI deploy |
+| `serverless.yml` | Serverless | Function deploy |
+| `vercel.json`/`netlify.toml` | Vercel/Netlify | CLI deploy |
 
 ### CI Platform Detection
 
 | Indicator | Platform |
 |-----------|----------|
 | `.github/workflows/` | GitHub Actions (existing) |
-| `.gitlab-ci.yml` | GitLab CI (existing) |
-| `.circleci/config.yml` | CircleCI (existing) |
-| `Jenkinsfile` | Jenkins (existing) |
-| `.github/` directory | GitHub (generate Actions) |
-| Default | GitHub Actions (most common) |
+| `.gitlab-ci.yml` | GitLab CI |
+| `.circleci/config.yml` | CircleCI |
+| `Jenkinsfile` | Jenkins |
+| Default | GitHub Actions |
 
 ## GitHub Actions Templates
 
 ### Node.js
-
 ```yaml
 name: CI
-
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: '{package-manager}'
-      - run: {install-command}
-      - run: {lint-command}
-      - run: {test-command}
-
+        with: { node-version: 20, cache: '{pkg-mgr}' }
+      - run: {install}
+      - run: {lint}
+      - run: {test}
   build:
     needs: lint-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: '{package-manager}'
-      - run: {install-command}
-      - run: {build-command}
+        with: { node-version: 20, cache: '{pkg-mgr}' }
+      - run: {install}
+      - run: {build}
 ```
 
 ### Python
-
 ```yaml
 name: CI
-
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: {install-command}
-      - run: {lint-command}
-      - run: {test-command}
+        with: { python-version: '3.12' }
+      - run: {install}
+      - run: {lint}
+      - run: {test}
 ```
 
 ### Go
-
 ```yaml
 name: CI
-
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
-        with:
-          go-version: '1.22'
+        with: { go-version: '1.22' }
       - run: go vet ./...
       - run: go test ./...
-
   build:
     needs: lint-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
-        with:
-          go-version: '1.22'
+        with: { go-version: '1.22' }
       - run: go build ./...
 ```
 
 ### Rust
-
 ```yaml
 name: CI
-
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy, rustfmt
+        with: { components: 'clippy, rustfmt' }
       - run: cargo fmt --check
       - run: cargo clippy -- -D warnings
       - run: cargo test
 ```
 
-## GitLab CI Templates
-
-### Node.js
+## GitLab CI Template (Node.js)
 
 ```yaml
-stages:
-  - lint
-  - test
-  - build
-
-lint:
-  stage: lint
-  image: node:20
-  script:
-    - {install-command}
-    - {lint-command}
-
-test:
-  stage: test
-  image: node:20
-  script:
-    - {install-command}
-    - {test-command}
-
-build:
-  stage: build
-  image: node:20
-  script:
-    - {install-command}
-    - {build-command}
-  artifacts:
-    paths:
-      - dist/
+stages: [lint, test, build]
+lint:  { stage: lint,  image: 'node:20', script: ['{install}', '{lint}'] }
+test:  { stage: test,  image: 'node:20', script: ['{install}', '{test}'] }
+build: { stage: build, image: 'node:20', script: ['{install}', '{build}'], artifacts: { paths: ['dist/'] } }
 ```
 
 ## Generation Strategy
 
-1. **Detect project** — scan for indicator files to determine language, framework, package manager
-2. **Detect CI platform** — check for existing configs or default to GitHub Actions
-3. **Select template** — match language + platform to template
-4. **Customize stages** — fill in package manager commands, build scripts from package.json/pyproject.toml
-5. **Add caching** — configure dependency caching for the detected package manager
-6. **Write config** — generate the pipeline file at the correct path
+1. Detect language, framework, package manager from indicator files
+2. Detect CI platform (existing config or default GitHub Actions)
+3. Select + customize template (fill commands from package.json/pyproject.toml)
+4. Add dependency caching (lock file hash as key, separate per branch)
+5. Write config to correct path
 
 ## Best Practices
 
-### Caching
-- Cache dependency directories (node_modules, .venv, target/)
-- Use lock file hash as cache key
-- Separate cache per branch for isolation
-
-### Matrix Builds
-- Test against multiple runtime versions when supporting them
-- Test on multiple OS if targeting cross-platform
-
-### Reusable Workflows
-- Extract common steps into reusable workflows/templates
-- Share across repositories via organization-level configs
+- **Caching:** Cache deps (node_modules, .venv, target/), lock file hash as key
+- **Matrix builds:** Multiple runtime versions if supported; multi-OS if cross-platform
+- **Reusable workflows:** Extract common steps; share via org-level configs

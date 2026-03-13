@@ -12,13 +12,22 @@ dependencies:
 hooks:
   pre-apply:
     priority: 100
-    description: Capture test baseline — run tests and record counts before changes
+    description: Run test suite and record baseline counts (total/passing/failing/test_command); inject test_baseline into context
+    refs:
+      - references/quality-runner.md
+      - references/quality-detection.md
   post-apply:
     priority: 100
-    description: Run tests, lint, typecheck; compare against baseline; gate on regressions
+    description: Re-run tests + lint + typecheck; compare against pre-apply baseline; block if regressions detected
+    refs:
+      - references/quality-runner.md
+      - references/quality-lint.md
   post-unify:
     priority: 100
-    description: Record quality delta in quality-history.md for trend tracking
+    description: Compute quality delta (before vs after); append entry to quality-history.md with phase metadata
+    refs:
+      - references/quality-delta.md
+      - references/quality-history.md
 
 files:
   references:

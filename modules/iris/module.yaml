@@ -13,10 +13,15 @@ dependencies:
 hooks:
   pre-plan:
     priority: 150
-    description: Scan planned files for known anti-patterns; inject review context
+    description: Scan files_modified list for known anti-pattern signatures; inject review_flags with pattern names into context
+    refs:
+      - references/review-patterns.md
   post-apply:
     priority: 250
-    description: Run review patterns against changed files; report findings
+    description: Run all 25 review patterns against changed files; report findings as annotations with severity
+    refs:
+      - references/review-patterns.md
+      - references/inspection-checklists.md
 
 files:
   references:
