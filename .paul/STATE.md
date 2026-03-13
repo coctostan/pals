@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-13)
 ## Current Position
 
 Milestone: v1.0 Production Ready
-Phase: 37 of 37 (Resilience & Isolation)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-13 — Phase 36 complete, transitioned to Phase 37
+Phase: 37 of 37 (Resilience & Isolation) — Complete
+Plan: 37-01 complete
+Status: Loop closed, phase complete — transition required
+Last activity: 2026-03-13 — Unified 37-01 (worktree isolation + AGENTS.md)
 
 Progress:
-- v1.0 Production Ready: [██████░░░░] 67%
-- Phase 37: [░░░░░░░░░░] 0%
+- v1.0 Production Ready: [██████████] 100%
+- Phase 37: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN]
+  ✓        ✓        ✓     [Loop complete — phase transition required]
 ```
 
 ## Accumulated Context
@@ -45,6 +45,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch not implemented (documented as future work)
 - Tree-sitter repo map deferred to future (Aider's approach requires Python tooling)
+- AGENTS.md deferred to interoperability milestone (duplicates CLAUDE.md, convention not standardized)
 
 ### Blockers/Concerns
 - None active
@@ -54,18 +55,25 @@ Last commit: 548c65b
 Branch: main
 PR: None open
 
+### Decisions (this session)
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Worktree isolation must be optional (default off) | 37 | Config-driven, zero behavior change for existing users |
+| worktree/ branch prefix distinct from feature/ | 37 | Clear namespace separation |
+| No worktree in fix loop | 37 | Fix loop lightweight by design |
+| AGENTS.md deferred to interoperability milestone | 37 | Duplicates CLAUDE.md; not standardized yet |
+
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 36 complete, ready to plan Phase 37
-Next action: /paul:plan for Phase 37
-Resume file: .paul/HANDOFF-2026-03-13-v10-phase36-complete.md
+Stopped at: v1.0 milestone 100% — pending /paul:complete-milestone
+Next action: /paul:complete-milestone
+Resume file: .paul/HANDOFF-2026-03-13-v10-phase37-complete.md
 Resume context:
-- Phase 36 complete: brownfield init, map-codebase v2 (GRAPH.md), onboarding guide
-- Phase 37 next: Resilience & Isolation (git worktrees, AGENTS.md)
-- Research during planning: deep-dive Superpowers worktree mechanics
-- v1.0 milestone 67% complete (2 of 3 phases)
-- Phase 37 is the LAST phase — after it, run /paul:complete-milestone
+- Phase 37 complete: optional worktree isolation (AGENTS.md deferred)
+- v1.0 milestone 100% complete (3/3 phases: 35, 36, 37)
+- Commit Phase 37 changes, then run /paul:complete-milestone
+- After milestone: plan next milestone
 
 ---
 *STATE.md — Updated after every significant action*

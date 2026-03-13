@@ -89,6 +89,71 @@ Next phase: UNIFY (after execution completes)
 **This check runs BEFORE any task execution, ensuring skills are in place.**
 </step>
 
+<step name="setup_worktree" priority="after-skills">
+**Optional: Create git worktree for isolated execution.**
+
+1. Read pals.json git config:
+   ```bash
+   WORKTREE_ISOLATION=$(jq -r '.git.worktree_isolation // false' pals.json 2>/dev/null)
+   ```
+
+2. **If false or absent:** Skip (no-op). All execution happens on current branch. Proceed to pre_apply_hooks.
+
+3. **If true:**
+   a. Derive worktree name from phase:
+      ```bash
+      PHASE_NAME={phase-name}  # e.g., "37-resilience-and-isolation"
+      WORKTREE_DIR=".worktree-${PHASE_NAME}"
+      WORKTREE_BRANCH="worktree/${PHASE_NAME}"
+      ```
+
+   b. Create worktree:
+      ```bash
+      git worktree add "${WORKTREE_DIR}" -b "${WORKTREE_BRANCH}"
+      ```
+
+   c. Copy .paul/ state into worktree (worktrees share git but not working directory):
+      ```bash
+      cp -r .paul/ "${WORKTREE_DIR}/.paul/"
+      cp pals.json "${WORKTREE_DIR}/pals.json" 2>/dev/null || true
+      ```
+
+   d. Record worktree in STATE.md Session Continuity:
+      ```markdown
+      Worktree: {WORKTREE_DIR} (branch: {WORKTREE_BRANCH})
+      ```
+
+   e. **All subsequent task execution happens in the worktree directory.**
+      File paths in tasks are relative to the worktree root.
+
+   f. Display:
+      ```
+      Worktree created: {WORKTREE_DIR}
+      Branch: {WORKTREE_BRANCH}
+      All execution will happen in isolated worktree.
+      ```
+
+4. **If worktree creation fails** (e.g., dirty working tree):
+   ```
+   ════════════════════════════════════════
+   ⚠️ Worktree creation failed
+   ════════════════════════════════════════
+
+   Error: {git error message}
+
+   Options:
+   [1] Continue without worktree (execute on current branch)
+   [2] Fix issue and retry
+   [3] Stop
+   ════════════════════════════════════════
+   ```
+   - If "1": Proceed without worktree, log deviation
+   - If "2": Wait for user, retry worktree creation
+   - If "3": Halt APPLY
+
+**Note:** Fix loop workflows (/paul:fix) do NOT use worktrees regardless of config.
+</step>
+
 <step name="pre_apply_hooks" priority="before-tasks">
 **Dispatch pre-apply lifecycle hooks to registered modules.**
 

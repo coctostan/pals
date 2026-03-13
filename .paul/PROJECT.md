@@ -28,6 +28,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Competitive analysis — 15 frameworks benchmarked, gaps/differentiators mapped, v1.0 priorities set (Phase 34)
 - [x] Lightweight fix loop — /paul:fix command with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY (Phase 35)
 - [x] Brownfield & codebase intelligence — brownfield init detection, map-codebase v2 with reference graph (GRAPH.md), onboarding guide (Phase 36)
+- [x] Resilience & isolation — optional git worktree isolation (config-driven, default off) (Phase 37)
 
 ### Must Have
 All validated — see below.
@@ -83,6 +84,7 @@ All validated — see below.
 - ✓ Competitive analysis — 15 frameworks benchmarked, 3 critical gaps, 6 strong differentiators, v1.0 phase mapping — Phase 34
 - ✓ Lightweight fix loop — /paul:fix with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY, fix-types reference — Phase 35
 - ✓ Brownfield & codebase intelligence — brownfield init detection, map-codebase v2 with Agent 5 reference graph (GRAPH.md), brownfield onboarding guide — Phase 36
+- ✓ Resilience & isolation — optional git worktree isolation (config-driven, default off) — Phase 37
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -162,6 +164,10 @@ All validated — see below.
 | Reference graph via Explore agent, not tree-sitter | 36 | PALS is markdown-based; Aider's graph insight adopted without Python dependencies |
 | GRAPH.md as 8th additive document | 36 | Existing 7 templates unchanged; zero regression risk |
 | Brownfield init is branch, not replacement | 36 | Greenfield flow untouched; brownfield detection is opt-in |
+| Worktree isolation must be optional (default off) | 37 | Config-driven, zero behavior change for existing users |
+| worktree/ branch prefix distinct from feature/ | 37 | Clear namespace separation |
+| No worktree in fix loop | 37 | Fix loop lightweight by design; worktree overhead contradicts fast-forward |
+| AGENTS.md deferred to interoperability milestone | 37 | Duplicates CLAUDE.md; convention not standardized |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -180,4 +186,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 36 Brownfield & Codebase Intelligence complete*
+*Last updated: 2026-03-13 after Phase 37 Resilience & Isolation complete*

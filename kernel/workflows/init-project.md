@@ -429,6 +429,7 @@ Wait for user response.
   "git": {
     "remote": null,
     "branching": "feature-per-phase",
+    "worktree_isolation": false,
     "auto_push": false,
     "auto_pr": false,
     "ci_checks": false
@@ -500,7 +501,21 @@ Wait for user response.
 - If "1": Store `git_branching = "feature-per-phase"`
 - If "2": Store `git_branching = "direct-to-main"`
 
-**Question 3 — Automation (only if GH remote detected):**
+**Question 3 — Worktree Isolation (only if git repo detected):**
+```
+Use git worktrees during APPLY phase?
+This creates an isolated copy for each phase — if something goes wrong,
+discard the worktree instead of reverting commits.
+
+[1] No (default) — work directly on current branch
+[2] Yes — isolate each APPLY phase in a worktree
+```
+
+Wait for user response.
+- If "1" or Enter: Store `git_worktree_isolation = false`
+- If "2": Store `git_worktree_isolation = true`
+
+**Question 4 — Automation (only if GH remote detected):**
 ```
 Git automation? (Enter to accept defaults)
 
@@ -520,6 +535,7 @@ Wait for CI checks before merge:     [yes/NO]
 "git": {
   "remote": "{git_remote or null}",
   "branching": "{git_branching}",
+  "worktree_isolation": {git_worktree_isolation},
   "auto_push": {git_auto_push},
   "auto_pr": {git_auto_pr},
   "ci_checks": {git_ci_checks}

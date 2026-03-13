@@ -167,6 +167,52 @@ If pals.json is absent or git section missing, all values default to safe/off.
 <step name="commit_phase">
 **Git commit for completed phase:**
 
+**0. Check for worktree from this phase:**
+
+```bash
+WORKTREE_ISOLATION=$(jq -r '.git.worktree_isolation // false' pals.json 2>/dev/null)
+git worktree list 2>/dev/null | grep "worktree/{phase}" || WORKTREE_FOUND=false
+```
+
+**If worktree found AND worktree_isolation=true:**
+
+```
+────────────────────────────────────────
+Worktree detected: .worktree-{phase-name}
+Branch: worktree/{phase-name}
+
+Merging worktree back to source branch...
+────────────────────────────────────────
+```
+
+Merge worktree branch:
+```bash
+# Determine source branch (main or feature branch)
+SOURCE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git merge worktree/{phase-name} --no-ff -m "Merge worktree/{phase-name} into ${SOURCE_BRANCH}"
+```
+
+If merge succeeds:
+```bash
+git worktree remove .worktree-{phase-name}
+git branch -d worktree/{phase-name}
+```
+Display: `Worktree merged and cleaned up.`
+
+If merge has conflicts:
+```
+⚠️ Conflicts merging worktree/{phase-name}.
+
+Options:
+[1] Resolve conflicts manually, then continue
+[2] Keep worktree branch (do not merge)
+[3] Discard worktree (lose worktree changes)
+```
+
+Clean STATE.md Session Continuity — remove `Worktree:` line.
+
+**If no worktree found or worktree_isolation=false:** Continue to feature branch check.
+
 **1. Check for feature branches from this phase:**
 
 If `GIT_BRANCHING` = `direct-to-main`: skip feature branch check, commit directly to main.
