@@ -14,6 +14,40 @@ Completed milestone log for this project.
 | v0.8 Configuration & Polish | 2026-03-12 | 1 day | 2 phases, 2 plans |
 | v0.9 Observability & Context Health | 2026-03-13 | 1 day | 2 phases, 3 plans |
 | v0.9.1 Release Readiness | 2026-03-13 | 1 day | 3 phases, 4 plans |
+| v0.9.2 Competitive Intelligence | 2026-03-13 | 1 day | 1 phase, 1 plan |
+
+---
+
+## ✅ v0.9.2 Competitive Intelligence
+
+**Completed:** 2026-03-13
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 1 |
+| Plans | 1 |
+| Frameworks researched | 15 |
+| Research subagents | 5 (parallel) |
+
+### Key Accomplishments
+
+- Benchmarked PALS against 15 agentic coding frameworks (BMAD, OhMyOpenCode, Superpowers, OpenSpec, SpecKit, Aider, Cline, Continue.dev, SWE-agent, OpenHands, MetaGPT, GPT Pilot, Cursor rules, Mentat, Devin)
+- Identified 3 critical gaps: brownfield support, lightweight fix loop, fast-forward escape hatch
+- Mapped 6 strong differentiators: UNIFY phase (unique), modular architecture, TDD enforcement, quality gating, session continuity, named module personalities
+- Recommended v1.0 phases: 35 (fix/hotfix), 36 (brownfield), 37 (resilience/isolation)
+- Identified Superpowers as closest competitor; PALS differentiates with UNIFY, modules, session continuity
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Brownfield is #1 adoption barrier | 34 | Must address in v1.0 |
+| Lightweight fix loop critical | 34 | Full loop for 1-file bugs drives users away |
+| Do NOT build autonomous execution | 34 | Supervised approach is correct |
+| Do NOT build IDE plugins | 34 | CLI-first via drivers is right abstraction |
 
 ---
 

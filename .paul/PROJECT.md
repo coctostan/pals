@@ -25,6 +25,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Seamless Git & GH — config-driven git automation in kernel workflows (Phase 31)
 - [x] PALS Documentation — module builder's guide, troubleshooting guide, changelog (Phase 32)
 - [x] DOCS module — documentation lifecycle & oversight companion (Phase 33)
+- [x] Competitive analysis — 15 frameworks benchmarked, gaps/differentiators mapped, v1.0 priorities set (Phase 34)
 
 ### Must Have
 All validated — see below.
@@ -77,6 +78,7 @@ All validated — see below.
 - ✓ Seamless Git & GH — pals.json git config (5 fields), init configure_git step, config-driven auto PR/push/CI in transition-phase, auto push in complete-milestone, branching defaults in pause-work — Phase 31
 - ✓ PALS Documentation — module builder's guide (7-step walkthrough + DEAN example), troubleshooting guide (5 categories, 19 entries), changelog (v0.1 through v0.9.1) — Phase 32
 - ✓ DOCS module — documentation lifecycle & oversight (2 hooks, 3 references, advisory priority 200-250) — Phase 33
+- ✓ Competitive analysis — 15 frameworks benchmarked, 3 critical gaps, 6 strong differentiators, v1.0 phase mapping — Phase 34
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -144,6 +146,10 @@ All validated — see below.
 | DOCS uses advisory priority (200-250) | 33 | Non-blocking doc awareness, runs after enforcement modules |
 | No kernel command for DOCS in v1 | 33 | Visibility via hooks first, /paul:docs command later |
 | Proximity-based drift detection (not content parsing) | 33 | Content parsing too fragile, git blame too slow for hook context |
+| Brownfield support is #1 adoption barrier | 34 | OpenSpec, Aider prove existing codebases need support |
+| Lightweight fix loop critical for v1.0 | 34 | Full PLAN-APPLY-UNIFY for 1-file bugs drives users away |
+| Do NOT build full autonomous execution | 34 | Devin's 15% success rate proves supervised approach is correct |
+| Superpowers is closest competitor | 34 | PALS differentiates with UNIFY, modules, session continuity |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -162,4 +168,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 33 Doc Lifecycle Module complete — v0.9.1 milestone complete*
+*Last updated: 2026-03-13 after Phase 34 Competitive Research complete*

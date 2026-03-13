@@ -28,11 +28,20 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-None active — v0.9.1 complete, ready for next milestone.
+None active — v0.9.2 complete, ready for next milestone.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v0.9.2 Competitive Intelligence - 2026-03-13 (1 phase)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 34 | Competitive Research | 1 | 2026-03-13 |
+
+</details>
 
 <details>
 <summary>v0.9.1 Release Readiness - 2026-03-13 (3 phases)</summary>
@@ -150,4 +159,4 @@ None active — v0.9.1 complete, ready for next milestone.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — v0.9.1 milestone complete*
+*Last updated: 2026-03-13 — v0.9.2 Competitive Intelligence complete*
