@@ -9,6 +9,46 @@ Completed milestone log for this project.
 | v0.3 Smart Context & Migration | 2026-03-11 | 1 day | 2 phases, 2 plans |
 | v0.4 Kernel & Modules | 2026-03-12 | 2 days | 4 phases, 7 plans |
 | v0.5 TODD & WALT Go Live | 2026-03-12 | 1 day | 3 phases, 3 plans |
+| v0.6 Enhance & Expand | 2026-03-12 | 1 day | 5 phases, 5 plans |
+| v0.7 Full Roster & Lifecycle Integration | 2026-03-12 | 1 day | 4 phases, 4 plans |
+| v0.8 Configuration & Polish | 2026-03-12 | 1 day | 2 phases, 2 plans |
+| v0.9 Observability & Context Health | 2026-03-13 | 1 day | 2 phases, 3 plans |
+
+---
+
+## ✅ v0.9 Observability & Context Health
+
+**Completed:** 2026-03-13
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 2 (Phase 30 skipped — conditional, deemed unnecessary) |
+| Plans | 3 |
+| Files changed | 32 (2 created, 30 modified) |
+
+### Key Accomplishments
+
+- Measured all 27 module reference files, identified WALT/TODD as 55% of context weight, trimmed 15 files achieving 43% total reduction (4,507 to 2,550 lines)
+- Established context budgets: 150 lines/file, 750 lines/core module, 350 lines/standard module
+- Per-hook reference mapping in 7 modules — each hook loads only what it needs
+- Formal context_inject schema with format types and per-hook injection table in MODULE-SPEC.md
+- Dispatch log instructions at every hook point in plan/apply/unify workflows
+- Failure cascading documentation across hook points (MODULE-SPEC.md 3.6-3.8)
+- State recovery playbook for non-destructive STATE.md repair
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| 150-line hard cap per reference file | 28 | Bounded context load per hook dispatch |
+| Separate budgets: 750 lines core, 350 standard | 28 | Core modules get 2x budget due to deeper integration |
+| Per-hook refs in module.yaml (not all module refs) | 29 | Each hook loads only what it needs |
+| post-task block skips tasks but post-apply still fires | 29 | Cleanup/reporting always runs |
+| Three detection outcomes: found-standard, found-non-standard, not-found | 29 | Non-standard warns, never silently skips |
+| Phase 30 skipped — context sustainable after Phase 28 optimization | 30 | No ongoing monitoring tool needed |
 
 ---
 

@@ -21,7 +21,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Publication-quality README — architecture, module catalog, command reference, configuration guide (Phase 27)
 - [x] Context audit & optimization — measure and trim module reference context weight (Phase 28)
 - [x] Module observability — dispatch log, activity reports, user-visible hook output (Phase 29)
-- [ ] Context monitor (conditional) — /paul:context command for ongoing budget monitoring (Phase 30)
+- [~] Context monitor (conditional) — skipped, Phase 28 optimization made this unnecessary (Phase 30)
 
 ### Must Have
 All validated — see below.
@@ -149,4 +149,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 29 Module Observability complete*
+*Last updated: 2026-03-13 after v0.9 Observability & Context Health complete*
