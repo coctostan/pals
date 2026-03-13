@@ -55,21 +55,22 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Last commit: 85c48e3
+Last commit: b06d9b9
 Branch: feature/v07-roster-hooks
 Feature branches merged: feature/20-dean-module, feature/21-iris-module
 
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: v0.7 milestone complete
-Next action: /paul:milestone or /paul:pause
-Resume file: .paul/phases/25-lifecycle-hooks/25-01-SUMMARY.md
+Stopped at: v0.7 milestone complete, session paused
+Next action: Merge feature/v07-roster-hooks to main, then define next milestone
+Resume file: .paul/HANDOFF-2026-03-12-v07-complete.md
 Resume context:
 - v0.7 Full Roster & Lifecycle Integration: 100% complete
 - 8 pals: CARL, TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY
 - All pals integrated into lifecycle hooks (16 registrations across 6 hook points)
 - 7 milestones complete: v0.1 → v0.7
+- Feature branch feature/v07-roster-hooks not yet merged to main
 
 ---
 *STATE.md — Updated after every significant action*
