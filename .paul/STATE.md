@@ -68,12 +68,14 @@ PR: #6 open (v1.0 milestone)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v1.1 milestone complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Stopped at: v1.1 complete, v1.2 milestone discussion done, MILESTONE-CONTEXT.md ready
+Next action: /paul:milestone (create v1.2 Multi-Model Routing from MILESTONE-CONTEXT.md)
+Resume file: .paul/HANDOFF-2026-03-14-v16-v1.1-complete.md
 Resume context:
-- v1.1 Deep Competitive Audit milestone complete (5 phases, 35+ improvements shipped)
-- Ready for next milestone definition
+- v1.1 milestone complete, committed 76508e6, tagged v1.1
+- v1.2 Multi-Model Routing discussed, MILESTONE-CONTEXT.md created
+- v2.0 Portability scoped separately (user's docs in docs/)
+- User wants pi-mono adapter support in v2.0
 
 ---
 *STATE.md — Updated after every significant action*
