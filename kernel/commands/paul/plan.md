@@ -12,21 +12,21 @@ Create or continue a PLAN for the specified phase.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/plan-phase.md
-@~/.pals/templates/PLAN.md
-@~/.pals/references/plan-format.md
+kernel/workflows/plan-phase.md
+kernel/templates/PLAN.md
+kernel/references/plan-format.md
 </execution_context>
 
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/plan-phase.md
+Follow workflow: kernel/workflows/plan-phase.md
 </process>
 
 <success_criteria>

@@ -18,16 +18,16 @@ Analyze a phase for unknowns and research them using subagents.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/research.md
-@~/.pals/references/subagent-criteria.md
+kernel/workflows/research.md
+kernel/references/subagent-criteria.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (required)
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>

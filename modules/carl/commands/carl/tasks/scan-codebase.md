@@ -7,7 +7,7 @@
 
 ### Phase 1: Detect Technologies
 
-1. **Load rule catalog** from `~/.pals/modules/carl/config/rule-catalog.yaml`
+1. **Load rule catalog** from `kernel/modules/carl/config/rule-catalog.yaml`
 2. **Scan project directory** for each technology's detection signatures:
    - For `file` signatures: use Glob to check if matching files exist in project root
    - For `package_json` signatures: read `package.json` and check if the package is in `dependencies` or `devDependencies`
@@ -171,7 +171,7 @@ Or install PALS which sets up .carl/ automatically.
 
 **Rule catalog not found:**
 ```
-Error: Rule catalog not found at ~/.pals/modules/carl/config/rule-catalog.yaml
+Error: Rule catalog not found at kernel/modules/carl/config/rule-catalog.yaml
 This file is part of the CARL module — reinstall PALS to restore it.
 ```
 

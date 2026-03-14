@@ -14,19 +14,19 @@ Execute discovery to inform planning decisions. Produces DISCOVERY.md with findi
 </objective>
 
 <execution_context>
-@~/.pals/workflows/discovery.md
-@~/.pals/templates/DISCOVERY.md
+kernel/workflows/discovery.md
+kernel/templates/DISCOVERY.md
 </execution_context>
 
 <context>
 $ARGUMENTS (phase number or topic)
 
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-**Follow workflow: @~/.pals/workflows/discovery.md**
+**Follow workflow: kernel/workflows/discovery.md**
 
 The workflow implements:
 1. Determine depth level (quick/standard/deep)

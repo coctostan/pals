@@ -15,8 +15,8 @@ inspection checklists, and specific suggestions based on what actually changed.
 </objective>
 
 <execution_context>
-@~/.pals/modules/iris/references/review-patterns.md
-@~/.pals/modules/iris/references/inspection-checklists.md
+kernel/modules/iris/references/review-patterns.md
+kernel/modules/iris/references/inspection-checklists.md
 </execution_context>
 
 <context>

@@ -11,17 +11,17 @@ Review all open issues from ISSUES.md and phase-scoped UAT files with current co
 </objective>
 
 <execution_context>
-@~/.pals/workflows/consider-issues.md
+kernel/workflows/consider-issues.md
 </execution_context>
 
 <context>
-@.paul/ISSUES.md (if exists)
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/ISSUES.md (if exists)
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-**Follow workflow: @~/.pals/workflows/consider-issues.md**
+**Follow workflow: kernel/workflows/consider-issues.md**
 
 The workflow implements:
 1. Find all issue files (ISSUES.md, phase-scoped UAT files)

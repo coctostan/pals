@@ -14,17 +14,17 @@ Restore PAUL context after a session break, determine current position, and sugg
 </objective>
 
 <execution_context>
-@~/.pals/workflows/resume-project.md
+kernel/workflows/resume-project.md
 </execution_context>
 
 <context>
 $ARGUMENTS (optional handoff path)
 
-@.paul/STATE.md
+.paul/STATE.md
 </context>
 
 <process>
-**Follow workflow: @~/.pals/workflows/resume-project.md**
+**Follow workflow: kernel/workflows/resume-project.md**
 
 The workflow implements:
 1. Verify .paul/ exists

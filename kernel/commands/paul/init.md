@@ -14,10 +14,10 @@ Creates PROJECT.md, STATE.md, and ROADMAP.md populated from conversation - user 
 </objective>
 
 <execution_context>
-@~/.pals/workflows/init-project.md
-@~/.pals/templates/PROJECT.md
-@~/.pals/templates/STATE.md
-@~/.pals/templates/ROADMAP.md
+kernel/workflows/init-project.md
+kernel/templates/PROJECT.md
+kernel/templates/STATE.md
+kernel/templates/ROADMAP.md
 </execution_context>
 
 <context>
@@ -25,7 +25,7 @@ Current directory state (check for existing .paul/)
 </context>
 
 <process>
-**Follow workflow: @~/.pals/workflows/init-project.md**
+**Follow workflow: kernel/workflows/init-project.md**
 
 The workflow implements conversational setup:
 

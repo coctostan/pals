@@ -230,7 +230,7 @@ paul-framework/
 ## Special Directories
 
 **src/**
-- Purpose: Resources installed to ~/.pals/
+- Purpose: Resources installed to kernel/ (resolved by adapter)
 - Source: Copied by bin/install.js during installation
 - Committed: Yes (source of truth)
 

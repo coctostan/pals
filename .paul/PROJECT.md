@@ -37,6 +37,8 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Config & routing design — agent-based task execution with 4 named roles, configurable models, dispatch logic (Phase 43)
 - [x] Implementation & validation — agent config in init, agent tracking in unify, model routing in research/discover (Phase 44)
 - [x] Artifact & Lifecycle Spec — normative schemas for 8 artifacts, lifecycle state machine, hook dispatch contract (Phase 45)
+- [x] Harness-Agnostic Skills — all kernel + module files use portable kernel/ references, zero @~/.pals/ or @.paul/ patterns (Phase 46)
+- [x] Pi Adapter — driver manifest, installer, uninstaller; multi-driver root installer installs for all detected harnesses (Phase 47)
 
 ### Must Have
 All validated — see below.
@@ -101,6 +103,7 @@ All validated — see below.
 - ✓ Config & routing design — pals.json agents schema (4 roles), agent-dispatch.md reference, apply/plan-phase agent dispatch logic, PLAN.md template agent attribute — Phase 43
 - ✓ Implementation & validation — init creates agents config, unify tracks agent execution, research/discover use configured model — Phase 44
 - ✓ Artifact & Lifecycle Spec — ARTIFACT-SPEC.md (8 schemas), LIFECYCLE-SPEC.md (7 states, 7 transitions), HOOK-CONTRACT.md (6 hooks, 9 modules) — Phase 45
+- ✓ Harness-Agnostic Skills — 3 plans: convention doc + core loop (46-01), all kernel files (46-02), all module files (46-03). 53+ files converted, zero non-portable references — Phase 46
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)

@@ -14,14 +14,14 @@ Direct entry point for ad-hoc fixes without full PLAN ceremony.
 </objective>
 
 <execution_context>
-@~/.pals/references/fix-types.md
-@~/.pals/workflows/fix-loop.md
+kernel/references/fix-types.md
+kernel/workflows/fix-loop.md
 </execution_context>
 
 <context>
 Fix description: $ARGUMENTS (optional — will prompt if not provided)
 
-@.paul/STATE.md
+.paul/STATE.md
 </context>
 
 <process>
@@ -81,7 +81,7 @@ Wait for user input. Accept: "s"/"standard", "f"/"ff"/"fast", "h"/"hotfix", or E
 <step name="route_to_fix_loop">
 **Route to fix-loop workflow:**
 
-Pass to @~/.pals/workflows/fix-loop.md:
+Pass to kernel/workflows/fix-loop.md:
 - mode: selected mode
 - description: fix description
 - uncommitted_changes: true/false

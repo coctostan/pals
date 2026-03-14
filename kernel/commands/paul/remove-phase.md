@@ -12,19 +12,19 @@ Remove a future phase from the roadmap and clean up its directory.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/roadmap-management.md
+kernel/workflows/roadmap-management.md
 </execution_context>
 
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/roadmap-management.md
+Follow workflow: kernel/workflows/roadmap-management.md
 
 Execute: **remove-phase** operation
 </process>

@@ -14,8 +14,8 @@ Guide the user through manual acceptance testing of recently built features.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/verify-work.md
-@~/.pals/templates/UAT-ISSUES.md
+kernel/workflows/verify-work.md
+kernel/templates/UAT-ISSUES.md
 </execution_context>
 
 <context>
@@ -23,12 +23,12 @@ Scope: $ARGUMENTS (optional)
 - If provided: Test specific phase or plan (e.g., "4" or "04-02")
 - If not provided: Test most recently completed plan
 
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-**Follow workflow: @~/.pals/workflows/verify-work.md**
+**Follow workflow: kernel/workflows/verify-work.md**
 
 The workflow implements:
 1. Identify test scope (specified or most recent SUMMARY)

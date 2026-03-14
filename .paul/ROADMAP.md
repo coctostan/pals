@@ -29,13 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.0 Portability & Cross-Harness**
 Status: 🚧 In Progress
-Phases: 1 of 4 complete
+Phases: 3 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 45 | Artifact & Lifecycle Spec | 1 | Complete | 2026-03-14 |
-| 46 | Harness-Agnostic Skills | TBD | Not started | - |
-| 47 | Pi Adapter | TBD | Not started | - |
+| 46 | Harness-Agnostic Skills | 3 | Complete | 2026-03-14 |
+| 47 | Pi Adapter | 1 | Complete | 2026-03-14 |
 | 48 | Cross-Harness Validation | TBD | Not started | - |
 
 ### Phase 45: Artifact & Lifecycle Spec

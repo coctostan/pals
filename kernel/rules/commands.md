@@ -46,9 +46,9 @@ A command should fit on one screen. If it grows beyond that, logic belongs in a 
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 ```
 
@@ -91,9 +91,9 @@ Create or continue a PLAN for the specified phase.
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>

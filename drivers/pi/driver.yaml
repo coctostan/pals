@@ -1,0 +1,21 @@
+name: pi
+version: 2.0.0
+platform: pi
+description: PALS driver for Pi (Anthropic's agentic IDE)
+
+kernel_version: ">=2.0.0"
+
+capabilities:
+  workflow_invoke: true
+  hook_register: false
+  state_read: true
+  state_write: true
+  user_interact: true
+  command_register: false
+
+config:
+  framework_dir: "~/.pi/agent/skills/pals"
+
+files:
+  - install.sh
+  - uninstall.sh

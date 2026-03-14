@@ -12,19 +12,19 @@ Facilitate vision discussion for a specific phase and create context handoff.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/discuss-phase.md
+kernel/workflows/discuss-phase.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (required)
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/discuss-phase.md
+Follow workflow: kernel/workflows/discuss-phase.md
 </process>
 
 <success_criteria>

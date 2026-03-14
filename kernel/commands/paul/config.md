@@ -14,7 +14,7 @@ Manage PALS module configuration and integrations. View, enable, and disable mod
 
 Look for pals.json in this order:
 1. Current project root (where .paul/ exists) — this is the per-project config
-2. `~/.pals/pals.json` (global fallback)
+2. `kernel/pals.json` (global fallback)
 
 If not found in the project root, create pals.json there with defaults (all modules enabled).
 The project root is the directory containing `.paul/`, NOT just the PALS source repo.

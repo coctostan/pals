@@ -12,18 +12,18 @@ Facilitate vision discussion for the next milestone and create context handoff.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/discuss-milestone.md
+kernel/workflows/discuss-milestone.md
 </execution_context>
 
 <context>
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
-@.paul/MILESTONES.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
+.paul/MILESTONES.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/discuss-milestone.md
+Follow workflow: kernel/workflows/discuss-milestone.md
 </process>
 
 <success_criteria>

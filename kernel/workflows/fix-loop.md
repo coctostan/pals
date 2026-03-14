@@ -15,8 +15,8 @@ It does NOT replace the full loop for planned work. It supplements it for ad-hoc
 </loop_context>
 
 <references>
-@~/.pals/references/fix-types.md
-@~/.pals/references/loop-phases.md
+@kernel/references/fix-types.md
+@kernel/references/loop-phases.md
 <!-- Module hooks dispatched where noted per mode -->
 </references>
 
@@ -94,7 +94,7 @@ autonomous: true
 <substep name="standard_hooks_post_apply">
 **Dispatch post-apply hooks:**
 
-1. Read `~/.pals/modules.yaml`
+1. Read `kernel/modules.yaml`
 2. Find modules registered for `post-apply`
 3. Sort by priority, dispatch each
 4. Output: `[dispatch] post-apply: {MODULE(priority) → outcome} | ...`
@@ -135,7 +135,7 @@ Fix applied successfully. {any notes}
 <substep name="standard_hooks_post_unify">
 **Dispatch post-unify hooks:**
 
-1. Read `~/.pals/modules.yaml`
+1. Read `kernel/modules.yaml`
 2. Find modules registered for `post-unify`
 3. Sort by priority, dispatch each
 4. Pass summary path

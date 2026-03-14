@@ -78,11 +78,11 @@ Enable secure user access
 @src/templates/PLAN.md
 
 # Project-relative (dynamic)
-@.paul/PROJECT.md
-@.paul/STATE.md
+.paul/PROJECT.md
+.paul/STATE.md
 
 # Conditional
-@.paul/DISCOVERY.md (if exists)
+.paul/DISCOVERY.md (if exists)
 ```
 
 ## Loop Terminology

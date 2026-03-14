@@ -15,9 +15,9 @@ After create-milestone, project is ready for first phase PLAN.
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/ROADMAP.md
-@.paul/MILESTONE-CONTEXT.md (if exists)
+.paul/STATE.md
+.paul/ROADMAP.md
+.paul/MILESTONE-CONTEXT.md (if exists)
 </required_reading>
 
 <references>

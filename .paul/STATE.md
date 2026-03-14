@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Milestone: v2.0 Portability & Cross-Harness
-Phase: 45 of 48 (Artifact & Lifecycle Spec) — Complete
-Plan: 45-01 complete
-Status: Phase 45 complete, ready for Phase 46
-Last activity: 2026-03-14 — Phase 45 unified, 3 spec docs shipped
+Phase: 47 of 48 (Pi Adapter) — Complete
+Plan: 47-01 complete (1/1 plans done)
+Status: Phase complete, ready for Phase 48
+Last activity: 2026-03-14 — Phase 47 complete (Pi adapter + multi-driver installer)
 
 Progress:
-- v2.0 Portability & Cross-Harness: [██░░░░░░░░] 25%
-- Phase 45: [██████████] 100%
+- v2.0 Portability & Cross-Harness: [███████░░░] 75%
+- Phase 47: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 45 complete]
+  ✓        ✓        ✓     [Phase 47 complete]
 ```
 
 ## Accumulated Context
@@ -51,6 +51,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Adapt context assembly pipeline, interrupted-action recovery, file staleness tracking, convention capture, structured onboarding | 42 | Lighter versions of Windsurf/MetaGPT/Cline/Devin/Cursor patterns |
 | Reject 11 techniques (condenser, dual-state, shadow git, autonomous memory, etc.) | 42 | Requires programmatic infrastructure or redundant with existing PALS/Claude Code mechanisms |
 | Defer tree-sitter+PageRank repo-map and LSP-powered analysis | 42 | High value but requires programmatic implementation beyond PALS scope |
+| Install for ALL detected harnesses (not pick one) | 47 | Both ~/.claude/ and ~/.pi/ get drivers; no prompt needed, no conflict |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -69,9 +70,13 @@ PR: #7 merged (v1.1+v1.2 milestones)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Phase 45 complete — Artifact & Lifecycle Spec
-Next action: /paul:plan for Phase 46: Harness-Agnostic Skills
-Resume file: .paul/HANDOFF-2026-03-14-phase45-complete.md
+Stopped at: Phase 47 complete — Pi adapter + multi-driver installer
+Next action: /paul:plan for Phase 48 (Cross-Harness Validation)
+Resume file: .paul/HANDOFF-2026-03-14-phase47-complete.md
+Resume context:
+- Phases 46+47 completed this session (harness-agnostic + Pi adapter)
+- Root installer rewritten for multi-driver support
+- Phase 48 is the final phase of v2.0 milestone
 
 ---
 *STATE.md — Updated after every significant action*

@@ -15,7 +15,7 @@ showing tested vs untested code paths with actionable suggestions.
 </objective>
 
 <execution_context>
-@~/.pals/modules/todd/references/coverage-detection.md
+kernel/modules/todd/references/coverage-detection.md
 </execution_context>
 
 <context>

@@ -22,16 +22,16 @@ Configure, amend, or audit specialized skill integrations for a PAUL project.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/configure-special-flows.md
-@~/.pals/references/specialized-workflow-integration.md
+kernel/workflows/configure-special-flows.md
+kernel/references/specialized-workflow-integration.md
 </execution_context>
 
 <context>
 Subcommand: $ARGUMENTS (optional)
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/SPECIAL-FLOWS.md (if exists)
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/SPECIAL-FLOWS.md (if exists)
 </context>
 
 <process>

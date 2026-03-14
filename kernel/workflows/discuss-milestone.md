@@ -17,9 +17,9 @@ After discussion, routes to /paul:milestone (create-milestone).
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/PROJECT.md (current requirements and progress)
-@.paul/MILESTONES.md (previous milestone accomplishments, if exists)
+.paul/STATE.md
+.paul/PROJECT.md (current requirements and progress)
+.paul/MILESTONES.md (previous milestone accomplishments, if exists)
 </required_reading>
 
 <references>

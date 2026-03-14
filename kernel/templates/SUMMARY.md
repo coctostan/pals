@@ -203,7 +203,7 @@ Or: "None"
 | `provides` | What this plan delivers |
 | `affects` | Future phases that need this context |
 | `tech-stack` | Libraries added, patterns established |
-| `key-files` | Important files for @context references |
+| `key-files` | Important files for context references |
 | `key-decisions` | Quick-reference decisions (detail in body) |
 | `patterns-established` | Conventions future phases should follow |
 | `duration`, `started`, `completed` | Performance metrics |

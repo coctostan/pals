@@ -12,20 +12,20 @@ Complete the current milestone, archive it, and evolve PROJECT.md.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/complete-milestone.md
+kernel/workflows/complete-milestone.md
 </execution_context>
 
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
-@.paul/MILESTONES.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
+.paul/MILESTONES.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/complete-milestone.md
+Follow workflow: kernel/workflows/complete-milestone.md
 </process>
 
 <success_criteria>

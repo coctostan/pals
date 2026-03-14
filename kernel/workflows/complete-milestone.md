@@ -16,10 +16,10 @@ After completion, project is ready for /paul:discuss-milestone or /paul:mileston
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/PROJECT.md
-@.paul/ROADMAP.md
-@.paul/phases/{milestone-phases}/*-SUMMARY.md
+.paul/STATE.md
+.paul/PROJECT.md
+.paul/ROADMAP.md
+.paul/phases/{milestone-phases}/*-SUMMARY.md
 </required_reading>
 
 <references>

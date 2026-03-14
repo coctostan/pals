@@ -4,8 +4,8 @@ Referenced by plan-phase.md when plan type is "tdd".
 </purpose>
 
 <references>
-@~/.pals/references/tdd.md
-@~/.pals/references/tdd-detection.md
+kernel/references/tdd.md
+kernel/references/tdd-detection.md
 </references>
 
 <process>
@@ -40,7 +40,7 @@ autonomous: true
 
 **Objective:** Goal, purpose (why TDD helps here), output files. **Context budget: 40%.**
 
-**Context:** @.paul/PROJECT.md, @.paul/ROADMAP.md, @.paul/STATE.md, relevant source files.
+**Context:** .paul/PROJECT.md, .paul/ROADMAP.md, .paul/STATE.md, relevant source files.
 
 **Acceptance Criteria (always these three):**
 - AC-1: Failing test written (fails for RIGHT reason — missing impl, not syntax)

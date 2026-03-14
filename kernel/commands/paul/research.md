@@ -18,8 +18,8 @@ Research a specific topic using subagents and save findings for review.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/research.md
-@~/.pals/references/subagent-criteria.md
+kernel/workflows/research.md
+kernel/references/subagent-criteria.md
 </execution_context>
 
 <context>
@@ -30,12 +30,12 @@ Optional flags:
 - `--web`: Focus on web/documentation (uses general-purpose agent)
 - No flag: Auto-detect based on topic
 
-@.paul/PROJECT.md
-@.paul/STATE.md
+.paul/PROJECT.md
+.paul/STATE.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/research.md
+Follow workflow: kernel/workflows/research.md
 </process>
 
 <success_criteria>

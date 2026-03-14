@@ -97,8 +97,8 @@ Execute an approved PLAN by running tasks in order, verifying each, and recordin
 </when_to_use>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/phases/{phase}/{plan}-PLAN.md
+.paul/STATE.md
+.paul/phases/{phase}/{plan}-PLAN.md
 </required_reading>
 
 <loop_context>

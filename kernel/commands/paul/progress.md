@@ -21,8 +21,8 @@ Show current progress and **route to exactly ONE next action**. Prevents decisio
 <context>
 $ARGUMENTS
 
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>

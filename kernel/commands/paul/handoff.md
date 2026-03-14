@@ -14,7 +14,7 @@ Generate a comprehensive handoff document synthesizing session activity, decisio
 </objective>
 
 <execution_context>
-@.paul/STATE.md
+.paul/STATE.md
 </execution_context>
 
 <context>

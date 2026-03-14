@@ -14,19 +14,19 @@ Surface Claude's assumptions about a phase to validate understanding before plan
 </objective>
 
 <execution_context>
-@~/.pals/workflows/phase-assumptions.md
+kernel/workflows/phase-assumptions.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (required)
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/phase-assumptions.md
+Follow workflow: kernel/workflows/phase-assumptions.md
 </process>
 
 <success_criteria>

@@ -12,10 +12,10 @@ Handle phase-level transition after all plans in a phase are complete. Evolves P
 </when_to_use>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/PROJECT.md
-@.paul/ROADMAP.md
-@.paul/phases/{current-phase}/*-SUMMARY.md
+.paul/STATE.md
+.paul/PROJECT.md
+.paul/ROADMAP.md
+.paul/phases/{current-phase}/*-SUMMARY.md
 </required_reading>
 
 <process>

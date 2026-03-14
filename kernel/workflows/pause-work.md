@@ -14,13 +14,13 @@ Any position in PLAN/APPLY/UNIFY loop. Captures state regardless of where loop i
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/PROJECT.md
+.paul/STATE.md
+.paul/PROJECT.md
 </required_reading>
 
 <references>
-@~/.pals/references/context-management.md
-@~/.pals/templates/HANDOFF.md
+@kernel/references/context-management.md
+@kernel/templates/HANDOFF.md
 </references>
 
 <process>

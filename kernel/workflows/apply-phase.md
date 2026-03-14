@@ -15,14 +15,14 @@ Next phase: UNIFY (after execution completes)
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/phases/{phase}/{plan}-PLAN.md
+.paul/STATE.md
+.paul/phases/{phase}/{plan}-PLAN.md
 </required_reading>
 
 <references>
-@~/.pals/references/checkpoints.md (if plan has checkpoints)
-@~/.pals/references/loop-phases.md
-<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
+kernel/references/checkpoints.md (if plan has checkpoints)
+kernel/references/loop-phases.md
+<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from kernel/modules.yaml -->
 </references>
 
 <process>
@@ -157,7 +157,7 @@ Next phase: UNIFY (after execution completes)
 <step name="pre_apply_hooks" priority="before-tasks">
 **Dispatch pre-apply lifecycle hooks to registered modules.**
 
-1. Read `~/.pals/modules.yaml` (if it exists)
+1. Read `kernel/modules.yaml` (if it exists)
 2. Find modules with hooks registered for `pre-apply`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
@@ -200,7 +200,7 @@ For each <task> in order:
      Continue? [yes/adjust plan/stop]
      ```
 6. **Dispatch post-task hooks:**
-   a. Read `~/.pals/modules.yaml` (if it exists)
+   a. Read `kernel/modules.yaml` (if it exists)
    b. Find modules with hooks registered for `post-task`
    c. Sort by priority (ascending — lower runs first)
    d. For each registered module:
@@ -287,7 +287,7 @@ For each <task> in order:
 <step name="post_apply_hooks" priority="after-tasks">
 **Dispatch post-apply lifecycle hooks to registered modules.**
 
-1. Read `~/.pals/modules.yaml` (if it exists)
+1. Read `kernel/modules.yaml` (if it exists)
 2. Find modules with hooks registered for `post-apply`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
