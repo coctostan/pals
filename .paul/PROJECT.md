@@ -104,6 +104,8 @@ All validated — see below.
 - ✓ Implementation & validation — init creates agents config, unify tracks agent execution, research/discover use configured model — Phase 44
 - ✓ Artifact & Lifecycle Spec — ARTIFACT-SPEC.md (8 schemas), LIFECYCLE-SPEC.md (7 states, 7 transitions), HOOK-CONTRACT.md (6 hooks, 9 modules) — Phase 45
 - ✓ Harness-Agnostic Skills — 3 plans: convention doc + core loop (46-01), all kernel files (46-02), all module files (46-03). 53+ files converted, zero non-portable references — Phase 46
+- ✓ Pi Adapter — driver manifest (4/6 capabilities), installer targeting ~/.pi/agent/skills/pals/, multi-driver root installer — Phase 47
+- ✓ Cross-Harness Validation — 45-check validation suite (TAP format), installer parity, portability compliance, artifact spec conformance, driver manifests. All pass. — Phase 48
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -220,4 +222,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 45 Artifact & Lifecycle Spec complete*
+*Last updated: 2026-03-14 after Phase 48 Cross-Harness Validation complete — v2.0 milestone done*

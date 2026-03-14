@@ -27,36 +27,24 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.0 Portability & Cross-Harness**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 45 | Artifact & Lifecycle Spec | 1 | Complete | 2026-03-14 |
-| 46 | Harness-Agnostic Skills | 3 | Complete | 2026-03-14 |
-| 47 | Pi Adapter | 1 | Complete | 2026-03-14 |
-| 48 | Cross-Harness Validation | TBD | Not started | - |
-
-### Phase 45: Artifact & Lifecycle Spec
-
-Focus: Formalize artifact schemas (STATE.md, PROJECT.md, ROADMAP.md, PLAN.md, SUMMARY.md), lifecycle state machine (PLAN → APPLY → UNIFY valid transitions, preconditions, postconditions), and hook semantics — the portable contract docs.
-
-### Phase 46: Harness-Agnostic Skills
-
-Focus: Rewrite all workflows/commands to remove `@` references and Claude-specific assumptions. Implement portable reference resolution that works on both Claude Code (Read tool) and pi (read tool).
-
-### Phase 47: Pi Adapter
-
-Focus: Build pi installer, pi TypeScript extension for hook dispatch, skill wiring into `~/.pi/agent/skills/`, settings.json integration. Map pi events → PALS lifecycle hooks.
-
-### Phase 48: Cross-Harness Validation
-
-Focus: End-to-end testing — same `.paul/` project driven by both Claude Code and pi adapters. Verify artifact parity, lifecycle fidelity, and module participation across harnesses.
+No active milestone. Run `/paul:discuss-milestone` or `/paul:milestone` to define the next one.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v2.0 Portability & Cross-Harness - 2026-03-14 (4 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 45 | Artifact & Lifecycle Spec | 1 | 2026-03-14 |
+| 46 | Harness-Agnostic Skills | 3 | 2026-03-14 |
+| 47 | Pi Adapter | 1 | 2026-03-14 |
+| 48 | Cross-Harness Validation | 1 | 2026-03-14 |
+
+</details>
 
 <details>
 <summary>v1.2 Multi-Model Routing - 2026-03-14 (2 phases)</summary>
