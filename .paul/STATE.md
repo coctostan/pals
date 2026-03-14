@@ -63,7 +63,11 @@ PR: #6 open (v1.0 milestone)
 Last session: 2026-03-14
 Stopped at: Phase 40 complete, transition done
 Next action: /paul:plan for Phase 41 (Quality & Validation)
-Resume file: .paul/phases/40-testing-tdd/40-01-SUMMARY.md
+Resume file: .paul/HANDOFF-2026-03-14-v13-phase40-complete.md
+Resume context:
+- Phase 40 (Testing & TDD) complete with 6 TODD improvements
+- v1.1 milestone at 60% (3/5 phases done: 38 planning, 39 execution, 40 testing)
+- Phase 41 scope: WALT quality gating deep dive (same research pattern as 38-40)
 
 ---
 *STATE.md — Updated after every significant action*
