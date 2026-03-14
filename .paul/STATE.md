@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Milestone: v1.1 Deep Competitive Audit & Quality Improvements
-Phase: 41 of 42 (Quality & Validation) — Complete
-Plan: 41-01 complete (loop closed)
-Status: Phase 41 complete, ready for Phase 42
-Last activity: 2026-03-14 — Unified 41-01 (quality & validation deep dive)
+Phase: 42 of 42 (UNIFY, Continuity & Codebase Intel) — Planning
+Plan: 42-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-14 — Created 42-01-PLAN.md (UNIFY, continuity & codebase intel deep dive)
 
 Progress:
-- v1.1 Deep Competitive Audit & Quality Improvements: [████████░░] 80%
-- Phase 41: [██████████] 100%
+- v1.1 Deep Competitive Audit & Quality Improvements: [█████████░] 90%
+- Phase 42: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 41 complete — ready for Phase 42 PLAN]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -53,6 +53,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Agent SDK hook dispatch not implemented
 - Tree-sitter repo map deferred
 - AGENTS.md deferred to interoperability milestone
+- Multi-model routing: Opus for plan/unify, Sonnet subagents for apply tasks — config-driven via pals.json `models` field, subagent dispatch in apply-phase
 
 ### Blockers/Concerns
 - None active
@@ -64,13 +65,14 @@ PR: #6 open (v1.0 milestone)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Phase 41 complete, transition done
-Next action: /paul:plan for Phase 42 (UNIFY, Continuity & Codebase Intel)
-Resume file: .paul/HANDOFF-2026-03-14-v14-phase41-complete.md
+Stopped at: Phase 42 planned, session paused before APPLY
+Next action: /paul:apply .paul/phases/42-unify-continuity-intel/42-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-14-v15-phase42-planned.md
 Resume context:
-- Phase 41 (Quality & Validation) complete with 8 WALT improvements
-- v1.1 milestone at 80% (4/5 phases done: 38 planning, 39 execution, 40 testing, 41 quality)
-- Phase 42 scope: UNIFY, session continuity, and brownfield intelligence deep dive
+- Phase 42 plan created: UNIFY, continuity & codebase intel deep dive
+- Research type plan with 3 tasks (research, checkpoint, implementation)
+- Final phase of v1.1 milestone (5/5)
+- Also fixed /paul:config bug (pals.json project root detection) — committed 6369de9
 
 ---
 *STATE.md — Updated after every significant action*
