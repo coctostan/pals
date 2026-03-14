@@ -28,7 +28,18 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-No active milestone. Run `/paul:discuss-milestone` or `/paul:milestone` to define the next one.
+**v2.1 Pi Runtime Integration**
+Status: In Progress
+Phases: 0 of 4 complete
+
+Focus: Make PALS actually run on Pi, not just deploy files to it
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 49 | SKILL.md Generation | 1 | Complete | 2026-03-14 |
+| 50 | Pi Extension | 1 | Planning | - |
+| 51 | Installer & Driver Update | TBD | Not started | - |
+| 52 | End-to-End Validation | TBD | Not started | - |
 
 ---
 
@@ -205,4 +216,4 @@ No active milestone. Run `/paul:discuss-milestone` or `/paul:milestone` to defin
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-14 — v2.0 Portability & Cross-Harness milestone created*
+*Last updated: 2026-03-14 — v2.1 Pi Runtime Integration milestone created*

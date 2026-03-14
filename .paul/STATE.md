@@ -5,25 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone
+**Current focus:** v2.1 Pi Runtime Integration
 
 ## Current Position
 
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.0 complete — ready for next
-Last activity: 2026-03-14 — v2.0 Portability & Cross-Harness milestone completed
+Milestone: v2.1 Pi Runtime Integration
+Phase: 50 of 52 (Pi Extension) — Planning
+Plan: 50-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-14 — Created 50-01-PLAN.md
 
 Progress:
-- v2.0 Portability & Cross-Harness: [██████████] 100% ✓
+- v2.1 Pi Runtime Integration: [██░░░░░░░░] 25%
+- Phase 49: [██████████] 100% ✓
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -69,13 +70,15 @@ PR: #7 merged (v1.1+v1.2 milestones)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v2.0 Portability & Cross-Harness milestone complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Stopped at: Plan 50-01 created, context limit reached
+Next action: /paul:apply .paul/phases/50-pi-extension/50-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-14-v2.1-phase50.md
 Resume context:
-- v2.0 complete: portable specs, harness-agnostic kernel, Pi adapter, cross-harness validation
-- 14 milestones completed total (v0.1 through v2.0)
-- 48 phases, 60+ plans completed
+- Phase 49 done: 11 SKILL.md files + skill-map.md created
+- Plan 50-01 ready: Pi TypeScript extension (pals-hooks.ts + README)
+- 2 tasks: create extension (<200 lines), create README
+- Pi extension API: registerCommand, events (session_start, context), appendEntry
+- Handoff has full Pi API reference for fresh session
 
 ---
 *STATE.md — Updated after every significant action*
