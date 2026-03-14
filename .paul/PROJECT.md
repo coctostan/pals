@@ -34,6 +34,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [~] Testing & TDD deep dive — 12 frameworks researched, 6 improvements to TODD module (Phase 40)
 - [~] Quality & Validation deep dive — 12 frameworks researched, 8 improvements to WALT module (Phase 41)
 - [~] UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements to 5 workflow/reference files (Phase 42)
+- [x] Config & routing design — agent-based task execution with 4 named roles, configurable models, dispatch logic (Phase 43)
 
 ### Must Have
 All validated — see below.
@@ -95,6 +96,7 @@ All validated — see below.
 - ✓ Testing & TDD deep dive — 12 frameworks researched, 6 improvements (anti-pattern injection, failure classification, contract guard, reflection loop, structural coverage, quality heuristics) — Phase 40
 - ✓ Quality & Validation deep dive — 12 frameworks researched, 8 improvements (3-tier severity, failure-to-context, advisory mode, zero-regression rate, small-change exemption, diff-based guidance, event-tagged history, scoped validation) — Phase 41
 - ✓ UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements (retrospective artifacts, offline changes detection, knowledge quality feedback, context assembly pipeline, interrupted-action recovery, file staleness tracking, per-module map, convention capture, structured onboarding) — Phase 42
+- ✓ Config & routing design — pals.json agents schema (4 roles), agent-dispatch.md reference, apply/plan-phase agent dispatch logic, PLAN.md template agent attribute — Phase 43
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -189,6 +191,9 @@ All validated — see below.
 | Adapt 8 techniques (context assembly, interrupted-action, staleness tracking, convention capture, structured onboarding, etc.) | 42 | Lighter versions of Windsurf/MetaGPT/Cline/Cursor patterns |
 | Reject 11 techniques (condenser, dual-state, shadow git, autonomous memory, etc.) | 42 | Require programmatic infrastructure beyond PALS scope |
 | Defer tree-sitter+PageRank and LSP-powered analysis | 42 | High value but needs programmatic implementation |
+| 4 agent roles: coder/researcher/tester/reviewer with config-driven models | 43 | Named roles dispatch via Agent tool; reviewer=opus, rest=sonnet |
+| Missing agents config = inline execution (backward-compatible) | 43 | No behavior change for projects without agents section |
+| Writing agents sequential, research/review parallel | 43 | Prevents file conflicts while allowing read-only parallelism |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -207,4 +212,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 42 UNIFY, Continuity & Codebase Intel Deep Dive complete — v1.1 milestone done*
+*Last updated: 2026-03-14 after Phase 43 Config & Routing Design complete*

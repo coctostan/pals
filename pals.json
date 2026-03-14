@@ -37,6 +37,12 @@
       "description": "Quality gating & validation"
     }
   },
+  "agents": {
+    "coder": { "model": "sonnet" },
+    "researcher": { "model": "sonnet" },
+    "tester": { "model": "sonnet" },
+    "reviewer": { "model": "opus" }
+  },
   "git": {
     "remote": null,
     "branching": "feature-per-phase",

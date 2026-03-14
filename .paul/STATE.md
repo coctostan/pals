@@ -5,25 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v1.1 Deep Competitive Audit & Quality Improvements
+**Current focus:** v1.2 Agent-Based Task Execution & Model Routing
 
 ## Current Position
 
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v1.1 complete — ready for next
-Last activity: 2026-03-14 — v1.1 Deep Competitive Audit milestone completed
+Milestone: v1.2 Multi-Model Routing
+Phase: 44 of 44 (Implementation & Validation)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-14 — Phase 43 complete, transitioned to Phase 44
 
 Progress:
-- v1.1 Deep Competitive Audit & Quality Improvements: [██████████] 100% ✓
+- v1.2 Multi-Model Routing: [█████░░░░░] 50%
+- Phase 44: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ○        ○        ○     [Ready for new PLAN]
 ```
 
 ## Accumulated Context
@@ -56,7 +57,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Agent SDK hook dispatch not implemented
 - Tree-sitter repo map deferred
 - AGENTS.md deferred to interoperability milestone
-- Multi-model routing: Opus for plan/unify, Sonnet subagents for apply tasks — config-driven via pals.json `models` field, subagent dispatch in apply-phase
+- Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 
 ### Blockers/Concerns
 - None active
@@ -68,14 +69,12 @@ PR: #6 open (v1.0 milestone)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v1.1 complete, v1.2 milestone discussion done, MILESTONE-CONTEXT.md ready
-Next action: /paul:milestone (create v1.2 Multi-Model Routing from MILESTONE-CONTEXT.md)
-Resume file: .paul/HANDOFF-2026-03-14-v16-v1.1-complete.md
+Stopped at: Phase 43 complete, ready to plan Phase 44
+Next action: /paul:plan for Phase 44
+Resume file: .paul/ROADMAP.md
 Resume context:
-- v1.1 milestone complete, committed 76508e6, tagged v1.1
-- v1.2 Multi-Model Routing discussed, MILESTONE-CONTEXT.md created
-- v2.0 Portability scoped separately (user's docs in docs/)
-- User wants pi-mono adapter support in v2.0
+- Phase 43 shipped: pals.json agents schema, agent-dispatch.md, apply/plan-phase dispatch logic
+- Phase 44 will wire remaining workflows and validate with real tasks
 
 ---
 *STATE.md — Updated after every significant action*
