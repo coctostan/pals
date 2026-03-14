@@ -27,7 +27,32 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-None — v1.2 complete. Run `/paul:milestone` to define next milestone.
+**v2.0 Portability & Cross-Harness**
+Status: 🚧 In Progress
+Phases: 1 of 4 complete
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 45 | Artifact & Lifecycle Spec | 1 | Complete | 2026-03-14 |
+| 46 | Harness-Agnostic Skills | TBD | Not started | - |
+| 47 | Pi Adapter | TBD | Not started | - |
+| 48 | Cross-Harness Validation | TBD | Not started | - |
+
+### Phase 45: Artifact & Lifecycle Spec
+
+Focus: Formalize artifact schemas (STATE.md, PROJECT.md, ROADMAP.md, PLAN.md, SUMMARY.md), lifecycle state machine (PLAN → APPLY → UNIFY valid transitions, preconditions, postconditions), and hook semantics — the portable contract docs.
+
+### Phase 46: Harness-Agnostic Skills
+
+Focus: Rewrite all workflows/commands to remove `@` references and Claude-specific assumptions. Implement portable reference resolution that works on both Claude Code (Read tool) and pi (read tool).
+
+### Phase 47: Pi Adapter
+
+Focus: Build pi installer, pi TypeScript extension for hook dispatch, skill wiring into `~/.pi/agent/skills/`, settings.json integration. Map pi events → PALS lifecycle hooks.
+
+### Phase 48: Cross-Harness Validation
+
+Focus: End-to-end testing — same `.paul/` project driven by both Claude Code and pi adapters. Verify artifact parity, lifecycle fidelity, and module participation across harnesses.
 
 ---
 
@@ -192,4 +217,4 @@ None — v1.2 complete. Run `/paul:milestone` to define next milestone.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-14 — Phase 43 complete, Phase 44 next*
+*Last updated: 2026-03-14 — v2.0 Portability & Cross-Harness milestone created*

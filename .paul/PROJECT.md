@@ -36,6 +36,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [~] UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements to 5 workflow/reference files (Phase 42)
 - [x] Config & routing design — agent-based task execution with 4 named roles, configurable models, dispatch logic (Phase 43)
 - [x] Implementation & validation — agent config in init, agent tracking in unify, model routing in research/discover (Phase 44)
+- [x] Artifact & Lifecycle Spec — normative schemas for 8 artifacts, lifecycle state machine, hook dispatch contract (Phase 45)
 
 ### Must Have
 All validated — see below.
@@ -99,6 +100,7 @@ All validated — see below.
 - ✓ UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements (retrospective artifacts, offline changes detection, knowledge quality feedback, context assembly pipeline, interrupted-action recovery, file staleness tracking, per-module map, convention capture, structured onboarding) — Phase 42
 - ✓ Config & routing design — pals.json agents schema (4 roles), agent-dispatch.md reference, apply/plan-phase agent dispatch logic, PLAN.md template agent attribute — Phase 43
 - ✓ Implementation & validation — init creates agents config, unify tracks agent execution, research/discover use configured model — Phase 44
+- ✓ Artifact & Lifecycle Spec — ARTIFACT-SPEC.md (8 schemas), LIFECYCLE-SPEC.md (7 states, 7 transitions), HOOK-CONTRACT.md (6 hooks, 9 modules) — Phase 45
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -215,4 +217,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 44 Implementation & Validation complete — v1.2 milestone done*
+*Last updated: 2026-03-14 after Phase 45 Artifact & Lifecycle Spec complete*

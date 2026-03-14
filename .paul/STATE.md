@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v1.2 complete — ready for next milestone
+**Current focus:** v2.0 Portability & Cross-Harness
 
 ## Current Position
 
-Milestone: v1.2 Multi-Model Routing — COMPLETE
-Phase: 44 of 44 (Implementation & Validation) — Complete
-Plan: 44-01 complete
-Status: Milestone complete, ready for next milestone
-Last activity: 2026-03-14 — v1.2 milestone complete (Phases 43-44)
+Milestone: v2.0 Portability & Cross-Harness
+Phase: 45 of 48 (Artifact & Lifecycle Spec) — Complete
+Plan: 45-01 complete
+Status: Phase 45 complete, ready for Phase 46
+Last activity: 2026-03-14 — Phase 45 unified, 3 spec docs shipped
 
 Progress:
-- v1.2 Multi-Model Routing: [██████████] 100%
-- Phase 44: [██████████] 100%
+- v2.0 Portability & Cross-Harness: [██░░░░░░░░] 25%
+- Phase 45: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Milestone complete]
+  ✓        ✓        ✓     [Phase 45 complete]
 ```
 
 ## Accumulated Context
@@ -69,15 +69,9 @@ PR: #7 merged (v1.1+v1.2 milestones)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v2.0 milestone discussion complete, MILESTONE-CONTEXT.md created
-Next action: /paul:milestone to create v2.0 Portability & Cross-Harness
-Resume file: .paul/HANDOFF-2026-03-14-v2.0-discussion.md
-Resume context:
-- v2.0 discussion complete: 4 phases planned (45-48)
-- Researched pi-mono extensions, SDK, skills — skills nearly identical to Claude Code
-- Key gap: `@` references (Claude-only) and hooks (shell vs TypeScript)
-- MILESTONE-CONTEXT.md ready for /paul:milestone consumption
-- Pi platform references captured in handoff
+Stopped at: Phase 45 complete — Artifact & Lifecycle Spec
+Next action: /paul:plan for Phase 46: Harness-Agnostic Skills
+Resume file: .paul/phases/45-artifact-lifecycle-spec/45-01-SUMMARY.md
 
 ---
 *STATE.md — Updated after every significant action*
