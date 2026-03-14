@@ -66,7 +66,7 @@ PR: #6 open (v1.0 milestone)
 Last session: 2026-03-14
 Stopped at: Phase 41 complete, transition done
 Next action: /paul:plan for Phase 42 (UNIFY, Continuity & Codebase Intel)
-Resume file: .paul/phases/41-quality-validation/41-01-SUMMARY.md
+Resume file: .paul/HANDOFF-2026-03-14-v14-phase41-complete.md
 Resume context:
 - Phase 41 (Quality & Validation) complete with 8 WALT improvements
 - v1.1 milestone at 80% (4/5 phases done: 38 planning, 39 execution, 40 testing, 41 quality)
