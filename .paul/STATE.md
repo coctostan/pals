@@ -71,7 +71,7 @@ PR: #7 merged (v1.1+v1.2 milestones)
 Last session: 2026-03-14
 Stopped at: Phase 45 complete — Artifact & Lifecycle Spec
 Next action: /paul:plan for Phase 46: Harness-Agnostic Skills
-Resume file: .paul/phases/45-artifact-lifecycle-spec/45-01-SUMMARY.md
+Resume file: .paul/HANDOFF-2026-03-14-phase45-complete.md
 
 ---
 *STATE.md — Updated after every significant action*
