@@ -106,6 +106,8 @@ All validated — see below.
 - ✓ Harness-Agnostic Skills — 3 plans: convention doc + core loop (46-01), all kernel files (46-02), all module files (46-03). 53+ files converted, zero non-portable references — Phase 46
 - ✓ Pi Adapter — driver manifest (4/6 capabilities), installer targeting ~/.pi/agent/skills/pals/, multi-driver root installer — Phase 47
 - ✓ Cross-Harness Validation — 45-check validation suite (TAP format), installer parity, portability compliance, artifact spec conformance, driver manifests. All pass. — Phase 48
+- ✓ SKILL.md Generation — 11 Pi skill entry points + skill-map.md mapping 21 workflows to 11 skills + 10 internal — Phase 49
+- ✓ Pi Extension — Thin TypeScript extension (143 lines) with 11 /paul-* commands via registerCommand, session_start + context event hooks — Phase 50
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -204,6 +206,11 @@ All validated — see below.
 | Missing agents config = inline execution (backward-compatible) | 43 | No behavior change for projects without agents section |
 | Writing agents sequential, research/review parallel | 43 | Prevents file conflicts while allowing read-only parallelism |
 | No interactive agent config during init | 44 | Defaults correct; advanced users edit pals.json directly |
+| 11 skills (not 21) — only user-facing commands | 49 | Internal workflows invoked by skill instructions, not standalone |
+| ../workflows/ relative paths in skills | 49 | Skills installed as siblings of kernel dirs in ~/.pi/agent/skills/pals/ |
+| Commands delegate to /skill:paul-* via notify | 50 | Keeps extension thin; skills have full workflow instructions |
+| Inline Pi API types (no SDK import) | 50 | Extension runs in Pi's runtime which provides types; no build step |
+| Context hook checks last 5 messages for PALS detection | 50 | Balance between detection accuracy and performance |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -222,4 +229,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 48 Cross-Harness Validation complete — v2.0 milestone done*
+*Last updated: 2026-03-14 after Phase 50 Pi Extension complete*

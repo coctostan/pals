@@ -10,13 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Milestone: v2.1 Pi Runtime Integration
-Phase: 50 of 52 (Pi Extension) — Planning
-Plan: 50-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-14 — Created 50-01-PLAN.md
+Phase: 51 of 52 (Installer & Driver Update)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-14 — Phase 50 complete, transitioned to Phase 51
 
 Progress:
-- v2.1 Pi Runtime Integration: [██░░░░░░░░] 25%
+- v2.1 Pi Runtime Integration: [█████░░░░░] 50%
+- Phase 50: [██████████] 100% ✓
 - Phase 49: [██████████] 100% ✓
 
 ## Loop Position
@@ -24,7 +25,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ○        ○        ○     [Ready for Phase 51 planning]
 ```
 
 ## Accumulated Context
@@ -70,15 +71,13 @@ PR: #7 merged (v1.1+v1.2 milestones)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Plan 50-01 created, context limit reached
-Next action: /paul:apply .paul/phases/50-pi-extension/50-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-14-v2.1-phase50.md
+Stopped at: Phase 50 complete, ready to plan Phase 51
+Next action: /paul:plan for Phase 51 (Installer & Driver Update)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 49 done: 11 SKILL.md files + skill-map.md created
-- Plan 50-01 ready: Pi TypeScript extension (pals-hooks.ts + README)
-- 2 tasks: create extension (<200 lines), create README
-- Pi extension API: registerCommand, events (session_start, context), appendEntry
-- Handoff has full Pi API reference for fresh session
+- Phase 50 complete: Pi extension created (pals-hooks.ts + README)
+- Phase 51 next: Deploy extension + skills to Pi locations
+- 2 phases remaining in v2.1 milestone (51, 52)
 
 ---
 *STATE.md — Updated after every significant action*
