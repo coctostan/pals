@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v1.2 Agent-Based Task Execution & Model Routing
+**Current focus:** v1.2 complete — ready for next milestone
 
 ## Current Position
 
-Milestone: v1.2 Multi-Model Routing
-Phase: 44 of 44 (Implementation & Validation)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-14 — Phase 43 complete, transitioned to Phase 44
+Milestone: v1.2 Multi-Model Routing — COMPLETE
+Phase: 44 of 44 (Implementation & Validation) — Complete
+Plan: 44-01 complete
+Status: Milestone complete, ready for next milestone
+Last activity: 2026-03-14 — v1.2 milestone complete (Phases 43-44)
 
 Progress:
-- v1.2 Multi-Model Routing: [█████░░░░░] 50%
-- Phase 44: [░░░░░░░░░░] 0%
+- v1.2 Multi-Model Routing: [██████████] 100%
+- Phase 44: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for new PLAN]
+  ✓        ✓        ✓     [Milestone complete]
 ```
 
 ## Accumulated Context
@@ -69,12 +69,13 @@ PR: #6 open (v1.0 milestone)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Phase 43 complete, ready to plan Phase 44
-Next action: /paul:plan for Phase 44
+Stopped at: v1.2 milestone complete
+Next action: /paul:milestone or /paul:discuss-milestone to define next milestone
 Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 43 shipped: pals.json agents schema, agent-dispatch.md, apply/plan-phase dispatch logic
-- Phase 44 will wire remaining workflows and validate with real tasks
+- v1.2 shipped: agent-based task execution with config-driven models across all workflows
+- Phase 43: config schema, dispatch reference, apply/plan-phase logic
+- Phase 44: init, unify, research, discover integration
 
 ---
 *STATE.md — Updated after every significant action*

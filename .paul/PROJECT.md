@@ -35,6 +35,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [~] Quality & Validation deep dive — 12 frameworks researched, 8 improvements to WALT module (Phase 41)
 - [~] UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements to 5 workflow/reference files (Phase 42)
 - [x] Config & routing design — agent-based task execution with 4 named roles, configurable models, dispatch logic (Phase 43)
+- [x] Implementation & validation — agent config in init, agent tracking in unify, model routing in research/discover (Phase 44)
 
 ### Must Have
 All validated — see below.
@@ -97,6 +98,7 @@ All validated — see below.
 - ✓ Quality & Validation deep dive — 12 frameworks researched, 8 improvements (3-tier severity, failure-to-context, advisory mode, zero-regression rate, small-change exemption, diff-based guidance, event-tagged history, scoped validation) — Phase 41
 - ✓ UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements (retrospective artifacts, offline changes detection, knowledge quality feedback, context assembly pipeline, interrupted-action recovery, file staleness tracking, per-module map, convention capture, structured onboarding) — Phase 42
 - ✓ Config & routing design — pals.json agents schema (4 roles), agent-dispatch.md reference, apply/plan-phase agent dispatch logic, PLAN.md template agent attribute — Phase 43
+- ✓ Implementation & validation — init creates agents config, unify tracks agent execution, research/discover use configured model — Phase 44
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -194,6 +196,7 @@ All validated — see below.
 | 4 agent roles: coder/researcher/tester/reviewer with config-driven models | 43 | Named roles dispatch via Agent tool; reviewer=opus, rest=sonnet |
 | Missing agents config = inline execution (backward-compatible) | 43 | No behavior change for projects without agents section |
 | Writing agents sequential, research/review parallel | 43 | Prevents file conflicts while allowing read-only parallelism |
+| No interactive agent config during init | 44 | Defaults correct; advanced users edit pals.json directly |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -212,4 +215,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 43 Config & Routing Design complete*
+*Last updated: 2026-03-14 after Phase 44 Implementation & Validation complete — v1.2 milestone done*

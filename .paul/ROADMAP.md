@@ -27,26 +27,21 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v1.2 Multi-Model Routing**
-Status: 🚧 In Progress
-Phases: 1 of 2 complete
-
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 43 | Config & Routing Design | 1 | ✅ Complete | 2026-03-14 |
-| 44 | Implementation & Validation | TBD | Not started | - |
-
-### Phase 43: Config & Routing Design
-
-Focus: pals.json `models` section schema, model selection logic in apply-phase.md, research which tasks benefit from Opus vs Sonnet
-
-### Phase 44: Implementation & Validation
-
-Focus: Wire model routing into apply-phase subagent dispatch, test with real tasks, document configuration
+None — v1.2 complete. Run `/paul:milestone` to define next milestone.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v1.2 Multi-Model Routing - 2026-03-14 (2 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 43 | Config & Routing Design | 1 | 2026-03-14 |
+| 44 | Implementation & Validation | 1 | 2026-03-14 |
+
+</details>
 
 <details>
 <summary>v1.1 Deep Competitive Audit & Quality Improvements - 2026-03-14 (5 phases)</summary>
