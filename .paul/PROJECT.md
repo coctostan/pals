@@ -29,6 +29,8 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Lightweight fix loop — /paul:fix command with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY (Phase 35)
 - [x] Brownfield & codebase intelligence — brownfield init detection, map-codebase v2 with reference graph (GRAPH.md), onboarding guide (Phase 36)
 - [x] Resilience & isolation — optional git worktree isolation (config-driven, default off) (Phase 37)
+- [~] Planning deep dive — 12 frameworks researched, 4 improvements to plan-phase.md (Phase 38)
+- [~] Execution deep dive — 12 frameworks researched, 6 improvements to apply-phase.md (Phase 39)
 
 ### Must Have
 All validated — see below.
@@ -85,6 +87,8 @@ All validated — see below.
 - ✓ Lightweight fix loop — /paul:fix with 3 modes (standard/fast-forward/hotfix), retroactive UNIFY, fix-types reference — Phase 35
 - ✓ Brownfield & codebase intelligence — brownfield init detection, map-codebase v2 with Agent 5 reference graph (GRAPH.md), brownfield onboarding guide — Phase 36
 - ✓ Resilience & isolation — optional git worktree isolation (config-driven, default off) — Phase 37
+- ✓ Planning deep dive — 12 frameworks researched, 4 improvements (clarity test, dual-goal, complexity gating, read-only) — Phase 38
+- ✓ Execution deep dive — 12 frameworks researched, 6 improvements (structured status, divergence check, bounded retry, revert-and-refine, stuck detection, re-plan protocol) — Phase 39
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -168,6 +172,10 @@ All validated — see below.
 | worktree/ branch prefix distinct from feature/ | 37 | Clear namespace separation |
 | No worktree in fix loop | 37 | Fix loop lightweight by design; worktree overhead contradicts fast-forward |
 | AGENTS.md deferred to interoperability milestone | 37 | Duplicates CLAUDE.md; convention not standardized |
+| Adopt clarity test, dual-goal, complexity gating, read-only planning | 38 | Best techniques from 12 frameworks' planning approaches |
+| Adopt stuck detection, deviation notification, revert-and-refine | 39 | Best techniques from 12 frameworks' execution mechanics |
+| Adapt bounded retries (max 2), structured status (3-state), re-plan protocol | 39 | Lighter versions of Aider/Superpowers/Devin techniques |
+| Reject 6 execution techniques (lint-gate, per-hunk, context fetch, checkpoints, isolation, slicing) | 39 | Handled by host tool or existing PALS mechanisms |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -186,4 +194,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-13 after Phase 37 Resilience & Isolation complete*
+*Last updated: 2026-03-14 after Phase 39 Execution Deep Dive complete*

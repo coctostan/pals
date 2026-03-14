@@ -182,10 +182,23 @@ For each <task> in order:
    - Follow specific instructions
    - Respect boundaries (DO NOT CHANGE protected files)
 3. Run <verify> command/check
-4. Record result:
-   - PASS: verification succeeded
-   - FAIL: verification failed (stop and report)
+4. Record result using structured status (adapted from Superpowers status protocol):
+   - PASS: verification succeeded, task complete
+   - PASS_WITH_CONCERNS: verification passed but with issues worth noting (e.g., warnings, edge cases untested). Log concerns for UNIFY review.
+   - BLOCKED: task cannot proceed due to missing context, wrong assumptions, or plan gap. Escalate — do not force through.
 5. Note <done> criteria satisfied
+6. **Divergence check** (adapted from Devin deviation detection):
+   After each task, briefly compare what was actually done vs what the plan specified:
+   - Files modified match plan's `<files>` list? Unexpected files touched?
+   - Action taken matches plan's `<action>`? Significant departures?
+   - If divergence is minor (e.g., extra helper file): note it, continue
+   - If divergence is significant (e.g., different approach, skipped requirement): **notify user** before proceeding:
+     ```
+     ⚠️ DEVIATION: Task N diverged from plan
+     Plan: [what plan said]
+     Actual: [what happened]
+     Continue? [yes/adjust plan/stop]
+     ```
 6. **Dispatch post-task hooks:**
    a. Read `~/.pals/modules.yaml` (if it exists)
    b. Find modules with hooks registered for `post-task`
@@ -296,12 +309,15 @@ If a task verification fails:
    - Which task failed
    - What verification check failed
    - What was expected vs actual
-3. **Offer options:**
-   - Retry: attempt the task again
-   - Skip: mark as failed, continue (creates deviation)
-   - Stop: halt execution, prepare for debugging
+3. **Bounded retry** (adapted from Aider reflection loop):
+   - Retry: attempt the task again (max 2 retries on the same task)
+   - After 2 failed retries: escalate — do NOT keep retrying the same approach
+   - On escalation, offer:
+     - **Revert and refine** (adapted from Cursor revert-and-refine pattern): revert task changes, adjust the approach or plan, then re-attempt
+     - Skip: mark as failed, continue (creates deviation)
+     - Stop: halt execution, prepare for debugging
 4. **Record resolution to STATE.md:**
-   - Add to `### Decisions` section: `| [date]: Task [N] [retry/skip/stop] - [reason] | Phase [N] | [impact] |`
+   - Add to `### Decisions` section: `| [date]: Task [N] [retry/skip/stop/revert-refine] - [reason] | Phase [N] | [impact] |`
 
 5. **Partial task failure** (multi-file task where some files were modified before failure):
    - **Assess:** Run `git diff` to see which files were changed vs what the task planned
@@ -311,17 +327,34 @@ If a task verification fails:
    - **Record:** Note which files were preserved vs reverted in the deviation log for UNIFY
 
 6. **Never revert blindly:** Always check `git diff` before reverting. Partial work may include correct changes that should be kept. Reverting everything wastes completed work and may mask the actual failure point.
+
+7. **Stuck/loop detection** (adapted from OpenHands stuck detector):
+   Monitor for unproductive patterns during execution:
+   - Same error appearing 3+ times across retries → approach is wrong, not just buggy
+   - Alternating between two states (fix A breaks B, fix B breaks A) for 2+ cycles → architectural issue
+   - Making changes that get reverted repeatedly → stop and reassess
+   When a stuck pattern is detected: **halt execution**, report the pattern to the user, and suggest either reverting to pre-task state and refining the plan, or escalating to a different approach.
 </step>
 
 <step name="track_progress">
 Throughout execution:
 
 1. Maintain mental log of:
-   - Tasks completed (with results)
-   - Tasks failed (with reasons)
+   - Tasks completed (with results — PASS, PASS_WITH_CONCERNS, or BLOCKED)
+   - Tasks failed (with reasons and retry count)
    - Checkpoints resolved (with decisions/approvals)
-   - Deviations from plan
+   - Deviations from plan (from per-task divergence checks)
 2. This information feeds into UNIFY phase
+
+3. **Re-plan trigger assessment** (deferred from Phase 38 — re-plan/divergence protocol):
+   After each task, evaluate whether accumulated deviations warrant re-planning:
+   - **Continue as-is:** Minor deviations, plan still valid, remaining tasks unaffected
+   - **Adapt in-flight:** Moderate deviation — adjust remaining task approach without formal re-plan (note adaptation for UNIFY)
+   - **Re-plan:** Major divergence — stop APPLY, return to PLAN phase with learnings. Triggers:
+     - 2+ tasks with significant deviations
+     - A BLOCKED task that reveals the plan's assumptions were wrong
+     - Discovered requirements that make remaining tasks invalid
+   If re-plan triggered: update STATE.md loop position back to PLAN ○, note reason, and suggest `/paul:plan` with the new context.
 </step>
 
 <step name="finalize">

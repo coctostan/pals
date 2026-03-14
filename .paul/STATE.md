@@ -2,7 +2,7 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-13)
+See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
 **Current focus:** v1.1 Deep Competitive Audit & Quality Improvements
@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-13)
 ## Current Position
 
 Milestone: v1.1 Deep Competitive Audit & Quality Improvements
-Phase: 39 of 42 (Execution Deep Dive)
+Phase: 40 of 42 (Testing & TDD)
 Plan: Not started
-Status: Phase 38 complete, ready for Phase 39
-Last activity: 2026-03-13 — Unified 38-01 (planning deep dive)
+Status: Phase 39 complete, ready for Phase 40
+Last activity: 2026-03-14 — Unified 39-01 (execution deep dive)
 
 Progress:
-- v1.1 Deep Competitive Audit & Quality Improvements: [██░░░░░░░░] 20%
-- Phase 38: [██████████] 100%
+- v1.1 Deep Competitive Audit & Quality Improvements: [████░░░░░░] 40%
+- Phase 39: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 38 complete — ready for Phase 39 PLAN]
+  ○        ○        ○     [Phase 39 complete — ready for Phase 40 PLAN]
 ```
 
 ## Accumulated Context
@@ -38,9 +38,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Adapt read-only planning from OpenHands | 38 | plan phase cannot modify source files |
 | Reject schema-as-workflow, PageRank, multi-model, tool restriction | 38 | Contradict PALS simplicity or not applicable |
 | Defer re-plan protocol to Phase 39 | 38 | Belongs in execution scope |
+| Adopt stuck detection, deviation notification, revert-and-refine | 39 | Best execution techniques from 12 frameworks |
+| Adapt bounded retries, structured status, re-plan protocol | 39 | Lighter versions of Aider/Superpowers patterns |
+| Reject 6 execution techniques | 39 | Handled by host tool or existing PALS mechanisms |
 
 ### Deferred Issues
-- Re-plan/divergence detection — deferred from Phase 38 to Phase 39
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch not implemented
 - Tree-sitter repo map deferred
@@ -50,15 +52,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: main
+Branch: v1.1/execution-deep-dive
 PR: #6 open (v1.0 milestone)
 
 ## Session Continuity
 
-Last session: 2026-03-13
-Stopped at: Phase 38 complete, transition done
-Next action: /paul:plan for Phase 39 (Execution Deep Dive)
-Resume file: .paul/phases/38-planning-deep-dive/38-01-SUMMARY.md
+Last session: 2026-03-14
+Stopped at: Phase 39 complete, transition done
+Next action: /paul:plan for Phase 40 (Testing & TDD)
+Resume file: .paul/phases/39-execution-deep-dive/39-01-SUMMARY.md
 
 ---
 *STATE.md — Updated after every significant action*
