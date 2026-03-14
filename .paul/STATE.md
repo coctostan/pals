@@ -69,13 +69,14 @@ PR: #6 open (v1.0 milestone)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v1.2 milestone complete
-Next action: /paul:milestone or /paul:discuss-milestone to define next milestone
-Resume file: .paul/ROADMAP.md
+Stopped at: v1.2 milestone complete, user wants to start next milestone
+Next action: /paul:discuss-milestone or /paul:milestone to define v1.3
+Resume file: .paul/HANDOFF-2026-03-14-v1.2-complete.md
 Resume context:
 - v1.2 shipped: agent-based task execution with config-driven models across all workflows
 - Phase 43: config schema, dispatch reference, apply/plan-phase logic
 - Phase 44: init, unify, research, discover integration
+- Deferred: Agent SDK hooks, tree-sitter repo-map, AGENTS.md, CI generation
 
 ---
 *STATE.md — Updated after every significant action*
