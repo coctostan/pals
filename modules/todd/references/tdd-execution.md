@@ -18,13 +18,19 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 <step name="execute_red" gate="entry">
 **RED: Write failing test**
 
+**Test anti-patterns to avoid** (inspired by Superpowers anti-pattern injection):
+- No mock behavior assertions without verifying mock setup matches real interface
+- No test-only methods on production code just to make testing easier
+- No incomplete mocks that silently return undefined/null for untested paths
+- Mock complexity > 10 lines → consider integration test instead
+
 1. Read RED task and `<feature><behavior>` from plan
 2. Create test file (project conventions, descriptive names: "should [behavior] when [condition]")
-3. Run `test_command`:
-   - **Tests FAIL (expected):** Classify failure reason:
-     - Missing module/function → correct (impl doesn't exist yet). Log success.
-     - Syntax error in test → STOP. Fix test before proceeding.
-     - Import error for framework → STOP. Configure framework before proceeding.
+3. Run `test_command` and **classify failure reason** (inspired by SWE-agent/Superpowers "failing for the right reason" validation):
+   - **CORRECT FAILURE — missing module/function/method:** Impl doesn't exist yet. This is the expected RED state. Log: "RED verified — failing for the right reason (missing impl)."
+   - **WRONG FAILURE — syntax error in test:** STOP. Fix test syntax before proceeding. Do not count as valid RED.
+   - **WRONG FAILURE — import/config error for test framework:** STOP. Configure framework before proceeding.
+   - **WRONG FAILURE — unrelated test breaks:** STOP. Investigate coupling before proceeding.
    - **Tests PASS (unexpected):** STOP. Do NOT proceed. Present options: fix test / feature exists / stop.
 4. Commit: `git commit -m "test({phase}-{plan}): add failing test for [feature]"`
 5. Store `red_commit_hash`. Unlock GREEN.
@@ -35,11 +41,13 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 
 **GATE:** `red_commit_hash` must exist. If not → STOP: "Cannot start GREEN without verified RED phase."
 
+**CONTRACT RULE:** Do NOT modify tests to make them pass. Tests define the contract. If tests seem wrong, go back to RED to fix them. (Inspired by Cline anti-pattern: agents that change tests to match broken implementation.)
+
 1. Read GREEN task and `<feature><implementation>` from plan
 2. Write MINIMAL implementation — just make tests green, no cleverness
 3. Run `test_command`:
    - **ALL pass:** Log success.
-   - **New tests fail:** Iterate (max 3 attempts, DO NOT change tests). Stalled → present options.
+   - **New tests fail:** Read test output and use it for diagnosis (inspired by Aider's reflection loop). Iterate implementation (max 2 attempts, DO NOT change tests). Stalled → present options.
    - **Existing tests break:** Fix without changing new test expectations.
 4. Commit: `git commit -m "feat({phase}-{plan}): implement [feature]"`
 5. Store `green_commit_hash`. Unlock REFACTOR.
@@ -80,9 +88,11 @@ TDD Execution Results:
 </error_handling>
 
 <anti_patterns>
-- **Changing tests to match implementation:** Tests define the contract. Go back to RED to fix tests.
-- **Skipping RED verification:** Must verify failure first.
+- **Changing tests to match implementation:** Tests define the contract. Go back to RED to fix tests. NEVER weaken assertions to make GREEN pass.
+- **Skipping RED verification:** Must verify failure first — and failure must be for the RIGHT reason.
+- **Ignoring test output on failure:** Always read and use test stdout/stderr to diagnose the issue before retrying.
 - **Over-engineering GREEN:** Simplest passing code. Elegance in REFACTOR.
 - **New behavior in REFACTOR:** REFACTOR changes HOW, not WHAT.
 - **Batching commits:** Each phase gets its own commit for audit trail.
+- **Excessive mocking:** If mock setup exceeds ~10 lines, consider integration test instead.
 </anti_patterns>

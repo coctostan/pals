@@ -31,6 +31,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Resilience & isolation — optional git worktree isolation (config-driven, default off) (Phase 37)
 - [~] Planning deep dive — 12 frameworks researched, 4 improvements to plan-phase.md (Phase 38)
 - [~] Execution deep dive — 12 frameworks researched, 6 improvements to apply-phase.md (Phase 39)
+- [~] Testing & TDD deep dive — 12 frameworks researched, 6 improvements to TODD module (Phase 40)
 
 ### Must Have
 All validated — see below.
@@ -89,6 +90,7 @@ All validated — see below.
 - ✓ Resilience & isolation — optional git worktree isolation (config-driven, default off) — Phase 37
 - ✓ Planning deep dive — 12 frameworks researched, 4 improvements (clarity test, dual-goal, complexity gating, read-only) — Phase 38
 - ✓ Execution deep dive — 12 frameworks researched, 6 improvements (structured status, divergence check, bounded retry, revert-and-refine, stuck detection, re-plan protocol) — Phase 39
+- ✓ Testing & TDD deep dive — 12 frameworks researched, 6 improvements (anti-pattern injection, failure classification, contract guard, reflection loop, structural coverage, quality heuristics) — Phase 40
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -176,6 +178,9 @@ All validated — see below.
 | Adopt stuck detection, deviation notification, revert-and-refine | 39 | Best techniques from 12 frameworks' execution mechanics |
 | Adapt bounded retries (max 2), structured status (3-state), re-plan protocol | 39 | Lighter versions of Aider/Superpowers/Devin techniques |
 | Reject 6 execution techniques (lint-gate, per-hunk, context fetch, checkpoints, isolation, slicing) | 39 | Handled by host tool or existing PALS mechanisms |
+| Adopt anti-pattern injection, failure classification, contract guard for TODD | 40 | Best techniques from 12 frameworks' testing approaches |
+| Adapt reflection loop, structural coverage, quality heuristics for TODD | 40 | Lighter versions of Aider/Continue.dev/BMAD techniques |
+| Reject 10 testing techniques (cross-agent, recursive debug, CI auto-fix, delete-before-test, etc.) | 40 | Multi-agent, IDE-specific, or already adopted |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -194,4 +199,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 39 Execution Deep Dive complete*
+*Last updated: 2026-03-14 after Phase 40 Testing & TDD Deep Dive complete*
