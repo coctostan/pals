@@ -32,6 +32,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [~] Planning deep dive — 12 frameworks researched, 4 improvements to plan-phase.md (Phase 38)
 - [~] Execution deep dive — 12 frameworks researched, 6 improvements to apply-phase.md (Phase 39)
 - [~] Testing & TDD deep dive — 12 frameworks researched, 6 improvements to TODD module (Phase 40)
+- [~] Quality & Validation deep dive — 12 frameworks researched, 8 improvements to WALT module (Phase 41)
 
 ### Must Have
 All validated — see below.
@@ -91,6 +92,7 @@ All validated — see below.
 - ✓ Planning deep dive — 12 frameworks researched, 4 improvements (clarity test, dual-goal, complexity gating, read-only) — Phase 38
 - ✓ Execution deep dive — 12 frameworks researched, 6 improvements (structured status, divergence check, bounded retry, revert-and-refine, stuck detection, re-plan protocol) — Phase 39
 - ✓ Testing & TDD deep dive — 12 frameworks researched, 6 improvements (anti-pattern injection, failure classification, contract guard, reflection loop, structural coverage, quality heuristics) — Phase 40
+- ✓ Quality & Validation deep dive — 12 frameworks researched, 8 improvements (3-tier severity, failure-to-context, advisory mode, zero-regression rate, small-change exemption, diff-based guidance, event-tagged history, scoped validation) — Phase 41
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -199,4 +201,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 40 Testing & TDD Deep Dive complete*
+*Last updated: 2026-03-14 after Phase 41 Quality & Validation Deep Dive complete*

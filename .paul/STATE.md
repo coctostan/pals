@@ -10,21 +10,21 @@ See: .paul/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Milestone: v1.1 Deep Competitive Audit & Quality Improvements
-Phase: 41 of 42 (Quality & Validation)
-Plan: Not started
-Status: Phase 40 complete, ready for Phase 41
-Last activity: 2026-03-14 — Unified 40-01 (testing & TDD deep dive)
+Phase: 41 of 42 (Quality & Validation) — Complete
+Plan: 41-01 complete (loop closed)
+Status: Phase 41 complete, ready for Phase 42
+Last activity: 2026-03-14 — Unified 41-01 (quality & validation deep dive)
 
 Progress:
-- v1.1 Deep Competitive Audit & Quality Improvements: [██████░░░░] 60%
-- Phase 40: [██████████] 100%
+- v1.1 Deep Competitive Audit & Quality Improvements: [████████░░] 80%
+- Phase 41: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 40 complete — ready for Phase 41 PLAN]
+  ○        ○        ○     [Phase 41 complete — ready for Phase 42 PLAN]
 ```
 
 ## Accumulated Context
@@ -44,6 +44,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Adopt anti-pattern injection, failure classification, contract guard | 40 | Best testing techniques from 12 frameworks into TODD |
 | Adapt test output reflection, structural coverage, quality heuristics | 40 | Lighter versions of Aider/Continue.dev/BMAD patterns |
 | Reject 10 testing techniques | 40 | Multi-agent, IDE-specific, or already adopted |
+| Adopt 3-tier severity, failure-to-context, advisory mode, zero-regression rate | 41 | Best quality techniques from 12 frameworks into WALT |
+| Adapt small-change exemption, diff-based guidance, event-tagged history, scoped validation | 41 | Lighter versions of SonarQube/reviewdog/lint-staged patterns |
+| Reject 10 quality techniques | 41 | Agent domain, over-engineering, or existing mechanisms |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -61,13 +64,13 @@ PR: #6 open (v1.0 milestone)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Phase 40 complete, transition done
-Next action: /paul:plan for Phase 41 (Quality & Validation)
-Resume file: .paul/HANDOFF-2026-03-14-v13-phase40-complete.md
+Stopped at: Phase 41 complete, transition done
+Next action: /paul:plan for Phase 42 (UNIFY, Continuity & Codebase Intel)
+Resume file: .paul/phases/41-quality-validation/41-01-SUMMARY.md
 Resume context:
-- Phase 40 (Testing & TDD) complete with 6 TODD improvements
-- v1.1 milestone at 60% (3/5 phases done: 38 planning, 39 execution, 40 testing)
-- Phase 41 scope: WALT quality gating deep dive (same research pattern as 38-40)
+- Phase 41 (Quality & Validation) complete with 8 WALT improvements
+- v1.1 milestone at 80% (4/5 phases done: 38 planning, 39 execution, 40 testing, 41 quality)
+- Phase 42 scope: UNIFY, session continuity, and brownfield intelligence deep dive
 
 ---
 *STATE.md — Updated after every significant action*

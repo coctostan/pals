@@ -18,10 +18,10 @@ Types: 0→0→0→0
 
 ## Plan History
 
-| Plan | Date | Tests | Coverage | Lint | Types | Verdict |
-|------|------|-------|----------|------|-------|---------|
-| 10-01 | 2026-03-10 | 0 pass | — | 12 | 0 | ◆ baseline |
-| 11-01 | 2026-03-10 | 15 pass | 78% | 10 | 0 | ▲ improved |
+| Plan | Date | Tests | Coverage | Lint | Types | Event | Verdict |
+|------|------|-------|----------|------|-------|-------|---------|
+| 10-01 | 2026-03-10 | 0 pass | — | 12 | 0 | | ◆ baseline |
+| 11-01 | 2026-03-10 | 15 pass | 78% | 10 | 0 | | ▲ improved |
 
 ---
 *Updated after every /paul:unify*
@@ -33,6 +33,7 @@ Types: 0→0→0→0
 | Tests | `N pass` or `—` |
 | Coverage | `N%` or `—` |
 | Lint/Types | Count or `—` |
+| Event | Optional: `refactor`, `new module`, `dep upgrade`, or blank. Explains metric shifts in context |
 | Verdict | ▲/●/▼/◆/— from quality-delta.md |
 
 </file_format>

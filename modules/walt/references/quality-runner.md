@@ -62,14 +62,18 @@ If counts unparseable: fall back to exit code only. If no `coverage_command`: om
 |------|--------------|----------|
 | `strict` | Block. Present fix/override/stop options. | Yes |
 | `lenient` | Warn, continue. | No |
+| `advisory` | Surface in report, never block. For research/prototyping phases. | No |
 
-Config: `.paul/walt.yml` → `test_gate: strict|lenient`. Default: `strict`.
+Config: `.paul/walt.yml` → `test_gate: strict|lenient|advisory`. Default: `strict`.
+
+**Small-change exemption:** If plan modifies ≤5 files and 0 test files, treat as `lenient` regardless of config.
 
 | Gate Result | Meaning |
 |-------------|---------|
 | `PASS` | No regressions |
 | `BLOCK` | Regressions in strict mode |
 | `WARN` | Regressions in lenient mode |
+| `INFO` | Regressions in advisory mode (reported, not blocking) |
 | `SKIP` | No test runner or runner failed |
 
 </gating_rules>
@@ -85,11 +89,18 @@ Before: {passed} passed, {failed} failed, {skipped} skipped
 After:  {passed} passed, {failed} failed, {skipped} skipped
 Regressions: {count} | New passes: {count} | Net delta: {+/-}
 Coverage: {before}% → {after}% ({+/-delta}%)
-Gate: {PASS|BLOCK|WARN|SKIP}
+Gate: {PASS|BLOCK|WARN|INFO|SKIP}
 ────────────────────────────────────
 ```
 
 If test names available, list regressions. No runner = "No test runner detected — skipped". Runner error = SKIP with error message.
+
+### Failure Context (on BLOCK/WARN)
+
+When gate is not PASS, include actionable context for the agent:
+- **What failed:** List regressed test names (if available) or "N new failures"
+- **Where to look:** Files modified in this plan that likely caused regression
+- **Baseline note:** "N failures existed before this plan (not blocking)" — known failures are informational context, not regressions
 
 </report_format>
 
