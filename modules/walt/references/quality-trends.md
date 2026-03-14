@@ -32,6 +32,13 @@ Same value 3+ plans = stalled. Exception: `0` for Lint/Types = positive ("clean!
 
 **Single entry:** "Baseline established — trends visible after 2+ plans"
 
+### Zero-Regression Rate
+
+Track percentage of plans completing without introducing test regressions:
+- **Formula:** Plans with Gate=PASS or SKIP / Total plans (excluding SKIP-only)
+- **Display:** `Zero-regression rate: N/M plans (X%)`
+- **Healthy:** ≥80%. **Attention:** 50-79%. **Degrading:** <50%.
+
 </trend_detection>
 
 <health_verdict>
@@ -64,11 +71,14 @@ Coverage: —→78%→82%→82%     ● stalled at 82%
 Lint:     12→10→5→0         ▲ improving (clean!)
 Types:    0→0→0→0           ● stable (clean)
 
+── Zero-Regression Rate ───────────────
+Rate: 8/10 plans (80%)     ✓ healthy
+
 ── Recent History ─────────────────────
-| Plan  | Tests | Coverage | Lint | Verdict |
-|-------|-------|----------|------|---------|
-| 13-01 | 21    | 82%      | 0    | ▲       |
-| 12-01 | 17    | 82%      | 5    | ▲       |
+| Plan  | Tests | Coverage | Lint | Event | Verdict |
+|-------|-------|----------|------|-------|---------|
+| 13-01 | 21    | 82%      | 0    |       | ▲       |
+| 12-01 | 17    | 82%      | 5    | refactor | ▲    |
 
 ── Health ─────────────────────────────
 Overall: {verdict}

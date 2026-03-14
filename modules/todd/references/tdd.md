@@ -50,6 +50,16 @@ refactor(08-02): extract regex to constant (optional)
 - **Descriptive names:** "should reject empty email", not "test1"
 - **No implementation details:** Test public API, not private methods
 
+## Test Quality Heuristics (inspired by BMAD quality scoring)
+
+Advisory checks to assess test quality after RED phase:
+
+- **Assertion density:** Each test should have at least 1 meaningful assertion. Tests with no assertions are worthless.
+- **Behavior vs implementation:** Assertions should check WHAT (return value, state change, side effect) not HOW (which helper was called, internal method order).
+- **Edge case coverage:** For each happy path test, consider: empty input, null/undefined, boundary values, error states. At least 1 edge case per feature.
+- **Mock hygiene:** Mocks should match real interfaces. Mock complexity > ~10 lines → prefer integration test.
+- **Test isolation:** Each test should pass independently. No shared mutable state between tests. No order dependency.
+
 </test_quality>
 
 <context_budget>

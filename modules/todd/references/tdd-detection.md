@@ -116,3 +116,24 @@ When a phase contains both TDD-suitable and non-TDD work:
 **Do NOT force TDD on non-TDD work.** The goal is design quality through testing, not test coverage metrics.
 
 </mixed_scope>
+
+<structural_coverage>
+
+## Structural Coverage Advisory (inspired by Continue.dev PR checks)
+
+During pre-apply for `type: execute` plans (not TDD — TDD plans already create tests):
+
+**Advisory check:** For each source file in `files_modified`, check if a corresponding test file exists:
+- `src/foo.ts` → `src/foo.test.ts` or `tests/foo.test.ts` or `__tests__/foo.test.ts`
+- `src/foo.py` → `tests/test_foo.py` or `src/test_foo.py`
+- `src/foo.go` → `src/foo_test.go`
+
+**If test file missing:** Surface as advisory signal (not blocking):
+```
+[TODD advisory] No test file found for: src/foo.ts
+Consider: Is this file testable? If yes, add tests in a follow-up plan.
+```
+
+**NOT blocking.** This is awareness, not enforcement. Some files genuinely don't need tests (config, types, constants).
+
+</structural_coverage>

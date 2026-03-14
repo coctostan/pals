@@ -53,16 +53,21 @@ WALT lint/typecheck integration for APPLY phase. Runs linters, type checkers, an
 | Lint | `lenient` (warn) |
 | Type errors | `strict` (block) |
 
-Config: `.paul/walt.yml` → `lint_gate: strict|lenient`, `type_gate: strict|lenient`.
+Config: `.paul/walt.yml` → `lint_gate: strict|lenient|advisory`, `type_gate: strict|lenient|advisory`.
+
+**Small-change exemption:** If plan modifies ≤5 files and 0 test files, treat lint/type gates as `lenient` regardless of config.
+
+**Scoped validation:** When possible, scope lint/format checks to `files_modified` from the plan frontmatter rather than the entire project. Reduces noise from pre-existing issues.
 
 | Gate Result | Meaning |
 |-------------|---------|
 | `PASS` | No issues (or all auto-fixed) |
 | `BLOCK` | Type errors (strict) or lint (if strict) |
 | `WARN` | Lint issues in lenient mode |
+| `INFO` | Issues in advisory mode (reported, not blocking) |
 | `SKIP` | No tools or tool failed |
 
-**Combined gate (test + lint):** Most restrictive wins. BLOCK + anything = BLOCK. SKIP = use other's result.
+**Combined gate (test + lint):** Most restrictive wins. BLOCK + anything = BLOCK. SKIP = use other's result. INFO = treat as PASS for gating, include in report.
 
 </gating_rules>
 
@@ -73,14 +78,29 @@ Config: `.paul/walt.yml` → `lint_gate: strict|lenient`, `type_gate: strict|len
 ```
 WALT Lint Report
 ────────────────────────────────────
-Format: {N} issues → auto-fixed | clean
-Lint:   {N} found, {M} auto-fixed, {R} remaining | clean
-Types:  {N} errors | clean
-Gate: {PASS|BLOCK|WARN|SKIP}
+Format: {N} issues → auto-fixed | clean                    [FYI]
+Lint:   {N} found, {M} auto-fixed, {R} remaining | clean   [WARN|INFO]
+Types:  {N} errors | clean                                  [BUG|INFO]
+Gate: {PASS|BLOCK|WARN|INFO|SKIP}
 ────────────────────────────────────
 ```
 
-If blocking, list type errors with file:line. No tools = "No linters or type checkers detected — skipped".
+### Severity Classification
+
+| Severity | Meaning | Examples |
+|----------|---------|---------|
+| BUG | Probable correctness issue, blocks in strict | Type errors, undefined references |
+| WARN | Quality concern, blocks only if strict | Lint violations, unused imports |
+| FYI | Informational, never blocks | Format auto-fixed, minor style |
+
+If blocking, list type errors with file:line and severity. No tools = "No linters or type checkers detected — skipped".
+
+### Failure Context (on BLOCK/WARN)
+
+When gate is not PASS, include actionable context:
+- **What failed:** List errors with file:line and severity (BUG/WARN/FYI)
+- **Where to look:** Files from plan's `files_modified` that have issues
+- **Auto-fixed:** Note what was already resolved (FYI items)
 
 </report_format>
 
