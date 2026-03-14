@@ -28,7 +28,40 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-None active. Run `/paul:discuss-milestone` or `/paul:milestone` to define the next milestone.
+**v1.1 Deep Competitive Audit & Quality Improvements**
+Status: 🚧 In Progress
+Phases: 1 of 5 complete
+Theme: Learn from the best at each workflow facet, then improve PALS output quality
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 38 | Planning Deep Dive | 1 | ✅ Complete | 2026-03-13 |
+| 39 | Execution Deep Dive | TBD | Not started | - |
+| 40 | Testing & TDD | TBD | Not started | - |
+| 41 | Quality & Validation | TBD | Not started | - |
+| 42 | UNIFY, Continuity & Codebase Intel | TBD | Not started | - |
+
+### Phase 38: Planning Deep Dive
+
+Focus: Research 10+ frameworks' planning approaches (wide + deep). Identify best techniques for decomposition, spec generation, context gathering, scope management. Implement concrete improvements to PALS plan-phase workflow.
+Research: Deep-dive planning mechanics across OpenSpec, BMAD, Superpowers, Aider, Cursor rules, SWE-agent, and others.
+
+### Phase 39: Execution Deep Dive
+
+Focus: Research how frameworks execute/apply code (wide + deep). Task decomposition during execution, context management, error recovery, edit formats, rollback strategies. Implement concrete improvements to PALS apply-phase workflow.
+Research: Deep-dive execution mechanics across Aider, Superpowers, SWE-agent, OpenHands, Cline, and others.
+
+### Phase 40: Testing & TDD
+
+Focus: Compare TODD's TDD enforcement against Aider's test-first, Cursor's approach, and others. Identify gaps in test generation, coverage targeting, and RED/GREEN/REFACTOR enforcement. Improve TODD module.
+
+### Phase 41: Quality & Validation
+
+Focus: Compare WALT's quality gating against SonarQube-style, CI-integrated, and post-hoc review approaches. Identify gaps in what gets caught and when. Improve WALT module.
+
+### Phase 42: UNIFY, Continuity & Codebase Intel
+
+Focus: Validate/sharpen PALS differentiators. Compare session continuity vs Superpowers checkpoints, UNIFY vs nothing, brownfield approaches. These are unique to PALS — ensure they're best-in-class.
 
 ---
 
@@ -170,4 +203,4 @@ None active. Run `/paul:discuss-milestone` or `/paul:milestone` to define the ne
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-13 — v1.0 Production Ready milestone complete*
+*Last updated: 2026-03-13 — v1.1 Deep Competitive Audit & Quality Improvements milestone created*
