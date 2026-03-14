@@ -38,6 +38,7 @@ Next phase: APPLY (after plan approval)
 2. If STATE.md shows mid-loop (APPLY or UNIFY incomplete):
    - Warn user: "Previous loop not closed. Complete UNIFY first or reset."
    - Do not proceed until resolved
+3. **Read-only constraint:** Plan phase must not modify source files — only produce plan artifacts. (Inspired by OpenHands' read-only planning agent)
 </step>
 
 <step name="identify_phase">
@@ -67,10 +68,14 @@ Next phase: APPLY (after plan approval)
 
 <step name="analyze_scope">
 1. Review phase goals from ROADMAP.md
-2. Estimate number of tasks needed:
+2. **Assess change size** to scale planning depth: (Inspired by GPT Pilot's complexity gating)
+   - 1-2 files, clear scope → lighter plan (fewer ACs, simpler verify)
+   - 3-5 files → standard plan (full ACs, explicit verify per task)
+   - 5+ files or cross-cutting → consider splitting into multiple plans
+3. Estimate number of tasks needed:
    - Target: 2-3 tasks per plan
    - If >3 tasks, consider splitting into multiple plans
-3. Identify files that will be modified
+4. Identify files that will be modified
 4. Determine if checkpoints are needed:
    - Visual verification required? → checkpoint:human-verify
    - Architecture decision needed? → checkpoint:decision
@@ -158,8 +163,12 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 1. Check all sections present
 2. Verify acceptance criteria are testable
 3. Confirm tasks are specific enough (files + action + verify + done)
-4. Ensure boundaries protect completed work
-5. Validate checkpoint placement (if any):
+   - `<verify>` = programmatic proof (command, check, test) — how to prove it worked
+   - `<done>` = human-reviewable outcome (links to AC-N) — what "complete" looks like
+   (Inspired by GPT Pilot's dual-goal task validation)
+4. **Clarity test:** Could someone with no project context execute this plan from the PLAN.md alone? If not, tasks are too vague. (Inspired by Superpowers' "junior engineer" test)
+5. Ensure boundaries protect completed work
+6. Validate checkpoint placement (if any):
    - After automated work completes
    - Before dependent decisions
    - Not too frequent (avoid checkpoint fatigue)
