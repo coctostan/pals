@@ -22,12 +22,12 @@ No multiple options. Prevents decision fatigue. User can redirect if needed.
 </philosophy>
 
 <required_reading>
-@.paul/STATE.md
+.paul/STATE.md
 </required_reading>
 
 <references>
-@~/.pals/references/context-management.md
-@~/.pals/references/loop-phases.md
+@kernel/references/context-management.md
+@kernel/references/loop-phases.md
 </references>
 
 <process>

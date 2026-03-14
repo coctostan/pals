@@ -15,8 +15,8 @@ verification checks for the current project.
 </objective>
 
 <execution_context>
-@~/.pals/modules/dave/references/pipeline-generation.md
-@~/.pals/modules/dave/references/deploy-verification.md
+kernel/modules/dave/references/pipeline-generation.md
+kernel/modules/dave/references/deploy-verification.md
 </execution_context>
 
 <context>
@@ -52,7 +52,7 @@ Project working directory.
    - `Jenkinsfile` (Jenkins)
 
 2. Scan for language/framework indicators:
-   - Use detection heuristics from @~/.pals/modules/dave/references/pipeline-generation.md
+   - Use detection heuristics from kernel/modules/dave/references/pipeline-generation.md
    - Record: language, package manager, framework, build tool
 
 3. Store detection results for use in subsequent steps.
@@ -172,7 +172,7 @@ Project working directory.
 
 1. Using detected project structure from detect_project step:
    - Determine language, package manager, framework
-   - Select appropriate template from @~/.pals/modules/dave/references/pipeline-generation.md
+   - Select appropriate template from kernel/modules/dave/references/pipeline-generation.md
 
 2. Ask user to confirm:
    ```
@@ -215,7 +215,7 @@ Project working directory.
    ```
 
 2. Based on selection, use checklists from
-   @~/.pals/modules/dave/references/deploy-verification.md:
+   kernel/modules/dave/references/deploy-verification.md:
 
    - **Local build:** Run build command, check for errors
    - **Staging:** Health check + smoke test checklist

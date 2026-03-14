@@ -14,14 +14,14 @@ Executes tasks in sequence, pauses at checkpoints for user input, reports comple
 </objective>
 
 <execution_context>
-@~/.pals/workflows/apply-phase.md
-@~/.pals/references/checkpoints.md
+kernel/workflows/apply-phase.md
+kernel/references/checkpoints.md
 </execution_context>
 
 <context>
 Plan path: $ARGUMENTS
 
-@.paul/STATE.md
+.paul/STATE.md
 </context>
 
 <process>
@@ -35,7 +35,7 @@ Plan path: $ARGUMENTS
 </step>
 
 <step name="execute">
-Follow workflow: @~/.pals/workflows/apply-phase.md
+Follow workflow: kernel/workflows/apply-phase.md
 
 Execute tasks sequentially. For each task:
 - Read task definition

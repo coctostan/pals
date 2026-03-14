@@ -32,9 +32,9 @@ autonomous: true                 # false if plan has checkpoints requiring user 
 
 <context>
 ## Project Context
-@.paul/PROJECT.md
-@.paul/ROADMAP.md
-@.paul/STATE.md
+.paul/PROJECT.md
+.paul/ROADMAP.md
+.paul/STATE.md
 
 ## Prior Work (only if genuinely needed)
 # Only reference prior SUMMARYs if:
@@ -45,7 +45,7 @@ autonomous: true                 # false if plan has checkpoints requiring user 
 # Do NOT reflexively chain: Plan 02 refs 01, Plan 03 refs 02...
 
 ## Source Files
-@path/to/relevant/source.ts
+path/to/relevant/source.ts
 </context>
 
 <skills>

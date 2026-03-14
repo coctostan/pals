@@ -19,8 +19,8 @@ Can be invoked at any time during a milestone.
 </loop_context>
 
 <required_reading>
-@.paul/ROADMAP.md
-@.paul/STATE.md
+.paul/ROADMAP.md
+.paul/STATE.md
 </required_reading>
 
 <references>

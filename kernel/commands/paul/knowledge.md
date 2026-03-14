@@ -15,8 +15,8 @@ knowledge base, or search existing knowledge to surface relevant context.
 </objective>
 
 <execution_context>
-@~/.pals/modules/skip/references/knowledge-capture.md
-@~/.pals/modules/skip/references/knowledge-search.md
+kernel/modules/skip/references/knowledge-capture.md
+kernel/modules/skip/references/knowledge-search.md
 </execution_context>
 
 <context>
@@ -132,7 +132,7 @@ Project working directory.
 4. Wait for user response.
 
 5. Ask for content based on type — use the appropriate template from
-   @~/.pals/modules/skip/references/knowledge-capture.md:
+   kernel/modules/skip/references/knowledge-capture.md:
    - For decisions: ask for context, decision, alternatives, rationale, impact
    - For rationale: ask for explanation and key factors
    - For trade-offs: ask for what was gained, what was accepted, revisit conditions
@@ -167,7 +167,7 @@ Project working directory.
 <step name="mode_search">
 **Mode: Search (argument is query text)**
 
-Follow search strategy from @~/.pals/modules/skip/references/knowledge-search.md:
+Follow search strategy from kernel/modules/skip/references/knowledge-search.md:
 
 1. Search KNOWLEDGE.md for query terms (if file exists):
    - Match in titles (highest priority)

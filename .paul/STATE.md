@@ -5,26 +5,25 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v1.2 complete — ready for next milestone
+**Current focus:** Awaiting next milestone
 
 ## Current Position
 
-Milestone: v1.2 Multi-Model Routing — COMPLETE
-Phase: 44 of 44 (Implementation & Validation) — Complete
-Plan: 44-01 complete
-Status: Milestone complete, ready for next milestone
-Last activity: 2026-03-14 — v1.2 milestone complete (Phases 43-44)
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: Milestone v2.0 complete — ready for next
+Last activity: 2026-03-14 — v2.0 Portability & Cross-Harness milestone completed
 
 Progress:
-- v1.2 Multi-Model Routing: [██████████] 100%
-- Phase 44: [██████████] 100%
+- v2.0 Portability & Cross-Harness: [██████████] 100% ✓
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Milestone complete]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -51,6 +50,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Adapt context assembly pipeline, interrupted-action recovery, file staleness tracking, convention capture, structured onboarding | 42 | Lighter versions of Windsurf/MetaGPT/Cline/Devin/Cursor patterns |
 | Reject 11 techniques (condenser, dual-state, shadow git, autonomous memory, etc.) | 42 | Requires programmatic infrastructure or redundant with existing PALS/Claude Code mechanisms |
 | Defer tree-sitter+PageRank repo-map and LSP-powered analysis | 42 | High value but requires programmatic implementation beyond PALS scope |
+| Install for ALL detected harnesses (not pick one) | 47 | Both ~/.claude/ and ~/.pi/ get drivers; no prompt needed, no conflict |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -63,20 +63,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: v1.1/execution-deep-dive
-PR: #6 open (v1.0 milestone)
+Branch: main
+PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v1.2 milestone complete, user wants to start next milestone
-Next action: /paul:discuss-milestone or /paul:milestone to define v1.3
-Resume file: .paul/HANDOFF-2026-03-14-v1.2-complete.md
+Stopped at: v2.0 Portability & Cross-Harness milestone complete
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 Resume context:
-- v1.2 shipped: agent-based task execution with config-driven models across all workflows
-- Phase 43: config schema, dispatch reference, apply/plan-phase logic
-- Phase 44: init, unify, research, discover integration
-- Deferred: Agent SDK hooks, tree-sitter repo-map, AGENTS.md, CI generation
+- v2.0 complete: portable specs, harness-agnostic kernel, Pi adapter, cross-harness validation
+- 14 milestones completed total (v0.1 through v2.0)
+- 48 phases, 60+ plans completed
 
 ---
 *STATE.md — Updated after every significant action*

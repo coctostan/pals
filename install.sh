@@ -31,37 +31,51 @@ cp -R "$PALS_ROOT/kernel/rules/"* ~/.pals/rules/
 
 echo "  [ok] Kernel files installed to ~/.pals/"
 
-# ── 2. Detect and run driver installer ───────────────────────────
-# Driver detection order:
-#   1. PALS_DRIVER env var (explicit override)
-#   2. ~/.claude/ directory presence → claude-code
-#   3. ANTHROPIC_AGENT_SDK env var → agent-sdk
-#   4. Fallback: claude-code (default)
+# ── 2. Detect and run driver installer(s) ─────────────────────────
+# Strategy:
+#   - PALS_DRIVER env var → install that one driver only
+#   - Otherwise: auto-detect ALL available harnesses and install for each
+#   - Multiple drivers can coexist (different install paths, no conflict)
+#   - Fallback: claude-code if nothing detected
+
+DRIVERS_INSTALLED=0
+
+run_driver() {
+  local DRIVER="$1"
+  local DRIVER_DIR="$PALS_ROOT/drivers/$DRIVER"
+  local DRIVER_INSTALL="$DRIVER_DIR/install.sh"
+  if [ ! -d "$DRIVER_DIR" ]; then
+    echo "  [WARN] Driver '$DRIVER' not found at $DRIVER_DIR"
+    return 1
+  fi
+  if [ ! -f "$DRIVER_INSTALL" ]; then
+    echo "  [skip] Driver '$DRIVER' has no install.sh"
+    return 0
+  fi
+  echo "  [ok] Installing driver: $DRIVER"
+  bash "$DRIVER_INSTALL"
+  DRIVERS_INSTALLED=$((DRIVERS_INSTALLED + 1))
+}
 
 if [ -n "$PALS_DRIVER" ]; then
-  DRIVER="$PALS_DRIVER"
-elif [ -d "$HOME/.claude" ]; then
-  DRIVER="claude-code"
-elif [ -n "$ANTHROPIC_AGENT_SDK" ]; then
-  DRIVER="agent-sdk"
+  # Explicit override: install only the specified driver
+  run_driver "$PALS_DRIVER"
 else
-  DRIVER="claude-code"
-fi
-
-DRIVER_DIR="$PALS_ROOT/drivers/$DRIVER"
-if [ ! -d "$DRIVER_DIR" ]; then
-  echo "ERROR: Driver '$DRIVER' not found at $DRIVER_DIR"
-  echo "Available drivers:"
-  ls -1 "$PALS_ROOT/drivers/"
-  exit 1
-fi
-
-DRIVER_INSTALL="$DRIVER_DIR/install.sh"
-if [ ! -f "$DRIVER_INSTALL" ]; then
-  echo "  [skip] Driver '$DRIVER' has no install.sh — kernel-only installation"
-else
-  echo "  [ok] Driver detected: $DRIVER"
-  bash "$DRIVER_INSTALL"
+  # Auto-detect: install for every detected harness
+  if [ -d "$HOME/.claude" ]; then
+    run_driver "claude-code"
+  fi
+  if [ -d "$HOME/.pi" ]; then
+    run_driver "pi"
+  fi
+  if [ -n "$ANTHROPIC_AGENT_SDK" ]; then
+    run_driver "agent-sdk"
+  fi
+  # Fallback: if nothing detected, default to claude-code
+  if [ $DRIVERS_INSTALLED -eq 0 ]; then
+    echo "  [info] No harness detected, defaulting to claude-code"
+    run_driver "claude-code"
+  fi
 fi
 
 # ── 3. Validation ───────────────────────────────────────────────
@@ -80,10 +94,14 @@ check_path ~/.pals/templates
 check_path ~/.pals/rules
 
 # Driver-specific validation
-if [ "$DRIVER" = "claude-code" ]; then
+if [ -d "$HOME/.claude/commands/paul" ]; then
   check_path ~/.pals/modules.yaml
   check_path ~/.claude/commands/paul
   check_path ~/.claude/settings.json
+fi
+if [ -d "$HOME/.pi/agent/skills/pals" ]; then
+  check_path ~/.pi/agent/skills/pals/workflows
+  check_path ~/.pi/agent/skills/pals/modules.yaml
 fi
 
 if [ $ERRORS -gt 0 ]; then
@@ -93,7 +111,6 @@ if [ $ERRORS -gt 0 ]; then
 fi
 
 # ── 4. Summary ──────────────────────────────────────────────────
-PALS_CMD_COUNT=$(find ~/.claude/commands/paul -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
 MODULE_COUNT=$(python3 -c "
 import os
 m = os.path.join(os.path.expanduser('~'), '.pals', 'modules.yaml')
@@ -104,19 +121,22 @@ if os.path.exists(m):
             if line.startswith('  ') and ':' in line and not line.strip().startswith(('version', 'installed', 'hooks', 'platform')):
                 count += 1
 print(count)
-")
+" 2>/dev/null || echo "0")
 
 echo ""
 echo "════════════════════════════════════════"
 echo "PALS installed successfully!"
 echo "════════════════════════════════════════"
 echo ""
-echo "  Driver:               $DRIVER"
+echo "  Drivers installed:    $DRIVERS_INSTALLED"
 echo "  ~/.pals/              Framework (kernel + $MODULE_COUNT modules)"
-echo "  ~/.pals/modules.yaml  Installed module registry"
-if [ "$DRIVER" = "claude-code" ]; then
+if [ -d "$HOME/.claude/commands/paul" ]; then
+  PALS_CMD_COUNT=$(find ~/.claude/commands/paul -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
   echo "  ~/.claude/commands/   $PALS_CMD_COUNT kernel commands + module commands"
   echo "  ~/.claude/hooks/      Platform hooks (symlinks)"
 fi
+if [ -d "$HOME/.pi/agent/skills/pals" ]; then
+  echo "  ~/.pi/agent/skills/   Pi skill (kernel + modules)"
+fi
 echo ""
-echo "Start a new Claude Code session to use PALS."
+echo "Start a new session in your harness to use PALS."

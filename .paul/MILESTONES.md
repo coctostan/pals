@@ -17,6 +17,70 @@ Completed milestone log for this project.
 | v0.9.2 Competitive Intelligence | 2026-03-13 | 1 day | 1 phase, 1 plan |
 | v1.0 Production Ready | 2026-03-13 | 1 day | 3 phases, 3 plans |
 | **v1.1 Deep Competitive Audit** | 2026-03-14 | 2 days | 5 phases, 5 plans |
+| **v1.2 Multi-Model Routing** | 2026-03-14 | 1 day | 2 phases, 2 plans |
+| **v2.0 Portability & Cross-Harness** | 2026-03-14 | 1 day | 4 phases, 6 plans |
+
+---
+
+## ✅ v2.0 Portability & Cross-Harness
+
+**Completed:** 2026-03-14
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 45-48) |
+| Plans | 6 |
+| Files created | ~15 (specs, drivers, validation) |
+| Key specs | 5 normative documents |
+
+### Key Accomplishments
+
+- Created 5 normative specification documents: ARTIFACT-SPEC.md (8 artifact schemas), LIFECYCLE-SPEC.md (7 states, 7 transitions), HOOK-CONTRACT.md, ADAPTER-CONTRACT.md, HARNESS-PORTABILITY.md
+- Converted all 53+ kernel and module files to portable reference convention — zero @~/.pals/, @.paul/, or ~/.pals/ hardcoded patterns remain
+- Created REFERENCE-RESOLUTION.md documenting portable kernel/ prefix convention with per-harness resolution table
+- Built Pi adapter: driver manifest (4/6 capabilities), installer targeting ~/.pi/agent/skills/pals/, uninstaller
+- Rewrote root installer for multi-driver support — installs for ALL detected harnesses simultaneously
+- Created and passed 45-check cross-harness validation suite proving installer parity, portability compliance, artifact spec conformance, and driver manifest completeness
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Artifacts are authoritative; prompts are interpretive | 45 | Core portability principle |
+| kernel/ prefix for portable references | 46 | Adapters resolve to install location |
+| Install for ALL detected harnesses | 47 | No silent override, no conflict |
+| Pi: no hook_register or command_register | 47 | Simpler adapter, can extend later |
+| TAP format for validation output | 48 | Machine-parseable, CI-ready |
+
+---
+
+## ✅ v1.2 Multi-Model Routing
+
+**Completed:** 2026-03-14
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 2 (Phases 43-44) |
+| Plans | 2 |
+
+### Key Accomplishments
+
+- Designed 4 agent roles (coder/researcher/tester/reviewer) with config-driven models in pals.json
+- Implemented agent dispatch in apply-phase and research/discover workflows
+- Backward-compatible: missing agents config = inline execution
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| 4 named roles with configurable models | 43 | reviewer=opus, rest=sonnet by default |
+| Missing config = backward-compatible inline | 43 | Zero behavior change for existing projects |
 
 ---
 

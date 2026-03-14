@@ -12,19 +12,19 @@ Create a new milestone with defined scope and phases.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/create-milestone.md
+kernel/workflows/create-milestone.md
 </execution_context>
 
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/create-milestone.md
+Follow workflow: kernel/workflows/create-milestone.md
 </process>
 
 <success_criteria>

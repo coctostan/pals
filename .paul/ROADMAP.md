@@ -27,11 +27,24 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-None — v1.2 complete. Run `/paul:milestone` to define next milestone.
+
+No active milestone. Run `/paul:discuss-milestone` or `/paul:milestone` to define the next one.
 
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v2.0 Portability & Cross-Harness - 2026-03-14 (4 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 45 | Artifact & Lifecycle Spec | 1 | 2026-03-14 |
+| 46 | Harness-Agnostic Skills | 3 | 2026-03-14 |
+| 47 | Pi Adapter | 1 | 2026-03-14 |
+| 48 | Cross-Harness Validation | 1 | 2026-03-14 |
+
+</details>
 
 <details>
 <summary>v1.2 Multi-Model Routing - 2026-03-14 (2 phases)</summary>
@@ -192,4 +205,4 @@ None — v1.2 complete. Run `/paul:milestone` to define next milestone.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-14 — Phase 43 complete, Phase 44 next*
+*Last updated: 2026-03-14 — v2.0 Portability & Cross-Harness milestone created*

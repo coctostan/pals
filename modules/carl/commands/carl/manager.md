@@ -34,7 +34,7 @@ argument-hint: "[list|add|create|edit|toggle|view]"
 
 ## Paths
 - **Project CARL:** `./.carl/`
-- **Global CARL:** `~/.pals/carl/`
+- **Global CARL:** `kernel/carl/`
 - **Manifest:** `./.carl/manifest`
 
 ## CARL Filesystem Structure

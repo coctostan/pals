@@ -15,7 +15,7 @@ trajectory analysis showing whether project quality is improving, stable, or deg
 </objective>
 
 <execution_context>
-@~/.pals/modules/walt/references/quality-trends.md
+kernel/modules/walt/references/quality-trends.md
 </execution_context>
 
 <context>

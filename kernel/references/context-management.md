@@ -47,17 +47,17 @@ PAUL uses context brackets to adapt behavior based on remaining capacity:
 ```markdown
 <!-- GOOD: Targeted loading -->
 <context>
-@.paul/STATE.md
+.paul/STATE.md
 @src/models/user.ts  (the specific file being modified)
 </context>
 
 <!-- BAD: Kitchen sink -->
 <context>
-@.paul/PROJECT.md
-@.paul/ROADMAP.md
-@.paul/STATE.md
-@.paul/phases/01-foundation/01-01-SUMMARY.md
-@.paul/phases/01-foundation/01-02-SUMMARY.md
+.paul/PROJECT.md
+.paul/ROADMAP.md
+.paul/STATE.md
+.paul/phases/01-foundation/01-01-SUMMARY.md
+.paul/phases/01-foundation/01-02-SUMMARY.md
 @src/models/user.ts
 @src/models/product.ts
 @src/api/routes.ts
@@ -69,11 +69,11 @@ When referencing prior work:
 
 ```markdown
 <!-- GOOD: Reference summary -->
-@.paul/phases/01-foundation/01-01-SUMMARY.md
+.paul/phases/01-foundation/01-01-SUMMARY.md
 
 <!-- AVOID: Full plan + summary -->
-@.paul/phases/01-foundation/01-01-PLAN.md
-@.paul/phases/01-foundation/01-01-SUMMARY.md
+.paul/phases/01-foundation/01-01-PLAN.md
+.paul/phases/01-foundation/01-01-SUMMARY.md
 ```
 
 Summaries capture what was built. Plans capture what was intended. After completion, the summary is more useful.

@@ -16,15 +16,15 @@ Next phase: PLAN (next plan or next phase)
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/phases/{phase}/{plan}-PLAN.md
+.paul/STATE.md
+.paul/phases/{phase}/{plan}-PLAN.md
 </required_reading>
 
 <references>
-@~/.pals/references/loop-phases.md
-@~/.pals/templates/SUMMARY.md
-@~/.pals/workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
-<!-- Module references are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
+kernel/references/loop-phases.md
+kernel/templates/SUMMARY.md
+kernel/workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
+<!-- Module references are loaded dynamically via hook dispatch from kernel/modules.yaml -->
 </references>
 
 <process>
@@ -144,7 +144,7 @@ Next phase: PLAN (next plan or next phase)
 <step name="pre_unify_hooks" priority="before-reconciliation">
 **Dispatch pre-unify lifecycle hooks to registered modules.**
 
-1. Read `~/.pals/modules.yaml` (if it exists)
+1. Read `kernel/modules.yaml` (if it exists)
 2. Find modules with hooks registered for `pre-unify`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
@@ -186,7 +186,7 @@ Next phase: PLAN (next plan or next phase)
 4. If all required skills invoked:
    - Note in SUMMARY.md: "Skill audit: All required skills invoked ✓"
 
-**Reference:** @references/specialized-workflow-integration.md
+**Reference:** kernel/references/specialized-workflow-integration.md
 </step>
 
 <step name="create_summary">
@@ -241,7 +241,7 @@ Next phase: PLAN (next plan or next phase)
 <step name="post_unify_hooks" priority="after-state-update">
 **Dispatch post-unify lifecycle hooks to registered modules.**
 
-1. Read `~/.pals/modules.yaml` (if it exists)
+1. Read `kernel/modules.yaml` (if it exists)
 2. Find modules with hooks registered for `post-unify`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
@@ -301,7 +301,7 @@ Continue to next plan?
    ════════════════════════════════════════
    ```
 
-2. **MUST read and execute:** @~/.pals/workflows/transition-phase.md
+2. **MUST read and execute:** kernel/workflows/transition-phase.md
 
 3. Transition handles (do not skip any):
    - Evolve PROJECT.md (requirements validated → shipped)

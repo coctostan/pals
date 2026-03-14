@@ -16,17 +16,17 @@ Next phase: APPLY (after plan approval)
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/ROADMAP.md
-@.paul/PROJECT.md
-@.paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
+.paul/STATE.md
+.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
 </required_reading>
 
 <references>
-@~/.pals/references/plan-format.md
-@~/.pals/references/checkpoints.md (if plan will have checkpoints)
-@~/.pals/templates/PLAN.md
-<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from ~/.pals/modules.yaml -->
+kernel/references/plan-format.md
+kernel/references/checkpoints.md (if plan will have checkpoints)
+kernel/templates/PLAN.md
+<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from kernel/modules.yaml -->
 </references>
 
 <process>
@@ -53,7 +53,7 @@ Next phase: APPLY (after plan approval)
 <step name="pre_plan_hooks" priority="before-scope-analysis">
 **Dispatch pre-plan lifecycle hooks to registered modules.**
 
-1. Read `~/.pals/modules.yaml` (if it exists)
+1. Read `kernel/modules.yaml` (if it exists)
 2. Find modules with hooks registered for `pre-plan`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:
@@ -144,7 +144,7 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 
    **Sections:**
    - <objective>: Goal, Purpose, Output
-   - <context>: @-references to project files and source
+   - <context>: references to project files and source
    - <acceptance_criteria>: Given/When/Then for each criterion
    - <tasks>: Task definitions with files, action, verify, done
    - <boundaries>: DO NOT CHANGE, SCOPE LIMITS
@@ -177,7 +177,7 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 <step name="post_plan_hooks" priority="after-plan-creation">
 **Dispatch post-plan lifecycle hooks to registered modules.**
 
-1. Read `~/.pals/modules.yaml` (if it exists)
+1. Read `kernel/modules.yaml` (if it exists)
 2. Find modules with hooks registered for `post-plan`
 3. Sort by priority (ascending — lower runs first)
 4. For each registered module:

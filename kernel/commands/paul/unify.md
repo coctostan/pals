@@ -14,14 +14,14 @@ Creates SUMMARY.md documenting what was built, decisions made, and any deferred 
 </objective>
 
 <execution_context>
-@~/.pals/workflows/unify-phase.md
-@~/.pals/templates/SUMMARY.md
+kernel/workflows/unify-phase.md
+kernel/templates/SUMMARY.md
 </execution_context>
 
 <context>
 Plan path: $ARGUMENTS
 
-@.paul/STATE.md
+.paul/STATE.md
 @{plan-path} (the PLAN.md being unified)
 </context>
 
@@ -34,7 +34,7 @@ Plan path: $ARGUMENTS
 </step>
 
 <step name="reconcile">
-Follow workflow: @~/.pals/workflows/unify-phase.md
+Follow workflow: kernel/workflows/unify-phase.md
 
 Compare plan to actual:
 - Which tasks completed as planned?

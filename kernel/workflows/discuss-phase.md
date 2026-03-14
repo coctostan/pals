@@ -19,9 +19,9 @@ After discussion, routes to /paul:plan (plan-phase).
 </loop_context>
 
 <required_reading>
-@.paul/STATE.md
-@.paul/PROJECT.md (current requirements and progress)
-@.paul/ROADMAP.md (phase scope and goals)
+.paul/STATE.md
+.paul/PROJECT.md (current requirements and progress)
+.paul/ROADMAP.md (phase scope and goals)
 </required_reading>
 
 <references>

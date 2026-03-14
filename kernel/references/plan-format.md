@@ -53,9 +53,9 @@ autonomous: true
 </objective>
 
 <context>
-@.paul/PROJECT.md
-@.paul/ROADMAP.md
-@.paul/STATE.md
+.paul/PROJECT.md
+.paul/ROADMAP.md
+.paul/STATE.md
 @relevant/source/files.ts
 </context>
 

@@ -12,19 +12,19 @@ Add a new phase to the current milestone's roadmap.
 </objective>
 
 <execution_context>
-@~/.pals/workflows/roadmap-management.md
+kernel/workflows/roadmap-management.md
 </execution_context>
 
 <context>
 $ARGUMENTS
 
-@.paul/PROJECT.md
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/PROJECT.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
-Follow workflow: @~/.pals/workflows/roadmap-management.md
+Follow workflow: kernel/workflows/roadmap-management.md
 
 Execute: **add-phase** operation
 </process>

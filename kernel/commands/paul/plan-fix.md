@@ -14,15 +14,15 @@ Create FIX.md plan from UAT issues found during verify.
 </objective>
 
 <execution_context>
-@~/.pals/references/plan-format.md
-@~/.pals/references/checkpoints.md
+kernel/references/plan-format.md
+kernel/references/checkpoints.md
 </execution_context>
 
 <context>
 Plan number: $ARGUMENTS (required - e.g., "04-02" or "10-01")
 
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/STATE.md
+.paul/ROADMAP.md
 </context>
 
 <process>
@@ -131,14 +131,14 @@ Priority: {blocker count} blocker, {major count} major, {minor count} minor, {co
 </objective>
 
 <context>
-@.paul/STATE.md
-@.paul/ROADMAP.md
+.paul/STATE.md
+.paul/ROADMAP.md
 
 **Issues being fixed:**
-@.paul/phases/XX-name/{plan}-UAT.md
+.paul/phases/XX-name/{plan}-UAT.md
 
 **Original plan for reference:**
-@.paul/phases/XX-name/{plan}-PLAN.md
+.paul/phases/XX-name/{plan}-PLAN.md
 </context>
 
 <acceptance_criteria>

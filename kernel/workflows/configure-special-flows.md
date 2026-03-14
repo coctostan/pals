@@ -15,8 +15,8 @@ Can be run at any time without affecting PLAN/APPLY/UNIFY state.
 </loop_context>
 
 <required_reading>
-@.paul/PROJECT.md (project context)
-@.paul/SPECIAL-FLOWS.md (if exists, for amendment)
+.paul/PROJECT.md (project context)
+.paul/SPECIAL-FLOWS.md (if exists, for amendment)
 </required_reading>
 
 <references>

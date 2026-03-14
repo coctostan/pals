@@ -15,8 +15,8 @@ opportunities for the current project.
 </objective>
 
 <execution_context>
-@~/.pals/modules/ruby/references/debt-detection.md
-@~/.pals/modules/ruby/references/refactor-patterns.md
+kernel/modules/ruby/references/debt-detection.md
+kernel/modules/ruby/references/refactor-patterns.md
 </execution_context>
 
 <context>
@@ -102,7 +102,7 @@ Project working directory.
 <step name="mode_scan">
 **Mode: Scan (argument is "scan")**
 
-1. Analyze source files using heuristics from @~/.pals/modules/ruby/references/debt-detection.md:
+1. Analyze source files using heuristics from kernel/modules/ruby/references/debt-detection.md:
 
    **File-level analysis:**
    - Line count per file (flag >300 lines)
@@ -167,7 +167,7 @@ Project working directory.
 1. Run scan (if not already done) to identify findings.
 
 2. For each finding, match to refactoring patterns from
-   @~/.pals/modules/ruby/references/refactor-patterns.md:
+   kernel/modules/ruby/references/refactor-patterns.md:
    - Long function → Extract function
    - Deep nesting → Guard clauses
    - Magic values → Replace with constants

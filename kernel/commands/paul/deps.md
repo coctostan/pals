@@ -15,8 +15,8 @@ vulnerabilities and outdated packages, and display a dashboard with actionable s
 </objective>
 
 <execution_context>
-@~/.pals/modules/dean/references/dependency-detection.md
-@~/.pals/modules/dean/references/vulnerability-audit.md
+kernel/modules/dean/references/dependency-detection.md
+kernel/modules/dean/references/vulnerability-audit.md
 </execution_context>
 
 <context>
