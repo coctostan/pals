@@ -13,10 +13,11 @@ Manage PALS module configuration and integrations. View, enable, and disable mod
 **Step 1: Locate and read config**
 
 Look for pals.json in this order:
-1. Current project root (if this is the PALS repo)
-2. `~/.pals/pals.json` (installed location)
+1. Current project root (where .paul/ exists) — this is the per-project config
+2. `~/.pals/pals.json` (global fallback)
 
-If not found, offer to create with defaults.
+If not found in the project root, create pals.json there with defaults (all modules enabled).
+The project root is the directory containing `.paul/`, NOT just the PALS source repo.
 
 Read pals.json and display the module dashboard:
 
