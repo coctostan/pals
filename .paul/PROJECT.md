@@ -33,6 +33,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [~] Execution deep dive — 12 frameworks researched, 6 improvements to apply-phase.md (Phase 39)
 - [~] Testing & TDD deep dive — 12 frameworks researched, 6 improvements to TODD module (Phase 40)
 - [~] Quality & Validation deep dive — 12 frameworks researched, 8 improvements to WALT module (Phase 41)
+- [~] UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements to 5 workflow/reference files (Phase 42)
 
 ### Must Have
 All validated — see below.
@@ -93,6 +94,7 @@ All validated — see below.
 - ✓ Execution deep dive — 12 frameworks researched, 6 improvements (structured status, divergence check, bounded retry, revert-and-refine, stuck detection, re-plan protocol) — Phase 39
 - ✓ Testing & TDD deep dive — 12 frameworks researched, 6 improvements (anti-pattern injection, failure classification, contract guard, reflection loop, structural coverage, quality heuristics) — Phase 40
 - ✓ Quality & Validation deep dive — 12 frameworks researched, 8 improvements (3-tier severity, failure-to-context, advisory mode, zero-regression rate, small-change exemption, diff-based guidance, event-tagged history, scoped validation) — Phase 41
+- ✓ UNIFY, Continuity & Codebase Intel deep dive — 12 frameworks + 3 tools researched, 11 improvements (retrospective artifacts, offline changes detection, knowledge quality feedback, context assembly pipeline, interrupted-action recovery, file staleness tracking, per-module map, convention capture, structured onboarding) — Phase 42
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -183,6 +185,10 @@ All validated — see below.
 | Adopt anti-pattern injection, failure classification, contract guard for TODD | 40 | Best techniques from 12 frameworks' testing approaches |
 | Adapt reflection loop, structural coverage, quality heuristics for TODD | 40 | Lighter versions of Aider/Continue.dev/BMAD techniques |
 | Reject 10 testing techniques (cross-agent, recursive debug, CI auto-fix, delete-before-test, etc.) | 40 | Multi-agent, IDE-specific, or already adopted |
+| Adopt retrospective artifacts (Devin), offline changes detection (GPT Pilot), knowledge quality feedback (Devin) | 42 | Best techniques for UNIFY, resume, and codebase intelligence workflows |
+| Adapt 8 techniques (context assembly, interrupted-action, staleness tracking, convention capture, structured onboarding, etc.) | 42 | Lighter versions of Windsurf/MetaGPT/Cline/Cursor patterns |
+| Reject 11 techniques (condenser, dual-state, shadow git, autonomous memory, etc.) | 42 | Require programmatic infrastructure beyond PALS scope |
+| Defer tree-sitter+PageRank and LSP-powered analysis | 42 | High value but needs programmatic implementation |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -201,4 +207,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 41 Quality & Validation Deep Dive complete*
+*Last updated: 2026-03-14 after Phase 42 UNIFY, Continuity & Codebase Intel Deep Dive complete — v1.1 milestone done*
