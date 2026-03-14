@@ -63,20 +63,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: v1.1/execution-deep-dive
-PR: #6 open (v1.0 milestone)
+Branch: main
+PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v1.2 milestone complete, user wants to start next milestone
-Next action: /paul:discuss-milestone or /paul:milestone to define v1.3
-Resume file: .paul/HANDOFF-2026-03-14-v1.2-complete.md
+Stopped at: v2.0 milestone discussion complete, MILESTONE-CONTEXT.md created
+Next action: /paul:milestone to create v2.0 Portability & Cross-Harness
+Resume file: .paul/HANDOFF-2026-03-14-v2.0-discussion.md
 Resume context:
-- v1.2 shipped: agent-based task execution with config-driven models across all workflows
-- Phase 43: config schema, dispatch reference, apply/plan-phase logic
-- Phase 44: init, unify, research, discover integration
-- Deferred: Agent SDK hooks, tree-sitter repo-map, AGENTS.md, CI generation
+- v2.0 discussion complete: 4 phases planned (45-48)
+- Researched pi-mono extensions, SDK, skills — skills nearly identical to Claude Code
+- Key gap: `@` references (Claude-only) and hooks (shell vs TypeScript)
+- MILESTONE-CONTEXT.md ready for /paul:milestone consumption
+- Pi platform references captured in handoff
 
 ---
 *STATE.md — Updated after every significant action*
