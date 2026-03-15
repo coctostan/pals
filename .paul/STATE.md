@@ -5,18 +5,19 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.1 Pi Runtime Integration
+**Current focus:** v2.1 Pi Runtime Integration — COMPLETE
 
 ## Current Position
 
-Milestone: v2.1 Pi Runtime Integration
-Phase: 52 of 52 (End-to-End Validation)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-14 — Phase 51 complete, transitioned to Phase 52
+Milestone: v2.1 Pi Runtime Integration — COMPLETE
+Phase: 52 of 52 (End-to-End Validation) — Complete
+Plan: 52-01 complete
+Status: v2.1 milestone complete, all 4 phases done
+Last activity: 2026-03-14 — Phase 52 complete, v2.1 milestone finished
 
 Progress:
-- v2.1 Pi Runtime Integration: [███████░░░] 75%
+- v2.1 Pi Runtime Integration: [██████████] 100% ✓
+- Phase 52: [██████████] 100% ✓
 - Phase 51: [██████████] 100% ✓
 - Phase 50: [██████████] 100% ✓
 - Phase 49: [██████████] 100% ✓
@@ -26,7 +27,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for Phase 52 planning]
+  ✓        ✓        ✓     [Loop complete — milestone done]
 ```
 
 ## Accumulated Context
@@ -66,19 +67,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: main
+Branch: v2.0/portability-and-cross-harness
 PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Phase 51 complete, ready to plan Phase 52
-Next action: /paul:plan for Phase 52 (End-to-End Validation)
+Stopped at: v2.1 milestone complete
+Next action: /paul:complete-milestone to formally close v2.1
 Resume file: .paul/ROADMAP.md
-Resume context:
-- Phase 51 complete: installer deploys skills + extension
-- Phase 52 is the LAST phase in v2.1 milestone
-- Phase 52: prove PALS loop works end-to-end on Pi
 
 ---
 *STATE.md — Updated after every significant action*

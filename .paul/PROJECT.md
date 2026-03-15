@@ -109,6 +109,7 @@ All validated — see below.
 - ✓ SKILL.md Generation — 11 Pi skill entry points + skill-map.md mapping 21 workflows to 11 skills + 10 internal — Phase 49
 - ✓ Pi Extension — Thin TypeScript extension (143 lines) with 11 /paul-* commands via registerCommand, session_start + context event hooks — Phase 50
 - ✓ Installer & Driver Update — install.sh deploys skills + extension, uninstall.sh cleans up, driver.yaml reflects command/hook capabilities — Phase 51
+- ✓ Pi End-to-End Validation — 75-check TAP validation suite, installer deployment, skill structure, extension structure, driver manifest accuracy. All pass. — Phase 52
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -230,4 +231,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 51 Installer & Driver Update complete*
+*Last updated: 2026-03-14 after Phase 52 End-to-End Validation complete (v2.1 milestone done)*
