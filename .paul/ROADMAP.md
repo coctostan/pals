@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.1 Pi Runtime Integration**
 Status: In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 Focus: Make PALS actually run on Pi, not just deploy files to it
 
@@ -38,7 +38,7 @@ Focus: Make PALS actually run on Pi, not just deploy files to it
 |-------|------|-------|--------|-----------|
 | 49 | SKILL.md Generation | 1 | Complete | 2026-03-14 |
 | 50 | Pi Extension | 1 | Complete | 2026-03-14 |
-| 51 | Installer & Driver Update | TBD | Not started | - |
+| 51 | Installer & Driver Update | 1 | Complete | 2026-03-14 |
 | 52 | End-to-End Validation | TBD | Not started | - |
 
 ---
@@ -216,4 +216,4 @@ Focus: Make PALS actually run on Pi, not just deploy files to it
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-14 — Phase 50 Pi Extension complete*
+*Last updated: 2026-03-14 — Phase 51 Installer & Driver Update complete*

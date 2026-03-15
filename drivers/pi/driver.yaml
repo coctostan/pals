@@ -7,11 +7,11 @@ kernel_version: ">=2.0.0"
 
 capabilities:
   workflow_invoke: true
-  hook_register: false
+  hook_register: true
   state_read: true
   state_write: true
   user_interact: true
-  command_register: false
+  command_register: true
 
 config:
   framework_dir: "~/.pi/agent/skills/pals"
@@ -19,3 +19,6 @@ config:
 files:
   - install.sh
   - uninstall.sh
+  - skill-map.md
+  - skills/
+  - extensions/

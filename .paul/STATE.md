@@ -10,13 +10,14 @@ See: .paul/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Milestone: v2.1 Pi Runtime Integration
-Phase: 51 of 52 (Installer & Driver Update)
+Phase: 52 of 52 (End-to-End Validation)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-14 — Phase 50 complete, transitioned to Phase 51
+Last activity: 2026-03-14 — Phase 51 complete, transitioned to Phase 52
 
 Progress:
-- v2.1 Pi Runtime Integration: [█████░░░░░] 50%
+- v2.1 Pi Runtime Integration: [███████░░░] 75%
+- Phase 51: [██████████] 100% ✓
 - Phase 50: [██████████] 100% ✓
 - Phase 49: [██████████] 100% ✓
 
@@ -25,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for Phase 51 planning]
+  ○        ○        ○     [Ready for Phase 52 planning]
 ```
 
 ## Accumulated Context
@@ -71,13 +72,13 @@ PR: #7 merged (v1.1+v1.2 milestones)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: Phase 50 complete, ready to plan Phase 51
-Next action: /paul:plan for Phase 51 (Installer & Driver Update)
+Stopped at: Phase 51 complete, ready to plan Phase 52
+Next action: /paul:plan for Phase 52 (End-to-End Validation)
 Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 50 complete: Pi extension created (pals-hooks.ts + README)
-- Phase 51 next: Deploy extension + skills to Pi locations
-- 2 phases remaining in v2.1 milestone (51, 52)
+- Phase 51 complete: installer deploys skills + extension
+- Phase 52 is the LAST phase in v2.1 milestone
+- Phase 52: prove PALS loop works end-to-end on Pi
 
 ---
 *STATE.md — Updated after every significant action*
