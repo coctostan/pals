@@ -5,29 +5,25 @@
 See: .paul/PROJECT.md (updated 2026-03-14)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.1 Pi Runtime Integration — COMPLETE
+**Current focus:** Awaiting next milestone
 
 ## Current Position
 
-Milestone: v2.1 Pi Runtime Integration — COMPLETE
-Phase: 52 of 52 (End-to-End Validation) — Complete
-Plan: 52-01 complete
-Status: v2.1 milestone complete, all 4 phases done
-Last activity: 2026-03-14 — Phase 52 complete, v2.1 milestone finished
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: v2.1 Pi Runtime Integration complete — ready for next
+Last activity: 2026-03-14 — Milestone v2.1 completed
 
 Progress:
 - v2.1 Pi Runtime Integration: [██████████] 100% ✓
-- Phase 52: [██████████] 100% ✓
-- Phase 51: [██████████] 100% ✓
-- Phase 50: [██████████] 100% ✓
-- Phase 49: [██████████] 100% ✓
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — milestone done]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -73,9 +69,9 @@ PR: #7 merged (v1.1+v1.2 milestones)
 ## Session Continuity
 
 Last session: 2026-03-14
-Stopped at: v2.1 milestone complete
-Next action: /paul:complete-milestone to formally close v2.1
-Resume file: .paul/ROADMAP.md
+Stopped at: Milestone v2.1 Pi Runtime Integration complete
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 
 ---
 *STATE.md — Updated after every significant action*

@@ -19,6 +19,42 @@ Completed milestone log for this project.
 | **v1.1 Deep Competitive Audit** | 2026-03-14 | 2 days | 5 phases, 5 plans |
 | **v1.2 Multi-Model Routing** | 2026-03-14 | 1 day | 2 phases, 2 plans |
 | **v2.0 Portability & Cross-Harness** | 2026-03-14 | 1 day | 4 phases, 6 plans |
+| **v2.1 Pi Runtime Integration** | 2026-03-14 | 1 day | 4 phases, 4 plans |
+
+---
+
+## ✅ v2.1 Pi Runtime Integration
+
+**Completed:** 2026-03-14
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 49-52) |
+| Plans | 4 |
+| Files created | ~15 (skills, extension, validation, report) |
+| Validation checks | 75 (all pass) |
+
+### Key Accomplishments
+
+- Generated 11 Pi SKILL.md entry points mapping 21 PALS workflows to user-facing skills, with skill-map.md as the canonical mapping reference
+- Built thin TypeScript extension (143 lines) with 11 /paul-* commands via registerCommand, session_start detection, and context injection hooks
+- Updated Pi installer to deploy skills to ~/.pi/agent/skills/pals/{name}/ and extension to ~/.pi/agent/extensions/
+- Updated driver.yaml to reflect full 6/6 capability support (added hook_register and command_register)
+- Created 75-check TAP validation suite proving end-to-end Pi integration: installer deployment, skill structure, extension structure, driver manifest accuracy
+- All 75 validation checks pass — Pi adapter is proven production-ready
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| 11 skills (not 21) — only user-facing commands | 49 | Internal workflows invoked by skill instructions |
+| ../workflows/ relative paths in skills | 49 | Skills installed as siblings of kernel dirs |
+| Commands delegate to /skill:paul-* via notify | 50 | Keeps extension thin; skills have full instructions |
+| Inline Pi API types (no SDK import) | 50 | No build step; runs in Pi's runtime |
+| Context hook checks last 5 messages | 50 | Balance detection accuracy and performance |
 
 ---
 
