@@ -28,14 +28,14 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.4 Pi Native UX Layer**
-Status: 🚧 In Progress
-Phases: 2 of 3 complete
+Status: ✅ Complete
+Phases: 3 of 3 complete — 2026-03-16
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 59 | Always-Visible Lifecycle Surface | 1 | ✅ Complete | 2026-03-16 |
 | 60 | Interactive Shortcuts & Flow Entry Points | 1 | ✅ Complete | 2026-03-16 |
-| 61 | UX Polish, Validation & Interoperability Guardrails | TBD | Ready to plan | - |
+| 61 | UX Polish, Validation & Interoperability Guardrails | 1 | ✅ Complete | 2026-03-16 |
 
 ### Phase 59: Always-Visible Lifecycle Surface
 
@@ -50,13 +50,23 @@ Plans: 1 planned, 1 completed (`60-01-PLAN.md` → `60-01-SUMMARY.md`)
 ### Phase 61: UX Polish, Validation & Interoperability Guardrails
 
 Focus: Refine wording/placement, validate low-clutter behavior, and prove cross-harness compatibility with Claude Code-oriented PALS usage.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 planned, 1 completed (`61-01-PLAN.md` → `61-01-SUMMARY.md`)
 ## Next Milestone
-To be defined after v2.4 completion.
+To be defined after v2.4 completion review.
 
 ---
 
 ## Completed Milestones
+<details>
+<summary>v2.4 Pi Native UX Layer - 2026-03-16 (3 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 59 | Always-Visible Lifecycle Surface | 1 | 2026-03-16 |
+| 60 | Interactive Shortcuts & Flow Entry Points | 1 | 2026-03-16 |
+| 61 | UX Polish, Validation & Interoperability Guardrails | 1 | 2026-03-16 |
+
+</details>
 
 <details>
 <summary>v2.3 Pi Interaction Model Refinement - 2026-03-16 (3 phases)</summary>

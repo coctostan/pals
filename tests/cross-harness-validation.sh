@@ -159,6 +159,14 @@ else
   fi
   tap_not_ok "Module sets match" "Cannot compare — missing modules.yaml"
 fi
+# Check Pi modules.yaml includes module overlays used by workflow dispatch
+if [ -f "$PI_MODULES_YAML" ]; then
+  if grep -q '^  todd:' "$PI_MODULES_YAML" && grep -q '^  walt:' "$PI_MODULES_YAML"; then
+    tap_ok "Pi modules.yaml includes TODD and WALT overlays"
+  else
+    tap_not_ok "Pi modules.yaml includes TODD and WALT overlays" "Expected todd and walt entries in Pi modules.yaml"
+  fi
+fi
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2: PORTABILITY COMPLIANCE
@@ -224,6 +232,16 @@ if [ -f "$STATE_MD" ]; then
   done
 else
   tap_not_ok "STATE.md exists" "File not found at $STATE_MD"
+fi
+
+# README should describe multi-driver support, including Pi
+README_MD="$REPO_ROOT/README.md"
+if [ -f "$README_MD" ]; then
+  if grep -q 'Claude Code · Pi · Agent SDK' "$README_MD" && grep -q 'Pi driver installs canonical skills plus an extension-backed command/hook layer' "$README_MD"; then
+    tap_ok "README documents Claude Code and Pi driver surfaces"
+  else
+    tap_not_ok "README documents Claude Code and Pi driver surfaces" "Expected Pi multi-driver guidance in README.md"
+  fi
 fi
 
 # PROJECT.md required sections
@@ -312,10 +330,10 @@ PI_YAML="$DRIVERS_DIR/pi/driver.yaml"
 if [ -f "$PI_YAML" ]; then
   HOOK_REG=$(grep 'hook_register:' "$PI_YAML" 2>/dev/null | tr -d ' ')
   CMD_REG=$(grep 'command_register:' "$PI_YAML" 2>/dev/null | tr -d ' ')
-  if echo "$HOOK_REG" | grep -q 'false' && echo "$CMD_REG" | grep -q 'false'; then
-    tap_ok "Pi driver: capability limitations documented (hook_register=false, command_register=false)"
+  if echo "$HOOK_REG" | grep -q 'true' && echo "$CMD_REG" | grep -q 'true'; then
+    tap_ok "Pi driver: runtime capability extensions documented (hook_register=true, command_register=true)"
   else
-    tap_not_ok "Pi driver: capability limitations documented" "Expected hook_register: false and command_register: false"
+    tap_not_ok "Pi driver: runtime capability extensions documented" "Expected hook_register: true and command_register: true"
   fi
 fi
 

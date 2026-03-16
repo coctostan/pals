@@ -4,7 +4,7 @@
 
 PALS (Project Automation & Lifecycle System) is an end-to-end development framework for agentic coding. It manages the full plan-apply-unify lifecycle, enforces test-driven development, gates quality, loads context-aware rules, tracks dependencies, reviews code, manages knowledge, automates deploys, and suggests refactors — all through a modular architecture that runs on any agentic coding platform.
 
-Built for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Eight pals. One kernel. Zero boilerplate.
+Built for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Pi, and the Agent SDK. Eight pals. One kernel. Zero boilerplate.
 
 ## Quick Start
 
@@ -14,7 +14,7 @@ cd pals
 ./install.sh
 ```
 
-Start a new Claude Code session, then in any project:
+Start a new Claude Code or Pi session, then in any project use the same core lifecycle:
 
 ```
 /paul:init        # Set up PALS in your project
@@ -23,6 +23,7 @@ Start a new Claude Code session, then in any project:
 /paul:unify       # Reconcile results and close the loop
 ```
 
+In Claude Code, those commands are installed directly as slash commands. In Pi, the extension exposes `/paul-*` convenience wrappers that route to canonical `/skill:paul-*` entries while keeping shared markdown workflows and `.paul/*` as the only lifecycle truth.
 That's the core loop. PALS tracks state, enforces quality, and manages context across sessions — you focus on the work.
 
 ## Architecture
@@ -39,7 +40,7 @@ PALS uses a three-layer stack inspired by operating system design:
 │  PAUL — lifecycle, commands, workflows       │
 ├─────────────────────────────────────────────┤
 │                  Drivers                     │
-│  Claude Code · Agent SDK                     │
+│  Claude Code · Pi · Agent SDK                │
 └─────────────────────────────────────────────┘
 ```
 
@@ -47,7 +48,7 @@ PALS uses a three-layer stack inspired by operating system design:
 
 **Modules** — Each pal is a loadable module with its own references, hooks, and capabilities. Modules register for lifecycle events (pre-plan, post-apply, etc.) and participate automatically. Enable or disable any module without affecting the rest.
 
-**Drivers** — Wiring layer that connects the kernel to a specific platform. The Claude Code driver installs slash commands and hooks. The Agent SDK driver exposes the same workflows as a headless API.
+**Drivers** — Wiring layer that connects the kernel to a specific platform. The Claude Code driver installs slash commands and hooks. The Pi driver installs canonical skills plus an extension-backed command/hook layer. The Agent SDK driver exposes the same workflows as a headless API.
 
 ## The Pals
 
@@ -168,6 +169,8 @@ PALS uses `pals.json` at the project root for module configuration:
 
 All 8 modules are enabled by default. Use `/paul:config` to toggle modules, manage integrations, and set preferences interactively.
 
+In Pi, enabled modules are installed beside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`. PLAN/APPLY/UNIFY use that registry to dispatch module guidance such as TODD and WALT; those modules are not separate Pi skills.
+
 ## How It Works
 
 ### The Plan-Apply-Unify Loop
@@ -211,11 +214,12 @@ cd pals
 
 The installer:
 - Creates `~/.pals/` with kernel, modules, and references
+- Detects available harnesses and installs the matching driver surfaces
 - Wires slash commands into `~/.claude/` for Claude Code
+- Installs canonical skills plus the Pi extension into `~/.pi/agent/`
 - Reads `pals.json` to determine which modules to install
 - Detects and cleans up legacy installations if present
-
-Start a new Claude Code session after installing.
+Start a new Claude Code or Pi session after installing.
 
 ## Uninstall
 
@@ -224,8 +228,8 @@ cd pals
 ./uninstall.sh
 ```
 
-Removes all PALS files from `~/.pals/` and `~/.claude/` without affecting other Claude Code configuration.
+Removes all PALS files from `~/.pals/` plus any installed driver surfaces (for example `~/.claude/` and `~/.pi/agent/`) without affecting unrelated harness configuration.
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (the CLI)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and/or Pi

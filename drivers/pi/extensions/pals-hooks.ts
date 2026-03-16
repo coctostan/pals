@@ -17,6 +17,8 @@ import { Key } from "@mariozechner/pi-tui";
 
 const PALS_STATUS_ID = "pals-lifecycle";
 const PALS_WIDGET_ID = "pals-lifecycle";
+const PRIMARY_QUICK_ACTION_LIMIT = 3;
+const MAX_QUICK_ACTIONS = 5;
 
 type PalsStateSnapshot = {
   detected: boolean;
@@ -108,15 +110,15 @@ function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
     { id: "milestone", commandName: "paul-milestone", label: "Milestone", shortcutHint: "Ctrl+Alt+M" },
   );
 
-  return actions.filter(
-    (action, index, all) => all.findIndex((candidate) => candidate.commandName === action.commandName) === index,
-  );
+  return actions
+    .filter((action, index, all) => all.findIndex((candidate) => candidate.commandName === action.commandName) === index)
+    .slice(0, MAX_QUICK_ACTIONS);
 }
 
 function renderQuickActionSummary(state: PalsStateSnapshot): string | undefined {
-  const actions = getQuickActions(state).slice(0, 3);
+  const actions = getQuickActions(state).slice(0, PRIMARY_QUICK_ACTION_LIMIT);
   if (actions.length === 0) return undefined;
-  return `Quick actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
+  return `Actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
 }
 function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
   if (!state.detected) return undefined;
@@ -133,10 +135,13 @@ function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
   if (!state.detected) return undefined;
 
   const quickActions = getQuickActions(state);
+
+  const primaryActions = quickActions.slice(0, PRIMARY_QUICK_ACTION_LIMIT);
+  const secondaryActions = quickActions.slice(PRIMARY_QUICK_ACTION_LIMIT);
   const actionLines = [
-    `Quick actions: ${quickActions.slice(0, 3).map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`,
-    `More actions: ${quickActions.slice(3).map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`,
-  ].filter((line) => !line.endsWith(": "));
+    primaryActions.length > 0 ? `Actions: ${primaryActions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}` : null,
+    secondaryActions.length > 0 ? `More: ${secondaryActions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}` : null,
+  ].filter(Boolean) as string[];
   const lines = [
     "PALS Lifecycle",
     state.milestone ? `Milestone: ${state.milestone}` : "Milestone: unknown",
@@ -296,6 +301,7 @@ export default function palsHooks(pi: any): void {
       state.loop ? `Loop: ${state.loop}` : null,
       state.nextAction ? `Next: ${state.nextAction}` : null,
       renderQuickActionSummary(state),
+      "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
     ]
       .filter(Boolean)
       .join(" | ");
