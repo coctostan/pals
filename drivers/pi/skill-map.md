@@ -8,6 +8,7 @@ In Pi:
 - `/paul-*` is the user-facing command layer for discovery and routing
 - `/skill:paul-*` is the canonical skill invocation layer
 - shared workflow markdown remains the implementation truth behind both surfaces
+- the extension also exposes a bounded shortcut layer for high-frequency flow entry points while still routing back through `/paul-*` wrappers
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
 |------------|------------|--------------------|-----------------|
@@ -58,6 +59,17 @@ From a skill directory, kernel resources are referenced via relative paths:
 - Rules: `../rules/{name}.md`
 
 Pi command registration lives in the extension layer (`drivers/pi/extensions/pals-hooks.ts`). Those `/paul-*` commands provide the command/hook layer only; they do not replace canonical skill files or shared workflows.
+
+## Shortcut-Enabled Entry Points
+
+The Pi extension exposes a small shortcut layer for the visible lifecycle surface:
+- `Ctrl+Alt+N` → current next action
+- `Ctrl+Alt+S` → `/paul-status`
+- `Ctrl+Alt+R` → `/paul-resume`
+- `Ctrl+Alt+H` → `/paul-help`
+- `Ctrl+Alt+M` → `/paul-milestone`
+
+These shortcuts are discovery and routing affordances only. They remain adapter-only and preserve `/skill:paul-*` as the canonical entry layer.
 
 ## Design Decisions
 

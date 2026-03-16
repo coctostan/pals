@@ -11,6 +11,7 @@
 
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
+import { Key } from "@mariozechner/pi-tui";
 
 // -- Helpers --
 
@@ -23,6 +24,20 @@ type PalsStateSnapshot = {
   phase?: string;
   loop?: string;
   nextAction?: string;
+};
+
+type CommandDef = {
+  name: string;
+  description: string;
+  skill: string;
+  guidance: string;
+};
+
+type QuickActionDef = {
+  id: string;
+  commandName: CommandDef["name"];
+  label: string;
+  shortcutHint: string;
 };
 
 function readFileOr(path: string, fallback: string): string {
@@ -59,52 +74,90 @@ function parsePalsState(cwd: string): PalsStateSnapshot {
   };
 }
 
+function getCommand(name: CommandDef["name"]): CommandDef | undefined {
+  return COMMANDS.find((cmd) => cmd.name === name);
+}
+
+function toWrapperCommand(commandText?: string): string | undefined {
+  const trimmed = compactWhitespace(commandText);
+  if (!trimmed) return undefined;
+  if (trimmed.startsWith("/paul-")) return trimmed;
+  if (trimmed.startsWith("/skill:paul-")) {
+    return trimmed.replace("/skill:", "/");
+  }
+  return undefined;
+}
+
+function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
+  const actions: QuickActionDef[] = [];
+  const nextWrapper = toWrapperCommand(state.nextAction);
+  const nextCommandName = nextWrapper?.slice(1).split(/\s+/, 1)[0] as CommandDef["name"] | undefined;
+  if (nextCommandName && getCommand(nextCommandName)) {
+    actions.push({
+      id: "next-action",
+      commandName: nextCommandName,
+      label: "Next",
+      shortcutHint: "Ctrl+Alt+N",
+    });
+  }
+
+  actions.push(
+    { id: "status", commandName: "paul-status", label: "Status", shortcutHint: "Ctrl+Alt+S" },
+    { id: "resume", commandName: "paul-resume", label: "Resume", shortcutHint: "Ctrl+Alt+R" },
+    { id: "help", commandName: "paul-help", label: "Help", shortcutHint: "Ctrl+Alt+H" },
+    { id: "milestone", commandName: "paul-milestone", label: "Milestone", shortcutHint: "Ctrl+Alt+M" },
+  );
+
+  return actions.filter(
+    (action, index, all) => all.findIndex((candidate) => candidate.commandName === action.commandName) === index,
+  );
+}
+
+function renderQuickActionSummary(state: PalsStateSnapshot): string | undefined {
+  const actions = getQuickActions(state).slice(0, 3);
+  if (actions.length === 0) return undefined;
+  return `Quick actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
+}
 function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
   if (!state.detected) return undefined;
-
   return [
     "PALS",
     state.phase ? `Phase: ${state.phase}` : null,
     state.nextAction ? `Next: ${state.nextAction}` : null,
+    renderQuickActionSummary(state),
   ]
     .filter(Boolean)
     .join(" • ");
 }
-
 function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
   if (!state.detected) return undefined;
 
+  const quickActions = getQuickActions(state);
+  const actionLines = [
+    `Quick actions: ${quickActions.slice(0, 3).map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`,
+    `More actions: ${quickActions.slice(3).map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`,
+  ].filter((line) => !line.endsWith(": "));
   const lines = [
     "PALS Lifecycle",
     state.milestone ? `Milestone: ${state.milestone}` : "Milestone: unknown",
     state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
     state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
     state.nextAction ? `Next action: ${state.nextAction}` : "Next action: unknown",
+    ...actionLines,
   ];
-
   return lines;
 }
-
 function syncLifecycleUi(ctx: any): void {
   const cwd = ctx?.cwd ?? process.cwd();
   const state = parsePalsState(cwd);
-
   if (!state.detected) {
     ctx?.ui?.setStatus(PALS_STATUS_ID, undefined);
     ctx?.ui?.setWidget(PALS_WIDGET_ID, undefined);
     return;
   }
-
   ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state));
   ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state));
 }
-
-type CommandDef = {
-  name: string;
-  description: string;
-  skill: string;
-  guidance: string;
-};
 
 // -- Command definitions --
 
@@ -178,42 +231,74 @@ const COMMANDS: CommandDef[] = [
 ];
 
 // -- Extension entry point --
-
 export default function palsHooks(pi: any): void {
+  const routeCommand = (commandName: CommandDef["name"], args = "", ctx?: any): void => {
+    const cmd = getCommand(commandName);
+    if (!cmd) return;
+    const trimmedArgs = args.trim();
+    const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
+    ctx?.ui?.notify(`${cmd.guidance} — routing now`, "info");
+    pi.sendUserMessage(skillCmd);
+  };
+
+  const routeWrapperCommand = (commandText: string, ctx?: any): void => {
+    const wrapper = toWrapperCommand(commandText);
+    if (!wrapper) return;
+
+    const commandName = wrapper.slice(1).split(/\s+/, 1)[0] as CommandDef["name"];
+    const args = wrapper.replace(/^\/paul-[^\s]+\s*/, "");
+    routeCommand(commandName, args, ctx);
+  };
+  const registerQuickActionShortcut = (
+    shortcut: string,
+    description: string,
+    handler: (ctx: any) => void,
+  ): void => {
+    pi.registerShortcut(shortcut, {
+      description,
+      handler: async (ctx: any) => {
+        handler(ctx);
+      },
+    });
+  };
   // Register all /paul-* slash commands as Pi-native discovery wrappers.
   for (const cmd of COMMANDS) {
     pi.registerCommand(cmd.name, {
       description: cmd.description,
       handler: async (args: string, ctx: any) => {
-        const trimmedArgs = args.trim();
-        const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
-
-        // Keep guidance brief and command-local so discoverability improves
-        // without materially increasing runtime context load.
-        ctx?.ui?.notify(`${cmd.guidance} — routing now`, "info");
-        pi.sendUserMessage(skillCmd);
+        routeCommand(cmd.name, args, ctx);
       },
     });
   }
 
+  registerQuickActionShortcut(Key.ctrlAlt("n"), "Run the current next PALS action", (ctx) => {
+    const nextWrapper = toWrapperCommand(parsePalsState(ctx?.cwd ?? process.cwd()).nextAction);
+    if (!nextWrapper) {
+      ctx?.ui?.notify("No PALS next action is available.", "warning");
+      return;
+    }
+    routeWrapperCommand(nextWrapper, ctx);
+  });
+  registerQuickActionShortcut(Key.ctrlAlt("s"), "Open PALS status", (ctx) => routeCommand("paul-status", "", ctx));
+  registerQuickActionShortcut(Key.ctrlAlt("r"), "Resume PALS work", (ctx) => routeCommand("paul-resume", "", ctx));
+  registerQuickActionShortcut(Key.ctrlAlt("h"), "Open PALS help", (ctx) => routeCommand("paul-help", "", ctx));
+  registerQuickActionShortcut(Key.ctrlAlt("m"), "Open PALS milestone flow", (ctx) => routeCommand("paul-milestone", "", ctx));
   // Session start: detect PALS project, show state, and render persistent lifecycle UI.
   pi.on("session_start", async (_event: any, ctx: any) => {
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
-
     syncLifecycleUi(ctx);
     if (!state.detected) return;
-
     const summary = [
       "PALS project detected.",
       state.milestone ? `Milestone: ${state.milestone}` : null,
       state.phase ? `Phase: ${state.phase}` : null,
       state.loop ? `Loop: ${state.loop}` : null,
       state.nextAction ? `Next: ${state.nextAction}` : null,
+      renderQuickActionSummary(state),
     ]
       .filter(Boolean)
       .join(" | ");
-
     ctx?.ui?.notify(summary, "info");
   });
 

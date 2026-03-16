@@ -29,13 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.4 Pi Native UX Layer**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 59 | Always-Visible Lifecycle Surface | 1 | ✅ Complete | 2026-03-16 |
-| 60 | Interactive Shortcuts & Flow Entry Points | TBD | Ready to plan | - |
-| 61 | UX Polish, Validation & Interoperability Guardrails | TBD | Not started | - |
+| 60 | Interactive Shortcuts & Flow Entry Points | 1 | ✅ Complete | 2026-03-16 |
+| 61 | UX Polish, Validation & Interoperability Guardrails | TBD | Ready to plan | - |
 
 ### Phase 59: Always-Visible Lifecycle Surface
 
@@ -45,7 +45,7 @@ Plans: 1 planned, 1 completed (`59-01-PLAN.md` → `59-01-SUMMARY.md`)
 ### Phase 60: Interactive Shortcuts & Flow Entry Points
 
 Focus: Add lightweight interactive shortcuts from the visible surface into existing status/resume/help/milestone actions without changing workflow semantics.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 planned, 1 completed (`60-01-PLAN.md` → `60-01-SUMMARY.md`)
 
 ### Phase 61: UX Polish, Validation & Interoperability Guardrails
 
@@ -258,4 +258,4 @@ To be defined after v2.4 completion.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-16 — Phase 59 completed, transitioned to Phase 60*
+*Last updated: 2026-03-16 — Phase 60 completed, transitioned to Phase 61*

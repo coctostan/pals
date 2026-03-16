@@ -12,6 +12,7 @@ Available PALS Pi command and skill surfaces.
 - Use `/paul-*` for the most convenient Pi-native command experience.
 - Use `/skill:paul-*` when you want the canonical underlying skill entry directly.
 - Both surfaces route into the same shared PALS workflow model; only the skills are canonical entry points.
+- Shortcut-enabled Pi entry points are also available from the lifecycle surface: `Ctrl+Alt+N` (next), `Ctrl+Alt+S` (status), `Ctrl+Alt+R` (resume), `Ctrl+Alt+H` (help), `Ctrl+Alt+M` (milestone).
 
 ## Pi command layer
 
@@ -28,6 +29,11 @@ Available PALS Pi command and skill surfaces.
 | `/paul-pause` | Create a handoff for a session break |
 | `/paul-fix` | Run a quick fix flow |
 | `/paul-help` | Show this help screen |
+
+## Shortcut layer
+- Use `Ctrl+Alt+N` to trigger the current next PALS action from the visible lifecycle surface.
+- Use `Ctrl+Alt+S` for `/paul-status`, `Ctrl+Alt+R` for `/paul-resume`, `Ctrl+Alt+H` for `/paul-help`, and `Ctrl+Alt+M` for `/paul-milestone`.
+- These shortcuts are Pi-native convenience entry points only; canonical workflow ownership remains with `/skill:paul-*`.
 
 ## Canonical Pi skill layer
 

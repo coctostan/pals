@@ -21,6 +21,17 @@ Pi exposes two aligned PALS entry surfaces:
 
 Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
 
+## Quick Actions & Shortcuts
+
+The lifecycle widget now exposes compact quick-action hints for the most relevant PALS entry points:
+- Next action — `Ctrl+Alt+N`
+- Status — `Ctrl+Alt+S`
+- Resume — `Ctrl+Alt+R`
+- Help — `Ctrl+Alt+H`
+- Milestone — `Ctrl+Alt+M`
+
+These shortcuts stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
+
 ## Commands
 
 The extension registers these slash commands:
@@ -40,8 +51,8 @@ The extension registers these slash commands:
 | /paul-help | Show Pi command and skill guidance for PALS |
 
 ## Event Hooks
-
-- **session_start**: Detects `.paul/` directory, reads `STATE.md`, and shows current phase/loop position.
+- **session_start**: Detects `.paul/` directory, reads `STATE.md`, shows current phase/loop position, and surfaces quick-action guidance.
+- **before_agent_start / turn_end / agent_end**: Refresh the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
 - **context**: When a PALS workflow is active, injects minimal project state (phase, loop position, next action) so the LLM can follow PALS workflows correctly.
 
 ## Requirements
