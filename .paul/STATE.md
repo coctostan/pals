@@ -4,13 +4,13 @@
 
 See: .paul/PROJECT.md (updated 2026-03-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 63 ready to plan — Guided Workflow UX
+**Current focus:** Phase 63 planned, awaiting approval — Guided Workflow UX
 ## Current Position
 Milestone: v2.5 Pi Runtime Coherence & Guided Flow
-Phase: 63 of 64 (Guided Workflow UX) — Ready to Plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-03-16T17:52:21Z — Phase 62 complete, UNIFY finished, transitioned to Phase 63
+Phase: 63 of 64 (Guided Workflow UX) — Planning
+Plan: 63-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-16T18:07:21Z — Created .paul/phases/63-guided-workflow-ux/63-01-PLAN.md
 Progress:
 - v2.5 Pi Runtime Coherence & Guided Flow: [███░░░░░░░] 33%
 - Phase 63: [░░░░░░░░░░] 0%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan next loop]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -76,16 +76,15 @@ Branch: feature/post-v24-milestone-closeout
 Last known merged PR: #12 for Phase 61 / v2.4 completion
 Note: local branch/main reconciliation still pending before any release-tag or mainline cleanup work
 ## Session Continuity
-Last session: 2026-03-16T17:52:21Z
-Stopped at: Phase 62 complete, ready to plan Phase 63
-Next action: /skill:paul-plan
-Resume file: .paul/ROADMAP.md
-Git strategy: refresh local main/branch state before any release-tag cleanup
+Last session: 2026-03-16T18:35:13Z
+Stopped at: Phase 63 planned; paused before approval to fix module dispatch so enabled modules actually load during PLAN/APPLY/UNIFY
+Next action: Run a standard /skill:paul-fix side-loop for module-dispatch auditing and repair, then resume Phase 63 approval/apply
+Resume file: .paul/HANDOFF-2026-03-16-phase63-module-dispatch-fix-next.md
+Git strategy: feature/63-guided-workflow-ux
 Resume context:
-- Phase 62 delivered a clearer hybrid Pi runtime model: explicit command activation signal, `before_agent_start` primary injection, and support-only `context` normalization
-- Plan summary created at `.paul/phases/62-runtime-context-event-refinement/62-01-SUMMARY.md` with AC PASS and verification evidence
-- Skill audit recorded advisory gaps for `/carl`, `TODD`, and `WALT`; no blockers active
-- Next step is to create the first Phase 63 plan for guided workflow UX while preserving `.paul/*` lifecycle authority
-- Consumed handoff `.paul/HANDOFF-2026-03-16-phase61-ready.md` remains archived at `.paul/handoffs/archive/`
+- Phase 63 plan exists at `.paul/phases/63-guided-workflow-ux/63-01-PLAN.md` but APPLY has not started
+- TODD/WALT/CARL are enabled in `pals.json`, but planning revealed a likely gap between conceptual `kernel/modules.yaml` dispatch wording and real installed `modules.yaml` registries
+- Next work should be a framework-level fix side-loop to audit and repair module loading for PLAN/APPLY/UNIFY before resuming the main loop
+- After the fix, reassess whether the Phase 63 plan needs refinement before approval
 ---
 *STATE.md — Updated after every significant action*
