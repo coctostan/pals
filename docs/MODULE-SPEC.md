@@ -636,8 +636,7 @@ After installation, files land in standard locations:
 
 ### 5.3 `modules.yaml` (Installed Module Registry)
 
-The installer writes `~/.pals/modules.yaml` to track what is installed:
-
+The installer writes `~/.pals/modules.yaml` to track what is installed and to embed the hook metadata runtime dispatch needs without re-reading source manifests:
 ```yaml
 kernel_version: "0.4.0"
 installed_modules:
@@ -645,10 +644,29 @@ installed_modules:
     version: "1.0.0"
     installed_at: "2026-03-11T14:30:00Z"
     hooks: [pre-plan, post-plan, pre-apply, post-task, post-apply]
+    hook_details:
+      pre-plan:
+        priority: 100
+        description: "Detect TDD candidates via file heuristics and phase metadata"
+        refs:
+          - references/tdd-detection.md
+          - references/tdd-plan-generation.md
+      post-plan:
+        priority: 100
+        description: "Restructure plan tasks as RED-GREEN-REFACTOR when TDD type detected"
+        refs:
+          - references/tdd-plan-generation.md
   walt:
     version: "1.0.0"
     installed_at: "2026-03-11T14:30:00Z"
     hooks: [pre-apply, post-apply, post-unify]
+    hook_details:
+      pre-apply:
+        priority: 100
+        description: "Run test suite and record baseline counts"
+        refs:
+          - references/quality-runner.md
+          - references/quality-detection.md
   carl:
     version: "1.0.0"
     installed_at: "2026-03-11T14:30:00Z"

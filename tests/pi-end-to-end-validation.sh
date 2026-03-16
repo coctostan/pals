@@ -136,6 +136,17 @@ else
   tap_not_ok "modules.yaml generated" "File not found"
 fi
 
+if [ -f "$SKILL_DIR/modules.yaml" ]; then
+  if grep -q '^    hook_details:' "$SKILL_DIR/modules.yaml" \
+    && grep -q '^      pre-plan:' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/tdd-detection.md' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/quality-runner.md' "$SKILL_DIR/modules.yaml"; then
+    tap_ok "modules.yaml includes runtime hook metadata and refs"
+  else
+    tap_not_ok "modules.yaml includes runtime hook metadata and refs" "Expected hook_details with TODD/WALT refs in installed registry"
+  fi
+fi
+
 # Check extension installed
 EXT_PATH="$TEMP_HOME/.pi/agent/extensions/pals-hooks.ts"
 if [ -f "$EXT_PATH" ]; then
@@ -311,6 +322,27 @@ else
   else
     tap_not_ok "Extension keeps one bounded automatic injection path and a support-only context hook" "Expected 0 messages.push, exactly one pals-context injection definition, and context normalization support"
 fi
+
+  # Guided workflow contract: detect canonical workflow markers from shared prompts
+  if grep -q 'Continue to APPLY' "$EXT_SRC" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_SRC" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_SRC" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension detects canonical workflow markers for guided UX"
+  else
+    tap_not_ok "Extension detects canonical workflow markers for guided UX" "Expected Continue to APPLY/UNIFY, CHECKPOINT, and ▶ NEXT markers in extension source"
+  fi
+
+  # Guided workflow contract: explicit Pi UI drives canonical continuation replies
+  if grep -Eq 'ctx\.ui\.(confirm|select)' "$EXT_SRC" 2>/dev/null && grep -q 'sendUserMessage' "$EXT_SRC" 2>/dev/null && grep -q 'approved' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension routes guided workflow responses through explicit UI and canonical user messages"
+  else
+    tap_not_ok "Extension routes guided workflow responses through explicit UI and canonical user messages" "Expected confirm/select UI plus canonical sendUserMessage routing in extension source"
+  fi
+
+  # Guardrail: guided workflow state remains derived-only and non-persistent
+  if ! grep -q 'appendEntry(' "$EXT_SRC" 2>/dev/null && grep -q 'sessionManager' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension keeps guided workflow interpretation derived-only and non-persistent"
+  else
+    tap_not_ok "Extension keeps guided workflow interpretation derived-only and non-persistent" "Expected session-derived inspection and no appendEntry-based workflow persistence"
+  fi
 fi
 
 # ════════════════════════════════════════════════════════════════════
@@ -399,6 +431,12 @@ if grep -q 'before_agent_start' "$README_PI" && grep -q 'context' "$README_PI" &
   tap_ok "Extension README documents refined activation/injection responsibility split"
 else
   tap_not_ok "Extension README documents refined activation/injection responsibility split" "Expected before_agent_start/context/activation/authoritative wording in drivers/pi/extensions/README.md"
+fi
+
+if grep -qi 'Guided Workflow UX' "$README_PI" && grep -qi 'checkpoint' "$README_PI" && grep -qi 'canonical reply' "$README_PI" && grep -qi 'authoritative' "$README_PI"; then
+  tap_ok "Extension README documents guided workflow guardrails"
+else
+  tap_not_ok "Extension README documents guided workflow guardrails" "Expected guided workflow, checkpoint, canonical reply, and authoritative wording in drivers/pi/extensions/README.md"
 fi
 
 if grep -q 'Command → Skill → Workflow Mapping' "$SKILL_MAP" && grep -q 'canonical' "$SKILL_MAP"; then

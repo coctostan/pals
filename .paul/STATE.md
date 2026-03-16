@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 63 planned, awaiting approval — Guided Workflow UX
+**Current focus:** Phase 64 ready to plan — Polish, Validation & UX Readability
 ## Current Position
 Milestone: v2.5 Pi Runtime Coherence & Guided Flow
-Phase: 63 of 64 (Guided Workflow UX) — Planning
-Plan: 63-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-16T18:07:21Z — Created .paul/phases/63-guided-workflow-ux/63-01-PLAN.md
+Phase: 64 of 64 (Polish, Validation & UX Readability) — Ready to plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-03-16T19:35:04Z — Completed Phase 63 UNIFY, created 63-01-SUMMARY, and transitioned to Phase 64 planning
 Progress:
-- v2.5 Pi Runtime Coherence & Guided Flow: [███░░░░░░░] 33%
-- Phase 63: [░░░░░░░░░░] 0%
+- v2.5 Pi Runtime Coherence & Guided Flow: [███████░░░] 67%
+- Phase 64: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ○        ○        ○     [Ready to plan Phase 64]
 ```
 
 ## Accumulated Context
@@ -58,6 +58,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic |
 | 2026-03-16: Treated TODD/WALT as installed Pi module overlays via modules.yaml and workflow dispatch rather than standalone skills during APPLY | 61 | Resolved first Pi end-to-end execution ambiguity without changing canonical workflow ownership |
 | 2026-03-16: Implemented Phase 62 hybrid runtime refinement with explicit command activation budgeting, `before_agent_start` primary injection, and `context` normalization-only support | 62 | Preserves one bounded automatic injection path while keeping `.paul/*` as authoritative lifecycle truth |
+| 2026-03-16: Keep Pi guided workflow UX marker-driven and route explicit continuations through `pi.sendUserMessage` without adding Pi-owned lifecycle state | 63 | Preserves shared workflow ownership while making approvals, checkpoints, resume routing, and transitions easier inside Pi |
+### Fixes
+| Fix | Phase | Impact |
+|-----|-------|--------|
+| Fix 02 (standard): Reworked installed module registries to include `hook_details`, aligned PLAN/APPLY/UNIFY dispatch wording to the installed registry, and added validation coverage | Phase 63 | Enabled modules can now be consulted from real installed `modules.yaml` registries instead of relying on conceptual source-manifest access |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
@@ -72,19 +77,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - None active
 ### Git State
-Branch: feature/post-v24-milestone-closeout
+Branch: feature/63-guided-workflow-ux
 Last known merged PR: #12 for Phase 61 / v2.4 completion
 Note: local branch/main reconciliation still pending before any release-tag or mainline cleanup work
 ## Session Continuity
-Last session: 2026-03-16T18:35:13Z
-Stopped at: Phase 63 planned; paused before approval to fix module dispatch so enabled modules actually load during PLAN/APPLY/UNIFY
-Next action: Run a standard /skill:paul-fix side-loop for module-dispatch auditing and repair, then resume Phase 63 approval/apply
-Resume file: .paul/HANDOFF-2026-03-16-phase63-module-dispatch-fix-next.md
+Last session: 2026-03-16T19:35:04Z
+Stopped at: Completed Phase 63 and transitioned to Phase 64; next work is planning the final v2.5 phase
+Next action: /skill:paul-plan
+Resume file: .paul/phases/63-guided-workflow-ux/63-01-SUMMARY.md
 Git strategy: feature/63-guided-workflow-ux
 Resume context:
-- Phase 63 plan exists at `.paul/phases/63-guided-workflow-ux/63-01-PLAN.md` but APPLY has not started
-- TODD/WALT/CARL are enabled in `pals.json`, but planning revealed a likely gap between conceptual `kernel/modules.yaml` dispatch wording and real installed `modules.yaml` registries
-- Next work should be a framework-level fix side-loop to audit and repair module loading for PLAN/APPLY/UNIFY before resuming the main loop
-- After the fix, reassess whether the Phase 63 plan needs refinement before approval
+- Phase 63 summary exists at `.paul/phases/63-guided-workflow-ux/63-01-SUMMARY.md` and records bounded guided workflow detection, explicit Pi-native continuation UI, and canonical `pi.sendUserMessage` routing
+- Pi validation passed `98/98` after adding guided workflow contract checks; the phase completed without scope deviations
+- `drivers/pi/extensions/pals-hooks.ts`, `drivers/pi/extensions/README.md`, and `tests/pi-end-to-end-validation.sh` are the key artifacts to reference when planning Phase 64 polish and readability work
+- Phase 64 should validate the new guided UX end-to-end, improve readability where appropriate, align docs/help surfaces, and clarify installation-strategy boundaries without introducing Pi-only lifecycle truth
 ---
 *STATE.md — Updated after every significant action*

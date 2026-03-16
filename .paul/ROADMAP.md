@@ -29,21 +29,20 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.5 Pi Runtime Coherence & Guided Flow**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
-
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 62 | Runtime Context & Event Refinement | 1 | ✅ Complete | 2026-03-16 |
-| 63 | Guided Workflow UX | 1 | Planning | - |
+| 63 | Guided Workflow UX | 1 | ✅ Complete | 2026-03-16 |
 | 64 | Polish, Validation & UX Readability | TBD | Not started | - |
 
 ### Phase 62: Runtime Context & Event Refinement (Complete)
 Focus: Tighten `before_agent_start` / `context` / command-trigger behavior, improve timing and quality of lifecycle context injection, and reduce ambiguity or prompt bloat. Completed.
 Plans: 1 planned, 1 completed (`62-01-PLAN.md` → `62-01-SUMMARY.md`)
 
-### Phase 63: Guided Workflow UX
-Focus: Add Pi-native approval, checkpoint, resume, and milestone/phase transition guidance grounded in existing shared-artifact workflow semantics.
-Plans: 1 planned, 0 completed (`63-01-PLAN.md` awaiting approval)
+### Phase 63: Guided Workflow UX (Complete)
+Focus: Add Pi-native approval, checkpoint, resume, and milestone/phase transition guidance grounded in existing shared-artifact workflow semantics. Completed.
+Plans: 1 planned, 1 completed (`63-01-PLAN.md` → `63-01-SUMMARY.md`)
 
 ### Phase 64: Polish, Validation & UX Readability
 Focus: Validate runtime and guided UX behavior end-to-end, increase readability of the UX by using colors where appropriate, keep docs/help aligned, and clarify installation strategy boundaries.
@@ -265,4 +264,4 @@ To be defined after v2.5 completion review.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-16 — Phase 63 plan created; awaiting approval*
+*Last updated: 2026-03-16 — Phase 63 complete; transitioned to Phase 64 planning*

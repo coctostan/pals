@@ -22,7 +22,8 @@ Next phase: UNIFY (after execution completes)
 <references>
 kernel/references/checkpoints.md (if plan has checkpoints)
 kernel/references/loop-phases.md
-<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from kernel/modules.yaml -->
+kernel/references/module-dispatch.md
+<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from the installed registry resolved as kernel/modules.yaml -->
 </references>
 
 <process>
@@ -156,18 +157,18 @@ kernel/references/loop-phases.md
 
 <step name="pre_apply_hooks" priority="before-tasks">
 **Dispatch pre-apply lifecycle hooks to registered modules.**
-
-1. Read `kernel/modules.yaml` (if it exists)
-2. Find modules with hooks registered for `pre-apply`
-3. Sort by priority (ascending — lower runs first)
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `pre-apply` by finding `installed_modules.*.hook_details.pre-apply`
+3. Sort by `hook_details.pre-apply.priority` ascending (lower runs first)
 4. For each registered module:
-   a. Load the module's hook-specific `refs` (from module.yaml hooks section, NOT all module refs)
-   b. Follow the module's hook description for `pre-apply`
+   a. Load only the hook-specific `refs` listed in `hook_details.pre-apply.refs`
+   b. Follow the hook description from `hook_details.pre-apply.description`
    c. Collect `context_inject` data (e.g., test baselines, enforcement flags)
    d. If module returns `action: block` — stop and surface the `reason` to the user
-5. If no modules registered for `pre-apply`: proceed (no-op, no warning)
-6. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → N inject keys | skip | block} | ...`
-7. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. If no modules registered for `pre-apply`: proceed (no-op, no warning)
+7. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → N inject keys | skip | block} | ...`
+8. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
 </step>
 
 <step name="execute_tasks">
@@ -200,16 +201,17 @@ For each <task> in order:
      Continue? [yes/adjust plan/stop]
      ```
 6. **Dispatch post-task hooks:**
-   a. Read `kernel/modules.yaml` (if it exists)
-   b. Find modules with hooks registered for `post-task`
-   c. Sort by priority (ascending — lower runs first)
+   a. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+   b. Resolve installed modules for `post-task` by finding `installed_modules.*.hook_details.post-task`
+   c. Sort by `hook_details.post-task.priority` ascending (lower runs first)
    d. For each registered module:
-      - Load the module's hook-specific `refs` (from module.yaml hooks section)
-      - Follow the module's hook description for `post-task`
+      - Load only the hook-specific `refs` listed in `hook_details.post-task.refs`
+      - Follow the hook description from `hook_details.post-task.description`
       - Pass task name, task result, and `context_inject` from pre-apply
       - If module returns `action: block` — stop and surface the `reason` to the user
-   e. If no modules registered for `post-task`: proceed (no-op)
-   f. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → outcome} | ...`
+   e. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+   f. If no modules registered for `post-task`: proceed (no-op)
+   g. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → outcome} | ...`
 
 **If type="checkpoint:human-verify":**
 1. Stop execution
@@ -286,19 +288,19 @@ For each <task> in order:
 
 <step name="post_apply_hooks" priority="after-tasks">
 **Dispatch post-apply lifecycle hooks to registered modules.**
-
-1. Read `kernel/modules.yaml` (if it exists)
-2. Find modules with hooks registered for `post-apply`
-3. Sort by priority (ascending — lower runs first)
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `post-apply` by finding `installed_modules.*.hook_details.post-apply`
+3. Sort by `hook_details.post-apply.priority` ascending (lower runs first)
 4. For each registered module:
-   a. Load the module's hook-specific `refs` (from module.yaml hooks section)
-   b. Follow the module's hook description for `post-apply`
+   a. Load only the hook-specific `refs` listed in `hook_details.post-apply.refs`
+   b. Follow the hook description from `hook_details.post-apply.description`
    c. Pass `context_inject` data accumulated from pre-apply hooks (e.g., baselines)
    d. Collect `annotations` (e.g., quality gate results, refactor suggestions)
    e. If module returns `action: block` — stop and surface the `reason` and optional `remediation` to the user, offer fix/override/stop
-5. If no modules registered for `post-apply`: proceed (no-op, no warning)
-6. Output dispatch log: `[dispatch] post-apply: {MODULE(priority) → N annotations | skip | block} | ...`
-7. Store accumulated `annotations` for inclusion in finalize step
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. If no modules registered for `post-apply`: proceed (no-op, no warning)
+7. Output dispatch log: `[dispatch] post-apply: {MODULE(priority) → N annotations | skip | block} | ...`
+8. Store accumulated `annotations` for inclusion in finalize step
 </step>
 
 <step name="handle_failures">

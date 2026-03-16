@@ -25,8 +25,9 @@ Next phase: APPLY (after plan approval)
 <references>
 kernel/references/plan-format.md
 kernel/references/checkpoints.md (if plan will have checkpoints)
+kernel/references/module-dispatch.md
 kernel/templates/PLAN.md
-<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from kernel/modules.yaml -->
+<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from the installed registry resolved as kernel/modules.yaml -->
 </references>
 
 <process>
@@ -52,18 +53,18 @@ kernel/templates/PLAN.md
 
 <step name="pre_plan_hooks" priority="before-scope-analysis">
 **Dispatch pre-plan lifecycle hooks to registered modules.**
-
-1. Read `kernel/modules.yaml` (if it exists)
-2. Find modules with hooks registered for `pre-plan`
-3. Sort by priority (ascending — lower runs first)
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `pre-plan` by finding `installed_modules.*.hook_details.pre-plan`
+3. Sort by `hook_details.pre-plan.priority` ascending (lower runs first)
 4. For each registered module:
-   a. Load the module's hook-specific `refs` (from module.yaml hooks section, NOT all module refs)
-   b. Follow the module's hook description for `pre-plan`
+   a. Load only the hook-specific `refs` listed in `hook_details.pre-plan.refs`
+   b. Follow the hook description from `hook_details.pre-plan.description`
    c. Collect `context_inject` data (e.g., type suggestions, candidate files)
    d. If module returns `action: block` — stop and surface the `reason` to the user
-5. If no modules registered for `pre-plan`: proceed (no-op, no warning)
-6. Output dispatch log: `[dispatch] pre-plan: {MODULE(priority) → N inject keys | skip | block} | ...`
-7. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. If no modules registered for `pre-plan`: proceed (no-op, no warning)
+7. Output dispatch log: `[dispatch] pre-plan: {MODULE(priority) → N inject keys | skip | block} | ...`
+8. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
 </step>
 
 <step name="analyze_scope">
@@ -176,19 +177,19 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 
 <step name="post_plan_hooks" priority="after-plan-creation">
 **Dispatch post-plan lifecycle hooks to registered modules.**
-
-1. Read `kernel/modules.yaml` (if it exists)
-2. Find modules with hooks registered for `post-plan`
-3. Sort by priority (ascending — lower runs first)
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `post-plan` by finding `installed_modules.*.hook_details.post-plan`
+3. Sort by `hook_details.post-plan.priority` ascending (lower runs first)
 4. For each registered module:
-   a. Load the module's hook-specific `refs` (from module.yaml hooks section)
-   b. Follow the module's hook description for `post-plan`
+   a. Load only the hook-specific `refs` listed in `hook_details.post-plan.refs`
+   b. Follow the hook description from `hook_details.post-plan.description`
    c. Pass the plan path, plan content, and `context_from_pre_plan`
    d. Collect `plan_modifications` (e.g., task restructuring)
    e. Apply modifications to the plan in priority order
-5. If no modules registered for `post-plan`: proceed (no-op, no warning)
-6. Output dispatch log: `[dispatch] post-plan: {MODULE(priority) → N modifications | skip} | ...`
-7. If modifications were applied: note in plan that module overlays were applied
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. If no modules registered for `post-plan`: proceed (no-op, no warning)
+7. Output dispatch log: `[dispatch] post-plan: {MODULE(priority) → N modifications | skip} | ...`
+8. If modifications were applied: note in plan that module overlays were applied
 </step>
 
 <step name="update_state" priority="required">
