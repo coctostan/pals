@@ -2,29 +2,26 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-15)
-
+See: .paul/PROJECT.md (updated 2026-03-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.4 complete — ready to start the next milestone
-
+**Current focus:** Phase 63 ready to plan — Guided Workflow UX
 ## Current Position
-Milestone: v2.4 Pi Native UX Layer
-Phase: 61 of 61 (UX Polish, Validation & Interoperability Guardrails) — Complete
-Plan: 61-01 complete
-Status: Ready for next milestone planning
-Last activity: 2026-03-16T15:50:15Z — Paused after v2.4 completion, validation, push/PR, and milestone-next handoff creation
+Milestone: v2.5 Pi Runtime Coherence & Guided Flow
+Phase: 63 of 64 (Guided Workflow UX) — Ready to Plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-03-16T17:52:21Z — Phase 62 complete, UNIFY finished, transitioned to Phase 63
 Progress:
-- v2.4 Pi Native UX Layer: [██████████] 100%
-- Phase 61: [██████████] 100%
+- v2.5 Pi Runtime Coherence & Guided Flow: [███░░░░░░░] 33%
+- Phase 63: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - milestone ready for closeout]
+  ○        ○        ○     [Ready to plan next loop]
 ```
 
 ## Accumulated Context
-
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
@@ -60,33 +57,35 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps Pi lifecycle semantics aligned across all visible adapter surfaces |
 | Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic |
 | 2026-03-16: Treated TODD/WALT as installed Pi module overlays via modules.yaml and workflow dispatch rather than standalone skills during APPLY | 61 | Resolved first Pi end-to-end execution ambiguity without changing canonical workflow ownership |
+| 2026-03-16: Implemented Phase 62 hybrid runtime refinement with explicit command activation budgeting, `before_agent_start` primary injection, and `context` normalization-only support | 62 | Preserves one bounded automatic injection path while keeping `.paul/*` as authoritative lifecycle truth |
+### Deviations
+| Deviation | Phase | Impact |
+|-----------|-------|--------|
+| Skill audit gap: `/carl`, `TODD`, and `WALT` were not explicitly invoked during Phase 62 APPLY/UNIFY | 62 | Advisory-only; implementation stayed in scope and validations passed (93/93), but workflow discipline should be tightened next phase |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
-- Agent SDK hook dispatch not implemented
+- Agent SDK hook dispatch shelved — not an active milestone driver
 - Tree-sitter repo map deferred
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
-
 ### Blockers/Concerns
 - None active
-
 ### Git State
-Branch: feature/phase-61-ux-polish-validation-interoperability-guardrails
-Last commit: 7a91b03 — docs(state): record v2.4 milestone completion routing
-PR: Phase 61 PR #12 created and reported merged; local branch/main refresh still pending
-
+Branch: feature/post-v24-milestone-closeout
+Last known merged PR: #12 for Phase 61 / v2.4 completion
+Note: local branch/main reconciliation still pending before any release-tag or mainline cleanup work
 ## Session Continuity
-
-Last session: 2026-03-16T15:50:15Z
-Stopped at: v2.4 complete, PR merged, milestone closeout not yet run
-Next action: /skill:paul-milestone
-Resume file: .paul/HANDOFF-2026-03-16-v24-complete-milestone-next.md
-Git strategy: feature/phase-61-ux-polish-validation-interoperability-guardrails
+Last session: 2026-03-16T17:52:21Z
+Stopped at: Phase 62 complete, ready to plan Phase 63
+Next action: /skill:paul-plan
+Resume file: .paul/ROADMAP.md
+Git strategy: refresh local main/branch state before any release-tag cleanup
 Resume context:
-- Phase 61 is complete and unified; both validation suites passed before pause
-- PR #12 was created and user says it merged, but local branch/main reconciliation has not been done yet
-- Next step is milestone closeout / next-milestone setup via `/skill:paul-milestone`
-
+- Phase 62 delivered a clearer hybrid Pi runtime model: explicit command activation signal, `before_agent_start` primary injection, and support-only `context` normalization
+- Plan summary created at `.paul/phases/62-runtime-context-event-refinement/62-01-SUMMARY.md` with AC PASS and verification evidence
+- Skill audit recorded advisory gaps for `/carl`, `TODD`, and `WALT`; no blockers active
+- Next step is to create the first Phase 63 plan for guided workflow UX while preserving `.paul/*` lifecycle authority
+- Consumed handoff `.paul/HANDOFF-2026-03-16-phase61-ready.md` remains archived at `.paul/handoffs/archive/`
 ---
 *STATE.md — Updated after every significant action*

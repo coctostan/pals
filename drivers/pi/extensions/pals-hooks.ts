@@ -20,6 +20,17 @@ const PALS_WIDGET_ID = "pals-lifecycle";
 const PRIMARY_QUICK_ACTION_LIMIT = 3;
 const MAX_QUICK_ACTIONS = 5;
 
+const PRIMARY_INJECTION_EVENT = "before_agent_start";
+const SUPPORTING_CONTEXT_EVENT = "context";
+const PALS_CONTEXT_CUSTOM_TYPE = "pals-context";
+const LEGACY_PALS_CONTEXT_HEADER = "## PALS Context (auto-injected)";
+const STATE_AUTHORITY_TAG = "[PALS_STATE_AUTHORITY=.paul/STATE.md]";
+const ACTIVATION_SIGNAL_TAG = "[PALS_ACTIVATION_SIGNAL]";
+
+const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
+const COMMAND_ACTIVATION_TURN_BUDGET = 3;
+const PROMPT_ACTIVATION_TURN_BUDGET = 1;
+
 type PalsStateSnapshot = {
   detected: boolean;
   milestone?: string;
@@ -40,6 +51,13 @@ type QuickActionDef = {
   commandName: CommandDef["name"];
   label: string;
   shortcutHint: string;
+};
+
+type ActivationState = {
+  source: "command" | "prompt";
+  signal: string;
+  expiresAt: number;
+  turnsRemaining: number;
 };
 
 function readFileOr(path: string, fallback: string): string {
@@ -90,6 +108,18 @@ function toWrapperCommand(commandText?: string): string | undefined {
   return undefined;
 }
 
+function detectCommandSignal(value?: string): string | undefined {
+  const compact = compactWhitespace(value);
+  if (!compact) return undefined;
+
+  const match = compact.match(/\/(?:skill:)?(paul-(?:init|plan|apply|unify|resume|status|fix|pause|milestone|discuss|help))(?:\s+(.+))?/i);
+  if (!match) return undefined;
+
+  const command = `/${match[1].toLowerCase()}`;
+  const args = compactWhitespace(match[2]);
+  return args ? `${command} ${args}` : command;
+}
+
 function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
   const actions: QuickActionDef[] = [];
   const nextWrapper = toWrapperCommand(state.nextAction);
@@ -120,6 +150,7 @@ function renderQuickActionSummary(state: PalsStateSnapshot): string | undefined 
   if (actions.length === 0) return undefined;
   return `Actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
 }
+
 function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
   if (!state.detected) return undefined;
   return [
@@ -131,6 +162,7 @@ function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
     .filter(Boolean)
     .join(" • ");
 }
+
 function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
   if (!state.detected) return undefined;
 
@@ -152,6 +184,7 @@ function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
   ];
   return lines;
 }
+
 function syncLifecycleUi(ctx: any): void {
   const cwd = ctx?.cwd ?? process.cwd();
   const state = parsePalsState(cwd);
@@ -162,6 +195,68 @@ function syncLifecycleUi(ctx: any): void {
   }
   ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state));
   ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state));
+}
+
+function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
+  return [
+    "PALS project detected.",
+    state.milestone ? `Milestone: ${state.milestone}` : null,
+    state.phase ? `Phase: ${state.phase}` : null,
+    state.loop ? `Loop: ${state.loop}` : null,
+    state.nextAction ? `Next: ${state.nextAction}` : null,
+    renderQuickActionSummary(state),
+    `Activation model: explicit /paul-* entry is strongest signal; ${PRIMARY_INJECTION_EVENT} handles primary injection and ${SUPPORTING_CONTEXT_EVENT} stays support-only.`, 
+    "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
+  ]
+    .filter(Boolean)
+    .join(" | ");
+}
+
+function shouldInjectPalsContext(state: PalsStateSnapshot, activation: ActivationState | undefined): boolean {
+  return Boolean(state.detected && activation && activation.turnsRemaining > 0);
+}
+
+function buildPalsContextPayload(state: PalsStateSnapshot, activation: ActivationState): string {
+  return [
+    "## PALS Context (bounded injection)",
+    "",
+    STATE_AUTHORITY_TAG,
+    `${ACTIVATION_SIGNAL_TAG} ${activation.signal} (${activation.source})`,
+    state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
+    state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
+    state.nextAction ? `Next action: ${state.nextAction}` : null,
+    "",
+    "Use shared .paul/* artifacts and loaded SKILL.md/workflow instructions as the authoritative lifecycle source.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function isLegacyPalsContextMessage(message: any): boolean {
+  return message?.role === "user" && typeof message?.content === "string" && message.content.includes(LEGACY_PALS_CONTEXT_HEADER);
+}
+
+function isPalsContextMessage(message: any): boolean {
+  if (message?.customType === PALS_CONTEXT_CUSTOM_TYPE) return true;
+  return isLegacyPalsContextMessage(message);
+}
+
+function keepOnlyLatestPalsContextMessage(messages: any[]): any[] {
+  let latestIndex = -1;
+  for (let i = 0; i < messages.length; i++) {
+    if (isPalsContextMessage(messages[i])) latestIndex = i;
+  }
+
+  if (latestIndex < 0) return messages;
+  return messages.filter((message, index) => !isPalsContextMessage(message) || index === latestIndex);
+}
+
+function messagesChanged(previous: any[], next: any[]): boolean {
+  if (previous.length !== next.length) return true;
+  for (let i = 0; i < previous.length; i++) {
+    if (previous[i] !== next[i]) return true;
+  }
+  return false;
 }
 
 // -- Command definitions --
@@ -237,10 +332,44 @@ const COMMANDS: CommandDef[] = [
 
 // -- Extension entry point --
 export default function palsHooks(pi: any): void {
+  let activationState: ActivationState | undefined;
+
+  const markActivation = (
+    source: ActivationState["source"],
+    signal: string,
+    turns: number,
+  ): void => {
+    activationState = {
+      source,
+      signal,
+      turnsRemaining: turns,
+      expiresAt: Date.now() + ACTIVATION_WINDOW_MS,
+    };
+  };
+
+  const getActiveActivation = (): ActivationState | undefined => {
+    if (!activationState) return undefined;
+    if (activationState.turnsRemaining <= 0 || activationState.expiresAt < Date.now()) {
+      activationState = undefined;
+      return undefined;
+    }
+    return activationState;
+  };
+
+  const consumeActivationTurn = (): void => {
+    if (!activationState) return;
+    activationState.turnsRemaining -= 1;
+    if (activationState.turnsRemaining <= 0) {
+      activationState = undefined;
+    }
+  };
+
   const routeCommand = (commandName: CommandDef["name"], args = "", ctx?: any): void => {
     const cmd = getCommand(commandName);
     if (!cmd) return;
     const trimmedArgs = args.trim();
+    const wrapperCmd = `/${commandName}${trimmedArgs ? " " + trimmedArgs : ""}`;
+    markActivation("command", wrapperCmd, COMMAND_ACTIVATION_TURN_BUDGET);
     const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
     ctx?.ui?.notify(`${cmd.guidance} — routing now`, "info");
     pi.sendUserMessage(skillCmd);
@@ -254,6 +383,7 @@ export default function palsHooks(pi: any): void {
     const args = wrapper.replace(/^\/paul-[^\s]+\s*/, "");
     routeCommand(commandName, args, ctx);
   };
+
   const registerQuickActionShortcut = (
     shortcut: string,
     description: string,
@@ -266,6 +396,7 @@ export default function palsHooks(pi: any): void {
       },
     });
   };
+
   // Register all /paul-* slash commands as Pi-native discovery wrappers.
   for (const cmd of COMMANDS) {
     pi.registerCommand(cmd.name, {
@@ -288,29 +419,41 @@ export default function palsHooks(pi: any): void {
   registerQuickActionShortcut(Key.ctrlAlt("r"), "Resume PALS work", (ctx) => routeCommand("paul-resume", "", ctx));
   registerQuickActionShortcut(Key.ctrlAlt("h"), "Open PALS help", (ctx) => routeCommand("paul-help", "", ctx));
   registerQuickActionShortcut(Key.ctrlAlt("m"), "Open PALS milestone flow", (ctx) => routeCommand("paul-milestone", "", ctx));
-  // Session start: detect PALS project, show state, and render persistent lifecycle UI.
+
+  // Session start: orientation + lifecycle surface refresh (no workflow injection).
   pi.on("session_start", async (_event: any, ctx: any) => {
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
     syncLifecycleUi(ctx);
     if (!state.detected) return;
-    const summary = [
-      "PALS project detected.",
-      state.milestone ? `Milestone: ${state.milestone}` : null,
-      state.phase ? `Phase: ${state.phase}` : null,
-      state.loop ? `Loop: ${state.loop}` : null,
-      state.nextAction ? `Next: ${state.nextAction}` : null,
-      renderQuickActionSummary(state),
-      "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
-    ]
-      .filter(Boolean)
-      .join(" | ");
-    ctx?.ui?.notify(summary, "info");
+    ctx?.ui?.notify(buildSessionOrientationSummary(state), "info");
   });
 
-  // Keep the visible lifecycle surface aligned with shared artifact state.
-  pi.on("before_agent_start", async (_event: any, ctx: any) => {
+  // Primary workflow-context injection point.
+  pi.on("before_agent_start", async (event: any, ctx: any) => {
     syncLifecycleUi(ctx);
+
+    const promptSignal = detectCommandSignal(event?.prompt);
+    if (promptSignal) {
+      markActivation("prompt", promptSignal, PROMPT_ACTIVATION_TURN_BUDGET);
+    }
+
+    const cwd = ctx?.cwd ?? process.cwd();
+    const state = parsePalsState(cwd);
+    const activeActivation = getActiveActivation();
+
+    if (!shouldInjectPalsContext(state, activeActivation)) return;
+
+    const contextPayload = buildPalsContextPayload(state, activeActivation as ActivationState);
+    consumeActivationTurn();
+
+    return {
+      message: {
+        customType: PALS_CONTEXT_CUSTOM_TYPE,
+        content: contextPayload,
+        display: false,
+      },
+    };
   });
 
   pi.on("turn_end", async (_event: any, ctx: any) => {
@@ -321,38 +464,18 @@ export default function palsHooks(pi: any): void {
     syncLifecycleUi(ctx);
   });
 
-  // Context hook: inject minimal PALS state only when workflows are active.
+  // Supporting context hook: keep prior context bounded and trim legacy payloads.
   pi.on("context", async (event: any, ctx: any) => {
+    syncLifecycleUi(ctx);
+
     const messages: any[] = event?.messages;
     if (!Array.isArray(messages) || messages.length === 0) return;
 
-    const recentText = messages
-      .slice(-5)
-      .map((m: any) => (typeof m.content === "string" ? m.content : ""))
-      .join(" ");
-    const palsActive = /paul-(plan|apply|unify|resume|fix|init|status|pause|milestone|discuss|help)/i.test(recentText);
+    const withoutLegacy = messages.filter((message) => !isLegacyPalsContextMessage(message));
+    const normalized = keepOnlyLatestPalsContextMessage(withoutLegacy);
 
-    if (!palsActive) return;
-
-    syncLifecycleUi(ctx);
-
-    const cwd = ctx?.cwd ?? process.cwd();
-    const state = parsePalsState(cwd);
-    if (!state.detected) return;
-
-    const contextLines = [
-      "## PALS Context (auto-injected)",
-      "",
-      state.milestone ? `**Milestone:** ${state.milestone}` : null,
-      `**Phase:** ${state.phase ?? "unknown"}`,
-      `**Loop:** ${state.loop ?? "unknown"}`,
-      state.nextAction ? `**Next action:** ${state.nextAction}` : null,
-      "",
-      "Follow the loaded SKILL.md instructions. Read referenced workflow files for full process details.",
-    ];
-
-    const contextMsg = contextLines.filter(Boolean).join("\n");
-    messages.push({ role: "user", content: contextMsg });
-    return { messages };
+    if (messagesChanged(messages, normalized)) {
+      return { messages: normalized };
+    }
   });
 }

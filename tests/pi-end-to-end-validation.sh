@@ -289,13 +289,28 @@ else
     tap_not_ok "Extension documents canonical /skill:paul-* routing" "Expected canonical routing guidance in extension source"
   fi
 
-  # Guardrail: keep a single automatic context injection site
-  PUSH_COUNT=$(grep -c 'messages.push' "$EXT_SRC" 2>/dev/null || echo 0)
-  if [ "$PUSH_COUNT" -eq 1 ]; then
-    tap_ok "Extension keeps a single automatic context injection site"
+  # Guardrail: primary injection is centered on before_agent_start
+  if grep -q 'PRIMARY_INJECTION_EVENT = "before_agent_start"' "$EXT_SRC" 2>/dev/null && grep -q 'pi.on("before_agent_start"' "$EXT_SRC" 2>/dev/null && grep -q 'customType: PALS_CONTEXT_CUSTOM_TYPE' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension uses before_agent_start as the primary context injection point"
   else
-    tap_not_ok "Extension keeps a single automatic context injection site" "Found $PUSH_COUNT messages.push call(s)"
+    tap_not_ok "Extension uses before_agent_start as the primary context injection point" "Expected before_agent_start marker, handler, and PALS context custom message injection"
   fi
+
+  # Guardrail: explicit command routing participates in activation model
+  if grep -q 'ACTIVATION_SIGNAL_TAG' "$EXT_SRC" 2>/dev/null && grep -q 'markActivation("command"' "$EXT_SRC" 2>/dev/null && grep -q 'COMMAND_ACTIVATION_TURN_BUDGET' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension models explicit command activation as strongest signal"
+  else
+    tap_not_ok "Extension models explicit command activation as strongest signal" "Expected activation markers and command-signal tracking in extension source"
+  fi
+
+  # Guardrail: keep a single bounded automatic injection path with context as support-only
+  PUSH_COUNT=$(grep -c 'messages.push' "$EXT_SRC" 2>/dev/null || true)
+  PALS_CONTEXT_INJECTION_COUNT=$(grep -c 'customType: PALS_CONTEXT_CUSTOM_TYPE\|customType: "pals-context"' "$EXT_SRC" 2>/dev/null || true)
+  if [ "$PUSH_COUNT" -eq 0 ] && [ "$PALS_CONTEXT_INJECTION_COUNT" -eq 1 ] && grep -q 'pi.on("context"' "$EXT_SRC" 2>/dev/null && grep -q 'keepOnlyLatestPalsContextMessage' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension keeps one bounded automatic injection path and a support-only context hook"
+  else
+    tap_not_ok "Extension keeps one bounded automatic injection path and a support-only context hook" "Expected 0 messages.push, exactly one pals-context injection definition, and context normalization support"
+fi
 fi
 
 # ════════════════════════════════════════════════════════════════════
@@ -378,6 +393,12 @@ if grep -q 'Quick Actions & Shortcuts' "$README_PI" && grep -q 'Ctrl+Alt+N' "$RE
   tap_ok "Extension README documents shortcut-enabled entry points"
 else
   tap_not_ok "Extension README documents shortcut-enabled entry points" "Expected quick-action shortcut guidance in drivers/pi/extensions/README.md"
+fi
+
+if grep -q 'before_agent_start' "$README_PI" && grep -q 'context' "$README_PI" && grep -q 'activation' "$README_PI" && grep -q 'authoritative' "$README_PI"; then
+  tap_ok "Extension README documents refined activation/injection responsibility split"
+else
+  tap_not_ok "Extension README documents refined activation/injection responsibility split" "Expected before_agent_start/context/activation/authoritative wording in drivers/pi/extensions/README.md"
 fi
 
 if grep -q 'Command → Skill → Workflow Mapping' "$SKILL_MAP" && grep -q 'canonical' "$SKILL_MAP"; then

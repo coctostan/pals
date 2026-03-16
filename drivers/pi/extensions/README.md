@@ -52,10 +52,10 @@ The extension registers these slash commands:
 | /paul-help | Show Pi command and skill guidance for PALS |
 
 ## Event Hooks
-- **session_start**: Detects `.paul/` directory, reads `STATE.md`, shows current phase/loop position, and surfaces quick-action guidance.
-- **before_agent_start / turn_end / agent_end**: Refresh the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
-- **context**: When a PALS workflow is active, injects minimal project state (phase, loop position, next action) so the LLM can follow PALS workflows correctly.
-
+- **session_start**: Orientation only — detects `.paul/`, reads `STATE.md`, refreshes lifecycle UI, and explains the runtime model without injecting workflow context.
+- **before_agent_start**: Primary PALS injection point. Explicit `/paul-*` (or `/skill:paul-*`) activation signals are treated as highest confidence, then one bounded `PALS Context` payload is injected from `.paul/STATE.md` as the authoritative source.
+- **turn_end / agent_end**: Refresh the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
+- **context**: Supporting surface only. It keeps context lean by trimming legacy/duplicate PALS context messages; it is not the architectural center of injection.
 ## Requirements
 
 - Pi coding agent with extension support
