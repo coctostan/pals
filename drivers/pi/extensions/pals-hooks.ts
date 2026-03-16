@@ -2,7 +2,8 @@
  * PALS Hooks — Pi Extension
  *
  * Bridges Pi lifecycle events to PALS workflows. Registers /paul-* commands
- * and injects project context so the LLM can follow PALS workflows correctly.
+ * as Pi-native convenience wrappers and injects only minimal project context
+ * so the LLM can follow PALS workflows correctly.
  *
  * Install: copy to ~/.pi/agent/extensions/pals-hooks.ts
  * Requires: Pi coding agent with extension support
@@ -33,42 +34,109 @@ function parsePalsState(cwd: string): { detected: boolean; phase?: string; loop?
   return {
     detected: true,
     phase: phaseMatch?.[1]?.trim(),
-    loop: loopMatch?.[2]?.trim(),
+    loop: loopMatch?.[1]?.trim(),
     nextAction: nextMatch?.[1]?.trim(),
   };
 }
 
+type CommandDef = {
+  name: string;
+  description: string;
+  skill: string;
+  guidance: string;
+};
+
 // -- Command definitions --
 
-const COMMANDS: Array<{ name: string; description: string; skill: string }> = [
-  { name: "paul-init", description: "Initialize PALS in this project", skill: "paul-init" },
-  { name: "paul-plan", description: "Create execution plan for current phase", skill: "paul-plan" },
-  { name: "paul-apply", description: "Execute an approved plan", skill: "paul-apply" },
-  { name: "paul-unify", description: "Reconcile plan vs actual and close the loop", skill: "paul-unify" },
-  { name: "paul-resume", description: "Restore context and continue work", skill: "paul-resume" },
-  { name: "paul-status", description: "Show project progress and next action", skill: "paul-status" },
-  { name: "paul-fix", description: "Quick fix with compressed loop", skill: "paul-fix" },
-  { name: "paul-pause", description: "Create handoff and prepare for session break", skill: "paul-pause" },
-  { name: "paul-milestone", description: "Create or complete a milestone", skill: "paul-milestone" },
-  { name: "paul-discuss", description: "Explore phase or milestone vision", skill: "paul-discuss" },
-  { name: "paul-help", description: "Show available PAUL commands", skill: "paul-help" },
+const COMMANDS: CommandDef[] = [
+  {
+    name: "paul-init",
+    description: "Set up PALS lifecycle files for this project",
+    skill: "paul-init",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-init",
+  },
+  {
+    name: "paul-plan",
+    description: "Plan the next PALS phase",
+    skill: "paul-plan",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-plan",
+  },
+  {
+    name: "paul-apply",
+    description: "Execute the approved PALS plan",
+    skill: "paul-apply",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-apply",
+  },
+  {
+    name: "paul-unify",
+    description: "Reconcile completed work and close the loop",
+    skill: "paul-unify",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-unify",
+  },
+  {
+    name: "paul-resume",
+    description: "Resume PALS work from current project state",
+    skill: "paul-resume",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-resume",
+  },
+  {
+    name: "paul-status",
+    description: "Show current PALS status and next action",
+    skill: "paul-status",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-status",
+  },
+  {
+    name: "paul-fix",
+    description: "Run a quick PALS fix flow",
+    skill: "paul-fix",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-fix",
+  },
+  {
+    name: "paul-pause",
+    description: "Create a PALS handoff before stopping",
+    skill: "paul-pause",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-pause",
+  },
+  {
+    name: "paul-milestone",
+    description: "Create or complete a PALS milestone",
+    skill: "paul-milestone",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-milestone",
+  },
+  {
+    name: "paul-discuss",
+    description: "Discuss scope before planning in PALS",
+    skill: "paul-discuss",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-discuss",
+  },
+  {
+    name: "paul-help",
+    description: "Show Pi command and skill guidance for PALS",
+    skill: "paul-help",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-help",
+  },
 ];
 
 // -- Extension entry point --
 
 export default function palsHooks(pi: any): void {
-  // Register all /paul-* slash commands — delegate to skills
+  // Register all /paul-* slash commands as Pi-native discovery wrappers.
   for (const cmd of COMMANDS) {
     pi.registerCommand(cmd.name, {
       description: cmd.description,
       handler: async (args: string, ctx: any) => {
-        const skillCmd = `/skill:${cmd.skill}${args ? " " + args : ""}`;
+        const trimmedArgs = args.trim();
+        const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
+
+        // Keep guidance brief and command-local so discoverability improves
+        // without materially increasing runtime context load.
+        ctx?.ui?.notify(`${cmd.guidance} — routing now`, "info");
         pi.sendUserMessage(skillCmd);
       },
     });
   }
 
-  // Session start: detect PALS project and show state
+  // Session start: detect PALS project and show state.
   pi.on("session_start", async (_event: any, ctx: any) => {
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
@@ -86,12 +154,11 @@ export default function palsHooks(pi: any): void {
     ctx?.ui?.notify(summary, "info");
   });
 
-  // Context hook: inject PALS state into messages when workflows are active
-  pi.on("context", async (event: any, _ctx: any) => {
+  // Context hook: inject minimal PALS state only when workflows are active.
+  pi.on("context", async (event: any, ctx: any) => {
     const messages: any[] = event?.messages;
     if (!Array.isArray(messages) || messages.length === 0) return;
 
-    // Check if a PALS workflow is active in recent messages
     const recentText = messages
       .slice(-5)
       .map((m: any) => (typeof m.content === "string" ? m.content : ""))
@@ -100,7 +167,7 @@ export default function palsHooks(pi: any): void {
 
     if (!palsActive) return;
 
-    const cwd = _ctx?.cwd ?? process.cwd();
+    const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
     if (!state.detected) return;
 
@@ -115,8 +182,6 @@ export default function palsHooks(pi: any): void {
     ];
 
     const contextMsg = contextLines.filter(Boolean).join("\n");
-
-    // Inject as a system message at the end of the messages array
     messages.push({ role: "user", content: contextMsg });
 
     return { messages };

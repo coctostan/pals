@@ -1,7 +1,7 @@
 name: pi
 version: 2.0.0
 platform: pi
-description: PALS driver for Pi (Anthropic's agentic IDE)
+description: PALS driver for Pi — canonical skills plus extension-backed command and hook surfaces
 
 kernel_version: ">=2.0.0"
 

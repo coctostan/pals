@@ -27,29 +27,23 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.3 Pi Interaction Model Refinement**
-Status: 🚧 In Progress (Phase 57 ready to plan)
-Phases: 1 of 3 complete
-## Phases
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 56 | Hook & Context Strategy | 1 | ✅ Complete | 2026-03-15 |
-| 57 | Command Routing & Discoverability | TBD | Not started | - |
-| 58 | Adapter Consistency Cleanup | TBD | Not started | - |
-## Phase Details
-### Phase 56: Hook & Context Strategy
-Focus: Evaluate and choose the best model for PALS state injection and workflow activation inside Pi
-Plans: 56-01-PLAN.md (research) — ✅ Complete 2026-03-15
-### Phase 57: Command Routing & Discoverability
-Focus: Improve `/paul-*` command UX, discoverability, and routing while preserving `/skill:paul-*` as canonical
-Plans: TBD (defined during /paul:plan)
-### Phase 58: Adapter Consistency Cleanup
-Focus: Remove drift across extension docs, installer comments, and skill/help text so the adapter clearly matches reality
-Plans: TBD (defined during /paul:plan)
+No active milestone.
+
+## Next Milestone
+Run /paul:discuss-milestone or /paul:milestone to define.
+
 ---
 
 ## Completed Milestones
 
+<details>
+<summary>v2.3 Pi Interaction Model Refinement - 2026-03-16 (3 phases)</summary>
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 56 | Hook & Context Strategy | 1 | 2026-03-15 |
+| 57 | Command Routing & Discoverability | 1 | 2026-03-16 |
+| 58 | Adapter Consistency Cleanup | 1 | 2026-03-16 |
+</details>
 <details>
 <summary>v2.2 Pi Port Audit & Native Fit - 2026-03-15 (3 phases)</summary>
 | Phase | Name | Plans | Completed |
@@ -242,4 +236,4 @@ Plans: TBD (defined during /paul:plan)
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-15 — v2.2 Pi Port Audit & Native Fit complete*
+*Last updated: 2026-03-16 — v2.3 Pi Interaction Model Refinement complete*

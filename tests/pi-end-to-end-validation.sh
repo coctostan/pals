@@ -245,6 +245,21 @@ else
   else
     tap_not_ok "Extension handles context event" "No context handler found"
   fi
+
+  # Check canonical routing guidance is present
+  if grep -q 'canonical /skill:paul-' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension documents canonical /skill:paul-* routing"
+  else
+    tap_not_ok "Extension documents canonical /skill:paul-* routing" "Expected canonical routing guidance in extension source"
+  fi
+
+  # Guardrail: keep a single automatic context injection site
+  PUSH_COUNT=$(grep -c 'messages.push' "$EXT_SRC" 2>/dev/null || echo 0)
+  if [ "$PUSH_COUNT" -eq 1 ]; then
+    tap_ok "Extension keeps a single automatic context injection site"
+  else
+    tap_not_ok "Extension keeps a single automatic context injection site" "Found $PUSH_COUNT messages.push call(s)"
+  fi
 fi
 
 # ════════════════════════════════════════════════════════════════════
@@ -298,6 +313,49 @@ else
   else
     tap_not_ok "Pi driver: uninstall.sh exists" "File not found"
   fi
+
+  # Check driver description reflects canonical skills + extension layer
+  if grep -q 'canonical skills plus extension-backed command and hook surfaces' "$DRIVER_YAML" 2>/dev/null; then
+    tap_ok "Pi manifest description reflects skills + extension model"
+  else
+    tap_not_ok "Pi manifest description reflects skills + extension model" "Expected updated driver description in drivers/pi/driver.yaml"
+  fi
+fi
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 5: PI DISCOVERY SURFACES
+# ════════════════════════════════════════════════════════════════════
+
+section "PI DISCOVERY SURFACES"
+
+README_PI="$REPO_ROOT/drivers/pi/extensions/README.md"
+SKILL_MAP="$REPO_ROOT/drivers/pi/skill-map.md"
+HELP_SKILL="$REPO_ROOT/drivers/pi/skills/paul-help/SKILL.md"
+
+if grep -q '/paul-\*' "$README_PI" && grep -q '/skill:paul-\*' "$README_PI" && grep -q 'canonical' "$README_PI"; then
+  tap_ok "Extension README explains /paul-* vs canonical /skill:paul-*"
+else
+  tap_not_ok "Extension README explains /paul-* vs canonical /skill:paul-*" "Expected wrapper/canonical guidance in drivers/pi/extensions/README.md"
+fi
+
+if grep -q 'Command → Skill → Workflow Mapping' "$SKILL_MAP" && grep -q 'canonical' "$SKILL_MAP"; then
+  tap_ok "Skill map documents command → skill → workflow model"
+else
+  tap_not_ok "Skill map documents command → skill → workflow model" "Expected command/skill/workflow guidance in drivers/pi/skill-map.md"
+fi
+
+if grep -q 'Use `/paul-\*`' "$HELP_SKILL" && grep -q 'canonical' "$HELP_SKILL"; then
+  tap_ok "Pi help skill explains command layer vs canonical skill layer"
+else
+  tap_not_ok "Pi help skill explains command layer vs canonical skill layer" "Expected command-vs-skill guidance in drivers/pi/skills/paul-help/SKILL.md"
+
+UNINSTALL_PI="$REPO_ROOT/drivers/pi/uninstall.sh"
+
+if grep -q 'canonical skill files' "$UNINSTALL_PI" && grep -q 'extension-backed /paul-\* command and hook layer' "$UNINSTALL_PI"; then
+  tap_ok "Pi uninstall script explains skills + extension removal clearly"
+else
+  tap_not_ok "Pi uninstall script explains skills + extension removal clearly" "Expected canonical-skill and extension-layer wording in drivers/pi/uninstall.sh"
+fi
 fi
 
 # ════════════════════════════════════════════════════════════════════

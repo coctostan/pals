@@ -12,37 +12,44 @@ cp pals-hooks.ts ~/.pi/agent/extensions/pals-hooks.ts
 
 Pi discovers extensions automatically on next session start.
 
+## Command Model
+
+Pi exposes two aligned PALS entry surfaces:
+
+- `/paul-*` — the ergonomic Pi command layer for everyday discovery and routing
+- `/skill:paul-*` — the canonical Pi skill layer that owns the underlying workflow entry point
+
+Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
+
 ## Commands
 
 The extension registers these slash commands:
 
 | Command | Description |
 |---------|-------------|
-| /paul-init | Initialize PALS in this project |
-| /paul-plan | Create execution plan for current phase |
-| /paul-apply | Execute an approved plan |
-| /paul-unify | Reconcile plan vs actual and close the loop |
-| /paul-resume | Restore context and continue work |
-| /paul-status | Show project progress and next action |
-| /paul-fix | Quick fix with compressed loop |
-| /paul-pause | Create handoff and prepare for session break |
-| /paul-milestone | Create or complete a milestone |
-| /paul-discuss | Explore phase or milestone vision |
-| /paul-help | Show available PAUL commands |
-
-Each command delegates to the corresponding Pi skill (`/skill:paul-*`).
+| /paul-init | Set up PALS lifecycle files for this project |
+| /paul-plan | Plan the next PALS phase |
+| /paul-apply | Execute the approved PALS plan |
+| /paul-unify | Reconcile completed work and close the loop |
+| /paul-resume | Resume PALS work from current project state |
+| /paul-status | Show current PALS status and next action |
+| /paul-fix | Run a quick PALS fix flow |
+| /paul-pause | Create a PALS handoff before stopping |
+| /paul-milestone | Create or complete a PALS milestone |
+| /paul-discuss | Discuss scope before planning in PALS |
+| /paul-help | Show Pi command and skill guidance for PALS |
 
 ## Event Hooks
 
-- **session_start**: Detects `.paul/` directory, reads STATE.md, and logs current phase/loop position.
-- **context**: When a PALS workflow is active, injects project state (phase, loop position, active modules) so the LLM can follow PALS workflows correctly.
+- **session_start**: Detects `.paul/` directory, reads `STATE.md`, and shows current phase/loop position.
+- **context**: When a PALS workflow is active, injects minimal project state (phase, loop position, next action) so the LLM can follow PALS workflows correctly.
 
 ## Requirements
 
 - Pi coding agent with extension support
-- PALS skills installed at `~/.pi/agent/skills/pals/` (see skill-map.md)
+- PALS skills installed at `~/.pi/agent/skills/pals/` (see `skill-map.md`)
 
 ## References
 
 - [Pi Extensions docs](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md)
-- [Skill Map](../skill-map.md) — full workflow-to-skill mapping
+- [Skill Map](../skill-map.md) — command/skill/workflow mapping for the Pi adapter

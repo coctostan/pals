@@ -222,6 +222,10 @@ All validated — see below.
 | Prefer a hybrid Pi event model over a single-hook redesign | 56 | Separating orientation, activation, and injection responsibilities produces a clearer adapter architecture than centering everything on one hook | Gives later implementation work a stable event model to build on |
 | Make `before_agent_start` the primary workflow-context decision point | 56 | It offers a stronger timing boundary than the current regex-driven `context` hook while staying adapter-only | Focuses future runtime refinement on a specific Pi-native surface |
 | Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves the useful parts of the current adapter without letting prompt shaping become hidden lifecycle truth | Protects artifact-first semantics as later Pi UX work deepens native fit |
+| Keep `/paul-*` as Pi-native convenience wrappers and `/skill:paul-*` as canonical entry points | 57 | Improves discoverability without forking workflow semantics into TypeScript |
+| Keep added routing guidance brief and command-local | 57 | Preserves command discoverability gains without materially increasing Pi runtime context load |
+| Keep Phase 58 focused on wording, metadata, and validation only | 58 | Closes the milestone with low-risk consistency work instead of reopening behavior changes |
+| Extend validation to cover Pi consistency claims | 58 | Makes future Pi adapter drift easier to detect and correct |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -240,4 +244,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-15 after Phase 56 Hook & Context Strategy unified*
+*Last updated: 2026-03-16 after v2.3 Pi Interaction Model Refinement milestone completion*

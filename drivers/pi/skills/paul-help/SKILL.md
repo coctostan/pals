@@ -1,58 +1,65 @@
 ---
 name: paul-help
-description: "Show available PALS commands and usage guide. Lists all Pi skill commands with descriptions and common workflows."
+description: "Show available PALS commands and usage guide. Explains how Pi /paul-* commands relate to canonical /skill:paul-* skills."
 ---
 
 # PAUL Help
 
-Available PALS commands for Pi.
+Available PALS Pi command and skill surfaces.
 
-## Core Loop
+## How to use PALS in Pi
 
-| Command | Purpose |
-|---------|---------|
-| `/skill:paul-plan` | Create execution plan for current phase |
-| `/skill:paul-apply` | Execute an approved plan |
-| `/skill:paul-unify` | Reconcile plan vs actual, close loop |
+- Use `/paul-*` for the most convenient Pi-native command experience.
+- Use `/skill:paul-*` when you want the canonical underlying skill entry directly.
+- Both surfaces route into the same shared PALS workflow model; only the skills are canonical entry points.
 
-## Project Management
+## Pi command layer
 
 | Command | Purpose |
 |---------|---------|
-| `/skill:paul-init` | Initialize PALS in a project |
-| `/skill:paul-milestone` | Create or complete a milestone |
-| `/skill:paul-discuss` | Explore scope before planning |
-| `/skill:paul-status` | Show project status and next action |
+| `/paul-plan` | Plan the next PALS phase |
+| `/paul-apply` | Execute the approved PALS plan |
+| `/paul-unify` | Reconcile completed work and close the loop |
+| `/paul-init` | Set up PALS lifecycle files in a project |
+| `/paul-milestone` | Create or complete a milestone |
+| `/paul-discuss` | Explore scope before planning |
+| `/paul-status` | Show project status and next action |
+| `/paul-resume` | Restore context after a session break |
+| `/paul-pause` | Create a handoff for a session break |
+| `/paul-fix` | Run a quick fix flow |
+| `/paul-help` | Show this help screen |
 
-## Session Management
+## Canonical Pi skill layer
 
 | Command | Purpose |
 |---------|---------|
-| `/skill:paul-resume` | Restore context after session break |
-| `/skill:paul-pause` | Create handoff for session break |
-
-## Utilities
-
-| Command | Purpose |
-|---------|---------|
-| `/skill:paul-fix` | Quick fix (standard/fast-forward/hotfix) |
-| `/skill:paul-help` | This help screen |
+| `/skill:paul-plan` | Canonical entry for phase planning |
+| `/skill:paul-apply` | Canonical entry for approved plan execution |
+| `/skill:paul-unify` | Canonical entry for reconciliation |
+| `/skill:paul-init` | Canonical entry for project initialization |
+| `/skill:paul-milestone` | Canonical entry for milestone management |
+| `/skill:paul-discuss` | Canonical entry for pre-plan discussion |
+| `/skill:paul-status` | Canonical entry for project status and routing |
+| `/skill:paul-resume` | Canonical entry for session resume |
+| `/skill:paul-pause` | Canonical entry for handoff creation |
+| `/skill:paul-fix` | Canonical entry for quick fixes |
+| `/skill:paul-help` | Canonical entry for this help screen |
 
 ## Common Workflows
 
 **Starting a new project:**
-1. `/skill:paul-init` — set up PALS
-2. `/skill:paul-discuss` — explore what to build
-3. `/skill:paul-milestone` — create milestone structure
-4. `/skill:paul-plan` — plan first phase
+1. `/paul-init` (or `/skill:paul-init`) — set up PALS
+2. `/paul-discuss` — explore what to build
+3. `/paul-milestone` — create milestone structure
+4. `/paul-plan` — plan first phase
 
 **Daily work loop:**
-1. `/skill:paul-resume` — restore context
-2. `/skill:paul-plan` → `/skill:paul-apply` → `/skill:paul-unify`
-3. `/skill:paul-pause` — save state before break
+1. `/paul-resume` — restore context
+2. `/paul-plan` → `/paul-apply` → `/paul-unify`
+3. `/paul-pause` — save state before a break
 
 **Quick fixes:**
-- `/skill:paul-fix` — bypass full loop for small changes
+- `/paul-fix` — bypass the full loop for small changes
 
 ## About PALS
 

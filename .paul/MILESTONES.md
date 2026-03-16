@@ -20,6 +20,41 @@ Completed milestone log for this project.
 | **v1.2 Multi-Model Routing** | 2026-03-14 | 1 day | 2 phases, 2 plans |
 | **v2.0 Portability & Cross-Harness** | 2026-03-14 | 1 day | 4 phases, 6 plans |
 | **v2.1 Pi Runtime Integration** | 2026-03-14 | 1 day | 4 phases, 4 plans |
+| **v2.3 Pi Interaction Model Refinement** | 2026-03-16 | 2 days | 3 phases, 3 plans |
+
+---
+
+## ✅ v2.3 Pi Interaction Model Refinement
+
+**Completed:** 2026-03-16
+**Duration:** 2 days (2026-03-15 to 2026-03-16)
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 56-58) |
+| Plans | 3 |
+| Files changed | 11 unique adapter/research files |
+| Validation checks | 81 (all pass) |
+
+### Key Accomplishments
+
+- Evaluated Pi event and context-injection options and selected a hybrid event model that keeps `.paul/*` artifacts authoritative
+- Improved `/paul-*` command routing and discoverability while preserving `/skill:paul-*` as the canonical Pi skill surface
+- Added guardrails so Pi command UX improvements do not materially increase automatic workflow-context injection overhead
+- Cleaned up remaining Pi adapter metadata, uninstall/operator wording, and help/discovery surfaces so they match the implemented extension-enabled model
+- Expanded the Pi end-to-end validation suite from 75 to 81 checks, covering command/discovery alignment and consistency-contract expectations
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Prefer a hybrid Pi event model over a single-hook redesign | 56 | Clarifies responsibility split across orientation, activation, and injection without creating Pi-only truth |
+| Keep `/paul-*` as Pi-native convenience wrappers and `/skill:paul-*` as canonical entry points | 57 | Improves discoverability without forking workflow semantics into TypeScript |
+| Keep added routing guidance brief and command-local | 57 | Preserves command discoverability gains without materially increasing Pi runtime context load |
+| Keep Phase 58 focused on wording, metadata, and validation only | 58 | Closes the milestone with low-risk consistency work instead of reopening behavior changes |
+| Extend validation to cover consistency claims | 58 | Makes future Pi adapter drift easier to detect and correct |
 
 ---
 

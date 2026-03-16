@@ -4,9 +4,10 @@ set -e
 # ════════════════════════════════════════
 # PALS Pi Driver Installer
 # ════════════════════════════════════════
-# Installs PALS kernel and module files into Pi's skill directory.
-# Pi uses skills (not slash commands or hooks), so this installer
-# simply copies files and generates a modules.yaml registry.
+# Installs PALS kernel, Pi skills, and the Pi extension into Pi's runtime directories.
+# Pi uses skills as the canonical workflow entry surface and the extension as the
+# Pi-native command/hook layer, so this installer copies both and generates a
+# modules.yaml registry for module-backed references.
 #
 # Expected environment:
 #   PALS_ROOT — path to the PALS git repo

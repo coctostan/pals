@@ -4,7 +4,7 @@ set -e
 # ════════════════════════════════════════
 # PALS Pi Driver Uninstaller
 # ════════════════════════════════════════
-# Removes PALS skill files and extension from Pi directories.
+# Removes PALS canonical skill files and the extension-backed command/hook layer from Pi directories.
 
 SKILL_DIR="$HOME/.pi/agent/skills/pals"
 
@@ -15,6 +15,8 @@ fi
 
 echo ""
 echo "  This will remove:"
+echo "    - Canonical Pi skills under ~/.pi/agent/skills/pals/"
+echo "    - Extension-backed /paul-* command and hook layer at ~/.pi/agent/extensions/pals-hooks.ts"
 echo "    - ~/.pi/agent/skills/pals/"
 echo "    - ~/.pi/agent/extensions/pals-hooks.ts"
 printf "  Continue? [y/N] "
