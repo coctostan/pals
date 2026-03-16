@@ -20,6 +20,19 @@ const PALS_WIDGET_ID = "pals-lifecycle";
 const PRIMARY_QUICK_ACTION_LIMIT = 3;
 const MAX_QUICK_ACTIONS = 5;
 
+const PRIMARY_INJECTION_EVENT = "before_agent_start";
+const SUPPORTING_CONTEXT_EVENT = "context";
+const PALS_CONTEXT_CUSTOM_TYPE = "pals-context";
+const LEGACY_PALS_CONTEXT_HEADER = "## PALS Context (auto-injected)";
+const STATE_AUTHORITY_TAG = "[PALS_STATE_AUTHORITY=.paul/STATE.md]";
+const ACTIVATION_SIGNAL_TAG = "[PALS_ACTIVATION_SIGNAL]";
+
+const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
+const COMMAND_ACTIVATION_TURN_BUDGET = 3;
+const PROMPT_ACTIVATION_TURN_BUDGET = 1;
+const GUIDED_WORKFLOW_LOOKBACK = 5;
+const GUIDED_WORKFLOW_SIGNATURE_BYTES = 240;
+
 type PalsStateSnapshot = {
   detected: boolean;
   milestone?: string;
@@ -40,6 +53,37 @@ type QuickActionDef = {
   commandName: CommandDef["name"];
   label: string;
   shortcutHint: string;
+};
+
+type ActivationState = {
+  source: "command" | "prompt";
+  signal: string;
+  expiresAt: number;
+  turnsRemaining: number;
+};
+
+type GuidedWorkflowOption = {
+  id: string;
+  label: string;
+  canonicalResponse: string;
+};
+
+type GuidedWorkflowMoment = {
+  kind:
+    | "apply-approval"
+    | "checkpoint-decision"
+    | "checkpoint-human-verify"
+    | "checkpoint-human-action"
+    | "resume-next"
+    | "phase-transition"
+    | "milestone-transition"
+    | "continue-to-unify";
+  title: string;
+  summary: string;
+  signature: string;
+  ui: "confirm" | "select" | "notify";
+  confirmResponse?: string;
+  options?: GuidedWorkflowOption[];
 };
 
 function readFileOr(path: string, fallback: string): string {
@@ -90,6 +134,18 @@ function toWrapperCommand(commandText?: string): string | undefined {
   return undefined;
 }
 
+function detectCommandSignal(value?: string): string | undefined {
+  const compact = compactWhitespace(value);
+  if (!compact) return undefined;
+
+  const match = compact.match(/\/(?:skill:)?(paul-(?:init|plan|apply|unify|resume|status|fix|pause|milestone|discuss|help))(?:\s+(.+))?/i);
+  if (!match) return undefined;
+
+  const command = `/${match[1].toLowerCase()}`;
+  const args = compactWhitespace(match[2]);
+  return args ? `${command} ${args}` : command;
+}
+
 function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
   const actions: QuickActionDef[] = [];
   const nextWrapper = toWrapperCommand(state.nextAction);
@@ -120,6 +176,7 @@ function renderQuickActionSummary(state: PalsStateSnapshot): string | undefined 
   if (actions.length === 0) return undefined;
   return `Actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
 }
+
 function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
   if (!state.detected) return undefined;
   return [
@@ -131,6 +188,7 @@ function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
     .filter(Boolean)
     .join(" • ");
 }
+
 function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
   if (!state.detected) return undefined;
 
@@ -152,6 +210,7 @@ function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
   ];
   return lines;
 }
+
 function syncLifecycleUi(ctx: any): void {
   const cwd = ctx?.cwd ?? process.cwd();
   const state = parsePalsState(cwd);
@@ -162,6 +221,374 @@ function syncLifecycleUi(ctx: any): void {
   }
   ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state));
   ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state));
+}
+
+function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
+  return [
+    "PALS project detected.",
+    state.milestone ? `Milestone: ${state.milestone}` : null,
+    state.phase ? `Phase: ${state.phase}` : null,
+    state.loop ? `Loop: ${state.loop}` : null,
+    state.nextAction ? `Next: ${state.nextAction}` : null,
+    renderQuickActionSummary(state),
+    `Activation model: explicit /paul-* entry is strongest signal; ${PRIMARY_INJECTION_EVENT} handles primary injection and ${SUPPORTING_CONTEXT_EVENT} stays support-only.`,
+    "Guided workflow UX watches canonical prompts like Continue to APPLY, CHECKPOINT, Continue to UNIFY, and ▶ NEXT.",
+    "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
+  ]
+    .filter(Boolean)
+    .join(" | ");
+}
+
+function shouldInjectPalsContext(state: PalsStateSnapshot, activation: ActivationState | undefined): boolean {
+  return Boolean(state.detected && activation && activation.turnsRemaining > 0);
+}
+
+function buildPalsContextPayload(state: PalsStateSnapshot, activation: ActivationState): string {
+  return [
+    "## PALS Context (bounded injection)",
+    "",
+    STATE_AUTHORITY_TAG,
+    `${ACTIVATION_SIGNAL_TAG} ${activation.signal} (${activation.source})`,
+    state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
+    state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
+    state.nextAction ? `Next action: ${state.nextAction}` : null,
+    "",
+    "Use shared .paul/* artifacts and loaded SKILL.md/workflow instructions as the authoritative lifecycle source.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function isLegacyPalsContextMessage(message: any): boolean {
+  return message?.role === "user" && typeof message?.content === "string" && message.content.includes(LEGACY_PALS_CONTEXT_HEADER);
+}
+
+function isPalsContextMessage(message: any): boolean {
+  if (message?.customType === PALS_CONTEXT_CUSTOM_TYPE) return true;
+  return isLegacyPalsContextMessage(message);
+}
+
+function keepOnlyLatestPalsContextMessage(messages: any[]): any[] {
+  let latestIndex = -1;
+  for (let i = 0; i < messages.length; i++) {
+    if (isPalsContextMessage(messages[i])) latestIndex = i;
+  }
+
+  if (latestIndex < 0) return messages;
+  return messages.filter((message, index) => !isPalsContextMessage(message) || index === latestIndex);
+}
+
+function messagesChanged(previous: any[], next: any[]): boolean {
+  if (previous.length !== next.length) return true;
+  for (let i = 0; i < previous.length; i++) {
+    if (previous[i] !== next[i]) return true;
+  }
+  return false;
+}
+
+function extractTextContent(message: any): string | undefined {
+  if (!message) return undefined;
+  if (typeof message.content === "string") return message.content.trim() || undefined;
+  if (!Array.isArray(message.content)) return undefined;
+
+  const text = message.content
+    .filter((block: any) => block?.type === "text")
+    .map((block: any) => block.text ?? "")
+    .join("\n")
+    .trim();
+
+  return text || undefined;
+}
+
+function collectRecentAssistantTexts(ctx: any, event: any, limit = GUIDED_WORKFLOW_LOOKBACK): string[] {
+  const texts: string[] = [];
+  const seen = new Set<string>();
+
+  const pushText = (message: any): void => {
+    const text = extractTextContent(message);
+    if (!text || seen.has(text)) return;
+    seen.add(text);
+    texts.push(text);
+  };
+
+  const eventMessages = Array.isArray(event?.messages) ? [...event.messages].reverse() : [];
+  for (const message of eventMessages) {
+    if (message?.role === "assistant") pushText(message);
+    if (texts.length >= limit) return texts;
+  }
+
+  const branchEntries = typeof ctx?.sessionManager?.getBranch === "function" ? [...ctx.sessionManager.getBranch()].reverse() : [];
+  for (const entry of branchEntries) {
+    const message = entry?.type === "message" ? entry.message : entry;
+    if (message?.role === "assistant") pushText(message);
+    if (texts.length >= limit) break;
+  }
+
+  return texts;
+}
+
+function summarizeWorkflowPrompt(text: string, fallback: string): string {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => compactWhitespace(line))
+    .filter(Boolean) as string[];
+
+  const filtered = lines.filter((line) => {
+    if (/^[═─]+$/.test(line)) return false;
+    if (line === "```" || line === "---" || line === "Options:" || line === "What's next?") return false;
+    if (line.startsWith("[")) return false;
+    if (line.startsWith("CHECKPOINT:")) return false;
+    if (line.startsWith("Continue to APPLY?")) return false;
+    if (line.startsWith("Continue to UNIFY?")) return false;
+    if (line.startsWith("▶ NEXT:")) return false;
+    return true;
+  });
+
+  return filtered.slice(0, 3).join(" | ") || fallback;
+}
+
+function extractNextActionSummary(text: string): string {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const nextIndex = lines.findIndex((line) => line.includes("▶ NEXT:"));
+  const command = nextIndex >= 0 ? compactWhitespace(lines[nextIndex].replace(/^.*▶ NEXT:\s*/, "")) : undefined;
+  const detail = nextIndex >= 0 ? compactWhitespace(lines[nextIndex + 1]) : undefined;
+
+  return compactWhitespace([
+    command ? `Next: ${command}` : undefined,
+    detail,
+  ].filter(Boolean).join(" — ")) ?? "A shared PALS workflow exposed a single next action.";
+}
+
+function parseGuidedWorkflowOptions(text: string): GuidedWorkflowOption[] {
+  const options: GuidedWorkflowOption[] = [];
+  const seen = new Set<string>();
+
+  const addOption = (id?: string, label?: string): void => {
+    const cleanId = compactWhitespace(id)?.replace(/:$/, "");
+    const cleanLabel = compactWhitespace(label?.replace(/\s*\|\s*$/, ""));
+    if (!cleanId || !cleanLabel || seen.has(cleanId)) return;
+    seen.add(cleanId);
+    options.push({ id: cleanId, label: cleanLabel, canonicalResponse: cleanId });
+  };
+
+  for (const line of text.split(/\r?\n/)) {
+    const inlineMatches = Array.from(line.matchAll(/\[([^\]]+)\]\s*([^|\n]+)/g));
+    if (inlineMatches.length > 0) {
+      for (const match of inlineMatches) {
+        addOption(match[1], match[2]);
+      }
+      continue;
+    }
+
+    const blockMatch = line.match(/^\s*\[([^\]]+)\]:\s*(.+)$/);
+    if (blockMatch) addOption(blockMatch[1], blockMatch[2]);
+  }
+
+  return options;
+}
+
+function detectExplicitCanonicalResponse(text: string): string | undefined {
+  const patterns = [
+    /On\s+"([^"]+)"\s+continue/i,
+    /Type\s+"([^"]+)"\s+to\s+proceed/i,
+    /Type\s+"([^"]+)"\s+to\s+continue/i,
+    /Reply\s+"([^"]+)"/i,
+    /Respond\s+with\s+"([^"]+)"/i,
+    /resume-signal[^\n"]*"([^"]+)"/i,
+  ];
+
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    const response = compactWhitespace(match?.[1]);
+    if (response) return response;
+  }
+
+  return undefined;
+}
+
+function makeGuidedWorkflowSignature(kind: GuidedWorkflowMoment["kind"], state: PalsStateSnapshot, text: string): string {
+  return compactWhitespace(
+    `${kind} | ${state.phase ?? "unknown-phase"} | ${state.loop ?? "unknown-loop"} | ${text.slice(0, GUIDED_WORKFLOW_SIGNATURE_BYTES)}`,
+  ) ?? kind;
+}
+
+// Guided workflow layer: detect canonical prompts like Continue to APPLY, Continue to UNIFY,
+// CHECKPOINT, and ▶ NEXT from recent assistant messages plus authoritative STATE.md context.
+function detectGuidedWorkflowMoment(
+  state: PalsStateSnapshot,
+  recentAssistantTexts: string[],
+): GuidedWorkflowMoment | undefined {
+  if (!state.detected) return undefined;
+
+  for (const text of recentAssistantTexts) {
+    if (text.includes("Continue to APPLY?")) {
+      return {
+        kind: "apply-approval",
+        title: "Continue to APPLY?",
+        summary:
+          compactWhitespace(
+            [
+              state.phase ? `Phase: ${state.phase}` : undefined,
+              "Pi can route your explicit approval back through the canonical workflow.",
+            ]
+              .filter(Boolean)
+              .join(" | "),
+          ) ?? "The approved plan is ready for APPLY.",
+        signature: makeGuidedWorkflowSignature("apply-approval", state, text),
+        ui: "select",
+        options: [
+          { id: "1", label: "Approved, run APPLY", canonicalResponse: "approved" },
+          { id: "2", label: "Questions first", canonicalResponse: "2" },
+          { id: "3", label: "Pause here", canonicalResponse: "3" },
+        ],
+      };
+    }
+
+    if (text.includes("Continue to UNIFY?")) {
+      return {
+        kind: "continue-to-unify",
+        title: "Continue to UNIFY?",
+        summary:
+          compactWhitespace(
+            [
+              state.phase ? `Phase: ${state.phase}` : undefined,
+              "APPLY finished; Pi can send the canonical continuation reply for UNIFY.",
+            ]
+              .filter(Boolean)
+              .join(" | "),
+          ) ?? "APPLY completed and UNIFY is ready.",
+        signature: makeGuidedWorkflowSignature("continue-to-unify", state, text),
+        ui: "select",
+        options: [
+          { id: "1", label: "Yes, run UNIFY", canonicalResponse: "1" },
+          { id: "2", label: "Pause here", canonicalResponse: "2" },
+        ],
+      };
+    }
+
+    if (text.includes("CHECKPOINT: Decision Required")) {
+      const options = parseGuidedWorkflowOptions(text);
+      return {
+        kind: "checkpoint-decision",
+        title: "CHECKPOINT: Decision Required",
+        summary: summarizeWorkflowPrompt(text, "A shared PALS workflow is waiting for a decision."),
+        signature: makeGuidedWorkflowSignature("checkpoint-decision", state, text),
+        ui: options.length > 0 ? "select" : "notify",
+        options,
+      };
+    }
+
+    if (text.includes("CHECKPOINT: Human Verification")) {
+      return {
+        kind: "checkpoint-human-verify",
+        title: "CHECKPOINT: Human Verification",
+        summary: summarizeWorkflowPrompt(text, "A shared PALS workflow is waiting for your human verification."),
+        signature: makeGuidedWorkflowSignature("checkpoint-human-verify", state, text),
+        ui: "confirm",
+        confirmResponse: "approved",
+      };
+    }
+
+    if (text.includes("CHECKPOINT: Human Action Required")) {
+      const confirmResponse = detectExplicitCanonicalResponse(text);
+      return {
+        kind: "checkpoint-human-action",
+        title: "CHECKPOINT: Human Action Required",
+        summary: summarizeWorkflowPrompt(
+          text,
+          "Complete the required human action first, then resume through the shared workflow prompt.",
+        ),
+        signature: makeGuidedWorkflowSignature("checkpoint-human-action", state, text),
+        ui: confirmResponse ? "confirm" : "notify",
+        confirmResponse,
+      };
+    }
+
+    if (text.includes("▶ NEXT:") && /Type\s+"yes"\s+to\s+proceed/i.test(text)) {
+      return {
+        kind: "resume-next",
+        title: "PALS next step ready",
+        summary: extractNextActionSummary(text),
+        signature: makeGuidedWorkflowSignature("resume-next", state, text),
+        ui: "confirm",
+        confirmResponse: "yes",
+      };
+    }
+
+    if (/PHASE\s+\d+\s+COMPLETE/i.test(text)) {
+      const options = parseGuidedWorkflowOptions(text);
+      if (options.length > 0) {
+        return {
+          kind: "phase-transition",
+          title: "Phase complete",
+          summary: summarizeWorkflowPrompt(text, "The next phase is ready for planning."),
+          signature: makeGuidedWorkflowSignature("phase-transition", state, text),
+          ui: "select",
+          options,
+        };
+      }
+    }
+
+    if (text.includes("MILESTONE COMPLETE") && text.includes("What's next?")) {
+      const options = parseGuidedWorkflowOptions(text);
+      return {
+        kind: "milestone-transition",
+        title: "Milestone complete",
+        summary: summarizeWorkflowPrompt(text, "The milestone is complete and waiting for an explicit next step."),
+        signature: makeGuidedWorkflowSignature("milestone-transition", state, text),
+        ui: options.length > 0 ? "select" : "notify",
+        options,
+      };
+    }
+  }
+
+  return undefined;
+}
+
+function sendCanonicalWorkflowResponse(pi: any, ctx: any, canonicalResponse?: string): void {
+  const response = compactWhitespace(canonicalResponse);
+  if (!response) return;
+
+  if (ctx?.isIdle?.() === false) {
+    pi.sendUserMessage(response, { deliverAs: "followUp" });
+    return;
+  }
+
+  pi.sendUserMessage(response);
+}
+
+async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: any, pi: any): Promise<void> {
+  if (!ctx?.hasUI) return;
+
+  ctx.ui.notify(`PALS guided workflow: ${moment.summary}`, "info");
+
+  if (moment.ui === "confirm" && moment.confirmResponse) {
+    const ok = await ctx.ui.confirm(
+      moment.title,
+      `${moment.summary}\n\nSend canonical reply \"${moment.confirmResponse}\" through normal user-message flow?`,
+    );
+    if (ok) {
+      ctx.ui.notify(`PALS guided workflow → sending \"${moment.confirmResponse}\"`, "info");
+      sendCanonicalWorkflowResponse(pi, ctx, moment.confirmResponse);
+    }
+    return;
+  }
+
+  if (moment.ui === "select" && moment.options && moment.options.length > 0) {
+    const optionLabels = moment.options.map((option) => `[${option.id}] ${option.label}`);
+    const choice = await ctx.ui.select(moment.title, optionLabels);
+    const selected = moment.options.find((option) => choice === `[${option.id}] ${option.label}`);
+    if (selected) {
+      ctx.ui.notify(`PALS guided workflow → sending \"${selected.canonicalResponse}\"`, "info");
+      sendCanonicalWorkflowResponse(pi, ctx, selected.canonicalResponse);
+    }
+    return;
+  }
+
+  ctx.ui.notify(`${moment.title}: respond in the canonical workflow prompt when ready.`, "info");
 }
 
 // -- Command definitions --
@@ -237,10 +664,45 @@ const COMMANDS: CommandDef[] = [
 
 // -- Extension entry point --
 export default function palsHooks(pi: any): void {
+  let activationState: ActivationState | undefined;
+  let lastGuidedWorkflowSignature: string | undefined;
+
+  const markActivation = (
+    source: ActivationState["source"],
+    signal: string,
+    turns: number,
+  ): void => {
+    activationState = {
+      source,
+      signal,
+      turnsRemaining: turns,
+      expiresAt: Date.now() + ACTIVATION_WINDOW_MS,
+    };
+  };
+
+  const getActiveActivation = (): ActivationState | undefined => {
+    if (!activationState) return undefined;
+    if (activationState.turnsRemaining <= 0 || activationState.expiresAt < Date.now()) {
+      activationState = undefined;
+      return undefined;
+    }
+    return activationState;
+  };
+
+  const consumeActivationTurn = (): void => {
+    if (!activationState) return;
+    activationState.turnsRemaining -= 1;
+    if (activationState.turnsRemaining <= 0) {
+      activationState = undefined;
+    }
+  };
+
   const routeCommand = (commandName: CommandDef["name"], args = "", ctx?: any): void => {
     const cmd = getCommand(commandName);
     if (!cmd) return;
     const trimmedArgs = args.trim();
+    const wrapperCmd = `/${commandName}${trimmedArgs ? " " + trimmedArgs : ""}`;
+    markActivation("command", wrapperCmd, COMMAND_ACTIVATION_TURN_BUDGET);
     const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
     ctx?.ui?.notify(`${cmd.guidance} — routing now`, "info");
     pi.sendUserMessage(skillCmd);
@@ -254,6 +716,7 @@ export default function palsHooks(pi: any): void {
     const args = wrapper.replace(/^\/paul-[^\s]+\s*/, "");
     routeCommand(commandName, args, ctx);
   };
+
   const registerQuickActionShortcut = (
     shortcut: string,
     description: string,
@@ -266,6 +729,22 @@ export default function palsHooks(pi: any): void {
       },
     });
   };
+
+  const maybePresentGuidedWorkflow = async (event: any, ctx: any): Promise<void> => {
+    const state = parsePalsState(ctx?.cwd ?? process.cwd());
+    const recentAssistantTexts = collectRecentAssistantTexts(ctx, event);
+    const guidedMoment = detectGuidedWorkflowMoment(state, recentAssistantTexts);
+
+    if (!guidedMoment) {
+      lastGuidedWorkflowSignature = undefined;
+      return;
+    }
+
+    if (guidedMoment.signature === lastGuidedWorkflowSignature) return;
+    lastGuidedWorkflowSignature = guidedMoment.signature;
+    await presentGuidedWorkflowMoment(guidedMoment, ctx, pi);
+  };
+
   // Register all /paul-* slash commands as Pi-native discovery wrappers.
   for (const cmd of COMMANDS) {
     pi.registerCommand(cmd.name, {
@@ -288,71 +767,64 @@ export default function palsHooks(pi: any): void {
   registerQuickActionShortcut(Key.ctrlAlt("r"), "Resume PALS work", (ctx) => routeCommand("paul-resume", "", ctx));
   registerQuickActionShortcut(Key.ctrlAlt("h"), "Open PALS help", (ctx) => routeCommand("paul-help", "", ctx));
   registerQuickActionShortcut(Key.ctrlAlt("m"), "Open PALS milestone flow", (ctx) => routeCommand("paul-milestone", "", ctx));
-  // Session start: detect PALS project, show state, and render persistent lifecycle UI.
+
+  // Session start: orientation + lifecycle surface refresh (no workflow injection).
   pi.on("session_start", async (_event: any, ctx: any) => {
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
     syncLifecycleUi(ctx);
     if (!state.detected) return;
-    const summary = [
-      "PALS project detected.",
-      state.milestone ? `Milestone: ${state.milestone}` : null,
-      state.phase ? `Phase: ${state.phase}` : null,
-      state.loop ? `Loop: ${state.loop}` : null,
-      state.nextAction ? `Next: ${state.nextAction}` : null,
-      renderQuickActionSummary(state),
-      "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
-    ]
-      .filter(Boolean)
-      .join(" | ");
-    ctx?.ui?.notify(summary, "info");
+    ctx?.ui?.notify(buildSessionOrientationSummary(state), "info");
   });
 
-  // Keep the visible lifecycle surface aligned with shared artifact state.
-  pi.on("before_agent_start", async (_event: any, ctx: any) => {
+  // Primary workflow-context injection point.
+  pi.on("before_agent_start", async (event: any, ctx: any) => {
     syncLifecycleUi(ctx);
+
+    const promptSignal = detectCommandSignal(event?.prompt);
+    if (promptSignal) {
+      markActivation("prompt", promptSignal, PROMPT_ACTIVATION_TURN_BUDGET);
+    }
+
+    const cwd = ctx?.cwd ?? process.cwd();
+    const state = parsePalsState(cwd);
+    const activeActivation = getActiveActivation();
+
+    if (!shouldInjectPalsContext(state, activeActivation)) return;
+
+    const contextPayload = buildPalsContextPayload(state, activeActivation as ActivationState);
+    consumeActivationTurn();
+
+    return {
+      message: {
+        customType: PALS_CONTEXT_CUSTOM_TYPE,
+        content: contextPayload,
+        display: false,
+      },
+    };
   });
 
   pi.on("turn_end", async (_event: any, ctx: any) => {
     syncLifecycleUi(ctx);
   });
 
-  pi.on("agent_end", async (_event: any, ctx: any) => {
+  pi.on("agent_end", async (event: any, ctx: any) => {
     syncLifecycleUi(ctx);
+    await maybePresentGuidedWorkflow(event, ctx);
   });
 
-  // Context hook: inject minimal PALS state only when workflows are active.
+  // Supporting context hook: keep prior context bounded and trim legacy payloads.
   pi.on("context", async (event: any, ctx: any) => {
+    syncLifecycleUi(ctx);
+
     const messages: any[] = event?.messages;
     if (!Array.isArray(messages) || messages.length === 0) return;
 
-    const recentText = messages
-      .slice(-5)
-      .map((m: any) => (typeof m.content === "string" ? m.content : ""))
-      .join(" ");
-    const palsActive = /paul-(plan|apply|unify|resume|fix|init|status|pause|milestone|discuss|help)/i.test(recentText);
+    const withoutLegacy = messages.filter((message) => !isLegacyPalsContextMessage(message));
+    const normalized = keepOnlyLatestPalsContextMessage(withoutLegacy);
 
-    if (!palsActive) return;
-
-    syncLifecycleUi(ctx);
-
-    const cwd = ctx?.cwd ?? process.cwd();
-    const state = parsePalsState(cwd);
-    if (!state.detected) return;
-
-    const contextLines = [
-      "## PALS Context (auto-injected)",
-      "",
-      state.milestone ? `**Milestone:** ${state.milestone}` : null,
-      `**Phase:** ${state.phase ?? "unknown"}`,
-      `**Loop:** ${state.loop ?? "unknown"}`,
-      state.nextAction ? `**Next action:** ${state.nextAction}` : null,
-      "",
-      "Follow the loaded SKILL.md instructions. Read referenced workflow files for full process details.",
-    ];
-
-    const contextMsg = contextLines.filter(Boolean).join("\n");
-    messages.push({ role: "user", content: contextMsg });
-    return { messages };
+    if (messagesChanged(messages, normalized)) {
+      return { messages: normalized };
+    }
   });
 }

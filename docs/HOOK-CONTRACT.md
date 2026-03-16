@@ -30,17 +30,18 @@ Hooks are the extension mechanism through which modules participate in the PLANâ
 - No two modules should share the same priority at the same hook point
 
 ### Module Loading
-
-- Read `modules.yaml` (or equivalent module registry)
+- Read `modules.yaml` (or equivalent installed module registry)
 - Only load modules that are enabled in project config (`pals.json`)
 - Missing module registry = no hooks fire (no-op, no error)
 - Disabled module = skip entirely
+- Resolve hook registrations from `installed_modules.{module}.hook_details.{hook}` when present
 
 ### Reference Loading
 
-- Each hook loads ONLY its hook-specific `refs` from module.yaml, NOT all module references
+- Each hook loads ONLY its hook-specific `refs` from the installed registry's `hook_details`, NOT all module references
 - This minimizes context injection per dispatch
 - Example: TODD's pre-plan loads `tdd-detection.md` and `tdd-plan-generation.md`, not all 5 TODD references
+- If a registry only has the legacy flat `hooks` list, regenerate it before relying on dispatch metadata
 
 ### Dispatch Logging
 
@@ -263,10 +264,9 @@ CARL's hook mechanism is adapter-specific and outside this contract's scope. Thi
 ## Adapter Implementation Notes
 
 A harness adapter implementing hook dispatch must:
-
-1. Read the module registry to discover active modules and their hook registrations
-2. Sort by priority (ascending) at each hook point
-3. Load only the hook-specific refs (not all module references)
+1. Read the installed module registry to discover active modules and their hook registrations
+2. Sort by priority (ascending) at each hook point using `hook_details.{hook}.priority`
+3. Load only the hook-specific refs listed in `hook_details.{hook}.refs` (not all module references)
 4. Pass the correct input context for each hook point
 5. Respect blocking semantics (especially: post-task block does not prevent post-apply)
 6. Log dispatch outcomes for observability
@@ -276,7 +276,6 @@ The mechanism by which hooks execute varies by adapter:
 - **Claude Code:** LLM reads hook instructions from module refs and follows them inline
 - **Pi:** TypeScript extension could map pi events to PALS hook dispatch
 - **Agent SDK:** Programmatic hook dispatch via query() API
-
 The hook CONTRACT (when, what input, what output, what persists) is the same regardless of mechanism.
 
 ---

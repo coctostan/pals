@@ -166,6 +166,19 @@ if [ -f "$PI_MODULES_YAML" ]; then
   else
     tap_not_ok "Pi modules.yaml includes TODD and WALT overlays" "Expected todd and walt entries in Pi modules.yaml"
   fi
+
+if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ]; then
+  if grep -q '^    hook_details:' "$CC_MODULES_YAML" \
+    && grep -q '^    hook_details:' "$PI_MODULES_YAML" \
+    && grep -q 'references/tdd-detection.md' "$CC_MODULES_YAML" \
+    && grep -q 'references/tdd-detection.md' "$PI_MODULES_YAML" \
+    && grep -q 'references/quality-runner.md' "$CC_MODULES_YAML" \
+    && grep -q 'references/quality-runner.md' "$PI_MODULES_YAML"; then
+    tap_ok "Both modules.yaml registries include hook metadata and refs"
+  else
+    tap_not_ok "Both modules.yaml registries include hook metadata and refs" "Expected hook_details with TODD/WALT refs in both installed registries"
+  fi
+fi
 fi
 
 # ════════════════════════════════════════════════════════════════════

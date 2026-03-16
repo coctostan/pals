@@ -21,6 +21,39 @@ Completed milestone log for this project.
 | **v2.0 Portability & Cross-Harness** | 2026-03-14 | 1 day | 4 phases, 6 plans |
 | **v2.1 Pi Runtime Integration** | 2026-03-14 | 1 day | 4 phases, 4 plans |
 | **v2.3 Pi Interaction Model Refinement** | 2026-03-16 | 2 days | 3 phases, 3 plans |
+| **v2.4 Pi Native UX Layer** | 2026-03-16 | 1 day | 3 phases, 3 plans |
+
+---
+
+## ✅ v2.4 Pi Native UX Layer
+
+**Completed:** 2026-03-16
+**Duration:** 1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 59-61) |
+| Plans | 3 |
+| Files changed | 10 unique adapter/docs/validation files |
+| Validation checks | 137 (90 Pi + 47 cross-harness, all pass) |
+
+### Key Accomplishments
+
+- Added an always-visible Pi lifecycle surface that derives milestone, phase, loop state, and next action from `.paul/STATE.md` without creating Pi-only workflow truth
+- Added bounded quick actions and keyboard shortcuts that route through `/paul-*` wrappers while preserving `/skill:paul-*` as the canonical workflow surface
+- Polished Pi lifecycle wording and discovery guidance so the visible UX stays low-clutter while remaining explicit about workflow ownership and lifecycle truth
+- Clarified that TODD and WALT load in Pi as installed `modules.yaml` overlays and workflow dispatch, not as standalone Pi skills
+- Expanded validation to 90 Pi checks and 47 cross-harness checks, confirming interoperability across Pi and Claude Code-oriented PALS usage
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps lifecycle semantics aligned across all visible Pi surfaces and reduces drift |
+| Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic |
+| Explain TODD/WALT as installed module overlays from `modules.yaml`, not standalone Pi skills | 61 | Resolves first-run Pi ambiguity without changing canonical workflow ownership |
 
 ---
 

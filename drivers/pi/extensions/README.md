@@ -33,6 +33,14 @@ The lifecycle widget exposes a bounded quick-action set for the highest-frequenc
 - Milestone — `Ctrl+Alt+M`
 The always-visible UI keeps only the first three actions in the primary summary and moves the rest into a secondary "More" line. These shortcuts stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
 
+## Guided Workflow UX
+
+The extension adds a bounded guided workflow layer for canonical PALS lifecycle moments already emitted by shared workflows. It inspects recent assistant output plus `.paul/STATE.md` for stable markers such as `Continue to APPLY`, `Continue to UNIFY`, `CHECKPOINT:`, and `▶ NEXT:`.
+
+When one of those moments appears, Pi may use lightweight native surfaces such as `notify`, `confirm`, or `select` to help the user respond. If the user explicitly continues, the extension routes the exact canonical reply back through normal user-message flow via `pi.sendUserMessage(...)` (`approved`, `yes`, `1`, selected option id, etc.).
+
+This layer is additive only: it never auto-continues a workflow, never skips human verification or human-action checkpoints, and never stores a Pi-owned workflow state. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
+
 ## Commands
 
 The extension registers these slash commands:
@@ -52,10 +60,11 @@ The extension registers these slash commands:
 | /paul-help | Show Pi command and skill guidance for PALS |
 
 ## Event Hooks
-- **session_start**: Detects `.paul/` directory, reads `STATE.md`, shows current phase/loop position, and surfaces quick-action guidance.
-- **before_agent_start / turn_end / agent_end**: Refresh the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
-- **context**: When a PALS workflow is active, injects minimal project state (phase, loop position, next action) so the LLM can follow PALS workflows correctly.
-
+- **session_start**: Orientation only — detects `.paul/`, reads `STATE.md`, refreshes lifecycle UI, and explains the runtime model without injecting workflow context.
+- **before_agent_start**: Primary PALS injection point. Explicit `/paul-*` (or `/skill:paul-*`) activation signals are treated as highest confidence, then one bounded `PALS Context` payload is injected from `.paul/STATE.md` as the authoritative source.
+- **turn_end**: Refreshes the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
+- **agent_end**: Re-checks recent assistant output for canonical guided workflow moments and, when appropriate, offers additive Pi-native continuation UI while keeping the shared workflow prompt authoritative.
+- **context**: Supporting surface only. It keeps context lean by trimming legacy/duplicate PALS context messages; it is not the architectural center of injection.
 ## Requirements
 
 - Pi coding agent with extension support

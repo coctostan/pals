@@ -288,18 +288,33 @@ for mod_name in sorted(os.listdir(modules_src)):
                 copy_file(src, dst)
 
     # ── Track installed module ────────────────────────────────────
-    lifecycle_hooks = list(manifest.get('hooks', {}).keys()) if isinstance(manifest.get('hooks'), dict) else []
+    hooks_config = manifest.get('hooks', {}) if isinstance(manifest.get('hooks'), dict) else {}
+    lifecycle_hooks = list(hooks_config.keys())
+    hook_details = {}
+    for hook_name in lifecycle_hooks:
+        hook_cfg = hooks_config.get(hook_name, {}) if isinstance(hooks_config.get(hook_name), dict) else {}
+        refs = hook_cfg.get('refs', [])
+        if not isinstance(refs, list):
+            refs = [refs] if refs else []
+        try:
+            priority = int(hook_cfg.get('priority', 999))
+        except (TypeError, ValueError):
+            priority = 999
+        hook_details[hook_name] = {
+            'priority': priority,
+            'description': hook_cfg.get('description', ''),
+            'refs': refs,
+        }
     installed[mod_name] = {
         'version': version,
         'hooks': lifecycle_hooks,
+        'hook_details': hook_details,
     }
 
     print(f"  [ok] {display} module installed")
-
 # ── Generate modules.yaml ─────────────────────────────────────────
 now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 lines = ['kernel_version: "2.0.0"', 'installed_modules:']
-
 for name in sorted(installed):
     info = installed[name]
     lines.append(f'  {name}:')
@@ -307,11 +322,24 @@ for name in sorted(installed):
     lines.append(f'    installed_at: "{now}"')
     hooks_str = ', '.join(info['hooks'])
     lines.append(f'    hooks: [{hooks_str}]')
-
+    if info['hook_details']:
+        lines.append('    hook_details:')
+        for hook_name in info['hooks']:
+            hook_info = info['hook_details'][hook_name]
+            description = str(hook_info.get('description', '')).replace('\\', '\\\\').replace('"', '\\"')
+            lines.append(f'      {hook_name}:')
+            lines.append(f'        priority: {hook_info.get("priority", 999)}')
+            lines.append(f'        description: "{description}"')
+            refs = hook_info.get('refs', [])
+            if refs:
+                lines.append('        refs:')
+                for ref in refs:
+                    lines.append(f'          - {ref}')
+            else:
+                lines.append('        refs: []')
 modules_yaml_path = os.path.join(skill_dir, 'modules.yaml')
 with open(modules_yaml_path, 'w') as f:
     f.write('\n'.join(lines) + '\n')
-
 print(f"  [ok] modules.yaml generated ({len(installed)} modules)")
 PYEOF
 

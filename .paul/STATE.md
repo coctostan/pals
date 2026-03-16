@@ -2,29 +2,26 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-15)
-
+See: .paul/PROJECT.md (updated 2026-03-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.4 complete — ready to start the next milestone
-
+**Current focus:** Phase 64 ready to plan — Polish, Validation & UX Readability
 ## Current Position
-Milestone: v2.4 Pi Native UX Layer
-Phase: 61 of 61 (UX Polish, Validation & Interoperability Guardrails) — Complete
-Plan: 61-01 complete
-Status: Ready for next milestone planning
-Last activity: 2026-03-16T15:33:57Z — Unified Phase 61, completed v2.4 Pi Native UX Layer, and committed phase results
+Milestone: v2.5 Pi Runtime Coherence & Guided Flow
+Phase: 64 of 64 (Polish, Validation & UX Readability) — Ready to plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-03-16T19:35:04Z — Completed Phase 63 UNIFY, created 63-01-SUMMARY, and transitioned to Phase 64 planning
 Progress:
-- v2.4 Pi Native UX Layer: [██████████] 100%
-- Phase 61: [██████████] 100%
+- v2.5 Pi Runtime Coherence & Guided Flow: [███████░░░] 67%
+- Phase 64: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - milestone ready for closeout]
+  ○        ○        ○     [Ready to plan Phase 64]
 ```
 
 ## Accumulated Context
-
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
@@ -60,33 +57,39 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps Pi lifecycle semantics aligned across all visible adapter surfaces |
 | Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic |
 | 2026-03-16: Treated TODD/WALT as installed Pi module overlays via modules.yaml and workflow dispatch rather than standalone skills during APPLY | 61 | Resolved first Pi end-to-end execution ambiguity without changing canonical workflow ownership |
+| 2026-03-16: Implemented Phase 62 hybrid runtime refinement with explicit command activation budgeting, `before_agent_start` primary injection, and `context` normalization-only support | 62 | Preserves one bounded automatic injection path while keeping `.paul/*` as authoritative lifecycle truth |
+| 2026-03-16: Keep Pi guided workflow UX marker-driven and route explicit continuations through `pi.sendUserMessage` without adding Pi-owned lifecycle state | 63 | Preserves shared workflow ownership while making approvals, checkpoints, resume routing, and transitions easier inside Pi |
+### Fixes
+| Fix | Phase | Impact |
+|-----|-------|--------|
+| Fix 02 (standard): Reworked installed module registries to include `hook_details`, aligned PLAN/APPLY/UNIFY dispatch wording to the installed registry, and added validation coverage | Phase 63 | Enabled modules can now be consulted from real installed `modules.yaml` registries instead of relying on conceptual source-manifest access |
+### Deviations
+| Deviation | Phase | Impact |
+|-----------|-------|--------|
+| Skill audit gap: `/carl`, `TODD`, and `WALT` were not explicitly invoked during Phase 62 APPLY/UNIFY | 62 | Advisory-only; implementation stayed in scope and validations passed (93/93), but workflow discipline should be tightened next phase |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
-- Agent SDK hook dispatch not implemented
+- Agent SDK hook dispatch shelved — not an active milestone driver
 - Tree-sitter repo map deferred
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
-
 ### Blockers/Concerns
 - None active
-
 ### Git State
-Branch: feature/phase-61-ux-polish-validation-interoperability-guardrails
-Last commit: 7704f81 — feat(phase-61): polish pi ux and interoperability guardrails
-PR: Phase 60 merged; no Phase 61 PR yet
-
+Branch: feature/63-guided-workflow-ux
+Last known merged PR: #12 for Phase 61 / v2.4 completion
+Note: local branch/main reconciliation still pending before any release-tag or mainline cleanup work
 ## Session Continuity
-
-Last session: 2026-03-16T15:33:57Z
-Stopped at: Phase 61 complete, v2.4 milestone unified
-Next action: /skill:paul-milestone
-Resume file: .paul/phases/61-ux-polish-validation-interoperability-guardrails/61-01-SUMMARY.md
-Git strategy: feature/phase-61-ux-polish-validation-interoperability-guardrails
+Last session: 2026-03-16T19:35:04Z
+Stopped at: Completed Phase 63 and transitioned to Phase 64; next work is planning the final v2.5 phase
+Next action: /skill:paul-plan
+Resume file: .paul/phases/63-guided-workflow-ux/63-01-SUMMARY.md
+Git strategy: feature/63-guided-workflow-ux
 Resume context:
-- Phase 61 is fully unified and v2.4 Pi Native UX Layer is now complete
-- Pi UX wording, bounded quick actions, module-overlay guidance, and cross-harness validation guardrails are all in place
-- Next step is milestone closeout / next-milestone setup via `/skill:paul-milestone`
-
+- Phase 63 summary exists at `.paul/phases/63-guided-workflow-ux/63-01-SUMMARY.md` and records bounded guided workflow detection, explicit Pi-native continuation UI, and canonical `pi.sendUserMessage` routing
+- Pi validation passed `98/98` after adding guided workflow contract checks; the phase completed without scope deviations
+- `drivers/pi/extensions/pals-hooks.ts`, `drivers/pi/extensions/README.md`, and `tests/pi-end-to-end-validation.sh` are the key artifacts to reference when planning Phase 64 polish and readability work
+- Phase 64 should validate the new guided UX end-to-end, improve readability where appropriate, align docs/help surfaces, and clarify installation-strategy boundaries without introducing Pi-only lifecycle truth
 ---
 *STATE.md — Updated after every significant action*

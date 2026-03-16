@@ -17,6 +17,7 @@ It does NOT replace the full loop for planned work. It supplements it for ad-hoc
 <references>
 @kernel/references/fix-types.md
 @kernel/references/loop-phases.md
+kernel/references/module-dispatch.md
 <!-- Module hooks dispatched where noted per mode -->
 </references>
 
@@ -93,12 +94,13 @@ autonomous: true
 
 <substep name="standard_hooks_post_apply">
 **Dispatch post-apply hooks:**
-
-1. Read `kernel/modules.yaml`
-2. Find modules registered for `post-apply`
-3. Sort by priority, dispatch each
-4. Output: `[dispatch] post-apply: {MODULE(priority) → outcome} | ...`
-5. If any module blocks: surface reason, offer fix/override
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `post-apply` by finding `installed_modules.*.hook_details.post-apply`
+3. Sort by `hook_details.post-apply.priority` ascending
+4. For each registered module, load only `hook_details.post-apply.refs` and follow `hook_details.post-apply.description`
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. Output: `[dispatch] post-apply: {MODULE(priority) → outcome} | ...`
+7. If any module blocks: surface reason, offer fix/override
 </substep>
 
 <substep name="standard_auto_summary">
@@ -134,12 +136,13 @@ Fix applied successfully. {any notes}
 
 <substep name="standard_hooks_post_unify">
 **Dispatch post-unify hooks:**
-
-1. Read `kernel/modules.yaml`
-2. Find modules registered for `post-unify`
-3. Sort by priority, dispatch each
-4. Pass summary path
-5. Output: `[dispatch] post-unify: {MODULE(priority) → outcome} | ...`
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
+3. Sort by `hook_details.post-unify.priority` ascending
+4. For each registered module, load only `hook_details.post-unify.refs` and follow `hook_details.post-unify.description`
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. Pass summary path
+7. Output: `[dispatch] post-unify: {MODULE(priority) → outcome} | ...`
 </substep>
 
 <substep name="standard_update_state">

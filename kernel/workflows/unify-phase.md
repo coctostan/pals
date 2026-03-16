@@ -22,9 +22,10 @@ Next phase: PLAN (next plan or next phase)
 
 <references>
 kernel/references/loop-phases.md
+kernel/references/module-dispatch.md
 kernel/templates/SUMMARY.md
 kernel/workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
-<!-- Module references are loaded dynamically via hook dispatch from kernel/modules.yaml -->
+<!-- Module references are loaded dynamically via hook dispatch from the installed registry resolved as kernel/modules.yaml -->
 </references>
 
 <process>
@@ -143,18 +144,18 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 
 <step name="pre_unify_hooks" priority="before-reconciliation">
 **Dispatch pre-unify lifecycle hooks to registered modules.**
-
-1. Read `kernel/modules.yaml` (if it exists)
-2. Find modules with hooks registered for `pre-unify`
-3. Sort by priority (ascending — lower runs first)
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `pre-unify` by finding `installed_modules.*.hook_details.pre-unify`
+3. Sort by `hook_details.pre-unify.priority` ascending (lower runs first)
 4. For each registered module:
-   a. Load the module's hook-specific `refs` (from module.yaml hooks section, NOT all module refs)
-   b. Follow the module's hook description for `pre-unify`
+   a. Load only the hook-specific `refs` listed in `hook_details.pre-unify.refs`
+   b. Follow the hook description from `hook_details.pre-unify.description`
    c. Pass `annotations_from_apply` accumulated during the apply phase
    d. Collect `context_inject` data (e.g., quality trends, audit results)
-5. If no modules registered for `pre-unify`: proceed (no-op, no warning)
-6. Output dispatch log: `[dispatch] pre-unify: {MODULE(priority) → N inject keys | skip} | ...`
-7. Store accumulated context for inclusion in SUMMARY.md
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. If no modules registered for `pre-unify`: proceed (no-op, no warning)
+7. Output dispatch log: `[dispatch] pre-unify: {MODULE(priority) → N inject keys | skip} | ...`
+8. Store accumulated context for inclusion in SUMMARY.md
 </step>
 
 <step name="audit_skill_invocations">
@@ -240,18 +241,18 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 
 <step name="post_unify_hooks" priority="after-state-update">
 **Dispatch post-unify lifecycle hooks to registered modules.**
-
-1. Read `kernel/modules.yaml` (if it exists)
-2. Find modules with hooks registered for `post-unify`
-3. Sort by priority (ascending — lower runs first)
+1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
+3. Sort by `hook_details.post-unify.priority` ascending (lower runs first)
 4. For each registered module:
-   a. Load the module's hook-specific `refs` (from module.yaml hooks section)
-   b. Follow the module's hook description for `post-unify`
+   a. Load only the hook-specific `refs` listed in `hook_details.post-unify.refs`
+   b. Follow the hook description from `hook_details.post-unify.description`
    c. Pass `annotations_from_apply` and summary path
    d. Collect `side_effects` (e.g., "Recorded quality delta in history")
-5. If no modules registered for `post-unify`: proceed (no-op, no warning)
-6. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N side effects | skip} | ...`
-7. Log any side_effects reported by modules
+5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
+6. If no modules registered for `post-unify`: proceed (no-op, no warning)
+7. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N side effects | skip} | ...`
+8. Log any side_effects reported by modules
 </step>
 
 <step name="check_phase_completion">
