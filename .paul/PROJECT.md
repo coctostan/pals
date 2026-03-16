@@ -115,6 +115,7 @@ All validated — see below.
 - ✓ Pi UX polish, module-overlay clarity, and interoperability guardrails — bounded lifecycle wording, explicit TODD/WALT overlay guidance, 90-check Pi validation, and 47-check cross-harness validation all pass — Phase 61
 - ✓ Pi runtime context/event refinement — explicit command activation + `before_agent_start` primary bounded injection + support-only `context`, with updated Pi validation contract (93 checks passing) — Phase 62
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
+- ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -236,6 +237,7 @@ All validated — see below.
 | Pi should explain TODD/WALT as installed module overlays from `modules.yaml`, not standalone Pi skills | 61 | First end-to-end Pi APPLY exposed a skill-vs-module ambiguity; documenting the real model preserves workflow truth while improving usability |
 | Explicit command entry is the strongest Pi activation signal; `before_agent_start` owns primary bounded injection while `context` remains support-only | 62 | Implements the Phase 56 hybrid event model directly in runtime code while preserving `.paul/*` as the authoritative lifecycle truth |
 | Guided workflow assistance in Pi must stay marker-driven, explicit, and routed through canonical user-message flow | 63 | Keeps the adapter helpful at approval/checkpoint/resume/transition moments without inventing Pi-owned lifecycle truth |
+| Use `matchAll(/[✓○]/g)` count for loop badge extraction; "success" level only for confirmed sends/routes | 64 | Keeps UX enrichment simple, robust, and bounded to additive cosmetic changes only |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -254,4 +256,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-16 after Phase 63 guided-workflow UX completion and transition to Phase 64 planning*
+*Last updated: 2026-03-16 after Phase 64 completion and v2.5 milestone close*

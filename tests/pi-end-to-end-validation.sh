@@ -470,6 +470,71 @@ else
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 6: UX READABILITY & COLOR ENRICHMENT
+# ════════════════════════════════════════════════════════════════════
+
+section "UX READABILITY & COLOR ENRICHMENT"
+
+EXT_SRC_P64="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
+README_P64="$REPO_ROOT/drivers/pi/extensions/README.md"
+SKILL_MAP_P64="$REPO_ROOT/drivers/pi/skill-map.md"
+
+# Check routing notification uses "success" level
+if grep -q 'routing now.*"success"\|"success".*routing now' "$EXT_SRC_P64" 2>/dev/null; then
+  tap_ok "Extension uses 'success' notify level for command routing confirmations"
+else
+  tap_not_ok "Extension uses 'success' notify level for command routing confirmations" "Expected 'success' level on routing notify in pals-hooks.ts"
+fi
+
+# Check guided workflow send notifications do not use flat "info"
+if ! grep -q 'PALS guided workflow.*sending.*"info"' "$EXT_SRC_P64" 2>/dev/null; then
+  tap_ok "Guided workflow send notifications do not use flat 'info' level"
+else
+  tap_not_ok "Guided workflow send notifications do not use flat 'info' level" "Expected no 'info' level on guided-workflow send notifications in pals-hooks.ts"
+fi
+
+# Check renderLoopBadge function exists
+if grep -q 'renderLoopBadge' "$EXT_SRC_P64" 2>/dev/null; then
+  tap_ok "Extension defines renderLoopBadge for loop state readability"
+else
+  tap_not_ok "Extension defines renderLoopBadge for loop state readability" "Expected renderLoopBadge function in pals-hooks.ts"
+fi
+
+# Check loop badge is wired into status bar
+if grep -q 'renderLoopBadge(state.loop)' "$EXT_SRC_P64" 2>/dev/null; then
+  tap_ok "Extension wires loop badge into renderLifecycleStatus"
+else
+  tap_not_ok "Extension wires loop badge into renderLifecycleStatus" "Expected renderLoopBadge(state.loop) call inside renderLifecycleStatus"
+fi
+
+# Check Installation Boundaries section in README
+if grep -q 'Installation Boundaries' "$README_P64" 2>/dev/null; then
+  tap_ok "Extension README documents installation boundaries"
+else
+  tap_not_ok "Extension README documents installation boundaries" "Expected 'Installation Boundaries' section in drivers/pi/extensions/README.md"
+fi
+
+# Check README maps extension install path
+if grep -q '~/.pi/agent/extensions/pals-hooks.ts' "$README_P64" 2>/dev/null; then
+  tap_ok "Extension README maps the extension install path"
+else
+  tap_not_ok "Extension README maps the extension install path" "Expected ~/.pi/agent/extensions/pals-hooks.ts in Installation Boundaries section"
+fi
+
+# Check README maps skill/kernel install path
+if grep -q '~/.pi/agent/skills/pals/' "$README_P64" 2>/dev/null; then
+  tap_ok "Extension README maps the skill/kernel install path"
+else
+  tap_not_ok "Extension README maps the skill/kernel install path" "Expected ~/.pi/agent/skills/pals/ in Installation Boundaries section"
+fi
+
+# Check skill-map documents the extension install target
+if grep -q '~/.pi/agent/extensions/pals-hooks.ts' "$SKILL_MAP_P64" 2>/dev/null; then
+  tap_ok "Skill map documents the extension install target"
+else
+  tap_not_ok "Skill map documents the extension install target" "Expected ~/.pi/agent/extensions/pals-hooks.ts in drivers/pi/skill-map.md"
+fi
+# ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 

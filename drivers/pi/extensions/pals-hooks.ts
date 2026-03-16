@@ -177,11 +177,18 @@ function renderQuickActionSummary(state: PalsStateSnapshot): string | undefined 
   return `Actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
 }
 
+function renderLoopBadge(loopString?: string): string | undefined {
+  if (!loopString) return undefined;
+  const marks = [...loopString.matchAll(/[✓○]/g)].map((m) => m[0]);
+  if (marks.length < 3) return undefined;
+  return `PLAN${marks[0]} APPLY${marks[1]} UNIFY${marks[2]}`;
+}
 function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
   if (!state.detected) return undefined;
   return [
     "PALS",
     state.phase ? `Phase: ${state.phase}` : null,
+    renderLoopBadge(state.loop),
     state.nextAction ? `Next: ${state.nextAction}` : null,
     renderQuickActionSummary(state),
   ]
@@ -571,7 +578,7 @@ async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: an
       `${moment.summary}\n\nSend canonical reply \"${moment.confirmResponse}\" through normal user-message flow?`,
     );
     if (ok) {
-      ctx.ui.notify(`PALS guided workflow → sending \"${moment.confirmResponse}\"`, "info");
+      ctx.ui.notify(`PALS guided workflow → sending "${moment.confirmResponse}"`, "success");
       sendCanonicalWorkflowResponse(pi, ctx, moment.confirmResponse);
     }
     return;
@@ -582,7 +589,7 @@ async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: an
     const choice = await ctx.ui.select(moment.title, optionLabels);
     const selected = moment.options.find((option) => choice === `[${option.id}] ${option.label}`);
     if (selected) {
-      ctx.ui.notify(`PALS guided workflow → sending \"${selected.canonicalResponse}\"`, "info");
+      ctx.ui.notify(`PALS guided workflow → sending "${selected.canonicalResponse}"`, "success");
       sendCanonicalWorkflowResponse(pi, ctx, selected.canonicalResponse);
     }
     return;
@@ -704,7 +711,7 @@ export default function palsHooks(pi: any): void {
     const wrapperCmd = `/${commandName}${trimmedArgs ? " " + trimmedArgs : ""}`;
     markActivation("command", wrapperCmd, COMMAND_ACTIVATION_TURN_BUDGET);
     const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
-    ctx?.ui?.notify(`${cmd.guidance} — routing now`, "info");
+    ctx?.ui?.notify(`${cmd.guidance} — routing now`, "success");
     pi.sendUserMessage(skillCmd);
   };
 

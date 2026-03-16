@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 64 ready to plan — Polish, Validation & UX Readability
+**Current focus:** v2.5 complete — next milestone to be defined
 ## Current Position
-Milestone: v2.5 Pi Runtime Coherence & Guided Flow
-Phase: 64 of 64 (Polish, Validation & UX Readability) — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-03-16T19:35:04Z — Completed Phase 63 UNIFY, created 63-01-SUMMARY, and transitioned to Phase 64 planning
+Milestone: v2.5 Pi Runtime Coherence & Guided Flow — ✅ Complete
+Phase: 64 of 64 (Polish, Validation & UX Readability) — Complete
+Plan: 64-01 complete
+Status: v2.5 milestone complete, next milestone to be defined
+Last activity: 2026-03-16 — Phase 64 UNIFY complete; v2.5 all 3 phases done
 Progress:
-- v2.5 Pi Runtime Coherence & Guided Flow: [███████░░░] 67%
-- Phase 64: [░░░░░░░░░░] 0%
+- v2.5 Pi Runtime Coherence & Guided Flow: [██████████] 100%
+- Phase 64: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 64]
+  ✓        ✓        ✓     [Loop complete — v2.5 milestone done]
 ```
 
 ## Accumulated Context
@@ -59,6 +59,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-16: Treated TODD/WALT as installed Pi module overlays via modules.yaml and workflow dispatch rather than standalone skills during APPLY | 61 | Resolved first Pi end-to-end execution ambiguity without changing canonical workflow ownership |
 | 2026-03-16: Implemented Phase 62 hybrid runtime refinement with explicit command activation budgeting, `before_agent_start` primary injection, and `context` normalization-only support | 62 | Preserves one bounded automatic injection path while keeping `.paul/*` as authoritative lifecycle truth |
 | 2026-03-16: Keep Pi guided workflow UX marker-driven and route explicit continuations through `pi.sendUserMessage` without adding Pi-owned lifecycle state | 63 | Preserves shared workflow ownership while making approvals, checkpoints, resume routing, and transitions easier inside Pi |
+| 2026-03-16: Use `matchAll(/[✓○]/g)` count for loop badge; "success" notify only for confirmed sends/routes | 64 | Keeps UX enrichment simple, robust, and bounded to additive cosmetic changes without regression risk |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -77,19 +78,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - None active
 ### Git State
-Branch: feature/63-guided-workflow-ux
-Last known merged PR: #12 for Phase 61 / v2.4 completion
-Note: local branch/main reconciliation still pending before any release-tag or mainline cleanup work
+Branch: main
+Last commit: HEAD (phase 64 completion commit)
+Feature branches merged: none (direct-to-main for Phase 64)
+Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
-Last session: 2026-03-16T19:35:04Z
-Stopped at: Completed Phase 63 and transitioned to Phase 64; next work is planning the final v2.5 phase
-Next action: /skill:paul-plan
-Resume file: .paul/phases/63-guided-workflow-ux/63-01-SUMMARY.md
-Git strategy: feature/63-guided-workflow-ux
+Last session: 2026-03-16
+Stopped at: Phase 64 complete; v2.5 milestone complete
+Next action: /skill:paul-milestone
+Resume file: .paul/phases/64-polish-validation-ux-readability/64-01-SUMMARY.md
+Git strategy: main
 Resume context:
-- Phase 63 summary exists at `.paul/phases/63-guided-workflow-ux/63-01-SUMMARY.md` and records bounded guided workflow detection, explicit Pi-native continuation UI, and canonical `pi.sendUserMessage` routing
-- Pi validation passed `98/98` after adding guided workflow contract checks; the phase completed without scope deviations
-- `drivers/pi/extensions/pals-hooks.ts`, `drivers/pi/extensions/README.md`, and `tests/pi-end-to-end-validation.sh` are the key artifacts to reference when planning Phase 64 polish and readability work
-- Phase 64 should validate the new guided UX end-to-end, improve readability where appropriate, align docs/help surfaces, and clarify installation-strategy boundaries without introducing Pi-only lifecycle truth
+- Phase 64 UNIFY complete with SUMMARY at `.paul/phases/64-polish-validation-ux-readability/64-01-SUMMARY.md`
+- v2.5 is now 3/3 phases complete (62, 63, 64)
+- Next step is milestone lifecycle handling (close current milestone / start next milestone definition)
 ---
 *STATE.md — Updated after every significant action*

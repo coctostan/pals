@@ -71,6 +71,18 @@ The extension registers these slash commands:
 - PALS skills installed at `~/.pi/agent/skills/pals/` (see `skill-map.md`)
 - Enabled module overlays installed into the same tree with `modules.yaml` describing which lifecycle hook semantics are available
 
+## Installation Boundaries
+
+`install.sh` deploys PALS artifacts to two distinct Pi locations:
+
+| Artifact | Install Target | Purpose |
+|----------|---------------|---------|
+| Kernel files (`workflows/`, `references/`, `templates/`, `rules/`) | `~/.pi/agent/skills/pals/` | Shared markdown workflows referenced by skills and the extension |
+| Skill entry points (11 `SKILL.md` files) | `~/.pi/agent/skills/pals/{skill-name}/SKILL.md` | Pi skill invocation layer for `/skill:paul-*` |
+| Pi extension | `~/.pi/agent/extensions/pals-hooks.ts` | Command registration, lifecycle hooks, guided workflow UX |
+| Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
+
+These are distinct install targets. The extension goes to `~/.pi/agent/extensions/`, skills and kernel files go to `~/.pi/agent/skills/pals/`. Uninstalling the extension alone does not remove skills or kernel files; `uninstall.sh` handles the full cleanup of all targets.
 ## References
 
 - [Pi Extensions docs](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md)
