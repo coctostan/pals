@@ -5,18 +5,18 @@
 See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 53 unified — ready to plan Phase 54
+**Current focus:** Phase 54 unified — ready to plan Phase 55
 
 ## Current Position
 
 Milestone: v2.2 Pi Port Audit & Native Fit
-Phase: 54 of 3 (Gap Analysis vs Ideal Pi Usage) — Ready to plan
+Phase: 55 of 3 (Recommendations & Roadmap) — Ready to plan
 Plan: Not started
 Status: Ready for PLAN
-Last activity: 2026-03-15 — Unified Phase 53 and transitioned to Phase 54
+Last activity: 2026-03-15 — Unified Phase 54 and transitioned to Phase 55
 Progress:
-- v2.2 Pi Port Audit & Native Fit: [███░░░░░░░] 33%
-- Phase 53: [██████████] 100%
+- v2.2 Pi Port Audit & Native Fit: [███████░░░] 67%
+- Phase 54: [██████████] 100%
 
 ## Loop Position
 
@@ -53,6 +53,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Install for ALL detected harnesses (not pick one) | 47 | Both ~/.claude/ and ~/.pi/ get drivers; no prompt needed, no conflict |
 | Pi port is artifact-safe and directionally correct as a thin adapter shell | 53 | Confirms later Pi work should refine native fit without abandoning shared markdown artifacts |
 | Future Pi work should focus on deeper native runtime/UI usage, not adapter replacement | 53 | Frames Phase 54 around gap analysis and Phase 55 around compatible recommendations |
+| PALS needs a more mature Pi-native shell around the existing artifact-safe architecture, not a Pi-specific redesign | 54 | Keeps Phase 55 focused on recommendations that deepen native fit without changing core workflow truth |
+| Prioritize context injection, command ergonomics, and lifecycle visibility as the highest-value Pi improvement areas | 54 | Gives the recommendation phase a clear ranking frame for roadmap shaping |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -66,20 +68,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 Branch: feature/53-current-state-audit
-Last commit: feat(53): complete current-state audit (HEAD on feature/53-current-state-audit)
+Last commit: feat(54): complete pi gap analysis (HEAD on feature/53-current-state-audit)
 PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
 Last session: 2026-03-15
-Stopped at: Phase 53 complete, ready to plan Phase 54
+Stopped at: Phase 54 complete, ready to plan Phase 55
 Next action: /skill:paul-plan
 Resume file: .paul/ROADMAP.md
 Git strategy: feature/53-current-state-audit
 Resume context:
-- Phase 53 loop is fully closed with SUMMARY.md recorded
-- Phase 54 should compare current Pi usage to an ideal artifact-compatible Pi integration
-- Use the Phase 53 audit artifacts as the factual baseline for planning the next step
+- Phase 54 gap-analysis loop is fully closed with SUMMARY.md recorded
+- Phase 55 should turn the established gaps into ranked recommendations and roadmap guidance
+- Do not repeat current-state audit or ideal-state definition; use the Phase 53 and Phase 54 artifacts as inputs
 
 ---
 *STATE.md — Updated after every significant action*

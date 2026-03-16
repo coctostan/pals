@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.2 Pi Port Audit & Native Fit**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 
 ## Phases
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 53 | Current-State Audit | 1 | ✅ Complete | 2026-03-15 |
-| 54 | Gap Analysis vs Ideal Pi Usage | TBD | Not started | - |
+| 54 | Gap Analysis vs Ideal Pi Usage | 1 | ✅ Complete | 2026-03-15 |
 | 55 | Recommendations & Roadmap | TBD | Not started | - |
 
 ## Phase Details
@@ -47,7 +47,7 @@ Plans: 53-01-PLAN.md (research) — ✅ Complete 2026-03-15
 
 ### Phase 54: Gap Analysis vs Ideal Pi Usage
 Focus: Compare the current port to an ideal artifact-compatible Pi integration and identify missing, weak, or non-native aspects
-Plans: TBD (defined during /paul:plan)
+Plans: 54-01-PLAN.md (research) — ✅ Complete 2026-03-15
 
 ### Phase 55: Recommendations & Roadmap
 Focus: Produce written audit report, ranked recommendations, and a split between compatible improvements now vs future-state v2 options
@@ -240,4 +240,4 @@ Plans: TBD (defined during /paul:plan)
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-15 — Phase 53 Current-State Audit complete; v2.2 in progress*
+*Last updated: 2026-03-15 — Phase 54 Gap Analysis vs Ideal Pi Usage complete; v2.2 in progress*
