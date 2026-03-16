@@ -53,6 +53,11 @@ Kernel files are installed to `~/.pi/agent/skills/pals/` with the same directory
 - `~/.pi/agent/skills/pals/templates/`
 - `~/.pi/agent/skills/pals/rules/`
 
+The extension is installed to Pi's extension directory — separate from the skill tree:
+- `~/.pi/agent/extensions/pals-hooks.ts` — Pi extension (command registration, lifecycle hooks, guided workflow UX)
+
+This means skills and kernel files live under `~/.pi/agent/skills/pals/` while the extension lives under `~/.pi/agent/extensions/`. Removing one does not affect the other; `uninstall.sh` handles both.
+
 From a skill directory, kernel resources are referenced via relative paths:
 - Workflows: `../workflows/{name}.md`
 - References: `../references/{name}.md`
