@@ -49,7 +49,7 @@ Plans: 1 planned, 1 completed (`63-01-PLAN.md` → `63-01-SUMMARY.md`)
 Focus: Validate runtime and guided UX behavior end-to-end, increase readability of the UX by using colors where appropriate, keep docs/help aligned, and clarify installation strategy boundaries.
 Plans: 1 planned, 1 completed (`64-01-PLAN.md` → `64-01-SUMMARY.md`)
 ## Next Milestone
-To be defined after v2.5 completion review.
+Run /skill:paul-discuss or /skill:paul-milestone to define.
 
 ---
 

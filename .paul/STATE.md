@@ -4,21 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.5 complete — next milestone to be defined
+**Current focus:** Awaiting next milestone definition
 ## Current Position
-Milestone: v2.5 Pi Runtime Coherence & Guided Flow — ✅ Complete
-Phase: 64 of 64 (Polish, Validation & UX Readability) — Complete
-Plan: 64-01 complete
-Status: v2.5 milestone complete, next milestone to be defined
-Last activity: 2026-03-16 — Phase 64 UNIFY complete; v2.5 all 3 phases done
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: Milestone v2.5 Pi Runtime Coherence & Guided Flow complete — ready for next
+Last activity: 2026-03-16 — Milestone v2.5 completed
 Progress:
-- v2.5 Pi Runtime Coherence & Guided Flow: [██████████] 100%
-- Phase 64: [██████████] 100%
+- v2.5 Pi Runtime Coherence & Guided Flow: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v2.5 milestone done]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -84,13 +83,13 @@ Feature branches merged: none (direct-to-main for Phase 64)
 Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
 Last session: 2026-03-16
-Stopped at: Phase 64 complete; v2.5 milestone complete
-Next action: /skill:paul-milestone
-Resume file: .paul/phases/64-polish-validation-ux-readability/64-01-SUMMARY.md
+Stopped at: Milestone v2.5 Pi Runtime Coherence & Guided Flow complete
+Next action: /skill:paul-discuss or /skill:paul-milestone
+Resume file: .paul/MILESTONES.md
 Git strategy: main
 Resume context:
-- Phase 64 UNIFY complete with SUMMARY at `.paul/phases/64-polish-validation-ux-readability/64-01-SUMMARY.md`
-- v2.5 is now 3/3 phases complete (62, 63, 64)
-- Next step is milestone lifecycle handling (close current milestone / start next milestone definition)
+- v2.5 milestone recorded in `.paul/MILESTONES.md`
+- Archive created at `.paul/milestones/v2.5-ROADMAP.md`
+- Next step is defining the next milestone scope
 ---
 *STATE.md — Updated after every significant action*
