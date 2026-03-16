@@ -21,16 +21,17 @@ Pi exposes two aligned PALS entry surfaces:
 
 Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
 
+Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time.
+
 ## Quick Actions & Shortcuts
 
-The lifecycle widget now exposes compact quick-action hints for the most relevant PALS entry points:
+The lifecycle widget exposes a bounded quick-action set for the highest-frequency PALS entry points:
 - Next action — `Ctrl+Alt+N`
 - Status — `Ctrl+Alt+S`
 - Resume — `Ctrl+Alt+R`
 - Help — `Ctrl+Alt+H`
 - Milestone — `Ctrl+Alt+M`
-
-These shortcuts stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
+The always-visible UI keeps only the first three actions in the primary summary and moves the rest into a secondary "More" line. These shortcuts stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
 
 ## Commands
 
@@ -59,6 +60,7 @@ The extension registers these slash commands:
 
 - Pi coding agent with extension support
 - PALS skills installed at `~/.pi/agent/skills/pals/` (see `skill-map.md`)
+- Enabled module overlays installed into the same tree with `modules.yaml` describing which lifecycle hook semantics are available
 
 ## References
 

@@ -5,22 +5,22 @@
 See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 60 unified — ready to plan Phase 61
+**Current focus:** v2.4 complete — ready to start the next milestone
 
 ## Current Position
 Milestone: v2.4 Pi Native UX Layer
-Phase: 61 of 61 (UX Polish, Validation & Interoperability Guardrails)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-16T14:35:38Z — Phase 60 unified, transitioned to Phase 61, and committed as a44de06
+Phase: 61 of 61 (UX Polish, Validation & Interoperability Guardrails) — Complete
+Plan: 61-01 complete
+Status: Ready for next milestone planning
+Last activity: 2026-03-16T15:33:57Z — Unified Phase 61, completed v2.4 Pi Native UX Layer, and committed phase results
 Progress:
-- v2.4 Pi Native UX Layer: [███████░░░] 67%
-- Phase 61: [░░░░░░░░░░] 0%
+- v2.4 Pi Native UX Layer: [██████████] 100%
+- Phase 61: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete - milestone ready for closeout]
 ```
 
 ## Accumulated Context
@@ -59,6 +59,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves artifact-first lifecycle truth while still allowing targeted prompt shaping |
 | Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps Pi lifecycle semantics aligned across all visible adapter surfaces |
 | Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic |
+| 2026-03-16: Treated TODD/WALT as installed Pi module overlays via modules.yaml and workflow dispatch rather than standalone skills during APPLY | 61 | Resolved first Pi end-to-end execution ambiguity without changing canonical workflow ownership |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -71,21 +72,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: feature/phase-60-interactive-shortcuts-flow-entry-points
-Last commit: a44de06 — feat(phase-60): add Pi shortcut-enabled lifecycle entry points
-PR: Phase 59 merged; Phase 60 work committed locally on feature branch, not pushed
+Branch: feature/phase-61-ux-polish-validation-interoperability-guardrails
+Last commit: 7704f81 — feat(phase-61): polish pi ux and interoperability guardrails
+PR: Phase 60 merged; no Phase 61 PR yet
 
 ## Session Continuity
 
-Last session: 2026-03-16T14:35:38Z
-Stopped at: Phase 60 complete, ready to plan Phase 61
-Next action: /skill:paul-plan
-Resume file: .paul/ROADMAP.md
-Git strategy: feature/phase-60-interactive-shortcuts-flow-entry-points
+Last session: 2026-03-16T15:33:57Z
+Stopped at: Phase 61 complete, v2.4 milestone unified
+Next action: /skill:paul-milestone
+Resume file: .paul/phases/61-ux-polish-validation-interoperability-guardrails/61-01-SUMMARY.md
+Git strategy: feature/phase-61-ux-polish-validation-interoperability-guardrails
 Resume context:
-- Phase 60 is complete with bounded Pi quick actions and lifecycle-surface shortcut entry points in place
-- Canonical `/skill:paul-*` ownership and `.paul/*` lifecycle authority were preserved throughout the implementation
-- Phase 61 should focus on wording/placement polish, low-clutter validation, and interoperability guardrails
+- Phase 61 is fully unified and v2.4 Pi Native UX Layer is now complete
+- Pi UX wording, bounded quick actions, module-overlay guidance, and cross-harness validation guardrails are all in place
+- Next step is milestone closeout / next-milestone setup via `/skill:paul-milestone`
 
 ---
 *STATE.md — Updated after every significant action*

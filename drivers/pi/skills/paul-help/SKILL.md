@@ -13,6 +13,7 @@ Available PALS Pi command and skill surfaces.
 - Use `/skill:paul-*` when you want the canonical underlying skill entry directly.
 - Both surfaces route into the same shared PALS workflow model; only the skills are canonical entry points.
 - Shortcut-enabled Pi entry points are also available from the lifecycle surface: `Ctrl+Alt+N` (next), `Ctrl+Alt+S` (status), `Ctrl+Alt+R` (resume), `Ctrl+Alt+H` (help), `Ctrl+Alt+M` (milestone).
+- Pi installs enabled modules beside the skills and records them in `~/.pi/agent/skills/pals/modules.yaml`; TODD and WALT are module overlays there, not standalone Pi skills you need to invoke separately.
 
 ## Pi command layer
 
@@ -70,5 +71,5 @@ Available PALS Pi command and skill surfaces.
 ## About PALS
 
 PALS (Project Automation & Lifecycle System) provides structured project management through the PLAN-APPLY-UNIFY loop. PAUL is the kernel, with modules for testing (TODD), quality (WALT), context rules (CARL), and more.
-
+In Pi, those modules are installed into the shared skill tree and surfaced through workflow dispatch, not as extra `/skill:*` commands.
 For more information, read the project README or `.paul/PROJECT.md`.

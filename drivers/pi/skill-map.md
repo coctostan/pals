@@ -9,6 +9,7 @@ In Pi:
 - `/skill:paul-*` is the canonical skill invocation layer
 - shared workflow markdown remains the implementation truth behind both surfaces
 - the extension also exposes a bounded shortcut layer for high-frequency flow entry points while still routing back through `/paul-*` wrappers
+- enabled modules are installed alongside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`; TODD/WALT remain module overlays, not standalone Pi skills
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
 |------------|------------|--------------------|-----------------|
@@ -59,6 +60,8 @@ From a skill directory, kernel resources are referenced via relative paths:
 - Rules: `../rules/{name}.md`
 
 Pi command registration lives in the extension layer (`drivers/pi/extensions/pals-hooks.ts`). Those `/paul-*` commands provide the command/hook layer only; they do not replace canonical skill files or shared workflows.
+
+Enabled module manifests are materialized into `~/.pi/agent/skills/pals/modules.yaml` during install. PLAN/APPLY/UNIFY then use that registry to decide which module hook semantics to dispatch from shared markdown references. This is how Pi loads TODD/WALT today: as installed module overlays, not separate `/skill:*` entries.
 
 ## Shortcut-Enabled Entry Points
 

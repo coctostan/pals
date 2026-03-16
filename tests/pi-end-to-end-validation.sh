@@ -239,6 +239,13 @@ else
   else
     tap_not_ok "Extension registers shortcut-enabled lifecycle entry points" "Expected registerShortcut usage and Ctrl+Alt shortcut hints in extension source"
   fi
+  # Guardrail: quick-action layer stays intentionally bounded
+  CTRL_ALT_COUNT=$(grep -o 'Key.ctrlAlt("[nsrhm]")' "$EXT_SRC" 2>/dev/null | sort -u | wc -l | tr -d ' ')
+  if [ "$CTRL_ALT_COUNT" -eq 5 ] && grep -q 'PRIMARY_QUICK_ACTION_LIMIT = 3' "$EXT_SRC" 2>/dev/null && grep -q 'MAX_QUICK_ACTIONS = 5' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension keeps the quick-action layer bounded (3 primary, 5 total)"
+  else
+    tap_not_ok "Extension keeps the quick-action layer bounded (3 primary, 5 total)" "Expected 5 unique Ctrl+Alt shortcuts plus explicit primary/total limits in extension source"
+  fi
 
   # Check session_start event handler
   if grep -q 'session_start' "$EXT_SRC" 2>/dev/null; then
@@ -383,6 +390,11 @@ if grep -q 'Shortcut-Enabled Entry Points' "$SKILL_MAP" && grep -q 'Ctrl+Alt+N' 
   tap_ok "Skill map documents shortcut-enabled entry points"
 else
   tap_not_ok "Skill map documents shortcut-enabled entry points" "Expected shortcut guidance in drivers/pi/skill-map.md"
+fi
+if grep -q 'modules.yaml' "$README_PI" && grep -q 'module overlays' "$SKILL_MAP" && grep -q 'TODD and WALT are module overlays' "$HELP_SKILL"; then
+  tap_ok "Pi discovery surfaces explain module overlays vs standalone skills"
+else
+  tap_not_ok "Pi discovery surfaces explain module overlays vs standalone skills" "Expected modules.yaml/module overlay guidance across Pi README, skill map, and help skill"
 fi
 
 if grep -q 'Use `/paul-\*`' "$HELP_SKILL" && grep -q 'canonical' "$HELP_SKILL" && grep -q 'Ctrl+Alt+N' "$HELP_SKILL"; then

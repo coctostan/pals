@@ -112,6 +112,7 @@ All validated — see below.
 - ✓ Pi End-to-End Validation — 75-check TAP validation suite, installer deployment, skill structure, extension structure, driver manifest accuracy. All pass. — Phase 52
 - ✓ Pi lifecycle visibility surface — persistent status/widget UI derived from `.paul/STATE.md` with validation coverage and no Pi-only lifecycle truth — Phase 59
 - ✓ Pi shortcut-enabled lifecycle entry layer — bounded quick actions and keyboard shortcuts route through `/paul-*` wrappers while preserving `/skill:paul-*` as canonical and `.paul/*` as the only lifecycle truth — Phase 60
+- ✓ Pi UX polish, module-overlay clarity, and interoperability guardrails — bounded lifecycle wording, explicit TODD/WALT overlay guidance, 90-check Pi validation, and 47-check cross-harness validation all pass — Phase 61
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -230,6 +231,7 @@ All validated — see below.
 | Extend validation to cover Pi consistency claims | 58 | Makes future Pi adapter drift easier to detect and correct |
 | Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps adapter-only lifecycle semantics in one parsing path and reduces drift across Pi UI surfaces |
 | Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic | Extends the lifecycle surface into interaction without breaking canonical skill ownership |
+| Pi should explain TODD/WALT as installed module overlays from `modules.yaml`, not standalone Pi skills | 61 | First end-to-end Pi APPLY exposed a skill-vs-module ambiguity; documenting the real model preserves workflow truth while improving usability |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -248,4 +250,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-16 after Phase 60 interactive shortcuts & flow entry points completion*
+*Last updated: 2026-03-16 after Phase 61 UX polish, validation, and interoperability guardrails completion*
