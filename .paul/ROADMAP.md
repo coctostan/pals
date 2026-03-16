@@ -27,8 +27,31 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
+**v2.2 Pi Port Audit & Native Fit**
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
 
-None active. Run `/paul:discuss-milestone` or `/paul:milestone` to define.
+## Phases
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 53 | Current-State Audit | 1 | In progress | - |
+| 54 | Gap Analysis vs Ideal Pi Usage | TBD | Not started | - |
+| 55 | Recommendations & Roadmap | TBD | Not started | - |
+
+## Phase Details
+
+### Phase 53: Current-State Audit
+Focus: Inspect the full Pi implementation: skills, commands, extension usage, installer behavior, hooks/context handling, docs, and UX model
+Plans: 53-01-PLAN.md (research)
+
+### Phase 54: Gap Analysis vs Ideal Pi Usage
+Focus: Compare the current port to an ideal artifact-compatible Pi integration and identify missing, weak, or non-native aspects
+Plans: TBD (defined during /paul:plan)
+
+### Phase 55: Recommendations & Roadmap
+Focus: Produce written audit report, ranked recommendations, and a split between compatible improvements now vs future-state v2 options
+Plans: TBD (defined during /paul:plan)
 
 ---
 

@@ -11,20 +11,6 @@
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 
-// -- Types (minimal Pi extension API surface) --
-
-interface ExtensionAPI {
-  registerCommand(name: string, opts: { description: string; handler: CommandHandler }): void;
-  on(event: string, handler: (...args: any[]) => void | Promise<void>): void;
-  appendEntry(entry: { type: string; content: string }): void;
-}
-
-type CommandHandler = (args: string, ctx: CommandContext) => void | Promise<void>;
-
-interface CommandContext {
-  ui: { notify(msg: string): void };
-}
-
 // -- Helpers --
 
 function readFileOr(path: string, fallback: string): string {
@@ -52,14 +38,6 @@ function parsePalsState(cwd: string): { detected: boolean; phase?: string; loop?
   };
 }
 
-function loadModuleNames(cwd: string): string[] {
-  const modulesPath = join(cwd, "modules.yaml");
-  const content = readFileOr(modulesPath, "");
-  if (!content) return [];
-  // Simple extraction: lines matching "  name: <value>"
-  return [...content.matchAll(/^\s+name:\s*(.+)$/gm)].map((m) => m[1].trim());
-}
-
 // -- Command definitions --
 
 const COMMANDS: Array<{ name: string; description: string; skill: string }> = [
@@ -78,21 +56,21 @@ const COMMANDS: Array<{ name: string; description: string; skill: string }> = [
 
 // -- Extension entry point --
 
-export default function palsHooks(pi: ExtensionAPI): void {
-  const cwd = process.cwd();
-
-  // Register all /paul-* slash commands
+export default function palsHooks(pi: any): void {
+  // Register all /paul-* slash commands — delegate to skills
   for (const cmd of COMMANDS) {
     pi.registerCommand(cmd.name, {
       description: cmd.description,
-      handler: async (_args: string, ctx: CommandContext) => {
-        ctx.ui.notify(`Run /skill:${cmd.skill} to execute this workflow`);
+      handler: async (args: string, ctx: any) => {
+        const skillCmd = `/skill:${cmd.skill}${args ? " " + args : ""}`;
+        pi.sendUserMessage(skillCmd);
       },
     });
   }
 
-  // Session start: detect PALS project and log state
-  pi.on("session_start", () => {
+  // Session start: detect PALS project and show state
+  pi.on("session_start", async (_event: any, ctx: any) => {
+    const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
     if (!state.detected) return;
 
@@ -105,26 +83,26 @@ export default function palsHooks(pi: ExtensionAPI): void {
       .filter(Boolean)
       .join(" | ");
 
-    pi.appendEntry({ type: "system", content: summary });
+    ctx?.ui?.notify(summary, "info");
   });
 
-  // Context hook: inject PALS state when workflows are active
-  pi.on("context", (...args: any[]) => {
-    const messages: Array<{ role: string; content: string }> = args[0] ?? [];
+  // Context hook: inject PALS state into messages when workflows are active
+  pi.on("context", async (event: any, _ctx: any) => {
+    const messages: any[] = event?.messages;
+    if (!Array.isArray(messages) || messages.length === 0) return;
 
     // Check if a PALS workflow is active in recent messages
     const recentText = messages
       .slice(-5)
-      .map((m) => m.content)
+      .map((m: any) => (typeof m.content === "string" ? m.content : ""))
       .join(" ");
     const palsActive = /paul-(plan|apply|unify|resume|fix|init|status|pause|milestone|discuss|help)/i.test(recentText);
 
     if (!palsActive) return;
 
+    const cwd = _ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
     if (!state.detected) return;
-
-    const modules = loadModuleNames(cwd);
 
     const contextLines = [
       "## PALS Context (auto-injected)",
@@ -132,12 +110,15 @@ export default function palsHooks(pi: ExtensionAPI): void {
       `**Phase:** ${state.phase ?? "unknown"}`,
       `**Loop:** ${state.loop ?? "unknown"}`,
       state.nextAction ? `**Next action:** ${state.nextAction}` : null,
-      modules.length > 0 ? `**Active modules:** ${modules.join(", ")}` : null,
       "",
       "Follow the loaded SKILL.md instructions. Read referenced workflow files for full process details.",
     ];
 
     const contextMsg = contextLines.filter(Boolean).join("\n");
-    pi.appendEntry({ type: "system", content: contextMsg });
+
+    // Inject as a system message at the end of the messages array
+    messages.push({ role: "user", content: contextMsg });
+
+    return { messages };
   });
 }
