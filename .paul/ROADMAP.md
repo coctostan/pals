@@ -27,27 +27,25 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**None active — ready to start next milestone**
-Status: ✅ v2.2 complete
-Phases: 3 of 3 complete
-
+**v2.3 Pi Interaction Model Refinement**
+Status: 🚧 In Progress (Phase 57 ready to plan)
+Phases: 1 of 3 complete
 ## Phases
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 53 | Current-State Audit | 1 | ✅ Complete | 2026-03-15 |
-| 54 | Gap Analysis vs Ideal Pi Usage | 1 | ✅ Complete | 2026-03-15 |
-| 55 | Recommendations & Roadmap | 1 | ✅ Complete | 2026-03-15 |
-
+| 56 | Hook & Context Strategy | 1 | ✅ Complete | 2026-03-15 |
+| 57 | Command Routing & Discoverability | TBD | Not started | - |
+| 58 | Adapter Consistency Cleanup | TBD | Not started | - |
 ## Phase Details
-### Phase 53: Current-State Audit
-Focus: Inspect the full Pi implementation: skills, commands, extension usage, installer behavior, hooks/context handling, docs, and UX model
-Plans: 53-01-PLAN.md (research) — ✅ Complete 2026-03-15
-### Phase 54: Gap Analysis vs Ideal Pi Usage
-Focus: Compare the current port to an ideal artifact-compatible Pi integration and identify missing, weak, or non-native aspects
-Plans: 54-01-PLAN.md (research) — ✅ Complete 2026-03-15
-### Phase 55: Recommendations & Roadmap
-Focus: Produce written audit report, ranked recommendations, and a split between compatible improvements now vs future-state v2 options
-Plans: 55-01-PLAN.md (research) — ✅ Complete 2026-03-15
+### Phase 56: Hook & Context Strategy
+Focus: Evaluate and choose the best model for PALS state injection and workflow activation inside Pi
+Plans: 56-01-PLAN.md (research) — ✅ Complete 2026-03-15
+### Phase 57: Command Routing & Discoverability
+Focus: Improve `/paul-*` command UX, discoverability, and routing while preserving `/skill:paul-*` as canonical
+Plans: TBD (defined during /paul:plan)
+### Phase 58: Adapter Consistency Cleanup
+Focus: Remove drift across extension docs, installer comments, and skill/help text so the adapter clearly matches reality
+Plans: TBD (defined during /paul:plan)
 ---
 
 ## Completed Milestones

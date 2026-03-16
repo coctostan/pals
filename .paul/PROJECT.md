@@ -219,6 +219,9 @@ All validated — see below.
 | Prioritize context injection, command ergonomics, and lifecycle visibility in Phase 55 recommendations | 54 | Establishes the main ranking frame for Pi roadmap guidance |
 | v2.3 should begin with Pi interaction model refinement before broader UX or runtime experiments | 55 | Converts the v2.2 recommendation work into the next milestone direction |
 | Preserve shared markdown artifacts as the authoritative lifecycle layer while refining Pi-native interaction quality | 55 | Ensures future Pi implementation work deepens native fit without semantic divergence |
+| Prefer a hybrid Pi event model over a single-hook redesign | 56 | Separating orientation, activation, and injection responsibilities produces a clearer adapter architecture than centering everything on one hook | Gives later implementation work a stable event model to build on |
+| Make `before_agent_start` the primary workflow-context decision point | 56 | It offers a stronger timing boundary than the current regex-driven `context` hook while staying adapter-only | Focuses future runtime refinement on a specific Pi-native surface |
+| Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves the useful parts of the current adapter without letting prompt shaping become hidden lifecycle truth | Protects artifact-first semantics as later Pi UX work deepens native fit |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -237,4 +240,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-15 after Phase 55 Recommendations & Roadmap unified (v2.2 complete)*
+*Last updated: 2026-03-15 after Phase 56 Hook & Context Strategy unified*

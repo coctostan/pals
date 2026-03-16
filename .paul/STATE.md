@@ -5,25 +5,22 @@
 See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.2 complete — ready to start next milestone
+**Current focus:** Phase 56 complete — ready to plan Phase 57
 
 ## Current Position
-
-Milestone: v2.2 Pi Port Audit & Native Fit — Complete
-Phase: Milestone complete — ready for next milestone
-Plan: None active
-Status: Ready for next milestone planning
-Last activity: 2026-03-15 — Unified Phase 55 and completed v2.2
+Milestone: v2.3 Pi Interaction Model Refinement
+Phase: 57 of 58 (Command Routing & Discoverability)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-15 — Phase 56 complete, transitioned to Phase 57
 Progress:
-- v2.2 Pi Port Audit & Native Fit: [██████████] 100%
-- Phase 55: [██████████] 100%
-
+- v2.3 Pi Interaction Model Refinement: [███░░░░░░░] 33%
+- Phase 57: [░░░░░░░░░░] 0%
 ## Loop Position
-
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Milestone complete - ready for next milestone]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -57,6 +54,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Prioritize context injection, command ergonomics, and lifecycle visibility as the highest-value Pi improvement areas | 54 | Gives the recommendation phase a clear ranking frame for roadmap shaping |
 | v2.3 should focus first on interaction model refinement: context strategy, command discoverability, and adapter consistency | 55 | Establishes the concrete next milestone direction after v2.2 closeout |
 | Rank Pi improvements by user value, risk, and compatibility posture instead of treating all ideas equally | 55 | Creates the roadmap structure for safe-now, careful-layering, and future-state work |
+| Prefer a hybrid Pi event model over a single-hook redesign | 56 | Clarifies responsibility split across orientation, activation, and injection without creating Pi-only truth |
+| Make `before_agent_start` the primary workflow-context decision point | 56 | Gives later implementation work a stronger timing boundary than the regex-driven `context` hook |
+| Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves artifact-first lifecycle truth while still allowing targeted prompt shaping |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -70,20 +70,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 Branch: feature/53-current-state-audit
-Last commit: feat(55): complete recommendations and roadmap (HEAD on feature/53-current-state-audit)
+Last commit: feat(56): define pi hook and context strategy (HEAD on feature/53-current-state-audit)
 PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
 Last session: 2026-03-15
-Stopped at: v2.2 complete, ready to start the next milestone
-Next action: /skill:paul-milestone
+Stopped at: Phase 56 complete, ready to plan Phase 57
+Next action: /skill:paul-plan
 Resume file: .paul/ROADMAP.md
 Git strategy: feature/53-current-state-audit
 Resume context:
-- v2.2 is fully complete across Phases 53-55
-- The recommended next milestone is v2.3 Pi Interaction Model Refinement
-- Use the new recommendation and roadmap artifacts as inputs rather than repeating Pi audit discovery
+- Phase 56 established the Phase 57 input strategy: keep `/paul-*` commands as wrappers over skills while improving discoverability and ergonomics
+- The hybrid event model recommendation is now a fixed constraint for later implementation work
+- Phase 57 should focus on command UX only, not revisit event-model selection or docs cleanup
 
 ---
 *STATE.md — Updated after every significant action*
