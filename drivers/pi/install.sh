@@ -4,9 +4,10 @@ set -e
 # ════════════════════════════════════════
 # PALS Pi Driver Installer
 # ════════════════════════════════════════
-# Installs PALS kernel and module files into Pi's skill directory.
-# Pi uses skills (not slash commands or hooks), so this installer
-# simply copies files and generates a modules.yaml registry.
+# Installs PALS kernel, Pi skills, and the Pi extension into Pi's runtime directories.
+# Pi uses skills as the canonical workflow entry surface and the extension as the
+# Pi-native command/hook layer, so this installer copies both and generates a
+# modules.yaml registry for module-backed references.
 #
 # Expected environment:
 #   PALS_ROOT — path to the PALS git repo
@@ -43,7 +44,36 @@ done
 
 echo "  [ok] Kernel files installed: $KERNEL_FILE_COUNT files"
 
-# ── 3. Module discovery and installation ─────────────────────────
+# ── 3. Copy Pi skill files ───────────────────────────────────────
+PI_SKILLS_DIR="$PALS_ROOT/drivers/pi/skills"
+SKILL_COUNT=0
+
+if [ -d "$PI_SKILLS_DIR" ]; then
+  for skill_dir_path in "$PI_SKILLS_DIR"/*/; do
+    skill_name="$(basename "$skill_dir_path")"
+    if [ -f "$skill_dir_path/SKILL.md" ]; then
+      mkdir -p "$SKILL_DIR/$skill_name"
+      cp "$skill_dir_path/SKILL.md" "$SKILL_DIR/$skill_name/SKILL.md"
+      SKILL_COUNT=$((SKILL_COUNT + 1))
+    fi
+  done
+fi
+
+echo "  [ok] Pi skills installed: $SKILL_COUNT skills"
+
+# ── 4. Copy Pi extension ─────────────────────────────────────────
+EXT_SRC="$PALS_ROOT/drivers/pi/extensions/pals-hooks.ts"
+EXT_DIR="$HOME/.pi/agent/extensions"
+
+if [ -f "$EXT_SRC" ]; then
+  mkdir -p "$EXT_DIR"
+  cp "$EXT_SRC" "$EXT_DIR/pals-hooks.ts"
+  echo "  [ok] Pi extension installed: ~/.pi/agent/extensions/pals-hooks.ts"
+else
+  echo "  [skip] No pals-hooks.ts extension found"
+fi
+
+# ── 5. Module discovery and installation ─────────────────────────
 # Python handles: reading pals.json, parsing module.yaml manifests,
 # copying module files, and generating modules.yaml registry.
 
@@ -285,7 +315,7 @@ with open(modules_yaml_path, 'w') as f:
 print(f"  [ok] modules.yaml generated ({len(installed)} modules)")
 PYEOF
 
-# ── 4. Summary ───────────────────────────────────────────────────
+# ── 6. Summary ───────────────────────────────────────────────────
 echo ""
 echo "  Pi driver installation complete."
 echo "  Skill path: ~/.pi/agent/skills/pals/"

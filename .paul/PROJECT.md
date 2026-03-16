@@ -106,6 +106,10 @@ All validated — see below.
 - ✓ Harness-Agnostic Skills — 3 plans: convention doc + core loop (46-01), all kernel files (46-02), all module files (46-03). 53+ files converted, zero non-portable references — Phase 46
 - ✓ Pi Adapter — driver manifest (4/6 capabilities), installer targeting ~/.pi/agent/skills/pals/, multi-driver root installer — Phase 47
 - ✓ Cross-Harness Validation — 45-check validation suite (TAP format), installer parity, portability compliance, artifact spec conformance, driver manifests. All pass. — Phase 48
+- ✓ SKILL.md Generation — 11 Pi skill entry points + skill-map.md mapping 21 workflows to 11 skills + 10 internal — Phase 49
+- ✓ Pi Extension — Thin TypeScript extension (143 lines) with 11 /paul-* commands via registerCommand, session_start + context event hooks — Phase 50
+- ✓ Installer & Driver Update — install.sh deploys skills + extension, uninstall.sh cleans up, driver.yaml reflects command/hook capabilities — Phase 51
+- ✓ Pi End-to-End Validation — 75-check TAP validation suite, installer deployment, skill structure, extension structure, driver manifest accuracy. All pass. — Phase 52
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -204,6 +208,24 @@ All validated — see below.
 | Missing agents config = inline execution (backward-compatible) | 43 | No behavior change for projects without agents section |
 | Writing agents sequential, research/review parallel | 43 | Prevents file conflicts while allowing read-only parallelism |
 | No interactive agent config during init | 44 | Defaults correct; advanced users edit pals.json directly |
+| 11 skills (not 21) — only user-facing commands | 49 | Internal workflows invoked by skill instructions, not standalone |
+| ../workflows/ relative paths in skills | 49 | Skills installed as siblings of kernel dirs in ~/.pi/agent/skills/pals/ |
+| Commands delegate to /skill:paul-* via notify | 50 | Keeps extension thin; skills have full workflow instructions |
+| Inline Pi API types (no SDK import) | 50 | Extension runs in Pi's runtime which provides types; no build step |
+| Context hook checks last 5 messages for PALS detection | 50 | Balance between detection accuracy and performance |
+| Pi adapter remains a thin, artifact-safe shell over shared markdown workflows | 53 | Audit confirmed current Pi implementation is directionally correct and should be refined rather than replaced |
+| Pi-native depth should increase via adapter-only improvements, not shared artifact divergence | 53 | Future Pi roadmap work should preserve cross-harness compatibility while improving command, hook, and UX fit |
+| PALS needs a more mature Pi-native shell around the existing artifact-safe architecture, not a Pi-specific redesign | 54 | Directs future Pi work toward adapter refinement rather than replacing the shared artifact model |
+| Prioritize context injection, command ergonomics, and lifecycle visibility in Phase 55 recommendations | 54 | Establishes the main ranking frame for Pi roadmap guidance |
+| v2.3 should begin with Pi interaction model refinement before broader UX or runtime experiments | 55 | Converts the v2.2 recommendation work into the next milestone direction |
+| Preserve shared markdown artifacts as the authoritative lifecycle layer while refining Pi-native interaction quality | 55 | Ensures future Pi implementation work deepens native fit without semantic divergence |
+| Prefer a hybrid Pi event model over a single-hook redesign | 56 | Separating orientation, activation, and injection responsibilities produces a clearer adapter architecture than centering everything on one hook | Gives later implementation work a stable event model to build on |
+| Make `before_agent_start` the primary workflow-context decision point | 56 | It offers a stronger timing boundary than the current regex-driven `context` hook while staying adapter-only | Focuses future runtime refinement on a specific Pi-native surface |
+| Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves the useful parts of the current adapter without letting prompt shaping become hidden lifecycle truth | Protects artifact-first semantics as later Pi UX work deepens native fit |
+| Keep `/paul-*` as Pi-native convenience wrappers and `/skill:paul-*` as canonical entry points | 57 | Improves discoverability without forking workflow semantics into TypeScript |
+| Keep added routing guidance brief and command-local | 57 | Preserves command discoverability gains without materially increasing Pi runtime context load |
+| Keep Phase 58 focused on wording, metadata, and validation only | 58 | Closes the milestone with low-risk consistency work instead of reopening behavior changes |
+| Extend validation to cover Pi consistency claims | 58 | Makes future Pi adapter drift easier to detect and correct |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -222,4 +244,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-14 after Phase 48 Cross-Harness Validation complete — v2.0 milestone done*
+*Last updated: 2026-03-16 after v2.3 Pi Interaction Model Refinement milestone completion*

@@ -2,24 +2,21 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-14)
+See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone
+**Current focus:** Milestone v2.3 complete — ready for next milestone
 
 ## Current Position
-
 Milestone: Awaiting next milestone
 Phase: None active
 Plan: None
-Status: Milestone v2.0 complete — ready for next
-Last activity: 2026-03-14 — v2.0 Portability & Cross-Harness milestone completed
-
+Status: Milestone v2.3 complete — ready for next
+Last activity: 2026-03-16 — Milestone v2.3 completed
 Progress:
-- v2.0 Portability & Cross-Harness: [██████████] 100% ✓
-
+- v2.3 Pi Interaction Model Refinement: [██████████] 100% ✓
+- Next milestone: [░░░░░░░░░░] 0%
 ## Loop Position
-
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
@@ -51,6 +48,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Reject 11 techniques (condenser, dual-state, shadow git, autonomous memory, etc.) | 42 | Requires programmatic infrastructure or redundant with existing PALS/Claude Code mechanisms |
 | Defer tree-sitter+PageRank repo-map and LSP-powered analysis | 42 | High value but requires programmatic implementation beyond PALS scope |
 | Install for ALL detected harnesses (not pick one) | 47 | Both ~/.claude/ and ~/.pi/ get drivers; no prompt needed, no conflict |
+| Pi port is artifact-safe and directionally correct as a thin adapter shell | 53 | Confirms later Pi work should refine native fit without abandoning shared markdown artifacts |
+| Future Pi work should focus on deeper native runtime/UI usage, not adapter replacement | 53 | Frames Phase 54 around gap analysis and Phase 55 around compatible recommendations |
+| PALS needs a more mature Pi-native shell around the existing artifact-safe architecture, not a Pi-specific redesign | 54 | Keeps Phase 55 focused on recommendations that deepen native fit without changing core workflow truth |
+| Prioritize context injection, command ergonomics, and lifecycle visibility as the highest-value Pi improvement areas | 54 | Gives the recommendation phase a clear ranking frame for roadmap shaping |
+| v2.3 should focus first on interaction model refinement: context strategy, command discoverability, and adapter consistency | 55 | Establishes the concrete next milestone direction after v2.2 closeout |
+| Rank Pi improvements by user value, risk, and compatibility posture instead of treating all ideas equally | 55 | Creates the roadmap structure for safe-now, careful-layering, and future-state work |
+| Prefer a hybrid Pi event model over a single-hook redesign | 56 | Clarifies responsibility split across orientation, activation, and injection without creating Pi-only truth |
+| Make `before_agent_start` the primary workflow-context decision point | 56 | Gives later implementation work a stronger timing boundary than the regex-driven `context` hook |
+| Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves artifact-first lifecycle truth while still allowing targeted prompt shaping |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -63,19 +69,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: main
+Branch: feature/53-current-state-audit
+Last commit: feat(56): define pi hook and context strategy (HEAD on feature/53-current-state-audit)
 PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
-Last session: 2026-03-14
-Stopped at: v2.0 Portability & Cross-Harness milestone complete
+Last session: 2026-03-16
+Stopped at: Milestone v2.3 complete
 Next action: /paul:discuss-milestone or /paul:milestone
 Resume file: .paul/MILESTONES.md
+Git strategy: feature/53-current-state-audit
 Resume context:
-- v2.0 complete: portable specs, harness-agnostic kernel, Pi adapter, cross-harness validation
-- 14 milestones completed total (v0.1 through v2.0)
-- 48 phases, 60+ plans completed
+- v2.3 is fully complete and archived across MILESTONES.md and .paul/milestones/v2.3-ROADMAP.md
+- The Pi interaction model refinement milestone delivered strategy, command/discoverability improvements, and consistency cleanup
+- The project is now waiting for the next milestone discussion or creation step
 
 ---
 *STATE.md — Updated after every significant action*
