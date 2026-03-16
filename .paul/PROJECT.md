@@ -111,6 +111,7 @@ All validated — see below.
 - ✓ Installer & Driver Update — install.sh deploys skills + extension, uninstall.sh cleans up, driver.yaml reflects command/hook capabilities — Phase 51
 - ✓ Pi End-to-End Validation — 75-check TAP validation suite, installer deployment, skill structure, extension structure, driver manifest accuracy. All pass. — Phase 52
 - ✓ Pi lifecycle visibility surface — persistent status/widget UI derived from `.paul/STATE.md` with validation coverage and no Pi-only lifecycle truth — Phase 59
+- ✓ Pi shortcut-enabled lifecycle entry layer — bounded quick actions and keyboard shortcuts route through `/paul-*` wrappers while preserving `/skill:paul-*` as canonical and `.paul/*` as the only lifecycle truth — Phase 60
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -228,6 +229,7 @@ All validated — see below.
 | Keep Phase 58 focused on wording, metadata, and validation only | 58 | Closes the milestone with low-risk consistency work instead of reopening behavior changes |
 | Extend validation to cover Pi consistency claims | 58 | Makes future Pi adapter drift easier to detect and correct |
 | Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps adapter-only lifecycle semantics in one parsing path and reduces drift across Pi UI surfaces |
+| Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic | Extends the lifecycle surface into interaction without breaking canonical skill ownership |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -246,4 +248,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-16 after Phase 59 always-visible lifecycle surface completion*
+*Last updated: 2026-03-16 after Phase 60 interactive shortcuts & flow entry points completion*

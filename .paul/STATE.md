@@ -5,17 +5,17 @@
 See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 59 unified — ready to plan Phase 60
+**Current focus:** Phase 60 unified — ready to plan Phase 61
 
 ## Current Position
 Milestone: v2.4 Pi Native UX Layer
-Phase: 60 of 61 (Interactive Shortcuts & Flow Entry Points)
+Phase: 61 of 61 (UX Polish, Validation & Interoperability Guardrails)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-16 — Phase 59 unified and transitioned to Phase 60
+Last activity: 2026-03-16T14:35:38Z — Phase 60 unified, transitioned to Phase 61, and committed as a44de06
 Progress:
-- v2.4 Pi Native UX Layer: [███░░░░░░░] 33%
-- Phase 60: [░░░░░░░░░░] 0%
+- v2.4 Pi Native UX Layer: [███████░░░] 67%
+- Phase 61: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
@@ -58,6 +58,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Make `before_agent_start` the primary workflow-context decision point | 56 | Gives later implementation work a stronger timing boundary than the regex-driven `context` hook |
 | Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves artifact-first lifecycle truth while still allowing targeted prompt shaping |
 | Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps Pi lifecycle semantics aligned across all visible adapter surfaces |
+| Keep Pi quick actions bounded and route shortcut entry points through the existing wrapper layer | 60 | Preserves low-clutter UX while avoiding Pi-only workflow semantics or duplicate routing logic |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -70,21 +71,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: feature/phase-59-always-visible-lifecycle-surface
-Last commit: feat(59): implement always-visible lifecycle surface (current HEAD on feature/phase-59-always-visible-lifecycle-surface)
-PR: none (feature branch not yet merged)
+Branch: feature/phase-60-interactive-shortcuts-flow-entry-points
+Last commit: a44de06 — feat(phase-60): add Pi shortcut-enabled lifecycle entry points
+PR: Phase 59 merged; Phase 60 work committed locally on feature branch, not pushed
 
 ## Session Continuity
 
-Last session: 2026-03-16T13:56:26Z
-Stopped at: Phase 59 complete, transitioned to Phase 60
+Last session: 2026-03-16T14:35:38Z
+Stopped at: Phase 60 complete, ready to plan Phase 61
 Next action: /skill:paul-plan
 Resume file: .paul/ROADMAP.md
-Git strategy: feature/phase-59-always-visible-lifecycle-surface
+Git strategy: feature/phase-60-interactive-shortcuts-flow-entry-points
 Resume context:
-- Phase 59 is complete with summary and validation captured
-- Phase 60 is next and should focus on interactive shortcuts and flow entry points
-- Preserve `.paul/*` authority while extending the Pi-native UX layer
+- Phase 60 is complete with bounded Pi quick actions and lifecycle-surface shortcut entry points in place
+- Canonical `/skill:paul-*` ownership and `.paul/*` lifecycle authority were preserved throughout the implementation
+- Phase 61 should focus on wording/placement polish, low-clutter validation, and interoperability guardrails
 
 ---
 *STATE.md — Updated after every significant action*

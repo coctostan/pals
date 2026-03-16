@@ -232,6 +232,14 @@ else
     tap_not_ok "Extension uses registerCommand" "No registerCommand calls found"
   fi
 
+  # Check shortcut registration for lifecycle entry points
+  SHORTCUT_COUNT=$(grep -c 'registerQuickActionShortcut\|registerShortcut' "$EXT_SRC" 2>/dev/null || echo 0)
+  if [ "$SHORTCUT_COUNT" -gt 0 ] && grep -q 'Ctrl+Alt+N' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension registers shortcut-enabled lifecycle entry points"
+  else
+    tap_not_ok "Extension registers shortcut-enabled lifecycle entry points" "Expected registerShortcut usage and Ctrl+Alt shortcut hints in extension source"
+  fi
+
   # Check session_start event handler
   if grep -q 'session_start' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension handles session_start event"
@@ -359,24 +367,35 @@ else
   tap_not_ok "Extension README explains /paul-* vs canonical /skill:paul-*" "Expected wrapper/canonical guidance in drivers/pi/extensions/README.md"
 fi
 
+if grep -q 'Quick Actions & Shortcuts' "$README_PI" && grep -q 'Ctrl+Alt+N' "$README_PI"; then
+  tap_ok "Extension README documents shortcut-enabled entry points"
+else
+  tap_not_ok "Extension README documents shortcut-enabled entry points" "Expected quick-action shortcut guidance in drivers/pi/extensions/README.md"
+fi
+
 if grep -q 'Command → Skill → Workflow Mapping' "$SKILL_MAP" && grep -q 'canonical' "$SKILL_MAP"; then
   tap_ok "Skill map documents command → skill → workflow model"
 else
   tap_not_ok "Skill map documents command → skill → workflow model" "Expected command/skill/workflow guidance in drivers/pi/skill-map.md"
 fi
 
-if grep -q 'Use `/paul-\*`' "$HELP_SKILL" && grep -q 'canonical' "$HELP_SKILL"; then
-  tap_ok "Pi help skill explains command layer vs canonical skill layer"
+if grep -q 'Shortcut-Enabled Entry Points' "$SKILL_MAP" && grep -q 'Ctrl+Alt+N' "$SKILL_MAP"; then
+  tap_ok "Skill map documents shortcut-enabled entry points"
 else
-  tap_not_ok "Pi help skill explains command layer vs canonical skill layer" "Expected command-vs-skill guidance in drivers/pi/skills/paul-help/SKILL.md"
+  tap_not_ok "Skill map documents shortcut-enabled entry points" "Expected shortcut guidance in drivers/pi/skill-map.md"
+fi
+
+if grep -q 'Use `/paul-\*`' "$HELP_SKILL" && grep -q 'canonical' "$HELP_SKILL" && grep -q 'Ctrl+Alt+N' "$HELP_SKILL"; then
+  tap_ok "Pi help skill explains command layer, canonical skill layer, and shortcuts"
+else
+  tap_not_ok "Pi help skill explains command layer, canonical skill layer, and shortcuts" "Expected command-vs-skill and shortcut guidance in drivers/pi/skills/paul-help/SKILL.md"
+fi
 
 UNINSTALL_PI="$REPO_ROOT/drivers/pi/uninstall.sh"
-
-if grep -q 'canonical skill files' "$UNINSTALL_PI" && grep -q 'extension-backed /paul-\* command and hook layer' "$UNINSTALL_PI"; then
+if grep -qi 'canonical.*skill files' "$UNINSTALL_PI" && grep -qi 'extension-backed .*command.*/hook layer\|extension-backed .*command and hook layer' "$UNINSTALL_PI"; then
   tap_ok "Pi uninstall script explains skills + extension removal clearly"
 else
   tap_not_ok "Pi uninstall script explains skills + extension removal clearly" "Expected canonical-skill and extension-layer wording in drivers/pi/uninstall.sh"
-fi
 fi
 
 # ════════════════════════════════════════════════════════════════════
