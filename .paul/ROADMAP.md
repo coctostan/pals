@@ -27,10 +27,32 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-No active milestone.
+**v2.4 Pi Native UX Layer**
+Status: 🚧 In Progress
+Phases: 1 of 3 complete
 
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 59 | Always-Visible Lifecycle Surface | 1 | ✅ Complete | 2026-03-16 |
+| 60 | Interactive Shortcuts & Flow Entry Points | TBD | Ready to plan | - |
+| 61 | UX Polish, Validation & Interoperability Guardrails | TBD | Not started | - |
+
+### Phase 59: Always-Visible Lifecycle Surface
+
+Focus: Add a persistent Pi status/widget surface for milestone, phase, loop state, and next action derived from `.paul/*`. Completed 2026-03-16.
+Plans: 1 planned, 1 completed (`59-01-PLAN.md` → `59-01-SUMMARY.md`)
+
+### Phase 60: Interactive Shortcuts & Flow Entry Points
+
+Focus: Add lightweight interactive shortcuts from the visible surface into existing status/resume/help/milestone actions without changing workflow semantics.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 61: UX Polish, Validation & Interoperability Guardrails
+
+Focus: Refine wording/placement, validate low-clutter behavior, and prove cross-harness compatibility with Claude Code-oriented PALS usage.
+Plans: TBD (defined during /paul:plan)
 ## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+To be defined after v2.4 completion.
 
 ---
 
@@ -236,4 +258,4 @@ Run /paul:discuss-milestone or /paul:milestone to define.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-16 — v2.3 Pi Interaction Model Refinement complete*
+*Last updated: 2026-03-16 — Phase 59 completed, transitioned to Phase 60*

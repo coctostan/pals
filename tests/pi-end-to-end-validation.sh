@@ -246,6 +246,27 @@ else
     tap_not_ok "Extension handles context event" "No context handler found"
   fi
 
+  # Check always-visible lifecycle surfaces are wired in
+  if grep -q 'setStatus' "$EXT_SRC" 2>/dev/null && grep -q 'setWidget' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension uses setStatus + setWidget for persistent lifecycle UI"
+  else
+    tap_not_ok "Extension uses setStatus + setWidget for persistent lifecycle UI" "Expected both setStatus and setWidget in extension source"
+  fi
+
+  # Check lifecycle fields are surfaced in the adapter contract
+  if grep -q 'Milestone:' "$EXT_SRC" 2>/dev/null && grep -q 'Phase:' "$EXT_SRC" 2>/dev/null && grep -q 'Loop:' "$EXT_SRC" 2>/dev/null && grep -q 'Next action:' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension surfaces milestone, phase, loop, and next action"
+  else
+    tap_not_ok "Extension surfaces milestone, phase, loop, and next action" "Expected lifecycle field labels in extension source"
+  fi
+
+  # Guardrail: lifecycle UI refreshes stay within approved Pi adapter events
+  if grep -q 'before_agent_start' "$EXT_SRC" 2>/dev/null && grep -q 'turn_end' "$EXT_SRC" 2>/dev/null && grep -q 'agent_end' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension refreshes lifecycle UI on approved adapter events"
+  else
+    tap_not_ok "Extension refreshes lifecycle UI on approved adapter events" "Expected before_agent_start, turn_end, and agent_end refresh hooks"
+  fi
+
   # Check canonical routing guidance is present
   if grep -q 'canonical /skill:paul-' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension documents canonical /skill:paul-* routing"

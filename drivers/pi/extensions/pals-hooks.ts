@@ -14,6 +14,17 @@ import { join } from "path";
 
 // -- Helpers --
 
+const PALS_STATUS_ID = "pals-lifecycle";
+const PALS_WIDGET_ID = "pals-lifecycle";
+
+type PalsStateSnapshot = {
+  detected: boolean;
+  milestone?: string;
+  phase?: string;
+  loop?: string;
+  nextAction?: string;
+};
+
 function readFileOr(path: string, fallback: string): string {
   try {
     return existsSync(path) ? readFileSync(path, "utf-8") : fallback;
@@ -22,21 +33,70 @@ function readFileOr(path: string, fallback: string): string {
   }
 }
 
-function parsePalsState(cwd: string): { detected: boolean; phase?: string; loop?: string; nextAction?: string } {
+function compactWhitespace(value?: string): string | undefined {
+  return value?.replace(/\s+/g, " ").trim() || undefined;
+}
+
+function parsePalsState(cwd: string): PalsStateSnapshot {
   const statePath = join(cwd, ".paul", "STATE.md");
   const content = readFileOr(statePath, "");
   if (!content) return { detected: false };
 
+  const milestoneMatch = content.match(/Milestone:\s*(.+)/);
   const phaseMatch = content.match(/Phase:\s*(.+)/);
-  const loopMatch = content.match(/PLAN\s+──▶\s+APPLY\s+──▶\s+UNIFY\s*\n\s*([^\n]+)/);
+  const loopHeaderMatch = content.match(/PLAN\s+──▶\s+APPLY\s+──▶\s+UNIFY/);
+  const loopStateMatch = content.match(/PLAN\s+──▶\s+APPLY\s+──▶\s+UNIFY\s*\n\s*([^\n]+)/);
   const nextMatch = content.match(/Next action:\s*(.+)/);
 
   return {
     detected: true,
-    phase: phaseMatch?.[1]?.trim(),
-    loop: loopMatch?.[1]?.trim(),
-    nextAction: nextMatch?.[1]?.trim(),
+    milestone: compactWhitespace(milestoneMatch?.[1]),
+    phase: compactWhitespace(phaseMatch?.[1]),
+    loop: loopHeaderMatch
+      ? compactWhitespace(`PLAN ──▶ APPLY ──▶ UNIFY ${loopStateMatch?.[1] ?? ""}`)
+      : undefined,
+    nextAction: compactWhitespace(nextMatch?.[1]),
   };
+}
+
+function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
+  if (!state.detected) return undefined;
+
+  return [
+    "PALS",
+    state.phase ? `Phase: ${state.phase}` : null,
+    state.nextAction ? `Next: ${state.nextAction}` : null,
+  ]
+    .filter(Boolean)
+    .join(" • ");
+}
+
+function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
+  if (!state.detected) return undefined;
+
+  const lines = [
+    "PALS Lifecycle",
+    state.milestone ? `Milestone: ${state.milestone}` : "Milestone: unknown",
+    state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
+    state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
+    state.nextAction ? `Next action: ${state.nextAction}` : "Next action: unknown",
+  ];
+
+  return lines;
+}
+
+function syncLifecycleUi(ctx: any): void {
+  const cwd = ctx?.cwd ?? process.cwd();
+  const state = parsePalsState(cwd);
+
+  if (!state.detected) {
+    ctx?.ui?.setStatus(PALS_STATUS_ID, undefined);
+    ctx?.ui?.setWidget(PALS_WIDGET_ID, undefined);
+    return;
+  }
+
+  ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state));
+  ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state));
 }
 
 type CommandDef = {
@@ -136,14 +196,17 @@ export default function palsHooks(pi: any): void {
     });
   }
 
-  // Session start: detect PALS project and show state.
+  // Session start: detect PALS project, show state, and render persistent lifecycle UI.
   pi.on("session_start", async (_event: any, ctx: any) => {
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
+
+    syncLifecycleUi(ctx);
     if (!state.detected) return;
 
     const summary = [
       "PALS project detected.",
+      state.milestone ? `Milestone: ${state.milestone}` : null,
       state.phase ? `Phase: ${state.phase}` : null,
       state.loop ? `Loop: ${state.loop}` : null,
       state.nextAction ? `Next: ${state.nextAction}` : null,
@@ -152,6 +215,19 @@ export default function palsHooks(pi: any): void {
       .join(" | ");
 
     ctx?.ui?.notify(summary, "info");
+  });
+
+  // Keep the visible lifecycle surface aligned with shared artifact state.
+  pi.on("before_agent_start", async (_event: any, ctx: any) => {
+    syncLifecycleUi(ctx);
+  });
+
+  pi.on("turn_end", async (_event: any, ctx: any) => {
+    syncLifecycleUi(ctx);
+  });
+
+  pi.on("agent_end", async (_event: any, ctx: any) => {
+    syncLifecycleUi(ctx);
   });
 
   // Context hook: inject minimal PALS state only when workflows are active.
@@ -167,6 +243,8 @@ export default function palsHooks(pi: any): void {
 
     if (!palsActive) return;
 
+    syncLifecycleUi(ctx);
+
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
     if (!state.detected) return;
@@ -174,6 +252,7 @@ export default function palsHooks(pi: any): void {
     const contextLines = [
       "## PALS Context (auto-injected)",
       "",
+      state.milestone ? `**Milestone:** ${state.milestone}` : null,
       `**Phase:** ${state.phase ?? "unknown"}`,
       `**Loop:** ${state.loop ?? "unknown"}`,
       state.nextAction ? `**Next action:** ${state.nextAction}` : null,
@@ -183,7 +262,6 @@ export default function palsHooks(pi: any): void {
 
     const contextMsg = contextLines.filter(Boolean).join("\n");
     messages.push({ role: "user", content: contextMsg });
-
     return { messages };
   });
 }
