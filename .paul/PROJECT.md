@@ -217,6 +217,8 @@ All validated — see below.
 | Pi-native depth should increase via adapter-only improvements, not shared artifact divergence | 53 | Future Pi roadmap work should preserve cross-harness compatibility while improving command, hook, and UX fit |
 | PALS needs a more mature Pi-native shell around the existing artifact-safe architecture, not a Pi-specific redesign | 54 | Directs future Pi work toward adapter refinement rather than replacing the shared artifact model |
 | Prioritize context injection, command ergonomics, and lifecycle visibility in Phase 55 recommendations | 54 | Establishes the main ranking frame for Pi roadmap guidance |
+| v2.3 should begin with Pi interaction model refinement before broader UX or runtime experiments | 55 | Converts the v2.2 recommendation work into the next milestone direction |
+| Preserve shared markdown artifacts as the authoritative lifecycle layer while refining Pi-native interaction quality | 55 | Ensures future Pi implementation work deepens native fit without semantic divergence |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -235,4 +237,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-15 after Phase 54 Gap Analysis unified (v2.2 in progress)*
+*Last updated: 2026-03-15 after Phase 55 Recommendations & Roadmap unified (v2.2 complete)*

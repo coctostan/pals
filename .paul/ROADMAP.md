@@ -27,35 +27,39 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.2 Pi Port Audit & Native Fit**
-Status: 🚧 In Progress
-Phases: 2 of 3 complete
+**None active — ready to start next milestone**
+Status: ✅ v2.2 complete
+Phases: 3 of 3 complete
 
 ## Phases
-
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 53 | Current-State Audit | 1 | ✅ Complete | 2026-03-15 |
 | 54 | Gap Analysis vs Ideal Pi Usage | 1 | ✅ Complete | 2026-03-15 |
-| 55 | Recommendations & Roadmap | TBD | Not started | - |
+| 55 | Recommendations & Roadmap | 1 | ✅ Complete | 2026-03-15 |
 
 ## Phase Details
-
 ### Phase 53: Current-State Audit
 Focus: Inspect the full Pi implementation: skills, commands, extension usage, installer behavior, hooks/context handling, docs, and UX model
 Plans: 53-01-PLAN.md (research) — ✅ Complete 2026-03-15
-
 ### Phase 54: Gap Analysis vs Ideal Pi Usage
 Focus: Compare the current port to an ideal artifact-compatible Pi integration and identify missing, weak, or non-native aspects
 Plans: 54-01-PLAN.md (research) — ✅ Complete 2026-03-15
-
 ### Phase 55: Recommendations & Roadmap
 Focus: Produce written audit report, ranked recommendations, and a split between compatible improvements now vs future-state v2 options
-Plans: TBD (defined during /paul:plan)
-
+Plans: 55-01-PLAN.md (research) — ✅ Complete 2026-03-15
 ---
 
 ## Completed Milestones
+
+<details>
+<summary>v2.2 Pi Port Audit & Native Fit - 2026-03-15 (3 phases)</summary>
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 53 | Current-State Audit | 1 | 2026-03-15 |
+| 54 | Gap Analysis vs Ideal Pi Usage | 1 | 2026-03-15 |
+| 55 | Recommendations & Roadmap | 1 | 2026-03-15 |
+</details>
 
 <details>
 <summary>v2.1 Pi Runtime Integration - 2026-03-14 (4 phases)</summary>
@@ -240,4 +244,4 @@ Plans: TBD (defined during /paul:plan)
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-15 — Phase 54 Gap Analysis vs Ideal Pi Usage complete; v2.2 in progress*
+*Last updated: 2026-03-15 — v2.2 Pi Port Audit & Native Fit complete*

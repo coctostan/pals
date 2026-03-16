@@ -5,25 +5,25 @@
 See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 54 unified — ready to plan Phase 55
+**Current focus:** v2.2 complete — ready to start next milestone
 
 ## Current Position
 
-Milestone: v2.2 Pi Port Audit & Native Fit
-Phase: 55 of 3 (Recommendations & Roadmap) — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-03-15 — Unified Phase 54 and transitioned to Phase 55
+Milestone: v2.2 Pi Port Audit & Native Fit — Complete
+Phase: Milestone complete — ready for next milestone
+Plan: None active
+Status: Ready for next milestone planning
+Last activity: 2026-03-15 — Unified Phase 55 and completed v2.2
 Progress:
-- v2.2 Pi Port Audit & Native Fit: [███████░░░] 67%
-- Phase 54: [██████████] 100%
+- v2.2 Pi Port Audit & Native Fit: [██████████] 100%
+- Phase 55: [██████████] 100%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ✓     [Milestone complete - ready for next milestone]
 ```
 
 ## Accumulated Context
@@ -55,6 +55,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Future Pi work should focus on deeper native runtime/UI usage, not adapter replacement | 53 | Frames Phase 54 around gap analysis and Phase 55 around compatible recommendations |
 | PALS needs a more mature Pi-native shell around the existing artifact-safe architecture, not a Pi-specific redesign | 54 | Keeps Phase 55 focused on recommendations that deepen native fit without changing core workflow truth |
 | Prioritize context injection, command ergonomics, and lifecycle visibility as the highest-value Pi improvement areas | 54 | Gives the recommendation phase a clear ranking frame for roadmap shaping |
+| v2.3 should focus first on interaction model refinement: context strategy, command discoverability, and adapter consistency | 55 | Establishes the concrete next milestone direction after v2.2 closeout |
+| Rank Pi improvements by user value, risk, and compatibility posture instead of treating all ideas equally | 55 | Creates the roadmap structure for safe-now, careful-layering, and future-state work |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -68,20 +70,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 Branch: feature/53-current-state-audit
-Last commit: feat(54): complete pi gap analysis (HEAD on feature/53-current-state-audit)
+Last commit: feat(55): complete recommendations and roadmap (HEAD on feature/53-current-state-audit)
 PR: #7 merged (v1.1+v1.2 milestones)
 
 ## Session Continuity
 
 Last session: 2026-03-15
-Stopped at: Phase 54 complete, ready to plan Phase 55
-Next action: /skill:paul-plan
+Stopped at: v2.2 complete, ready to start the next milestone
+Next action: /skill:paul-milestone
 Resume file: .paul/ROADMAP.md
 Git strategy: feature/53-current-state-audit
 Resume context:
-- Phase 54 gap-analysis loop is fully closed with SUMMARY.md recorded
-- Phase 55 should turn the established gaps into ranked recommendations and roadmap guidance
-- Do not repeat current-state audit or ideal-state definition; use the Phase 53 and Phase 54 artifacts as inputs
+- v2.2 is fully complete across Phases 53-55
+- The recommended next milestone is v2.3 Pi Interaction Model Refinement
+- Use the new recommendation and roadmap artifacts as inputs rather than repeating Pi audit discovery
 
 ---
 *STATE.md — Updated after every significant action*
