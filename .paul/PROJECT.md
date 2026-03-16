@@ -110,6 +110,7 @@ All validated — see below.
 - ✓ Pi Extension — Thin TypeScript extension (143 lines) with 11 /paul-* commands via registerCommand, session_start + context event hooks — Phase 50
 - ✓ Installer & Driver Update — install.sh deploys skills + extension, uninstall.sh cleans up, driver.yaml reflects command/hook capabilities — Phase 51
 - ✓ Pi End-to-End Validation — 75-check TAP validation suite, installer deployment, skill structure, extension structure, driver manifest accuracy. All pass. — Phase 52
+- ✓ Pi lifecycle visibility surface — persistent status/widget UI derived from `.paul/STATE.md` with validation coverage and no Pi-only lifecycle truth — Phase 59
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -226,6 +227,7 @@ All validated — see below.
 | Keep added routing guidance brief and command-local | 57 | Preserves command discoverability gains without materially increasing Pi runtime context load |
 | Keep Phase 58 focused on wording, metadata, and validation only | 58 | Closes the milestone with low-risk consistency work instead of reopening behavior changes |
 | Extend validation to cover Pi consistency claims | 58 | Makes future Pi adapter drift easier to detect and correct |
+| Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps adapter-only lifecycle semantics in one parsing path and reduces drift across Pi UI surfaces |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -244,4 +246,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-16 after v2.3 Pi Interaction Model Refinement milestone completion*
+*Last updated: 2026-03-16 after Phase 59 always-visible lifecycle surface completion*

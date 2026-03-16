@@ -5,22 +5,22 @@
 See: .paul/PROJECT.md (updated 2026-03-15)
 
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Milestone v2.3 complete — ready for next milestone
+**Current focus:** Phase 59 unified — ready to plan Phase 60
 
 ## Current Position
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.3 complete — ready for next
-Last activity: 2026-03-16 — Milestone v2.3 completed
+Milestone: v2.4 Pi Native UX Layer
+Phase: 60 of 61 (Interactive Shortcuts & Flow Entry Points)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-16 — Phase 59 unified and transitioned to Phase 60
 Progress:
-- v2.3 Pi Interaction Model Refinement: [██████████] 100% ✓
-- Next milestone: [░░░░░░░░░░] 0%
+- v2.4 Pi Native UX Layer: [███░░░░░░░] 33%
+- Phase 60: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -57,6 +57,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Prefer a hybrid Pi event model over a single-hook redesign | 56 | Clarifies responsibility split across orientation, activation, and injection without creating Pi-only truth |
 | Make `before_agent_start` the primary workflow-context decision point | 56 | Gives later implementation work a stronger timing boundary than the regex-driven `context` hook |
 | Reduce `context` to a narrow supporting role while keeping `.paul/*` authoritative | 56 | Preserves artifact-first lifecycle truth while still allowing targeted prompt shaping |
+| Reuse one shared lifecycle snapshot for Pi notifications, status, widget, and injected context | 59 | Keeps Pi lifecycle semantics aligned across all visible adapter surfaces |
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -69,21 +70,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 
 ### Git State
-Branch: feature/53-current-state-audit
-Last commit: feat(56): define pi hook and context strategy (HEAD on feature/53-current-state-audit)
-PR: #7 merged (v1.1+v1.2 milestones)
+Branch: feature/phase-59-always-visible-lifecycle-surface
+Last commit: feat(59): implement always-visible lifecycle surface (current HEAD on feature/phase-59-always-visible-lifecycle-surface)
+PR: none (feature branch not yet merged)
 
 ## Session Continuity
 
-Last session: 2026-03-16
-Stopped at: Milestone v2.3 complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
-Git strategy: feature/53-current-state-audit
+Last session: 2026-03-16T13:56:26Z
+Stopped at: Phase 59 complete, transitioned to Phase 60
+Next action: /skill:paul-plan
+Resume file: .paul/ROADMAP.md
+Git strategy: feature/phase-59-always-visible-lifecycle-surface
 Resume context:
-- v2.3 is fully complete and archived across MILESTONES.md and .paul/milestones/v2.3-ROADMAP.md
-- The Pi interaction model refinement milestone delivered strategy, command/discoverability improvements, and consistency cleanup
-- The project is now waiting for the next milestone discussion or creation step
+- Phase 59 is complete with summary and validation captured
+- Phase 60 is next and should focus on interactive shortcuts and flow entry points
+- Preserve `.paul/*` authority while extending the Pi-native UX layer
 
 ---
 *STATE.md — Updated after every significant action*
