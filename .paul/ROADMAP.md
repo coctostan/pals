@@ -27,29 +27,28 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.5 Pi Runtime Coherence & Guided Flow**
-Status: ✅ Complete
-Completed: 2026-03-16
-Phases: 3 of 3 complete
+**v2.6 Collaborative Planning & PRD Depth**
+Status: 🚧 In Progress
+Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 62 | Runtime Context & Event Refinement | 1 | ✅ Complete | 2026-03-16 |
-| 63 | Guided Workflow UX | 1 | ✅ Complete | 2026-03-16 |
-| 64 | Polish, Validation & UX Readability | 1 | ✅ Complete | 2026-03-16 |
+| 65 | Research & Current-State Audit | 1 | ✅ Complete | 2026-03-17 |
+| 66 | Collaborative Planning Model | TBD | Ready to plan | - |
+| 67 | Onboarding & PRD Depth | TBD | Not started | - |
 
-### Phase 62: Runtime Context & Event Refinement (Complete)
-Focus: Tighten `before_agent_start` / `context` / command-trigger behavior, improve timing and quality of lifecycle context injection, and reduce ambiguity or prompt bloat. Completed.
-Plans: 1 planned, 1 completed (`62-01-PLAN.md` → `62-01-SUMMARY.md`)
+### Phase 65: Research & Current-State Audit (Complete)
+Focus: Investigate current skill + markdown workflow behavior, examine industry best practices such as design trees and structured requirements discovery, and identify collaboration gaps plus interoperability constraints. Completed.
+Plans: 1 planned, 1 completed (`65-01-PLAN.md` → `65-01-SUMMARY.md`)
 
-### Phase 63: Guided Workflow UX (Complete)
-Focus: Add Pi-native approval, checkpoint, resume, and milestone/phase transition guidance grounded in existing shared-artifact workflow semantics. Completed.
-Plans: 1 planned, 1 completed (`63-01-PLAN.md` → `63-01-SUMMARY.md`)
+### Phase 66: Collaborative Planning Model
+Focus: Define low/medium/high collaboration behavior, add project default plus per-run override, and establish the pre-plan review prompt with its 4-option review menu.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 64: Polish, Validation & UX Readability (Complete)
-Focus: Validate runtime and guided UX behavior end-to-end, increase readability of the UX by using colors where appropriate, keep docs/help aligned, and clarify installation strategy boundaries.
-Plans: 1 planned, 1 completed (`64-01-PLAN.md` → `64-01-SUMMARY.md`)
+### Phase 67: Onboarding & PRD Depth
+Focus: Strengthen onboarding into a fuller PRD / requirements artifact, preserve explicit requirements/constraints/open questions/deferred items, and align docs, validation, and interoperability expectations.
+Plans: TBD (defined during /paul:plan)
 ## Next Milestone
-Run /skill:paul-discuss or /skill:paul-milestone to define.
+Run /skill:paul-discuss or /skill:paul-milestone after v2.6 is complete.
 
 ---
 
@@ -263,7 +262,7 @@ Run /skill:paul-discuss or /skill:paul-milestone to define.
 <summary>v0.1 Fork & Unify - 2026-03-11 (6 phases)</summary>
 
 | Phase | Name | Plans | Completed |
-|-------|------|-------|-----------|
+*Last updated: 2026-03-17 — Phase 65 complete; transitioned to Phase 66 planning*
 | 1 | Architecture & Design | 2 | 2026-03-11 |
 | 2 | Fork & Restructure | 3 | 2026-03-11 |
 | 3 | Merge TODD/WALT | 2 | 2026-03-11 |
@@ -275,4 +274,4 @@ Run /skill:paul-discuss or /skill:paul-milestone to define.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-16 — v2.5 complete; Phase 64 done, all 3 phases finished*
+*Last updated: 2026-03-17 — Phase 65 complete; transitioned to Phase 66 planning*

@@ -2,22 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-16)
+See: .paul/PROJECT.md (updated 2026-03-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone definition
+**Current focus:** Phase 66 planning ready
 ## Current Position
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.5 Pi Runtime Coherence & Guided Flow complete — ready for next
-Last activity: 2026-03-16 — Milestone v2.5 completed
+Milestone: v2.6 Collaborative Planning & PRD Depth
+Phase: 66 of 3 (Collaborative Planning Model)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-17 — Phase 65 complete, transitioned to Phase 66
 Progress:
-- v2.5 Pi Runtime Coherence & Guided Flow: [██████████] 100% ✓
+- v2.6 Collaborative Planning & PRD Depth: [███░░░░░░░] 33%
+- Phase 65: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -59,14 +60,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-16: Implemented Phase 62 hybrid runtime refinement with explicit command activation budgeting, `before_agent_start` primary injection, and `context` normalization-only support | 62 | Preserves one bounded automatic injection path while keeping `.paul/*` as authoritative lifecycle truth |
 | 2026-03-16: Keep Pi guided workflow UX marker-driven and route explicit continuations through `pi.sendUserMessage` without adding Pi-owned lifecycle state | 63 | Preserves shared workflow ownership while making approvals, checkpoints, resume routing, and transitions easier inside Pi |
 | 2026-03-16: Use `matchAll(/[✓○]/g)` count for loop badge; "success" notify only for confirmed sends/routes | 64 | Keeps UX enrichment simple, robust, and bounded to additive cosmetic changes without regression risk |
+| 2026-03-17: Keep artifact-first shared markdown workflows as lifecycle truth while improving collaborative definition behavior | 65 | Keeps v2.6 focused on workflow semantics and artifact population rather than architectural replacement |
+| 2026-03-17: Add low/medium/high collaboration levels plus project default and per-run override for planning work | 65 | Establishes the bounded collaboration model for upcoming implementation phases |
+| 2026-03-17: Add a 4-option pre-plan review choice (quick recap, detailed recap, full plan, no review needed) | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
 | Fix 02 (standard): Reworked installed module registries to include `hook_details`, aligned PLAN/APPLY/UNIFY dispatch wording to the installed registry, and added validation coverage | Phase 63 | Enabled modules can now be consulted from real installed `modules.yaml` registries instead of relying on conceptual source-manifest access |
+| Fix 03 (standard): Aligned resume handoff discovery and docs so `/paul:resume` falls back to `.paul/handoffs/archive/` and only archives active consumed handoffs | No phase | Prevents the latest archived handoff from becoming undiscoverable during normal resume flows |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
-| Skill audit gap: `/carl`, `TODD`, and `WALT` were not explicitly invoked during Phase 62 APPLY/UNIFY | 62 | Advisory-only; implementation stayed in scope and validations passed (93/93), but workflow discipline should be tightened next phase |
+Last commit: HEAD (feat(65-research-current-state-audit): complete phase 65 research audit)
 
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
@@ -78,18 +83,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - None active
 ### Git State
 Branch: main
-Last commit: HEAD (phase 64 completion commit)
-Feature branches merged: none (direct-to-main for Phase 64)
+Last commit: HEAD (feat(65-research-current-state-audit): complete phase 65 research audit)
+Feature branches merged: none (direct-to-main for Phase 65)
 Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
-Last session: 2026-03-16
-Stopped at: Milestone v2.5 Pi Runtime Coherence & Guided Flow complete
-Next action: /skill:paul-discuss or /skill:paul-milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-03-17T00:35:00-04:00
+Stopped at: Phase 65 complete, ready to plan Phase 66
+Next action: /skill:paul-plan for Phase 66
+Resume file: .paul/phases/65-research-current-state-audit/65-01-SUMMARY.md
 Git strategy: main
 Resume context:
-- v2.5 milestone recorded in `.paul/MILESTONES.md`
-- Archive created at `.paul/milestones/v2.5-ROADMAP.md`
-- Next step is defining the next milestone scope
+- Phase 65 is complete with summary at `.paul/phases/65-research-current-state-audit/65-01-SUMMARY.md`
+- Research established the current-state audit, best-practices synthesis, and recommended planning model
+- Phase 66 should implement the collaboration-level model and 4-option review flow
+- Phase 67 remains the follow-on phase for onboarding and PRD depth
 ---
 *STATE.md — Updated after every significant action*
