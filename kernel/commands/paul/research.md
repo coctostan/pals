@@ -31,11 +31,14 @@ Optional flags:
 - No flag: Auto-detect based on topic
 
 .paul/PROJECT.md
+.paul/PRD.md (selectively, if present and the topic needs deeper product framing / deferred scope / assumptions / open questions)
 .paul/STATE.md
 </context>
 
 <process>
 Follow workflow: kernel/workflows/research.md
+
+Use `PROJECT.md` as the default brief. Consult `PRD.md` only when the research topic materially benefits from deeper product-definition context.
 </process>
 
 <success_criteria>

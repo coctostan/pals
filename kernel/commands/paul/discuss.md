@@ -20,6 +20,7 @@ kernel/workflows/discuss-milestone.md
 Phase number: $ARGUMENTS (required for phase discussion)
 
 .paul/PROJECT.md
+.paul/PRD.md (selectively, if present and deeper framing / deferred scope / assumptions / open questions matter)
 .paul/STATE.md
 .paul/ROADMAP.md
 </context>
@@ -30,6 +31,8 @@ Follow workflow: the discuss command detects whether to run milestone discussion
 Shared planning behavior now includes:
 - a project default collaboration level with per-run override (`low` / `medium` / `high`)
 - explicit exploratory vs direct-requirements mode selection
+- `PROJECT.md` as the default hot-path brief
+- selective `PRD.md` reads when richer product framing or unresolved depth helps the discussion
 - follow-up depth that matches the chosen collaboration level
 - a 4-option review menu before the handoff file is written:
   - Quick recap
@@ -42,5 +45,6 @@ Shared planning behavior now includes:
 - [ ] Correct discussion workflow selected
 - [ ] Context handoff file created with planning posture metadata
 - [ ] Goals and/or milestone themes articulated
+- [ ] `PRD.md` consulted only when deeper context materially helped
 - [ ] Review menu offered before routing forward
 </success_criteria>

@@ -22,6 +22,7 @@ Produces a plan that contains everything needed for execution:
    - File: `.paul/STATE.md`
    - File: `.paul/ROADMAP.md`
    - File: `.paul/PROJECT.md`
+   - File: `.paul/PRD.md` (selectively, if present and deeper product framing / deferred scope / assumptions / open questions matter)
 2. Read the full workflow definition:
    - File: `../workflows/plan-phase.md`
 3. Read the plan template:
@@ -34,6 +35,7 @@ Produces a plan that contains everything needed for execution:
    - Reuse discussion handoff metadata when available
    - Apply project default collaboration with per-run override
    - Distinguish exploratory vs direct-requirements mode
+   - Treat `PROJECT.md` as the hot-path brief and `PRD.md` as selective deeper context
    - Create PLAN.md in `.paul/phases/{NN}-{name}/`
    - Offer Quick recap / Detailed recap / Full plan / No review needed
    - Update STATE.md loop position to PLAN complete
@@ -46,6 +48,7 @@ Produces a plan that contains everything needed for execution:
 - Clarity test: could someone with no context execute this plan?
 - If more than 3 tasks needed, split into multiple plans
 - Review menu happens before APPLY routing, not after execution begins
+- Not every workflow should read both artifacts; load `PRD.md` only when it materially helps planning
 
 ## Output
 

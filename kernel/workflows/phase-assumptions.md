@@ -1,8 +1,15 @@
 <purpose>
 Surface Claude's assumptions about a phase before planning, enabling users to correct misconceptions early.
 
-Key insight: This is ANALYSIS of what Claude thinks, not INTAKE of what user knows. No file output - purely conversational to prompt discussion before planning begins.
+Key insight: This is ANALYSIS of what Claude thinks, not INTAKE of what the user knows. No file output - purely conversational to prompt discussion before planning begins.
 </purpose>
+
+<required_reading>
+.paul/PROJECT.md
+.paul/PRD.md (selectively, if present and deeper product framing / deferred items / assumptions / open questions matter)
+.paul/STATE.md
+.paul/ROADMAP.md
+</required_reading>
 
 <process>
 
@@ -42,7 +49,6 @@ Available phases:
 Exit workflow.
 
 **If phase found:**
-
 Parse phase details:
 - Phase number
 - Phase name
@@ -55,7 +61,12 @@ Continue to analyze_phase.
 <step name="analyze_phase">
 **Identify assumptions across five areas:**
 
-Based on ROADMAP.md description and PROJECT.md context, surface assumptions:
+Base the analysis on:
+- ROADMAP.md phase description
+- PROJECT.md as the hot-path project brief
+- `.paul/PRD.md` only if it exists and deeper product framing, deferred items, current-state detail, dependencies, assumptions, or open questions materially affect the phase
+
+Do **not** read `PRD.md` reflexively for every phase. Use it when it sharpens the assumptions being surfaced.
 
 **1. Technical Approach:**
 What libraries, frameworks, patterns, or tools would Claude use?
@@ -88,7 +99,7 @@ What does Claude assume exists or needs to be in place?
 - "This will be consumed by..."
 
 **Confidence levels:**
-- "Fairly confident: ..." (clear from roadmap)
+- "Fairly confident: ..." (clear from roadmap / brief)
 - "Assuming: ..." (reasonable inference)
 - "Unclear: ..." (could go multiple ways)
 </step>
@@ -121,7 +132,6 @@ What does Claude assume exists or needs to be in place?
 ---
 
 **What do you think?**
-
 Are these assumptions accurate? Let me know:
 - What I got right
 - What I got wrong
@@ -175,6 +185,7 @@ If "Re-examine": Return to analyze_phase with updated understanding
 - [ ] Phase number validated against ROADMAP.md
 - [ ] Assumptions surfaced across five areas
 - [ ] Confidence levels marked where appropriate
+- [ ] `PROJECT.md` used as the default brief and `PRD.md` consulted selectively when needed
 - [ ] "What do you think?" prompt presented
 - [ ] User feedback acknowledged
 - [ ] Clear next steps offered

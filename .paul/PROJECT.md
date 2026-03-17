@@ -116,7 +116,7 @@ All validated — see below.
 - ✓ Pi runtime context/event refinement — explicit command activation + `before_agent_start` primary bounded injection + support-only `context`, with updated Pi validation contract (93 checks passing) — Phase 62
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
-- [~] Collaborative planning & PRD depth — Phase 65 research complete; Phase 66 collaboration model implemented; Phase 67 onboarding / PRD-depth work remains (v2.6)
+- [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -244,6 +244,8 @@ All validated — see below.
 | Add a 4-option pre-plan review choice: quick recap, detailed recap, full plan, no review needed | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
 | Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserves artifact-first portability while making init/discuss/milestone/plan behavior more collaborative |
 | Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
+| Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Settles the content/read/file model for richer onboarding without bloating the hot path |
+| Keep `PRD.md` additive and legacy-safe for existing repos rather than forcing destructive migration | 67 | Preserves portability while allowing validation and docs to codify the new layered contract |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -262,4 +264,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-17 after Phase 66 completion and transition to Phase 67*
+*Last updated: 2026-03-17 after Phase 67 completion*

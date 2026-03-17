@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 67 APPLY complete; research artifacts are ready for UNIFY and follow-on implementation planning
+**Current focus:** v2.6 is phase-complete; next step is milestone closeout for the layered `PROJECT.md` + `PRD.md` rollout
 ## Current Position
 Milestone: v2.6 Collaborative Planning & PRD Depth
-Phase: 67 of 3 (Onboarding & PRD Depth) — APPLY complete
-Plan: 67-01 executed
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-17T18:57:30Z — Executed .paul/phases/67-onboarding-prd-depth/67-01-PLAN.md
+Phase: 67 of 3 (Onboarding & PRD Depth) — Complete
+Plan: 67-02 unified
+Status: Milestone complete, ready for /skill:paul-milestone
+Last activity: 2026-03-17T21:12:14Z — Unified .paul/phases/67-onboarding-prd-depth/67-02-PLAN.md, completed Phase 67 transition, and committed the phase changes
 Progress:
-- v2.6 Collaborative Planning & PRD Depth: [███████░░░] 67%
-- Phase 67: [███████░░░] 67%
+- v2.6 Collaborative Planning & PRD Depth: [██████████] 100%
+- Phase 67: [██████████] 100% (67-01 and 67-02 complete)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Applied, ready for UNIFY]
+  ✓        ✓        ✓     [Milestone complete]
 ```
 
 ## Accumulated Context
@@ -68,6 +68,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-17: Split Phase 67 into a research-first plan before implementation | 67 | Settles the artifact/content/read model before workflow/template changes land |
 | 2026-03-17: Greenfield and brownfield onboarding should converge to the same durable schema with different intake flows | 67 | Preserves one canonical product/project structure without forcing identical discovery behavior |
 | 2026-03-17: Decide content model and read model before choosing whether PROJECT.md and PRD depth should be one or two documents | 67 | Keeps context cost explicit and avoids prematurely locking in the wrong durable artifact layout |
+| 2026-03-17: Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Settles the Phase 67 content/read/file model so the follow-on implementation plan can update onboarding, templates, docs, and validation without reopening the design question |
+| 2026-03-17: Keep `PRD.md` additive and legacy-safe rather than mandatory for existing repos | 67 | Allows docs and validation to adopt the layered model without destructive migration |
+| 2026-03-17: Complete the layered onboarding/artifact rollout across workflows, templates, docs, and validation | 67 | Finishes v2.6 with shared portable `PROJECT.md` + `PRD.md` behavior |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -77,6 +80,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
 | None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
+| None material | 67 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -86,20 +90,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - None active
 ### Git State
-Branch: main
-Last commit: HEAD (feat(66-collaborative-planning-model): implement collaborative planning model)
+Branch: feature/67-onboarding-prd-depth
+Last commit: HEAD (feat(67): layered PROJECT.md + PRD.md onboarding model)
 Feature branches merged: none
 Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
-Last session: 2026-03-17T14:59:27-0400
-Stopped at: APPLY complete for plan 67-01; session paused before UNIFY
-Next action: Run /skill:paul-unify .paul/phases/67-onboarding-prd-depth/67-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-17-phase67-apply-complete.md
+Last session: 2026-03-17T21:12:14Z
+Stopped at: Phase 67 complete; v2.6 is ready for milestone closeout
+Next action: Run /skill:paul-milestone to complete the current milestone
+Resume file: .paul/phases/67-onboarding-prd-depth/67-02-SUMMARY.md
 Git strategy: feature/67-onboarding-prd-depth
 Resume context:
-- Phase 67 research artifacts were created and APPLY is complete, but UNIFY has not yet been run
-- The recommended direction is a layered durable model: `PROJECT.md` as the hot-path landing artifact plus `PRD.md` as the deeper selectively-read product-definition layer
-- Greenfield and brownfield should converge to the same durable schema while keeping different intake flows
-- The next session should close the loop with UNIFY, then plan the implementation follow-on work
+- Init/onboarding now writes a compact `PROJECT.md` plus deeper `PRD.md`, with brownfield evidence bridged into current-state, dependency, and constraint fields
+- Planning/discussion/assumptions/research surfaces now treat `PROJECT.md` as the hot-path brief and read `PRD.md` selectively
+- Shared artifact docs and validation now codify the layered contract; `bash tests/cross-harness-validation.sh` and `bash tests/pi-end-to-end-validation.sh` both pass
+- Git commit created: `HEAD` — `feat(67): layered PROJECT.md + PRD.md onboarding model`
 ---
 *STATE.md — Updated after every significant action*

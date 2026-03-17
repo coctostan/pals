@@ -26,6 +26,7 @@ The adapter must be able to:
 At minimum, this includes:
 - `STATE.md`
 - `PROJECT.md`
+- `PRD.md`
 - `ROADMAP.md`
 - `MILESTONES.md`
 - `SPECIAL-FLOWS.md`
@@ -86,6 +87,7 @@ Generated files do not need to be word-for-word identical across runs or harness
 - section meaning
 - state meaning
 - lifecycle implications
+- the layered `PROJECT.md` (hot path) / `PRD.md` (deeper selective context) distinction when `PRD.md` is present
 
 ### B. Lifecycle semantics
 The adapter must respect:
@@ -192,6 +194,7 @@ Portable resource identities should not depend on a specific installed location 
 To run PALS correctly, an adapter should consult:
 - `.paul/STATE.md`
 - `.paul/PROJECT.md`
+- `.paul/PRD.md` (when present; selective deeper context)
 - `.paul/ROADMAP.md`
 - current plan/summary files
 - active module configuration
@@ -199,6 +202,8 @@ To run PALS correctly, an adapter should consult:
 - module manifests and relevant resources
 
 Adapters should avoid relying on hidden conversational context when the same information should exist in artifacts.
+
+Adapters should treat `PROJECT.md` as the default landing brief and `PRD.md` as additive deeper context. Legacy projects may not have `PRD.md`; when present, it must remain a shared portable artifact rather than a harness-specific extension.
 
 ---
 
@@ -229,6 +234,7 @@ At minimum, it should be possible to verify that the adapter:
 - preserves lifecycle consistency
 - creates matching plan/summary pairs
 - updates state coherently
+- preserves layered project-definition semantics when `PRD.md` is present
 - does not introduce harness-specific state into `.paul/`
 
 ---

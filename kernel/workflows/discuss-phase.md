@@ -20,7 +20,8 @@ After discussion, routes to /paul:plan (plan-phase).
 
 <required_reading>
 .paul/STATE.md
-.paul/PROJECT.md (current requirements and progress)
+.paul/PROJECT.md (hot-path requirements and progress brief)
+.paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail help the discussion)
 .paul/ROADMAP.md (phase scope and goals)
 </required_reading>
 
@@ -109,7 +110,8 @@ This gives user context for the discussion.
 6. Apply mode guidance:
    - exploratory → allow broader shaping before converging on plan-ready goals
    - direct-requirements → stay close to the user's stated scope and focus on clarifying + prioritizing it
-7. Store `collaboration_level` and `planning_mode` for the phase handoff file.
+7. Use `.paul/PROJECT.md` as the default brief and consult `.paul/PRD.md` only when richer product framing, deferred items, assumptions, open questions, or dependency detail materially help the discussion
+8. Store `collaboration_level` and `planning_mode` for the phase handoff file.
 </step>
 
 <step name="explore_goals">
