@@ -105,12 +105,11 @@ Common issues and how to fix them. Each entry follows **Symptom → Cause → Fi
 ---
 
 ### Handoff file not found on resume
-
 **Symptom:** `/paul:resume` references a handoff file that doesn't exist.
 
-**Cause:** Handoff was archived or deleted. Check `.paul/handoffs/archive/`.
+**Cause:** Handoff was archived, deleted, or the referenced active path is stale.
 
-**Fix:** Resume works without a handoff — it falls back to STATE.md and loop position. If you need the handoff content, check the archive directory.
+**Fix:** Check both `.paul/` and `.paul/handoffs/archive/`. Resume can still use archived handoffs as fallback context, and if none exist it falls back to STATE.md and loop position.
 
 ---
 

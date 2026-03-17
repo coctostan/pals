@@ -27,28 +27,33 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.6 Collaborative Planning & PRD Depth**
-Status: ✅ Complete
-Completed: 2026-03-17
-Phases: 3 of 3 complete
+**v2.7 Module Reality Check & Visibility**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 65 | Research & Current-State Audit | 1 | ✅ Complete | 2026-03-17 |
-| 66 | Collaborative Planning Model | 1 planned, 1 completed | ✅ Complete | 2026-03-17 |
-| 67 | Onboarding & PRD Depth | 2 planned, 2 completed | ✅ Complete | 2026-03-17 |
+| 68 | Execution Audit | 1 planned | Planning | - |
+| 69 | Gap Fixes | TBD | Not started | - |
+| 70 | Visibility UX | TBD | Not started | - |
+| 71 | Recommendations | TBD | Not started | - |
 
-### Phase 65: Research & Current-State Audit (Complete)
-Focus: Investigate current skill + markdown workflow behavior, examine industry best practices such as design trees and structured requirements discovery, and identify collaboration gaps plus interoperability constraints. Completed.
-Plans: 1 planned, 1 completed (`65-01-PLAN.md` → `65-01-SUMMARY.md`)
+### Phase 68: Execution Audit (Planning)
+Focus: Inspect every module invocation path, trace what actually fires during PLAN/APPLY/UNIFY, and publish findings before any fixes are made.
+Plans: 1 planned, 0 completed (`68-01-PLAN.md`)
 
-### Phase 66: Collaborative Planning Model (Complete)
-Focus: Define low/medium/high collaboration behavior, add project default plus per-run override, and establish the pre-plan review prompt with its 4-option review menu. Completed.
-Plans: 1 planned, 1 completed (`66-01-PLAN.md` → `66-01-SUMMARY.md`)
-### Phase 67: Onboarding & PRD Depth (Complete)
-Focus: Strengthen onboarding into a fuller PRD / requirements artifact, preserve explicit requirements/constraints/open questions/deferred items, and align docs, validation, and interoperability expectations. Completed.
-Plans: 2 planned, 2 completed (`67-01-PLAN.md` → `67-01-SUMMARY.md`, `67-02-PLAN.md` → `67-02-SUMMARY.md`) — layered onboarding/artifact model implemented and reconciled across workflows, templates, docs, and validation
+### Phase 69: Gap Fixes
+Focus: Implement the minimum changes needed to close only the module-execution gaps confirmed by the audit.
+Plans: TBD (defined during /skill:paul-plan)
+
+### Phase 70: Visibility UX
+Focus: Add live module status indicators in the UX/TUI and make module participation visible while flows are running.
+Plans: TBD (defined during /skill:paul-plan)
+
+### Phase 71: Recommendations
+Focus: Produce per-module keep/improve/merge/remove recommendations and ensure end reports summarize module participation.
+Plans: TBD (defined during /skill:paul-plan)
 ## Next Milestone
-Run /skill:paul-discuss or /skill:paul-milestone to define.
+Define after v2.7 is complete.
 
 ---
 
@@ -284,4 +289,4 @@ Run /skill:paul-discuss or /skill:paul-milestone to define.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-17 — v2.6 milestone completed; ready for next milestone definition*
+*Last updated: 2026-03-17 — v2.7 Phase 68 planned; awaiting APPLY*
