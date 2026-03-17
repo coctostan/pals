@@ -44,6 +44,23 @@ After create-milestone, project is ready for first phase PLAN.
    - Proceed to step 2 (get_milestone_info)
 </step>
 
+<step name="determine_planning_posture">
+**Set the collaboration depth before milestone creation.**
+
+1. If `MILESTONE-CONTEXT.md` exists, look for carried metadata:
+   - `Planning Mode`
+   - `Collaboration Level`
+   - `Suggested Review Path`
+2. If no collaboration level is carried in the handoff, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`
+3. Offer a quick override if the user wants to adjust collaboration before roadmap changes
+4. If no planning mode is available from the handoff, ask whether this run is exploratory or direct-requirements
+5. Apply collaboration guidance while asking any remaining milestone questions:
+   - low → minimal probing
+   - medium → clarify constraints and phase grouping
+   - high → also probe assumptions, risks, and alternatives where helpful
+6. Store the effective `planning_mode` and `collaboration_level` for review + reporting.
+</step>
+
 <step name="get_milestone_info">
 **Only if no MILESTONE-CONTEXT.md exists.**
 
@@ -81,6 +98,27 @@ For each phase, derive:
 - Phase number (next available from ROADMAP.md)
 - Phase name
 - Brief description
+</step>
+
+<step name="review_milestone_structure">
+Offer progressive review before writing milestone structure:
+
+```
+Would you like to see the plan before I update ROADMAP.md?
+
+[1] Quick recap
+[2] Detailed recap
+[3] Full plan
+[4] No review needed
+```
+
+- **Quick recap:** show milestone name, theme, phase count, and top constraints
+- **Detailed recap:** show milestone scope, phase mapping, constraints, and open questions
+- **Full plan:** show the full milestone section, phase table, and roadmap structure about to be written
+- **No review needed:** continue immediately
+
+If the user requests adjustments after a review, refine the milestone structure before writing files.
+Store the selected path as `review_preference`.
 </step>
 
 <step name="update_roadmap">
@@ -190,6 +228,7 @@ MILESTONE CREATED
 Milestone: {milestone_name}
 Theme: {milestone_theme}
 Phases: {phase_count}
+Mode: {planning_mode} | Collaboration: {collaboration_level}
 
 Created:
   .paul/phases/{phase-1-slug}/     ✓

@@ -225,6 +225,29 @@ else
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 2B: SHARED COLLABORATIVE PLANNING MODEL
+# ════════════════════════════════════════════════════════════════════
+
+section "SHARED COLLABORATIVE PLANNING MODEL"
+
+if grep -R 'default_collaboration' "$KERNEL_DIR/workflows" "$REPO_ROOT/kernel/commands/paul" >/dev/null 2>&1 \
+  && grep -R 'exploratory' "$KERNEL_DIR/workflows" "$REPO_ROOT/kernel/commands/paul" >/dev/null 2>&1 \
+  && grep -R 'direct-requirements' "$KERNEL_DIR/workflows" "$REPO_ROOT/kernel/commands/paul" >/dev/null 2>&1; then
+  tap_ok "Shared planning workflows document collaboration defaults and mode selection"
+else
+  tap_not_ok "Shared planning workflows document collaboration defaults and mode selection" "Expected default_collaboration plus exploratory/direct-requirements markers in shared kernel planning files"
+fi
+
+if grep -R 'Quick recap' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
+  && grep -R 'Detailed recap' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
+  && grep -R 'Full plan' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
+  && grep -R 'No review needed' "$KERNEL_DIR/workflows" >/dev/null 2>&1; then
+  tap_ok "Shared planning workflows expose the 4-option review menu across harnesses"
+else
+  tap_not_ok "Shared planning workflows expose the 4-option review menu across harnesses" "Expected review-menu wording in shared kernel workflows"
+fi
+
+# ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: ARTIFACT SPEC COMPLIANCE
 # ════════════════════════════════════════════════════════════════════
 

@@ -27,10 +27,22 @@ $ARGUMENTS
 
 <process>
 Follow workflow: kernel/workflows/plan-phase.md
+
+The planning workflow now:
+1. Reuses discussion handoff metadata when available
+2. Applies the project default collaboration level with per-run override
+3. Distinguishes exploratory vs direct-requirements planning mode
+4. Builds the executable plan at the appropriate collaboration depth
+5. Offers the review menu before APPLY routing:
+   - Quick recap
+   - Detailed recap
+   - Full plan
+   - No review needed
 </process>
 
 <success_criteria>
 - [ ] PLAN.md created in correct phase directory
-- [ ] All acceptance criteria defined
+- [ ] Collaboration level and planning mode determined for the run
+- [ ] Review menu offered before APPLY routing
 - [ ] STATE.md updated with loop position
 </success_criteria>

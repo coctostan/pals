@@ -2,7 +2,7 @@
 
 Template for `.paul/MILESTONE-CONTEXT.md` — temporary handoff from discuss-milestone to create-milestone.
 
-**Purpose:** Persist milestone discussion context across `/clear` boundaries. This is a handoff artifact, not permanent documentation.
+**Purpose:** Persist milestone discussion context across `/clear` boundaries while carrying the planning posture chosen for that run.
 
 ---
 
@@ -13,6 +13,9 @@ Template for `.paul/MILESTONE-CONTEXT.md` — temporary handoff from discuss-mil
 
 **Generated:** {{DATE}}
 **Status:** Ready for /paul:create-milestone
+**Planning Mode:** exploratory | direct-requirements
+**Collaboration Level:** low | medium | high
+**Suggested Review Path:** Quick recap | Detailed recap | Full plan | No review needed
 
 ## Features to Build
 
@@ -68,6 +71,7 @@ Template for `.paul/MILESTONE-CONTEXT.md` — temporary handoff from discuss-mil
 │                                                                  │
 │  1. /paul:discuss-milestone                                      │
 │     └─> Explores features, scope, constraints                    │
+│     └─> Captures planning mode + collaboration level             │
 │     └─> Creates MILESTONE-CONTEXT.md at end                      │
 │                                                                  │
 │  2. /clear (safe now)                                            │
@@ -88,8 +92,9 @@ Template for `.paul/MILESTONE-CONTEXT.md` — temporary handoff from discuss-mil
 
 1. **Created by:** `discuss-milestone` command at end of discussion
 2. **Consumed by:** `create-milestone` command
-3. **Deleted after:** Milestone successfully created
-4. **Not committed:** Exclude from version control (temporary artifact)
+3. **Carries:** planning mode, collaboration level, and preferred review depth
+4. **Deleted after:** Milestone successfully created
+5. **Not committed:** Exclude from version control (temporary artifact)
 
 ---
 
@@ -99,6 +104,7 @@ Template for `.paul/MILESTONE-CONTEXT.md` — temporary handoff from discuss-mil
 
 | Section | Include | Purpose |
 |---------|---------|---------|
+| Planning posture | Mode + collaboration level + review preference | Keeps milestone creation aligned with the discussion depth |
 | Features | User-facing capabilities to build | Defines milestone substance |
 | Scope | Version number, theme, phase count | Frames the work |
 | Phase Mapping | Rough feature-to-phase breakdown | Guides create-milestone |
@@ -114,7 +120,7 @@ Template for `.paul/MILESTONE-CONTEXT.md` — temporary handoff from discuss-mil
 | Code architecture decisions | Research phase work |
 | Exhaustive task lists | PLAN.md level of detail |
 
-**Key principle:** This captures the *what* and *why*, not the *how*.
+**Key principle:** This captures the *what* and *why*, plus the collaboration posture used to reach it — not the full implementation plan.
 
 ---
 
@@ -151,6 +157,9 @@ STATE.md: Updated with new phase position
 
 **Generated:** 2026-01-29
 **Status:** Ready for /paul:create-milestone
+**Planning Mode:** exploratory
+**Collaboration Level:** high
+**Suggested Review Path:** Detailed recap
 
 ## Features to Build
 

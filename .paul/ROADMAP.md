@@ -29,24 +29,23 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.6 Collaborative Planning & PRD Depth**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 65 | Research & Current-State Audit | 1 | ✅ Complete | 2026-03-17 |
-| 66 | Collaborative Planning Model | TBD | Ready to plan | - |
-| 67 | Onboarding & PRD Depth | TBD | Not started | - |
+| 66 | Collaborative Planning Model | 1 planned, 1 completed | ✅ Complete | 2026-03-17 |
+| 67 | Onboarding & PRD Depth | TBD | Ready to plan | - |
 
 ### Phase 65: Research & Current-State Audit (Complete)
 Focus: Investigate current skill + markdown workflow behavior, examine industry best practices such as design trees and structured requirements discovery, and identify collaboration gaps plus interoperability constraints. Completed.
 Plans: 1 planned, 1 completed (`65-01-PLAN.md` → `65-01-SUMMARY.md`)
 
-### Phase 66: Collaborative Planning Model
-Focus: Define low/medium/high collaboration behavior, add project default plus per-run override, and establish the pre-plan review prompt with its 4-option review menu.
-Plans: TBD (defined during /paul:plan)
-
+### Phase 66: Collaborative Planning Model (Complete)
+Focus: Define low/medium/high collaboration behavior, add project default plus per-run override, and establish the pre-plan review prompt with its 4-option review menu. Completed.
+Plans: 1 planned, 1 completed (`66-01-PLAN.md` → `66-01-SUMMARY.md`)
 ### Phase 67: Onboarding & PRD Depth
 Focus: Strengthen onboarding into a fuller PRD / requirements artifact, preserve explicit requirements/constraints/open questions/deferred items, and align docs, validation, and interoperability expectations.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next: `/skill:paul-plan`)
 ## Next Milestone
 Run /skill:paul-discuss or /skill:paul-milestone after v2.6 is complete.
 
@@ -274,4 +273,4 @@ Run /skill:paul-discuss or /skill:paul-milestone after v2.6 is complete.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-17 — Phase 65 complete; transitioned to Phase 66 planning*
+*Last updated: 2026-03-17 — Phase 66 planned; awaiting approval*

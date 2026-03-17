@@ -77,6 +77,39 @@ Still planned:
 This gives user context for the discussion.
 </step>
 
+<step name="determine_planning_posture">
+**Set the collaboration depth before shaping milestone scope.**
+
+1. Read `pals.json` if it exists and extract `planning.default_collaboration`
+2. Determine the effective default:
+   - project default from `pals.json`
+   - fallback = `medium`
+3. Ask whether this run should keep the default or override it:
+   ```
+   Planning collaboration level: {default_collaboration} (project default)
+
+   [1] Keep {default_collaboration}
+   [2] low — minimal probing
+   [3] medium — clarify constraints and open questions
+   [4] high — deeper shaping, assumptions, alternatives, and risks
+   ```
+4. Ask whether this milestone is exploratory or direct-requirements:
+   ```
+   Is this milestone discussion exploratory or direct-requirements?
+
+   [1] Exploratory — we still need to shape options and tradeoffs
+   [2] Direct-requirements — the destination is mostly known; focus on clarifying and structuring it
+   ```
+5. Apply collaboration guidance to the remaining discussion:
+   - low → ask the core feature question and only essential follow-ups
+   - medium → clarify constraints, success conditions, and open questions
+   - high → also probe assumptions, milestone-level risks, and meaningful alternatives
+6. Apply mode guidance:
+   - exploratory → allow broader shaping before converging on milestone structure
+   - direct-requirements → stay close to the user's stated scope and focus on clarifying + prioritizing it
+7. Store `collaboration_level` and `planning_mode` for the milestone handoff file.
+</step>
+
 <step name="explore_features">
 **The core question — features first:**
 
@@ -122,6 +155,27 @@ From the features discussed, derive:
 Confirm with user before proceeding.
 </step>
 
+<step name="review_scope">
+Offer progressive review before writing the milestone handoff:
+
+```
+Would you like to review this before I save the milestone context?
+
+[1] Quick recap
+[2] Detailed recap
+[3] Full plan
+[4] No review needed
+```
+
+- **Quick recap:** show the milestone goal, main feature groups, and biggest constraints
+- **Detailed recap:** show features, proposed phases, constraints, open questions, and assumptions
+- **Full plan:** show the full milestone-context draft / phase mapping that will be written
+- **No review needed:** continue immediately
+
+If the user asks for changes after a review, keep discussing instead of routing forward.
+Store the selected path as `review_preference`.
+</step>
+
 <step name="write_context">
 Create `.paul/MILESTONE-CONTEXT.md`:
 
@@ -130,6 +184,9 @@ Create `.paul/MILESTONE-CONTEXT.md`:
 
 **Generated:** {date}
 **Status:** Ready for /paul:milestone
+**Planning Mode:** {planning_mode}
+**Collaboration Level:** {collaboration_level}
+**Suggested Review Path:** {review_preference}
 
 ## Features to Build
 
@@ -180,6 +237,7 @@ DISCUSSION COMPLETE
 Milestone: {milestone_name}
 Features: {feature_count}
 Phases: {phase_count}
+Mode: {planning_mode} | Collaboration: {collaboration_level}
 
 Context saved for handoff.
 

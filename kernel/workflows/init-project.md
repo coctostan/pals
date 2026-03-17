@@ -95,6 +95,39 @@ Before planning, I need to understand what you're building.
 ```
 </step>
 
+<step name="determine_planning_posture">
+**Set the planning posture for onboarding.**
+
+1. Determine the project default collaboration level:
+   - If `pals.json` already exists and `planning.default_collaboration` is set, use it
+   - Otherwise use `medium`
+2. Ask whether this onboarding run is exploratory or direct-requirements:
+   ```
+   How should we shape this onboarding run?
+
+   [1] Exploratory — the problem, users, or options still need shaping
+   [2] Direct-requirements — you already know the requirements and want to move quickly
+   ```
+3. Ask for the planning collaboration level for this run and project default:
+   ```
+   Planning collaboration level?
+   Current default: {default_collaboration}
+
+   [1] low — minimal probing, keep momentum high
+   [2] medium — clarify ambiguities, constraints, and success conditions
+   [3] high — deeper shaping, assumptions, alternatives, and risks when useful
+   ```
+4. Apply this collaboration guidance to the remaining init conversation:
+   - low → ask only for missing essentials or blockers
+   - medium → clarify ambiguities and constraints before moving on
+   - high → also probe target users, assumptions, alternatives, and risks when genuinely helpful
+5. Store:
+   - `planning_mode = exploratory | direct-requirements`
+   - `collaboration_level = low | medium | high`
+   - `default_collaboration = low | medium | high`
+6. Note that later planning workflows may keep the project default or override it per run.
+</step>
+
 <step name="gather_core_value">
 **Ask ONE question at a time. Wait for response before next question.**
 
@@ -437,6 +470,9 @@ Wait for user response.
   "integrations": {
     "sonarqube": { "enabled": false, "project_key": "" }
   },
+  "planning": {
+    "default_collaboration": "medium"
+  },
   "preferences": {
     "auto_commit": false,
     "verbose_output": false
@@ -445,6 +481,7 @@ Wait for user response.
 ```
 
 Adjust `enabled` values based on user's toggle selections.
+Set `planning.default_collaboration` to the value chosen in determine_planning_posture (fallback: `medium`).
 If SonarQube was enabled in the earlier integrations step, set `integrations.sonarqube.enabled: true` and populate `project_key`.
 Git section will be populated by the configure_git step (next).
 
@@ -567,6 +604,7 @@ Created:
   .paul/phases/           ✓
 
 Git: [remote URL or "local only"] | [branching strategy] | push:[yes/no] PR:[yes/no] CI:[yes/no]
+Planning default: {default_collaboration} | This run: {planning_mode}, {collaboration_level} collaboration
 
 ────────────────────────────────────────
 ▶ NEXT: /paul:plan

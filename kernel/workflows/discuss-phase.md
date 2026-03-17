@@ -79,6 +79,39 @@ What was built: {summary}
 This gives user context for the discussion.
 </step>
 
+<step name="determine_planning_posture">
+**Set the collaboration depth before shaping phase scope.**
+
+1. Read `pals.json` if it exists and extract `planning.default_collaboration`
+2. Determine the effective default:
+   - project default from `pals.json`
+   - fallback = `medium`
+3. Ask whether this run should keep the default or override it:
+   ```
+   Planning collaboration level: {default_collaboration} (project default)
+
+   [1] Keep {default_collaboration}
+   [2] low — minimal probing
+   [3] medium — clarify constraints and success conditions
+   [4] high — deeper shaping, assumptions, alternatives, and risks
+   ```
+4. Ask whether this phase is exploratory or direct-requirements:
+   ```
+   Is this phase discussion exploratory or direct-requirements?
+
+   [1] Exploratory — we still need to shape the approach
+   [2] Direct-requirements — the destination is mostly known; focus on clarifying and structuring it
+   ```
+5. Apply collaboration guidance to the remaining discussion:
+   - low → ask only the essential follow-ups needed to create the handoff
+   - medium → clarify constraints, success conditions, and open questions
+   - high → also probe assumptions, edge cases, and meaningful alternative approaches
+6. Apply mode guidance:
+   - exploratory → allow broader shaping before converging on plan-ready goals
+   - direct-requirements → stay close to the user's stated scope and focus on clarifying + prioritizing it
+7. Store `collaboration_level` and `planning_mode` for the phase handoff file.
+</step>
+
 <step name="explore_goals">
 **The core question — goals first:**
 
@@ -137,10 +170,31 @@ From the discussion, derive:
 Confirm with user before proceeding.
 </step>
 
+<step name="review_context">
+Offer progressive review before writing the phase handoff:
+
+```
+Would you like to review this before I save the phase context?
+
+[1] Quick recap
+[2] Detailed recap
+[3] Full plan
+[4] No review needed
+```
+
+- **Quick recap:** show the phase goal, main approach, and biggest constraints
+- **Detailed recap:** show goals, approach notes, constraints, open questions, and assumptions
+- **Full plan:** show the full CONTEXT.md draft that will be written
+- **No review needed:** continue immediately
+
+If the user asks for changes after a review, keep discussing instead of routing forward.
+Store the selected path as `review_preference`.
+</step>
+
 <step name="write_context">
 Create `.paul/phases/{NN}-{name}/CONTEXT.md`:
 
-Use CONTEXT.md template format.
+Use CONTEXT.md template format. Include `Planning Mode`, `Collaboration Level`, and `Suggested Review Path` from the discussion.
 
 Display:
 ```
@@ -160,6 +214,7 @@ DISCUSSION COMPLETE
 
 Phase: {phase_number} — {phase_name}
 Goals: {goal_count}
+Mode: {planning_mode} | Collaboration: {collaboration_level}
 Status: Ready for planning
 
 Context saved for handoff.

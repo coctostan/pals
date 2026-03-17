@@ -11,6 +11,8 @@ Create or complete a milestone.
 
 **Create mode** (no active milestone or user requests new):
 - Define milestone name, theme, and phases
+- Reuse discussion handoff metadata when available
+- Offer review before writing milestone structure
 - Create phase directories in `.paul/phases/`
 - Update ROADMAP.md with milestone section
 - Update STATE.md with new position
@@ -26,27 +28,24 @@ Create or complete a milestone.
 1. Read project state:
    - File: `.paul/STATE.md`
    - File: `.paul/ROADMAP.md`
-
 2. Detect mode:
    - If no active milestone or user says "create" → create mode
    - If all phases complete or user says "complete" → complete mode
-
 3. For create mode, read:
    - File: `../workflows/create-milestone.md`
    - File: `.paul/MILESTONE-CONTEXT.md` (if exists, from prior discussion)
-
 4. For complete mode, read:
    - File: `../workflows/complete-milestone.md`
    - File: `.paul/MILESTONES.md`
-
 5. Follow the appropriate workflow
 
 ## Key Behavior
 
-- Check for MILESTONE-CONTEXT.md handoff from /skill:paul-discuss
-- If context exists, skip interactive questions
+- Check for MILESTONE-CONTEXT.md handoff from `/skill:paul-discuss`
+- If context exists, reuse planning mode / collaboration level before asking more questions
+- If context does not exist, fall back to the project planning default and allow override
+- Offer the 4-option review menu before committing roadmap changes in create mode
 - Clean up MILESTONE-CONTEXT.md after creating milestone
-- On complete: update all tracking artifacts
 
 ## Output
 

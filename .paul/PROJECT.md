@@ -116,7 +116,7 @@ All validated — see below.
 - ✓ Pi runtime context/event refinement — explicit command activation + `before_agent_start` primary bounded injection + support-only `context`, with updated Pi validation contract (93 checks passing) — Phase 62
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
-- [~] Collaborative planning & PRD depth — Phase 65 research complete; implementation planned for Phases 66-67 (v2.6)
+- [~] Collaborative planning & PRD depth — Phase 65 research complete; Phase 66 collaboration model implemented; Phase 67 onboarding / PRD-depth work remains (v2.6)
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -242,6 +242,8 @@ All validated — see below.
 | Keep artifact-first shared markdown workflows as lifecycle truth while improving collaborative definition behavior | 65 | Audit showed collaboration weaknesses come from workflow behavior and artifact population, not from the authority model itself |
 | Add low/medium/high collaboration levels plus project default and per-run override for planning work | 65 | Matches user need for adjustable collaboration depth across project, milestone, and phase planning |
 | Add a 4-option pre-plan review choice: quick recap, detailed recap, full plan, no review needed | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
+| Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserves artifact-first portability while making init/discuss/milestone/plan behavior more collaborative |
+| Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -260,4 +262,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-17 after Phase 65 completion and transition to Phase 66*
+*Last updated: 2026-03-17 after Phase 66 completion and transition to Phase 67*

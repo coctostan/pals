@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 66 planning ready
+**Current focus:** Phase 66 complete; ready to plan Phase 67 onboarding / PRD depth
 ## Current Position
 Milestone: v2.6 Collaborative Planning & PRD Depth
-Phase: 66 of 3 (Collaborative Planning Model)
+Phase: 67 of 3 (Onboarding & PRD Depth) — Ready to plan
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-17 — Phase 65 complete, transitioned to Phase 66
+Last activity: 2026-03-17T16:56:58Z — Phase 66 complete, transitioned to Phase 67
 Progress:
-- v2.6 Collaborative Planning & PRD Depth: [███░░░░░░░] 33%
-- Phase 65: [██████████] 100% ✓
+- v2.6 Collaborative Planning & PRD Depth: [███████░░░] 67%
+- Phase 67: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ○        ○        ○     [Ready for first PLAN in Phase 67]
 ```
 
 ## Accumulated Context
@@ -63,6 +63,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-17: Keep artifact-first shared markdown workflows as lifecycle truth while improving collaborative definition behavior | 65 | Keeps v2.6 focused on workflow semantics and artifact population rather than architectural replacement |
 | 2026-03-17: Add low/medium/high collaboration levels plus project default and per-run override for planning work | 65 | Establishes the bounded collaboration model for upcoming implementation phases |
 | 2026-03-17: Add a 4-option pre-plan review choice (quick recap, detailed recap, full plan, no review needed) | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
+| 2026-03-17: Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserves artifact-first portability while making init/discuss/milestone/plan behavior more collaborative |
+| 2026-03-17: Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -71,8 +73,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
-Last commit: HEAD (feat(65-research-current-state-audit): complete phase 65 research audit)
-
+| None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -83,19 +84,20 @@ Last commit: HEAD (feat(65-research-current-state-audit): complete phase 65 rese
 - None active
 ### Git State
 Branch: main
-Last commit: HEAD (feat(65-research-current-state-audit): complete phase 65 research audit)
-Feature branches merged: none (direct-to-main for Phase 65)
+Last commit: HEAD (feat(66-collaborative-planning-model): implement collaborative planning model)
+Feature branches merged: none
 Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
-Last session: 2026-03-17T00:35:00-04:00
-Stopped at: Phase 65 complete, ready to plan Phase 66
-Next action: /skill:paul-plan for Phase 66
-Resume file: .paul/phases/65-research-current-state-audit/65-01-SUMMARY.md
+Last session: 2026-03-17T16:56:58Z
+Stopped at: Phase 66 complete, ready to plan Phase 67
+Next action: Run /skill:paul-plan for Phase 67 (Onboarding & PRD Depth)
+Resume file: .paul/ROADMAP.md
 Git strategy: main
 Resume context:
-- Phase 65 is complete with summary at `.paul/phases/65-research-current-state-audit/65-01-SUMMARY.md`
-- Research established the current-state audit, best-practices synthesis, and recommended planning model
-- Phase 66 should implement the collaboration-level model and 4-option review flow
-- Phase 67 remains the follow-on phase for onboarding and PRD depth
+- Phase 66 reconciliation summary: `.paul/phases/66-collaborative-planning-model/66-01-SUMMARY.md`
+- Shared planning workflows now support `planning.default_collaboration`, per-run override, exploratory vs direct-requirements mode, and the 4-option review menu
+- Pi wrapper/docs/validation surfaces now align with the collaborative planning behavior, including guided review-menu routing
+- Validation passed during Phase 66 APPLY: `bash tests/pi-end-to-end-validation.sh && bash tests/cross-harness-validation.sh`
+- Next work is Phase 67 onboarding / PRD depth, which will build on the new collaboration model without changing artifact-first lifecycle truth
 ---
 *STATE.md — Updated after every significant action*

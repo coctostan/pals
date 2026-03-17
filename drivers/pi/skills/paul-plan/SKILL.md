@@ -14,7 +14,7 @@ Produces a plan that contains everything needed for execution:
 - Acceptance criteria (Given/When/Then)
 - Tasks with files, action, verify, and done criteria
 - Boundaries (protected files, scope limits)
-- Verification checklist
+- Review routing before APPLY
 
 ## How to Execute
 
@@ -22,21 +22,20 @@ Produces a plan that contains everything needed for execution:
    - File: `.paul/STATE.md`
    - File: `.paul/ROADMAP.md`
    - File: `.paul/PROJECT.md`
-
 2. Read the full workflow definition:
    - File: `../workflows/plan-phase.md`
-
 3. Read the plan template:
    - File: `../templates/PLAN.md`
-
 4. Read the plan format reference:
    - File: `../references/plan-format.md`
-
 5. Follow the plan-phase workflow:
    - Validate preconditions (loop ready for PLAN)
    - Identify which phase is next
-   - Analyze scope and estimate tasks
+   - Reuse discussion handoff metadata when available
+   - Apply project default collaboration with per-run override
+   - Distinguish exploratory vs direct-requirements mode
    - Create PLAN.md in `.paul/phases/{NN}-{name}/`
+   - Offer Quick recap / Detailed recap / Full plan / No review needed
    - Update STATE.md loop position to PLAN complete
 
 ## Key Behavior
@@ -46,6 +45,7 @@ Produces a plan that contains everything needed for execution:
 - Every task needs: files, action, verify, done
 - Clarity test: could someone with no context execute this plan?
 - If more than 3 tasks needed, split into multiple plans
+- Review menu happens before APPLY routing, not after execution begins
 
 ## Output
 
