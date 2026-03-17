@@ -1,5 +1,5 @@
 <purpose>
-Initialize PAUL structure in a new project. Creates .paul/ directory with PROJECT.md, ROADMAP.md, STATE.md, and phases/ directory. Gathers project context conversationally before routing to planning.
+Initialize PAUL structure in a new project. Creates .paul/ directory with PROJECT.md, PRD.md, ROADMAP.md, STATE.md, and phases/ directory. Gathers layered project/product context conversationally before routing to planning.
 </purpose>
 
 <when_to_use>
@@ -95,59 +95,125 @@ Before planning, I need to understand what you're building.
 ```
 </step>
 
-<step name="gather_core_value">
-**Ask ONE question at a time. Wait for response before next question.**
+<step name="determine_planning_posture">
+**Set the planning posture for onboarding.**
 
-**Question 1: Core Value**
-```
-What's the core value this project delivers?
+1. Determine the project default collaboration level:
+   - If `pals.json` already exists and `planning.default_collaboration` is set, use it
+   - Otherwise use `medium`
+2. Ask whether this onboarding run is exploratory or direct-requirements:
+   ```
+   How should we shape this onboarding run?
 
-(Example: "Users can track expenses and see spending patterns")
-```
+   [1] Exploratory — the problem, users, or options still need shaping
+   [2] Direct-requirements — you already know the requirements and want to move quickly
+   ```
+3. Ask for the planning collaboration level for this run and project default:
+   ```
+   Planning collaboration level?
+   Current default: {default_collaboration}
 
-Wait for user response. Store as `core_value`.
-</step>
-
-<step name="gather_description">
-**Question 2: What are you building?**
-```
-What are you building? (1-2 sentences)
-
-(Example: "A CLI tool for managing Docker containers")
-```
-
-Wait for user response. Store as `description`.
+   [1] low — minimal probing, keep momentum high
+   [2] medium — clarify ambiguities, constraints, and success conditions
+   [3] high — deeper shaping, assumptions, alternatives, and risks when useful
+   ```
+4. Apply this collaboration guidance to the remaining init conversation:
+   - low → ask only for missing essentials or blockers
+   - medium → clarify ambiguities and constraints before moving on
+   - high → also probe target users, assumptions, alternatives, and risks when genuinely helpful
+5. Store:
+   - `planning_mode = exploratory | direct-requirements`
+   - `collaboration_level = low | medium | high`
+   - `default_collaboration = low | medium | high`
+6. Note that later planning workflows may keep the project default or override it per run.
 </step>
 
 <step name="populate_from_codebase">
 **Only runs if `brownfield = true` AND `codebase_mapped = true`.**
 
-If codebase was mapped, read the findings to enrich the conversational flow:
+If codebase was mapped, read the findings to enrich the layered onboarding flow:
 
-1. Read `.paul/codebase/STACK.md` — extract primary language, framework, key dependencies
-2. Read `.paul/codebase/ARCHITECTURE.md` — extract architectural pattern, entry points
-3. Read `.paul/codebase/CONVENTIONS.md` — extract naming conventions, code style
-
-4. When asking `gather_core_value` and `gather_description`, provide context hints:
-   ```
-   From your codebase, I can see:
-   - Language: [primary language from STACK.md]
-   - Framework: [framework from STACK.md]
-   - Architecture: [pattern from ARCHITECTURE.md]
-
-   With that context...
-   ```
-
-5. Pre-populate `create_project_md` with codebase findings:
-   - Add a `## Technology` section with stack summary
-   - Add discovered constraints to `## Constraints` (e.g., existing patterns to preserve)
-   - Reference `.paul/codebase/` in the PROJECT.md for detailed context
+1. Read `.paul/codebase/STACK.md` — extract primary language, framework, and notable dependencies
+2. Read `.paul/codebase/ARCHITECTURE.md` — extract current architecture, entry points, and existing capabilities
+3. Read `.paul/codebase/CONVENTIONS.md` and `.paul/codebase/INTEGRATIONS.md` — extract constraints, integrations, and patterns to preserve
+4. Use those findings as evidence while asking the user about:
+   - current-state realities that must remain true
+   - dependencies / integrations that shape the solution
+   - constraints and conventions that should carry into planning
+   - the future product direction beyond what today's code already does
+5. Pre-populate the durable artifacts with the map findings:
+   - `PROJECT.md` gets concise current-state, scope, constraint, and link context
+   - `PRD.md` gets current-state vs desired-state framing, dependency detail, assumptions, and supporting references
+   - Reference `.paul/codebase/` for detailed evidence instead of duplicating the full map
 
 **If `brownfield = false` or `codebase_mapped = false`:** skip this step entirely.
 </step>
 
+<step name="gather_identity_and_framing">
+**Ask ONE question at a time. Wait for response before next question.**
+
+**Question 1: What is this project?**
+```
+What are you building, and how would you describe it in 1-2 sentences?
+
+(Example: "A CLI tool for managing Docker containers across multiple environments")
+```
+
+Wait for user response. Store as `description`.
+</step>
+
+<step name="gather_users_and_needs">
+**Question 2: Who is this for?**
+```
+Who are the primary users, and what do they need from this?
+
+(Example: "Platform engineers who need a safer, faster way to manage container fleets")
+```
+
+Wait for user response. Store as `target_users_and_needs`.
+</step>
+
+<step name="gather_problem_opportunity">
+**Question 3: What problem or opportunity matters most?**
+```
+What problem or opportunity is this addressing, and why does it matter now?
+
+(If helpful, answer in terms of pain, opportunity, urgency, or desired outcome.)
+```
+
+Wait for user response. Store as `problem_opportunity` and `why_now`.
+</step>
+
+<step name="gather_scope_shape">
+**Question 4: What is in and out?**
+```
+What is must-have for the first meaningful outcome, and what should be explicitly deferred or out of scope?
+```
+
+Wait for user response. Store as `must_have_scope`, `deferred_scope`, and `out_of_scope`.
+</step>
+
+<step name="gather_constraints_questions">
+**Question 5: What else should the durable product definition remember?**
+```
+What constraints, dependencies, assumptions, open questions, or success signals should I capture?
+
+{If brownfield context is available, also confirm the important current-state realities and integrations I found in the codebase map.}
+```
+
+Wait for user response. Store as:
+- `constraints`
+- `dependencies`
+- `assumptions`
+- `open_questions`
+- `success_signals`
+- `current_state_notes`
+
+Derive `core_value` as a concise one-line summary of the main user + problem + outcome from the answers above. Confirm with the user if the synthesis is uncertain.
+</step>
+
 <step name="gather_project_name">
-**Question 3: Project name**
+**Question 6: Project name**
 
 Infer from:
 1. Directory name
@@ -165,7 +231,7 @@ Store as `project_name`.
 </step>
 
 <step name="create_project_md">
-Create `.paul/PROJECT.md` with gathered information:
+Create `.paul/PROJECT.md` as the compact landing brief with gathered information:
 
 ```markdown
 # Project: [project_name]
@@ -176,29 +242,111 @@ Create `.paul/PROJECT.md` with gathered information:
 ## Core Value
 [core_value]
 
-## Requirements
+## Current State
+| Attribute | Value |
+|-----------|-------|
+| Version | 0.1.0 |
+| Status | Discovery / Onboarding |
+| Last Updated | [YYYY-MM-DD] |
 
-### Must Have
-- [To be defined during planning]
+**Current system summary:**
+- [current_state_notes or "New project"]
 
-### Should Have
-- [To be defined during planning]
+## Scope Snapshot
+### Active
+- [must_have_scope]
 
-### Nice to Have
-- [To be defined during planning]
+### Planned
+- [deferred_scope or "To be refined during planning"]
+
+### Out of Scope
+- [out_of_scope or "None explicitly yet"]
+
+## Target Users
+**Primary:** [target_users_and_needs summary]
 
 ## Constraints
-- [To be identified during planning]
+- [top constraints]
 
-## Success Criteria
-- [core_value] is achieved
-- [To be refined during planning]
+## Success Metrics
+- [success_signals or "To be refined during planning"]
+
+## Key Decisions
+| Decision | Rationale | Date | Status |
+|----------|-----------|------|--------|
+| Layered artifact model (`PROJECT.md` + `PRD.md`) adopted at init | Keep hot-path context concise while preserving deeper product definition | [YYYY-MM-DD] | Active |
+
+## Links
+- `PRD.md` — deeper product-definition context
+- `.paul/ROADMAP.md` — milestone and phase structure
+- `.paul/codebase/` — brownfield evidence (if available)
 
 ---
 *Created: [timestamp]*
 ```
 
-Note: Requirements and constraints are populated during planning, not init.
+Note: `PROJECT.md` should stay intentionally concise. Put deeper product framing, deferred items, assumptions, open questions, and dependency detail in `PRD.md`.
+</step>
+
+<step name="create_prd_md">
+Create `.paul/PRD.md` with the deeper product-definition context gathered during onboarding:
+
+```markdown
+# Product Requirements: [project_name]
+
+## Problem / Opportunity
+[problem_opportunity]
+
+## Why Now
+[why_now]
+
+## Current State / Existing System Context
+[current_state_notes or brownfield evidence summary]
+
+## Desired Outcome
+[desired outcome implied by core_value and must_have_scope]
+
+## Target Users and Needs
+[target_users_and_needs]
+
+## Requirements
+### Must Have
+- [must_have_scope]
+
+### Should Have / Nice to Have
+- [deferred_scope or "To be refined during planning"]
+
+### Explicitly Deferred
+- [deferred_scope or "None captured yet"]
+
+### Out of Scope
+- [out_of_scope or "None explicitly yet"]
+
+## Constraints & Dependencies
+### Constraints
+- [constraints]
+
+### Dependencies / Integrations
+- [dependencies or brownfield integrations]
+
+## Assumptions
+- [assumptions or "None captured yet"]
+
+## Open Questions
+- [open_questions or "None captured yet"]
+
+## Recommended Direction
+[initial synthesis of the intended direction from onboarding]
+
+## Supporting References
+- `.paul/PROJECT.md`
+- `.paul/codebase/` (if available)
+
+---
+*Created: [timestamp]*
+```
+
+Note: `PRD.md` is the deeper, selectively-read artifact for planning, discussion, research, and assumptions work.
 </step>
 
 <step name="create_roadmap_md">
@@ -437,6 +585,9 @@ Wait for user response.
   "integrations": {
     "sonarqube": { "enabled": false, "project_key": "" }
   },
+  "planning": {
+    "default_collaboration": "medium"
+  },
   "preferences": {
     "auto_commit": false,
     "verbose_output": false
@@ -445,6 +596,7 @@ Wait for user response.
 ```
 
 Adjust `enabled` values based on user's toggle selections.
+Set `planning.default_collaboration` to the value chosen in determine_planning_posture (fallback: `medium`).
 If SonarQube was enabled in the earlier integrations step, set `integrations.sonarqube.enabled: true` and populate `project_key`.
 Git section will be populated by the configure_git step (next).
 
@@ -560,6 +712,7 @@ Core value: [core_value]
 
 Created:
   .paul/PROJECT.md        ✓
+  .paul/PRD.md            ✓
   .paul/ROADMAP.md        ✓
   .paul/STATE.md          ✓
   pals.json               ✓  ([N] modules enabled)
@@ -567,6 +720,7 @@ Created:
   .paul/phases/           ✓
 
 Git: [remote URL or "local only"] | [branching strategy] | push:[yes/no] PR:[yes/no] CI:[yes/no]
+Planning default: {default_collaboration} | This run: {planning_mode}, {collaboration_level} collaboration
 
 ────────────────────────────────────────
 ▶ NEXT: /paul:plan
@@ -587,7 +741,8 @@ Always show pals.json with module count.
 
 <output>
 - `.paul/` directory structure
-- `.paul/PROJECT.md` (populated from conversation)
+- `.paul/PROJECT.md` (compact landing brief populated from conversation)
+- `.paul/PRD.md` (deeper product-definition artifact populated from conversation)
 - `.paul/ROADMAP.md` (skeleton for planning)
 - `.paul/STATE.md` (initialized state)
 - `pals.json` (module configuration, git config, and user's selections)

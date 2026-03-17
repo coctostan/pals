@@ -141,14 +141,14 @@ Usage: `/paul:pause "switching to other project"`
 
 ### `/paul:resume [handoff-path]`
 Restore context from handoff and continue work.
-
-- Reads STATE.md and any HANDOFF files
+- Reads STATE.md and active HANDOFF files
+- Falls back to archived handoffs when needed
 - Determines current loop position
 - Suggests exactly ONE next action
-- Archives consumed handoffs
-
+- Archives consumed active handoffs
 Usage: `/paul:resume`
 Usage: `/paul:resume .paul/HANDOFF-context.md`
+Usage: `/paul:resume .paul/handoffs/archive/HANDOFF-context.md`
 
 ---
 

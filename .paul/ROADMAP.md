@@ -27,33 +27,47 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.5 Pi Runtime Coherence & Guided Flow**
-Status: ✅ Complete
-Completed: 2026-03-16
-Phases: 3 of 3 complete
+**v2.7 Module Reality Check & Visibility**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 62 | Runtime Context & Event Refinement | 1 | ✅ Complete | 2026-03-16 |
-| 63 | Guided Workflow UX | 1 | ✅ Complete | 2026-03-16 |
-| 64 | Polish, Validation & UX Readability | 1 | ✅ Complete | 2026-03-16 |
+| 68 | Execution Audit | 1 planned | Planning | - |
+| 69 | Gap Fixes | TBD | Not started | - |
+| 70 | Visibility UX | TBD | Not started | - |
+| 71 | Recommendations | TBD | Not started | - |
 
-### Phase 62: Runtime Context & Event Refinement (Complete)
-Focus: Tighten `before_agent_start` / `context` / command-trigger behavior, improve timing and quality of lifecycle context injection, and reduce ambiguity or prompt bloat. Completed.
-Plans: 1 planned, 1 completed (`62-01-PLAN.md` → `62-01-SUMMARY.md`)
+### Phase 68: Execution Audit (Planning)
+Focus: Inspect every module invocation path, trace what actually fires during PLAN/APPLY/UNIFY, and publish findings before any fixes are made.
+Plans: 1 planned, 0 completed (`68-01-PLAN.md`)
 
-### Phase 63: Guided Workflow UX (Complete)
-Focus: Add Pi-native approval, checkpoint, resume, and milestone/phase transition guidance grounded in existing shared-artifact workflow semantics. Completed.
-Plans: 1 planned, 1 completed (`63-01-PLAN.md` → `63-01-SUMMARY.md`)
+### Phase 69: Gap Fixes
+Focus: Implement the minimum changes needed to close only the module-execution gaps confirmed by the audit.
+Plans: TBD (defined during /skill:paul-plan)
 
-### Phase 64: Polish, Validation & UX Readability (Complete)
-Focus: Validate runtime and guided UX behavior end-to-end, increase readability of the UX by using colors where appropriate, keep docs/help aligned, and clarify installation strategy boundaries.
-Plans: 1 planned, 1 completed (`64-01-PLAN.md` → `64-01-SUMMARY.md`)
+### Phase 70: Visibility UX
+Focus: Add live module status indicators in the UX/TUI and make module participation visible while flows are running.
+Plans: TBD (defined during /skill:paul-plan)
+
+### Phase 71: Recommendations
+Focus: Produce per-module keep/improve/merge/remove recommendations and ensure end reports summarize module participation.
+Plans: TBD (defined during /skill:paul-plan)
 ## Next Milestone
-To be defined after v2.5 completion review.
+Define after v2.7 is complete.
 
 ---
 
 ## Completed Milestones
+<details>
+<summary>v2.6 Collaborative Planning & PRD Depth - 2026-03-17 (3 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 65 | Research & Current-State Audit | 1 | 2026-03-17 |
+| 66 | Collaborative Planning Model | 1 | 2026-03-17 |
+| 67 | Onboarding & PRD Depth | 2 | 2026-03-17 |
+
+</details>
 <details>
 <summary>v2.5 Pi Runtime Coherence & Guided Flow - 2026-03-16 (3 phases)</summary>
 
@@ -263,7 +277,7 @@ To be defined after v2.5 completion review.
 <summary>v0.1 Fork & Unify - 2026-03-11 (6 phases)</summary>
 
 | Phase | Name | Plans | Completed |
-|-------|------|-------|-----------|
+*Last updated: 2026-03-17 — Phase 65 complete; transitioned to Phase 66 planning*
 | 1 | Architecture & Design | 2 | 2026-03-11 |
 | 2 | Fork & Restructure | 3 | 2026-03-11 |
 | 3 | Merge TODD/WALT | 2 | 2026-03-11 |
@@ -275,4 +289,4 @@ To be defined after v2.5 completion review.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-16 — v2.5 complete; Phase 64 done, all 3 phases finished*
+*Last updated: 2026-03-17 — v2.7 Phase 68 planned; awaiting APPLY*

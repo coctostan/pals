@@ -1,16 +1,14 @@
 <brownfield_onboarding>
 
 ## Purpose
-
-Guide for adopting PALS into an existing codebase. Covers the 3-step adoption process, boundary-setting, first milestone scoping, and common scenarios.
+Guide for adopting PALS into an existing codebase. Covers the 3-step adoption process, boundary-setting, first milestone scoping, and how brownfield evidence now feeds the layered `PROJECT.md` + `PRD.md` model.
 
 **Core philosophy:** Adopt, don't rewrite. PALS enhances your existing project — it doesn't replace your architecture.
 
 ## The 3-Step Adoption Process
 
 ### Step 1: Map (`/paul:map-codebase`)
-
-Run `/paul:map-codebase` to understand what exists before making any decisions.
+Run `/paul:map-codebase` to understand what exists before making planning or onboarding decisions.
 
 **What it produces:**
 - 8 documents in `.paul/codebase/` covering stack, architecture, conventions, testing, integrations, concerns, structure, and reference graph
@@ -18,33 +16,66 @@ Run `/paul:map-codebase` to understand what exists before making any decisions.
 - ARCHITECTURE.md and CONVENTIONS.md include "Brownfield Quick Start" sections with patterns to preserve
 
 **Key outputs to review:**
-- **Hub files** — these are high-impact targets; changes here affect many files
-- **Conventions** — naming, import ordering, patterns Claude should follow
+- **Hub files** — high-impact targets; changes here affect many files
+- **Conventions** — naming, import ordering, patterns to follow
 - **Concerns** — existing technical debt to be aware of (not necessarily to fix first)
+- **Integrations / stack** — dependencies and environment realities that should inform onboarding
 
 ### Step 2: Init (`/paul:init`)
+Run `/paul:init` after mapping. Init detects the codebase map and uses it to bridge **current-system evidence** into a shared durable schema:
+- `PROJECT.md` becomes the compact landing brief / hot-path artifact
+- `PRD.md` becomes the deeper product-definition artifact
+- both greenfield and brownfield projects land in the **same durable model**, even though the intake flow differs
 
-Run `/paul:init` after mapping. Init detects the codebase map and uses it to:
-- Pre-populate PROJECT.md with stack, architecture, and constraints
-- Suggest core value and description based on what the code does
-- Set up boundaries based on existing patterns
+**During brownfield init, use the codebase map to:**
+- summarize the current system, notable capabilities, and must-preserve patterns
+- capture dependencies / integrations / operational realities from the evidence
+- confirm constraints discovered in the map instead of guessing
+- still ask about the future product direction, user needs, problem/opportunity, and desired outcome
 
-**During init, focus on:**
-- Defining the core value from the user's perspective (not the code's structure)
-- Confirming discovered constraints are accurate
-- Choosing which modules to enable (all by default)
+**Important brownfield principle:**
+Do not let onboarding become only a codebase dump. The existing system explains today's reality; the user still defines tomorrow's intent.
 
 ### Step 3: First Plan (`/paul:plan`)
-
 Create a carefully scoped first milestone. See "First Milestone Scoping" below.
 
-## Setting Boundaries
+Because `PROJECT.md` is now intentionally concise, use `PRD.md` when the first milestone needs deeper context such as:
+- richer problem framing
+- deferred items
+- assumptions or open questions
+- current-state vs desired-state tension
+- dependency / integration implications
 
+## Brownfield Durable Artifact Guidance
+
+### `PROJECT.md` should capture
+- short description and core value
+- concise current-state summary
+- scope snapshot (validated / active / planned / out of scope)
+- top constraints
+- top success metrics
+- links to `PRD.md` and `.paul/codebase/`
+
+### `PRD.md` should capture
+- problem / opportunity and why now
+- current-state / desired-state framing
+- detailed requirement buckets
+- explicitly deferred items
+- assumptions and open questions
+- dependencies / integrations
+- supporting brownfield references
+
+### `.paul/codebase/` should remain
+- the evidence layer
+- detailed enough for discovery and implementation support
+- linked from durable artifacts instead of duplicated into them wholesale
+
+## Setting Boundaries
 Boundaries protect existing code from unintended changes during PALS-managed work.
 
 **How to define boundaries in your first milestone:**
 - List directories/files that should NOT be modified: `<boundaries>## DO NOT CHANGE\n- src/auth/* (stable auth system)\n- database/migrations/* (schema locked)</boundaries>`
-- Use CONVENTIONS.md findings as implicit boundaries — Claude should follow existing patterns
+- Use CONVENTIONS.md findings as implicit boundaries — follow existing patterns
 - Start narrow: protect everything except the area you're working on
 
 **Gradual adoption strategy:**
@@ -69,6 +100,7 @@ Boundaries protect existing code from unintended changes during PALS-managed wor
 - Don't scope a milestone with more than 3-5 phases initially
 - Don't try to fix all CONCERNS.md issues in the first milestone
 - Don't change established conventions — follow them
+- Don't treat the current implementation as the whole product definition
 
 **Use GRAPH.md to prioritize:**
 - Hub files = highest-impact targets for testing and documentation
@@ -88,12 +120,14 @@ Boundaries protect existing code from unintended changes during PALS-managed wor
 - Use CONCERNS.md to create a prioritized tech debt backlog
 - First milestone: add tests to the top 5 hub files
 - Don't try to modernize everything at once
+- Use onboarding to separate current-system facts from desired future outcomes
 
 ### Mid-Project (work already in progress)
 - Map what exists, identify what's done vs remaining
 - Create a milestone for the remaining work only
 - Treat completed code as boundaries (protect it)
 - Use `/paul:fix` for ad-hoc issues that come up during adoption
+- Capture active/deferred scope clearly in `PROJECT.md` + `PRD.md`
 
 ### Team Adoption
 - One developer starts with PALS, shares `.paul/` via git
@@ -103,18 +137,19 @@ Boundaries protect existing code from unintended changes during PALS-managed wor
 
 ## Quick Reference
 
-```
+```text
 Brownfield adoption in 3 commands:
 
 1. /paul:map-codebase     → Understand what exists
-2. /paul:init             → Set up PALS with codebase context
+2. /paul:init             → Create layered PROJECT.md + PRD.md from evidence + product intent
 3. /paul:plan             → Create first milestone (start small)
 
 Key files after adoption:
 - .paul/codebase/GRAPH.md     → Hub files, clusters (scope guide)
 - .paul/codebase/CONVENTIONS.md → Patterns to follow
 - .paul/codebase/CONCERNS.md   → Known issues (future milestones)
-- .paul/PROJECT.md              → Project context from codebase map
+- .paul/PROJECT.md             → Compact landing brief / hot path
+- .paul/PRD.md                 → Deeper product-definition context
 ```
 
 </brownfield_onboarding>

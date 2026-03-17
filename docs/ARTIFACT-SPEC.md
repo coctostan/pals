@@ -96,11 +96,9 @@ STATE.md is the primary artifact an adapter uses to determine loop position and 
 ## 2. PROJECT.md
 
 ### Purpose
-
-Business context and requirements -- the "brief" that informs all planning. Defines what is being built, why it matters, and what constraints apply.
+Compact hot-path project brief -- the landing artifact many workflows read first. Defines what is being built, why it matters, the current scope snapshot, top constraints, and where to find deeper product-definition context.
 
 ### Location
-
 `.paul/PROJECT.md`
 
 ### Required Sections
@@ -109,42 +107,84 @@ Business context and requirements -- the "brief" that informs all planning. Defi
 |---------|----------|
 | **Description / What This Is** | One paragraph describing the product or feature (what, not how) |
 | **Core Value** | Single sentence: what problem does this solve for whom |
-| **Requirements** | Subsections: Active (in progress), Validated (shipped), Constraints |
-| **Key Decisions** | Table: decision, phase, rationale |
-| **Success Criteria** | Measurable outcomes defining project success |
+| **Current State** | Short version / status / current-system summary |
+| **Scope Snapshot** | Concise scope buckets: Validated, Active, Planned, Out of Scope |
+| **Constraints** | Highest-impact constraints that shape planning |
+| **Success Metrics** | Measurable outcomes defining project success |
+| **Key Decisions** | Table: durable, high-signal decisions |
+| **Links** | Pointers to `PRD.md`, roadmap, codebase evidence, or other deeper artifacts |
 
 ### Optional Sections
 
 | Section | Contents |
 |---------|----------|
-| **Current State** | Version, status (Prototype/MVP/Beta/Production), last updated, URLs |
-| **Target Users** | Primary and secondary users with characteristics and goals |
-| **Context** | Business context and technical context |
-| **Tech Stack** | Table: layer, technology, notes |
-| **Links** | Table: resource, URL |
+| **Target Users** | Summary-level primary/secondary users and needs |
 | **Specialized Flows** | Reference to SPECIAL-FLOWS.md with quick-reference summary |
 
 ### Frontmatter
-
 None.
 
 ### Created By
-
 `init-project` workflow.
 
 ### Read By
-
-`plan-phase` (for context during planning), `apply-phase` (for context during execution).
+Orientation and hot-path workflows first (`resume-project`, status/help-style routing, planning entry points), plus `plan-phase`, discussion workflows, and `apply-phase`.
 
 ### Written By
-
-- `init-project`: initial creation with description, core value, initial requirements
-- Milestone creation workflows: add new requirements to Active section
-- `unify-phase`: updates Key Decisions table with decisions made during the phase
+- `init-project`: initial creation with description, core value, scope snapshot, and links
+- Milestone / planning workflows: update scope snapshot when durable scope changes
+- `unify-phase`: updates Key Decisions and other concise durable summaries
 
 ### Portability Note
+`PROJECT.md` is intentionally concise. Adapters must preserve its role as the hot-path landing brief and should not expand it into the full product-definition artifact. Detailed framing, deferred scope, assumptions, open questions, and dependency depth belong in `PRD.md`.
 
-Core value drives all planning decisions. Any adapter must preserve the core value and ensure it is available to the planning workflow. The Requirements section is the living record of what has been built and what remains -- adapters must maintain its accuracy.
+---
+
+## 2A. PRD.md
+
+### Purpose
+Deeper, selectively-read product-definition artifact. Preserves richer problem framing, current-state vs desired-state context, detailed requirement buckets, deferred items, assumptions, open questions, dependencies, and supporting references.
+
+### Location
+`.paul/PRD.md`
+
+### Required Sections
+
+| Section | Contents |
+|---------|----------|
+| **Problem / Opportunity** | What problem or opportunity this work addresses |
+| **Why Now** | Urgency, timing, or strategic context |
+| **Current State / Existing System Context** | Current-system reality, especially for brownfield adoption |
+| **Desired Outcome** | The intended future state |
+| **Requirements** | Deeper requirement buckets including must-have, should-have, deferred, and out-of-scope |
+| **Constraints & Dependencies** | Important constraints, integrations, and dependencies |
+| **Assumptions** | Assumptions worth preserving across sessions |
+| **Open Questions** | Unresolved questions that affect planning or discovery |
+| **Recommended Direction** | Chosen direction and major rationale |
+| **Supporting References** | Links to source artifacts such as `PROJECT.md`, codebase docs, or research |
+
+### Optional Sections
+
+| Section | Contents |
+|---------|----------|
+| **Target Users and Needs** | Richer user/problem framing than the hot-path brief requires |
+| **Brownfield Evidence Notes** | Summarized evidence from `.paul/codebase/` artifacts |
+
+### Frontmatter
+None.
+
+### Created By
+`init-project` workflow or later durable product-definition updates.
+
+### Read By
+Selectively by `plan-phase`, `discuss-phase`, `discuss-milestone`, `phase-assumptions`, and research/discovery workflows when deeper product context materially helps the work.
+
+### Written By
+- `init-project`: initial creation from onboarding answers
+- later planning/discovery workflows when durable product-definition conclusions change
+
+### Portability Note
+`PRD.md` is additive and portable. Legacy repos without `PRD.md` remain valid; adapters must not require destructive migration. When `PRD.md` exists, adapters should preserve its deeper-context role and avoid duplicating its full contents back into `PROJECT.md`.
 
 ---
 
@@ -420,9 +460,7 @@ Frontmatter enables automated context assembly. Adapters must preserve the front
 Session transfer document -- enables context restoration in a fresh session with no prior context. Designed to be the single entry point for a new session.
 
 ### Location
-
-`.paul/HANDOFF-{context}.md`
-
+Active handoffs are created at: `.paul/HANDOFF-{context}.md`
 Examples:
 - `.paul/HANDOFF-2026-03-14-v2.0-discussion.md`
 - `.paul/HANDOFF-2026-03-13-v08-complete.md`
@@ -462,8 +500,7 @@ None. Uses markdown headings with bold metadata fields at the top (Date, Status)
 `resume-project` workflow (triggered by `/paul:resume`).
 
 ### Lifecycle
-
-Consumed and archived after successful resume. Handoffs in `.paul/handoffs/archive/` serve as historical record but are not read by any active workflow.
+Created as an active handoff in `.paul/`, then typically archived after successful resume or later cleanup. Archived handoffs in `.paul/handoffs/archive/` remain valid historical context and may be read by resume workflows as fallback when no active handoff is available.
 
 ### Portability Note
 
@@ -574,36 +611,36 @@ This artifact exists purely for cross-session persistence during milestone plann
 The following diagram shows how artifacts reference and depend on each other:
 
 ```
-PROJECT.md <──────────────────── STATE.md ──────────────────> ROADMAP.md
-  (core value, requirements)      (references both)            (phase position)
-       │                              │                            │
-       │                              │                            │
-       ▼                              ▼                            ▼
-   PLAN.md ◄──── references ────── PLAN.md ──── references ──► PLAN.md
-   (project context)               (state)                     (phase info)
-       │                                                           │
-       │                                                           │
-       ▼                                                           │
-  SUMMARY.md ─── may reference prior ──► SUMMARY.md               │
-  (plan completion)                      (if genuine dependency)   │
-       ▲                                                           │
-       │                                                           │
-  HANDOFF.md ─── snapshots ──► STATE.md                            │
-  (session transfer)           (current position)                  │
-       │                                                           │
-       └── references ──► current PLAN.md                          │
-                                                                   │
-SPECIAL-FLOWS.md ──► read by plan-phase ──► populates PLAN.md     │
-                                             skills section        │
-                                                                   │
+PROJECT.md ◄──────────── STATE.md ────────────► ROADMAP.md
+(hot-path brief)          (references both)      (phase position)
+     │                          │
+     │                          └──► current PLAN.md / next action
+     ▼
+  PRD.md ───── selective deeper context ─────► PLAN.md
+(deeper product definition)                   (execution plan)
+     │                                            │
+     │                                            ▼
+     └──────── may inform discussion / research  SUMMARY.md
+                                                  (plan completion)
+
+HANDOFF.md ─── snapshots ──► STATE.md
+(session transfer)         (current position)
+       │
+       └── references ──► current PLAN.md
+
+SPECIAL-FLOWS.md ──► read by plan-phase ──► populates PLAN.md
+                                             skills section
+
 MILESTONE-CONTEXT.md ──► consumed by ──► creates entries in ──► ROADMAP.md
 (temporary)               create-milestone
 ```
 
 **Key relationships:**
 
-- **STATE.md** references PROJECT.md (core value) and ROADMAP.md (phase position). It is the hub artifact.
-- **PLAN.md** references PROJECT.md (for context), ROADMAP.md (for phase info), STATE.md (for position), and source files (for implementation context).
+- **STATE.md** references PROJECT.md (hot-path brief) and ROADMAP.md (phase position). It is the hub artifact.
+- **PROJECT.md** is the concise landing brief. It should point to PRD.md rather than duplicating deep product-definition detail.
+- **PRD.md** carries the deeper durable product-definition layer and is read selectively by planning/discovery workflows when its depth materially helps.
+- **PLAN.md** references PROJECT.md (always), ROADMAP.md (for phase info), STATE.md (for position), and source files. It may also reference PRD.md selectively when deeper product context is needed.
 - **SUMMARY.md** references its corresponding PLAN.md. It may reference prior SUMMARY.md files, but only when a genuine data dependency exists (e.g., types or exports from a prior plan are consumed).
 - **HANDOFF.md** snapshots the current STATE.md and references the current PLAN.md. It is a point-in-time capture for session transfer.
 - **ROADMAP.md** tracks all phases. PLAN.md and SUMMARY.md files exist within phase directories (`phases/{NN}-{name}/`).
@@ -644,6 +681,13 @@ ROADMAP.md phase status must match the actual plan files in phase directories:
 ### Core Value Preservation
 
 The core value string in STATE.md (Project Reference section) must match the Core Value in PROJECT.md. If they diverge, PROJECT.md is authoritative.
+
+### Layered Product Definition Consistency
+
+- `PROJECT.md` remains the concise hot-path brief. If `PRD.md` exists, `PROJECT.md` should link to it instead of duplicating its full contents.
+- `PRD.md` is optional for legacy repos. Its absence alone must not invalidate an existing project.
+- If `PRD.md` exists, it must not replace lifecycle state tracked by `STATE.md` / `ROADMAP.md`.
+- Adapters and validation should treat the `PROJECT.md` + `PRD.md` model as shared portable behavior, not a harness-specific extension.
 
 ---
 

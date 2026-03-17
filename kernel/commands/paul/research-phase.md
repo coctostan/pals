@@ -9,7 +9,6 @@ allowed-tools: [Read, Task, Bash, Write]
 Analyze a phase for unknowns and research them using subagents.
 
 **When to use:** Before planning a phase when there are technical unknowns that need investigation.
-
 **Distinction from /paul:research:**
 - `/paul:research <topic>`: User knows what to research
 - `/paul:research-phase <N>`: Claude identifies what needs researching
@@ -26,6 +25,7 @@ kernel/references/subagent-criteria.md
 Phase number: $ARGUMENTS (required)
 
 .paul/PROJECT.md
+.paul/PRD.md (selectively, if present and deeper product framing / deferred scope / assumptions / open questions matter)
 .paul/STATE.md
 .paul/ROADMAP.md
 </context>
@@ -61,8 +61,9 @@ Exit workflow.
 Analyze the phase for research needs:
 
 1. Read ROADMAP.md phase description
-2. Read PROJECT.md for context
-3. Check for existing CONTEXT.md in phase directory
+2. Read PROJECT.md as the hot-path project brief
+3. If `.paul/PRD.md` exists and the phase needs deeper product framing, deferred items, assumptions, open questions, or dependency detail, read the relevant sections selectively
+4. Check for existing CONTEXT.md in phase directory
 
 **Identify unknowns in these categories:**
 
@@ -204,6 +205,7 @@ What's next?
 - [ ] Unknowns identified and classified
 - [ ] User confirmed research list
 - [ ] Appropriate agents spawned in parallel
+- [ ] `PROJECT.md` used as the hot-path brief and `PRD.md` read selectively when needed
 - [ ] Findings consolidated into phase RESEARCH.md
 - [ ] Summary presented for review
 </success_criteria>

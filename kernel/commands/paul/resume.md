@@ -10,7 +10,7 @@ Restore PAUL context after a session break, determine current position, and sugg
 
 **When to use:** Starting a new session on an existing PAUL project.
 
-**Handoff lifecycle:** Detects handoffs, presents content, archives after work proceeds.
+**Handoff lifecycle:** Detects handoffs, presents content, and archives active consumed handoffs after work proceeds while still allowing archived handoffs to be used as fallback resume context.
 </objective>
 
 <execution_context>
@@ -28,21 +28,23 @@ $ARGUMENTS (optional handoff path)
 
 The workflow implements:
 1. Verify .paul/ exists
-2. Detect handoff files (use $ARGUMENTS if provided, else find most recent)
+2. Detect handoff files (use $ARGUMENTS if provided, else prefer most recent active handoff and fall back to archived handoffs)
 3. Load STATE.md
 4. Present handoff content if detected
 5. Reconcile handoff vs STATE.md
 6. Determine exactly ONE next action based on loop position
 7. Display resume status with single routing
-8. After work proceeds: archive/delete consumed handoff
+8. After work proceeds: archive/delete consumed active handoff as appropriate
 
 **Key behavior:** Suggest exactly ONE next action, not multiple options.
 
 **Handoff pattern:** `.paul/HANDOFF-{context}.md` (e.g., `HANDOFF-phase10-audit.md`)
+**Archive fallback:** `.paul/handoffs/archive/HANDOFF*.md`
 </process>
 
 <success_criteria>
 - [ ] Context restored from STATE.md and/or handoff
+- [ ] Archived handoffs remain discoverable as fallback resume context
 - [ ] Loop position correctly identified
 - [ ] Exactly ONE next action suggested (not multiple options)
 - [ ] User can proceed or redirect with context

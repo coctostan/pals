@@ -23,6 +23,16 @@ Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to t
 
 Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time.
 
+## Collaboration-Aware Planning
+
+Shared planning workflows now support a bounded collaboration model:
+- project default: `pals.json` → `planning.default_collaboration`
+- per-run override: keep the default or switch to `low`, `medium`, or `high`
+- planning mode: `exploratory` vs `direct-requirements`
+- progressive review: `Quick recap`, `Detailed recap`, `Full plan`, `No review needed`
+
+These behaviors belong to shared markdown workflows (`init-project`, `discuss-milestone`, `discuss-phase`, `create-milestone`, `plan-phase`). Pi surfaces them; it does not redefine them.
+
 ## Quick Actions & Shortcuts
 
 The lifecycle widget exposes a bounded quick-action set for the highest-frequency PALS entry points:
@@ -31,13 +41,14 @@ The lifecycle widget exposes a bounded quick-action set for the highest-frequenc
 - Resume — `Ctrl+Alt+R`
 - Help — `Ctrl+Alt+H`
 - Milestone — `Ctrl+Alt+M`
+
 The always-visible UI keeps only the first three actions in the primary summary and moves the rest into a secondary "More" line. These shortcuts stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
 
 ## Guided Workflow UX
 
-The extension adds a bounded guided workflow layer for canonical PALS lifecycle moments already emitted by shared workflows. It inspects recent assistant output plus `.paul/STATE.md` for stable markers such as `Continue to APPLY`, `Continue to UNIFY`, `CHECKPOINT:`, and `▶ NEXT:`.
+The extension adds a bounded guided workflow layer for canonical PALS lifecycle moments already emitted by shared workflows. It inspects recent assistant output plus `.paul/STATE.md` for stable markers such as `Would you like to see the plan?`, `Continue to APPLY`, `Continue to UNIFY`, `CHECKPOINT:`, and `▶ NEXT:`.
 
-When one of those moments appears, Pi may use lightweight native surfaces such as `notify`, `confirm`, or `select` to help the user respond. If the user explicitly continues, the extension routes the exact canonical reply back through normal user-message flow via `pi.sendUserMessage(...)` (`approved`, `yes`, `1`, selected option id, etc.).
+When one of those moments appears, Pi may use lightweight native surfaces such as `notify`, `confirm`, or `select` to help the user respond. If the user explicitly continues, the extension routes the exact canonical reply back through normal user-message flow via `pi.sendUserMessage(...)` (`1`, `approved`, `yes`, selected option id, etc.).
 
 This layer is additive only: it never auto-continues a workflow, never skips human verification or human-action checkpoints, and never stores a Pi-owned workflow state. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
 
@@ -65,6 +76,7 @@ The extension registers these slash commands:
 - **turn_end**: Refreshes the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
 - **agent_end**: Re-checks recent assistant output for canonical guided workflow moments and, when appropriate, offers additive Pi-native continuation UI while keeping the shared workflow prompt authoritative.
 - **context**: Supporting surface only. It keeps context lean by trimming legacy/duplicate PALS context messages; it is not the architectural center of injection.
+
 ## Requirements
 
 - Pi coding agent with extension support
@@ -83,6 +95,7 @@ The extension registers these slash commands:
 | Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
 
 These are distinct install targets. The extension goes to `~/.pi/agent/extensions/`, skills and kernel files go to `~/.pi/agent/skills/pals/`. Uninstalling the extension alone does not remove skills or kernel files; `uninstall.sh` handles the full cleanup of all targets.
+
 ## References
 
 - [Pi Extensions docs](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md)

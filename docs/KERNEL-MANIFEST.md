@@ -7,12 +7,12 @@
 
 | Category | Files | Description |
 |----------|-------|-------------|
-| Kernel | 48 | PAUL core loop, state management, lifecycle, commands |
+| Kernel | 49 | PAUL core loop, state management, lifecycle, commands |
 | TODD Module | 5 | TDD enforcement (references + workflow overlay) |
 | WALT Module | 7 | Quality gating (references + workflow) |
 | CARL Module | 13 | Context rules (config + hook + commands) |
 | Shared | 5 | Rules used by kernel and modules |
-| **Total** | **78** | |
+| **Total** | **79** | |
 
 ---
 
@@ -50,11 +50,12 @@ The kernel implements the plan/apply/unify loop, state management, project initi
 | `references/git-strategy.md` | Branch and commit strategy |
 | `references/context-management.md` | Context pressure and cycling |
 
-### Templates (17 files)
+### Templates (18 files)
 
 | File | Role |
 |------|------|
-| `templates/PROJECT.md` | Project definition template |
+| `templates/PROJECT.md` | Compact hot-path project brief template |
+| `templates/PRD.md` | Deeper product-definition template |
 | `templates/STATE.md` | State tracking template |
 | `templates/ROADMAP.md` | Roadmap template |
 | `templates/MILESTONES.md` | Milestone archive template |

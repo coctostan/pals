@@ -116,6 +116,7 @@ All validated — see below.
 - ✓ Pi runtime context/event refinement — explicit command activation + `before_agent_start` primary bounded injection + support-only `context`, with updated Pi validation contract (93 checks passing) — Phase 62
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
+- [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -238,6 +239,13 @@ All validated — see below.
 | Explicit command entry is the strongest Pi activation signal; `before_agent_start` owns primary bounded injection while `context` remains support-only | 62 | Implements the Phase 56 hybrid event model directly in runtime code while preserving `.paul/*` as the authoritative lifecycle truth |
 | Guided workflow assistance in Pi must stay marker-driven, explicit, and routed through canonical user-message flow | 63 | Keeps the adapter helpful at approval/checkpoint/resume/transition moments without inventing Pi-owned lifecycle truth |
 | Use `matchAll(/[✓○]/g)` count for loop badge extraction; "success" level only for confirmed sends/routes | 64 | Keeps UX enrichment simple, robust, and bounded to additive cosmetic changes only |
+| Keep artifact-first shared markdown workflows as lifecycle truth while improving collaborative definition behavior | 65 | Audit showed collaboration weaknesses come from workflow behavior and artifact population, not from the authority model itself |
+| Add low/medium/high collaboration levels plus project default and per-run override for planning work | 65 | Matches user need for adjustable collaboration depth across project, milestone, and phase planning |
+| Add a 4-option pre-plan review choice: quick recap, detailed recap, full plan, no review needed | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
+| Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserves artifact-first portability while making init/discuss/milestone/plan behavior more collaborative |
+| Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
+| Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Settles the content/read/file model for richer onboarding without bloating the hot path |
+| Keep `PRD.md` additive and legacy-safe for existing repos rather than forcing destructive migration | 67 | Preserves portability while allowing validation and docs to codify the new layered contract |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -256,4 +264,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-16 after Phase 64 completion and v2.5 milestone close*
+*Last updated: 2026-03-17 after Phase 67 completion*

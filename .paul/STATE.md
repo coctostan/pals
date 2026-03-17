@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-16)
+See: .paul/PROJECT.md (updated 2026-03-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.5 complete — next milestone to be defined
+**Current focus:** Phase 68 plan is ready for review and approval
 ## Current Position
-Milestone: v2.5 Pi Runtime Coherence & Guided Flow — ✅ Complete
-Phase: 64 of 64 (Polish, Validation & UX Readability) — Complete
-Plan: 64-01 complete
-Status: v2.5 milestone complete, next milestone to be defined
-Last activity: 2026-03-16 — Phase 64 UNIFY complete; v2.5 all 3 phases done
+Milestone: v2.7 Module Reality Check & Visibility
+Phase: 68 of 4 (Execution Audit) — Planning
+Plan: 68-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-17T22:52:50Z — Created .paul/phases/68-execution-audit/68-01-PLAN.md
 Progress:
-- v2.5 Pi Runtime Coherence & Guided Flow: [██████████] 100%
-- Phase 64: [██████████] 100%
+- v2.7 Module Reality Check & Visibility: [░░░░░░░░░░] 0%
+- Phase 68: [░░░░░░░░░░] 0% (audit plan created)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v2.5 milestone done]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -60,15 +60,27 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-16: Implemented Phase 62 hybrid runtime refinement with explicit command activation budgeting, `before_agent_start` primary injection, and `context` normalization-only support | 62 | Preserves one bounded automatic injection path while keeping `.paul/*` as authoritative lifecycle truth |
 | 2026-03-16: Keep Pi guided workflow UX marker-driven and route explicit continuations through `pi.sendUserMessage` without adding Pi-owned lifecycle state | 63 | Preserves shared workflow ownership while making approvals, checkpoints, resume routing, and transitions easier inside Pi |
 | 2026-03-16: Use `matchAll(/[✓○]/g)` count for loop badge; "success" notify only for confirmed sends/routes | 64 | Keeps UX enrichment simple, robust, and bounded to additive cosmetic changes without regression risk |
+| 2026-03-17: Keep artifact-first shared markdown workflows as lifecycle truth while improving collaborative definition behavior | 65 | Keeps v2.6 focused on workflow semantics and artifact population rather than architectural replacement |
+| 2026-03-17: Add low/medium/high collaboration levels plus project default and per-run override for planning work | 65 | Establishes the bounded collaboration model for upcoming implementation phases |
+| 2026-03-17: Add a 4-option pre-plan review choice (quick recap, detailed recap, full plan, no review needed) | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
+| 2026-03-17: Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserves artifact-first portability while making init/discuss/milestone/plan behavior more collaborative |
+| 2026-03-17: Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
+| 2026-03-17: Split Phase 67 into a research-first plan before implementation | 67 | Settles the artifact/content/read model before workflow/template changes land |
+| 2026-03-17: Greenfield and brownfield onboarding should converge to the same durable schema with different intake flows | 67 | Preserves one canonical product/project structure without forcing identical discovery behavior |
+| 2026-03-17: Decide content model and read model before choosing whether PROJECT.md and PRD depth should be one or two documents | 67 | Keeps context cost explicit and avoids prematurely locking in the wrong durable artifact layout |
+| 2026-03-17: Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Settles the Phase 67 content/read/file model so the follow-on implementation plan can update onboarding, templates, docs, and validation without reopening the design question |
+| 2026-03-17: Keep `PRD.md` additive and legacy-safe rather than mandatory for existing repos | 67 | Allows docs and validation to adopt the layered model without destructive migration |
+| 2026-03-17: Complete the layered onboarding/artifact rollout across workflows, templates, docs, and validation | 67 | Finishes v2.6 with shared portable `PROJECT.md` + `PRD.md` behavior |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
 | Fix 02 (standard): Reworked installed module registries to include `hook_details`, aligned PLAN/APPLY/UNIFY dispatch wording to the installed registry, and added validation coverage | Phase 63 | Enabled modules can now be consulted from real installed `modules.yaml` registries instead of relying on conceptual source-manifest access |
+| Fix 03 (standard): Aligned resume handoff discovery and docs so `/paul:resume` falls back to `.paul/handoffs/archive/` and only archives active consumed handoffs | No phase | Prevents the latest archived handoff from becoming undiscoverable during normal resume flows |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
-| Skill audit gap: `/carl`, `TODD`, and `WALT` were not explicitly invoked during Phase 62 APPLY/UNIFY | 62 | Advisory-only; implementation stayed in scope and validations passed (93/93), but workflow discipline should be tightened next phase |
-
+| None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
+| None material | 67 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -78,19 +90,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - None active
 ### Git State
-Branch: main
-Last commit: HEAD (phase 64 completion commit)
-Feature branches merged: none (direct-to-main for Phase 64)
+Branch: feature/67-onboarding-prd-depth
+Last commit: HEAD (latest local milestone closeout commit)
+Feature branches merged: none
 Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
-Last session: 2026-03-16
-Stopped at: Phase 64 complete; v2.5 milestone complete
-Next action: /skill:paul-milestone
-Resume file: .paul/phases/64-polish-validation-ux-readability/64-01-SUMMARY.md
-Git strategy: main
+Last session: 2026-03-17T18:54:36-0400
+Stopped at: Paused after creating Plan 68-01, before APPLY approval
+Next action: Review and approve the plan, then run /skill:paul-apply .paul/phases/68-execution-audit/68-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-17-phase68-plan-ready.md
+Git strategy: feature/67-onboarding-prd-depth
 Resume context:
-- Phase 64 UNIFY complete with SUMMARY at `.paul/phases/64-polish-validation-ux-readability/64-01-SUMMARY.md`
-- v2.5 is now 3/3 phases complete (62, 63, 64)
-- Next step is milestone lifecycle handling (close current milestone / start next milestone definition)
+- v2.7 is active and Phase 68 is still at PLAN ✓ / APPLY ○ / UNIFY ○
+- `.paul/phases/68-execution-audit/68-01-PLAN.md` is an audit-only research plan; no fixes or UX changes should be implemented during this phase
+- The audit should compare source module manifests, the installed Pi registry at `~/.pi/agent/skills/pals/modules.yaml`, workflow dispatch paths, and current user-visible surfaces
+- After the audit artifacts are produced, stop for direction before any Phase 69 gap-fix work begins
 ---
 *STATE.md — Updated after every significant action*

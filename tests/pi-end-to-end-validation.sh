@@ -470,6 +470,35 @@ else
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 5B: COLLABORATIVE PLANNING MODEL
+# ════════════════════════════════════════════════════════════════════
+
+section "COLLABORATIVE PLANNING MODEL"
+
+if grep -R 'default_collaboration' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/kernel/commands/paul" "$REPO_ROOT/drivers/pi/skills" >/dev/null 2>&1 \
+  && grep -R 'low / medium / high' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/drivers/pi/skills" >/dev/null 2>&1; then
+  tap_ok "Planning workflows and Pi skills document collaboration defaults + levels"
+else
+  tap_not_ok "Planning workflows and Pi skills document collaboration defaults + levels" "Expected default_collaboration and low / medium / high markers across shared workflows and Pi skills"
+fi
+
+if grep -R 'exploratory' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/kernel/commands/paul" "$REPO_ROOT/drivers/pi/skills" >/dev/null 2>&1 \
+  && grep -R 'direct-requirements' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/kernel/commands/paul" "$REPO_ROOT/drivers/pi/skills" >/dev/null 2>&1; then
+  tap_ok "Planning workflows and Pi skills document exploratory vs direct-requirements mode"
+else
+  tap_not_ok "Planning workflows and Pi skills document exploratory vs direct-requirements mode" "Expected exploratory/direct-requirements wording across shared workflows and Pi skills"
+fi
+
+if grep -R 'Quick recap' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/drivers/pi" >/dev/null 2>&1 \
+  && grep -R 'Detailed recap' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/drivers/pi" >/dev/null 2>&1 \
+  && grep -R 'Full plan' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/drivers/pi" >/dev/null 2>&1 \
+  && grep -R 'No review needed' "$REPO_ROOT/kernel/workflows" "$REPO_ROOT/drivers/pi" >/dev/null 2>&1; then
+  tap_ok "Planning workflows, Pi docs, and extension surface the 4-option review menu"
+else
+  tap_not_ok "Planning workflows, Pi docs, and extension surface the 4-option review menu" "Expected Quick recap / Detailed recap / Full plan / No review needed across kernel and Pi surfaces"
+fi
+
+# ════════════════════════════════════════════════════════════════════
 # CATEGORY 6: UX READABILITY & COLOR ENRICHMENT
 # ════════════════════════════════════════════════════════════════════
 

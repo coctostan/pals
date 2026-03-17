@@ -225,6 +225,29 @@ else
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 2B: SHARED COLLABORATIVE PLANNING MODEL
+# ════════════════════════════════════════════════════════════════════
+
+section "SHARED COLLABORATIVE PLANNING MODEL"
+
+if grep -R 'default_collaboration' "$KERNEL_DIR/workflows" "$REPO_ROOT/kernel/commands/paul" >/dev/null 2>&1 \
+  && grep -R 'exploratory' "$KERNEL_DIR/workflows" "$REPO_ROOT/kernel/commands/paul" >/dev/null 2>&1 \
+  && grep -R 'direct-requirements' "$KERNEL_DIR/workflows" "$REPO_ROOT/kernel/commands/paul" >/dev/null 2>&1; then
+  tap_ok "Shared planning workflows document collaboration defaults and mode selection"
+else
+  tap_not_ok "Shared planning workflows document collaboration defaults and mode selection" "Expected default_collaboration plus exploratory/direct-requirements markers in shared kernel planning files"
+fi
+
+if grep -R 'Quick recap' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
+  && grep -R 'Detailed recap' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
+  && grep -R 'Full plan' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
+  && grep -R 'No review needed' "$KERNEL_DIR/workflows" >/dev/null 2>&1; then
+  tap_ok "Shared planning workflows expose the 4-option review menu across harnesses"
+else
+  tap_not_ok "Shared planning workflows expose the 4-option review menu across harnesses" "Expected review-menu wording in shared kernel workflows"
+fi
+
+# ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: ARTIFACT SPEC COMPLIANCE
 # ════════════════════════════════════════════════════════════════════
 
@@ -257,19 +280,52 @@ if [ -f "$README_MD" ]; then
   fi
 fi
 
+# Kernel layered-artifact assets
+if [ -f "$REPO_ROOT/kernel/templates/PRD.md" ]; then
+  tap_ok "Kernel includes PRD.md template"
+else
+  tap_not_ok "Kernel includes PRD.md template" "File not found at kernel/templates/PRD.md"
+fi
+
+if grep -q 'PRD.md' "$REPO_ROOT/docs/ARTIFACT-SPEC.md" 2>/dev/null   && grep -q 'PRD.md' "$REPO_ROOT/docs/ADAPTER-CONTRACT.md" 2>/dev/null   && grep -q 'templates/PRD.md' "$REPO_ROOT/docs/KERNEL-MANIFEST.md" 2>/dev/null; then
+  tap_ok "Shared docs describe the layered PROJECT.md + PRD.md contract"
+else
+  tap_not_ok "Shared docs describe the layered PROJECT.md + PRD.md contract" "Expected PRD.md references in artifact/adapter/manifest docs"
+fi
+
 # PROJECT.md required sections
 PROJECT_MD="$PAUL_DIR/PROJECT.md"
 if [ -f "$PROJECT_MD" ]; then
   tap_ok "PROJECT.md exists"
-  for section_name in "Description" "Core Value" "Requirements"; do
+  for section_name in "Description" "Core Value"; do
     if grep -qi "## $section_name\|^## .*$section_name" "$PROJECT_MD" 2>/dev/null; then
       tap_ok "PROJECT.md has '$section_name' section"
     else
       tap_not_ok "PROJECT.md has '$section_name' section" "Section not found"
     fi
   done
+
+  if grep -q '## Scope Snapshot' "$PROJECT_MD" 2>/dev/null; then
+    tap_ok "PROJECT.md uses hot-path scope snapshot structure"
+  else
+    tap_ok "Legacy PROJECT.md without hot-path scope snapshot is allowed"
+  fi
 else
   tap_not_ok "PROJECT.md exists" "File not found at $PROJECT_MD"
+fi
+
+PRD_MD="$PAUL_DIR/PRD.md"
+if [ -f "$PRD_MD" ]; then
+  tap_ok "PRD.md exists"
+  for section_name in "Problem / Opportunity" "Requirements" "Open Questions"; do
+    if grep -qi "## $section_name\|^## .*$section_name" "$PRD_MD" 2>/dev/null; then
+      tap_ok "PRD.md has '$section_name' section"
+    else
+      tap_not_ok "PRD.md has '$section_name' section" "Section not found"
+    fi
+  done
+else
+  tap_ok "PRD.md optional for legacy projects"
 fi
 
 # ROADMAP.md required sections

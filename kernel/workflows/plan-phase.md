@@ -19,6 +19,7 @@ Next phase: APPLY (after plan approval)
 .paul/STATE.md
 .paul/ROADMAP.md
 .paul/PROJECT.md
+.paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail are relevant)
 .paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
 </required_reading>
 
@@ -49,6 +50,34 @@ kernel/templates/PLAN.md
    - Dependencies on prior phases
 2. If multiple phases available, ask user which to plan
 3. Confirm phase selection before proceeding
+</step>
+
+<step name="determine_planning_posture">
+**Set the planning posture before shaping the executable plan.**
+
+1. Check `.paul/phases/{NN}-{phase-name}/CONTEXT.md` for carried metadata:
+   - `Planning Mode`
+   - `Collaboration Level`
+   - `Suggested Review Path`
+2. If no collaboration metadata exists in CONTEXT.md, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`
+3. Offer a per-run override:
+   ```
+   Planning collaboration level: {default_collaboration} (project default)
+
+   [1] Keep {default_collaboration}
+   [2] low — minimal probing, move to executable structure quickly
+   [3] medium — clarify ambiguities, constraints, and success conditions
+   [4] high — deeper shaping, assumptions, alternatives, and risks
+   ```
+4. If planning mode was not already captured, ask whether this run is exploratory or direct-requirements
+5. Apply collaboration semantics while closing remaining planning gaps:
+   - low → only resolve what is needed for an executable plan
+   - medium → clarify ambiguities and open questions before finalizing tasks
+   - high → also surface assumptions, alternatives, and edge cases where they materially affect the plan
+6. Apply mode semantics:
+   - exploratory → allow a small amount of alternative/assumption shaping before locking the plan
+   - direct-requirements → stay close to stated requirements and resolve only what is necessary for execution
+7. Store `collaboration_level`, `planning_mode`, and any carried `review_preference` for later review routing.
 </step>
 
 <step name="pre_plan_hooks" priority="before-scope-analysis">
@@ -90,15 +119,18 @@ kernel/templates/PLAN.md
 </step>
 
 <step name="load_context">
-1. Read PROJECT.md for:
-   - Core requirements and constraints
-   - Value proposition (what matters)
-2. If prior phase exists, read its SUMMARY.md for:
+1. Read `.paul/PROJECT.md` first as the hot-path brief for:
+   - Core value and description
+   - Scope snapshot and top constraints
+   - High-signal success metrics and key decisions
+2. If `.paul/PRD.md` exists and the phase needs deeper product framing, deferred items, assumptions, open questions, current-state vs desired-state detail, or dependency context, read the relevant sections selectively
+3. If prior phase exists, read its SUMMARY.md for:
    - What was built
    - Decisions made
    - Any deferred issues
-3. Read source files relevant to this phase's work
-4. Do NOT reflexively chain all prior summaries - only load what's genuinely needed
+4. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries
+5. Read source files relevant to this phase's work
+6. Do NOT reflexively chain all prior summaries or artifacts - only load what's genuinely needed
 </step>
 
 <step name="check_specialized_flows">
@@ -190,6 +222,27 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 6. If no modules registered for `post-plan`: proceed (no-op, no warning)
 7. Output dispatch log: `[dispatch] post-plan: {MODULE(priority) → N modifications | skip} | ...`
 8. If modifications were applied: note in plan that module overlays were applied
+</step>
+
+<step name="review_plan">
+Offer progressive disclosure before APPLY routing:
+
+```
+Would you like to see the plan?
+
+[1] Quick recap
+[2] Detailed recap
+[3] Full plan
+[4] No review needed
+```
+
+- **Quick recap:** show the goal, main tasks, major constraints, and open questions/assumptions
+- **Detailed recap:** show the acceptance criteria, task structure, files, constraints, deferred items, and open questions
+- **Full plan:** show the full PLAN.md artifact
+- **No review needed:** continue immediately
+
+If the user requests changes after a review, refine the plan before proceeding to APPLY routing.
+Store the selected path as `review_preference`.
 </step>
 
 <step name="update_state" priority="required">

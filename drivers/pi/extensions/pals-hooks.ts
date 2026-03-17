@@ -70,6 +70,7 @@ type GuidedWorkflowOption = {
 
 type GuidedWorkflowMoment = {
   kind:
+    | "plan-review"
     | "apply-approval"
     | "checkpoint-decision"
     | "checkpoint-human-verify"
@@ -239,7 +240,7 @@ function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
     state.nextAction ? `Next: ${state.nextAction}` : null,
     renderQuickActionSummary(state),
     `Activation model: explicit /paul-* entry is strongest signal; ${PRIMARY_INJECTION_EVENT} handles primary injection and ${SUPPORTING_CONTEXT_EVENT} stays support-only.`,
-    "Guided workflow UX watches canonical prompts like Continue to APPLY, CHECKPOINT, Continue to UNIFY, and ▶ NEXT.",
+    "Guided workflow UX watches canonical prompts like Would you like to see the plan?, Continue to APPLY, CHECKPOINT, Continue to UNIFY, and ▶ NEXT.",
     "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
   ]
     .filter(Boolean)
@@ -431,6 +432,40 @@ function detectGuidedWorkflowMoment(
   if (!state.detected) return undefined;
 
   for (const text of recentAssistantTexts) {
+    const hasPlanningReviewMenu =
+      text.includes("Quick recap")
+      && text.includes("Detailed recap")
+      && text.includes("Full plan")
+      && text.includes("No review needed");
+
+    if (hasPlanningReviewMenu && (/Would you like to see the plan\?/i.test(text) || /Would you like to review/i.test(text))) {
+      const parsedOptions = parseGuidedWorkflowOptions(text);
+      const options = parsedOptions.length > 0
+        ? parsedOptions
+        : [
+            { id: "1", label: "Quick recap", canonicalResponse: "1" },
+            { id: "2", label: "Detailed recap", canonicalResponse: "2" },
+            { id: "3", label: "Full plan", canonicalResponse: "3" },
+            { id: "4", label: "No review needed", canonicalResponse: "4" },
+          ];
+      return {
+        kind: "plan-review",
+        title: "Planning review",
+        summary:
+          compactWhitespace(
+            [
+              state.phase ? `Phase: ${state.phase}` : undefined,
+              "Choose how much planning detail to review before continuing.",
+            ]
+              .filter(Boolean)
+              .join(" | "),
+          ) ?? "Choose how much planning detail to review before continuing.",
+        signature: makeGuidedWorkflowSignature("plan-review", state, text),
+        ui: "select",
+        options,
+      };
+    }
+
     if (text.includes("Continue to APPLY?")) {
       return {
         kind: "apply-approval",

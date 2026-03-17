@@ -2,7 +2,7 @@
 
 Template for `.paul/phases/{NN}-{name}/CONTEXT.md` - phase discussion context handoff.
 
-**Purpose:** Captures user's vision, goals, and approach before planning. Created by `/paul:discuss`, consumed by `/paul:plan`.
+**Purpose:** Captures the user's planning posture, goals, and approach before executable planning. Created by `/paul:discuss`, consumed by `/paul:plan`.
 
 ---
 
@@ -14,6 +14,9 @@ Template for `.paul/phases/{NN}-{name}/CONTEXT.md` - phase discussion context ha
 **Phase:** {NN} — {phase_name}
 **Generated:** {date}
 **Status:** Ready for planning | Needs more discussion
+**Planning Mode:** exploratory | direct-requirements
+**Collaboration Level:** low | medium | high
+**Suggested Review Path:** Quick recap | Detailed recap | Full plan | No review needed
 
 ## Goals
 
@@ -60,6 +63,9 @@ Template for `.paul/phases/{NN}-{name}/CONTEXT.md` - phase discussion context ha
 | `Phase` | Phase number and name from ROADMAP.md |
 | `Generated` | Date context was created |
 | `Status` | Whether context is complete or needs more discussion |
+| `Planning Mode` | Whether the run was exploratory or direct-requirements |
+| `Collaboration Level` | low / medium / high planning depth used for the run |
+| `Suggested Review Path` | The review option the user preferred before handoff |
 | `Goals` | User's objectives for the phase |
 | `Approach` | Technical direction, patterns, preferences |
 | `Constraints` | Limitations or requirements |
@@ -71,10 +77,10 @@ Template for `.paul/phases/{NN}-{name}/CONTEXT.md` - phase discussion context ha
 ## Usage Pattern
 
 1. User runs `/paul:discuss <phase>`
-2. Discussion workflow explores goals and approach
-3. CONTEXT.md created in phase directory
-4. `/paul:plan` reads CONTEXT.md to inform planning
-5. CONTEXT.md remains for reference (not deleted)
+2. Discussion workflow decides the planning mode and collaboration level
+3. CONTEXT.md is created in the phase directory
+4. `/paul:plan` reads CONTEXT.md to inform planning and review routing
+5. Later planning runs may keep the project default collaboration level or override it per run
 
 ---
 

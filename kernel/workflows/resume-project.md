@@ -45,23 +45,27 @@ No multiple options. Prevents decision fatigue. User can redirect if needed.
 
 <step name="detect_handoffs">
 **Check for handoff files:**
-
-1. Search for handoff files:
+1. Search for active handoff files first:
    ```bash
    ls -t .paul/HANDOFF*.md 2>/dev/null | head -5
    ```
 
-2. If handoff argument provided ($ARGUMENTS):
+2. Search archived handoffs as fallback:
+   ```bash
+   ls -t .paul/handoffs/archive/HANDOFF*.md 2>/dev/null | head -5
+   ```
+
+3. If handoff argument provided ($ARGUMENTS):
    - Use specified handoff path
    - Validate it exists
+4. If no argument but handoffs found:
+   - Prefer the most recent active handoff
+   - If no active handoff exists, use the most recent archived handoff
+   - Note: `.paul/HANDOFF-{context}.md` is the standard active pattern
 
-3. If no argument but handoffs found:
-   - Use most recent handoff (by modification time)
-   - Note: `.paul/HANDOFF-{context}.md` is standard pattern
-
-4. Track handoff for lifecycle:
+5. Track handoff for lifecycle:
    - Store path for later archive/delete
-   - Will be consumed after resume proceeds
+   - If the selected handoff is already archived, do not move it again after resume proceeds
 </step>
 
 <step name="load_state">
@@ -140,34 +144,29 @@ Type "yes" to proceed, or provide context for a different action.
 Show exactly ONE suggested action with the standard PAUL routing format.
 </step>
 
-</process>
-
 <step name="handoff_lifecycle">
 **After user proceeds with work:**
-
 When user confirms next action (e.g., "yes", "1", "approved"):
-
-1. **Archive handoff** (if one was consumed):
+1. **Archive handoff** (if one was consumed from the active root location):
    ```bash
    mkdir -p .paul/handoffs/archive
    mv .paul/HANDOFF-{context}.md .paul/handoffs/archive/
    ```
    - Preserves history while removing from active path
+   - If the consumed handoff was already in `.paul/handoffs/archive/`, leave it in place
    - Alternative: delete if archive not needed
-
 2. **Clean orphaned handoffs:**
    ```bash
-   # Find handoffs older than current phase
+   # Find active handoffs older than current phase
    find .paul -maxdepth 1 -name "HANDOFF*.md" -mtime +7 -type f
    ```
    - Move to archive or delete
-   - Prevents accumulation of stale handoffs
-
+   - Prevents accumulation of stale active handoffs
 3. **Update STATE.md:**
-   - Clear "Resume file" if it pointed to handoff
+   - Clear "Resume file" if it pointed to an active handoff that was archived
+   - If STATE.md points to an archived handoff, that is still a valid resume context path
    - Handoff context now integrated into session
 </step>
-
 </process>
 
 <output>

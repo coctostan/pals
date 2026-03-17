@@ -1,137 +1,73 @@
 # PROJECT.md Template
 
-Template for `.paul/PROJECT.md` — the project's business context and requirements.
+Template for `.paul/PROJECT.md` — the compact hot-path project brief.
 
-**Purpose:** Define what we're building, why it matters, and constraints. This is the "brief" that informs all planning.
+**Purpose:** Provide the concise landing context many workflows can read quickly: what this project is, why it matters, what is currently in scope, the most important constraints, and where to find deeper product-definition detail.
 
 ---
 
 ## File Template
 
 ```markdown
-# [Project Name]
+# Project: [Project Name]
 
-## What This Is
-
-[One paragraph describing what we're building. Be specific about the product/feature, not the technology.]
+## Description
+[1 short paragraph describing what this project/product is. Focus on the product or capability, not the implementation details.]
 
 ## Core Value
-
-[Single sentence: What problem does this solve for whom? This is THE thing that matters.]
+[Single sentence: what problem does this solve for whom?]
 
 ## Current State
-
 | Attribute | Value |
 |-----------|-------|
 | Version | [current version] |
-| Status | [Prototype / MVP / Beta / Production] |
+| Status | [Discovery / Prototype / MVP / Beta / Production] |
 | Last Updated | [YYYY-MM-DD] |
 
-**Production URLs:** (if applicable)
-- [URL 1]: [Description]
-- [URL 2]: [Description]
+**Current system summary:**
+- [For greenfield: "New project"]
+- [For brownfield: concise current-system reality, notable capabilities, or migration posture]
 
-## Requirements
+## Scope Snapshot
+### Validated
+- [x] [Already shipped capability or requirement]
 
-### Validated (Shipped)
+### Active
+- [ ] [Current must-have outcome or near-term priority]
 
-[Requirements that have been implemented and proven]
-
-- [x] [Requirement 1] — [version shipped]
-- [x] [Requirement 2] — [version shipped]
-- [x] [Requirement 3] — [version shipped]
-
-### Active (In Progress)
-
-[Requirements currently being worked on]
-
-- [ ] [Requirement 1] — [status/notes]
-- [ ] [Requirement 2] — [status/notes]
-
-### Planned (Next)
-
-[Requirements queued for upcoming work]
-
-- [ ] [Requirement 1]
-- [ ] [Requirement 2]
+### Planned
+- [ ] [Next likely scope item]
 
 ### Out of Scope
-
-[Explicitly excluded requirements — important for preventing scope creep]
-
-- [Excluded feature 1] — [reason]
-- [Excluded feature 2] — [reason]
+- [Explicitly excluded item] — [reason]
 
 ## Target Users
+**Primary:** [Main user or operator]
+- [Key need or job to be done]
 
-**Primary:** [Who is the main user]
-- [Key characteristic 1]
-- [Key characteristic 2]
-- [Their main goal/need]
-
-**Secondary:** [Other users, if applicable]
-- [Characteristics]
-
-## Context
-
-**Business Context:**
-[Relevant business information — market, partners, strategy]
-
-**Technical Context:**
-[Relevant technical information — existing systems, integrations, constraints]
+**Secondary:** [Optional secondary audience]
+- [Relevant note]
 
 ## Constraints
-
-### Technical Constraints
-- [Constraint 1: e.g., "Must run on Vercel serverless"]
-- [Constraint 2: e.g., "Database must be PostgreSQL"]
-
-### Business Constraints
-- [Constraint 1: e.g., "No PII storage outside approved regions"]
-- [Constraint 2: e.g., "Must integrate with existing CRM"]
-
-### Compliance Constraints
-- [Constraint 1: e.g., "GDPR data handling required"]
-- [Constraint 2: e.g., "SOC 2 audit trail needed"]
-
-## Key Decisions
-
-| Decision | Rationale | Date | Status |
-|----------|-----------|------|--------|
-| [What was decided] | [Why] | [YYYY-MM-DD] | Active / Superseded |
-| [Decision 2] | [Rationale] | [Date] | [Status] |
+- [Top technical / business / compliance constraint]
+- [Existing-system constraint or pattern to preserve]
 
 ## Success Metrics
+- [Outcome or signal that shows the project is succeeding]
+- [Optional adoption / business / operational metric]
 
-[How we know if this project succeeds — measurable outcomes]
-
-| Metric | Target | Current | Status |
-|--------|--------|---------|--------|
-| [Metric 1] | [Target value] | [Current value] | [On track / At risk / Achieved] |
-| [Metric 2] | [Target] | [Current] | [Status] |
-
-## Tech Stack
-
-| Layer | Technology | Notes |
-|-------|------------|-------|
-| Framework | [e.g., Laravel 11] | |
-| Frontend | [e.g., Vue 3 + Inertia] | |
-| Database | [e.g., PostgreSQL] | |
-| Hosting | [e.g., Forge/Vapor] | |
-| Auth | [e.g., Laravel Breeze] | |
-| Payments | [e.g., Laravel Cashier] | |
+## Key Decisions
+| Decision | Rationale | Date | Status |
+|----------|-----------|------|--------|
+| [Decision] | [Why] | [YYYY-MM-DD] | Active |
 
 ## Links
-
-| Resource | URL |
-|----------|-----|
-| Repository | [URL] |
-| Production | [URL] |
-| Staging | [URL] |
-| Documentation | [URL] |
+- `PRD.md` — deeper product definition, assumptions, deferred items, and open questions
+- `.paul/ROADMAP.md` — milestone and phase structure
+- [.paul/codebase/] — brownfield evidence and codebase map artifacts (if available)
 
 ---
-*PROJECT.md — Updated when requirements or context change*
+*PROJECT.md — compact landing brief; keep it intentionally concise*
 *Last updated: [YYYY-MM-DD]*
 ```
 
@@ -139,42 +75,52 @@ Template for `.paul/PROJECT.md` — the project's business context and requireme
 
 ## Section Specifications
 
-### What This Is
-**Purpose:** Concrete description of the product/feature.
+### Description
+**Purpose:** Short product/project framing.
 **Length:** One paragraph.
-**Focus:** What it is, not how it's built.
+**Focus:** What it is, not the full rationale or design history.
 
 ### Core Value
-**Purpose:** The ONE thing that matters. Used to guide all decisions.
-**Format:** Single sentence answering "What problem for whom?"
-**Example:** "Attorneys can make informed accept/reject decisions on cases in under 2 minutes without reading raw documents."
+**Purpose:** The one-line value statement used across orientation and planning flows.
+**Format:** Single sentence answering “what problem for whom?”
 
-### Requirements
-**Purpose:** Track feature state across development.
-**Categories:**
-- **Validated:** Shipped and proven
-- **Active:** Currently being implemented
-- **Planned:** Queued for future
-- **Out of Scope:** Explicitly excluded (prevents scope creep)
+### Current State
+**Purpose:** Fast situational awareness.
+**Include:** Version/status plus a brief current-system summary.
+**Why:** Helps orientation flows and planning entry points without forcing deep reads.
+
+### Scope Snapshot
+**Purpose:** Show scope posture at a glance.
+**Include:** Only concise bullets for Validated, Active, Planned, and Out of Scope.
+**Why:** This is the hot-path replacement for dumping deep requirement detail into PROJECT.md.
 
 ### Target Users
-**Purpose:** Who we're building for.
-**Include:** Characteristics, goals, needs.
-**Why:** Prevents building for imaginary users.
+**Purpose:** Keep the main audience visible on the hot path.
+**Include:** Summary-level user notes only.
+**Detailed user/problem framing belongs in PRD.md.**
 
 ### Constraints
-**Purpose:** Hard limits on solutions.
-**Categories:**
-- Technical (platform, technology requirements)
-- Business (partnerships, integrations, budget)
-- Compliance (legal, regulatory, security)
-
-### Key Decisions
-**Purpose:** Record of significant decisions.
-**Include:** What, why, when, status (Active/Superseded).
-**Integration:** Can sync with decision-logger MCP.
+**Purpose:** Surface the highest-impact limits and must-preserve realities.
+**Include:** Only the most important constraints. Put deeper dependency or environment detail in PRD.md.
 
 ### Success Metrics
-**Purpose:** Measurable outcomes.
-**Include:** Target values and current state.
-**Why:** Objective success criteria prevent endless scope expansion.
+**Purpose:** Keep project success anchored to outcomes.
+**Include:** A few top signals or measurable goals.
+
+### Key Decisions
+**Purpose:** Preserve durable, high-signal decisions.
+**Include:** Only decisions that materially affect planning or execution.
+
+### Links
+**Purpose:** Point to deeper artifacts instead of duplicating them.
+**At minimum:** Link to `PRD.md` and roadmap/state artifacts as relevant.
+
+## Authoring Guidance
+
+`PROJECT.md` should remain the **compact landing brief**. It should **not** become:
+- the full product-design appendix
+- the home for every assumption or open question
+- a dump of brownfield codebase findings
+- a chronological ledger of every phase accomplishment
+
+When detail grows, summarize here and move the deeper material into `PRD.md`, research files, or codebase artifacts.

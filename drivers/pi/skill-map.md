@@ -10,6 +10,7 @@ In Pi:
 - shared workflow markdown remains the implementation truth behind both surfaces
 - the extension also exposes a bounded shortcut layer for high-frequency flow entry points while still routing back through `/paul-*` wrappers
 - enabled modules are installed alongside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`; TODD/WALT remain module overlays, not standalone Pi skills
+- planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
 |------------|------------|--------------------|-----------------|
@@ -78,6 +79,14 @@ The Pi extension exposes a small shortcut layer for the visible lifecycle surfac
 - `Ctrl+Alt+M` → `/paul-milestone`
 
 These shortcuts are discovery and routing affordances only. They remain adapter-only and preserve `/skill:paul-*` as the canonical entry layer.
+
+## Collaboration Flow Notes
+
+Planning-oriented Pi entry points stay aligned with shared workflow truth:
+- `init`, `discuss`, `milestone`, and `plan` all respect `planning.default_collaboration`
+- each run may keep the default or override it to `low`, `medium`, or `high`
+- planning runs explicitly distinguish `exploratory` vs `direct-requirements`
+- Pi guided workflow UX may surface the review menu (`Quick recap`, `Detailed recap`, `Full plan`, `No review needed`) but still sends canonical numeric replies through normal message flow
 
 ## Design Decisions
 
