@@ -23,6 +23,42 @@ Completed milestone log for this project.
 | **v2.3 Pi Interaction Model Refinement** | 2026-03-16 | 2 days | 3 phases, 3 plans |
 | **v2.4 Pi Native UX Layer** | 2026-03-16 | 1 day | 3 phases, 3 plans |
 | **v2.5 Pi Runtime Coherence & Guided Flow** | 2026-03-16 | 1 day | 3 phases, 3 plans |
+| **v2.6 Collaborative Planning & PRD Depth** | 2026-03-17 | 17 hours | 3 phases, 4 plans |
+
+---
+
+## ✅ v2.6 Collaborative Planning & PRD Depth
+
+**Completed:** 2026-03-17
+**Duration:** 17 hours
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 65-67) |
+| Plans | 4 |
+| Files changed | 40 unique workflow/template/doc/validation/state files |
+| Validation checks | 162 passing total (53 cross-harness + 109 Pi) |
+
+### Key Accomplishments
+
+- Audited the current planning and onboarding lifecycle, grounding collaboration and PRD-depth gaps in concrete PALS workflow and artifact behavior.
+- Implemented a shared low / medium / high collaboration model with project defaults, per-run overrides, and explicit exploratory vs direct-requirements language.
+- Added a 4-option pre-plan review flow (quick recap, detailed recap, full plan, no review needed) across shared workflows and Pi guided UX.
+- Rolled out a layered durable artifact model with compact hot-path `PROJECT.md` context plus selectively-read `PRD.md` depth.
+- Updated shared docs, adapter contracts, and validation so the layered onboarding model remains portable and legacy-safe across harnesses.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Keep artifact-first shared markdown workflows as lifecycle truth while improving collaborative definition behavior | 65 | Preserved the existing authority model while targeting the real planning/onboarding weakness |
+| Add low / medium / high collaboration levels with project default plus per-run override | 65 | Introduced bounded collaboration depth across init, milestone discussion, and phase planning |
+| Add a 4-option pre-plan review choice before APPLY routing | 65 | Added progressive disclosure without changing execution-loop semantics |
+| Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserved portability while making collaboration behavior configurable and explicit |
+| Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Increased product-definition depth without bloating the hot path |
+| Keep `PRD.md` additive and legacy-safe for existing repos | 67 | Avoided destructive migration while codifying the new portable contract |
 
 ---
 
