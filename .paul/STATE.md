@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 66 complete; ready to plan Phase 67 onboarding / PRD depth
+**Current focus:** Phase 67 APPLY complete; research artifacts are ready for UNIFY and follow-on implementation planning
 ## Current Position
 Milestone: v2.6 Collaborative Planning & PRD Depth
-Phase: 67 of 3 (Onboarding & PRD Depth) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-17T16:56:58Z — Phase 66 complete, transitioned to Phase 67
+Phase: 67 of 3 (Onboarding & PRD Depth) — APPLY complete
+Plan: 67-01 executed
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-17T18:57:30Z — Executed .paul/phases/67-onboarding-prd-depth/67-01-PLAN.md
 Progress:
 - v2.6 Collaborative Planning & PRD Depth: [███████░░░] 67%
-- Phase 67: [░░░░░░░░░░] 0%
+- Phase 67: [███████░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN in Phase 67]
+  ✓        ✓        ○     [Applied, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -65,6 +65,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-17: Add a 4-option pre-plan review choice (quick recap, detailed recap, full plan, no review needed) | 65 | Introduces progressive disclosure before APPLY without changing execution-loop semantics |
 | 2026-03-17: Keep planning collaboration shared-workflow driven via `pals.json` `planning.default_collaboration` plus per-run overrides | 66 | Preserves artifact-first portability while making init/discuss/milestone/plan behavior more collaborative |
 | 2026-03-17: Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
+| 2026-03-17: Split Phase 67 into a research-first plan before implementation | 67 | Settles the artifact/content/read model before workflow/template changes land |
+| 2026-03-17: Greenfield and brownfield onboarding should converge to the same durable schema with different intake flows | 67 | Preserves one canonical product/project structure without forcing identical discovery behavior |
+| 2026-03-17: Decide content model and read model before choosing whether PROJECT.md and PRD depth should be one or two documents | 67 | Keeps context cost explicit and avoids prematurely locking in the wrong durable artifact layout |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -88,16 +91,15 @@ Last commit: HEAD (feat(66-collaborative-planning-model): implement collaborativ
 Feature branches merged: none
 Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
 ## Session Continuity
-Last session: 2026-03-17T16:56:58Z
-Stopped at: Phase 66 complete, ready to plan Phase 67
-Next action: Run /skill:paul-plan for Phase 67 (Onboarding & PRD Depth)
-Resume file: .paul/ROADMAP.md
-Git strategy: main
+Last session: 2026-03-17T14:59:27-0400
+Stopped at: APPLY complete for plan 67-01; session paused before UNIFY
+Next action: Run /skill:paul-unify .paul/phases/67-onboarding-prd-depth/67-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-17-phase67-apply-complete.md
+Git strategy: feature/67-onboarding-prd-depth
 Resume context:
-- Phase 66 reconciliation summary: `.paul/phases/66-collaborative-planning-model/66-01-SUMMARY.md`
-- Shared planning workflows now support `planning.default_collaboration`, per-run override, exploratory vs direct-requirements mode, and the 4-option review menu
-- Pi wrapper/docs/validation surfaces now align with the collaborative planning behavior, including guided review-menu routing
-- Validation passed during Phase 66 APPLY: `bash tests/pi-end-to-end-validation.sh && bash tests/cross-harness-validation.sh`
-- Next work is Phase 67 onboarding / PRD depth, which will build on the new collaboration model without changing artifact-first lifecycle truth
+- Phase 67 research artifacts were created and APPLY is complete, but UNIFY has not yet been run
+- The recommended direction is a layered durable model: `PROJECT.md` as the hot-path landing artifact plus `PRD.md` as the deeper selectively-read product-definition layer
+- Greenfield and brownfield should converge to the same durable schema while keeping different intake flows
+- The next session should close the loop with UNIFY, then plan the implementation follow-on work
 ---
 *STATE.md — Updated after every significant action*
