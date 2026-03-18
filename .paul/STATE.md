@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-17)
+See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 68 plan is ready for review and approval
+**Current focus:** Phase 69 planning is next — execution proof first, visibility UX second
 ## Current Position
 Milestone: v2.7 Module Reality Check & Visibility
-Phase: 68 of 4 (Execution Audit) — Planning
-Plan: 68-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-17T22:52:50Z — Created .paul/phases/68-execution-audit/68-01-PLAN.md
+Phase: 69 of 4 (Gap Fixes) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-18T01:09:28Z — Phase 68 complete, transitioned to Phase 69 planning
 Progress:
-- v2.7 Module Reality Check & Visibility: [░░░░░░░░░░] 0%
-- Phase 68: [░░░░░░░░░░] 0% (audit plan created)
+- v2.7 Module Reality Check & Visibility: [███░░░░░░░] 25%
+- Phase 69: [░░░░░░░░░░] 0% (planning not started)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -71,6 +71,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-17: Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Settles the Phase 67 content/read/file model so the follow-on implementation plan can update onboarding, templates, docs, and validation without reopening the design question |
 | 2026-03-17: Keep `PRD.md` additive and legacy-safe rather than mandatory for existing repos | 67 | Allows docs and validation to adopt the layered model without destructive migration |
 | 2026-03-17: Complete the layered onboarding/artifact rollout across workflows, templates, docs, and validation | 67 | Finishes v2.6 with shared portable `PROJECT.md` + `PRD.md` behavior |
+| 2026-03-18: Treat the module system as more wired than visible; source-vs-installed drift is not the main problem | 68 | Keeps follow-on work focused on proof/reporting and UX rather than phantom registry fixes |
+| 2026-03-18: Prioritize execution-proof fixes before visibility UX | 68 | Sets Phase 69 on durable evidence/reporting and Phase 70 on presentation |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -81,6 +83,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 |-----------|-------|--------|
 | None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 | None material | 67 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
+| None material | 68 | Phase executed as planned; audit stayed within `.paul/` artifacts and produced the requested evidence package |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -88,22 +91,23 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
-- None active
+- Phase 68: Live Pi lifecycle surfaces remain module-opaque; address in Phase 70
+- Phase 68: Post-unify module outputs lack a proven durable SUMMARY path; address in Phase 69
 ### Git State
-Branch: feature/67-onboarding-prd-depth
-Last commit: HEAD (latest local milestone closeout commit)
-Feature branches merged: none
-Remote status: remote not configured (pals.json git.remote = null), so no push/PR automation executed
+Branch: feature/69-gap-fixes
+Last commit: HEAD (WIP pause commit on feature/69-gap-fixes after Phase 68 completion)
+Feature branches merged: PR #15 merged to main; draft PR #16 open for feature/69-gap-fixes
+Remote status: origin configured and branch is pushed/tracking origin/feature/69-gap-fixes
 ## Session Continuity
-Last session: 2026-03-17T18:54:36-0400
-Stopped at: Paused after creating Plan 68-01, before APPLY approval
-Next action: Review and approve the plan, then run /skill:paul-apply .paul/phases/68-execution-audit/68-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-17-phase68-plan-ready.md
-Git strategy: feature/67-onboarding-prd-depth
+Last session: 2026-03-17T21:16:48-0400
+Stopped at: Paused after completing Phase 68 and transitioning to Phase 69 planning
+Next action: /skill:paul-plan for Phase 69 (Gap Fixes)
+Resume file: .paul/HANDOFF-2026-03-17-phase69-ready.md
+Git strategy: feature-per-phase (current branch: feature/69-gap-fixes)
 Resume context:
-- v2.7 is active and Phase 68 is still at PLAN ✓ / APPLY ○ / UNIFY ○
-- `.paul/phases/68-execution-audit/68-01-PLAN.md` is an audit-only research plan; no fixes or UX changes should be implemented during this phase
-- The audit should compare source module manifests, the installed Pi registry at `~/.pi/agent/skills/pals/modules.yaml`, workflow dispatch paths, and current user-visible surfaces
-- After the audit artifacts are produced, stop for direction before any Phase 69 gap-fix work begins
+- Phase 68 is fully complete and summarized in `.paul/phases/68-execution-audit/68-01-SUMMARY.md`
+- The Phase 68 handoff has been superseded by `.paul/HANDOFF-2026-03-17-phase69-ready.md`
+- Phase 69 should focus on durable module execution evidence, especially the post-unify reporting gap
+- Phase 70 should make that proven evidence visible in live UX and end reporting
 ---
 *STATE.md — Updated after every significant action*
