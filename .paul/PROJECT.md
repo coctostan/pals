@@ -117,6 +117,7 @@ All validated — see below.
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 - [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
+- [ ] Module execution proof & visibility — use the Phase 68 audit findings to harden execution evidence, improve live module visibility, and produce recommendation-grade module guidance across Phases 69-71
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -246,6 +247,8 @@ All validated — see below.
 | Extend Pi guided workflow UX to surface the 4-option review menu without introducing Pi-owned workflow state | 66 | Keeps Pi additive-only while supporting the shared planning review flow |
 | Adopt a layered durable artifact model with compact `PROJECT.md` hot-path context plus selectively-read `PRD.md` depth | 67 | Settles the content/read/file model for richer onboarding without bloating the hot path |
 | Keep `PRD.md` additive and legacy-safe for existing repos rather than forcing destructive migration | 67 | Preserves portability while allowing validation and docs to codify the new layered contract |
+| Treat the module system as more wired than visible | 68 | Audit found source manifests and the installed Pi registry aligned; the main trust problem is weak proof and visibility, not declared hook drift |
+| Prioritize execution-proof fixes before visibility UX | 68 | Post-unify reporting and lifecycle evidence need to be made durable before richer UI surfaces are added |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -264,4 +267,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-17 after Phase 67 completion*
+*Last updated: 2026-03-18 after Phase 68 completion*
