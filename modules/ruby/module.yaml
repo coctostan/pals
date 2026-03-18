@@ -18,7 +18,7 @@ hooks:
       - references/debt-detection.md
   post-unify:
     priority: 300
-    description: Scan SUMMARY.md files_modified for new debt patterns; report as annotations with refactor suggestions
+    description: Scan SUMMARY.md or FIX-SUMMARY.md files_modified for new debt patterns; return a durable post-unify report with refactor suggestions
     refs:
       - references/refactor-patterns.md
 

@@ -429,7 +429,7 @@ completed: YYYY-MM-DDTHH:MM:SSZ
 
 | Section | Contents |
 |---------|----------|
-| **Module Execution Reports** | Populated during UNIFY from module hook annotations. Module-specific subsections (e.g., Test Execution from TODD, Quality metrics from WALT). |
+| **Module Execution Reports** | Finalized during UNIFY from carried-forward post-apply annotations, retained reconciliation context, and post-unify module reports / recorded side effects that should remain visible after loop close. |
 | **Task Commits** | Table: task name, commit hash, type, description |
 | **Issues Encountered** | Table: issue, resolution |
 | **Retrospective** | Issue timeline, outcome evaluation, improvement notes |

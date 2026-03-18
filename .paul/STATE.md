@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 69 planning is next — execution proof first, visibility UX second
+**Current focus:** Phase 70 planning can now focus on live module visibility UX on top of the hardened execution-evidence path
 ## Current Position
 Milestone: v2.7 Module Reality Check & Visibility
-Phase: 69 of 4 (Gap Fixes) — Ready to plan
+Phase: 70 of 4 (Visibility UX) — Ready to PLAN
 Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-18T01:09:28Z — Phase 68 complete, transitioned to Phase 69 planning
+Status: Ready to PLAN
+Last activity: 2026-03-18T03:26:35Z — Phase 69 complete, transitioned to Phase 70
 Progress:
-- v2.7 Module Reality Check & Visibility: [███░░░░░░░] 25%
-- Phase 69: [░░░░░░░░░░] 0% (planning not started)
+- v2.7 Module Reality Check & Visibility: [█████░░░░░] 50%
+- Phase 70: [░░░░░░░░░░] 0% (not started)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Accumulated Context
@@ -73,6 +73,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-17: Complete the layered onboarding/artifact rollout across workflows, templates, docs, and validation | 67 | Finishes v2.6 with shared portable `PROJECT.md` + `PRD.md` behavior |
 | 2026-03-18: Treat the module system as more wired than visible; source-vs-installed drift is not the main problem | 68 | Keeps follow-on work focused on proof/reporting and UX rather than phantom registry fixes |
 | 2026-03-18: Prioritize execution-proof fixes before visibility UX | 68 | Sets Phase 69 on durable evidence/reporting and Phase 70 on presentation |
+| 2026-03-18: Finalize summary evidence after post-unify instead of treating the first SUMMARY write as final | 69 | Gives post-unify-capable modules a durable report path in both UNIFY and standard fix loops |
+| 2026-03-18: Use `module_reports` for persisted post-unify summary content and `side_effects` for non-blocking follow-on actions | 69 | Aligns workflows, specs, overlays, and validation around one durable reporting contract |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -84,6 +86,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 | None material | 67 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 | None material | 68 | Phase executed as planned; audit stayed within `.paul/` artifacts and produced the requested evidence package |
+| None material | 69 | APPLY stayed within the planned shared workflow/docs/tests scope; lifecycle artifact updates were limited to state and handoff bookkeeping |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -91,23 +94,22 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
-- Phase 68: Live Pi lifecycle surfaces remain module-opaque; address in Phase 70
-- Phase 68: Post-unify module outputs lack a proven durable SUMMARY path; address in Phase 69
+- Phase 70: Live Pi lifecycle surfaces remain module-opaque; now safe to address on top of the hardened evidence path
+- Phase 71: Decide the long-term proof/visibility balance without overbuilding telemetry or Pi-only state
 ### Git State
 Branch: feature/69-gap-fixes
-Last commit: HEAD (WIP pause commit on feature/69-gap-fixes)
-Feature branches merged: PR #15 and PR #16 merged to main; feature/69-gap-fixes recreated locally for Phase 69 planning pause
+Last commit: HEAD feat(69-gap-fixes): harden durable module evidence path
+Feature branches merged: PR #15 and PR #16 already merged to main; Phase 69 remains on feature/69-gap-fixes locally
 Remote status: origin configured; feature/69-gap-fixes not yet pushed
 ## Session Continuity
-Last session: 2026-03-17T22:32:40-0400
-Stopped at: Paused on synced main after PR #16 merge and feature-branch cleanup
-Next action: /skill:paul-plan for Phase 69 (Gap Fixes)
-Resume file: .paul/HANDOFF-2026-03-17-phase69-ready-main-synced.md
+Last session: 2026-03-17T23:26:35-0400
+Stopped at: Phase 69 complete, ready to plan Phase 70 Visibility UX
+Next action: /skill:paul-plan
+Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase (currently on feature/69-gap-fixes)
 Resume context:
-- Phase 68 is fully complete and summarized in `.paul/phases/68-execution-audit/68-01-SUMMARY.md`
-- Local main is synced to merge commit `a0aa5df`; `feature/69-gap-fixes` is deleted locally and remotely
-- Phase 69 should focus on durable module execution evidence, especially the post-unify reporting gap
-- Phase 70 should make that proven evidence visible in live UX and end reporting
+- Phase 69 summary is recorded at `.paul/phases/69-gap-fixes/69-01-SUMMARY.md`
+- The durable module evidence/reporting contract is now proven by shared workflow/spec updates plus passing cross-harness and Pi validation suites
+- Phase 70 should focus on live module visibility UX only; do not reopen the Phase 69 reporting-contract work unless new contradictions appear
 ---
 *STATE.md — Updated after every significant action*

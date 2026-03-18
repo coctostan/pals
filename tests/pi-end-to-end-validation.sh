@@ -147,6 +147,42 @@ if [ -f "$SKILL_DIR/modules.yaml" ]; then
   fi
 fi
 
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 1B: MODULE EXECUTION EVIDENCE
+# ════════════════════════════════════════════════════════════════════
+
+section "MODULE EXECUTION EVIDENCE"
+
+if [ -f "$SKILL_DIR/modules.yaml" ]; then
+  if grep -q '^  walt:' "$SKILL_DIR/modules.yaml" \
+    && grep -q '^  skip:' "$SKILL_DIR/modules.yaml" \
+    && grep -q '^  ruby:' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/quality-history.md' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/knowledge-search.md' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/refactor-patterns.md' "$SKILL_DIR/modules.yaml"; then
+    tap_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules"
+  else
+    tap_not_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules" "Expected WALT/SKIP/RUBY post-unify refs in installed Pi registry"
+  fi
+else
+  tap_not_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules" "modules.yaml missing from installed Pi skill dir"
+fi
+
+PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
+PI_FIX="$SKILL_DIR/workflows/fix-loop.md"
+PI_SUMMARY_TEMPLATE="$SKILL_DIR/templates/SUMMARY.md"
+
+if [ -f "$PI_UNIFY" ] && [ -f "$PI_FIX" ] && [ -f "$PI_SUMMARY_TEMPLATE" ] \
+  && grep -q 'finalize_summary' "$PI_UNIFY" \
+  && grep -q 'module_reports' "$PI_UNIFY" \
+  && grep -q 'FIX-SUMMARY' "$PI_FIX" \
+  && grep -q 'module_reports' "$PI_FIX" \
+  && grep -q 'Module Execution Reports' "$PI_SUMMARY_TEMPLATE"; then
+  tap_ok "Installed Pi kernel preserves the durable summary evidence path"
+else
+  tap_not_ok "Installed Pi kernel preserves the durable summary evidence path" "Expected finalize_summary/module_reports markers in installed Pi workflows and summary template"
+fi
+
 # Check extension installed
 EXT_PATH="$TEMP_HOME/.pi/agent/extensions/pals-hooks.ts"
 if [ -f "$EXT_PATH" ]; then

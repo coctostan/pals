@@ -155,7 +155,7 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
 6. If no modules registered for `pre-unify`: proceed (no-op, no warning)
 7. Output dispatch log: `[dispatch] pre-unify: {MODULE(priority) → N inject keys | skip} | ...`
-8. Store accumulated context for inclusion in SUMMARY.md
+8. Store accumulated pre-unify context for reconciliation and later SUMMARY.md finalization alongside carried-forward apply annotations
 </step>
 
 <step name="audit_skill_invocations">
@@ -191,10 +191,8 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 </step>
 
 <step name="create_summary">
-1. Create SUMMARY.md at `.paul/phases/{phase}/{plan}-SUMMARY.md`
+1. Create a SUMMARY.md draft at `.paul/phases/{phase}/{plan}-SUMMARY.md`
 2. Include:
-
-   **Frontmatter:**
    ```yaml
    ---
    phase: NN-name
@@ -203,15 +201,16 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
    duration: approximate time
    ---
    ```
-
    **Sections:**
    - Objective (brief restatement)
    - What Was Built (table: file, purpose, lines)
    - Acceptance Criteria Results (table: AC, description, status)
    - Verification Results (command outputs)
+   - Module Execution Reports (keep this section open for finalization; seed it with any carried-forward apply annotations or pre-unify context that already needs to persist)
    - Deviations (if any, with explanations)
    - Key Patterns/Decisions (if any emerged)
    - Next Phase (what comes next)
+3. Preserve the draft as a durable staging point for summary finalization. Do NOT treat the first write as the last write — post-unify module reports and recorded side effects must still be able to land in `Module Execution Reports` before the loop closes.
 </step>
 
 <step name="update_state">
@@ -247,12 +246,23 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 4. For each registered module:
    a. Load only the hook-specific `refs` listed in `hook_details.post-unify.refs`
    b. Follow the hook description from `hook_details.post-unify.description`
-   c. Pass `annotations_from_apply` and summary path
-   d. Collect `side_effects` (e.g., "Recorded quality delta in history")
+   c. Pass `annotations_from_apply`, retained pre-unify context, and summary path
+   d. Collect `module_reports` for durable inclusion in `Module Execution Reports`
+   e. Collect `side_effects` (e.g., "Recorded quality delta in history")
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
 6. If no modules registered for `post-unify`: proceed (no-op, no warning)
-7. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N side effects | skip} | ...`
-8. Log any side_effects reported by modules
+7. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N reports / N side effects | skip} | ...`
+8. Store accumulated post-unify module reports and logged side_effects for summary finalization
+</step>
+<step name="finalize_summary" priority="after-post-unify">
+1. Re-open the SUMMARY.md draft before phase-completion routing.
+2. Finalize `## Module Execution Reports` using one durable reporting path:
+   - carried-forward `annotations_from_apply`
+   - any pre-unify `context_inject` that materially informed reconciliation
+   - `module_reports` returned by post-unify hooks
+   - recorded `side_effects` that should remain visible after the loop closes
+3. If no module evidence exists after reconciliation, omit the section entirely instead of leaving placeholder comments.
+4. Save the finalized SUMMARY.md before `check_phase_completion` or transition routing runs.
 </step>
 
 <step name="check_phase_completion">

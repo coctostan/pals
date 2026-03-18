@@ -117,7 +117,7 @@ All validated — see below.
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 - [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
-- [ ] Module execution proof & visibility — use the Phase 68 audit findings to harden execution evidence, improve live module visibility, and produce recommendation-grade module guidance across Phases 69-71
+- [~] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69; live module visibility UX and recommendation-grade module guidance remain for Phases 70-71
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -249,6 +249,8 @@ All validated — see below.
 | Keep `PRD.md` additive and legacy-safe for existing repos rather than forcing destructive migration | 67 | Preserves portability while allowing validation and docs to codify the new layered contract |
 | Treat the module system as more wired than visible | 68 | Audit found source manifests and the installed Pi registry aligned; the main trust problem is weak proof and visibility, not declared hook drift |
 | Prioritize execution-proof fixes before visibility UX | 68 | Post-unify reporting and lifecycle evidence need to be made durable before richer UI surfaces are added |
+| Finalize summary evidence after post-unify instead of treating the first SUMMARY write as final | 69 | Keeps post-unify-capable module contributions durably visible in SUMMARY/FIX-SUMMARY artifacts |
+| Use `module_reports` for persisted post-unify content and `side_effects` for non-blocking follow-on actions | 69 | Gives workflows, specs, overlays, and validation one durable reporting contract before Phase 70 UX work |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -267,4 +269,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after Phase 68 completion*
+*Last updated: 2026-03-18 after Phase 69 completion*

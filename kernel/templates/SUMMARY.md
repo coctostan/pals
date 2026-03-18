@@ -69,10 +69,12 @@ completed: YYYY-MM-DDTHH:MM:SSZ  # ISO timestamp when apply finished
 | AC-3: [Name] | Pass / Fail | [Details] |
 
 ## Module Execution Reports
-
-<!-- Populated during UNIFY from module hook annotations collected during apply/unify phases. -->
-<!-- Each module that contributed annotations adds its own subsection here. -->
-<!-- If no modules contributed annotations, omit this section entirely. -->
+<!-- Finalized during UNIFY from one durable reporting path: -->
+<!-- 1. carried-forward post-apply annotations -->
+<!-- 2. any pre-unify context that materially informed reconciliation -->
+<!-- 3. post-unify module_reports and recorded side_effects returned before loop close -->
+<!-- Each contributing module gets its own persisted subsection here. -->
+<!-- If no module evidence survives finalization, omit this section entirely. -->
 
 <!-- Example subsection (from a test enforcement module):
 ### Test Execution
@@ -226,10 +228,10 @@ The one-liner should tell someone what actually shipped.
 **Requirement:** All must pass for plan to be complete.
 
 ### Module Execution Reports
-**Purpose:** Consolidated reports from module hooks that ran during apply/unify.
-**Contains:** Module-specific subsections with annotations, metrics, audit results.
-**When included:** Only when modules contributed annotations via lifecycle hooks.
-**Update:** Populated during UNIFY from accumulated hook annotations.
+**Purpose:** Persist durable evidence of module contributions across APPLY and UNIFY.
+**Contains:** Module-specific subsections with carried-forward annotations, reconciliation context, post-unify reports, and any recorded side effects worth preserving in the summary.
+**When included:** Only when lifecycle hooks produced evidence that should remain visible after loop close.
+**Update:** Drafted during UNIFY reconciliation and finalized after post-unify hooks, before the summary is closed.
 
 ### Deviations Section
 **Purpose:** Document unplanned work and its handling.

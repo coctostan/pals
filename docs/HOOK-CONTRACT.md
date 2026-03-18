@@ -186,10 +186,10 @@ Outcomes: `N inject keys`, `skip`, `block`, `N modifications`, `N annotations`
 | `block` | Halt further progression with reason and optional remediation steps. User offered: fix/override/stop. |
 
 **Persistence:** MIXED
-- Annotations are carried to the finalize step and included in apply completion output
-- Quality gate results persist to SUMMARY.md (via unify-phase Module Execution Reports)
-- WALT quality data persists to quality-history.md
-- SKIP knowledge suggestions are advisory (user decides to persist)
+- Annotations are carried forward into UNIFY / FIX summary finalization, not just apply completion output
+- Quality gate results persist to `SUMMARY.md` / `FIX-SUMMARY.md` via `Module Execution Reports`
+- WALT quality history remains a post-unify side effect in `.paul/QUALITY-HISTORY.md`
+- SKIP knowledge suggestions remain advisory unless the user chooses to persist them
 
 **Current Registrations:**
 
@@ -207,23 +207,24 @@ Outcomes: `N inject keys`, `skip`, `block`, `N modifications`, `N annotations`
 
 ### 6. post-unify
 
-**When:** After unify-phase reconciliation completes. SUMMARY.md is being finalized.
-
+**When:** After unify-phase reconciliation completes. `STATE.md` may already be updated, but `SUMMARY.md` / `FIX-SUMMARY.md` is still open for finalization.
 **Input Context:**
-- SUMMARY.md content (accomplishments, decisions, deviations)
+- Summary path for the draft being finalized
 - Plan vs actual comparison results
 - Accumulated annotations from post-apply
+- Any retained pre-unify context that materially informed reconciliation
 
 **Allowed Output Actions:**
-
 | Action | Description |
 |--------|-------------|
-| `context_inject` | Advisory annotations for SUMMARY.md Module Execution Reports section |
+| `module_reports` | Durable report blocks for the summary's `Module Execution Reports` section |
+| `side_effects` | Recorded follow-on actions that should remain visible after loop close (history append, suggestion capture, etc.) |
 
-**Persistence:** PERSISTED (to artifacts)
-- WALT: Computes quality delta (before vs after), appends entry to quality-history.md with phase metadata
-- SKIP: Extracts decisions/rationale from SUMMARY.md, creates knowledge entry suggestions
-- RUBY: Scans SUMMARY.md files_modified for new debt patterns, reports refactor suggestions
+**Persistence:** PERSISTED (to summary/history artifacts)
+- `module_reports` persist into `SUMMARY.md` / `FIX-SUMMARY.md` during finalization
+- `side_effects` may update durable artifacts and should also be logged or summarized with the module report when relevant
+- WALT records quality history as a side effect while returning the quality report that survives in the summary
+- SKIP and RUBY return durable post-unify reports; any additional writes stay non-blocking side effects
 
 **Blocking:** post-unify hooks CANNOT block. They are advisory only.
 
@@ -231,9 +232,9 @@ Outcomes: `N inject keys`, `skip`, `block`, `N modifications`, `N annotations`
 
 | Module | Priority | Action | Can Block? |
 |--------|----------|--------|------------|
-| WALT | 100 | Quality delta computation + history append | No |
-| SKIP | 200 | Knowledge extraction + entry suggestions | No |
-| RUBY | 300 | Debt scan + refactor suggestions | No |
+| WALT | 100 | Quality delta computation + durable summary report + history append | No |
+| SKIP | 200 | Knowledge extraction + durable summary report + entry suggestions | No |
+| RUBY | 300 | Debt scan + durable summary report + refactor suggestions | No |
 
 ---
 

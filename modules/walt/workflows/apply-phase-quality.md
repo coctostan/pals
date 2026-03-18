@@ -153,10 +153,9 @@ This workflow is loaded by kernel hook dispatch when WALT's hooks fire.
 <hook name="post-unify" priority="100">
 ## Quality History Recording
 
-**When:** Kernel dispatches post-unify hooks after state update.
+**When:** Kernel dispatches post-unify hooks after state update while `SUMMARY.md` / `FIX-SUMMARY.md` is still open for finalization.
 
 **Load:** @references/quality-delta.md, @references/quality-history.md
-
 **Action:**
 1. Check for WALT annotations from the apply phase:
    - Look for walt_test_report and walt_lint_report in apply annotations
@@ -172,18 +171,17 @@ This workflow is loaded by kernel hook dispatch when WALT's hooks fire.
      - Type errors: count (no before/after comparison)
    - Determine per-metric trajectory indicator: improved / stable / degraded / skipped
    - Determine overall verdict: improved (any up, none down) / stable (all same) / degraded (any down)
-
-3. **Add Quality section to SUMMARY.md** (per quality-delta.md metric format):
-   - Insert the quality table with Before/After/Delta/Trajectory columns
-   - Or minimal "Not tracked" if no data
-   - Include compact format in SUMMARY.md narrative
-
+3. **Return a durable quality `module_report` for `Module Execution Reports`** (per quality-delta.md metric format):
+   - Prepare the quality table with Before/After/Delta/Trajectory columns
+   - Or a minimal "Not tracked" report if no data exists
+   - Hand the report back to the kernel so summary finalization persists it after post-unify completes
 4. **Append to .paul/QUALITY-HISTORY.md** (per quality-history.md):
    - If file doesn't exist: create with header, trajectory lines, and table header
    - Append new row to Plan History table with plan ID, date, after values, verdict
    - Update Cumulative Trajectory summary (append new values, truncate at 8 with ...→)
+5. Return a side-effect note such as "Recorded quality delta in quality-history.md" when history was updated so the kernel can preserve that action in the final summary log when relevant
 
-**Does NOT block.** History recording is append-only and informational.
+**Does NOT block.** History recording is append-only and informational, and the durable summary report is returned to the kernel before loop close.
 </hook>
 
 </hooks>
