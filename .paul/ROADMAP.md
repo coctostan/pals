@@ -28,14 +28,14 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.7 Module Reality Check & Visibility**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete
+Status: ✅ Complete
+Phases: 4 of 4 complete — 2026-03-18
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 68 | Execution Audit | 1/1 | ✅ Complete | 2026-03-18 |
 | 69 | Gap Fixes | 1/1 | ✅ Complete | 2026-03-18 |
 | 70 | Visibility UX | 1/1 | ✅ Complete | 2026-03-18 |
-| 71 | Recommendations | TBD | Not started | - |
+| 71 | Recommendations | 1/1 | ✅ Complete | 2026-03-18 |
 
 ### Phase 68: Execution Audit (Complete)
 Focus: Inspect every module invocation path, trace what actually fires during PLAN/APPLY/UNIFY, and publish findings before any fixes are made.
@@ -50,11 +50,11 @@ Focus: Add live module status indicators in the UX/TUI and make module participa
 Plans: 1 complete (`70-01-PLAN.md`, `70-01-SUMMARY.md`)
 
 
-### Phase 71: Recommendations
+### Phase 71: Recommendations (Complete)
 Focus: Produce per-module keep/improve/merge/remove recommendations and ensure end reports summarize module participation.
-Plans: TBD (defined during /skill:paul-plan)
+Plans: 1 complete (`71-01-PLAN.md`, `71-01-SUMMARY.md`)
 ## Next Milestone
-Define after v2.7 is complete.
+TBD — define from the Phase 71 recommendation artifacts via /skill:paul-milestone.
 
 ---
 
@@ -290,4 +290,4 @@ Define after v2.7 is complete.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-18 — Phase 70 complete; Phase 71 ready to plan*
+*Last updated: 2026-03-18 — Phase 71 complete; v2.7 milestone complete*

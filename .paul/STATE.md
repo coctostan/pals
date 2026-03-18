@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 71 planning can now define recommendation-grade proof/visibility guidance on top of the hardened evidence path and live module visibility UX
+**Current focus:** v2.7 is complete; use the Phase 71 recommendation artifacts to define the next milestone without reopening telemetry, Pi-owned lifecycle state, or the Phase 69/70 proof baseline
 ## Current Position
-Milestone: v2.7 Module Reality Check & Visibility
-Phase: 71 of 4 (Recommendations) — ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-18T09:36:00-0400 — Phase 70 UNIFY complete; transitioned from Visibility UX to Phase 71 planning on feature/70-visibility-ux
+Milestone: v2.7 Module Reality Check & Visibility — Complete
+Phase: Milestone complete — ready for next milestone
+Plan: None active
+Status: Milestone complete, ready for next milestone
+Last activity: 2026-03-18T10:16:51-0400 — Unified .paul/phases/71-recommendations/71-01-PLAN.md and closed v2.7
 Progress:
-- v2.7 Module Reality Check & Visibility: [████████░░] 75%
-- Phase 71: [░░░░░░░░░░] 0% (Ready to plan)
+- v2.7 Module Reality Check & Visibility: [██████████] 100%
+- Phase 71: [██████████] 100% (Complete)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to start next PLAN]
+  ✓        ✓        ✓     [Loop complete - milestone complete]
 ```
 
 ## Accumulated Context
@@ -78,6 +78,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-18: Derive live module visibility from recent shared workflow/reporting signals rather than registry presence alone | 70 | Keeps Pi module visibility trustworthy without inventing a second execution ledger |
 | 2026-03-18: Reuse existing Pi status/widget surfaces for recent module activity instead of adding new dashboards or telemetry | 70 | Delivers bounded visibility with additive adapter-only UX |
 | 2026-03-18: Treat `Module Execution Reports` as a bounded fallback alongside recent `[dispatch]` output for live visibility | 70 | Keeps post-unify-visible module activity legible without Pi-owned persistence |
+| 2026-03-18: Keep the module roster and improve legibility before considering merge/remove changes | 71 | Future work should refine recommendation/report clarity rather than destabilize module boundaries |
+| 2026-03-18: Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserves artifact-first truth while making module participation legible without telemetry or Pi-owned execution state |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -91,13 +93,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 68 | Phase executed as planned; audit stayed within `.paul/` artifacts and produced the requested evidence package |
 | None material | 69 | APPLY stayed within the planned shared workflow/docs/tests scope; lifecycle artifact updates were limited to state and handoff bookkeeping |
 | None material | 70 | Phase executed as planned; bounded live visibility work stayed within the approved Pi adapter/docs/tests scope |
-### Skill Audit (Phase 70)
+| None material | 71 | APPLY and UNIFY stayed within the planned recommendation-only scope; no Phase 69/70 implementation work was reopened |
+### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
-| /paul | ✓ | Lifecycle flow drove PLAN → APPLY → UNIFY |
-| /carl | ○ | No explicit CARL invocation was recorded during this bounded Pi adapter visibility change |
-| TODD | ○ | Tests were extended, but no explicit TODD workflow invocation was recorded |
-| WALT | ○ | Verification passed, but no explicit WALT workflow invocation was recorded |
+| /paul | ✓ | Lifecycle flow drove PLAN → APPLY → UNIFY for this recommendation-only phase |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -105,22 +105,22 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
-- Phase 71: Decide the long-term proof/visibility balance without overbuilding telemetry or Pi-only state
-- Phase 71: Recommendation work should build on the now-visible live UX and hardened evidence path instead of reopening adapter-only guardrails
+- Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
+- Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/70-visibility-ux
-Last commit: HEAD feat(70-visibility-ux): bounded live module visibility
-Feature branches merged: PR #15 and PR #16 already merged to main; feature/70-visibility-ux remains the active branch for follow-on milestone work
+Last commit: HEAD feat(71-recommendations): module proof and visibility guidance
+Feature branches merged: PR #15 and PR #16 already merged to main; feature/70-visibility-ux remains the active local branch for the next milestone because remote automation is disabled
 Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
 ## Session Continuity
-Last session: 2026-03-18T09:36:00-0400
-Stopped at: Phase 70 complete, ready to plan Phase 71
-Next action: Run /skill:paul-plan
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-18T10:16:51-0400
+Stopped at: v2.7 milestone complete
+Next action: Run /skill:paul-milestone
+Resume file: .paul/phases/71-recommendations/71-01-SUMMARY.md
 Git strategy: feature/70-visibility-ux
 Resume context:
-- Phase 70 is complete: `.paul/phases/70-visibility-ux/70-01-SUMMARY.md` reconciles the bounded live module visibility UX work across `drivers/pi/extensions/pals-hooks.ts`, `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, and `tests/pi-end-to-end-validation.sh`
-- Verification is green: `npx -y esbuild drivers/pi/extensions/pals-hooks.ts --bundle --platform=node --format=cjs --outfile=/tmp/pals-hooks-p70.js --external:@mariozechner/pi-tui` and `bash tests/pi-end-to-end-validation.sh` (116/116)
-- Next step is Phase 71 planning only; do not reopen telemetry, proof-model redesign, or Pi-owned lifecycle state during planning
+- v2.7 is complete across Phase 68 audit, Phase 69 durable evidence repair, Phase 70 live Pi visibility UX, and Phase 71 recommendation synthesis
+- The key new artifacts are `.paul/phases/71-recommendations/module-recommendations-matrix.md`, `.paul/phases/71-recommendations/proof-visibility-guidance.md`, `.paul/phases/71-recommendations/71-recommendations-report.md`, and `.paul/phases/71-recommendations/71-01-SUMMARY.md`
+- The next milestone should start from these outputs and avoid reopening telemetry, Pi-owned lifecycle state, or already-settled proof/visibility guardrails without new evidence
 ---
 *STATE.md — Updated after every significant action*
