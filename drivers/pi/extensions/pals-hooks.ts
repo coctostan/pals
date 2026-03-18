@@ -32,6 +32,11 @@ const COMMAND_ACTIVATION_TURN_BUDGET = 3;
 const PROMPT_ACTIVATION_TURN_BUDGET = 1;
 const GUIDED_WORKFLOW_LOOKBACK = 5;
 const GUIDED_WORKFLOW_SIGNATURE_BYTES = 240;
+const RECENT_MODULE_ACTIVITY_LOOKBACK = 3;
+const MAX_VISIBLE_MODULES = 3;
+const MAX_WIDGET_MODULE_DETAILS = 4;
+const DISPATCH_MARKER = "[dispatch]";
+const MODULE_REPORTS_HEADER = "Module Execution Reports";
 
 type PalsStateSnapshot = {
   detected: boolean;
@@ -85,6 +90,18 @@ type GuidedWorkflowMoment = {
   ui: "confirm" | "select" | "notify";
   confirmResponse?: string;
   options?: GuidedWorkflowOption[];
+};
+
+type ModuleActivityEntry = {
+  name: string;
+  detail?: string;
+};
+
+type RecentModuleActivity = {
+  source: "dispatch" | "report";
+  stage: string;
+  stageLabel: string;
+  entries: ModuleActivityEntry[];
 };
 
 function readFileOr(path: string, fallback: string): string {
@@ -184,12 +201,160 @@ function renderLoopBadge(loopString?: string): string | undefined {
   if (marks.length < 3) return undefined;
   return `PLAN${marks[0]} APPLY${marks[1]} UNIFY${marks[2]}`;
 }
-function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
+function compactModuleDetail(detail?: string): string | undefined {
+  const compact = compactWhitespace(detail);
+  if (!compact) return undefined;
+  return compact.length > 48 ? `${compact.slice(0, 47)}…` : compact;
+}
+
+function normalizeModuleEntryName(value?: string): string | undefined {
+  const cleaned = compactWhitespace(value)?.replace(/[^A-Za-z0-9_-]/g, "");
+  return cleaned ? cleaned.toUpperCase() : undefined;
+}
+
+function formatModuleStageLabel(stage?: string): string {
+  const compact = compactWhitespace(stage);
+  if (!compact) return "recent activity";
+  return compact === "module-reports" ? "module reports" : compact;
+}
+
+function parseModuleActivityEntries(raw: string): ModuleActivityEntry[] {
+  const cleaned = raw.trim().replace(/^\{/, "").replace(/\}$/, "");
+  if (!cleaned) return [];
+
+  return cleaned
+    .split(/\s+\|\s+/)
+    .map((part) => {
+      const match = compactWhitespace(part)?.match(/^([A-Za-z0-9_-]+)(?:\(\d+\))?(?:\s*→\s*(.+))?$/);
+      if (!match) return undefined;
+      const name = normalizeModuleEntryName(match[1]);
+      if (!name) return undefined;
+      return {
+        name,
+        detail: compactModuleDetail(match[2]),
+      };
+    })
+    .filter(Boolean) as ModuleActivityEntry[];
+}
+
+function extractDispatchModuleActivity(text: string): RecentModuleActivity | undefined {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const line = lines[i]!;
+    if (!line.startsWith(DISPATCH_MARKER)) continue;
+    const match = line.match(/^\[dispatch\]\s*([^:]+):\s*(.+)$/);
+    if (!match) continue;
+
+    const stage = compactWhitespace(match[1]);
+    const entries = parseModuleActivityEntries(match[2]);
+    if (!stage || entries.length === 0) continue;
+
+    return {
+      source: "dispatch",
+      stage,
+      stageLabel: formatModuleStageLabel(stage),
+      entries,
+    };
+  }
+
+  return undefined;
+}
+
+function extractModuleReportActivity(text: string): RecentModuleActivity | undefined {
+  if (!text.includes(MODULE_REPORTS_HEADER)) return undefined;
+
+  const lines = text.split(/\r?\n/).map((line) => line.trim());
+  const headerIndex = lines.findIndex((line) => line.includes(MODULE_REPORTS_HEADER));
+  if (headerIndex < 0) return undefined;
+
+  const entries: ModuleActivityEntry[] = [];
+  for (let i = headerIndex + 1; i < lines.length && entries.length < MAX_WIDGET_MODULE_DETAILS; i++) {
+    const line = lines[i]!;
+    if (!line) continue;
+    if (/^##\s+/.test(line) && !line.includes(MODULE_REPORTS_HEADER)) break;
+
+    const headingMatch = line.match(/^#{3,4}\s+(?:.+?\(([A-Z][A-Z0-9_-]+)\)|([A-Z][A-Z0-9_-]+))(?:\s|$)/);
+    if (headingMatch) {
+      const name = normalizeModuleEntryName(headingMatch[1] ?? headingMatch[2]);
+      if (name && !entries.some((entry) => entry.name === name)) entries.push({ name });
+      continue;
+    }
+
+    const bulletMatch = line.match(/^-\s*([A-Z][A-Z0-9_-]+)\s*:\s*(.+)$/);
+    if (bulletMatch) {
+      const name = normalizeModuleEntryName(bulletMatch[1]);
+      if (name && !entries.some((entry) => entry.name === name)) {
+        entries.push({ name, detail: compactModuleDetail(bulletMatch[2]) });
+      }
+    }
+  }
+
+  if (entries.length === 0) return undefined;
+  return {
+    source: "report",
+    stage: "module-reports",
+    stageLabel: formatModuleStageLabel("module-reports"),
+    entries,
+  };
+}
+
+function extractRecentModuleActivity(recentAssistantTexts: string[]): RecentModuleActivity | undefined {
+  for (const text of recentAssistantTexts) {
+    const dispatchActivity = extractDispatchModuleActivity(text);
+    if (dispatchActivity) return dispatchActivity;
+
+    const reportActivity = extractModuleReportActivity(text);
+    if (reportActivity) return reportActivity;
+  }
+
+  return undefined;
+}
+
+function formatModuleEntryList(
+  entries: ModuleActivityEntry[],
+  limit: number,
+  separator: string,
+  includeDetails = false,
+): string | undefined {
+  if (entries.length === 0) return undefined;
+
+  const visible = entries.slice(0, limit).map((entry) => {
+    if (!includeDetails || !entry.detail) return entry.name;
+    return `${entry.name} → ${entry.detail}`;
+  });
+  const overflow = entries.length > limit ? `${separator}+${entries.length - limit}` : "";
+  return `${visible.join(separator)}${overflow}`;
+}
+
+function renderModuleActivity(activity?: RecentModuleActivity): string | undefined {
+  if (!activity) return undefined;
+  const modules = formatModuleEntryList(activity.entries, MAX_VISIBLE_MODULES, ", ");
+  if (!modules) return undefined;
+  return `Modules: ${activity.stageLabel} • ${modules}`;
+}
+
+function renderModuleActivityDetails(activity?: RecentModuleActivity): string[] {
+  if (!activity) return [];
+
+  const details = formatModuleEntryList(activity.entries, MAX_WIDGET_MODULE_DETAILS, " | ", true);
+  if (!details) return [];
+  return [
+    `Recent module activity: ${activity.stageLabel}`,
+    `Modules: ${details}`,
+  ];
+}
+
+function renderLifecycleStatus(state: PalsStateSnapshot, activity?: RecentModuleActivity): string | undefined {
   if (!state.detected) return undefined;
   return [
     "PALS",
     state.phase ? `Phase: ${state.phase}` : null,
     renderLoopBadge(state.loop),
+    renderModuleActivity(activity),
     state.nextAction ? `Next: ${state.nextAction}` : null,
     renderQuickActionSummary(state),
   ]
@@ -197,28 +362,27 @@ function renderLifecycleStatus(state: PalsStateSnapshot): string | undefined {
     .join(" • ");
 }
 
-function renderLifecycleWidget(state: PalsStateSnapshot): string[] | undefined {
+function renderLifecycleWidget(state: PalsStateSnapshot, activity?: RecentModuleActivity): string[] | undefined {
   if (!state.detected) return undefined;
-
   const quickActions = getQuickActions(state);
-
   const primaryActions = quickActions.slice(0, PRIMARY_QUICK_ACTION_LIMIT);
   const secondaryActions = quickActions.slice(PRIMARY_QUICK_ACTION_LIMIT);
   const actionLines = [
     primaryActions.length > 0 ? `Actions: ${primaryActions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}` : null,
     secondaryActions.length > 0 ? `More: ${secondaryActions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}` : null,
   ].filter(Boolean) as string[];
+  const moduleLines = renderModuleActivityDetails(activity);
   const lines = [
     "PALS Lifecycle",
     state.milestone ? `Milestone: ${state.milestone}` : "Milestone: unknown",
     state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
     state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
     state.nextAction ? `Next action: ${state.nextAction}` : "Next action: unknown",
+    ...moduleLines,
     ...actionLines,
   ];
   return lines;
 }
-
 function syncLifecycleUi(ctx: any): void {
   const cwd = ctx?.cwd ?? process.cwd();
   const state = parsePalsState(cwd);
@@ -227,8 +391,11 @@ function syncLifecycleUi(ctx: any): void {
     ctx?.ui?.setWidget(PALS_WIDGET_ID, undefined);
     return;
   }
-  ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state));
-  ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state));
+
+  const recentAssistantTexts = collectRecentAssistantTexts(ctx, undefined, RECENT_MODULE_ACTIVITY_LOOKBACK);
+  const recentModuleActivity = extractRecentModuleActivity(recentAssistantTexts);
+  ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state, recentModuleActivity));
+  ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state, recentModuleActivity));
 }
 
 function buildSessionOrientationSummary(state: PalsStateSnapshot): string {

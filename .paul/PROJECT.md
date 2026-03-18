@@ -117,7 +117,7 @@ All validated — see below.
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 - [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
-- [~] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69; live module visibility UX and recommendation-grade module guidance remain for Phases 70-71
+- [~] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69, live module visibility UX shipped in Phase 70, and recommendation-grade module guidance remains for Phase 71
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -251,6 +251,9 @@ All validated — see below.
 | Prioritize execution-proof fixes before visibility UX | 68 | Post-unify reporting and lifecycle evidence need to be made durable before richer UI surfaces are added |
 | Finalize summary evidence after post-unify instead of treating the first SUMMARY write as final | 69 | Keeps post-unify-capable module contributions durably visible in SUMMARY/FIX-SUMMARY artifacts |
 | Use `module_reports` for persisted post-unify content and `side_effects` for non-blocking follow-on actions | 69 | Gives workflows, specs, overlays, and validation one durable reporting contract before Phase 70 UX work |
+| 2026-03-18: Derive live module visibility from recent shared workflow/reporting signals rather than registry presence alone | 70 | Keeps Pi module visibility trustworthy without inventing a second execution ledger |
+| 2026-03-18: Reuse existing Pi status/widget surfaces for recent module activity instead of adding new dashboards or telemetry | 70 | Delivers bounded visibility with additive adapter-only UX |
+| 2026-03-18: Treat `Module Execution Reports` as a bounded fallback alongside recent `[dispatch]` output for live visibility | 70 | Keeps post-unify-visible module activity legible without Pi-owned persistence |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -269,4 +272,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after Phase 69 completion*
+*Last updated: 2026-03-18 after Phase 70 completion*

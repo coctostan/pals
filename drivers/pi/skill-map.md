@@ -10,6 +10,7 @@ In Pi:
 - shared workflow markdown remains the implementation truth behind both surfaces
 - the extension also exposes a bounded shortcut layer for high-frequency flow entry points while still routing back through `/paul-*` wrappers
 - enabled modules are installed alongside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`; TODD/WALT remain module overlays, not standalone Pi skills
+- live module visibility in the Pi status/widget is dispatch-derived from recent shared workflow/reporting output plus shared artifacts; it remains adapter-only and never becomes an authoritative Pi-owned execution ledger
 - planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
@@ -68,6 +69,8 @@ From a skill directory, kernel resources are referenced via relative paths:
 Pi command registration lives in the extension layer (`drivers/pi/extensions/pals-hooks.ts`). Those `/paul-*` commands provide the command/hook layer only; they do not replace canonical skill files or shared workflows.
 
 Enabled module manifests are materialized into `~/.pi/agent/skills/pals/modules.yaml` during install. PLAN/APPLY/UNIFY then use that registry to decide which module hook semantics to dispatch from shared markdown references. This is how Pi loads TODD/WALT today: as installed module overlays, not separate `/skill:*` entries.
+
+That same shared workflow/reporting contract now powers bounded live module visibility in the Pi status/widget. The extension only derives a recent module activity snapshot from canonical signals such as `[dispatch] ...` and `Module Execution Reports`; it does not persist its own module history or claim authoritative proof independently of shared artifacts.
 
 ## Shortcut-Enabled Entry Points
 

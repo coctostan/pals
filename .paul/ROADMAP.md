@@ -29,12 +29,12 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.7 Module Reality Check & Visibility**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 68 | Execution Audit | 1/1 | ✅ Complete | 2026-03-18 |
 | 69 | Gap Fixes | 1/1 | ✅ Complete | 2026-03-18 |
-| 70 | Visibility UX | 1 planned (`70-01-PLAN.md`) | Planning | - |
+| 70 | Visibility UX | 1/1 | ✅ Complete | 2026-03-18 |
 | 71 | Recommendations | TBD | Not started | - |
 
 ### Phase 68: Execution Audit (Complete)
@@ -45,9 +45,9 @@ Plans: 1 complete (`68-01-PLAN.md`, `68-01-SUMMARY.md`)
 Focus: Implement the minimum changes needed to close only the module-execution gaps confirmed by the audit.
 Plans: 1 complete (`69-01-PLAN.md`, `69-01-SUMMARY.md`)
 
-### Phase 70: Visibility UX
+### Phase 70: Visibility UX (Complete)
 Focus: Add live module status indicators in the UX/TUI and make module participation visible while flows are running.
-Plans: 1 planned (`70-01-PLAN.md`)
+Plans: 1 complete (`70-01-PLAN.md`, `70-01-SUMMARY.md`)
 
 
 ### Phase 71: Recommendations
@@ -290,4 +290,4 @@ Define after v2.7 is complete.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-18 — Phase 70 plan 01 created; awaiting APPLY*
+*Last updated: 2026-03-18 — Phase 70 complete; Phase 71 ready to plan*

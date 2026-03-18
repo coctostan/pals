@@ -52,6 +52,12 @@ When one of those moments appears, Pi may use lightweight native surfaces such a
 
 This layer is additive only: it never auto-continues a workflow, never skips human verification or human-action checkpoints, and never stores a Pi-owned workflow state. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
 
+## Live Module Visibility
+
+The always-visible Pi status/widget now includes a bounded recent module activity summary when a trustworthy signal is present. That visibility is dispatch-derived from recent shared workflow/reporting output plus shared artifacts — especially canonical markers such as `[dispatch] pre-plan: ...`, `[dispatch] post-apply: ...`, and `Module Execution Reports`.
+
+This surface is informative, adapter-only, and non-authoritative. It does not create Pi-owned module state, does not use `appendEntry`, and clears naturally when recent shared workflow output no longer provides a trustworthy module activity signal.
+
 ## Commands
 
 The extension registers these slash commands:
@@ -73,8 +79,8 @@ The extension registers these slash commands:
 ## Event Hooks
 - **session_start**: Orientation only — detects `.paul/`, reads `STATE.md`, refreshes lifecycle UI, and explains the runtime model without injecting workflow context.
 - **before_agent_start**: Primary PALS injection point. Explicit `/paul-*` (or `/skill:paul-*`) activation signals are treated as highest confidence, then one bounded `PALS Context` payload is injected from `.paul/STATE.md` as the authoritative source.
-- **turn_end**: Refreshes the always-visible lifecycle status/widget so shortcut hints stay aligned with shared artifacts.
-- **agent_end**: Re-checks recent assistant output for canonical guided workflow moments and, when appropriate, offers additive Pi-native continuation UI while keeping the shared workflow prompt authoritative.
+- **turn_end**: Refreshes the always-visible lifecycle status/widget so shortcut hints and any recent dispatch-derived module activity stay aligned with shared artifacts and recent shared workflow output.
+- **agent_end**: Re-checks recent assistant output for canonical guided workflow moments and bounded live module activity, then offers additive Pi-native continuation UI only when the shared workflow prompt remains authoritative.
 - **context**: Supporting surface only. It keeps context lean by trimming legacy/duplicate PALS context messages; it is not the architectural center of injection.
 
 ## Requirements
