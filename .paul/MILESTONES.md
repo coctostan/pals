@@ -24,6 +24,41 @@ Completed milestone log for this project.
 | **v2.4 Pi Native UX Layer** | 2026-03-16 | 1 day | 3 phases, 3 plans |
 | **v2.5 Pi Runtime Coherence & Guided Flow** | 2026-03-16 | 1 day | 3 phases, 3 plans |
 | **v2.6 Collaborative Planning & PRD Depth** | 2026-03-17 | 17 hours | 3 phases, 4 plans |
+| **v2.7 Module Reality Check & Visibility** | 2026-03-18 | 15h 24m | 4 phases, 4 plans |
+
+---
+
+## ✅ v2.7 Module Reality Check & Visibility
+
+**Completed:** 2026-03-18
+**Duration:** 15h 24m
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 68-71) |
+| Plans | 4 |
+| Files changed | 23 unique workflow/spec/adapter/validation/state files |
+
+### Key Accomplishments
+
+- Audited the module system and confirmed the main trust problem was proof and visibility opacity rather than source-vs-installed drift.
+- Hardened the durable post-unify evidence path so module contributions can persist into `SUMMARY.md` / `FIX-SUMMARY.md` after finalization.
+- Established one shared reporting contract built around durable `module_reports` and non-blocking `side_effects`.
+- Added bounded, dispatch-derived live module visibility to Pi's status/widget surfaces without creating Pi-owned execution truth.
+- Closed the milestone with per-module recommendations and a layered proof model that preserves the roster and improves legibility instead of adding telemetry.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Treat the module system as more wired than visible | 68 | Kept follow-on work focused on proof/reporting and UX instead of chasing registry drift |
+| Finalize summary evidence after post-unify instead of treating the first SUMMARY write as final | 69 | Gave post-unify-capable modules a dependable durable reporting path |
+| Use `module_reports` for persisted content and `side_effects` for non-blocking follow-on actions | 69 | Aligned workflows, specs, overlays, and validation around one evidence contract |
+| Derive live module visibility from recent shared workflow/reporting signals rather than registry presence alone | 70 | Kept Pi visibility trustworthy without inventing a second execution ledger |
+| Keep the module roster and improve legibility before considering merge/remove changes | 71 | Future work can focus on recommendation/report clarity instead of destabilizing module boundaries |
+| Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserved artifact-first truth while making module participation easier to interpret |
 
 ---
 
