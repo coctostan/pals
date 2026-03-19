@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.10 Workflow Integrity — fix structural failures that allowed hallucinated implementation to pass undetected
+**Current focus:** v2.11 Pi CARL Session Boundary Manager — implement Pi-native autonomous session boundary management
 ## Current Position
-Milestone: v2.10 Workflow Integrity
-Phase: 80 of 80 (Workflow Integrity Fixes) — Complete
-Plan: 80-01 complete
-Status: v2.10 milestone complete
-Last activity: 2026-03-19T12:10:00-0400 — UNIFY complete, Phase 80 done
+Milestone: v2.11 Pi CARL Session Boundary Manager
+Phase: 81 of 83 (Core Implementation)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-19T13:00:00-0400 — Milestone created from discussion context
 Progress:
-- v2.10 Workflow Integrity: [██████████] 100% ✅
+- v2.11 Pi CARL Session Boundary Manager: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -120,15 +120,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: a05df6f v2.9 CARL Session Boundary Manager (#17)
-Note: v2.9 merge contained zero CARL implementation code — only .paul/ docs and v2.7/v2.8 module visibility changes
+Last commit: 8b591b4 feat(v2.10): Workflow Integrity
 ## Session Continuity
-Last session: 2026-03-19T12:10:00-0400
-Stopped at: v2.10 Workflow Integrity milestone complete
-Next action: /paul:milestone complete or define next milestone
-Resume file: .paul/phases/80-workflow-integrity/80-01-SUMMARY.md
-Git strategy: main
+Last session: 2026-03-19T13:10:00-0400
+Stopped at: v2.11 milestone created, ready to plan Phase 81
+Next action: /paul:plan for Phase 81
+Resume file: .paul/HANDOFF-2026-03-19-v211-milestone-created.md
+Git strategy: feature-per-phase
 Resume context:
-- v2.10 complete — 1 phase (80), 5 workflow files hardened against hallucination cascades
-- v2.9 remains hollow — CARL feature work deferred to future milestone
+- v2.11 created — 3 phases (81-83) to implement Pi CARL session boundary manager
+- Reuse v2.9 research: carl-pi-design.md, api-validation-report.md, Phase 77 PLAN spec
+- All edits target drivers/pi/extensions/pals-hooks.ts (repo source), deploy via install.sh
 *STATE.md — Updated after every significant action*

@@ -27,20 +27,37 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.10 Workflow Integrity**
-Status: ✅ Complete
-Completed: 2026-03-19
-Phases: 1 of 1 complete
+**v2.11 Pi CARL Session Boundary Manager**
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 80 | Workflow Integrity Fixes | 1/1 | ✅ Complete | 2026-03-19 |
+| 81 | Core Implementation | TBD | Not started | - |
+| 82 | Config & Integration | TBD | Not started | - |
+| 83 | Validation & Docs | TBD | Not started | - |
 
-### Phase 80: Workflow Integrity Fixes
-Focus: Fix the structural PALS workflow failures that allowed four phases of hallucinated implementation to pass undetected. Close the commit staging blind spot, add ground-truth verification to apply/unify, enforce repo-source-only edit targets in plans, and add a post-stage sanity check before commits.
-Plans: 1/1 complete
+### Phase 81: Core Implementation
+Focus: CARL logic in pals-hooks.ts: command context stashing, phase-completion detection via loop signature, context ratio decision model, carlCreateFreshSession, carlEvaluatePhaseCompletion, carlMonitorSafetyCeiling. Deploy via install.sh.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 82: Config & Integration
+Focus: pals.json carl config section with defaults, pause/resume wiring, bootstrap message format, auto-resume chain, loadCarlConfig helper.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 83: Validation & Docs
+Focus: End-to-end manual testing, threshold calibration, update Pi extension README and PALS docs to reflect the two-CARL model.
+Plans: TBD (defined during /paul:plan)
 ---
 
 ## Completed Milestones
+<details>
+<summary>v2.10 Workflow Integrity - 2026-03-19 (1 phase)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 80 | Workflow Integrity Fixes | 1/1 | 2026-03-19 |
+
+</details>
 <details>
 <summary>v2.9 CARL Session Boundary Manager - 2026-03-18 (4 phases) ⚠️ HOLLOW</summary>
 
