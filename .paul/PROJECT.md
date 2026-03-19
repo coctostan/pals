@@ -123,7 +123,7 @@ All validated — see below.
 - [x] CARL integration & configuration — init creates pals.json carl config, modules.yaml updated to v2.0.0, dead Claude Code-era carl/ files removed (Phase 78)
 
 ## Constraints
-- CARL remains architecturally independent (hook-level integration only)
+- CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
 - /carl:* namespace preserved (not merged into /paul:*)
 - Kernel must remain platform-agnostic (no Claude Code assumptions in core)
@@ -279,10 +279,10 @@ See: .paul/SPECIAL-FLOWS.md
 
 Quick Reference:
 - /paul → Project planning & lifecycle management
-- /carl → Context rules & domain configuration
+- /carl → Session boundary manager — autonomous session transitions
 - TODD → Test-driven development enforcement
 - WALT → Quality gating & validation
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after Phase 78 (Integration & Configuration) complete*
+*Last updated: 2026-03-18 after Phase 79 (Validation & Documentation) complete — v2.9 milestone complete*

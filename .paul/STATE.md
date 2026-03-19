@@ -7,17 +7,17 @@ See: .paul/PROJECT.md (updated 2026-03-18)
 **Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
 ## Current Position
 Milestone: v2.9 CARL Session Boundary Manager
-Phase: 79 of 79 (Validation & Documentation)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-18T17:20:00-0400 — Phase 78 complete, transitioned to Phase 79
+Phase: 79 of 79 (Validation & Documentation) — Complete
+Plan: 79-01 complete
+Status: v2.9 milestone complete
+Last activity: 2026-03-18T17:40:00-0400 — v2.9 CARL Session Boundary Manager milestone complete
 Progress:
-- v2.9 CARL Session Boundary Manager: [███████░░░] 75%
+- v2.9 CARL Session Boundary Manager: [██████████] 100% ✅
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN]
+  ✓        ✓        ✓     [Loop complete]
 ```
 
 ## Accumulated Context
@@ -104,6 +104,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 76 | Plan executed exactly as written; test command added, APIs validated, report written |
 | None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
 | None material | 78 | Plan executed exactly as written; init config, modules.yaml, dead file removal all clean |
+| Minor additive | 79 | PROJECT.md quick reference and constraint also updated beyond plan's explicit file list; essential consistency fix |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -119,18 +120,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/carl-session-boundary
-Last commit: 9968ada feat(78-integration-config): CARL integration and dead file cleanup
+Last commit: 5424ced feat(79-validation-docs): complete v2.9 CARL Session Boundary Manager
 Feature branches merged: PR #15 and PR #16 already merged to main; feature/carl-session-boundary is the active v2.9 branch
 Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
 Note: pals-hooks.ts lives at ~/.pi/agent/extensions/ (outside repo); extension changes tracked via .paul/ artifacts
 ## Session Continuity
-Last session: 2026-03-18T17:20:00-0400
-Stopped at: Phase 78 complete, ready to plan Phase 79
-Next action: /paul:plan for Phase 79 (Validation & Documentation)
+Last session: 2026-03-18T17:40:00-0400
+Stopped at: v2.9 CARL Session Boundary Manager milestone complete
+Next action: /paul:milestone complete or define next milestone
 Resume file: .paul/ROADMAP.md
 Git strategy: feature/carl-session-boundary
 Resume context:
-- Phases 76-78 complete — CARL fully implemented and integrated
-- Phase 79: end-to-end testing, threshold calibration, docs, Pi adapter contract
-- This is the final phase of v2.9
+- v2.9 complete — 4 phases (76-79), CARL fully implemented as Pi-native session boundary manager
+- Next milestone not yet defined
 *STATE.md — Updated after every significant action*
