@@ -25,9 +25,41 @@ Completed milestone log for this project.
 | **v2.5 Pi Runtime Coherence & Guided Flow** | 2026-03-16 | 1 day | 3 phases, 3 plans |
 | **v2.6 Collaborative Planning & PRD Depth** | 2026-03-17 | 17 hours | 3 phases, 4 plans |
 | **v2.7 Module Reality Check & Visibility** | 2026-03-18 | 15h 24m | 4 phases, 4 plans |
+| **v2.8 Module Report Clarity** | 2026-03-18 | ~30min | 4 phases, 4 plans |
 
 ---
 
+## ✅ v2.8 Module Report Clarity
+
+**Completed:** 2026-03-18
+**Duration:** ~30min
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 72-75) |
+| Plans | 4 |
+| Files changed | 10 unique reference/template/workflow files |
+
+### Key Accomplishments
+
+- Added structured `module_report` labels to all four proof-bearing modules (TODD, WALT, SKIP, RUBY) for carry-forward into SUMMARY.md Module Execution Reports.
+- Uncommented concrete template subsections for each module in SUMMARY.md with module-specific table formats and guidance comments.
+- Added per-module reconciliation guidance to unify-phase.md (8 guidance lines covering 4 modules × populate + omit rules).
+- Established consistent report contribution cross-references in each module's reference files.
+- SKIP report clarity explicitly separates durable decision captures from optional follow-on suggestions.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Use Phase/Commit/Tests/Status as TODD table columns | 72 | Richer TDD evidence than the previous Phase/Commit/Status format |
+| Add Tests failing row to WALT subsection | 73 | Captures regression direction alongside passing tests |
+| Separate captures from suggestions in SKIP reports | 74 | Readers can distinguish persisted vs merely suggested knowledge |
+| Use File/Smell/Severity/Suggested Pattern for RUBY | 75 | Makes debt actionable for follow-up planning |
+
+---
 ## ✅ v2.7 Module Reality Check & Visibility
 
 **Completed:** 2026-03-18

@@ -27,38 +27,45 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.7 Module Reality Check & Visibility**
-Status: ✅ Complete
-Phases: 4 of 4 complete — 2026-03-18
+**v2.9 CARL Session Boundary Manager**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 68 | Execution Audit | 1/1 | ✅ Complete | 2026-03-18 |
-| 69 | Gap Fixes | 1/1 | ✅ Complete | 2026-03-18 |
-| 70 | Visibility UX | 1/1 | ✅ Complete | 2026-03-18 |
-| 71 | Recommendations | 1/1 | ✅ Complete | 2026-03-18 |
+| 76 | API Validation & Prototype | TBD | Not started | - |
+| 77 | Core Implementation | TBD | Not started | - |
+| 78 | Integration & Configuration | TBD | Not started | - |
+| 79 | Validation & Documentation | TBD | Not started | - |
 
-### Phase 68: Execution Audit (Complete)
-Focus: Inspect every module invocation path, trace what actually fires during PLAN/APPLY/UNIFY, and publish findings before any fixes are made.
-Plans: 1 complete (`68-01-PLAN.md`, `68-01-SUMMARY.md`)
+### Phase 76: API Validation & Prototype
+Focus: Validate ctx.getContextUsage(), ctx.newSession() via stashed command context, and pi.sendUserMessage() for auto-resume. Build a minimal prototype.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 69: Gap Fixes (Complete)
-Focus: Implement the minimum changes needed to close only the module-execution gaps confirmed by the audit.
-Plans: 1 complete (`69-01-PLAN.md`, `69-01-SUMMARY.md`)
+### Phase 77: Core Implementation
+Focus: CARL extension logic in pals-hooks.ts: phase-completion detection, context usage check, decision model, session creation with bootstrap prompt, auto-resume.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 70: Visibility UX (Complete)
-Focus: Add live module status indicators in the UX/TUI and make module participation visible while flows are running.
-Plans: 1 complete (`70-01-PLAN.md`, `70-01-SUMMARY.md`)
+### Phase 78: Integration & Configuration
+Focus: Wire into PALS pause/resume workflows, add pals.json carl config, mid-phase safety valve, AGENTS.md template in paul-init, remove dead carl/ files.
+Plans: TBD (defined during /paul:plan)
 
-
-### Phase 71: Recommendations (Complete)
-Focus: Produce per-module keep/improve/merge/remove recommendations and ensure end reports summarize module participation.
-Plans: 1 complete (`71-01-PLAN.md`, `71-01-SUMMARY.md`)
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
-
+### Phase 79: Validation & Documentation
+Focus: End-to-end testing, threshold calibration, update PALS docs/references, update Pi adapter contract.
+Plans: TBD (defined during /paul:plan)
 ---
 
 ## Completed Milestones
+<details>
+<summary>v2.8 Module Report Clarity - 2026-03-18 (4 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 72 | TODD Report Clarity | 1/1 | 2026-03-18 |
+| 73 | WALT Report Clarity | 1/1 | 2026-03-18 |
+| 74 | SKIP Report Clarity | 1/1 | 2026-03-18 |
+| 75 | RUBY Report Clarity | 1/1 | 2026-03-18 |
+
+</details>
 <details>
 <summary>v2.7 Module Reality Check & Visibility - 2026-03-18 (4 phases)</summary>
 
@@ -301,4 +308,4 @@ Run /paul:discuss-milestone or /paul:milestone to define.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-18 — v2.7 archived as a completed milestone; ready to define the next milestone*
+*Last updated: 2026-03-19 — v2.9 CARL Session Boundary Manager milestone created*

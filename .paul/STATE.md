@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone definition; start from the Phase 71 recommendation artifacts and preserve the settled proof/visibility guardrails
+**Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
 ## Current Position
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.7 Module Reality Check & Visibility complete — ready for next
-Last activity: 2026-03-18T10:43:59-0400 — Milestone v2.7 completed
+Milestone: v2.9 CARL Session Boundary Manager
+Phase: 76 of 79 (API Validation & Prototype)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-19T08:57:18-0400 — Milestone v2.9 created
 Progress:
-- v2.7 Module Reality Check & Visibility: [██████████] 100% ✓
+- v2.9 CARL Session Boundary Manager: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -112,14 +112,15 @@ Last commit: HEAD wip(post-v27-complete): pause before next milestone definition
 Feature branches merged: PR #15 and PR #16 already merged to main; feature/post-v27-complete is the active local pause checkpoint branch
 Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
 ## Session Continuity
-Last session: 2026-03-18T10:47:42-0400
-Stopped at: Milestone v2.7 complete, pausing before next milestone definition
-Next action: Run /skill:paul-discuss or /skill:paul-milestone
-Resume file: .paul/HANDOFF-2026-03-18-post-v27-complete.md
+Last session: 2026-03-19T09:00:33-0400
+Stopped at: v2.9 milestone created, pausing before Phase 76 PLAN
+Next action: /paul:plan for Phase 76 (API Validation & Prototype)
+Resume file: .paul/HANDOFF-2026-03-19-carl-milestone-created.md
 Git strategy: feature/post-v27-complete
 Resume context:
-- v2.7 is complete and archived in `.paul/MILESTONES.md` and `.paul/milestones/v2.7-ROADMAP.md`
-- The Phase 71 recommendation artifacts are the primary input for the next milestone definition
-- A WIP checkpoint commit now exists on `feature/post-v27-complete`; the working tree should be clean when you resume
+- v2.8 complete (4 phases, all proof-bearing modules have report clarity)
+- v2.9 milestone created with 4 phases (76-79) for CARL session boundary manager
+- Research docs at .paul/phases/carl-research/ (GSD2 mechanisms + CARL design)
+- Phase 76 will validate Pi extension APIs before implementation
 ---
 *STATE.md — Updated after every significant action*
