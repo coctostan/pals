@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-18)
 **Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
 ## Current Position
 Milestone: v2.9 CARL Session Boundary Manager
-Phase: 77 of 79 (Core Implementation)
+Phase: 78 of 79 (Integration & Configuration)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-18T16:15:00-0400 — Phase 76 complete, transitioned to Phase 77
+Last activity: 2026-03-18T16:55:00-0400 — Phase 77 complete, transitioned to Phase 78
 Progress:
-- v2.9 CARL Session Boundary Manager: [███░░░░░░░] 25%
+- v2.9 CARL Session Boundary Manager: [█████░░░░░] 50%
 ## Loop Position
 Current loop state:
 ```
@@ -82,6 +82,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | All three CARL-critical Pi APIs work as documented; no design changes needed | 76 | Phase 77 can proceed with carl-pi-design.md architecture unchanged |
 | 40% continue_threshold and 80% safety_ceiling are reasonable defaults | 76 | pals.json carl config uses these as defaults |
 | Stashed command context lifetime across agent_end needs Phase 77 validation | 76 | Early Phase 77 task must test stashing across event handler boundaries |
+| CARL logic inside palsHooks() closure, not a separate module | 77 | Self-contained; shares pi/activation/guided-workflow state |
+| Loop signature change detection for phase-completion sensing | 77 | Prevents false positives from repeated agent_end calls |
+| session_start seeds previousLoopSignature to avoid spurious session creation | 77 | Prevents CARL from misreading already-complete loop state on resume |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -97,6 +100,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 70 | Phase executed as planned; bounded live visibility work stayed within the approved Pi adapter/docs/tests scope |
 | None material | 71 | APPLY and UNIFY stayed within the planned recommendation-only scope; no Phase 69/70 implementation work was reopened |
 | None material | 76 | Plan executed exactly as written; test command added, APIs validated, report written |
+| None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -112,18 +116,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/carl-session-boundary
-Last commit: d8b6fd5 feat(76-api-validation): validate CARL-critical Pi extension APIs
+Last commit: ec47e49 feat(77-core-implementation): production CARL session boundary manager
 Feature branches merged: PR #15 and PR #16 already merged to main; feature/carl-session-boundary is the active v2.9 branch
 Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
 Note: pals-hooks.ts lives at ~/.pi/agent/extensions/ (outside repo); extension changes tracked via .paul/ artifacts
 ## Session Continuity
-Last session: 2026-03-18T16:15:00-0400
-Stopped at: Phase 76 complete, ready to plan Phase 77
-Next action: /paul:plan for Phase 77 (Core Implementation)
+Last session: 2026-03-18T16:55:00-0400
+Stopped at: Phase 77 complete, ready to plan Phase 78
+Next action: /paul:plan for Phase 78 (Integration & Configuration)
 Resume file: .paul/ROADMAP.md
 Git strategy: feature/carl-session-boundary
 Resume context:
-- Phase 76 complete — all 3 CARL APIs validated, prototype working
-- api-validation-report.md ready as Phase 77 input
-- Phase 77 scope: CARL extension logic in pals-hooks.ts (phase detection, context check, session creation, auto-resume)
+- Phases 76-77 complete — APIs validated, core CARL logic implemented
+- Phase 78 scope: pals.json carl config, pause/resume wiring, AGENTS.md template, dead carl/ removal
+- Mid-phase safety valve and phase detection ready but need integration wiring
 *STATE.md — Updated after every significant action*
