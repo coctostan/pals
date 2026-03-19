@@ -264,9 +264,44 @@ Cannot auto-merge. Options:
 **3. Stage phase files:**
 ```bash
 git add .paul/phases/{phase}/ .paul/STATE.md .paul/PROJECT.md .paul/ROADMAP.md
-git add src/  # If source files were modified
+git add -u  # Stage all modifications to already-tracked files
+# Stage new files in known project directories (if any were created):
+git add drivers/ kernel/ modules/ tests/ docs/ src/ 2>/dev/null || true
 ```
 
+**3a. Post-stage sanity check:**
+Compare staged files against the plan's `files_modified` frontmatter:
+```bash
+git diff --cached --name-only
+```
+Parse the plan's `files_modified` list. If the plan lists non-`.paul/` files but **none** appear in the staged diff:
+
+```
+════════════════════════════════════════
+⚠️ COMMIT SANITY CHECK FAILED
+════════════════════════════════════════
+
+Plan claims modifications to:
+  {files_modified entries that are not .paul/ paths}
+
+Actually staged (non-.paul/):
+  {staged non-.paul/ files, or "none"}
+
+This usually means implementation edits went to a file outside
+the repo (e.g., ~/.pi/ instead of drivers/pi/) or were never made.
+
+Options:
+[1] Review and fix — verify edits target repo source files
+[2] Commit anyway — this phase is documentation-only
+[3] Abort commit
+════════════════════════════════════════
+```
+
+- If "1": halt commit, return to investigation
+- If "2": proceed, but record deviation in STATE.md: "Commit sanity override: plan claimed non-.paul/ changes but none staged"
+- If "3": abort
+
+**If all `files_modified` entries are `.paul/` paths, or non-`.paul/` files do appear in the staged diff:** proceed without prompting.
 **4. Create phase commit:**
 ```bash
 git commit -m "$(cat <<'EOF'

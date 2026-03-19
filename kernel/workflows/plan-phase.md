@@ -187,6 +187,17 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 
 3. Ensure every task has:
    - Clear files list
+   - All file paths in <files> MUST be repo-relative (relative to the repo root)
+   - NEVER use absolute paths to installed/runtime copies outside the repo:
+     ✗ ~/.pi/agent/extensions/pals-hooks.ts
+     ✗ ~/.claude/hooks/carl-hook.py
+     ✗ ~/.carl/manifest
+     ✓ drivers/pi/extensions/pals-hooks.ts
+     ✓ modules/carl/hooks/carl-hook.py
+     ✓ modules/carl/config/manifest
+   - If the work affects an installed runtime file, the plan MUST:
+     (a) Target the repo source copy in <files>
+     (b) Include a deploy/install step (e.g., `bash drivers/pi/install.sh`) as a subsequent action
    - Specific action (not vague)
    - Verification command/check
    - Done criteria linking to AC-N

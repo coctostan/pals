@@ -118,6 +118,37 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 <step name="gather_results">
 **Normal UNIFY path (not retroactive):**
 
+0. **Ground-truth diff check:**
+   Before gathering from execution memory, verify what actually changed:
+   ```bash
+   git diff --stat {last_commit_from_STATE.md}..HEAD
+   ```
+   Compare this output against the plan's `files_modified` frontmatter:
+   - If the plan lists non-`.paul/` files in `files_modified` but the diff shows **zero non-`.paul/` changes**: flag as **critical reconciliation mismatch**.
+     ```
+     ════════════════════════════════════════
+     ⛔ RECONCILIATION MISMATCH
+     ════════════════════════════════════════
+
+     Plan files_modified claims:
+       {non-.paul/ entries from files_modified}
+
+     Actual changes since last commit:
+       {git diff --stat output, or "only .paul/ files"}
+
+     The plan claimed implementation changes that do not appear
+     in the working tree. Do NOT proceed with SUMMARY creation
+     until this is resolved.
+
+     Options:
+     [1] Investigate — review what happened during APPLY
+     [2] Proceed as documentation-only — record mismatch in SUMMARY
+     ════════════════════════════════════════
+     ```
+   - If "1": halt SUMMARY creation, return to investigation
+   - If "2": proceed, but the SUMMARY MUST note the mismatch in its Deviations section
+   - If diff and plan align (or plan only lists `.paul/` files): proceed normally
+
 1. Recall execution from APPLY phase:
    - Which tasks completed successfully
    - Which tasks failed (if any)
