@@ -104,11 +104,10 @@ autonomous: true
 </substep>
 
 <substep name="standard_auto_summary">
-**Auto-generate compressed SUMMARY:**
+**Create compressed FIX-SUMMARY draft:**
 
 Create `.paul/phases/{phase-dir}/{phase}-{NN}-FIX-SUMMARY.md`:
-
-```markdown
+~~~~markdown
 ---
 phase: {phase-slug}
 plan: {NN}
@@ -117,7 +116,6 @@ completed: {ISO timestamp}
 ---
 
 ## Fix Summary
-
 **Issue:** {description}
 **Mode:** Standard fix
 
@@ -131,9 +129,10 @@ completed: {ISO timestamp}
 
 ### Result
 Fix applied successfully. {any notes}
-```
+### Module Execution Reports
+<!-- Finalized after post-unify from carried-forward post-apply annotations plus any post-unify module_reports / recorded side_effects. Omit this section if no module evidence persists. -->
+~~~~
 </substep>
-
 <substep name="standard_hooks_post_unify">
 **Dispatch post-unify hooks:**
 1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
@@ -141,8 +140,19 @@ Fix applied successfully. {any notes}
 3. Sort by `hook_details.post-unify.priority` ascending
 4. For each registered module, load only `hook_details.post-unify.refs` and follow `hook_details.post-unify.description`
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. Pass summary path
-7. Output: `[dispatch] post-unify: {MODULE(priority) → outcome} | ...`
+6. Pass carried-forward post-apply annotations and summary path
+7. Collect `module_reports` and `side_effects`
+8. Output: `[dispatch] post-unify: {MODULE(priority) → N reports / N side effects | skip} | ...`
+</substep>
+
+<substep name="standard_finalize_summary">
+**Finalize FIX-SUMMARY after post-unify:**
+1. Re-open FIX-SUMMARY before state updates.
+2. Merge:
+   - carried-forward post-apply annotations
+   - post-unify `module_reports`
+   - recorded `side_effects` that should remain visible after the fix loop closes
+3. Write the durable `Module Execution Reports` section, or remove the placeholder entirely if no module evidence persisted.
 </substep>
 
 <substep name="standard_update_state">
@@ -311,7 +321,7 @@ Continue normal work. UNIFY will detect the pending flag.
 
 <output>
 Depends on mode:
-- **Standard:** FIX.md + FIX-SUMMARY.md + hook results + STATE.md entry
+- **Standard:** FIX.md + finalized FIX-SUMMARY.md + hook results + STATE.md entry
 - **Fast-forward:** Git commit + one-line STATE.md entry
 - **Hotfix:** Git commit + retroactive UNIFY flag in STATE.md
 </output>

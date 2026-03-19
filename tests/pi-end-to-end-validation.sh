@@ -147,6 +147,42 @@ if [ -f "$SKILL_DIR/modules.yaml" ]; then
   fi
 fi
 
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 1B: MODULE EXECUTION EVIDENCE
+# ════════════════════════════════════════════════════════════════════
+
+section "MODULE EXECUTION EVIDENCE"
+
+if [ -f "$SKILL_DIR/modules.yaml" ]; then
+  if grep -q '^  walt:' "$SKILL_DIR/modules.yaml" \
+    && grep -q '^  skip:' "$SKILL_DIR/modules.yaml" \
+    && grep -q '^  ruby:' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/quality-history.md' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/knowledge-search.md' "$SKILL_DIR/modules.yaml" \
+    && grep -q 'references/refactor-patterns.md' "$SKILL_DIR/modules.yaml"; then
+    tap_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules"
+  else
+    tap_not_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules" "Expected WALT/SKIP/RUBY post-unify refs in installed Pi registry"
+  fi
+else
+  tap_not_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules" "modules.yaml missing from installed Pi skill dir"
+fi
+
+PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
+PI_FIX="$SKILL_DIR/workflows/fix-loop.md"
+PI_SUMMARY_TEMPLATE="$SKILL_DIR/templates/SUMMARY.md"
+
+if [ -f "$PI_UNIFY" ] && [ -f "$PI_FIX" ] && [ -f "$PI_SUMMARY_TEMPLATE" ] \
+  && grep -q 'finalize_summary' "$PI_UNIFY" \
+  && grep -q 'module_reports' "$PI_UNIFY" \
+  && grep -q 'FIX-SUMMARY' "$PI_FIX" \
+  && grep -q 'module_reports' "$PI_FIX" \
+  && grep -q 'Module Execution Reports' "$PI_SUMMARY_TEMPLATE"; then
+  tap_ok "Installed Pi kernel preserves the durable summary evidence path"
+else
+  tap_not_ok "Installed Pi kernel preserves the durable summary evidence path" "Expected finalize_summary/module_reports markers in installed Pi workflows and summary template"
+fi
+
 # Check extension installed
 EXT_PATH="$TEMP_HOME/.pi/agent/extensions/pals-hooks.ts"
 if [ -f "$EXT_PATH" ]; then
@@ -343,6 +379,34 @@ fi
   else
     tap_not_ok "Extension keeps guided workflow interpretation derived-only and non-persistent" "Expected session-derived inspection and no appendEntry-based workflow persistence"
   fi
+
+  # Live module visibility contract: bounded parser/renderer path for canonical workflow signals
+  if grep -q 'extractRecentModuleActivity' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'renderModuleActivity' "$EXT_SRC" 2>/dev/null \
+    && grep -q '\[dispatch\]' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'Module Execution Reports' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension derives recent module activity from canonical dispatch/report markers"
+  else
+    tap_not_ok "Extension derives recent module activity from canonical dispatch/report markers" "Expected extractRecentModuleActivity/renderModuleActivity plus [dispatch]/Module Execution Reports markers in pals-hooks.ts"
+  fi
+
+  # Live module visibility contract: reuse the existing lifecycle status/widget surfaces
+  if grep -q 'collectRecentAssistantTexts(ctx, undefined, RECENT_MODULE_ACTIVITY_LOOKBACK)' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'renderLifecycleStatus(state, recentModuleActivity)' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'renderLifecycleWidget(state, recentModuleActivity)' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension wires recent module activity into the existing lifecycle status/widget"
+  else
+    tap_not_ok "Extension wires recent module activity into the existing lifecycle status/widget" "Expected recent module activity derivation to flow through the existing status/widget rendering path"
+  fi
+
+  # Guardrail: module visibility remains derived-only, bounded, and non-persistent
+  if ! grep -q 'appendEntry(' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'RECENT_MODULE_ACTIVITY_LOOKBACK' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'collectRecentAssistantTexts' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension keeps live module visibility derived-only and bounded"
+  else
+    tap_not_ok "Extension keeps live module visibility derived-only and bounded" "Expected bounded recent-message derivation and no appendEntry-based module persistence in pals-hooks.ts"
+  fi
 fi
 
 # ════════════════════════════════════════════════════════════════════
@@ -467,6 +531,22 @@ if grep -qi 'canonical.*skill files' "$UNINSTALL_PI" && grep -qi 'extension-back
   tap_ok "Pi uninstall script explains skills + extension removal clearly"
 else
   tap_not_ok "Pi uninstall script explains skills + extension removal clearly" "Expected canonical-skill and extension-layer wording in drivers/pi/uninstall.sh"
+fi
+
+if grep -qi 'Live Module Visibility' "$README_PI" \
+  && grep -qi 'dispatch-derived' "$README_PI" \
+  && grep -qi 'non-authoritative' "$README_PI"; then
+  tap_ok "Extension README documents the live module visibility contract"
+else
+  tap_not_ok "Extension README documents the live module visibility contract" "Expected Live Module Visibility section with dispatch-derived and non-authoritative wording in drivers/pi/extensions/README.md"
+fi
+
+if grep -qi 'dispatch-derived' "$SKILL_MAP" \
+  && grep -qi 'Module Execution Reports' "$SKILL_MAP" \
+  && grep -qi 'authoritative' "$SKILL_MAP"; then
+  tap_ok "Skill map documents live module visibility as derived-only adapter behavior"
+else
+  tap_not_ok "Skill map documents live module visibility as derived-only adapter behavior" "Expected dispatch-derived / Module Execution Reports / authoritative wording in drivers/pi/skill-map.md"
 fi
 
 # ════════════════════════════════════════════════════════════════════

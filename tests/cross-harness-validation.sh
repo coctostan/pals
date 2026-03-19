@@ -179,6 +179,54 @@ if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ]; then
     tap_not_ok "Both modules.yaml registries include hook metadata and refs" "Expected hook_details with TODD/WALT refs in both installed registries"
   fi
 fi
+  if grep -q '^  walt:' "$CC_MODULES_YAML" \
+    && grep -q '^  skip:' "$CC_MODULES_YAML" \
+    && grep -q '^  ruby:' "$CC_MODULES_YAML" \
+    && grep -q '^  walt:' "$PI_MODULES_YAML" \
+    && grep -q '^  skip:' "$PI_MODULES_YAML" \
+    && grep -q '^  ruby:' "$PI_MODULES_YAML" \
+    && grep -q 'references/quality-history.md' "$CC_MODULES_YAML" \
+    && grep -q 'references/knowledge-search.md' "$CC_MODULES_YAML" \
+    && grep -q 'references/refactor-patterns.md' "$CC_MODULES_YAML" \
+    && grep -q 'references/quality-history.md' "$PI_MODULES_YAML" \
+    && grep -q 'references/knowledge-search.md' "$PI_MODULES_YAML" \
+    && grep -q 'references/refactor-patterns.md' "$PI_MODULES_YAML"; then
+    tap_ok "Both modules.yaml registries preserve post-unify metadata for durable evidence modules"
+  else
+    tap_not_ok "Both modules.yaml registries preserve post-unify metadata for durable evidence modules" "Expected WALT/SKIP/RUBY post-unify refs in both installed registries"
+  fi
+fi
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 1B: DURABLE MODULE EVIDENCE PATH
+# ════════════════════════════════════════════════════════════════════
+
+section "DURABLE MODULE EVIDENCE PATH"
+
+if grep -q 'finalize_summary' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
+  && grep -q 'Module Execution Reports' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
+  && grep -q 'module_reports' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
+  && grep -q 'FIX-SUMMARY' "$REPO_ROOT/kernel/workflows/fix-loop.md" \
+  && grep -q 'module_reports' "$REPO_ROOT/kernel/workflows/fix-loop.md"; then
+  tap_ok "Shared workflows preserve a durable summary path for post-unify module evidence"
+else
+  tap_not_ok "Shared workflows preserve a durable summary path for post-unify module evidence" "Expected finalize_summary + module_reports markers in unify/fix workflows"
+fi
+
+if grep -q 'Module Execution Reports' "$REPO_ROOT/kernel/templates/SUMMARY.md" \
+  && grep -q 'module_reports' "$REPO_ROOT/docs/HOOK-CONTRACT.md" \
+  && grep -q 'module_reports' "$REPO_ROOT/docs/MODULE-SPEC.md" \
+  && grep -q 'Module Execution Reports' "$REPO_ROOT/docs/ARTIFACT-SPEC.md"; then
+  tap_ok "Shared template and specs describe one durable module reporting contract"
+else
+  tap_not_ok "Shared template and specs describe one durable module reporting contract" "Expected Module Execution Reports / module_reports markers across template and specs"
+fi
+
+if grep -q 'module_report' "$REPO_ROOT/modules/walt/workflows/apply-phase-quality.md" \
+  && grep -q 'durable post-unify report' "$REPO_ROOT/modules/ruby/module.yaml"; then
+  tap_ok "Post-unify module overlays align with the durable reporting model"
+else
+  tap_not_ok "Post-unify module overlays align with the durable reporting model" "Expected durable post-unify reporting markers in WALT workflow and RUBY manifest"
 fi
 
 # ════════════════════════════════════════════════════════════════════

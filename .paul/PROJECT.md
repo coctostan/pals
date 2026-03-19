@@ -117,10 +117,13 @@ All validated — see below.
 - ✓ Pi guided workflow UX — bounded canonical prompt detection plus explicit Pi-native continuation helpers for approvals, checkpoints, resume routing, and transitions, with validation contract coverage (98 checks passing) — Phase 63
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 - [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
-- [ ] Module execution proof & visibility — use the Phase 68 audit findings to harden execution evidence, improve live module visibility, and produce recommendation-grade module guidance across Phases 69-71
+- [x] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69, live module visibility UX shipped in Phase 70, and recommendation-grade module guidance closed the loop in Phase 71 (v2.7)
+- [x] CARL API validation — all 3 Pi extension APIs (getContextUsage, newSession, sendUserMessage) validated empirically with working prototype (Phase 76)
+- [x] CARL core implementation — production session boundary manager with phase detection, configurable decision model, session creation + auto-resume, and safety valve (Phase 77)
+- [x] CARL integration & configuration — init creates pals.json carl config, modules.yaml updated to v2.0.0, dead Claude Code-era carl/ files removed (Phase 78)
 
 ## Constraints
-- CARL remains architecturally independent (hook-level integration only)
+- CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
 - /carl:* namespace preserved (not merged into /paul:*)
 - Kernel must remain platform-agnostic (no Claude Code assumptions in core)
@@ -249,6 +252,21 @@ All validated — see below.
 | Keep `PRD.md` additive and legacy-safe for existing repos rather than forcing destructive migration | 67 | Preserves portability while allowing validation and docs to codify the new layered contract |
 | Treat the module system as more wired than visible | 68 | Audit found source manifests and the installed Pi registry aligned; the main trust problem is weak proof and visibility, not declared hook drift |
 | Prioritize execution-proof fixes before visibility UX | 68 | Post-unify reporting and lifecycle evidence need to be made durable before richer UI surfaces are added |
+| Finalize summary evidence after post-unify instead of treating the first SUMMARY write as final | 69 | Keeps post-unify-capable module contributions durably visible in SUMMARY/FIX-SUMMARY artifacts |
+| Use `module_reports` for persisted post-unify content and `side_effects` for non-blocking follow-on actions | 69 | Gives workflows, specs, overlays, and validation one durable reporting contract before Phase 70 UX work |
+| 2026-03-18: Derive live module visibility from recent shared workflow/reporting signals rather than registry presence alone | 70 | Keeps Pi module visibility trustworthy without inventing a second execution ledger |
+| 2026-03-18: Reuse existing Pi status/widget surfaces for recent module activity instead of adding new dashboards or telemetry | 70 | Delivers bounded visibility with additive adapter-only UX |
+| 2026-03-18: Treat `Module Execution Reports` as a bounded fallback alongside recent `[dispatch]` output for live visibility | 70 | Keeps post-unify-visible module activity legible without Pi-owned persistence |
+| 2026-03-18: Keep the module roster and improve legibility before considering merge/remove changes | 71 | Audit evidence showed opacity more than dead weight, so future work should refine recommendation/report clarity rather than destabilize module boundaries |
+| 2026-03-18: Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserves artifact-first truth while making module participation legible without telemetry or Pi-owned execution state |
+| 2026-03-18: All three CARL-critical Pi APIs work as documented; no design changes needed | 76 | Phase 77 can proceed with carl-pi-design.md architecture unchanged |
+| 2026-03-18: 40% continue_threshold and 80% safety_ceiling are reasonable defaults for CARL | 76 | pals.json carl config uses these as defaults |
+| 2026-03-18: Stashed command context lifetime across agent_end needs Phase 77 validation | 76 | Early Phase 77 task must test stashing across event handler boundaries |
+| 2026-03-18: CARL logic inside palsHooks() closure sharing pi/activation/guided-workflow state | 77 | Self-contained without module-level exports |
+| 2026-03-18: Loop signature change detection prevents false positives from repeated agent_end calls | 77 | CARL triggers once per actual phase completion |
+| 2026-03-18: session_start seeds previousLoopSignature to avoid spurious session creation on resume | 77 | Prevents CARL from misreading already-complete loop state |
+| 2026-03-18: CARL config fields live inside modules.carl in pals.json alongside enabled/description | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
+| 2026-03-18: CARL module version bumped to 2.0.0 for architectural shift from rule injection to session boundary | 78 | Clear signal of role change in module registry |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -261,10 +279,10 @@ See: .paul/SPECIAL-FLOWS.md
 
 Quick Reference:
 - /paul → Project planning & lifecycle management
-- /carl → Context rules & domain configuration
+- /carl → Session boundary manager — autonomous session transitions
 - TODD → Test-driven development enforcement
 - WALT → Quality gating & validation
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after Phase 68 completion*
+*Last updated: 2026-03-18 after Phase 79 (Validation & Documentation) complete — v2.9 milestone complete*

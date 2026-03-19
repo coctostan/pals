@@ -4,21 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 69 planning is next — execution proof first, visibility UX second
+**Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
 ## Current Position
-Milestone: v2.7 Module Reality Check & Visibility
-Phase: 69 of 4 (Gap Fixes) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-18T01:09:28Z — Phase 68 complete, transitioned to Phase 69 planning
+Milestone: v2.9 CARL Session Boundary Manager
+Phase: 79 of 79 (Validation & Documentation) — Complete
+Plan: 79-01 complete
+Status: v2.9 milestone complete
+Last activity: 2026-03-18T17:40:00-0400 — v2.9 CARL Session Boundary Manager milestone complete
 Progress:
-- v2.7 Module Reality Check & Visibility: [███░░░░░░░] 25%
-- Phase 69: [░░░░░░░░░░] 0% (planning not started)
+- v2.9 CARL Session Boundary Manager: [██████████] 100% ✅
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete]
 ```
 
 ## Accumulated Context
@@ -73,6 +72,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-17: Complete the layered onboarding/artifact rollout across workflows, templates, docs, and validation | 67 | Finishes v2.6 with shared portable `PROJECT.md` + `PRD.md` behavior |
 | 2026-03-18: Treat the module system as more wired than visible; source-vs-installed drift is not the main problem | 68 | Keeps follow-on work focused on proof/reporting and UX rather than phantom registry fixes |
 | 2026-03-18: Prioritize execution-proof fixes before visibility UX | 68 | Sets Phase 69 on durable evidence/reporting and Phase 70 on presentation |
+| 2026-03-18: Finalize summary evidence after post-unify instead of treating the first SUMMARY write as final | 69 | Gives post-unify-capable modules a durable report path in both UNIFY and standard fix loops |
+| 2026-03-18: Use `module_reports` for persisted post-unify summary content and `side_effects` for non-blocking follow-on actions | 69 | Aligns workflows, specs, overlays, and validation around one durable reporting contract |
+| 2026-03-18: Derive live module visibility from recent shared workflow/reporting signals rather than registry presence alone | 70 | Keeps Pi module visibility trustworthy without inventing a second execution ledger |
+| 2026-03-18: Reuse existing Pi status/widget surfaces for recent module activity instead of adding new dashboards or telemetry | 70 | Delivers bounded visibility with additive adapter-only UX |
+| 2026-03-18: Treat `Module Execution Reports` as a bounded fallback alongside recent `[dispatch]` output for live visibility | 70 | Keeps post-unify-visible module activity legible without Pi-owned persistence |
+| 2026-03-18: Keep the module roster and improve legibility before considering merge/remove changes | 71 | Future work should refine recommendation/report clarity rather than destabilize module boundaries |
+| 2026-03-18: Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserves artifact-first truth while making module participation legible without telemetry or Pi-owned execution state |
+| All three CARL-critical Pi APIs work as documented; no design changes needed | 76 | Phase 77 can proceed with carl-pi-design.md architecture unchanged |
+| 40% continue_threshold and 80% safety_ceiling are reasonable defaults | 76 | pals.json carl config uses these as defaults |
+| Stashed command context lifetime across agent_end needs Phase 77 validation | 76 | Early Phase 77 task must test stashing across event handler boundaries |
+| CARL logic inside palsHooks() closure, not a separate module | 77 | Self-contained; shares pi/activation/guided-workflow state |
+| Loop signature change detection for phase-completion sensing | 77 | Prevents false positives from repeated agent_end calls |
+| session_start seeds previousLoopSignature to avoid spurious session creation | 77 | Prevents CARL from misreading already-complete loop state on resume |
+| CARL config fields inside modules.carl in pals.json | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
+| CARL module version bumped to 2.0.0 | 78 | Clear signal of architectural shift from rule injection to session boundary |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -84,6 +98,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 | None material | 67 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
 | None material | 68 | Phase executed as planned; audit stayed within `.paul/` artifacts and produced the requested evidence package |
+| None material | 69 | APPLY stayed within the planned shared workflow/docs/tests scope; lifecycle artifact updates were limited to state and handoff bookkeeping |
+| None material | 70 | Phase executed as planned; bounded live visibility work stayed within the approved Pi adapter/docs/tests scope |
+| None material | 71 | APPLY and UNIFY stayed within the planned recommendation-only scope; no Phase 69/70 implementation work was reopened |
+| None material | 76 | Plan executed exactly as written; test command added, APIs validated, report written |
+| None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
+| None material | 78 | Plan executed exactly as written; init config, modules.yaml, dead file removal all clean |
+| Minor additive | 79 | PROJECT.md quick reference and constraint also updated beyond plan's explicit file list; essential consistency fix |
+### Skill Audit (Phase 71)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow drove PLAN → APPLY → UNIFY for this recommendation-only phase |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -91,23 +116,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
-- Phase 68: Live Pi lifecycle surfaces remain module-opaque; address in Phase 70
-- Phase 68: Post-unify module outputs lack a proven durable SUMMARY path; address in Phase 69
+- Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
+- Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/69-gap-fixes
-Last commit: HEAD (WIP pause commit on feature/69-gap-fixes after Phase 68 completion)
-Feature branches merged: PR #15 merged to main; draft PR #16 open for feature/69-gap-fixes
-Remote status: origin configured and branch is pushed/tracking origin/feature/69-gap-fixes
+Branch: feature/carl-session-boundary
+Last commit: 5424ced feat(79-validation-docs): complete v2.9 CARL Session Boundary Manager
+Feature branches merged: PR #15 and PR #16 already merged to main; feature/carl-session-boundary is the active v2.9 branch
+Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
+Note: pals-hooks.ts lives at ~/.pi/agent/extensions/ (outside repo); extension changes tracked via .paul/ artifacts
 ## Session Continuity
-Last session: 2026-03-17T21:16:48-0400
-Stopped at: Paused after completing Phase 68 and transitioning to Phase 69 planning
-Next action: /skill:paul-plan for Phase 69 (Gap Fixes)
-Resume file: .paul/HANDOFF-2026-03-17-phase69-ready.md
-Git strategy: feature-per-phase (current branch: feature/69-gap-fixes)
+Last session: 2026-03-18T17:40:00-0400
+Stopped at: v2.9 CARL Session Boundary Manager milestone complete
+Next action: /paul:milestone complete or define next milestone
+Resume file: .paul/ROADMAP.md
+Git strategy: feature/carl-session-boundary
 Resume context:
-- Phase 68 is fully complete and summarized in `.paul/phases/68-execution-audit/68-01-SUMMARY.md`
-- The Phase 68 handoff has been superseded by `.paul/HANDOFF-2026-03-17-phase69-ready.md`
-- Phase 69 should focus on durable module execution evidence, especially the post-unify reporting gap
-- Phase 70 should make that proven evidence visible in live UX and end reporting
----
+- v2.9 complete — 4 phases (76-79), CARL fully implemented as Pi-native session boundary manager
+- Next milestone not yet defined
 *STATE.md — Updated after every significant action*

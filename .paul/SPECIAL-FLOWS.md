@@ -5,7 +5,7 @@
 | Skill | Work Type | Priority | Trigger |
 |-------|-----------|----------|---------|
 | /paul | Project planning & lifecycle management | Required | All planning, applying, and unifying work — the PLAN-APPLY-UNIFY loop |
-| /carl | Context rules & domain configuration | Required | When establishing coding standards, domain rules, or behavioral constraints |
+| /carl | Session boundary manager — autonomous session transitions | Required | Automatic — monitors context at phase boundaries and mid-phase, creates fresh sessions when needed |
 | TODD | Test-driven development enforcement | Required | Before and during code implementation — ensures tests are written first |
 | WALT | Quality gating & validation | Required | After implementation — validates code quality before marking work complete |
 
@@ -16,10 +16,10 @@
 - **Commands:** /paul:plan, /paul:apply, /paul:unify, /paul:progress, /paul:verify
 - **Integration:** Core workflow engine, always active
 
-### /carl (Context & Rules Layer)
-- **Scope:** Domain-specific rules, global conventions, context-aware behavior
-- **Commands:** /carl:manager, domain/rule CRUD
-- **Integration:** Rules injected via system hooks, enforced during all phases
+### /carl (Session Boundary Manager)
+- **Scope:** Autonomous context-aware session transitions at phase boundaries and mid-phase safety valve
+- **Mechanism:** Pi extension events (agent_end for phase detection, turn_end for safety monitoring)
+- **Configuration:** pals.json carl section (session_strategy, continue_threshold, safety_ceiling)
 
 ### TODD (Test-Driven Development)
 - **Scope:** TDD enforcement during APPLY phase — tests before implementation

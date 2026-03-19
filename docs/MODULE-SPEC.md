@@ -363,8 +363,7 @@ context_inject:                    # additional data to include in unify reconci
 
 ### 2.8 `post-unify`
 
-**Trigger:** Fires after unify reconciliation is complete and the loop is about to close. STATE.md and ROADMAP.md have been updated. This is the final hook before the loop iteration ends.
-
+**Trigger:** Fires after unify reconciliation is complete and the loop is about to close. STATE.md and ROADMAP.md may already be updated, but `SUMMARY.md` / `FIX-SUMMARY.md` is still open for finalization. This is the final hook before the loop iteration ends.
 **Payload:**
 ```yaml
 hook: post-unify
@@ -377,14 +376,19 @@ state_update:                      # what changed in STATE.md
   next_phase: "05-api-endpoints"
 annotations_from_apply:            # all accumulated annotations
   quality_gate: { ... }
+pre_unify_context:                 # retained reconciliation context that may also persist to the summary
+  quality_trend: { ... }
 ```
-
 **Return contract:**
 ```yaml
 action: continue                   # continue only (post-unify cannot block)
-side_effects:                      # actions the module performed
+module_reports:                    # durable blocks for Module Execution Reports
+  - title: "Quality"
+    format: markdown
+    content: |
+      | Metric | Before | After | Delta | Trajectory |
+side_effects:                      # non-blocking follow-on actions the module performed
   - "Recorded quality delta in quality-history.md"
-  - "Updated TDD coverage metrics"
 ```
 
 ---
@@ -416,9 +420,9 @@ Short-circuit order follows priority. If TODD (priority 50) blocks on `pre-apply
 ### 3.3 Data Passing Between Hooks
 
 Hooks at the same hook point receive the same base payload from the kernel. They cannot directly pass data to each other within a single hook point. However:
-
 - `context_inject` values from one hook point carry forward to subsequent hook points. If TODD injects `tdd_type: true` at `pre-plan`, that value appears in `context_from_pre_plan` at `post-plan`.
-- `annotations` from `post-task` hooks accumulate and appear in `annotations_from_apply` at `post-apply`, `pre-unify`, and `post-unify`.
+- `annotations` from `post-task` hooks accumulate and appear in `annotations_from_apply` at `post-apply`, `pre-unify`, `post-unify`, and summary finalization.
+- `module_reports` and `side_effects` returned by `post-unify` do not feed another hook point; they feed the kernel's durable summary finalization and artifact logging.
 - Within a single hook point, if multiple modules return `context_inject`, their values are merged. On key collision, the higher-priority-number (later-running) module's value wins.
 
 ### 3.4 `context_inject` Schema
@@ -451,9 +455,10 @@ context_inject:
 | pre-apply | TODD | `tdd_enforced` | flag | post-task, post-apply |
 | pre-apply | WALT | `test_baseline` | structured | post-apply |
 | post-task | TODD | `tdd_phase_completed` | key-value | accumulates → post-apply |
-| post-apply | WALT | `quality_gate` | structured | pre-unify, SUMMARY |
-| pre-unify | WALT | `quality_trend` | structured | reconciliation |
+| `post-apply` | WALT | `quality_gate` | structured | pre-unify, summary finalization |
+| `pre-unify` | WALT | `quality_trend` | structured | reconciliation, summary finalization |
 
+**Note:** `post-unify` does not use `context_inject`; it returns `module_reports` + `side_effects` because those outputs persist directly into summary finalization.
 **Merge rules:** When multiple modules inject at the same hook point, values are merged by key. On key collision, the later-running module (higher priority number) wins.
 
 ### 3.5 Data Flow Summary
@@ -476,14 +481,12 @@ post-task (per task)
   └─ annotations ──────────────────► accumulate across tasks
 
 post-apply
-  └─ annotations ──────────────────► pre-unify, post-unify
+  └─ annotations ──────────────────► pre-unify, post-unify, summary finalization
                                       (as annotations_from_apply)
-
 pre-unify
-  └─ context_inject ──────────────► kernel includes in reconciliation
-
+  └─ context_inject ──────────────► reconciliation + summary finalization
 post-unify
-  └─ side_effects ─────────────────► logged, no further processing
+  └─ module_reports + side_effects ─► summary finalization + durable artifact log
 ```
 
 ### 3.6 Failure Cascading Across Hook Points
@@ -812,7 +815,7 @@ hooks:
     description: Run tests, lint, typecheck; compare against baseline; gate on regressions
   post-unify:
     priority: 100
-    description: Record quality delta in quality-history.md for trend tracking
+    description: Record quality delta in quality-history.md and return a durable summary report for trend tracking
 
 files:
   references:
