@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-03-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
+**Current focus:** v2.10 Workflow Integrity — fix structural failures that allowed hallucinated implementation to pass undetected
 ## Current Position
-Milestone: v2.9 CARL Session Boundary Manager
-Phase: 79 of 79 (Validation & Documentation) — Complete
-Plan: 79-01 complete
-Status: v2.9 milestone complete
-Last activity: 2026-03-18T17:40:00-0400 — v2.9 CARL Session Boundary Manager milestone complete
+Milestone: v2.10 Workflow Integrity
+Phase: 80 of 80 (Workflow Integrity Fixes) — Complete
+Plan: 80-01 complete
+Status: v2.10 milestone complete
+Last activity: 2026-03-19T12:10:00-0400 — UNIFY complete, Phase 80 done
 Progress:
-- v2.9 CARL Session Boundary Manager: [██████████] 100% ✅
+- v2.10 Workflow Integrity: [██████████] 100% ✅
 ## Loop Position
 Current loop state:
 ```
@@ -119,18 +119,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/carl-session-boundary
-Last commit: 5424ced feat(79-validation-docs): complete v2.9 CARL Session Boundary Manager
-Feature branches merged: PR #15 and PR #16 already merged to main; feature/carl-session-boundary is the active v2.9 branch
-Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
-Note: pals-hooks.ts lives at ~/.pi/agent/extensions/ (outside repo); extension changes tracked via .paul/ artifacts
+Branch: main
+Last commit: a05df6f v2.9 CARL Session Boundary Manager (#17)
+Note: v2.9 merge contained zero CARL implementation code — only .paul/ docs and v2.7/v2.8 module visibility changes
 ## Session Continuity
-Last session: 2026-03-18T17:40:00-0400
-Stopped at: v2.9 CARL Session Boundary Manager milestone complete
+Last session: 2026-03-19T12:10:00-0400
+Stopped at: v2.10 Workflow Integrity milestone complete
 Next action: /paul:milestone complete or define next milestone
-Resume file: .paul/ROADMAP.md
-Git strategy: feature/carl-session-boundary
+Resume file: .paul/phases/80-workflow-integrity/80-01-SUMMARY.md
+Git strategy: main
 Resume context:
-- v2.9 complete — 4 phases (76-79), CARL fully implemented as Pi-native session boundary manager
-- Next milestone not yet defined
+- v2.10 complete — 1 phase (80), 5 workflow files hardened against hallucination cascades
+- v2.9 remains hollow — CARL feature work deferred to future milestone
 *STATE.md — Updated after every significant action*

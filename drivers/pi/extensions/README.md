@@ -102,6 +102,17 @@ The extension registers these slash commands:
 
 These are distinct install targets. The extension goes to `~/.pi/agent/extensions/`, skills and kernel files go to `~/.pi/agent/skills/pals/`. Uninstalling the extension alone does not remove skills or kernel files; `uninstall.sh` handles the full cleanup of all targets.
 
+## Development Workflow
+
+When modifying `pals-hooks.ts`, always edit the **repo source** at `drivers/pi/extensions/pals-hooks.ts`. Never edit the installed runtime copy at `~/.pi/agent/extensions/pals-hooks.ts` directly — it will be overwritten by the next `install.sh` run.
+
+After editing the repo source, re-deploy:
+```bash
+bash drivers/pi/install.sh
+```
+
+PALS plans that target this file MUST use the repo-relative path `drivers/pi/extensions/pals-hooks.ts` in their `<files>` tags, not the installed path.
+
 ## References
 
 - [Pi Extensions docs](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md)

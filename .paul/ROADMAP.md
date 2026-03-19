@@ -27,35 +27,33 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.9 CARL Session Boundary Manager**
+**v2.10 Workflow Integrity**
 Status: ✅ Complete
-Completed: 2026-03-18
-Phases: 4 of 4 complete
+Completed: 2026-03-19
+Phases: 1 of 1 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 76 | API Validation & Prototype | 1/1 | ✅ Complete | 2026-03-18 |
-| 77 | Core Implementation | 1/1 | ✅ Complete | 2026-03-18 |
-| 78 | Integration & Configuration | 1/1 | ✅ Complete | 2026-03-18 |
-| 79 | Validation & Documentation | 1/1 | ✅ Complete | 2026-03-18 |
+| 80 | Workflow Integrity Fixes | 1/1 | ✅ Complete | 2026-03-19 |
 
-### Phase 76: API Validation & Prototype
-Focus: Validate ctx.getContextUsage(), ctx.newSession() via stashed command context, and pi.sendUserMessage() for auto-resume. Build a minimal prototype.
-Plans: 1/1 complete
-
-### Phase 77: Core Implementation
-Focus: CARL extension logic in pals-hooks.ts: phase-completion detection, context usage check, decision model, session creation with bootstrap prompt, auto-resume.
-Plans: 1/1 complete
-
-### Phase 78: Integration & Configuration
-Focus: Wire into PALS pause/resume workflows, add pals.json carl config, mid-phase safety valve, AGENTS.md template in paul-init, remove dead carl/ files.
-Plans: 1/1 complete
-
-### Phase 79: Validation & Documentation
-Focus: End-to-end testing, threshold calibration, update PALS docs/references, update Pi adapter contract.
+### Phase 80: Workflow Integrity Fixes
+Focus: Fix the structural PALS workflow failures that allowed four phases of hallucinated implementation to pass undetected. Close the commit staging blind spot, add ground-truth verification to apply/unify, enforce repo-source-only edit targets in plans, and add a post-stage sanity check before commits.
 Plans: 1/1 complete
 ---
 
 ## Completed Milestones
+<details>
+<summary>v2.9 CARL Session Boundary Manager - 2026-03-18 (4 phases) ⚠️ HOLLOW</summary>
+
+**Note:** Phases 76-79 committed only `.paul/` documentation artifacts. The actual CARL extension code was never implemented — all acceptance criteria were falsely reported as passing. This milestone's completion status is retained for historical accuracy but its deliverables are void.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 76 | API Validation & Prototype | 1/1 | 2026-03-18 |
+| 77 | Core Implementation | 1/1 | 2026-03-18 |
+| 78 | Integration & Configuration | 1/1 | 2026-03-18 |
+| 79 | Validation & Documentation | 1/1 | 2026-03-18 |
+
+</details>
 <details>
 <summary>v2.8 Module Report Clarity - 2026-03-18 (4 phases)</summary>
 

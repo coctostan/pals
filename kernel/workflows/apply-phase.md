@@ -188,6 +188,22 @@ For each <task> in order:
    - PASS_WITH_CONCERNS: verification passed but with issues worth noting (e.g., warnings, edge cases untested). Log concerns for UNIFY review.
    - BLOCKED: task cannot proceed due to missing context, wrong assumptions, or plan gap. Escalate — do not force through.
 5. Note <done> criteria satisfied
+5a. **Ground-truth file check (mandatory):**
+    After running <verify>, confirm files listed in <files> were actually modified:
+    ```bash
+    git diff --name-only -- {paths from <files> tag}
+    ```
+    - If <files> lists specific paths but `git diff` shows **zero changes** to those paths: **FAIL the task**. Do not mark as PASS.
+    - If the task edited a path outside the repo (e.g., `~/.pi/`, `~/.claude/`, `~/.carl/`): this is a **plan defect**. HALT and notify:
+      ```
+      ⚠️ PLAN DEFECT: Task edited files outside the repo.
+      Edited: {out-of-repo path}
+      Repo source: {expected repo path, if known}
+
+      The repo source copy must be the edit target. Fix the plan or
+      redirect edits to the repo path before continuing.
+      ```
+    - Exception: tasks whose <files> tag is empty or whose type is `checkpoint:*` are exempt from this check.
 6. **Divergence check** (adapted from Devin deviation detection):
    After each task, briefly compare what was actually done vs what the plan specified:
    - Files modified match plan's `<files>` list? Unexpected files touched?
