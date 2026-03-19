@@ -29,12 +29,12 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.9 CARL Session Boundary Manager**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 76 | API Validation & Prototype | 1/1 | ✅ Complete | 2026-03-18 |
 | 77 | Core Implementation | 1/1 | ✅ Complete | 2026-03-18 |
-| 78 | Integration & Configuration | TBD | Not started | - |
+| 78 | Integration & Configuration | 1/1 | ✅ Complete | 2026-03-18 |
 | 79 | Validation & Documentation | TBD | Not started | - |
 
 ### Phase 76: API Validation & Prototype
@@ -47,7 +47,7 @@ Plans: 1/1 complete
 
 ### Phase 78: Integration & Configuration
 Focus: Wire into PALS pause/resume workflows, add pals.json carl config, mid-phase safety valve, AGENTS.md template in paul-init, remove dead carl/ files.
-Plans: TBD (defined during /paul:plan)
+Plans: 1/1 complete
 
 ### Phase 79: Validation & Documentation
 Focus: End-to-end testing, threshold calibration, update PALS docs/references, update Pi adapter contract.

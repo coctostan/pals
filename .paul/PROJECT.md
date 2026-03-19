@@ -120,6 +120,7 @@ All validated — see below.
 - [x] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69, live module visibility UX shipped in Phase 70, and recommendation-grade module guidance closed the loop in Phase 71 (v2.7)
 - [x] CARL API validation — all 3 Pi extension APIs (getContextUsage, newSession, sendUserMessage) validated empirically with working prototype (Phase 76)
 - [x] CARL core implementation — production session boundary manager with phase detection, configurable decision model, session creation + auto-resume, and safety valve (Phase 77)
+- [x] CARL integration & configuration — init creates pals.json carl config, modules.yaml updated to v2.0.0, dead Claude Code-era carl/ files removed (Phase 78)
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -264,6 +265,8 @@ All validated — see below.
 | 2026-03-18: CARL logic inside palsHooks() closure sharing pi/activation/guided-workflow state | 77 | Self-contained without module-level exports |
 | 2026-03-18: Loop signature change detection prevents false positives from repeated agent_end calls | 77 | CARL triggers once per actual phase completion |
 | 2026-03-18: session_start seeds previousLoopSignature to avoid spurious session creation on resume | 77 | Prevents CARL from misreading already-complete loop state |
+| 2026-03-18: CARL config fields live inside modules.carl in pals.json alongside enabled/description | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
+| 2026-03-18: CARL module version bumped to 2.0.0 for architectural shift from rule injection to session boundary | 78 | Clear signal of role change in module registry |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -282,4 +285,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after Phase 77 (Core Implementation) complete*
+*Last updated: 2026-03-18 after Phase 78 (Integration & Configuration) complete*

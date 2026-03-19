@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-18)
 **Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
 ## Current Position
 Milestone: v2.9 CARL Session Boundary Manager
-Phase: 78 of 79 (Integration & Configuration)
+Phase: 79 of 79 (Validation & Documentation)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-18T16:55:00-0400 — Phase 77 complete, transitioned to Phase 78
+Last activity: 2026-03-18T17:20:00-0400 — Phase 78 complete, transitioned to Phase 79
 Progress:
-- v2.9 CARL Session Boundary Manager: [█████░░░░░] 50%
+- v2.9 CARL Session Boundary Manager: [███████░░░] 75%
 ## Loop Position
 Current loop state:
 ```
@@ -85,6 +85,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | CARL logic inside palsHooks() closure, not a separate module | 77 | Self-contained; shares pi/activation/guided-workflow state |
 | Loop signature change detection for phase-completion sensing | 77 | Prevents false positives from repeated agent_end calls |
 | session_start seeds previousLoopSignature to avoid spurious session creation | 77 | Prevents CARL from misreading already-complete loop state on resume |
+| CARL config fields inside modules.carl in pals.json | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
+| CARL module version bumped to 2.0.0 | 78 | Clear signal of architectural shift from rule injection to session boundary |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -101,6 +103,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 71 | APPLY and UNIFY stayed within the planned recommendation-only scope; no Phase 69/70 implementation work was reopened |
 | None material | 76 | Plan executed exactly as written; test command added, APIs validated, report written |
 | None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
+| None material | 78 | Plan executed exactly as written; init config, modules.yaml, dead file removal all clean |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -116,18 +119,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/carl-session-boundary
-Last commit: ec47e49 feat(77-core-implementation): production CARL session boundary manager
+Last commit: 9968ada feat(78-integration-config): CARL integration and dead file cleanup
 Feature branches merged: PR #15 and PR #16 already merged to main; feature/carl-session-boundary is the active v2.9 branch
 Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
 Note: pals-hooks.ts lives at ~/.pi/agent/extensions/ (outside repo); extension changes tracked via .paul/ artifacts
 ## Session Continuity
-Last session: 2026-03-18T16:55:00-0400
-Stopped at: Phase 77 complete, ready to plan Phase 78
-Next action: /paul:plan for Phase 78 (Integration & Configuration)
+Last session: 2026-03-18T17:20:00-0400
+Stopped at: Phase 78 complete, ready to plan Phase 79
+Next action: /paul:plan for Phase 79 (Validation & Documentation)
 Resume file: .paul/ROADMAP.md
 Git strategy: feature/carl-session-boundary
 Resume context:
-- Phases 76-77 complete — APIs validated, core CARL logic implemented
-- Phase 78 scope: pals.json carl config, pause/resume wiring, AGENTS.md template, dead carl/ removal
-- Mid-phase safety valve and phase detection ready but need integration wiring
+- Phases 76-78 complete — CARL fully implemented and integrated
+- Phase 79: end-to-end testing, threshold calibration, docs, Pi adapter contract
+- This is the final phase of v2.9
 *STATE.md — Updated after every significant action*
