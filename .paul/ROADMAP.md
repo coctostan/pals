@@ -29,17 +29,17 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.9 CARL Session Boundary Manager**
 Status: 🚧 In Progress
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 76 | API Validation & Prototype | TBD | Not started | - |
+| 76 | API Validation & Prototype | 1/1 | ✅ Complete | 2026-03-18 |
 | 77 | Core Implementation | TBD | Not started | - |
 | 78 | Integration & Configuration | TBD | Not started | - |
 | 79 | Validation & Documentation | TBD | Not started | - |
 
 ### Phase 76: API Validation & Prototype
 Focus: Validate ctx.getContextUsage(), ctx.newSession() via stashed command context, and pi.sendUserMessage() for auto-resume. Build a minimal prototype.
-Plans: TBD (defined during /paul:plan)
+Plans: 1/1 complete
 
 ### Phase 77: Core Implementation
 Focus: CARL extension logic in pals-hooks.ts: phase-completion detection, context usage check, decision model, session creation with bootstrap prompt, auto-resume.

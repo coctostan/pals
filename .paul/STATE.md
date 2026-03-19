@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-18)
 **Current focus:** v2.9 CARL Session Boundary Manager — replace Claude Code-era CARL with Pi-native autonomous session boundary management
 ## Current Position
 Milestone: v2.9 CARL Session Boundary Manager
-Phase: 76 of 79 (API Validation & Prototype)
+Phase: 77 of 79 (Core Implementation)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-19T08:57:18-0400 — Milestone v2.9 created
+Last activity: 2026-03-18T16:15:00-0400 — Phase 76 complete, transitioned to Phase 77
 Progress:
-- v2.9 CARL Session Boundary Manager: [░░░░░░░░░░] 0%
+- v2.9 CARL Session Boundary Manager: [███░░░░░░░] 25%
 ## Loop Position
 Current loop state:
 ```
@@ -79,6 +79,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-18: Treat `Module Execution Reports` as a bounded fallback alongside recent `[dispatch]` output for live visibility | 70 | Keeps post-unify-visible module activity legible without Pi-owned persistence |
 | 2026-03-18: Keep the module roster and improve legibility before considering merge/remove changes | 71 | Future work should refine recommendation/report clarity rather than destabilize module boundaries |
 | 2026-03-18: Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserves artifact-first truth while making module participation legible without telemetry or Pi-owned execution state |
+| All three CARL-critical Pi APIs work as documented; no design changes needed | 76 | Phase 77 can proceed with carl-pi-design.md architecture unchanged |
+| 40% continue_threshold and 80% safety_ceiling are reasonable defaults | 76 | pals.json carl config uses these as defaults |
+| Stashed command context lifetime across agent_end needs Phase 77 validation | 76 | Early Phase 77 task must test stashing across event handler boundaries |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -93,6 +96,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 69 | APPLY stayed within the planned shared workflow/docs/tests scope; lifecycle artifact updates were limited to state and handoff bookkeeping |
 | None material | 70 | Phase executed as planned; bounded live visibility work stayed within the approved Pi adapter/docs/tests scope |
 | None material | 71 | APPLY and UNIFY stayed within the planned recommendation-only scope; no Phase 69/70 implementation work was reopened |
+| None material | 76 | Plan executed exactly as written; test command added, APIs validated, report written |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -107,20 +111,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/post-v27-complete
-Last commit: HEAD wip(post-v27-complete): pause before next milestone definition
-Feature branches merged: PR #15 and PR #16 already merged to main; feature/post-v27-complete is the active local pause checkpoint branch
+Branch: feature/carl-session-boundary
+Last commit: d8b6fd5 feat(76-api-validation): validate CARL-critical Pi extension APIs
+Feature branches merged: PR #15 and PR #16 already merged to main; feature/carl-session-boundary is the active v2.9 branch
 Remote status: origin configured locally, but `pals.json` keeps PALS remote automation disabled (`git.remote = null`)
+Note: pals-hooks.ts lives at ~/.pi/agent/extensions/ (outside repo); extension changes tracked via .paul/ artifacts
 ## Session Continuity
-Last session: 2026-03-19T09:00:33-0400
-Stopped at: v2.9 milestone created, pausing before Phase 76 PLAN
-Next action: /paul:plan for Phase 76 (API Validation & Prototype)
-Resume file: .paul/HANDOFF-2026-03-19-carl-milestone-created.md
-Git strategy: feature/post-v27-complete
+Last session: 2026-03-18T16:15:00-0400
+Stopped at: Phase 76 complete, ready to plan Phase 77
+Next action: /paul:plan for Phase 77 (Core Implementation)
+Resume file: .paul/ROADMAP.md
+Git strategy: feature/carl-session-boundary
 Resume context:
-- v2.8 complete (4 phases, all proof-bearing modules have report clarity)
-- v2.9 milestone created with 4 phases (76-79) for CARL session boundary manager
-- Research docs at .paul/phases/carl-research/ (GSD2 mechanisms + CARL design)
-- Phase 76 will validate Pi extension APIs before implementation
----
+- Phase 76 complete — all 3 CARL APIs validated, prototype working
+- api-validation-report.md ready as Phase 77 input
+- Phase 77 scope: CARL extension logic in pals-hooks.ts (phase detection, context check, session creation, auto-resume)
 *STATE.md — Updated after every significant action*

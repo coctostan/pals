@@ -118,6 +118,7 @@ All validated — see below.
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 - [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
 - [x] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69, live module visibility UX shipped in Phase 70, and recommendation-grade module guidance closed the loop in Phase 71 (v2.7)
+- [x] CARL API validation — all 3 Pi extension APIs (getContextUsage, newSession, sendUserMessage) validated empirically with working prototype (Phase 76)
 
 ## Constraints
 - CARL remains architecturally independent (hook-level integration only)
@@ -256,6 +257,9 @@ All validated — see below.
 | 2026-03-18: Treat `Module Execution Reports` as a bounded fallback alongside recent `[dispatch]` output for live visibility | 70 | Keeps post-unify-visible module activity legible without Pi-owned persistence |
 | 2026-03-18: Keep the module roster and improve legibility before considering merge/remove changes | 71 | Audit evidence showed opacity more than dead weight, so future work should refine recommendation/report clarity rather than destabilize module boundaries |
 | 2026-03-18: Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserves artifact-first truth while making module participation legible without telemetry or Pi-owned execution state |
+| 2026-03-18: All three CARL-critical Pi APIs work as documented; no design changes needed | 76 | Phase 77 can proceed with carl-pi-design.md architecture unchanged |
+| 2026-03-18: 40% continue_threshold and 80% safety_ceiling are reasonable defaults for CARL | 76 | pals.json carl config uses these as defaults |
+| 2026-03-18: Stashed command context lifetime across agent_end needs Phase 77 validation | 76 | Early Phase 77 task must test stashing across event handler boundaries |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -274,4 +278,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after v2.7 milestone completion*
+*Last updated: 2026-03-18 after Phase 76 (API Validation & Prototype) complete*
