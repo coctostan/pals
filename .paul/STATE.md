@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-18)
 **Current focus:** v2.11 Pi CARL Session Boundary Manager — implement Pi-native autonomous session boundary management
 ## Current Position
 Milestone: v2.11 Pi CARL Session Boundary Manager
-Phase: 81 of 83 (Core Implementation)
+Phase: 82 of 83 (Config & Integration)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-19T13:00:00-0400 — Milestone created from discussion context
+Last activity: 2026-03-19T14:20:00-0400 — Phase 81 complete, transitioned to Phase 82
 Progress:
-- v2.11 Pi CARL Session Boundary Manager: [░░░░░░░░░░] 0%
+- v2.11 Pi CARL Session Boundary Manager: [███░░░░░░░] 33%
 ## Loop Position
 Current loop state:
 ```
@@ -105,6 +105,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
 | None material | 78 | Plan executed exactly as written; init config, modules.yaml, dead file removal all clean |
 | Minor additive | 79 | PROJECT.md quick reference and constraint also updated beyond plan's explicit file list; essential consistency fix |
+| None material | 81 | Plan executed exactly as written; 3 tasks all PASS, 173 lines added to pals-hooks.ts, no approach changes |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -120,15 +121,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: 8b591b4 feat(v2.10): Workflow Integrity
+Last commit: 3a6f1fc feat(81-core-implementation): CARL session boundary manager core logic
 ## Session Continuity
-Last session: 2026-03-19T13:10:00-0400
-Stopped at: v2.11 milestone created, ready to plan Phase 81
-Next action: /paul:plan for Phase 81
-Resume file: .paul/HANDOFF-2026-03-19-v211-milestone-created.md
+Last session: 2026-03-19T14:20:00-0400
+Stopped at: Phase 81 complete, ready to plan Phase 82
+Next action: /paul:plan for Phase 82
+Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase
 Resume context:
-- v2.11 created — 3 phases (81-83) to implement Pi CARL session boundary manager
-- Reuse v2.9 research: carl-pi-design.md, api-validation-report.md, Phase 77 PLAN spec
-- All edits target drivers/pi/extensions/pals-hooks.ts (repo source), deploy via install.sh
+- Phase 81 complete — CARL core logic in pals-hooks.ts (173 lines added)
+- Phase 82: Config & Integration — pals.json carl config, pause/resume wiring, bootstrap format, auto-resume
+- All edits target drivers/pi/extensions/pals-hooks.ts (repo source)
 *STATE.md — Updated after every significant action*

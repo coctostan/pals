@@ -38,6 +38,12 @@ const MAX_WIDGET_MODULE_DETAILS = 4;
 const DISPATCH_MARKER = "[dispatch]";
 const MODULE_REPORTS_HEADER = "Module Execution Reports";
 
+// -- CARL Session Boundary Manager constants --
+const CARL_NEW_SESSION_TIMEOUT_MS = 10_000;
+const CARL_DEFAULT_CONTINUE_THRESHOLD = 0.4;
+const CARL_DEFAULT_SAFETY_CEILING = 0.8;
+const CARL_DEFAULT_STRATEGY: CarlConfig["session_strategy"] = "phase-boundary";
+
 type PalsStateSnapshot = {
   detected: boolean;
   milestone?: string;
@@ -102,6 +108,19 @@ type RecentModuleActivity = {
   stage: string;
   stageLabel: string;
   entries: ModuleActivityEntry[];
+};
+
+type CarlConfig = {
+  session_strategy: "phase-boundary" | "always-fresh" | "manual";
+  continue_threshold: number;
+  safety_ceiling: number;
+};
+
+type CarlState = {
+  stashedCmdCtx: any | undefined;
+  dispatching: boolean;
+  previousLoopSignature: string | undefined;
+  pauseAtNextBoundary: boolean;
 };
 
 function readFileOr(path: string, fallback: string): string {
@@ -800,6 +819,55 @@ async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: an
   ctx.ui.notify(`${moment.title}: respond in the canonical workflow prompt when ready.`, "info");
 }
 
+// -- CARL helpers and core functions --
+
+function loadCarlConfig(cwd: string): CarlConfig {
+  const palsJsonPath1 = join(cwd, ".paul", "pals.json");
+  const palsJsonPath2 = join(cwd, "pals.json");
+  const raw = readFileOr(palsJsonPath1, "") || readFileOr(palsJsonPath2, "");
+  let carl: any = {};
+  try {
+    const parsed = raw ? JSON.parse(raw) : {};
+    carl = parsed?.modules?.carl ?? {};
+  } catch {
+    // Invalid JSON — use defaults
+  }
+  return {
+    session_strategy: ["phase-boundary", "always-fresh", "manual"].includes(carl.session_strategy)
+      ? carl.session_strategy
+      : CARL_DEFAULT_STRATEGY,
+    continue_threshold: typeof carl.continue_threshold === "number" ? carl.continue_threshold : CARL_DEFAULT_CONTINUE_THRESHOLD,
+    safety_ceiling: typeof carl.safety_ceiling === "number" ? carl.safety_ceiling : CARL_DEFAULT_SAFETY_CEILING,
+  };
+}
+
+function extractLoopSignature(state: PalsStateSnapshot): string | undefined {
+  if (!state.loop) return undefined;
+  const marks = [...state.loop.matchAll(/[✓○]/g)].map((m) => m[0]);
+  return marks.length >= 3 ? marks.join("") : undefined;
+}
+
+function buildCarlBootstrapPrompt(state: PalsStateSnapshot, reason: string): string {
+  return [
+    "## PALS Session Bootstrap",
+    "",
+    "**Resuming from CARL autonomous session boundary.**",
+    "",
+    "### Current State",
+    state.milestone ? `Milestone: ${state.milestone}` : null,
+    state.phase ? `Phase: ${state.phase}` : null,
+    state.loop ? `Loop: ${state.loop}` : null,
+    state.nextAction ? `Next action: ${state.nextAction}` : null,
+    "",
+    `### Session Break Reason`,
+    `CARL triggered a fresh session: ${reason}`,
+    "",
+    "### Resume",
+    "Run /skill:paul-resume to continue.",
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
+}
 // -- Command definitions --
 
 const COMMANDS: CommandDef[] = [
@@ -875,6 +943,102 @@ const COMMANDS: CommandDef[] = [
 export default function palsHooks(pi: any): void {
   let activationState: ActivationState | undefined;
   let lastGuidedWorkflowSignature: string | undefined;
+
+  // -- CARL Session Boundary Manager state --
+  const carlState: CarlState = {
+    stashedCmdCtx: undefined,
+    dispatching: false,
+    previousLoopSignature: undefined,
+    pauseAtNextBoundary: false,
+  };
+
+  const carlCreateFreshSession = async (ctx: any, reason: string): Promise<boolean> => {
+    if (!carlState.stashedCmdCtx) {
+      ctx?.ui?.notify("CARL: No stashed command context — run a /paul-* command first to enable session management.", "warning");
+      return false;
+    }
+    if (carlState.dispatching) return false;
+    carlState.dispatching = true;
+    try {
+      const cwd = ctx?.cwd ?? process.cwd();
+      const state = parsePalsState(cwd);
+      const bootstrapContent = buildCarlBootstrapPrompt(state, reason);
+      const sessionPromise = carlState.stashedCmdCtx.newSession({
+        setup: async (sm: any) => {
+          sm.appendMessage({
+            role: "user",
+            content: [{ type: "text", text: bootstrapContent }],
+            timestamp: Date.now(),
+          });
+        },
+      });
+      const timeoutPromise = new Promise<{ cancelled: true }>((resolve) =>
+        setTimeout(() => resolve({ cancelled: true }), CARL_NEW_SESSION_TIMEOUT_MS),
+      );
+      const result = await Promise.race([sessionPromise, timeoutPromise]);
+      if (result?.cancelled) {
+        ctx?.ui?.notify("CARL: Session creation timed out or was cancelled.", "warning");
+        return false;
+      }
+      pi.sendUserMessage("/skill:paul-resume");
+      return true;
+    } catch (err) {
+      ctx?.ui?.notify(`CARL: Session creation failed — ${err}`, "warning");
+      return false;
+    } finally {
+      carlState.dispatching = false;
+    }
+  };
+
+  const carlEvaluatePhaseCompletion = async (ctx: any): Promise<void> => {
+    const cwd = ctx?.cwd ?? process.cwd();
+    const state = parsePalsState(cwd);
+    if (!state.detected) return;
+
+    const signature = extractLoopSignature(state);
+    if (!signature) return;
+    if (signature === carlState.previousLoopSignature) return;
+    carlState.previousLoopSignature = signature;
+
+    if (signature !== "✓✓✓") return;
+
+    const config = loadCarlConfig(cwd);
+    if (config.session_strategy === "manual") return;
+
+    const usage = ctx?.getContextUsage?.();
+    const contextWindow = ctx?.model?.contextWindow ?? 200_000;
+    const tokens = usage?.tokens ?? 0;
+    const ratio = tokens / contextWindow;
+    const pct = Math.round(ratio * 100);
+
+    if (config.session_strategy === "always-fresh" || ratio >= config.continue_threshold) {
+      ctx?.ui?.notify(`CARL: Phase complete, context at ${pct}%. Creating fresh session.`, "info");
+      await carlCreateFreshSession(ctx, `phase-complete (context ${pct}%)`);
+    } else {
+      ctx?.ui?.notify(`CARL: Phase complete, context at ${pct}% — continuing in same session.`, "info");
+    }
+  };
+
+  const carlMonitorSafetyCeiling = (ctx: any): void => {
+    const cwd = ctx?.cwd ?? process.cwd();
+    const state = parsePalsState(cwd);
+    if (!state.detected) return;
+
+    const config = loadCarlConfig(cwd);
+    if (config.session_strategy === "manual") return;
+    if (carlState.pauseAtNextBoundary) return;
+
+    const usage = ctx?.getContextUsage?.();
+    const contextWindow = ctx?.model?.contextWindow ?? 200_000;
+    const tokens = usage?.tokens ?? 0;
+    const ratio = tokens / contextWindow;
+
+    if (ratio >= config.safety_ceiling) {
+      carlState.pauseAtNextBoundary = true;
+      const pct = Math.round(ratio * 100);
+      ctx?.ui?.notify(`CARL: Context pressure at ${pct}%. Will pause at next task boundary.`, "warning");
+    }
+  };
 
   const markActivation = (
     source: ActivationState["source"],
@@ -959,6 +1123,7 @@ export default function palsHooks(pi: any): void {
     pi.registerCommand(cmd.name, {
       description: cmd.description,
       handler: async (args: string, ctx: any) => {
+        carlState.stashedCmdCtx = ctx;
         routeCommand(cmd.name, args, ctx);
       },
     });
@@ -981,6 +1146,7 @@ export default function palsHooks(pi: any): void {
   pi.on("session_start", async (_event: any, ctx: any) => {
     const cwd = ctx?.cwd ?? process.cwd();
     const state = parsePalsState(cwd);
+    carlState.previousLoopSignature = extractLoopSignature(state);
     syncLifecycleUi(ctx);
     if (!state.detected) return;
     ctx?.ui?.notify(buildSessionOrientationSummary(state), "info");
@@ -1015,11 +1181,18 @@ export default function palsHooks(pi: any): void {
 
   pi.on("turn_end", async (_event: any, ctx: any) => {
     syncLifecycleUi(ctx);
+    carlMonitorSafetyCeiling(ctx);
   });
 
   pi.on("agent_end", async (event: any, ctx: any) => {
     syncLifecycleUi(ctx);
     await maybePresentGuidedWorkflow(event, ctx);
+    await carlEvaluatePhaseCompletion(ctx);
+    if (carlState.pauseAtNextBoundary && carlState.stashedCmdCtx) {
+      carlState.pauseAtNextBoundary = false;
+      ctx?.ui?.notify("CARL: Safety boundary reached. Creating fresh session.", "warning");
+      await carlCreateFreshSession(ctx, "safety-ceiling");
+    }
   });
 
   // Supporting context hook: keep prior context bounded and trim legacy payloads.
