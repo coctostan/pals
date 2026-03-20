@@ -124,13 +124,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Branch: feature/v2.11-carl-session-boundary
 Last commit: 016a8b4 feat(82-config-integration): CARL config, init wiring, dead file removal
 ## Session Continuity
-Last session: 2026-03-19T14:40:00-0400
-Stopped at: Phase 82 complete, ready to plan Phase 83
+Last session: 2026-03-19T14:45:00-0400
+Stopped at: Phase 82 complete, pausing before Phase 83
 Next action: /paul:plan for Phase 83
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-03-19-v211-phase83-ready.md
 Git strategy: feature-per-phase
 Resume context:
-- Phase 82 complete — pals.json carl config added, init workflow updated, dead modules/carl/ removed (-2,393 lines)
+- Phases 81-82 complete — CARL core logic + config/integration done
 - Phase 83: Validation & Docs — end-to-end testing, threshold calibration, docs update
-- Feature branch: feature/v2.11-carl-session-boundary
+- Feature branch: feature/v2.11-carl-session-boundary (3 commits ahead of main)
 *STATE.md — Updated after every significant action*
