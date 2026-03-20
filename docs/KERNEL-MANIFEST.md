@@ -195,7 +195,9 @@ WALT enforces quality standards through test regression detection, linting, and 
 
 ---
 
-## CARL Module (Context Rules)
+## CARL Module (Context Rules) — HISTORICAL
+
+> **Note (v2.11):** The original `modules/carl/` directory was removed in v2.11. Pi CARL is now a session boundary manager implemented in `drivers/pi/extensions/pals-hooks.ts` (phase detection, context pressure monitoring, autonomous session creation). Claude Code CARL (context rule injection) retains its existing hook-based architecture. The manifest below documents the v1 file layout.
 
 CARL manages domain-driven context rules that inject into every prompt via hooks. Architecturally independent — hook-level integration only.
 

@@ -27,26 +27,19 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.11 Pi CARL Session Boundary Manager**
-Status: 🚧 In Progress
-Phases: 2 of 3 complete
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 81 | Core Implementation | 1/1 | ✅ Complete | 2026-03-19 |
-| 82 | Config & Integration | 1/1 | ✅ Complete | 2026-03-19 |
-| 83 | Validation & Docs | TBD | Not started | - |
+No active milestone. v2.11 complete.
 
-### Phase 81: Core Implementation
-Focus: CARL logic in pals-hooks.ts: command context stashing, phase-completion detection via loop signature, context ratio decision model, carlCreateFreshSession, carlEvaluatePhaseCompletion, carlMonitorSafetyCeiling. Deploy via install.sh.
-Plans: 1/1 complete
+## Completed Milestones
+<details>
+<summary>v2.11 Pi CARL Session Boundary Manager - 2026-03-19 (3 phases)</summary>
 
-### Phase 82: Config & Integration
-Focus: pals.json carl config section with defaults, pause/resume wiring, bootstrap message format, auto-resume chain, loadCarlConfig helper.
-Plans: TBD (defined during /paul:plan)
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 81 | Core Implementation | 1/1 | 2026-03-19 |
+| 82 | Config & Integration | 1/1 | 2026-03-19 |
+| 83 | Validation & Docs | 1/1 | 2026-03-19 |
 
-### Phase 83: Validation & Docs
-Focus: End-to-end manual testing, threshold calibration, update Pi extension README and PALS docs to reflect the two-CARL model.
-Plans: TBD (defined during /paul:plan)
+</details>
 ---
 
 ## Completed Milestones
@@ -324,4 +317,4 @@ Plans: TBD (defined during /paul:plan)
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-19 — v2.9 CARL Session Boundary Manager milestone created*
+*Last updated: 2026-03-19 — v2.11 Pi CARL Session Boundary Manager milestone complete*

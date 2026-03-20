@@ -55,7 +55,7 @@ PALS uses a three-layer stack inspired by operating system design:
 | Pal | Full Name | What It Does | Key Command |
 |-----|-----------|-------------|-------------|
 | **PAUL** | Project Automation & Lifecycle | Kernel. Plans, executes, and tracks work through the plan-apply-unify loop. | `/paul:plan` |
-| **CARL** | Context-Aware Rule Loading | Injects domain-specific rules into every session via hooks. Auto-detects technologies and loads relevant rules. | `/carl:manager` |
+| **CARL** | Session & Context Manager | Claude Code: context rule injection via hooks. Pi: autonomous session boundary management via extension events. | `/carl:manager` (CC) / automatic (Pi) |
 | **TODD** | Test-Driven Development | Enforces RED-GREEN-REFACTOR discipline. Detects TDD candidates during planning and restructures tasks. | `/paul:coverage` |
 | **WALT** | Watchful Automated Lint & Testing | Quality gating. Captures baselines before apply, runs checks after, detects regressions. | `/paul:quality` |
 | **DEAN** | Dependency Evaluation & Audit Notifier | Scans dependencies for vulnerabilities, outdated packages, and license issues across 10 ecosystems. | `/paul:deps` |
@@ -126,13 +126,13 @@ PALS uses a three-layer stack inspired by operating system design:
 | `/paul:verify` | Guide manual acceptance testing |
 | `/paul:plan-fix` | Plan fixes for issues found during verification |
 
-### CARL (Context Rules)
+### CARL (Session & Context Manager)
 
-| Command | Description |
-|---------|-------------|
-| `/carl:manager` | Manage domains, rules, and star-commands |
+CARL serves different roles depending on the platform:
 
-CARL's manager supports subcommands: `*list`, `*add`, `*create`, `*edit`, `*toggle`, `*view`, `*scan`, `*suggest`.
+**Claude Code — Context Rules:** `/carl:manager` manages domains, rules, and star-commands (`*list`, `*add`, `*create`, `*edit`, `*toggle`, `*view`, `*scan`, `*suggest`). Rules inject into prompts via `UserPromptSubmit` hooks.
+
+**Pi — Session Boundary Manager:** CARL runs automatically via `pals-hooks.ts` extension events. It detects phase completion at `agent_end`, evaluates context pressure, and creates fresh sessions when thresholds are exceeded. No separate commands needed — configure via `pals.json` → `modules.carl` (strategy, thresholds). See `drivers/pi/extensions/README.md` for details.
 
 ### Utilities
 
@@ -148,7 +148,7 @@ PALS uses `pals.json` at the project root for module configuration:
 ```json
 {
   "modules": {
-    "carl": { "enabled": true, "description": "Context rules & domain configuration" },
+    "carl": { "enabled": true, "description": "Session boundary manager (Pi) / Context rules (Claude Code)" },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
     "walt": { "enabled": true, "description": "Quality gating & validation" },
     "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },

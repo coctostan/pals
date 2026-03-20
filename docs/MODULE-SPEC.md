@@ -681,7 +681,9 @@ installed_modules:
 
 ## 6. Example Manifests
 
-### 6.1 CARL (`modules/carl/module.yaml`)
+### 6.1 CARL (`modules/carl/module.yaml`) — HISTORICAL
+
+> **Note (v2.11):** The `modules/carl/` directory was removed in v2.11. Pi CARL is now implemented as a session boundary manager in `drivers/pi/extensions/pals-hooks.ts`. Claude Code CARL retains its existing hook-based architecture. The manifest example below is retained for historical/educational reference of the v1 module format.
 
 ```yaml
 name: carl

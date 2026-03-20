@@ -58,6 +58,52 @@ The always-visible Pi status/widget now includes a bounded recent module activit
 
 This surface is informative, adapter-only, and non-authoritative. It does not create Pi-owned module state, does not use `appendEntry`, and clears naturally when recent shared workflow output no longer provides a trustworthy module activity signal.
 
+## CARL Session Boundary Manager
+
+CARL in Pi manages autonomous session boundaries — it detects phase completion and creates fresh sessions when context pressure exceeds configurable thresholds. This is distinct from Claude Code CARL, which handles context rule injection via `UserPromptSubmit` hooks. The two serve different roles on different platforms (the "two-CARL model").
+
+### How It Works
+
+1. **Command stashing**: Every `/paul-*` command handler stashes the `ExtensionCommandContext` so CARL can later call `newSession()` to create a fresh session.
+2. **Phase detection**: At `agent_end`, CARL extracts the loop signature (✓/○ marks) from `.paul/STATE.md` and compares it against the previous signature. A change to "✓✓✓" means the PLAN-APPLY-UNIFY loop just completed.
+3. **Decision model**: On loop completion, CARL computes the context ratio (`tokens / contextWindow`) and compares it against `continue_threshold`. If the ratio exceeds the threshold (or strategy is `always-fresh`), it creates a new session.
+4. **Safety valve**: At `turn_end`, CARL monitors context pressure. If the ratio reaches `safety_ceiling`, it sets a `pauseAtNextBoundary` flag that triggers a session break at the next `agent_end`.
+5. **Bootstrap & auto-resume**: Fresh sessions receive a compact state summary and CARL automatically runs `/skill:paul-resume` to continue work.
+
+### Strategies
+
+| Strategy | Behavior |
+|----------|----------|
+| `phase-boundary` (default) | Creates fresh session at phase completion only when context ratio ≥ `continue_threshold` |
+| `always-fresh` | Creates fresh session at every phase completion regardless of context pressure |
+| `manual` | Disables CARL entirely; user manages session boundaries |
+
+### Threshold Defaults
+
+| Setting | Default | Purpose |
+|---------|---------|----------|
+| `continue_threshold` | 0.4 (40%) | Context ratio below which CARL continues in the same session |
+| `safety_ceiling` | 0.8 (80%) | Context ratio that triggers a safety break at the next boundary |
+
+These defaults were validated empirically in Phase 76 (API validation). They can be overridden per-project in `pals.json` → `modules.carl`.
+
+### Configuration
+
+```json
+{
+  "modules": {
+    "carl": {
+      "enabled": true,
+      "session_strategy": "phase-boundary",
+      "continue_threshold": 0.4,
+      "safety_ceiling": 0.8
+    }
+  }
+}
+```
+
+No separate `/carl-*` commands are needed in Pi — CARL runs automatically via extension event hooks.
+
 ## Commands
 
 The extension registers these slash commands:
@@ -79,8 +125,8 @@ The extension registers these slash commands:
 ## Event Hooks
 - **session_start**: Orientation only — detects `.paul/`, reads `STATE.md`, refreshes lifecycle UI, and explains the runtime model without injecting workflow context.
 - **before_agent_start**: Primary PALS injection point. Explicit `/paul-*` (or `/skill:paul-*`) activation signals are treated as highest confidence, then one bounded `PALS Context` payload is injected from `.paul/STATE.md` as the authoritative source.
-- **turn_end**: Refreshes the always-visible lifecycle status/widget so shortcut hints and any recent dispatch-derived module activity stay aligned with shared artifacts and recent shared workflow output.
-- **agent_end**: Re-checks recent assistant output for canonical guided workflow moments and bounded live module activity, then offers additive Pi-native continuation UI only when the shared workflow prompt remains authoritative.
+- **turn_end**: Refreshes the always-visible lifecycle status/widget so shortcut hints and any recent dispatch-derived module activity stay aligned with shared artifacts and recent shared workflow output. Also runs CARL's safety ceiling monitor (`carlMonitorSafetyCeiling`).
+- **agent_end**: Re-checks recent assistant output for canonical guided workflow moments and bounded live module activity, then offers additive Pi-native continuation UI only when the shared workflow prompt remains authoritative. Also runs CARL's phase completion evaluator (`carlEvaluatePhaseCompletion`) and checks the safety boundary flag.
 - **context**: Supporting surface only. It keeps context lean by trimming legacy/duplicate PALS context messages; it is not the architectural center of injection.
 
 ## Requirements
