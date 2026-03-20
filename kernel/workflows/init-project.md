@@ -539,7 +539,7 @@ Store `specialized_flows_enabled = false`
 Which PALS modules would you like to enable?
 (All enabled by default — enter numbers to toggle, or press Enter to accept)
 
-  [1] CARL   ✓  Context rules & domain configuration
+  [1] CARL   ✓  Session boundary manager (Pi extension)
   [2] TODD   ✓  Test-driven development enforcement
   [3] WALT   ✓  Quality gating & validation
   [4] DEAN   ✓  Dependency evaluation & audit notifier
@@ -565,7 +565,7 @@ Wait for user response.
 ```json
 {
   "modules": {
-    "carl": { "enabled": true, "description": "Context rules & domain configuration" },
+    "carl": { "enabled": true, "description": "Session boundary manager (Pi extension)", "session_strategy": "phase-boundary", "continue_threshold": 0.4, "safety_ceiling": 0.8 },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
     "walt": { "enabled": true, "description": "Quality gating & validation" },
     "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },

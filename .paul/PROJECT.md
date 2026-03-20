@@ -120,7 +120,7 @@ All validated — see below.
 - [x] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69, live module visibility UX shipped in Phase 70, and recommendation-grade module guidance closed the loop in Phase 71 (v2.7)
 - [x] CARL API validation — all 3 Pi extension APIs (getContextUsage, newSession, sendUserMessage) validated empirically with working prototype (Phase 76, v2.9 hollow — research artifacts valid)
 - [x] CARL core implementation — production session boundary manager with phase detection, configurable decision model, session creation + auto-resume, and safety valve (Phase 81, v2.11)
-- [x] CARL integration & configuration — init creates pals.json carl config, modules.yaml updated to v2.0.0, dead Claude Code-era carl/ files removed (Phase 78, v2.9 hollow — needs redo in Phase 82)
+- [x] CARL integration & configuration — pals.json carl config fields added, init workflow updated for new projects, dead Claude Code-era modules/carl/ removed (Phase 82, v2.11)
 
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)

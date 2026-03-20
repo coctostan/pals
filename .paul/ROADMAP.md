@@ -29,11 +29,11 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.11 Pi CARL Session Boundary Manager**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 81 | Core Implementation | 1/1 | ✅ Complete | 2026-03-19 |
-| 82 | Config & Integration | TBD | Not started | - |
+| 82 | Config & Integration | 1/1 | ✅ Complete | 2026-03-19 |
 | 83 | Validation & Docs | TBD | Not started | - |
 
 ### Phase 81: Core Implementation
