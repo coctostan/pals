@@ -113,7 +113,9 @@ type RecentModuleActivity = {
 type CarlConfig = {
   session_strategy: "phase-boundary" | "always-fresh" | "manual";
   continue_threshold: number;
+  continue_threshold_tokens?: number;
   safety_ceiling: number;
+  safety_ceiling_tokens?: number;
 };
 
 type CarlState = {
@@ -832,13 +834,29 @@ function loadCarlConfig(cwd: string): CarlConfig {
   } catch {
     // Invalid JSON — use defaults
   }
+
+  const continueThresholdTokens =
+    typeof carl.continue_threshold_tokens === "number" && Number.isFinite(carl.continue_threshold_tokens)
+      ? carl.continue_threshold_tokens
+      : undefined;
+  const safetyCeilingTokens =
+    typeof carl.safety_ceiling_tokens === "number" && Number.isFinite(carl.safety_ceiling_tokens)
+      ? carl.safety_ceiling_tokens
+      : undefined;
+
   return {
     session_strategy: ["phase-boundary", "always-fresh", "manual"].includes(carl.session_strategy)
       ? carl.session_strategy
       : CARL_DEFAULT_STRATEGY,
     continue_threshold: typeof carl.continue_threshold === "number" ? carl.continue_threshold : CARL_DEFAULT_CONTINUE_THRESHOLD,
+    continue_threshold_tokens: continueThresholdTokens,
     safety_ceiling: typeof carl.safety_ceiling === "number" ? carl.safety_ceiling : CARL_DEFAULT_SAFETY_CEILING,
+    safety_ceiling_tokens: safetyCeilingTokens,
   };
+}
+
+function formatCarlContextPressure(tokens: number, ratio: number): string {
+  return `${tokens.toLocaleString()} tokens (${Math.round(ratio * 100)}%)`;
 }
 
 function extractLoopSignature(state: PalsStateSnapshot): string | undefined {
@@ -1009,13 +1027,17 @@ export default function palsHooks(pi: any): void {
     const contextWindow = ctx?.model?.contextWindow ?? 200_000;
     const tokens = usage?.tokens ?? 0;
     const ratio = tokens / contextWindow;
-    const pct = Math.round(ratio * 100);
+    const pressure = formatCarlContextPressure(tokens, ratio);
+    const reachedContinueThreshold =
+      typeof config.continue_threshold_tokens === "number"
+        ? tokens >= config.continue_threshold_tokens
+        : ratio >= config.continue_threshold;
 
-    if (config.session_strategy === "always-fresh" || ratio >= config.continue_threshold) {
-      ctx?.ui?.notify(`CARL: Phase complete, context at ${pct}%. Creating fresh session.`, "info");
-      await carlCreateFreshSession(ctx, `phase-complete (context ${pct}%)`);
+    if (config.session_strategy === "always-fresh" || reachedContinueThreshold) {
+      ctx?.ui?.notify(`CARL: Phase complete, context at ${pressure}. Creating fresh session.`, "info");
+      await carlCreateFreshSession(ctx, `phase-complete (${pressure})`);
     } else {
-      ctx?.ui?.notify(`CARL: Phase complete, context at ${pct}% — continuing in same session.`, "info");
+      ctx?.ui?.notify(`CARL: Phase complete, context at ${pressure} — continuing in same session.`, "info");
     }
   };
 
@@ -1032,11 +1054,14 @@ export default function palsHooks(pi: any): void {
     const contextWindow = ctx?.model?.contextWindow ?? 200_000;
     const tokens = usage?.tokens ?? 0;
     const ratio = tokens / contextWindow;
+    const reachedSafetyCeiling =
+      typeof config.safety_ceiling_tokens === "number"
+        ? tokens >= config.safety_ceiling_tokens
+        : ratio >= config.safety_ceiling;
 
-    if (ratio >= config.safety_ceiling) {
+    if (reachedSafetyCeiling) {
       carlState.pauseAtNextBoundary = true;
-      const pct = Math.round(ratio * 100);
-      ctx?.ui?.notify(`CARL: Context pressure at ${pct}%. Will pause at next task boundary.`, "warning");
+      ctx?.ui?.notify(`CARL: Context pressure at ${formatCarlContextPressure(tokens, ratio)}. Will pause at next task boundary.`, "warning");
     }
   };
 

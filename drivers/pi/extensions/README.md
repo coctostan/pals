@@ -66,15 +66,15 @@ CARL in Pi manages autonomous session boundaries — it detects phase completion
 
 1. **Command stashing**: Every `/paul-*` command handler stashes the `ExtensionCommandContext` so CARL can later call `newSession()` to create a fresh session.
 2. **Phase detection**: At `agent_end`, CARL extracts the loop signature (✓/○ marks) from `.paul/STATE.md` and compares it against the previous signature. A change to "✓✓✓" means the PLAN-APPLY-UNIFY loop just completed.
-3. **Decision model**: On loop completion, CARL computes the context ratio (`tokens / contextWindow`) and compares it against `continue_threshold`. If the ratio exceeds the threshold (or strategy is `always-fresh`), it creates a new session.
-4. **Safety valve**: At `turn_end`, CARL monitors context pressure. If the ratio reaches `safety_ceiling`, it sets a `pauseAtNextBoundary` flag that triggers a session break at the next `agent_end`.
+3. **Decision model**: On loop completion, CARL computes both token usage and context ratio (`tokens / contextWindow`). It compares usage against `continue_threshold_tokens` when configured, otherwise against `continue_threshold`. If the threshold is reached (or strategy is `always-fresh`), it creates a new session.
+4. **Safety valve**: At `turn_end`, CARL monitors context pressure. It compares usage against `safety_ceiling_tokens` when configured, otherwise against `safety_ceiling`. If the threshold is reached, it sets a `pauseAtNextBoundary` flag that triggers a session break at the next `agent_end`.
 5. **Bootstrap & auto-resume**: Fresh sessions receive a compact state summary and CARL automatically runs `/skill:paul-resume` to continue work.
 
 ### Strategies
 
 | Strategy | Behavior |
 |----------|----------|
-| `phase-boundary` (default) | Creates fresh session at phase completion only when context ratio ≥ `continue_threshold` |
+| `phase-boundary` (default) | Creates fresh session at phase completion only when usage reaches `continue_threshold_tokens` or, if unset, context ratio ≥ `continue_threshold` |
 | `always-fresh` | Creates fresh session at every phase completion regardless of context pressure |
 | `manual` | Disables CARL entirely; user manages session boundaries |
 
@@ -82,8 +82,10 @@ CARL in Pi manages autonomous session boundaries — it detects phase completion
 
 | Setting | Default | Purpose |
 |---------|---------|----------|
-| `continue_threshold` | 0.4 (40%) | Context ratio below which CARL continues in the same session |
-| `safety_ceiling` | 0.8 (80%) | Context ratio that triggers a safety break at the next boundary |
+| `continue_threshold` | 0.4 (40%) | Ratio-based phase boundary fallback when `continue_threshold_tokens` is unset |
+| `continue_threshold_tokens` | unset | Optional absolute token threshold for phase-boundary session rollover |
+| `safety_ceiling` | 0.8 (80%) | Ratio-based safety fallback when `safety_ceiling_tokens` is unset |
+| `safety_ceiling_tokens` | unset | Optional absolute token threshold for next-boundary safety rollover |
 
 These defaults were validated empirically in Phase 76 (API validation). They can be overridden per-project in `pals.json` → `modules.carl`.
 
@@ -96,7 +98,9 @@ These defaults were validated empirically in Phase 76 (API validation). They can
       "enabled": true,
       "session_strategy": "phase-boundary",
       "continue_threshold": 0.4,
-      "safety_ceiling": 0.8
+      "continue_threshold_tokens": 60000,
+      "safety_ceiling": 0.8,
+      "safety_ceiling_tokens": 120000
     }
   }
 }

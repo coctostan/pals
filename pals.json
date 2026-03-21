@@ -5,7 +5,9 @@
       "description": "Session boundary manager (Pi extension)",
       "session_strategy": "phase-boundary",
       "continue_threshold": 0.4,
-      "safety_ceiling": 0.8
+      "continue_threshold_tokens": 60000,
+      "safety_ceiling": 0.8,
+      "safety_ceiling_tokens": 120000
     },
     "dave": {
       "enabled": true,
