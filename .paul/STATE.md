@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-19)
 **Current focus:** v2.13 GitHub Flow Hardening — close correctness gaps in branch handling, staging, routing, validation, status, and config clarity.
 ## Current Position
 Milestone: v2.13 GitHub Flow Hardening
-Phase: 90 of 91 (Status Parity & Config Clarity)
-Plan: 90-01 APPLY complete
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-23T22:00:00-0400 — APPLY 90-01 complete (2 tasks, all PASS)
+Phase: 91 of 91 (Verification & Docs)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-23T22:10:00-0400 — Phase 90 complete, transitioned to Phase 91
 Progress:
-- v2.13 GitHub Flow Hardening: [█████░░░░░] 50%
-- Phase 90: [█████████░] 90%
+- v2.13 GitHub Flow Hardening: [███████░░░] 75%
+- Phase 91: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -133,14 +133,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/v2.13-github-flow-hardening
-Last commit: 818ac67 (Phase 89 complete)
+Last commit: d113f4a (Phase 90 APPLY)
 ## Session Continuity
-Last session: 2026-03-23T22:00:00-0400
-Stopped at: APPLY 90-01 complete
-Next action: Run /paul:unify
-Resume file: .paul/phases/90-status-parity-config-clarity/90-01-PLAN.md
+Last session: 2026-03-23T22:10:00-0400
+Stopped at: Phase 90 complete, ready to plan Phase 91
+Next action: /paul:plan for Phase 91
+Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase
 Resume context:
-- Task 1: Add GitHub Flow git state block and git-aware routing to progress.md
-- Task 2: Remove branching from github-flow template in init, add inline comments to workflows
+- Phase 91 is the final phase of v2.13 GitHub Flow Hardening
+- Focus: Cross-cutting verification artifact proving all 6 hardening issues resolved, update git-strategy.md and README
 *STATE.md — Updated after every significant action*

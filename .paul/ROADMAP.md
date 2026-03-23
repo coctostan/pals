@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 ### v2.13 GitHub Flow Hardening
 Theme: Close remaining correctness gaps so GitHub Flow in PALS is reliable in real use — hardening pass, not redesign.
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 88 | Branch & Staging Correctness | 1/1 | ✅ Complete | 2026-03-23 |
 | 89 | Routing & Validation | 1/1 | ✅ Complete | 2026-03-23 |
-| 90 | Status Parity & Config Clarity | TBD | Not started | - |
+| 90 | Status Parity & Config Clarity | 1/1 | ✅ Complete | 2026-03-23 |
 | 91 | Verification & Docs | TBD | Not started | - |
 
 #### Phase 88: Branch & Staging Correctness
@@ -49,7 +49,7 @@ Plans: 89-01 ✅ Complete (2026-03-23)
 
 #### Phase 90: Status Parity & Config Clarity
 Focus: Bring `/paul-status` to GitHub Flow parity with resume/pause. Clarify `branching` vs `workflow` field semantics.
-Plans: TBD (defined during /paul:plan)
+Plans: 90-01 ✅ Complete (2026-03-23)
 
 #### Phase 91: Verification & Docs
 Focus: Cross-cutting verification artifact proving all 6 hardening issues resolved. Update git-strategy.md and README.
@@ -356,4 +356,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-23 — Phase 89 complete, v2.13 in progress*
+*Last updated: 2026-03-23 — Phase 90 complete, v2.13 in progress*
