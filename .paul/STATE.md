@@ -8,17 +8,17 @@ See: .paul/PROJECT.md (updated 2026-03-19)
 ## Current Position
 Milestone: v2.13 GitHub Flow Hardening
 Phase: 90 of 91 (Status Parity & Config Clarity)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-23T21:30:00-0400 — Phase 89 complete, transitioned to Phase 90
+Plan: 90-01 APPLY complete
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-23T22:00:00-0400 — APPLY 90-01 complete (2 tasks, all PASS)
 Progress:
 - v2.13 GitHub Flow Hardening: [█████░░░░░] 50%
-- Phase 90: [░░░░░░░░░░] 0%
+- Phase 90: [█████████░] 90%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -135,13 +135,12 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Branch: feature/v2.13-github-flow-hardening
 Last commit: 818ac67 (Phase 89 complete)
 ## Session Continuity
-Last session: 2026-03-23T21:30:00-0400
-Stopped at: Phase 89 complete, ready to plan Phase 90
-Next action: /paul:plan for Phase 90
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-23T22:00:00-0400
+Stopped at: APPLY 90-01 complete
+Next action: Run /paul:unify
+Resume file: .paul/phases/90-status-parity-config-clarity/90-01-PLAN.md
 Git strategy: feature-per-phase
 Resume context:
-- Phase 88 shipped: branch detection + staging correctness
-- Phase 89 shipped: behind-base routing priority + gh auth validation
-- Phase 90 scope: status parity & config clarity (Issues 5 and 6 from followup)
+- Task 1: Add GitHub Flow git state block and git-aware routing to progress.md
+- Task 2: Remove branching from github-flow template in init, add inline comments to workflows
 *STATE.md — Updated after every significant action*

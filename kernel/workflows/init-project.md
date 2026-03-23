@@ -739,7 +739,6 @@ Wait for CI checks before merge:     [yes/NO]
   "remote": "{git_remote}",
   "base_branch": "{git_base_branch}",
   "merge_method": "squash",
-  "branching": "feature-per-phase",
   "worktree_isolation": false,
   "auto_push": true,
   "auto_pr": true,

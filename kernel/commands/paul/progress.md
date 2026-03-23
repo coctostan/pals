@@ -36,7 +36,41 @@ Read `.paul/STATE.md` and `.paul/ROADMAP.md`:
 - Performance metrics (if tracked)
 - Blockers or concerns
 </step>
+<step name="check_git_state">
+**Surface git/PR state for github-flow projects.**
 
+1. Read pals.json and resolve GIT_WORKFLOW using 3-tier resolution:
+   ```
+   if git.workflow exists → use it
+   else if git.branching exists → "legacy"
+   else → "none"
+   ```
+
+2. **If GIT_WORKFLOW = "github-flow":**
+   a. Detect current branch:
+      ```bash
+      git branch --show-current
+      ```
+   b. Read GIT_BASE_BRANCH from pals.json `git.base_branch` (default: "main")
+   c. Check ahead/behind base:
+      ```bash
+      git fetch origin {GIT_BASE_BRANCH} --quiet 2>/dev/null
+      git rev-list --left-right --count origin/{GIT_BASE_BRANCH}...HEAD 2>/dev/null
+      ```
+      Parse output: first number = BEHIND_COUNT, second = AHEAD_COUNT
+   d. Check for open PR:
+      ```bash
+      gh pr view --json url,state,statusCheckRollup 2>/dev/null
+      ```
+   e. If PR exists, extract:
+      - PR_URL from `url`
+      - PR_STATE from `state` (OPEN, MERGED, CLOSED)
+      - CI_STATE from `statusCheckRollup`: all SUCCESS → "passing", any FAILURE → "failing", else → "pending"
+   f. If no PR exists: PR_URL = "none", PR_STATE = "N/A", CI_STATE = "N/A"
+   g. Store: CURRENT_BRANCH, GIT_BASE_BRANCH, PR_URL, PR_STATE, CI_STATE, AHEAD_COUNT, BEHIND_COUNT
+
+3. **If GIT_WORKFLOW != "github-flow":** skip entirely (no git state surfacing)
+</step>
 <step name="calculate_progress">
 Determine overall progress:
 
@@ -64,9 +98,23 @@ Factor this into routing decision:
 
 <step name="determine_routing">
 Based on state (+ user context if provided), determine **ONE** next action:
+**Git-aware routing (github-flow only):**
+If GIT_WORKFLOW = "github-flow" AND git state was collected:
+
+| Git State | Override Next Action |
+|-----------|---------------------|
+| PR open + CI failing | "Fix CI failures, then merge PR" |
+| BEHIND_COUNT > 0 (branch behind base) | "Update branch from base: `git fetch origin {GIT_BASE_BRANCH} && git rebase origin/{GIT_BASE_BRANCH}` then re-push and recheck CI" |
+| PR open + CI passing + reviews pending (if `require_reviews: true`) | "Get PR reviewed" |
+| PR open + CI passing + ready to merge | "Merge PR: `gh pr merge`" |
+| No PR + loop complete (all ✓) | Normal routing (next PLAN will create branch) |
+
+Note: BEHIND_COUNT > 0 fires even if the PR is ready to merge. Merging a behind-base
+branch risks post-merge CI failures. Always update from base first.
+
+If no git override applies, fall through to the default routing below.
 
 **Default routing (no user context):**
-
 | Situation | Single Suggestion |
 |-----------|-------------------|
 | No plan exists | `/paul:plan` |
@@ -77,39 +125,44 @@ Based on state (+ user context if provided), determine **ONE** next action:
 | Milestone complete | "Create next milestone or ship" |
 | Blockers present | "Address blocker: [specific]" |
 | Context at DEEP/CRITICAL | `/paul:pause` |
-
 **With user context:** Adjust suggestion to align with stated intent.
-
 **IMPORTANT:** Suggest exactly ONE action. Not multiple options.
 </step>
 
 <step name="display_progress">
 Show progress with single routing:
-
 ```
 ════════════════════════════════════════
 PAUL PROGRESS
 ════════════════════════════════════════
-
 Milestone: [name] - [X]% complete
 ├── Phase 1: [name] ████████████ Done
 ├── Phase 2: [name] ████████░░░░ 70%
 ├── Phase 3: [name] ░░░░░░░░░░░░ Pending
 └── Phase 4: [name] ░░░░░░░░░░░░ Pending
-
-Current Loop: Phase 2, Plan 02-03
 ┌─────────────────────────────────────┐
 │  PLAN ──▶ APPLY ──▶ UNIFY          │
 │    ✓        ✓        ○             │
+└─────────────────────────────────────┘
+
+{If GIT_WORKFLOW = "github-flow":}
+Git State:
+┌─────────────────────────────────────┐
+│  Branch: {CURRENT_BRANCH}           │
+│  Base:   {GIT_BASE_BRANCH}          │
+│  PR:     {PR_URL} ({PR_STATE})      │
+│  CI:     {CI_STATE}                 │
+│  Sync:   {BEHIND_COUNT} behind / {AHEAD_COUNT} ahead │
 └─────────────────────────────────────┘
 
 ────────────────────────────────────────
 ▶ NEXT: /paul:unify .paul/phases/02-features/02-03-PLAN.md
   Close the loop and update state.
 ────────────────────────────────────────
-
 Type "yes" to proceed, or provide context for a different suggestion.
 ```
+
+**Note:** If GIT_WORKFLOW is not "github-flow", omit the entire Git State block.
 </step>
 
 <step name="context_advisory">
