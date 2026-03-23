@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-19)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.11 complete — next milestone not yet defined
+**Current focus:** v2.12 GitHub Flow Enforcement — make PALS loop progression aware of branch/PR/merge/CI state
 ## Current Position
-Milestone: v2.11 Pi CARL Session Boundary Manager — COMPLETE
-Phase: 83 of 83 (Validation & Docs) — Complete
-Plan: 83-01 complete
-Status: Milestone complete, ready for next milestone
-Last activity: 2026-03-19T15:40:00-0400 — Phase 83 complete, v2.11 milestone complete
+Milestone: v2.12 GitHub Flow Enforcement
+Phase: 84 of 87 (Research & Config Schema)
+Plan: 84-01 complete
+Status: Phase 84 complete — ready for transition
+Last activity: 2026-03-23T13:32:00-0400 — Phase 84 UNIFY complete
 Progress:
-- v2.11 Pi CARL Session Boundary Manager: [██████████] 100%
-- Phase 83: [██████████] 100%
+- v2.12 GitHub Flow Enforcement: [██░░░░░░░░] 25%
+- Phase 84: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — milestone done]
+  ✓        ✓        ✓     [Loop complete — phase transition required]
 ```
 
 ## Accumulated Context
@@ -88,11 +88,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | session_start seeds previousLoopSignature to avoid spurious session creation | 77 | Prevents CARL from misreading already-complete loop state on resume |
 | CARL config fields inside modules.carl in pals.json | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
 | CARL module version bumped to 2.0.0 | 78 | Clear signal of architectural shift from rule injection to session boundary |
+| Add optional token-based CARL thresholds alongside ratio fallbacks | No phase | Keeps phase-boundary and safety rollover practical on 1M-context models without breaking existing configs |
+| D1: Merge gate lives in unify-phase, not transition-phase | 84 | Phase 85 implementation targets unify-phase for the gate |
+| D2: PR created after APPLY, merge state checked in UNIFY | 84 | Matches real GitHub Flow timing |
+| D3: CI failure is blocking in github-flow mode (no escape) | 84 | Strict mode means strict; escape is ci_checks:false or workflow:legacy |
+| D4: Branch naming stays feature/{phase-name} | 84 | No changes needed |
+| D5: gh CLI required for github-flow mode | 84 | Init should validate gh availability |
+| D6: Hotfix mode exempt from merge gate | 84 | fix-loop.md gets minimal changes |
+| D7: Legacy mode = true superset of current behavior | 84 | Existing projects must not break |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
 | Fix 02 (standard): Reworked installed module registries to include `hook_details`, aligned PLAN/APPLY/UNIFY dispatch wording to the installed registry, and added validation coverage | Phase 63 | Enabled modules can now be consulted from real installed `modules.yaml` registries instead of relying on conceptual source-manifest access |
 | Fix 03 (standard): Aligned resume handoff discovery and docs so `/paul:resume` falls back to `.paul/handoffs/archive/` and only archives active consumed handoffs | No phase | Prevents the latest archived handoff from becoming undiscoverable during normal resume flows |
+| Hotfix: Added token-based CARL session thresholds with 60k/120k project defaults | No phase | Retroactively documented in `83-02-HOTFIX-SUMMARY.md` |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
@@ -122,16 +131,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/v2.11-carl-session-boundary
-Last commit: 016a8b4 feat(82-config-integration): CARL config, init wiring, dead file removal
+Branch: main (ready for new feature branch)
+Last commit: 2ceeed0 hotfix: add token-based CARL session thresholds
 ## Session Continuity
-Last session: 2026-03-19T15:40:00-0400
-Stopped at: v2.11 milestone complete
-Next action: /paul:milestone (start next milestone)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-23T13:32:00-0400
+Stopped at: Phase 84 UNIFY complete, transition required
+Next action: Phase transition → then /paul:plan for Phase 85
+Resume file: .paul/phases/84-research-config-schema/84-01-SUMMARY.md
 Git strategy: feature-per-phase
 Resume context:
-- v2.11 complete — all 3 phases (81-83) done
-- CARL session boundary manager: core logic, config, validation & docs all shipped
-- Feature branch: feature/v2.11-carl-session-boundary (ready for merge)
+- Phase 84 complete: git audit + config schema design shipped
+- 7 design decisions recorded for Phase 85-86 implementation
+- Central gap: missing merge gate in unify-phase (CRITICAL)
+- Config schema ready for direct implementation
 *STATE.md — Updated after every significant action*
