@@ -122,6 +122,7 @@ All validated — see below.
 - [x] CARL core implementation — production session boundary manager with phase detection, configurable decision model, session creation + auto-resume, and safety valve (Phase 81, v2.11)
 - [x] CARL integration & configuration — pals.json carl config fields added, init workflow updated for new projects, dead Claude Code-era modules/carl/ removed (Phase 82, v2.11)
 - [x] CARL validation & docs — end-to-end deployment verified, threshold calibration documented, Pi extension README and PALS docs updated for two-CARL model (Phase 83, v2.11)
+- [x] GitHub Flow lifecycle awareness — init offers GitHub Flow as first-class option, resume surfaces git/PR/CI state with git-aware routing, pause captures git continuity in handoffs (Phase 86, v2.12)
 
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)

@@ -36,7 +36,7 @@ Phases: 1 of 4 complete
 |-------|------|-------|--------|----------|
 | 84 | Research & Config Schema | 1/1 | Complete | 2026-03-23 |
 | 85 | Core Loop Enforcement | 1/1 | Complete | 2026-03-23 |
-| 86 | Lifecycle Awareness | TBD | Not started | - |
+| 86 | Lifecycle Awareness | 1/1 | Complete | 2026-03-23 |
 | 87 | Validation & Docs | TBD | Not started | - |
 
 ### Phase 84: Research & Config Schema
@@ -49,7 +49,7 @@ Plans: 85-01 (Core Loop Enforcement — preflight/postflight + merge gate + tran
 
 ### Phase 86: Lifecycle Awareness
 Focus: Update init-project defaults, resume/pause/status/handoff to surface branch, PR, CI, and behind-main state. Make next-action routing use that data.
-Plans: TBD (defined during /paul:plan)
+Plans: 86-01 (Lifecycle Awareness — init defaults + resume git surfacing + pause git continuity)
 
 ### Phase 87: Validation & Docs
 Focus: End-to-end verification that the full loop enforces GitHub Flow correctly. Documentation updates.

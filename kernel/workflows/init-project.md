@@ -605,86 +605,141 @@ Git section will be populated by the configure_git step (next).
 
 <step name="configure_git">
 **Ask about git/GH configuration:**
-
+**0. Detect `gh` CLI availability:**
+```bash
+gh --version 2>/dev/null
+```
+- Store `gh_available = true/false` for later use
 **1. Detect git repo:**
 ```bash
 git rev-parse --git-dir 2>/dev/null
 ```
-
 **If not a git repo:**
 ```
 Not a git repo — git features disabled.
 Run `git init` to enable later, then update pals.json git section.
 ```
-- Set all git config to defaults (remote: null, auto_push: false, auto_pr: false, ci_checks: false)
+- Set `workflow: "none"` and all git config to defaults
 - Skip remaining git questions
 - Store `git_enabled = false`
-
 **If git repo detected, ask ONE question at a time:**
-
 **Question 1 — GitHub repo:**
 ```
 GitHub repository?
-
-[1] Yes — detect from remote
 [2] Enter URL manually
 [3] No GitHub repo (local only)
 ```
 
 Wait for user response.
-
 - If "1": Run `git remote get-url origin 2>/dev/null`
   - If remote found: Display "Detected: {URL}" and confirm
   - If no remote: "No remote found. Enter URL or choose [3]"
 - If "2": Prompt for URL, store as `git_remote`
 - If "3": Set `git_remote = null`
-
-**Question 2 — Branching strategy (only if git repo detected):**
+**Question 2 — Git workflow (only if git repo detected):**
 ```
-Branching strategy?
+Git workflow?
 
-[1] Feature branch per phase (recommended)
-    Creates feature/{phase-name}, merges on phase complete
-[2] Direct to main
-    All commits on main branch
+[1] GitHub Flow (recommended for GitHub repos)
+    Feature branches, PRs, CI gates, merge-before-next-phase
+[2] Feature branch per phase
+    Creates feature/{phase-name}, merges on phase complete (no enforcement)
+[3] Direct to main
+    All commits on main branch (no enforcement)
 ```
 
 Wait for user response.
-- If "1": Store `git_branching = "feature-per-phase"`
-- If "2": Store `git_branching = "direct-to-main"`
 
-**Question 3 — Worktree Isolation (only if git repo detected):**
+**If "1" (GitHub Flow):**
+- If `gh_available = false`:
+  ```
+  ⚠️  GitHub Flow requires the `gh` CLI for PR/CI operations.
+  Install: https://cli.github.com/
+
+  [1] Continue anyway (enforcement features will be limited)
+  [2] Choose a different workflow
+  ```
+  If "2": re-present Question 2
+- If `git_remote = null`:
+  ```
+  ⚠️  GitHub Flow requires a GitHub remote.
+  Enter remote URL, or choose a different workflow.
+  ```
+  Prompt for URL or re-present Question 2
+- Detect base branch:
+  ```bash
+  git remote show origin 2>/dev/null | grep 'HEAD branch' | awk '{print $NF}'
+  ```
+  If detected, use it. Otherwise default to `"main"`.
+- Store:
+  - `git_workflow = "github-flow"`
+  - `git_base_branch = "{detected or main}"`
+  - `git_merge_method = "squash"`
+  - `git_auto_push = true`
+  - `git_auto_pr = true`
+  - `git_ci_checks = true`
+  - `git_delete_branch_on_merge = true`
+  - `git_update_branch_when_behind = true`
+  - `git_require_pr_before_next_phase = true`
+  - `git_require_reviews = false`
+  - `git_worktree_isolation = false`
+- Skip Questions 3 and 4 — GitHub Flow defaults handle them
+
+**If "2" (Feature branch per phase):**
+- Store `git_workflow = "legacy"`, `git_branching = "feature-per-phase"`
+- Continue to Questions 3 and 4
+
+**If "3" (Direct to main):**
+- Store `git_workflow = "legacy"`, `git_branching = "direct-to-main"`
+- Continue to Questions 3 and 4
+
+**Question 3 — Worktree Isolation (only for legacy workflow):**
 ```
 Use git worktrees during APPLY phase?
 This creates an isolated copy for each phase — if something goes wrong,
 discard the worktree instead of reverting commits.
-
-[1] No (default) — work directly on current branch
 [2] Yes — isolate each APPLY phase in a worktree
 ```
 
 Wait for user response.
 - If "1" or Enter: Store `git_worktree_isolation = false`
 - If "2": Store `git_worktree_isolation = true`
-
-**Question 4 — Automation (only if GH remote detected):**
+**Question 4 — Automation (only for legacy workflow with GH remote):**
 ```
 Git automation? (Enter to accept defaults)
-
-Auto-push after phase complete:      [yes/NO]
 Auto-create PR on phase transition:  [yes/NO]
 Wait for CI checks before merge:     [yes/NO]
 ```
-
 - Defaults are NO for all (conservative)
 - Accept "yes" or "y" to enable each
 - Store as `git_auto_push`, `git_auto_pr`, `git_ci_checks`
-
-**If no GH remote:** Skip Question 3, all automation defaults to false.
+**If no GH remote:** Skip Question 4, all automation defaults to false.
 
 **Update pals.json git section with gathered values:**
+
+**If github-flow:**
 ```json
 "git": {
+  "workflow": "github-flow",
+  "remote": "{git_remote}",
+  "base_branch": "{git_base_branch}",
+  "merge_method": "squash",
+  "branching": "feature-per-phase",
+  "worktree_isolation": false,
+  "auto_push": true,
+  "auto_pr": true,
+  "ci_checks": true,
+  "delete_branch_on_merge": true,
+  "update_branch_when_behind": true,
+  "require_pr_before_next_phase": true,
+  "require_reviews": false
+}
+```
+
+**If legacy:**
+```json
+"git": {
+  "workflow": "legacy",
   "remote": "{git_remote or null}",
   "branching": "{git_branching}",
   "worktree_isolation": {git_worktree_isolation},
@@ -694,6 +749,18 @@ Wait for CI checks before merge:     [yes/NO]
 }
 ```
 
+**If none (no git repo):**
+```json
+"git": {
+  "workflow": "none",
+  "remote": null,
+  "branching": "feature-per-phase",
+  "worktree_isolation": false,
+  "auto_push": false,
+  "auto_pr": false,
+  "ci_checks": false
+}
+```
 Store `git_enabled = true` and `git_remote` for confirmation display.
 </step>
 
@@ -719,7 +786,7 @@ Created:
   .paul/SPECIAL-FLOWS.md  ✓  (if specialized_flows_enabled: "[N] skills configured")
   .paul/phases/           ✓
 
-Git: [remote URL or "local only"] | [branching strategy] | push:[yes/no] PR:[yes/no] CI:[yes/no]
+Git: [remote URL or "local only"] | {git_workflow} | push:[yes/no] PR:[yes/no] CI:[yes/no]
 Planning default: {default_collaboration} | This run: {planning_mode}, {collaboration_level} collaboration
 
 ────────────────────────────────────────

@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-19)
 **Current focus:** v2.12 GitHub Flow Enforcement — make PALS loop progression aware of branch/PR/merge/CI state
 ## Current Position
 Milestone: v2.12 GitHub Flow Enforcement
-Phase: 85 of 87 (Core Loop Enforcement)
-Plan: 85-01 complete
-Status: Phase 85 complete — ready for transition
-Last activity: 2026-03-23T14:35:00-0400 — Phase 85 UNIFY complete
+Phase: 87 of 87 (Validation & Docs)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-23T15:25:00-0400 — Phase 86 complete, transitioned to Phase 87
 Progress:
-- v2.12 GitHub Flow Enforcement: [█████░░░░░] 50%
-- Phase 85: [██████████] 100%
+- v2.12 GitHub Flow Enforcement: [████████░░] 75%
+- Phase 87: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — phase transition required]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Accumulated Context
@@ -118,6 +118,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 81 | Plan executed exactly as written; 3 tasks all PASS, 173 lines added to pals-hooks.ts, no approach changes |
 | Minor: SPECIAL-FLOWS.md already correct | 82 | Plan expected it needed updating; file was already up to date from prior session |
 | None material | 85 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
+| None material | 86 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -135,13 +136,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Branch: feature/v2.11-carl-session-boundary
 Last commit: c88157d feat(85): Core Loop Enforcement
 ## Session Continuity
-Last session: 2026-03-23T14:35:00-0400
-Stopped at: Phase 85 UNIFY complete, transition required
-Next action: Phase transition → then /paul:plan for Phase 86
-Resume file: .paul/phases/85-core-loop-enforcement/85-01-SUMMARY.md
+Last session: 2026-03-23T15:25:00-0400
+Stopped at: Phase 86 complete, transitioned to Phase 87
+Next action: /paul:plan for Phase 87
+Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase
 Resume context:
-- Phase 85 complete: preflight/postflight + merge gate + transition mechanics shipped
-- 3 workflow files updated, all enforcement conditional on github-flow mode
-- Phase 86 scope: init defaults, resume/pause/status git surfacing
+- Phase 86 complete: init + resume + pause all have GitHub Flow awareness
+- Phase 87 is the final phase: validation & docs for the full enforcement + awareness
+- Milestone v2.12 at 75% — one phase remaining
 *STATE.md — Updated after every significant action*
