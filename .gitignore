@@ -1,0 +1,6 @@
+# Tool artifacts
+.codegraph/
+
+# Scratch planning files
+github-flow-hardening-followup.md
+github-flow-prompt.md

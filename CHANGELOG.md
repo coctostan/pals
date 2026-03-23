@@ -2,6 +2,49 @@
 
 All notable changes to PALS are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.12.0] — 2026-03-23 — GitHub Flow Enforcement
+
+### Added
+- 3-tier workflow mode resolution: `github-flow` (strict), `legacy` (advisory), `none` (no git ops) (Phases 84-85)
+- GitHub Flow preflight in apply-phase: branch validation before work begins (Phase 85)
+- GitHub Flow postflight in apply-phase: push + PR creation after execution (Phase 85)
+- 6-gate merge gate in unify-phase: PR exists → CI → reviews → merged → base sync → branch cleanup (Phase 85)
+- GitHub Flow as first-class init option with 10 config fields and `gh` CLI validation (Phase 86)
+- Git state surfacing in resume-project: branch, PR, CI, ahead/behind with git-aware routing (Phase 86)
+- Git/PR continuity data in pause-work handoff template (Phase 86)
+- End-to-end verification report validating all 6 design contracts (Phase 87)
+
+### Changed
+- transition-phase.md: `GIT_BASE_BRANCH` replaces all hardcoded `main` references (Phase 85)
+- git-strategy.md: now the canonical reference for all git workflow configuration (Phase 87)
+- README.md Configuration section updated with git workflow modes (Phase 87)
+
+### Decisions
+- Merge gate lives in unify-phase (lifecycle routing), not transition-phase (mechanical git ops) (Phase 84)
+- CI failure is blocking in github-flow mode — no escape hatch (Phase 84)
+- Hotfix mode exempt from merge gate (Phase 84)
+- Legacy mode is true superset of current behavior — existing projects never break (Phase 84)
+
+## [2.11.0] — 2026-03-19 — Pi CARL Session Boundary Manager
+
+### Added
+- CARL session boundary manager core logic in Pi extension: command context stashing, phase-completion detection, context usage decision model, autonomous session creation + auto-resume (Phase 81)
+- Token-based CARL thresholds (`continue_threshold_tokens`, `safety_ceiling_tokens`) for practical behavior on large context windows (Hotfix)
+- 5 CARL config fields in pals.json `modules.carl` section (Phase 82)
+
+### Changed
+- pals-hooks.ts: CARL wired into `agent_end` (phase completion) and `turn_end` (safety ceiling) event handlers (Phase 81)
+- Init workflow updated with CARL session boundary display and config template (Phase 82)
+- Pi extension README documents two-CARL model and threshold configuration (Phase 83)
+
+### Removed
+- Dead Claude Code-era `modules/carl/` directory: 17 files, -2,393 lines (Phase 82)
+
+### Decisions
+- CARL logic inside palsHooks() closure, not a separate module — shares existing state (Phase 81)
+- Loop signature change detection for phase-completion sensing — prevents false positives (Phase 81)
+- CARL module version bumped to 2.0.0 — clear architectural shift signal (Phase 82)
+
 ## [Unreleased] — v0.9.1 Release Readiness
 
 ### Added

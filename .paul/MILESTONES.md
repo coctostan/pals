@@ -26,6 +26,10 @@ Completed milestone log for this project.
 | **v2.6 Collaborative Planning & PRD Depth** | 2026-03-17 | 17 hours | 3 phases, 4 plans |
 | **v2.7 Module Reality Check & Visibility** | 2026-03-18 | 15h 24m | 4 phases, 4 plans |
 | **v2.8 Module Report Clarity** | 2026-03-18 | ~30min | 4 phases, 4 plans |
+| **v2.9 CARL Session Boundary Manager** ⚠️ HOLLOW | 2026-03-18 | 1 day | 4 phases, 4 plans |
+| **v2.10 Workflow Integrity** | 2026-03-19 | <1 day | 1 phase, 1 plan |
+| **v2.11 Pi CARL Session Boundary Manager** | 2026-03-19 | <1 day | 3 phases, 4 plans |
+| **v2.12 GitHub Flow Enforcement** | 2026-03-23 | <1 day | 4 phases, 4 plans |
 
 ---
 
@@ -91,6 +95,101 @@ Completed milestone log for this project.
 | Derive live module visibility from recent shared workflow/reporting signals rather than registry presence alone | 70 | Kept Pi visibility trustworthy without inventing a second execution ledger |
 | Keep the module roster and improve legibility before considering merge/remove changes | 71 | Future work can focus on recommendation/report clarity instead of destabilizing module boundaries |
 | Standardize a layered proof model across dispatch trace, durable reports, side effects, validation, and bounded Pi live visibility | 71 | Preserved artifact-first truth while making module participation easier to interpret |
+
+---
+
+## ✅ v2.12 GitHub Flow Enforcement
+
+**Completed:** 2026-03-23
+**Duration:** <1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 84-87) |
+| Plans | 4 |
+| Files changed | 6 unique kernel workflow + reference + doc files |
+
+### Key Accomplishments
+
+- Audited all 8 kernel workflows for git handling gaps, producing a comprehensive git-audit-report with behavioral contracts per workflow mode.
+- Designed 3-tier workflow mode resolution (`github-flow` > `legacy` > `none`) with 11-field pals.json config schema and full backward compatibility.
+- Implemented GitHub Flow preflight (branch validation before APPLY), postflight (push + PR creation after APPLY), and 6-gate merge gate in UNIFY.
+- Added lifecycle awareness: GitHub Flow as first-class init option, git state surfacing in resume/pause, and git-aware routing that overrides loop-position routing when git state demands action.
+- Validated all 6 design contracts against implementation and updated git-strategy.md and README.md with full GitHub Flow documentation.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Merge gate lives in unify-phase, not transition-phase | 84 | Lifecycle routing decision kept separate from mechanical git ops |
+| PR created after APPLY, merge state checked in UNIFY | 84 | Matches real GitHub Flow timing |
+| CI failure is blocking in github-flow mode (no escape) | 84 | Strict mode means strict; escape is `ci_checks:false` or `workflow:legacy` |
+| gh CLI required for github-flow mode | 84 | Init validates gh availability |
+| Hotfix mode exempt from merge gate | 84 | Fix-loop stays fast |
+| Legacy mode = true superset of current behavior | 84 | Existing projects must not break |
+
+---
+
+## ✅ v2.11 Pi CARL Session Boundary Manager
+
+**Completed:** 2026-03-19
+**Duration:** <1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 81-83) |
+| Plans | 4 (3 phase plans + 1 hotfix) |
+| Files changed | 8 unique extension/config/doc files |
+
+### Key Accomplishments
+
+- Implemented CARL session boundary manager core logic in Pi extension: command context stashing, phase-completion detection via loop signature comparison, context usage decision model, autonomous session creation + auto-resume.
+- Wired CARL into pals.json configuration with 5 config fields (enabled, description, session_strategy, continue_threshold, safety_ceiling).
+- Removed dead Claude Code-era `modules/carl/` directory (17 files, -2,393 lines).
+- Validated end-to-end deployment: brace/paren balance, install verification, and documentation of the two-CARL model (shared rules + Pi session boundary).
+- Added token-based CARL thresholds (60k/120k defaults) via hotfix for practical behavior on large context windows.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| CARL logic inside palsHooks() closure, not a separate module | 81 | Self-contained; shares pi/activation/guided-workflow state |
+| Loop signature change detection for phase-completion sensing | 81 | Prevents false positives from repeated agent_end calls |
+| CARL config fields inside modules.carl in pals.json | 82 | Consistent with existing module pattern |
+| CARL module version bumped to 2.0.0 | 82 | Clear signal of architectural shift |
+| Token-based thresholds alongside ratio fallbacks | hotfix | Keeps behavior practical on 1M-context models |
+
+---
+
+## ⚠️ v2.9 CARL Session Boundary Manager (HOLLOW)
+
+**Completed:** 2026-03-18
+**Duration:** 1 day
+**Status:** HOLLOW — deliverables void
+
+**Note:** Phases 76-79 committed only `.paul/` documentation artifacts. The actual CARL extension code was never implemented — all acceptance criteria were falsely reported as passing. This milestone's completion status is retained for historical accuracy but its deliverables are void. Superseded by v2.11.
+
+---
+
+## ✅ v2.10 Workflow Integrity
+
+**Completed:** 2026-03-19
+**Duration:** <1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 1 (Phase 80) |
+| Plans | 1 |
+
+### Key Accomplishments
+
+- Closed hallucination cascade failure modes in kernel workflows discovered during v2.9 audit.
 
 ---
 
