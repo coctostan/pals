@@ -171,6 +171,32 @@ All 8 modules are enabled by default. Use `/paul:config` to toggle modules, mana
 
 In Pi, enabled modules are installed beside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`. PLAN/APPLY/UNIFY use that registry to dispatch module guidance such as TODD and WALT; those modules are not separate Pi skills.
 
+### Git Workflow
+
+PALS can enforce GitHub Flow through the `git` section of `pals.json`:
+
+```json
+{
+  "git": {
+    "workflow": "github-flow",
+    "base_branch": "main",
+    "merge_method": "squash",
+    "auto_push": true,
+    "auto_pr": true,
+    "ci_checks": true,
+    "require_pr_before_next_phase": true
+  }
+}
+```
+
+| Mode | Behavior |
+|------|----------|
+| `github-flow` | Strict enforcement — branch validation before work, auto-PR after apply, merge gate blocks next phase until PR is merged and CI passes. Requires `gh` CLI. |
+| `legacy` | Advisory git ops — feature-per-phase branching with optional push/PR/CI. Default for existing projects. |
+| `none` | No git operations (default for new projects without git config). |
+
+GitHub Flow enforcement is configured during `/paul:init` or by editing `pals.json` directly. See `kernel/references/git-strategy.md` for full documentation.
+
 ## How It Works
 
 ### The Plan-Apply-Unify Loop

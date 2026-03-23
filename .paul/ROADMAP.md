@@ -27,34 +27,22 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.12 GitHub Flow Enforcement**
-Status: 🚧 In Progress
+None — v2.12 complete. Next milestone not yet defined.
+
+## Completed Milestones
+<details>
+<summary>v2.12 GitHub Flow Enforcement - 2026-03-23 (4 phases)</summary>
+
 Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Flow is actively enforced, not just descriptive config.
-Phases: 1 of 4 complete
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|----------|
-| 84 | Research & Config Schema | 1/1 | Complete | 2026-03-23 |
-| 85 | Core Loop Enforcement | 1/1 | Complete | 2026-03-23 |
-| 86 | Lifecycle Awareness | 1/1 | Complete | 2026-03-23 |
-| 87 | Validation & Docs | TBD | Not started | - |
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 84 | Research & Config Schema | 1/1 | 2026-03-23 |
+| 85 | Core Loop Enforcement | 1/1 | 2026-03-23 |
+| 86 | Lifecycle Awareness | 1/1 | 2026-03-23 |
+| 87 | Validation & Docs | 1/1 | 2026-03-23 |
 
-### Phase 84: Research & Config Schema
-Focus: Audit current git handling across all workflows, design the pals.json GitHub Flow config schema, identify every touchpoint where git state is read or ignored.
-Plans: TBD (defined during /paul:plan)
-
-### Phase 85: Core Loop Enforcement
-Focus: The critical behavioral changes — apply-phase preflight/postflight (branch validation, auto-push, auto-PR) and unify-phase merge gate (block next PLAN until PR is merged and main is resynced).
-Plans: 85-01 (Core Loop Enforcement — preflight/postflight + merge gate + transition mechanics)
-
-### Phase 86: Lifecycle Awareness
-Focus: Update init-project defaults, resume/pause/status/handoff to surface branch, PR, CI, and behind-main state. Make next-action routing use that data.
-Plans: 86-01 (Lifecycle Awareness — init defaults + resume git surfacing + pause git continuity)
-
-### Phase 87: Validation & Docs
-Focus: End-to-end verification that the full loop enforces GitHub Flow correctly. Documentation updates.
-Plans: TBD (defined during /paul:plan)
-
+</details>
 ## Completed Milestones
 <details>
 <summary>v2.11 Pi CARL Session Boundary Manager - 2026-03-19 (3 phases)</summary>
@@ -343,4 +331,4 @@ Plans: TBD (defined during /paul:plan)
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-23 — v2.12 GitHub Flow Enforcement milestone created*
+*Last updated: 2026-03-23 — v2.12 GitHub Flow Enforcement milestone complete*

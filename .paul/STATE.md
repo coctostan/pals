@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-19)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.12 GitHub Flow Enforcement — make PALS loop progression aware of branch/PR/merge/CI state
+**Current focus:** None — v2.12 complete. Next milestone not yet defined.
 ## Current Position
 Milestone: v2.12 GitHub Flow Enforcement
-Phase: 87 of 87 (Validation & Docs)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-23T15:25:00-0400 — Phase 86 complete, transitioned to Phase 87
+Phase: 87 of 87 (Validation & Docs) — Complete
+Plan: 87-01 complete
+Status: Milestone v2.12 complete
+Last activity: 2026-03-23T16:20:00-0400 — v2.12 milestone transition complete
 Progress:
-- v2.12 GitHub Flow Enforcement: [████████░░] 75%
-- Phase 87: [░░░░░░░░░░] 0%
+- v2.12 GitHub Flow Enforcement: [██████████] 100%
+- Phase 87: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN]
+  ✓        ✓        ✓     [Milestone complete]
 ```
 
 ## Accumulated Context
@@ -134,15 +134,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/v2.11-carl-session-boundary
-Last commit: c88157d feat(85): Core Loop Enforcement
+Last commit: 92d8a79 feat(87): Validation & Docs
 ## Session Continuity
-Last session: 2026-03-23T15:25:00-0400
-Stopped at: Phase 86 complete, transitioned to Phase 87
-Next action: /paul:plan for Phase 87
+Last session: 2026-03-23T16:20:00-0400
+Stopped at: v2.12 milestone complete
+Next action: Start next milestone or pause
 Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase
 Resume context:
-- Phase 86 complete: init + resume + pause all have GitHub Flow awareness
-- Phase 87 is the final phase: validation & docs for the full enforcement + awareness
-- Milestone v2.12 at 75% — one phase remaining
+- v2.12 GitHub Flow Enforcement milestone complete (4/4 phases)
+- All workflow contracts verified, docs updated
+- No next milestone defined yet
 *STATE.md — Updated after every significant action*
