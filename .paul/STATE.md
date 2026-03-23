@@ -7,13 +7,13 @@ See: .paul/PROJECT.md (updated 2026-03-19)
 **Current focus:** v2.13 GitHub Flow Hardening — close correctness gaps in branch handling, staging, routing, validation, status, and config clarity.
 ## Current Position
 Milestone: v2.13 GitHub Flow Hardening
-Phase: 89 of 91 (Routing & Validation)
+Phase: 90 of 91 (Status Parity & Config Clarity)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-03-23T21:15:00-0400 — Phase 88 complete, transitioned to Phase 89
+Last activity: 2026-03-23T21:30:00-0400 — Phase 89 complete, transitioned to Phase 90
 Progress:
-- v2.13 GitHub Flow Hardening: [███░░░░░░░] 25%
-- Phase 89: [░░░░░░░░░░] 0%
+- v2.13 GitHub Flow Hardening: [█████░░░░░] 50%
+- Phase 90: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
@@ -135,12 +135,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Branch: feature/v2.13-github-flow-hardening
 Last commit: a916f4a (Phase 88 complete)
 ## Session Continuity
-Last session: 2026-03-23T21:15:00-0400
-Stopped at: Phase 88 complete, ready to plan Phase 89
-Next action: /paul:plan for Phase 89
+Last session: 2026-03-23T21:30:00-0400
+Stopped at: Phase 89 complete, ready to plan Phase 90
+Next action: /paul:plan for Phase 90
 Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase
 Resume context:
-- Phase 88 shipped: branch detection + staging correctness in 4 workflow files
-- Phase 89 scope: routing & validation (behind-base priority in resume, gh auth validation in init)
+- Phase 88 shipped: branch detection + staging correctness
+- Phase 89 shipped: behind-base routing priority + gh auth validation
+- Phase 90 scope: status parity & config clarity (Issues 5 and 6 from followup)
 *STATE.md — Updated after every significant action*

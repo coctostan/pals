@@ -126,6 +126,7 @@ All validated — see below.
 - [x] GitHub Flow enforcement — strict branch/PR/merge/CI gating with preflight, postflight, 6-gate merge gate, lifecycle awareness, and full documentation (Phases 84-87, v2.12)
 
 - [x] Branch & Staging Correctness — all GitHub Flow workflow steps use detected branch name, pause staging captures all repo changes (Phase 88, v2.13)
+- [x] Routing & Validation — behind-base routing priority in resume, gh auth validation in init (Phase 89, v2.13)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -289,4 +290,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-23 after Phase 88 (Branch & Staging Correctness) complete — v2.13 in progress*
+*Last updated: 2026-03-23 after Phase 89 (Routing & Validation) complete — v2.13 in progress*

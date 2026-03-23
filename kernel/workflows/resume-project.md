@@ -140,9 +140,12 @@ If GIT_WORKFLOW = "github-flow" AND git state was collected:
 | Git State | Override Next Action |
 |-----------|---------------------|
 | PR open + CI failing | "Fix CI failures, then merge PR" |
+| BEHIND_COUNT > 0 (branch behind base) | "Update branch from base: `git fetch origin {GIT_BASE_BRANCH} && git rebase origin/{GIT_BASE_BRANCH}` then re-push and recheck CI" |
 | PR open + CI passing + reviews pending (if `require_reviews: true`) | "Get PR reviewed" |
 | PR open + CI passing + ready to merge | "Merge PR: `gh pr merge`" |
 | No PR + loop complete (all ✓) | Normal routing (next PLAN will create branch) |
+Note: BEHIND_COUNT > 0 fires even if the PR is ready to merge. Merging a behind-base
+branch risks post-merge CI failures. Always update from base first.
 
 If no git override applies, fall through to the loop-position routing below.
 
