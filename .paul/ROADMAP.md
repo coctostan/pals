@@ -35,7 +35,7 @@ Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 84 | Research & Config Schema | 1/1 | Complete | 2026-03-23 |
-| 85 | Core Loop Enforcement | TBD | Not started | - |
+| 85 | Core Loop Enforcement | 1/1 | Complete | 2026-03-23 |
 | 86 | Lifecycle Awareness | TBD | Not started | - |
 | 87 | Validation & Docs | TBD | Not started | - |
 
@@ -45,7 +45,7 @@ Plans: TBD (defined during /paul:plan)
 
 ### Phase 85: Core Loop Enforcement
 Focus: The critical behavioral changes — apply-phase preflight/postflight (branch validation, auto-push, auto-PR) and unify-phase merge gate (block next PLAN until PR is merged and main is resynced).
-Plans: TBD (defined during /paul:plan)
+Plans: 85-01 (Core Loop Enforcement — preflight/postflight + merge gate + transition mechanics)
 
 ### Phase 86: Lifecycle Awareness
 Focus: Update init-project defaults, resume/pause/status/handoff to surface branch, PR, CI, and behind-main state. Make next-action routing use that data.

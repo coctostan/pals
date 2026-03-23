@@ -7,13 +7,13 @@ See: .paul/PROJECT.md (updated 2026-03-19)
 **Current focus:** v2.12 GitHub Flow Enforcement — make PALS loop progression aware of branch/PR/merge/CI state
 ## Current Position
 Milestone: v2.12 GitHub Flow Enforcement
-Phase: 84 of 87 (Research & Config Schema)
-Plan: 84-01 complete
-Status: Phase 84 complete — ready for transition
-Last activity: 2026-03-23T13:32:00-0400 — Phase 84 UNIFY complete
+Phase: 85 of 87 (Core Loop Enforcement)
+Plan: 85-01 complete
+Status: Phase 85 complete — ready for transition
+Last activity: 2026-03-23T14:35:00-0400 — Phase 85 UNIFY complete
 Progress:
-- v2.12 GitHub Flow Enforcement: [██░░░░░░░░] 25%
-- Phase 84: [██████████] 100%
+- v2.12 GitHub Flow Enforcement: [█████░░░░░] 50%
+- Phase 85: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
@@ -117,6 +117,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Minor additive | 79 | PROJECT.md quick reference and constraint also updated beyond plan's explicit file list; essential consistency fix |
 | None material | 81 | Plan executed exactly as written; 3 tasks all PASS, 173 lines added to pals-hooks.ts, no approach changes |
 | Minor: SPECIAL-FLOWS.md already correct | 82 | Plan expected it needed updating; file was already up to date from prior session |
+| None material | 85 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -131,17 +132,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main (ready for new feature branch)
-Last commit: 2ceeed0 hotfix: add token-based CARL session thresholds
+Branch: feature/v2.11-carl-session-boundary
+Last commit: c88157d feat(85): Core Loop Enforcement
 ## Session Continuity
-Last session: 2026-03-23T13:32:00-0400
-Stopped at: Phase 84 UNIFY complete, transition required
-Next action: Phase transition → then /paul:plan for Phase 85
-Resume file: .paul/phases/84-research-config-schema/84-01-SUMMARY.md
+Last session: 2026-03-23T14:35:00-0400
+Stopped at: Phase 85 UNIFY complete, transition required
+Next action: Phase transition → then /paul:plan for Phase 86
+Resume file: .paul/phases/85-core-loop-enforcement/85-01-SUMMARY.md
 Git strategy: feature-per-phase
 Resume context:
-- Phase 84 complete: git audit + config schema design shipped
-- 7 design decisions recorded for Phase 85-86 implementation
-- Central gap: missing merge gate in unify-phase (CRITICAL)
-- Config schema ready for direct implementation
+- Phase 85 complete: preflight/postflight + merge gate + transition mechanics shipped
+- 3 workflow files updated, all enforcement conditional on github-flow mode
+- Phase 86 scope: init defaults, resume/pause/status git surfacing
 *STATE.md — Updated after every significant action*

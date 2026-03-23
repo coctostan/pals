@@ -151,17 +151,32 @@ Update ROADMAP.md:
 
 <step name="read_git_config" priority="before-commit">
 **Read git configuration from pals.json:**
-
-```bash
 GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
 GIT_BRANCHING=$(jq -r '.git.branching // "feature-per-phase"' pals.json 2>/dev/null)
 GIT_AUTO_PUSH=$(jq -r '.git.auto_push // false' pals.json 2>/dev/null)
 GIT_AUTO_PR=$(jq -r '.git.auto_pr // false' pals.json 2>/dev/null)
 GIT_CI_CHECKS=$(jq -r '.git.ci_checks // false' pals.json 2>/dev/null)
-```
+# Workflow mode resolution (workflow > branching fallback > none)
+GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
+if [ -z "$GIT_WORKFLOW" ]; then
+  if [ -n "$GIT_BRANCHING" ] && [ "$GIT_BRANCHING" != "null" ]; then
+    GIT_WORKFLOW="legacy"
+  else
+    GIT_WORKFLOW="none"
+  fi
+fi
 
+# GitHub Flow fields (used when GIT_WORKFLOW = "github-flow")
+GIT_BASE_BRANCH=$(jq -r '.git.base_branch // "main"' pals.json 2>/dev/null)
+GIT_MERGE_METHOD=$(jq -r '.git.merge_method // "squash"' pals.json 2>/dev/null)
+GIT_DELETE_BRANCH=$(jq -r '.git.delete_branch_on_merge // true' pals.json 2>/dev/null)
+GIT_UPDATE_WHEN_BEHIND=$(jq -r '.git.update_branch_when_behind // true' pals.json 2>/dev/null)
+GIT_REQUIRE_PR=$(jq -r '.git.require_pr_before_next_phase // false' pals.json 2>/dev/null)
+GIT_REQUIRE_REVIEWS=$(jq -r '.git.require_reviews // false' pals.json 2>/dev/null)
+```
 These values are used in `commit_phase` and `post_commit_automation`.
 If pals.json is absent or git section missing, all values default to safe/off.
+`GIT_WORKFLOW` drives all conditional behavior: "github-flow" enables strict enforcement, "legacy" preserves current behavior, "none" skips all git operations.
 </step>
 
 <step name="commit_phase">
@@ -214,47 +229,48 @@ Clean STATE.md Session Continuity — remove `Worktree:` line.
 **If no worktree found or worktree_isolation=false:** Continue to feature branch check.
 
 **1. Check for feature branches from this phase:**
-
-If `GIT_BRANCHING` = `direct-to-main`: skip feature branch check, commit directly to main.
-
+If `GIT_BRANCHING` = `direct-to-main`: skip feature branch check, commit directly to `${GIT_BASE_BRANCH}`.
 If `GIT_BRANCHING` = `feature-per-phase` (default):
 ```bash
 git branch --list "feature/{phase}*"
 ```
 
-**2. If feature branch exists:**
+**1a. GitHub Flow mode — skip local merge:**
+
+**If GIT_WORKFLOW = "github-flow":**
+- Do NOT merge feature branch to `${GIT_BASE_BRANCH}` locally.
+- The feature-to-base merge is handled by the unify-phase merge gate via `gh pr merge`.
+- Stay on the feature branch for staging and committing.
+- Skip directly to step 3 (Stage phase files).
+
+**If GIT_WORKFLOW = "legacy" or "none":** Continue with existing merge behavior below.
+
+**2. If feature branch exists (legacy/none mode only):**
 ```
 ────────────────────────────────────────
-Feature branch detected: feature/{phase-name}
-
-Checking for conflicts with main...
+git fetch origin ${GIT_BASE_BRANCH} 2>/dev/null || true
+Checking for conflicts with ${GIT_BASE_BRANCH}...
 ────────────────────────────────────────
 ```
-
 Check for conflicts:
 ```bash
-git fetch origin main 2>/dev/null || true
-git diff main...feature/{phase-name} --stat
+git fetch origin ${GIT_BASE_BRANCH} 2>/dev/null || true
+git diff ${GIT_BASE_BRANCH}...feature/{phase-name} --stat
 ```
-
 **If no conflicts:**
 ```
 No conflicts detected.
-
-Merge feature/{phase-name} to main? [yes/no]
+Merge feature/{phase-name} to ${GIT_BASE_BRANCH}? [yes/no]
 ```
-
 If yes:
 ```bash
-git checkout main
-git merge feature/{phase-name} --no-ff -m "Merge feature/{phase-name} into main"
+git checkout ${GIT_BASE_BRANCH}
+git merge feature/{phase-name} --no-ff -m "Merge feature/{phase-name} into ${GIT_BASE_BRANCH}"
 git branch -d feature/{phase-name}
 ```
-
 **If conflicts exist:**
 ```
-⚠️ Conflicts detected between feature/{phase-name} and main.
-
+⚠️ Conflicts detected between feature/{phase-name} and ${GIT_BASE_BRANCH}.
 Cannot auto-merge. Options:
 [1] Resolve conflicts manually, then re-run transition
 [2] Keep on feature branch (do not merge)
@@ -322,7 +338,7 @@ Update STATE.md Accumulated Context:
 ```markdown
 ### Git State
 Last commit: {short-hash}
-Branch: main
+Branch: ${GIT_BASE_BRANCH}
 Feature branches merged: {list or "none"}
 ```
 
@@ -347,40 +363,53 @@ gh pr checks feature/{phase-name} --watch
 ```
 
 If CI fails:
+**If GIT_WORKFLOW = "github-flow":**
+```
+────────────────────────────────────────
+⛔ CI checks failed on feature/{phase-name}.
+CI failure is blocking in github-flow mode.
+There is no "merge anyway" option.
+
+Next action: Fix CI failures and re-push.
+────────────────────────────────────────
+```
+BLOCK — do not proceed to merge or PR creation.
+
+**If GIT_WORKFLOW = "legacy" or "none":**
 ```
 ────────────────────────────────────────
 CI checks failed on feature/{phase-name}.
-
-[1] Merge anyway (CI failures noted)
 [2] Wait and retry
 [3] Keep on feature branch (do not merge)
 ────────────────────────────────────────
 ```
-
 If ci_checks=false or no remote: skip silently.
 
 **2. Auto PR (if auto_pr=true and remote set):**
-
-After pushing feature branch (or after merge to main):
+Check if PR already exists (may have been created by apply-phase postflight in github-flow mode):
 ```bash
-gh pr create --base main --head feature/{phase-name} \
+EXISTING_PR=$(gh pr view feature/{phase-name} --json url -q '.url' 2>/dev/null || echo "")
+```
+
+If PR exists: Display `PR already exists: ${EXISTING_PR}`
+If no PR:
+```bash
+gh pr create --base ${GIT_BASE_BRANCH} --head feature/{phase-name} \
   --title "feat({phase}): {phase-description}" \
   --body "Phase {N} complete. Auto-generated by PAUL."
 ```
-
 Display PR URL to user.
 If auto_pr=false or no remote: skip silently.
 
 **3. Auto Push (if auto_push=true and remote set):**
-
-After commit/merge to main:
+After commit/merge to ${GIT_BASE_BRANCH}:
 ```bash
-git push origin main
+git push origin ${GIT_BASE_BRANCH}
 ```
 
 Display: `Pushed to remote: {remote}`
 
-If auto_push=false: display `Push when ready: git push origin main`
+If auto_push=false: display `Push when ready: git push origin ${GIT_BASE_BRANCH}`
 If no remote: skip silently — display nothing.
 </step>
 
