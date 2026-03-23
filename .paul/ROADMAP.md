@@ -27,8 +27,33 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-None — v2.12 complete. Next milestone not yet defined.
+### v2.13 GitHub Flow Hardening
+Theme: Close remaining correctness gaps so GitHub Flow in PALS is reliable in real use — hardening pass, not redesign.
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|----------|
+| 88 | Branch & Staging Correctness | TBD | Not started | - |
+| 89 | Routing & Validation | TBD | Not started | - |
+| 90 | Status Parity & Config Clarity | TBD | Not started | - |
+| 91 | Verification & Docs | TBD | Not started | - |
+
+#### Phase 88: Branch & Staging Correctness
+Focus: Stop hardcoding `feature/${PHASE_NAME}` — resolve and use real branch name everywhere. Fix `pause-work.md` staging to capture all repo changes, not just `.paul/ src/`.
+Plans: TBD (defined during /paul:plan)
+
+#### Phase 89: Routing & Validation
+Focus: Add explicit behind-base routing priority in resume. Validate `gh auth status` not just CLI presence during init.
+Plans: TBD (defined during /paul:plan)
+
+#### Phase 90: Status Parity & Config Clarity
+Focus: Bring `/paul-status` to GitHub Flow parity with resume/pause. Clarify `branching` vs `workflow` field semantics.
+Plans: TBD (defined during /paul:plan)
+
+#### Phase 91: Verification & Docs
+Focus: Cross-cutting verification artifact proving all 6 hardening issues resolved. Update git-strategy.md and README.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
 <details>
 <summary>v2.12 GitHub Flow Enforcement - 2026-03-23 (4 phases)</summary>
@@ -331,4 +356,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-23 — v2.12 GitHub Flow Enforcement milestone complete*
+*Last updated: 2026-03-23 — v2.13 GitHub Flow Hardening milestone created*

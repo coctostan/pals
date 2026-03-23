@@ -4,21 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-19)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** None — v2.12 complete. Next milestone not yet defined.
+**Current focus:** v2.13 GitHub Flow Hardening — close correctness gaps in branch handling, staging, routing, validation, status, and config clarity.
 ## Current Position
-Milestone: v2.12 GitHub Flow Enforcement
-Phase: 87 of 87 (Validation & Docs) — Complete
-Plan: 87-01 complete
-Status: Milestone v2.12 complete
-Last activity: 2026-03-23T16:20:00-0400 — v2.12 milestone transition complete
+Milestone: v2.13 GitHub Flow Hardening
+Phase: 88 of 91 (Branch & Staging Correctness)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-23T20:30:00-0400 — Milestone created
 Progress:
-- v2.12 GitHub Flow Enforcement: [██████████] 100%
-- Phase 87: [██████████] 100%
+- v2.13 GitHub Flow Hardening: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Milestone complete]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -130,19 +129,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - AGENTS.md deferred to interoperability milestone
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
-- Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/v2.11-carl-session-boundary
-Last commit: 92d8a79 feat(87): Validation & Docs
+Branch: feature/v2.13-github-flow-hardening
+Last commit: 18e7a74 (main, merged v2.11+v2.12)
 ## Session Continuity
-Last session: 2026-03-23T16:20:00-0400
-Stopped at: v2.12 milestone complete
-Next action: Start next milestone or pause
+Last session: 2026-03-23T20:30:00-0400
+Stopped at: Milestone created, ready to plan
+Next action: /paul:plan for Phase 88
 Resume file: .paul/ROADMAP.md
 Git strategy: feature-per-phase
 Resume context:
-- v2.12 GitHub Flow Enforcement milestone complete (4/4 phases)
-- All workflow contracts verified, docs updated
-- No next milestone defined yet
+- v2.13 GitHub Flow Hardening milestone created (0/4 phases)
+- Phase 88 (Branch & Staging Correctness) ready for planning
+- Requirements doc: github-flow-hardening-followup.md
 *STATE.md — Updated after every significant action*
