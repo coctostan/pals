@@ -118,9 +118,12 @@ All validated — see below.
 - ✓ Pi UX polish & readability — semantic notify levels ("success" for routing/sends), compact loop badge in status bar, installation boundary docs, 106-check validation contract — Phase 64
 - [x] Collaborative planning & PRD depth — Phase 65 research, Phase 66 collaboration model, and Phase 67 layered onboarding / `PROJECT.md` + `PRD.md` rollout completed (v2.6)
 - [x] Module execution proof & visibility — execution evidence/reporting was hardened in Phase 69, live module visibility UX shipped in Phase 70, and recommendation-grade module guidance closed the loop in Phase 71 (v2.7)
-- [x] CARL API validation — all 3 Pi extension APIs (getContextUsage, newSession, sendUserMessage) validated empirically with working prototype (Phase 76)
-- [x] CARL core implementation — production session boundary manager with phase detection, configurable decision model, session creation + auto-resume, and safety valve (Phase 77)
-- [x] CARL integration & configuration — init creates pals.json carl config, modules.yaml updated to v2.0.0, dead Claude Code-era carl/ files removed (Phase 78)
+- [x] CARL API validation — all 3 Pi extension APIs (getContextUsage, newSession, sendUserMessage) validated empirically with working prototype (Phase 76, v2.9 hollow — research artifacts valid)
+- [x] CARL core implementation — production session boundary manager with phase detection, configurable decision model, session creation + auto-resume, and safety valve (Phase 81, v2.11)
+- [x] CARL integration & configuration — pals.json carl config fields added, init workflow updated for new projects, dead Claude Code-era modules/carl/ removed (Phase 82, v2.11)
+- [x] CARL validation & docs — end-to-end deployment verified, threshold calibration documented, Pi extension README and PALS docs updated for two-CARL model (Phase 83, v2.11)
+- [x] GitHub Flow lifecycle awareness — init offers GitHub Flow as first-class option, resume surfaces git/PR/CI state with git-aware routing, pause captures git continuity in handoffs (Phase 86, v2.12)
+- [x] GitHub Flow enforcement — strict branch/PR/merge/CI gating with preflight, postflight, 6-gate merge gate, lifecycle awareness, and full documentation (Phases 84-87, v2.12)
 
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
@@ -285,4 +288,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-18 after Phase 79 (Validation & Documentation) complete — v2.9 milestone complete*
+*Last updated: 2026-03-23 after Phase 87 (Validation & Docs) complete — v2.12 milestone complete*

@@ -34,6 +34,18 @@ Any position in PLAN/APPLY/UNIFY loop. Captures state regardless of where loop i
    ```bash
    ls -t .paul/phases/*/PLAN*.md 2>/dev/null | head -1
    ```
+3. Resolve GIT_WORKFLOW from pals.json using 3-tier resolution:
+   ```
+   if git.workflow exists → use it
+   else if git.branching exists → "legacy"
+   else → "none"
+   ```
+4. If GIT_WORKFLOW = "github-flow":
+   a. Detect current branch: `git branch --show-current`
+   b. Read GIT_BASE_BRANCH from pals.json `git.base_branch` (default: "main")
+   c. Check ahead/behind: `git rev-list --left-right --count origin/{GIT_BASE_BRANCH}...HEAD 2>/dev/null`
+   d. Check PR state: `gh pr view --json url,state,statusCheckRollup 2>/dev/null`
+   e. Store: CURRENT_BRANCH, GIT_BASE_BRANCH, PR_URL, PR_STATE, CI_STATE, BEHIND_COUNT
 </step>
 
 <step name="gather_session_context">
@@ -91,6 +103,19 @@ You have no prior context. This document tells you everything.
 PLAN ──▶ APPLY ──▶ UNIFY
   [✓/○]    [✓/○]    [✓/○]
 ```
+
+{If GIT_WORKFLOW = "github-flow":}
+## Git State
+
+| Field | Value |
+|-------|-------|
+| Branch | {CURRENT_BRANCH} |
+| Base | {GIT_BASE_BRANCH} |
+| PR | {PR_URL or "none"} ({PR_STATE or "N/A"}) |
+| CI | {CI_STATE or "N/A"} |
+| Behind base | {BEHIND_COUNT} commits (or "Up to date") |
+
+{End if}
 
 ---
 
@@ -158,44 +183,52 @@ Resume context:
 </step>
 
 <step name="optional_commit">
-**If git repo, offer WIP commit with explicit two-question flow:**
+**If git repo, offer WIP commit with explicit flow based on workflow mode:**
 
-**Read git config for default:**
+**Read git config using 3-tier workflow resolution:**
 ```bash
-GIT_BRANCHING=$(jq -r '.git.branching // "feature-per-phase"' pals.json 2>/dev/null)
+GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
+if [ -z "$GIT_WORKFLOW" ]; then
+  GIT_BRANCHING=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
+  GIT_WORKFLOW=${GIT_BRANCHING:+"legacy"}
+  GIT_WORKFLOW=${GIT_WORKFLOW:-"none"}
+fi
 ```
 
+**If GIT_WORKFLOW = "none":** skip commit step entirely.
 **Question 1 — Commit WIP?**
 ```
 ────────────────────────────────────────
 Would you like to commit your work-in-progress?
-
-This saves a checkpoint you can return to.
 ────────────────────────────────────────
 [yes] / [no]
 ```
 
 **If no:** Skip to confirm step.
 
-**If yes — Question 2 — Branch choice (default from pals.json):**
+**If GIT_WORKFLOW = "github-flow":**
+- Always commit to feature branch (github-flow requires feature branches)
+- Skip Question 2 (branch choice is predetermined)
+```bash
+# Commit to current feature branch (already on it in github-flow)
+git add .paul/ src/
+git commit -m "wip({phase}): paused at {plan}
 
+Co-Authored-By: Claude <noreply@anthropic.com>"
+```
+
+**If GIT_WORKFLOW = "legacy" — Question 2 — Branch choice:**
 If `GIT_BRANCHING` = `direct-to-main`: default is option 1.
 If `GIT_BRANCHING` = `feature-per-phase` (or unset): default is option 2.
-
 ```
 ────────────────────────────────────────
 Where should this WIP commit go?
-
-[1] main — Commit directly to main branch {* if direct-to-main}
 [2] feature branch — Create feature/{phase-name} branch first {* if feature-per-phase}
-
-Default matches your pals.json branching config.
 Press enter for default, or choose explicitly.
 ────────────────────────────────────────
 ```
 
 If user presses enter or says "default", use the config-driven default.
-
 **If main (option 1):**
 ```bash
 git add .paul/ src/
@@ -203,26 +236,20 @@ git commit -m "wip({phase}): paused at {plan}
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
-
 **If feature branch (option 2):**
 ```bash
 # Create and switch to feature branch
 git checkout -b feature/{phase-name}
-
-# Commit to feature branch
 git add .paul/ src/
 git commit -m "wip({phase}): paused at {plan}
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
-
 # Record branch strategy in STATE.md for transition-phase
 ```
-
 **Update STATE.md Session Continuity with branch info:**
 ```markdown
 Git strategy: {main|feature/{phase-name}}
 ```
-
 This enables transition-phase.md to know the branch strategy when reconciling.
 </step>
 

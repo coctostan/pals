@@ -2,7 +2,12 @@
   "modules": {
     "carl": {
       "enabled": true,
-      "description": "Context rules & domain configuration"
+      "description": "Session boundary manager (Pi extension)",
+      "session_strategy": "phase-boundary",
+      "continue_threshold": 0.4,
+      "continue_threshold_tokens": 60000,
+      "safety_ceiling": 0.8,
+      "safety_ceiling_tokens": 120000
     },
     "dave": {
       "enabled": true,

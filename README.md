@@ -55,7 +55,7 @@ PALS uses a three-layer stack inspired by operating system design:
 | Pal | Full Name | What It Does | Key Command |
 |-----|-----------|-------------|-------------|
 | **PAUL** | Project Automation & Lifecycle | Kernel. Plans, executes, and tracks work through the plan-apply-unify loop. | `/paul:plan` |
-| **CARL** | Context-Aware Rule Loading | Injects domain-specific rules into every session via hooks. Auto-detects technologies and loads relevant rules. | `/carl:manager` |
+| **CARL** | Session & Context Manager | Claude Code: context rule injection via hooks. Pi: autonomous session boundary management via extension events. | `/carl:manager` (CC) / automatic (Pi) |
 | **TODD** | Test-Driven Development | Enforces RED-GREEN-REFACTOR discipline. Detects TDD candidates during planning and restructures tasks. | `/paul:coverage` |
 | **WALT** | Watchful Automated Lint & Testing | Quality gating. Captures baselines before apply, runs checks after, detects regressions. | `/paul:quality` |
 | **DEAN** | Dependency Evaluation & Audit Notifier | Scans dependencies for vulnerabilities, outdated packages, and license issues across 10 ecosystems. | `/paul:deps` |
@@ -126,13 +126,13 @@ PALS uses a three-layer stack inspired by operating system design:
 | `/paul:verify` | Guide manual acceptance testing |
 | `/paul:plan-fix` | Plan fixes for issues found during verification |
 
-### CARL (Context Rules)
+### CARL (Session & Context Manager)
 
-| Command | Description |
-|---------|-------------|
-| `/carl:manager` | Manage domains, rules, and star-commands |
+CARL serves different roles depending on the platform:
 
-CARL's manager supports subcommands: `*list`, `*add`, `*create`, `*edit`, `*toggle`, `*view`, `*scan`, `*suggest`.
+**Claude Code — Context Rules:** `/carl:manager` manages domains, rules, and star-commands (`*list`, `*add`, `*create`, `*edit`, `*toggle`, `*view`, `*scan`, `*suggest`). Rules inject into prompts via `UserPromptSubmit` hooks.
+
+**Pi — Session Boundary Manager:** CARL runs automatically via `pals-hooks.ts` extension events. It detects phase completion at `agent_end`, evaluates context pressure, and creates fresh sessions when thresholds are exceeded. No separate commands needed — configure via `pals.json` → `modules.carl` (strategy, thresholds). See `drivers/pi/extensions/README.md` for details.
 
 ### Utilities
 
@@ -148,7 +148,7 @@ PALS uses `pals.json` at the project root for module configuration:
 ```json
 {
   "modules": {
-    "carl": { "enabled": true, "description": "Context rules & domain configuration" },
+    "carl": { "enabled": true, "description": "Session boundary manager (Pi) / Context rules (Claude Code)" },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
     "walt": { "enabled": true, "description": "Quality gating & validation" },
     "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
@@ -170,6 +170,32 @@ PALS uses `pals.json` at the project root for module configuration:
 All 8 modules are enabled by default. Use `/paul:config` to toggle modules, manage integrations, and set preferences interactively.
 
 In Pi, enabled modules are installed beside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`. PLAN/APPLY/UNIFY use that registry to dispatch module guidance such as TODD and WALT; those modules are not separate Pi skills.
+
+### Git Workflow
+
+PALS can enforce GitHub Flow through the `git` section of `pals.json`:
+
+```json
+{
+  "git": {
+    "workflow": "github-flow",
+    "base_branch": "main",
+    "merge_method": "squash",
+    "auto_push": true,
+    "auto_pr": true,
+    "ci_checks": true,
+    "require_pr_before_next_phase": true
+  }
+}
+```
+
+| Mode | Behavior |
+|------|----------|
+| `github-flow` | Strict enforcement — branch validation before work, auto-PR after apply, merge gate blocks next phase until PR is merged and CI passes. Requires `gh` CLI. |
+| `legacy` | Advisory git ops — feature-per-phase branching with optional push/PR/CI. Default for existing projects. |
+| `none` | No git operations (default for new projects without git config). |
+
+GitHub Flow enforcement is configured during `/paul:init` or by editing `pals.json` directly. See `kernel/references/git-strategy.md` for full documentation.
 
 ## How It Works
 

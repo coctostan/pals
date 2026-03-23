@@ -27,20 +27,44 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.10 Workflow Integrity**
-Status: ✅ Complete
-Completed: 2026-03-19
-Phases: 1 of 1 complete
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 80 | Workflow Integrity Fixes | 1/1 | ✅ Complete | 2026-03-19 |
+None — v2.12 complete. Next milestone not yet defined.
 
-### Phase 80: Workflow Integrity Fixes
-Focus: Fix the structural PALS workflow failures that allowed four phases of hallucinated implementation to pass undetected. Close the commit staging blind spot, add ground-truth verification to apply/unify, enforce repo-source-only edit targets in plans, and add a post-stage sanity check before commits.
-Plans: 1/1 complete
+## Completed Milestones
+<details>
+<summary>v2.12 GitHub Flow Enforcement - 2026-03-23 (4 phases)</summary>
+
+Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Flow is actively enforced, not just descriptive config.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 84 | Research & Config Schema | 1/1 | 2026-03-23 |
+| 85 | Core Loop Enforcement | 1/1 | 2026-03-23 |
+| 86 | Lifecycle Awareness | 1/1 | 2026-03-23 |
+| 87 | Validation & Docs | 1/1 | 2026-03-23 |
+
+</details>
+## Completed Milestones
+<details>
+<summary>v2.11 Pi CARL Session Boundary Manager - 2026-03-19 (3 phases)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 81 | Core Implementation | 1/1 | 2026-03-19 |
+| 82 | Config & Integration | 1/1 | 2026-03-19 |
+| 83 | Validation & Docs | 1/1 | 2026-03-19 |
+
+</details>
 ---
 
 ## Completed Milestones
+<details>
+<summary>v2.10 Workflow Integrity - 2026-03-19 (1 phase)</summary>
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 80 | Workflow Integrity Fixes | 1/1 | 2026-03-19 |
+
+</details>
 <details>
 <summary>v2.9 CARL Session Boundary Manager - 2026-03-18 (4 phases) ⚠️ HOLLOW</summary>
 
@@ -307,4 +331,4 @@ Plans: 1/1 complete
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-19 — v2.9 CARL Session Boundary Manager milestone created*
+*Last updated: 2026-03-23 — v2.12 GitHub Flow Enforcement milestone complete*

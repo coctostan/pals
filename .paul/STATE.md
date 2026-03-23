@@ -2,22 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-18)
+See: .paul/PROJECT.md (updated 2026-03-19)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.10 Workflow Integrity — fix structural failures that allowed hallucinated implementation to pass undetected
+**Current focus:** None — v2.12 complete. Next milestone not yet defined.
 ## Current Position
-Milestone: v2.10 Workflow Integrity
-Phase: 80 of 80 (Workflow Integrity Fixes) — Complete
-Plan: 80-01 complete
-Status: v2.10 milestone complete
-Last activity: 2026-03-19T12:10:00-0400 — UNIFY complete, Phase 80 done
+Milestone: v2.12 GitHub Flow Enforcement
+Phase: 87 of 87 (Validation & Docs) — Complete
+Plan: 87-01 complete
+Status: Milestone v2.12 complete
+Last activity: 2026-03-23T16:20:00-0400 — v2.12 milestone transition complete
 Progress:
-- v2.10 Workflow Integrity: [██████████] 100% ✅
+- v2.12 GitHub Flow Enforcement: [██████████] 100%
+- Phase 87: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete]
+  ✓        ✓        ✓     [Milestone complete]
 ```
 
 ## Accumulated Context
@@ -87,11 +88,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | session_start seeds previousLoopSignature to avoid spurious session creation | 77 | Prevents CARL from misreading already-complete loop state on resume |
 | CARL config fields inside modules.carl in pals.json | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
 | CARL module version bumped to 2.0.0 | 78 | Clear signal of architectural shift from rule injection to session boundary |
+| Add optional token-based CARL thresholds alongside ratio fallbacks | No phase | Keeps phase-boundary and safety rollover practical on 1M-context models without breaking existing configs |
+| D1: Merge gate lives in unify-phase, not transition-phase | 84 | Phase 85 implementation targets unify-phase for the gate |
+| D2: PR created after APPLY, merge state checked in UNIFY | 84 | Matches real GitHub Flow timing |
+| D3: CI failure is blocking in github-flow mode (no escape) | 84 | Strict mode means strict; escape is ci_checks:false or workflow:legacy |
+| D4: Branch naming stays feature/{phase-name} | 84 | No changes needed |
+| D5: gh CLI required for github-flow mode | 84 | Init should validate gh availability |
+| D6: Hotfix mode exempt from merge gate | 84 | fix-loop.md gets minimal changes |
+| D7: Legacy mode = true superset of current behavior | 84 | Existing projects must not break |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
 | Fix 02 (standard): Reworked installed module registries to include `hook_details`, aligned PLAN/APPLY/UNIFY dispatch wording to the installed registry, and added validation coverage | Phase 63 | Enabled modules can now be consulted from real installed `modules.yaml` registries instead of relying on conceptual source-manifest access |
 | Fix 03 (standard): Aligned resume handoff discovery and docs so `/paul:resume` falls back to `.paul/handoffs/archive/` and only archives active consumed handoffs | No phase | Prevents the latest archived handoff from becoming undiscoverable during normal resume flows |
+| Hotfix: Added token-based CARL session thresholds with 60k/120k project defaults | No phase | Retroactively documented in `83-02-HOTFIX-SUMMARY.md` |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
@@ -105,6 +115,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
 | None material | 78 | Plan executed exactly as written; init config, modules.yaml, dead file removal all clean |
 | Minor additive | 79 | PROJECT.md quick reference and constraint also updated beyond plan's explicit file list; essential consistency fix |
+| None material | 81 | Plan executed exactly as written; 3 tasks all PASS, 173 lines added to pals-hooks.ts, no approach changes |
+| Minor: SPECIAL-FLOWS.md already correct | 82 | Plan expected it needed updating; file was already up to date from prior session |
+| None material | 85 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
+| None material | 86 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -119,16 +133,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Next milestone is not yet defined; use the Phase 71 matrix, guidance, and final report as the starting context
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: a05df6f v2.9 CARL Session Boundary Manager (#17)
-Note: v2.9 merge contained zero CARL implementation code — only .paul/ docs and v2.7/v2.8 module visibility changes
+Branch: feature/v2.11-carl-session-boundary
+Last commit: 92d8a79 feat(87): Validation & Docs
 ## Session Continuity
-Last session: 2026-03-19T12:10:00-0400
-Stopped at: v2.10 Workflow Integrity milestone complete
-Next action: /paul:milestone complete or define next milestone
-Resume file: .paul/phases/80-workflow-integrity/80-01-SUMMARY.md
-Git strategy: main
+Last session: 2026-03-23T16:20:00-0400
+Stopped at: v2.12 milestone complete
+Next action: Start next milestone or pause
+Resume file: .paul/ROADMAP.md
+Git strategy: feature-per-phase
 Resume context:
-- v2.10 complete — 1 phase (80), 5 workflow files hardened against hallucination cascades
-- v2.9 remains hollow — CARL feature work deferred to future milestone
+- v2.12 GitHub Flow Enforcement milestone complete (4/4 phases)
+- All workflow contracts verified, docs updated
+- No next milestone defined yet
 *STATE.md — Updated after every significant action*

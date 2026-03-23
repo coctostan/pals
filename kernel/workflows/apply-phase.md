@@ -40,6 +40,101 @@ kernel/references/module-dispatch.md
    - Wait for explicit approval before proceeding
 </step>
 
+<step name="github_flow_preflight" priority="after-approval">
+**Conditional: GitHub Flow branch validation before work begins.**
+
+1. **Resolve workflow mode:**
+   ```bash
+   GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
+   if [ -z "$GIT_WORKFLOW" ]; then
+     GIT_BRANCHING_CHECK=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
+     if [ -n "$GIT_BRANCHING_CHECK" ]; then
+       GIT_WORKFLOW="legacy"
+     else
+       GIT_WORKFLOW="none"
+     fi
+   fi
+   ```
+
+2. **If GIT_WORKFLOW != "github-flow":** Skip entire step (no-op). Proceed to load_plan.
+
+3. **Read config fields:**
+   ```bash
+   GIT_BASE_BRANCH=$(jq -r '.git.base_branch // "main"' pals.json 2>/dev/null)
+   GIT_UPDATE_WHEN_BEHIND=$(jq -r '.git.update_branch_when_behind // true' pals.json 2>/dev/null)
+   GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
+   PHASE_NAME={phase-name}  # e.g., "85-core-loop-enforcement"
+   ```
+
+4. **Check 1 — Not on base_branch:**
+   ```bash
+   CURRENT=$(git rev-parse --abbrev-ref HEAD)
+   ```
+   - If `$CURRENT` = `$GIT_BASE_BRANCH`: create feature branch:
+     ```bash
+     git checkout -b "feature/${PHASE_NAME}" "${GIT_BASE_BRANCH}"
+     ```
+     Display: `Created feature/${PHASE_NAME} from ${GIT_BASE_BRANCH}`
+   - If already on `feature/{phase}*`: continue on current branch
+
+5. **Check 2 — base_branch up-to-date with remote (if remote set):**
+   ```bash
+   git fetch origin ${GIT_BASE_BRANCH} 2>/dev/null || true
+   LOCAL=$(git rev-parse ${GIT_BASE_BRANCH})
+   REMOTE=$(git rev-parse origin/${GIT_BASE_BRANCH} 2>/dev/null || echo "$LOCAL")
+   ```
+   If `$LOCAL` != `$REMOTE`:
+   ```bash
+   git checkout ${GIT_BASE_BRANCH} && git pull origin ${GIT_BASE_BRANCH}
+   git checkout feature/${PHASE_NAME}
+   ```
+   Display: `Updated ${GIT_BASE_BRANCH} from remote`
+
+6. **Check 3 — Feature branch not behind base_branch:**
+   ```bash
+   BEHIND=$(git rev-list --count HEAD..${GIT_BASE_BRANCH})
+   ```
+   - If `$BEHIND` > 0 and `$GIT_UPDATE_WHEN_BEHIND` = true:
+     ```bash
+     git rebase ${GIT_BASE_BRANCH}
+     ```
+     Display: `Rebased feature branch onto ${GIT_BASE_BRANCH}`
+   - If `$BEHIND` > 0 and `$GIT_UPDATE_WHEN_BEHIND` = false:
+     ```
+     ⚠️ Feature branch is ${BEHIND} commits behind ${GIT_BASE_BRANCH}.
+     update_branch_when_behind is false — proceeding without rebase.
+     ```
+
+7. **Check 4 — Clean working tree:**
+   ```bash
+   git status --porcelain
+   ```
+   If dirty with unrelated changes (files outside plan scope):
+   ```
+   ⚠️ Working tree has unrelated changes:
+   {git status --porcelain output}
+
+   [1] Stash changes and continue
+   [2] Continue anyway
+   [3] Stop
+   ```
+   - If "1": `git stash push -m "pals-preflight-stash"`
+   - If "2": proceed with warning logged
+   - If "3": halt APPLY
+
+8. **Display preflight summary:**
+   ```
+   ────────────────────────────────────────
+   GitHub Flow Preflight ✓
+   ────────────────────────────────────────
+   Branch:     feature/${PHASE_NAME}
+   Base:       ${GIT_BASE_BRANCH}
+   Behind:     0 commits
+   Tree:       clean
+   ────────────────────────────────────────
+   ```
+</step>
+
 <step name="load_plan">
 1. Read the PLAN.md file
 2. Parse frontmatter:
@@ -373,6 +468,87 @@ Throughout execution:
      - A BLOCKED task that reveals the plan's assumptions were wrong
      - Discovered requirements that make remaining tasks invalid
    If re-plan triggered: update STATE.md loop position back to PLAN ○, note reason, and suggest `/paul:plan` with the new context.
+</step>
+
+<step name="github_flow_postflight" priority="after-hooks">
+**Conditional: Push branch and create PR after successful execution.**
+
+1. **Resolve workflow mode** (same pattern as preflight):
+   ```bash
+   GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
+   if [ -z "$GIT_WORKFLOW" ]; then
+     GIT_BRANCHING_CHECK=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
+     if [ -n "$GIT_BRANCHING_CHECK" ]; then GIT_WORKFLOW="legacy"; else GIT_WORKFLOW="none"; fi
+   fi
+   ```
+
+2. **If GIT_WORKFLOW != "github-flow":** Skip entire step (no-op). Proceed to finalize.
+
+3. **Read config fields:**
+   ```bash
+   GIT_AUTO_PUSH=$(jq -r '.git.auto_push // false' pals.json 2>/dev/null)
+   GIT_AUTO_PR=$(jq -r '.git.auto_pr // false' pals.json 2>/dev/null)
+   GIT_CI_CHECKS=$(jq -r '.git.ci_checks // false' pals.json 2>/dev/null)
+   GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
+   GIT_BASE_BRANCH=$(jq -r '.git.base_branch // "main"' pals.json 2>/dev/null)
+   PHASE_NAME={phase-name}
+   ```
+
+4. **If no remote set:** Skip all remote operations silently. Proceed to finalize.
+
+5. **Stage and commit implementation work:**
+   ```bash
+   git add -A
+   git commit -m "feat(${PHASE_NAME}): {description}" --allow-empty
+   ```
+
+6. **Push feature branch (if auto_push=true):**
+   ```bash
+   git push origin feature/${PHASE_NAME}
+   ```
+   Display: `Pushed feature/${PHASE_NAME} to origin`
+
+7. **Create PR (if auto_pr=true):**
+   ```bash
+   # Check if PR already exists for this branch
+   EXISTING_PR=$(gh pr view feature/${PHASE_NAME} --json url -q '.url' 2>/dev/null || echo "")
+   ```
+   - If PR exists: Display `PR already exists: ${EXISTING_PR}`
+   - If no PR:
+     ```bash
+     gh pr create --base ${GIT_BASE_BRANCH} --head feature/${PHASE_NAME} \
+       --title "feat(${PHASE_NAME}): {description}" \
+       --body "Phase {N} — auto-generated by PALS."
+     ```
+   - Record PR URL in STATE.md `### Git State` section:
+     ```markdown
+     PR: {url} (state: open)
+     ```
+
+8. **Surface CI check state (if ci_checks=true):**
+   ```bash
+   gh pr checks feature/${PHASE_NAME}
+   ```
+   Display CI results (informational — blocking enforcement happens in unify-phase merge gate, not here):
+   ```
+   ────────────────────────────────────────
+   CI Status: {passing|failing|pending}
+   Note: CI is informational here. Merge gate
+   in UNIFY will enforce before next phase.
+   ────────────────────────────────────────
+   ```
+
+9. **Display postflight summary:**
+   ```
+   ────────────────────────────────────────
+   GitHub Flow Postflight ✓
+   ────────────────────────────────────────
+   Branch:  feature/${PHASE_NAME}
+   Pushed:  {yes/no}
+   PR:      {url or "not created"}
+   CI:      {status or "not checked"}
+   ────────────────────────────────────────
+   ```
 </step>
 
 <step name="finalize">

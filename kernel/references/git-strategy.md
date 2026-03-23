@@ -4,26 +4,65 @@ Git integration for PAUL workflow.
 
 <configuration>
 ## Git Configuration (pals.json)
-
-Git behavior is configured per-project in `pals.json` under the `git` key.
 Set during `/paul:init` or manually.
+### Workflow Modes
 
-| Field | Values | Default | Effect |
-|-------|--------|---------|--------|
-| remote | URL or null | null | GH repo for PRs and pushes |
-| branching | feature-per-phase, direct-to-main | feature-per-phase | Branch strategy per phase |
-| auto_push | true/false | false | Push after phase/milestone commits |
-| auto_pr | true/false | false | Create PR on phase transition |
-| ci_checks | true/false | false | Wait for CI before merge |
+PALS supports three git workflow modes, configured via the `workflow` field:
 
-**When config is absent:** All automation disabled. Commits are local-only.
-Feature branches still created/merged per workflow instructions,
-but no pushes, PRs, or CI checks.
+| Mode | Behavior | Enforcement |
+|------|----------|-------------|
+| `github-flow` | Strict GitHub Flow — branch validation, auto-PR, merge gate blocks next phase until PR is merged. Requires `gh` CLI. | Active: preflight/postflight in apply-phase, 6-gate merge gate in unify-phase, git-aware routing in resume/pause |
+| `legacy` | Advisory git ops — feature-per-phase branching, optional push/PR/CI. Current behavior for existing projects. | Passive: no blocking gates, all automation optional |
+| `none` | No git operations. All git steps are no-ops. | None |
 
+### Config Resolution (3-Tier)
+
+Workflow mode is resolved using a 3-tier priority:
+
+```
+function resolveGitWorkflow(config):
+  if config.git.workflow exists:     → use it (github-flow | legacy | none)
+  if config.git.branching exists:    → "legacy" (backward compatible)
+  else:                              → "none"
+```
+
+**Backward compatibility:** Existing projects with `branching: "feature-per-phase"` or `branching: "direct-to-main"` automatically resolve to `workflow: "legacy"` with zero behavior change. No migration required.
+
+### Full Config Schema
+
+| Field | Type | Default | Modes | Read by |
+|-------|------|---------|-------|---------|
+| `workflow` | `"github-flow"` \| `"legacy"` \| `"none"` | `"none"` | All | All workflows |
+| `remote` | `string` \| `null` | `null` | All | transition-phase, complete-milestone |
+| `base_branch` | `string` | `"main"` | github-flow | apply-phase (preflight), transition-phase, resume-project |
+| `merge_method` | `"squash"` \| `"merge"` \| `"rebase"` | `"squash"` | github-flow | transition-phase |
+| `auto_push` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase (postflight), transition-phase |
+| `auto_pr` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase (postflight), unify-phase (merge gate) |
+| `ci_checks` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | unify-phase (merge gate), transition-phase |
+| `delete_branch_on_merge` | `boolean` | `true` | github-flow | transition-phase, unify-phase (merge gate) |
+| `update_branch_when_behind` | `boolean` | `true` | github-flow | apply-phase (preflight) |
+| `require_pr_before_next_phase` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow | unify-phase (merge gate), resume-project |
+| `require_reviews` | `boolean` | `false` | github-flow | unify-phase (merge gate) |
+
+**Legacy fields:** `branching` and `worktree_isolation` are preserved for backward compatibility. `branching` is used as a fallback signal for workflow mode resolution. `worktree_isolation` is orthogonal to workflow mode.
+
+### Key Behavioral Patterns
+
+**Preflight (apply-phase):** Before task execution in github-flow mode, validates: correct branch, not behind base, base is fresh from remote, clean working tree. Creates feature branch if needed.
+
+**Postflight (apply-phase):** After task execution in github-flow mode, pushes feature branch (if `auto_push`), creates PR (if `auto_pr`), surfaces CI state.
+
+**Merge Gate (unify-phase):** After SUMMARY.md creation in github-flow mode, enforces 6 sequential gates before routing to next PLAN: PR exists → CI passing → reviews approved → PR merged → base synced → branch cleaned. CI failure is blocking with no escape hatch.
+
+**Lifecycle Awareness (init/resume/pause):** Init offers GitHub Flow as a first-class option with `gh` CLI validation. Resume surfaces git/PR/CI state and routes next action based on git state (e.g., "fix CI" if CI failing). Pause captures git/PR continuity data in handoff.
 **Reading config in workflows:**
 ```bash
-jq -r '.git.remote // empty' pals.json 2>/dev/null
-jq -r '.git.auto_pr // false' pals.json 2>/dev/null
+GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
+# 3-tier fallback if workflow field absent:
+if [ -z "$GIT_WORKFLOW" ]; then
+  BRANCHING=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
+  [ -n "$BRANCHING" ] && GIT_WORKFLOW="legacy" || GIT_WORKFLOW="none"
+fi
 ```
 </configuration>
 

@@ -19,7 +19,7 @@
 ### /carl (Session Boundary Manager)
 - **Scope:** Autonomous context-aware session transitions at phase boundaries and mid-phase safety valve
 - **Mechanism:** Pi extension events (agent_end for phase detection, turn_end for safety monitoring)
-- **Configuration:** pals.json carl section (session_strategy, continue_threshold, safety_ceiling)
+- **Configuration:** pals.json carl section (session_strategy, continue_threshold / continue_threshold_tokens, safety_ceiling / safety_ceiling_tokens)
 
 ### TODD (Test-Driven Development)
 - **Scope:** TDD enforcement during APPLY phase — tests before implementation

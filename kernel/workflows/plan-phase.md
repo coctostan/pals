@@ -193,8 +193,8 @@ Required skills will BLOCK apply-phase until confirmed loaded.
      ✗ ~/.claude/hooks/carl-hook.py
      ✗ ~/.carl/manifest
      ✓ drivers/pi/extensions/pals-hooks.ts
-     ✓ modules/carl/hooks/carl-hook.py
-     ✓ modules/carl/config/manifest
+     ✓ modules/todd/references/tdd.md
+     ✓ modules/walt/references/quality-runner.md
    - If the work affects an installed runtime file, the plan MUST:
      (a) Target the repo source copy in <files>
      (b) Include a deploy/install step (e.g., `bash drivers/pi/install.sh`) as a subsequent action
