@@ -27,9 +27,31 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.16 Module Dispatch Validation
-Status: ✅ Complete
-Completed: 2026-03-24
+### v2.17 Module Dispatch Refinement & Multi-Model Audit
+Status: 🚧 In Progress
+Completed: -
+
+Theme: Fix blocking-suppresses-advisory, harden weak modules, compare module behavior across models.
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|----------|
+| 103 | Fix Blocking-Suppresses-Advisory | TBD | Not started | - |
+| 104 | SKIP Hardening + DEAN Adversarial | TBD | Not started | - |
+| 105 | Multi-Model Module Comparison | TBD | Not started | - |
+
+## Completed Milestones
+<details>
+<summary>v2.16 Module Dispatch Validation - 2026-03-24 (3 phases)</summary>
+
+Theme: Prove that PALS modules actually dispatch and contribute value.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 100 | Module E2E Test | 2 | 2026-03-24 |
+| 101 | Blocking Module Audit | 1 | 2026-03-24 |
+| 102 | Advisory Module Audit | 1 | 2026-03-24 |
+
+</details>
 
 Theme: Prove that PALS modules actually dispatch and contribute value when driving a real project through Pi, now that the kernel/ path fix is deployed.
 
