@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-19)
 **Current focus:** v2.13 GitHub Flow Hardening — close correctness gaps in branch handling, staging, routing, validation, status, and config clarity.
 ## Current Position
 Milestone: v2.13 GitHub Flow Hardening
-Phase: 91 of 91 (Verification & Docs)
-Plan: 91-01 APPLY complete
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-23T22:25:00-0400 — APPLY 91-01 complete (3 tasks, all PASS)
+Phase: 91 of 91 (Verification & Docs) — COMPLETE
+Plan: 91-01 UNIFY complete
+Status: Phase complete, ready for transition
+Last activity: 2026-03-23T22:35:00-0400 — UNIFY 91-01 complete (all AC PASS)
 Progress:
-- v2.13 GitHub Flow Hardening: [███████░░░] 75%
-- Phase 91: [█████████░] 90%
+- v2.13 GitHub Flow Hardening: [█████████░] 90%
+- Phase 91: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — phase done, transition required]
 ```
 
 ## Accumulated Context
@@ -133,15 +133,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/v2.13-github-flow-hardening
-Last commit: d113f4a (Phase 90 APPLY)
+Last commit: 1cc15c5 (Phase 91 APPLY)
 ## Session Continuity
-Last session: 2026-03-23T22:25:00-0400
-Stopped at: APPLY 91-01 complete
-Next action: Run /paul:unify
-Resume file: .paul/phases/91-verification-docs/91-01-PLAN.md
+Last session: 2026-03-23T22:35:00-0400
+Stopped at: UNIFY 91-01 complete
+Next action: Execute transition (Phase 91 is last phase of v2.13)
+Resume file: .paul/phases/91-verification-docs/91-01-SUMMARY.md
 Git strategy: feature-per-phase
 Resume context:
-- Task 1: Create VERIFICATION.md proving all 6 hardening issues resolved
-- Task 2: Update git-strategy.md with v2.13 hardening pass details and status parity
-- Task 3: Update README.md git workflow section with hardening note
+- Phase 91 UNIFY complete — all 4 AC PASS, 0 deviations
+- Transition required: last phase of v2.13 GitHub Flow Hardening
+- After transition: milestone completion
 *STATE.md — Updated after every significant action*
