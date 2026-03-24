@@ -27,17 +27,32 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.14 GitHub Flow Validation
-Status: ✅ Complete
-Completed: 2026-03-24
+### v2.15 PALS End-to-End Validation via Pi
+Status: 🚧 In Progress
+Completed: -
+
+Theme: Build a real Pi extension (pi-verify) by driving PALS through Pi in a cmux-controlled pane — exercising every major workflow and recording gaps.
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|----------|
+| 95 | Test Infrastructure | TBD | Not started | - |
+| 96 | Init & First Loop | TBD | Not started | - |
+| 97 | Second Loop & Lifecycle | TBD | Not started | - |
+| 98 | Fix Loop & GH Flow | TBD | Not started | - |
+| 99 | Gap Report & Finalization | TBD | Not started | - |
+
+## Completed Milestones
+<details>
+<summary>v2.14 GitHub Flow Validation - 2026-03-24 (3 phases)</summary>
 
 Theme: Prove the v2.12/v2.13 GitHub Flow implementation works in real use on both a lean test project and the full pals repo.
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|----------|
-| 92 | Isolated Validation (gh-flow-test) | 1/1 | ✅ Complete | 2026-03-24 |
-| 93 | Live Validation (pals) | 1/1 | ✅ Complete | 2026-03-24 |
-| 94 | Fixes & Hardening | 1/1 | ✅ Complete | 2026-03-24 |
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 92 | Isolated Validation (gh-flow-test) | 1/1 | 2026-03-24 |
+| 93 | Live Validation (pals) | 1/1 | 2026-03-24 |
+| 94 | Fixes & Hardening | 1/1 | 2026-03-24 |
+
+</details>
 ## Completed Milestones
 <details>
 <summary>v2.13 GitHub Flow Hardening - 2026-03-23 (4 phases)</summary>
