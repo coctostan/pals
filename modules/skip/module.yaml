@@ -13,12 +13,24 @@ dependencies:
 hooks:
   post-apply:
     priority: 300
-    description: Scan STATE.md Decisions table and task outputs for new decisions; suggest /paul:knowledge entries
+    description: >-
+      Scan STATE.md Decisions table and task outputs for new decisions.
+      For each decision found, format it as a structured Decision Record using
+      knowledge-capture.md templates. Include: date, title, type
+      (decision/rationale/trade-off/constraint/lesson), phase, context, decision
+      text, alternatives considered, rationale, and impact. Output the formatted
+      entry ready for /paul:knowledge — not just 'decision found'.
     refs:
       - references/knowledge-capture.md
   post-unify:
     priority: 200
-    description: Extract decisions and rationale from SUMMARY.md; create knowledge entry suggestions with type classification
+    description: >-
+      Extract decisions and rationale from SUMMARY.md. For each, produce a
+      formatted knowledge entry using the appropriate template from
+      knowledge-capture.md (Decision Record, Rationale Note, Trade-off Analysis,
+      Constraint, or Lesson Learned). Include all required fields: date, title,
+      type, phase, content. Output structured entries with context and rationale,
+      not just 'decision found' or 'knowledge extracted'.
     refs:
       - references/knowledge-capture.md
       - references/knowledge-search.md

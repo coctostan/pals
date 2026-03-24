@@ -13,12 +13,22 @@ dependencies:
 hooks:
   pre-plan:
     priority: 200
-    description: Scan for project docs (README, CHANGELOG, API docs, config docs); inject doc_warnings with stale/missing doc counts into plan context
+    description: >-
+      Scan for project docs using expanded catalog: README.md, CHANGELOG.md,
+      CONTRIBUTING.md, docs/ directory, API.md, any *.md in project root. Build
+      proximity map: for each source file in files_modified, check if a
+      corresponding doc exists (e.g., src/verify.ts → docs/verify.md). Inject
+      doc_warnings with: missing docs count, stale docs count, proximity gaps.
     refs:
       - references/doc-detection.md
   post-apply:
     priority: 250
-    description: Compare files_changed against doc catalog; warn if code changed but nearby docs not updated; surface drift warnings
+    description: >-
+      Compare files_changed against expanded doc catalog. For each changed source
+      file check: 1) Was README.md updated? 2) Was CHANGELOG.md updated? 3) If
+      docs/ exists, was the corresponding doc updated? 4) Proximity: if src/X.ts
+      changed, did docs/X.md change? Surface specific drift warnings with file
+      pairs: 'src/verify.ts changed but docs/verify.md was not updated'.
     refs:
       - references/doc-drift.md
 
