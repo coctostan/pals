@@ -15,20 +15,26 @@ hooks:
     priority: 200
     description: >-
       Scan for project docs using expanded catalog: README.md, CHANGELOG.md,
-      CONTRIBUTING.md, docs/ directory, API.md, any *.md in project root. Build
-      proximity map: for each source file in files_modified, check if a
-      corresponding doc exists (e.g., src/verify.ts → docs/verify.md). Inject
-      doc_warnings with: missing docs count, stale docs count, proximity gaps.
+      CONTRIBUTING.md, API.md, ARCHITECTURE.md, docs/ directory, any *.md in
+      project root and package roots. Build proximity map: for each source file
+      in files_modified, find the nearest related doc (e.g., src/verify.ts →
+      docs/verify.md, src/auth/* → docs/auth.md). Run: find . -maxdepth 3 -name
+      '*.md' -not -path './.paul/*' to build catalog. Inject doc_warnings with:
+      total docs found, files_modified with no nearby doc, stale doc candidates.
     refs:
       - references/doc-detection.md
   post-apply:
     priority: 250
     description: >-
-      Compare files_changed against expanded doc catalog. For each changed source
-      file check: 1) Was README.md updated? 2) Was CHANGELOG.md updated? 3) If
-      docs/ exists, was the corresponding doc updated? 4) Proximity: if src/X.ts
-      changed, did docs/X.md change? Surface specific drift warnings with file
-      pairs: 'src/verify.ts changed but docs/verify.md was not updated'.
+      Compare files_changed against doc catalog from pre-plan. For EACH changed
+      source file: 1) Check README.md — if any src/ file changed and README not
+      in files_changed, flag 'README.md: NOT UPDATED — DRIFT'. 2) Check
+      CHANGELOG.md — if any functional file changed and CHANGELOG not updated,
+      flag 'CHANGELOG.md: NOT UPDATED — DRIFT'. 3) Check API.md/openapi.yaml —
+      if route/endpoint files changed. 4) Proximity: if src/X.ts changed, check
+      docs/X.md. Output a per-file drift table: '| File Changed | Related Doc |
+      Status |' with UPDATED/DRIFT/NO DOC for each pair. Count: 'Files modified:
+      N, Docs updated: M, Drift warnings: K'.
     refs:
       - references/doc-drift.md
 
