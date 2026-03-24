@@ -31,6 +31,40 @@ Completed milestone log for this project.
 | **v2.11 Pi CARL Session Boundary Manager** | 2026-03-19 | <1 day | 3 phases, 4 plans |
 | **v2.12 GitHub Flow Enforcement** | 2026-03-23 | <1 day | 4 phases, 4 plans |
 | **v2.13 GitHub Flow Hardening** | 2026-03-23 | <1 day | 4 phases, 4 plans |
+| **v2.14 GitHub Flow Validation** | 2026-03-24 | <1 day | 3 phases, 3 plans |
+
+---
+
+## ✅ v2.14 GitHub Flow Validation
+
+**Completed:** 2026-03-24
+**Duration:** <1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 92-94) |
+| Plans | 3 |
+| PRs merged | 3 (#20, #21, #22) |
+| Files changed | 2 kernel/driver source files + validation artifacts |
+
+### Key Accomplishments
+- Validated all 9 GitHub Flow operations end-to-end on isolated test repo (gh-flow-test)
+- Exercised full GitHub Flow lifecycle on pals repo: 3 feature branches, 3 PRs, 3 squash merges, 3 merge gates passed
+- Audited 7 workflow files for git awareness: 6/7 had full coverage, found 1 gap
+- Fixed status workflow (roadmap-management.md) — added show-status operation with git-aware display and routing
+- Confirmed module dispatch (8 modules) fully compatible with github-flow mode
+- Verified pause/resume git continuity: all 7 state fields captured and restored
+- Created pals.json with github-flow config for pals repo (first time)
+- Created gh-flow-test repo at coctostan/gh-flow-test for isolated validation
+
+### Issues Found & Fixed
+| Issue | Severity | Resolution |
+|-------|----------|------------|
+| pals.json placed in .paul/ instead of project root | Medium | Moved to root (workflows use `jq ... pals.json`) |
+| roadmap-management.md had zero GitHub Flow awareness | Medium | Added show-status operation with full git-aware display |
+| v2.13 Phase 90 claimed status parity but source had no git refs | Low | Fixed and documented |
 
 ---
 
