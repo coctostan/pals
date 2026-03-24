@@ -13,12 +13,24 @@ dependencies:
 hooks:
   pre-plan:
     priority: 200
-    description: Check files_modified for CI/CD config patterns (.github/workflows, Dockerfile, etc.); inject deploy_warning if found
+    description: >-
+      Check files_modified for CI/CD config patterns (.github/workflows,
+      Dockerfile, etc.); inject deploy_warning if found. If NO CI config exists
+      anywhere in the project, suggest: 'No CI detected. DAVE can generate a
+      GitHub Actions workflow from pipeline-generation.md templates. Consider
+      adding .github/workflows/ci.yml to the plan scope.'
     refs:
       - references/pipeline-generation.md
   post-apply:
     priority: 175
-    description: If pipeline configs were modified, validate YAML/Dockerfile syntax; block on parse errors
+    description: >-
+      If CI config files were modified (.github/workflows/*.yml, .gitlab-ci.yml,
+      Dockerfile): 1) Validate YAML syntax by running
+      node -e "require('yaml').parse(require('fs').readFileSync('{file}','utf8'))"
+      or yq — if parse error, report with line number. 2) Check for common CI
+      mistakes: missing runs-on, missing actions/checkout step, no test step, no
+      cache step. 3) If Dockerfile modified: check FROM tag is pinned (not
+      :latest). Block on YAML parse errors. Warn on missing best practices.
     refs:
       - references/deploy-verification.md
 

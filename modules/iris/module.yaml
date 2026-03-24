@@ -18,7 +18,18 @@ hooks:
       - references/review-patterns.md
   post-apply:
     priority: 250
-    description: Run all 25 review patterns against changed files; report findings as annotations with severity
+    description: >-
+      Run code review patterns against changed files using real tools where
+      available. For TypeScript/JavaScript projects: run
+      npx eslint --no-eslintrc --rule 'complexity: [warn, 10]'
+      --rule 'no-unused-vars: warn' --rule 'no-eval: error'
+      --format json {changed_files} to get real complexity and security findings.
+      Parse ESLint JSON output: extract rule violations with file, line, column,
+      message. For hardcoded secrets: grep for patterns (sk-live, api_key=,
+      password=, AWS_SECRET). Report: code smells (complexity, unused vars),
+      security (eval, hardcoded secrets), with file:line references and measured
+      values. Share ESLint invocation with RUBY — run once, split results by
+      concern (IRIS takes code smells + security, RUBY takes complexity metrics).
     refs:
       - references/review-patterns.md
       - references/inspection-checklists.md

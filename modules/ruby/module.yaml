@@ -13,12 +13,26 @@ dependencies:
 hooks:
   pre-plan:
     priority: 250
-    description: Check files_modified against debt detection heuristics; inject debt_flags with file paths and debt types
+    description: >-
+      Check files_modified against debt detection heuristics. For
+      TypeScript/JavaScript projects, note that post-unify will use ESLint
+      complexity analysis (shared with IRIS). Inject debt_flags with file paths
+      and preliminary debt indicators (file line counts via wc -l as quick
+      pre-screen).
     refs:
       - references/debt-detection.md
   post-unify:
     priority: 300
-    description: Scan SUMMARY.md or FIX-SUMMARY.md files_modified for new debt patterns; return a durable post-unify report with refactor suggestions
+    description: >-
+      Scan changed files for debt patterns using ESLint output (shared from
+      IRIS post-apply run, or run independently if IRIS didn't run):
+      npx eslint --no-eslintrc --rule 'complexity: [warn, 10]' --format json
+      {changed_files}. Parse complexity rule violations: report ACTUAL cyclomatic
+      complexity per function (not estimates). Thresholds: >10 acceptable, >20
+      warning, >30 critical. Report file-level metrics: lines per file (>300
+      warning, >500 critical). Suggest specific refactoring: 'Extract function X
+      (complexity: 14) into smaller units.' Fall back to wc -l and grep only
+      when ESLint is not available.
     refs:
       - references/refactor-patterns.md
 
