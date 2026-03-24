@@ -1,12 +1,13 @@
 <purpose>
-Handle dynamic roadmap modifications: adding phases to the current milestone and removing future phases. These are the "escape hatches" when scope changes mid-milestone.
-
+Handle roadmap operations: showing project status with git-aware routing, adding phases to the current milestone, and removing future phases.
 **Operations:**
+- **show-status:** Display project dashboard with git-aware routing (used by /paul:status)
 - **add-phase:** Append a new phase to the current milestone
 - **remove-phase:** Remove a future (not-started) phase
 </purpose>
 
 <when_to_use>
+- User requests project status (/paul:status)
 - User realizes more phases are needed mid-milestone
 - Scope changed and a planned phase is no longer needed
 - Emergency phase insertion (use decimal phases for interruptions)
@@ -26,6 +27,127 @@ Can be invoked at any time during a milestone.
 <references>
 @src/templates/ROADMAP.md (phase section format)
 </references>
+
+---
+
+## Operation: show-status
+
+<process>
+
+<step name="read_state">
+1. Read `.paul/STATE.md` for:
+   - Current milestone, phase, plan
+   - Loop position (PLAN/APPLY/UNIFY markers)
+   - Last activity timestamp
+   - Progress percentages
+2. Read `.paul/ROADMAP.md` for:
+   - Milestone theme and phase table
+   - Phase completion counts
+</step>
+
+<step name="check_git_state">
+**Surface git/PR state for github-flow projects.**
+
+1. Read pals.json and resolve GIT_WORKFLOW using 3-tier resolution:
+   ```
+   if git.workflow exists → use it
+   else if git.branching exists → "legacy"
+   else → "none"
+   ```
+
+2. **If GIT_WORKFLOW = "github-flow":**
+   a. Detect current branch:
+      ```bash
+      git branch --show-current
+      ```
+   b. Read GIT_BASE_BRANCH from pals.json `git.base_branch` (default: "main")
+   c. Check ahead/behind base:
+      ```bash
+      git fetch origin {GIT_BASE_BRANCH} --quiet 2>/dev/null
+      git rev-list --left-right --count origin/{GIT_BASE_BRANCH}...HEAD 2>/dev/null
+      ```
+      Parse output: first number = BEHIND_COUNT, second = AHEAD_COUNT
+   d. Check for open PR:
+      ```bash
+      gh pr view --json url,state,statusCheckRollup 2>/dev/null
+      ```
+   e. If PR exists, extract:
+      - PR_URL from `url`
+      - PR_STATE from `state` (OPEN, MERGED, CLOSED)
+      - CI_STATE from `statusCheckRollup`: all SUCCESS → "passing", any FAILURE → "failing", else → "pending"
+   f. If no PR exists: PR_URL = "none", PR_STATE = "N/A", CI_STATE = "N/A"
+   g. Store: CURRENT_BRANCH, GIT_BASE_BRANCH, PR_URL, PR_STATE, CI_STATE, AHEAD_COUNT, BEHIND_COUNT
+
+3. **If GIT_WORKFLOW != "github-flow":** skip entirely (no git state surfacing)
+</step>
+
+<step name="determine_next_action">
+**Git-aware routing (github-flow only):**
+If GIT_WORKFLOW = "github-flow" AND git state was collected:
+
+| Git State | Override Next Action |
+|-----------|---------------------|
+| BEHIND_COUNT > 0 (branch behind base) | "Update branch from base: `git fetch origin {GIT_BASE_BRANCH} && git rebase origin/{GIT_BASE_BRANCH}` then re-push and recheck CI" |
+| PR open + CI failing | "Fix CI failures, then merge PR" |
+| PR open + CI passing + reviews pending (if `require_reviews: true`) | "Get PR reviewed" |
+| PR open + CI passing + ready to merge | "Merge PR: `gh pr merge`" |
+| No PR + loop complete (all ✓) | Normal routing (next PLAN will create branch) |
+
+Note: BEHIND_COUNT > 0 fires even if the PR is ready to merge. Merging a behind-base
+branch risks post-merge CI failures. Always update from base first.
+
+If no git override applies, fall through to the loop-position routing below.
+
+**Loop-position routing:**
+Based on loop position, determine **exactly ONE** next action:
+
+| Loop State | Next Action |
+|------------|-------------------|
+| PLAN ○ (no plan yet) | `/paul:plan` |
+| PLAN ✓, APPLY ○ (plan awaiting approval) | `/paul:apply [plan-path]` |
+| PLAN ✓, APPLY ✓, UNIFY ○ (executed, not reconciled) | `/paul:unify [plan-path]` |
+| All ✓ (loop complete) | `/paul:plan` (next phase) |
+| Blocked | "Address blocker: [specific issue]" |
+</step>
+
+<step name="display_status">
+Display to user with ONE next action:
+```
+════════════════════════════════════════
+PAUL PROJECT STATUS
+════════════════════════════════════════
+Project: [from PROJECT.md or STATE.md]
+Milestone: [name] ([X]% complete)
+Phase: [N] of [M] - [Phase Name]
+Plan: [NN-PP] - [status]
+┌─────────────────────────────────────┐
+│  PLAN ──▶ APPLY ──▶ UNIFY          │
+│   [✓/○]    [✓/○]    [✓/○]          │
+└─────────────────────────────────────┘
+
+{If GIT_WORKFLOW = "github-flow":}
+Git State:
+┌─────────────────────────────────────┐
+│  Branch: {CURRENT_BRANCH}           │
+│  Base:   {GIT_BASE_BRANCH}          │
+│  PR:     {PR_URL} ({PR_STATE})      │
+│  CI:     {CI_STATE}                 │
+│  Sync:   {BEHIND_COUNT} behind / {AHEAD_COUNT} ahead │
+└─────────────────────────────────────┘
+Last Activity: [timestamp]
+────────────────────────────────────────
+▶ NEXT: [single command with path]
+  [brief description of what it does]
+────────────────────────────────────────
+```
+
+**Note:** If GIT_WORKFLOW is not "github-flow", omit the entire Git State block.
+If no PR exists, show "PR: none (N/A)" instead.
+**IMPORTANT:** Do NOT show numbered options (1, 2, 3, 4).
+Show exactly ONE suggested action with the standard PAUL routing format.
+</step>
+
+</process>
 
 ---
 
