@@ -14,23 +14,39 @@ hooks:
   pre-plan:
     priority: 200
     description: >-
-      Check files_modified for CI/CD config patterns (.github/workflows,
-      Dockerfile, etc.); inject deploy_warning if found. If NO CI config exists
-      anywhere in the project, suggest: 'No CI detected. DAVE can generate a
-      GitHub Actions workflow from pipeline-generation.md templates. Consider
-      adding .github/workflows/ci.yml to the plan scope.'
+      Discover CI/CD config files by running: find . -maxdepth 4 -name '*.yml'
+      -path '*/.github/workflows/*' -o -name '.gitlab-ci.yml' -o -name
+      'Dockerfile' -o -name 'docker-compose.yml' -o -name 'Jenkinsfile' 2>/dev/null.
+      Output a CI inventory table: '| File | Platform | Status |' listing each
+      config found (e.g., '.github/workflows/ci.yml | GitHub Actions | found').
+      If NO CI config found anywhere: suggest generating one — detect project
+      type from lock files (package.json=Node.js, go.mod=Go, Cargo.toml=Rust,
+      requirements.txt=Python) and suggest: 'No CI detected. Add
+      .github/workflows/ci.yml using the {type}-ci template from
+      pipeline-generation.md.' If CI found: check coverage_gaps — does it have
+      build, test, lint steps? Warn if any missing. Inject deploy_context with:
+      ci_files list, platforms, coverage_gaps.
     refs:
       - references/pipeline-generation.md
   post-apply:
     priority: 175
     description: >-
-      If CI config files were modified (.github/workflows/*.yml, .gitlab-ci.yml,
-      Dockerfile): 1) Validate YAML syntax by running
-      node -e "require('yaml').parse(require('fs').readFileSync('{file}','utf8'))"
-      or yq — if parse error, report with line number. 2) Check for common CI
-      mistakes: missing runs-on, missing actions/checkout step, no test step, no
-      cache step. 3) If Dockerfile modified: check FROM tag is pinned (not
-      :latest). Block on YAML parse errors. Warn on missing best practices.
+      For EACH modified CI config file in files_changed: 1) Validate YAML syntax
+      by running: cat {file} | python3 -c "import sys,yaml;
+      yaml.safe_load(sys.stdin)" 2>&1 — if error, capture line number and
+      message. Alternative: yq '.' {file} 2>&1. 2) For GitHub Actions files:
+      grep for required keys — 'runs-on:' must exist, 'uses: actions/checkout'
+      should exist, at least one 'run:' step with test or lint. Report missing
+      keys with file path. 3) For Dockerfile: grep '^FROM' lines and check tag
+      pinning — WARN if ':latest' or bare image (no tag). Recommend pinned tags.
+      4) Output a validation table: '| File | Check | Result |' with PASS/FAIL/
+      WARN per check (e.g., '| ci.yml | YAML syntax | PASS |', '| ci.yml |
+      runs-on present | PASS |', '| Dockerfile | FROM pinned | WARN: using
+      :latest |'). BLOCK on any YAML parse error — display: 'DAVE BLOCK: {file}
+      has YAML syntax error at line {N}: {message}. Fix before proceeding.' WARN
+      on missing best practices (no test step, unpinned FROM, no cache step). If
+      no CI files in files_changed: output 'No CI config files in changed set —
+      skipping DAVE post-apply.' and skip gracefully.
     refs:
       - references/deploy-verification.md
 
