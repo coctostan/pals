@@ -36,8 +36,8 @@ Theme: Prove that PALS modules actually dispatch and contribute value when drivi
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 100 | Module E2E Test | TBD | Not started | - |
-| 101 | Module Analysis & Fixes | TBD | Not started | - |
-| 102 | Updated Report | TBD | Not started | - |
+| 101 | Blocking Module Audit | TBD | Not started | - |
+| 102 | Advisory Module Audit | TBD | Not started | - |
 
 ## Completed Milestones
 <details>
