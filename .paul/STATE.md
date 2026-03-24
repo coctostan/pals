@@ -4,7 +4,7 @@
 
 See: .paul/PROJECT.md (updated 2026-03-23)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Module Dispatch Refinement & Multi-Model Audit
+**Current focus:** Module Hardening
 
 ## Current Position
 Milestone: v2.16 Module Dispatch Validation
