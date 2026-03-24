@@ -258,20 +258,14 @@ references/module-dispatch.md
 </step>
 
 <step name="pre_apply_hooks" priority="before-tasks">
-**Dispatch pre-apply lifecycle hooks to registered modules.**
+**Dispatch pre-apply baseline hooks. These record baselines for post-apply comparison.**
 1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
-2. Resolve installed modules for `pre-apply` by finding `installed_modules.*.hook_details.pre-apply`
-3. Sort by `hook_details.pre-apply.priority` ascending (lower runs first)
-4. For each registered module:
-   a. Load only the hook-specific `refs` listed in `hook_details.pre-apply.refs`
-   b. Follow the hook description from `hook_details.pre-apply.description`
-   c. Collect `context_inject` data (e.g., test baselines, enforcement flags)
-   d. If module returns `action: block` — record it but DO NOT stop. Continue to next module.
-5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `pre-apply`: proceed (no-op, no warning)
-7. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → N inject keys | skip | block} | ...`
-8. After ALL modules have run: if any returned `action: block`, surface the blocking reason(s) and offer fix/override/stop. Display all advisory output first so the user sees the full picture.
-9. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
+2. Resolve installed modules for `pre-apply`:
+   - TODD (p50): verify test files exist, record test baseline
+   - WALT (p100): run test suite, record baseline counts (total/passing/failing)
+3. For each: load refs, follow description, collect `context_inject` (baselines)
+4. If module returns `action: block` (e.g., TODD finds no test files): surface reason, offer fix/override/stop
+5. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → baseline recorded | BLOCK(reason)} | ...`
 </step>
 
 <step name="execute_tasks">
@@ -319,19 +313,18 @@ For each <task> in order:
      Actual: [what happened]
      Continue? [yes/adjust plan/stop]
      ```
-6. **Dispatch post-task hooks:**
+6. **Dispatch post-task enforcement hooks:**
    a. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
-   b. Resolve installed modules for `post-task` by finding `installed_modules.*.hook_details.post-task`
-   c. Sort by `hook_details.post-task.priority` ascending (lower runs first)
-   d. For each registered module:
-      - Load only the hook-specific `refs` listed in `hook_details.post-task.refs`
-      - Follow the hook description from `hook_details.post-task.description`
+   b. Resolve installed modules for `post-task` (currently: TODD at p100)
+   c. For each registered module:
+      - Load hook-specific `refs`
+      - Follow hook description (e.g., run test suite, compare against baseline)
       - Pass task name, task result, and `context_inject` from pre-apply
-      - If module returns `action: block` — record it but DO NOT stop. Continue to next module.
-   e. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-   f. If no modules registered for `post-task`: proceed (no-op)
-   g. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → outcome} | ...`
-   h. After ALL post-task modules have run: if any returned `action: block`, display all advisory annotations first, THEN surface blocking reason(s) and offer fix/override/stop.
+   d. If module returns `action: block`:
+      - Surface the reason to the user
+      - Offer: fix the issue / skip this task / stop APPLY
+   e. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → PASS | BLOCK(reason)} | ...`
+   f. Note: post-task has no advisory modules — only TODD enforcement. Advisory output comes at post-apply.
 
 **If type="checkpoint:human-verify":**
 1. Stop execution
@@ -406,23 +399,41 @@ For each <task> in order:
 5. Continue if verified, report if failed
 </step>
 
-<step name="post_apply_hooks" priority="after-tasks">
-**Dispatch post-apply lifecycle hooks to registered modules.**
+<step name="advisory_module_dispatch" priority="after-tasks">
+**Dispatch advisory (non-blocking) post-apply modules. This step runs BEFORE enforcement so advisory output is ALWAYS visible.**
 1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
-2. Resolve installed modules for `post-apply` by finding `installed_modules.*.hook_details.post-apply`
-3. Sort by `hook_details.post-apply.priority` ascending (lower runs first)
-4. For each registered module:
-   a. Load only the hook-specific `refs` listed in `hook_details.post-apply.refs`
-   b. Follow the hook description from `hook_details.post-apply.description`
-   c. Pass `context_inject` data accumulated from pre-apply hooks (e.g., baselines)
-   d. Collect `annotations` (e.g., quality gate results, refactor suggestions)
-   e. If module returns `action: block` — record it but DO NOT stop. Continue to next module.
-5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `post-apply`: proceed (no-op, no warning)
-7. After ALL modules have run, output the complete dispatch log: `[dispatch] post-apply: {MODULE(priority) → N annotations | skip | block} | ...`
-8. Display ALL advisory annotations (code smells, debt, doc drift, knowledge suggestions) so the user sees the full picture.
-9. THEN if any module returned `action: block`: surface the blocking reason(s) with fix/override/stop options. The user now has full context from advisory modules before deciding how to handle the block.
-10. Store accumulated `annotations` for inclusion in finalize step
+2. Resolve installed modules for `post-apply` whose hook description does NOT contain "block" — these are advisory-only modules:
+   - IRIS (review patterns, p250)
+   - DOCS (doc drift detection, p250)
+   - RUBY (debt detection, p300)
+   - SKIP (knowledge extraction, p300)
+3. Sort by priority ascending, run each:
+   a. Load hook-specific `refs`
+   b. Follow hook description
+   c. Pass `context_inject` from pre-apply
+   d. Collect `annotations` (code smells, security flags, debt reports, doc drift, knowledge suggestions)
+4. Output dispatch log: `[dispatch] post-apply advisory: {MODULE(priority) → N annotations | skip} | ...`
+5. Display ALL advisory annotations to the user.
+6. This step NEVER blocks — advisory modules inform, they do not gate.
+</step>
+<step name="enforcement_module_dispatch" priority="after-advisory">
+**Dispatch enforcement (blocking) post-apply modules. Advisory output is already visible above.**
+1. Read `modules.yaml` if not already loaded
+2. Resolve installed modules for `post-apply` whose hook description contains "block" — these are enforcement modules:
+   - WALT (quality gate: tests + lint + typecheck vs baseline, p100)
+   - DEAN (dependency audit vs baseline, p150)
+   - TODD (full test suite + refactor candidates, p200)
+3. Sort by priority ascending, run each:
+   a. Load hook-specific `refs`
+   b. Follow hook description
+   c. Pass `context_inject` and baselines from pre-apply
+   d. Collect result: PASS or BLOCK with reason
+4. Output dispatch log: `[dispatch] post-apply enforcement: {MODULE(priority) → PASS | BLOCK(reason)} | ...`
+5. If any module returned `action: block`:
+   - The user already has full advisory context from the step above
+   - Surface blocking reason(s) with fix/override/stop options
+6. If all enforcement modules pass: proceed to finalize
+7. Store accumulated `annotations` from both steps for inclusion in finalize step
 </step>
 
 <step name="handle_failures">

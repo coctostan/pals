@@ -81,21 +81,27 @@ templates/PLAN.md
 7. Store `collaboration_level`, `planning_mode`, and any carried `review_preference` for later review routing.
 </step>
 
-<step name="pre_plan_hooks" priority="before-scope-analysis">
-**Dispatch pre-plan lifecycle hooks to registered modules.**
+<step name="pre_plan_advisory_hooks" priority="before-scope-analysis">
+**Dispatch advisory pre-plan hooks first — these inform the plan but never block.**
 1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
-2. Resolve installed modules for `pre-plan` by finding `installed_modules.*.hook_details.pre-plan`
-3. Sort by `hook_details.pre-plan.priority` ascending (lower runs first)
-4. For each registered module:
-   a. Load only the hook-specific `refs` listed in `hook_details.pre-plan.refs`
-   b. Follow the hook description from `hook_details.pre-plan.description`
-   c. Collect `context_inject` data (e.g., type suggestions, candidate files)
-   d. If module returns `action: block` — record it but DO NOT stop. Continue to next module.
-5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `pre-plan`: proceed (no-op, no warning)
-7. Output dispatch log: `[dispatch] pre-plan: {MODULE(priority) → N inject keys | skip | block} | ...`
-8. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
-9. After ALL modules have run: if any returned `action: block`, display all advisory output first, THEN surface blocking reason(s) and offer fix/override/stop.
+2. Resolve installed modules for `pre-plan` whose hook description does NOT contain "block":
+   - TODD (p100): scan for test files/frameworks, inject tdd_candidates
+   - IRIS (p150): scan files for anti-pattern signatures, inject review_flags
+   - DAVE (p200): check for CI/CD config patterns, inject deploy_warning
+   - DOCS (p200): scan for stale/missing docs, inject doc_warnings
+   - RUBY (p250): check files for tech debt heuristics, inject debt_flags
+3. For each: load refs, follow description, collect `context_inject`
+4. Output dispatch log: `[dispatch] pre-plan advisory: {MODULE(priority) → N inject keys | skip} | ...`
+5. Display all advisory findings to the user.
+</step>
+<step name="pre_plan_enforcement_hooks" priority="after-advisory-before-scope">
+**Dispatch enforcement pre-plan hooks — these can block plan creation.**
+1. Resolve installed modules for `pre-plan` whose hook description contains "block":
+   - DEAN (p50): run dependency audit, inject dep_warnings — block if critical
+2. For each: load refs, follow description, collect `context_inject`
+3. Output dispatch log: `[dispatch] pre-plan enforcement: {MODULE(priority) → N inject keys | BLOCK(reason)} | ...`
+4. If any block: surface with advisory context already visible, offer fix/override/stop
+5. Pass ALL accumulated `context_inject` (advisory + enforcement) to analyze_scope
 </step>
 
 <step name="analyze_scope">
