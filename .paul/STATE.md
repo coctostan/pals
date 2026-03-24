@@ -8,18 +8,19 @@ See: .paul/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 Milestone: v2.15 PALS End-to-End Validation via Pi
-Phase: 95 of 99 (Test Infrastructure) — UNIFY complete
-Plan: 95-01 complete
-Status: Loop complete, merge gate pending
-Last activity: 2026-03-24T12:00:00-0400 — SUMMARY created, merge gate pending
+Phase: 96 of 99 (Init & First Loop)
+Plan: Not started
+Status: Phase 95 complete — ready to plan Phase 96
+Last activity: 2026-03-24T12:05:00-0400 — Phase 95 complete, PR #23 merged
 Progress:
-- v2.15 PALS E2E Validation: [░░░░░░░░░░] 0%
+- v2.15 PALS E2E Validation: [██░░░░░░░░] 20%
+- Phase 96: [░░░░░░░░░░] 0%
 
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate pending]
+  ○        ○        ○     [Phase 95 complete — ready for Phase 96 PLAN]
 ```
 
 ## Accumulated Context
@@ -127,16 +128,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: 88edff8 (feat(v2.14): milestone complete)
-PR: none
+Last commit: 966bda0 (feat(95-test-infrastructure): test infrastructure setup (#23))
+PR: https://github.com/coctostan/pals/pull/23 (state: MERGED)
 ## Session Continuity
-Last session: 2026-03-24T11:30:00-0400
-Stopped at: Milestone v2.15 created, ready to plan
-Next action: /paul:plan for Phase 95
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-24T12:05:00-0400
+Stopped at: Phase 95 complete — transition done, merge gate passed
+Next action: /paul:plan for Phase 96 (Init & First Loop)
+Resume file: .paul/phases/95-test-infrastructure/95-01-SUMMARY.md
 Resume context:
-- v2.15 PALS E2E Validation via Pi: 5 phases (95-99)
-- Phase 95: Test Infrastructure (cmux pane, pi-verify project, GitHub repo)
-- pi-verify extension from ayagmar/pi-extension-template
-- cmux orchestration: send commands to Pi in split pane, read-screen to verify
+- Test pane: surface:23, pane:22, Pi running with Kimi for Coding (K2.5)
+- Directory: /Users/maxwellnewman/claude/pi-verify (empty, no git)
+- PALS loaded (11 skills + pals-hooks.ts), megapowers disabled
+- Widget activates after /paul-init creates .paul/STATE.md
+- Pi waiting at prompt, 0% context used
 *STATE.md — Updated after every significant action*
