@@ -34,7 +34,7 @@ Completed: -
 Theme: Build a real Pi extension (pi-verify) by driving PALS through Pi in a cmux-controlled pane — exercising every major workflow and recording gaps.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 95 | Test Infrastructure | TBD | Not started | - |
+| 95 | Test Infrastructure | 1/1 | Merging | - |
 | 96 | Init & First Loop | TBD | Not started | - |
 | 97 | Second Loop & Lifecycle | TBD | Not started | - |
 | 98 | Fix Loop & GH Flow | TBD | Not started | - |
