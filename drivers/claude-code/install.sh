@@ -150,39 +150,47 @@ def parse_module_yaml(filepath):
             path.pop()
             indents.pop()
 
-        if value in ('', '>', '|'):
-            # Check if next content is a list or nested map
+        is_block_scalar = value in ('>', '|', '>-', '|-')
+        if value == '' or is_block_scalar:
             j = i
             while j < len(lines) and not lines[j].strip():
                 j += 1
             if j < len(lines):
                 peek = lines[j].strip()
-                if peek.startswith('- '):
-                    # Starting a list
+                peek_indent = len(lines[j]) - len(lines[j].lstrip())
+                if is_block_scalar:
+                    # Block scalars (>, >-, |, |-) are ALWAYS text
+                    text_parts = []
+                    while j < len(lines):
+                        nl = lines[j].strip()
+                        ni = len(lines[j]) - len(lines[j].lstrip())
+                        if nl and ni <= indent:
+                            break
+                        if nl:
+                            text_parts.append(nl)
+                        j += 1
+                    _set_nested(result, path + [key], ' '.join(text_parts))
+                    i = j
+                elif peek.startswith('- '):
                     list_key = key
                     list_items = []
                     list_indent = indent
+                elif ':' in peek and peek_indent > indent:
+                    _set_nested(result, path + [key], {})
+                    path.append(key)
+                    indents.append(indent)
                 else:
-                    # Nested map or multiline string
-                    peek_indent = len(lines[j]) - len(lines[j].lstrip())
-                    if ':' in peek and peek_indent > indent:
-                        # Nested map
-                        _set_nested(result, path + [key], {})
-                        path.append(key)
-                        indents.append(indent)
-                    else:
-                        # Multiline string
-                        text_parts = []
-                        while j < len(lines):
-                            nl = lines[j].strip()
-                            ni = len(lines[j]) - len(lines[j].lstrip())
-                            if nl and ni <= indent:
-                                break
-                            if nl:
-                                text_parts.append(nl)
-                            j += 1
-                        _set_nested(result, path + [key], ' '.join(text_parts))
-                        i = j
+                    text_parts = []
+                    while j < len(lines):
+                        nl = lines[j].strip()
+                        ni = len(lines[j]) - len(lines[j].lstrip())
+                        if nl and ni <= indent:
+                            break
+                        if nl:
+                            text_parts.append(nl)
+                        j += 1
+                    _set_nested(result, path + [key], ' '.join(text_parts))
+                    i = j
             else:
                 _set_nested(result, path + [key], {})
         elif value == '[]':

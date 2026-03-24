@@ -14,23 +14,29 @@ hooks:
   post-apply:
     priority: 300
     description: >-
-      Scan STATE.md Decisions table and task outputs for new decisions.
-      For each decision found, format it as a structured Decision Record using
-      knowledge-capture.md templates. Include: date, title, type
-      (decision/rationale/trade-off/constraint/lesson), phase, context, decision
-      text, alternatives considered, rationale, and impact. Output the formatted
-      entry ready for /paul:knowledge — not just 'decision found'.
+      Scan STATE.md Decisions table and task outputs for new decisions. For EACH
+      decision found, output a COMPLETE Decision Record in this exact format:
+      '## [YYYY-MM-DD] [Decision title]' followed by 'Type: decision', 'Phase:
+      [N]', 'Context: [why this decision was needed]', 'Decision: [what was
+      chosen]', 'Alternatives considered: [list with rejection reasons]',
+      'Rationale: [why this option]', 'Impact: [what this affects]'. Read the
+      Decisions table from STATE.md with: grep '|' .paul/STATE.md to find rows.
+      Parse each row's Decision column. NEVER output just 'decision found' or
+      'decision extracted' — always output the full structured record.
     refs:
       - references/knowledge-capture.md
   post-unify:
     priority: 200
     description: >-
-      Extract decisions and rationale from SUMMARY.md. For each, produce a
-      formatted knowledge entry using the appropriate template from
-      knowledge-capture.md (Decision Record, Rationale Note, Trade-off Analysis,
-      Constraint, or Lesson Learned). Include all required fields: date, title,
-      type, phase, content. Output structured entries with context and rationale,
-      not just 'decision found' or 'knowledge extracted'.
+      Extract decisions and rationale from SUMMARY.md. For EACH item, produce
+      the COMPLETE knowledge entry using the matching template from
+      knowledge-capture.md. Decision Record: date, title, context, decision,
+      alternatives, rationale, impact. Rationale Note: date, title, explanation,
+      key factors. Trade-off Analysis: date, title, options matrix, chosen
+      option, reasoning. Lesson Learned: date, title, what happened, root cause,
+      lesson, action items. Read SUMMARY.md with: cat .paul/phases/*/SUMMARY.md
+      to find content. NEVER output just 'knowledge extracted' — always output
+      the full structured entry with all required fields populated.
     refs:
       - references/knowledge-capture.md
       - references/knowledge-search.md
