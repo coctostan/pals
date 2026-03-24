@@ -8,19 +8,19 @@ See: .paul/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 Milestone: v2.15 PALS End-to-End Validation via Pi
-Phase: 96 of 99 (Init & First Loop) — UNIFY complete
-Plan: 96-01 complete
-Status: Loop complete, merge gate pending
-Last activity: 2026-03-24T12:30:00-0400 — SUMMARY created
+Phase: 97 of 99 (Second Loop & Lifecycle)
+Plan: Not started
+Status: Phase 96 complete — ready to plan Phase 97
+Last activity: 2026-03-24T12:35:00-0400 — Phase 96 complete, PR #24 merged
 Progress:
-- v2.15 PALS E2E Validation: [██░░░░░░░░] 20%
-- Phase 96: [░░░░░░░░░░] 0%
+- v2.15 PALS E2E Validation: [████░░░░░░] 40%
+- Phase 97: [░░░░░░░░░░] 0%
 
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate pending]
+  ○        ○        ○     [Phase 96 complete — ready for Phase 97 PLAN]
 ```
 
 ## Accumulated Context
@@ -128,17 +128,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: 966bda0 (feat(95-test-infrastructure): test infrastructure setup (#23))
-PR: https://github.com/coctostan/pals/pull/23 (state: MERGED)
+Last commit: a8d8982 (feat(96-init-and-first-loop): PALS E2E validation (#24))
+PR: https://github.com/coctostan/pals/pull/24 (state: MERGED)
 ## Session Continuity
-Last session: 2026-03-24T12:05:00-0400
-Stopped at: Phase 95 complete — transition done, merge gate passed
-Next action: /paul:plan for Phase 96 (Init & First Loop)
-Resume file: .paul/phases/95-test-infrastructure/95-01-SUMMARY.md
+Last session: 2026-03-24T12:35:00-0400
+Stopped at: Phase 96 complete — full E2E loop passed
+Next action: /paul:plan for Phase 97 (Second Loop & Lifecycle)
+Resume file: .paul/phases/96-init-and-first-loop/96-01-SUMMARY.md
 Resume context:
-- Test pane: surface:23, pane:22, Pi running with Kimi for Coding (K2.5)
-- Directory: /Users/maxwellnewman/claude/pi-verify (empty, no git)
-- PALS loaded (11 skills + pals-hooks.ts), megapowers disabled
-- Widget activates after /paul-init creates .paul/STATE.md
-- Pi waiting at prompt, 0% context used
+- Test pane: surface:23, Pi at 36.3% context, pi-verify v0.1 complete
+- 52 test points: 50 PASS, 2 PASS_WITH_RETRY, 0 FAIL
+- 4 gaps documented (all Low/Medium)
+- Pi waiting at prompt: "What would you like to do next?"
+- Phase 97 tests: pause/resume, status, second loop
 *STATE.md — Updated after every significant action*
