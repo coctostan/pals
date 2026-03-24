@@ -605,11 +605,18 @@ Git section will be populated by the configure_git step (next).
 
 <step name="configure_git">
 **Ask about git/GH configuration:**
-**0. Detect `gh` CLI availability:**
+**0. Detect `gh` CLI availability and authentication:**
 ```bash
 gh --version 2>/dev/null
 ```
-- Store `gh_available = true/false` for later use
+- If command fails: `gh_available = false`, `gh_authenticated = false`
+- If command succeeds: `gh_available = true`, then check authentication:
+```bash
+gh auth status 2>/dev/null
+```
+- If auth check succeeds: `gh_authenticated = true`
+- If auth check fails: `gh_authenticated = false`
+- Store both `gh_available` and `gh_authenticated` for later use
 **1. Detect git repo:**
 ```bash
 git rev-parse --git-dir 2>/dev/null
@@ -655,8 +662,16 @@ Wait for user response.
   ```
   ⚠️  GitHub Flow requires the `gh` CLI for PR/CI operations.
   Install: https://cli.github.com/
+  [2] Choose a different workflow
+  ```
+  If "2": re-present Question 2
+- If `gh_available = true` but `gh_authenticated = false`:
+  ```
+  ⚠️  `gh` CLI is installed but not authenticated.
+  GitHub Flow requires authentication for PR creation, CI checks, and merging.
+  Run: `gh auth login`
 
-  [1] Continue anyway (enforcement features will be limited)
+  [1] Continue anyway (enforcement features will fail until authenticated)
   [2] Choose a different workflow
   ```
   If "2": re-present Question 2
@@ -724,7 +739,6 @@ Wait for CI checks before merge:     [yes/NO]
   "remote": "{git_remote}",
   "base_branch": "{git_base_branch}",
   "merge_method": "squash",
-  "branching": "feature-per-phase",
   "worktree_isolation": false,
   "auto_push": true,
   "auto_pr": true,

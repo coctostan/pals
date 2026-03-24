@@ -125,6 +125,10 @@ All validated — see below.
 - [x] GitHub Flow lifecycle awareness — init offers GitHub Flow as first-class option, resume surfaces git/PR/CI state with git-aware routing, pause captures git continuity in handoffs (Phase 86, v2.12)
 - [x] GitHub Flow enforcement — strict branch/PR/merge/CI gating with preflight, postflight, 6-gate merge gate, lifecycle awareness, and full documentation (Phases 84-87, v2.12)
 
+- [x] Branch & Staging Correctness — all GitHub Flow workflow steps use detected branch name, pause staging captures all repo changes (Phase 88, v2.13)
+- [x] Routing & Validation — behind-base routing priority in resume, gh auth validation in init (Phase 89, v2.13)
+- [x] Status Parity & Config Clarity — progress.md mirrors resume's git-aware routing/display, GitHub Flow init template no longer emits redundant `branching` (Phase 90, v2.13)
+- [x] Verification & Docs — cross-cutting verification artifact proving all 6 hardening issues resolved, git-strategy.md and README.md updated (Phase 91, v2.13)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -288,4 +292,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-23 after Phase 87 (Validation & Docs) complete — v2.12 milestone complete*
+*Last updated: 2026-03-23 after v2.13 GitHub Flow Hardening milestone complete*

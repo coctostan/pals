@@ -195,6 +195,8 @@ PALS can enforce GitHub Flow through the `git` section of `pals.json`:
 | `legacy` | Advisory git ops — feature-per-phase branching with optional push/PR/CI. Default for existing projects. |
 | `none` | No git operations (default for new projects without git config). |
 
+In GitHub Flow mode, both `/paul:progress` and `/paul:resume` surface live git state (branch, PR, CI, sync status) and route the next action based on git state priority — e.g., "fix CI" if checks are failing, "update branch" if behind base, "merge PR" when ready.
+
 GitHub Flow enforcement is configured during `/paul:init` or by editing `pals.json` directly. See `kernel/references/git-strategy.md` for full documentation.
 
 ## How It Works

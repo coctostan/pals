@@ -30,6 +30,43 @@ Completed milestone log for this project.
 | **v2.10 Workflow Integrity** | 2026-03-19 | <1 day | 1 phase, 1 plan |
 | **v2.11 Pi CARL Session Boundary Manager** | 2026-03-19 | <1 day | 3 phases, 4 plans |
 | **v2.12 GitHub Flow Enforcement** | 2026-03-23 | <1 day | 4 phases, 4 plans |
+| **v2.13 GitHub Flow Hardening** | 2026-03-23 | <1 day | 4 phases, 4 plans |
+
+---
+
+## ✅ v2.13 GitHub Flow Hardening
+
+**Completed:** 2026-03-23
+**Duration:** <1 day
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 88-91) |
+| Plans | 4 |
+| Files changed | 10 unique kernel workflow + reference + doc files |
+
+### Key Accomplishments
+
+- Eliminated all hardcoded `feature/${PHASE_NAME}` branch name assumptions from GitHub Flow workflow steps — all 4 workflow files now use `git rev-parse --abbrev-ref HEAD` for branch detection.
+- Fixed pause-work staging to capture all repo changes via `git add -A` instead of restrictive `.paul/ src/` patterns.
+- Added behind-base routing priority in resume's git-aware routing table, ensuring stale branches are updated before merge.
+- Upgraded init's gh CLI validation from presence-only (`gh --version`) to authentication-aware (`gh auth status`) with distinct messaging.
+- Brought `/paul:progress` to full GitHub Flow parity with resume's git-aware routing and display, ensuring consistent next-action guidance.
+- Clarified config semantics by removing redundant `branching` from GitHub Flow init template while preserving it for legacy mode.
+- Created cross-cutting verification artifact proving all 6 hardening issues resolved with traceable evidence spanning Phases 84-91.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Use `git rev-parse --abbrev-ref HEAD` for all branch detection | 88 | Eliminates naming assumption coupling across workflows |
+| Replace `git add .paul/ src/` with `git add -A` in all pause paths | 88 | Captures all repo changes without blind spots |
+| Behind-base routing takes precedence over merge readiness | 89 | Prevents merging stale branches |
+| Two-tier gh validation: CLI presence + auth status | 89 | Clear messaging for each failure mode |
+| Status and resume share identical git-aware routing table | 90 | Consistent next-action guidance regardless of entry point |
+| GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 
 ---
 

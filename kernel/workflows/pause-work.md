@@ -211,7 +211,7 @@ Would you like to commit your work-in-progress?
 - Skip Question 2 (branch choice is predetermined)
 ```bash
 # Commit to current feature branch (already on it in github-flow)
-git add .paul/ src/
+git add -A
 git commit -m "wip({phase}): paused at {plan}
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
@@ -231,7 +231,7 @@ Press enter for default, or choose explicitly.
 If user presses enter or says "default", use the config-driven default.
 **If main (option 1):**
 ```bash
-git add .paul/ src/
+git add -A
 git commit -m "wip({phase}): paused at {plan}
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
@@ -240,7 +240,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 ```bash
 # Create and switch to feature branch
 git checkout -b feature/{phase-name}
-git add .paul/ src/
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git add -A
 git commit -m "wip({phase}): paused at {plan}
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
@@ -248,7 +249,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 **Update STATE.md Session Continuity with branch info:**
 ```markdown
-Git strategy: {main|feature/{phase-name}}
+Git strategy: {main|${CURRENT_BRANCH}}
 ```
 This enables transition-phase.md to know the branch strategy when reconciling.
 </step>
