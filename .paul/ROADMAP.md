@@ -36,7 +36,7 @@ Theme: Prove the v2.12/v2.13 GitHub Flow implementation works in real use on bot
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 92 | Isolated Validation (gh-flow-test) | 1/1 | ✅ Complete | 2026-03-24 |
-| 93 | Live Validation (pals) | TBD | Not started | - |
+| 93 | Live Validation (pals) | 1/1 | Planning | - |
 | 94 | Fixes & Hardening | TBD | Not started | - |
 ## Completed Milestones
 <details>
