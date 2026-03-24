@@ -37,7 +37,7 @@ Theme: Build a real Pi extension (pi-verify) by driving PALS through Pi in a cmu
 | 95 | Test Infrastructure | 1/1 | ✅ Complete | 2026-03-24 |
 | 96 | Init & First Loop | 1/1 | ✅ Complete | 2026-03-24 |
 | 97 | Second Loop & Lifecycle | 1/1 | ✅ Complete | 2026-03-24 |
-| 98 | Fix Loop & GH Flow | TBD | Not started | - |
+| 98 | Fix Loop & GH Flow | 1/1 | ✅ Complete | 2026-03-24 |
 | 99 | Gap Report & Finalization | TBD | Not started | - |
 
 ## Completed Milestones
