@@ -27,12 +27,17 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.13 GitHub Flow Hardening
-Status: ✅ Complete
-Completed: 2026-03-23
+### v2.14 GitHub Flow Validation
+Status: 🚧 In Progress
+Completed: -
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+Theme: Prove the v2.12/v2.13 GitHub Flow implementation works in real use on both a lean test project and the full pals repo.
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|----------|
+| 92 | Isolated Validation (gh-flow-test) | 1/1 | Planning | - |
+| 93 | Live Validation (pals) | TBD | Not started | - |
+| 94 | Fixes & Hardening | TBD | Not started | - |
 ## Completed Milestones
 <details>
 <summary>v2.13 GitHub Flow Hardening - 2026-03-23 (4 phases)</summary>

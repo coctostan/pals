@@ -1,68 +1,36 @@
 {
   "modules": {
-    "carl": {
-      "enabled": true,
-      "description": "Session boundary manager (Pi extension)",
-      "session_strategy": "phase-boundary",
-      "continue_threshold": 0.4,
-      "continue_threshold_tokens": 60000,
-      "safety_ceiling": 0.8,
-      "safety_ceiling_tokens": 120000
-    },
-    "dave": {
-      "enabled": true,
-      "description": "Deploy automation & verification engine"
-    },
-    "dean": {
-      "enabled": true,
-      "description": "Dependency evaluation & audit notifier"
-    },
-    "docs": {
-      "enabled": true,
-      "description": "Documentation lifecycle & oversight"
-    },
-    "iris": {
-      "enabled": true,
-      "description": "Intelligent review & inspection system"
-    },
-    "ruby": {
-      "enabled": true,
-      "description": "Refactor utility & better-code yielder"
-    },
-    "skip": {
-      "enabled": true,
-      "description": "Smart knowledge & information persistence"
-    },
-    "todd": {
-      "enabled": true,
-      "description": "Test-driven development enforcement"
-    },
-    "walt": {
-      "enabled": true,
-      "description": "Quality gating & validation"
-    }
-  },
-  "agents": {
-    "coder": { "model": "sonnet" },
-    "researcher": { "model": "sonnet" },
-    "tester": { "model": "sonnet" },
-    "reviewer": { "model": "opus" }
+    "carl": { "enabled": true, "description": "Session boundary manager (Pi extension)", "session_strategy": "phase-boundary", "continue_threshold": 0.4, "safety_ceiling": 0.8 },
+    "todd": { "enabled": true, "description": "Test-driven development enforcement" },
+    "walt": { "enabled": true, "description": "Quality gating & validation" },
+    "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
+    "iris": { "enabled": true, "description": "Intelligent review & inspection system" },
+    "skip": { "enabled": true, "description": "Smart knowledge & information persistence" },
+    "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
+    "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
   },
   "git": {
-    "remote": null,
-    "branching": "feature-per-phase",
-    "auto_push": false,
-    "auto_pr": false,
-    "ci_checks": false
+    "workflow": "github-flow",
+    "remote": "https://github.com/coctostan/pals.git",
+    "base_branch": "main",
+    "merge_method": "squash",
+    "worktree_isolation": false,
+    "auto_push": true,
+    "auto_pr": true,
+    "ci_checks": true,
+    "delete_branch_on_merge": true,
+    "update_branch_when_behind": true,
+    "require_pr_before_next_phase": true,
+    "require_reviews": false
   },
   "integrations": {
-    "sonarqube": {
-      "enabled": false,
-      "project_key": ""
-    }
+    "sonarqube": { "enabled": false, "project_key": "" }
+  },
+  "planning": {
+    "default_collaboration": "medium"
   },
   "preferences": {
     "auto_commit": false,
-    "verbose_output": true
+    "verbose_output": false
   }
 }
