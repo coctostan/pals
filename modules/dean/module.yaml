@@ -13,12 +13,21 @@ dependencies:
 hooks:
   pre-plan:
     priority: 50
-    description: Run dependency audit for detected package managers; inject dep_warnings with severity counts into plan context
+    description: >-
+      Run dependency audit using pnpm audit --json (or ecosystem equivalent from
+      vulnerability-audit.md). Parse severity levels from JSON output. Inject
+      dep_warnings with severity breakdown: critical, high, moderate, low counts.
     refs:
       - references/vulnerability-audit.md
   post-apply:
     priority: 150
-    description: Re-run dependency audit; compare against pre-plan baseline; block if new critical/high vulnerabilities introduced
+    description: >-
+      Re-run dependency audit using pnpm audit --json (or ecosystem equivalent).
+      Parse severity levels from JSON output. Compare against pre-plan baseline.
+      Blocking rules: BLOCK if any NEW critical or high severity vulnerabilities.
+      WARN (non-blocking) if new moderate severity. IGNORE new low severity.
+      Display: severity breakdown table (critical/high/moderate/low counts, new
+      vs pre-existing), specific package names and CVEs for blocking issues.
     refs:
       - references/vulnerability-audit.md
 

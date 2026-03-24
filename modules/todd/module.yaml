@@ -19,7 +19,13 @@ hooks:
       - references/tdd-plan-generation.md
   post-plan:
     priority: 100
-    description: If plan type is tdd, restructure tasks into RED-GREEN-REFACTOR sequence with phase gates
+    description: >-
+      If plan type is tdd, restructure tasks into RED-GREEN-REFACTOR sequence
+      with phase gates. If plan type is execute BUT pre-plan detected
+      tdd_candidates covering the planned files, suggest to the user: 'Test
+      coverage exists for the planned changes (tdd_candidates: {files}). Consider
+      changing plan type to tdd for RED-GREEN-REFACTOR enforcement.' Let the user
+      decide — do not auto-change the type.
     refs:
       - references/tdd-plan-generation.md
   pre-apply:
