@@ -2,23 +2,24 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-19)
+See: .paul/PROJECT.md (updated 2026-03-23)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.13 GitHub Flow Hardening — close correctness gaps in branch handling, staging, routing, validation, status, and config clarity.
+**Current focus:** Awaiting next milestone
+
 ## Current Position
-Milestone: v2.13 GitHub Flow Hardening
-Phase: 91 of 91 (Verification & Docs) — COMPLETE
-Plan: 91-01 UNIFY complete
-Status: Phase complete, ready for transition
-Last activity: 2026-03-23T22:35:00-0400 — UNIFY 91-01 complete (all AC PASS)
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: Milestone v2.13 GitHub Flow Hardening complete — ready for next
+Last activity: 2026-03-23T22:45:00-0400 — Milestone v2.13 completed
 Progress:
-- v2.13 GitHub Flow Hardening: [█████████░] 90%
-- Phase 91: [██████████] 100%
+- v2.13 GitHub Flow Hardening: [██████████] 100% ✓
+
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — phase done, transition required]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -96,6 +97,12 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | D5: gh CLI required for github-flow mode | 84 | Init should validate gh availability |
 | D6: Hotfix mode exempt from merge gate | 84 | fix-loop.md gets minimal changes |
 | D7: Legacy mode = true superset of current behavior | 84 | Existing projects must not break |
+| Use `git rev-parse --abbrev-ref HEAD` for all branch detection | 88 | Eliminates naming assumption coupling across workflows |
+| Replace `git add .paul/ src/` with `git add -A` in all pause paths | 88 | Captures all repo changes without blind spots |
+| Behind-base routing takes precedence over merge readiness | 89 | Prevents merging stale branches |
+| Two-tier gh validation: CLI presence + auth status | 89 | Clear messaging for each failure mode |
+| Status and resume share identical git-aware routing table | 90 | Consistent next-action guidance regardless of entry point |
+| GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -105,20 +112,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
-| None material | 66 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
-| None material | 67 | Phase executed as planned; unrelated working tree changes outside scope were left untouched |
-| None material | 68 | Phase executed as planned; audit stayed within `.paul/` artifacts and produced the requested evidence package |
-| None material | 69 | APPLY stayed within the planned shared workflow/docs/tests scope; lifecycle artifact updates were limited to state and handoff bookkeeping |
-| None material | 70 | Phase executed as planned; bounded live visibility work stayed within the approved Pi adapter/docs/tests scope |
-| None material | 71 | APPLY and UNIFY stayed within the planned recommendation-only scope; no Phase 69/70 implementation work was reopened |
-| None material | 76 | Plan executed exactly as written; test command added, APIs validated, report written |
-| None material | 77 | Plan executed exactly as written; CARL core logic implemented, test command removed, structural integrity verified |
-| None material | 78 | Plan executed exactly as written; init config, modules.yaml, dead file removal all clean |
-| Minor additive | 79 | PROJECT.md quick reference and constraint also updated beyond plan's explicit file list; essential consistency fix |
-| None material | 81 | Plan executed exactly as written; 3 tasks all PASS, 173 lines added to pals-hooks.ts, no approach changes |
-| Minor: SPECIAL-FLOWS.md already correct | 82 | Plan expected it needed updating; file was already up to date from prior session |
-| None material | 85 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
-| None material | 86 | Plan executed exactly as written; 3 tasks all PASS, 3 workflow files updated, no existing steps modified |
+| None material | 88-91 | All phases executed exactly as planned |
 ### Skill Audit (Phase 71)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -132,16 +126,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/v2.13-github-flow-hardening
-Last commit: 46f2970 (Phase 91 transition)
+Branch: main (pending merge)
+Last commit: 7e66a53 (v2.13 milestone finalization)
 ## Session Continuity
-Last session: 2026-03-23T22:40:00-0400
-Stopped at: Phase 91 transition complete, v2.13 milestone complete
-Next action: /paul:milestone (complete v2.13)
-Resume file: .paul/ROADMAP.md
-Git strategy: feature-per-phase
+Last session: 2026-03-23T22:45:00-0400
+Stopped at: Milestone v2.13 GitHub Flow Hardening complete
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 Resume context:
-- v2.13 GitHub Flow Hardening: all 4 phases (88-91) complete
-- All 6 hardening issues resolved with traceable evidence
-- Milestone ready for completion
+- v2.13 GitHub Flow Hardening: all 4 phases complete, milestone finalized
+- 26 milestones completed total (v0.1 through v2.13)
+- Ready for next milestone definition
 *STATE.md — Updated after every significant action*
