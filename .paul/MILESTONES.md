@@ -33,6 +33,7 @@ Completed milestone log for this project.
 | **v2.13 GitHub Flow Hardening** | 2026-03-23 | <1 day | 4 phases, 4 plans |
 | **v2.14 GitHub Flow Validation** | 2026-03-24 | <1 day | 3 phases, 3 plans |
 | **v2.15 PALS E2E Validation via Pi** | 2026-03-24 | ~3 hours | 5 phases, 5 plans |
+| **v2.16 Module Dispatch Validation** | 2026-03-24 | ~4 hours | 3 phases, 3 plans |
 
 ---
 
