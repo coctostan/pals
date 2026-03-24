@@ -90,11 +90,12 @@ templates/PLAN.md
    a. Load only the hook-specific `refs` listed in `hook_details.pre-plan.refs`
    b. Follow the hook description from `hook_details.pre-plan.description`
    c. Collect `context_inject` data (e.g., type suggestions, candidate files)
-   d. If module returns `action: block` — stop and surface the `reason` to the user
+   d. If module returns `action: block` — record it but DO NOT stop. Continue to next module.
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
 6. If no modules registered for `pre-plan`: proceed (no-op, no warning)
 7. Output dispatch log: `[dispatch] pre-plan: {MODULE(priority) → N inject keys | skip | block} | ...`
 8. Pass accumulated `context_inject` to analyze_scope (e.g., type suggestions feed into step 6)
+9. After ALL modules have run: if any returned `action: block`, display all advisory output first, THEN surface blocking reason(s) and offer fix/override/stop.
 </step>
 
 <step name="analyze_scope">
