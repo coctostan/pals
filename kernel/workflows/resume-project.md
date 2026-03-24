@@ -26,8 +26,8 @@ No multiple options. Prevents decision fatigue. User can redirect if needed.
 </required_reading>
 
 <references>
-@kernel/references/context-management.md
-@kernel/references/loop-phases.md
+@references/context-management.md
+@references/loop-phases.md
 </references>
 
 <process>

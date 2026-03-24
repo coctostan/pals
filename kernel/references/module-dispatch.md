@@ -4,11 +4,11 @@ How PLAN/APPLY/UNIFY should resolve enabled module overlays from the installed r
 
 ## Purpose
 
-`kernel/modules.yaml` is a **logical path** for the active installed module registry.
+`modules.yaml` is a **logical path** for the active installed module registry.
 It is not a source-controlled file in this repo.
 
 Adapters resolve it to their installed runtime location for the current harness.
-Examples live in `docs/REFERENCE-RESOLUTION.md`; the workflow should rely on the logical `kernel/modules.yaml` path, not a hardcoded install path.
+Examples live in `docs/REFERENCE-RESOLUTION.md`; the workflow should rely on the logical `modules.yaml` path, not a hardcoded install path.
 
 Workflows should treat that installed registry as authoritative for which modules are active.
 
@@ -43,7 +43,7 @@ installed_modules:
 
 For hook `{hook_name}`:
 
-1. Read `kernel/modules.yaml` if it exists.
+1. Read `modules.yaml` if it exists.
 2. Look under `installed_modules.*.hook_details.{hook_name}`.
 3. Keep only modules that define that hook.
 4. Sort by `priority` ascending.
@@ -54,7 +54,7 @@ For hook `{hook_name}`:
 
 ## Missing or Older Registries
 
-If `kernel/modules.yaml` is missing, treat hook dispatch as a no-op.
+If `modules.yaml` is missing, treat hook dispatch as a no-op.
 
 If the registry exists but does not include `hook_details`, it is from an older install.
 In that case:

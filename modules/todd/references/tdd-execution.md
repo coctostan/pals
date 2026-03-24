@@ -4,8 +4,8 @@ Referenced by apply-phase.md when executing `type: tdd` plans.
 </purpose>
 
 <references>
-kernel/references/tdd.md
-kernel/references/tdd-plan-generation.md
+references/tdd.md
+references/tdd-plan-generation.md
 </references>
 
 <process>

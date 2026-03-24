@@ -20,10 +20,10 @@ Next phase: UNIFY (after execution completes)
 </required_reading>
 
 <references>
-kernel/references/checkpoints.md (if plan has checkpoints)
-kernel/references/loop-phases.md
-kernel/references/module-dispatch.md
-<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from the installed registry resolved as kernel/modules.yaml -->
+references/checkpoints.md (if plan has checkpoints)
+references/loop-phases.md
+references/module-dispatch.md
+<!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
 <process>
@@ -258,7 +258,7 @@ kernel/references/module-dispatch.md
 
 <step name="pre_apply_hooks" priority="before-tasks">
 **Dispatch pre-apply lifecycle hooks to registered modules.**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `pre-apply` by finding `installed_modules.*.hook_details.pre-apply`
 3. Sort by `hook_details.pre-apply.priority` ascending (lower runs first)
 4. For each registered module:
@@ -318,7 +318,7 @@ For each <task> in order:
      Continue? [yes/adjust plan/stop]
      ```
 6. **Dispatch post-task hooks:**
-   a. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+   a. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
    b. Resolve installed modules for `post-task` by finding `installed_modules.*.hook_details.post-task`
    c. Sort by `hook_details.post-task.priority` ascending (lower runs first)
    d. For each registered module:
@@ -405,7 +405,7 @@ For each <task> in order:
 
 <step name="post_apply_hooks" priority="after-tasks">
 **Dispatch post-apply lifecycle hooks to registered modules.**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `post-apply` by finding `installed_modules.*.hook_details.post-apply`
 3. Sort by `hook_details.post-apply.priority` ascending (lower runs first)
 4. For each registered module:

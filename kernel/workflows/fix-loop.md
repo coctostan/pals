@@ -15,9 +15,9 @@ It does NOT replace the full loop for planned work. It supplements it for ad-hoc
 </loop_context>
 
 <references>
-@kernel/references/fix-types.md
-@kernel/references/loop-phases.md
-kernel/references/module-dispatch.md
+@references/fix-types.md
+@references/loop-phases.md
+references/module-dispatch.md
 <!-- Module hooks dispatched where noted per mode -->
 </references>
 
@@ -94,7 +94,7 @@ autonomous: true
 
 <substep name="standard_hooks_post_apply">
 **Dispatch post-apply hooks:**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `post-apply` by finding `installed_modules.*.hook_details.post-apply`
 3. Sort by `hook_details.post-apply.priority` ascending
 4. For each registered module, load only `hook_details.post-apply.refs` and follow `hook_details.post-apply.description`
@@ -135,7 +135,7 @@ Fix applied successfully. {any notes}
 </substep>
 <substep name="standard_hooks_post_unify">
 **Dispatch post-unify hooks:**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
 3. Sort by `hook_details.post-unify.priority` ascending
 4. For each registered module, load only `hook_details.post-unify.refs` and follow `hook_details.post-unify.description`

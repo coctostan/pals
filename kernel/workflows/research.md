@@ -19,7 +19,7 @@ Research informs planning but doesn't gate it.
 </loop_context>
 
 <required_reading>
-@kernel/references/subagent-criteria.md
+@references/subagent-criteria.md
 </required_reading>
 
 <references>

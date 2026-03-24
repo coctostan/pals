@@ -21,11 +21,11 @@ Next phase: PLAN (next plan or next phase)
 </required_reading>
 
 <references>
-kernel/references/loop-phases.md
-kernel/references/module-dispatch.md
-kernel/templates/SUMMARY.md
-kernel/workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
-<!-- Module references are loaded dynamically via hook dispatch from the installed registry resolved as kernel/modules.yaml -->
+references/loop-phases.md
+references/module-dispatch.md
+templates/SUMMARY.md
+workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
+<!-- Module references are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
 <process>
@@ -175,7 +175,7 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 
 <step name="pre_unify_hooks" priority="before-reconciliation">
 **Dispatch pre-unify lifecycle hooks to registered modules.**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `pre-unify` by finding `installed_modules.*.hook_details.pre-unify`
 3. Sort by `hook_details.pre-unify.priority` ascending (lower runs first)
 4. For each registered module:
@@ -218,7 +218,7 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 4. If all required skills invoked:
    - Note in SUMMARY.md: "Skill audit: All required skills invoked ✓"
 
-**Reference:** kernel/references/specialized-workflow-integration.md
+**Reference:** references/specialized-workflow-integration.md
 </step>
 
 <step name="create_summary">
@@ -271,7 +271,7 @@ kernel/workflows/transition-phase.md (always listed; executed only when check_ph
 
 <step name="post_unify_hooks" priority="after-state-update">
 **Dispatch post-unify lifecycle hooks to registered modules.**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
 3. Sort by `hook_details.post-unify.priority` ascending (lower runs first)
 4. For each registered module:
@@ -495,7 +495,7 @@ Continue to next plan?
    ════════════════════════════════════════
    ```
 
-2. **MUST read and execute:** kernel/workflows/transition-phase.md
+2. **MUST read and execute:** workflows/transition-phase.md
 
 3. Transition handles (do not skip any):
    - Evolve PROJECT.md (requirements validated → shipped)

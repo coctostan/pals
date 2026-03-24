@@ -4,8 +4,8 @@ Referenced by plan-phase.md when plan type is "tdd".
 </purpose>
 
 <references>
-kernel/references/tdd.md
-kernel/references/tdd-detection.md
+references/tdd.md
+references/tdd-detection.md
 </references>
 
 <process>

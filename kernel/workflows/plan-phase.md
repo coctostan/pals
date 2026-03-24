@@ -24,11 +24,11 @@ Next phase: APPLY (after plan approval)
 </required_reading>
 
 <references>
-kernel/references/plan-format.md
-kernel/references/checkpoints.md (if plan will have checkpoints)
-kernel/references/module-dispatch.md
-kernel/templates/PLAN.md
-<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from the installed registry resolved as kernel/modules.yaml -->
+references/plan-format.md
+references/checkpoints.md (if plan will have checkpoints)
+references/module-dispatch.md
+templates/PLAN.md
+<!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
 <process>
@@ -82,7 +82,7 @@ kernel/templates/PLAN.md
 
 <step name="pre_plan_hooks" priority="before-scope-analysis">
 **Dispatch pre-plan lifecycle hooks to registered modules.**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `pre-plan` by finding `installed_modules.*.hook_details.pre-plan`
 3. Sort by `hook_details.pre-plan.priority` ascending (lower runs first)
 4. For each registered module:
@@ -220,7 +220,7 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 
 <step name="post_plan_hooks" priority="after-plan-creation">
 **Dispatch post-plan lifecycle hooks to registered modules.**
-1. Read `kernel/modules.yaml` (installed module registry; see `kernel/references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
 2. Resolve installed modules for `post-plan` by finding `installed_modules.*.hook_details.post-plan`
 3. Sort by `hook_details.post-plan.priority` ascending (lower runs first)
 4. For each registered module:
