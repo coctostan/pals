@@ -24,7 +24,15 @@ hooks:
       - references/quality-lint.md
   post-unify:
     priority: 100
-    description: Compute quality delta (before vs after); append entry to quality-history.md with phase metadata
+    description: >-
+      Compute quality delta (before vs after). Append entry to
+      .paul/quality-history.md with: date (YYYY-MM-DD), phase name, test counts
+      (total/passing/failing), lint result (clean or N warnings), typecheck
+      result (clean or N errors), coverage % (if available from test output),
+      trend direction (↑ improving / → stable / ↓ declining compared to previous
+      entry). Create .paul/quality-history.md if it doesn't exist, with header:
+      | Date | Phase | Tests | Lint | Typecheck | Coverage | Trend |.
+      Format as a markdown table row for easy scanning across milestones.
     refs:
       - references/quality-delta.md
       - references/quality-history.md
