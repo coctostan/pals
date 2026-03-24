@@ -28,7 +28,7 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 ### v2.14 GitHub Flow Validation
-Status: 🚧 In Progress (1/3 phases complete)
+Status: 🚧 In Progress (2/3 phases complete)
 Completed: -
 
 Theme: Prove the v2.12/v2.13 GitHub Flow implementation works in real use on both a lean test project and the full pals repo.
@@ -36,7 +36,7 @@ Theme: Prove the v2.12/v2.13 GitHub Flow implementation works in real use on bot
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 92 | Isolated Validation (gh-flow-test) | 1/1 | ✅ Complete | 2026-03-24 |
-| 93 | Live Validation (pals) | 1/1 | Planning | - |
+| 93 | Live Validation (pals) | 1/1 | ✅ Complete | 2026-03-24 |
 | 94 | Fixes & Hardening | TBD | Not started | - |
 ## Completed Milestones
 <details>
