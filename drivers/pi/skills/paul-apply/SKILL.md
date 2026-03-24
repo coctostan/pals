@@ -27,6 +27,10 @@ Reads the current plan and executes each task:
 3. Read the full workflow definition:
    - File: `../workflows/apply-phase.md`
 
+4. Read the module registry (if it exists):
+   - File: `../modules.yaml`
+   - This drives pre-apply, post-task, and post-apply hook dispatch for TODD, WALT, DEAN, DOCS, IRIS, SKIP, DAVE
+
 4. Follow the apply-phase workflow:
    - Confirm user has approved the plan
    - Execute tasks in order

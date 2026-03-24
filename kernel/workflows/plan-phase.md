@@ -21,6 +21,7 @@ Next phase: APPLY (after plan approval)
 .paul/PROJECT.md
 .paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail are relevant)
 .paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
+modules.yaml (installed module registry — MUST read if it exists; drives pre-plan and post-plan hook dispatch)
 </required_reading>
 
 <references>

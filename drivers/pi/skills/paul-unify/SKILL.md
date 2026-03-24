@@ -28,6 +28,10 @@ Creates a SUMMARY.md that documents:
 3. Read the full workflow definition:
    - File: `../workflows/unify-phase.md`
 
+4. Read the module registry (if it exists):
+   - File: `../modules.yaml`
+   - This drives pre-unify and post-unify hook dispatch for WALT, SKIP, RUBY
+
 4. Follow the unify-phase workflow:
    - Compare plan tasks to actual results
    - Document deviations

@@ -110,6 +110,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Fix 03 (standard): Aligned resume handoff discovery and docs so `/paul:resume` falls back to `.paul/handoffs/archive/` and only archives active consumed handoffs | No phase | Prevents the latest archived handoff from becoming undiscoverable during normal resume flows |
 | Hotfix: Added token-based CARL session thresholds with 60k/120k project defaults | No phase | Retroactively documented in `83-02-HOTFIX-SUMMARY.md` |
 | Fix 04 (standard): Removed `kernel/` path prefix from all module dispatch and reference paths in 11 files (36+ references). Reinstalled to deployed location. | Phase 99 | **Critical** — ALL module hooks (TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY, DOCS) were silently skipped because `kernel/modules.yaml` didn't exist in the installed tree. Modules now dispatch correctly. |
+| Fix 05 (manual — should have used /paul:fix): Added `modules.yaml` to `<required_reading>` in plan-phase.md, apply-phase.md, unify-phase.md. Model reads required_reading reliably but skips embedded dispatch substeps. | Phase 100 | Ensures model reads the module registry as a prerequisite for hook dispatch. **Needs reinstall.** |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
