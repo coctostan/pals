@@ -14,20 +14,30 @@ hooks:
   pre-plan:
     priority: 50
     description: >-
-      Run dependency audit using pnpm audit --json (or ecosystem equivalent from
-      vulnerability-audit.md). Parse severity levels from JSON output. Inject
-      dep_warnings with severity breakdown: critical, high, moderate, low counts.
+      Detect package manager: look for pnpm-lock.yaml, package-lock.json,
+      yarn.lock, go.mod, Cargo.toml, requirements.txt, Pipfile, Gemfile. Run
+      the matching audit command from vulnerability-audit.md (e.g., pnpm audit
+      --json for pnpm). Parse JSON output to extract severity counts. Output a
+      severity table: '| Severity | Count |' with rows for critical, high,
+      moderate, low. Record these counts as the BASELINE for post-apply
+      comparison. Inject dep_warnings with the severity breakdown. Block plan
+      creation if critical > 0 — display: 'DEAN BLOCK: N critical
+      vulnerabilities found. Fix before planning. Packages: [list]'.
     refs:
       - references/vulnerability-audit.md
   post-apply:
     priority: 150
     description: >-
-      Re-run dependency audit using pnpm audit --json (or ecosystem equivalent).
-      Parse severity levels from JSON output. Compare against pre-plan baseline.
-      Blocking rules: BLOCK if any NEW critical or high severity vulnerabilities.
-      WARN (non-blocking) if new moderate severity. IGNORE new low severity.
-      Display: severity breakdown table (critical/high/moderate/low counts, new
-      vs pre-existing), specific package names and CVEs for blocking issues.
+      Re-run the same audit command used in pre-plan (e.g., pnpm audit --json).
+      Parse JSON output for current severity counts. Compare against pre-plan
+      baseline to compute DELTA: new_critical, new_high, new_moderate, new_low.
+      Output a comparison table: '| Severity | Before | After | New |' with
+      rows for each level. BLOCK if new_critical > 0 OR new_high > 0 — display:
+      'DEAN BLOCK: N new critical/high vulnerabilities introduced. Packages:
+      [names]. CVEs: [ids]. Fix before proceeding.' WARN (non-blocking) if
+      new_moderate > 0 — display: 'DEAN WARN: N new moderate vulnerabilities.
+      Consider fixing.' IGNORE new_low. If audit tool unavailable, display
+      install command from vulnerability-audit.md and skip gracefully.
     refs:
       - references/vulnerability-audit.md
 
