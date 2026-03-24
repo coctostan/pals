@@ -18,6 +18,7 @@ Next phase: PLAN (next plan or next phase)
 <required_reading>
 .paul/STATE.md
 .paul/phases/{phase}/{plan}-PLAN.md
+modules.yaml (installed module registry — MUST read if it exists; drives pre-unify and post-unify hook dispatch)
 </required_reading>
 
 <references>

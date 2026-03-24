@@ -17,6 +17,7 @@ Next phase: UNIFY (after execution completes)
 <required_reading>
 .paul/STATE.md
 .paul/phases/{phase}/{plan}-PLAN.md
+modules.yaml (installed module registry — MUST read if it exists; drives pre-apply, post-task, and post-apply hook dispatch)
 </required_reading>
 
 <references>
