@@ -111,6 +111,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Hotfix: Added token-based CARL session thresholds with 60k/120k project defaults | No phase | Retroactively documented in `83-02-HOTFIX-SUMMARY.md` |
 | Fix 04 (standard): Removed `kernel/` path prefix from all module dispatch and reference paths in 11 files (36+ references). Reinstalled to deployed location. | Phase 99 | **Critical** — ALL module hooks (TODD, WALT, DEAN, IRIS, SKIP, DAVE, RUBY, DOCS) were silently skipped because `kernel/modules.yaml` didn't exist in the installed tree. Modules now dispatch correctly. |
 | Fix 05 (manual — should have used /paul:fix): Added `modules.yaml` to `<required_reading>` in plan-phase.md, apply-phase.md, unify-phase.md. Model reads required_reading reliably but skips embedded dispatch substeps. | Phase 100 | Ensures model reads the module registry as a prerequisite for hook dispatch. **Needs reinstall.** |
+| Fix 06 (standard /paul:fix): Split single-loop dispatch into two explicit steps — `advisory_module_dispatch` (IRIS, RUBY, DOCS, SKIP — never blocks) then `enforcement_module_dispatch` (TODD, WALT, DEAN — can block). Prose-based "DO NOT stop" failed because models follow structure not qualifiers. | Phase 104 | **Structural** — advisory output now guaranteed visible regardless of enforcement blocks. |
 ### Deviations
 | Deviation | Phase | Impact |
 |-----------|-------|--------|
