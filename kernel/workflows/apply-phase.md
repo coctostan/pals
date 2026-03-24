@@ -266,11 +266,12 @@ references/module-dispatch.md
    a. Load only the hook-specific `refs` listed in `hook_details.pre-apply.refs`
    b. Follow the hook description from `hook_details.pre-apply.description`
    c. Collect `context_inject` data (e.g., test baselines, enforcement flags)
-   d. If module returns `action: block` — stop and surface the `reason` to the user
+   d. If module returns `action: block` — record it but DO NOT stop. Continue to next module.
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
 6. If no modules registered for `pre-apply`: proceed (no-op, no warning)
 7. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → N inject keys | skip | block} | ...`
-8. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
+8. After ALL modules have run: if any returned `action: block`, surface the blocking reason(s) and offer fix/override/stop. Display all advisory output first so the user sees the full picture.
+9. Store accumulated `context_inject` data for use in execute_tasks and post_apply_hooks
 </step>
 
 <step name="execute_tasks">
@@ -326,10 +327,11 @@ For each <task> in order:
       - Load only the hook-specific `refs` listed in `hook_details.post-task.refs`
       - Follow the hook description from `hook_details.post-task.description`
       - Pass task name, task result, and `context_inject` from pre-apply
-      - If module returns `action: block` — stop and surface the `reason` to the user
+      - If module returns `action: block` — record it but DO NOT stop. Continue to next module.
    e. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
    f. If no modules registered for `post-task`: proceed (no-op)
    g. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → outcome} | ...`
+   h. After ALL post-task modules have run: if any returned `action: block`, display all advisory annotations first, THEN surface blocking reason(s) and offer fix/override/stop.
 
 **If type="checkpoint:human-verify":**
 1. Stop execution
@@ -414,11 +416,13 @@ For each <task> in order:
    b. Follow the hook description from `hook_details.post-apply.description`
    c. Pass `context_inject` data accumulated from pre-apply hooks (e.g., baselines)
    d. Collect `annotations` (e.g., quality gate results, refactor suggestions)
-   e. If module returns `action: block` — stop and surface the `reason` and optional `remediation` to the user, offer fix/override/stop
+   e. If module returns `action: block` — record it but DO NOT stop. Continue to next module.
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
 6. If no modules registered for `post-apply`: proceed (no-op, no warning)
-7. Output dispatch log: `[dispatch] post-apply: {MODULE(priority) → N annotations | skip | block} | ...`
-8. Store accumulated `annotations` for inclusion in finalize step
+7. After ALL modules have run, output the complete dispatch log: `[dispatch] post-apply: {MODULE(priority) → N annotations | skip | block} | ...`
+8. Display ALL advisory annotations (code smells, debt, doc drift, knowledge suggestions) so the user sees the full picture.
+9. THEN if any module returned `action: block`: surface the blocking reason(s) with fix/override/stop options. The user now has full context from advisory modules before deciding how to handle the block.
+10. Store accumulated `annotations` for inclusion in finalize step
 </step>
 
 <step name="handle_failures">
