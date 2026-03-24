@@ -28,16 +28,16 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 ### v2.17 Module Dispatch Refinement & Multi-Model Audit
-Status: 🚧 In Progress
-Completed: -
+Status: ✅ Complete
+Completed: 2026-03-24
 
 Theme: Fix blocking-suppresses-advisory, harden weak modules, compare module behavior across models.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 103 | Fix Blocking-Suppresses-Advisory | TBD | Not started | - |
-| 104 | SKIP Hardening + DEAN Adversarial | TBD | Not started | - |
-| 105 | Multi-Model Module Comparison | TBD | Not started | - |
+| 103 | Fix Blocking-Suppresses-Advisory | 1/1 | ✅ Complete | 2026-03-24 |
+| 104 | SKIP Hardening + DEAN Adversarial | 2 | ✅ Complete | 2026-03-24 |
+| 105 | Module Action Items | 1 | ✅ Complete | 2026-03-24 |
 
 ## Completed Milestones
 <details>
