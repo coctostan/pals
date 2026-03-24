@@ -28,8 +28,8 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 ### v2.15 PALS End-to-End Validation via Pi
-Status: 🚧 In Progress
-Completed: -
+Status: ✅ Complete
+Completed: 2026-03-24
 
 Theme: Build a real Pi extension (pi-verify) by driving PALS through Pi in a cmux-controlled pane — exercising every major workflow and recording gaps.
 | Phase | Name | Plans | Status | Completed |
@@ -38,7 +38,7 @@ Theme: Build a real Pi extension (pi-verify) by driving PALS through Pi in a cmu
 | 96 | Init & First Loop | 1/1 | ✅ Complete | 2026-03-24 |
 | 97 | Second Loop & Lifecycle | 1/1 | ✅ Complete | 2026-03-24 |
 | 98 | Fix Loop & GH Flow | 1/1 | ✅ Complete | 2026-03-24 |
-| 99 | Gap Report & Finalization | TBD | Not started | - |
+| 99 | Gap Report & Finalization | 1/1 | ✅ Complete | 2026-03-24 |
 
 ## Completed Milestones
 <details>
