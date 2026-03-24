@@ -44,7 +44,7 @@ function resolveGitWorkflow(config):
 | `require_pr_before_next_phase` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow | unify-phase (merge gate), resume-project |
 | `require_reviews` | `boolean` | `false` | github-flow | unify-phase (merge gate) |
 
-**Legacy fields:** `branching` and `worktree_isolation` are preserved for backward compatibility. `branching` is used as a fallback signal for workflow mode resolution. `worktree_isolation` is orthogonal to workflow mode.
+**Legacy fields:** `branching` is preserved for backward compatibility in legacy and none templates. GitHub Flow templates omit `branching` entirely — the `workflow` field is authoritative. `worktree_isolation` is orthogonal to workflow mode.
 
 ### Key Behavioral Patterns
 
@@ -54,7 +54,9 @@ function resolveGitWorkflow(config):
 
 **Merge Gate (unify-phase):** After SUMMARY.md creation in github-flow mode, enforces 6 sequential gates before routing to next PLAN: PR exists → CI passing → reviews approved → PR merged → base synced → branch cleaned. CI failure is blocking with no escape hatch.
 
-**Lifecycle Awareness (init/resume/pause):** Init offers GitHub Flow as a first-class option with `gh` CLI validation. Resume surfaces git/PR/CI state and routes next action based on git state (e.g., "fix CI" if CI failing). Pause captures git/PR continuity data in handoff.
+**Lifecycle Awareness (init/resume/pause):** Init offers GitHub Flow as a first-class option with `gh` CLI and `gh auth status` validation (distinguishes CLI-missing from CLI-present-but-unauthenticated). Resume surfaces git/PR/CI state and routes next action based on git state priority (CI failing → fix CI, behind base → update branch, PR ready → merge). Pause captures git/PR continuity data in handoff using `git add -A` for complete staging.
+
+**Status Parity (progress):** The `/paul:progress` command surfaces the same GitHub Flow git state as resume — branch, base, PR URL/state, CI state, and ahead/behind sync. Both status and resume use identical git-aware routing tables, ensuring they never disagree about the next step.
 **Reading config in workflows:**
 ```bash
 GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
