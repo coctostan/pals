@@ -8,10 +8,10 @@ See: .paul/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 Milestone: v2.19 Module Excellence
-Phase: 109 of 112 (DOCS & SKIP Upgrade)
-Plan: 109-01 executed
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-24 — Phase 109 APPLY complete
+Phase: 110 of 112 (DEAN Adversarial Hardening)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-24 — Phase 109 complete, merged PR #33
 Progress:
 - v2.19 Module Excellence: [▓▓░░░░░░░░] 25%
 
@@ -19,13 +19,14 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ○        ○        ○     [Ready for next PLAN]
 ```
 
 ## Accumulated Context
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
+| Fix installer >- block scalar parser rather than rewriting descriptions | 109 | All modules with multi-line descriptions now install correctly; root cause of many v2.18 grades being lower than expected |
 | Adopt clarity test from Superpowers | 38 | validate_plan checks "could someone with no context execute this?" |
 | Adopt dual-goal emphasis from GPT Pilot | 38 | verify=programmatic, done=human-reviewable made explicit |
 | Adopt complexity gating from GPT Pilot | 38 | analyze_scope scales plan depth to change size |
@@ -131,16 +132,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/109-docs-skip-upgrade
-Last commit: c815c8a (feat(109-docs-skip-upgrade): upgrade DOCS and SKIP to A-grade)
-PR: https://github.com/coctostan/pals/pull/33 (state: open)
+Branch: main
+Last commit: 2839cff (feat(109-docs-skip-upgrade): DOCS and SKIP to A-grade, fix installer >- parsing (#33))
+PR: https://github.com/coctostan/pals/pull/33 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-24
-Stopped at: Phase 109 APPLY complete
-Next action: /paul:unify for Phase 109
-Resume file: .paul/phases/109-docs-skip-upgrade/109-01-PLAN.md
+Stopped at: Phase 109 complete, ready for Phase 110
+Next action: /paul:plan for Phase 110 (DEAN Adversarial Hardening)
+Resume file: .paul/phases/109-docs-skip-upgrade/109-01-SUMMARY.md
 Resume context:
-- DOCS upgraded: expanded catalog, proximity mapping, per-file drift table
-- SKIP upgraded: exact Decision Record format, NEVER-just-found guardrails
-- Installer fix: >- block scalar parsing in both drivers
-- Also found and fixed: installer bug causing all multi-line descriptions to be silently dropped
+- DOCS upgraded to A (expanded catalog, proximity mapping, drift table)
+- SKIP upgraded to A (exact Decision Record format, NEVER guardrails)
+- Installer >- parser bug fixed in both drivers
+- Phase 110 next: DEAN B→A via adversarial dependency vulnerability injection
