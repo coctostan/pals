@@ -4,23 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-03-23)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone
+**Current focus:** PALS End-to-End Validation via Pi
 
 ## Current Position
-Milestone: v2.14 GitHub Flow Validation
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.14 GitHub Flow Validation complete — ready for next
-Last activity: 2026-03-24T11:25:00-0400 — Milestone v2.14 completed
+Milestone: v2.15 PALS End-to-End Validation via Pi
+Phase: 95 of 99 (Test Infrastructure) — UNIFY complete
+Plan: 95-01 complete
+Status: Loop complete, merge gate pending
+Last activity: 2026-03-24T12:00:00-0400 — SUMMARY created, merge gate pending
 Progress:
-- v2.14 GitHub Flow Validation: [██████████] 100% ✓
+- v2.15 PALS E2E Validation: [░░░░░░░░░░] 0%
 
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ✓     [Loop complete — merge gate pending]
 ```
 
 ## Accumulated Context
@@ -128,15 +127,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: 220adb4 (feat(94-fixes-and-hardening): git-aware status display (#22))
-PR: https://github.com/coctostan/pals/pull/22 (state: MERGED)
+Last commit: 88edff8 (feat(v2.14): milestone complete)
+PR: none
 ## Session Continuity
-Last session: 2026-03-24T11:25:00-0400
-Stopped at: Milestone v2.14 GitHub Flow Validation complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-03-24T11:30:00-0400
+Stopped at: Milestone v2.15 created, ready to plan
+Next action: /paul:plan for Phase 95
+Resume file: .paul/ROADMAP.md
 Resume context:
-- v2.14 GitHub Flow Validation: all 3 phases complete, milestone finalized
-- 27 milestones completed total (v0.1 through v2.14)
-- Ready for next milestone definition
+- v2.15 PALS E2E Validation via Pi: 5 phases (95-99)
+- Phase 95: Test Infrastructure (cmux pane, pi-verify project, GitHub repo)
+- pi-verify extension from ayagmar/pi-extension-template
+- cmux orchestration: send commands to Pi in split pane, read-screen to verify
 *STATE.md — Updated after every significant action*
