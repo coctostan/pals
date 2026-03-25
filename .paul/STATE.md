@@ -132,9 +132,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/129-adversarial-testing-setup
-Last commit: 7a7deaf adversarial E2E testing
-PR: pending
+Branch: main
+Last commit: PR #46 merged (squash)
+PR: https://github.com/coctostan/pals/pull/46 (MERGED)
 ## Session Continuity
 Last session: 2026-03-25
 Stopped at: Phase 129 complete — adversarial testing results documented
