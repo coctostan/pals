@@ -36,7 +36,7 @@ Theme: Prove modules produce real value under adversarial, real-dev, and greenfi
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 129 | Adversarial Testing Setup | 1 | ✅ Complete | 2026-03-25 |
-| 130 | Real-User Feature Dev | TBD | Not started | - |
+| 130 | Real-User Feature Dev | 1 | Planning | - |
 | 131 | Greenfield Project | TBD | Not started | - |
 ## Completed Milestones
 <details>
