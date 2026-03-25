@@ -9,22 +9,23 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 Milestone: v2.25 E2E Adversarial Testing
 Phase: 129 of 131 (Adversarial Testing Setup)
 Plan: 129-01 complete
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-25 — Phase 129 APPLY complete
+Status: Phase 129 complete — UNIFY done
+Last activity: 2026-03-25 — Phase 129 UNIFY complete
 Progress:
 - v2.25 E2E Adversarial Testing: [▓▓▓░░░░░░░] 33%
-- Phase 129: [██████████] 100%
+- Phase 129: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — Phase 129 finished]
 ```
 
 ## Accumulated Context
 ### Decisions
 | Decision | Phase | Impact |
 |----------|-------|--------|
+| Module dispatch quality is model-dependent — sonnet executes module instructions as commands, kimi documents them as expectations | 129 | Future module wording may need more imperative phrasing; module value proposition depends on model capability |
 | Fix installer >- block scalar parser rather than rewriting descriptions | 109 | All modules with multi-line descriptions now install correctly; root cause of many v2.18 grades being lower than expected |
 | Adopt clarity test from Superpowers | 38 | validate_plan checks "could someone with no context execute this?" |
 | Adopt dual-goal emphasis from GPT Pilot | 38 | verify=programmatic, done=human-reviewable made explicit |
@@ -136,6 +137,6 @@ Last commit: 7a7deaf adversarial E2E testing
 PR: pending
 ## Session Continuity
 Last session: 2026-03-25
-Stopped at: Phase 129 APPLY complete — adversarial results documented
-Next action: /paul:unify for Phase 129
-Resume file: .paul/phases/129-adversarial-testing-setup/adversarial-results.md
+Stopped at: Phase 129 complete — adversarial testing results documented
+Next action: Merge PR #46, then /paul:plan for Phase 130
+Resume file: .paul/phases/129-adversarial-testing-setup/129-01-SUMMARY.md
