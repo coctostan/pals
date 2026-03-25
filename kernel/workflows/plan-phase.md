@@ -21,7 +21,7 @@ Next phase: APPLY (after plan approval)
 .paul/PROJECT.md
 .paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail are relevant)
 .paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
-modules.yaml (installed module registry — MUST read if it exists; drives pre-plan and post-plan hook dispatch)
+modules.yaml (installed module registry — MUST read; drives pre-plan and post-plan hook dispatch)
 </required_reading>
 
 <references>
@@ -83,7 +83,7 @@ templates/PLAN.md
 
 <step name="pre_plan_advisory_hooks" priority="before-scope-analysis">
 **Dispatch advisory pre-plan hooks first — these inform the plan but never block.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-plan advisory: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `pre-plan` whose hook description does NOT contain "block":
    - TODD (p100): scan for test files/frameworks, inject tdd_candidates
    - IRIS (p150): scan files for anti-pattern signatures, inject review_flags
@@ -224,11 +224,12 @@ Required skills will BLOCK apply-phase until confirmed loaded.
    - After automated work completes
    - Before dependent decisions
    - Not too frequent (avoid checkpoint fatigue)
+7. **Module dispatch validation:** If modules are enabled in `pals.json` and pre-plan dispatch ran, verify the plan records dispatch results (in `<module_dispatch>` section or inline). If no dispatch log was recorded, emit WARNING: "Pre-plan module dispatch produced no recorded output — verify modules.yaml was loaded."
 </step>
 
 <step name="post_plan_hooks" priority="after-plan-creation">
 **Dispatch post-plan lifecycle hooks to registered modules.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded from prerequisite read. If not found, emit `[dispatch] post-plan: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-plan` by finding `installed_modules.*.hook_details.post-plan`
 3. Sort by `hook_details.post-plan.priority` ascending (lower runs first)
 4. For each registered module:
@@ -238,7 +239,7 @@ Required skills will BLOCK apply-phase until confirmed loaded.
    d. Collect `plan_modifications` (e.g., task restructuring)
    e. Apply modifications to the plan in priority order
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `post-plan`: proceed (no-op, no warning)
+6. If no modules registered for `post-plan`: emit `[dispatch] post-plan: 0 modules registered for this hook`
 7. Output dispatch log: `[dispatch] post-plan: {MODULE(priority) → N modifications | skip} | ...`
 8. If modifications were applied: note in plan that module overlays were applied
 </step>

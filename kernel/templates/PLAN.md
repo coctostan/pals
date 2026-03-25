@@ -48,6 +48,15 @@ autonomous: true                 # false if plan has checkpoints requiring user 
 path/to/relevant/source.ts
 </context>
 
+<module_dispatch>
+## Pre-Plan Module Dispatch
+<!-- REQUIRED. Record dispatch results from pre-plan hooks below. -->
+<!-- If modules.yaml was not found, state: "WARNING: modules.yaml not loaded — [reason]" -->
+<!-- If no modules registered for pre-plan, state: "[dispatch] pre-plan: 0 modules registered" -->
+
+[dispatch results recorded here during /paul:plan]
+</module_dispatch>
+
 <skills>
 ## Required Skills (from SPECIAL-FLOWS.md)
 

@@ -17,7 +17,7 @@ Next phase: UNIFY (after execution completes)
 <required_reading>
 .paul/STATE.md
 .paul/phases/{phase}/{plan}-PLAN.md
-modules.yaml (installed module registry — MUST read if it exists; drives pre-apply, post-task, and post-apply hook dispatch)
+modules.yaml (installed module registry — MUST read; drives pre-apply, post-task, and post-apply hook dispatch)
 </required_reading>
 
 <references>
@@ -259,7 +259,7 @@ references/module-dispatch.md
 
 <step name="pre_apply_hooks" priority="before-tasks">
 **Dispatch pre-apply baseline hooks. These record baselines for post-apply comparison.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-apply: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `pre-apply`:
    - TODD (p50): verify test files exist, record test baseline
    - WALT (p100): run test suite, record baseline counts (total/passing/failing)
@@ -314,7 +314,7 @@ For each <task> in order:
      Continue? [yes/adjust plan/stop]
      ```
 6. **Dispatch post-task enforcement hooks:**
-   a. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+   a. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-task: modules.yaml NOT FOUND — WARNING` and skip dispatch.
    b. Resolve installed modules for `post-task` (currently: TODD at p100)
    c. For each registered module:
       - Load hook-specific `refs`
@@ -401,7 +401,7 @@ For each <task> in order:
 
 <step name="advisory_module_dispatch" priority="after-tasks">
 **Dispatch advisory (non-blocking) post-apply modules. This step runs BEFORE enforcement so advisory output is ALWAYS visible.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-apply advisory: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-apply` whose hook description does NOT contain "block" — these are advisory-only modules:
    - IRIS (review patterns, p250)
    - DOCS (doc drift detection, p250)
@@ -418,7 +418,7 @@ For each <task> in order:
 </step>
 <step name="enforcement_module_dispatch" priority="after-advisory">
 **Dispatch enforcement (blocking) post-apply modules. Advisory output is already visible above.**
-1. Read `modules.yaml` if not already loaded
+1. Read `modules.yaml` if not already loaded. If not found, emit `[dispatch] post-apply enforcement: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-apply` whose hook description contains "block" — these are enforcement modules:
    - WALT (quality gate: tests + lint + typecheck vs baseline, p100)
    - DEAN (dependency audit vs baseline, p150)
