@@ -1,0 +1,62 @@
+name: reed
+display_name: REED
+description: >
+  Resilience & Error Engineering Defense. Validates retry patterns,
+  checks timeout coverage, detects missing error boundaries, ensures
+  graceful degradation, and flags cascading failure risks.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 210
+    description: >-
+      Scan files_modified for resilience concerns. 1) Check for timeout config:
+      grep -rn 'timeout\|Timeout\|TIMEOUT' {files} — note if external calls
+      have timeouts. 2) Check for retry patterns: grep -rn 'retry\|Retry\|
+      backoff\|maxRetries' {files}. 3) Check for error boundaries (React):
+      grep -rn 'ErrorBoundary\|componentDidCatch' in UI files. 4) Check for
+      graceful shutdown: grep -rn 'SIGTERM\|SIGINT\|gracefulShutdown\|
+      process\.on' in entry files. Output resilience assessment: '| Check |
+      Status |' with rows for timeouts, retries, error boundaries, shutdown.
+      Inject resilience_context with: timeout_count, retry_patterns,
+      has_error_boundary, has_shutdown_handler. If no relevant files: 'REED:
+      No resilience-relevant files in scope — skipping.'
+    refs:
+      - references/resilience-patterns.md
+  post-apply:
+    priority: 180
+    description: >-
+      For EACH changed file: 1) Infinite retry detection: grep -n 'while.*true
+      \|for.*;;' {file} — if near retry/fetch/request logic, BLOCK: 'REED
+      BLOCK: {file}:{line} — potential infinite retry loop. Add max retries
+      and backoff.' 2) Timeout check: for files with fetch/axios/http calls
+      (grep 'fetch(\|axios\.\|http\.\|request('), check if timeout is
+      configured nearby. WARN if missing: 'REED WARN: {file}:{line} — external
+      call without timeout. Add timeout configuration.' 3) Error boundaries:
+      if React component file changed, check nearest ErrorBoundary exists.
+      WARN if top-level component has no boundary. 4) Empty catch blocks:
+      grep 'catch.*{[[:space:]]*}' — WARN per match: 'REED WARN: {file}:{line}
+      — empty catch. Handle error or propagate.' 5) Graceful shutdown: if
+      server entry file changed, check for SIGTERM handler. WARN if missing.
+      Output resilience review table: '| File | Check | Result |' with
+      PASS/WARN/BLOCK. If no concerns: 'REED: No resilience issues in {N}
+      changed files.'
+    refs:
+      - references/resilience-patterns.md
+
+files:
+  references:
+    - references/resilience-principles.md
+    - references/resilience-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

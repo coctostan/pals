@@ -27,17 +27,30 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.21 Expertise Expansion II
-Status: ✅ Complete
-Phases: 3 of 3 complete
+### v2.22 Expertise Expansion III
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
 
-Theme: Build 3 new expert modules (LUKE, ARIA, DANA) for UI/UX, accessibility, and data design coverage.
+Theme: Build 3 new expert modules (OMAR, REED, VERA) for observability, resilience, and privacy/compliance coverage.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 117 | LUKE Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 118 | ARIA Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 119 | DANA Module | 1/1 | ✅ Complete | 2026-03-24 |
+| 120 | OMAR Module | TBD | Not started | - |
+| 121 | REED Module | TBD | Not started | - |
+| 122 | VERA Module | TBD | Not started | - |
 
+## Completed Milestones
+<details>
+<summary>v2.21 Expertise Expansion II - 2026-03-24 (3 phases)</summary>
+
+Theme: Build 3 new expert modules (LUKE, ARIA, DANA).
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 117 | LUKE Module | 1 | 2026-03-24 |
+| 118 | ARIA Module | 1 | 2026-03-24 |
+| 119 | DANA Module | 1 | 2026-03-24 |
+
+</details>
 ## Completed Milestones
 <details>
 <summary>v2.20 Expertise Expansion I - 2026-03-24 (4 phases)</summary>
