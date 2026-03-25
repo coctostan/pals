@@ -8,17 +8,17 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 ## Current Position
 Milestone: v2.25 E2E Adversarial Testing
 Phase: 129 of 131 (Adversarial Testing Setup)
-Plan: 129-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-25 — Created 129-01-PLAN.md
+Plan: 129-01 complete
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-25 — Phase 129 APPLY complete
 Progress:
-- v2.25 E2E Adversarial Testing: [░░░░░░░░░░] 0%
-- Phase 129: [░░░░░░░░░░] 0%
+- v2.25 E2E Adversarial Testing: [▓▓▓░░░░░░░] 33%
+- Phase 129: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -131,11 +131,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: PR #45 merged
-PR: none (on main)
+Branch: feature/129-adversarial-testing-setup
+Last commit: 7a7deaf adversarial E2E testing
+PR: pending
 ## Session Continuity
 Last session: 2026-03-25
-Stopped at: Plan 129-01 created
-Next action: Review and approve plan, then run /paul:apply 129-01-PLAN.md
-Resume file: .paul/phases/129-adversarial-testing-setup/129-01-PLAN.md
+Stopped at: Phase 129 APPLY complete — adversarial results documented
+Next action: /paul:unify for Phase 129
+Resume file: .paul/phases/129-adversarial-testing-setup/adversarial-results.md
