@@ -29,13 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 ### v2.24 Module Dispatch Integrity
 Status: 🚧 In Progress
-Phases: 0 of 2 complete
+Phases: 2 of 2 complete
 
 Theme: Debug, reproduce, and durably fix the module dispatch system so modules can never silently skip.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 127 | Debug + Reproduce + Instrument | 2 | ✅ Complete | 2026-03-25 |
-| 128 | Durable Fix Across System | TBD | Not started | - |
+| 128 | Install, Config & Init Audit | 1 | ✅ Complete | 2026-03-25 |
 ## Completed Milestones
 <details>
 <summary>v2.23 pi-verify v1.0 — Ship-Ready Product - 2026-03-25 (4 phases, executed in pi-verify via cmux)</summary>

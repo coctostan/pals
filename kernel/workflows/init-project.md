@@ -539,14 +539,24 @@ Store `specialized_flows_enabled = false`
 Which PALS modules would you like to enable?
 (All enabled by default — enter numbers to toggle, or press Enter to accept)
 
-  [1] CARL   ✓  Session boundary manager (Pi extension)
-  [2] TODD   ✓  Test-driven development enforcement
-  [3] WALT   ✓  Quality gating & validation
-  [4] DEAN   ✓  Dependency evaluation & audit notifier
-  [5] IRIS   ✓  Intelligent review & inspection system
-  [6] SKIP   ✓  Smart knowledge & information persistence
-  [7] DAVE   ✓  Deploy automation & verification engine
-  [8] RUBY   ✓  Refactor utility & better-code yielder
+  [1]  CARL   ✓  Session boundary manager (Pi extension)
+  [2]  TODD   ✓  Test-driven development enforcement
+  [3]  WALT   ✓  Quality gating & validation
+  [4]  DEAN   ✓  Dependency evaluation & audit notifier
+  [5]  IRIS   ✓  Intelligent review & inspection system
+  [6]  SKIP   ✓  Smart knowledge & information persistence
+  [7]  DAVE   ✓  Deploy automation & verification engine
+  [8]  RUBY   ✓  Refactor utility & better-code yielder
+  [9]  ARCH   ✓  Architecture pattern detection & boundary enforcement
+  [10] SETH   ✓  Security evaluation & threat hunting
+  [11] PETE   ✓  Performance evaluation & tuning expert
+  [12] GABE   ✓  Gateway & API boundary expert
+  [13] LUKE   ✓  UI/UX pattern detection & review
+  [14] ARIA   ✓  Accessibility assessment & enforcement
+  [15] DANA   ✓  Data pattern detection & migration safety
+  [16] OMAR   ✓  Observability & logging review
+  [17] REED   ✓  Resilience pattern detection & review
+  [18] VERA   ✓  Privacy assessment & PII protection
 ```
 
 Wait for user response.
@@ -572,7 +582,17 @@ Wait for user response.
     "iris": { "enabled": true, "description": "Intelligent review & inspection system" },
     "skip": { "enabled": true, "description": "Smart knowledge & information persistence" },
     "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
-    "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
+    "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" },
+    "arch": { "enabled": true, "description": "Architecture pattern detection & boundary enforcement" },
+    "seth": { "enabled": true, "description": "Security evaluation & threat hunting" },
+    "pete": { "enabled": true, "description": "Performance evaluation & tuning expert" },
+    "gabe": { "enabled": true, "description": "Gateway & API boundary expert" },
+    "luke": { "enabled": true, "description": "UI/UX pattern detection & review" },
+    "aria": { "enabled": true, "description": "Accessibility assessment & enforcement" },
+    "dana": { "enabled": true, "description": "Data pattern detection & migration safety" },
+    "omar": { "enabled": true, "description": "Observability & logging review" },
+    "reed": { "enabled": true, "description": "Resilience pattern detection & review" },
+    "vera": { "enabled": true, "description": "Privacy assessment & PII protection" }
   },
   "git": {
     "remote": null,
