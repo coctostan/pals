@@ -1,0 +1,61 @@
+name: pete
+display_name: PETE
+description: >
+  Performance Evaluation & Tuning Expert. Detects N+1 queries, bundle
+  bloat, algorithmic anti-patterns, rendering performance issues, and
+  memory concerns across the plan-apply-unify loop.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 225
+    description: >-
+      Scan files_modified for performance-sensitive patterns. Check for database
+      query files (ORM models, repository files, query builders) in scope. If
+      found, flag for N+1 and unbounded query review. Check for heavy import
+      patterns: grep -n "import.*from 'lodash'\|import.*from 'moment'\|
+      require('lodash')" {files_modified} — suggest tree-shakeable alternatives.
+      Check package.json if modified: are devDependencies properly separated?
+      Scan for rendering files (React components, Vue SFCs) in scope — flag for
+      re-render and virtualization review. Output performance assessment: '|
+      Category | Files in Scope | Risk |' with rows for queries, bundle,
+      rendering, algorithms. Inject perf_context with risk areas.
+    refs:
+      - references/performance-patterns.md
+  post-apply:
+    priority: 175
+    description: >-
+      For EACH changed file, run performance checks: 1) N+1 detection: grep -n
+      'for.*await\|forEach.*await\|\.map.*await' {file} — WARN on any match:
+      'PETE WARN: Potential N+1 pattern in {file}:{line}. Consider batch query.'
+      2) Heavy imports: grep -n "import.*from 'lodash'\|require('moment')" {file}
+      — WARN: 'PETE WARN: Full library import in {file}:{line}. Use
+      lodash/{method} or date-fns instead.' 3) Unbounded queries: grep -n
+      'SELECT \*\|\.find()\|\.findAll()' {file} — WARN if no LIMIT/pagination
+      nearby. 4) Nested loops: grep -n 'for.*for\|forEach.*forEach' {file} —
+      WARN: 'O(n²) pattern in {file}:{line}.' 5) Sync I/O in async: grep -n
+      'readFileSync\|writeFileSync' {file} — BLOCK if in request handler or
+      async function: 'PETE BLOCK: Synchronous I/O in async path {file}:{line}.
+      Use async variant.' 6) Large files: wc -l {file} — WARN if >500 lines.
+      Output performance findings table: '| File | Pattern | Severity | Detail
+      |' with findings. If no issues: 'PETE: No performance concerns in {N}
+      changed files.'
+    refs:
+      - references/performance-patterns.md
+
+files:
+  references:
+    - references/performance-principles.md
+    - references/performance-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
