@@ -1,0 +1,59 @@
+name: gabe
+display_name: GABE
+description: >
+  Gateway & API Boundary Expert. Validates REST/GraphQL conventions,
+  detects breaking contract changes, checks versioning strategy, and
+  ensures API endpoints have proper validation and documentation.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 175
+    description: >-
+      Scan files_modified for API-related files: grep -rn 'app\.\(get\|post\|
+      put\|patch\|delete\)\|router\.\|@Get\|@Post\|@Put\|@Delete\|\.graphql'
+      {files_modified} to identify route/controller/schema files. If API files
+      found: assess contract health — check for verb-based URLs (grep for
+      '/get\|/create\|/update\|/delete'), missing pagination on list endpoints,
+      missing versioning (count endpoints, warn if >5 without /v1/ or version
+      header). Check for OpenAPI/Swagger spec: find . -name 'openapi.*' -o
+      -name 'swagger.*'. Output API assessment: '| Endpoint | Convention |
+      Status |' with PASS/WARN per check. Inject api_context with: endpoint
+      count, convention warnings, versioning status, spec presence.
+    refs:
+      - references/api-patterns.md
+  post-apply:
+    priority: 140
+    description: >-
+      For EACH changed route/controller/schema file: 1) Breaking change check:
+      parse git diff for removed routes (deleted app.get/post/etc lines),
+      removed response fields (deleted interface/type fields), new required
+      request fields. BLOCK on breaking changes without deprecation: 'GABE
+      BLOCK: Breaking change in {file}:{line} — endpoint {path} removed (or
+      field {name} removed from response). Add deprecation notice or restore.'
+      2) Convention check: flag verb-based URLs, missing status codes, plain
+      string error responses. WARN per violation. 3) Validation check: for new
+      or modified endpoints, grep for schema validation (Zod, Joi, Pydantic,
+      class-validator). WARN if endpoint has no validation: 'GABE WARN: {file}
+      endpoint {path} has no input validation.' 4) Output contract review table:
+      '| File | Endpoint | Check | Result |' with PASS/WARN/BLOCK per check.
+      If no API files changed: 'GABE: No API files in changed set — skipping.'
+    refs:
+      - references/api-patterns.md
+
+files:
+  references:
+    - references/api-principles.md
+    - references/api-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
