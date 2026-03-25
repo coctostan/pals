@@ -29,13 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 ### v2.20 Expertise Expansion I
 Status: 🚧 In Progress
-Phases: 1 of 4 complete
+Phases: 2 of 4 complete
 
 Theme: Build 4 new expert modules (ARCH, SETH, PETE, GABE) with full structure matching existing module quality.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 113 | ARCH Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 114 | SETH Module | TBD | Not started | - |
+| 114 | SETH Module | 1/1 | ✅ Complete | 2026-03-24 |
 | 115 | PETE Module | TBD | Not started | - |
 | 116 | GABE Module | TBD | Not started | - |
 
