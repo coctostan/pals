@@ -1,0 +1,61 @@
+name: aria
+display_name: ARIA
+description: >
+  Accessibility Review & Inclusion Audit. Checks WCAG compliance,
+  validates semantic HTML usage, detects missing alt text and labels,
+  ensures keyboard navigation, and flags color-only information patterns.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 190
+    description: >-
+      Scan files_modified for UI files (.tsx, .jsx, .vue, .svelte, .html). If
+      UI files found: 1) Check for non-semantic interactive elements: grep -rn
+      '<div.*onClick\|<span.*onClick' {ui_files} — count violations. 2) Check
+      for images without alt: grep -rn '<img' {ui_files} | grep -v 'alt=' —
+      count missing. 3) Check for inputs without labels: grep -rn '<input\|
+      <select\|<textarea' {ui_files} | grep -v 'aria-label\|aria-labelledby\|
+      <label' — count unlabeled. 4) Check for focus removal: grep -rn
+      'outline.*none\|outline.*0' in CSS/SCSS files. Output accessibility
+      assessment: '| Check | Count | Status |' with rows for semantic HTML,
+      alt text, labels, focus styles. Inject a11y_context with violation counts.
+      If no UI files: 'ARIA: No UI files in planned changes — skipping.'
+    refs:
+      - references/accessibility-patterns.md
+  post-apply:
+    priority: 165
+    description: >-
+      For EACH changed UI file (.tsx, .jsx, .vue, .svelte): 1) Semantic HTML:
+      grep '<div.*onClick\|<span.*onClick' {file} — WARN per match: 'ARIA
+      WARN: {file}:{line} — non-semantic <div onClick>. Use <button> instead.'
+      2) Alt text: grep '<img' {file} | grep -v 'alt=' — BLOCK if new images
+      without alt: 'ARIA BLOCK: {file}:{line} — <img> without alt text. Add
+      alt="" for decorative or descriptive alt for informative.' 3) Input
+      labels: grep '<input\|<select\|<textarea' {file} | grep -v 'aria-label\|
+      aria-labelledby\|id=.*<label' — BLOCK if new inputs without labels: 'ARIA
+      BLOCK: {file}:{line} — form input without label. Add <label> or
+      aria-label.' 4) Focus styles: grep 'outline.*none' in changed CSS — WARN:
+      'ARIA WARN: {file}:{line} — focus outline removed. Provide visible
+      alternative.' 5) Keyboard handlers: for elements with onClick but no
+      onKeyDown, WARN. 6) Output a11y review table: '| File | Check | Result |'
+      with PASS/WARN/BLOCK. If no UI files: 'ARIA: No UI files changed.'
+    refs:
+      - references/accessibility-patterns.md
+
+files:
+  references:
+    - references/accessibility-principles.md
+    - references/accessibility-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

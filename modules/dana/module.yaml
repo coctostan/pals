@@ -1,0 +1,63 @@
+name: dana
+display_name: DANA
+description: >
+  Data Architecture & Normalization Advisor. Validates schema design,
+  checks migration safety, detects query anti-patterns, ensures data
+  integrity constraints, and surfaces database health concerns.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 195
+    description: >-
+      Scan files_modified for data-related files: find matching patterns
+      *.prisma, *.entity.ts, *.model.ts, *.model.py, schema.rb, migrations/.
+      If data files found: 1) Check for schema files: find . -name
+      'schema.prisma' -o -name '*.entity.ts' -o -name 'models.py'. 2) Check
+      for migration files in scope: find . -path '*/migrations/*' in
+      files_modified. 3) If migrations present, scan for destructive ops:
+      grep 'DROP\|RENAME\|removeColumn\|dropTable' — flag as high risk. 4)
+      Check schema health: grep for tables without created_at/updated_at. 5)
+      Output data assessment: '| File | Type | Risk |' with schema/migration/
+      query classification. Inject data_context with: schema_files, migration
+      count, destructive_ops, missing_timestamps. If no data files: 'DANA: No
+      data files in planned changes — skipping.'
+    refs:
+      - references/data-patterns.md
+  post-apply:
+    priority: 155
+    description: >-
+      For EACH changed data file: 1) Migration safety: if migration file, grep
+      for 'DROP COLUMN\|DROP TABLE\|removeColumn\|dropTable\|RENAME' — BLOCK
+      on destructive operations: 'DANA BLOCK: {file}:{line} — destructive
+      migration ({operation}). Ensure rollback exists and data is backed up.'
+      Check for NOT NULL without DEFAULT: grep 'NOT NULL' and verify DEFAULT
+      clause. WARN if missing. 2) Schema health: for schema/entity files, check
+      for created_at/updated_at (grep 'createdAt\|created_at\|timestamps').
+      WARN if table missing timestamps. Check for missing foreign key indexes.
+      3) Query patterns: for repository/service files, grep for N+1 indicators
+      'for.*await.*find\|forEach.*await.*query\|map.*await.*get' — WARN per
+      match: 'DANA WARN: {file}:{line} — potential N+1 query pattern. Use eager
+      loading or batch query.' 4) Unbounded queries: grep 'findAll\|find()\|
+      SELECT \*' without '.limit\|LIMIT' — WARN. 5) Output data review table:
+      '| File | Check | Result |' with PASS/WARN/BLOCK. If no data files:
+      'DANA: No data files in changed set.'
+    refs:
+      - references/data-patterns.md
+
+files:
+  references:
+    - references/data-principles.md
+    - references/data-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

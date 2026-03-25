@@ -1,0 +1,59 @@
+name: luke
+display_name: LUKE
+description: >
+  Layout & UX Knowledge Expert. Validates component design patterns,
+  checks design system consistency, detects UX anti-patterns, and
+  ensures responsive design and proper user feedback in UI code.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 185
+    description: >-
+      Scan files_modified for UI component files: find matching patterns
+      *.tsx, *.jsx, *.vue, *.svelte. If UI files found: 1) Check component
+      sizes: wc -l {ui_files} — flag any >200 lines as oversized. 2) Check
+      for design system usage: grep for hardcoded colors (#hex, rgb()) and
+      spacing (margin/padding with raw px) in changed files. Count violations.
+      3) Scan for inline styles: grep 'style={{' {files}. 4) Output UI health
+      assessment: '| File | Lines | Inline Styles | Hardcoded Values | Status |'
+      with OK/WARN per file. Inject ux_context with: component_count,
+      oversized_components, design_token_violations, inline_style_count. If no
+      UI files in scope: 'LUKE: No UI files in planned changes — skipping.'
+    refs:
+      - references/ux-patterns.md
+  post-apply:
+    priority: 160
+    description: >-
+      For EACH changed UI component file (.tsx, .jsx, .vue, .svelte): 1) Size
+      check: wc -l {file} — WARN if >200 lines, BLOCK if >500 lines: 'LUKE
+      BLOCK: {file} is {N} lines — god component. Split into smaller focused
+      components.' 2) Design consistency: grep for hardcoded colors
+      '#[0-9a-fA-F]{3,8}' and raw spacing 'margin:.*[0-9]px|padding:.*[0-9]px'
+      — WARN per violation: 'LUKE WARN: {file}:{line} uses hardcoded {color/
+      spacing} — use design tokens.' 3) UX feedback check: if file contains form
+      submission or API calls, check for loading states (grep 'loading\|
+      isLoading\|spinner\|Skeleton') and error handling (grep 'error\|Error\|
+      catch'). WARN if missing: 'LUKE WARN: {file} has API call but no loading
+      state.' 4) Inline styles: grep 'style={{' — WARN per occurrence. 5) Output
+      UX review table: '| File | Check | Result |' with PASS/WARN/BLOCK per
+      check. If no UI files changed: 'LUKE: No UI files in changed set.'
+    refs:
+      - references/ux-patterns.md
+
+files:
+  references:
+    - references/ux-principles.md
+    - references/ux-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
