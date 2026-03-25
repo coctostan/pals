@@ -1,0 +1,61 @@
+name: vera
+display_name: VERA
+description: >
+  Verification & Regulatory Awareness. Detects PII handling patterns,
+  checks GDPR/CCPA compliance readiness, validates consent flows,
+  flags sensitive data exposure, and ensures data retention practices.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 215
+    description: >-
+      Scan files_modified for privacy concerns. 1) PII field detection: grep
+      -rn 'email\|phone\|ssn\|socialSecurity\|creditCard\|dateOfBirth\|
+      passport\|address' in schema/model/entity files — count PII fields. 2)
+      Check for consent mechanism: grep -rn 'consent\|gdpr\|optIn\|optOut\|
+      privacy' {files}. 3) Check for data deletion: grep -rn 'deleteUser\|
+      removeUser\|purge\|anonymize\|erasure' {files}. 4) Check for encryption
+      on PII: grep -rn 'encrypt\|bcrypt\|argon\|crypto' near PII fields.
+      Output privacy assessment: '| Check | Status |' with rows for PII
+      inventory, consent, deletion, encryption. Inject privacy_context with:
+      pii_field_count, has_consent, has_deletion, has_encryption. If no
+      relevant files: 'VERA: No privacy-relevant files in scope — skipping.'
+    refs:
+      - references/privacy-patterns.md
+  post-apply:
+    priority: 185
+    description: >-
+      For EACH changed file: 1) PII in logs: grep -n 'console.*email\|
+      log.*phone\|log.*ssn\|log.*address\|log.*creditCard\|console.*password'
+      {file} — BLOCK on match: 'VERA BLOCK: {file}:{line} — PII ({type}) in
+      log statement. Remove or mask with [REDACTED].' 2) New PII storage: if
+      schema/model file changed and new PII field added (grep diff for +email,
+      +phone, etc.), check for encryption — WARN if unencrypted: 'VERA WARN:
+      {file} — new PII field {name} without encryption. Consider encrypting at
+      rest.' 3) Consent check: if user-facing data collection added (new form
+      fields, new API endpoints accepting PII), check for consent mechanism.
+      WARN if missing. 4) Hardcoded PII in tests: grep test files for real
+      email/phone patterns — WARN: 'VERA WARN: {file}:{line} — hardcoded PII
+      in test. Use faker/generated data.' 5) Output privacy review table:
+      '| File | Check | Result |' with PASS/WARN/BLOCK. If no concerns:
+      'VERA: No privacy issues in {N} changed files.'
+    refs:
+      - references/privacy-patterns.md
+
+files:
+  references:
+    - references/privacy-principles.md
+    - references/privacy-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

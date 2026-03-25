@@ -1,0 +1,60 @@
+name: omar
+display_name: OMAR
+description: >
+  Observability, Monitoring & Alert Review. Validates logging patterns,
+  checks health endpoint coverage, detects empty catch blocks, flags
+  sensitive data in logs, and ensures error tracking readiness.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 205
+    description: >-
+      Scan files_modified for observability concerns. 1) Count console.log
+      usage: grep -rn 'console\.log\|console\.error' {files} — report count.
+      2) Check for structured logger: grep -rn 'logger\.\|winston\|pino\|
+      bunyan\|log4js' {files} — note if project uses structured logging. 3)
+      Check for health endpoint: grep -rn '/health\|/healthz\|/ready' in route
+      files. 4) Check for error handlers: grep -rn 'uncaughtException\|
+      unhandledRejection' in entry files. Output observability assessment:
+      '| Check | Status |' with rows for logging, health, error handling,
+      structured logger. Inject obs_context with: console_log_count, has_logger,
+      has_health, has_error_handler. If no relevant files: 'OMAR: No
+      observability-relevant files in scope — skipping.'
+    refs:
+      - references/observability-patterns.md
+  post-apply:
+    priority: 170
+    description: >-
+      For EACH changed file: 1) Sensitive data in logs: grep -n
+      'console.*password\|log.*token\|log.*secret\|log.*apiKey\|log.*email'
+      {file} — BLOCK on match: 'OMAR BLOCK: {file}:{line} — sensitive data
+      ({type}) in log statement. Remove or mask before proceeding.' 2) Empty
+      catch blocks: grep -n 'catch.*{[[:space:]]*}' {file} — WARN per match:
+      'OMAR WARN: {file}:{line} — empty catch block. Log error or re-throw.'
+      3) New console.log: grep -n 'console\.log' {file} — WARN: 'OMAR WARN:
+      {file}:{line} — console.log in production code. Use structured logger.'
+      4) Removed health endpoint: if route file changed, check /health still
+      exists — WARN if removed. 5) Error swallowing: grep for catch blocks
+      that don't log or re-throw — WARN. Output observability review table:
+      '| File | Check | Result |' with PASS/WARN/BLOCK. If no concerns:
+      'OMAR: No observability issues in {N} changed files.'
+    refs:
+      - references/observability-patterns.md
+
+files:
+  references:
+    - references/observability-principles.md
+    - references/observability-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
