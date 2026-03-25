@@ -27,18 +27,32 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.19 Module Excellence
-Status: ✅ Complete
-Phases: 4 of 4 complete
+### v2.20 Expertise Expansion I
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 
-Theme: Get every module to A or A+ using adversarial testing methodology.
+Theme: Build 4 new expert modules (ARCH, SETH, PETE, GABE) with full structure matching existing module quality.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 109 | DOCS & SKIP Upgrade | 1/1 | ✅ Complete | 2026-03-24 |
-| 110 | DEAN Adversarial Hardening | 1/1 | ✅ Complete | 2026-03-24 |
-| 111 | DAVE Adversarial Hardening | 1/1 | ✅ Complete | 2026-03-24 |
-| 112 | Full Roster Retest & Certification | 1/1 | ✅ Complete | 2026-03-24 |
+| 113 | ARCH Module | TBD | Not started | - |
+| 114 | SETH Module | TBD | Not started | - |
+| 115 | PETE Module | TBD | Not started | - |
+| 116 | GABE Module | TBD | Not started | - |
 
+## Completed Milestones
+<details>
+<summary>v2.19 Module Excellence - 2026-03-24 (4 phases)</summary>
+
+Theme: Get every module to A or A+ using adversarial testing methodology.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 109 | DOCS & SKIP Upgrade | 1 | 2026-03-24 |
+| 110 | DEAN Adversarial Hardening | 1 | 2026-03-24 |
+| 111 | DAVE Adversarial Hardening | 1 | 2026-03-24 |
+| 112 | Full Roster Retest & Certification | 1 | 2026-03-24 |
+
+</details>
 ## Completed Milestones
 <details>
 <summary>v2.18 Module Hardening - 2026-03-24 (3 phases)</summary>
