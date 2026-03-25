@@ -41,6 +41,7 @@ Completed milestone log for this project.
 | **v2.21 Expertise Expansion II** | 2026-03-24 | ~15 min | 3 phases, 1 plan |
 | **v2.22 Expertise Expansion III** | 2026-03-24 | ~15 min | 3 phases, 1 plan |
 | **v2.23 pi-verify v1.0 — Ship-Ready Product** | 2026-03-25 | ~90 min | 4 phases via cmux (pi-verify). Module dispatch failed silently. |
+| **v2.24 Module Dispatch Integrity** | 2026-03-25 | 1 session | 2 phases, 4 plans. Fixed 7 process failures + pals.json migration. |
 
 ---
 
@@ -473,6 +474,41 @@ Completed milestone log for this project.
 | Install for ALL detected harnesses | 47 | No silent override, no conflict |
 | Pi: no hook_register or command_register | 47 | Simpler adapter, can extend later |
 | TAP format for validation output | 48 | Machine-parseable, CI-ready |
+
+## ✅ v2.24 Module Dispatch Integrity
+
+**Completed:** 2026-03-25
+**Duration:** 1 session
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 2 |
+| Plans | 4 (127-01, 127-02, 128-01, 128-02) |
+| Files changed | 17 |
+| PRs | 3 (#43, #44, #45) |
+
+### Key Accomplishments
+
+- Fixed all 7 process failures that caused zero module dispatch in v2.23 E2E test (duplicate step numbers, "if it exists" qualifiers, silent no-op dispatch, missing template sections, no downstream validation)
+- Confirmed module dispatch works at runtime — 18 modules parsed, 16 hooks dispatched, log lines emitted
+- Updated init template from 8 to 18 modules
+- Created pals-json-schema.md — canonical schema reference for all pals.json fields
+- Added automatic pals.json migration for existing projects (triggered on plan/resume when schema_version mismatches)
+- Added paul-config Pi skill (was missing entirely)
+- Documented project pals.json vs installed modules.yaml relationship
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Fix instruction patterns, not architecture | 127 | Root cause was 7 compounding process failures in workflow instructions, not a module system design flaw |
+| Module skip messages count as dispatch evidence | 127 | A module that correctly skips IS dispatching — the failure was never being consulted at all |
+| Migration only adds, never overwrites | 128 | Safe for any existing project — preserves all user choices |
+| schema_version field enables auto-migration | 128 | plan-phase and resume-project detect version mismatch and migrate automatically |
+| Per-project module disable deferred | 128 | pals.json modules section is informational until runtime disable is built |
+| Install staleness detection deferred | 128 | No version check telling users to reinstall after updates |
 
 ---
 
