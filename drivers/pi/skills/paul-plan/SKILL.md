@@ -29,10 +29,10 @@ Produces a plan that contains everything needed for execution:
    - File: `../templates/PLAN.md`
 4. Read the plan format reference:
    - File: `../references/plan-format.md`
-5. Read the module registry (if it exists):
+5. Read the module registry (MUST — installed at ../modules.yaml):
    - File: `../modules.yaml`
    - This drives pre-plan and post-plan hook dispatch for TODD, DEAN, DOCS, IRIS, RUBY, DAVE
-5. Follow the plan-phase workflow:
+6. Follow the plan-phase workflow:
    - Validate preconditions (loop ready for PLAN)
    - Identify which phase is next
    - Reuse discussion handoff metadata when available

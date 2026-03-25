@@ -94,7 +94,7 @@ autonomous: true
 
 <substep name="standard_hooks_post_apply">
 **Dispatch post-apply hooks:**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] post-apply: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-apply` by finding `installed_modules.*.hook_details.post-apply`
 3. Sort by `hook_details.post-apply.priority` ascending
 4. For each registered module, load only `hook_details.post-apply.refs` and follow `hook_details.post-apply.description`
@@ -135,7 +135,7 @@ Fix applied successfully. {any notes}
 </substep>
 <substep name="standard_hooks_post_unify">
 **Dispatch post-unify hooks:**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-unify: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
 3. Sort by `hook_details.post-unify.priority` ascending
 4. For each registered module, load only `hook_details.post-unify.refs` and follow `hook_details.post-unify.description`

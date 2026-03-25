@@ -74,7 +74,9 @@ completed: YYYY-MM-DDTHH:MM:SSZ  # ISO timestamp when apply finished
 <!-- 2. any pre-unify context that materially informed reconciliation -->
 <!-- 3. post-unify module_reports and recorded side_effects returned before loop close -->
 <!-- Each contributing module gets its own persisted subsection here. -->
-<!-- If no module evidence survives finalization, omit this section entirely. -->
+<!-- REQUIRED. If no module evidence survives finalization, this section MUST still be present. -->
+<!-- State WHY no modules fired: registry not loaded, no hooks registered for this phase, or modules read but produced no output. -->
+<!-- Do NOT omit this section. -->
 
 <!-- Example subsection (from a test enforcement module):
 ### Test Execution
@@ -230,7 +232,7 @@ The one-liner should tell someone what actually shipped.
 ### Module Execution Reports
 **Purpose:** Persist durable evidence of module contributions across APPLY and UNIFY.
 **Contains:** Module-specific subsections with carried-forward annotations, reconciliation context, post-unify reports, and any recorded side effects worth preserving in the summary.
-**When included:** Only when lifecycle hooks produced evidence that should remain visible after loop close.
+**When included:** ALWAYS. This section is REQUIRED. If no modules fired, state why (registry not loaded, no hooks registered, etc.).
 **Update:** Drafted during UNIFY reconciliation and finalized after post-unify hooks, before the summary is closed.
 
 ### Deviations Section

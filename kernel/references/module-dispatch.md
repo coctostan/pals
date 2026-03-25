@@ -43,7 +43,7 @@ installed_modules:
 
 For hook `{hook_name}`:
 
-1. Read `modules.yaml` if it exists.
+1. Read `modules.yaml`. If not found, emit WARNING: `[dispatch] {hook_name}: modules.yaml NOT FOUND — module hooks will not fire. Run install.sh to regenerate.` and stop dispatch for this hook.
 2. Look under `installed_modules.*.hook_details.{hook_name}`.
 3. Keep only modules that define that hook.
 4. Sort by `priority` ascending.
@@ -54,7 +54,7 @@ For hook `{hook_name}`:
 
 ## Missing or Older Registries
 
-If `modules.yaml` is missing, treat hook dispatch as a no-op.
+If `modules.yaml` is missing, emit WARNING: `[dispatch] {hook}: modules.yaml NOT FOUND — module hooks will not fire. Run install.sh to regenerate.` Do NOT silently skip — the warning must be visible in the output.
 
 If the registry exists but does not include `hook_details`, it is from an older install.
 In that case:

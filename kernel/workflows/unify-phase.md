@@ -18,7 +18,7 @@ Next phase: PLAN (next plan or next phase)
 <required_reading>
 .paul/STATE.md
 .paul/phases/{phase}/{plan}-PLAN.md
-modules.yaml (installed module registry — MUST read if it exists; drives pre-unify and post-unify hook dispatch)
+modules.yaml (installed module registry — MUST read; drives pre-unify and post-unify hook dispatch)
 </required_reading>
 
 <references>
@@ -176,7 +176,7 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 
 <step name="pre_unify_hooks" priority="before-reconciliation">
 **Dispatch pre-unify lifecycle hooks to registered modules.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-unify: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `pre-unify` by finding `installed_modules.*.hook_details.pre-unify`
 3. Sort by `hook_details.pre-unify.priority` ascending (lower runs first)
 4. For each registered module:
@@ -185,7 +185,7 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
    c. Pass `annotations_from_apply` accumulated during the apply phase
    d. Collect `context_inject` data (e.g., quality trends, audit results)
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `pre-unify`: proceed (no-op, no warning)
+6. If no modules registered for `pre-unify`: emit `[dispatch] pre-unify: 0 modules registered for this hook`
 7. Output dispatch log: `[dispatch] pre-unify: {MODULE(priority) → N inject keys | skip} | ...`
 8. Store accumulated pre-unify context for reconciliation and later SUMMARY.md finalization alongside carried-forward apply annotations
 </step>
@@ -272,7 +272,7 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 
 <step name="post_unify_hooks" priority="after-state-update">
 **Dispatch post-unify lifecycle hooks to registered modules.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`) if it exists
+1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-unify: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
 3. Sort by `hook_details.post-unify.priority` ascending (lower runs first)
 4. For each registered module:
@@ -282,7 +282,7 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
    d. Collect `module_reports` for durable inclusion in `Module Execution Reports`
    e. Collect `side_effects` (e.g., "Recorded quality delta in history")
 5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `post-unify`: proceed (no-op, no warning)
+6. If no modules registered for `post-unify`: emit `[dispatch] post-unify: 0 modules registered for this hook`
 7. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N reports / N side effects | skip} | ...`
 8. Store accumulated post-unify module reports and logged side_effects for summary finalization
 </step>
@@ -293,7 +293,7 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
    - any pre-unify `context_inject` that materially informed reconciliation
    - `module_reports` returned by post-unify hooks
    - recorded `side_effects` that should remain visible after the loop closes
-3. If no module evidence exists after reconciliation, omit the section entirely instead of leaving placeholder comments.
+3. **Module evidence validation:** If modules are enabled in `pals.json` but `## Module Execution Reports` is empty and no dispatch logs were recorded during this loop, emit WARNING: "Modules enabled but zero dispatch evidence found — verify modules.yaml was loaded during PLAN and APPLY." The section MUST still be present; state why no modules fired rather than omitting it.
 4. Save the finalized SUMMARY.md before `check_phase_completion` or transition routing runs.
 </step>
 

@@ -27,18 +27,43 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.22 Expertise Expansion III
-Status: ✅ Complete
-Phases: 3 of 3 complete
+### v2.24 Module Dispatch Integrity
+Status: 🚧 In Progress
+Phases: 0 of 2 complete
 
-Theme: Build 3 new expert modules (OMAR, REED, VERA) for observability, resilience, and privacy/compliance coverage.
+Theme: Debug, reproduce, and durably fix the module dispatch system so modules can never silently skip.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 120 | OMAR Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 121 | REED Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 122 | VERA Module | 1/1 | ✅ Complete | 2026-03-24 |
-
+| 127 | Debug + Reproduce + Instrument | 2 | ✅ Complete | 2026-03-25 |
+| 128 | Durable Fix Across System | TBD | Not started | - |
 ## Completed Milestones
+<details>
+<summary>v2.23 pi-verify v1.0 — Ship-Ready Product - 2026-03-25 (4 phases, executed in pi-verify via cmux)</summary>
+
+Theme: Transform pi-verify from test scaffolding into a publishable, multi-language verification extension while stress-testing all 18 PALS modules under real development pressure.
+
+**Result:** pi-verify v1.0 shipped (67 tests, 5 languages, config + parallel execution). Module dispatch failed silently — zero modules fired across all 4 phases. See .paul/references/v223-e2e-assessment.md.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 123/10 | Identity & Cleanup | 1 | 2026-03-25 |
+| 124/11 | Multi-Language Detection | 1 | 2026-03-25 |
+| 125/12 | Config & Parallel Execution | 1 | 2026-03-25 |
+| 126/13 | Publish Prep | 1 | 2026-03-25 |
+
+</details>
+<details>
+<summary>v2.22 Expertise Expansion III - 2026-03-24 (3 phases)</summary>
+
+Theme: Build 3 new expert modules (OMAR, REED, VERA) for observability, resilience, and privacy/compliance coverage.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 120 | OMAR Module | 1 | 2026-03-24 |
+| 121 | REED Module | 1 | 2026-03-24 |
+| 122 | VERA Module | 1 | 2026-03-24 |
+
+</details>
 <details>
 <summary>v2.21 Expertise Expansion II - 2026-03-24 (3 phases)</summary>
 
