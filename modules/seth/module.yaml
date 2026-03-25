@@ -1,0 +1,62 @@
+name: seth
+display_name: SETH
+description: >
+  Security Evaluation & Threat Hunting. Scans for OWASP Top 10 risks,
+  detects hardcoded secrets, validates authentication patterns, checks
+  input validation coverage, and surfaces code-level security concerns.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=0.4.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 80
+    description: >-
+      Scan files_modified for security-sensitive patterns. Run secret detection:
+      grep -rn 'AKIA\|BEGIN.*PRIVATE KEY\|api[_-]\?key.*=\|password.*=.*["'"'"']'
+      --include='*.ts' --include='*.js' --include='*.py' --include='*.env'
+      {files_modified}. Check for auth-related files in scope (middleware, guards,
+      login endpoints). Assess OWASP coverage: does the project have input
+      validation (Zod/Joi/Pydantic), auth middleware, rate limiting, CSRF
+      protection? Output a security assessment: '| Category | Status |' with
+      rows for secrets, auth, validation, injection risk. Inject sec_warnings
+      with finding counts per category. Block plan creation if hardcoded secrets
+      found in planned files — display: 'SETH BLOCK: Hardcoded secret detected
+      in {file}. Remove before planning.'
+    refs:
+      - references/security-patterns.md
+  post-apply:
+    priority: 130
+    description: >-
+      For EACH changed file, run security checks: 1) Secret scan: grep -rn
+      'AKIA\|BEGIN.*PRIVATE KEY\|api[_-]\?key.*=\|password.*=['"'"'"]' {file} —
+      BLOCK on any match: 'SETH BLOCK: Hardcoded secret in {file}:{line}:
+      {matched_pattern}. Remove immediately.' 2) Injection scan: grep -n
+      'eval(\|exec(\|execSync(\|innerHTML\|dangerouslySetInnerHTML\|v-html'
+      {file} — BLOCK on eval/exec with dynamic input: 'SETH BLOCK: Dangerous
+      {function} in {file}:{line}. Use safe alternative.' WARN on innerHTML.
+      3) Auth pattern check: if auth-related files changed, verify middleware
+      is still wired (grep for auth middleware in route files). WARN if auth
+      middleware removed. 4) Input validation: if API endpoint files changed,
+      check for schema validation (grep for 'z\.\|Zod\|Joi\|validate\|
+      Pydantic\|class-validator'). WARN if endpoint has no validation. Output
+      security findings table: '| File | Check | Severity | Finding |' with
+      CRITICAL/HIGH/MEDIUM/LOW per finding. If no issues: 'SETH: No security
+      concerns in {N} changed files.'
+    refs:
+      - references/security-patterns.md
+
+files:
+  references:
+    - references/security-principles.md
+    - references/security-patterns.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}
