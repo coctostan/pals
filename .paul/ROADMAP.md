@@ -27,18 +27,31 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-### v2.20 Expertise Expansion I
-Status: ✅ Complete
-Phases: 4 of 4 complete
+### v2.21 Expertise Expansion II
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
 
-Theme: Build 4 new expert modules (ARCH, SETH, PETE, GABE) with full structure matching existing module quality.
+Theme: Build 3 new expert modules (LUKE, ARIA, DANA) for UI/UX, accessibility, and data design coverage.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 113 | ARCH Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 114 | SETH Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 115 | PETE Module | 1/1 | ✅ Complete | 2026-03-24 |
-| 116 | GABE Module | 1/1 | ✅ Complete | 2026-03-24 |
+| 117 | LUKE Module | TBD | Not started | - |
+| 118 | ARIA Module | TBD | Not started | - |
+| 119 | DANA Module | TBD | Not started | - |
 
+## Completed Milestones
+<details>
+<summary>v2.20 Expertise Expansion I - 2026-03-24 (4 phases)</summary>
+
+Theme: Build 4 new expert modules (ARCH, SETH, PETE, GABE).
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 113 | ARCH Module | 1 | 2026-03-24 |
+| 114 | SETH Module | 1 | 2026-03-24 |
+| 115 | PETE Module | 1 | 2026-03-24 |
+| 116 | GABE Module | 1 | 2026-03-24 |
+
+</details>
 ## Completed Milestones
 <details>
 <summary>v2.19 Module Excellence - 2026-03-24 (4 phases)</summary>
