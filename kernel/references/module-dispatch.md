@@ -67,3 +67,15 @@ In that case:
 - Do **not** assume every module reference should load; use only hook-specific `refs`.
 - Do **not** treat source `modules/*/module.yaml` as authoritative over the installed registry when both exist.
 - Do **not** fire hooks for modules absent from the installed registry, even if source manifests exist in the repo.
+
+## Project Config vs Installed Registry
+
+The project's `pals.json` `modules` section records which modules the user chose during `/paul:init`.
+However, **runtime dispatch reads only `modules.yaml`** (the installed registry), not the project's `pals.json`.
+
+This means:
+- All installed modules dispatch regardless of project-level config
+- A project with only 8 modules in its `pals.json` still gets all 18 dispatching
+- Per-project module disable at runtime is a planned future feature
+
+Until per-project disable is implemented, `pals.json` modules section is informational only.
