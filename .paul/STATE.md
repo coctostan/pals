@@ -4,23 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-23)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.19 Module Excellence — get every module to A or A+
+**Current focus:** v2.20 Expertise Expansion I — ARCH, SETH, PETE, GABE
 
 ## Current Position
-Milestone: v2.19 Module Excellence — COMPLETE
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.19 Module Excellence complete — ready for next
-Last activity: 2026-03-24 — v2.19 complete, all 8 modules certified A/A+
+Milestone: v2.20 Expertise Expansion I
+Phase: 113 of 116 (ARCH Module)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-24 — Milestone created
 Progress:
-
-- v2.19 Module Excellence: [██████████] 100% ✓
+- v2.20 Expertise Expansion I: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -138,11 +136,10 @@ Last commit: c81d2dd (feat(112-full-roster-retest): all 8 modules certified A/A+
 PR: none (on main)
 ## Session Continuity
 Last session: 2026-03-24
-Stopped at: v2.19 complete
-Next action: /paul:discuss or /paul:resume
-Resume file: .paul/phases/112-full-roster-retest/roster-certification.md
+Stopped at: Milestone created, ready to plan
+Next action: /paul:plan for Phase 113
+Resume file: .paul/ROADMAP.md
 Resume context:
-- 32 milestones completed (v0.1 → v2.19)
-- All 8 modules certified A/A+ (59/59 criteria pass)
-- Installer >- parser bug fixed as bonus
-- Deferred: multi-model comparison, pi-verify cleanup
+- v2.20 Expertise Expansion I created with 4 phases (113-116)
+- Phase 113 first: ARCH module (architecture expert)
+- Part 1 of 3 expansion milestones (v2.20, v2.21, v2.22)
