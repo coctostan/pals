@@ -65,7 +65,9 @@ After init, project is ready for first PLAN.
    - **preferences:** Add `preferences.auto_commit: false`, `preferences.verbose_output: false` if missing.
    - **integrations:** Add `integrations.sonarqube: { "enabled": false, "project_key": "" }` if missing.
 
-5. Write updated pals.json (preserving all existing values, only adding new fields).
+5. Set `schema_version` to the current `kernel_version` from installed `modules.yaml` (e.g., `"schema_version": "2.0.0"`).
+
+6. Write updated pals.json (preserving all existing values, only adding new fields + version stamp).
 
 6. Display migration summary:
    ```
@@ -617,6 +619,7 @@ Wait for user response.
 
 ```json
 {
+  "schema_version": "2.0.0",
   "modules": {
     "carl": { "enabled": true, "description": "Session boundary manager (Pi extension)", "session_strategy": "phase-boundary", "continue_threshold": 0.4, "safety_ceiling": 0.8 },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },

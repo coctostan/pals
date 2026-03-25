@@ -81,6 +81,22 @@ No multiple options. Prevents decision fatigue. User can redirect if needed.
      - Resume context
 </step>
 
+<step name="check_config_version" priority="after-load-state">
+**Check if project pals.json needs migration.**
+
+1. Read `pals.json` in project root. If absent, skip this step.
+2. Read `schema_version` field from pals.json (may be missing on older projects).
+3. Read `kernel_version` from installed `modules.yaml`.
+4. If `schema_version` is missing or does not match `kernel_version`:
+   - Run the `migrate_pals_json` step from `init-project.md`:
+     - Add missing modules, git fields, planning, preferences, integrations with defaults
+     - Preserve all existing user values
+     - Set `schema_version` to current `kernel_version`
+     - Show migration summary
+   - Continue with resume after migration completes
+5. If versions match: proceed (no migration needed, zero overhead).
+</step>
+
 <step name="load_resume_context">
 1. If handoff detected in previous step:
    - Read handoff file content

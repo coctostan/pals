@@ -2,6 +2,14 @@
 
 Canonical schema for project-level PALS configuration. This is the single source of truth for field names, types, defaults, and migration behavior.
 
+## schema_version
+
+| Field | Type | Default | Since |
+|-------|------|---------|-------|
+| `schema_version` | string | none (absent on old projects) | v2.24 |
+
+Matches the `kernel_version` from installed `modules.yaml`. Used by plan-phase and resume-project to detect when migration is needed. If missing or mismatched, the `migrate_pals_json` step runs automatically.
+
 ## modules
 
 Module enable/disable config. All modules default to `enabled: true` if absent.
