@@ -44,6 +44,22 @@ templates/PLAN.md
 3. **Read-only constraint:** Plan phase must not modify source files — only produce plan artifacts. (Inspired by OpenHands' read-only planning agent)
 </step>
 
+<step name="check_config_version" priority="after-preconditions">
+**Check if project pals.json needs migration.**
+
+1. Read `pals.json` in project root. If absent, skip this step.
+2. Read `schema_version` field from pals.json (may be missing on older projects).
+3. Read `kernel_version` from installed `modules.yaml`.
+4. If `schema_version` is missing or does not match `kernel_version`:
+   - Run the `migrate_pals_json` step from `init-project.md`:
+     - Add missing modules, git fields, planning, preferences, integrations with defaults
+     - Preserve all existing user values
+     - Set `schema_version` to current `kernel_version`
+     - Show migration summary
+   - Continue with planning after migration completes
+5. If versions match: proceed (no migration needed, zero overhead).
+</step>
+
 <step name="identify_phase">
 1. Read ROADMAP.md to determine:
    - Which phase is next (first incomplete phase)

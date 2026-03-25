@@ -36,10 +36,55 @@ After init, project is ready for first PLAN.
    ls .paul/ 2>/dev/null
    ```
 2. If exists:
-   - "PAUL already initialized in this project."
-   - Route to `/paul:resume` or `/paul:progress`
-   - Exit this workflow
+   a. Check if pals.json exists and needs migration (see `migrate_pals_json` step below)
+   b. If migration was needed and performed, show results and offer:
+      - "Config updated. Continue to /paul:resume or /paul:plan?"
+   c. If no migration needed:
+      - "PAUL already initialized in this project."
+      - Route to `/paul:resume` or `/paul:progress`
+   d. Exit this workflow (do NOT re-initialize)
 3. If not exists: proceed with initialization
+</step>
+<step name="migrate_pals_json" priority="after-check-existing">
+**Migrate an existing pals.json to the current schema. Runs when .paul/ exists.**
+
+1. Read existing pals.json:
+   ```bash
+   cat pals.json 2>/dev/null
+   ```
+   If pals.json does not exist: skip migration entirely (init will create it fresh).
+
+2. Read the canonical schema from `references/pals-json-schema.md` for the expected field list.
+
+3. Read installed `modules.yaml` to discover all currently installed modules.
+
+4. Compare existing pals.json against expected fields. For each missing field:
+   - **modules:** For each module in `modules.yaml` not present in `pals.json.modules`, add it with `{ "enabled": true, "description": "..." }` using the description from the module's manifest.
+   - **git fields:** Add missing git fields with their schema defaults. Do NOT overwrite existing values. Special case: if `git.branching` exists but `git.workflow` does not, add `git.workflow: "legacy"` (preserves the user's existing behavior).
+   - **planning:** Add `planning.default_collaboration: "medium"` if missing.
+   - **preferences:** Add `preferences.auto_commit: false`, `preferences.verbose_output: false` if missing.
+   - **integrations:** Add `integrations.sonarqube: { "enabled": false, "project_key": "" }` if missing.
+
+5. Set `schema_version` to the current `kernel_version` from installed `modules.yaml` (e.g., `"schema_version": "2.0.0"`).
+
+6. Write updated pals.json (preserving all existing values, only adding new fields + version stamp).
+
+6. Display migration summary:
+   ```
+   ════════════════════════════════════════
+   pals.json migrated to current schema
+   ════════════════════════════════════════
+
+   Added modules: {list of new module names, or "none"}
+   Added git fields: {list of new field names, or "none"}
+   Added sections: {planning, preferences, integrations — whichever were missing}
+   Preserved: {count} existing settings unchanged
+
+   No existing values were overwritten.
+   ════════════════════════════════════════
+   ```
+
+7. If nothing was missing: skip the summary, output "pals.json is up to date."
 </step>
 
 <step name="detect_existing_code">
@@ -574,6 +619,7 @@ Wait for user response.
 
 ```json
 {
+  "schema_version": "2.0.0",
   "modules": {
     "carl": { "enabled": true, "description": "Session boundary manager (Pi extension)", "session_strategy": "phase-boundary", "continue_threshold": 0.4, "safety_ceiling": 0.8 },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
