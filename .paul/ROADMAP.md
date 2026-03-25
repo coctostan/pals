@@ -34,7 +34,7 @@ Phases: 0 of 2 complete
 Theme: Debug, reproduce, and durably fix the module dispatch system so modules can never silently skip.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 127 | Debug + Reproduce + Instrument | 1 | ✅ Complete | 2026-03-25 |
+| 127 | Debug + Reproduce + Instrument | 2 | ✅ Complete | 2026-03-25 |
 | 128 | Durable Fix Across System | TBD | Not started | - |
 ## Completed Milestones
 <details>
