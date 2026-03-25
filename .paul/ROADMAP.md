@@ -35,7 +35,7 @@ Theme: Debug, reproduce, and durably fix the module dispatch system so modules c
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 127 | Debug + Reproduce + Instrument | 2 | ✅ Complete | 2026-03-25 |
-| 128 | Install, Config & Init Audit | 1 | ✅ Complete | 2026-03-25 |
+| 128 | Install, Config & Init Audit | 2 | 🚧 In progress | - |
 ## Completed Milestones
 <details>
 <summary>v2.23 pi-verify v1.0 — Ship-Ready Product - 2026-03-25 (4 phases, executed in pi-verify via cmux)</summary>

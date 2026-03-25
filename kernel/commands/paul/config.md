@@ -11,13 +11,10 @@ Manage PALS module configuration and integrations. View, enable, and disable mod
 <process>
 
 **Step 1: Locate and read config**
-
-Look for pals.json in this order:
 1. Current project root (where .paul/ exists) — this is the per-project config
 2. `kernel/pals.json` (global fallback)
-
-If not found in the project root, create pals.json there with defaults (all modules enabled).
 The project root is the directory containing `.paul/`, NOT just the PALS source repo.
+**Read the installed module registry** (`modules.yaml` at `../modules.yaml` relative to the skill) to discover all installed modules. This is the source of truth for which modules exist — not a hardcoded list.
 
 Read pals.json and display the module dashboard:
 
@@ -26,15 +23,14 @@ Read pals.json and display the module dashboard:
 PALS CONFIGURATION
 ════════════════════════════════════════
 
-Modules:
-  CARL   [on]   Context rules & domain configuration
-  TODD   [on]   Test-driven development enforcement
-  WALT   [on]   Quality gating & validation
-  DEAN   [on]   Dependency evaluation & audit notifier
-  IRIS   [on]   Intelligent review & inspection system
-  SKIP   [on]   Smart knowledge & information persistence
-  DAVE   [on]   Deploy automation & verification engine
-  RUBY   [on]   Refactor utility & better-code yielder
+Modules (from installed registry):
+  For EACH module in modules.yaml installed_modules:
+    - Read module name and description from the registry
+    - Check if module exists in project pals.json
+    - If exists: show [on] or [off] based on pals.json enabled field
+    - If NOT in pals.json: show [on]* with footnote
+
+  * = not in project config, using default: enabled
 
 Integrations:
   SonarQube  [off]
@@ -56,23 +52,17 @@ Preferences:
 **[1] Toggle a module:**
 ```
 Which module? (name or number)
-
-  [1] CARL   [on]
-  [2] TODD   [on]
-  [3] WALT   [on]
-  [4] DEAN   [on]
-  [5] IRIS   [on]
-  [6] SKIP   [on]
-  [7] DAVE   [on]
-  [8] RUBY   [on]
+  List ALL modules from installed modules.yaml registry,
+  numbered sequentially. Show current on/off status from
+  pals.json (default: on if not in config).
 ```
-
 After user selects a module:
+- If module not in pals.json yet: add it with current default state first
 - Flip its `enabled` boolean in pals.json
 - Write updated pals.json
 - Show confirmation: `TODD [on] → [off]`
 - Re-display dashboard
-- Note: Changes take effect after next `install.sh` run
+- Note: Module enable/disable in pals.json is informational until per-project runtime disable is implemented. All installed modules currently dispatch regardless.
 
 **[2] Manage integrations:**
 ```

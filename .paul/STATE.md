@@ -8,18 +8,18 @@ See: .paul/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 Milestone: v2.24 Module Dispatch Integrity
-Phase: 128 of 128 (Install, Config & Init Audit) — Complete
-Plan: 128-01 complete
-Status: v2.24 milestone complete, all phases done
-Last activity: 2026-03-25 — UNIFY complete, v2.24 ready to close
+Phase: 128 of 128 (Install, Config & Init Audit) — Reopened
+Plan: 128-02 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-25 — Created 128-02-PLAN.md (pals.json migration)
 Progress:
-- v2.24 Module Dispatch Integrity: [██████████] 100%
-- Phase 128: [██████████] 100%
+- v2.24 Module Dispatch Integrity: [███████░░░] 70%
+- Phase 128: [█████░░░░░] 50%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete]
+  ✓        ○        ○     [Plan 128-02 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -132,11 +132,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/128-install-config-init-audit
-Last commit: 2e233c9
-PR: https://github.com/coctostan/pals/pull/44 (state: open)
+Branch: main
+Last commit: 0e70a90 (PR #44 merged)
+PR: https://github.com/coctostan/pals/pull/44 (state: merged)
 ## Session Continuity
 Last session: 2026-03-25
-Stopped at: v2.24 complete — both phases done
-Next action: Merge PR #44, then /paul:milestone to close v2.24
+Stopped at: Phase 128 reopened — pals.json migration not addressed
+Next action: /paul:plan for 128-02 (pals.json migration)
 Resume file: .paul/phases/128-install-config-init-audit/128-01-SUMMARY.md
