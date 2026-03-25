@@ -34,7 +34,8 @@ Creates the `.paul/` project directory with core artifacts:
 
 ## Key Behavior
 
-- If `.paul/` exists, offer brownfield init (preserve existing state)
+- If `.paul/` exists and pals.json is stale, run migration first (add missing modules/fields with defaults, preserve existing values)
+- If `.paul/` exists and config is current, route to `/paul:resume` or `/paul:plan`
 - If `.paul/` does not exist, run greenfield init
 - Ask questions ONE at a time, not all at once
 - Store `planning.default_collaboration` so later planning flows can keep or override it per run
