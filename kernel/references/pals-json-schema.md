@@ -94,6 +94,24 @@ Values: `"low"`, `"medium"`, `"high"`.
 | `preferences.auto_commit` | bool | `false` | v1.0 |
 | `preferences.verbose_output` | bool | `false` | v1.0 |
 
+## guided_workflow
+
+| Field | Type | Default | Since |
+|-------|------|---------|-------|
+| `guided_workflow.auto_present.plan_review` | bool | `false` | v2.30 |
+| `guided_workflow.auto_present.apply_approval` | bool | `false` | v2.30 |
+| `guided_workflow.auto_present.continue_to_unify` | bool | `true` | v2.30 |
+| `guided_workflow.auto_present.checkpoint_decision` | bool | `true` | v2.30 |
+| `guided_workflow.auto_present.checkpoint_human_verify` | bool | `true` | v2.30 |
+| `guided_workflow.auto_present.checkpoint_human_action` | bool | `true` | v2.30 |
+| `guided_workflow.auto_present.resume_next` | bool | `true` | v2.30 |
+| `guided_workflow.auto_present.phase_transition` | bool | `false` | v2.30 |
+| `guided_workflow.auto_present.milestone_transition` | bool | `false` | v2.30 |
+
+Controls whether the Pi guided workflow extension auto-presents interactive dialogs for each transition type.
+- `false` = notify-only (user responds in chat prompt)
+- `true` = auto-present interactive confirm/select dialog
+
 ## integrations
 
 | Field | Type | Default | Since |

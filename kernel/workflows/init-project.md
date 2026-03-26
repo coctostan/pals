@@ -69,6 +69,7 @@ All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE
    - **git fields:** Add missing git fields with their schema defaults. Do NOT overwrite existing values. Special case: if `git.branching` exists but `git.workflow` does not, add `git.workflow: "legacy"` (preserves the user's existing behavior).
    - **planning:** Add `planning.default_collaboration: "medium"` if missing.
    - **preferences:** Add `preferences.auto_commit: false`, `preferences.verbose_output: false` if missing.
+   - **guided_workflow:** Add `guided_workflow.auto_present` with safe defaults (plan_review: false, apply_approval: false, continue_to_unify: true, checkpoint_*: true, resume_next: true, phase_transition: false, milestone_transition: false) if missing.
    - **integrations:** Add `integrations.sonarqube: { "enabled": false, "project_key": "" }` if missing.
 
 5. Set `schema_version` to the current `kernel_version` from installed `modules.yaml` (e.g., `"schema_version": "2.0.0"`).
@@ -83,7 +84,7 @@ All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE
 
    Added modules: {list of new module names, or "none"}
    Added git fields: {list of new field names, or "none"}
-   Added sections: {planning, preferences, integrations — whichever were missing}
+   Added sections: {planning, preferences, integrations, guided_workflow — whichever were missing}
    Preserved: {count} existing settings unchanged
 
    No existing values were overwritten.
@@ -692,7 +693,19 @@ Wait for user response.
   "preferences": {
     "auto_commit": false,
     "verbose_output": false
-  }
+  },
+  "guided_workflow": {
+    "auto_present": {
+      "plan_review": false,
+      "apply_approval": false,
+      "continue_to_unify": true,
+      "checkpoint_decision": true,
+      "checkpoint_human_verify": true,
+      "checkpoint_human_action": true,
+      "resume_next": true,
+      "phase_transition": false,
+      "milestone_transition": false
+    }
 }
 ```
 Adjust `enabled` values based on user's toggle selections.
