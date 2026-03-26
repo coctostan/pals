@@ -1,7 +1,5 @@
 # PALS
 
-**The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers.**
-
 PALS (Project Automation & Lifecycle System) is an end-to-end development framework for agentic coding. It manages the full plan-apply-unify lifecycle, enforces quality gates, loads context-aware modules, and tracks state across sessions — all through a modular architecture that runs on any agentic coding platform.
 
 Built for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Pi](https://github.com/nicholasgasior/pi-coding-agent), and the Agent SDK. Eighteen modules. One kernel. Zero boilerplate.
@@ -42,8 +40,8 @@ PALS uses a three-layer stack inspired by operating system design:
 │                    Kernel                         │
 │  PAUL — lifecycle, commands, workflows            │
 ├─────────────────────────────────────────────────┤
-│                    Drivers                        │
-│  Claude Code · Pi · Agent SDK                     │
+│                    Platforms                        │
+│  Claude Code · Pi                      │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -51,7 +49,7 @@ PALS uses a three-layer stack inspired by operating system design:
 
 **Modules** — Each module registers for lifecycle events (pre-plan, post-apply, etc.) and participates automatically. Enable or disable any module without affecting the rest. 8 core pals handle lifecycle concerns; 10 expert modules cover architecture, security, accessibility, performance, data, API design, UX, observability, resilience, and privacy.
 
-**Drivers** — Wiring layer that connects the kernel to a specific platform. The Claude Code driver installs slash commands and hooks. The Pi driver installs canonical skills plus an extension-backed command/hook layer. The Agent SDK driver exposes the same workflows as a headless API.
+**Platforms** — Wiring layer that connects the kernel to a specific platform. The Claude Code driver installs slash commands and hooks. The Pi driver installs canonical skills plus an extension-backed command/hook layer.
 
 ## Key Features
 
