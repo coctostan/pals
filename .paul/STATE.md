@@ -136,9 +136,9 @@ Last commit: 159a084 feat(140): E2E Protocol Validation (#50)
 PR: https://github.com/coctostan/pals/pull/50 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: Milestone v2.29 complete
+Stopped at: Milestone v2.29 complete — session paused
 Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/references/v229-e2e-report.md
+Resume file: .paul/HANDOFF-2026-03-26-v229-complete.md
 Resume context:
 - v2.29 E2E Test Protocol milestone complete (2 phases, 2 PRs merged)
 - E2E report produced with 4 findings → v2.30 Pi Guided Workflow UX
