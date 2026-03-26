@@ -2,6 +2,123 @@
 
 All notable changes to PALS are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.30.0] — 2026-03-26 — Pi Guided Workflow UX & Documentation
+
+### Added
+- Per-transition-type `guided_workflow.auto_present` config in pals.json — critical transitions (plan approval, phase/milestone transitions) default to notify-only; routine transitions auto-present (Phase 141)
+- `isValidOptionId()` whitelist validator for guided workflow menu parser — rejects code/doc content like `[id]`, accepts numeric IDs and known PALS responses (Phase 142)
+- Loop-state guard: skip stale "Continue to UNIFY?" detection when loop is already ✓✓✓ (Phase 143)
+
+### Changed
+- Init NEXT prompt merged to single line to prevent truncation (Phase 143)
+- README.md fully rewritten: 18 modules documented, ghost commands removed, correct URLs, current pals.json schema (Phase 144)
+- CHANGELOG.md updated through v2.30 (Phase 144)
+
+## [2.29.0] — 2026-03-26 — E2E Test Protocol
+
+### Added
+- Reusable E2E test protocol with 8 monitoring dimensions (Module Dispatch, Artifact Quality, Workflow Compliance, Git Flow, Init/Onboarding, Session Management, Model Behavior, Planning Quality)
+- Structured E2E report template matching actionable items format
+- Protocol validated via greenfield pi-monitor webapp build (3 loops, 2 phases, all dimensions scored)
+
+## [2.28.0] — 2026-03-26 — DEAN Baseline Management
+
+### Added
+- Baseline-aware DEAN override with delta comparison and staleness guard
+- `.paul/dean-baseline.json` for acknowledged vulnerability tracking
+- Closes all 13 v2.25 actionable items
+
+## [2.27.0] — 2026-03-26 — Module Dispatch Hardening
+
+### Changed
+- 40 hook descriptions rewritten to imperative/MUST wording across all 18 modules (Phase 135)
+- MANDATORY post-apply/post-unify dispatch markers with structural enforcement (Phase 136)
+- Merge gate split from 1 step to 4 explicit sub-steps (Phase 137)
+
+## [2.26.0] — 2026-03-26 — Init/Onboarding Overhaul
+
+### Added
+- Three init flows: quick (~1Q), greenfield (~8Q), brownfield (~12+Q)
+- Smart question gating with conditional follow-ups
+- Brownfield detection fix for repos with only config files
+- `--quick` mode for experienced users
+
+## [2.25.0] — 2026-03-25 — E2E Adversarial Testing
+
+### Added
+- Adversarial testing methodology for module validation
+- Real-user feature dev E2E run on existing codebase
+- Greenfield project E2E run proving module dispatch across all lifecycle points
+
+## [2.24.0] — 2026-03-25 — Module Dispatch Integrity
+
+### Fixed
+- Removed `kernel/` path prefix from 36+ module dispatch references (modules were silently skipped)
+- Added `modules.yaml` to `<required_reading>` in plan/apply/unify workflows
+- Split single-loop dispatch into advisory-then-enforcement structure
+
+## [2.23.0] — 2026-03-25 — pi-verify v1.0
+
+### Added
+- pi-verify v1.0 shipped: 67 tests, 5 languages, config + parallel execution
+- Built entirely through PALS in Pi via cmux (4 phases)
+- E2E assessment revealing module dispatch failure (fixed in v2.24)
+
+## [2.20.0–2.22.0] — 2026-03-24 — Expertise Expansion I–III
+
+### Added
+- 10 new expert modules: ARCH (architecture), SETH (security), PETE (performance), GABE (API conventions), LUKE (UX patterns), ARIA (accessibility), DANA (data patterns), OMAR (observability), REED (resilience), VERA (privacy)
+- Each module has pre-plan and post-apply hooks with tool-backed commands
+
+## [2.19.0] — 2026-03-24 — Module Excellence
+
+### Changed
+- All 8 core modules upgraded to A/A+ grade via adversarial testing methodology
+- DOCS & SKIP upgraded, DEAN and DAVE adversarially hardened, full roster retested
+
+## [2.18.0] — 2026-03-24 — Module Hardening
+
+### Changed
+- All 8 modules upgraded from "dispatches correctly" to "produces genuinely useful, tool-backed output"
+- Quick wins, tool integration, and quality tracking across 3 phases
+
+## [2.17.0] — 2026-03-24 — Module Dispatch Refinement
+
+### Fixed
+- Blocking modules no longer suppress advisory output — advisory dispatch runs first, enforcement second
+- SKIP hardened with full knowledge record templates
+- DEAN adversarial testing applied
+
+## [2.16.0] — 2026-03-24 — Module Dispatch Validation
+
+### Added
+- Module E2E test proving dispatch works after kernel/ path fix
+- Blocking module audit (WALT, DEAN, TODD verified)
+- Advisory module audit (IRIS, DOCS, RUBY, SKIP verified)
+
+## [2.15.0] — 2026-03-24 — PALS E2E Validation via Pi
+
+### Added
+- pi-verify extension built through PALS in Pi (5 phases via cmux)
+- Exercised init, plan, apply, unify, fix, pause, resume, and GitHub Flow workflows
+- Gap report documenting 12 findings across workflows
+
+## [2.14.0] — 2026-03-24 — GitHub Flow Validation
+
+### Added
+- Isolated validation on test project (gh-flow-test)
+- Live validation on pals repo itself
+- 8 fixes and hardening items resolved
+
+## [2.13.0] — 2026-03-23 — GitHub Flow Hardening
+
+### Fixed
+- All workflow steps use detected branch name (`git rev-parse --abbrev-ref HEAD`) instead of naming assumptions
+- Pause staging uses `git add -A` to capture all repo changes
+- Behind-base routing takes precedence over merge readiness
+- Two-tier `gh` validation: CLI presence + auth status
+- Status and resume share identical git-aware routing table
+- GitHub Flow init template omits ambiguous `branching` field
 ## [2.12.0] — 2026-03-23 — GitHub Flow Enforcement
 
 ### Added
