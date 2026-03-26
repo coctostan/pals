@@ -44,6 +44,7 @@ Completed milestone log for this project.
 | **v2.24 Module Dispatch Integrity** | 2026-03-25 | 1 session | 2 phases, 4 plans. Fixed 7 process failures + pals.json migration. |
 | **v2.25 E2E Adversarial Testing** | 2026-03-25 | 1 session | 3 phases, 3 plans. Cross-model testing (Kimi/GPT-5.4/Sonnet), pi-verify /verify diff, pi-bench from scratch, greenfield audit. |
 | **v2.26 Init/Onboarding Overhaul** | 2026-03-26 | 1 session | 3 phases, 3 plans. Greenfield ~8 questions, quick mode ~1, brownfield grouped modules, explicit milestone. |
+| **v2.27 Module Dispatch Hardening** | 2026-03-26 | 1 session | 3 phases, 3 plans. 40 hooks → imperative, MANDATORY dispatch markers, merge gate 1→4 sub-steps. |
 
 ---
 
@@ -599,6 +600,44 @@ Completed milestone log for this project.
 | 11 | Conditional git automation questions | v2.25 Phase 131 |
 | 12 | Remove specialized skills from init | v2.25 Phase 131 |
 | 13 | /paul:init --quick mode | v2.25 Phase 131 |
+
+## ✅ v2.27 Module Dispatch Hardening
+
+**Completed:** 2026-03-26
+**Duration:** 1 session
+**Theme:** Make modules actually fire across models — imperative instruction wording, structural post-apply/post-unify enforcement, and merge gate simplification
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 |
+| Plans | 3 |
+| Files changed | 20 (18 module.yaml + 2 workflow .md) |
+
+### Key Accomplishments
+
+- **40 hook descriptions rewritten:** All module hooks changed from descriptive/passive ("Scan...") to imperative ("MUST run: `command`") with explicit commands and output formats
+- **MANDATORY dispatch markers:** Post-apply advisory + enforcement steps and post-unify hooks marked as MANDATORY with DO NOT SKIP instructions
+- **Dispatch evidence requirements:** Both apply-phase and unify-phase require SKIPPED reason if hooks don't fire; finalize steps audit for empty evidence
+- **Merge gate simplified:** 1 monolithic step (∼150 lines) → 4 focused sub-steps (resolve/pr/merge/cleanup), each ~30-40 lines and individually executable
+
+### Key Decisions
+
+| Decision | Phase | Rationale |
+|----------|-------|-----------|
+| Rewrite descriptions to imperative, not add new hooks | 135 | Root cause was wording, not missing dispatch logic |
+| MANDATORY markers are warnings, not new blocking gates | 136 | Avoid slowing capable models that already dispatch correctly |
+| Merge gate sub-steps use priority chain, not nesting | 137 | Each step independently addressable by weaker models |
+
+### Items Addressed
+
+| Item | Description | Source |
+|------|-------------|--------|
+| 1 | Module instruction wording audit | v2.25 Phase 129 |
+| 2 | Post-apply dispatch enforcement | v2.25 Phases 129-130 |
+| 4 | Post-unify hook enforcement | v2.25 Phases 129-131 |
+| 5 | GitHub Flow merge gate simplification | v2.25 Phases 129-130 |
 ---
 
 *Milestones log created: 2026-03-12*

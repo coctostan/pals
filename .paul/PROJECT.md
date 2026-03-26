@@ -130,6 +130,7 @@ All validated — see below.
 - [x] Status Parity & Config Clarity — progress.md mirrors resume's git-aware routing/display, GitHub Flow init template no longer emits redundant `branching` (Phase 90, v2.13)
 - [x] Verification & Docs — cross-cutting verification artifact proving all 6 hardening issues resolved, git-strategy.md and README.md updated (Phase 91, v2.13)
 - [x] Init/Onboarding Overhaul — three init flows (quick ~1Q, greenfield ~8Q, brownfield ~12+Q), brownfield detection fix, conditional question gating, explicit default milestone, grouped module descriptions, --quick mode (Phases 132-134, v2.26)
+- [x] Module Dispatch Hardening — 40 hook descriptions rewritten to imperative, MANDATORY post-apply/post-unify dispatch markers, dispatch evidence audits, merge gate split 1→4 sub-steps (Phases 135-137, v2.27)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
