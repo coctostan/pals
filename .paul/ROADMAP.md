@@ -28,15 +28,15 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.26 Init/Onboarding Overhaul**
-Status: 🚧 In Progress
+Status: ✅ Complete
 Theme: Fix greenfield init friction — smart defaults, fewer questions, better detection, and conditional question gating
-Phases: 2 of 3 complete
+Phases: 3 of 3 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 132 | Smart Question Gating + Brownfield Detection Fix | 1 | ✅ Complete | 2026-03-26 |
 | 133 | Greenfield Fast Path + Explicit Milestone Creation | 1 | ✅ Complete | 2026-03-26 |
-| 134 | Quick Mode + Validation | TBD | Not started | - |
+| 134 | Quick Mode + Validation | 1 | ✅ Complete | 2026-03-26 |
 
 ### Phase 132: Smart Question Gating + Brownfield Detection Fix
 Focus: Conditional git automation questions, brownfield source-file detection threshold, SonarQube/skills gating (Items 6, 7, 11)

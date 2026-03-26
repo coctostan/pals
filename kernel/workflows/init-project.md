@@ -20,6 +20,12 @@ After init, project is ready for first PLAN.
 - Populate files from answers (user doesn't edit templates)
 - End with ONE next action
 - Build momentum into planning
+**Three init flows (v2.26):**
+- **Quick mode** (~1 question): User says "quick" / "--quick" / "just init" → infer project name, ask "what are you building?", default everything, create all artifacts, route to /paul:plan
+- **Greenfield** (~8 questions): No source files → merged identity/problem question, simplified constraints, silent module defaults, silent planning posture defaults, explicit v0.1 milestone
+- **Brownfield** (~12+ questions): Source files found → codebase mapping offer, planning posture questions, separate identity + problem questions, full constraints capture, grouped module toggle with descriptions
+
+All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE.md, pals.json, phases/
 </philosophy>
 
 <references>
@@ -87,6 +93,73 @@ After init, project is ready for first PLAN.
 7. If nothing was missing: skip the summary, output "pals.json is up to date."
 </step>
 
+<step name="detect_quick_mode" priority="after-check-existing">
+**Detect quick init mode.**
+
+Check if the user's init request contains "quick", "fast", "--quick", or "just init":
+- Store `quick_mode = true` if detected
+- Store `quick_mode = false` otherwise
+
+**If `quick_mode = false`:** proceed to `detect_existing_code` normally.
+
+**If `quick_mode = true`:**
+
+1. Infer project name:
+   - From `package.json` `name` field if it exists
+   - Otherwise from current directory name: `basename $(pwd)`
+   - Store as `project_name`
+   - Display: `Project name: {project_name}`
+
+2. Ask ONE question:
+   ```
+   Quick init mode — one question only.
+
+   What are you building? (1-2 sentences)
+   ```
+   Wait for response. Store as `description`.
+
+3. Apply all defaults:
+   - `brownfield = false`
+   - `planning_mode = "direct-requirements"`
+   - `collaboration_level = "medium"`, `default_collaboration = "medium"`
+   - `target_users_and_needs = "TBD — refine during planning"`
+   - `problem_opportunity = description`, `why_now = "TBD"`
+   - `must_have_scope = "TBD — define during first /paul:plan"`
+   - `deferred_scope = "TBD"`, `out_of_scope = "TBD"`
+   - `constraints = "None captured"`, `dependencies = "TBD"`
+   - `assumptions = "TBD"`, `open_questions = "TBD"`
+   - `success_signals = "TBD"`, `current_state_notes = "New project"`
+   - Derive `core_value` from `description`
+   - `module_selections` = all 18 modules enabled
+   - `integrations_enabled = false`
+   - `specialized_flows_enabled = false`
+   - Detect git repo (`git rev-parse --git-dir 2>/dev/null`):
+     - If git repo found: `git_enabled = true`, `git_workflow = "none"`, all automation = false
+     - If no git repo: `git_enabled = false`, `git_workflow = "none"`, all automation = false
+
+4. Skip directly to artifact creation:
+   - Execute: `create_structure`
+   - Execute: `create_project_md`
+   - Execute: `create_prd_md`
+   - Execute: `create_roadmap_md`
+   - Execute: `create_state_md`
+   - Create `pals.json` with all defaults (all modules enabled, git workflow "none", SonarQube disabled, medium collaboration)
+   - Execute: `confirm_and_route`
+
+5. **Skip all of these steps:**
+   - `detect_existing_code`
+   - `determine_planning_posture`
+   - `populate_from_codebase`
+   - `gather_identity_and_framing`
+   - `gather_users_and_needs`
+   - `gather_scope_shape`
+   - `gather_constraints_questions`
+   - `gather_project_name`
+   - `prompt_integrations`
+   - `check_specialized_flows`
+   - `configure_modules`
+   - `configure_git`
+</step>
 <step name="detect_existing_code">
 **Detect whether this is a brownfield (existing codebase) or greenfield project.**
 
@@ -826,6 +899,8 @@ PAUL INITIALIZED
 
 Project: [project_name]
 Core value: [core_value]
+
+{If quick_mode = true: "Mode: Quick init — all defaults applied"}
 
 Created:
   .paul/PROJECT.md        ✓
