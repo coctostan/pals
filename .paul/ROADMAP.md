@@ -29,13 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.30 Pi Guided Workflow UX & Documentation** 
 Status: 🚧 In Progress 
-Phases: 1 of 4 complete
+Phases: 2 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 141 | Guided Workflow Auto-Approve Control | 1 | ✅ Complete | 2026-03-26 |
-| 142 | Menu Parser Hardening | 1 | Planning | - |
-| 143 | Label Accuracy & Polish | TBD | Not started | - |
+| 142 | Menu Parser Hardening | 1 | ✅ Complete | 2026-03-26 |
+| 143 | Label Accuracy & Polish | 1 | Planning | - |
 | 144 | README & Documentation Update | TBD | Not started | - |
 
 ### Phase 141: Guided Workflow Auto-Approve Control

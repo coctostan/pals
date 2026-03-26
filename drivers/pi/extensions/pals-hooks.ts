@@ -721,6 +721,9 @@ function detectGuidedWorkflowMoment(
     }
 
     if (text.includes("Continue to UNIFY?")) {
+      // Don't match if loop is already complete — text is stale from a previous output
+      const loopSig = extractLoopSignature(state);
+      if (loopSig === "✓✓✓") continue;
       return {
         kind: "continue-to-unify",
         title: "Continue to UNIFY?",
