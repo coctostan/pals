@@ -138,4 +138,8 @@ PR: none (on main)
 Last session: 2026-03-26
 Stopped at: Milestone v2.28 complete — all 13 v2.25 items addressed
 Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Resume file: .paul/HANDOFF-2026-03-26-v228-complete.md
+Resume context:
+- Three milestones completed this session: v2.26, v2.27, v2.28
+- All 13 v2.25 actionable items now addressed
+- No active milestone — ready for new direction
