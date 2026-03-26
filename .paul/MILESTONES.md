@@ -42,6 +42,7 @@ Completed milestone log for this project.
 | **v2.22 Expertise Expansion III** | 2026-03-24 | ~15 min | 3 phases, 1 plan |
 | **v2.23 pi-verify v1.0 — Ship-Ready Product** | 2026-03-25 | ~90 min | 4 phases via cmux (pi-verify). Module dispatch failed silently. |
 | **v2.24 Module Dispatch Integrity** | 2026-03-25 | 1 session | 2 phases, 4 plans. Fixed 7 process failures + pals.json migration. |
+| **v2.25 E2E Adversarial Testing** | 2026-03-25 | 1 session | 3 phases, 3 plans. Cross-model testing (Kimi/GPT-5.4/Sonnet), pi-verify /verify diff, pi-bench from scratch, greenfield audit. |
 
 ---
 
@@ -509,6 +510,47 @@ Completed milestone log for this project.
 | schema_version field enables auto-migration | 128 | plan-phase and resume-project detect version mismatch and migrate automatically |
 | Per-project module disable deferred | 128 | pals.json modules section is informational until runtime disable is built |
 | Install staleness detection deferred | 128 | No version check telling users to reinstall after updates |
+
+---
+
+## ✅ v2.25 E2E Adversarial Testing
+
+**Completed:** 2026-03-25
+**Duration:** 1 session (~8 hours)
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 129-131) |
+| Plans | 3 |
+| PRs merged | 3 (#46, #47, #48) |
+| Models tested | 3 (Kimi K2.5, GPT-5.4, Sonnet 4.6) |
+| Projects tested | 2 (pi-verify brownfield, pi-bench greenfield) |
+| Actionable items | 13 across 3 milestone candidates |
+
+### Key Accomplishments
+
+- Proved module dispatch is model-dependent: Sonnet 100/100/94%, GPT-5.4 86/70/65%, Kimi 71/12/0% across L1 (workflow), L2 (dispatch), L3 (quality)
+- Sonnet executes module instructions as shell commands; Kimi documents them as expectations; GPT-5.4 is middle-tier
+- DEAN is the most impactful module across all models — real `pnpm audit --json` with CVE blocking
+- TODD shaped test coverage during planning (GPT-5.4 added 3 tests because TODD flagged the need)
+- RUBY shaped plan scope ("2-3 tasks with focused change set")
+- Built real features: pi-verify `/verify diff` (67→70 tests), pi-bench from scratch (12 tests)
+- Comprehensive greenfield init audit: 7 unnecessary questions identified, 8 recommendations
+- CARL session boundary management fired correctly on greenfield
+- Created `.paul/references/v225-actionable-items.md` with 13 items mapped to 3 future milestones
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Module dispatch quality is model-dependent | 129 | Future module wording may need more imperative phrasing; module value depends on model capability |
+| DEAN blocking on pre-existing vulns needs baseline mechanism | 130 | Currently requires manual override every plan; needs "remember baseline" feature |
+| Post-unify hooks need stronger enforcement | 130 | GPT-5.4 and Kimi skip them; only Sonnet runs consistently |
+| GitHub Flow merge gates are the hardest workflow step | 130 | Only Sonnet executes full flow; may need structural simplification |
+| Greenfield init asks 7+ unnecessary questions | 131 | Smart question gating needed based on context (no GitHub → skip remote questions) |
+| Brownfield detection triggers on empty scaffolds | 131 | Needs actual source file check, not just directory existence |
 
 ---
 
