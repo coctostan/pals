@@ -400,6 +400,8 @@ For each <task> in order:
 </step>
 
 <step name="advisory_module_dispatch" priority="after-tasks">
+⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
+STOP after task execution. You MUST dispatch advisory modules NOW before proceeding to enforcement.
 **Dispatch advisory (non-blocking) post-apply modules. This step runs BEFORE enforcement so advisory output is ALWAYS visible.**
 1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-apply advisory: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-apply` whose hook description does NOT contain "block" — these are advisory-only modules:
@@ -415,8 +417,12 @@ For each <task> in order:
 4. Output dispatch log: `[dispatch] post-apply advisory: {MODULE(priority) → N annotations | skip} | ...`
 5. Display ALL advisory annotations to the user.
 6. This step NEVER blocks — advisory modules inform, they do not gate.
+7. If you did not execute any advisory module hooks above, you MUST state why:
+   `[dispatch] post-apply advisory: SKIPPED — {reason}`
 </step>
 <step name="enforcement_module_dispatch" priority="after-advisory">
+⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
+STOP after advisory dispatch. You MUST dispatch enforcement modules NOW.
 **Dispatch enforcement (blocking) post-apply modules. Advisory output is already visible above.**
 1. Read `modules.yaml` if not already loaded. If not found, emit `[dispatch] post-apply enforcement: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-apply` whose hook description contains "block" — these are enforcement modules:
@@ -434,6 +440,8 @@ For each <task> in order:
    - Surface blocking reason(s) with fix/override/stop options
 6. If all enforcement modules pass: proceed to finalize
 7. Store accumulated `annotations` from both steps for inclusion in finalize step
+8. If you did not execute any enforcement module hooks above, you MUST state why:
+   `[dispatch] post-apply enforcement: SKIPPED — {reason}`
 </step>
 
 <step name="handle_failures">
@@ -587,6 +595,10 @@ After all tasks attempted:
 3. Include module annotations from post-apply hooks (if any):
    - Append reports collected from registered modules
    - Show combined gate result if any module provided quality gates
+   **Dispatch evidence check:** If BOTH advisory and enforcement dispatch logs show
+   "SKIPPED" or are absent entirely, MUST display:
+   '⚠️ WARNING: No post-apply modules fired. Verify modules.yaml was loaded.
+   Module Execution Reports will be empty in SUMMARY.md.'
 4. Report with quick continuation prompt:
    ```
    ════════════════════════════════════════

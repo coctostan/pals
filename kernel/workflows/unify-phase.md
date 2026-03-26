@@ -271,6 +271,10 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 </step>
 
 <step name="post_unify_hooks" priority="after-state-update">
+⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
+STOP after state update. You MUST dispatch post-unify modules NOW.
+Post-unify hooks are the persistence layer — they record quality history,
+capture decisions, and analyze debt. Skipping them loses institutional knowledge.
 **Dispatch post-unify lifecycle hooks to registered modules.**
 1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-unify: modules.yaml NOT FOUND — WARNING` and skip dispatch.
 2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
@@ -285,6 +289,8 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 6. If no modules registered for `post-unify`: emit `[dispatch] post-unify: 0 modules registered for this hook`
 7. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N reports / N side effects | skip} | ...`
 8. Store accumulated post-unify module reports and logged side_effects for summary finalization
+9. If you did not execute any post-unify module hooks above, you MUST state why:
+   `[dispatch] post-unify: SKIPPED — {reason}`
 </step>
 <step name="finalize_summary" priority="after-post-unify">
 1. Re-open the SUMMARY.md draft before phase-completion routing.
@@ -293,8 +299,10 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
    - any pre-unify `context_inject` that materially informed reconciliation
    - `module_reports` returned by post-unify hooks
    - recorded `side_effects` that should remain visible after the loop closes
-3. **Module evidence validation:** If modules are enabled in `pals.json` but `## Module Execution Reports` is empty and no dispatch logs were recorded during this loop, emit WARNING: "Modules enabled but zero dispatch evidence found — verify modules.yaml was loaded during PLAN and APPLY." The section MUST still be present; state why no modules fired rather than omitting it.
-4. Save the finalized SUMMARY.md before `check_phase_completion` or transition routing runs.
+3. **Module evidence validation (MANDATORY):** If modules are enabled in `pals.json` but `## Module Execution Reports` is empty and no dispatch logs were recorded during this loop, MUST emit WARNING: "Modules enabled but zero dispatch evidence found — verify modules.yaml was loaded during PLAN and APPLY." The section MUST still be present; state why no modules fired rather than omitting it. MUST NOT proceed to check_phase_completion until the warning is recorded in SUMMARY.md.
+4. **Post-unify dispatch audit:** If post_unify_hooks dispatch log is absent or shows "SKIPPED" for all modules, MUST add to Module Execution Reports:
+   '⚠️ Post-unify hooks did not fire. Reason: {reason or "unknown — verify modules.yaml was loaded"}. Quality history, knowledge capture, and debt analysis were not recorded for this loop.'
+5. Save the finalized SUMMARY.md before `check_phase_completion` or transition routing runs.
 </step>
 
 <step name="github_flow_merge_gate" priority="after-summary">

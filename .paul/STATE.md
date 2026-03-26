@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.27 Module Dispatch Hardening
 ## Current Position
 Milestone: v2.27 Module Dispatch Hardening
-Phase: 135 of 137 (Module Instruction Wording Audit)
-Plan: 135-01 complete
-Status: Phase 135 complete, ready for next phase
-Last activity: 2026-03-26 — UNIFY complete for 135-01
+Phase: 136 of 137 (Post-Apply/Post-Unify Enforcement)
+Plan: 136-01 complete
+Status: Phase 136 complete, ready for next phase
+Last activity: 2026-03-26 — UNIFY complete for 136-01
 Progress:
-- v2.27 Module Dispatch Hardening: [███░░░░░░░] 33%
+- v2.27 Module Dispatch Hardening: [██████░░░░] 66%
 ## Loop Position
 Current loop state:
 ```
@@ -136,6 +136,6 @@ Last commit: PR #48 merged
 PR: none (on main)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: Phase 135 complete
-Next action: /paul:plan for Phase 136
-Resume file: .paul/phases/135-module-instruction-wording/135-01-SUMMARY.md
+Stopped at: Phase 136 complete
+Next action: /paul:plan for Phase 137
+Resume file: .paul/phases/136-post-apply-unify-enforcement/136-01-SUMMARY.md

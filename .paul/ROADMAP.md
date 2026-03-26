@@ -30,12 +30,12 @@ Phases: 3 of 3 complete
 **v2.27 Module Dispatch Hardening**
 Status: 🚧 In Progress
 Theme: Make modules actually fire across models — imperative instruction wording, structural post-apply/post-unify enforcement, and merge gate simplification
-Phases: 0 of 3 complete
+Phases: 2 of 3 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 135 | Module Instruction Wording Audit | 1 | ✅ Complete | 2026-03-26 |
-| 136 | Post-Apply/Post-Unify Enforcement | TBD | Not started | - |
+| 136 | Post-Apply/Post-Unify Enforcement | 1 | ✅ Complete | 2026-03-26 |
 | 137 | GitHub Flow Merge Gate Simplification | TBD | Not started | - |
 
 ### Phase 135: Module Instruction Wording Audit
