@@ -30,12 +30,12 @@ Phases: 3 of 3 complete
 **v2.26 Init/Onboarding Overhaul**
 Status: 🚧 In Progress
 Theme: Fix greenfield init friction — smart defaults, fewer questions, better detection, and conditional question gating
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 132 | Smart Question Gating + Brownfield Detection Fix | 1 | ✅ Complete | 2026-03-26 |
-| 133 | Greenfield Fast Path + Explicit Milestone Creation | TBD | Not started | - |
+| 133 | Greenfield Fast Path + Explicit Milestone Creation | 1 | ✅ Complete | 2026-03-26 |
 | 134 | Quick Mode + Validation | TBD | Not started | - |
 
 ### Phase 132: Smart Question Gating + Brownfield Detection Fix

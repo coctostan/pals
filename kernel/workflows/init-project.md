@@ -147,35 +147,37 @@ Before planning, I need to understand what you're building.
 
 <step name="determine_planning_posture">
 **Set the planning posture for onboarding.**
-
-1. Determine the project default collaboration level:
    - If `pals.json` already exists and `planning.default_collaboration` is set, use it
    - Otherwise use `medium`
-2. Ask whether this onboarding run is exploratory or direct-requirements:
+2. **If greenfield (`brownfield = false`):**
+   - Default silently: `planning_mode = "direct-requirements"`, `collaboration_level = "medium"`, `default_collaboration = "medium"`
+   - Display: "Greenfield project — using direct-requirements mode with medium collaboration."
+   - Skip questions 2-3 below. Continue to gather_identity_and_framing.
+
+3. **If brownfield (`brownfield = true`):**
+   Ask whether this onboarding run is exploratory or direct-requirements:
    ```
    How should we shape this onboarding run?
-
-   [1] Exploratory — the problem, users, or options still need shaping
    [2] Direct-requirements — you already know the requirements and want to move quickly
    ```
-3. Ask for the planning collaboration level for this run and project default:
+
+4. Ask for the planning collaboration level for this run and project default:
    ```
    Planning collaboration level?
    Current default: {default_collaboration}
-
-   [1] low — minimal probing, keep momentum high
    [2] medium — clarify ambiguities, constraints, and success conditions
    [3] high — deeper shaping, assumptions, alternatives, and risks when useful
    ```
-4. Apply this collaboration guidance to the remaining init conversation:
+
+5. Apply this collaboration guidance to the remaining init conversation:
    - low → ask only for missing essentials or blockers
    - medium → clarify ambiguities and constraints before moving on
    - high → also probe target users, assumptions, alternatives, and risks when genuinely helpful
-5. Store:
+6. Store:
    - `planning_mode = exploratory | direct-requirements`
    - `collaboration_level = low | medium | high`
    - `default_collaboration = low | medium | high`
-6. Note that later planning workflows may keep the project default or override it per run.
+7. Note that later planning workflows may keep the project default or override it per run.
 </step>
 
 <step name="populate_from_codebase">
@@ -201,15 +203,29 @@ If codebase was mapped, read the findings to enrich the layered onboarding flow:
 
 <step name="gather_identity_and_framing">
 **Ask ONE question at a time. Wait for response before next question.**
+**Question 1: What is this project and why?**
 
-**Question 1: What is this project?**
+**If greenfield:**
+```
+What are you building, and what problem or opportunity is it addressing?
+
+(Example: "A CLI tool for managing Docker containers — platform engineers need a safer way to manage container fleets across environments")
+```
+Wait for user response. Parse into `description`, `problem_opportunity`, and `why_now`.
+
+**If brownfield:**
+Ask as two separate questions for richer context:
+
+*Question 1a:*
 ```
 What are you building, and how would you describe it in 1-2 sentences?
-
-(Example: "A CLI tool for managing Docker containers across multiple environments")
 ```
-
 Wait for user response. Store as `description`.
+*Question 1b:*
+```
+What problem or opportunity is this addressing, and why does it matter now?
+```
+Wait for user response. Store as `problem_opportunity` and `why_now`.
 </step>
 
 <step name="gather_users_and_needs">
@@ -223,34 +239,31 @@ Who are the primary users, and what do they need from this?
 Wait for user response. Store as `target_users_and_needs`.
 </step>
 
-<step name="gather_problem_opportunity">
-**Question 3: What problem or opportunity matters most?**
-```
-What problem or opportunity is this addressing, and why does it matter now?
-
-(If helpful, answer in terms of pain, opportunity, urgency, or desired outcome.)
-```
-
-Wait for user response. Store as `problem_opportunity` and `why_now`.
-</step>
-
 <step name="gather_scope_shape">
-**Question 4: What is in and out?**
+**Question 3: What is in and out?**
 ```
 What is must-have for the first meaningful outcome, and what should be explicitly deferred or out of scope?
 ```
 
 Wait for user response. Store as `must_have_scope`, `deferred_scope`, and `out_of_scope`.
 </step>
-
 <step name="gather_constraints_questions">
-**Question 5: What else should the durable product definition remember?**
+**Greenfield: simplified optional prompt**
+**Brownfield: full context capture**
+
+**If greenfield:**
+```
+Any constraints or key decisions to capture? (press Enter to skip)
+
+(Example: "Must use TypeScript, no external auth services, deploy to Vercel")
+```
+Wait for user response. Store as `constraints`.
+Default the rest: `dependencies = "TBD"`, `assumptions = "TBD"`, `open_questions = "TBD"`, `success_signals = "TBD"`, `current_state_notes = "New project"`.
+
+**If brownfield:**
 ```
 What constraints, dependencies, assumptions, open questions, or success signals should I capture?
-
-{If brownfield context is available, also confirm the important current-state realities and integrations I found in the codebase map.}
 ```
-
 Wait for user response. Store as:
 - `constraints`
 - `dependencies`
@@ -258,8 +271,6 @@ Wait for user response. Store as:
 - `open_questions`
 - `success_signals`
 - `current_state_notes`
-
-Derive `core_value` as a concise one-line summary of the main user + problem + outcome from the answers above. Confirm with the user if the synthesis is uncertain.
 </step>
 
 <step name="gather_project_name">
@@ -427,7 +438,7 @@ Phases will be defined during `/paul:plan`.
 *Roadmap created: [timestamp]*
 ```
 
-Note: Phase details are populated during planning, not init.
+Note: Phase details are populated during planning, not init. The "v0.1 Initial Release" milestone is explicitly created here — no separate `/paul:milestone` invocation is needed. Users can customize via `/paul:milestone` later.
 </step>
 
 <step name="create_state_md">
@@ -445,7 +456,7 @@ See: .paul/PROJECT.md (updated [timestamp])
 
 ## Current Position
 
-Milestone: v0.1 Initial Release
+Milestone: v0.1 Initial Release (created during init)
 Phase: Not yet defined
 Plan: None yet
 Status: Ready to create roadmap and first PLAN
@@ -477,7 +488,7 @@ None yet.
 
 Last session: [timestamp]
 Stopped at: Project initialization complete
-Next action: Run /paul:plan to define phases and first plan
+Next action: Run /paul:plan to define phases and first plan for v0.1
 Resume file: .paul/PROJECT.md
 
 ---
@@ -510,45 +521,64 @@ Note: Users can configure specialized flows later via `/paul:flows`.
 </step>
 
 <step name="configure_modules">
-**Ask about module configuration:**
+**Module configuration — greenfield skips, brownfield gets grouped descriptions.**
 
+**If greenfield (`brownfield = false`):**
+- All 18 modules enabled by default (silent)
+- Display: "All 18 modules enabled by default. (Adjust later via /paul:config)"
+- Skip the interactive toggle question
+- Store `module_selections` with all enabled
+- Continue to configure_git
+
+**If brownfield (`brownfield = true`):**
 ```
 Which PALS modules would you like to enable?
 (All enabled by default — enter numbers to toggle, or press Enter to accept)
+Quality & Testing:
+  [1]  TODD  ✓  Enforces test coverage and TDD workflows
+  [2]  WALT  ✓  Gates quality (tests, lint, typecheck pass/fail)
 
-  [1]  CARL   ✓  Session boundary manager (Pi extension)
-  [2]  TODD   ✓  Test-driven development enforcement
-  [3]  WALT   ✓  Quality gating & validation
-  [4]  DEAN   ✓  Dependency evaluation & audit notifier
-  [5]  IRIS   ✓  Intelligent review & inspection system
-  [6]  SKIP   ✓  Smart knowledge & information persistence
-  [7]  DAVE   ✓  Deploy automation & verification engine
-  [8]  RUBY   ✓  Refactor utility & better-code yielder
-  [9]  ARCH   ✓  Architecture pattern detection & boundary enforcement
-  [10] SETH   ✓  Security evaluation & threat hunting
-  [11] PETE   ✓  Performance evaluation & tuning expert
-  [12] GABE   ✓  Gateway & API boundary expert
-  [13] LUKE   ✓  UI/UX pattern detection & review
-  [14] ARIA   ✓  Accessibility assessment & enforcement
-  [15] DANA   ✓  Data pattern detection & migration safety
-  [16] OMAR   ✓  Observability & logging review
-  [17] REED   ✓  Resilience pattern detection & review
-  [18] VERA   ✓  Privacy assessment & PII protection
+Security & Dependencies:
+  [3]  DEAN  ✓  Audits dependencies for known vulnerabilities
+  [4]  SETH  ✓  Scans for hardcoded secrets and injection risks
+
+Code Quality:
+  [5]  IRIS  ✓  Reviews code for anti-patterns and smells
+  [6]  RUBY  ✓  Flags technical debt and refactoring candidates
+
+Architecture & APIs:
+  [7]  ARCH  ✓  Detects architecture patterns and boundary violations
+  [8]  GABE  ✓  Reviews API contracts and conventions
+
+UI & Accessibility:
+  [9]  LUKE  ✓  UI/UX pattern detection and review
+  [10] ARIA  ✓  Accessibility assessment and enforcement
+
+Data & Infrastructure:
+  [11] DANA  ✓  Data patterns and migration safety
+  [12] DAVE  ✓  CI/CD config validation and deploy checks
+  [13] PETE  ✓  Performance pattern detection
+
+Observability & Resilience:
+  [14] OMAR  ✓  Logging and observability review
+  [15] REED  ✓  Resilience patterns (timeouts, retries, error handling)
+
+Privacy & Session:
+  [16] VERA  ✓  PII detection and privacy compliance
+  [17] CARL  ✓  Session boundary manager (Pi extension)
+
+Knowledge:
+  [18] SKIP  ✓  Captures decisions, rationale, and lessons learned
 ```
 
 Wait for user response.
-
 **If user presses Enter or says "all" or "defaults":**
 - All modules enabled (default)
 - Store `module_selections` with all enabled
-
-**If user provides numbers (e.g., "4 5 7"):**
 - Toggle those modules off (flip ✓ to ✗)
 - Show updated list and confirm
 - Store `module_selections` with updated states
-
 **After confirmation, create `pals.json` in project root:**
-
 ```json
 {
   "schema_version": "2.0.0",
@@ -592,13 +622,10 @@ Wait for user response.
   }
 }
 ```
-
 Adjust `enabled` values based on user's toggle selections.
 Set `planning.default_collaboration` to the value chosen in determine_planning_posture (fallback: `medium`).
-If SonarQube was enabled in the earlier integrations step, set `integrations.sonarqube.enabled: true` and populate `project_key`.
 Git section will be populated by the configure_git step (next).
-
-**Note:** This step is quick — accept defaults with Enter. Don't make it feel heavy.
+**Note:** This step is quick — accept defaults with Enter for brownfield, or fully silent for greenfield.
 </step>
 
 <step name="configure_git">
@@ -807,6 +834,8 @@ Created:
   .paul/STATE.md          ✓
   pals.json               ✓  ([N] modules enabled)
   .paul/phases/           ✓
+
+Milestone: v0.1 Initial Release (default — customize via /paul:milestone)
 
 Git: [remote URL or "local only"] | {git_workflow} | push:[yes/no] PR:[yes/no] CI:[yes/no]
 Planning default: {default_collaboration} | This run: {planning_mode}, {collaboration_level} collaboration
