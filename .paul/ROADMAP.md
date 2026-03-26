@@ -35,7 +35,7 @@ Theme: Make E2E testing a repeatable PALS capability instead of ad-hoc sessions
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 139 | Protocol Design & Report Template | 1 | ✅ Complete | 2026-03-26 |
-| 140 | Protocol Validation — Greenfield E2E Run | TBD | Not started | - |
+| 140 | Protocol Validation — Greenfield E2E Run | 1 | Planning | - |
 ## Completed Milestones
 <details>
 <summary>v2.28 DEAN Baseline Management - 2026-03-26 (1 phase)</summary>

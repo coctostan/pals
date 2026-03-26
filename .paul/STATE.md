@@ -8,9 +8,9 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 ## Current Position
 Milestone: v2.29 E2E Test Protocol
 Phase: 140 of 2 (Protocol Validation — Greenfield E2E Run)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-26 — Phase 139 complete, transitioned to Phase 140
+Plan: 140-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-26 — Created 140-01-PLAN.md
 Progress:
 - v2.29 E2E Test Protocol: [▓▓▓▓▓░░░░░] 50%
 - Phase 140: [░░░░░░░░░░] 0%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -137,10 +137,10 @@ Last commit: b92810b feat(139): E2E Test Protocol & Report Template (#49)
 PR: https://github.com/coctostan/pals/pull/49 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: Phase 139 complete, ready to plan Phase 140
-Next action: /paul:plan for Phase 140
-Resume file: .paul/ROADMAP.md
+Stopped at: Plan 140-01 created
+Next action: Review and approve plan, then run /paul:apply 140-01-PLAN.md
+Resume file: .paul/phases/140-protocol-validation-greenfield-e2e/140-01-PLAN.md
 Resume context:
-- Phase 139 complete: E2E test protocol + report template shipped (PR #49 merged)
-- Phase 140 next: Protocol Validation — Greenfield E2E Run
-- Protocol at kernel/references/e2e-test-protocol.md, template at kernel/templates/E2E-REPORT.md
+- Plan 140-01 is the E2E test script: cmux pane, greenfield pi-monitor, sonnet 4.6:high
+- 3 tasks: setup+init, execute loops+monitor, produce report
+- Protocol at kernel/references/e2e-test-protocol.md
