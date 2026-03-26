@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.30 Pi Guided Workflow UX & Documentation
 ## Current Position
 Milestone: v2.30 Pi Guided Workflow UX & Documentation
-Phase: 143 of 4 (Label Accuracy & Polish)
-Plan: 143-01 created, awaiting approval
+Phase: 144 of 4 (README & Documentation Update)
+Plan: 144-01 created, awaiting approval
 Status: PLAN created, ready for APPLY
-Last activity: 2026-03-26 — Created 143-01-PLAN.md
+Last activity: 2026-03-26 — Created 144-01-PLAN.md
 Progress:
-- v2.30 Pi Guided Workflow UX & Documentation: [█████░░░░░] 50%
+- v2.30 Pi Guided Workflow UX & Documentation: [███████░░░] 75%
 ## Loop Position
 Current loop state:
 ```
@@ -132,10 +132,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: d21f849 feat(142): Menu Parser Hardening (#52)
-PR: https://github.com/coctostan/pals/pull/52 (state: MERGED)
+Last commit: ee9b964 feat(143): Label Accuracy & Polish (#53)
+PR: https://github.com/coctostan/pals/pull/53 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: Plan 143-01 created
+Stopped at: Plan 144-01 created
 Next action: /paul:apply
-Resume file: .paul/phases/143-label-accuracy-polish/143-01-PLAN.md
+Resume file: .paul/phases/144-readme-documentation-update/144-01-PLAN.md

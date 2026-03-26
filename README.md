@@ -2,19 +2,19 @@
 
 **The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers.**
 
-PALS (Project Automation & Lifecycle System) is an end-to-end development framework for agentic coding. It manages the full plan-apply-unify lifecycle, enforces test-driven development, gates quality, loads context-aware rules, tracks dependencies, reviews code, manages knowledge, automates deploys, and suggests refactors — all through a modular architecture that runs on any agentic coding platform.
+PALS (Project Automation & Lifecycle System) is an end-to-end development framework for agentic coding. It manages the full plan-apply-unify lifecycle, enforces quality gates, loads context-aware modules, and tracks state across sessions — all through a modular architecture that runs on any agentic coding platform.
 
-Built for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Pi, and the Agent SDK. Eight pals. One kernel. Zero boilerplate.
+Built for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Pi](https://github.com/nicholasgasior/pi-coding-agent), and the Agent SDK. Eighteen modules. One kernel. Zero boilerplate.
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/maxwellnewman/pals.git
+git clone https://github.com/coctostan/pals.git
 cd pals
 ./install.sh
 ```
 
-Start a new Claude Code or Pi session, then in any project use the same core lifecycle:
+Start a new Claude Code or Pi session, then in any project:
 
 ```
 /paul:init        # Set up PALS in your project
@@ -23,7 +23,8 @@ Start a new Claude Code or Pi session, then in any project use the same core lif
 /paul:unify       # Reconcile results and close the loop
 ```
 
-In Claude Code, those commands are installed directly as slash commands. In Pi, the extension exposes `/paul-*` convenience wrappers that route to canonical `/skill:paul-*` entries while keeping shared markdown workflows and `.paul/*` as the only lifecycle truth.
+In Claude Code, those commands are installed as slash commands. In Pi, the extension exposes `/paul-*` convenience wrappers that route to canonical `/skill:paul-*` entries while keeping shared markdown workflows and `.paul/*` as the only lifecycle truth.
+
 That's the core loop. PALS tracks state, enforces quality, and manages context across sessions — you focus on the work.
 
 ## Architecture
@@ -31,38 +32,70 @@ That's the core loop. PALS tracks state, enforces quality, and manages context a
 PALS uses a three-layer stack inspired by operating system design:
 
 ```
-┌─────────────────────────────────────────────┐
-│                  Modules                     │
-│  CARL · TODD · WALT · DEAN · IRIS · SKIP   │
-│              DAVE · RUBY                     │
-├─────────────────────────────────────────────┤
-│                  Kernel                      │
-│  PAUL — lifecycle, commands, workflows       │
-├─────────────────────────────────────────────┤
-│                  Drivers                     │
-│  Claude Code · Pi · Agent SDK                │
-└─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────┐
+│                   Modules (18)                   │
+│  Core: CARL · TODD · WALT · DEAN · IRIS · SKIP │
+│        DAVE · RUBY                               │
+│  Expert: ARCH · SETH · PETE · GABE · LUKE      │
+│          ARIA · DANA · OMAR · REED · VERA       │
+├─────────────────────────────────────────────────┤
+│                    Kernel                         │
+│  PAUL — lifecycle, commands, workflows            │
+├─────────────────────────────────────────────────┤
+│                    Drivers                        │
+│  Claude Code · Pi · Agent SDK                     │
+└─────────────────────────────────────────────────┘
 ```
 
 **Kernel** — PAUL is the core. It owns the plan-apply-unify loop, commands, workflows, and lifecycle hooks. Platform-agnostic by design.
 
-**Modules** — Each pal is a loadable module with its own references, hooks, and capabilities. Modules register for lifecycle events (pre-plan, post-apply, etc.) and participate automatically. Enable or disable any module without affecting the rest.
+**Modules** — Each module registers for lifecycle events (pre-plan, post-apply, etc.) and participates automatically. Enable or disable any module without affecting the rest. 8 core pals handle lifecycle concerns; 10 expert modules cover architecture, security, accessibility, performance, data, API design, UX, observability, resilience, and privacy.
 
 **Drivers** — Wiring layer that connects the kernel to a specific platform. The Claude Code driver installs slash commands and hooks. The Pi driver installs canonical skills plus an extension-backed command/hook layer. The Agent SDK driver exposes the same workflows as a headless API.
 
+## Key Features
+
+- **Plan-Apply-Unify Loop** — Every unit of work follows a structured three-phase cycle with acceptance criteria, verification, and reconciliation
+- **18 Modules** — From TDD enforcement (TODD) to accessibility auditing (ARIA), each module hooks into lifecycle events and contributes automatically
+- **GitHub Flow Enforcement** — Strict branch/PR/CI gating with merge gates, or advisory mode for lighter workflows
+- **Collaborative Planning** — Low/medium/high collaboration levels with 4-option review menu before execution
+- **Guided Workflow UX** (Pi) — Per-transition-type auto-approve config so users retain control at critical decision points
+- **E2E Test Protocol** — Reusable methodology for validating PALS across 8 dimensions with structured reporting
+- **Session Continuity** — State tracked in `.paul/STATE.md` with handoff/resume support across sessions
+- **Three Init Flows** — Quick (~1 question), greenfield (~8), brownfield (~12+) with smart defaults
+
 ## The Pals
 
-| Pal | Full Name | What It Does | Key Command |
-|-----|-----------|-------------|-------------|
-| **PAUL** | Project Automation & Lifecycle | Kernel. Plans, executes, and tracks work through the plan-apply-unify loop. | `/paul:plan` |
-| **CARL** | Session & Context Manager | Claude Code: context rule injection via hooks. Pi: autonomous session boundary management via extension events. | `/carl:manager` (CC) / automatic (Pi) |
-| **TODD** | Test-Driven Development | Enforces RED-GREEN-REFACTOR discipline. Detects TDD candidates during planning and restructures tasks. | `/paul:coverage` |
-| **WALT** | Watchful Automated Lint & Testing | Quality gating. Captures baselines before apply, runs checks after, detects regressions. | `/paul:quality` |
-| **DEAN** | Dependency Evaluation & Audit Notifier | Scans dependencies for vulnerabilities, outdated packages, and license issues across 10 ecosystems. | `/paul:deps` |
-| **IRIS** | Intelligent Review & Inspection System | Structured code review with 25 patterns and 5 checklists covering security, performance, and maintainability. | `/paul:review` |
-| **SKIP** | Smart Knowledge & Information Persistence | Captures decisions, rationale, and context. Multi-source search across project knowledge. | `/paul:knowledge` |
-| **DAVE** | Deploy Automation & Verification Engine | CI/CD pipeline auditing, generation, and verification. Detects 12+ languages and frameworks. | `/paul:deploy` |
-| **RUBY** | Refactor Utility & Better-code Yielder | Scans for tech debt and suggests refactoring opportunities using 9 patterns across 3 analysis modes. | `/paul:refactor` |
+### Core Pals
+
+| Pal | Full Name | What It Does |
+|-----|-----------|-------------|
+| **PAUL** | Project Automation & Lifecycle | Kernel. Plans, executes, and tracks work through the plan-apply-unify loop. |
+| **CARL** | Session & Context Manager | Pi: autonomous session boundary management via extension events. Claude Code: context rule injection via hooks. |
+| **TODD** | Test-Driven Development | Enforces RED-GREEN-REFACTOR. Detects TDD candidates during planning and restructures tasks. |
+| **WALT** | Watchful Automated Lint & Testing | Quality gating. Captures baselines before apply, runs checks after, detects regressions. |
+| **DEAN** | Dependency Evaluation & Audit Notifier | Scans dependencies for vulnerabilities with baseline-aware delta comparison across 10 ecosystems. |
+| **IRIS** | Intelligent Review & Inspection System | Code review with 25 patterns and 5 checklists covering security, performance, and maintainability. |
+| **SKIP** | Smart Knowledge & Information Persistence | Captures decisions, rationale, trade-offs, and lessons learned. Multi-source search across project knowledge. |
+| **DAVE** | Deploy Automation & Verification Engine | CI/CD pipeline auditing, generation, and verification. Detects 12+ languages and frameworks. |
+| **RUBY** | Refactor Utility & Better-code Yielder | Tech debt scanning and refactoring suggestions using 9 patterns across 3 analysis modes. |
+
+### Expert Modules
+
+| Module | Focus | What It Does |
+|--------|-------|-------------|
+| **ARCH** | Architecture | Detects project patterns (MVC, Clean, Feature-based), checks layer boundaries, flags god files |
+| **SETH** | Security | OWASP-aligned scans for hardcoded secrets, injection risks, auth gaps, input validation |
+| **PETE** | Performance | N+1 detection, heavy import flagging, sync I/O in async paths, unbounded query warnings |
+| **GABE** | API Conventions | REST convention checks, breaking change detection, versioning, schema validation |
+| **LUKE** | UX Patterns | Component size limits, design token enforcement, loading state checks, inline style detection |
+| **ARIA** | Accessibility | Semantic HTML, alt text, input labels, focus management, keyboard handler checks |
+| **DANA** | Data Patterns | Migration safety, schema health, N+1 query detection, unbounded query warnings |
+| **OMAR** | Observability | Sensitive data in logs, empty catch blocks, health endpoint checks, structured logging |
+| **REED** | Resilience | Timeout configuration, retry pattern validation, error boundaries, graceful shutdown |
+| **VERA** | Privacy | PII detection in logs, consent checks, encryption verification, test data hygiene |
+
+All modules are enabled by default and dispatch automatically via lifecycle hooks. No configuration needed — disable any module via `pals.json` or `/paul:config`.
 
 ## Commands
 
@@ -70,41 +103,22 @@ PALS uses a three-layer stack inspired by operating system design:
 
 | Command | Description |
 |---------|-------------|
-| `/paul:init` | Initialize PALS in your project |
+| `/paul:init` | Initialize PALS in your project (quick, greenfield, or brownfield flow) |
 | `/paul:plan` | Create an executable plan for the current phase |
 | `/paul:apply` | Execute an approved plan |
 | `/paul:unify` | Reconcile plan vs actual and close the loop |
-| `/paul:progress` | Show current status and suggest next action |
-| `/paul:help` | Show all available commands |
+| `/paul:status` | Show current status, git state, and suggest next action |
+| `/paul:help` | Show all available commands and skill guidance |
 
-### Session Management
+### Session & Flow Management
 
 | Command | Description |
 |---------|-------------|
 | `/paul:resume` | Restore context from handoff and continue work |
 | `/paul:pause` | Create handoff file and prepare for session break |
-| `/paul:handoff` | Generate comprehensive session handoff document |
-
-### Planning & Discovery
-
-| Command | Description |
-|---------|-------------|
-| `/paul:discuss` | Explore phase vision before planning |
-| `/paul:discuss-milestone` | Explore next milestone vision |
-| `/paul:assumptions` | Surface assumptions about a phase before planning |
-| `/paul:discover` | Research technical options before planning |
-| `/paul:research` | Research a topic using subagents |
-| `/paul:research-phase` | Research unknowns for a specific phase |
-| `/paul:consider-issues` | Review and triage deferred issues |
-
-### Roadmap & Milestones
-
-| Command | Description |
-|---------|-------------|
-| `/paul:milestone` | Create a new milestone |
-| `/paul:complete-milestone` | Mark current milestone as complete |
-| `/paul:add-phase` | Add a new phase to current milestone |
-| `/paul:remove-phase` | Remove a future (not started) phase |
+| `/paul:fix` | Quick fix flow (standard, fast-forward, or hotfix mode) |
+| `/paul:milestone` | Create or complete a milestone |
+| `/paul:discuss` | Explore scope before planning (milestone or phase) |
 
 ### Module Commands
 
@@ -119,36 +133,15 @@ PALS uses a three-layer stack inspired by operating system design:
 | `/paul:refactor` | RUBY | Tech debt scanning and refactoring suggestions |
 | `/paul:config` | — | View and manage module configuration |
 
-### Verification & Quality
-
-| Command | Description |
-|---------|-------------|
-| `/paul:verify` | Guide manual acceptance testing |
-| `/paul:plan-fix` | Plan fixes for issues found during verification |
-
-### CARL (Session & Context Manager)
-
-CARL serves different roles depending on the platform:
-
-**Claude Code — Context Rules:** `/carl:manager` manages domains, rules, and star-commands (`*list`, `*add`, `*create`, `*edit`, `*toggle`, `*view`, `*scan`, `*suggest`). Rules inject into prompts via `UserPromptSubmit` hooks.
-
-**Pi — Session Boundary Manager:** CARL runs automatically via `pals-hooks.ts` extension events. It detects phase completion at `agent_end`, evaluates context pressure, and creates fresh sessions when thresholds are exceeded. No separate commands needed — configure via `pals.json` → `modules.carl` (strategy, thresholds). See `drivers/pi/extensions/README.md` for details.
-
-### Utilities
-
-| Command | Description |
-|---------|-------------|
-| `/paul:flows` | Configure specialized workflow integrations |
-| `/paul:map-codebase` | Generate codebase map for context |
-
 ## Configuration
 
-PALS uses `pals.json` at the project root for module configuration:
+PALS uses `pals.json` at the project root:
 
 ```json
 {
+  "schema_version": "2.0.0",
   "modules": {
-    "carl": { "enabled": true, "description": "Session boundary manager (Pi) / Context rules (Claude Code)" },
+    "carl": { "enabled": true, "description": "Session boundary manager" },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
     "walt": { "enabled": true, "description": "Quality gating & validation" },
     "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
@@ -157,26 +150,6 @@ PALS uses `pals.json` at the project root for module configuration:
     "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
     "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
   },
-  "integrations": {
-    "sonarqube": { "enabled": false, "project_key": "" }
-  },
-  "preferences": {
-    "auto_commit": false,
-    "verbose_output": false
-  }
-}
-```
-
-All 8 modules are enabled by default. Use `/paul:config` to toggle modules, manage integrations, and set preferences interactively.
-
-In Pi, enabled modules are installed beside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`. PLAN/APPLY/UNIFY use that registry to dispatch module guidance such as TODD and WALT; those modules are not separate Pi skills.
-
-### Git Workflow
-
-PALS can enforce GitHub Flow through the `git` section of `pals.json`:
-
-```json
-{
   "git": {
     "workflow": "github-flow",
     "base_branch": "main",
@@ -184,70 +157,95 @@ PALS can enforce GitHub Flow through the `git` section of `pals.json`:
     "auto_push": true,
     "auto_pr": true,
     "ci_checks": true,
-    "require_pr_before_next_phase": true
+    "require_pr_before_next_phase": true,
+    "require_reviews": false
+  },
+  "planning": {
+    "default_collaboration": "medium"
+  },
+  "preferences": {
+    "auto_commit": false,
+    "verbose_output": false
+  },
+  "guided_workflow": {
+    "auto_present": {
+      "plan_review": false,
+      "apply_approval": false,
+      "continue_to_unify": true,
+      "phase_transition": false,
+      "milestone_transition": false
+    }
   }
 }
 ```
 
+All 18 modules are enabled by default. Expert modules (ARCH, SETH, etc.) are configured in `modules.yaml` and dispatch automatically — they don't need entries in `pals.json` unless you want to disable them.
+
+### Git Workflow
+
 | Mode | Behavior |
 |------|----------|
-| `github-flow` | Strict enforcement — branch validation before work, auto-PR after apply, merge gate blocks next phase until PR is merged and CI passes. Requires `gh` CLI. |
+| `github-flow` | Strict enforcement — branch validation, auto-PR, merge gate blocks next phase until PR merged and CI passes. Requires `gh` CLI. |
 | `legacy` | Advisory git ops — feature-per-phase branching with optional push/PR/CI. Default for existing projects. |
 | `none` | No git operations (default for new projects without git config). |
 
-In GitHub Flow mode, both `/paul:progress` and `/paul:resume` surface live git state (branch, PR, CI, sync status) and route the next action based on git state priority — e.g., "fix CI" if checks are failing, "update branch" if behind base, "merge PR" when ready.
+Both `/paul:status` and `/paul:resume` surface live git state (branch, PR, CI, sync status) and route the next action based on git state — e.g., "fix CI" if checks failing, "update branch" if behind base, "merge PR" when ready.
 
-GitHub Flow enforcement is configured during `/paul:init` or by editing `pals.json` directly. See `kernel/references/git-strategy.md` for full documentation.
+### Guided Workflow (Pi)
+
+The `guided_workflow.auto_present` section controls whether the Pi extension auto-presents interactive dialogs at each transition type:
+
+- **`false`** (notify-only): User responds in the chat prompt — no auto-cascade
+- **`true`** (auto-present): Interactive confirm/select dialog presented automatically
+
+Default: critical transitions (plan approval, phase/milestone transitions) are notify-only. Routine transitions (continue to UNIFY, checkpoints) auto-present.
 
 ## How It Works
 
 ### The Plan-Apply-Unify Loop
 
-Every unit of work follows a three-phase loop:
-
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
 ```
 
-1. **PLAN** — Analyze scope, define acceptance criteria, create tasks with specific files, actions, and verification steps. Modules participate via `pre-plan` and `post-plan` hooks (e.g., TODD detects TDD candidates and restructures tasks).
+1. **PLAN** — Analyze scope, define acceptance criteria, create tasks with specific files, actions, and verification steps. Modules participate via `pre-plan` and `post-plan` hooks.
 
-2. **APPLY** — Execute tasks sequentially. Each task is verified before proceeding. Modules gate quality via `pre-apply` and `post-apply` hooks (e.g., WALT captures baselines before and checks for regressions after).
+2. **APPLY** — Execute tasks sequentially. Each task is verified before proceeding. Modules gate quality via `pre-apply` and `post-apply` hooks.
 
-3. **UNIFY** — Reconcile what was planned vs what was built. Record deviations, update state, close the loop. Modules contribute via `post-unify` hooks (e.g., SKIP captures decisions for future reference).
+3. **UNIFY** — Reconcile what was planned vs what was built. Record deviations, update state, close the loop. Modules contribute via `post-unify` hooks.
 
 ### Lifecycle Hooks
 
-Modules register for lifecycle events and participate automatically:
-
 | Hook Point | When It Fires | Example Modules |
 |------------|--------------|-----------------|
-| `pre-plan` | Before plan creation | TODD (TDD detection), DEAN (dependency check), IRIS (review prep) |
+| `pre-plan` | Before plan creation | TODD, DEAN, IRIS, ARCH, SETH, LUKE, ARIA, DANA, GABE, OMAR, PETE, REED, VERA |
 | `post-plan` | After plan creation | TODD (task restructuring for TDD) |
-| `pre-apply` | Before execution | WALT (quality baseline capture) |
+| `pre-apply` | Before execution | WALT (quality baseline), TODD (test verification) |
 | `post-task` | After each task | TODD (test verification) |
-| `post-apply` | After all tasks | WALT (regression check), DEAN (dependency audit), IRIS (review), SKIP (capture) |
-| `post-unify` | After loop closes | WALT (history update), SKIP (knowledge persistence), RUBY (refactor suggestions) |
+| `post-apply` | After all tasks | Advisory: IRIS, DOCS, RUBY, SKIP. Enforcement: WALT, DEAN, TODD. Plus expert modules. |
+| `post-unify` | After loop closes | WALT (history), SKIP (knowledge), RUBY (debt analysis) |
 
 ### Session Continuity
 
-PALS tracks state in `.paul/STATE.md` and supports handoffs between sessions. Use `/paul:pause` to create a handoff document and `/paul:resume` to restore context in a new session. No work is lost between conversations.
+PALS tracks state in `.paul/STATE.md` and supports handoffs between sessions. Use `/paul:pause` to create a handoff document and `/paul:resume` to restore context. CARL (Pi extension) automatically manages session boundaries based on context pressure — creating fresh sessions when thresholds are reached.
 
 ## Install
 
 ```bash
-git clone https://github.com/maxwellnewman/pals.git
+git clone https://github.com/coctostan/pals.git
 cd pals
 ./install.sh
 ```
 
 The installer:
-- Creates `~/.pals/` with kernel, modules, and references
-- Detects available harnesses and installs the matching driver surfaces
-- Wires slash commands into `~/.claude/` for Claude Code
-- Installs canonical skills plus the Pi extension into `~/.pi/agent/`
+- Detects available harnesses (Claude Code, Pi) and installs matching driver surfaces
+- **Claude Code:** Wires slash commands into `~/.claude/`
+- **Pi:** Installs skills to `~/.pi/agent/skills/pals/` and extension to `~/.pi/agent/extensions/`
+- Generates `modules.yaml` registry for all 18 modules
 - Reads `pals.json` to determine which modules to install
 - Detects and cleans up legacy installations if present
-Start a new Claude Code or Pi session after installing.
+
+Start a new session after installing.
 
 ## Uninstall
 
@@ -256,8 +254,19 @@ cd pals
 ./uninstall.sh
 ```
 
-Removes all PALS files from `~/.pals/` plus any installed driver surfaces (for example `~/.claude/` and `~/.pi/agent/`) without affecting unrelated harness configuration.
+Removes all PALS files from installed driver locations without affecting unrelated harness configuration.
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and/or Pi
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and/or [Pi](https://github.com/nicholasgasior/pi-coding-agent)
+- `gh` CLI (optional — required only for GitHub Flow enforcement)
+
+## Documentation
+
+See `docs/` for detailed specifications:
+- `docs/ARCHITECTURE.md` — System architecture
+- `docs/LIFECYCLE-SPEC.md` — State machine and transitions
+- `docs/HOOK-CONTRACT.md` — Module lifecycle hooks
+- `docs/MODULE-BUILDERS-GUIDE.md` — How to build a new module
+- `docs/TROUBLESHOOTING.md` — Common issues and solutions
+- `kernel/references/e2e-test-protocol.md` — E2E testing methodology
