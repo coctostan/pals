@@ -7,17 +7,17 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.27 Module Dispatch Hardening
 ## Current Position
 Milestone: v2.27 Module Dispatch Hardening
-Phase: 136 of 137 (Post-Apply/Post-Unify Enforcement)
-Plan: 136-01 complete
-Status: Phase 136 complete, ready for next phase
-Last activity: 2026-03-26 — UNIFY complete for 136-01
+Phase: 137 of 137 (GitHub Flow Merge Gate Simplification)
+Plan: 137-01 complete
+Status: Phase 137 complete — all v2.27 phases done
+Last activity: 2026-03-26 — UNIFY complete for 137-01
 Progress:
-- v2.27 Module Dispatch Hardening: [██████░░░░] 66%
+- v2.27 Module Dispatch Hardening: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ✓     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -136,6 +136,6 @@ Last commit: PR #48 merged
 PR: none (on main)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: Phase 136 complete
-Next action: /paul:plan for Phase 137
-Resume file: .paul/phases/136-post-apply-unify-enforcement/136-01-SUMMARY.md
+Stopped at: v2.27 milestone complete
+Next action: /paul:milestone to close v2.27
+Resume file: .paul/phases/137-merge-gate-simplification/137-01-SUMMARY.md
