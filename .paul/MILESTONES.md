@@ -46,6 +46,7 @@ Completed milestone log for this project.
 | **v2.26 Init/Onboarding Overhaul** | 2026-03-26 | 1 session | 3 phases, 3 plans. Greenfield ~8 questions, quick mode ~1, brownfield grouped modules, explicit milestone. |
 | **v2.27 Module Dispatch Hardening** | 2026-03-26 | 1 session | 3 phases, 3 plans. 40 hooks → imperative, MANDATORY dispatch markers, merge gate 1→4 sub-steps. |
 | **v2.28 DEAN Baseline Management** | 2026-03-26 | 1 session | 1 phase, 1 plan. Baseline-aware DEAN override, delta comparison, staleness guard. Closes all 13 v2.25 items. |
+| **v2.29 E2E Test Protocol** | 2026-03-26 | 1 session | 2 phases, 2 plans. Reusable E2E test protocol (8 dimensions, scoring model), validated with greenfield pi-monitor build (Sonnet 4.6). 4 findings → v2.30. |
 
 ---
 
