@@ -270,3 +270,8 @@ See `docs/` for detailed specifications:
 - `docs/MODULE-BUILDERS-GUIDE.md` — How to build a new module
 - `docs/TROUBLESHOOTING.md` — Common issues and solutions
 - `kernel/references/e2e-test-protocol.md` — E2E testing methodology
+
+## Credits
+
+Built on top earlier versoins of [PAUL](https://github.com/ChristopherKahler/paul) and [CARL](https://github.com/ChristopherKahler/carl)
+Thank you to https://github.com/ChristopherKahler
