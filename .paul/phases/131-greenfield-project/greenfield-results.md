@@ -103,6 +103,74 @@ The greenfield init flow asked **9+ questions** before creating artifacts:
 
 ---
 
+## L1/L2/L3 Assessment — GPT-5.4 Greenfield
+
+### L1 — Workflow Compliance (Greenfield)
+
+| Criteria | Result |
+|----------|--------|
+| Read SKILL.md | ✅ |
+| Read modules.yaml | ✅ (inferred from dispatch markers) |
+| PLAN.md proper structure | ✅ Both plans have frontmatter, AC, tasks |
+| APPLY execution | ✅ Code created, tests pass, TypeScript compiles |
+| SUMMARY.md written | ✅ Both summaries with Module Execution Reports |
+| STATE.md updated | ✅ All transitions tracked |
+| PROJECT.md populated | ✅ 65 lines with real content |
+| PRD.md populated | ✅ 68 lines |
+| pals.json created | ✅ schema_version 2.0.0, 18 modules |
+| Git commits at transitions | ✅ 2 phase commits + scaffold |
+| GitHub Flow | N/A — chose "legacy / direct-to-main" (correct for local-only) |
+| Milestone creation | ⚠️ Implicit during init, not via /paul:milestone |
+| CARL session management | ✅ Fired at 65% context, created fresh session |
+
+**L1 Score: ~92% (12/13)** — Only gap is implicit milestone creation.
+
+### L2 — Module Dispatch
+
+| Hook Point | Loop 1 | Loop 2 |
+|-----------|--------|--------|
+| pre-plan advisory (ARCH, TODD, IRIS, DAVE, DOCS, RUBY) | ✅ All 6 logged | ✅ All 6 logged |
+| pre-plan enforcement (DEAN, SETH) | ✅ DEAN skip (no deps), SETH no block | ✅ DEAN no block, SETH no block |
+| post-apply | Not evident in PLAN/SUMMARY | Not evident |
+| post-unify (WALT, SKIP, RUBY) | ✅ **All 3 fired with real output** | ✅ **All 3 fired with real output** |
+
+**Key finding:** GPT-5.4 on greenfield runs pre-plan dispatch AND post-unify dispatch (WALT, SKIP, RUBY all fired). Post-apply advisory/enforcement is the gap — same as Phase 130 brownfield behavior.
+
+**L2 Score: ~75% (6/8 hook points)** — pre-plan + post-unify strong, post-apply missing.
+
+### L3 — Module Output Quality
+
+| Module | Output | Value |
+|--------|--------|-------|
+| WALT | quality-history.md: 8/8→12/12, lint clean, typecheck clean, ↑ improving | ✅ Real tracking |
+| SKIP | Decisions captured: package-level defaults, direct ctx.modelRegistry path, markdown output | ✅ Real knowledge |
+| RUBY | "Watch src/index.ts size" + "extract history/storage/report helpers" | ✅ Actionable debt warning |
+| ARCH | "Flat TypeScript structure appropriate" | ✅ Useful baseline |
+| TODD | "tdd candidate present, test/ exists" | ✅ Shaped coverage |
+| DOCS | "README minimal; update recommended" | ✅ Correct flag |
+| DEAN | "Skip, no lockfile" | ⚠️ Correct but no value |
+| SETH | "No hardcoded secrets" | ✅ Quick pass |
+| IRIS | "No anti-patterns" | ✅ Clean baseline |
+| DAVE | "No CI detected, deferred" | ✅ Correct |
+
+**L3 Score: ~80% (8/10 modules produced useful output)**
+
+### GPT-5.4 Greenfield vs Brownfield Comparison
+
+| Dimension | Brownfield (Phase 130) | Greenfield (Phase 131) |
+|-----------|----------------------|------------------------|
+| L1 Workflow | ~86% | ~92% |
+| L2 Dispatch | ~70% | ~75% |
+| L3 Quality | ~65% | ~80% |
+| Post-unify hooks | Not evident | ✅ WALT + SKIP + RUBY all fired |
+| CARL | Not observed | ✅ Fired at phase boundary |
+| GitHub Flow | ⚠️ Partial (branch yes, merge gate no) | N/A (correct — local only) |
+| DEAN | ✅ Ran pnpm audit | ⚠️ Skip (no deps) |
+
+**Verdict:** GPT-5.4 performs BETTER on greenfield than brownfield. The simpler context (no existing bait/cleanup baggage) let it focus on clean execution. Post-unify hooks fired on greenfield but not brownfield — possibly because the greenfield session was fresher.
+
+---
+
 ## Recommendations for v2.26+ Init/Onboarding
 
 ### High Priority

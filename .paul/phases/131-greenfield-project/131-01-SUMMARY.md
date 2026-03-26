@@ -28,8 +28,11 @@ duration: ~2 hours
 
 ## Module Execution Reports
 
-[dispatch] pre-plan (both loops): ARCH, TODD, IRIS, DAVE, DOCS, RUBY, DEAN, SETH — all 8 logged with greenfield-appropriate context
-[dispatch] CARL: Phase boundary detection fired at 65%, created fresh session between loops
+[dispatch] pre-plan (both loops): ARCH, TODD, IRIS, DAVE, DOCS, RUBY, DEAN, SETH — all 8 logged
+[dispatch] post-unify (both loops): WALT (quality-history.md: 8/8→12/12), SKIP (decisions captured), RUBY (debt warnings)
+[dispatch] CARL: Phase boundary detection fired at 65%, created fresh session
+
+**L1: 92% | L2: 75% | L3: 80%** — GPT-5.4 performs better on greenfield than brownfield (86/70/65). Post-unify hooks fired on greenfield but not brownfield.
 
 ## Key Findings
 
