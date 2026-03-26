@@ -26,8 +26,29 @@ Status: ✅ Complete
 Completed: 2026-03-12
 Phases: 3 of 3 complete
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+## Current Milestone
+**v2.26 Init/Onboarding Overhaul**
+Status: 🚧 In Progress
+Theme: Fix greenfield init friction — smart defaults, fewer questions, better detection, and conditional question gating
+Phases: 1 of 3 complete
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 132 | Smart Question Gating + Brownfield Detection Fix | 1 | ✅ Complete | 2026-03-26 |
+| 133 | Greenfield Fast Path + Explicit Milestone Creation | TBD | Not started | - |
+| 134 | Quick Mode + Validation | TBD | Not started | - |
+
+### Phase 132: Smart Question Gating + Brownfield Detection Fix
+Focus: Conditional git automation questions, brownfield source-file detection threshold, SonarQube/skills gating (Items 6, 7, 11)
+Plans: TBD (defined during /paul:plan)
+
+### Phase 133: Greenfield Fast Path + Explicit Milestone Creation
+Focus: Reduce greenfield to ~8 questions, default milestone creation in init, module descriptions, remove specialized skills question (Items 8, 9, 10, 12)
+Plans: TBD (defined during /paul:plan)
+
+### Phase 134: Quick Mode + Validation
+Focus: /paul:init --quick flag for experienced users, end-to-end greenfield and brownfield validation (Item 13 + E2E test)
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
 <details>
 <summary>v2.25 E2E Adversarial Testing - 2026-03-25 (3 phases)</summary>

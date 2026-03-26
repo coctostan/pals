@@ -95,33 +95,38 @@ After init, project is ready for first PLAN.
    ls package.json requirements.txt Cargo.toml go.mod pom.xml Gemfile pyproject.toml composer.json 2>/dev/null
    ls -d src/ lib/ app/ cmd/ pkg/ 2>/dev/null
    ```
-
-2. **If indicators found** (brownfield detected):
+2. **If indicators found**, verify actual source files exist (not just empty directories):
+   ```bash
+   find src lib app cmd pkg -type f \( -name '*.ts' -o -name '*.js' -o -name '*.py' -o -name '*.rs' -o -name '*.go' -o -name '*.java' -o -name '*.rb' -o -name '*.php' -o -name '*.c' -o -name '*.cpp' -o -name '*.swift' \) 2>/dev/null | head -1
+   ```
+3. **If indicators found AND source files exist** (brownfield confirmed):
    ```
    ════════════════════════════════════════
    Existing codebase detected:
    ════════════════════════════════════════
 
    Found: [list of detected files/directories]
-
    Mapping your codebase first helps me understand your project's
    architecture, conventions, and patterns before setting up PAUL.
-
    Map codebase now? (Recommended for existing projects) [Y/n]
    ```
 
    Wait for user response.
-
    **If yes (default):**
    - Run `/paul:map-codebase` workflow
    - After map completes, store `brownfield = true` and `codebase_mapped = true`
    - Continue to create_structure with brownfield context available
-
    **If no:**
    - Store `brownfield = true` and `codebase_mapped = false`
    - Continue to create_structure (user can map later via `/paul:map-codebase`)
-
-3. **If no indicators found** (greenfield):
+4. **If indicators found but NO source files exist** (scaffolding only):
+   ```
+   Project scaffolding detected but no source files found.
+   Treating as greenfield project.
+   ```
+   - Store `brownfield = false`
+   - Continue to create_structure
+5. **If no indicators found** (greenfield):
    - Store `brownfield = false`
    - Continue to create_structure
 </step>
@@ -481,100 +486,27 @@ Resume file: .paul/PROJECT.md
 </step>
 
 <step name="prompt_integrations">
-**Ask about optional integrations:**
+**Integrations default to disabled during init.**
 
-```
-Optional integrations:
+SonarQube and other integrations are not asked about during init to reduce onboarding friction.
 
-Would you like to enable SonarQube code quality scanning?
-(Requires SonarQube server and MCP server - can enable later)
+- Store `integrations_enabled = false`
+- SonarQube defaults to `{ "enabled": false, "project_key": "" }` in pals.json
+- Display nothing (silent default)
 
-[1] Yes, enable SonarQube
-[2] Skip for now
-```
-
-Wait for user response.
-
-**If "1" or "yes" or "enable":**
-
-1. Prompt for project key:
-   ```
-   SonarQube project key?
-   (Press Enter to use: [project_name])
-   ```
-
-   - If user presses Enter: use `project_name`
-   - Otherwise: use provided key
-
-2. Create `.paul/config.md`:
-   ```markdown
-   # Project Config
-
-   **Project:** [project_name]
-   **Created:** [timestamp]
-
-   ## Project Settings
-
-   ```yaml
-   project:
-     name: [project_name]
-     version: 0.0.0
-   ```
-
-   ## Integrations
-
-   ### SonarQube
-
-   ```yaml
-   sonarqube:
-     enabled: true
-     project_key: [project_key]
-   ```
-
-   ## Preferences
-
-   ```yaml
-   preferences:
-     auto_commit: false
-     verbose_output: false
-   ```
-
-   ---
-   *Config created: [timestamp]*
-   ```
-
-3. Store `integrations_enabled = true`
-
-**If "2" or "skip" or "no":**
-
-Store `integrations_enabled = false`
-(Don't create config.md - user can add later)
+Note: Users can enable integrations later via `/paul:config`.
 </step>
 
 <step name="check_specialized_flows">
-**Ask about specialized skills:**
+**Specialized flows skipped during init.**
 
-```
-Do you have specialized skills or commands for this project?
-(e.g., /revops-expert, /frontend-design, custom workflows)
+Specialized skills configuration is not asked about during init to reduce onboarding friction.
 
-[1] Yes, configure now
-[2] Skip for now (add later via /paul:flows)
-```
+- Store `specialized_flows_enabled = false`
+- No SPECIAL-FLOWS.md created during init
+- Display nothing (silent default)
 
-Wait for user response.
-
-**If "1" or "yes" or "configure":**
-
-1. Store `specialized_flows_enabled = true`
-2. Route to: @workflows/configure-special-flows.md
-3. After completion, return to init confirmation
-4. Store `skills_configured_count` from workflow output
-
-**If "2" or "skip" or "no":**
-
-Store `specialized_flows_enabled = false`
-(User can add later via /paul:flows)
+Note: Users can configure specialized flows later via `/paul:flows`.
 </step>
 
 <step name="configure_modules">
@@ -772,20 +704,31 @@ Wait for user response.
 
 **If "3" (Direct to main):**
 - Store `git_workflow = "legacy"`, `git_branching = "direct-to-main"`
-- Continue to Questions 3 and 4
+- Set `git_worktree_isolation = false`, `git_auto_push = false`, `git_auto_pr = false`, `git_ci_checks = false`
+- Skip Questions 3 and 4 — direct-to-main has no branch isolation or remote automation
+- Display: "Direct-to-main workflow — branch isolation and automation questions skipped."
 
-**Question 3 — Worktree Isolation (only for legacy workflow):**
+**Question 3 — Worktree Isolation (only for feature-per-phase workflow):**
+
+Note: This question is ONLY asked when the user chose "Feature branch per phase" (option 2). It is skipped for GitHub Flow (handled by defaults) and Direct to main (no branch isolation needed).
+
 ```
 Use git worktrees during APPLY phase?
 This creates an isolated copy for each phase — if something goes wrong,
 discard the worktree instead of reverting commits.
 [2] Yes — isolate each APPLY phase in a worktree
 ```
-
 Wait for user response.
 - If "1" or Enter: Store `git_worktree_isolation = false`
 - If "2": Store `git_worktree_isolation = true`
-**Question 4 — Automation (only for legacy workflow with GH remote):**
+**Question 4 — Automation (only for feature-per-phase workflow with GH remote):**
+
+Note: This question is ONLY asked when ALL of these are true:
+- User chose "Feature branch per phase" (option 2)
+- `git_remote` is not null (a GitHub remote was configured)
+
+Skipped when: direct-to-main (no branches to PR), no remote (can't push/PR), or GitHub Flow (handled by defaults).
+
 ```
 Git automation? (Enter to accept defaults)
 Auto-create PR on phase transition:  [yes/NO]
@@ -794,7 +737,7 @@ Wait for CI checks before merge:     [yes/NO]
 - Defaults are NO for all (conservative)
 - Accept "yes" or "y" to enable each
 - Store as `git_auto_push`, `git_auto_pr`, `git_ci_checks`
-**If no GH remote:** Skip Question 4, all automation defaults to false.
+**If skipped** (no remote or direct-to-main): Set `git_auto_push = false`, `git_auto_pr = false`, `git_ci_checks = false`.
 
 **Update pals.json git section with gathered values:**
 
@@ -863,7 +806,6 @@ Created:
   .paul/ROADMAP.md        ✓
   .paul/STATE.md          ✓
   pals.json               ✓  ([N] modules enabled)
-  .paul/SPECIAL-FLOWS.md  ✓  (if specialized_flows_enabled: "[N] skills configured")
   .paul/phases/           ✓
 
 Git: [remote URL or "local only"] | {git_workflow} | push:[yes/no] PR:[yes/no] CI:[yes/no]
@@ -877,9 +819,9 @@ Planning default: {default_collaboration} | This run: {planning_mode}, {collabor
 Type "yes" to proceed, or ask questions first.
 ```
 
-**Note:** Only show SPECIAL-FLOWS.md line if specialized flows were enabled.
-Only show Git line if `git_enabled = true`.
+**Note:** Only show Git line if `git_enabled = true`.
 Always show pals.json with module count.
+Integrations and specialized flows can be added later via `/paul:config` and `/paul:flows`.
 
 **Do NOT suggest multiple next steps.** ONE action only.
 </step>
@@ -893,7 +835,6 @@ Always show pals.json with module count.
 - `.paul/ROADMAP.md` (skeleton for planning)
 - `.paul/STATE.md` (initialized state)
 - `pals.json` (module configuration, git config, and user's selections)
-- `.paul/SPECIAL-FLOWS.md` (if specialized flows enabled)
 - `.paul/phases/` (empty directory)
 - Clear routing to `/paul:plan`
 </output>
