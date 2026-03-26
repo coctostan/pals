@@ -138,4 +138,4 @@ PR: none (on main)
 Last session: 2026-03-25
 Stopped at: Milestone v2.25 complete, no active milestone
 Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Resume file: .paul/HANDOFF-2026-03-25-v225-complete.md
