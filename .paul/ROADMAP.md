@@ -26,8 +26,33 @@ Status: ✅ Complete
 Completed: 2026-03-12
 Phases: 3 of 3 complete
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+## Current Milestone
+**v2.30 Pi Guided Workflow UX & Documentation** 
+Status: 🚧 In Progress 
+Phases: 0 of 4 complete
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|----------|
+| 141 | Guided Workflow Auto-Approve Control | 1 | In progress | - |
+| 142 | Menu Parser Hardening | TBD | Not started | - |
+| 143 | Label Accuracy & Polish | TBD | Not started | - |
+| 144 | README & Documentation Update | TBD | Not started | - |
+
+### Phase 141: Guided Workflow Auto-Approve Control
+Focus: Add opt-in auto-approve setting (default: wait-for-user at checkpoints). Per-transition-type control so users retain decision authority at plan approval, UNIFY transitions, and phase boundaries.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 142: Menu Parser Hardening
+Focus: Whitelist-based menu detection — only match `[N]` numeric or known PALS response patterns (yes/no/approved/pause). Reject code/documentation content like `[id]`.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 143: Label Accuracy & Polish
+Focus: Fix init next-action prompt truncation ("▶ NEXT: /") and sync guided workflow menu labels with current loop state instead of cached previous state.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 144: README & Documentation Update
+Focus: Full refresh of README.md and project documentation to reflect current state after 140+ phases of evolution.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
 <details>
 <summary>v2.29 E2E Test Protocol - 2026-03-26 (2 phases)</summary>

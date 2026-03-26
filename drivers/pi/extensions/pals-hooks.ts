@@ -118,6 +118,34 @@ type CarlConfig = {
   safety_ceiling_tokens?: number;
 };
 
+type GuidedWorkflowAutoPresent = {
+  plan_review: boolean;
+  apply_approval: boolean;
+  continue_to_unify: boolean;
+  checkpoint_decision: boolean;
+  checkpoint_human_verify: boolean;
+  checkpoint_human_action: boolean;
+  resume_next: boolean;
+  phase_transition: boolean;
+  milestone_transition: boolean;
+};
+
+type GuidedWorkflowConfig = {
+  auto_present: GuidedWorkflowAutoPresent;
+};
+
+const GUIDED_WORKFLOW_DEFAULTS: GuidedWorkflowAutoPresent = {
+  plan_review: false,
+  apply_approval: false,
+  continue_to_unify: true,
+  checkpoint_decision: true,
+  checkpoint_human_verify: true,
+  checkpoint_human_action: true,
+  resume_next: true,
+  phase_transition: false,
+  milestone_transition: false,
+};
+
 type CarlState = {
   stashedCmdCtx: any | undefined;
   dispatching: boolean;
@@ -790,15 +818,29 @@ function sendCanonicalWorkflowResponse(pi: any, ctx: any, canonicalResponse?: st
   pi.sendUserMessage(response);
 }
 
-async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: any, pi: any): Promise<void> {
+async function presentGuidedWorkflowMoment(
+  moment: GuidedWorkflowMoment,
+  ctx: any,
+  pi: any,
+  config?: GuidedWorkflowConfig,
+): Promise<void> {
   if (!ctx?.hasUI) return;
+  const autoPresent = config ? shouldAutoPresent(config, moment.kind) : true;
+
+  if (!autoPresent) {
+    // Notify-only mode: inform user of the workflow moment but do not auto-present interactive dialog
+    ctx.ui.notify(
+      `PALS workflow: ${moment.title} — respond in the chat prompt when ready. ${moment.summary}`,
+      "info",
+    );
+    return;
+  }
 
   ctx.ui.notify(`PALS guided workflow: ${moment.summary}`, "info");
-
   if (moment.ui === "confirm" && moment.confirmResponse) {
     const ok = await ctx.ui.confirm(
       moment.title,
-      `${moment.summary}\n\nSend canonical reply \"${moment.confirmResponse}\" through normal user-message flow?`,
+      `${moment.summary}\n\nSend canonical reply "${moment.confirmResponse}" through normal user-message flow?`,
     );
     if (ok) {
       ctx.ui.notify(`PALS guided workflow → sending "${moment.confirmResponse}"`, "success");
@@ -806,7 +848,6 @@ async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: an
     }
     return;
   }
-
   if (moment.ui === "select" && moment.options && moment.options.length > 0) {
     const optionLabels = moment.options.map((option) => `[${option.id}] ${option.label}`);
     const choice = await ctx.ui.select(moment.title, optionLabels);
@@ -817,7 +858,6 @@ async function presentGuidedWorkflowMoment(moment: GuidedWorkflowMoment, ctx: an
     }
     return;
   }
-
   ctx.ui.notify(`${moment.title}: respond in the canonical workflow prompt when ready.`, "info");
 }
 
@@ -853,6 +893,34 @@ function loadCarlConfig(cwd: string): CarlConfig {
     safety_ceiling: typeof carl.safety_ceiling === "number" ? carl.safety_ceiling : CARL_DEFAULT_SAFETY_CEILING,
     safety_ceiling_tokens: safetyCeilingTokens,
   };
+}
+
+function loadGuidedWorkflowConfig(cwd: string): GuidedWorkflowConfig {
+  const palsJsonPath1 = join(cwd, ".paul", "pals.json");
+  const palsJsonPath2 = join(cwd, "pals.json");
+  const raw = readFileOr(palsJsonPath1, "") || readFileOr(palsJsonPath2, "");
+  let gw: any = {};
+  try {
+    const parsed = raw ? JSON.parse(raw) : {};
+    gw = parsed?.guided_workflow?.auto_present ?? {};
+  } catch {
+    // Invalid JSON — use defaults
+  }
+
+  const autoPresent: GuidedWorkflowAutoPresent = { ...GUIDED_WORKFLOW_DEFAULTS };
+  for (const key of Object.keys(GUIDED_WORKFLOW_DEFAULTS) as (keyof GuidedWorkflowAutoPresent)[]) {
+    if (typeof gw[key] === "boolean") {
+      autoPresent[key] = gw[key];
+    }
+  }
+
+  return { auto_present: autoPresent };
+}
+
+function shouldAutoPresent(config: GuidedWorkflowConfig, momentKind: GuidedWorkflowMoment["kind"]): boolean {
+  // Map hyphenated moment kind to underscored config key
+  const configKey = momentKind.replace(/-/g, "_") as keyof GuidedWorkflowAutoPresent;
+  return config.auto_present[configKey] ?? true;
 }
 
 function formatCarlContextPressure(tokens: number, ratio: number): string {
@@ -1129,18 +1197,17 @@ export default function palsHooks(pi: any): void {
   };
 
   const maybePresentGuidedWorkflow = async (event: any, ctx: any): Promise<void> => {
-    const state = parsePalsState(ctx?.cwd ?? process.cwd());
+    const cwd = ctx?.cwd ?? process.cwd();
+    const state = parsePalsState(cwd);
     const recentAssistantTexts = collectRecentAssistantTexts(ctx, event);
     const guidedMoment = detectGuidedWorkflowMoment(state, recentAssistantTexts);
-
-    if (!guidedMoment) {
       lastGuidedWorkflowSignature = undefined;
       return;
     }
-
     if (guidedMoment.signature === lastGuidedWorkflowSignature) return;
     lastGuidedWorkflowSignature = guidedMoment.signature;
-    await presentGuidedWorkflowMoment(guidedMoment, ctx, pi);
+    const gwConfig = loadGuidedWorkflowConfig(cwd);
+    await presentGuidedWorkflowMoment(guidedMoment, ctx, pi, gwConfig);
   };
 
   // Register all /paul-* slash commands as Pi-native discovery wrappers.
