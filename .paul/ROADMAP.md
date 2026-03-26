@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 ### v2.25 E2E Adversarial Testing
 Status: 🚧 In Progress
-Phases: 2 of 3 complete
+Phases: 3 of 3 complete
 Theme: Prove modules produce real value under adversarial, real-dev, and greenfield conditions — not just that they dispatch.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 129 | Adversarial Testing Setup | 1 | ✅ Complete | 2026-03-25 |
 | 130 | Real-User Feature Dev | 1 | ✅ Complete | 2026-03-25 |
-| 131 | Greenfield Project | 1 | Planning | - |
+| 131 | Greenfield Project | 1 | ✅ Complete | 2026-03-25 |
 ## Completed Milestones
 <details>
 <summary>v2.24 Module Dispatch Integrity - 2026-03-25 (2 phases)</summary>
