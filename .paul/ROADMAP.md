@@ -29,12 +29,12 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.29 E2E Test Protocol**
 Status: 🚧 In Progress
-Phases: 0 of 2 complete
+Phases: 1 of 2 complete
 Theme: Make E2E testing a repeatable PALS capability instead of ad-hoc sessions
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 139 | Protocol Design & Report Template | 1 | Planning | - |
+| 139 | Protocol Design & Report Template | 1 | ✅ Complete | 2026-03-26 |
 | 140 | Protocol Validation — Greenfield E2E Run | TBD | Not started | - |
 ## Completed Milestones
 <details>
