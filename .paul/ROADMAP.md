@@ -26,8 +26,16 @@ Status: ✅ Complete
 Completed: 2026-03-12
 Phases: 3 of 3 complete
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+## Current Milestone
+**v2.29 E2E Test Protocol**
+Status: 🚧 In Progress
+Phases: 0 of 2 complete
+Theme: Make E2E testing a repeatable PALS capability instead of ad-hoc sessions
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|----------|
+| 139 | Protocol Design & Report Template | 1 | Planning | - |
+| 140 | Protocol Validation — Greenfield E2E Run | TBD | Not started | - |
 ## Completed Milestones
 <details>
 <summary>v2.28 DEAN Baseline Management - 2026-03-26 (1 phase)</summary>
