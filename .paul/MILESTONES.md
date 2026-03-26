@@ -43,6 +43,7 @@ Completed milestone log for this project.
 | **v2.23 pi-verify v1.0 — Ship-Ready Product** | 2026-03-25 | ~90 min | 4 phases via cmux (pi-verify). Module dispatch failed silently. |
 | **v2.24 Module Dispatch Integrity** | 2026-03-25 | 1 session | 2 phases, 4 plans. Fixed 7 process failures + pals.json migration. |
 | **v2.25 E2E Adversarial Testing** | 2026-03-25 | 1 session | 3 phases, 3 plans. Cross-model testing (Kimi/GPT-5.4/Sonnet), pi-verify /verify diff, pi-bench from scratch, greenfield audit. |
+| **v2.26 Init/Onboarding Overhaul** | 2026-03-26 | 1 session | 3 phases, 3 plans. Greenfield ~8 questions, quick mode ~1, brownfield grouped modules, explicit milestone. |
 
 ---
 
@@ -552,6 +553,52 @@ Completed milestone log for this project.
 | Greenfield init asks 7+ unnecessary questions | 131 | Smart question gating needed based on context (no GitHub → skip remote questions) |
 | Brownfield detection triggers on empty scaffolds | 131 | Needs actual source file check, not just directory existence |
 
+## ✅ v2.26 Init/Onboarding Overhaul
+
+**Completed:** 2026-03-26
+**Duration:** 1 session
+**Theme:** Fix greenfield init friction — smart defaults, fewer questions, better detection, and conditional question gating
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 |
+| Plans | 3 |
+| Files changed | 1 (kernel/workflows/init-project.md) |
+| Net line change | 914 → 958 (+44 net, mostly from quick mode + grouped descriptions) |
+
+### Key Accomplishments
+
+- **Brownfield detection fix:** Two-stage check requires actual source files, not just empty directories (Item 7)
+- **Conditional question gating:** Git automation questions skip when irrelevant; SonarQube + specialized skills removed from init (Items 6, 11, 12)
+- **Greenfield fast path (~8 questions):** Planning posture defaults silently, identity/problem merged, constraints simplified, modules skip silently (Item 8)
+- **Explicit default milestone:** v0.1 Initial Release created formally during init with references in ROADMAP, STATE, and confirmation (Item 9)
+- **Grouped module descriptions:** Brownfield module toggle shows 18 modules in 9 concern groups (Item 10)
+- **Quick init mode (~1 question):** "quick"/"--quick"/"just init" asks only "what are you building?", defaults everything else (Item 13)
+- **Three documented init flows:** Quick (~1), Greenfield (~8), Brownfield (~12+) — all producing identical artifacts
+
+### Key Decisions
+
+| Decision | Phase | Rationale |
+|----------|-------|-----------|
+| Greenfield/brownfield branching is step-level, not separate workflows | 133 | One file, less maintenance |
+| Quick mode is a complete bypass (new step, no changes to existing steps) | 134 | Additive-only, no regression risk |
+| Module grouping by concern, not alphabetical | 133 | Makes 18-module list scannable |
+| SonarQube + skills moved to /paul:config, not removed | 132 | Functionality preserved, just relocated |
+
+### Items Addressed
+
+| Item | Description | Source |
+|------|-------------|--------|
+| 6 | Smart question gating in init | v2.25 Phase 131 |
+| 7 | Brownfield detection threshold fix | v2.25 Phase 131 |
+| 8 | Reduce greenfield to ~8 questions | v2.25 Phase 131 |
+| 9 | Explicit first milestone in init | v2.25 Phase 131 |
+| 10 | Module explanations during init | v2.25 Phase 131 |
+| 11 | Conditional git automation questions | v2.25 Phase 131 |
+| 12 | Remove specialized skills from init | v2.25 Phase 131 |
+| 13 | /paul:init --quick mode | v2.25 Phase 131 |
 ---
 
 *Milestones log created: 2026-03-12*
