@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 Milestone: Awaiting next milestone
 Phase: None active
 Plan: None
-Status: Milestone v2.27 Module Dispatch Hardening complete — ready for next
+Status: Milestone v2.28 DEAN Baseline Management complete — ready for next
 Last activity: 2026-03-26 — Milestone completed
 Progress:
-- v2.27 Module Dispatch Hardening: [██████████] 100% ✓
+- v2.28 DEAN Baseline Management: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
@@ -136,6 +136,6 @@ Last commit: PR #48 merged
 PR: none (on main)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: Milestone v2.27 complete, no active milestone
+Stopped at: Milestone v2.28 complete — all 13 v2.25 items addressed
 Next action: /paul:discuss-milestone or /paul:milestone
 Resume file: .paul/MILESTONES.md

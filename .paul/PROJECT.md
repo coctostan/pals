@@ -131,6 +131,7 @@ All validated — see below.
 - [x] Verification & Docs — cross-cutting verification artifact proving all 6 hardening issues resolved, git-strategy.md and README.md updated (Phase 91, v2.13)
 - [x] Init/Onboarding Overhaul — three init flows (quick ~1Q, greenfield ~8Q, brownfield ~12+Q), brownfield detection fix, conditional question gating, explicit default milestone, grouped module descriptions, --quick mode (Phases 132-134, v2.26)
 - [x] Module Dispatch Hardening — 40 hook descriptions rewritten to imperative, MANDATORY post-apply/post-unify dispatch markers, dispatch evidence audits, merge gate split 1→4 sub-steps (Phases 135-137, v2.27)
+- [x] DEAN Baseline Management — baseline-aware override (delta comparison, staleness guard, .paul/dean-baseline.json), closes all 13 v2.25 actionable items (Phase 138, v2.28)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native

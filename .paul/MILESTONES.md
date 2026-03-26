@@ -45,6 +45,7 @@ Completed milestone log for this project.
 | **v2.25 E2E Adversarial Testing** | 2026-03-25 | 1 session | 3 phases, 3 plans. Cross-model testing (Kimi/GPT-5.4/Sonnet), pi-verify /verify diff, pi-bench from scratch, greenfield audit. |
 | **v2.26 Init/Onboarding Overhaul** | 2026-03-26 | 1 session | 3 phases, 3 plans. Greenfield ~8 questions, quick mode ~1, brownfield grouped modules, explicit milestone. |
 | **v2.27 Module Dispatch Hardening** | 2026-03-26 | 1 session | 3 phases, 3 plans. 40 hooks → imperative, MANDATORY dispatch markers, merge gate 1→4 sub-steps. |
+| **v2.28 DEAN Baseline Management** | 2026-03-26 | 1 session | 1 phase, 1 plan. Baseline-aware DEAN override, delta comparison, staleness guard. Closes all 13 v2.25 items. |
 
 ---
 
@@ -638,6 +639,34 @@ Completed milestone log for this project.
 | 2 | Post-apply dispatch enforcement | v2.25 Phases 129-130 |
 | 4 | Post-unify hook enforcement | v2.25 Phases 129-131 |
 | 5 | GitHub Flow merge gate simplification | v2.25 Phases 129-130 |
+
+## ✅ v2.28 DEAN Baseline Management
+
+**Completed:** 2026-03-26
+**Duration:** 1 session
+**Theme:** Eliminate repeated override friction for pre-existing vulnerabilities
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 1 |
+| Plans | 1 |
+| Files changed | 3 (dean module.yaml, vulnerability-audit.md, plan-phase.md) |
+
+### Key Accomplishments
+
+- **Baseline recording:** Override path in plan-phase.md writes `.paul/dean-baseline.json` with severity counts, packages, timestamp
+- **Delta comparison:** DEAN pre-plan hook computes delta vs baseline — only BLOCKs on NEW critical/high
+- **Staleness guard:** Baseline expires after configurable N days (default 30), re-triggers full audit
+- **Documented lifecycle:** Schema, delta logic, staleness, clearing all in vulnerability-audit.md
+- **All 13 v2.25 items now complete** across milestones v2.26, v2.27, v2.28
+
+### Items Addressed
+
+| Item | Description | Source |
+|------|-------------|--------|
+| 3 | DEAN baseline mechanism | v2.25 Phase 130 |
 ---
 
 *Milestones log created: 2026-03-12*

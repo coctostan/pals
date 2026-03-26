@@ -117,7 +117,20 @@ templates/PLAN.md
 2. For each: load refs, follow description, collect `context_inject`
 3. Output dispatch log: `[dispatch] pre-plan enforcement: {MODULE(priority) → N inject keys | BLOCK(reason)} | ...`
 4. If any block: surface with advisory context already visible, offer fix/override/stop
-5. Pass ALL accumulated `context_inject` (advisory + enforcement) to analyze_scope
+5. **DEAN baseline recording (on override):** If DEAN blocked and user chose "override":
+   a. MUST create `.paul/dean-baseline.json` with current severity counts:
+      ```json
+      {
+        "created": "{ISO timestamp}",
+        "acknowledged_by": "user override during plan-phase",
+        "staleness_days": {from pals.json modules.dean.baseline_staleness_days, default 30},
+        "severity": {current counts from audit},
+        "packages": [{list of critical/high package names with versions}]
+      }
+      ```
+   b. Display: "DEAN baseline recorded. Future plans will only block on NEW vulnerabilities."
+   c. Log to STATE.md Decisions: "DEAN baseline established: {N} critical, {M} high acknowledged"
+6. Pass ALL accumulated `context_inject` (advisory + enforcement) to analyze_scope
 </step>
 
 <step name="analyze_scope">

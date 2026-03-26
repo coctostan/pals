@@ -18,10 +18,19 @@ hooks:
       yarn.lock, go.mod, Cargo.toml, requirements.txt, Pipfile, Gemfile. MUST run
       the matching audit command (e.g., `pnpm audit --json` for pnpm, `npm audit
       --json` for npm). Parse JSON output to extract severity counts. Output:
-      '| Severity | Count |' table. Record counts as BASELINE for post-apply
-      comparison. Inject dep_warnings with severity breakdown. BLOCK plan creation
-      if critical > 0: 'DEAN BLOCK: {N} critical vulnerabilities found. Packages:
-      [list]. Fix before planning.'
+      '| Severity | Count |' table. THEN MUST check for baseline: `cat
+      .paul/dean-baseline.json 2>/dev/null`. If baseline exists AND is not stale
+      (created + staleness_days > now): compute delta — new_critical =
+      current.critical - baseline.critical, new_high = current.high -
+      baseline.high. If new_critical > 0 OR new_high > 0: BLOCK with 'DEAN BLOCK:
+      {N} NEW critical/high vulnerabilities since baseline. Packages: [list].' If
+      delta <= 0: PASS with 'DEAN: Baseline acknowledged ({N} critical, {M} high
+      pre-existing). No NEW vulnerabilities.' If baseline is stale: treat as no
+      baseline (full BLOCK on critical > 0). If no baseline exists: BLOCK plan
+      creation if critical > 0: 'DEAN BLOCK: {N} critical vulnerabilities found.
+      Packages: [list]. Fix or override to establish baseline.' Record counts as
+      BASELINE for post-apply comparison. Inject dep_warnings with severity
+      breakdown.
     refs:
       - references/vulnerability-audit.md
   post-apply:
