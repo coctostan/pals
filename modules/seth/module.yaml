@@ -14,17 +14,16 @@ hooks:
   pre-plan:
     priority: 80
     description: >-
-      Scan files_modified for security-sensitive patterns. Run secret detection:
-      grep -rn 'AKIA\|BEGIN.*PRIVATE KEY\|api[_-]\?key.*=\|password.*=.*["'"'"']'
-      --include='*.ts' --include='*.js' --include='*.py' --include='*.env'
-      {files_modified}. Check for auth-related files in scope (middleware, guards,
-      login endpoints). Assess OWASP coverage: does the project have input
-      validation (Zod/Joi/Pydantic), auth middleware, rate limiting, CSRF
-      protection? Output a security assessment: '| Category | Status |' with
-      rows for secrets, auth, validation, injection risk. Inject sec_warnings
-      with finding counts per category. Block plan creation if hardcoded secrets
-      found in planned files — display: 'SETH BLOCK: Hardcoded secret detected
-      in {file}. Remove before planning.'
+      MUST run: `grep -rn 'AKIA\|BEGIN.*PRIVATE KEY\|api[_-]\?key.*=\|
+      password.*=.*["'"'"']' --include='*.ts' --include='*.js' --include='*.py'
+      --include='*.env' {files_modified}` for secret detection. MUST check for
+      auth-related files in scope (middleware, guards, login endpoints). MUST
+      assess OWASP coverage: `grep -rn 'Zod\|Joi\|Pydantic\|rateLimit\|csrf'
+      {files_modified}`. Output: '| Category | Status |' table with rows for
+      secrets, auth, validation, injection risk. Inject sec_warnings with finding
+      counts. BLOCK plan creation if hardcoded secrets found: 'SETH BLOCK:
+      Hardcoded secret detected in {file}. Remove before planning.' If no
+      concerns: 'SETH: No security concerns in planned files.'
     refs:
       - references/security-patterns.md
   post-apply:

@@ -14,25 +14,25 @@ hooks:
   pre-plan:
     priority: 250
     description: >-
-      Check files_modified against debt detection heuristics. For
-      TypeScript/JavaScript projects, note that post-unify will use ESLint
-      complexity analysis (shared with IRIS). Inject debt_flags with file paths
-      and preliminary debt indicators (file line counts via wc -l as quick
-      pre-screen).
+      MUST run: `wc -l {files_modified}` to pre-screen file sizes. Flag files >300
+      lines as debt candidates. Note that post-unify will use ESLint complexity
+      analysis (shared with IRIS). Inject debt_flags with file paths and line
+      counts. If all files <300 lines: 'RUBY: No preliminary debt indicators in
+      planned files.'
     refs:
       - references/debt-detection.md
   post-unify:
     priority: 300
     description: >-
-      Scan changed files for debt patterns using ESLint output (shared from
-      IRIS post-apply run, or run independently if IRIS didn't run):
-      npx eslint --no-eslintrc --rule 'complexity: [warn, 10]' --format json
-      {changed_files}. Parse complexity rule violations: report ACTUAL cyclomatic
-      complexity per function (not estimates). Thresholds: >10 acceptable, >20
-      warning, >30 critical. Report file-level metrics: lines per file (>300
-      warning, >500 critical). Suggest specific refactoring: 'Extract function X
-      (complexity: 14) into smaller units.' Fall back to wc -l and grep only
-      when ESLint is not available.
+      MUST run: `npx eslint --no-eslintrc --rule 'complexity: [warn, 10]' --format
+      json {changed_files}` (shared from IRIS post-apply run, or run independently
+      if IRIS didn't run). Parse complexity rule violations: report ACTUAL
+      cyclomatic complexity per function. Thresholds: >10 acceptable, >20 WARN,
+      >30 critical. MUST run: `wc -l {changed_files}` for file-level metrics:
+      >300 WARN, >500 critical. Output specific refactoring suggestions: 'Extract
+      function X (complexity: {N}) into smaller units.' If ESLint unavailable, fall
+      back to `wc -l` and `grep` only. If no debt: 'RUBY: No technical debt
+      concerns in changed files.'
     refs:
       - references/refactor-patterns.md
 

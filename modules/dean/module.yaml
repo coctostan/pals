@@ -14,15 +14,14 @@ hooks:
   pre-plan:
     priority: 50
     description: >-
-      Detect package manager: look for pnpm-lock.yaml, package-lock.json,
-      yarn.lock, go.mod, Cargo.toml, requirements.txt, Pipfile, Gemfile. Run
-      the matching audit command from vulnerability-audit.md (e.g., pnpm audit
-      --json for pnpm). Parse JSON output to extract severity counts. Output a
-      severity table: '| Severity | Count |' with rows for critical, high,
-      moderate, low. Record these counts as the BASELINE for post-apply
-      comparison. Inject dep_warnings with the severity breakdown. Block plan
-      creation if critical > 0 — display: 'DEAN BLOCK: N critical
-      vulnerabilities found. Fix before planning. Packages: [list]'.
+      MUST detect package manager: look for pnpm-lock.yaml, package-lock.json,
+      yarn.lock, go.mod, Cargo.toml, requirements.txt, Pipfile, Gemfile. MUST run
+      the matching audit command (e.g., `pnpm audit --json` for pnpm, `npm audit
+      --json` for npm). Parse JSON output to extract severity counts. Output:
+      '| Severity | Count |' table. Record counts as BASELINE for post-apply
+      comparison. Inject dep_warnings with severity breakdown. BLOCK plan creation
+      if critical > 0: 'DEAN BLOCK: {N} critical vulnerabilities found. Packages:
+      [list]. Fix before planning.'
     refs:
       - references/vulnerability-audit.md
   post-apply:

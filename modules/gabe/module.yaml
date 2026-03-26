@@ -14,16 +14,15 @@ hooks:
   pre-plan:
     priority: 175
     description: >-
-      Scan files_modified for API-related files: grep -rn 'app\.\(get\|post\|
-      put\|patch\|delete\)\|router\.\|@Get\|@Post\|@Put\|@Delete\|\.graphql'
-      {files_modified} to identify route/controller/schema files. If API files
-      found: assess contract health — check for verb-based URLs (grep for
-      '/get\|/create\|/update\|/delete'), missing pagination on list endpoints,
-      missing versioning (count endpoints, warn if >5 without /v1/ or version
-      header). Check for OpenAPI/Swagger spec: find . -name 'openapi.*' -o
-      -name 'swagger.*'. Output API assessment: '| Endpoint | Convention |
-      Status |' with PASS/WARN per check. Inject api_context with: endpoint
-      count, convention warnings, versioning status, spec presence.
+      MUST run: `grep -rn 'app\.\(get\|post\|put\|patch\|delete\)\|router\.\|
+      @Get\|@Post\|@Put\|@Delete\|\.graphql' {files_modified}` to identify API
+      files. If API files found: MUST check for verb-based URLs: `grep -rn
+      '/get\|/create\|/update\|/delete' {api_files}`. MUST check versioning
+      (warn if >5 endpoints without /v1/). MUST check for OpenAPI spec: `find .
+      -name 'openapi.*' -o -name 'swagger.*'`. Output: '| Endpoint | Convention |
+      Status |' table. Inject api_context with: endpoint count, convention
+      warnings, versioning status, spec presence. If no API files: 'GABE: No API
+      files in planned changes — skipping.'
     refs:
       - references/api-patterns.md
   post-apply:

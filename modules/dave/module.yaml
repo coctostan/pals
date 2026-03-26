@@ -14,18 +14,15 @@ hooks:
   pre-plan:
     priority: 200
     description: >-
-      Discover CI/CD config files by running: find . -maxdepth 4 -name '*.yml'
-      -path '*/.github/workflows/*' -o -name '.gitlab-ci.yml' -o -name
-      'Dockerfile' -o -name 'docker-compose.yml' -o -name 'Jenkinsfile' 2>/dev/null.
-      Output a CI inventory table: '| File | Platform | Status |' listing each
-      config found (e.g., '.github/workflows/ci.yml | GitHub Actions | found').
-      If NO CI config found anywhere: suggest generating one — detect project
-      type from lock files (package.json=Node.js, go.mod=Go, Cargo.toml=Rust,
-      requirements.txt=Python) and suggest: 'No CI detected. Add
-      .github/workflows/ci.yml using the {type}-ci template from
-      pipeline-generation.md.' If CI found: check coverage_gaps — does it have
-      build, test, lint steps? Warn if any missing. Inject deploy_context with:
-      ci_files list, platforms, coverage_gaps.
+      MUST run: `find . -maxdepth 4 -name '*.yml' -path '*/.github/workflows/*'
+      -o -name '.gitlab-ci.yml' -o -name 'Dockerfile' -o -name
+      'docker-compose.yml' -o -name 'Jenkinsfile' 2>/dev/null` to discover CI/CD
+      configs. Output: '| File | Platform | Status |' table. If NO CI config
+      found: MUST suggest generating one — detect project type from lock files
+      and output: 'No CI detected. Add .github/workflows/ci.yml.' If CI found:
+      MUST check coverage_gaps — build, test, lint steps present? WARN if any
+      missing. Inject deploy_context with: ci_files, platforms, coverage_gaps.
+      If no gaps: 'DAVE: CI config found and covers build/test/lint.'
     refs:
       - references/pipeline-generation.md
   post-apply:

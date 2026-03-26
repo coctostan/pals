@@ -13,34 +13,50 @@ dependencies:
 hooks:
   pre-plan:
     priority: 100
-    description: Scan planned files for test files/frameworks; inject tdd_candidates and tdd_type into plan context
+    description: >-
+      MUST run: `find . -name '*.test.*' -o -name '*.spec.*' -o -name
+      '__tests__' -type d 2>/dev/null | head -20` to detect test files. MUST run:
+      `grep -rn 'jest\|vitest\|mocha\|pytest\|go test' package.json Makefile
+      Cargo.toml 2>/dev/null` to detect test frameworks. Output: '| Framework |
+      Test Files | Status |' table. Inject tdd_candidates and tdd_type into plan
+      context. If no test files: 'TODD: No test infrastructure detected —
+      consider adding tests.'
     refs:
       - references/tdd-detection.md
       - references/tdd-plan-generation.md
   post-plan:
     priority: 100
     description: >-
-      If plan type is tdd, restructure tasks into RED-GREEN-REFACTOR sequence
-      with phase gates. If plan type is execute BUT pre-plan detected
-      tdd_candidates covering the planned files, suggest to the user: 'Test
-      coverage exists for the planned changes (tdd_candidates: {files}). Consider
-      changing plan type to tdd for RED-GREEN-REFACTOR enforcement.' Let the user
-      decide — do not auto-change the type.
+      If plan type is tdd, MUST restructure tasks into RED-GREEN-REFACTOR sequence
+      with phase gates. If plan type is execute BUT pre-plan detected tdd_candidates
+      covering the planned files, MUST suggest to the user: 'Test coverage exists
+      for the planned changes (tdd_candidates: {files}). Consider changing plan type
+      to tdd for RED-GREEN-REFACTOR enforcement.' Let the user decide — do NOT
+      auto-change the type.
     refs:
       - references/tdd-plan-generation.md
   pre-apply:
     priority: 50
-    description: Verify test files exist or are first in task order; block if RED phase would be skipped
+    description: >-
+      MUST verify test files exist or are first in task order. MUST block if RED
+      phase would be skipped: 'TODD BLOCK: Test files must exist before
+      implementation. Create tests first.'
     refs:
       - references/tdd-execution.md
   post-task:
     priority: 100
-    description: Run test suite after each task; block if tests regress from previous task's state
+    description: >-
+      MUST run test suite after each task. MUST block if tests regress from
+      previous task's state: 'TODD BLOCK: Tests regressed after Task {N}.
+      {failing_count} tests now failing. Fix before proceeding.'
     refs:
       - references/tdd-execution.md
   post-apply:
     priority: 200
-    description: Run full test suite; if all green, suggest REFACTOR candidates from changed files
+    description: >-
+      MUST run full test suite. If all green, MUST suggest REFACTOR candidates
+      from changed files. If tests fail: 'TODD BLOCK: {N} tests failing after
+      APPLY. Fix before proceeding to UNIFY.'
     refs:
       - references/tdd.md
 

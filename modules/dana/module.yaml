@@ -14,18 +14,16 @@ hooks:
   pre-plan:
     priority: 195
     description: >-
-      Scan files_modified for data-related files: find matching patterns
-      *.prisma, *.entity.ts, *.model.ts, *.model.py, schema.rb, migrations/.
-      If data files found: 1) Check for schema files: find . -name
-      'schema.prisma' -o -name '*.entity.ts' -o -name 'models.py'. 2) Check
-      for migration files in scope: find . -path '*/migrations/*' in
-      files_modified. 3) If migrations present, scan for destructive ops:
-      grep 'DROP\|RENAME\|removeColumn\|dropTable' — flag as high risk. 4)
-      Check schema health: grep for tables without created_at/updated_at. 5)
-      Output data assessment: '| File | Type | Risk |' with schema/migration/
-      query classification. Inject data_context with: schema_files, migration
-      count, destructive_ops, missing_timestamps. If no data files: 'DANA: No
-      data files in planned changes — skipping.'
+      MUST run: `find {files_modified} -name '*.prisma' -o -name '*.entity.ts' -o
+      -name '*.model.ts' -o -name '*.model.py' -o -name 'schema.rb'` to identify
+      data files. MUST check for migrations: `find {files_modified} -path
+      '*/migrations/*'`. If migrations present, MUST run: `grep -n 'DROP\|RENAME\|
+      removeColumn\|dropTable' {migration_files}` — flag as high risk. MUST check
+      schema health: `grep -rn 'created_at\|updated_at\|timestamps'
+      {schema_files}` — flag tables without timestamps. Output: '| File | Type |
+      Risk |' table. Inject data_context with: schema_files, migration count,
+      destructive_ops, missing_timestamps. If no data files: 'DANA: No data files
+      in planned changes — skipping.'
     refs:
       - references/data-patterns.md
   post-apply:

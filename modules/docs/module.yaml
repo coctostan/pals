@@ -14,27 +14,26 @@ hooks:
   pre-plan:
     priority: 200
     description: >-
-      Scan for project docs using expanded catalog: README.md, CHANGELOG.md,
-      CONTRIBUTING.md, API.md, ARCHITECTURE.md, docs/ directory, any *.md in
-      project root and package roots. Build proximity map: for each source file
-      in files_modified, find the nearest related doc (e.g., src/verify.ts →
-      docs/verify.md, src/auth/* → docs/auth.md). Run: find . -maxdepth 3 -name
-      '*.md' -not -path './.paul/*' to build catalog. Inject doc_warnings with:
-      total docs found, files_modified with no nearby doc, stale doc candidates.
+      MUST run: `find . -maxdepth 3 -name '*.md' -not -path './.paul/*'` to build
+      doc catalog. For each source file in files_modified, MUST find the nearest
+      related doc (e.g., src/verify.ts → docs/verify.md). Output: '| Source File |
+      Related Doc | Status |' table. Inject doc_warnings with: total docs found,
+      files_modified with no nearby doc, stale doc candidates. If all files have
+      nearby docs: 'DOCS: All planned files have related documentation.'
     refs:
       - references/doc-detection.md
   post-apply:
     priority: 250
     description: >-
-      Compare files_changed against doc catalog from pre-plan. For EACH changed
-      source file: 1) Check README.md — if any src/ file changed and README not
-      in files_changed, flag 'README.md: NOT UPDATED — DRIFT'. 2) Check
-      CHANGELOG.md — if any functional file changed and CHANGELOG not updated,
-      flag 'CHANGELOG.md: NOT UPDATED — DRIFT'. 3) Check API.md/openapi.yaml —
-      if route/endpoint files changed. 4) Proximity: if src/X.ts changed, check
-      docs/X.md. Output a per-file drift table: '| File Changed | Related Doc |
-      Status |' with UPDATED/DRIFT/NO DOC for each pair. Count: 'Files modified:
-      N, Docs updated: M, Drift warnings: K'.
+      For EACH file in files_changed, MUST check doc drift: 1) MUST check
+      README.md — if any src/ file changed and README not in files_changed,
+      output: 'README.md: NOT UPDATED — DRIFT'. 2) MUST check CHANGELOG.md — if
+      functional file changed and CHANGELOG not updated, output: 'CHANGELOG.md:
+      NOT UPDATED — DRIFT'. 3) MUST check API.md/openapi.yaml if route/endpoint
+      files changed. 4) Proximity: if src/X.ts changed, check docs/X.md. Output:
+      '| File Changed | Related Doc | Status |' with UPDATED/DRIFT/NO DOC.
+      Summary: 'Files modified: N, Docs updated: M, Drift warnings: K'. If no
+      drift: 'DOCS: No doc drift in {N} changed files.'
     refs:
       - references/doc-drift.md
 

@@ -14,17 +14,15 @@ hooks:
   pre-plan:
     priority: 190
     description: >-
-      Scan files_modified for UI files (.tsx, .jsx, .vue, .svelte, .html). If
-      UI files found: 1) Check for non-semantic interactive elements: grep -rn
-      '<div.*onClick\|<span.*onClick' {ui_files} — count violations. 2) Check
-      for images without alt: grep -rn '<img' {ui_files} | grep -v 'alt=' —
-      count missing. 3) Check for inputs without labels: grep -rn '<input\|
-      <select\|<textarea' {ui_files} | grep -v 'aria-label\|aria-labelledby\|
-      <label' — count unlabeled. 4) Check for focus removal: grep -rn
-      'outline.*none\|outline.*0' in CSS/SCSS files. Output accessibility
-      assessment: '| Check | Count | Status |' with rows for semantic HTML,
-      alt text, labels, focus styles. Inject a11y_context with violation counts.
-      If no UI files: 'ARIA: No UI files in planned changes — skipping.'
+      MUST identify UI files in scope: check files_modified for .tsx, .jsx, .vue,
+      .svelte, .html extensions. If UI files found, MUST run: 1) `grep -rn
+      '<div.*onClick\|<span.*onClick' {ui_files}` — count non-semantic violations.
+      2) `grep -rn '<img' {ui_files} | grep -v 'alt='` — count missing alt text.
+      3) `grep -rn '<input\|<select\|<textarea' {ui_files} | grep -v
+      'aria-label\|aria-labelledby\|<label'` — count unlabeled inputs. 4) `grep
+      -rn 'outline.*none\|outline.*0' {css_files}` — count focus removals. Output:
+      '| Check | Count | Status |' table. Inject a11y_context with violation
+      counts. If no UI files: 'ARIA: No UI files in planned changes — skipping.'
     refs:
       - references/accessibility-patterns.md
   post-apply:

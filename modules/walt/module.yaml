@@ -12,27 +12,33 @@ dependencies:
 hooks:
   pre-apply:
     priority: 100
-    description: Run test suite and record baseline counts (total/passing/failing/test_command); inject test_baseline into context
+    description: >-
+      MUST run test suite and record baseline counts (total/passing/failing/
+      test_command). Inject test_baseline into context. If no test command found:
+      'WALT: No test suite detected — baseline is zero.'
     refs:
       - references/quality-runner.md
       - references/quality-detection.md
   post-apply:
     priority: 100
-    description: Re-run tests + lint + typecheck; compare against pre-apply baseline; block if regressions detected
+    description: >-
+      MUST re-run tests + lint + typecheck. MUST compare against pre-apply
+      baseline. BLOCK if regressions detected: 'WALT BLOCK: Quality regression
+      — {N} tests now failing (was {M}). Fix before proceeding.'
     refs:
       - references/quality-runner.md
       - references/quality-lint.md
   post-unify:
     priority: 100
     description: >-
-      Compute quality delta (before vs after). Append entry to
+      MUST compute quality delta (before vs after). MUST append entry to
       .paul/quality-history.md with: date (YYYY-MM-DD), phase name, test counts
-      (total/passing/failing), lint result (clean or N warnings), typecheck
-      result (clean or N errors), coverage % (if available from test output),
-      trend direction (↑ improving / → stable / ↓ declining compared to previous
-      entry). Create .paul/quality-history.md if it doesn't exist, with header:
-      | Date | Phase | Tests | Lint | Typecheck | Coverage | Trend |.
-      Format as a markdown table row for easy scanning across milestones.
+      (total/passing/failing), lint result (clean or N warnings), typecheck result
+      (clean or N errors), coverage % (if available), trend direction (↑ improving
+      / → stable / ↓ declining). MUST create .paul/quality-history.md if it
+      doesn't exist, with header: '| Date | Phase | Tests | Lint | Typecheck |
+      Coverage | Trend |'. If no quality data: 'WALT: No quality data to record
+      for this phase.'
     refs:
       - references/quality-delta.md
       - references/quality-history.md

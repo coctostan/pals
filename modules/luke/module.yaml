@@ -14,16 +14,15 @@ hooks:
   pre-plan:
     priority: 185
     description: >-
-      Scan files_modified for UI component files: find matching patterns
-      *.tsx, *.jsx, *.vue, *.svelte. If UI files found: 1) Check component
-      sizes: wc -l {ui_files} — flag any >200 lines as oversized. 2) Check
-      for design system usage: grep for hardcoded colors (#hex, rgb()) and
-      spacing (margin/padding with raw px) in changed files. Count violations.
-      3) Scan for inline styles: grep 'style={{' {files}. 4) Output UI health
-      assessment: '| File | Lines | Inline Styles | Hardcoded Values | Status |'
-      with OK/WARN per file. Inject ux_context with: component_count,
-      oversized_components, design_token_violations, inline_style_count. If no
-      UI files in scope: 'LUKE: No UI files in planned changes — skipping.'
+      MUST identify UI files in files_modified (.tsx, .jsx, .vue, .svelte). If UI
+      files found: 1) MUST run: `wc -l {ui_files}` — flag any >200 lines. 2) MUST
+      run: `grep -rn '#[0-9a-fA-F]\{3,8\}\|rgb(' {ui_files}` for hardcoded
+      colors and `grep -rn 'margin:.*[0-9]px\|padding:.*[0-9]px' {ui_files}` for
+      raw spacing. 3) MUST run: `grep -rn 'style={{' {ui_files}` for inline styles.
+      Output: '| File | Lines | Inline Styles | Hardcoded Values | Status |' table.
+      Inject ux_context with: component_count, oversized_components,
+      design_token_violations, inline_style_count. If no UI files: 'LUKE: No UI
+      files in planned changes — skipping.'
     refs:
       - references/ux-patterns.md
   post-apply:

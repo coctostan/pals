@@ -14,36 +14,36 @@ hooks:
   pre-plan:
     priority: 75
     description: >-
-      Detect project architecture pattern by scanning directory structure: ls -d
-      src/*/ 2>/dev/null or find . -maxdepth 3 -type d -not -path './.paul/*'
-      -not -path './.git/*' -not -path './node_modules/*'. Match against known
-      patterns from architecture-patterns.md (MVC, Clean/Hexagonal, 3-Tier,
+      MUST run: `find . -maxdepth 3 -type d -not -path './.paul/*' -not -path
+      './.git/*' -not -path './node_modules/*'` to detect project architecture.
+      MUST run: `ls -d src/*/ 2>/dev/null` for top-level structure. Match against
+      known patterns from architecture-patterns.md (MVC, Clean/Hexagonal, 3-Tier,
       Feature-based, Flat). Output: 'Detected pattern: {name} ({confidence})'.
-      For each file in files_modified, check if the file is in the expected
+      For each file in files_modified, MUST check if the file is in the expected
       layer for its purpose. Flag files in unexpected locations: 'ARCH advisory:
-      {file} appears to be {type} but is in {layer} directory'. Check structural
-      metrics: count files per directory (warn >25), check directory depth (warn
-      >6), scan for god files >500 lines via wc -l. Inject arch_context with:
-      detected_pattern, layer_map, structural_warnings. Block plan creation if
-      circular dependencies detected between planned files.
+      {file} appears to be {type} but is in {layer} directory'. MUST run:
+      `wc -l {files_modified}` to check for god files >500 lines. MUST count files
+      per directory (warn >25) and check directory depth (warn >6). Inject
+      arch_context with: detected_pattern, layer_map, structural_warnings. BLOCK
+      plan creation if circular dependencies detected between planned files.
+      If no concerns: 'ARCH: No architectural concerns in planned files.'
     refs:
       - references/architecture-patterns.md
       - references/architecture-onboarding.md
   post-apply:
     priority: 125
     description: >-
-      For EACH changed file, run boundary violation check: grep -n 'import\|
-      require\|from ' {file} to extract imports. Resolve each import target to
-      its architectural layer using the project's detected pattern from pre-plan.
-      Check each import against boundary rules from architecture-patterns.md.
-      Output a boundary check table: '| File | Import | From Layer | To Layer |
-      Status |' with PASS/VIOLATION/WARN per import. BLOCK on critical or high
-      severity violations: 'ARCH BLOCK: Boundary violation in {file}:{line} —
-      {source_layer} → {target_layer} is not allowed. {explanation from boundary
-      rules}.' WARN on medium/low: convention drift, files in unexpected dirs.
-      Check for new god files: wc -l {changed_files} — WARN if any >500 lines.
-      Check for responsibility creep: if a file grew by >100 lines, flag for
-      review. If no architectural concerns: output 'ARCH: No boundary violations
+      For EACH file in files_changed, MUST run: `grep -n 'import\|require\|from '
+      {file}` to extract imports. Resolve each import target to its architectural
+      layer using the project's detected pattern from pre-plan. MUST check each
+      import against boundary rules from architecture-patterns.md. Output a
+      boundary check table: '| File | Import | From Layer | To Layer | Status |'
+      with PASS/VIOLATION/WARN per import. BLOCK on critical or high severity
+      violations: 'ARCH BLOCK: Boundary violation in {file}:{line} —
+      {source_layer} → {target_layer} is not allowed.' WARN on medium/low:
+      convention drift, files in unexpected dirs. MUST run: `wc -l
+      {changed_files}` — WARN if any >500 lines. If a file grew by >100 lines,
+      WARN for responsibility creep. If no concerns: 'ARCH: No boundary violations
       or drift detected in {N} changed files.'
     refs:
       - references/architecture-drift.md

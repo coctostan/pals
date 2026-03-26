@@ -14,29 +14,28 @@ hooks:
   post-apply:
     priority: 300
     description: >-
-      Scan STATE.md Decisions table and task outputs for new decisions. For EACH
-      decision found, output a COMPLETE Decision Record in this exact format:
-      '## [YYYY-MM-DD] [Decision title]' followed by 'Type: decision', 'Phase:
-      [N]', 'Context: [why this decision was needed]', 'Decision: [what was
-      chosen]', 'Alternatives considered: [list with rejection reasons]',
-      'Rationale: [why this option]', 'Impact: [what this affects]'. Read the
-      Decisions table from STATE.md with: grep '|' .paul/STATE.md to find rows.
-      Parse each row's Decision column. NEVER output just 'decision found' or
-      'decision extracted' — always output the full structured record.
+      MUST read STATE.md Decisions table: `grep '|' .paul/STATE.md` to find rows.
+      Parse each row's Decision column. For EACH decision found, MUST output a
+      COMPLETE Decision Record: '## [YYYY-MM-DD] [Decision title]' followed by
+      'Type: decision', 'Phase: [N]', 'Context: [why needed]', 'Decision: [what
+      was chosen]', 'Alternatives considered: [list with rejection reasons]',
+      'Rationale: [why this option]', 'Impact: [what this affects]'. NEVER output
+      just 'decision found' or 'decision extracted' — MUST always output the full
+      structured record.
     refs:
       - references/knowledge-capture.md
   post-unify:
     priority: 200
     description: >-
-      Extract decisions and rationale from SUMMARY.md. For EACH item, produce
-      the COMPLETE knowledge entry using the matching template from
-      knowledge-capture.md. Decision Record: date, title, context, decision,
-      alternatives, rationale, impact. Rationale Note: date, title, explanation,
-      key factors. Trade-off Analysis: date, title, options matrix, chosen
-      option, reasoning. Lesson Learned: date, title, what happened, root cause,
-      lesson, action items. Read SUMMARY.md with: cat .paul/phases/*/SUMMARY.md
-      to find content. NEVER output just 'knowledge extracted' — always output
-      the full structured entry with all required fields populated.
+      MUST read SUMMARY.md: `cat .paul/phases/*/SUMMARY.md` to find content. For
+      EACH decision, rationale, trade-off, or lesson, MUST produce the COMPLETE
+      knowledge entry using the matching template from knowledge-capture.md.
+      Decision Record: date, title, context, decision, alternatives, rationale,
+      impact. Rationale Note: date, title, explanation, key factors. Trade-off
+      Analysis: date, title, options matrix, chosen option, reasoning. Lesson
+      Learned: date, title, what happened, root cause, lesson, action items.
+      NEVER output just 'knowledge extracted' — MUST always output the full
+      structured entry with all required fields populated.
     refs:
       - references/knowledge-capture.md
       - references/knowledge-search.md

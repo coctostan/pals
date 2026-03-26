@@ -14,17 +14,16 @@ hooks:
   pre-plan:
     priority: 215
     description: >-
-      Scan files_modified for privacy concerns. 1) PII field detection: grep
-      -rn 'email\|phone\|ssn\|socialSecurity\|creditCard\|dateOfBirth\|
-      passport\|address' in schema/model/entity files — count PII fields. 2)
-      Check for consent mechanism: grep -rn 'consent\|gdpr\|optIn\|optOut\|
-      privacy' {files}. 3) Check for data deletion: grep -rn 'deleteUser\|
-      removeUser\|purge\|anonymize\|erasure' {files}. 4) Check for encryption
-      on PII: grep -rn 'encrypt\|bcrypt\|argon\|crypto' near PII fields.
-      Output privacy assessment: '| Check | Status |' with rows for PII
-      inventory, consent, deletion, encryption. Inject privacy_context with:
-      pii_field_count, has_consent, has_deletion, has_encryption. If no
-      relevant files: 'VERA: No privacy-relevant files in scope — skipping.'
+      MUST run: `grep -rn 'email\|phone\|ssn\|socialSecurity\|creditCard\|
+      dateOfBirth\|passport\|address' {schema_model_files}` to detect PII fields.
+      MUST run: `grep -rn 'consent\|gdpr\|optIn\|optOut\|privacy'
+      {files_modified}` for consent. MUST run: `grep -rn 'deleteUser\|removeUser\|
+      purge\|anonymize\|erasure' {files_modified}` for deletion capability. MUST
+      run: `grep -rn 'encrypt\|bcrypt\|argon\|crypto' {files_modified}` near PII
+      fields for encryption. Output: '| Check | Status |' table. Inject
+      privacy_context with: pii_field_count, has_consent, has_deletion,
+      has_encryption. If no relevant files: 'VERA: No privacy-relevant files in
+      scope — skipping.'
     refs:
       - references/privacy-patterns.md
   post-apply:

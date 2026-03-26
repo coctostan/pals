@@ -14,17 +14,15 @@ hooks:
   pre-plan:
     priority: 210
     description: >-
-      Scan files_modified for resilience concerns. 1) Check for timeout config:
-      grep -rn 'timeout\|Timeout\|TIMEOUT' {files} — note if external calls
-      have timeouts. 2) Check for retry patterns: grep -rn 'retry\|Retry\|
-      backoff\|maxRetries' {files}. 3) Check for error boundaries (React):
-      grep -rn 'ErrorBoundary\|componentDidCatch' in UI files. 4) Check for
-      graceful shutdown: grep -rn 'SIGTERM\|SIGINT\|gracefulShutdown\|
-      process\.on' in entry files. Output resilience assessment: '| Check |
-      Status |' with rows for timeouts, retries, error boundaries, shutdown.
-      Inject resilience_context with: timeout_count, retry_patterns,
-      has_error_boundary, has_shutdown_handler. If no relevant files: 'REED:
-      No resilience-relevant files in scope — skipping.'
+      MUST run: `grep -rn 'timeout\|Timeout\|TIMEOUT' {files_modified}` to check
+      timeout config. MUST run: `grep -rn 'retry\|Retry\|backoff\|maxRetries'
+      {files_modified}` to check retry patterns. MUST check error boundaries:
+      `grep -rn 'ErrorBoundary\|componentDidCatch' {ui_files}`. MUST check
+      graceful shutdown: `grep -rn 'SIGTERM\|SIGINT\|gracefulShutdown\|
+      process\.on' {entry_files}`. Output: '| Check | Status |' table. Inject
+      resilience_context with: timeout_count, retry_patterns, has_error_boundary,
+      has_shutdown_handler. If no relevant files: 'REED: No resilience-relevant
+      files in scope — skipping.'
     refs:
       - references/resilience-patterns.md
   post-apply:
