@@ -929,8 +929,7 @@ Git: [remote URL or "local only"] | {git_workflow} | push:[yes/no] PR:[yes/no] C
 Planning default: {default_collaboration} | This run: {planning_mode}, {collaboration_level} collaboration
 
 ────────────────────────────────────────
-▶ NEXT: /paul:plan
-  Define your phases and create your first plan.
+▶ NEXT: /paul:plan — Define your phases and create your first plan.
 ────────────────────────────────────────
 
 Type "yes" to proceed, or ask questions first.
