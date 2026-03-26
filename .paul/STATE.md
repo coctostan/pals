@@ -7,12 +7,12 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.30 Pi Guided Workflow UX & Documentation
 ## Current Position
 Milestone: v2.30 Pi Guided Workflow UX & Documentation
-Phase: 141 of 4 (Guided Workflow Auto-Approve Control)
-Plan: 141-01 executed
+Phase: 142 of 4 (Menu Parser Hardening)
+Plan: 142-01 executed
 Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-26 — Executed 141-01-PLAN.md
+Last activity: 2026-03-26 — Executed 142-01-PLAN.md
 Progress:
-- v2.30 Pi Guided Workflow UX & Documentation: [░░░░░░░░░░] 0%
+- v2.30 Pi Guided Workflow UX & Documentation: [██░░░░░░░░] 25%
 ## Loop Position
 Current loop state:
 ```
@@ -132,10 +132,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: 159a084 feat(140): E2E Protocol Validation (#50)
-PR: https://github.com/coctostan/pals/pull/50 (state: MERGED)
+Last commit: 5292a06 feat(141): Guided Workflow Auto-Approve Control (#51)
+PR: https://github.com/coctostan/pals/pull/51 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-26
-Stopped at: APPLY complete for 141-01
-Next action: /paul:unify
-Resume file: .paul/phases/141-guided-workflow-auto-approve-control/141-01-PLAN.md
+Stopped at: Plan 142-01 created
+Next action: /paul:apply
+Resume file: .paul/phases/142-menu-parser-hardening/142-01-PLAN.md

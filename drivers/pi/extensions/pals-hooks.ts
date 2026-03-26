@@ -586,6 +586,21 @@ function extractNextActionSummary(text: string): string {
   ].filter(Boolean).join(" — ")) ?? "A shared PALS workflow exposed a single next action.";
 }
 
+function isValidOptionId(id: string): boolean {
+  const trimmed = id.trim();
+  // Accept: purely numeric ("1", "2", "42")
+  if (/^\d+$/.test(trimmed)) return true;
+  // Accept: known PALS canonical responses
+  const knownResponses = new Set([
+    "yes", "no", "approved", "pause", "stop", "continue",
+    "go", "skip", "override", "ready", "done",
+  ]);
+  if (knownResponses.has(trimmed.toLowerCase())) return true;
+  // Accept: option-{id} patterns from checkpoint decisions
+  if (/^option-[a-z0-9]+$/i.test(trimmed)) return true;
+  // Reject everything else (code patterns like "id", "slug", "name", "...params")
+  return false;
+}
 function parseGuidedWorkflowOptions(text: string): GuidedWorkflowOption[] {
   const options: GuidedWorkflowOption[] = [];
   const seen = new Set<string>();
@@ -593,7 +608,7 @@ function parseGuidedWorkflowOptions(text: string): GuidedWorkflowOption[] {
   const addOption = (id?: string, label?: string): void => {
     const cleanId = compactWhitespace(id)?.replace(/:$/, "");
     const cleanLabel = compactWhitespace(label?.replace(/\s*\|\s*$/, ""));
-    if (!cleanId || !cleanLabel || seen.has(cleanId)) return;
+    if (!cleanId || !cleanLabel || !isValidOptionId(cleanId) || seen.has(cleanId)) return;
     seen.add(cleanId);
     options.push({ id: cleanId, label: cleanLabel, canonicalResponse: cleanId });
   };
