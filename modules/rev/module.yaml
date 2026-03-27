@@ -1,0 +1,42 @@
+name: rev
+display_name: REV
+description: >
+  Review Engine & Verification. Thorough code review via subagent
+  dispatch — spawns an isolated reviewer with fresh context for
+  unbiased, senior-dev-level review.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=2.0.0"
+  modules: []
+  external:
+    - name: pi-subagents
+      package: "@tintinweb/pi-subagents"
+      required: false
+      check: "Agent tool available"
+
+hooks:
+  on-demand:
+    priority: 100
+    description: >-
+      Triggered by /paul:review command. NOT a lifecycle hook —
+      does not fire automatically during PLAN/APPLY/UNIFY.
+      See review-prompt.md for the full review prompt template.
+    refs:
+      - references/review-prompt.md
+      - references/review-checklist.md
+
+files:
+  references:
+    - references/review-prompt.md
+    - references/review-checklist.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands:
+  - name: review
+    description: "Run thorough code review via subagent"
+
+platform: {}

@@ -14,7 +14,7 @@ hooks:
   pre-plan:
     priority: 150
     description: >-
-      MUST run: `grep -rn 'TODO\|FIXME\|HACK\|XXX\|any' {files_modified}`
+      MUST run: `grep -rn 'TODO\|FIXME\|HACK\|XXX' {files_modified}`
       to detect anti-pattern signatures. Output: '| File | Pattern |
       Count |' table with findings. Inject review_flags with pattern names and
       counts. If no anti-patterns found: 'IRIS: No anti-patterns in planned files.'
