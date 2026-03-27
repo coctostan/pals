@@ -132,9 +132,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/151-research-and-design
-Last commit: 184de0f feat(151): REV module design
-PR: https://github.com/coctostan/pals/pull/58 (state: OPEN)
+Branch: main
+Last commit: b56354b feat(151): REV module design — review prompt, dispatch, UX (#58)
+PR: https://github.com/coctostan/pals/pull/58 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-27
 Stopped at: Phase 151 UNIFY complete
