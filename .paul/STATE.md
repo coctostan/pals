@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 154 of 157 (Pi Subagent Audit) — APPLY complete
-Plan: 154-01 executed, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-27T17:20:55Z — Completed APPLY for .paul/phases/154-pi-subagent-audit/154-01-PLAN.md
+Phase: 154 of 157 (Pi Subagent Audit) — UNIFY in progress
+Plan: 154-01 reconciling results
+Status: Unifying
+Last activity: 2026-03-27T17:20:55Z — Started UNIFY for .paul/phases/154-pi-subagent-audit/154-01-PLAN.md
 Progress:
 - v2.34 Pi Subagent Integration & PALS Implementer: [░░░░░░░░░░] 0%
 - Phase 154 Pi Subagent Audit: [░░░░░░░░░░] 0%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ◉     [UNIFY in progress]
 ```
 
 ## Accumulated Context
@@ -103,6 +103,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Behind-base routing takes precedence over merge readiness | 89 | Prevents merging stale branches |
 | Two-tier gh validation: CLI presence + auth status | 89 | Clear messaging for each failure mode |
 | Status and resume share identical git-aware routing table | 90 | Consistent next-action guidance regardless of entry point |
+| 2026-03-27: Design Phase 155 around a parent-controlled PALS-native implementer contract, not the generic runtime `implementer` | 154 | Keeps inline APPLY as the reference model and prevents runtime-global agent behavior from becoming lifecycle truth |
 | GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 ### Fixes
 | Fix | Phase | Impact |
@@ -137,10 +138,10 @@ Last commit: feat(pi-subagent-audit): add Phase 154 audit artifacts
 PR: https://github.com/coctostan/pals/pull/62 (state: open, CI: pending)
 ## Session Continuity
 Last session: 2026-03-27T17:20:55Z
-Stopped at: Completed Phase 154 APPLY with audit artifacts ready for reconciliation
-Next action: Run /paul:unify .paul/phases/154-pi-subagent-audit/154-01-PLAN.md
+Stopped at: Reconciling Phase 154 APPLY results and merge-gate state
+Next action: Complete UNIFY and merge PR #62 if gate checks pass
 Resume file: .paul/phases/154-pi-subagent-audit/154-01-SUMMARY.md
 Resume context:
-- Phase 154 APPLY is complete and produced current-state, runtime-behavior, and implementer-summary audit artifacts
-- No source/runtime behavior was changed; this phase stayed audit-only and additive
-- Phase 155 should use these artifacts to design a deliberate PALS-native implementer while preserving `.paul/*` authority, REV behavior, and inline APPLY as reference
+- Phase 154 APPLY produced the three planned audit artifacts and an initial SUMMARY draft
+- Phase 155 design stance is now clear: use a parent-controlled PALS-native implementer contract, not generic runtime agent behavior
+- UNIFY must finalize module reports, close the loop, and satisfy the github-flow merge gate before moving to Phase 155
