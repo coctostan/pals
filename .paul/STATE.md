@@ -8,9 +8,9 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 ## Current Position
 Milestone: v2.33 Code Review Module (REV)
 Phase: 152 of 3 (Core Implementation) — Executing
-Plan: 152-01 APPLY complete, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-27 — APPLY 152-01 complete (REV module created, IRIS fixed, init wired)
+Plan: 152-01 complete (UNIFY done)
+Status: Loop complete, ready for next PLAN (152-02)
+Last activity: 2026-03-27 — UNIFY 152-01 complete
 Progress:
 - v2.33 Code Review Module (REV): [███░░░░░░░] 33%
 - Phase 152: [█████░░░░░] 50%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -137,10 +137,10 @@ Last commit: ceb8e73 feat(152): REV module, IRIS any fix, init wiring
 PR: https://github.com/coctostan/pals/pull/59 (state: OPEN)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: APPLY 152-01 complete
-Next action: /paul:unify for Plan 152-01
-Resume file: .paul/phases/152-core-implementation/152-01-PLAN.md
+Stopped at: UNIFY 152-01 complete
+Next action: /paul:plan for Plan 152-02 (skill + merge gate + extension)
+Resume file: .paul/phases/152-core-implementation/152-01-SUMMARY.md
 Resume context:
-- APPLY complete — REV module created, IRIS any bug fixed, init wired with module #20
-- PR #59 open on feature/152-core-implementation
-- Plan 152-02 (not yet written) wires /paul:review skill + merge gate + extension
+- Plan 152-01 complete — REV module structure, IRIS fix, init wiring all done
+- PR #59 open on feature/152-core-implementation (will accumulate 152-02 work)
+- Plan 152-02 wires /paul:review skill + merge gate review step + Pi extension
