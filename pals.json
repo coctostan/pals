@@ -44,6 +44,12 @@
       "pr_review_block_on_critical": true
     }
   },
+  "agents": {
+    "implementer": {
+      "enabled": true,
+      "model": null
+    }
+  },
   "git": {
     "workflow": "github-flow",
     "remote": "https://github.com/coctostan/pals.git",

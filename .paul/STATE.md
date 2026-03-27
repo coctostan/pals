@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 155 of 157 (PALS Implementer Design) — Complete
-Plan: 155-01 complete
-Status: UNIFY complete — merge gate / transition in progress
-Last activity: 2026-03-27T18:55:00Z — Created .paul/phases/155-pals-implementer-design/155-01-SUMMARY.md and closed the Phase 155 loop
+Phase: 156 of 157 (PALS Implementer Integration) — Applying
+Plan: 156-01 executed, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-27T18:27:05Z — Completed Phase 156 APPLY and implemented the repo-local delegated APPLY path
 Progress:
-- v2.34 Pi Subagent Integration & PALS Implementer: [███████░░░] 75%
-- Phase 155 PALS Implementer Design: [██████████] 100%
+- v2.34 Pi Subagent Integration & PALS Implementer: [█████████░] 90%
+- Phase 156 PALS Implementer Integration: [███████░░░] 75%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - merge gate / transition pending]
+  ✓        ✓        ○     [Execution complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -135,15 +135,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/155-pals-implementer-design
-Last commit: 85c237d feat(155-pals-implementer-design): design PALS implementer contract
-PR: https://github.com/coctostan/pals/pull/63 (state: OPEN)
+Branch: feature/156-pals-implementer-integration
+Last commit: Phase 156 delegated APPLY implementation pushed on feature/156-pals-implementer-integration
+PR: https://github.com/coctostan/pals/pull/64 (state: OPEN)
 ## Session Continuity
-Last session: 2026-03-27T18:55:00Z
-Stopped at: Phase 155 UNIFY complete; summary drafted and merge gate/phase transition remain
-Next action: Resolve merge gate for PR #63, then transition to Phase 156 planning
-Resume file: .paul/phases/155-pals-implementer-design/155-01-SUMMARY.md
+Last session: 2026-03-27T18:27:05Z
+Stopped at: Phase 156 APPLY complete after implementing the repo-local `pals-implementer` path
+Next action: Run /paul:unify .paul/phases/156-pals-implementer-integration/156-01-PLAN.md
+Resume file: .paul/phases/156-pals-implementer-integration/156-01-PLAN.md
 Resume context:
-- Phase 155 produced the contract, prompt/module strategy, integration handoff, and SUMMARY artifacts
-- The loop is closed; PR #63 is open on feature/155-pals-implementer-design
-- Remaining work is merge-gate completion and mandatory transition into Phase 156
+- Repo-local `.pi/agents/pals-implementer.md` now exists and APPLY delegation/fallback rules are wired into the shared workflow and Pi skill guidance
+- PR #64 is open on feature/156-pals-implementer-integration and checks are running after the latest push
+- UNIFY should reconcile advisory notes about doc drift and the lack of repo-wide test/dependency baselines

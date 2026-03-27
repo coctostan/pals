@@ -458,6 +458,7 @@ function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
     `Activation model: explicit /paul-* entry is strongest signal; ${PRIMARY_INJECTION_EVENT} handles primary injection and ${SUPPORTING_CONTEXT_EVENT} stays support-only.`,
     "Guided workflow UX watches canonical prompts like Would you like to see the plan?, Continue to APPLY, CHECKPOINT, Continue to UNIFY, and ▶ NEXT.",
     "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
+    "Delegated APPLY stays prompt/workflow-first: eligible bounded tasks may use repo-local `pals-implementer`, but parent APPLY still owns verification, module gates, fallback, and `.paul/*` updates.",
   ]
     .filter(Boolean)
     .join(" | ");
@@ -476,6 +477,7 @@ function buildPalsContextPayload(state: PalsStateSnapshot, activation: Activatio
     state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
     state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
     state.nextAction ? `Next action: ${state.nextAction}` : null,
+    "Delegated APPLY may use repo-local `pals-implementer` only for eligible bounded tasks; parent APPLY remains authoritative for verification, module enforcement, fallback, and `.paul/*` lifecycle writes.",
     "",
     "Use shared .paul/* artifacts and loaded SKILL.md/workflow instructions as the authoritative lifecycle source.",
   ]

@@ -10,9 +10,9 @@ Execute an approved PLAN.md by running its tasks.
 ## What This Does
 
 Reads the current plan and executes each task:
-- Runs auto tasks (create/modify files, run commands)
+- Runs eligible checkpoint-free auto tasks inline or through the repo-local `pals-implementer`
+- Keeps official verify steps, module enforcement, fallback judgment, and `.paul/*` lifecycle writes in the parent
 - Pauses at checkpoints for user input
-- Verifies each task with its verify step
 - Records deviations from plan
 - Updates project state on completion
 
@@ -33,8 +33,9 @@ Reads the current plan and executes each task:
 
 5. Follow the apply-phase workflow:
    - Confirm user has approved the plan
-   - Execute tasks in order
-   - Run verification for each task
+   - Determine whether each eligible auto task may use parent-controlled `pals-implementer` delegation
+   - Fall back to inline APPLY whenever delegation is unavailable, ambiguous, or non-equivalent
+   - Run the official verify step for every task in the parent
    - Handle checkpoints (decision, human-verify, human-action)
    - Track deviations from plan
    - Update STATE.md loop position to APPLY complete
@@ -42,6 +43,7 @@ Reads the current plan and executes each task:
 ## Key Behavior
 
 - Never start without explicit plan approval
+- Delegated APPLY is task-bounded only; the parent keeps verification, module gates, fallback judgment, and `.paul/*` authority
 - Every task MUST have its verify step run
 - Respect boundaries (DO NOT CHANGE protected files)
 - On failure: retry up to 2 times, then escalate

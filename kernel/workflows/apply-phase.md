@@ -24,6 +24,7 @@ modules.yaml (installed module registry — MUST read; drives pre-apply, post-ta
 references/checkpoints.md (if plan has checkpoints)
 references/loop-phases.md
 references/module-dispatch.md
+references/subagent-criteria.md
 <!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
@@ -275,17 +276,81 @@ For each <task> in order:
 
 **If type="auto":**
 1. Log task start: "Task N: [name]"
-2. Execute <action> content:
-   - Create/modify files specified in <files>
-   - Follow specific instructions
-   - Respect boundaries (DO NOT CHANGE protected files)
-3. Run <verify> command/check
-4. Record result using structured status (adapted from Superpowers status protocol):
+2. Decide execution mode:
+   - Default to inline APPLY in the parent session.
+   - Delegation to a repo-local `pals-implementer` is optional, task-bounded, and allowed only when the task satisfies `references/subagent-criteria.md` plus the Phase 155 contract:
+     - approved plan is `autonomous: true`
+     - `<files>`, `<action>`, and `<verify>` are clear and bounded
+     - no checkpoint or human decision/action is required inside the task
+     - file scope is repo-local only
+     - the task does not transfer `.paul/*` lifecycle ownership to the subagent
+     - the task is well-defined enough that the parent can still judge equivalence to inline APPLY
+3. **If delegation is considered:**
+   a. Read config:
+      ```bash
+      IMPLEMENTER_ENABLED=$(jq -r '.agents.implementer.enabled // true' pals.json 2>/dev/null)
+      IMPLEMENTER_MODEL=$(jq -r '.agents.implementer.model // empty' pals.json 2>/dev/null)
+      ```
+   b. Require all of:
+      - `Agent()` is available
+      - repo-local `.pi/agents/pals-implementer.md` exists and is valid
+      - `IMPLEMENTER_ENABLED = true`
+   c. Build a parent-owned task packet with:
+      - task identity
+      - lifecycle reminder (`.paul/*` remains authoritative; parent owns verification, module gates, fallback, and state/report writes)
+      - exact task objective and `<action>` content
+      - allowed files and forbidden files
+      - relevant plan/design excerpts and immediate supporting repo files
+      - task-local module expectations from pre-apply context
+      - task-local verification to attempt before returning
+      - required report format
+      - stop conditions and fallback triggers
+   d. Resolve model in this order:
+      - explicit per-dispatch override from the parent workflow
+      - `pals.json` `agents.implementer.model`
+      - `.pi/agents/pals-implementer.md` frontmatter model
+      - runtime default
+   e. Dispatch in foreground mode:
+      ```javascript
+      Agent({
+        subagent_type: "pals-implementer",
+        prompt: assembled_task_packet,
+        description: `Apply task ${N}: ${task_name}`,
+        run_in_background: false,
+        inherit_context: false,
+        model: IMPLEMENTER_MODEL || undefined,
+      })
+      ```
+   f. Require a structured report from the subagent covering:
+      - `status`
+      - `task_name`
+      - `files_changed`
+      - `commands_run`
+      - `verification_attempted`
+      - `verification_results`
+      - `concerns`
+      - `fallback_recommended`
+      - `summary`
+   g. Fall back immediately to inline APPLY if any of the following is true:
+      - the task fails eligibility
+      - config disables the path
+      - `Agent()` is unavailable
+      - `.pi/agents/pals-implementer.md` is missing or invalid
+      - the subagent returns `blocked`
+      - `fallback_recommended = true`
+      - the report is incomplete or unverifiable
+      - the run touched files outside approved scope
+      - the parent cannot judge the result as equivalent to inline APPLY
+4. Execute `<action>` content:
+   - If delegated path is accepted: review the returned report, inspect claimed file changes, and continue under parent control.
+   - If inline path is used or fallback is triggered: create/modify files specified in `<files>`, follow specific instructions, and respect boundaries (DO NOT CHANGE protected files).
+5. Run the official `<verify>` command/check in the parent session.
+6. Record result using structured status (adapted from Superpowers status protocol):
    - PASS: verification succeeded, task complete
    - PASS_WITH_CONCERNS: verification passed but with issues worth noting (e.g., warnings, edge cases untested). Log concerns for UNIFY review.
-   - BLOCKED: task cannot proceed due to missing context, wrong assumptions, or plan gap. Escalate — do not force through.
-5. Note <done> criteria satisfied
-5a. **Ground-truth file check (mandatory):**
+   - BLOCKED: task cannot proceed due to missing context, wrong assumptions, plan gap, or non-equivalent delegated execution. Escalate — do not force through.
+7. Note <done> criteria satisfied
+7a. **Ground-truth file check (mandatory):**
     After running <verify>, confirm files listed in <files> were actually modified:
     ```bash
     git diff --name-only -- {paths from <files> tag}
@@ -296,12 +361,10 @@ For each <task> in order:
       ⚠️ PLAN DEFECT: Task edited files outside the repo.
       Edited: {out-of-repo path}
       Repo source: {expected repo path, if known}
-
-      The repo source copy must be the edit target. Fix the plan or
       redirect edits to the repo path before continuing.
       ```
     - Exception: tasks whose <files> tag is empty or whose type is `checkpoint:*` are exempt from this check.
-6. **Divergence check** (adapted from Devin deviation detection):
+8. **Divergence check** (adapted from Devin deviation detection):
    After each task, briefly compare what was actually done vs what the plan specified:
    - Files modified match plan's `<files>` list? Unexpected files touched?
    - Action taken matches plan's `<action>`? Significant departures?
@@ -313,7 +376,7 @@ For each <task> in order:
      Actual: [what happened]
      Continue? [yes/adjust plan/stop]
      ```
-6. **Dispatch post-task enforcement hooks:**
+9. **Dispatch post-task enforcement hooks:**
    a. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-task: modules.yaml NOT FOUND — WARNING` and skip dispatch.
    b. Resolve installed modules for `post-task` (currently: TODD at p100)
    c. For each registered module:
