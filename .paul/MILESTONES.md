@@ -48,6 +48,37 @@ Completed milestone log for this project.
 | **v2.28 DEAN Baseline Management** | 2026-03-26 | 1 session | 1 phase, 1 plan. Baseline-aware DEAN override, delta comparison, staleness guard. Closes all 13 v2.25 items. |
 | **v2.29 E2E Test Protocol** | 2026-03-26 | 1 session | 2 phases, 2 plans. Reusable E2E test protocol (8 dimensions, scoring model), validated with greenfield pi-monitor build (Sonnet 4.6). 4 findings → v2.30. |
 | **v2.33 Code Review Module (REV)** | 2026-03-27 | 1 session | 3 phases, 4 plans. REV module + skill + merge gate + live validation. |
+| **v2.34 Pi Subagent Integration & PALS Implementer** | 2026-03-27 | 3h 41m | 4 phases, 4 plans. Parent-controlled `pals-implementer`, installer-backed Pi agent availability, and validation/docs polish. |
+
+---
+## ✅ v2.34 Pi Subagent Integration & PALS Implementer
+
+**Completed:** 2026-03-27
+**Duration:** 3h 41m
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 4 (Phases 154-157) |
+| Plans | 4 |
+| Files changed | 24 unique workflow, validation, doc, and lifecycle files |
+| PRs merged | 1 (#66) |
+
+### Key Accomplishments
+- Audited live `pi-subagents` usage and converted the findings into an explicit parent-controlled implementer contract instead of treating generic runtime agents as authoritative APPLY semantics.
+- Designed and shipped the repo-authored `pals-implementer` path with task-bounded delegation, parent-owned verification/module enforcement, and inline APPLY fallback.
+- Extended `drivers/pi/install.sh` so project-shipped Pi agents install into `~/.pi/agent/agents`, making `pals-implementer` available after install across repos.
+- Hardened Pi and cross-harness validation to prove delegated APPLY remains parent-authoritative and stays distinct from REV / `/paul:review`.
+- Documented Pi's three install surfaces and the bounded delegated APPLY operating model across README, extension docs, skill map, changelog, and milestone artifacts.
+
+### Key Decisions
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Parent-controlled `pals-implementer`, not generic runtime `implementer`, is the only acceptable APPLY delegation model | 154-155 | Keeps `.paul/*` and inline APPLY semantics authoritative |
+| Delegation must stay task-bounded, with module enforcement, verification, and lifecycle truth remaining in the parent | 155-156 | Prevents hidden authority drift and keeps fallback simple |
+| Install project-shipped Pi agents via `drivers/pi/install.sh` | 156 | Makes `pals-implementer` available after install outside the source repo |
+| Validation must explicitly prove delegated APPLY / REV separation | 157 | Preserves REV as the separate `code-reviewer` review path |
 
 ---
 
