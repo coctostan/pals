@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 156 of 157 (PALS Implementer Integration) — Applying
-Plan: 156-01 executed, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-27T18:27:05Z — Completed Phase 156 APPLY and implemented the repo-local delegated APPLY path
+Phase: 157 of 157 (Validation & Polish) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-27T18:45:00Z — Completed Phase 156 UNIFY and transitioned to Phase 157
 Progress:
-- v2.34 Pi Subagent Integration & PALS Implementer: [█████████░] 90%
-- Phase 156 PALS Implementer Integration: [███████░░░] 75%
+- v2.34 Pi Subagent Integration & PALS Implementer: [█████████░] 95%
+- Phase 157 Validation & Polish: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Execution complete, ready for UNIFY]
+  ○        ○        ○     [Ready to plan next phase]
 ```
 
 ## Accumulated Context
@@ -106,6 +106,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-27: Design Phase 155 around a parent-controlled PALS-native implementer contract, not the generic runtime `implementer` | 154 | Keeps inline APPLY as the reference model and prevents runtime-global agent behavior from becoming lifecycle truth |
 | 2026-03-27: Use a dedicated repo-local `pals-implementer` agent with parent-controlled task delegation, not the generic runtime `implementer` | 155 | Gives Phase 156 a concrete repo-owned dispatch target while preserving `.paul/*` authority |
 | 2026-03-27: Keep module enforcement, verification authority, and inline APPLY fallback in the parent workflow | 155 | Prevents subagent execution from becoming hidden lifecycle truth and defines the Phase 157 validation target |
+| 2026-03-27: Install project-shipped Pi agents via `drivers/pi/install.sh` instead of relying on repo-local discovery alone | 156 | Makes `pals-implementer` available after install across repos, not just inside the PALS repo |
 | GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 ### Fixes
 | Fix | Phase | Impact |
@@ -123,10 +124,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | None material | 88-91 | All phases executed exactly as planned |
 | **Orchestrator bypassed PALS for Phases 100-106** | Phases 100-106 | Committed directly, skipped PLAN/APPLY/UNIFY loop, no STATE.md updates, no merge gate workflow. Raw git + PR merges. Logged as deviation and corrected at Phase 107. |
 | Fix 05 applied manually instead of /paul:fix | Phase 100 | Should have used standard fix workflow |
-### Skill Audit (Phase 71)
+| Phase 156 implementation expanded to include installer-backed global agent installation after initial APPLY scope | Phase 156 | Small scope expansion via `drivers/pi/install.sh` so `pals-implementer` works outside the PALS repo |
+### Skill Audit (Phase 156)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
-| /paul | ✓ | Lifecycle flow drove PLAN → APPLY → UNIFY for this recommendation-only phase |
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the Phase 156 implementer integration and follow-up installer fix |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -136,15 +138,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/156-pals-implementer-integration
-Last commit: Phase 156 delegated APPLY implementation pushed on feature/156-pals-implementer-integration
-PR: https://github.com/coctostan/pals/pull/64 (state: OPEN)
+Branch: main
+Last commit: Phase 156 unify and transition artifacts reconciled after implementer integration
+PR: https://github.com/coctostan/pals/pull/65 (state: MERGED)
 ## Session Continuity
-Last session: 2026-03-27T18:27:05Z
-Stopped at: Phase 156 APPLY complete after implementing the repo-local `pals-implementer` path
-Next action: Run /paul:unify .paul/phases/156-pals-implementer-integration/156-01-PLAN.md
-Resume file: .paul/phases/156-pals-implementer-integration/156-01-PLAN.md
+Last session: 2026-03-27T18:45:00Z
+Stopped at: Phase 156 complete, ready to plan Phase 157
+Next action: /paul:plan for Phase 157
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Repo-local `.pi/agents/pals-implementer.md` now exists and APPLY delegation/fallback rules are wired into the shared workflow and Pi skill guidance
-- PR #64 is open on feature/156-pals-implementer-integration and checks are running after the latest push
-- UNIFY should reconcile advisory notes about doc drift and the lack of repo-wide test/dependency baselines
+- Phase 156 is closed with a SUMMARY, parent-controlled `pals-implementer` delegation, and installer-backed global Pi agent support
+- PR #65 carried the remaining Phase 156 follow-up commits after PR #64 had already merged the initial implementation slice
+- Phase 157 should validate real delegated APPLY behavior, preserve REV semantics, and close the remaining doc drift / stray documentation diff
