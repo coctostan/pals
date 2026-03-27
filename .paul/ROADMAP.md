@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.34 Pi Subagent Integration & PALS Implementer**
 Status: 🚧 In Progress
-Phases: 1 of 4 complete
+Phases: 1 of 4 complete (Phase 155 planning)
 
 Theme: Make PALS use the `pi-subagents` extension deliberately and correctly by auditing current behavior and introducing a PALS-native implementer that preserves normal PALS execution semantics with fresh-context advantages.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 154 | Pi Subagent Audit | 1 | ✅ Complete | 2026-03-27 |
-| 155 | PALS Implementer Design | TBD | Not started | - |
+| 155 | PALS Implementer Design | 1 planned (155-01) | Planning | - |
 | 156 | PALS Implementer Integration | TBD | Not started | - |
 | 157 | Validation & Polish | TBD | Not started | - |
 
@@ -47,7 +47,7 @@ Result: Current `pi-subagents` usage is now audited; Phase 155 should design a p
 
 ### Phase 155: PALS Implementer Design
 Focus: Define the PALS-specific implementer contract, prompt/context assembly, module participation model, tooling expectations, and integration boundaries.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 created (155-01)
 
 ### Phase 156: PALS Implementer Integration
 Focus: Add the PALS-specific implementer, wire deliberate routing to it, and disable or avoid unintended dependence on generic `worker` / `implementer` usage.

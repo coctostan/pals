@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 155 of 157 (PALS Implementer Design) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-27T17:36:20Z — Phase 154 complete, transitioned to Phase 155 and phase transition committed on main
+Phase: 155 of 157 (PALS Implementer Design) — Applying
+Plan: 155-01 executed, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-27T18:40:00Z — Completed Phase 155 APPLY and authored the three design artifacts
 Progress:
-- v2.34 Pi Subagent Integration & PALS Implementer: [██░░░░░░░░] 25%
-- Phase 154 Pi Subagent Audit: [██████████] 100%
+- v2.34 Pi Subagent Integration & PALS Implementer: [█████░░░░░] 50%
+- Phase 155 PALS Implementer Design: [███████░░░] 75%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ○     [Execution complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -133,15 +133,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
+Branch: feature/155-pals-implementer-design
 Last commit: feat(154-pi-subagent-audit): complete phase transition
 PR: https://github.com/coctostan/pals/pull/62 (state: MERGED)
 ## Session Continuity
-Last session: 2026-03-27T17:36:20Z
-Stopped at: Phase 154 complete, ready to plan Phase 155
-Next action: /paul:plan for Phase 155
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-27T18:40:00Z
+Stopped at: Phase 155 APPLY complete after authoring the implementer contract, prompt/module strategy, and integration handoff
+Next action: Run /paul:unify .paul/phases/155-pals-implementer-design/155-01-PLAN.md
+Resume file: .paul/phases/155-pals-implementer-design/155-01-PLAN.md
 Resume context:
-- Phase 154 is complete: audit artifacts are merged and the loop is closed
-- Phase 155 should design a parent-controlled PALS-native implementer contract, with inline APPLY as the behavioral reference
-- REV behavior, `.paul/*` authority, and additive Pi-only scope remain preserved constraints
+- APPLY completed on feature/155-pals-implementer-design and produced the three Phase 155 design artifacts
+- The design is explicitly for `@tintinweb/pi-subagents`, repo-local `.pi/agents/*.md`, and parent dispatch via `Agent()`
+- Parent-owned lifecycle, verification, module orchestration, and inline APPLY fallback are now the settled design stance
