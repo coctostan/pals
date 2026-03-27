@@ -30,18 +30,18 @@ Phases: 3 of 3 complete
 **v2.35 Context Bloat Audit & Reduction Strategy**
 Status: 🚧 In Progress
 Theme: Audit how PALS context load grows under Pi usage, especially from repeatedly-read artifacts and workflow markdown, then produce ranked tactical and structural recommendations without changing artifact-first lifecycle authority.
-Phases: 0 of 3 complete
-
+Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 158 | Artifact Growth & Hot-Path Audit | 1 | APPLY complete | - |
+| 158 | Artifact Growth & Hot-Path Audit | 1/1 | ✅ Complete | 2026-03-27 |
 | 159 | Workflow Bloat Audit | TBD | Not started | - |
 | 160 | Findings & Recommendation Package | TBD | Not started | - |
 
 ### Phase 158: Artifact Growth & Hot-Path Audit
 Focus: Broad audit of `.paul/*` artifacts with emphasis on repeated-read files, growth patterns, and likely hot-path context waste under Pi usage.
 Plans: 1 (`158-01-PLAN.md`)
-Status: APPLY complete; ready for UNIFY
+Status: ✅ Complete
+Completed: 2026-03-27
 Outputs: `artifact-footprint-inventory.md`, `pi-hot-path-read-analysis.md`, `158-artifact-growth-hot-path-report.md`
 
 ### Phase 159: Workflow Bloat Audit
@@ -627,4 +627,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-27 — Phase 158 APPLY complete; ready for UNIFY*
+*Last updated: 2026-03-27 — Phase 158 complete; transitioned to Phase 159 planning*

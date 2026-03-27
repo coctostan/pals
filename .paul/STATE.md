@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-27)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Run UNIFY for Phase 158 — Artifact Growth & Hot-Path Audit
+**Current focus:** Plan Phase 159 — Workflow Bloat Audit
 ## Current Position
 Milestone: v2.35 Context Bloat Audit & Reduction Strategy
-Phase: 158 of 3 (Artifact Growth & Hot-Path Audit) — APPLY complete
-Plan: 158-01 executed, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-27T22:19:22Z — Executed .paul/phases/158-artifact-growth-hot-path-audit/158-01-PLAN.md and created Phase 158 audit artifacts
+Phase: 159 of 3 (Workflow Bloat Audit) — ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-27T22:51:26Z — Phase 158 unified and transitioned to Phase 159
 Progress:
 - v2.35 Context Bloat Audit & Reduction Strategy: [███░░░░░░░] 33%
-- Phase 158: [███████░░░] 67%
+- Phase 159: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Applied, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -109,6 +109,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-27: Install project-shipped Pi agents via `drivers/pi/install.sh` instead of relying on repo-local discovery alone | 156 | Makes `pals-implementer` available after install across repos, not just inside the PALS repo |
 | 2026-03-27: Validate the implementer path with explicit Pi install-surface docs and text-based boundary assertions | 157 | Turns the delegated APPLY contract into durable automated proof without moving lifecycle truth into Pi |
 | GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
+| 2026-03-27: Separate total artifact growth from repeat-read hot-path cost before designing fixes | 158 | Prevents Phase 159 from conflating archive mass with active Pi context pressure |
+| 2026-03-27: Treat `STATE.md` as the confirmed hot artifact and `ROADMAP.md` as the main warm-path artifact | 158 | Future reduction work should optimize repeated-read pressure first, not just largest files |
+| 2026-03-27: Preserve `PROJECT.md` as the compact brief instead of using it to absorb roadmap or milestone history | 158 | Protects the layered artifact model that Phase 158 found was already working comparatively well |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -139,15 +142,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/158-artifact-growth-hot-path-audit
-Last commit: Phase 158 APPLY artifacts and postflight state updates pushed on feature/158-artifact-growth-hot-path-audit
-PR: https://github.com/coctostan/pals/pull/67 (OPEN, checks pending)
+Branch: main
+Last commit: feat(158): complete artifact growth & hot-path audit on main
+PR: https://github.com/coctostan/pals/pull/67 (MERGED)
 ## Session Continuity
-Last session: 2026-03-27T22:19:22Z
-Stopped at: APPLY complete for Plan 158-01; UNIFY has not started
-Next action: Run /paul:unify .paul/phases/158-artifact-growth-hot-path-audit/158-01-PLAN.md
-Resume file: .paul/phases/158-artifact-growth-hot-path-audit/158-01-SUMMARY.md
+Last session: 2026-03-27T22:51:26Z
+Stopped at: Phase 158 complete, ready to plan Phase 159
+Next action: Run /paul:plan for Phase 159 — Workflow Bloat Audit
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Milestone v2.35 is active and still in Phase 158
-- Plan 158-01 has been executed; UNIFY is the next required loop step
-- Phase 158 remains artifact-audit-only; workflow-bloat analysis is still deferred to Phase 159
+- Milestone v2.35 is 1 of 3 phases complete after closing Phase 158
+- Phase 159 should audit workflow and prompt-shape duplication around hot artifacts without redoing raw footprint measurement
+- Phase 160 will consolidate artifact and workflow findings into ranked reduction recommendations

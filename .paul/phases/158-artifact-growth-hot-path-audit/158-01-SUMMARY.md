@@ -1,65 +1,113 @@
-# Phase 158 Apply Summary
+---
+phase: 158-artifact-growth-hot-path-audit
+plan: 01
+completed: 2026-03-27T22:51:26Z
+duration: ~1 session
+---
 
-_Date:_ 2026-03-27  
-_Phase:_ 158 — Artifact Growth & Hot-Path Audit  
-_Plan:_ 158-01
+## Objective
+Produce an evidence-backed audit of `.paul/` artifact growth, identify which artifact classes dominate footprint, and separate repeat-read Pi hot-path costs from cold archival accumulation without implementing fixes yet.
 
-## Outcome
+## What Was Built
 
-Phase 158 APPLY completed successfully.
+| File | Purpose | Lines |
+|------|---------|------:|
+| `.paul/phases/158-artifact-growth-hot-path-audit/artifact-footprint-inventory.md` | Measured the `.paul/` corpus by file count, line count, size, directory bucket, and largest artifacts | 107 |
+| `.paul/phases/158-artifact-growth-hot-path-audit/pi-hot-path-read-analysis.md` | Mapped Pi-era artifact read paths and classified authority files as hot / warm / cold | 138 |
+| `.paul/phases/158-artifact-growth-hot-path-audit/158-artifact-growth-hot-path-report.md` | Synthesized confirmed findings, plausible findings, open questions, and artifact-side candidate fix directions | 224 |
 
-Created audit artifacts:
-- `.paul/phases/158-artifact-growth-hot-path-audit/artifact-footprint-inventory.md`
-- `.paul/phases/158-artifact-growth-hot-path-audit/pi-hot-path-read-analysis.md`
-- `.paul/phases/158-artifact-growth-hot-path-audit/158-artifact-growth-hot-path-report.md`
+Total new audit artifact volume: **469 lines** across **3 files**.
 
-## Task Results
+## Acceptance Criteria Results
 
-| Task | Result | Notes |
-|---|---|---|
-| Task 1 — measured inventory of `.paul/` footprint | PASS | Quantified total corpus size, major buckets, largest files, live authority files, and active vs historical material |
-| Task 2 — Pi-era hot-path read map | PASS | Classified `STATE.md`, `ROADMAP.md`, `PROJECT.md`, `MILESTONES.md`, `PRD.md`, `SPECIAL-FLOWS.md`, and handoffs as hot / warm / cold with file-backed evidence |
-| Task 3 — artifact-side findings and candidate directions | PASS | Separated confirmed artifact-side findings from workflow-side follow-up questions for Phase 159 |
+| AC | Description | Status | Evidence |
+|----|-------------|--------|----------|
+| AC-1 | Artifact footprint inventory is complete and measurement-backed | PASS | `artifact-footprint-inventory.md` records total corpus size, major buckets, largest files, and live-vs-archive distinctions |
+| AC-2 | Pi hot-path read analysis identifies repeat-read artifacts and entry points | PASS | `pi-hot-path-read-analysis.md` classifies `STATE.md`, `ROADMAP.md`, `PROJECT.md`, `MILESTONES.md`, handoffs, and Pi entry paths as hot / warm / cold |
+| AC-3 | Artifact-side findings isolate bloat mechanisms and candidate fix directions | PASS | `158-artifact-growth-hot-path-report.md` separates confirmed artifact findings from Phase 159 workflow questions and lists bounded candidate directions |
 
-## Key Findings
+## Reconciliation: Plan vs Actual
 
-- Historical accumulation dominates `.paul/` footprint; the main mass is in `phases/`, archived handoffs, and milestone rollups.
-- `STATE.md` is the confirmed hot-path artifact in Pi-era flows.
-- `ROADMAP.md` is the strongest secondary warm-path pressure source.
-- `PROJECT.md` is comparatively compact and aligned with its intended brief role.
-- `MILESTONES.md` and archived handoffs are large, but mostly cold.
+### Task 1 — Build a measured inventory of the current `.paul/` artifact footprint
+**Planned:** quantify file count, total lines, major buckets, large files, and live authority files.
 
-## Verification
+**Actual:** completed as planned.
+Key findings included:
+- `.paul/` = **534 files**, **82,241 lines**, **3.66 MB**
+- `.paul/phases/` = **63,827 lines**
+- `.paul/handoffs/archive/` = **9,436 lines** across **91 files**
+- `.paul/milestones/` = **6,006 lines** across **18 files**
 
-Plan verifications passed:
-- `artifact-footprint-inventory.md` exists and includes required inventory markers
-- `pi-hot-path-read-analysis.md` exists and includes required hot-path markers
-- `158-artifact-growth-hot-path-report.md` exists and includes required synthesis markers
+### Task 2 — Map Pi-era hot-path artifact reads and repeated context entry points
+**Planned:** inspect Pi extension, Pi skills, and shared workflows to classify recurring reads.
 
-Regression checks passed after each task:
-- `bash tests/cross-harness-validation.sh` → 60/60 passed
-- `bash tests/pi-end-to-end-validation.sh` → 123/123 passed
+**Actual:** completed as planned.
+Key findings included:
+- `.paul/STATE.md` is the confirmed hot-path artifact
+- `.paul/ROADMAP.md` is the strongest secondary warm-path artifact
+- `.paul/PROJECT.md` remains comparatively compact and aligned with its brief role
+- `.paul/MILESTONES.md` and archived handoffs are growth-heavy but mostly cold
 
-## Deviations
+### Task 3 — Synthesize artifact-side bloat findings and candidate fix directions
+**Planned:** isolate confirmed bloat drivers, separate artifact cost from workflow cost, and hand workflow questions to Phase 159.
 
-None.
+**Actual:** completed as planned.
+The report:
+- distinguished historical accumulation from repeated-read hot-path cost
+- marked findings as confirmed / plausible / open
+- kept recommendations bounded to artifact-side directions only
+- explicitly handed workflow-prose questions to Phase 159
+
+## Verification Results
+
+### Ground-truth reconciliation
+- `git diff --stat HEAD~1..HEAD` matched the documentation-only scope of the plan
+- Planned `files_modified` entries were all `.paul/` artifacts, and actual changes stayed in `.paul/`
+- No out-of-scope implementation files were modified
+
+### File checks
+- `test -f .paul/phases/158-artifact-growth-hot-path-audit/artifact-footprint-inventory.md` ✅
+- `test -f .paul/phases/158-artifact-growth-hot-path-audit/pi-hot-path-read-analysis.md` ✅
+- `test -f .paul/phases/158-artifact-growth-hot-path-audit/158-artifact-growth-hot-path-report.md` ✅
+- Phase plan count vs summary count after UNIFY: **1 / 1** ✅
+
+### Regression / validation checks
+- `bash tests/cross-harness-validation.sh` → **60/60 passed**
+- `bash tests/pi-end-to-end-validation.sh` → **123/123 passed**
+
+### Skill audit
+- Required skill `/paul` was invoked for PLAN → APPLY → UNIFY ✅
 
 ## Module Execution Reports
 
-### Pre-apply
-- TODD (p50): PASS — test infrastructure exists (`tests/cross-harness-validation.sh`, `tests/pi-end-to-end-validation.sh`)
-- WALT (p100): PASS — baseline captured from both validation suites (60/60 pass, 123/123 pass)
+[dispatch] pre-unify: 0 modules registered for this hook
 
-### Post-task / post-apply
-- TODD (post-task): PASS after each task — validation suites remained green
-- IRIS (post-apply advisory): skip — changed files are markdown audit artifacts only; no TypeScript / JavaScript review surface changed
-- DOCS (post-apply advisory): PASS — changes were documentation artifacts by design; no external source-doc drift introduced
-- SKIP (post-apply advisory): skip — no new APPLY-time lifecycle decision was introduced; full historical decision re-expansion would add noise rather than new signal for this research phase
-- WALT (post-apply enforcement): PASS — no quality regression; both validation suites still fully green
-- DEAN (post-apply enforcement): skip — no supported package-manager lockfile / dependency audit baseline in scope
-- TODD (post-apply enforcement): PASS — full validation suites green after APPLY
+### Carried forward from APPLY
+- TODD (pre-apply / post-task / post-apply): PASS — validation suites stayed green throughout this research-only phase
+- WALT (pre-apply / post-apply): PASS — baseline and post-apply quality remained green with no regressions
+- IRIS / DOCS / SKIP / DEAN post-apply advisories and enforcement were documented during APPLY; none changed the phase outcome
 
-## Ready for UNIFY
+### Post-unify
+- WALT (p100): PASS — quality delta is **stable**. Added `158-01` to `.paul/quality-history.md` with tests unchanged at **123 pass + 60 pass**, coverage/lint/types unchanged (`—`), trend `→ stable`
+- SKIP (p200): PASS — captured durable knowledge from this phase:
+  - **Decision Record:** Separate total artifact growth from repeat-read hot-path cost. Context: user concern mixed both pressures together. Decision: treat them as different classes of cost and keep Phase 158 artifact-focused. Alternatives considered: blanket artifact cleanup now (rejected: insufficient evidence), workflow audit first (rejected: would blur artifact-specific findings). Rationale: measurement needed before redesign. Impact: Phase 159 can focus on workflow amplification instead of redoing footprint discovery.
+  - **Decision Record:** Treat `STATE.md` as the confirmed hot artifact and `ROADMAP.md` as the main warm-path artifact. Context: Phase 158 measured both size and recurrence. Decision: future artifact optimization should prioritize hot-path recurrence first. Alternatives considered: optimize largest file only (rejected: largest is not automatically hottest), treat all authority files equally (rejected: evidence does not support equal pressure). Rationale: context cost is driven by repeated reads, not just file size. Impact: later fixes should target `STATE.md` first and evaluate `ROADMAP.md` second.
+  - **Lesson Learned:** Large archives and expensive context are different problems. What happened: phases, archived handoffs, and milestone rollups dominated total `.paul/` size while `STATE.md` dominated active recurrence. Root cause: historical accumulation and hot-path routing pressure are separate mechanisms. Lesson: artifact redesign should use hot / warm / cold classes instead of raw size alone. Action items: Phase 159 audits workflow amplification; Phase 160 ranks combined fixes.
+- RUBY (p300): PASS — debt scan on changed artifact files via `wc -l` found **107 / 138 / 224** lines; all are below the 300-line warning threshold. No technical-debt concern from file size in this changed set.
 
-Next command:
-- `/paul:unify .paul/phases/158-artifact-growth-hot-path-audit/158-01-PLAN.md`
+## Deviations
+None.
+
+## Key Patterns / Decisions
+- Historical accumulation is the dominant `.paul/` footprint driver, but not the dominant hot-path driver
+- `STATE.md` is operationally hot because it is repeatedly consulted, not because it is especially large
+- `ROADMAP.md` is the main secondary context-cost candidate because it is both warm-path and relatively dense
+- `PROJECT.md` is one of the few live artifacts already behaving close to the intended compact-brief design
+
+## Merge Gate Status
+- PR `#67` was already merged before UNIFY reconciliation began
+- Local branch is now `main`
+- Merge gate for the APPLY branch was therefore already satisfied when this UNIFY ran
+
+## Next Phase
+Phase 158 is complete. Transition to **Phase 159 — Workflow Bloat Audit**.

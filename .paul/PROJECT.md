@@ -288,6 +288,9 @@ All validated — see below.
 | `modules.rev.pr_review` defaults to false | 151 | Merge-gate review remains opt-in and adds zero default overhead |
 | Design a parent-controlled PALS-native implementer contract instead of adopting the generic runtime `implementer` | 154 | Audit showed current runtime agents are useful primitives but not authoritative APPLY semantics |
 | Install project-shipped Pi agents globally during Pi driver install instead of relying on repo-local discovery alone | 156 | Ensures `pals-implementer` works in repos that use installed PALS without requiring extra agent-scope setup |
+| Separate total artifact growth from repeat-read hot-path cost before designing fixes | 158 | Prevents blanket cleanup instincts from blurring historical accumulation with active Pi context pressure |
+| Treat `STATE.md` as the confirmed hot artifact and `ROADMAP.md` as the main warm-path artifact | 158 | Future reduction work should optimize repeated-read pressure first, not just largest files |
+| Preserve `PROJECT.md` as the compact brief instead of using it to absorb roadmap or milestone history | 158 | The layered artifact model is working here; expanding PROJECT would recreate the same bloat problem elsewhere |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -306,4 +309,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-27 after milestone v2.34 completion*
+*Last updated: 2026-03-27 after Phase 158 completion*
