@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.33 Code Review Module (REV)
 ## Current Position
 Milestone: v2.33 Code Review Module (REV)
-Phase: 153 of 3 (Validation & Polish) — Planning
-Plan: 153-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-27 — Created 153-01-PLAN.md
+Phase: 153 of 3 (Validation & Polish) — Complete
+Plan: 153-01 complete (UNIFY done)
+Status: Phase 153 complete, milestone v2.33 complete
+Last activity: 2026-03-27 — UNIFY 153-01 complete
 Progress:
-- v2.33 Code Review Module (REV): [██████░░░░] 66%
-- Phase 153: [░░░░░░░░░░] 0%
+- v2.33 Code Review Module (REV): [██████████] 100%
+- Phase 153: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — milestone complete]
 ```
 
 ## Accumulated Context
@@ -132,14 +132,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: ba12961 feat(152): /paul:review skill, merge gate, Pi extension (#2) (#60)
-PR: https://github.com/coctostan/pals/pull/60 (state: MERGED)
+Branch: feature/153-validation-and-polish
+Last commit: a67d83c feat(153): REV validation — config, live test, polish from reviewer findings
+PR: https://github.com/coctostan/pals/pull/61 (state: OPEN)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: Plan 153-01 created
-Next action: /paul:apply for Plan 153-01
-Resume file: .paul/phases/153-validation-and-polish/153-01-PLAN.md
+Stopped at: UNIFY 153-01 complete, milestone v2.33 complete
+Next action: Merge PR #61, then /paul:milestone to complete v2.33
+Resume file: .paul/phases/153-validation-and-polish/153-01-SUMMARY.md
 Resume context:
-- Plan adds REV config to pals.json, runs live /paul:review test, polishes based on findings
-- Includes checkpoint for human verification of reviewer output
+- Milestone v2.33 complete — all 3 phases done (design, implementation, validation)
+- REV module fully validated with live review test
