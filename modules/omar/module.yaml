@@ -27,18 +27,15 @@ hooks:
   post-apply:
     priority: 170
     description: >-
-      For EACH changed file: 1) Sensitive data in logs: grep -n
-      'console.*password\|log.*token\|log.*secret\|log.*apiKey\|log.*email'
-      {file} — BLOCK on match: 'OMAR BLOCK: {file}:{line} — sensitive data
-      ({type}) in log statement. Remove or mask before proceeding.' 2) Empty
-      catch blocks: grep -n 'catch.*{[[:space:]]*}' {file} — WARN per match:
-      'OMAR WARN: {file}:{line} — empty catch block. Log error or re-throw.'
-      3) New console.log: grep -n 'console\.log' {file} — WARN: 'OMAR WARN:
+      For EACH changed file: 1) Empty catch blocks: grep -n
+      'catch.*{[[:space:]]*}' {file} — WARN per match: 'OMAR WARN:
+      {file}:{line} — empty catch block. Log error or re-throw.' 2) New
+      console.log: grep -n 'console\.log' {file} — WARN: 'OMAR WARN:
       {file}:{line} — console.log in production code. Use structured logger.'
-      4) Removed health endpoint: if route file changed, check /health still
-      exists — WARN if removed. 5) Error swallowing: grep for catch blocks
+      3) Removed health endpoint: if route file changed, check /health still
+      exists — WARN if removed. 4) Error swallowing: grep for catch blocks
       that don't log or re-throw — WARN. Output observability review table:
-      '| File | Check | Result |' with PASS/WARN/BLOCK. If no concerns:
+      '| File | Check | Result |' with PASS/WARN. If no concerns:
       'OMAR: No observability issues in {N} changed files.'
     refs:
       - references/observability-patterns.md

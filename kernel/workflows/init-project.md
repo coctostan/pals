@@ -131,7 +131,7 @@ Check if the user's init request contains "quick", "fast", "--quick", or "just i
    - `assumptions = "TBD"`, `open_questions = "TBD"`
    - `success_signals = "TBD"`, `current_state_notes = "New project"`
    - Derive `core_value` from `description`
-   - `module_selections` = all 18 modules enabled
+   - `module_selections` = all 19 modules enabled
    - `integrations_enabled = false`
    - `specialized_flows_enabled = false`
    - Detect git repo (`git rev-parse --git-dir 2>/dev/null`):
@@ -598,8 +598,8 @@ Note: Users can configure specialized flows later via `/paul:flows`.
 **Module configuration — greenfield skips, brownfield gets grouped descriptions.**
 
 **If greenfield (`brownfield = false`):**
-- All 18 modules enabled by default (silent)
-- Display: "All 18 modules enabled by default. (Adjust later via /paul:config)"
+- All 19 modules enabled by default (silent)
+- Display: "All 19 modules enabled by default. (Adjust later via /paul:config)"
 - Skip the interactive toggle question
 - Store `module_selections` with all enabled
 - Continue to configure_git
@@ -641,8 +641,9 @@ Privacy & Session:
   [16] VERA  ✓  PII detection and privacy compliance
   [17] CARL  ✓  Session boundary manager (Pi extension)
 
-Knowledge:
+Knowledge & Documentation:
   [18] SKIP  ✓  Captures decisions, rationale, and lessons learned
+  [19] DOCS  ✓  Documentation drift detection and lifecycle oversight
 ```
 
 Wait for user response.
@@ -674,7 +675,8 @@ Wait for user response.
     "dana": { "enabled": true, "description": "Data pattern detection & migration safety" },
     "omar": { "enabled": true, "description": "Observability & logging review" },
     "reed": { "enabled": true, "description": "Resilience pattern detection & review" },
-    "vera": { "enabled": true, "description": "Privacy assessment & PII protection" }
+    "vera": { "enabled": true, "description": "Privacy assessment & PII protection" },
+    "docs": { "enabled": true, "description": "Documentation drift detection & lifecycle oversight" }
   },
   "git": {
     "remote": null,

@@ -14,10 +14,10 @@ hooks:
   pre-plan:
     priority: 250
     description: >-
-      MUST run: `wc -l {files_modified}` to pre-screen file sizes. Flag files >300
-      lines as debt candidates. Note that post-unify will use ESLint complexity
-      analysis (shared with IRIS). Inject debt_flags with file paths and line
-      counts. If all files <300 lines: 'RUBY: No preliminary debt indicators in
+      Note: ARCH handles file-size screening via wc -l. RUBY pre-plan focuses on
+      debt signal awareness. Note that post-unify will use ESLint complexity
+      analysis (shared with IRIS). Inject debt_flags noting planned files for
+      post-unify analysis. If no debt signals: 'RUBY: No preliminary debt indicators in
       planned files.'
     refs:
       - references/debt-detection.md

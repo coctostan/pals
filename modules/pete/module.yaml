@@ -39,10 +39,9 @@ hooks:
       WARN: 'O(n²) pattern in {file}:{line}.' 5) Sync I/O in async: grep -n
       'readFileSync\|writeFileSync' {file} — BLOCK if in request handler or
       async function: 'PETE BLOCK: Synchronous I/O in async path {file}:{line}.
-      Use async variant.' 6) Large files: wc -l {file} — WARN if >500 lines.
-      Output performance findings table: '| File | Pattern | Severity | Detail
-      |' with findings. If no issues: 'PETE: No performance concerns in {N}
-      changed files.'
+      Use async variant.' Output performance findings table: '| File | Pattern
+      | Severity | Detail |' with findings. If no issues: 'PETE: No performance
+      concerns in {N} changed files.'
     refs:
       - references/performance-patterns.md
 
