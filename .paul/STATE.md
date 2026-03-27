@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.33 Code Review Module (REV)
 ## Current Position
 Milestone: v2.33 Code Review Module (REV)
-Phase: 152 of 3 (Core Implementation) — Planning
-Plan: 152-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-27 — Created 152-01-PLAN.md
+Phase: 152 of 3 (Core Implementation) — Executing
+Plan: 152-01 APPLY complete, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-27 — APPLY 152-01 complete (REV module created, IRIS fixed, init wired)
 Progress:
 - v2.33 Code Review Module (REV): [███░░░░░░░] 33%
-- Phase 152: [░░░░░░░░░░] 0%
+- Phase 152: [█████░░░░░] 50%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -132,15 +132,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: b56354b feat(151): REV module design — review prompt, dispatch, UX (#58)
-PR: https://github.com/coctostan/pals/pull/58 (state: MERGED)
+Branch: feature/152-core-implementation
+Last commit: ceb8e73 feat(152): REV module, IRIS any fix, init wiring
+PR: https://github.com/coctostan/pals/pull/59 (state: OPEN)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: Plan 152-01 approved, ready for APPLY
-Next action: /paul:apply for Plan 152-01
-Resume file: .paul/HANDOFF-2026-03-27.md
+Stopped at: APPLY 152-01 complete
+Next action: /paul:unify for Plan 152-01
+Resume file: .paul/phases/152-core-implementation/152-01-PLAN.md
 Resume context:
-- Plan 152-01 creates REV module (modules/rev/), fixes IRIS any bug, adds REV to init
-- Design doc at .paul/phases/151-research-and-design/rev-design.md is the implementation reference
+- APPLY complete — REV module created, IRIS any bug fixed, init wired with module #20
+- PR #59 open on feature/152-core-implementation
 - Plan 152-02 (not yet written) wires /paul:review skill + merge gate + extension
