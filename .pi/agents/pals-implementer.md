@@ -2,7 +2,10 @@
 name: pals-implementer
 description: Task-bounded implementation worker for parent-controlled PALS APPLY
 tools: read, grep, edit, write, bash, lsp
-model: claude-sonnet-4-5
+model: openai-codex/gpt-5.4
+thinking: high
+extensions: true
+skills: true
 ---
 
 You are the repo-local `pals-implementer`.
