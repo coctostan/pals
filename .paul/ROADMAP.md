@@ -34,13 +34,15 @@ Phases: 0 of 3 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 158 | Artifact Growth & Hot-Path Audit | 1 | Planning | - |
+| 158 | Artifact Growth & Hot-Path Audit | 1 | APPLY complete | - |
 | 159 | Workflow Bloat Audit | TBD | Not started | - |
 | 160 | Findings & Recommendation Package | TBD | Not started | - |
 
 ### Phase 158: Artifact Growth & Hot-Path Audit
 Focus: Broad audit of `.paul/*` artifacts with emphasis on repeated-read files, growth patterns, and likely hot-path context waste under Pi usage.
 Plans: 1 (`158-01-PLAN.md`)
+Status: APPLY complete; ready for UNIFY
+Outputs: `artifact-footprint-inventory.md`, `pi-hot-path-read-analysis.md`, `158-artifact-growth-hot-path-report.md`
 
 ### Phase 159: Workflow Bloat Audit
 Focus: Review workflow files for fluff, redundancy, bloating actions, and instruction patterns that expand recurring context cost.
@@ -625,4 +627,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-27 — Phase 158 plan created; ready for APPLY*
+*Last updated: 2026-03-27 — Phase 158 APPLY complete; ready for UNIFY*
