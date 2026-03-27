@@ -267,7 +267,7 @@ Two layers of config:
 2. **`pals.json modules.rev`** — PALS-specific config. Controls when REV fires, whether it blocks, and can override the model.
 
 Resolution order for model:
-1. `pals.json modules.rev.model` (if set) → passed as model override in Agent() call
+1. `pals.json modules.rev.model` (if set) → passed as model override in x) call
 2. Agent .md `model` field → used by pi-subagents if no override
 3. Session default → fallback if neither is set
 

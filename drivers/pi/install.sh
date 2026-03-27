@@ -4,10 +4,11 @@ set -e
 # ════════════════════════════════════════
 # PALS Pi Driver Installer
 # ════════════════════════════════════════
-# Installs PALS kernel, Pi skills, and the Pi extension into Pi's runtime directories.
-# Pi uses skills as the canonical workflow entry surface and the extension as the
-# Pi-native command/hook layer, so this installer copies both and generates a
-# modules.yaml registry for module-backed references.
+# Installs PALS kernel, Pi skills, project-shipped Pi agents, and the Pi extension into
+# Pi's runtime directories. Pi uses skills as the canonical workflow entry surface, the
+# extension as the Pi-native command/hook layer, and user-level agents for globally
+# available subagent definitions such as pals-implementer. This installer copies those
+# surfaces and generates a modules.yaml registry for module-backed references.
 #
 # Expected environment:
 #   PALS_ROOT — path to the PALS git repo
@@ -73,7 +74,24 @@ else
   echo "  [skip] No pals-hooks.ts extension found"
 fi
 
-# ── 5. Module discovery and installation ─────────────────────────
+# ── 5. Copy project-shipped Pi agent definitions ───────────────────
+PI_AGENTS_DIR="$PALS_ROOT/.pi/agents"
+AGENT_DIR="$HOME/.pi/agent/agents"
+AGENT_COUNT=0
+
+if [ -d "$PI_AGENTS_DIR" ]; then
+  mkdir -p "$AGENT_DIR"
+  for agent_path in "$PI_AGENTS_DIR"/*.md; do
+    [ -f "$agent_path" ] || continue
+    cp "$agent_path" "$AGENT_DIR/$(basename "$agent_path")"
+    AGENT_COUNT=$((AGENT_COUNT + 1))
+  done
+  echo "  [ok] Pi agents installed: $AGENT_COUNT agents"
+else
+  echo "  [skip] No project Pi agents found"
+fi
+
+# ── 6. Module discovery and installation ─────────────────────────
 # Python handles: reading pals.json, parsing module.yaml manifests,
 # copying module files, and generating modules.yaml registry.
 
@@ -356,7 +374,7 @@ with open(modules_yaml_path, 'w') as f:
 print(f"  [ok] modules.yaml generated ({len(installed)} modules)")
 PYEOF
 
-# ── 6. Summary ───────────────────────────────────────────────────
+# ── 7. Summary ───────────────────────────────────────────────────
 echo ""
 echo "  Pi driver installation complete."
 echo "  Skill path: ~/.pi/agent/skills/pals/"
