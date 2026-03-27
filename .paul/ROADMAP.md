@@ -35,7 +35,7 @@ Theme: Build a subagent-powered code review module that leverages fresh context 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
 | 151 | Research & Design | 1 | ✅ Complete | 2026-03-27 |
-| 152 | Core Implementation | TBD | Not started | - |
+| 152 | Core Implementation | 1 | Planning | - |
 | 153 | Validation & Polish | TBD | Not started | - |
 
 ## Completed Milestones
