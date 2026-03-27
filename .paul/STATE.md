@@ -132,14 +132,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/152-core-implementation
-Last commit: 64cda10 feat(152): /paul:review skill, merge gate review step, Pi extension command
-PR: https://github.com/coctostan/pals/pull/60 (state: OPEN)
+Branch: main
+Last commit: ba12961 feat(152): /paul:review skill, merge gate, Pi extension (#2) (#60)
+PR: https://github.com/coctostan/pals/pull/60 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: UNIFY 152-02 complete, phase 152 complete
-Next action: Transition to Phase 153 (Validation & Polish)
+Stopped at: Phase 152 complete, transition done
+Next action: /paul:plan for Phase 153 (Validation & Polish)
 Resume file: .paul/phases/152-core-implementation/152-02-SUMMARY.md
 Resume context:
-- Phase 152 complete — both plans done (module structure + skill/gate/extension)
-- PR #60 open on feature/152-core-implementation, needs merge before Phase 153
+- Phase 152 complete — REV module fully wired (module + skill + merge gate + extension)
+- Phase 153 (Validation & Polish) is next — test REV against real code, tune prompt
