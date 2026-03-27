@@ -55,6 +55,13 @@ Module enable/disable config. All modules default to `enabled: true` if absent.
 | `modules.reed.description` | string | "Resilience pattern detection & review" | v2.22 |
 | `modules.vera.enabled` | bool | true | v2.22 |
 | `modules.vera.description` | string | "Privacy assessment & PII protection" | v2.22 |
+| `modules.docs.enabled` | bool | true | v0.9.1 |
+| `modules.docs.description` | string | "Documentation drift detection & lifecycle oversight" | v0.9.1 |
+| `modules.rev.enabled` | bool | true | v2.33 |
+| `modules.rev.description` | string | "Thorough code review via subagent" | v2.33 |
+| `modules.rev.model` | string\|null | `null` | v2.33 |
+| `modules.rev.pr_review` | bool | `false` | v2.33 |
+| `modules.rev.pr_review_block_on_critical` | bool | `true` | v2.33 |
 
 **Note:** Runtime dispatch reads `modules.yaml` (installed registry), not this section. Per-project module disable at runtime is a planned future feature. Until then, this section is informational — all installed modules dispatch regardless.
 
