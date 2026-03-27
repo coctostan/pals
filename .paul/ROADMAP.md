@@ -27,12 +27,29 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.34 Pi Subagent Integration & PALS Implementer**
-Status: ✅ Complete
-Completed: 2026-03-27
+**v2.35 Context Bloat Audit & Reduction Strategy**
+Status: 🚧 In Progress
+Theme: Audit how PALS context load grows under Pi usage, especially from repeatedly-read artifacts and workflow markdown, then produce ranked tactical and structural recommendations without changing artifact-first lifecycle authority.
+Phases: 0 of 3 complete
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 158 | Artifact Growth & Hot-Path Audit | 1 | Planning | - |
+| 159 | Workflow Bloat Audit | TBD | Not started | - |
+| 160 | Findings & Recommendation Package | TBD | Not started | - |
+
+### Phase 158: Artifact Growth & Hot-Path Audit
+Focus: Broad audit of `.paul/*` artifacts with emphasis on repeated-read files, growth patterns, and likely hot-path context waste under Pi usage.
+Plans: 1 (`158-01-PLAN.md`)
+
+### Phase 159: Workflow Bloat Audit
+Focus: Review workflow files for fluff, redundancy, bloating actions, and instruction patterns that expand recurring context cost.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 160: Findings & Recommendation Package
+Focus: Consolidate evidence and deliver ranked tactical cleanup options plus structural redesign recommendations.
+Plans: TBD (defined during /paul:plan)
+
 ## Completed Milestones
 <details>
 <summary>v2.34 Pi Subagent Integration & PALS Implementer - 2026-03-27 (4 phases)</summary>
@@ -596,7 +613,7 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 <summary>v0.1 Fork & Unify - 2026-03-11 (6 phases)</summary>
 
 | Phase | Name | Plans | Completed |
-*Last updated: 2026-03-17 — Phase 65 complete; transitioned to Phase 66 planning*
+*Last updated: 2026-03-17 - Phase 65 complete; transitioned to Phase 66 planning*
 | 1 | Architecture & Design | 2 | 2026-03-11 |
 | 2 | Fork & Restructure | 3 | 2026-03-11 |
 | 3 | Merge TODD/WALT | 2 | 2026-03-11 |
@@ -608,4 +625,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-27 — milestone v2.34 completed; awaiting next milestone*
+*Last updated: 2026-03-27 — Phase 158 plan created; ready for APPLY*
