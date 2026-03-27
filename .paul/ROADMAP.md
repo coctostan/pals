@@ -27,16 +27,16 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.30 Pi Guided Workflow UX & Documentation** 
-Status: 🚧 In Progress 
-Phases: 3 of 4 complete
+**v2.32 Module Health & AGENTS.md**
+Status: 🚧 In Progress
+Phases: 1 of 3 complete
 
+Theme: Audit all 18 modules for context cost, overlap, and effectiveness, then integrate AGENTS.md into the PALS lifecycle.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|----------|
-| 141 | Guided Workflow Auto-Approve Control | 1 | ✅ Complete | 2026-03-26 |
-| 142 | Menu Parser Hardening | 1 | ✅ Complete | 2026-03-26 |
-| 143 | Label Accuracy & Polish | 1 | ✅ Complete | 2026-03-26 |
-| 144 | README & Documentation Update | 1 | Planning | - |
+| 148 | Module Health Audit | 1 | ✅ Complete | 2026-03-26 |
+| 149 | Module Audit Implementation | TBD | Not started | - |
+| 150 | AGENTS.md Integration | TBD | Not started | - |
 
 ### Phase 141: Guided Workflow Auto-Approve Control
 Focus: Add opt-in auto-approve setting (default: wait-for-user at checkpoints). Per-transition-type control so users retain decision authority at plan approval, UNIFY transitions, and phase boundaries.
