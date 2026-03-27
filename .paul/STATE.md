@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-25)
+See: .paul/PROJECT.md (updated 2026-03-27)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.33 Code Review Module (REV)
+**Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
-Milestone: v2.33 Code Review Module (REV)
-Phase: 153 of 3 (Validation & Polish) — Complete
-Plan: 153-01 complete (UNIFY done)
-Status: Phase 153 complete, milestone v2.33 complete
-Last activity: 2026-03-27 — UNIFY 153-01 complete
+Milestone: v2.34 Pi Subagent Integration & PALS Implementer
+Phase: 154 of 157 (Pi Subagent Audit) — UNIFY in progress
+Plan: 154-01 reconciling results
+Status: Unifying
+Last activity: 2026-03-27T17:33:15Z — UNIFY blocked at merge gate while PR #62 CI is still running
 Progress:
-- v2.33 Code Review Module (REV): [██████████] 100%
-- Phase 153: [██████████] 100%
+- v2.34 Pi Subagent Integration & PALS Implementer: [░░░░░░░░░░] 0%
+- Phase 154 Pi Subagent Audit: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — milestone complete]
+  ✓        ✓        ◉     [UNIFY in progress]
 ```
 
 ## Accumulated Context
@@ -103,6 +103,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Behind-base routing takes precedence over merge readiness | 89 | Prevents merging stale branches |
 | Two-tier gh validation: CLI presence + auth status | 89 | Clear messaging for each failure mode |
 | Status and resume share identical git-aware routing table | 90 | Consistent next-action guidance regardless of entry point |
+| 2026-03-27: Design Phase 155 around a parent-controlled PALS-native implementer contract, not the generic runtime `implementer` | 154 | Keeps inline APPLY as the reference model and prevents runtime-global agent behavior from becoming lifecycle truth |
 | GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 ### Fixes
 | Fix | Phase | Impact |
@@ -132,14 +133,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: e744a73 feat(153): REV validation — config, live test, polish (#61)
-PR: https://github.com/coctostan/pals/pull/61 (state: MERGED)
+Branch: feature/pi-subagent-audit
+Last commit: feat(pi-subagent-audit): add Phase 154 audit artifacts
+PR: https://github.com/coctostan/pals/pull/62 (state: open, CI: pending)
 ## Session Continuity
-Last session: 2026-03-27
-Stopped at: Milestone v2.33 complete
-Next action: /paul:milestone to close v2.33 or start next milestone
-Resume file: .paul/phases/153-validation-and-polish/153-01-SUMMARY.md
+Last session: 2026-03-27T17:20:55Z
+Stopped at: Reconciling Phase 154 APPLY results and merge-gate state
+Next action: Wait for PR #62 CI to finish, then resume /paul:unify .paul/phases/154-pi-subagent-audit/154-01-PLAN.md
+Resume file: .paul/phases/154-pi-subagent-audit/154-01-SUMMARY.md
 Resume context:
-- Milestone v2.33 Code Review Module (REV) — complete (3/3 phases, 4 plans, 3 PRs merged)
-- REV delivers: module + skill + merge gate + extension, validated with live review test
+- UNIFY artifacts were committed and pushed in `docs(154-pi-subagent-audit): UNIFY artifacts`
+- Merge gate is active for github-flow and PR #62 remains open with CI still running
+- Resume UNIFY after CI completes so the PR can be merged and Phase 154 can fully close

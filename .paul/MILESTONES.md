@@ -47,6 +47,7 @@ Completed milestone log for this project.
 | **v2.27 Module Dispatch Hardening** | 2026-03-26 | 1 session | 3 phases, 3 plans. 40 hooks → imperative, MANDATORY dispatch markers, merge gate 1→4 sub-steps. |
 | **v2.28 DEAN Baseline Management** | 2026-03-26 | 1 session | 1 phase, 1 plan. Baseline-aware DEAN override, delta comparison, staleness guard. Closes all 13 v2.25 items. |
 | **v2.29 E2E Test Protocol** | 2026-03-26 | 1 session | 2 phases, 2 plans. Reusable E2E test protocol (8 dimensions, scoring model), validated with greenfield pi-monitor build (Sonnet 4.6). 4 findings → v2.30. |
+| **v2.33 Code Review Module (REV)** | 2026-03-27 | 1 session | 3 phases, 4 plans. REV module + skill + merge gate + live validation. |
 
 ---
 
@@ -668,6 +669,40 @@ Completed milestone log for this project.
 | Item | Description | Source |
 |------|-------------|--------|
 | 3 | DEAN baseline mechanism | v2.25 Phase 130 |
+---
+
+## ✅ v2.33 Code Review Module (REV)
+
+**Completed:** 2026-03-27
+**Duration:** 1 session
+**Theme:** Build a subagent-powered code review module that leverages fresh context and configurable models for thorough, unbiased code review.
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 |
+| Plans | 4 |
+| Files changed | 11 |
+| PRs merged | 3 (#59, #60, #61) |
+
+### Key Accomplishments
+- Built the REV module manifest and reference set for on-demand, subagent-powered code review.
+- Added `/paul:review` skill support and Pi command registration for deliberate review execution.
+- Integrated an opt-in REV review step into the GitHub Flow merge gate without adding default overhead.
+- Validated REV end-to-end with a live code review run and fixed the important findings it surfaced.
+- Fixed the IRIS bare `any` grep false-positive bug during the REV rollout.
+- Added project-level `modules.rev` configuration and extended the canonical pals.json schema.
+
+### Key Decisions
+| Decision | Phase | Rationale |
+|----------|-------|-----------|
+| REV has no lifecycle hooks; it is on-demand and PR-level only | 151 | IRIS covers lightweight post-apply review, while REV is intentionally expensive and deliberate. |
+| REV dispatch always runs in foreground | 151 | On-demand review and merge-gate review both need the result before proceeding. |
+| `modules.rev.model` is nullable and falls back to agent/session defaults | 151 | Keeps review model selection flexible without forcing a PALS-only override. |
+| `modules.rev.pr_review` defaults to false | 151 | PR review stays opt-in, so projects pay zero default merge-gate cost. |
+| Missing pi-subagents degrades to in-session review fallback | 151 | Review remains available even when isolated subagents are unavailable. |
+
 ---
 
 *Milestones log created: 2026-03-12*

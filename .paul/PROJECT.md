@@ -39,6 +39,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Artifact & Lifecycle Spec — normative schemas for 8 artifacts, lifecycle state machine, hook dispatch contract (Phase 45)
 - [x] Harness-Agnostic Skills — all kernel + module files use portable kernel/ references, zero @~/.pals/ or @.paul/ patterns (Phase 46)
 - [x] Pi Adapter — driver manifest, installer, uninstaller; multi-driver root installer installs for all detected harnesses (Phase 47)
+- [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 
 ### Must Have
 All validated — see below.
@@ -132,6 +133,8 @@ All validated — see below.
 - [x] Init/Onboarding Overhaul — three init flows (quick ~1Q, greenfield ~8Q, brownfield ~12+Q), brownfield detection fix, conditional question gating, explicit default milestone, grouped module descriptions, --quick mode (Phases 132-134, v2.26)
 - [x] Module Dispatch Hardening — 40 hook descriptions rewritten to imperative, MANDATORY post-apply/post-unify dispatch markers, dispatch evidence audits, merge gate split 1→4 sub-steps (Phases 135-137, v2.27)
 - [x] DEAN Baseline Management — baseline-aware override (delta comparison, staleness guard, .paul/dean-baseline.json), closes all 13 v2.25 actionable items (Phase 138, v2.28)
+- ✓ REV code review module — on-demand module manifest, review prompt/checklist refs, nullable model override, and graceful degraded fallback shipped across Phases 151-153 (v2.33)
+- ✓ Review workflow integration — `/paul:review` skill, Pi command registration, opt-in merge-gate review step, live review validation, and polish fixes shipped in v2.33
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -277,6 +280,10 @@ All validated — see below.
 | 2026-03-18: session_start seeds previousLoopSignature to avoid spurious session creation on resume | 77 | Prevents CARL from misreading already-complete loop state |
 | 2026-03-18: CARL config fields live inside modules.carl in pals.json alongside enabled/description | 78 | Consistent with existing module pattern; loadCarlConfig reads this path |
 | 2026-03-18: CARL module version bumped to 2.0.0 for architectural shift from rule injection to session boundary | 78 | Clear signal of role change in module registry |
+| REV has no lifecycle hooks; it is on-demand and PR-level only | 151 | Keeps review deliberate and avoids expensive automatic dispatch when IRIS already covers lightweight post-apply review |
+| REV runs in foreground and blocks until review completes | 151 | On-demand review and merge-gate review both need the result before the workflow can proceed |
+| `modules.rev.model` is nullable and falls back to agent/session defaults | 151 | Preserves flexible model control without forcing a PALS-only override |
+| `modules.rev.pr_review` defaults to false | 151 | Merge-gate review remains opt-in and adds zero default overhead |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -295,4 +302,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-26 after Phase 139 (E2E Test Protocol)*
+*Last updated: 2026-03-27 after v2.33 Code Review Module (REV)*
