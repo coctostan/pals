@@ -140,8 +140,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/158-artifact-growth-hot-path-audit
-Last commit: wip(158-artifact-growth-hot-path-audit): paused at 158-01
-PR: none
+Last commit: 4cb1e75 feat(158-artifact-growth-hot-path-audit): audit artifact growth and hot paths
+PR: https://github.com/coctostan/pals/pull/67 (OPEN)
 ## Session Continuity
 Last session: 2026-03-27T22:19:22Z
 Stopped at: APPLY complete for Plan 158-01; UNIFY has not started
