@@ -140,7 +140,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/158-artifact-growth-hot-path-audit
-Last commit: 38feb15 chore(158-artifact-growth-hot-path-audit): record apply postflight
+Last commit: Phase 158 APPLY artifacts and postflight state updates pushed on feature/158-artifact-growth-hot-path-audit
 PR: https://github.com/coctostan/pals/pull/67 (OPEN, checks pending)
 ## Session Continuity
 Last session: 2026-03-27T22:19:22Z
