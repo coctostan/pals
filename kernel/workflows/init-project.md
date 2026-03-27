@@ -145,6 +145,7 @@ Check if the user's init request contains "quick", "fast", "--quick", or "just i
    - Execute: `create_roadmap_md`
    - Execute: `create_state_md`
    - Create `pals.json` with all defaults (all modules enabled, git workflow "none", SonarQube disabled, medium collaboration)
+   - Execute: `create_agents_md`
    - Execute: `confirm_and_route`
 
 5. **Skip all of these steps:**
@@ -570,6 +571,63 @@ Resume file: .paul/PROJECT.md
 ```
 </step>
 
+<step name="create_agents_md">
+**Generate a lean AGENTS.md at the project root.**
+
+This file follows the AGENTS.md convention — focused on what models can't infer from file structure alone.
+
+1. Build the PALS Workflow section:
+   - Read `pals.json` modules: collect names where `enabled: true`
+   - Read `pals.json` git.workflow (github-flow / legacy / none)
+   - Format as comma-separated module list and workflow label
+
+2. Use standard Boundaries section (same for all PALS projects — always/ask/never rules).
+
+3. Leave Project Conventions as a placeholder with guidance comments.
+
+4. Write to project root:
+   ```markdown
+   # [project_name]
+
+   ## PALS Workflow
+
+   This project uses [PALS](https://github.com/coctostan/pals) — a project automation & lifecycle system.
+
+   - **Lifecycle:** PLAN → APPLY → UNIFY loop
+   - **State:** `.paul/STATE.md` tracks current position
+   - **Commands:** `/paul:plan`, `/paul:apply`, `/paul:unify`, `/paul:fix`
+   - **Git workflow:** [git_workflow from pals.json]
+   - **Active modules:** [comma-separated enabled module names]
+
+   ## Boundaries
+
+   ### Always Do
+   - Run tests before marking work complete
+   - Follow the PLAN → APPLY → UNIFY loop
+   - Check `.paul/STATE.md` for current project position before starting work
+
+   ### Ask First
+   - Before modifying files outside the current plan scope
+   - Before adding new dependencies
+   - Before changing architecture patterns
+
+   ### Never Do
+   - Commit secrets, API keys, or credentials
+   - Skip the UNIFY phase after APPLY
+   - Modify `.paul/` files directly — use `/paul:*` commands
+
+   ## Project Conventions
+
+   <!-- Add project-specific conventions that AI agents should follow. -->
+   <!-- Examples: naming patterns, import style, architecture decisions, domain terms. -->
+   <!-- This section is yours — PALS won't overwrite it during regeneration. -->
+
+   - [Add your conventions here]
+   ```
+
+5. Display: `AGENTS.md generated ✓`
+</step>
+
 <step name="prompt_integrations">
 **Integrations default to disabled during init.**
 
@@ -923,6 +981,7 @@ Created:
   .paul/ROADMAP.md        ✓
   .paul/STATE.md          ✓
   pals.json               ✓  ([N] modules enabled)
+  AGENTS.md               ✓  (PALS workflow + boundaries)
   .paul/phases/           ✓
 
 Milestone: v0.1 Initial Release (default — customize via /paul:milestone)
