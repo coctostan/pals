@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 157 of 157 (Validation & Polish) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-27T18:45:00Z — Completed Phase 156 UNIFY and transitioned to Phase 157
+Phase: 157 of 157 (Validation & Polish) — Planning
+Plan: 157-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-27T19:35:00Z — Created .paul/phases/157-validation-and-polish/157-01-PLAN.md
 Progress:
 - v2.34 Pi Subagent Integration & PALS Implementer: [█████████░] 95%
 - Phase 157 Validation & Polish: [░░░░░░░░░░] 0%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan next phase]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -142,11 +142,11 @@ Branch: main
 Last commit: Phase 156 unify and transition artifacts reconciled after implementer integration
 PR: https://github.com/coctostan/pals/pull/65 (state: MERGED)
 ## Session Continuity
-Last session: 2026-03-27T18:45:00Z
-Stopped at: Phase 156 complete, ready to plan Phase 157
-Next action: /paul:plan for Phase 157
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-27T20:13:00Z
+Stopped at: Phase 157 plan created, awaiting approval before APPLY
+Next action: Review and approve plan, then run /paul:apply .paul/phases/157-validation-and-polish/157-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-27-phase157-plan-ready.md
 Resume context:
-- Phase 156 is closed with a SUMMARY, parent-controlled `pals-implementer` delegation, and installer-backed global Pi agent support
-- PR #65 carried the remaining Phase 156 follow-up commits after PR #64 had already merged the initial implementation slice
-- Phase 157 should validate real delegated APPLY behavior, preserve REV semantics, and close the remaining doc drift / stray documentation diff
+- Phase 157 has a single executable plan focused on delegated APPLY proof, Pi docs, and live validation
+- No APPLY work has started yet; the working tree contains only planning/lifecycle artifacts plus the new handoff
+- REV must remain separate from delegated APPLY while Phase 157 validates the repo-local `pals-implementer` path
