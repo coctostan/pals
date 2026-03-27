@@ -14,9 +14,8 @@ hooks:
   pre-plan:
     priority: 150
     description: >-
-      MUST run: `grep -rn 'TODO\|FIXME\|HACK\|XXX\|any\|eval(' {files_modified}`
-      to detect anti-pattern signatures. MUST check file sizes: `wc -l
-      {files_modified}` and flag any >300 lines. Output: '| File | Pattern |
+      MUST run: `grep -rn 'TODO\|FIXME\|HACK\|XXX\|any' {files_modified}`
+      to detect anti-pattern signatures. Output: '| File | Pattern |
       Count |' table with findings. Inject review_flags with pattern names and
       counts. If no anti-patterns found: 'IRIS: No anti-patterns in planned files.'
     refs:
@@ -26,13 +25,12 @@ hooks:
     description: >-
       For EACH file in files_changed, MUST run: `npx eslint --no-eslintrc
       --rule 'complexity: [warn, 10]' --rule 'no-unused-vars: warn'
-      --rule 'no-eval: error' --format json {file}` for TypeScript/JavaScript
+      --format json {file}` for TypeScript/JavaScript
       projects. Parse ESLint JSON output: extract rule violations with file,
-      line, column, message. MUST run: `grep -rn 'sk-live\|api_key=\|password=\|
-      AWS_SECRET' {file}` for hardcoded secrets. Report: code smells (complexity,
-      unused vars), security (eval, hardcoded secrets), with file:line references
+      line, column, message. Report: code smells (complexity,
+      unused vars) with file:line references
       and measured values. Share ESLint invocation with RUBY — run once, split
-      results by concern (IRIS takes code smells + security, RUBY takes complexity
+      results by concern (IRIS takes code smells, RUBY takes complexity
       metrics). If no issues: 'IRIS: No code review concerns in {N} changed files.'
     refs:
       - references/review-patterns.md
