@@ -44,6 +44,31 @@ tap_check() {
   fi
 }
 
+tap_file_contains_all() {
+  local description="$1"
+  local file="$2"
+  shift 2
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local missing=()
+  local pattern
+  for pattern in "$@"; do
+    if ! grep -Fq -- "$pattern" "$file" 2>/dev/null; then
+      missing+=("$pattern")
+    fi
+  done
+
+  if [ "${#missing[@]}" -eq 0 ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Missing marker(s): ${missing[*]}"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -198,6 +223,44 @@ fi
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 1A: SHARED APPLY / REV BOUNDARIES
+# ════════════════════════════════════════════════════════════════════
+
+section "SHARED APPLY / REV BOUNDARIES"
+
+CC_APPLY_WORKFLOW="$CC_KERNEL_DIR/workflows/apply-phase.md"
+PI_APPLY_WORKFLOW="$PI_KERNEL_DIR/workflows/apply-phase.md"
+
+if [ -f "$CC_APPLY_WORKFLOW" ] && [ -f "$PI_APPLY_WORKFLOW" ] \
+  && grep -Fq 'subagent_type: "pals-implementer"' "$CC_APPLY_WORKFLOW" \
+  && grep -Fq 'subagent_type: "pals-implementer"' "$PI_APPLY_WORKFLOW" \
+  && grep -Fq '.pi/agents/pals-implementer.md' "$CC_APPLY_WORKFLOW" \
+  && grep -Fq '.pi/agents/pals-implementer.md' "$PI_APPLY_WORKFLOW" \
+  && grep -Fq 'lifecycle reminder' "$CC_APPLY_WORKFLOW" \
+  && grep -Fq 'lifecycle reminder' "$PI_APPLY_WORKFLOW" \
+  && grep -Fq 'parent owns verification, module gates, fallback, and state/report writes' "$CC_APPLY_WORKFLOW" \
+  && grep -Fq 'parent owns verification, module gates, fallback, and state/report writes' "$PI_APPLY_WORKFLOW"; then
+  tap_ok "Both installed shared apply workflows preserve delegated pals-implementer guardrails"
+else
+  tap_not_ok "Both installed shared apply workflows preserve delegated pals-implementer guardrails" "Expected pals-implementer agent-path and parent-authority markers in both installed apply-phase.md files"
+fi
+
+tap_file_contains_all \
+  "Shared review command keeps REV entry routed through /paul:review" \
+  "$REPO_ROOT/kernel/commands/paul/review.md" \
+  '/paul:review'
+
+if [ -f "$REPO_ROOT/kernel/workflows/unify-phase.md" ] \
+  && [ -f "$REPO_ROOT/drivers/pi/skills/paul-review/SKILL.md" ] \
+  && grep -Fq 'subagent_type: "code-reviewer"' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
+  && grep -Fq 'code-reviewer' "$REPO_ROOT/drivers/pi/skills/paul-review/SKILL.md" \
+  && grep -Fq 'On-demand only' "$REPO_ROOT/drivers/pi/skills/paul-review/SKILL.md"; then
+  tap_ok "Shared workflow and Pi review skill keep REV separate from delegated APPLY"
+else
+  tap_not_ok "Shared workflow and Pi review skill keep REV separate from delegated APPLY" "Expected code-reviewer and on-demand review markers in shared review surfaces"
+fi
+
+# ════════════════════════════════════════════════════════════════════
 # CATEGORY 1B: DURABLE MODULE EVIDENCE PATH
 # ════════════════════════════════════════════════════════════════════
 
@@ -223,10 +286,10 @@ else
 fi
 
 if grep -q 'module_report' "$REPO_ROOT/modules/walt/workflows/apply-phase-quality.md" \
-  && grep -q 'durable post-unify report' "$REPO_ROOT/modules/ruby/module.yaml"; then
+  && grep -q 'post-unify:' "$REPO_ROOT/modules/ruby/module.yaml" && grep -q 'json {changed_files}' "$REPO_ROOT/modules/ruby/module.yaml"; then
   tap_ok "Post-unify module overlays align with the durable reporting model"
 else
-  tap_not_ok "Post-unify module overlays align with the durable reporting model" "Expected durable post-unify reporting markers in WALT workflow and RUBY manifest"
+  tap_not_ok "Post-unify module overlays align with the durable reporting model" "Expected WALT module_report markers plus RUBY post-unify changed_files analysis markers"
 fi
 
 # ════════════════════════════════════════════════════════════════════

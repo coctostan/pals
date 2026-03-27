@@ -28,15 +28,15 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.34 Pi Subagent Integration & PALS Implementer**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete (Phase 157 ready to plan)
+Status: ✅ Complete
+Phases: 4 of 4 complete — 2026-03-27
 Theme: Make PALS use the `pi-subagents` extension deliberately and correctly by auditing current behavior and introducing a PALS-native implementer that preserves normal PALS execution semantics with fresh-context advantages.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 154 | Pi Subagent Audit | 1 | ✅ Complete | 2026-03-27 |
 | 155 | PALS Implementer Design | 1 | ✅ Complete | 2026-03-27 |
 | 156 | PALS Implementer Integration | 1 completed (156-01) | ✅ Complete | 2026-03-27 |
-| 157 | Validation & Polish | TBD | Not started | - |
+| 157 | Validation & Polish | 1 completed (157-01) | ✅ Complete | 2026-03-27 |
 
 ### Phase 154: Pi Subagent Audit
 Focus: Audit live `pi-subagents` usage, inventory agent prompts/tools/models/extensions, trace actual routing, and confirm whether modules are injected into subagents today.
@@ -53,7 +53,8 @@ Plans: 1 completed (156-01)
 Result: The repo now ships a bounded `pals-implementer`, parent-controlled APPLY delegation/fallback, minimal Pi guidance/config, and installer-backed global agent installation for cross-repo use.
 ### Phase 157: Validation & Polish
 Focus: Validate real PALS flows, confirm TODD/WALT behavior and full tooling access, preserve REV, and document the final operating model.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 completed (157-01)
+Result: Durable Pi-side proof now covers `pals-implementer` installation, delegated APPLY / REV separation, and the final three-surface operating-model docs for v2.34.
 ## Completed Milestones
 <details>
 <summary>v2.33 Code Review Module (REV) - 2026-03-27 (3 phases)</summary>
@@ -617,4 +618,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-27 — v2.33 milestone completed*
+*Last updated: 2026-03-27 — Phase 157 complete; milestone v2.34 complete*

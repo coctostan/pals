@@ -2,6 +2,15 @@
 
 All notable changes to PALS are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.34.0] — 2026-03-27 — Validation & Polish
+
+### Added
+- Automated proof coverage for the Phase 157 validation/polish pass
+- Pi install visibility for project-shipped agents at `~/.pi/agent/agents/`, including `pals-implementer`
+
+### Changed
+- Final operating-model documentation across README and Pi driver docs: three Pi install surfaces, parent-authoritative delegated APPLY, and `/paul:review` as a separate on-demand `code-reviewer` path
+
 ## [2.30.0] — 2026-03-26 — Pi Guided Workflow UX & Documentation
 
 ### Added

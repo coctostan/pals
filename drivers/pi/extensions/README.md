@@ -14,14 +14,19 @@ Pi discovers extensions automatically on next session start.
 
 ## Command Model
 
-Pi exposes two aligned PALS entry surfaces:
+Pi installs three distinct PALS runtime surfaces:
 
-- `/paul-*` — the ergonomic Pi command layer for everyday discovery and routing
-- `/skill:paul-*` — the canonical Pi skill layer that owns the underlying workflow entry point
+- `~/.pi/agent/skills/pals/` — shared kernel files plus canonical `/skill:paul-*` entry points
+- `~/.pi/agent/extensions/pals-hooks.ts` — the Pi-native `/paul-*` command layer, lifecycle hooks, and guided workflow UX
+- `~/.pi/agent/agents/` — project-shipped helper agents such as `pals-implementer`
+
+Only the first two are direct lifecycle entry surfaces. Project-shipped agents are helper definitions that parent-controlled workflows may invoke when a bounded task needs isolated implementation work.
 
 Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
 
 Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time.
+
+Delegated APPLY stays bounded. If `/skill:paul-apply` uses `pals-implementer`, the parent workflow still owns verification, checkpoints, module gates, fallback judgment, and `.paul/*` artifacts. Pi surfaces the helper, but Pi does not become lifecycle truth.
 
 ## Collaboration-Aware Planning
 
@@ -137,20 +142,20 @@ The extension registers these slash commands:
 
 - Pi coding agent with extension support
 - PALS skills installed at `~/.pi/agent/skills/pals/` (see `skill-map.md`)
+- Project-shipped Pi agents installed at `~/.pi/agent/agents/` when bounded delegated APPLY is enabled
 - Enabled module overlays installed into the same tree with `modules.yaml` describing which lifecycle hook semantics are available
 
 ## Installation Boundaries
 
-`install.sh` deploys PALS artifacts to two distinct Pi locations:
-
+`install.sh` deploys PALS artifacts to three distinct Pi locations:
 | Artifact | Install Target | Purpose |
 |----------|---------------|---------|
 | Kernel files (`workflows/`, `references/`, `templates/`, `rules/`) | `~/.pi/agent/skills/pals/` | Shared markdown workflows referenced by skills and the extension |
 | Skill entry points (11 `SKILL.md` files) | `~/.pi/agent/skills/pals/{skill-name}/SKILL.md` | Pi skill invocation layer for `/skill:paul-*` |
 | Pi extension | `~/.pi/agent/extensions/pals-hooks.ts` | Command registration, lifecycle hooks, guided workflow UX |
+| Project-shipped agents | `~/.pi/agent/agents/{agent-name}.md` | Helper agents such as `pals-implementer` for parent-authoritative, task-bounded delegation |
 | Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
-
-These are distinct install targets. The extension goes to `~/.pi/agent/extensions/`, skills and kernel files go to `~/.pi/agent/skills/pals/`. Uninstalling the extension alone does not remove skills or kernel files; `uninstall.sh` handles the full cleanup of all targets.
+These are distinct install targets. Skills and kernel files live under `~/.pi/agent/skills/pals/`, the extension lives under `~/.pi/agent/extensions/`, and project-shipped agents live under `~/.pi/agent/agents/`. Removing one surface does not transfer lifecycle ownership to Pi or remove the others; `uninstall.sh` handles the full cleanup of all targets.
 
 ## Development Workflow
 
