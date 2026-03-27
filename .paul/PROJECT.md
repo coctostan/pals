@@ -40,6 +40,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Harness-Agnostic Skills — all kernel + module files use portable kernel/ references, zero @~/.pals/ or @.paul/ patterns (Phase 46)
 - [x] Pi Adapter — driver manifest, installer, uninstaller; multi-driver root installer installs for all detected harnesses (Phase 47)
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
+- [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 
 ### Must Have
 All validated — see below.
@@ -285,6 +286,7 @@ All validated — see below.
 | `modules.rev.model` is nullable and falls back to agent/session defaults | 151 | Preserves flexible model control without forcing a PALS-only override |
 | `modules.rev.pr_review` defaults to false | 151 | Merge-gate review remains opt-in and adds zero default overhead |
 | Design a parent-controlled PALS-native implementer contract instead of adopting the generic runtime `implementer` | 154 | Audit showed current runtime agents are useful primitives but not authoritative APPLY semantics |
+| Install project-shipped Pi agents globally during Pi driver install instead of relying on repo-local discovery alone | 156 | Ensures `pals-implementer` works in repos that use installed PALS without requiring extra agent-scope setup |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -303,4 +305,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-27 after Phase 154 Pi Subagent Audit*
+*Last updated: 2026-03-27 after Phase 156 PALS Implementer Integration*

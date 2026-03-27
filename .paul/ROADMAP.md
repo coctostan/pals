@@ -29,14 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.34 Pi Subagent Integration & PALS Implementer**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete (Phase 156 planning)
-
+Phases: 3 of 4 complete (Phase 157 ready to plan)
 Theme: Make PALS use the `pi-subagents` extension deliberately and correctly by auditing current behavior and introducing a PALS-native implementer that preserves normal PALS execution semantics with fresh-context advantages.
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 154 | Pi Subagent Audit | 1 | ✅ Complete | 2026-03-27 |
 | 155 | PALS Implementer Design | 1 | ✅ Complete | 2026-03-27 |
-| 156 | PALS Implementer Integration | 1 planned (156-01) | Planning | - |
+| 156 | PALS Implementer Integration | 1 completed (156-01) | ✅ Complete | 2026-03-27 |
 | 157 | Validation & Polish | TBD | Not started | - |
 
 ### Phase 154: Pi Subagent Audit
@@ -50,7 +49,8 @@ Plans: 1 completed (155-01)
 Result: The design is settled around a repo-local `pals-implementer`, parent-controlled task delegation, parent-owned verification/module enforcement, and inline APPLY fallback.
 ### Phase 156: PALS Implementer Integration
 Focus: Add the PALS-specific implementer, wire deliberate routing to it, and disable or avoid unintended dependence on generic `worker` / `implementer` usage.
-Plans: 1 created (156-01)
+Plans: 1 completed (156-01)
+Result: The repo now ships a bounded `pals-implementer`, parent-controlled APPLY delegation/fallback, minimal Pi guidance/config, and installer-backed global agent installation for cross-repo use.
 ### Phase 157: Validation & Polish
 Focus: Validate real PALS flows, confirm TODD/WALT behavior and full tooling access, preserve REV, and document the final operating model.
 Plans: TBD (defined during /paul:plan)
