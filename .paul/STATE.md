@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.33 Code Review Module (REV)
 ## Current Position
 Milestone: v2.33 Code Review Module (REV)
-Phase: 152 of 3 (Core Implementation) — Planning
-Plan: 152-02 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-27 — Created 152-02-PLAN.md
+Phase: 152 of 3 (Core Implementation) — Complete
+Plan: 152-02 complete (UNIFY done)
+Status: Phase 152 complete, ready for transition
+Last activity: 2026-03-27 — UNIFY 152-02 complete
 Progress:
-- v2.33 Code Review Module (REV): [███░░░░░░░] 33%
-- Phase 152: [█████░░░░░] 50%
+- v2.33 Code Review Module (REV): [██████░░░░] 66%
+- Phase 152: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — phase complete]
 ```
 
 ## Accumulated Context
@@ -132,14 +132,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: ec240ef feat(152): REV module — module structure, IRIS fix, init wiring (#59)
-PR: https://github.com/coctostan/pals/pull/59 (state: MERGED)
+Branch: feature/152-core-implementation
+Last commit: 64cda10 feat(152): /paul:review skill, merge gate review step, Pi extension command
+PR: https://github.com/coctostan/pals/pull/60 (state: OPEN)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: Plan 152-02 created
-Next action: /paul:apply for Plan 152-02
-Resume file: .paul/phases/152-core-implementation/152-02-PLAN.md
+Stopped at: UNIFY 152-02 complete, phase 152 complete
+Next action: Transition to Phase 153 (Validation & Polish)
+Resume file: .paul/phases/152-core-implementation/152-02-SUMMARY.md
 Resume context:
-- Plan 152-02 creates /paul:review skill, adds merge gate review step, updates Pi extension
-- Design reference at .paul/phases/151-research-and-design/rev-design.md
+- Phase 152 complete — both plans done (module structure + skill/gate/extension)
+- PR #60 open on feature/152-core-implementation, needs merge before Phase 153
