@@ -132,14 +132,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/153-validation-and-polish
-Last commit: a67d83c feat(153): REV validation — config, live test, polish from reviewer findings
-PR: https://github.com/coctostan/pals/pull/61 (state: OPEN)
+Branch: main
+Last commit: e744a73 feat(153): REV validation — config, live test, polish (#61)
+PR: https://github.com/coctostan/pals/pull/61 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: UNIFY 153-01 complete, milestone v2.33 complete
-Next action: Merge PR #61, then /paul:milestone to complete v2.33
+Stopped at: Milestone v2.33 complete
+Next action: /paul:milestone to close v2.33 or start next milestone
 Resume file: .paul/phases/153-validation-and-polish/153-01-SUMMARY.md
 Resume context:
-- Milestone v2.33 complete — all 3 phases done (design, implementation, validation)
-- REV module fully validated with live review test
+- Milestone v2.33 Code Review Module (REV) — complete (3/3 phases, 4 plans, 3 PRs merged)
+- REV delivers: module + skill + merge gate + extension, validated with live review test
