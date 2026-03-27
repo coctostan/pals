@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.33 Code Review Module (REV)
 ## Current Position
 Milestone: v2.33 Code Review Module (REV)
-Phase: 152 of 3 (Core Implementation) — Executing
-Plan: 152-01 complete (UNIFY done)
-Status: Loop complete, ready for next PLAN (152-02)
-Last activity: 2026-03-27 — UNIFY 152-01 complete
+Phase: 152 of 3 (Core Implementation) — Planning
+Plan: 152-02 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-27 — Created 152-02-PLAN.md
 Progress:
 - v2.33 Code Review Module (REV): [███░░░░░░░] 33%
 - Phase 152: [█████░░░░░] 50%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -137,10 +137,9 @@ Last commit: ec240ef feat(152): REV module — module structure, IRIS fix, init 
 PR: https://github.com/coctostan/pals/pull/59 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: UNIFY 152-01 complete
-Next action: /paul:plan for Plan 152-02 (skill + merge gate + extension)
-Resume file: .paul/phases/152-core-implementation/152-01-SUMMARY.md
+Stopped at: Plan 152-02 created
+Next action: /paul:apply for Plan 152-02
+Resume file: .paul/phases/152-core-implementation/152-02-PLAN.md
 Resume context:
-- Plan 152-01 complete — REV module structure, IRIS fix, init wiring all done
-- PR #59 open on feature/152-core-implementation (will accumulate 152-02 work)
-- Plan 152-02 wires /paul:review skill + merge gate review step + Pi extension
+- Plan 152-02 creates /paul:review skill, adds merge gate review step, updates Pi extension
+- Design reference at .paul/phases/151-research-and-design/rev-design.md

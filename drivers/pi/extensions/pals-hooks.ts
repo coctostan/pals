@@ -205,7 +205,7 @@ function detectCommandSignal(value?: string): string | undefined {
   const compact = compactWhitespace(value);
   if (!compact) return undefined;
 
-  const match = compact.match(/\/(?:skill:)?(paul-(?:init|plan|apply|unify|resume|status|fix|pause|milestone|discuss|help))(?:\s+(.+))?/i);
+  const match = compact.match(/\/(?:skill:)?(paul-(?:init|plan|apply|unify|resume|status|fix|pause|milestone|discuss|help|review))(?:\s+(.+))?/i);
   if (!match) return undefined;
 
   const command = `/${match[1].toLowerCase()}`;
@@ -1040,6 +1040,12 @@ const COMMANDS: CommandDef[] = [
     description: "Show Pi command and skill guidance for PALS",
     skill: "paul-help",
     guidance: "Pi convenience wrapper → canonical /skill:paul-help",
+  },
+  {
+    name: "paul-review",
+    description: "Run thorough code review via REV subagent",
+    skill: "paul-review",
+    guidance: "Pi convenience wrapper → canonical /skill:paul-review",
   },
 ];
 

@@ -401,9 +401,58 @@ Display gate status:
 ```
 </step>
 
-<step name="merge_gate_merge" priority="after-merge-gate-pr">
+<step name="merge_gate_review" priority="after-merge-gate-pr" condition="rev_pr_review_enabled">
+⚠️ **CONDITIONAL: Only runs if REV module pr_review is enabled.**
+**Merge Gate Step 3 of 5: Code review via REV subagent.**
+
+1. Read REV config:
+   ```bash
+   REV_ENABLED=$(jq -r '.modules.rev.enabled // false' pals.json 2>/dev/null)
+   REV_PR_REVIEW=$(jq -r '.modules.rev.pr_review // false' pals.json 2>/dev/null)
+   REV_BLOCK_ON_CRITICAL=$(jq -r '.modules.rev.pr_review_block_on_critical // true' pals.json 2>/dev/null)
+   REV_MODEL=$(jq -r '.modules.rev.model // empty' pals.json 2>/dev/null)
+   ```
+
+2. **If REV_ENABLED != true OR REV_PR_REVIEW != true:** Skip silently. Display: "3. Code review: skipped". Proceed to merge_gate_merge.
+
+3. **If enabled:** Assemble full-branch diff review:
+   a. Run `git diff ${GIT_BASE_BRANCH}...HEAD` to get full branch diff
+   b. Read each changed file in full
+   c. Read `AGENTS.md` if exists
+   d. Read installed `modules/rev/references/review-prompt.md` for the prompt template
+   e. Substitute placeholders and dispatch:
+      ```
+      Agent({
+        subagent_type: "code-reviewer",
+        prompt: assembled_review_prompt,
+        description: "Code review: PR merge gate",
+        run_in_background: false,
+        model: REV_MODEL || undefined
+      })
+      ```
+
+4. **Parse verdict from reviewer output:**
+   - **NOT READY (Critical findings)** AND `REV_BLOCK_ON_CRITICAL = true`:
+     ```
+     ⛔ MERGE GATE: Code review found Critical issues.
+     {list critical findings}
+     Fix before merging.
+     ```
+     BLOCK — do not proceed to merge.
+   - **READY WITH CONCERNS (Important/Minor only):** Display findings as advisory, proceed.
+     Display: "3. Code review: ⚠️ CONCERNS"
+   - **READY:** Display: "3. Code review: ✓ READY"
+
+5. **If Agent tool not available:** Warn and skip:
+   ```
+   ⚠️ REV pr_review enabled but pi-subagents not available. Skipping code review.
+   ```
+   Display: "3. Code review: skipped (no pi-subagents)"
+</step>
+
+<step name="merge_gate_merge" priority="after-merge-gate-review">
 ⚠️ **MANDATORY if merge_gate_pr passed.**
-**Merge Gate Step 3 of 4: Merge PR and sync local base branch.**
+**Merge Gate Step 4 of 5: Merge PR and sync local base branch.**
    **Gate 4 — PR merged:**
 MUST run:
 ```bash
@@ -430,7 +479,7 @@ Display: `Synced local ${GIT_BASE_BRANCH} with remote`
 </step>
 
 <step name="merge_gate_cleanup" priority="after-merge-gate-merge">
-**Merge Gate Step 4 of 4: Branch cleanup and state update.**
+**Merge Gate Step 5 of 5: Branch cleanup and state update.**
    **Gate 6 — Feature branch cleanup (if delete_branch_on_merge=true):**
 MUST run:
 ```bash
@@ -444,10 +493,11 @@ MERGE GATE STATUS
 ────────────────────────────────────────
 1. PR exists:     ✓
 2. CI passing:    ✓ / skipped
-3. Reviews:       ✓ / skipped
-4. PR merged:     ✓
-5. Base synced:   ✓
-   6. Branch clean:  ✓
+3. Code review:   ✓ READY / ⚠️ CONCERNS / ⛔ BLOCKED / skipped
+4. Reviews:       ✓ / skipped
+5. PR merged:     ✓
+6. Base synced:   ✓
+7. Branch clean:  ✓
 ────────────────────────────────────────
 ```
 
