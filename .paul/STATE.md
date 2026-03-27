@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-25)
 **Current focus:** v2.33 Code Review Module (REV)
 ## Current Position
 Milestone: v2.33 Code Review Module (REV)
-Phase: 152 of 3 (Core Implementation) — Planning
-Plan: 152-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-27 — Created 152-01-PLAN.md
+Phase: 152 of 3 (Core Implementation) — Executing
+Plan: 152-01 complete (UNIFY done)
+Status: Loop complete, ready for next PLAN (152-02)
+Last activity: 2026-03-27 — UNIFY 152-01 complete
 Progress:
 - v2.33 Code Review Module (REV): [███░░░░░░░] 33%
-- Phase 152: [░░░░░░░░░░] 0%
+- Phase 152: [█████░░░░░] 50%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -132,15 +132,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: b56354b feat(151): REV module design — review prompt, dispatch, UX (#58)
-PR: https://github.com/coctostan/pals/pull/58 (state: MERGED)
+Branch: feature/152-core-implementation
+Last commit: ceb8e73 feat(152): REV module, IRIS any fix, init wiring
+PR: https://github.com/coctostan/pals/pull/59 (state: OPEN)
 ## Session Continuity
 Last session: 2026-03-27
-Stopped at: Plan 152-01 approved, ready for APPLY
-Next action: /paul:apply for Plan 152-01
-Resume file: .paul/HANDOFF-2026-03-27.md
+Stopped at: UNIFY 152-01 complete
+Next action: /paul:plan for Plan 152-02 (skill + merge gate + extension)
+Resume file: .paul/phases/152-core-implementation/152-01-SUMMARY.md
 Resume context:
-- Plan 152-01 creates REV module (modules/rev/), fixes IRIS any bug, adds REV to init
-- Design doc at .paul/phases/151-research-and-design/rev-design.md is the implementation reference
-- Plan 152-02 (not yet written) wires /paul:review skill + merge gate + extension
+- Plan 152-01 complete — REV module structure, IRIS fix, init wiring all done
+- PR #59 open on feature/152-core-implementation (will accumulate 152-02 work)
+- Plan 152-02 wires /paul:review skill + merge gate review step + Pi extension
