@@ -284,6 +284,7 @@ All validated — see below.
 | REV runs in foreground and blocks until review completes | 151 | On-demand review and merge-gate review both need the result before the workflow can proceed |
 | `modules.rev.model` is nullable and falls back to agent/session defaults | 151 | Preserves flexible model control without forcing a PALS-only override |
 | `modules.rev.pr_review` defaults to false | 151 | Merge-gate review remains opt-in and adds zero default overhead |
+| Design a parent-controlled PALS-native implementer contract instead of adopting the generic runtime `implementer` | 154 | Audit showed current runtime agents are useful primitives but not authoritative APPLY semantics |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -302,4 +303,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-27 after v2.33 Code Review Module (REV)*
+*Last updated: 2026-03-27 after Phase 154 Pi Subagent Audit*
