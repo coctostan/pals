@@ -132,9 +132,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/150-agents-md-integration
-Last commit: 194b032 feat(150): AGENTS.md integration
-PR: https://github.com/coctostan/pals/pull/57 (state: OPEN)
+Branch: main
+Last commit: bec7a33 feat(150): AGENTS.md integration — lean template, init generation, transition staleness (#57)
+PR: https://github.com/coctostan/pals/pull/57 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-26
 Stopped at: Milestone v2.32 complete
