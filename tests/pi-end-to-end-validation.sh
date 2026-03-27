@@ -43,6 +43,31 @@ tap_check() {
   fi
 }
 
+tap_file_contains_all() {
+  local description="$1"
+  local file="$2"
+  shift 2
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local missing=()
+  local pattern
+  for pattern in "$@"; do
+    if ! grep -Fq -- "$pattern" "$file" 2>/dev/null; then
+      missing+=("$pattern")
+    fi
+  done
+
+  if [ "${#missing[@]}" -eq 0 ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Missing marker(s): ${missing[*]}"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -191,6 +216,30 @@ else
   tap_not_ok "Extension installed" "pals-hooks.ts not found in extensions dir"
 fi
 
+AGENT_DIR="$TEMP_HOME/.pi/agent/agents"
+IMPLEMENTER_AGENT="$AGENT_DIR/pals-implementer.md"
+
+tap_file_contains_all \
+  "Pi installer source copies repo-local agents into ~/.pi/agent/agents/" \
+  "$REPO_ROOT/drivers/pi/install.sh" \
+  'PI_AGENTS_DIR="$PALS_ROOT/.pi/agents"' \
+  'AGENT_DIR="$HOME/.pi/agent/agents"' \
+  'cp "$agent_path" "$AGENT_DIR/$(basename "$agent_path")"'
+
+if [ -f "$IMPLEMENTER_AGENT" ]; then
+  tap_ok "Pi installer installs ~/.pi/agent/agents/pals-implementer.md"
+else
+  tap_not_ok "Pi installer installs ~/.pi/agent/agents/pals-implementer.md" "File not found"
+fi
+
+tap_file_contains_all \
+  "Installed pals-implementer agent preserves bounded parent-authority contract markers" \
+  "$IMPLEMENTER_AGENT" \
+  'Your parent APPLY workflow is authoritative' \
+  'Treat the parent prompt as authoritative' \
+  'Do not edit `.paul/*` lifecycle files' \
+  'Return control to the parent immediately when:'
+
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2: SKILL STRUCTURAL VALIDITY
 # ════════════════════════════════════════════════════════════════════
@@ -234,6 +283,40 @@ for skill in "${EXPECTED_SKILLS[@]}"; do
     tap_not_ok "$skill: references workflow files" "No workflow reference found"
   fi
 done
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 2B: DELEGATED APPLY / REV BOUNDARIES
+# ════════════════════════════════════════════════════════════════════
+
+section "DELEGATED APPLY / REV BOUNDARIES"
+
+tap_file_contains_all \
+  "Installed Pi apply skill documents repo-local pals-implementer delegation under parent authority" \
+  "$SKILL_DIR/paul-apply/SKILL.md" \
+  'pals-implementer' \
+  'official verify steps' \
+  'module enforcement' \
+  '.paul/*'
+
+tap_file_contains_all \
+  "Installed shared apply workflow routes delegated APPLY through pals-implementer with parent-owned guardrails" \
+  "$SKILL_DIR/workflows/apply-phase.md" \
+  'subagent_type: "pals-implementer"' \
+  '.pi/agents/pals-implementer.md' \
+  'lifecycle reminder' \
+  'parent owns verification, module gates, fallback, and state/report writes'
+
+tap_file_contains_all \
+  "Shared review command keeps REV entry routed through /paul:review" \
+  "$REPO_ROOT/kernel/commands/paul/review.md" \
+  '/paul:review'
+
+tap_file_contains_all \
+  "Installed Pi review skill keeps REV on the code-reviewer, on-demand path" \
+  "$SKILL_DIR/paul-review/SKILL.md" \
+  'code-reviewer' \
+  'On-demand only' \
+  'NOT a lifecycle hook'
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: EXTENSION STRUCTURAL VALIDITY

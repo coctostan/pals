@@ -21,8 +21,10 @@ Start a new Claude Code or Pi session, then in any project:
 /paul:unify       # Reconcile results and close the loop
 ```
 
-In Claude Code, those commands are installed as slash commands. In Pi, the extension exposes `/paul-*` convenience wrappers that route to canonical `/skill:paul-*` entries while keeping shared markdown workflows and `.paul/*` as the only lifecycle truth.
+In Claude Code, those commands are installed as slash commands. In Pi, the runtime is split across three shipped surfaces: the shared kernel and canonical skills under `~/.pi/agent/skills/pals/`, the Pi extension at `~/.pi/agent/extensions/pals-hooks.ts`, and project-shipped agents under `~/.pi/agent/agents/`.
+Driver surfaces: Claude Code · Pi · Agent SDK. Pi driver installs canonical skills plus an extension-backed command/hook layer.
 
+That split keeps the operating model explicit. `/paul-*` remains the Pi-native command layer, `/skill:paul-*` remains the canonical workflow entry layer, and shared markdown workflows plus `.paul/*` remain the only lifecycle truth. Pi can expose bounded helper surfaces such as the repo-local `pals-implementer`, but it does not become the owner of PLAN/APPLY/UNIFY state.
 That's the core loop. PALS tracks state, enforces quality, and manages context across sessions — you focus on the work.
 
 ## Architecture
@@ -125,7 +127,7 @@ All modules are enabled by default and dispatch automatically via lifecycle hook
 | `/paul:coverage` | TODD | Test coverage analysis dashboard |
 | `/paul:quality` | WALT | Quality trend dashboard with streak/regression detection |
 | `/paul:deps` | DEAN | Dependency health audit across 10 ecosystems |
-| `/paul:review` | IRIS | Structured code review with pattern matching |
+| `/paul:review` | IRIS | On-demand review path that dispatches a separate `code-reviewer`; not part of delegated APPLY or lifecycle state ownership |
 | `/paul:knowledge` | SKIP | Capture and search project knowledge |
 | `/paul:deploy` | DAVE | CI/CD pipeline audit, generation, and verification |
 | `/paul:refactor` | RUBY | Tech debt scanning and refactoring suggestions |
@@ -212,6 +214,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 3. **UNIFY** — Reconcile what was planned vs what was built. Record deviations, update state, close the loop. Modules contribute via `post-unify` hooks.
 
+### Delegated APPLY Operating Model
+
+Parent APPLY remains authoritative even when an eligible auto task is delegated. The parent workflow still owns approval, official verify steps, module dispatch and gates, fallback judgment, and all `.paul/*` lifecycle writes.
+
+For clear repo-local tasks only, the parent may delegate bounded implementation work to the repo-shipped `pals-implementer`. In Pi, `install.sh` makes that agent visible at `~/.pi/agent/agents/pals-implementer.md` so parent-controlled APPLY can invoke it without moving lifecycle ownership into the adapter.
+
+This is distinct from review. `/paul:review` remains a separate on-demand path that dispatches `code-reviewer` for isolated review work; it does not replace APPLY verification and it does not become lifecycle truth.
+
 ### Lifecycle Hooks
 
 | Hook Point | When It Fires | Example Modules |
@@ -238,7 +248,9 @@ cd pals
 The installer:
 - Detects available harnesses (Claude Code, Pi) and installs matching driver surfaces
 - **Claude Code:** Wires slash commands into `~/.claude/`
-- **Pi:** Installs skills to `~/.pi/agent/skills/pals/` and extension to `~/.pi/agent/extensions/`
+- **Pi skill/kernel surface:** Installs shared workflows, references, templates, rules, and canonical skills to `~/.pi/agent/skills/pals/`
+- **Pi extension surface:** Installs `pals-hooks.ts` to `~/.pi/agent/extensions/`
+- **Pi project-agent surface:** Installs project-shipped agent definitions, including `pals-implementer`, to `~/.pi/agent/agents/`
 - Generates `modules.yaml` registry for all 18 modules
 - Reads `pals.json` to determine which modules to install
 - Detects and cleans up legacy installations if present

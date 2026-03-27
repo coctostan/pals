@@ -136,6 +136,7 @@ All validated — see below.
 - [x] DEAN Baseline Management — baseline-aware override (delta comparison, staleness guard, .paul/dean-baseline.json), closes all 13 v2.25 actionable items (Phase 138, v2.28)
 - ✓ REV code review module — on-demand module manifest, review prompt/checklist refs, nullable model override, and graceful degraded fallback shipped across Phases 151-153 (v2.33)
 - ✓ Review workflow integration — `/paul:review` skill, Pi command registration, opt-in merge-gate review step, live review validation, and polish fixes shipped in v2.33
+- ✓ PALS-native implementer validation & operating-model docs — automated proof, temp-HOME install validation, and explicit Pi three-surface documentation shipped in Phase 157 (v2.34)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -305,4 +306,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-27 after Phase 156 PALS Implementer Integration*
+*Last updated: 2026-03-27 after Phase 157 Validation & Polish*

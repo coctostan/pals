@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 157 of 157 (Validation & Polish) — Planning
-Plan: 157-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-27T19:35:00Z — Created .paul/phases/157-validation-and-polish/157-01-PLAN.md
+Phase: 157 of 157 (Validation & Polish) — Complete
+Plan: 157-01 complete
+Status: UNIFY complete, milestone complete pending merge gate
+Last activity: 2026-03-27T20:41:25Z — Created .paul/phases/157-validation-and-polish/157-01-SUMMARY.md and closed the Phase 157 loop
 Progress:
-- v2.34 Pi Subagent Integration & PALS Implementer: [█████████░] 95%
-- Phase 157 Validation & Polish: [░░░░░░░░░░] 0%
+- v2.34 Pi Subagent Integration & PALS Implementer: [██████████] 100%
+- Phase 157 Validation & Polish: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — milestone complete pending merge gate]
 ```
 
 ## Accumulated Context
@@ -107,6 +107,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-27: Use a dedicated repo-local `pals-implementer` agent with parent-controlled task delegation, not the generic runtime `implementer` | 155 | Gives Phase 156 a concrete repo-owned dispatch target while preserving `.paul/*` authority |
 | 2026-03-27: Keep module enforcement, verification authority, and inline APPLY fallback in the parent workflow | 155 | Prevents subagent execution from becoming hidden lifecycle truth and defines the Phase 157 validation target |
 | 2026-03-27: Install project-shipped Pi agents via `drivers/pi/install.sh` instead of relying on repo-local discovery alone | 156 | Makes `pals-implementer` available after install across repos, not just inside the PALS repo |
+| 2026-03-27: Validate the implementer path with explicit Pi install-surface docs and text-based boundary assertions | 157 | Turns the delegated APPLY contract into durable automated proof without moving lifecycle truth into Pi |
 | GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 ### Fixes
 | Fix | Phase | Impact |
@@ -142,11 +143,11 @@ Branch: main
 Last commit: Phase 156 unify and transition artifacts reconciled after implementer integration
 PR: https://github.com/coctostan/pals/pull/65 (state: MERGED)
 ## Session Continuity
-Last session: 2026-03-27T20:13:00Z
-Stopped at: Phase 157 plan created, awaiting approval before APPLY
-Next action: Review and approve plan, then run /paul:apply .paul/phases/157-validation-and-polish/157-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-27-phase157-plan-ready.md
+Last session: 2026-03-27T20:41:25Z
+Stopped at: Phase 157 unified; merge gate and milestone closeout pending
+Next action: Complete GitHub Flow merge gate for feature/157-validation-and-polish, then start the next milestone
+Resume file: .paul/phases/157-validation-and-polish/157-01-SUMMARY.md
 Resume context:
-- Phase 157 has a single executable plan focused on delegated APPLY proof, Pi docs, and live validation
-- No APPLY work has started yet; the working tree contains only planning/lifecycle artifacts plus the new handoff
-- REV must remain separate from delegated APPLY while Phase 157 validates the repo-local `pals-implementer` path
+- Phase 157 loop is complete with a SUMMARY documenting durable proof, Pi operating-model docs, and passing validation suites
+- Pi temp-HOME install now proves ~/.pi/agent/agents/pals-implementer.md is installed and delegated APPLY remains parent-authoritative
+- REV remains separate from delegated APPLY and stays tied to /paul:review + code-reviewer; merge gate is the remaining completion step
