@@ -475,6 +475,35 @@ State consistency: ✓
 **Only proceed to route_next after verification passes.**
 </step>
 
+<step name="check_agents_md_staleness" priority="after-state-consistency">
+**Advisory: Check if AGENTS.md is stale.**
+
+This check is non-blocking — it never halts transitions.
+
+1. Check if AGENTS.md exists in project root:
+   ```bash
+   ls AGENTS.md 2>/dev/null
+   ```
+   If not found: skip silently. Not all projects have AGENTS.md.
+
+2. If found, compare enabled module list:
+   - Extract module names from AGENTS.md (look for `**Active modules:**` line)
+   - Extract enabled module names from pals.json
+   - If lists differ (modules added, removed, or toggled):
+     ```
+     ────────────────────────────────────────
+     ⚠️  AGENTS.md may be stale.
+     Module list has changed since AGENTS.md was generated.
+     Regenerate PALS Workflow section? [y/N]
+     ────────────────────────────────────────
+     ```
+   - If user says yes: regenerate only the PALS Workflow section (preserve Boundaries and Project Conventions)
+   - If user says no or presses Enter: skip, no state changes
+   - If lists match: skip silently
+
+3. **Never block.** This is advisory. Default is [N] (skip).
+</step>
+
 <step name="route_next">
 **Check if milestone complete:**
 

@@ -1219,6 +1219,7 @@ export default function palsHooks(pi: any): void {
     const state = parsePalsState(cwd);
     const recentAssistantTexts = collectRecentAssistantTexts(ctx, event);
     const guidedMoment = detectGuidedWorkflowMoment(state, recentAssistantTexts);
+    if (!guidedMoment) {
       lastGuidedWorkflowSignature = undefined;
       return;
     }
