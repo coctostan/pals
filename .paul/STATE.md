@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-03-27)
 **Current focus:** v2.34 Pi Subagent Integration & PALS Implementer
 ## Current Position
 Milestone: v2.34 Pi Subagent Integration & PALS Implementer
-Phase: 155 of 157 (PALS Implementer Design) — Applying
-Plan: 155-01 executed, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-27T18:40:00Z — Completed Phase 155 APPLY and authored the three design artifacts
+Phase: 155 of 157 (PALS Implementer Design) — Complete
+Plan: 155-01 complete
+Status: UNIFY complete — merge gate / transition in progress
+Last activity: 2026-03-27T18:55:00Z — Created .paul/phases/155-pals-implementer-design/155-01-SUMMARY.md and closed the Phase 155 loop
 Progress:
-- v2.34 Pi Subagent Integration & PALS Implementer: [█████░░░░░] 50%
-- Phase 155 PALS Implementer Design: [███████░░░] 75%
+- v2.34 Pi Subagent Integration & PALS Implementer: [███████░░░] 75%
+- Phase 155 PALS Implementer Design: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Execution complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - merge gate / transition pending]
 ```
 
 ## Accumulated Context
@@ -104,6 +104,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Two-tier gh validation: CLI presence + auth status | 89 | Clear messaging for each failure mode |
 | Status and resume share identical git-aware routing table | 90 | Consistent next-action guidance regardless of entry point |
 | 2026-03-27: Design Phase 155 around a parent-controlled PALS-native implementer contract, not the generic runtime `implementer` | 154 | Keeps inline APPLY as the reference model and prevents runtime-global agent behavior from becoming lifecycle truth |
+| 2026-03-27: Use a dedicated repo-local `pals-implementer` agent with parent-controlled task delegation, not the generic runtime `implementer` | 155 | Gives Phase 156 a concrete repo-owned dispatch target while preserving `.paul/*` authority |
+| 2026-03-27: Keep module enforcement, verification authority, and inline APPLY fallback in the parent workflow | 155 | Prevents subagent execution from becoming hidden lifecycle truth and defines the Phase 157 validation target |
 | GitHub Flow init template omits `branching` field | 90 | Unambiguous config semantics |
 ### Fixes
 | Fix | Phase | Impact |
@@ -137,11 +139,11 @@ Branch: feature/155-pals-implementer-design
 Last commit: 85c237d feat(155-pals-implementer-design): design PALS implementer contract
 PR: https://github.com/coctostan/pals/pull/63 (state: OPEN)
 ## Session Continuity
-Last session: 2026-03-27T18:40:00Z
-Stopped at: Phase 155 APPLY complete after authoring the implementer contract, prompt/module strategy, and integration handoff
-Next action: Run /paul:unify .paul/phases/155-pals-implementer-design/155-01-PLAN.md
-Resume file: .paul/phases/155-pals-implementer-design/155-01-PLAN.md
+Last session: 2026-03-27T18:55:00Z
+Stopped at: Phase 155 UNIFY complete; summary drafted and merge gate/phase transition remain
+Next action: Resolve merge gate for PR #63, then transition to Phase 156 planning
+Resume file: .paul/phases/155-pals-implementer-design/155-01-SUMMARY.md
 Resume context:
-- APPLY completed on feature/155-pals-implementer-design and produced the three Phase 155 design artifacts
-- The design is explicitly for `@tintinweb/pi-subagents`, repo-local `.pi/agents/*.md`, and parent dispatch via `Agent()`
-- Parent-owned lifecycle, verification, module orchestration, and inline APPLY fallback are now the settled design stance
+- Phase 155 produced the contract, prompt/module strategy, integration handoff, and SUMMARY artifacts
+- The loop is closed; PR #63 is open on feature/155-pals-implementer-design
+- Remaining work is merge-gate completion and mandatory transition into Phase 156
