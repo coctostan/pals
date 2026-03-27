@@ -132,9 +132,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/152-core-implementation
-Last commit: ceb8e73 feat(152): REV module, IRIS any fix, init wiring
-PR: https://github.com/coctostan/pals/pull/59 (state: OPEN)
+Branch: main
+Last commit: ec240ef feat(152): REV module — module structure, IRIS fix, init wiring (#59)
+PR: https://github.com/coctostan/pals/pull/59 (state: MERGED)
 ## Session Continuity
 Last session: 2026-03-27
 Stopped at: UNIFY 152-01 complete
