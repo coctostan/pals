@@ -27,12 +27,34 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.33 Code Review Module (REV)**
-Status: ✅ Complete
-Completed: 2026-03-27
+**v2.34 Pi Subagent Integration & PALS Implementer**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+Theme: Make PALS use the `pi-subagents` extension deliberately and correctly by auditing current behavior and introducing a PALS-native implementer that preserves normal PALS execution semantics with fresh-context advantages.
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 154 | Pi Subagent Audit | TBD | Planning | - |
+| 155 | PALS Implementer Design | TBD | Not started | - |
+| 156 | PALS Implementer Integration | TBD | Not started | - |
+| 157 | Validation & Polish | TBD | Not started | - |
+
+### Phase 154: Pi Subagent Audit
+Focus: Audit live `pi-subagents` usage, inventory agent prompts/tools/models/extensions, trace actual routing, and confirm whether modules are injected into subagents today.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 155: PALS Implementer Design
+Focus: Define the PALS-specific implementer contract, prompt/context assembly, module participation model, tooling expectations, and integration boundaries.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 156: PALS Implementer Integration
+Focus: Add the PALS-specific implementer, wire deliberate routing to it, and disable or avoid unintended dependence on generic `worker` / `implementer` usage.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 157: Validation & Polish
+Focus: Validate real PALS flows, confirm TODD/WALT behavior and full tooling access, preserve REV, and document the final operating model.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
 <details>
 <summary>v2.33 Code Review Module (REV) - 2026-03-27 (3 phases)</summary>
@@ -46,34 +68,6 @@ Theme: Build a subagent-powered code review module that leverages fresh context 
 | 153 | Validation & Polish | 1 | 2026-03-27 |
 
 </details>
-<details>
-<summary>v2.32 Module Health & AGENTS.md - 2026-03-26 (3 phases)</summary>
-
-Theme: Audit all 18 modules for context cost, overlap, and effectiveness, then integrate AGENTS.md into the PALS lifecycle.
-
-| Phase | Name | Plans | Completed |
-|-------|------|-------|-----------|
-| 148 | Module Health Audit | 1 | 2026-03-26 |
-| 149 | Module Audit Implementation | 1 | 2026-03-26 |
-| 150 | AGENTS.md Integration | 1 | 2026-03-26 |
-
-</details>
-### Phase 141: Guided Workflow Auto-Approve Control
-Focus: Add opt-in auto-approve setting (default: wait-for-user at checkpoints). Per-transition-type control so users retain decision authority at plan approval, UNIFY transitions, and phase boundaries.
-Plans: TBD (defined during /paul:plan)
-
-### Phase 142: Menu Parser Hardening
-Focus: Whitelist-based menu detection — only match `[N]` numeric or known PALS response patterns (yes/no/approved/pause). Reject code/documentation content like `[id]`.
-Plans: TBD (defined during /paul:plan)
-
-### Phase 143: Label Accuracy & Polish
-Focus: Fix init next-action prompt truncation ("▶ NEXT: /") and sync guided workflow menu labels with current loop state instead of cached previous state.
-Plans: TBD (defined during /paul:plan)
-
-### Phase 144: README & Documentation Update
-Focus: Full refresh of README.md and project documentation to reflect current state after 140+ phases of evolution.
-Plans: TBD (defined during /paul:plan)
-## Completed Milestones
 <details>
 <summary>v2.29 E2E Test Protocol - 2026-03-26 (2 phases)</summary>
 
