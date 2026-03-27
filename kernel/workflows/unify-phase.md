@@ -306,7 +306,7 @@ capture decisions, and analyze debt. Skipping them loses institutional knowledge
 </step>
 
 <step name="merge_gate_resolve" priority="after-summary">
-**Merge Gate Step 1 of 4: Resolve config and check if merge gate applies.**
+**Merge Gate Step 1 of 5: Resolve config and check if merge gate applies.**
 
 1. MUST resolve workflow mode:
    ```bash
@@ -347,8 +347,8 @@ capture decisions, and analyze debt. Skipping them loses institutional knowledge
 
 <step name="merge_gate_pr" priority="after-merge-gate-resolve">
 ⚠️ **MANDATORY if merge_gate_resolve did not skip.**
-**Merge Gate Step 2 of 4: Ensure PR exists, CI passes, reviews approved.**
-   **Gate 1 — PR exists:**
+**Merge Gate Step 2 of 5: Ensure PR exists, CI passes, reviews approved.**
+   **Gate 1 - PR exists:**
 MUST run:
 ```bash
 PR_JSON=$(gh pr view ${CURRENT_BRANCH} --json url,state,reviewDecision 2>/dev/null || echo "")
@@ -453,7 +453,7 @@ Display gate status:
 <step name="merge_gate_merge" priority="after-merge-gate-review">
 ⚠️ **MANDATORY if merge_gate_pr passed.**
 **Merge Gate Step 4 of 5: Merge PR and sync local base branch.**
-   **Gate 4 — PR merged:**
+   **Gate 5 — PR merged:**
 MUST run:
 ```bash
 PR_STATE=$(echo $PR_JSON | jq -r '.state')
@@ -480,7 +480,7 @@ Display: `Synced local ${GIT_BASE_BRANCH} with remote`
 
 <step name="merge_gate_cleanup" priority="after-merge-gate-merge">
 **Merge Gate Step 5 of 5: Branch cleanup and state update.**
-   **Gate 6 — Feature branch cleanup (if delete_branch_on_merge=true):**
+   **Gate 7 — Feature branch cleanup (if delete_branch_on_merge=true):**
 MUST run:
 ```bash
 git branch -d ${CURRENT_BRANCH} 2>/dev/null || true

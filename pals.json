@@ -1,14 +1,48 @@
 {
   "schema_version": "2.0.0",
   "modules": {
-    "carl": { "enabled": true, "description": "Session boundary manager (Pi extension)", "session_strategy": "phase-boundary", "continue_threshold": 0.4, "safety_ceiling": 0.8 },
-    "todd": { "enabled": true, "description": "Test-driven development enforcement" },
-    "walt": { "enabled": true, "description": "Quality gating & validation" },
-    "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
-    "iris": { "enabled": true, "description": "Intelligent review & inspection system" },
-    "skip": { "enabled": true, "description": "Smart knowledge & information persistence" },
-    "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
-    "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
+    "carl": {
+      "enabled": true,
+      "description": "Session boundary manager (Pi extension)",
+      "session_strategy": "phase-boundary",
+      "continue_threshold": 0.4,
+      "safety_ceiling": 0.8
+    },
+    "todd": {
+      "enabled": true,
+      "description": "Test-driven development enforcement"
+    },
+    "walt": {
+      "enabled": true,
+      "description": "Quality gating & validation"
+    },
+    "dean": {
+      "enabled": true,
+      "description": "Dependency evaluation & audit notifier"
+    },
+    "iris": {
+      "enabled": true,
+      "description": "Intelligent review & inspection system"
+    },
+    "skip": {
+      "enabled": true,
+      "description": "Smart knowledge & information persistence"
+    },
+    "dave": {
+      "enabled": true,
+      "description": "Deploy automation & verification engine"
+    },
+    "ruby": {
+      "enabled": true,
+      "description": "Refactor utility & better-code yielder"
+    },
+    "rev": {
+      "enabled": true,
+      "description": "Thorough code review via subagent",
+      "model": null,
+      "pr_review": false,
+      "pr_review_block_on_critical": true
+    }
   },
   "git": {
     "workflow": "github-flow",
@@ -25,7 +59,10 @@
     "require_reviews": false
   },
   "integrations": {
-    "sonarqube": { "enabled": false, "project_key": "" }
+    "sonarqube": {
+      "enabled": false,
+      "project_key": ""
+    }
   },
   "planning": {
     "default_collaboration": "medium"
