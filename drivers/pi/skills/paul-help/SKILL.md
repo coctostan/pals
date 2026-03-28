@@ -5,24 +5,22 @@ description: "Show available PALS commands and usage guide. Explains how Pi /pau
 
 # PAUL Help
 
-Available PALS Pi command and skill surfaces.
+Pi exposes convenience wrappers on top of the canonical PALS skill layer.
 
-## How to use PALS in Pi
-
-- Use `/paul-*` for the most convenient Pi-native command experience.
+## Use the right surface
+- Use `/paul-*` for the fastest Pi-native command experience.
 - Use `/skill:paul-*` when you want the canonical underlying skill entry directly.
-- Both surfaces route into the same shared PALS workflow model; only the skills are canonical entry points.
-- Shortcut-enabled Pi entry points are also available from the lifecycle surface: `Ctrl+Alt+N` (next), `Ctrl+Alt+S` (status), `Ctrl+Alt+R` (resume), `Ctrl+Alt+H` (help), `Ctrl+Alt+M` (milestone).
-- Pi installs enabled modules beside the skills and records them in `~/.pi/agent/skills/pals/modules.yaml`; TODD and WALT are module overlays there, not standalone Pi skills you need to invoke separately.
+- The canonical skills and shared workflows remain authoritative; `/paul-*` is a convenience wrapper layer.
+- Shortcut-enabled entry points are available for high-frequency actions: `Ctrl+Alt+N`, `Ctrl+Alt+S`, `Ctrl+Alt+R`, `Ctrl+Alt+H`, `Ctrl+Alt+M`.
+- Pi installs enabled modules beside the skills in `~/.pi/agent/skills/pals/modules.yaml`; TODD and WALT are module overlays, not standalone Pi skills.
 
 ## Pi command layer
-
 | Command | Purpose |
 |---------|---------|
 | `/paul-plan` | Plan the next PALS phase |
 | `/paul-apply` | Execute the approved PALS plan |
 | `/paul-unify` | Reconcile completed work and close the loop |
-| `/paul-init` | Set up PALS lifecycle files in a project |
+| `/paul-init` | Initialize PALS in a project |
 | `/paul-milestone` | Create or complete a milestone |
 | `/paul-discuss` | Explore scope before planning |
 | `/paul-status` | Show project status and next action |
@@ -31,45 +29,22 @@ Available PALS Pi command and skill surfaces.
 | `/paul-fix` | Run a quick fix flow |
 | `/paul-help` | Show this help screen |
 
-## Shortcut layer
-- Use `Ctrl+Alt+N` to trigger the current next PALS action from the visible lifecycle surface.
-- Use `Ctrl+Alt+S` for `/paul-status`, `Ctrl+Alt+R` for `/paul-resume`, `Ctrl+Alt+H` for `/paul-help`, and `Ctrl+Alt+M` for `/paul-milestone`.
-- These shortcuts are Pi-native convenience entry points only; canonical workflow ownership remains with `/skill:paul-*`.
+## Canonical skill layer
+| Canonical entry | Typical use |
+|-----------------|-------------|
+| `/skill:paul-init` | Start or migrate a PALS project |
+| `/skill:paul-plan` | Build the next approved plan |
+| `/skill:paul-apply` | Execute the approved plan |
+| `/skill:paul-unify` | Reconcile plan vs actual |
+| `/skill:paul-resume` | Restore context and route to one next action |
+| `/skill:paul-status` | Inspect lifecycle state without modifying it |
+| `/skill:paul-discuss` | Shape milestone/phase scope before planning |
+| `/skill:paul-milestone` | Create or complete a milestone |
+| `/skill:paul-pause` | Capture a self-contained handoff |
+| `/skill:paul-fix` | Run the side-loop fix flow |
+| `/skill:paul-help` | Re-open this guidance |
 
-## Canonical Pi skill layer
-
-| Command | Purpose |
-|---------|---------|
-| `/skill:paul-plan` | Canonical entry for phase planning |
-| `/skill:paul-apply` | Canonical entry for approved plan execution |
-| `/skill:paul-unify` | Canonical entry for reconciliation |
-| `/skill:paul-init` | Canonical entry for project initialization |
-| `/skill:paul-milestone` | Canonical entry for milestone management |
-| `/skill:paul-discuss` | Canonical entry for pre-plan discussion |
-| `/skill:paul-status` | Canonical entry for project status and routing |
-| `/skill:paul-resume` | Canonical entry for session resume |
-| `/skill:paul-pause` | Canonical entry for handoff creation |
-| `/skill:paul-fix` | Canonical entry for quick fixes |
-| `/skill:paul-help` | Canonical entry for this help screen |
-
-## Common Workflows
-
-**Starting a new project:**
-1. `/paul-init` (or `/skill:paul-init`) — set up PALS
-2. `/paul-discuss` — explore what to build
-3. `/paul-milestone` — create milestone structure
-4. `/paul-plan` — plan first phase
-
-**Daily work loop:**
-1. `/paul-resume` — restore context
-2. `/paul-plan` → `/paul-apply` → `/paul-unify`
-3. `/paul-pause` — save state before a break
-
-**Quick fixes:**
-- `/paul-fix` — bypass the full loop for small changes
-
-## About PALS
-
-PALS (Project Automation & Lifecycle System) provides structured project management through the PLAN-APPLY-UNIFY loop. PAUL is the kernel, with modules for testing (TODD), quality (WALT), context rules (CARL), and more.
-In Pi, those modules are installed into the shared skill tree and surfaced through workflow dispatch, not as extra `/skill:*` commands.
-For more information, read the project README or `.paul/PROJECT.md`.
+## Shortcut routing
+- `Ctrl+Alt+N` routes the visible next PALS action.
+- `Ctrl+Alt+S`, `Ctrl+Alt+R`, `Ctrl+Alt+H`, and `Ctrl+Alt+M` route to status, resume, help, and milestone shortcuts.
+- These shortcuts are Pi convenience entry points only; canonical lifecycle ownership stays with `/skill:paul-*` plus the shared workflow markdown.

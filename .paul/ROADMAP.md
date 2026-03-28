@@ -27,24 +27,34 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.35 Context Bloat Audit & Reduction Strategy**
-Status: ✅ Complete
-Completed: 2026-03-28
-Theme: Audit how PALS context load grows under Pi usage, especially from repeatedly-read artifacts and workflow markdown, then produce ranked tactical and structural recommendations without changing artifact-first lifecycle authority.
-Phases: 3 of 3 complete
+**v2.36 Context Reduction Implementation — Workflow-First Pass**
+Status: 🚧 In Progress
+Started: 2026-03-28
+Theme: Implement the highest-value workflow-side context reductions first — slimmer wrappers, tighter read discipline, and trimmed roadmap/workflow prose — without changing artifact-first lifecycle authority.
+Phases: 0 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 158 | Artifact Growth & Hot-Path Audit | 1/1 | ✅ Complete | 2026-03-27 |
-| 159 | Workflow Bloat Audit | 1/1 | ✅ Complete | 2026-03-28 |
-| 160 | Findings & Recommendation Package | 1/1 | ✅ Complete | 2026-03-28 |
-### Phase 160: Findings & Recommendation Package
-Focus: Consolidate evidence and deliver ranked tactical cleanup options plus structural redesign recommendations.
-Plans: 1 (`160-01-PLAN.md`)
-Status: ✅ Complete
-Completed: 2026-03-28
-Outputs: `context-bloat-findings-matrix.md`, `context-reduction-recommendations-ranked.md`, `160-findings-recommendation-package-report.md`, `160-01-SUMMARY.md`
-
+| 161 | Wrapper & Entrypoint Slimming | 1 | UNIFY complete (merge pending) | - |
+| 162 | Workflow Read-Discipline Reduction | TBD | Not started | - |
+| 163 | ROADMAP/Workflow Prose Cleanup + Validation | TBD | Not started | - |
+### Phase 161: Wrapper & Entrypoint Slimming
+Focus: Reduce wrapper and entrypoint overhead so canonical commands preserve guided behavior with less repeated prose and less redundant injection.
+Plans: 1 (`161-01-PLAN.md`)
+Status: UNIFY complete, merge gate pending
+Outputs: Slimmed Pi wrapper shells, updated Pi validation contract, `161-01-PLAN.md`, `161-01-SUMMARY.md`
 ## Completed Milestones
+<details>
+<summary>v2.35 Context Bloat Audit & Reduction Strategy - 2026-03-28 (3 phases)</summary>
+
+Theme: Audit how PALS context load grows under Pi usage, especially from repeatedly-read artifacts and workflow markdown, then produce ranked tactical and structural recommendations without changing artifact-first lifecycle authority.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 158 | Artifact Growth & Hot-Path Audit | 1 | 2026-03-27 |
+| 159 | Workflow Bloat Audit | 1 | 2026-03-28 |
+| 160 | Findings & Recommendation Package | 1 | 2026-03-28 |
+
+</details>
 <details>
 <summary>v2.34 Pi Subagent Integration & PALS Implementer - 2026-03-27 (4 phases)</summary>
 
@@ -619,4 +629,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-28 — Phase 160 complete; v2.35 closed with recommendations for the next milestone*
+*Last updated: 2026-03-28 — Phase 161 UNIFY complete; merge gate pending*

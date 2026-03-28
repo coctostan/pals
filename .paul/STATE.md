@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.35 complete — define the next milestone (recommended: v2.36 Context Reduction Implementation — Workflow-First Pass)
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 161-01 unified, merge gate pending
 ## Current Position
-Milestone: v2.35 Context Bloat Audit & Reduction Strategy (Complete)
-Phase: 160 of 3 (Findings & Recommendation Package) — Complete
-Plan: [160-01] summarized and merged
-Status: Milestone complete, ready for next milestone
-Last activity: 2026-03-28T02:00:00Z — Phase 160 complete, PR #69 merged, v2.35 closed
+Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
+Phase: 161 of 3 (Wrapper & Entrypoint Slimming) — UNIFY complete
+Plan: [161-01] unified; transition pending merge gate
+Status: Loop complete, merge gate ready
+Last activity: 2026-03-28T01:56:10Z — Created 161-01 summary, updated quality history, and prepared PR #70 for merge-gate resolution
 Progress:
-- v2.35 Context Bloat Audit & Reduction Strategy: [██████████] 100%
-- Phase 160: [██████████] 100%
+- v2.36 Context Reduction Implementation — Workflow-First Pass: [███░░░░░░░] 33%
+- Phase 161: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - milestone closed]
+  ✓        ✓        ✓     [Loop complete — merge gate pending]
 ```
 
 ## Accumulated Context
@@ -116,6 +116,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Preserve guided workflow markers and target surrounding prose/read bundles first for workflow-bloat reduction | 159 | Lets Phase 160 pursue safer wording and read-discipline reductions without destabilizing guided UX semantics |
 | 2026-03-28: Reduce workflow amplification before attempting hotter artifact redesign | 160 | Sets the next milestone toward wrapper/read-discipline/prose cleanup before any `STATE.md` redesign |
 | 2026-03-28: Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | Gives future reduction work explicit trim-vs-preserve boundaries |
+| 2026-03-28: Keep Pi wrapper shells as command-local deltas while retaining route-specific guardrails in each wrapper | 161 | Reduces repeated read scaffolding without moving lifecycle truth out of shared workflows |
+| 2026-03-28: Prefer semantic thin-wrapper validation over brittle line-count assertions | 161 | Keeps wrapper slimming durable without freezing command-local wording |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -133,6 +135,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | **Orchestrator bypassed PALS for Phases 100-106** | Phases 100-106 | Committed directly, skipped PLAN/APPLY/UNIFY loop, no STATE.md updates, no merge gate workflow. Raw git + PR merges. Logged as deviation and corrected at Phase 107. |
 | Fix 05 applied manually instead of /paul:fix | Phase 100 | Should have used standard fix workflow |
 | Phase 156 implementation expanded to include installer-backed global agent installation after initial APPLY scope | Phase 156 | Small scope expansion via `drivers/pi/install.sh` so `pals-implementer` works outside the PALS repo |
+| Phase 161 Task 3 used `install.sh` and `tests/cross-harness-validation.sh` as verification surfaces, but only `tests/pi-end-to-end-validation.sh` required repo changes | Phase 161 | Minor plan metadata over-scoping; APPLY completed successfully and the variance should be documented in UNIFY |
 ### Skill Audit (Phase 156)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -153,15 +156,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: b5e203a
-PR: https://github.com/coctostan/pals/pull/69 (MERGED)
+Branch: feature/161-wrapper-entrypoint-slimming
+Last commit: 9c5c507
+PR: https://github.com/coctostan/pals/pull/70 (state: open, CI: passing)
 ## Session Continuity
-Last session: 2026-03-28T02:00:00Z
-Stopped at: v2.35 complete; ready to define the next milestone
-Next action: Start the next milestone (recommended: v2.36 Context Reduction Implementation — Workflow-First Pass)
-Resume file: .paul/phases/160-findings-recommendation-package/160-01-SUMMARY.md
+Last session: 2026-03-28T01:56:10Z
+Stopped at: Completed Phase 161 UNIFY reconciliation; summary and quality history are written and PR #70 is ready for merge-gate resolution
+Next action: Merge PR #70, then continue the Phase 161 transition to Phase 162
+Resume file: .paul/phases/161-wrapper-entrypoint-slimming/161-01-SUMMARY.md
 Resume context:
-- Phase 160 closed the context-bloat milestone with a combined findings matrix, ranked recommendations, and a milestone-close report
-- Recommended next step is a workflow-first reduction milestone before any hotter artifact redesign
-- Current branch is `main` and PR #69 is merged
+- `161-01-SUMMARY.md` now records the wrapper-shell slimming, semantic validation hardening, and the minor Task 3 files-list deviation.
+- `.paul/QUALITY-HISTORY.md` was updated with `161-01` as an improving validation snapshot (`143 pass + 60 pass`).
+- PR #70 is open with passing CI on `feature/161-wrapper-entrypoint-slimming`; next work depends on merge-gate resolution and then the mandatory phase transition.

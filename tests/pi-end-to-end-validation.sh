@@ -68,6 +68,31 @@ tap_file_contains_all() {
   fi
 }
 
+tap_file_contains_none() {
+  local description="$1"
+  local file="$2"
+  shift 2
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local present=()
+  local pattern
+  for pattern in "$@"; do
+    if grep -Fq -- "$pattern" "$file" 2>/dev/null; then
+      present+=("$pattern")
+    fi
+  done
+
+  if [ "${#present[@]}" -eq 0 ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Unexpected marker(s): ${present[*]}"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -283,6 +308,110 @@ for skill in "${EXPECTED_SKILLS[@]}"; do
     tap_not_ok "$skill: references workflow files" "No workflow reference found"
   fi
 done
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 2A: THIN WRAPPER CONTRACT
+# ════════════════════════════════════════════════════════════════════
+
+section "THIN WRAPPER CONTRACT"
+
+CORE_WRAPPER_SKILLS=(
+  paul-apply
+  paul-discuss
+  paul-fix
+  paul-init
+  paul-milestone
+  paul-pause
+  paul-plan
+  paul-resume
+  paul-status
+  paul-unify
+)
+
+for skill in "${CORE_WRAPPER_SKILLS[@]}"; do
+  tap_file_contains_none \
+    "Installed $skill wrapper omits duplicated read-bundle scaffolding" \
+    "$SKILL_DIR/$skill/SKILL.md" \
+    'Read project state:'
+done
+
+tap_file_contains_all \
+  "Installed Pi apply skill keeps explicit approval and parent-owned APPLY guardrails in the thin wrapper" \
+  "$SKILL_DIR/paul-apply/SKILL.md" \
+  'explicit user approval' \
+  'pals-implementer' \
+  'official verify steps' \
+  'module enforcement' \
+  '.paul/*'
+
+tap_file_contains_all \
+  "Installed Pi discuss skill keeps collaboration-aware discussion semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-discuss/SKILL.md" \
+  'planning.default_collaboration' \
+  'exploratory' \
+  'direct-requirements' \
+  '4-option review menu'
+
+tap_file_contains_all \
+  "Installed Pi init skill keeps layered onboarding guardrails in the thin wrapper" \
+  "$SKILL_DIR/paul-init/SKILL.md" \
+  'greenfield' \
+  'brownfield' \
+  'planning.default_collaboration' \
+  'one question at a time'
+
+tap_file_contains_all \
+  "Installed Pi milestone skill keeps create/complete routing semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-milestone/SKILL.md" \
+  'create-milestone' \
+  'complete-milestone' \
+  'MILESTONE-CONTEXT.md'
+
+tap_file_contains_all \
+  "Installed Pi pause skill keeps self-contained handoff semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-pause/SKILL.md" \
+  'HANDOFF' \
+  'no prior context' \
+  'git state' \
+  'STATE.md'
+
+tap_file_contains_all \
+  "Installed Pi plan skill keeps collaboration and review-menu semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-plan/SKILL.md" \
+  'planning.default_collaboration' \
+  'exploratory' \
+  'direct-requirements' \
+  '4-option review menu'
+
+tap_file_contains_all \
+  "Installed Pi resume skill keeps authoritative single-next routing semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-resume/SKILL.md" \
+  'STATE.md remains authoritative' \
+  'exactly one next action' \
+  '.paul/handoffs/archive/' \
+  'Archive an active consumed handoff'
+
+tap_file_contains_all \
+  "Installed Pi status skill keeps read-only git-aware routing semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-status/SKILL.md" \
+  'Read-only wrapper' \
+  'github-flow' \
+  'exactly one next action'
+
+tap_file_contains_all \
+  "Installed Pi fix skill keeps quick-fix mode semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-fix/SKILL.md" \
+  'standard' \
+  'fast-forward' \
+  'hotfix' \
+  'STATE.md'
+
+tap_file_contains_all \
+  "Installed Pi unify skill keeps reconciliation semantics in the thin wrapper" \
+  "$SKILL_DIR/paul-unify/SKILL.md" \
+  'SUMMARY.md' \
+  'deviations' \
+  'ROADMAP.md'
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2B: DELEGATED APPLY / REV BOUNDARIES
