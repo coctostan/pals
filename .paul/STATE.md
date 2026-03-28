@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 APPLY complete
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 UNIFY in merge gate
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 166 of 3 (Validation & Docs Refresh) — Apply Complete
-Plan: 166-01 executed; ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-28T19:10:24Z — Completed Phase 166 APPLY for README / Pi docs / validation alignment
+Phase: 166 of 3 (Validation & Docs Refresh) — UNIFY Complete, Merge Gate Pending
+Plan: 166-01 summarized; awaiting PR merge to transition milestone
+Status: UNIFY complete, waiting at merge gate
+Last activity: 2026-03-28T19:11:58Z — Created Phase 166 summary and entered merge gate for PR #75
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [████████░░] 83%
+- v2.37 Implementer Config Alignment & Delegation Expansion: [█████████░] 92%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [UNIFY complete; merge gate pending]
 ```
 
 ## Accumulated Context
@@ -169,13 +169,13 @@ Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
 Branch: feature/166-validation-docs-refresh
 Last commit: feat(166-validation-docs-refresh): align docs and validation pushed on feature/166-validation-docs-refresh
 PR: https://github.com/coctostan/pals/pull/75 (OPEN)
-CI: pending
+CI: passing
 ## Session Continuity
-Last session: 2026-03-28T19:10:24Z
-Stopped at: Phase 166 APPLY completed; waiting to reconcile results in UNIFY
-Next action: Run /paul:unify .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
-Resume file: .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
+Last session: 2026-03-28T19:11:58Z
+Stopped at: Phase 166 summary written; merge gate is waiting for PR merge
+Next action: Merge PR #75, then continue transition to close milestone v2.37
+Resume file: .paul/phases/166-validation-docs-refresh/166-01-SUMMARY.md
 Resume context:
-- README, Pi adapter docs, and Pi/cross-harness validation suites were aligned to the explicit `agents.implementer` config and bounded helper-agent contract.
+- Summary created at `.paul/phases/166-validation-docs-refresh/166-01-SUMMARY.md` with all three acceptance criteria marked PASS.
 - Validation passed: `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`.
-- Active Phase 166 handoff was archived after resume; proceed with UNIFY on this feature branch.
+- PR #75 exists and CI is passing; merge gate is now waiting for merge approval.
