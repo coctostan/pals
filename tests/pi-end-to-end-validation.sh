@@ -261,8 +261,10 @@ tap_file_contains_all \
   "Installed pals-implementer agent preserves bounded parent-authority contract markers" \
   "$IMPLEMENTER_AGENT" \
   'Your parent APPLY workflow is authoritative' \
+  'single bounded task or sequential task step' \
   'Treat the parent prompt as authoritative' \
   'Do not edit `.paul/*` lifecycle files' \
+  'non-equivalent outcomes as reasons to stop and return control' \
   'Return control to the parent immediately when:'
 
 # ════════════════════════════════════════════════════════════════════
@@ -340,6 +342,7 @@ tap_file_contains_all \
   "$SKILL_DIR/paul-apply/SKILL.md" \
   'explicit user approval' \
   'pals-implementer' \
+  'single-task work the parent can still verify' \
   'official verify steps' \
   'module enforcement' \
   '.paul/*'
@@ -423,17 +426,19 @@ tap_file_contains_all \
   "Installed Pi apply skill documents repo-local pals-implementer delegation under parent authority" \
   "$SKILL_DIR/paul-apply/SKILL.md" \
   'pals-implementer' \
+  'single-task work the parent can still verify' \
   'official verify steps' \
   'module enforcement' \
   '.paul/*'
-
 tap_file_contains_all \
   "Installed shared apply workflow routes delegated APPLY through pals-implementer with parent-owned guardrails" \
   "$SKILL_DIR/workflows/apply-phase.md" \
   'subagent_type: "pals-implementer"' \
   '.pi/agents/pals-implementer.md' \
   'lifecycle reminder' \
-  'parent owns verification, module gates, fallback, and state/report writes'
+  'parent owns verification, module gates, fallback, and state/report writes' \
+  'delegation may be used for a single eligible task or sequential task step' \
+  'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline'
 
 PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
 PI_SCHEMA_REF="$SKILL_DIR/references/pals-json-schema.md"

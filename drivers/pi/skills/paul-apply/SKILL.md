@@ -13,7 +13,7 @@ Execute an approved PLAN.md.
 
 ## Command-local notes
 - Starts only after explicit user approval of the selected plan.
-- `pals-implementer` delegation is optional, bounded to eligible auto tasks, and never changes lifecycle ownership.
+- `pals-implementer` delegation is optional for eligible bounded auto tasks, including single-task work the parent can still verify, and never changes lifecycle ownership.
 - The parent APPLY flow keeps official verify steps, module enforcement, checkpoints, fallback judgment, and `.paul/*` state/report writes.
-- If delegated execution is unavailable, ambiguous, or non-equivalent, fall back to inline APPLY.
+- If delegated execution is unavailable, ambiguous, exploratory, or non-equivalent, fall back to inline APPLY.
 - Successful execution leaves the loop ready for `/skill:paul-unify`.

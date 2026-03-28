@@ -280,11 +280,13 @@ For each <task> in order:
    - Default to inline APPLY in the parent session.
    - Delegation to a repo-local `pals-implementer` is optional, task-bounded, and allowed only when the task satisfies `references/subagent-criteria.md` plus the Phase 155 contract:
      - approved plan is `autonomous: true`
+     - the task is a bounded autonomous unit the parent can describe, inspect, and verify as equivalent to inline APPLY
      - `<files>`, `<action>`, and `<verify>` are clear and bounded
      - no checkpoint or human decision/action is required inside the task
      - file scope is repo-local only
-     - the task does not transfer `.paul/*` lifecycle ownership to the subagent
-     - the task is well-defined enough that the parent can still judge equivalence to inline APPLY
+     - `.paul/*` lifecycle ownership, official verification, module enforcement, fallback judgment, and state/report writes remain in the parent
+     - delegation may be used for a single eligible task or sequential task step; it is not limited to parallel-only work
+     - ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline in the parent session
 3. **If delegation is considered:**
    a. Read config:
       ```bash

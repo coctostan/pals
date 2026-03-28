@@ -239,10 +239,14 @@ if [ -f "$CC_APPLY_WORKFLOW" ] && [ -f "$PI_APPLY_WORKFLOW" ] \
   && grep -Fq 'lifecycle reminder' "$CC_APPLY_WORKFLOW" \
   && grep -Fq 'lifecycle reminder' "$PI_APPLY_WORKFLOW" \
   && grep -Fq 'parent owns verification, module gates, fallback, and state/report writes' "$CC_APPLY_WORKFLOW" \
-  && grep -Fq 'parent owns verification, module gates, fallback, and state/report writes' "$PI_APPLY_WORKFLOW"; then
+  && grep -Fq 'parent owns verification, module gates, fallback, and state/report writes' "$PI_APPLY_WORKFLOW" \
+  && grep -Fq 'delegation may be used for a single eligible task or sequential task step' "$CC_APPLY_WORKFLOW" \
+  && grep -Fq 'delegation may be used for a single eligible task or sequential task step' "$PI_APPLY_WORKFLOW" \
+  && grep -Fq 'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline' "$CC_APPLY_WORKFLOW" \
+  && grep -Fq 'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline' "$PI_APPLY_WORKFLOW"; then
   tap_ok "Both installed shared apply workflows preserve delegated pals-implementer guardrails"
 else
-  tap_not_ok "Both installed shared apply workflows preserve delegated pals-implementer guardrails" "Expected pals-implementer agent-path and parent-authority markers in both installed apply-phase.md files"
+  tap_not_ok "Both installed shared apply workflows preserve delegated pals-implementer guardrails" "Expected pals-implementer agent-path, parent-authority, and broadened bounded-delegation markers in both installed apply-phase.md files"
 fi
 
 CC_INIT_WORKFLOW="$CC_KERNEL_DIR/workflows/init-project.md"

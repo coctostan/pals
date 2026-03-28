@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 ready to plan
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 unify complete, merge gate ready
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 165 of 3 (Delegated APPLY Expansion)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-28T16:42:55Z — Phase 164 merged and transitioned to Phase 165 planning
+Phase: 165 of 3 (Delegated APPLY Expansion) — UNIFY Complete
+Plan: 165-01 reconciled
+Status: UNIFY complete, awaiting merge gate and transition
+Last activity: 2026-03-28T18:01:30Z — Finalized Phase 165 summary, quality history, and merge-gate readiness
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [███░░░░░░░] 33%
+- v2.37 Implementer Config Alignment & Delegation Expansion: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan]
+  ✓        ✓        ✓     [Loop complete — merge gate / transition pending]
 ```
 
 ## Accumulated Context
@@ -120,6 +120,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Prefer semantic shared-workflow contract checks over brittle line-count assertions | 163 | Keeps workflow prose cleanup durable without freezing exact wording |
 | 2026-03-28: Finish v2.36 with bounded prose cleanup before structural artifact redesign | 163 | Closes the workflow-first reduction pass without reopening higher-risk roadmap/state redesign |
 | 2026-03-28: Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
+| 2026-03-28: Broaden delegated APPLY eligibility around bounded parent-verifiable tasks rather than a parallel-only subagent heuristic | 165 | Keeps delegated APPLY practical for more auto tasks without weakening parent authority, fallback, or lifecycle ownership |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -160,21 +161,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
 - Tree-sitter repo map deferred
-Last commit: main updated after PR #73 merge and Phase 165 transition
+Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: e54a706 docs(164-implementer-config-contract-alignment): complete transition to phase 165
-PR: https://github.com/coctostan/pals/pull/73 (MERGED)
+Branch: feature/165-delegated-apply-expansion
+Last commit: feature branch updated for Phase 165 delegated APPLY widening work
+PR: https://github.com/coctostan/pals/pull/74 (OPEN)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T16:42:55Z
-Stopped at: Phase 164 complete, merged, and transitioned to Phase 165 planning
-Next action: /paul:plan for Phase 165
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-28T18:01:30Z
+Stopped at: Phase 165 UNIFY completed; PR #74 is open, CI passing, and merge gate is ready
+Next action: Merge PR #74, then continue transition to Phase 166
+Resume file: .paul/phases/165-delegated-apply-expansion/165-01-SUMMARY.md
 Resume context:
-- Phase 164 is complete and merged via PR #73.
-- The explicit `agents.implementer` config contract now aligns init, migration, schema docs, and validation.
-- Phase 165 should expand delegated APPLY eligibility while preserving parent verification, module enforcement, fallback, and `.paul/*` authority.
+- Phase 165 reconciliation is complete and the loop is closed pending merge/transition.
+- Delegated APPLY now allows broader bounded parent-verifiable task delegation while preserving fallback and lifecycle authority.
+- Quality history and post-unify module reporting were finalized locally on feature/165-delegated-apply-expansion.
