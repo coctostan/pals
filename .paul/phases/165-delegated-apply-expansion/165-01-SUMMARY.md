@@ -42,9 +42,16 @@ Broaden delegated APPLY eligibility so more bounded autonomous tasks can route t
 ## Module Execution Reports
 ### Post-Apply Advisory
 - `[dispatch] post-apply advisory: IRIS(skip — workflow/skill/validation text changes only, no code-review smell surface beyond the explicit contract edits) | DOCS(0 annotations — the changed shared/Pi guidance stayed internally aligned with the canonical contract) | RUBY(skip — no refactor/debt-specific source changes outside the targeted delegation contract wording) | SKIP(1 annotation — remember that delegated APPLY validation is strongest when it checks installed surfaces, not only repo source text)`
-
-### Post-Apply Enforcement
 - `[dispatch] post-apply enforcement: WALT(PASS — Pi installer plus Pi and cross-harness validation suites passed) | DEAN(skip — no dependency manifest or lockfile changed in this phase) | TODD(PASS — contract-focused shell validation covered the changed workflow/skill/test surfaces and caught no regression)`
+### Pre-UNIFY
+- `[dispatch] pre-unify: 0 modules registered for this hook`
+
+### Post-UNIFY
+- `[dispatch] post-unify: WALT(1 report / 1 side effect) | SKIP(1 report / 0 side effects) | RUBY(1 report / 0 side effects)`
+- WALT report: Validation evidence remained clean at UNIFY time. Recorded Phase `165-01` in `.paul/quality-history.md` as `151 pass + 62 pass`, trend `↑ improving`.
+- WALT side effect: Appended a new quality-history entry for Phase 165.
+- SKIP report: Durable knowledge captured — delegated APPLY should be evaluated as bounded parent-verifiable work, not a parallel-only heuristic; installed-surface validation is the strongest proof surface for shared contract changes.
+- RUBY report: No meaningful technical-debt concerns were introduced by the targeted workflow/skill/validation wording changes; changed files remained modest in size and scope.
 
 ## Deviations
 - The installed `modules.yaml` was available during APPLY, but this phase still used targeted contract verification and installer-backed shell suites rather than a richer repo-wide lint/typecheck baseline. That was sufficient for the workflow/config/test scope of this phase.
@@ -63,4 +70,4 @@ Broaden delegated APPLY eligibility so more bounded autonomous tasks can route t
 | WALT | ✓ | Enforced through post-change validation gates; installer-backed suites passed. |
 
 ## Next Phase
-Run `/skill:paul-unify .paul/phases/165-delegated-apply-expansion/165-01-PLAN.md` to reconcile the executed work, update milestone artifacts, and close Phase 165.
+After PR #74 merges and transition runs, continue with `/skill:paul-plan` for Phase 166 (Validation & Docs Refresh).

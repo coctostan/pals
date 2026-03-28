@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 apply complete
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 unify complete, merge gate ready
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 165 of 3 (Delegated APPLY Expansion) — Apply Complete
-Plan: 165-01 executed
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-28T17:54:54Z — Completed Phase 165 APPLY and wrote .paul/phases/165-delegated-apply-expansion/165-01-SUMMARY.md
+Phase: 165 of 3 (Delegated APPLY Expansion) — UNIFY Complete
+Plan: 165-01 reconciled
+Status: UNIFY complete, awaiting merge gate and transition
+Last activity: 2026-03-28T18:01:30Z — Finalized Phase 165 summary, quality history, and merge-gate readiness
 Progress:
 - v2.37 Implementer Config Alignment & Delegation Expansion: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — merge gate / transition pending]
 ```
 
 ## Accumulated Context
@@ -169,13 +169,13 @@ Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
 Branch: feature/165-delegated-apply-expansion
 Last commit: feature branch updated for Phase 165 delegated APPLY widening work
 PR: https://github.com/coctostan/pals/pull/74 (OPEN)
-CI: pending
+CI: passing
 ## Session Continuity
-Last session: 2026-03-28T17:54:54Z
-Stopped at: Phase 165 APPLY completed after delegated APPLY contract widening and validation
-Next action: Run /paul:unify .paul/phases/165-delegated-apply-expansion/165-01-PLAN.md
-Resume file: 
+Last session: 2026-03-28T18:01:30Z
+Stopped at: Phase 165 UNIFY completed; PR #74 is open, CI passing, and merge gate is ready
+Next action: Merge PR #74, then continue transition to Phase 166
+Resume file: .paul/phases/165-delegated-apply-expansion/165-01-SUMMARY.md
 Resume context:
-- Phase 165 execution is complete and the loop is now ready for UNIFY.
+- Phase 165 reconciliation is complete and the loop is closed pending merge/transition.
 - Delegated APPLY now allows broader bounded parent-verifiable task delegation while preserving fallback and lifecycle authority.
-- Summary, validation evidence, and state updates are present locally on feature/165-delegated-apply-expansion.
+- Quality history and post-unify module reporting were finalized locally on feature/165-delegated-apply-expansion.
