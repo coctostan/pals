@@ -28,15 +28,16 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.36 Context Reduction Implementation — Workflow-First Pass**
-Status: 🚧 In Progress
+Status: ✅ Complete
 Started: 2026-03-28
+Completed: 2026-03-28
 Theme: Implement the highest-value workflow-side context reductions first — slimmer wrappers, tighter read discipline, and trimmed roadmap/workflow prose — without changing artifact-first lifecycle authority.
-Phases: 2 of 3 complete
+Phases: 3 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 161 | Wrapper & Entrypoint Slimming | 1 | Complete | 2026-03-28 |
 | 162 | Workflow Read-Discipline Reduction | 1 | Complete | 2026-03-28 |
-| 163 | ROADMAP/Workflow Prose Cleanup + Validation | 1 | Planning | - |
+| 163 | ROADMAP/Workflow Prose Cleanup + Validation | 1 | Complete | 2026-03-28 |
 ### Phase 161: Wrapper & Entrypoint Slimming
 Focus: Reduce wrapper and entrypoint overhead so canonical commands preserve guided behavior with less repeated prose and less redundant injection.
 Plans: 1 (`161-01-PLAN.md`)
@@ -50,8 +51,8 @@ Outputs: Targeted read-discipline updates for planning/status/milestone workflow
 ### Phase 163: ROADMAP/Workflow Prose Cleanup + Validation
 Focus: Trim the remaining surrounding prose and duplicated warm-path explanation in the roadmap/planning workflow cluster while preserving slice-based reads, collaboration semantics, guided markers, and `.paul/*` authority, then lock that slimmer contract into validation.
 Plans: 1 (`163-01-PLAN.md`)
-Status: Planning
-Outputs: Slimmer shared workflow prose for roadmap/planning routes, validation coverage for the preserved contract, `163-01-PLAN.md`
+Status: Complete
+Outputs: Slimmer shared workflow prose for roadmap/planning routes, validation coverage for the preserved contract, `163-01-PLAN.md`, `163-01-SUMMARY.md`
 ## Completed Milestones
 <details>
 <summary>v2.35 Context Bloat Audit & Reduction Strategy - 2026-03-28 (3 phases)</summary>

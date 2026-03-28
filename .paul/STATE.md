@@ -4,13 +4,13 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Phase 163 UNIFY complete, merge gate ready
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass complete; ready for next milestone planning
 ## Current Position
 Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
 Phase: 163 of 3 (ROADMAP/Workflow Prose Cleanup + Validation) — Complete
 Plan: [163-01] complete
-Status: UNIFY complete, ready for transition
-Last activity: 2026-03-28T02:59:04Z — Created .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-SUMMARY.md
+Status: Milestone complete, ready for next milestone
+Last activity: 2026-03-28T03:01:51Z — Phase 163 complete, PR #72 merged, and milestone v2.36 closed
 Progress:
 - v2.36 Context Reduction Implementation — Workflow-First Pass: [██████████] 100%
 - Phase 163: [██████████] 100%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for transition]
+  ✓        ✓        ✓     [Loop complete - milestone complete]
 ```
 
 ## Accumulated Context
@@ -165,16 +165,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/163-roadmap-workflow-prose-cleanup-validation
-Last commit: `605946d chore(163-roadmap-workflow-prose-cleanup-validation): record apply state`
-PR: https://github.com/coctostan/pals/pull/72 (OPEN)
+Branch: main
+Last commit: `feat(163-roadmap-workflow-prose-cleanup-validation): slim workflow prose contract (#72)`
+PR: https://github.com/coctostan/pals/pull/72 (MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T02:59:04Z
-Stopped at: UNIFY complete with summary written, quality history updated, and merge gate ready
-Next action: Merge PR #72 and complete phase transition
-Resume file: .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-SUMMARY.md
+Last session: 2026-03-28T03:01:51Z
+Stopped at: Milestone v2.36 complete after Phase 163 summary, merge gate resolution, and transition updates
+Next action: Start the next milestone when ready
+Resume file: .paul/ROADMAP.md
 Resume context:
-- `163-01-SUMMARY.md` records all three tasks complete with semantic validation proof and durable module execution reporting.
-- `.paul/QUALITY-HISTORY.md` now includes `163-01` with an improved result of 149 Pi checks + 60 cross-harness checks passing.
-- PR #72 is open with CI passing and reviews not required, so the merge gate is ready for final resolution.
+- Phase 163 is complete, PR #72 is merged, and `main` is the current working branch.
+- v2.36 now stands at 3 of 3 phases complete with wrappers, read-discipline cleanup, and prose-contract validation all closed.
+- The next deliberate move is milestone selection/planning, not more work inside Phase 163.

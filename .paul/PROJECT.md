@@ -137,6 +137,7 @@ All validated — see below.
 - ✓ REV code review module — on-demand module manifest, review prompt/checklist refs, nullable model override, and graceful degraded fallback shipped across Phases 151-153 (v2.33)
 - ✓ Review workflow integration — `/paul:review` skill, Pi command registration, opt-in merge-gate review step, live review validation, and polish fixes shipped in v2.33
 - ✓ PALS-native implementer validation & operating-model docs — automated proof, temp-HOME install validation, and explicit Pi three-surface documentation shipped in Phase 157 (v2.34)
+- ✓ Workflow-first context reduction implementation — thin wrappers, slice-based roadmap reads, slimmer warm-path workflow prose, and semantic installed-surface validation shipped across Phases 161-163 (v2.36)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -313,4 +314,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-28 after Phase 160 completion*
+*Last updated: 2026-03-28 after Phase 163 completion*
