@@ -291,6 +291,8 @@ All validated — see below.
 | Separate total artifact growth from repeat-read hot-path cost before designing fixes | 158 | Prevents blanket cleanup instincts from blurring historical accumulation with active Pi context pressure |
 | Treat `STATE.md` as the confirmed hot artifact and `ROADMAP.md` as the main warm-path artifact | 158 | Future reduction work should optimize repeated-read pressure first, not just largest files |
 | Preserve `PROJECT.md` as the compact brief instead of using it to absorb roadmap or milestone history | 158 | The layered artifact model is working here; expanding PROJECT would recreate the same bloat problem elsewhere |
+| Keep workflow-side amplification separate from artifact-side cost until Phase 160 combines both evidence streams | 159 | Preserves a clean recommendation baseline and avoids blurring root causes across the two audit phases |
+| Preserve guided workflow markers and target surrounding prose/read bundles first for workflow-bloat reduction | 159 | Enables safer wording/read-discipline cleanup without destabilizing guided UX semantics |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -309,4 +311,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-27 after Phase 158 completion*
+*Last updated: 2026-03-28 after Phase 159 completion*

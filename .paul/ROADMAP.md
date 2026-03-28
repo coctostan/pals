@@ -30,12 +30,12 @@ Phases: 3 of 3 complete
 **v2.35 Context Bloat Audit & Reduction Strategy**
 Status: 🚧 In Progress
 Theme: Audit how PALS context load grows under Pi usage, especially from repeatedly-read artifacts and workflow markdown, then produce ranked tactical and structural recommendations without changing artifact-first lifecycle authority.
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 158 | Artifact Growth & Hot-Path Audit | 1/1 | ✅ Complete | 2026-03-27 |
-| 159 | Workflow Bloat Audit | 1/1 | 🚧 Planning | - |
-| 160 | Findings & Recommendation Package | TBD | Not started | - |
+| 159 | Workflow Bloat Audit | 1/1 | ✅ Complete | 2026-03-28 |
+| 160 | Findings & Recommendation Package | TBD | Ready to plan | - |
 
 ### Phase 158: Artifact Growth & Hot-Path Audit
 Focus: Broad audit of `.paul/*` artifacts with emphasis on repeated-read files, growth patterns, and likely hot-path context waste under Pi usage.
@@ -47,11 +47,13 @@ Outputs: `artifact-footprint-inventory.md`, `pi-hot-path-read-analysis.md`, `158
 ### Phase 159: Workflow Bloat Audit
 Focus: Review workflow files for fluff, redundancy, bloating actions, and instruction patterns that expand recurring context cost.
 Plans: 1 (`159-01-PLAN.md`)
-Status: 🚧 Planning
-
+Status: ✅ Complete
+Completed: 2026-03-28
+Outputs: `workflow-read-surface-inventory.md`, `prompt-shape-duplication-audit.md`, `159-workflow-bloat-report.md`, `159-01-SUMMARY.md`
 ### Phase 160: Findings & Recommendation Package
 Focus: Consolidate evidence and deliver ranked tactical cleanup options plus structural redesign recommendations.
 Plans: TBD (defined during /paul:plan)
+Status: Ready to plan
 
 ## Completed Milestones
 <details>
