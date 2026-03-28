@@ -138,6 +138,8 @@ All validated — see below.
 - ✓ Review workflow integration — `/paul:review` skill, Pi command registration, opt-in merge-gate review step, live review validation, and polish fixes shipped in v2.33
 - ✓ PALS-native implementer validation & operating-model docs — automated proof, temp-HOME install validation, and explicit Pi three-surface documentation shipped in Phase 157 (v2.34)
 - ✓ Workflow-first context reduction implementation — thin wrappers, slice-based roadmap reads, slimmer warm-path workflow prose, and semantic installed-surface validation shipped across Phases 161-163 (v2.36)
+- ✓ Implementer config contract alignment — explicit `agents.implementer` defaults now flow through init, migration, schema docs, README guidance, and installed-surface validation across Phases 164-166 (v2.37)
+- ✓ Delegated APPLY expansion — `pals-implementer` now covers broader bounded parent-verifiable task packets while keeping verification, module enforcement, fallback, and `.paul/*` lifecycle authority in the parent (Phases 165-166, v2.37)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -297,6 +299,8 @@ All validated — see below.
 | Reduce workflow amplification before attempting hotter artifact redesign | 160 | The combined audit shows the safest high-value wins are in wrapper/read-discipline/prose cleanup before touching `STATE.md` structure |
 | Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | `ROADMAP.md` is the main warm-path artifact amplified by workflow bundling, while `PROJECT.md` and canonical markers are stabilizing behaviors worth keeping |
 | Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
+|| Broaden delegated APPLY eligibility around bounded parent-verifiable tasks rather than a parallel-only subagent heuristic | 165 | Makes delegated APPLY practical for more auto tasks without weakening parent authority, fallback, or lifecycle ownership |
+|| Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -315,4 +319,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-28 after Phase 164 completion*
+*Last updated: 2026-03-28 after v2.37 completion*

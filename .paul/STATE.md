@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 UNIFY in merge gate
+**Current focus:** Awaiting next milestone definition after v2.37 closeout
 ## Current Position
-Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 166 of 3 (Validation & Docs Refresh) — UNIFY Complete, Merge Gate Pending
-Plan: 166-01 summarized; awaiting PR merge to transition milestone
-Status: UNIFY complete, waiting at merge gate
-Last activity: 2026-03-28T19:11:58Z — Created Phase 166 summary and entered merge gate for PR #75
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: Milestone v2.37 complete — ready for next
+Last activity: 2026-03-28T19:29:15Z — Completed milestone v2.37 closeout after PR #75 merged
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [█████████░] 92%
+- v2.37 Implementer Config Alignment & Delegation Expansion: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [UNIFY complete; merge gate pending]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -121,6 +121,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Finish v2.36 with bounded prose cleanup before structural artifact redesign | 163 | Closes the workflow-first reduction pass without reopening higher-risk roadmap/state redesign |
 | 2026-03-28: Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
 | 2026-03-28: Broaden delegated APPLY eligibility around bounded parent-verifiable tasks rather than a parallel-only subagent heuristic | 165 | Keeps delegated APPLY practical for more auto tasks without weakening parent authority, fallback, or lifecycle ownership |
+| 2026-03-28: Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -161,21 +162,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
 - Tree-sitter repo map deferred
-Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
+Last commit: feat(166-validation-docs-refresh): align docs and validation (#75)
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/166-validation-docs-refresh
-Last commit: feat(166-validation-docs-refresh): align docs and validation pushed on feature/166-validation-docs-refresh
-PR: https://github.com/coctostan/pals/pull/75 (OPEN)
+Branch: main
+Last commit: feat(166-validation-docs-refresh): align docs and validation (#75)
+PR: https://github.com/coctostan/pals/pull/75 (MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T19:11:58Z
-Stopped at: Phase 166 summary written; merge gate is waiting for PR merge
-Next action: Merge PR #75, then continue transition to close milestone v2.37
-Resume file: .paul/phases/166-validation-docs-refresh/166-01-SUMMARY.md
+Last session: 2026-03-28T19:29:15Z
+Stopped at: Milestone v2.37 complete
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 Resume context:
-- Summary created at `.paul/phases/166-validation-docs-refresh/166-01-SUMMARY.md` with all three acceptance criteria marked PASS.
-- Validation passed: `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`.
-- PR #75 exists and CI is passing; merge gate is now waiting for merge approval.
+- Milestone v2.37 is complete and archived in `.paul/MILESTONES.md` plus `.paul/milestones/v2.37-ROADMAP.md`.
+- PRs #73, #74, and #75 merged cleanly on 2026-03-28.
+- The repo is on `main` and ready for the next milestone definition.

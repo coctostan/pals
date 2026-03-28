@@ -49,8 +49,39 @@ Completed milestone log for this project.
 | **v2.29 E2E Test Protocol** | 2026-03-26 | 1 session | 2 phases, 2 plans. Reusable E2E test protocol (8 dimensions, scoring model), validated with greenfield pi-monitor build (Sonnet 4.6). 4 findings → v2.30. |
 | **v2.33 Code Review Module (REV)** | 2026-03-27 | 1 session | 3 phases, 4 plans. REV module + skill + merge gate + live validation. |
 | **v2.34 Pi Subagent Integration & PALS Implementer** | 2026-03-27 | 3h 41m | 4 phases, 4 plans. Parent-controlled `pals-implementer`, installer-backed Pi agent availability, and validation/docs polish. |
+| **v2.37 Implementer Config Alignment & Delegation Expansion** | 2026-03-28 | 2h 53m | 3 phases, 3 plans |
 
 ---
+## ✅ v2.37 Implementer Config Alignment & Delegation Expansion
+
+**Completed:** 2026-03-28
+**Duration:** 2h 53m
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 164-166) |
+| Plans | 3 |
+| Files changed | 12 unique workflow, schema, doc, validation, and lifecycle files |
+| PRs merged | 3 (#73, #74, #75) |
+
+### Key Accomplishments
+- Aligned the canonical `pals.json` contract around an explicit `agents.implementer` block so init, migration, schema docs, and generated config all agree.
+- Broadened delegated APPLY from a parallel-leaning heuristic to a bounded parent-verifiable task model while preserving parent-owned verification, module enforcement, fallback, and `.paul/*` authority.
+- Kept the repo-owned `pals-implementer`, Pi wrapper, README, and Pi adapter docs synchronized with the stricter helper-agent boundary and three-surface operating model.
+- Expanded Pi and cross-harness validation so install-surface and repo-surface drift in implementer config or delegated APPLY semantics now fails automatically.
+- Closed the milestone through GitHub Flow with three merged PRs covering contract alignment, delegated APPLY expansion, and validation/docs refresh.
+
+### Key Decisions
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
+| Broaden delegated APPLY eligibility around bounded parent-verifiable tasks rather than a parallel-only subagent heuristic | 165 | Makes delegated APPLY practical for more auto tasks without weakening parent authority, fallback, or lifecycle ownership |
+| Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
+
+---
+
 ## ✅ v2.34 Pi Subagent Integration & PALS Implementer
 
 **Completed:** 2026-03-27
