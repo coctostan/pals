@@ -13,7 +13,7 @@ In Pi:
 - enabled modules are installed alongside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`; TODD/WALT remain module overlays, not standalone Pi skills
 - live module visibility in the Pi status/widget is dispatch-derived from recent shared workflow/reporting output plus shared artifacts; it remains adapter-only and never becomes an authoritative Pi-owned execution ledger
 - planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
-- delegated APPLY stays task-bounded: Pi may surface `pals-implementer`, but parent APPLY keeps verification, fallback, checkpoints, module gates, and `.paul/*` authority
+- delegated APPLY stays task-bounded: Pi may surface `pals-implementer`, but parent APPLY keeps verification, fallback, checkpoints, module gates, and `.paul/*` authority; the helper is only for eligible bounded repo-local work
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
 |------------|------------|--------------------|-----------------|
@@ -68,7 +68,7 @@ From a skill directory, kernel resources are referenced via relative paths:
 - Rules: `../rules/{name}.md`
 Pi command registration lives in the extension layer (`drivers/pi/extensions/pals-hooks.ts`). Those `/paul-*` commands provide the command/hook layer only; they do not replace canonical skill files or shared workflows.
 
-`pals-implementer` is not a second APPLY authority. It exists so parent APPLY can offload a well-bounded repo task and then resume parent-owned verification and lifecycle handling.
+`pals-implementer` is not a second APPLY authority. It exists so parent APPLY can offload an eligible bounded repo-local task or sequential task step and then resume parent-owned verification and lifecycle handling.
 
 Enabled module manifests are materialized into `~/.pi/agent/skills/pals/modules.yaml` during install. PLAN/APPLY/UNIFY then use that registry to decide which module hook semantics to dispatch from shared markdown references. This is how Pi loads TODD/WALT today: as installed module overlays, not separate `/skill:*` entries.
 That same shared workflow/reporting contract now powers bounded live module visibility in the Pi status/widget. The extension only derives a recent module activity snapshot from canonical signals such as `[dispatch] ...` and `Module Execution Reports`; it does not persist its own module history or claim authoritative proof independently of shared artifacts.

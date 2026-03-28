@@ -804,6 +804,35 @@ else
   tap_not_ok "Pi discovery surfaces explain module overlays vs standalone skills" "Expected modules.yaml/module overlay guidance across Pi README, skill map, and help skill"
 fi
 
+README_MAIN="$REPO_ROOT/README.md"
+if [ -f "$README_MAIN" ] \
+  && grep -Fq '"agents": {' "$README_MAIN" \
+  && grep -Fq '"implementer": { "enabled": true, "model": null }' "$README_MAIN" \
+  && grep -Fq 'Current top-level sections for a fresh generated config are `modules`, `agents`, `git`, `planning`, `preferences`, and `guided_workflow`' "$README_MAIN" \
+  && grep -Fq 'eligible bounded repo-local work only' "$README_MAIN" \
+  && grep -Fq 'single task or sequential task step' "$README_MAIN"; then
+  tap_ok "README preserves explicit implementer config defaults and bounded delegation wording"
+else
+  tap_not_ok "README preserves explicit implementer config defaults and bounded delegation wording" "Expected agents.implementer config and bounded helper-agent wording in README.md"
+fi
+
+if [ -f "$README_PI" ] \
+  && grep -Fq 'three distinct PALS runtime surfaces' "$README_PI" \
+  && grep -Fq 'eligible bounded repo-local task needs isolated implementation work' "$README_PI" \
+  && grep -Fq 'Pi surfaces the helper only for eligible bounded repo-local work' "$README_PI"; then
+  tap_ok "Extension README keeps the helper-agent model bounded to the three-surface Pi runtime"
+else
+  tap_not_ok "Extension README keeps the helper-agent model bounded to the three-surface Pi runtime" "Expected three-surface and bounded helper-agent wording in drivers/pi/extensions/README.md"
+fi
+
+if [ -f "$SKILL_MAP" ] \
+  && grep -Fq 'eligible bounded repo-local work' "$SKILL_MAP" \
+  && grep -Fq 'eligible bounded repo-local task or sequential task step' "$SKILL_MAP"; then
+  tap_ok "Skill map keeps helper-agent boundaries aligned with bounded delegated APPLY"
+else
+  tap_not_ok "Skill map keeps helper-agent boundaries aligned with bounded delegated APPLY" "Expected bounded repo-local helper-agent wording in drivers/pi/skill-map.md"
+fi
+
 if grep -q 'Use `/paul-\*`' "$HELP_SKILL" && grep -q 'canonical' "$HELP_SKILL" && grep -q 'Ctrl+Alt+N' "$HELP_SKILL"; then
   tap_ok "Pi help skill explains command layer, canonical skill layer, and shortcuts"
 else

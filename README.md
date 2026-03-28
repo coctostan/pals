@@ -150,6 +150,9 @@ PALS uses `pals.json` at the project root:
     "dave": { "enabled": true, "description": "Deploy automation & verification engine" },
     "ruby": { "enabled": true, "description": "Refactor utility & better-code yielder" }
   },
+  "agents": {
+    "implementer": { "enabled": true, "model": null }
+  },
   "git": {
     "workflow": "github-flow",
     "base_branch": "main",
@@ -180,6 +183,7 @@ PALS uses `pals.json` at the project root:
 ```
 
 All 18 modules are enabled by default. Expert modules (ARCH, SETH, etc.) are configured in `modules.yaml` and dispatch automatically — they don't need entries in `pals.json` unless you want to disable them.
+Current top-level sections for a fresh generated config are `modules`, `agents`, `git`, `planning`, `preferences`, and `guided_workflow` (plus `schema_version`).
 
 ### Git Workflow
 
@@ -216,10 +220,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Delegated APPLY Operating Model
 
-Parent APPLY remains authoritative even when an eligible auto task is delegated. The parent workflow still owns approval, official verify steps, module dispatch and gates, fallback judgment, and all `.paul/*` lifecycle writes.
+Parent APPLY remains authoritative even when an eligible auto task is delegated. The parent workflow still owns approval, official verify steps, module dispatch and gates, checkpoints, fallback judgment, and all `.paul/*` lifecycle writes.
 
-For clear repo-local tasks only, the parent may delegate bounded implementation work to the repo-shipped `pals-implementer`. In Pi, `install.sh` makes that agent visible at `~/.pi/agent/agents/pals-implementer.md` so parent-controlled APPLY can invoke it without moving lifecycle ownership into the adapter.
-
+For eligible bounded repo-local work only, the parent may delegate a single task or sequential task step to the repo-shipped `pals-implementer`. In Pi, `install.sh` makes that agent visible at `~/.pi/agent/agents/pals-implementer.md` so parent-controlled APPLY can invoke a helper without moving lifecycle ownership into the adapter.
 This is distinct from review. `/paul:review` remains a separate on-demand path that dispatches `code-reviewer` for isolated review work; it does not replace APPLY verification and it does not become lifecycle truth.
 
 ### Lifecycle Hooks

@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 unify complete, merge gate ready
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 UNIFY in merge gate
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 165 of 3 (Delegated APPLY Expansion) — UNIFY Complete
-Plan: 165-01 reconciled
-Status: UNIFY complete, awaiting merge gate and transition
-Last activity: 2026-03-28T18:01:30Z — Finalized Phase 165 summary, quality history, and merge-gate readiness
+Phase: 166 of 3 (Validation & Docs Refresh) — UNIFY Complete, Merge Gate Pending
+Plan: 166-01 summarized; awaiting PR merge to transition milestone
+Status: UNIFY complete, waiting at merge gate
+Last activity: 2026-03-28T19:11:58Z — Created Phase 166 summary and entered merge gate for PR #75
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [██████░░░░] 67%
+- v2.37 Implementer Config Alignment & Delegation Expansion: [█████████░] 92%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate / transition pending]
+  ✓        ✓        ✓     [UNIFY complete; merge gate pending]
 ```
 
 ## Accumulated Context
@@ -166,16 +166,16 @@ Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/165-delegated-apply-expansion
-Last commit: feature branch updated for Phase 165 delegated APPLY widening work
-PR: https://github.com/coctostan/pals/pull/74 (OPEN)
+Branch: feature/166-validation-docs-refresh
+Last commit: feat(166-validation-docs-refresh): align docs and validation pushed on feature/166-validation-docs-refresh
+PR: https://github.com/coctostan/pals/pull/75 (OPEN)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T18:01:30Z
-Stopped at: Phase 165 UNIFY completed; PR #74 is open, CI passing, and merge gate is ready
-Next action: Merge PR #74, then continue transition to Phase 166
-Resume file: .paul/phases/165-delegated-apply-expansion/165-01-SUMMARY.md
+Last session: 2026-03-28T19:11:58Z
+Stopped at: Phase 166 summary written; merge gate is waiting for PR merge
+Next action: Merge PR #75, then continue transition to close milestone v2.37
+Resume file: .paul/phases/166-validation-docs-refresh/166-01-SUMMARY.md
 Resume context:
-- Phase 165 reconciliation is complete and the loop is closed pending merge/transition.
-- Delegated APPLY now allows broader bounded parent-verifiable task delegation while preserving fallback and lifecycle authority.
-- Quality history and post-unify module reporting were finalized locally on feature/165-delegated-apply-expansion.
+- Summary created at `.paul/phases/166-validation-docs-refresh/166-01-SUMMARY.md` with all three acceptance criteria marked PASS.
+- Validation passed: `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`.
+- PR #75 exists and CI is passing; merge gate is now waiting for merge approval.
