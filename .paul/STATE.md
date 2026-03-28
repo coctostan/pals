@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 unify complete, merge gate ready
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 planning active
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 165 of 3 (Delegated APPLY Expansion) — UNIFY Complete
-Plan: 165-01 reconciled
-Status: UNIFY complete, awaiting merge gate and transition
-Last activity: 2026-03-28T18:01:30Z — Finalized Phase 165 summary, quality history, and merge-gate readiness
+Phase: 166 of 3 (Validation & Docs Refresh) — Planning
+Plan: 166-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-28T18:21:13Z — Created .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
 Progress:
 - v2.37 Implementer Config Alignment & Delegation Expansion: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate / transition pending]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -166,16 +166,16 @@ Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/165-delegated-apply-expansion
-Last commit: feature branch updated for Phase 165 delegated APPLY widening work
-PR: https://github.com/coctostan/pals/pull/74 (OPEN)
-CI: passing
+Branch: main
+Last commit: main advanced after merging Phase 165 PR #74
+PR: none (N/A)
+CI: N/A
 ## Session Continuity
-Last session: 2026-03-28T18:01:30Z
-Stopped at: Phase 165 UNIFY completed; PR #74 is open, CI passing, and merge gate is ready
-Next action: Merge PR #74, then continue transition to Phase 166
-Resume file: .paul/phases/165-delegated-apply-expansion/165-01-SUMMARY.md
+Last session: 2026-03-28T18:21:13Z
+Stopped at: Plan 166-01 created; session paused before APPLY approval
+Next action: Review and approve plan, then run /paul:apply .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-28-phase166-plan-ready.md
 Resume context:
-- Phase 165 reconciliation is complete and the loop is closed pending merge/transition.
-- Delegated APPLY now allows broader bounded parent-verifiable task delegation while preserving fallback and lifecycle authority.
-- Quality history and post-unify module reporting were finalized locally on feature/165-delegated-apply-expansion.
+- Phase 165 is merged and closed; the repo is back on main with no open PR.
+- Phase 166 has an executable plan focused on README / Pi adapter docs and Pi + cross-harness validation drift prevention.
+- APPLY has not started; keep the phase bounded to docs/validation alignment and preserve existing lifecycle semantics.

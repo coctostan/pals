@@ -31,21 +31,21 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-03-28
 Theme: Align `pals.json`, init, migration, schema, docs, and validation around explicit implementer config, then broaden delegated APPLY so `pals-implementer` is used more often without weakening parent authority.
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 164 | Implementer Config Contract Alignment | 1 | ✅ Complete | 2026-03-28 |
-| 165 | Delegated APPLY Expansion | 1 (`165-01`) | Planning | - |
-| 166 | Validation & Docs Refresh | TBD | Not started | - |
+| 165 | Delegated APPLY Expansion | 1 (`165-01`) | ✅ Complete | 2026-03-28 |
+| 166 | Validation & Docs Refresh | 1 (`166-01`) | Planning | - |
 ### Phase 164: Implementer Config Contract Alignment
 Focus: Add explicit `agents.implementer` config to the canonical `pals.json` contract, ensure init and migration populate it, and align schema/docs with runtime expectations.
 Plans: 1 (`164-01`) — complete 2026-03-28
 ### Phase 165: Delegated APPLY Expansion
 Focus: Loosen delegated APPLY eligibility so more bounded autonomous tasks route through `pals-implementer` while keeping parent verification, module enforcement, fallback, and `.paul/*` authority intact.
-Plans: 1 (`165-01`) — planning
+Plans: 1 (`165-01`) — complete 2026-03-28
 ### Phase 166: Validation & Docs Refresh
 Focus: Validate the new config/delegation behavior in fresh-project scenarios and refresh docs/tests so the operating model and generated config stay in sync.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`166-01`) — planning
 ## Completed Milestones
 <details>
 <summary>v2.36 Context Reduction Implementation — Workflow-First Pass - 2026-03-28 (3 phases)</summary>
