@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 162-01 unified, merge gate pending
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 163-01 created, awaiting approval
 ## Current Position
 Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
-Phase: 162 of 3 (Workflow Read-Discipline Reduction) — UNIFY complete
-Plan: [162-01] unified; transition pending merge gate
-Status: Loop complete, merge gate ready
-Last activity: 2026-03-28T02:20:46Z — Created 162-01 summary, updated quality history, and prepared PR #71 for merge-gate resolution
+Phase: 163 of 3 (ROADMAP/Workflow Prose Cleanup + Validation) — Planning
+Plan: [163-01] created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-03-28T02:33:04Z — Created .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md after merging PR #71
 Progress:
 - v2.36 Context Reduction Implementation — Workflow-First Pass: [██████░░░░] 67%
-- Phase 162: [██████████] 100%
+- Phase 163: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate pending]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -156,16 +156,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/162-workflow-read-discipline-reduction
-Last commit: current branch HEAD
-PR: https://github.com/coctostan/pals/pull/71 (state: open, CI: passing)
+Branch: feature/163-roadmap-workflow-prose-cleanup-validation
+Last commit: `wip(163): paused at 163-01`
+PR: none (feature branch not pushed yet)
 ## Session Continuity
-Last session: 2026-03-28T02:20:46Z
-Stopped at: Completed Phase 162 UNIFY reconciliation; summary and quality history are written and PR #71 is ready for merge-gate resolution
-Next action: Merge PR #71, then continue the Phase 162 transition to Phase 163
-Resume file: .paul/phases/162-workflow-read-discipline-reduction/162-01-SUMMARY.md
+Last session: 2026-03-28T02:40:20Z
+Stopped at: Plan 163-01 created and paused at review/approval boundary
+Next action: Review and approve plan, then run /paul:apply .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-03-28-phase163-plan-ready.md
 Resume context:
-- `162-01-SUMMARY.md` now records the shared workflow read-discipline changes and preserved collaboration semantics.
-- `.paul/QUALITY-HISTORY.md` was updated with `162-01` as a stable validation snapshot (`143 pass + 60 pass`).
-- PR #71 is open with passing CI on `feature/162-workflow-read-discipline-reduction`; next work depends on merge-gate resolution and then the mandatory phase transition.
-- PR #71 is open with passing CI on `feature/162-workflow-read-discipline-reduction`; next work depends on merge-gate resolution and then the mandatory phase transition.
+- PR #71 is merged; a WIP commit for Phase 163 planning is now saved on `feature/163-roadmap-workflow-prose-cleanup-validation`.
+- `163-01-PLAN.md` is written and Phase 163 is paused before APPLY, with no implementation work started yet.
+- This phase is intentionally limited to bounded prose cleanup in the roadmap/planning workflow cluster plus Pi/cross-harness validation.
