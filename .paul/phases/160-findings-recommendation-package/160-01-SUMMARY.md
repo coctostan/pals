@@ -113,10 +113,9 @@ None.
 - The next milestone should begin with bounded workflow-side cleanup before attempting riskier artifact restructures
 
 ## Merge Gate Status
-- PR `#69` exists: https://github.com/coctostan/pals/pull/69
-- Reviews are not required by `pals.json`
-- CI reports **no checks configured/reported** for this branch
-- Final merge resolution occurs during UNIFY merge-gate handling
-
+- PR `#69` merged: https://github.com/coctostan/pals/pull/69
+- Reviews were not required by `pals.json`
+- Socket Security checks passed before merge
+- Branch merged via squash and local `main` synced to `origin/main`
 ## Next Phase
-Phase 160 completes the v2.35 milestone. Recommended next milestone: **v2.36 Context Reduction Implementation — Workflow-First Pass**.
+v2.35 is complete. Recommended next milestone: **v2.36 Context Reduction Implementation — Workflow-First Pass**.

@@ -4,13 +4,13 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Plan Phase 160 — Findings & Recommendation Package
+**Current focus:** v2.35 complete — define the next milestone (recommended: v2.36 Context Reduction Implementation — Workflow-First Pass)
 ## Current Position
-Milestone: v2.35 Context Bloat Audit & Reduction Strategy
+Milestone: v2.35 Context Bloat Audit & Reduction Strategy (Complete)
 Phase: 160 of 3 (Findings & Recommendation Package) — Complete
-Plan: [160-01] complete
-Status: UNIFY complete, merge gate / transition in progress
-Last activity: 2026-03-28T01:45:00Z — Finalized .paul/phases/160-findings-recommendation-package/160-01-SUMMARY.md
+Plan: [160-01] summarized and merged
+Status: Milestone complete, ready for next milestone
+Last activity: 2026-03-28T02:00:00Z — Phase 160 complete, PR #69 merged, v2.35 closed
 Progress:
 - v2.35 Context Bloat Audit & Reduction Strategy: [██████████] 100%
 - Phase 160: [██████████] 100%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - phase ready for transition]
+  ✓        ✓        ✓     [Loop complete - milestone closed]
 ```
 
 ## Accumulated Context
@@ -114,6 +114,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-27: Preserve `PROJECT.md` as the compact brief instead of using it to absorb roadmap or milestone history | 158 | Protects the layered artifact model that Phase 158 found was already working comparatively well |
 | 2026-03-28: Keep workflow-side amplification separate from artifact-side cost until Phase 160 combines both evidence streams | 159 | Preserves a clean recommendation baseline and avoids blurring root causes across the two audit phases |
 | 2026-03-28: Preserve guided workflow markers and target surrounding prose/read bundles first for workflow-bloat reduction | 159 | Lets Phase 160 pursue safer wording and read-discipline reductions without destabilizing guided UX semantics |
+| 2026-03-28: Reduce workflow amplification before attempting hotter artifact redesign | 160 | Sets the next milestone toward wrapper/read-discipline/prose cleanup before any `STATE.md` redesign |
+| 2026-03-28: Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | Gives future reduction work explicit trim-vs-preserve boundaries |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -151,15 +153,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/160-findings-recommendation-package
-Last commit: 988b919
-PR: https://github.com/coctostan/pals/pull/69 (OPEN — no checks reported yet)
+Branch: main
+Last commit: b5e203a
+PR: https://github.com/coctostan/pals/pull/69 (MERGED)
 ## Session Continuity
-Last session: 2026-03-28T01:45:00Z
-Stopped at: UNIFY complete for Plan [160-01]; merge gate / phase transition in progress
-Next action: Clear merge gate for PR #69, then finish milestone transition
+Last session: 2026-03-28T02:00:00Z
+Stopped at: v2.35 complete; ready to define the next milestone
+Next action: Start the next milestone (recommended: v2.36 Context Reduction Implementation — Workflow-First Pass)
 Resume file: .paul/phases/160-findings-recommendation-package/160-01-SUMMARY.md
 Resume context:
-- Phase 160 summary is drafted and quality history has been updated
-- v2.35 is logically complete pending GitHub Flow merge-gate resolution and final transition updates
-- Current branch is `feature/160-findings-recommendation-package`; PR #69 is open with no checks reported
+- Phase 160 closed the context-bloat milestone with a combined findings matrix, ranked recommendations, and a milestone-close report
+- Recommended next step is a workflow-first reduction milestone before any hotter artifact redesign
+- Current branch is `main` and PR #69 is merged

@@ -293,6 +293,8 @@ All validated — see below.
 | Preserve `PROJECT.md` as the compact brief instead of using it to absorb roadmap or milestone history | 158 | The layered artifact model is working here; expanding PROJECT would recreate the same bloat problem elsewhere |
 | Keep workflow-side amplification separate from artifact-side cost until Phase 160 combines both evidence streams | 159 | Preserves a clean recommendation baseline and avoids blurring root causes across the two audit phases |
 | Preserve guided workflow markers and target surrounding prose/read bundles first for workflow-bloat reduction | 159 | Enables safer wording/read-discipline cleanup without destabilizing guided UX semantics |
+| Reduce workflow amplification before attempting hotter artifact redesign | 160 | The combined audit shows the safest high-value wins are in wrapper/read-discipline/prose cleanup before touching `STATE.md` structure |
+| Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | `ROADMAP.md` is the main warm-path artifact amplified by workflow bundling, while `PROJECT.md` and canonical markers are stabilizing behaviors worth keeping |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -311,4 +313,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-28 after Phase 159 completion*
+*Last updated: 2026-03-28 after Phase 160 completion*
