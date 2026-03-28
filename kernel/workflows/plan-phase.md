@@ -17,8 +17,8 @@ Next phase: APPLY (after plan approval)
 
 <required_reading>
 .paul/STATE.md
-.paul/ROADMAP.md
 .paul/PROJECT.md
+.paul/ROADMAP.md (read the current milestone section first; expand only to the target phase detail or broader roadmap structure when the route genuinely needs it)
 .paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail are relevant)
 .paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
 modules.yaml (installed module registry — MUST read; drives pre-plan and post-plan hook dispatch)
@@ -61,12 +61,13 @@ templates/PLAN.md
 </step>
 
 <step name="identify_phase">
-1. Read ROADMAP.md to determine:
+1. Read the current milestone section in ROADMAP.md first to determine:
    - Which phase is next (first incomplete phase)
-   - Phase scope and goals
+   - Phase scope and goals from the milestone table
    - Dependencies on prior phases
-2. If multiple phases available, ask user which to plan
-3. Confirm phase selection before proceeding
+2. Expand from the milestone table to the target phase detail only after the candidate phase is identified
+3. If multiple phases available, ask user which to plan
+4. Confirm phase selection before proceeding
 </step>
 
 <step name="determine_planning_posture">
@@ -134,7 +135,7 @@ templates/PLAN.md
 </step>
 
 <step name="analyze_scope">
-1. Review phase goals from ROADMAP.md
+1. Review the target phase detail in ROADMAP.md rather than re-reading unrelated milestone history
 2. **Assess change size** to scale planning depth: (Inspired by GPT Pilot's complexity gating)
    - 1-2 files, clear scope → lighter plan (fewer ACs, simpler verify)
    - 3-5 files → standard plan (full ACs, explicit verify per task)
@@ -160,14 +161,15 @@ templates/PLAN.md
    - Core value and description
    - Scope snapshot and top constraints
    - High-signal success metrics and key decisions
-2. If `.paul/PRD.md` exists and the phase needs deeper product framing, deferred items, assumptions, open questions, current-state vs desired-state detail, or dependency context, read the relevant sections selectively
-3. If prior phase exists, read its SUMMARY.md for:
+2. Read the current milestone section plus the target phase detail in `.paul/ROADMAP.md`; do not pull unrelated milestone history unless this route actually needs it
+3. If `.paul/PRD.md` exists and the phase needs deeper product framing, deferred items, assumptions, open questions, current-state vs desired-state detail, or dependency context, read the relevant sections selectively
+4. If prior phase exists, read its SUMMARY.md for:
    - What was built
    - Decisions made
    - Any deferred issues
-4. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries
-5. Read source files relevant to this phase's work
-6. Do NOT reflexively chain all prior summaries or artifacts - only load what's genuinely needed
+5. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries
+6. Read source files relevant to this phase's work
+7. Do NOT reflexively chain all prior summaries or artifacts - only load what's genuinely needed
 </step>
 
 <step name="check_specialized_flows">

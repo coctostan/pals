@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 161-01 unified, merge gate pending
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 162-01 unified, merge gate pending
 ## Current Position
 Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
-Phase: 161 of 3 (Wrapper & Entrypoint Slimming) — UNIFY complete
-Plan: [161-01] unified; transition pending merge gate
+Phase: 162 of 3 (Workflow Read-Discipline Reduction) — UNIFY complete
+Plan: [162-01] unified; transition pending merge gate
 Status: Loop complete, merge gate ready
-Last activity: 2026-03-28T01:56:10Z — Created 161-01 summary, updated quality history, and prepared PR #70 for merge-gate resolution
+Last activity: 2026-03-28T02:20:46Z — Created 162-01 summary, updated quality history, and prepared PR #71 for merge-gate resolution
 Progress:
-- v2.36 Context Reduction Implementation — Workflow-First Pass: [███░░░░░░░] 33%
-- Phase 161: [██████████] 100%
+- v2.36 Context Reduction Implementation — Workflow-First Pass: [██████░░░░] 67%
+- Phase 162: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
@@ -156,15 +156,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/161-wrapper-entrypoint-slimming
-Last commit: 9c5c507
-PR: https://github.com/coctostan/pals/pull/70 (state: open, CI: passing)
+Branch: feature/162-workflow-read-discipline-reduction
+Last commit: current branch HEAD
+PR: https://github.com/coctostan/pals/pull/71 (state: open, CI: passing)
 ## Session Continuity
-Last session: 2026-03-28T01:56:10Z
-Stopped at: Completed Phase 161 UNIFY reconciliation; summary and quality history are written and PR #70 is ready for merge-gate resolution
-Next action: Merge PR #70, then continue the Phase 161 transition to Phase 162
-Resume file: .paul/phases/161-wrapper-entrypoint-slimming/161-01-SUMMARY.md
+Last session: 2026-03-28T02:20:46Z
+Stopped at: Completed Phase 162 UNIFY reconciliation; summary and quality history are written and PR #71 is ready for merge-gate resolution
+Next action: Merge PR #71, then continue the Phase 162 transition to Phase 163
+Resume file: .paul/phases/162-workflow-read-discipline-reduction/162-01-SUMMARY.md
 Resume context:
-- `161-01-SUMMARY.md` now records the wrapper-shell slimming, semantic validation hardening, and the minor Task 3 files-list deviation.
-- `.paul/QUALITY-HISTORY.md` was updated with `161-01` as an improving validation snapshot (`143 pass + 60 pass`).
-- PR #70 is open with passing CI on `feature/161-wrapper-entrypoint-slimming`; next work depends on merge-gate resolution and then the mandatory phase transition.
+- `162-01-SUMMARY.md` now records the shared workflow read-discipline changes and preserved collaboration semantics.
+- `.paul/QUALITY-HISTORY.md` was updated with `162-01` as a stable validation snapshot (`143 pass + 60 pass`).
+- PR #71 is open with passing CI on `feature/162-workflow-read-discipline-reduction`; next work depends on merge-gate resolution and then the mandatory phase transition.
+- PR #71 is open with passing CI on `feature/162-workflow-read-discipline-reduction`; next work depends on merge-gate resolution and then the mandatory phase transition.

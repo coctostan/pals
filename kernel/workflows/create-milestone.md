@@ -16,8 +16,8 @@ After create-milestone, project is ready for first phase PLAN.
 
 <required_reading>
 .paul/STATE.md
-.paul/ROADMAP.md
 .paul/MILESTONE-CONTEXT.md (if exists)
+.paul/ROADMAP.md (consult only the slice needed to insert the new milestone and derive the next available phase number)
 </required_reading>
 
 <references>
@@ -32,13 +32,12 @@ After create-milestone, project is ready for first phase PLAN.
    ```bash
    cat .paul/MILESTONE-CONTEXT.md 2>/dev/null
    ```
-
 2. **If found:**
    - Display: "Loading context from discuss-milestone..."
    - Parse: Features, Scope, Phase Mapping, Constraints
    - Store for use in subsequent steps
+   - Read only the roadmap slice needed to preserve surrounding structure and derive the next available phase number
    - Skip to step 4 (update_roadmap)
-
 3. **If not found:**
    - Display: "No discussion context found. Let's define the milestone."
    - Proceed to step 2 (get_milestone_info)
@@ -95,7 +94,7 @@ What phases will this milestone include?
 Wait for response. Parse into phase list.
 
 For each phase, derive:
-- Phase number (next available from ROADMAP.md)
+- Phase number (next available phase number from ROADMAP.md)
 - Phase name
 - Brief description
 </step>
@@ -122,8 +121,7 @@ Store the selected path as `review_preference`.
 </step>
 
 <step name="update_roadmap">
-Read current ROADMAP.md and update:
-
+Read only the roadmap slice needed to insert the new milestone and preserve surrounding structure:
 1. **Add milestone header section:**
    ```markdown
    ## Current Milestone
@@ -131,22 +129,18 @@ Read current ROADMAP.md and update:
    Status: 🚧 In Progress
    Phases: 0 of {phase_count} complete
    ```
-
-2. **Add phases to table:**
+   2. **Add phases to table:**
    ```markdown
    | Phase | Name | Plans | Status | Completed |
    |-------|------|-------|--------|-----------|
    | {N} | {name} | TBD | Not started | - |
    ```
-
-3. **Add phase details section:**
+   3. **Add phase details section:**
    ```markdown
    ### Phase {N}: {name}
-
    Focus: {description}
    Plans: TBD (defined during /paul:plan)
    ```
-
 4. **Update footer timestamp**
 </step>
 

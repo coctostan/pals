@@ -22,7 +22,7 @@ After discussion, routes to /paul:plan (plan-phase).
 .paul/STATE.md
 .paul/PROJECT.md (hot-path requirements and progress brief)
 .paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail help the discussion)
-.paul/ROADMAP.md (phase scope and goals)
+.paul/ROADMAP.md (use the current milestone section to validate the phase, then read only the selected phase detail for scope and goals)
 </required_reading>
 
 <references>
@@ -43,13 +43,11 @@ Example: /paul:discuss 10
 ```
 Exit workflow.
 
-2. Validate phase exists in ROADMAP.md
-3. Extract phase details: number, name, description, scope
-
+2. Validate phase exists in the current milestone section of ROADMAP.md
+3. Extract the selected phase detail: number, name, description, scope
 **If phase not found:**
 ```
 Error: Phase {N} not found in roadmap.
-
 Available phases:
 [list incomplete phases from roadmap]
 ```
@@ -67,8 +65,8 @@ PHASE DISCUSSION
 Phase: {phase_number} — {phase_name}
 Status: {from ROADMAP.md}
 
-Roadmap description:
-{phase description from ROADMAP.md}
+Selected phase detail from ROADMAP.md:
+{selected phase detail from ROADMAP.md}
 
 {If prior phase completed:}
 Prior phase: {prior_phase_name}
@@ -110,7 +108,7 @@ This gives user context for the discussion.
 6. Apply mode guidance:
    - exploratory → allow broader shaping before converging on plan-ready goals
    - direct-requirements → stay close to the user's stated scope and focus on clarifying + prioritizing it
-7. Use `.paul/PROJECT.md` as the default brief and consult `.paul/PRD.md` only when richer product framing, deferred items, assumptions, open questions, or dependency detail materially help the discussion
+7. Use `.paul/PROJECT.md` as the default brief, consult `.paul/PRD.md` only when richer product framing, deferred items, assumptions, open questions, or dependency detail materially help the discussion, and avoid broad roadmap rereads after the selected phase detail is loaded
 8. Store `collaboration_level` and `planning_mode` for the phase handoff file.
 </step>
 
