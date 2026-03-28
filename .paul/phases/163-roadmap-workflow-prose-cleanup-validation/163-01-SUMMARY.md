@@ -134,9 +134,9 @@ None.
 - Structural `ROADMAP.md` or `STATE.md` redesign should remain evidence-gated follow-on work, not an automatic next move
 
 ## Merge Gate Status
-- PR `#72` exists: https://github.com/coctostan/pals/pull/72
-- Reviews are not required by `pals.json`
-- CI reached passing state before merge resolution
+- PR `#72` merged successfully: https://github.com/coctostan/pals/pull/72
+- Reviews were not required by `pals.json`
+- CI passed before merge and the branch was resolved back to `main`
 
 ## Next Phase
-After merge and transition, **v2.36 Context Reduction Implementation — Workflow-First Pass** is complete and the project is ready for the next milestone decision.
+After merge and transition, **v2.36 Context Reduction Implementation - Workflow-First Pass** is complete and the project is ready for the next milestone decision.
