@@ -160,7 +160,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
 - Tree-sitter repo map deferred
-- AGENTS.md deferred to interoperability milestone
+Last commit: main updated after PR #73 merge and Phase 165 transition
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
