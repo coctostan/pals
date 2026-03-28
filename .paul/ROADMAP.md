@@ -27,33 +27,38 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.36 Context Reduction Implementation — Workflow-First Pass**
-Status: ✅ Complete
+**v2.37 Implementer Config Alignment & Delegation Expansion**
+Status: 🚧 In Progress
 Started: 2026-03-28
-Completed: 2026-03-28
-Theme: Implement the highest-value workflow-side context reductions first — slimmer wrappers, tighter read discipline, and trimmed roadmap/workflow prose — without changing artifact-first lifecycle authority.
-Phases: 3 of 3 complete
+Theme: Align `pals.json`, init, migration, schema, docs, and validation around explicit implementer config, then broaden delegated APPLY so `pals-implementer` is used more often without weakening parent authority.
+Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 161 | Wrapper & Entrypoint Slimming | 1 | Complete | 2026-03-28 |
-| 162 | Workflow Read-Discipline Reduction | 1 | Complete | 2026-03-28 |
-| 163 | ROADMAP/Workflow Prose Cleanup + Validation | 1 | Complete | 2026-03-28 |
-### Phase 161: Wrapper & Entrypoint Slimming
-Focus: Reduce wrapper and entrypoint overhead so canonical commands preserve guided behavior with less repeated prose and less redundant injection.
-Plans: 1 (`161-01-PLAN.md`)
-Status: Complete
-Outputs: Slimmed Pi wrapper shells, updated Pi validation contract, `161-01-PLAN.md`, `161-01-SUMMARY.md`
-### Phase 162: Workflow Read-Discipline Reduction
-Focus: Narrow shared workflow read bundles around `ROADMAP.md` and active planning context so plan, status, and milestone-creation routes read only the slices they actually need while keeping `.paul/*` authoritative.
-Plans: 1 (`162-01-PLAN.md`)
-Status: Complete
-Outputs: Targeted read-discipline updates for planning/status/milestone workflows, preserved collaboration and guided behavior, `162-01-PLAN.md`, `162-01-SUMMARY.md`
-### Phase 163: ROADMAP/Workflow Prose Cleanup + Validation
-Focus: Trim the remaining surrounding prose and duplicated warm-path explanation in the roadmap/planning workflow cluster while preserving slice-based reads, collaboration semantics, guided markers, and `.paul/*` authority, then lock that slimmer contract into validation.
-Plans: 1 (`163-01-PLAN.md`)
-Status: Complete
-Outputs: Slimmer shared workflow prose for roadmap/planning routes, validation coverage for the preserved contract, `163-01-PLAN.md`, `163-01-SUMMARY.md`
+| 164 | Implementer Config Contract Alignment | 1 | ✅ Complete | 2026-03-28 |
+| 165 | Delegated APPLY Expansion | TBD | Not started | - |
+| 166 | Validation & Docs Refresh | TBD | Not started | - |
+### Phase 164: Implementer Config Contract Alignment
+Focus: Add explicit `agents.implementer` config to the canonical `pals.json` contract, ensure init and migration populate it, and align schema/docs with runtime expectations.
+Plans: 1 (`164-01`) — complete 2026-03-28
+### Phase 165: Delegated APPLY Expansion
+Focus: Loosen delegated APPLY eligibility so more bounded autonomous tasks route through `pals-implementer` while keeping parent verification, module enforcement, fallback, and `.paul/*` authority intact.
+Plans: TBD (defined during /paul:plan)
+### Phase 166: Validation & Docs Refresh
+Focus: Validate the new config/delegation behavior in fresh-project scenarios and refresh docs/tests so the operating model and generated config stay in sync.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
+<details>
+<summary>v2.36 Context Reduction Implementation — Workflow-First Pass - 2026-03-28 (3 phases)</summary>
+
+Theme: Implement the highest-value workflow-side context reductions first — slimmer wrappers, tighter read discipline, and trimmed roadmap/workflow prose — without changing artifact-first lifecycle authority.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 161 | Wrapper & Entrypoint Slimming | 1 | 2026-03-28 |
+| 162 | Workflow Read-Discipline Reduction | 1 | 2026-03-28 |
+| 163 | ROADMAP/Workflow Prose Cleanup + Validation | 1 | 2026-03-28 |
+
+</details>
 <details>
 <summary>v2.35 Context Bloat Audit & Reduction Strategy - 2026-03-28 (3 phases)</summary>
 

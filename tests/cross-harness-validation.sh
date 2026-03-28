@@ -245,6 +245,35 @@ else
   tap_not_ok "Both installed shared apply workflows preserve delegated pals-implementer guardrails" "Expected pals-implementer agent-path and parent-authority markers in both installed apply-phase.md files"
 fi
 
+CC_INIT_WORKFLOW="$CC_KERNEL_DIR/workflows/init-project.md"
+PI_INIT_WORKFLOW="$PI_KERNEL_DIR/workflows/init-project.md"
+CC_SCHEMA_REF="$CC_KERNEL_DIR/references/pals-json-schema.md"
+PI_SCHEMA_REF="$PI_KERNEL_DIR/references/pals-json-schema.md"
+
+if [ -f "$CC_INIT_WORKFLOW" ] && [ -f "$PI_INIT_WORKFLOW" ] \
+  && grep -Fq '"agents": {' "$CC_INIT_WORKFLOW" \
+  && grep -Fq '"agents": {' "$PI_INIT_WORKFLOW" \
+  && grep -Fq '"implementer": { "enabled": true, "model": null }' "$CC_INIT_WORKFLOW" \
+  && grep -Fq '"implementer": { "enabled": true, "model": null }' "$PI_INIT_WORKFLOW" \
+  && grep -Fq '**agents:** Add `agents.implementer: { "enabled": true, "model": null }` if missing' "$CC_INIT_WORKFLOW" \
+  && grep -Fq '**agents:** Add `agents.implementer: { "enabled": true, "model": null }` if missing' "$PI_INIT_WORKFLOW"; then
+  tap_ok "Both installed shared init workflows preserve explicit implementer config defaults"
+else
+  tap_not_ok "Both installed shared init workflows preserve explicit implementer config defaults" "Expected implementer config defaults in both installed init-project.md files"
+fi
+
+if [ -f "$CC_SCHEMA_REF" ] && [ -f "$PI_SCHEMA_REF" ] \
+  && grep -Fq '## agents' "$CC_SCHEMA_REF" \
+  && grep -Fq '## agents' "$PI_SCHEMA_REF" \
+  && grep -Fq '`agents.implementer.enabled`' "$CC_SCHEMA_REF" \
+  && grep -Fq '`agents.implementer.enabled`' "$PI_SCHEMA_REF" \
+  && grep -Fq '`agents.implementer.model`' "$CC_SCHEMA_REF" \
+  && grep -Fq '`agents.implementer.model`' "$PI_SCHEMA_REF"; then
+  tap_ok "Both installed schema references document implementer config fields"
+else
+  tap_not_ok "Both installed schema references document implementer config fields" "Expected agents.implementer markers in both installed pals-json-schema.md files"
+fi
+
 tap_file_contains_all \
   "Shared review command keeps REV entry routed through /paul:review" \
   "$REPO_ROOT/kernel/commands/paul/review.md" \

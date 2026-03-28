@@ -65,6 +65,17 @@ Module enable/disable config. All modules default to `enabled: true` if absent.
 
 **Note:** Runtime dispatch reads `modules.yaml` (installed registry), not this section. Per-project module disable at runtime is a planned future feature. Until then, this section is informational — all installed modules dispatch regardless.
 
+## agents
+
+Agent-routing config for bounded subagent paths. These fields control optional delegated execution defaults without changing parent lifecycle authority.
+
+| Field | Type | Default | Since |
+|-------|------|---------|-------|
+| `agents.implementer.enabled` | bool | `true` | v2.34 |
+| `agents.implementer.model` | string\|null | `null` | v2.34 |
+
+`agents.implementer` documents the explicit config surface used by delegated APPLY for the repo-controlled `pals-implementer`. Migration should add this block when missing and preserve any existing user-provided values.
+
 ## git
 
 Git automation config. All fields have safe jq defaults.

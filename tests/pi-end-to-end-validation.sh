@@ -435,6 +435,24 @@ tap_file_contains_all \
   'lifecycle reminder' \
   'parent owns verification, module gates, fallback, and state/report writes'
 
+PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
+PI_SCHEMA_REF="$SKILL_DIR/references/pals-json-schema.md"
+
+tap_file_contains_all \
+  "Installed shared init workflow emits explicit implementer config defaults" \
+  "$PI_INIT_WORKFLOW" \
+  '"agents": {' \
+  '"implementer": { "enabled": true, "model": null }' \
+  '**agents:** Add `agents.implementer: { "enabled": true, "model": null }` if missing'
+
+tap_file_contains_all \
+  "Installed shared schema reference documents implementer config fields" \
+  "$PI_SCHEMA_REF" \
+  '## agents' \
+  '`agents.implementer.enabled`' \
+  '`agents.implementer.model`' \
+  'Migration should add this block when missing'
+
 tap_file_contains_all \
   "Shared review command keeps REV entry routed through /paul:review" \
   "$REPO_ROOT/kernel/commands/paul/review.md" \
