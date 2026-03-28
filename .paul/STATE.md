@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 163-01 created, awaiting approval
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Phase 163 APPLY complete, ready for UNIFY
 ## Current Position
 Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
-Phase: 163 of 3 (ROADMAP/Workflow Prose Cleanup + Validation) — Planning
-Plan: [163-01] created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-28T02:33:04Z — Created .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md after merging PR #71
+Phase: 163 of 3 (ROADMAP/Workflow Prose Cleanup + Validation) — Applying
+Plan: [163-01] APPLY complete, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-28T02:52:48Z — Completed APPLY for .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
 Progress:
 - v2.36 Context Reduction Implementation — Workflow-First Pass: [██████░░░░] 67%
-- Phase 163: [░░░░░░░░░░] 0%
+- Phase 163: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -157,14 +157,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/163-roadmap-workflow-prose-cleanup-validation
-Last commit: `wip(163): paused at 163-01`
-PR: none (feature branch not pushed yet)
+Last commit: `chore(163-roadmap-workflow-prose-cleanup-validation): record apply state`
+PR: https://github.com/coctostan/pals/pull/72 (OPEN)
+CI: pending
 ## Session Continuity
-Last session: 2026-03-28T02:40:20Z
-Stopped at: Plan 163-01 created and paused at review/approval boundary
-Next action: Review and approve plan, then run /paul:apply .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
-Resume file:
+Last session: 2026-03-28T02:52:48Z
+Stopped at: APPLY complete after bounded workflow prose cleanup and validation
+Next action: Run /paul:unify .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
+Resume file: .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
 Resume context:
-- PR #71 is merged; a WIP commit for Phase 163 planning is now saved on `feature/163-roadmap-workflow-prose-cleanup-validation`.
-- `163-01-PLAN.md` is written and Phase 163 is paused before APPLY, with no implementation work started yet.
-- This phase is intentionally limited to bounded prose cleanup in the roadmap/planning workflow cluster plus Pi/cross-harness validation.
+- The warm roadmap/planning workflow cluster is slimmer while preserving slice-based reads, collaboration controls, exact-one routing, and one-question-at-a-time milestone prompts.
+- `tests/pi-end-to-end-validation.sh` now validates the installed shared-workflow prose contract with marker-presence and marker-absence checks.
+- `PALS_DRIVER=pi bash install.sh`, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` all passed; PR #72 is open with CI pending.
