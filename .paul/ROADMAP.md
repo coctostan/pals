@@ -34,7 +34,7 @@ Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 158 | Artifact Growth & Hot-Path Audit | 1/1 | ✅ Complete | 2026-03-27 |
-| 159 | Workflow Bloat Audit | TBD | Not started | - |
+| 159 | Workflow Bloat Audit | 1/1 | 🚧 Planning | - |
 | 160 | Findings & Recommendation Package | TBD | Not started | - |
 
 ### Phase 158: Artifact Growth & Hot-Path Audit
@@ -46,7 +46,8 @@ Outputs: `artifact-footprint-inventory.md`, `pi-hot-path-read-analysis.md`, `158
 
 ### Phase 159: Workflow Bloat Audit
 Focus: Review workflow files for fluff, redundancy, bloating actions, and instruction patterns that expand recurring context cost.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`159-01-PLAN.md`)
+Status: 🚧 Planning
 
 ### Phase 160: Findings & Recommendation Package
 Focus: Consolidate evidence and deliver ranked tactical cleanup options plus structural redesign recommendations.

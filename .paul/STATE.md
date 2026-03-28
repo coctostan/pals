@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-27)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Plan Phase 159 — Workflow Bloat Audit
+**Current focus:** Run UNIFY for 159-01 — Workflow Bloat Audit
 ## Current Position
 Milestone: v2.35 Context Bloat Audit & Reduction Strategy
-Phase: 159 of 3 (Workflow Bloat Audit) — ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-27T22:51:26Z — Phase 158 unified and transitioned to Phase 159
+Phase: 159 of 3 (Workflow Bloat Audit) — APPLY complete
+Plan: 159-01 — APPLY complete, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-28T00:38:01Z — Completed APPLY for .paul/phases/159-workflow-bloat-audit/159-01-PLAN.md
 Progress:
 - v2.35 Context Bloat Audit & Reduction Strategy: [███░░░░░░░] 33%
-- Phase 159: [░░░░░░░░░░] 0%
+- Phase 159: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -142,15 +142,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: feat(158): complete artifact growth & hot-path audit on main
-PR: https://github.com/coctostan/pals/pull/67 (MERGED)
+Branch: feature/159-workflow-bloat-audit
+Last commit: feat(159-workflow-bloat-audit): complete apply
+PR: https://github.com/coctostan/pals/pull/68 (OPEN)
 ## Session Continuity
-Last session: 2026-03-27T22:51:26Z
-Stopped at: Phase 158 complete, ready to plan Phase 159
-Next action: Run /paul:plan for Phase 159 — Workflow Bloat Audit
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-28T00:38:01Z
+Stopped at: APPLY complete for 159-01
+Next action: Run /paul:unify .paul/phases/159-workflow-bloat-audit/159-01-PLAN.md
+Resume file: .paul/phases/159-workflow-bloat-audit/159-01-PLAN.md
 Resume context:
-- Milestone v2.35 is 1 of 3 phases complete after closing Phase 158
-- Phase 159 should audit workflow and prompt-shape duplication around hot artifacts without redoing raw footprint measurement
-- Phase 160 will consolidate artifact and workflow findings into ranked reduction recommendations
+- Created the three Phase 159 audit artifacts: `workflow-read-surface-inventory.md`, `prompt-shape-duplication-audit.md`, and `159-workflow-bloat-report.md`
+- Findings isolate workflow-side amplification around `STATE.md`, `ROADMAP.md`, wrapper shells, module dispatch prose, and resume continuity text
+- Pre-apply and post-apply enforcement were non-blocking for this docs-only research phase; no root test runner or dependency-audit target was present
