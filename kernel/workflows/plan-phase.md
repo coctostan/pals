@@ -3,10 +3,9 @@ Create an executable PLAN.md for the current or specified phase. The plan define
 </purpose>
 
 <when_to_use>
-- Starting a new phase (ROADMAP shows next phase ready)
-- Previous plan completed (loop closed with UNIFY)
-- First plan in a project (after init-project)
-- Resuming work that needs a new plan
+- Starting a new phase after the prior loop closed (or for the first plan)
+- Creating the next executable plan from roadmap state and any carried context
+- Resuming work that needs a new approved plan before APPLY
 </when_to_use>
 
 <loop_context>
@@ -61,40 +60,27 @@ templates/PLAN.md
 </step>
 
 <step name="identify_phase">
-1. Read the current milestone section in ROADMAP.md first to determine:
-   - Which phase is next (first incomplete phase)
-   - Phase scope and goals from the milestone table
-   - Dependencies on prior phases
-2. Expand from the milestone table to the target phase detail only after the candidate phase is identified
-3. If multiple phases available, ask user which to plan
-4. Confirm phase selection before proceeding
+1. Read the current milestone section in ROADMAP.md to identify the first incomplete phase, its scope/goals, and any dependencies.
+2. Expand to the target phase detail only after the candidate phase is identified.
+3. If multiple phases are viable, ask the user which to plan and confirm the selection.
 </step>
 
 <step name="determine_planning_posture">
 **Set the planning posture before shaping the executable plan.**
 
-1. Check `.paul/phases/{NN}-{phase-name}/CONTEXT.md` for carried metadata:
-   - `Planning Mode`
-   - `Collaboration Level`
-   - `Suggested Review Path`
-2. If no collaboration metadata exists in CONTEXT.md, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`
+1. Check `.paul/phases/{NN}-{phase-name}/CONTEXT.md` for carried `Planning Mode`, `Collaboration Level`, and `Suggested Review Path`.
+2. If no collaboration metadata exists in CONTEXT.md, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`.
 3. Offer a per-run override:
    ```
    Planning collaboration level: {default_collaboration} (project default)
-
    [1] Keep {default_collaboration}
    [2] low — minimal probing, move to executable structure quickly
    [3] medium — clarify ambiguities, constraints, and success conditions
    [4] high — deeper shaping, assumptions, alternatives, and risks
    ```
-4. If planning mode was not already captured, ask whether this run is exploratory or direct-requirements
-5. Apply collaboration semantics while closing remaining planning gaps:
-   - low → only resolve what is needed for an executable plan
-   - medium → clarify ambiguities and open questions before finalizing tasks
-   - high → also surface assumptions, alternatives, and edge cases where they materially affect the plan
-6. Apply mode semantics:
-   - exploratory → allow a small amount of alternative/assumption shaping before locking the plan
-   - direct-requirements → stay close to stated requirements and resolve only what is necessary for execution
+4. If planning mode was not already captured, ask whether this run is exploratory or direct-requirements.
+5. Apply collaboration semantics: low → only what is needed for an executable plan; medium → clarify ambiguities and open questions; high → also surface assumptions, alternatives, and edge cases that materially affect execution.
+6. Apply mode semantics: exploratory → allow limited shaping before locking the plan; direct-requirements → stay close to stated requirements and resolve only what execution needs.
 7. Store `collaboration_level`, `planning_mode`, and any carried `review_preference` for later review routing.
 </step>
 
@@ -135,41 +121,23 @@ templates/PLAN.md
 </step>
 
 <step name="analyze_scope">
-1. Review the target phase detail in ROADMAP.md rather than re-reading unrelated milestone history
-2. **Assess change size** to scale planning depth: (Inspired by GPT Pilot's complexity gating)
-   - 1-2 files, clear scope → lighter plan (fewer ACs, simpler verify)
-   - 3-5 files → standard plan (full ACs, explicit verify per task)
-   - 5+ files or cross-cutting → consider splitting into multiple plans
-3. Estimate number of tasks needed:
-   - Target: 2-3 tasks per plan
-   - If >3 tasks, consider splitting into multiple plans
-4. Identify files that will be modified
-4. Determine if checkpoints are needed:
+1. Review the target phase detail in ROADMAP.md rather than re-reading unrelated milestone history.
+2. Assess change size to scale planning depth: 1-2 files with clear scope → lighter plan; 3-5 files → standard plan; 5+ files or cross-cutting work → consider splitting.
+3. Target 2-3 tasks per plan; if the work needs more than 3, consider splitting into multiple plans.
+4. Identify files that will be modified and whether checkpoints are needed:
    - Visual verification required? → checkpoint:human-verify
    - Architecture decision needed? → checkpoint:decision
-   - Unavoidable manual action? → checkpoint:human-action (rare)
-5. Set autonomous flag: true if no checkpoints, false otherwise
-6. Determine plan type:
-   - Default type is `execute`
-   - Dispatch `pre-plan` hooks (see pre_plan_hooks step) — modules may suggest alternative types based on their own heuristics
-   - If a module suggests a non-default type via `context_inject`: present the suggestion to the user for confirmation
-   - User confirms or overrides the type selection
+   - Unavoidable manual action? → checkpoint:human-action
+5. Set `autonomous: true` if no checkpoints are needed; otherwise `false`.
+6. Default plan type is `execute`. If a pre-plan hook suggests a different type, present the suggestion to the user and let the user confirm or override it.
 </step>
-
 <step name="load_context">
-1. Read `.paul/PROJECT.md` first as the hot-path brief for:
-   - Core value and description
-   - Scope snapshot and top constraints
-   - High-signal success metrics and key decisions
-2. Read the current milestone section plus the target phase detail in `.paul/ROADMAP.md`; do not pull unrelated milestone history unless this route actually needs it
-3. If `.paul/PRD.md` exists and the phase needs deeper product framing, deferred items, assumptions, open questions, current-state vs desired-state detail, or dependency context, read the relevant sections selectively
-4. If prior phase exists, read its SUMMARY.md for:
-   - What was built
-   - Decisions made
-   - Any deferred issues
-5. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries
-6. Read source files relevant to this phase's work
-7. Do NOT reflexively chain all prior summaries or artifacts - only load what's genuinely needed
+1. Read `.paul/PROJECT.md` first as the hot-path brief for the core value, description, scope snapshot, top constraints, success metrics, and key decisions.
+2. Read the current milestone section plus the target phase detail in `.paul/ROADMAP.md`; do not pull unrelated milestone history unless this route genuinely needs it.
+3. If `.paul/PRD.md` exists, read only the sections that add deeper product framing, deferred items, assumptions, open questions, current-vs-desired-state detail, or dependency context.
+4. If a prior phase exists, read its SUMMARY.md for what was built, decisions made, and deferred issues.
+5. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries.
+6. Read only the source files relevant to this phase; do not reflexively chain unrelated prior artifacts.
 </step>
 
 <step name="check_specialized_flows">

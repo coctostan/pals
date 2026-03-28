@@ -448,6 +448,55 @@ tap_file_contains_all \
   'NOT a lifecycle hook'
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 2C: SHARED WORKFLOW PROSE CONTRACT
+# ════════════════════════════════════════════════════════════════════
+
+section "SHARED WORKFLOW PROSE CONTRACT"
+
+PI_ROADMAP="$SKILL_DIR/workflows/roadmap-management.md"
+PI_PLAN="$SKILL_DIR/workflows/plan-phase.md"
+PI_DISCUSS="$SKILL_DIR/workflows/discuss-phase.md"
+PI_MILESTONE="$SKILL_DIR/workflows/create-milestone.md"
+
+tap_file_contains_all \
+  "Installed shared roadmap workflow keeps slice-based status routing markers after prose cleanup" \
+  "$PI_ROADMAP" \
+  'git-aware routing' \
+  'current milestone section' \
+  'exactly ONE'
+
+tap_file_contains_none \
+  "Installed shared roadmap workflow drops the older numbered-option warning wording" \
+  "$PI_ROADMAP" \
+  'Do NOT show numbered options (1, 2, 3, 4).'
+
+tap_file_contains_all \
+  "Installed shared plan workflow keeps targeted-read and review-menu markers after prose cleanup" \
+  "$PI_PLAN" \
+  'target phase detail' \
+  'planning.default_collaboration' \
+  'Would you like to see the plan?'
+
+tap_file_contains_all \
+  "Installed shared discuss workflow keeps selected-phase posture markers after prose cleanup" \
+  "$PI_DISCUSS" \
+  'selected phase detail' \
+  'planning.default_collaboration' \
+  'direct-requirements'
+
+tap_file_contains_none \
+  "Installed shared discuss workflow drops older explanatory filler around phase-context setup" \
+  "$PI_DISCUSS" \
+  'This gives user context for the discussion.' \
+  'This workflow gathers USER input about the phase.'
+
+tap_file_contains_all \
+  "Installed shared milestone workflow keeps one-question-at-a-time and review markers after prose cleanup" \
+  "$PI_MILESTONE" \
+  'one question at a time' \
+  'planning.default_collaboration' \
+  'Would you like to see the plan before I update ROADMAP.md?' 
+# ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: EXTENSION STRUCTURAL VALIDITY
 # ════════════════════════════════════════════════════════════════════
 

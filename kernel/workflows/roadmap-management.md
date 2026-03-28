@@ -1,17 +1,11 @@
 <purpose>
-Handle roadmap operations: showing project status with git-aware routing, adding phases to the current milestone, and removing future phases.
-**Operations:**
-- **show-status:** Display project dashboard with git-aware routing (used by /paul:status)
-- **add-phase:** Append a new phase to the current milestone
-- **remove-phase:** Remove a future (not-started) phase
+Handle roadmap operations: show project status with git-aware routing, add phases to the current milestone, and remove future phases.
 </purpose>
 
 <when_to_use>
 - User requests project status (/paul:status)
-- User realizes more phases are needed mid-milestone
-- Scope changed and a planned phase is no longer needed
-- Emergency phase insertion (use decimal phases for interruptions)
-- Roadmap cleanup after requirements change
+- Milestone scope changes and needs a phase added or removed
+- Roadmap cleanup is required without changing loop semantics
 </when_to_use>
 
 <loop_context>
@@ -35,14 +29,8 @@ Can be invoked at any time during a milestone.
 <process>
 
 <step name="read_state">
-1. Read `.paul/STATE.md` for:
-   - Current milestone, phase, plan
-   - Loop position (PLAN/APPLY/UNIFY markers)
-   - Last activity timestamp
-   - Progress percentages
-2. Read the current milestone section in `.paul/ROADMAP.md` for:
-   - Milestone theme and phase table
-   - Phase completion counts
+1. Read `.paul/STATE.md` for the current milestone, phase, plan, loop position, last activity, and progress.
+2. Read the current milestone section in `.paul/ROADMAP.md` for the milestone theme, phase table, and completion counts.
 </step>
 
 <step name="check_git_state">
@@ -93,10 +81,7 @@ If GIT_WORKFLOW = "github-flow" AND git state was collected:
 | PR open + CI passing + ready to merge | "Merge PR: `gh pr merge`" |
 | No PR + loop complete (all ✓) | Normal routing (next PLAN will create branch) |
 
-Note: BEHIND_COUNT > 0 fires even if the PR is ready to merge. Merging a behind-base
-branch risks post-merge CI failures. Always update from base first.
-
-If no git override applies, fall through to the loop-position routing below.
+Behind-base routing takes precedence over merge readiness; otherwise fall through to the loop-position routing below.
 
 **Loop-position routing:**
 Based on loop position, determine **exactly ONE** next action:
@@ -141,10 +126,7 @@ Last Activity: [timestamp]
 ────────────────────────────────────────
 ```
 
-**Note:** If GIT_WORKFLOW is not "github-flow", omit the entire Git State block.
-If no PR exists, show "PR: none (N/A)" instead.
-**IMPORTANT:** Do NOT show numbered options (1, 2, 3, 4).
-Show exactly ONE suggested action with the standard PAUL routing format.
+If GIT_WORKFLOW is not "github-flow", omit the Git State block. If no PR exists, show "PR: none (N/A)". Show exactly ONE suggested action with the standard PAUL routing format and no numbered options.
 </step>
 
 </process>

@@ -163,7 +163,7 @@ PR: none (feature branch not pushed yet)
 Last session: 2026-03-28T02:40:20Z
 Stopped at: Plan 163-01 created and paused at review/approval boundary
 Next action: Review and approve plan, then run /paul:apply .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-28-phase163-plan-ready.md
+Resume file:
 Resume context:
 - PR #71 is merged; a WIP commit for Phase 163 planning is now saved on `feature/163-roadmap-workflow-prose-cleanup-validation`.
 - `163-01-PLAN.md` is written and Phase 163 is paused before APPLY, with no implementation work started yet.
