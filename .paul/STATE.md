@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Phase 163 APPLY complete, ready for UNIFY
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Phase 163 UNIFY complete, merge gate ready
 ## Current Position
 Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
-Phase: 163 of 3 (ROADMAP/Workflow Prose Cleanup + Validation) — Applying
-Plan: [163-01] APPLY complete, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-28T02:52:48Z — Completed APPLY for .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
+Phase: 163 of 3 (ROADMAP/Workflow Prose Cleanup + Validation) — Complete
+Plan: [163-01] complete
+Status: UNIFY complete, ready for transition
+Last activity: 2026-03-28T02:59:04Z — Created .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-SUMMARY.md
 Progress:
-- v2.36 Context Reduction Implementation — Workflow-First Pass: [██████░░░░] 67%
-- Phase 163: [██████░░░░] 67%
+- v2.36 Context Reduction Implementation — Workflow-First Pass: [██████████] 100%
+- Phase 163: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for transition]
 ```
 
 ## Accumulated Context
@@ -118,6 +118,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | Gives future reduction work explicit trim-vs-preserve boundaries |
 | 2026-03-28: Keep Pi wrapper shells as command-local deltas while retaining route-specific guardrails in each wrapper | 161 | Reduces repeated read scaffolding without moving lifecycle truth out of shared workflows |
 | 2026-03-28: Prefer semantic thin-wrapper validation over brittle line-count assertions | 161 | Keeps wrapper slimming durable without freezing command-local wording |
+| 2026-03-28: Prefer semantic shared-workflow contract checks over brittle line-count assertions | 163 | Keeps workflow prose cleanup durable without freezing exact wording |
+| 2026-03-28: Finish v2.36 with bounded prose cleanup before structural artifact redesign | 163 | Closes the workflow-first reduction pass without reopening higher-risk roadmap/state redesign |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -147,6 +149,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /carl | ✓ | Session-boundary routing remained active at pause/resume level; no separate manual action was needed during the audit |
 | TODD | N/A | Research-only documentation phase; no implementation path or RED/GREEN/REFACTOR work applied |
 | WALT | N/A | Documentation-only audit; no project test/lint/typecheck execution path was available for meaningful gating |
+### Skill Audit (Phase 163)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the workflow prose cleanup and validation phase |
+| /carl | ✓ | Session-boundary routing remained active while the phase moved across planning, apply, and unify |
+| TODD | ✓ | APPLY/UNIFY preserved regression-check sequencing for the workflow and validation edits |
+| WALT | ✓ | Validation suites ran during APPLY and quality history was recorded during UNIFY |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -157,15 +166,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/163-roadmap-workflow-prose-cleanup-validation
-Last commit: `chore(163-roadmap-workflow-prose-cleanup-validation): record apply state`
+Last commit: `605946d chore(163-roadmap-workflow-prose-cleanup-validation): record apply state`
 PR: https://github.com/coctostan/pals/pull/72 (OPEN)
-CI: pending
+CI: passing
 ## Session Continuity
-Last session: 2026-03-28T02:52:48Z
-Stopped at: APPLY complete after bounded workflow prose cleanup and validation
-Next action: Run /paul:unify .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
-Resume file: .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-PLAN.md
+Last session: 2026-03-28T02:59:04Z
+Stopped at: UNIFY complete with summary written, quality history updated, and merge gate ready
+Next action: Merge PR #72 and complete phase transition
+Resume file: .paul/phases/163-roadmap-workflow-prose-cleanup-validation/163-01-SUMMARY.md
 Resume context:
-- The warm roadmap/planning workflow cluster is slimmer while preserving slice-based reads, collaboration controls, exact-one routing, and one-question-at-a-time milestone prompts.
-- `tests/pi-end-to-end-validation.sh` now validates the installed shared-workflow prose contract with marker-presence and marker-absence checks.
-- `PALS_DRIVER=pi bash install.sh`, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` all passed; PR #72 is open with CI pending.
+- `163-01-SUMMARY.md` records all three tasks complete with semantic validation proof and durable module execution reporting.
+- `.paul/QUALITY-HISTORY.md` now includes `163-01` with an improved result of 149 Pi checks + 60 cross-harness checks passing.
+- PR #72 is open with CI passing and reviews not required, so the merge gate is ready for final resolution.
