@@ -296,6 +296,7 @@ All validated — see below.
 | Preserve guided workflow markers and target surrounding prose/read bundles first for workflow-bloat reduction | 159 | Enables safer wording/read-discipline cleanup without destabilizing guided UX semantics |
 | Reduce workflow amplification before attempting hotter artifact redesign | 160 | The combined audit shows the safest high-value wins are in wrapper/read-discipline/prose cleanup before touching `STATE.md` structure |
 | Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | `ROADMAP.md` is the main warm-path artifact amplified by workflow bundling, while `PROJECT.md` and canonical markers are stabilizing behaviors worth keeping |
+| Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -314,4 +315,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-28 after Phase 163 completion*
+*Last updated: 2026-03-28 after Phase 164 completion*

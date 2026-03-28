@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 164 loop complete, transition pending
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 165 ready to plan
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 164 of 3 (Implementer Config Contract Alignment) — Complete
-Plan: 164-01 complete
-Status: Ready for next PLAN
-Last activity: 2026-03-28T16:17:02Z — Created .paul/phases/164-implementer-config-contract-alignment/164-01-SUMMARY.md
+Phase: 165 of 3 (Delegated APPLY Expansion)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-03-28T16:42:55Z — Phase 164 merged and transitioned to Phase 165 planning
 Progress:
 - v2.37 Implementer Config Alignment & Delegation Expansion: [███░░░░░░░] 33%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ○        ○        ○     [Ready to plan]
 ```
 
 ## Accumulated Context
@@ -119,6 +119,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Prefer semantic thin-wrapper validation over brittle line-count assertions | 161 | Keeps wrapper slimming durable without freezing command-local wording |
 | 2026-03-28: Prefer semantic shared-workflow contract checks over brittle line-count assertions | 163 | Keeps workflow prose cleanup durable without freezing exact wording |
 | 2026-03-28: Finish v2.36 with bounded prose cleanup before structural artifact redesign | 163 | Closes the workflow-first reduction pass without reopening higher-risk roadmap/state redesign |
+| 2026-03-28: Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -165,15 +166,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: milestone transition updates on main (post-merge)
-PR: https://github.com/coctostan/pals/pull/72 (MERGED)
+Last commit: e54a706 docs(164-implementer-config-contract-alignment): complete transition to phase 165
+PR: https://github.com/coctostan/pals/pull/73 (MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T16:17:02Z
-Stopped at: 164-01 loop complete; merge gate / transition routing pending
-Next action: Complete UNIFY merge gate / transition, then route to Phase 165 planning
-Resume file: .paul/phases/164-implementer-config-contract-alignment/164-01-SUMMARY.md
+Last session: 2026-03-28T16:42:55Z
+Stopped at: Phase 164 complete, merged, and transitioned to Phase 165 planning
+Next action: /paul:plan for Phase 165
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 164 summary is written at `.paul/phases/164-implementer-config-contract-alignment/164-01-SUMMARY.md`.
-- The config contract now aligns init/migration output, schema documentation, and installer-backed validation around explicit `agents.implementer` settings.
-- Merge-gate and transition routing still need to settle branch/PR state before Phase 165 planning.
+- Phase 164 is complete and merged via PR #73.
+- The explicit `agents.implementer` config contract now aligns init, migration, schema docs, and validation.
+- Phase 165 should expand delegated APPLY eligibility while preserving parent verification, module enforcement, fallback, and `.paul/*` authority.
