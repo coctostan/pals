@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 161-01 applied, awaiting UNIFY
+**Current focus:** v2.36 Context Reduction Implementation — Workflow-First Pass — Plan 161-01 unified, merge gate pending
 ## Current Position
 Milestone: v2.36 Context Reduction Implementation — Workflow-First Pass
-Phase: 161 of 3 (Wrapper & Entrypoint Slimming) — APPLY complete
-Plan: [161-01] APPLY complete, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-03-28T01:51:28Z — Applied 161-01: slimmed Pi wrapper shells, updated Pi validation, and reinstalled the Pi surface
+Phase: 161 of 3 (Wrapper & Entrypoint Slimming) — UNIFY complete
+Plan: [161-01] unified; transition pending merge gate
+Status: Loop complete, merge gate ready
+Last activity: 2026-03-28T01:56:10Z — Created 161-01 summary, updated quality history, and prepared PR #70 for merge-gate resolution
 Progress:
-- v2.36 Context Reduction Implementation — Workflow-First Pass: [░░░░░░░░░░] 0%
-- Phase 161: [███████░░░] 67%
+- v2.36 Context Reduction Implementation — Workflow-First Pass: [███░░░░░░░] 33%
+- Phase 161: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Applied, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — merge gate pending]
 ```
 
 ## Accumulated Context
@@ -117,6 +117,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Reduce workflow amplification before attempting hotter artifact redesign | 160 | Sets the next milestone toward wrapper/read-discipline/prose cleanup before any `STATE.md` redesign |
 | 2026-03-28: Treat `ROADMAP.md` as the clearest combined reduction target while preserving `PROJECT.md` and guided markers | 160 | Gives future reduction work explicit trim-vs-preserve boundaries |
 | 2026-03-28: Keep Pi wrapper shells as command-local deltas while retaining route-specific guardrails in each wrapper | 161 | Reduces repeated read scaffolding without moving lifecycle truth out of shared workflows |
+| 2026-03-28: Prefer semantic thin-wrapper validation over brittle line-count assertions | 161 | Keeps wrapper slimming durable without freezing command-local wording |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -156,14 +157,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/161-wrapper-entrypoint-slimming
-Last commit: b5e203a
-PR: none
+Last commit: 9c5c507
+PR: https://github.com/coctostan/pals/pull/70 (state: open, CI: passing)
 ## Session Continuity
-Last session: 2026-03-28T01:51:28Z
-Stopped at: Completed Phase 161 APPLY execution after slimming Pi wrapper shells, tightening Pi validation, and redeploying the Pi surface
-Next action: Run /paul:unify .paul/phases/161-wrapper-entrypoint-slimming/161-01-PLAN.md
-Resume file: .paul/phases/161-wrapper-entrypoint-slimming/161-01-PLAN.md
+Last session: 2026-03-28T01:56:10Z
+Stopped at: Completed Phase 161 UNIFY reconciliation; summary and quality history are written and PR #70 is ready for merge-gate resolution
+Next action: Merge PR #70, then continue the Phase 161 transition to Phase 162
+Resume file: .paul/phases/161-wrapper-entrypoint-slimming/161-01-SUMMARY.md
 Resume context:
-- Tasks 1-3 were executed; the core Pi wrapper shells are slimmer, `paul-help` stays explicit about wrapper vs canonical entrypoints, and the Pi validation script now checks the thin-wrapper contract.
-- `PALS_DRIVER=pi bash install.sh`, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` all passed on `feature/161-wrapper-entrypoint-slimming`.
-- Minor deviation: Task 3's `<files>` list included verification surfaces (`install.sh`, `tests/cross-harness-validation.sh`) that were exercised but did not require repo edits; capture that variance in UNIFY.
+- `161-01-SUMMARY.md` now records the wrapper-shell slimming, semantic validation hardening, and the minor Task 3 files-list deviation.
+- `.paul/QUALITY-HISTORY.md` was updated with `161-01` as an improving validation snapshot (`143 pass + 60 pass`).
+- PR #70 is open with passing CI on `feature/161-wrapper-entrypoint-slimming`; next work depends on merge-gate resolution and then the mandatory phase transition.

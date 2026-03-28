@@ -34,14 +34,14 @@ Theme: Implement the highest-value workflow-side context reductions first — sl
 Phases: 0 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 161 | Wrapper & Entrypoint Slimming | 1 | Apply complete | - |
+| 161 | Wrapper & Entrypoint Slimming | 1 | UNIFY complete (merge pending) | - |
 | 162 | Workflow Read-Discipline Reduction | TBD | Not started | - |
 | 163 | ROADMAP/Workflow Prose Cleanup + Validation | TBD | Not started | - |
 ### Phase 161: Wrapper & Entrypoint Slimming
 Focus: Reduce wrapper and entrypoint overhead so canonical commands preserve guided behavior with less repeated prose and less redundant injection.
 Plans: 1 (`161-01-PLAN.md`)
-Status: APPLY complete, ready for UNIFY
-Outputs: Slimmed Pi wrapper shells, updated Pi validation contract, `161-01-PLAN.md`
+Status: UNIFY complete, merge gate pending
+Outputs: Slimmed Pi wrapper shells, updated Pi validation contract, `161-01-PLAN.md`, `161-01-SUMMARY.md`
 ## Completed Milestones
 <details>
 <summary>v2.35 Context Bloat Audit & Reduction Strategy - 2026-03-28 (3 phases)</summary>
@@ -629,4 +629,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-03-28 — Phase 161 APPLY complete; awaiting UNIFY*
+*Last updated: 2026-03-28 — Phase 161 UNIFY complete; merge gate pending*
