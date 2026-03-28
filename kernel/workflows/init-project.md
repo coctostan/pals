@@ -67,6 +67,7 @@ All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE
 4. Compare existing pals.json against expected fields. For each missing field:
    - **modules:** For each module in `modules.yaml` not present in `pals.json.modules`, add it with `{ "enabled": true, "description": "..." }` using the description from the module's manifest.
    - **git fields:** Add missing git fields with their schema defaults. Do NOT overwrite existing values. Special case: if `git.branching` exists but `git.workflow` does not, add `git.workflow: "legacy"` (preserves the user's existing behavior).
+   - **agents:** Add `agents.implementer: { "enabled": true, "model": null }` if missing. Do NOT overwrite existing agent settings.
    - **planning:** Add `planning.default_collaboration: "medium"` if missing.
    - **preferences:** Add `preferences.auto_commit: false`, `preferences.verbose_output: false` if missing.
    - **guided_workflow:** Add `guided_workflow.auto_present` with safe defaults (plan_review: false, apply_approval: false, continue_to_unify: true, checkpoint_*: true, resume_next: true, phase_transition: false, milestone_transition: false) if missing.
@@ -739,6 +740,9 @@ Wait for user response.
     "vera": { "enabled": true, "description": "Privacy assessment & PII protection" },
     "docs": { "enabled": true, "description": "Documentation drift detection & lifecycle oversight" },
     "rev": { "enabled": true, "description": "Thorough code review via subagent", "model": null, "pr_review": false, "pr_review_block_on_critical": true }
+  },
+  "agents": {
+    "implementer": { "enabled": true, "model": null }
   },
   "git": {
     "remote": null,
