@@ -166,7 +166,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: `feat(163-roadmap-workflow-prose-cleanup-validation): slim workflow prose contract (#72)`
+Last commit: milestone transition updates on main (post-merge)
 PR: https://github.com/coctostan/pals/pull/72 (MERGED)
 CI: passing
 ## Session Continuity
