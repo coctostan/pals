@@ -424,6 +424,28 @@ if [ -f "$README_MD" ]; then
   fi
 fi
 
+if [ -f "$README_MD" ] \
+  && grep -Fq '"agents": {' "$README_MD" \
+  && grep -Fq '"implementer": { "enabled": true, "model": null }' "$README_MD" \
+  && grep -Fq 'Current top-level sections for a fresh generated config are `modules`, `agents`, `git`, `planning`, `preferences`, and `guided_workflow`' "$README_MD" \
+  && grep -Fq 'eligible bounded repo-local work only' "$README_MD"; then
+  tap_ok "README preserves the explicit implementer config and bounded helper-agent contract"
+else
+  tap_not_ok "README preserves the explicit implementer config and bounded helper-agent contract" "Expected agents.implementer config and bounded delegation wording in README.md"
+fi
+
+README_PI="$REPO_ROOT/drivers/pi/extensions/README.md"
+SKILL_MAP_PI="$REPO_ROOT/drivers/pi/skill-map.md"
+if [ -f "$README_PI" ] && [ -f "$SKILL_MAP_PI" ] \
+  && grep -Fq 'three distinct PALS runtime surfaces' "$README_PI" \
+  && grep -Fq 'Pi surfaces the helper only for eligible bounded repo-local work' "$README_PI" \
+  && grep -Fq 'eligible bounded repo-local work' "$SKILL_MAP_PI" \
+  && grep -Fq 'eligible bounded repo-local task or sequential task step' "$SKILL_MAP_PI"; then
+  tap_ok "Repo Pi docs preserve the bounded helper-agent contract"
+else
+  tap_not_ok "Repo Pi docs preserve the bounded helper-agent contract" "Expected bounded helper-agent wording across drivers/pi/extensions/README.md and drivers/pi/skill-map.md"
+fi
+
 # Kernel layered-artifact assets
 if [ -f "$REPO_ROOT/kernel/templates/PRD.md" ]; then
   tap_ok "Kernel includes PRD.md template"

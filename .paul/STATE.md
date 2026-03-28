@@ -4,20 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 planning active
+**Current focus:** v2.37 Implementer Config Alignment & Delegation Expansion — Phase 166 APPLY complete
 ## Current Position
 Milestone: v2.37 Implementer Config Alignment & Delegation Expansion
-Phase: 166 of 3 (Validation & Docs Refresh) — Planning
-Plan: 166-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-03-28T18:21:13Z — Created .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
+Phase: 166 of 3 (Validation & Docs Refresh) — Apply Complete
+Plan: 166-01 executed; ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-03-28T19:10:24Z — Completed Phase 166 APPLY for README / Pi docs / validation alignment
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [██████░░░░] 67%
+- v2.37 Implementer Config Alignment & Delegation Expansion: [████████░░] 83%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -166,16 +166,16 @@ Last commit: feature/165-delegated-apply-expansion pushed with PR #74 open
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: main advanced after merging Phase 165 PR #74
-PR: none (N/A)
-CI: N/A
+Branch: feature/166-validation-docs-refresh
+Last commit: feat(166-validation-docs-refresh): align docs and validation pushed on feature/166-validation-docs-refresh
+PR: https://github.com/coctostan/pals/pull/75 (OPEN)
+CI: pending
 ## Session Continuity
-Last session: 2026-03-28T18:21:13Z
-Stopped at: Plan 166-01 created; session paused before APPLY approval
-Next action: Review and approve plan, then run /paul:apply .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-03-28-phase166-plan-ready.md
+Last session: 2026-03-28T19:10:24Z
+Stopped at: Phase 166 APPLY completed; waiting to reconcile results in UNIFY
+Next action: Run /paul:unify .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
+Resume file: .paul/phases/166-validation-docs-refresh/166-01-PLAN.md
 Resume context:
-- Phase 165 is merged and closed; the repo is back on main with no open PR.
-- Phase 166 has an executable plan focused on README / Pi adapter docs and Pi + cross-harness validation drift prevention.
-- APPLY has not started; keep the phase bounded to docs/validation alignment and preserve existing lifecycle semantics.
+- README, Pi adapter docs, and Pi/cross-harness validation suites were aligned to the explicit `agents.implementer` config and bounded helper-agent contract.
+- Validation passed: `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`.
+- Active Phase 166 handoff was archived after resume; proceed with UNIFY on this feature branch.

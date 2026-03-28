@@ -20,13 +20,13 @@ Pi installs three distinct PALS runtime surfaces:
 - `~/.pi/agent/extensions/pals-hooks.ts` — the Pi-native `/paul-*` command layer, lifecycle hooks, and guided workflow UX
 - `~/.pi/agent/agents/` — project-shipped helper agents such as `pals-implementer`
 
-Only the first two are direct lifecycle entry surfaces. Project-shipped agents are helper definitions that parent-controlled workflows may invoke when a bounded task needs isolated implementation work.
+Only the first two are direct lifecycle entry surfaces. Project-shipped agents are helper definitions that parent-controlled workflows may invoke when an eligible bounded repo-local task needs isolated implementation work.
 
 Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
 
 Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time.
 
-Delegated APPLY stays bounded. If `/skill:paul-apply` uses `pals-implementer`, the parent workflow still owns verification, checkpoints, module gates, fallback judgment, and `.paul/*` artifacts. Pi surfaces the helper, but Pi does not become lifecycle truth.
+Delegated APPLY stays bounded. If `/skill:paul-apply` uses `pals-implementer`, the parent workflow still owns verification, checkpoints, module gates, fallback judgment, and `.paul/*` artifacts. Pi surfaces the helper only for eligible bounded repo-local work; Pi does not become lifecycle truth.
 
 ## Collaboration-Aware Planning
 
