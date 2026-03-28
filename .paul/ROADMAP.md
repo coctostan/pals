@@ -35,14 +35,14 @@ Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 164 | Implementer Config Contract Alignment | 1 | ✅ Complete | 2026-03-28 |
-| 165 | Delegated APPLY Expansion | TBD | Not started | - |
+| 165 | Delegated APPLY Expansion | 1 (`165-01`) | Planning | - |
 | 166 | Validation & Docs Refresh | TBD | Not started | - |
 ### Phase 164: Implementer Config Contract Alignment
 Focus: Add explicit `agents.implementer` config to the canonical `pals.json` contract, ensure init and migration populate it, and align schema/docs with runtime expectations.
 Plans: 1 (`164-01`) — complete 2026-03-28
 ### Phase 165: Delegated APPLY Expansion
 Focus: Loosen delegated APPLY eligibility so more bounded autonomous tasks route through `pals-implementer` while keeping parent verification, module enforcement, fallback, and `.paul/*` authority intact.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`165-01`) — planning
 ### Phase 166: Validation & Docs Refresh
 Focus: Validate the new config/delegation behavior in fresh-project scenarios and refresh docs/tests so the operating model and generated config stay in sync.
 Plans: TBD (defined during /paul:plan)

@@ -36,17 +36,23 @@ BAD for subagent:
 - "Optimize performance" (unclear targets)
 ```
 
-### 3. Parallel Value
-Multiple independent tasks can run simultaneously, providing actual time savings.
+### 3. Delegation Value
+Use subagents when delegation creates real value.
+
+For generic subagent usage, parallel independent work is still the strongest signal.
+For PALS delegated APPLY, a single bounded autonomous task can also qualify when the parent retains lifecycle ownership and can still verify the result as equivalent to inline execution.
 
 ```
-GOOD for subagent:
+GOOD for generic subagent use:
 - Plan 01-01 (User model) and Plan 01-02 (Product model) - independent
 - Three test suites for different modules
+GOOD for delegated APPLY:
+- One bounded task with explicit `<files>`, `<action>`, and `<verify>` that the parent can inspect and verify
+- A sequential implementation step that is repo-local, unambiguous, and does not require checkpoints
 
-BAD for subagent:
-- Single sequential task (no parallelization benefit)
-- Tasks with shared state or outputs
+BAD for either:
+- Ambiguous or exploratory work
+- Tasks with shared hidden state or unclear verification
 ```
 
 ### 4. Complexity Sweet Spot
@@ -113,9 +119,9 @@ BAD state:
                  YES
                   │
          ┌────────▼────────┐
-         │ Multiple tasks  │
-         │ that can run    │──► NO ──► Work in main session
-         │ in parallel?    │          (no parallelization benefit)
+         │ Parent can keep │
+         │ authority and   │──► NO ──► Work in main session
+         │ verify result?  │          (delegation not safe)
          └─────────────────┘
                   │
                  YES
@@ -174,6 +180,6 @@ When criteria are borderline, prefer working in the main session:
 - Easier course correction
 - Direct human interaction available
 
-**Subagents are for parallelization of well-defined work, not context offloading.**
+**Subagents are for bounded, well-defined work; in generic cases that usually means parallelization, and in PALS delegated APPLY it can also mean a single parent-verifiable task.**
 
 </subagent_criteria>
