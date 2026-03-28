@@ -1,12 +1,11 @@
 <purpose>
-Define a new milestone in the project. Creates milestone structure in ROADMAP.md, initializes phase directories, and updates project state. Uses MILESTONE-CONTEXT.md handoff if available from discuss-milestone.
+Define a new milestone in the project, create its roadmap structure, initialize phase directories, and update project state. Use MILESTONE-CONTEXT.md if available from discuss-milestone.
 </purpose>
 
 <when_to_use>
-- User explicitly requests new milestone
-- Triggered after /paul:discuss-milestone (reads context)
-- Project completed previous milestone, needs next
-- Starting fresh project milestone planning
+- User explicitly requests a new milestone
+- Triggered after /paul:discuss-milestone with carried context
+- Previous milestone is complete and the next milestone needs structure
 </when_to_use>
 
 <loop_context>
@@ -46,24 +45,18 @@ After create-milestone, project is ready for first phase PLAN.
 <step name="determine_planning_posture">
 **Set the collaboration depth before milestone creation.**
 
-1. If `MILESTONE-CONTEXT.md` exists, look for carried metadata:
-   - `Planning Mode`
-   - `Collaboration Level`
-   - `Suggested Review Path`
-2. If no collaboration level is carried in the handoff, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`
-3. Offer a quick override if the user wants to adjust collaboration before roadmap changes
-4. If no planning mode is available from the handoff, ask whether this run is exploratory or direct-requirements
-5. Apply collaboration guidance while asking any remaining milestone questions:
-   - low → minimal probing
-   - medium → clarify constraints and phase grouping
-   - high → also probe assumptions, risks, and alternatives where helpful
+1. If `MILESTONE-CONTEXT.md` exists, look for carried `Planning Mode`, `Collaboration Level`, and `Suggested Review Path`.
+2. If no collaboration level is carried in the handoff, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`.
+3. Offer a quick override if the user wants to adjust collaboration before roadmap changes.
+4. If no planning mode is available from the handoff, ask whether this run is exploratory or direct-requirements.
+5. Apply collaboration guidance while asking any remaining milestone questions: low → minimal probing; medium → clarify constraints and phase grouping; high → also probe assumptions, risks, and alternatives where helpful.
 6. Store the effective `planning_mode` and `collaboration_level` for review + reporting.
 </step>
 
 <step name="get_milestone_info">
 **Only if no MILESTONE-CONTEXT.md exists.**
 
-Ask ONE question at a time:
+Ask one question at a time:
 
 **Question 1: Milestone name/version**
 ```
@@ -122,26 +115,26 @@ Store the selected path as `review_preference`.
 
 <step name="update_roadmap">
 Read only the roadmap slice needed to insert the new milestone and preserve surrounding structure:
-1. **Add milestone header section:**
+1. Add the milestone header section.
    ```markdown
    ## Current Milestone
    **{milestone_name}** ({version})
    Status: 🚧 In Progress
    Phases: 0 of {phase_count} complete
    ```
-   2. **Add phases to table:**
+2. Add the phases table rows.
    ```markdown
    | Phase | Name | Plans | Status | Completed |
    |-------|------|-------|--------|-----------|
    | {N} | {name} | TBD | Not started | - |
    ```
-   3. **Add phase details section:**
+3. Add the phase details sections.
    ```markdown
    ### Phase {N}: {name}
    Focus: {description}
    Plans: TBD (defined during /paul:plan)
    ```
-4. **Update footer timestamp**
+4. Update the footer timestamp.
 </step>
 
 <step name="create_phase_directories">

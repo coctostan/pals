@@ -1,16 +1,12 @@
 <purpose>
-Facilitate vision articulation before planning a phase. Acts as a thinking partner to explore what the user wants to accomplish, then creates CONTEXT.md for handoff to plan-phase.
-
-**Philosophy:** Goals first — everything else (approach, constraints, risks) derives from what the user wants to achieve.
-
-**Distinction from assumptions:** This workflow gathers USER input about the phase. The assumptions workflow surfaces CLAUDE's understanding for validation.
+Facilitate vision articulation before planning a phase, then create CONTEXT.md for handoff to plan-phase.
+Focus on user goals and constraints for the phase rather than Claude-authored assumptions.
 </purpose>
 
 <when_to_use>
-- User starting a new phase and wants to think through approach
-- User has rough ideas but needs to articulate them before planning
-- Before /paul:plan when discussion is desired
+- User wants to think through a phase before planning it
 - Phase scope is unclear or has multiple possible approaches
+- A discussion handoff is needed before /paul:plan
 </when_to_use>
 
 <loop_context>
@@ -56,39 +52,27 @@ Exit workflow.
 
 <step name="phase_context">
 **Present phase context:**
-
 ```
 ════════════════════════════════════════
 PHASE DISCUSSION
 ════════════════════════════════════════
-
 Phase: {phase_number} — {phase_name}
 Status: {from ROADMAP.md}
-
 Selected phase detail from ROADMAP.md:
 {selected phase detail from ROADMAP.md}
-
 {If prior phase completed:}
 Prior phase: {prior_phase_name}
 What was built: {summary}
-
 ────────────────────────────────────────
 ```
 
-This gives user context for the discussion.
-</step>
-
 <step name="determine_planning_posture">
 **Set the collaboration depth before shaping phase scope.**
-
-1. Read `pals.json` if it exists and extract `planning.default_collaboration`
-2. Determine the effective default:
-   - project default from `pals.json`
-   - fallback = `medium`
+1. Read `pals.json` if it exists and extract `planning.default_collaboration`.
+2. Determine the effective default: project default from `pals.json`, otherwise `medium`.
 3. Ask whether this run should keep the default or override it:
    ```
    Planning collaboration level: {default_collaboration} (project default)
-
    [1] Keep {default_collaboration}
    [2] low — minimal probing
    [3] medium — clarify constraints and success conditions
@@ -97,18 +81,12 @@ This gives user context for the discussion.
 4. Ask whether this phase is exploratory or direct-requirements:
    ```
    Is this phase discussion exploratory or direct-requirements?
-
    [1] Exploratory — we still need to shape the approach
    [2] Direct-requirements — the destination is mostly known; focus on clarifying and structuring it
    ```
-5. Apply collaboration guidance to the remaining discussion:
-   - low → ask only the essential follow-ups needed to create the handoff
-   - medium → clarify constraints, success conditions, and open questions
-   - high → also probe assumptions, edge cases, and meaningful alternative approaches
-6. Apply mode guidance:
-   - exploratory → allow broader shaping before converging on plan-ready goals
-   - direct-requirements → stay close to the user's stated scope and focus on clarifying + prioritizing it
-7. Use `.paul/PROJECT.md` as the default brief, consult `.paul/PRD.md` only when richer product framing, deferred items, assumptions, open questions, or dependency detail materially help the discussion, and avoid broad roadmap rereads after the selected phase detail is loaded
+5. Apply collaboration guidance to the remaining discussion: low → only essential follow-ups for the handoff; medium → clarify constraints, success conditions, and open questions; high → also probe assumptions, edge cases, and meaningful alternatives.
+6. Apply mode guidance: exploratory → allow broader shaping before converging on plan-ready goals; direct-requirements → stay close to the user's stated scope and focus on clarifying + prioritizing it.
+7. Use `.paul/PROJECT.md` as the default brief, consult `.paul/PRD.md` only when richer product framing, deferred items, assumptions, open questions, or dependency detail materially help the discussion, and avoid broad roadmap rereads after the selected phase detail is loaded.
 8. Store `collaboration_level` and `planning_mode` for the phase handoff file.
 </step>
 
@@ -127,12 +105,7 @@ success looks like and any specific goals you have in mind.
 
 Wait for user response.
 
-**Follow-up if needed:**
-- "Any specific features or capabilities you're prioritizing?"
-- "What's the most important outcome?"
-- "Any concerns or risks you want to address?"
-
-Store responses as `goals` list.
+**Follow-up if needed:** ask only for missing priorities, most important outcomes, or risks, then store responses as the `goals` list.
 </step>
 
 <step name="explore_approach">

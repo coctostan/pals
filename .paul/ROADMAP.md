@@ -31,12 +31,12 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-03-28
 Theme: Implement the highest-value workflow-side context reductions first — slimmer wrappers, tighter read discipline, and trimmed roadmap/workflow prose — without changing artifact-first lifecycle authority.
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 161 | Wrapper & Entrypoint Slimming | 1 | Complete | 2026-03-28 |
-| 162 | Workflow Read-Discipline Reduction | 1 | UNIFY complete (merge pending) | - |
-| 163 | ROADMAP/Workflow Prose Cleanup + Validation | TBD | Not started | - |
+| 162 | Workflow Read-Discipline Reduction | 1 | Complete | 2026-03-28 |
+| 163 | ROADMAP/Workflow Prose Cleanup + Validation | 1 | Planning | - |
 ### Phase 161: Wrapper & Entrypoint Slimming
 Focus: Reduce wrapper and entrypoint overhead so canonical commands preserve guided behavior with less repeated prose and less redundant injection.
 Plans: 1 (`161-01-PLAN.md`)
@@ -45,8 +45,13 @@ Outputs: Slimmed Pi wrapper shells, updated Pi validation contract, `161-01-PLAN
 ### Phase 162: Workflow Read-Discipline Reduction
 Focus: Narrow shared workflow read bundles around `ROADMAP.md` and active planning context so plan, status, and milestone-creation routes read only the slices they actually need while keeping `.paul/*` authoritative.
 Plans: 1 (`162-01-PLAN.md`)
-Status: UNIFY complete, merge gate pending
+Status: Complete
 Outputs: Targeted read-discipline updates for planning/status/milestone workflows, preserved collaboration and guided behavior, `162-01-PLAN.md`, `162-01-SUMMARY.md`
+### Phase 163: ROADMAP/Workflow Prose Cleanup + Validation
+Focus: Trim the remaining surrounding prose and duplicated warm-path explanation in the roadmap/planning workflow cluster while preserving slice-based reads, collaboration semantics, guided markers, and `.paul/*` authority, then lock that slimmer contract into validation.
+Plans: 1 (`163-01-PLAN.md`)
+Status: Planning
+Outputs: Slimmer shared workflow prose for roadmap/planning routes, validation coverage for the preserved contract, `163-01-PLAN.md`
 ## Completed Milestones
 <details>
 <summary>v2.35 Context Bloat Audit & Reduction Strategy - 2026-03-28 (3 phases)</summary>
