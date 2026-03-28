@@ -20,8 +20,8 @@ Can be invoked at any time during a milestone.
 </loop_context>
 
 <required_reading>
-.paul/ROADMAP.md
 .paul/STATE.md
+.paul/ROADMAP.md (read the current milestone section for show-status; expand to broader roadmap structure only for add/remove operations)
 </required_reading>
 
 <references>
@@ -40,7 +40,7 @@ Can be invoked at any time during a milestone.
    - Loop position (PLAN/APPLY/UNIFY markers)
    - Last activity timestamp
    - Progress percentages
-2. Read `.paul/ROADMAP.md` for:
+2. Read the current milestone section in `.paul/ROADMAP.md` for:
    - Milestone theme and phase table
    - Phase completion counts
 </step>
@@ -156,10 +156,9 @@ Show exactly ONE suggested action with the standard PAUL routing format.
 <process>
 
 <step name="add_validate" priority="first">
-1. Read ROADMAP.md for current milestone
-2. Identify highest phase number in milestone
+1. Read the current milestone section in ROADMAP.md
+2. Identify highest phase number in that active milestone table
 3. Calculate next phase number = highest + 1
-
 **If no active milestone:**
 - Error: "No active milestone. Run /paul:milestone first."
 - Exit workflow
@@ -266,20 +265,17 @@ Continue with current work or plan this phase later.
 <process>
 
 <step name="remove_validate" priority="first">
-1. Read ROADMAP.md for current milestone
-2. Find target phase by number or name
+1. Read the current milestone section in ROADMAP.md
+2. Find target phase by number or name within that active milestone slice
 3. Check phase status
-
 **Validation rules:**
 - Phase must be "Not started" — cannot remove in-progress or complete phases
 - Phase must be in current milestone
 - Cannot remove if it's the only remaining phase
-
 **If validation fails:**
 ```
 Cannot remove Phase {number}: {name}
 Reason: {status is not "Not started" / only remaining phase / not in current milestone}
-
 Only future (not started) phases can be removed.
 ```
 Exit workflow.

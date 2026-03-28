@@ -31,17 +31,22 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-03-28
 Theme: Implement the highest-value workflow-side context reductions first — slimmer wrappers, tighter read discipline, and trimmed roadmap/workflow prose — without changing artifact-first lifecycle authority.
-Phases: 0 of 3 complete
+Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 161 | Wrapper & Entrypoint Slimming | 1 | UNIFY complete (merge pending) | - |
-| 162 | Workflow Read-Discipline Reduction | TBD | Not started | - |
+| 161 | Wrapper & Entrypoint Slimming | 1 | Complete | 2026-03-28 |
+| 162 | Workflow Read-Discipline Reduction | 1 | Planning | - |
 | 163 | ROADMAP/Workflow Prose Cleanup + Validation | TBD | Not started | - |
 ### Phase 161: Wrapper & Entrypoint Slimming
 Focus: Reduce wrapper and entrypoint overhead so canonical commands preserve guided behavior with less repeated prose and less redundant injection.
 Plans: 1 (`161-01-PLAN.md`)
-Status: UNIFY complete, merge gate pending
+Status: Complete
 Outputs: Slimmed Pi wrapper shells, updated Pi validation contract, `161-01-PLAN.md`, `161-01-SUMMARY.md`
+### Phase 162: Workflow Read-Discipline Reduction
+Focus: Narrow shared workflow read bundles around `ROADMAP.md` and active planning context so plan, status, and milestone-creation routes read only the slices they actually need while keeping `.paul/*` authoritative.
+Plans: 1 (`162-01-PLAN.md`)
+Status: Planning
+Outputs: Targeted read-discipline updates for planning/status/milestone workflows, preserved collaboration and guided behavior, `162-01-PLAN.md`
 ## Completed Milestones
 <details>
 <summary>v2.35 Context Bloat Audit & Reduction Strategy - 2026-03-28 (3 phases)</summary>
