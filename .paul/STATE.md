@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-27)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Plan Phase 159 — Workflow Bloat Audit
+**Current focus:** Run UNIFY for 159-01 — Workflow Bloat Audit
 ## Current Position
 Milestone: v2.35 Context Bloat Audit & Reduction Strategy
-Phase: 159 of 3 (Workflow Bloat Audit) — ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-27T22:51:26Z — Phase 158 unified and transitioned to Phase 159
+Phase: 159 of 3 (Workflow Bloat Audit) — UNIFY complete, pending merge gate
+Plan: 159-01 — complete
+Status: UNIFY complete, awaiting PR merge for transition to Phase 160
+Last activity: 2026-03-28T00:55:00Z — Created .paul/phases/159-workflow-bloat-audit/159-01-SUMMARY.md and finalized Phase 159 reconciliation
 Progress:
-- v2.35 Context Bloat Audit & Reduction Strategy: [███░░░░░░░] 33%
-- Phase 159: [░░░░░░░░░░] 0%
+- v2.35 Context Bloat Audit & Reduction Strategy: [██████░░░░] 67%
+- Phase 159: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete — awaiting merge gate resolution]
 ```
 
 ## Accumulated Context
@@ -112,6 +112,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-27: Separate total artifact growth from repeat-read hot-path cost before designing fixes | 158 | Prevents Phase 159 from conflating archive mass with active Pi context pressure |
 | 2026-03-27: Treat `STATE.md` as the confirmed hot artifact and `ROADMAP.md` as the main warm-path artifact | 158 | Future reduction work should optimize repeated-read pressure first, not just largest files |
 | 2026-03-27: Preserve `PROJECT.md` as the compact brief instead of using it to absorb roadmap or milestone history | 158 | Protects the layered artifact model that Phase 158 found was already working comparatively well |
+| 2026-03-28: Keep workflow-side amplification separate from artifact-side cost until Phase 160 combines both evidence streams | 159 | Preserves a clean recommendation baseline and avoids blurring root causes across the two audit phases |
+| 2026-03-28: Preserve guided workflow markers and target surrounding prose/read bundles first for workflow-bloat reduction | 159 | Lets Phase 160 pursue safer wording and read-discipline reductions without destabilizing guided UX semantics |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -133,6 +135,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Expected | Invoked | Notes |
 |----------|---------|-------|
 | /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the Phase 156 implementer integration and follow-up installer fix |
+### Skill Audit (Phase 159)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the workflow-bloat audit |
+| /carl | ✓ | Session-boundary routing remained active at pause/resume level; no separate manual action was needed during the audit |
+| TODD | N/A | Research-only documentation phase; no implementation path or RED/GREEN/REFACTOR work applied |
+| WALT | N/A | Documentation-only audit; no project test/lint/typecheck execution path was available for meaningful gating |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -142,15 +151,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: feat(158): complete artifact growth & hot-path audit on main
-PR: https://github.com/coctostan/pals/pull/67 (MERGED)
+Branch: feature/159-workflow-bloat-audit
+Last commit: feat(159-workflow-bloat-audit): complete apply
+PR: https://github.com/coctostan/pals/pull/68 (OPEN)
 ## Session Continuity
-Last session: 2026-03-27T22:51:26Z
-Stopped at: Phase 158 complete, ready to plan Phase 159
-Next action: Run /paul:plan for Phase 159 — Workflow Bloat Audit
-Resume file: .paul/ROADMAP.md
+Last session: 2026-03-28T00:55:00Z
+Stopped at: Phase 159 reconciliation is complete; merge gate is waiting on PR merge resolution
+Next action: Merge PR #68 for feature/159-workflow-bloat-audit, then continue Phase 159 transition to Phase 160
+Resume file: .paul/phases/159-workflow-bloat-audit/159-01-SUMMARY.md
 Resume context:
-- Milestone v2.35 is 1 of 3 phases complete after closing Phase 158
-- Phase 159 should audit workflow and prompt-shape duplication around hot artifacts without redoing raw footprint measurement
-- Phase 160 will consolidate artifact and workflow findings into ranked reduction recommendations
+- Phase 159 PLAN/APPLY/UNIFY work is complete and summarized
+- `.paul/QUALITY-HISTORY.md` has been updated with a stable 159-01 entry
+- PR #68 is open with passing CI and no required reviews; transition to Phase 160 is blocked only on merge resolution
