@@ -36,7 +36,7 @@ Phases: 2 of 3 complete
 |-------|------|-------|--------|-----------|
 | 167 | UX Audit & Target Design | 1 (`167-01`) | ✅ Complete | 2026-04-01 |
 | 168 | Core Lifecycle UI Polish | 1 (`168-01`) | ✅ Complete | 2026-04-01 |
-| 169 | Supporting UX Alignment & Validation | TBD | Planning | - |
+| 169 | Supporting UX Alignment & Validation | 1 (`169-01`) | Planning | - |
 
 ### Phase 167: UX Audit & Target Design
 Focus: Inspect the current Pi lifecycle display, define the target layout/wording/color semantics, and decide whether any adjacent prompt or notification adjustments are worth including.
@@ -48,7 +48,7 @@ Plans: 1 (`168-01`) — complete
 
 ### Phase 169: Supporting UX Alignment & Validation
 Focus: Align nearby prompts or notifications only where they support the same UX language, then validate presentation consistency and behavior.
-Plans: TBD — ready for planning
+Plans: 1 (`169-01`) — planned
 ## Next Milestone
 TBD after v2.38 completion.
 

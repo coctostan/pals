@@ -613,6 +613,19 @@ else
     tap_not_ok "Extension surfaces milestone, phase, loop, and next action" "Expected lifecycle field labels in extension source"
   fi
 
+  # Guardrail: the persistent widget stays limited to the calm 4-line lifecycle hierarchy
+  if grep -q 'PALS Milestone:' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'Phase:' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'Loop:' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'Next action:' "$EXT_SRC" 2>/dev/null \
+    && ! grep -q 'Actions:' "$EXT_SRC" 2>/dev/null \
+    && ! grep -q 'More:' "$EXT_SRC" 2>/dev/null \
+    && ! grep -q 'PALS Lifecycle' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Extension keeps the lifecycle widget aligned to the calm 4-line hierarchy"
+  else
+    tap_not_ok "Extension keeps the lifecycle widget aligned to the calm 4-line hierarchy" "Expected PALS Milestone/Phase/Loop/Next action labels and no legacy Actions:/More:/PALS Lifecycle widget copy in pals-hooks.ts"
+  fi
+
   # Guardrail: lifecycle UI refreshes stay within approved Pi adapter events
   if grep -q 'before_agent_start' "$EXT_SRC" 2>/dev/null && grep -q 'turn_end' "$EXT_SRC" 2>/dev/null && grep -q 'agent_end' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension refreshes lifecycle UI on approved adapter events"
@@ -805,6 +818,22 @@ if grep -q 'Shortcut-Enabled Entry Points' "$SKILL_MAP" && grep -q 'Ctrl+Alt+N' 
   tap_ok "Skill map documents shortcut-enabled entry points"
 else
   tap_not_ok "Skill map documents shortcut-enabled entry points" "Expected shortcut guidance in drivers/pi/skill-map.md"
+fi
+
+if grep -q 'milestone, phase, loop, and next action' "$README_PI" \
+  && grep -q 'entry points, not persistent widget rows' "$README_PI" \
+  && ! grep -q 'secondary "More" line' "$README_PI"; then
+  tap_ok "Extension README describes the calm lifecycle surface without legacy shortcut rows"
+else
+  tap_not_ok "Extension README describes the calm lifecycle surface without legacy shortcut rows" "Expected calm lifecycle wording, shortcut-as-entry-point guidance, and no legacy secondary More row language in drivers/pi/extensions/README.md"
+fi
+
+if grep -q 'milestone, phase, loop, and next action' "$SKILL_MAP" \
+  && grep -q 'persistent panel rows' "$SKILL_MAP" \
+  && grep -q 'milestone, phase, loop, and next action' "$HELP_SKILL"; then
+  tap_ok "Pi discovery surfaces keep shortcuts framed as routing around the calm lifecycle surface"
+else
+  tap_not_ok "Pi discovery surfaces keep shortcuts framed as routing around the calm lifecycle surface" "Expected calm lifecycle wording across drivers/pi/skill-map.md and drivers/pi/skills/paul-help/SKILL.md"
 fi
 if grep -q 'modules.yaml' "$README_PI" && grep -q 'module overlays' "$SKILL_MAP" && grep -q 'TODD and WALT are module overlays' "$HELP_SKILL"; then
   tap_ok "Pi discovery surfaces explain module overlays vs standalone skills"
