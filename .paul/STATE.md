@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Apply 169-01 completed — Pi docs and validation now align with the calmer lifecycle surface
+**Current focus:** Unify 169-01 completed — Phase 169 is reconciled and waiting on merge/transition closure
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 169 of 3 (Supporting UX Alignment & Validation) — Applying
-Plan: 169-01 executed, awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-01T19:47:33Z — Completed APPLY for .paul/phases/169-supporting-ux-alignment-validation/169-01-PLAN.md and opened PR #79
+Phase: 169 of 3 (Supporting UX Alignment & Validation) — Complete
+Plan: 169-01 complete
+Status: UNIFY complete; merge gate and phase transition pending
+Last activity: 2026-04-01T19:53:03Z — Created 169-01 SUMMARY and finalized UNIFY reconciliation for PR #79
 Progress:
-- v2.38 Pi Lifecycle UX Polish: [██████░░░░] 67%
+- v2.38 Pi Lifecycle UX Polish: [██████████] 100%
 - Phase 168: [██████████] 100% ✓
-- Phase 169: [██████░░░░] 67%
+- Phase 169: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
+  ✓        ✓        ✓     [Loop complete - awaiting merge gate and transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -126,6 +126,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 || 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
 | 2026-04-01: Keep a direct `renderLoopBadge(state.loop)` call in the compact status path while simplifying the surrounding hierarchy | 168 | Preserves the calmer status line while keeping the existing Pi validation contract green during APPLY |
+| 2026-04-01: Keep Phase 169 lifecycle alignment documentation-first when `pals-hooks.ts` already matches the calmer contract | 169 | Preserved the stable Phase 168 runtime hierarchy and focused changes on docs plus semantic validation guardrails |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -173,6 +174,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /carl | ✓ | Session-boundary routing remained active while Phase 168 moved across planning, apply, and unify |
 | TODD | ✓ | APPLY preserved disciplined verification expectations for the bounded runtime edit |
 | WALT | ✓ | Validation passed during APPLY and quality evidence was persisted during UNIFY |
+### Skill Audit (Phase 169)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the docs/validation alignment phase |
+| /carl | ✓ | Session-boundary routing remained active while the phase moved across APPLY and UNIFY |
+| TODD | ✓ | APPLY preserved disciplined validation sequencing on the shell-based Pi validation surface |
+| WALT | ✓ | Validation ran during APPLY and quality history was recorded during UNIFY |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -183,14 +191,14 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/169-supporting-ux-alignment-validation
-Last commit: 0a83141 feat(169-supporting-ux-alignment-validation): align Pi docs and validation
+Last commit: 2e531d7 chore(169-supporting-ux-alignment-validation): record apply state
 PR: https://github.com/coctostan/pals/pull/79 (state: open)
-CI: pending (Socket Security checks queued)
+CI: passing
 ## Session Continuity
-Last session: 2026-04-01T19:47:33Z
-Stopped at: APPLY complete for Plan 169-01
-Next action: Run /paul:unify .paul/phases/169-supporting-ux-alignment-validation/169-01-PLAN.md
-Resume file: .paul/phases/169-supporting-ux-alignment-validation/169-01-PLAN.md
+Last session: 2026-04-01T19:53:03Z
+Stopped at: UNIFY complete for Plan 169-01
+Next action: Merge PR #79, complete transition for Phase 169, and close milestone v2.38
+Resume file: .paul/phases/169-supporting-ux-alignment-validation/169-01-SUMMARY.md
 Resume context:
 - Phase 169 docs now describe the persistent Pi lifecycle surface as milestone / phase / loop / next action, with shortcuts framed as entry points rather than persistent rows.
 - `tests/pi-end-to-end-validation.sh` now guards the calm 4-line hierarchy semantically and rejects the older `Actions:` / `More:` copy.
