@@ -12,6 +12,7 @@ In Pi:
 - the extension also exposes a bounded shortcut layer for high-frequency flow entry points while still routing back through `/paul-*` wrappers
 - enabled modules are installed alongside the skills and recorded in `~/.pi/agent/skills/pals/modules.yaml`; TODD/WALT remain module overlays, not standalone Pi skills
 - live module visibility in the Pi status/widget is dispatch-derived from recent shared workflow/reporting output plus shared artifacts; it remains adapter-only and never becomes an authoritative Pi-owned execution ledger
+- the visible lifecycle surface stays centered on milestone, phase, loop, and next action; shortcuts remain separate routing affordances rather than extra persistent panel rows
 - planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
 - delegated APPLY stays task-bounded: Pi may surface `pals-implementer`, but parent APPLY keeps verification, fallback, checkpoints, module gates, and `.paul/*` authority; the helper is only for eligible bounded repo-local work
 
@@ -73,15 +74,14 @@ That same shared workflow/reporting contract now powers bounded live module visi
 
 ## Shortcut-Enabled Entry Points
 
-The Pi extension exposes a small shortcut layer for the visible lifecycle surface:
+The Pi extension exposes a small shortcut layer for the visible lifecycle surface. The persistent lifecycle surface itself stays centered on milestone, phase, loop, and next action:
 - `Ctrl+Alt+N` → current next action
 - `Ctrl+Alt+S` → `/paul-status`
 - `Ctrl+Alt+R` → `/paul-resume`
 - `Ctrl+Alt+H` → `/paul-help`
 - `Ctrl+Alt+M` → `/paul-milestone`
 
-These shortcuts are discovery and routing affordances only. They remain adapter-only and preserve `/skill:paul-*` as the canonical entry layer.
-
+These shortcuts are discovery and routing affordances only, not extra persistent panel rows. They remain adapter-only and preserve `/skill:paul-*` as the canonical entry layer.
 ## Collaboration Flow Notes
 
 Planning-oriented Pi entry points stay aligned with shared workflow truth:

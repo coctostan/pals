@@ -12,6 +12,7 @@ Pi exposes convenience wrappers on top of the canonical PALS skill layer.
 - Use `/skill:paul-*` when you want the canonical underlying skill entry directly.
 - The canonical skills and shared workflows remain authoritative; `/paul-*` is a convenience wrapper layer.
 - Shortcut-enabled entry points are available for high-frequency actions: `Ctrl+Alt+N`, `Ctrl+Alt+S`, `Ctrl+Alt+R`, `Ctrl+Alt+H`, `Ctrl+Alt+M`.
+- The visible lifecycle surface stays centered on milestone, phase, loop, and next action; shortcuts are entry points, not persistent panel rows.
 - Pi installs enabled modules beside the skills in `~/.pi/agent/skills/pals/modules.yaml`; TODD and WALT are module overlays, not standalone Pi skills.
 
 ## Pi command layer

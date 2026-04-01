@@ -38,15 +38,14 @@ These behaviors belong to shared markdown workflows (`init-project`, `discuss-mi
 
 ## Quick Actions & Shortcuts
 
-The lifecycle widget exposes a bounded quick-action set for the highest-frequency PALS entry points:
+The always-visible lifecycle surface stays centered on milestone, phase, loop, and next action. Pi also exposes a bounded shortcut set for the highest-frequency PALS entry points:
 - Next action — `Ctrl+Alt+N`
 - Status — `Ctrl+Alt+S`
 - Resume — `Ctrl+Alt+R`
 - Help — `Ctrl+Alt+H`
 - Milestone — `Ctrl+Alt+M`
 
-The always-visible UI keeps only the first three actions in the primary summary and moves the rest into a secondary "More" line. These shortcuts stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
-
+These shortcuts are entry points, not persistent widget rows. They stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
 ## Guided Workflow UX
 
 The extension adds a bounded guided workflow layer for canonical PALS lifecycle moments already emitted by shared workflows. It inspects recent assistant output plus `.paul/STATE.md` for stable markers such as `Would you like to see the plan?`, `Continue to APPLY`, `Continue to UNIFY`, `CHECKPOINT:`, and `▶ NEXT:`.

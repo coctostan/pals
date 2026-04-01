@@ -4,24 +4,23 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 169 ready to plan — docs/validation alignment for the calmer Pi lifecycle surface
+**Current focus:** Apply 169-01 completed — Pi docs and validation now align with the calmer lifecycle surface
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 169 of 3 (Supporting UX Alignment & Validation) — Planning
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-01T19:12:05Z — Completed Phase 168 transition commit and left the project ready to plan Phase 169
+Phase: 169 of 3 (Supporting UX Alignment & Validation) — Applying
+Plan: 169-01 executed, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-01T20:02:00Z — Completed APPLY for .paul/phases/169-supporting-ux-alignment-validation/169-01-PLAN.md
 Progress:
 - v2.38 Pi Lifecycle UX Polish: [██████░░░░] 67%
 - Phase 168: [██████████] 100% ✓
-- Phase 169: [░░░░░░░░░░] 0%
+- Phase 169: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan]
+  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
 ```
-
 ## Accumulated Context
 ### Decisions
 | Decision | Phase | Impact |
@@ -183,16 +182,16 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
+Branch: feature/169-supporting-ux-alignment-validation
 Last commit: c40dce7 feat(168-core-lifecycle-ui-polish): complete phase transition
-PR: https://github.com/coctostan/pals/pull/78 (MERGED)
-CI: passing
+PR: not created yet
+CI: not checked
 ## Session Continuity
-Last session: 2026-04-01T19:10:55Z
-Stopped at: Phase 168 complete, ready to plan Phase 169
-Next action: /paul:plan
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-01T20:02:00Z
+Stopped at: APPLY complete for Plan 169-01
+Next action: Run /paul:unify .paul/phases/169-supporting-ux-alignment-validation/169-01-PLAN.md
+Resume file: .paul/phases/169-supporting-ux-alignment-validation/169-01-PLAN.md
 Resume context:
-- Phase 168 completed the runtime Pi lifecycle UI polish in `drivers/pi/extensions/pals-hooks.ts` and merged as PR #78.
-- Phase 169 now owns docs, discovery-surface wording, and validation alignment around the calmer 4-line lifecycle presentation.
-- Keep the next plan bounded to supporting UX alignment; do not reopen lifecycle authority, add new persistent surfaces, or broaden into unrelated Pi redesign work.
+- Phase 169 docs now describe the persistent Pi lifecycle surface as milestone / phase / loop / next action, with shortcuts framed as entry points rather than persistent rows.
+- `tests/pi-end-to-end-validation.sh` now guards the calm 4-line hierarchy semantically and rejects the older `Actions:` / `More:` copy.
+- `drivers/pi/extensions/pals-hooks.ts` was inspected for adjacent wording drift; no runtime hierarchy changes were needed, and bundling plus the Pi end-to-end validation suite passed.
