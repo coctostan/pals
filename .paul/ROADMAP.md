@@ -27,19 +27,30 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.37 Implementer Config Alignment & Delegation Expansion**
-Status: ✅ Complete
-Completed: 2026-03-28
-Theme: Align `pals.json`, init, migration, schema, docs, and validation around explicit implementer config, then broaden delegated APPLY so `pals-implementer` is used more often without weakening parent authority.
-Phases: 3 of 3 complete
+**v2.38 Pi Lifecycle UX Polish**
+Status: 🚧 In Progress
+Started: 2026-04-01
+Theme: Make the existing Pi lifecycle display calm, legible, and visually meaningful for daily use without expanding into a broader new widget system.
+Phases: 0 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 164 | Implementer Config Contract Alignment | 1 (`164-01`) | ✅ Complete | 2026-03-28 |
-| 165 | Delegated APPLY Expansion | 1 (`165-01`) | ✅ Complete | 2026-03-28 |
-| 166 | Validation & Docs Refresh | 1 (`166-01`) | ✅ Complete | 2026-03-28 |
+| 167 | UX Audit & Target Design | 1 (`167-01`) | Planning | - |
+| 168 | Core Lifecycle UI Polish | TBD | Not started | - |
+| 169 | Supporting UX Alignment & Validation | TBD | Not started | - |
 
+### Phase 167: UX Audit & Target Design
+Focus: Inspect the current Pi lifecycle display, define the target layout/wording/color semantics, and decide whether any adjacent prompt or notification adjustments are worth including.
+Plans: 1 (`167-01`) — planning
+
+### Phase 168: Core Lifecycle UI Polish
+Focus: Implement the simplified lifecycle panel, remove persistent clutter, and add semantic color plus clearer visual hierarchy.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 169: Supporting UX Alignment & Validation
+Focus: Align nearby prompts or notifications only where they support the same UX language, then validate presentation consistency and behavior.
+Plans: TBD (defined during /paul:plan)
 ## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+TBD after v2.38 completion.
 
 ## Completed Milestones
 <details>

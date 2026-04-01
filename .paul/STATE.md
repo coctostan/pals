@@ -4,20 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone definition after v2.37 closeout
+**Current focus:** Phase 167 planning complete — audit/design plan ready for approval
 ## Current Position
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.37 complete — ready for next
-Last activity: 2026-03-28T19:29:15Z — Completed milestone v2.37 closeout after PR #75 merged
+Milestone: v2.38 Pi Lifecycle UX Polish
+Phase: 167 of 3 (UX Audit & Target Design) — Planning
+Plan: 167-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-01T17:16:02Z — Created .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [██████████] 100% ✓
+- v2.38 Pi Lifecycle UX Polish: [░░░░░░░░░░] 0%
+- Phase 167: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -172,11 +173,11 @@ Last commit: feat(166-validation-docs-refresh): align docs and validation (#75)
 PR: https://github.com/coctostan/pals/pull/75 (MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T19:29:15Z
-Stopped at: Milestone v2.37 complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-04-01T17:16:02Z
+Stopped at: Plan 167-01 created
+Next action: Review and approve plan, then run /paul:apply .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
+Resume file: .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
 Resume context:
-- Milestone v2.37 is complete and archived in `.paul/MILESTONES.md` plus `.paul/milestones/v2.37-ROADMAP.md`.
-- PRs #73, #74, and #75 merged cleanly on 2026-03-28.
-- The repo is on `main` and ready for the next milestone definition.
+- Phase 167 is an audit/design-only plan that creates three artifacts under `.paul/phases/167-ux-audit-target-design/`.
+- The plan audits the current Pi lifecycle surface, defines the target 4-line UX and semantic color model, and hands off bounded implementation scope for Phases 168-169.
+- No runtime code, docs, or tests should change during Phase 167 APPLY; those remain evidence sources only.
