@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 168 APPLY complete — runtime UI polish ready for UNIFY
+**Current focus:** Phase 168 UNIFY complete — runtime UI polish ready for phase transition
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 168 of 3 (Core Lifecycle UI Polish) — Apply Complete
-Plan: 168-01 executed
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-01T18:57:54Z — Completed APPLY for 168-01; simplified the Pi lifecycle render path and passed Pi validation
+Phase: 168 of 3 (Core Lifecycle UI Polish) — Complete
+Plan: 168-01 complete
+Status: Loop complete, ready for phase transition
+Last activity: 2026-04-01T19:08:53Z — Created 168-01 summary, recorded quality history, and closed the Phase 168 loop
 Progress:
 - v2.38 Pi Lifecycle UX Polish: [██████░░░░] 67%
 - Phase 167: [██████████] 100% ✓
-- Phase 168: [██████░░░░] 67%
+- Phase 168: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Implementation complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for phase transition]
 ```
 
 ## Accumulated Context
@@ -167,6 +167,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Expected | Invoked | Notes |
 |----------|---------|-------|
 | /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the Phase 167 audit/design work |
+### Skill Audit (Phase 168)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the runtime lifecycle UI polish phase |
+| /carl | ✓ | Session-boundary routing remained active while Phase 168 moved across planning, apply, and unify |
+| TODD | ✓ | APPLY preserved disciplined verification expectations for the bounded runtime edit |
+| WALT | ✓ | Validation passed during APPLY and quality evidence was persisted during UNIFY |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -181,11 +188,11 @@ Last commit: fd28ac9 feat(168-core-lifecycle-ui-polish): simplify Pi lifecycle U
 PR: https://github.com/coctostan/pals/pull/78 (OPEN)
 CI: not reported yet
 ## Session Continuity
-Last session: 2026-04-01T18:57:54Z
-Stopped at: APPLY complete for 168-01
-Next action: /paul:unify .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
-Resume file: .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
+Last session: 2026-04-01T19:08:53Z
+Stopped at: UNIFY complete for 168-01
+Next action: complete Phase 168 transition, then /paul:plan for Phase 169
+Resume file: .paul/phases/168-core-lifecycle-ui-polish/168-01-SUMMARY.md
 Resume context:
-- `drivers/pi/extensions/pals-hooks.ts` now renders a strict 4-line widget anchored on `PALS Milestone`, `Phase`, `Loop`, and `Next action`.
-- The compact status path no longer includes persistent quick-action or module clutter and keeps a direct `renderLoopBadge(state.loop)` call for validation compatibility.
-- Verification passed via esbuild bundling and `bash tests/pi-end-to-end-validation.sh`; PR #78 is open and ready for UNIFY.
+- `drivers/pi/extensions/pals-hooks.ts` now renders the calm 4-line lifecycle widget and a cleaner compact status line without persistent quick-action clutter.
+- `168-01-SUMMARY.md` records the completed runtime polish, the retained direct loop-badge call for validation compatibility, and the Phase 169 follow-up boundary.
+- `.paul/quality-history.md` now includes Phase 168's explicit Pi validation result; the phase is ready for merge-gate resolution and transition to Phase 169.
