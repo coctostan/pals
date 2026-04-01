@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 168 planning complete — runtime UI polish plan ready for approval
+**Current focus:** Phase 168 APPLY complete — runtime UI polish ready for UNIFY
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 168 of 3 (Core Lifecycle UI Polish) — Planning
-Plan: 168-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-01T18:07:59Z — Created .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
+Phase: 168 of 3 (Core Lifecycle UI Polish) — Apply Complete
+Plan: 168-01 executed
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-01T18:57:54Z — Completed APPLY for 168-01; simplified the Pi lifecycle render path and passed Pi validation
 Progress:
-- v2.38 Pi Lifecycle UX Polish: [███░░░░░░░] 33%
+- v2.38 Pi Lifecycle UX Polish: [██████░░░░] 67%
 - Phase 167: [██████████] 100% ✓
-- Phase 168: [░░░░░░░░░░] 0%
+- Phase 168: [██████░░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [Implementation complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -126,6 +126,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
 || 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
+| 2026-04-01: Keep a direct `renderLoopBadge(state.loop)` call in the compact status path while simplifying the surrounding hierarchy | 168 | Preserves the calmer status line while keeping the existing Pi validation contract green during APPLY |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -175,16 +176,16 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
-PR: https://github.com/coctostan/pals/pull/77 (MERGED)
-CI: passing
+Branch: feature/168-core-lifecycle-ui-polish
+Last commit: fd28ac9 feat(168-core-lifecycle-ui-polish): simplify Pi lifecycle UI
+PR: https://github.com/coctostan/pals/pull/78 (OPEN)
+CI: not reported yet
 ## Session Continuity
-Last session: 2026-04-01T18:07:59Z
-Stopped at: Plan 168-01 created
-Next action: Review and approve plan, then run /paul:apply .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
+Last session: 2026-04-01T18:57:54Z
+Stopped at: APPLY complete for 168-01
+Next action: /paul:unify .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
 Resume file: .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
 Resume context:
-- Phase 168 is the runtime implementation phase for the calm 4-line Pi lifecycle surface designed in Phase 167.
-- The plan is bounded to `drivers/pi/extensions/pals-hooks.ts`; docs/validation alignment remains Phase 169 unless a critical runtime break forces reconsideration.
-- Verification includes bundling `pals-hooks.ts` and running `bash tests/pi-end-to-end-validation.sh` after the render-path changes.
+- `drivers/pi/extensions/pals-hooks.ts` now renders a strict 4-line widget anchored on `PALS Milestone`, `Phase`, `Loop`, and `Next action`.
+- The compact status path no longer includes persistent quick-action or module clutter and keeps a direct `renderLoopBadge(state.loop)` call for validation compatibility.
+- Verification passed via esbuild bundling and `bash tests/pi-end-to-end-validation.sh`; PR #78 is open and ready for UNIFY.

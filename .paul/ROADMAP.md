@@ -35,7 +35,7 @@ Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 167 | UX Audit & Target Design | 1 (`167-01`) | ✅ Complete | 2026-04-01 |
-| 168 | Core Lifecycle UI Polish | 1 (`168-01`) | Planning | - |
+| 168 | Core Lifecycle UI Polish | 1 (`168-01`) | Apply complete | - |
 | 169 | Supporting UX Alignment & Validation | TBD | Not started | - |
 
 ### Phase 167: UX Audit & Target Design
@@ -44,7 +44,7 @@ Plans: 1 (`167-01`) — complete
 
 ### Phase 168: Core Lifecycle UI Polish
 Focus: Implement the simplified lifecycle panel, remove persistent clutter, and add semantic color plus clearer visual hierarchy.
-Plans: 1 (`168-01`) — planning
+Plans: 1 (`168-01`) — apply complete, unify pending
 
 ### Phase 169: Supporting UX Alignment & Validation
 Focus: Align nearby prompts or notifications only where they support the same UX language, then validate presentation consistency and behavior.
