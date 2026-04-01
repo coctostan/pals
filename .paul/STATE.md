@@ -4,21 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 168 ready to plan after Phase 167 completion
+**Current focus:** Phase 168 UNIFY complete — runtime UI polish ready for phase transition
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 168 of 3 (Core Lifecycle UI Polish)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-01T18:07:59Z — Phase 167 complete, transitioned to Phase 168
+Phase: 168 of 3 (Core Lifecycle UI Polish) — Complete
+Plan: 168-01 complete
+Status: Loop complete, ready for phase transition
+Last activity: 2026-04-01T19:08:53Z — Created 168-01 summary, recorded quality history, and closed the Phase 168 loop
 Progress:
-- v2.38 Pi Lifecycle UX Polish: [███░░░░░░░] 33%
+- v2.38 Pi Lifecycle UX Polish: [██████░░░░] 67%
 - Phase 167: [██████████] 100% ✓
+- Phase 168: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete - ready for phase transition]
 ```
 
 ## Accumulated Context
@@ -125,6 +126,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
 || 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
+| 2026-04-01: Keep a direct `renderLoopBadge(state.loop)` call in the compact status path while simplifying the surrounding hierarchy | 168 | Preserves the calmer status line while keeping the existing Pi validation contract green during APPLY |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -165,6 +167,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Expected | Invoked | Notes |
 |----------|---------|-------|
 | /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the Phase 167 audit/design work |
+### Skill Audit (Phase 168)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the runtime lifecycle UI polish phase |
+| /carl | ✓ | Session-boundary routing remained active while Phase 168 moved across planning, apply, and unify |
+| TODD | ✓ | APPLY preserved disciplined verification expectations for the bounded runtime edit |
+| WALT | ✓ | Validation passed during APPLY and quality evidence was persisted during UNIFY |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -174,16 +183,16 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
-PR: https://github.com/coctostan/pals/pull/77 (MERGED)
-CI: passing
+Branch: feature/168-core-lifecycle-ui-polish
+Last commit: fd28ac9 feat(168-core-lifecycle-ui-polish): simplify Pi lifecycle UI
+PR: https://github.com/coctostan/pals/pull/78 (OPEN)
+CI: not reported yet
 ## Session Continuity
-Last session: 2026-04-01T18:07:59Z
-Stopped at: Phase 167 complete, ready to plan Phase 168
-Next action: /paul:plan for Phase 168
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-01T19:08:53Z
+Stopped at: UNIFY complete for 168-01
+Next action: complete Phase 168 transition, then /paul:plan for Phase 169
+Resume file: .paul/phases/168-core-lifecycle-ui-polish/168-01-SUMMARY.md
 Resume context:
-- Phase 167 completed with three audit/design artifacts plus `.paul/phases/167-ux-audit-target-design/167-01-SUMMARY.md`.
-- The target UX is now explicit: a calm 4-line lifecycle panel with semantic color meaning and reduced persistent clutter.
-- Phase 168 should implement the runtime rendering changes in `drivers/pi/extensions/pals-hooks.ts`; Phase 169 should align docs and validation afterward.
+- `drivers/pi/extensions/pals-hooks.ts` now renders the calm 4-line lifecycle widget and a cleaner compact status line without persistent quick-action clutter.
+- `168-01-SUMMARY.md` records the completed runtime polish, the retained direct loop-badge call for validation compatibility, and the Phase 169 follow-up boundary.
+- `.paul/quality-history.md` now includes Phase 168's explicit Pi validation result; the phase is ready for merge-gate resolution and transition to Phase 169.

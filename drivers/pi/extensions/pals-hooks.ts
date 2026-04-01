@@ -238,17 +238,28 @@ function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
     .slice(0, MAX_QUICK_ACTIONS);
 }
 
-function renderQuickActionSummary(state: PalsStateSnapshot): string | undefined {
-  const actions = getQuickActions(state).slice(0, PRIMARY_QUICK_ACTION_LIMIT);
-  if (actions.length === 0) return undefined;
-  return `Actions: ${actions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}`;
-}
 
 function renderLoopBadge(loopString?: string): string | undefined {
   if (!loopString) return undefined;
   const marks = [...loopString.matchAll(/[✓○]/g)].map((m) => m[0]);
   if (marks.length < 3) return undefined;
   return `PLAN${marks[0]} APPLY${marks[1]} UNIFY${marks[2]}`;
+}
+
+function renderCompactLoopSummary(loopString?: string): string | undefined {
+  if (!loopString) return undefined;
+  return `Loop: ${renderLoopBadge(loopString) ?? compactWhitespace(loopString)}`;
+}
+
+function renderLifecycleActionLabel(state: PalsStateSnapshot): string {
+  const nextAction = compactWhitespace(state.nextAction)?.toLowerCase() ?? "";
+  const loopSignature = state.loop ? [...state.loop.matchAll(/[✓○]/g)].map((match) => match[0]).join("") : "";
+
+  if (loopSignature === "✓✓✓") return "Complete";
+  if (/address blocker|blocked|fix ci|failing|failure/.test(nextAction)) return "Blocked";
+  if (/review|approve|checkpoint|human verification|human action|decision required|waiting/.test(nextAction)) return "Waiting";
+  if (nextAction) return "Ready";
+  return "Next";
 }
 function compactModuleDetail(detail?: string): string | undefined {
   const compact = compactWhitespace(detail);
@@ -399,13 +410,14 @@ function renderModuleActivityDetails(activity?: RecentModuleActivity): string[] 
 
 function renderLifecycleStatus(state: PalsStateSnapshot, activity?: RecentModuleActivity): string | undefined {
   if (!state.detected) return undefined;
+  const actionLabel = renderLifecycleActionLabel(state);
+  const loopBadge = renderLoopBadge(state.loop);
   return [
     "PALS",
+    state.milestone ? `Milestone: ${state.milestone}` : null,
     state.phase ? `Phase: ${state.phase}` : null,
-    renderLoopBadge(state.loop),
-    renderModuleActivity(activity),
-    state.nextAction ? `Next: ${state.nextAction}` : null,
-    renderQuickActionSummary(state),
+    loopBadge ? `Loop: ${loopBadge}` : renderCompactLoopSummary(state.loop),
+    state.nextAction ? `${actionLabel}: ${state.nextAction}` : null,
   ]
     .filter(Boolean)
     .join(" • ");
@@ -413,24 +425,12 @@ function renderLifecycleStatus(state: PalsStateSnapshot, activity?: RecentModule
 
 function renderLifecycleWidget(state: PalsStateSnapshot, activity?: RecentModuleActivity): string[] | undefined {
   if (!state.detected) return undefined;
-  const quickActions = getQuickActions(state);
-  const primaryActions = quickActions.slice(0, PRIMARY_QUICK_ACTION_LIMIT);
-  const secondaryActions = quickActions.slice(PRIMARY_QUICK_ACTION_LIMIT);
-  const actionLines = [
-    primaryActions.length > 0 ? `Actions: ${primaryActions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}` : null,
-    secondaryActions.length > 0 ? `More: ${secondaryActions.map((action) => `${action.label} ${action.shortcutHint}`).join(" | ")}` : null,
-  ].filter(Boolean) as string[];
-  const moduleLines = renderModuleActivityDetails(activity);
-  const lines = [
-    "PALS Lifecycle",
-    state.milestone ? `Milestone: ${state.milestone}` : "Milestone: unknown",
+  return [
+    state.milestone ? `PALS Milestone: ${state.milestone}` : "PALS Milestone: unknown",
     state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
     state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
     state.nextAction ? `Next action: ${state.nextAction}` : "Next action: unknown",
-    ...moduleLines,
-    ...actionLines,
   ];
-  return lines;
 }
 function syncLifecycleUi(ctx: any): void {
   const cwd = ctx?.cwd ?? process.cwd();
@@ -454,7 +454,7 @@ function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
     state.phase ? `Phase: ${state.phase}` : null,
     state.loop ? `Loop: ${state.loop}` : null,
     state.nextAction ? `Next: ${state.nextAction}` : null,
-    renderQuickActionSummary(state),
+    "Persistent lifecycle UI stays centered on milestone, phase, loop, and next action.",
     `Activation model: explicit /paul-* entry is strongest signal; ${PRIMARY_INJECTION_EVENT} handles primary injection and ${SUPPORTING_CONTEXT_EVENT} stays support-only.`,
     "Guided workflow UX watches canonical prompts like Would you like to see the plan?, Continue to APPLY, CHECKPOINT, Continue to UNIFY, and ▶ NEXT.",
     "Modules load from modules.yaml and workflow dispatch; Pi does not expose standalone TODD/WALT skills.",
