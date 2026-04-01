@@ -304,6 +304,7 @@ All validated — see below.
 || Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
 || 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
+| 2026-04-01: Keep the compact Pi lifecycle status text-first and preserve direct `renderLoopBadge(state.loop)` wiring while Phase 169 owns docs/validation alignment | 168 | Delivers the calmer Phase 168 runtime polish without broadening scope into validation-contract churn or fragile styling experiments |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -322,4 +323,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-01 after Phase 167 completion*
+*Last updated: 2026-04-01 after Phase 168 completion*

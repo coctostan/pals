@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 168 UNIFY complete — runtime UI polish ready for phase transition
+**Current focus:** Phase 169 ready to plan — docs/validation alignment for the calmer Pi lifecycle surface
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 168 of 3 (Core Lifecycle UI Polish) — Complete
-Plan: 168-01 complete
-Status: Loop complete, ready for phase transition
-Last activity: 2026-04-01T19:08:53Z — Created 168-01 summary, recorded quality history, and closed the Phase 168 loop
+Phase: 169 of 3 (Supporting UX Alignment & Validation) — Planning
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-01T19:10:55Z — Phase 168 complete, PR merged, transitioned to Phase 169 planning
 Progress:
 - v2.38 Pi Lifecycle UX Polish: [██████░░░░] 67%
-- Phase 167: [██████████] 100% ✓
 - Phase 168: [██████████] 100% ✓
+- Phase 169: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for phase transition]
+  ○        ○        ○     [Ready to plan]
 ```
 
 ## Accumulated Context
@@ -183,16 +183,16 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/168-core-lifecycle-ui-polish
-Last commit: fd28ac9 feat(168-core-lifecycle-ui-polish): simplify Pi lifecycle UI
-PR: https://github.com/coctostan/pals/pull/78 (OPEN)
-CI: not reported yet
+Branch: main
+Last commit: e2f433a feat(168-core-lifecycle-ui-polish): simplify Pi lifecycle UI (#78)
+PR: https://github.com/coctostan/pals/pull/78 (MERGED)
+CI: passing
 ## Session Continuity
-Last session: 2026-04-01T19:08:53Z
-Stopped at: UNIFY complete for 168-01
-Next action: complete Phase 168 transition, then /paul:plan for Phase 169
-Resume file: .paul/phases/168-core-lifecycle-ui-polish/168-01-SUMMARY.md
+Last session: 2026-04-01T19:10:55Z
+Stopped at: Phase 168 complete, ready to plan Phase 169
+Next action: /paul:plan
+Resume file: .paul/ROADMAP.md
 Resume context:
-- `drivers/pi/extensions/pals-hooks.ts` now renders the calm 4-line lifecycle widget and a cleaner compact status line without persistent quick-action clutter.
-- `168-01-SUMMARY.md` records the completed runtime polish, the retained direct loop-badge call for validation compatibility, and the Phase 169 follow-up boundary.
-- `.paul/quality-history.md` now includes Phase 168's explicit Pi validation result; the phase is ready for merge-gate resolution and transition to Phase 169.
+- Phase 168 completed the runtime Pi lifecycle UI polish in `drivers/pi/extensions/pals-hooks.ts` and merged as PR #78.
+- Phase 169 now owns docs, discovery-surface wording, and validation alignment around the calmer 4-line lifecycle presentation.
+- Keep the next plan bounded to supporting UX alignment; do not reopen lifecycle authority, add new persistent surfaces, or broaden into unrelated Pi redesign work.

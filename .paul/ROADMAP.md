@@ -31,12 +31,12 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-04-01
 Theme: Make the existing Pi lifecycle display calm, legible, and visually meaningful for daily use without expanding into a broader new widget system.
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 167 | UX Audit & Target Design | 1 (`167-01`) | ✅ Complete | 2026-04-01 |
-| 168 | Core Lifecycle UI Polish | 1 (`168-01`) | Apply complete | - |
-| 169 | Supporting UX Alignment & Validation | TBD | Not started | - |
+| 168 | Core Lifecycle UI Polish | 1 (`168-01`) | ✅ Complete | 2026-04-01 |
+| 169 | Supporting UX Alignment & Validation | TBD | Planning | - |
 
 ### Phase 167: UX Audit & Target Design
 Focus: Inspect the current Pi lifecycle display, define the target layout/wording/color semantics, and decide whether any adjacent prompt or notification adjustments are worth including.
@@ -44,11 +44,11 @@ Plans: 1 (`167-01`) — complete
 
 ### Phase 168: Core Lifecycle UI Polish
 Focus: Implement the simplified lifecycle panel, remove persistent clutter, and add semantic color plus clearer visual hierarchy.
-Plans: 1 (`168-01`) — apply complete, unify pending
+Plans: 1 (`168-01`) — complete
 
 ### Phase 169: Supporting UX Alignment & Validation
 Focus: Align nearby prompts or notifications only where they support the same UX language, then validate presentation consistency and behavior.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD — ready for planning
 ## Next Milestone
 TBD after v2.38 completion.
 
