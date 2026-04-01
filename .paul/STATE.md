@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-03-28)
+See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 167 APPLY complete — ready for UNIFY
+**Current focus:** Phase 168 ready to plan after Phase 167 completion
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 167 of 3 (UX Audit & Target Design) — APPLY complete
-Plan: 167-01 APPLY complete, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-01T17:28:41Z — Completed APPLY for .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
+Phase: 168 of 3 (Core Lifecycle UI Polish)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-01T18:05:45Z — Phase 167 complete, transitioned to Phase 168
 Progress:
-- v2.38 Pi Lifecycle UX Polish: [░░░░░░░░░░] 0%
-- Phase 167: [███████░░░] 67%
+- v2.38 Pi Lifecycle UX Polish: [███░░░░░░░] 33%
+- Phase 167: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Applied, ready for UNIFY]
+  ○        ○        ○     [Ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -123,6 +123,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-03-28: Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
 | 2026-03-28: Broaden delegated APPLY eligibility around bounded parent-verifiable tasks rather than a parallel-only subagent heuristic | 165 | Keeps delegated APPLY practical for more auto tasks without weakening parent authority, fallback, or lifecycle ownership |
 | 2026-03-28: Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
+|| 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
+|| 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -159,6 +161,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /carl | ✓ | Session-boundary routing remained active while the phase moved across planning, apply, and unify |
 | TODD | ✓ | APPLY/UNIFY preserved regression-check sequencing for the workflow and validation edits |
 | WALT | ✓ | Validation suites ran during APPLY and quality history was recorded during UNIFY |
+### Skill Audit (Phase 167)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the Phase 167 audit/design work |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -168,16 +174,16 @@ Last commit: feat(166-validation-docs-refresh): align docs and validation (#75)
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/167-ux-audit-target-design
-Last commit: feat(167-ux-audit-target-design): audit lifecycle surface and target UX
-PR: https://github.com/coctostan/pals/pull/77 (OPEN)
+Branch: main
+Last commit: b77503d feat(167-ux-audit-target-design): audit lifecycle surface and target UX (#77)
+PR: https://github.com/coctostan/pals/pull/77 (MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-01T17:28:41Z
-Stopped at: APPLY complete for 167-01
-Next action: /paul:unify .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
-Resume file: .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
+Last session: 2026-04-01T18:05:45Z
+Stopped at: Phase 167 complete, ready to plan Phase 168
+Next action: /paul:plan for Phase 168
+Resume file: .paul/ROADMAP.md
 Resume context:
-- APPLY created the three planned audit/design artifacts under `.paul/phases/167-ux-audit-target-design/`.
-- The phase now has an explicit current-state audit, target lifecycle UX design, and bounded implementation handoff for Phases 168-169.
-- Module registry hooks did not run because `modules.yaml` is absent in the repo source tree; UNIFY should record that warning explicitly.
+- Phase 167 completed with three audit/design artifacts plus `.paul/phases/167-ux-audit-target-design/167-01-SUMMARY.md`.
+- The target UX is now explicit: a calm 4-line lifecycle panel with semantic color meaning and reduced persistent clutter.
+- Phase 168 should implement the runtime rendering changes in `drivers/pi/extensions/pals-hooks.ts`; Phase 169 should align docs and validation afterward.

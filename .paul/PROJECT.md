@@ -41,6 +41,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Pi Adapter — driver manifest, installer, uninstaller; multi-driver root installer installs for all detected harnesses (Phase 47)
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
+- [~] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
 
 ### Must Have
 All validated — see below.
@@ -301,6 +302,8 @@ All validated — see below.
 | Align the canonical `pals.json` contract around an explicit `agents.implementer` block before expanding delegated APPLY coverage | 164 | Keeps future delegation work grounded in init/migration/schema defaults rather than repo-local runtime assumptions |
 || Broaden delegated APPLY eligibility around bounded parent-verifiable tasks rather than a parallel-only subagent heuristic | 165 | Makes delegated APPLY practical for more auto tasks without weakening parent authority, fallback, or lifecycle ownership |
 || Keep fresh-project docs and installed-surface validation aligned with the implementer/delegation contract | 166 | Prevents README/Pi/runtime drift from silently reintroducing configuration or authority ambiguity |
+|| 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
+|| 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -319,4 +322,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-03-28 after v2.37 completion*
+*Last updated: 2026-04-01 after Phase 167 completion*
