@@ -17,9 +17,9 @@ Assembles diff context and changed files, then dispatches a `code-reviewer` suba
    - File: `.paul/STATE.md`
    - File: `pals.json` (check `modules.rev` config — enabled, model, pr_review settings)
 
-2. Read the installed module references:
-   - File: `../modules/rev/references/review-prompt.md` (prompt template with placeholders)
-   - File: `../modules/rev/references/review-checklist.md` (8 dimensions with severity guides)
+2. Read the installed review references:
+   - File: `../references/review-prompt.md` (prompt template with placeholders)
+   - File: `../references/review-checklist.md` (8 dimensions with severity guides)
 
 3. Present scope selection:
    ```

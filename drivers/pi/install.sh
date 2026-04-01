@@ -48,19 +48,41 @@ echo "  [ok] Kernel files installed: $KERNEL_FILE_COUNT files"
 # ── 3. Copy Pi skill files ───────────────────────────────────────
 PI_SKILLS_DIR="$PALS_ROOT/drivers/pi/skills"
 SKILL_COUNT=0
+render_pi_skill() {
+  local src="$1"
+  local dst="$2"
+  local skill_root="$3"
+  python3 - "$src" "$dst" "$skill_root" <<'PYEOF'
+import sys
+from pathlib import Path
 
+src, dst, skill_root = sys.argv[1:4]
+text = Path(src).read_text()
+replacements = {
+    '../workflows/': f'{skill_root}/workflows/',
+    '../references/': f'{skill_root}/references/',
+    '../templates/': f'{skill_root}/templates/',
+    '../rules/': f'{skill_root}/rules/',
+    '../modules.yaml': f'{skill_root}/modules.yaml',
+}
+for old, new in replacements.items():
+    text = text.replace(old, new)
+Path(dst).parent.mkdir(parents=True, exist_ok=True)
+Path(dst).write_text(text)
+PYEOF
+}
 if [ -d "$PI_SKILLS_DIR" ]; then
   for skill_dir_path in "$PI_SKILLS_DIR"/*/; do
     skill_name="$(basename "$skill_dir_path")"
     if [ -f "$skill_dir_path/SKILL.md" ]; then
       mkdir -p "$SKILL_DIR/$skill_name"
-      cp "$skill_dir_path/SKILL.md" "$SKILL_DIR/$skill_name/SKILL.md"
+      render_pi_skill "$skill_dir_path/SKILL.md" "$SKILL_DIR/$skill_name/SKILL.md" "$SKILL_DIR"
       SKILL_COUNT=$((SKILL_COUNT + 1))
     fi
   done
 fi
 
-echo "  [ok] Pi skills installed: $SKILL_COUNT skills"
+echo "  [ok] Pi skills installed: $SKILL_COUNT skills (absolute install-root references rendered)"
 
 # ── 4. Copy Pi extension ─────────────────────────────────────────
 EXT_SRC="$PALS_ROOT/drivers/pi/extensions/pals-hooks.ts"

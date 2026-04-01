@@ -470,6 +470,13 @@ tap_file_contains_all \
   'On-demand only' \
   'NOT a lifecycle hook'
 
+
+tap_file_contains_all \
+  "Installed Pi review skill points at installed review prompt/checklist refs" \
+  "$SKILL_DIR/paul-review/SKILL.md" \
+  "$SKILL_DIR/references/review-prompt.md" \
+  "$SKILL_DIR/references/review-checklist.md"
+
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2C: SHARED WORKFLOW PROSE CONTRACT
 # ════════════════════════════════════════════════════════════════════
@@ -762,6 +769,7 @@ section "PI DISCOVERY SURFACES"
 README_PI="$REPO_ROOT/drivers/pi/extensions/README.md"
 SKILL_MAP="$REPO_ROOT/drivers/pi/skill-map.md"
 HELP_SKILL="$REPO_ROOT/drivers/pi/skills/paul-help/SKILL.md"
+PI_INSTALLER="$REPO_ROOT/drivers/pi/install.sh"
 
 if grep -q '/paul-\*' "$README_PI" && grep -q '/skill:paul-\*' "$README_PI" && grep -q 'canonical' "$README_PI"; then
   tap_ok "Extension README explains /paul-* vs canonical /skill:paul-*"
@@ -802,6 +810,14 @@ if grep -q 'modules.yaml' "$README_PI" && grep -q 'module overlays' "$SKILL_MAP"
   tap_ok "Pi discovery surfaces explain module overlays vs standalone skills"
 else
   tap_not_ok "Pi discovery surfaces explain module overlays vs standalone skills" "Expected modules.yaml/module overlay guidance across Pi README, skill map, and help skill"
+fi
+if [ -f "$SKILL_DIR/paul-plan/SKILL.md" ] \
+  && grep -Fq "$SKILL_DIR/workflows/plan-phase.md" "$SKILL_DIR/paul-plan/SKILL.md" \
+  && grep -Fq "$SKILL_DIR/modules.yaml" "$SKILL_DIR/paul-plan/SKILL.md" \
+  && grep -Fq 'absolute install-root references rendered' "$PI_INSTALLER"; then
+  tap_ok "Pi installer renders installed skill references to absolute install-root paths"
+else
+  tap_not_ok "Pi installer renders installed skill references to absolute install-root paths" "Expected installed Pi skills to point at the installed skill tree rather than repo-local lookup, and installer to document the render step"
 fi
 
 README_MAIN="$REPO_ROOT/README.md"

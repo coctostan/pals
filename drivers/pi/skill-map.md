@@ -48,7 +48,6 @@ These are invoked by other workflows and do not need their own skill entry point
 | discuss-phase | paul-discuss (context detection) |
 
 ## Path Strategy
-
 Skills are installed to `~/.pi/agent/skills/pals/{skill-name}/SKILL.md`.
 Kernel files are installed to `~/.pi/agent/skills/pals/` with the same directory structure as the source repo kernel:
 - `~/.pi/agent/skills/pals/workflows/`
@@ -57,20 +56,19 @@ Kernel files are installed to `~/.pi/agent/skills/pals/` with the same directory
 - `~/.pi/agent/skills/pals/rules/`
 The extension is installed to Pi's extension directory — separate from the skill tree:
 - `~/.pi/agent/extensions/pals-hooks.ts` — Pi extension (command registration, lifecycle hooks, guided workflow UX)
-
 Project-shipped helper agents are installed to Pi's agent directory:
 - `~/.pi/agent/agents/pals-implementer.md` — bounded implementation worker used only when parent `/skill:paul-apply` delegates an eligible repo-local task
 This means PALS uses three Pi install surfaces: skill/kernel files under `~/.pi/agent/skills/pals/`, the extension under `~/.pi/agent/extensions/`, and helper agents under `~/.pi/agent/agents/`. Removing one surface does not move lifecycle truth into Pi; shared workflows plus `.paul/*` remain authoritative, and `uninstall.sh` handles the coordinated cleanup.
-From a skill directory, kernel resources are referenced via relative paths:
-- Workflows: `../workflows/{name}.md`
-- References: `../references/{name}.md`
-- Templates: `../templates/{name}.md`
-- Rules: `../rules/{name}.md`
-Pi command registration lives in the extension layer (`drivers/pi/extensions/pals-hooks.ts`). Those `/paul-*` commands provide the command/hook layer only; they do not replace canonical skill files or shared workflows.
+Pi currently executes file reads from the project workspace, so the Pi installer materializes canonical skill references as absolute install-root paths inside the installed `SKILL.md` files. Source-controlled Pi skills still use portable `../...` references, but the installed copies resolve to paths like:
+- Workflows: `~/.pi/agent/skills/pals/workflows/{name}.md`
+- References: `~/.pi/agent/skills/pals/references/{name}.md`
+- Templates: `~/.pi/agent/skills/pals/templates/{name}.md`
+- Rules: `~/.pi/agent/skills/pals/rules/{name}.md`
+- Module registry: `~/.pi/agent/skills/pals/modules.yaml`
 
 `pals-implementer` is not a second APPLY authority. It exists so parent APPLY can offload an eligible bounded repo-local task or sequential task step and then resume parent-owned verification and lifecycle handling.
 
-Enabled module manifests are materialized into `~/.pi/agent/skills/pals/modules.yaml` during install. PLAN/APPLY/UNIFY then use that registry to decide which module hook semantics to dispatch from shared markdown references. This is how Pi loads TODD/WALT today: as installed module overlays, not separate `/skill:*` entries.
+Enabled module manifests are materialized into `~/.pi/agent/skills/pals/modules.yaml` during install. PLAN/APPLY/UNIFY then use that registry to decide which module hook semantics to dispatch from shared markdown references. This is how Pi loads TODD/WALT today: as installed module overlays, not separate `/skill:*` entries, and the installed Pi skills point at that registry via absolute install-root paths rather than repo-local lookup.
 That same shared workflow/reporting contract now powers bounded live module visibility in the Pi status/widget. The extension only derives a recent module activity snapshot from canonical signals such as `[dispatch] ...` and `Module Execution Reports`; it does not persist its own module history or claim authoritative proof independently of shared artifacts.
 
 ## Shortcut-Enabled Entry Points
