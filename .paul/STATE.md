@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Unify 169-01 completed — Phase 169 is reconciled and waiting on merge/transition closure
+**Current focus:** v2.38 Pi Lifecycle UX Polish is complete — ready to define the next milestone
 ## Current Position
-Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 169 of 3 (Supporting UX Alignment & Validation) — Complete
-Plan: 169-01 complete
-Status: UNIFY complete; merge gate and phase transition pending
-Last activity: 2026-04-01T19:53:03Z — Created 169-01 SUMMARY and finalized UNIFY reconciliation for PR #79
+Milestone: v2.38 Pi Lifecycle UX Polish — Complete
+Phase: Milestone complete — ready for next milestone
+Plan: None active
+Status: Ready for next milestone discussion
+Last activity: 2026-04-01T19:56:53Z — Merged PR #79 and completed transition for Phase 169 / milestone v2.38
 Progress:
 - v2.38 Pi Lifecycle UX Polish: [██████████] 100%
 - Phase 168: [██████████] 100% ✓
-- Phase 169: [██████████] 100%
+- Phase 169: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - awaiting merge gate and transition]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 ## Accumulated Context
 ### Decisions
@@ -190,16 +190,16 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/169-supporting-ux-alignment-validation
-Last commit: 2e531d7 chore(169-supporting-ux-alignment-validation): record apply state
-PR: https://github.com/coctostan/pals/pull/79 (state: open)
+Branch: main
+Last commit: d86067f feat(169-supporting-ux-alignment-validation): align Pi docs and validation (#79)
+PR: https://github.com/coctostan/pals/pull/79 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-01T19:53:03Z
-Stopped at: UNIFY complete for Plan 169-01
-Next action: Merge PR #79, complete transition for Phase 169, and close milestone v2.38
-Resume file: .paul/phases/169-supporting-ux-alignment-validation/169-01-SUMMARY.md
+Last session: 2026-04-01T19:56:53Z
+Stopped at: Milestone v2.38 complete
+Next action: /paul-milestone to define the next milestone
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 169 docs now describe the persistent Pi lifecycle surface as milestone / phase / loop / next action, with shortcuts framed as entry points rather than persistent rows.
-- `tests/pi-end-to-end-validation.sh` now guards the calm 4-line hierarchy semantically and rejects the older `Actions:` / `More:` copy.
-- `drivers/pi/extensions/pals-hooks.ts` was inspected for adjacent wording drift; no runtime hierarchy changes were needed, and bundling plus the Pi end-to-end validation suite passed.
+- v2.38 is complete: runtime polish (Phase 168) and the docs/validation contract alignment (Phase 169) are both merged.
+- The Pi lifecycle surface now ships as a calm milestone / phase / loop / next-action hierarchy with semantic validation guardrails against legacy widget clutter.
+- The next lifecycle choice is milestone-level: define the next milestone scope or review accomplishments before planning again.

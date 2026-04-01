@@ -41,7 +41,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] Pi Adapter — driver manifest, installer, uninstaller; multi-driver root installer installs for all detected harnesses (Phase 47)
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
-- [~] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
+- [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
 
 ### Must Have
 All validated — see below.
@@ -305,6 +305,7 @@ All validated — see below.
 || 2026-04-01: Collapse the persistent Pi lifecycle widget to a strict 4-line panel centered on milestone, phase, loop, and next action | 167 | Gives Phase 168 a clear implementation target and removes shortcut/module clutter from the main daily-use surface |
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
 | 2026-04-01: Keep the compact Pi lifecycle status text-first and preserve direct `renderLoopBadge(state.loop)` wiring while Phase 169 owns docs/validation alignment | 168 | Delivers the calmer Phase 168 runtime polish without broadening scope into validation-contract churn or fragile styling experiments |
+| 2026-04-01: Keep Phase 169 lifecycle alignment semantic and documentation-first when runtime wording already matches | 169 | The shipped runtime already fit the calmer contract, so the safest closeout was docs + validation alignment rather than unnecessary render-path churn |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -323,4 +324,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-01 after Phase 168 completion*
+*Last updated: 2026-04-01 after Phase 169 completion*
