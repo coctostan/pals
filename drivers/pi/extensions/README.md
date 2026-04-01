@@ -23,9 +23,7 @@ Pi installs three distinct PALS runtime surfaces:
 Only the first two are direct lifecycle entry surfaces. Project-shipped agents are helper definitions that parent-controlled workflows may invoke when an eligible bounded repo-local task needs isolated implementation work.
 
 Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
-
-Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time.
-
+Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time. Because Pi resolves file access from the active workspace, the Pi installer renders the installed `SKILL.md` files with absolute install-root paths (for workflows, references, templates, rules, and `modules.yaml`) so module dispatch does not fall back to repo-local lookup.
 Delegated APPLY stays bounded. If `/skill:paul-apply` uses `pals-implementer`, the parent workflow still owns verification, checkpoints, module gates, fallback judgment, and `.paul/*` artifacts. Pi surfaces the helper only for eligible bounded repo-local work; Pi does not become lifecycle truth.
 
 ## Collaboration-Aware Planning
@@ -151,7 +149,7 @@ The extension registers these slash commands:
 | Artifact | Install Target | Purpose |
 |----------|---------------|---------|
 | Kernel files (`workflows/`, `references/`, `templates/`, `rules/`) | `~/.pi/agent/skills/pals/` | Shared markdown workflows referenced by skills and the extension |
-| Skill entry points (11 `SKILL.md` files) | `~/.pi/agent/skills/pals/{skill-name}/SKILL.md` | Pi skill invocation layer for `/skill:paul-*` |
+| Skill entry points (11 `SKILL.md` files) | `~/.pi/agent/skills/pals/{skill-name}/SKILL.md` | Pi skill invocation layer for `/skill:paul-*`; installer rewrites portable `../...` references to absolute install-root paths |
 | Pi extension | `~/.pi/agent/extensions/pals-hooks.ts` | Command registration, lifecycle hooks, guided workflow UX |
 | Project-shipped agents | `~/.pi/agent/agents/{agent-name}.md` | Helper agents such as `pals-implementer` for parent-authoritative, task-bounded delegation |
 | Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
