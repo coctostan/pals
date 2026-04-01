@@ -4,20 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-03-28)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone definition after v2.37 closeout
+**Current focus:** Phase 167 APPLY complete — ready for UNIFY
 ## Current Position
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: Milestone v2.37 complete — ready for next
-Last activity: 2026-03-28T19:29:15Z — Completed milestone v2.37 closeout after PR #75 merged
+Milestone: v2.38 Pi Lifecycle UX Polish
+Phase: 167 of 3 (UX Audit & Target Design) — APPLY complete
+Plan: 167-01 APPLY complete, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-01T17:28:41Z — Completed APPLY for .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
 Progress:
-- v2.37 Implementer Config Alignment & Delegation Expansion: [██████████] 100% ✓
+- v2.38 Pi Lifecycle UX Polish: [░░░░░░░░░░] 0%
+- Phase 167: [███████░░░] 67%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ○     [Applied, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -167,16 +168,16 @@ Last commit: feat(166-validation-docs-refresh): align docs and validation (#75)
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: feat(166-validation-docs-refresh): align docs and validation (#75)
-PR: https://github.com/coctostan/pals/pull/75 (MERGED)
+Branch: feature/167-ux-audit-target-design
+Last commit: feat(167-ux-audit-target-design): audit lifecycle surface and target UX
+PR: https://github.com/coctostan/pals/pull/77 (OPEN)
 CI: passing
 ## Session Continuity
-Last session: 2026-03-28T19:29:15Z
-Stopped at: Milestone v2.37 complete
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-04-01T17:28:41Z
+Stopped at: APPLY complete for 167-01
+Next action: /paul:unify .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
+Resume file: .paul/phases/167-ux-audit-target-design/167-01-PLAN.md
 Resume context:
-- Milestone v2.37 is complete and archived in `.paul/MILESTONES.md` plus `.paul/milestones/v2.37-ROADMAP.md`.
-- PRs #73, #74, and #75 merged cleanly on 2026-03-28.
-- The repo is on `main` and ready for the next milestone definition.
+- APPLY created the three planned audit/design artifacts under `.paul/phases/167-ux-audit-target-design/`.
+- The phase now has an explicit current-state audit, target lifecycle UX design, and bounded implementation handoff for Phases 168-169.
+- Module registry hooks did not run because `modules.yaml` is absent in the repo source tree; UNIFY should record that warning explicitly.
