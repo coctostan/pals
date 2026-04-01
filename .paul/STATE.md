@@ -4,21 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Phase 168 ready to plan after Phase 167 completion
+**Current focus:** Phase 168 planning complete — runtime UI polish plan ready for approval
 ## Current Position
 Milestone: v2.38 Pi Lifecycle UX Polish
-Phase: 168 of 3 (Core Lifecycle UI Polish)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-01T18:07:59Z — Phase 167 complete, transitioned to Phase 168
+Phase: 168 of 3 (Core Lifecycle UI Polish) — Planning
+Plan: 168-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-01T18:07:59Z — Created .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
 Progress:
 - v2.38 Pi Lifecycle UX Polish: [███░░░░░░░] 33%
 - Phase 167: [██████████] 100% ✓
+- Phase 168: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for next PLAN]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -180,10 +181,10 @@ PR: https://github.com/coctostan/pals/pull/77 (MERGED)
 CI: passing
 ## Session Continuity
 Last session: 2026-04-01T18:07:59Z
-Stopped at: Phase 167 complete, ready to plan Phase 168
-Next action: /paul:plan for Phase 168
-Resume file: .paul/ROADMAP.md
+Stopped at: Plan 168-01 created
+Next action: Review and approve plan, then run /paul:apply .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
+Resume file: .paul/phases/168-core-lifecycle-ui-polish/168-01-PLAN.md
 Resume context:
-- Phase 167 completed with three audit/design artifacts plus `.paul/phases/167-ux-audit-target-design/167-01-SUMMARY.md`.
-- The target UX is now explicit: a calm 4-line lifecycle panel with semantic color meaning and reduced persistent clutter.
-- Phase 168 should implement the runtime rendering changes in `drivers/pi/extensions/pals-hooks.ts`; Phase 169 should align docs and validation afterward.
+- Phase 168 is the runtime implementation phase for the calm 4-line Pi lifecycle surface designed in Phase 167.
+- The plan is bounded to `drivers/pi/extensions/pals-hooks.ts`; docs/validation alignment remains Phase 169 unless a critical runtime break forces reconsideration.
+- Verification includes bundling `pals-hooks.ts` and running `bash tests/pi-end-to-end-validation.sh` after the render-path changes.
