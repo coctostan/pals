@@ -42,7 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
-- [~] CODI module (v0.1 scaffolding) — registry-discovered pre-plan advisory overlay at priority 220; v0.1 hello-world ships without tool calls or prerequisite checks; call-time failure handling and `impact` integration arrive in Phase 171 (Phase 170, v2.39 in progress)
+- [~] CODI module (v0.1 live integration) — registry-discovered pre-plan advisory overlay at priority 220; Phase 170 shipped hello-world scaffolding; Phase 171 upgraded to live `impact` integration with per-symbol call pattern, 5-outcome categorization, partial-success invariant, and call-time failure handling; plan-phase coupling and real-world trial remain in Phases 172–173 (v2.39 in progress)
 
 ### Must Have
 All validated — see below.
@@ -144,6 +144,7 @@ All validated — see below.
 - ✓ Delegated APPLY expansion — `pals-implementer` now covers broader bounded parent-verifiable task packets while keeping verification, module enforcement, fallback, and `.paul/*` lifecycle authority in the parent (Phases 165-166, v2.37)
 - ✓ Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface shipped across Phases 167-169 (v2.38)
 - ✓ CODI module scaffolding — registry-discovered pre-plan advisory overlay at priority 220, hello-world dispatch, no tool calls in v0.1; installer is already registry-driven so zero installer/kernel/workflow edits were required (Phase 170, v2.39 in progress)
+- ✓ CODI live `impact` integration — per-symbol call pattern (not batched, because `impact` is all-or-nothing on unresolved input), 5 per-symbol outcome categories, partial-success invariant, Blast Radius markdown sub-section returned as `context_inject.blast_radius`, 4 hook-level skip paths, classifier-safety invariant extended to full module surface (Phase 171, v2.39 in progress)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -312,6 +313,10 @@ All validated — see below.
 | 2026-04-16: CODI v0.1 ships with no prerequisite checks and no tool calls; tool-availability handling is deferred to Phase 171 call-time failure handling rather than a pre-dispatch proxy check | 170 | Honest about what a markdown hook description can reliably introspect; keeps v0.1 minimal and honors the source-plan's "skip cleanly rather than erroring" intent at the correct layer |
 | 2026-04-16: Installer is already fully registry-driven; adding a new PALS module requires zero installer/kernel/workflow code changes | 170 | Establishes the canonical pattern for future module additions and is the reason Phase 170's scope shrank from "4 phases of scaffolding" to "2 files" |
 | 2026-04-16: CODI uses "halt" and "skip" instead of "block" in its manifest description | 170 | The shared dispatch classifier in `plan-phase.md` uses strict substring matching on "block" to distinguish advisory from enforcement hooks; documented in the reference doc so future maintainers don't reintroduce the token |
+| 2026-04-16: CODI call pattern is per-symbol, NOT batched — `impact` is all-or-nothing on unresolved input and batching would destroy partial results | 171 | Generalizes to future codegraph tool integrations (`symbol_graph` v0.2, `trace` v0.3); documented alongside the input-self-filter quirk discovered during Phase 171 planning |
+| 2026-04-16: Classifier-safety invariant tightens at the module surface — the halt-keyword token is now avoided across manifest description AND reference doc natural prose | 171 | Prevents future module edits from reintroducing the time bomb via innocent prose; "sub-section" and "code region" replace the common alternative across all CODI surfaces |
+| 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; pattern worth codifying for future CODI-family phases |
+| 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -330,4 +335,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-16 after Phase 170 completion (CODI v0.1 module scaffolding shipped, v2.39 in progress)*
+*Last updated: 2026-04-16 after Phase 171 completion (CODI live `impact` integration shipped, v2.39 at 50% — Phases 172–173 remain)*

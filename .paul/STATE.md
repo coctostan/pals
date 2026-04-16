@@ -2,15 +2,15 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-01)
+See: .paul/PROJECT.md (updated 2026-04-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.39 CODI v0.1 — Phase 170 scaffolding shipped; Phase 171 adds `impact` integration with call-time failure handling
+**Current focus:** v2.39 CODI v0.1 — Phases 170–171 shipped (hello-world scaffolding + live `impact` integration); Phase 172 adds plan-phase coupling & distribution; Phase 173 produces the ship/iterate/kill decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 171 of 4 (`impact` Integration & Symbol Extraction)
-Plan: 171-01 complete
-Status: Loop complete — Phase 171 ready for transition
-Last activity: 2026-04-16 — UNIFY complete for Plan 171-01; SUMMARY.md authored; all 4 AC PASS; pi-end-to-end-validation.sh 159/159
+Phase: 172 of 4 (Plan-Phase Coupling & Distribution)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-16 — Phase 171 complete and merged (PR #81); transitioned to Phase 172
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [█████░░░░░] 50% (2 of 4 phases complete)
 - Phase 170: [██████████] 100% ✓
@@ -19,7 +19,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for phase transition]
+  ○        ○        ○     [Phase 171 merged; ready for Phase 172 PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -197,18 +197,21 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/171-impact-integration-symbol-extraction
-Last commit: 4ebd86e feat(171-impact-integration-symbol-extraction): CODI per-symbol impact integration with call-time failure handling
-PR: https://github.com/coctostan/pals/pull/81 (state: OPEN)
-CI: not configured (no checks on this branch, same posture as Phase 170)
+Branch: main
+Last commit: 1db871e feat(171-impact-integration-symbol-extraction): CODI per-symbol impact integration (#81)
+PR: https://github.com/coctostan/pals/pull/81 (state: MERGED)
+CI: passing (Socket Security: 2/2 SUCCESS at merge time)
 ## Session Continuity
 Last session: 2026-04-16
-Stopped at: UNIFY complete for Plan 171-01; SUMMARY.md authored; entering merge gate + phase transition
-Next action: Merge gate resolution → phase transition → /paul-plan for Phase 172 (Plan-Phase Coupling & Distribution)
-Resume file: .paul/phases/171-impact-integration-symbol-extraction/171-01-SUMMARY.md
+Stopped at: Phase 171 complete and merged (PR #81); transitioned to Phase 172 ready-to-plan
+Next action: /paul-plan for Phase 172 (Plan-Phase Coupling & Distribution)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- UNIFY complete: all 4 AC PASS with evidence captured in SUMMARY.md. Loop position ✓/✓/✓.
-- SUMMARY.md highlights: empirical-probing-during-PLAN pattern worth codifying, classifier-safety invariant tightened to full module surface, per-symbol call pattern documented as generalizable to future codegraph tool integrations (symbol_graph v0.2, trace v0.3), partial-success invariant decouples per-symbol outcomes from hook-level skip paths.
-- Phase 171 is the last plan in its phase directory (1 of 1). Phase transition MANDATORY before Phase 172 planning.
-- Merge gate: `git.require_pr_before_next_phase: true` → PR #81 must merge before phase transition completes. CI not configured on this repo; `require_reviews: false`.
-- Deviations logged for transition / future reference: mid-plan correction from empirical probing (high-collab win, not a failure); Task 1 in-loop "block"→"sub-section" rename (tightened classifier-safety invariant); `.pi/prompt-assembler/` untracked runtime cache (consider future gitignore).
+- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection: 2 of 4 phases complete (Phases 170, 171). Next: Phase 172.
+- Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
+- Planning posture default: high collaboration, direct-requirements (project `planning.default_collaboration: high`).
+- Phase 171 shipped: live `impact` integration on CODI — per-symbol call pattern, 5-outcome categorization, partial-success invariant, Blast Radius sub-section via `context_inject.blast_radius`, 4 hook-level skip paths, full-module-surface classifier-safety (no "block" token anywhere). `pi-end-to-end-validation.sh`: 159/159 (no regression).
+- Phase 172 scope: (a) lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, (b) register CODI default-on in `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, (c) document setup UX. **No PLAN.md template changes** (deferred to v0.4).
+- Phase 172 complements Phase 171's hook-side contract with plan-side ergonomic improvements — tests whether the live contract produces useful injections on prose-heavy objectives that don't already contain explicit symbols.
+- Phase 173 runs the real-world trial on 2–3 live PALS planning sessions and produces the ship-v0.2 / iterate / kill decision artifact that gates all v0.2+ work.
+- Phase 171 lessons worth reusing: empirical-probing-during-PLAN when a tool contract materially shapes the plan; classifier-safety discipline at the full module surface; per-symbol call pattern (likely to generalize to `symbol_graph` v0.2 and `trace` v0.3).

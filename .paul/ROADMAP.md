@@ -31,11 +31,11 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-04-16
 Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
-Phases: 1 of 4 complete
+Phases: 2 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
-| 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | 🚧 Planning | - |
+| 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | ✅ Complete | 2026-04-16 |
 | 172 | Plan-Phase Coupling & Distribution | TBD | Not started | - |
 | 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
 
