@@ -4,8 +4,9 @@ description: >
   Codegraph-Driven Structural Injection. Dispatches at pre-plan to
   inject structural blast-radius facts (from pi-codegraph tools) into
   PLAN.md so plans carry graph-derived truth instead of guessed
-  files_modified and boundaries. Currently v0.1 hello-world plumbing;
-  actual codegraph tool calls start in Phase 171.
+  files_modified and boundaries. Extracts explicit symbols from phase
+  scope, calls `impact` per-symbol with call-time failure handling,
+  and injects a formatted Blast Radius sub-section via context_inject.
 version: 1.0.0
 
 dependencies:
@@ -16,14 +17,71 @@ hooks:
   pre-plan:
     priority: 220
     description: >-
-      MUST emit `[dispatch] CODI: hello, objective=<one-line phase
-      objective summary>` as output. This is the v0.1 hello-world
-      plumbing test. No codegraph tool calls and no prerequisite
-      checks are performed at this stage. Tool-availability handling
-      is introduced in Phase 171 via call-time failure handling: if
-      `impact` or other codegraph tools are unavailable when called,
-      CODI will emit a skip log and exit gracefully at the call site.
-      CODI is advisory-only and MUST NEVER halt plan creation.
+      CODI injects structural blast-radius facts from the codegraph `impact` tool into PLAN.md so plans carry graph-derived truth
+      about affected call-sites. ADVISORY ONLY — MUST NEVER halt plan creation. Run the four steps below in order.
+
+      STEP 1 — EXTRACT SYMBOLS. Scan three source text regions: the current-phase detail section in `.paul/ROADMAP.md`, the
+      in-progress plan objective text, and source-file path tokens explicitly mentioned in phase scope. Accept rules: (a)
+      backtick-quoted identifiers (e.g., `fooFn`, `Bar.baz`, `snake_case`, `camelCase`); (b) tokens that look like file paths
+      — contain `/` AND either end with a known source-code extension OR start with a repo-root directory such as `src/`,
+      `modules/`, `kernel/`, `drivers/`, `.paul/`; (c) explicit phrases of the form "symbol X" or "the function X". Reject
+      rules: English prose; shell-command backticks such as `ls`, `git status`, `grep -n`; config literals such as `true`,
+      `false`, quoted option values; tokens of 2 characters or fewer; stopwords at minimum `yes`, `no`, `on`, `off`, `null`,
+      `none`. State plainly in operation: NO MAGIC INFERENCE — only explicit textual matches. When in doubt extract fewer
+      symbols. If zero symbols extracted, skip directly to the "no extractable symbols" hook-level skip log in Step 7.
+
+      STEP 2 — CALL `impact` PER SYMBOL. For EACH extracted symbol, invoke `impact({ symbols: [singleSymbol], changeType:
+      "behavior_change" })` as a separate call. DO NOT batch all symbols into a single call. Rationale: `impact` is
+      all-or-nothing on unresolved input — one unknown symbol in a batched call replaces the entire response with `Symbol
+      "..." not found` and destroys ALL resolved data. Per-symbol calls give per-symbol outcome isolation and enable the
+      partial-success invariant. Before the loop, if the `impact` tool itself is unavailable in the agent's tool namespace,
+      emit the "tool unavailable" skip log from Step 7 and exit without any call. Wrap each per-symbol call in try/catch.
+      Input-self-filter quirk: `impact` excludes input symbols from their own downstream output — document but do not
+      compensate. Categorize each per-symbol response into ONE of five outcomes:
+        (a) resolved-with-call-sites — response non-empty AND does NOT match the pattern `Symbol "..." not found`
+            → include the symbol in the Blast Radius with raw `impact` output preserved verbatim.
+        (b) resolved-but-empty — response is the empty string. Legitimate: the symbol is an entry point or has no callers.
+            NOT a failure. Include the symbol with a single `(no downstream call-sites)` annotation.
+        (c) unresolved — response matches the pattern `Symbol "..." not found`. Add to the unresolved list (contributes to U
+            in the success log).
+        (d) call-errored — the wrapped call threw. Add to the unresolved list annotated `(call errored)`.
+        (e) tool-unavailable — handled before the loop as a hook-level skip (see Step 7).
+
+      STEP 3 — FORMAT the per-symbol results into a markdown sub-section titled `### Blast Radius (CODI)`. For each
+      resolved-with-call-sites symbol: a `**{symbol}**` subheading followed by a fenced code region containing the raw
+      `impact` response verbatim (do NOT parse, reformat, or annotate individual call-site lines — codegraph's output
+      format is pi-codegraph's contract, not CODI's to stabilize). For each resolved-but-empty symbol: a `**{symbol}**`
+      subheading followed by `_(no downstream call-sites)_` on its own line. Finally a `**Unresolved:**` bulleted list if
+      any symbols failed resolution or errored, with `(call errored)` annotation where applicable. Omit any sub-section
+      that would be empty. If ALL outcomes were unresolved, STILL inject the sub-section (visible as unresolved-only) — only
+      hook-level skip conditions suppress injection entirely. See references/codi.md for a worked example.
+
+      STEP 4 — RETURN the formatted markdown as `context_inject.blast_radius`. The plan-phase workflow surfaces injected
+      content inline within the generated PLAN.md's `<module_dispatch>` section (no PLAN.md template changes in this
+      phase; v0.4 will formalize dedicated sections).
+
+      STEP 5 — PARTIAL-SUCCESS INVARIANT. The hook MUST inject resolved outcomes together with the unresolved list
+      whenever at least one per-symbol result was produced. Never all-or-nothing at the hook level. No error propagates
+      to the plan; no partial structural facts are silently dropped.
+
+      STEP 6 — EMIT EXACTLY ONE `[dispatch] CODI: ...` log line per dispatch, chosen from:
+        Success (any injection, even unresolved-only):
+          `[dispatch] CODI: pre-plan advisory → impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius`
+        Hook-level skip — no extractable symbols:
+          `[dispatch] CODI: skipped — no extractable symbols in phase scope`
+        Hook-level skip — tool unavailable:
+          `[dispatch] CODI: skipped — codegraph tools unavailable`
+        Hook-level skip — catastrophic loop error (not per-symbol):
+          `[dispatch] CODI: skipped — impact loop errored: <short reason>`
+        Hook-level skip — all symbols resolved-but-empty AND none unresolved (pathological but possible):
+          `[dispatch] CODI: skipped — impact returned empty blast radius for all symbols`
+
+      STEP 7 — CLASSIFIER SAFETY. This description MUST NEVER contain the word "halt-keyword" (the literal
+      advisory-vs-enforcement token) in any casing; the shared dispatch classifier uses strict substring matching to
+      distinguish advisory from enforcement hooks, so CODI uses "halt", "skip", "stop", or "reject" instead.
+
+      See references/codi.md for the full extractor rules, `impact` response format reference, Blast Radius worked
+      example, and the complete call-time failure-handling contract.
     refs:
       - references/codi.md
 

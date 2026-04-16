@@ -8,9 +8,9 @@ See: .paul/PROJECT.md (updated 2026-04-01)
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
 Phase: 171 of 4 (`impact` Integration & Symbol Extraction)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-16 — Phase 170 complete and merged (PR #80); transitioned to Phase 171
+Plan: 171-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-16 — Created .paul/phases/171-impact-integration-symbol-extraction/171-01-PLAN.md
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███░░░░░░░] 25% (1 of 4 phases complete)
 - Phase 170: [██████████] 100% ✓
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 170 merged; ready for Phase 171 PLAN]
+  ✓        ○        ○     [Plan 171-01 created, awaiting approval]
 ```
 ## Accumulated Context
 ### Decisions
@@ -198,15 +198,15 @@ PR: https://github.com/coctostan/pals/pull/80 (state: MERGED)
 CI: passing
 ## Session Continuity
 Last session: 2026-04-16
-Stopped at: Phase 170 complete and merged (PR #80); transitioned to Phase 171 ready-to-plan
-Next action: /paul-plan for Phase 171 (`impact` Integration & Symbol Extraction)
-Resume file: .paul/ROADMAP.md
+Stopped at: Plan 171-01 created, awaiting approval
+Next action: Review and approve plan, then run /paul-apply .paul/phases/171-impact-integration-symbol-extraction/171-01-PLAN.md
+Resume file: .paul/phases/171-impact-integration-symbol-extraction/171-01-PLAN.md
 Resume context:
-- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection: 1 of 4 phases complete (Phase 170). Next: Phase 171.
+- Plan 171-01 created under milestone v2.39 CODI v0.1 — upgrades CODI from Phase 170 hello-world to live `impact` integration with explicit-symbol extractor + call-time failure handling.
+- Planning posture: high collaboration, direct-requirements, pure-manifest-contract approach (α) — logic lives in manifest description + reference doc; no new scripts, no kernel/workflow/installer changes.
+- 3 tasks: (1) rewrite `modules/codi/module.yaml` `hooks.pre-plan.description` with full contract; (2) rewrite `modules/codi/references/codi.md` (≤150 lines) with extractor rules, impact call contract, impact response format, Blast Radius format with worked example, call-time failure handling with partial-success invariant; (3) regenerate installed registry via `drivers/pi/install.sh`, verify CODI block correctness, run `pi-end-to-end-validation.sh` (expect 159/159).
+- 4 AC: manifest contract, reference doc structure, installer-regenerated registry advisory-classified, no regression in shared validation.
 - Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
-- Planning posture: high collaboration, direct-requirements. Project default `planning.default_collaboration` is `high`.
-- Phase 170 shipped: `modules/codi/module.yaml` + `modules/codi/references/codi.md`. Zero installer, kernel, or workflow edits needed (installer is already registry-driven).
-- CODI is registered in `~/.pi/agent/skills/pals/modules.yaml` with `hook_details.pre-plan.priority: 220`, refs correct, no "block" token — advisory classification confirmed. `pi-end-to-end-validation.sh`: 159/159.
-- v0.1 contract locked: **no prerequisite checks and no tool calls**. Tool-availability handling is Phase 171's call-time failure handling, not a pre-dispatch proxy check.
-- Phase 171 scope: explicit-symbol extractor (backticks, file paths), per-symbol `impact({ symbols, changeType: "behavior_change" })` calls wrapped with graceful failure handling, formatted Blast Radius `context_inject` injection into PLAN.md. No template changes (deferred to v0.4).
-- Gating discipline honored: Phase 173 produces a ship-v0.2 / iterate / kill decision artifact before any v0.2+ work is scheduled.
+- Key invariants preserved from Phase 170: priority 220, single `pre-plan` hook, no "block" token anywhere, advisory-only classification, call-time failure handling philosophy.
+- Plan revision based on empirical `impact` probing: PER-SYMBOL call pattern (not batched — batching is all-or-nothing on unresolved input), plain-text response shape preserved raw in fenced blocks, 5 per-symbol outcomes (resolved-with-call-sites / resolved-but-empty / unresolved / call-errored / tool-unavailable), partial-success invariant, input-self-filter quirk documented. Success log: `impact × N symbols → R resolved, U unresolved, K total call-sites`.
+- Next gating: Phase 173 produces a ship-v0.2 / iterate / kill decision artifact before any v0.2+ work is scheduled.

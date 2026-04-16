@@ -35,7 +35,7 @@ Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
-| 171 | `impact` Integration & Symbol Extraction | TBD | Not started | - |
+| 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | 🚧 Planning | - |
 | 172 | Plan-Phase Coupling & Distribution | TBD | Not started | - |
 | 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
 
