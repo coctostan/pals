@@ -1,0 +1,40 @@
+name: codi
+display_name: CODI
+description: >
+  Codegraph-Driven Structural Injection. Dispatches at pre-plan to
+  inject structural blast-radius facts (from pi-codegraph tools) into
+  PLAN.md so plans carry graph-derived truth instead of guessed
+  files_modified and boundaries. Currently v0.1 hello-world plumbing;
+  actual codegraph tool calls start in Phase 171.
+version: 1.0.0
+
+dependencies:
+  kernel: ">=2.0.0"
+  modules: []
+
+hooks:
+  pre-plan:
+    priority: 220
+    description: >-
+      MUST emit `[dispatch] CODI: hello, objective=<one-line phase
+      objective summary>` as output. This is the v0.1 hello-world
+      plumbing test. No codegraph tool calls and no prerequisite
+      checks are performed at this stage. Tool-availability handling
+      is introduced in Phase 171 via call-time failure handling: if
+      `impact` or other codegraph tools are unavailable when called,
+      CODI will emit a skip log and exit gracefully at the call site.
+      CODI is advisory-only and MUST NEVER halt plan creation.
+    refs:
+      - references/codi.md
+
+files:
+  references:
+    - references/codi.md
+  workflows: []
+  templates: []
+  config: []
+  rules: []
+
+commands: []
+
+platform: {}

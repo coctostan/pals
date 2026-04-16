@@ -27,32 +27,54 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.38 Pi Lifecycle UX Polish**
-Status: ✅ Complete
-Started: 2026-04-01
-Theme: Make the existing Pi lifecycle display calm, legible, and visually meaningful for daily use without expanding into a broader new widget system.
-Phases: 3 of 3 complete
+**v2.39 CODI v0.1 — Pre-Plan Structural Injection**
+Status: 🚧 In Progress
+Started: 2026-04-16
+Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
+Phases: 0 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 167 | UX Audit & Target Design | 1 (`167-01`) | ✅ Complete | 2026-04-01 |
-| 168 | Core Lifecycle UI Polish | 1 (`168-01`) | ✅ Complete | 2026-04-01 |
-| 169 | Supporting UX Alignment & Validation | 1 (`169-01`) | ✅ Complete | 2026-04-01 |
+| 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | Planning | - |
+| 171 | `impact` Integration & Symbol Extraction | TBD | Not started | - |
+| 172 | Plan-Phase Coupling & Distribution | TBD | Not started | - |
+| 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
 
-### Phase 167: UX Audit & Target Design
-Focus: Inspect the current Pi lifecycle display, define the target layout/wording/color semantics, and decide whether any adjacent prompt or notification adjustments are worth including.
-Plans: 1 (`167-01`) — complete
+### Phase 170: CODI Module Scaffolding & Hello-World Hook
+Focus: Create `modules/codi/` with manifest and reference doc, wire a hello-world `pre-plan` dispatch that logs and exits, register the module in the installer, and establish graceful-skip behavior for non-TS projects and un-indexed repos. First concrete step from the integration plan — validates plumbing before any codegraph integration lands.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 168: Core Lifecycle UI Polish
-Focus: Implement the simplified lifecycle panel, remove persistent clutter, and add semantic color plus clearer visual hierarchy.
-Plans: 1 (`168-01`) — complete
+### Phase 171: `impact` Integration & Symbol Extraction
+Focus: Add an explicit-symbol extractor (backtick-quoted names, file paths, explicit mentions — no magic inference), call `impact({ symbols, changeType: "behavior_change" })` per target, and inject a formatted Blast Radius block via `context_inject`. Advisory hook priority (~p200, after TODD/IRIS, before DEAN). Records dispatch in `<module_dispatch>`. Never blocks.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 169: Supporting UX Alignment & Validation
-Focus: Align nearby prompts or notifications only where they support the same UX language, then validate presentation consistency and behavior.
-Plans: 1 (`169-01`) — complete
+### Phase 172: Plan-Phase Coupling & Distribution
+Focus: Add a lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, register CODI default-on in the `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, and document setup UX. No PLAN.md template changes (deferred to v0.4).
+Plans: TBD (defined during /paul:plan)
+
+### Phase 173: Real-World Trial & Gating Decision
+Focus: Run CODI on 2–3 real PALS planning sessions and manually observe the 4 success signals (fewer unexpected files, drop in mid-APPLY codegraph calls, more specific `<boundaries>`, no need for understand/verify brokers). Produce a decision artifact: ship v0.2, iterate v0.1, or kill the thesis. Honors the plan's explicit gating discipline.
+Plans: TBD (defined during /paul:plan)
 ## Next Milestone
-TBD after v2.38 completion.
+TBD after v2.39 completion. Candidate directions (gated on v0.1 results):
+- **v0.2** — add `symbol_graph` for upstream dependency context
+- **v0.3** — conditional `trace` for runtime-behavior plans
+- **v0.4** — formalize `<impact>` / `<dependencies>` / `<runtime_paths>` PLAN.md template sections
+- **v0.5+** — CODI at other PALS hooks (pre-apply / post-task / pre-unify)
+- Gate CODI module registration on `pi-codegraph` install detection (not just runtime skip).
 
 ## Completed Milestones
+<details>
+<summary>v2.38 Pi Lifecycle UX Polish - 2026-04-01 (3 phases)</summary>
+
+Theme: Make the existing Pi lifecycle display calm, legible, and visually meaningful for daily use without expanding into a broader new widget system.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 167 | UX Audit & Target Design | 1 | 2026-04-01 |
+| 168 | Core Lifecycle UI Polish | 1 | 2026-04-01 |
+| 169 | Supporting UX Alignment & Validation | 1 | 2026-04-01 |
+
+</details>
 <details>
 <summary>v2.37 Implementer Config Alignment & Delegation Expansion - 2026-03-28 (3 phases)</summary>
 
@@ -663,4 +685,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-01 — v2.38 milestone completed*
+*Last updated: 2026-04-16 — v2.39 CODI v0.1 milestone created (Phases 170–173)*
