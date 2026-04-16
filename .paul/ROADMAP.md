@@ -31,17 +31,17 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-04-16
 Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | Planning | - |
+| 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
 | 171 | `impact` Integration & Symbol Extraction | TBD | Not started | - |
 | 172 | Plan-Phase Coupling & Distribution | TBD | Not started | - |
 | 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
 
 ### Phase 170: CODI Module Scaffolding & Hello-World Hook
-Focus: Create `modules/codi/` with manifest and reference doc, wire a hello-world `pre-plan` dispatch that logs and exits, register the module in the installer, and establish graceful-skip behavior for non-TS projects and un-indexed repos. First concrete step from the integration plan — validates plumbing before any codegraph integration lands.
-Plans: TBD (defined during /paul:plan)
+Focus: Create `modules/codi/` with manifest and reference doc as a registry-discovered pre-plan advisory overlay. v0.1 ships with a hello-world dispatch, no codegraph tool calls, and no prerequisite checks — tool-availability handling is deferred to Phase 171 call-time failure handling. First concrete step from the integration plan.
+Plans: 1 (`170-01`) — complete
 
 ### Phase 171: `impact` Integration & Symbol Extraction
 Focus: Add an explicit-symbol extractor (backtick-quoted names, file paths, explicit mentions — no magic inference), call `impact({ symbols, changeType: "behavior_change" })` per target, and inject a formatted Blast Radius block via `context_inject`. Advisory hook priority (~p200, after TODD/IRIS, before DEAN). Records dispatch in `<module_dispatch>`. Never blocks.
@@ -685,4 +685,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-16 — v2.39 CODI v0.1 milestone created (Phases 170–173)*
+*Last updated: 2026-04-16 — Phase 170 complete (CODI module scaffolding shipped); v2.39 at 1 of 4 phases*

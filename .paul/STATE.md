@@ -4,13 +4,13 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.39 CODI v0.1 — ship a minimum-viable pre-plan PALS module that injects codegraph `impact` results into PLAN.md, then measure whether plans improve before stacking v0.2+
+**Current focus:** v2.39 CODI v0.1 — Phase 170 scaffolding shipped; Phase 171 adds `impact` integration with call-time failure handling
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 170 of 4 (CODI Module Scaffolding & Hello-World Hook) — Complete
-Plan: 170-01 complete (SUMMARY.md written; all 4 ACs PASS)
-Status: UNIFY complete; merge gate pending, then Phase 171 planning
-Last activity: 2026-04-16 — Phase 170 UNIFY complete; SUMMARY.md + quality-history updated
+Phase: 171 of 4 (`impact` Integration & Symbol Extraction)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-16 — Phase 170 complete and merged (PR #80); transitioned to Phase 171
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███░░░░░░░] 25% (1 of 4 phases complete)
 - Phase 170: [██████████] 100% ✓
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate, then Phase 171]
+  ○        ○        ○     [Phase 170 merged; ready for Phase 171 PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -126,6 +126,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
 | 2026-04-01: Keep a direct `renderLoopBadge(state.loop)` call in the compact status path while simplifying the surrounding hierarchy | 168 | Preserves the calmer status line while keeping the existing Pi validation contract green during APPLY |
 | 2026-04-01: Keep Phase 169 lifecycle alignment documentation-first when `pals-hooks.ts` already matches the calmer contract | 169 | Preserved the stable Phase 168 runtime hierarchy and focused changes on docs plus semantic validation guardrails |
+| 2026-04-16: CODI v0.1 ships with no prerequisite checks and no tool calls; tool-availability handling is deferred to Phase 171 call-time failure handling rather than a pre-dispatch proxy check | 170 | Honest about what a markdown hook description can reliably introspect; keeps v0.1 minimal |
+| 2026-04-16: Installer is already fully registry-driven; adding a new PALS module requires zero installer/kernel/workflow code changes | 170 | Canonical pattern for future module additions; Phase 170 scope shrank accordingly |
+| 2026-04-16: CODI uses "halt" and "skip" instead of "block" in its manifest description | 170 | The shared dispatch classifier uses strict substring matching on "block" to distinguish advisory from enforcement hooks |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -189,22 +192,21 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/170-codi-module-scaffolding
-Last commit: 4b0d89e feat(170-codi-module-scaffolding): CODI module hello-world pre-plan hook
-PR: https://github.com/coctostan/pals/pull/80 (state: OPEN)
-CI: Socket Security pending (informational; merge gate enforcement is in UNIFY)
+Branch: main
+Last commit: 0a64311 feat(170-codi-module-scaffolding): CODI module hello-world pre-plan hook (#80)
+PR: https://github.com/coctostan/pals/pull/80 (state: MERGED)
+CI: passing
 ## Session Continuity
 Last session: 2026-04-16
-Stopped at: Phase 170 APPLY complete; PR #80 open; ready for UNIFY
-Next action: /paul-unify .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
-Resume file: .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
+Stopped at: Phase 170 complete and merged (PR #80); transitioned to Phase 171 ready-to-plan
+Next action: /paul-plan for Phase 171 (`impact` Integration & Symbol Extraction)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection defined with 4 phases (170–173). Phase 170 APPLY just completed.
+- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection: 1 of 4 phases complete (Phase 170). Next: Phase 171.
 - Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
-- Planning posture: high collaboration, direct-requirements. Project default `planning.default_collaboration` is now `high`.
-- Phase 170 shipped: `modules/codi/module.yaml` + `modules/codi/references/codi.md`. Zero installer, kernel, or workflow edits needed (installer is registry-driven).
-- CODI registered in `~/.pi/agent/skills/pals/modules.yaml` with `hook_details.pre-plan.priority: 220`, refs correct, no "block" token — advisory classification confirmed.
-- v0.1 decision locked: **no prerequisite checks and no tool calls**. Tool-availability handling is deferred to Phase 171 call-time failure handling (not a pre-dispatch check). This corrects my earlier plan draft that proposed `.codegraph/` or TS/JS skip heuristics.
-- Plan execution: 3/3 tasks PASS, 0 deviations. All advisory and enforcement post-apply modules PASS or skip. `tests/pi-end-to-end-validation.sh`: 159/159.
-- PR #80 open on `feature/170-codi-module-scaffolding` (base: main); Socket Security CI check pending.
+- Planning posture: high collaboration, direct-requirements. Project default `planning.default_collaboration` is `high`.
+- Phase 170 shipped: `modules/codi/module.yaml` + `modules/codi/references/codi.md`. Zero installer, kernel, or workflow edits needed (installer is already registry-driven).
+- CODI is registered in `~/.pi/agent/skills/pals/modules.yaml` with `hook_details.pre-plan.priority: 220`, refs correct, no "block" token — advisory classification confirmed. `pi-end-to-end-validation.sh`: 159/159.
+- v0.1 contract locked: **no prerequisite checks and no tool calls**. Tool-availability handling is Phase 171's call-time failure handling, not a pre-dispatch proxy check.
+- Phase 171 scope: explicit-symbol extractor (backticks, file paths), per-symbol `impact({ symbols, changeType: "behavior_change" })` calls wrapped with graceful failure handling, formatted Blast Radius `context_inject` injection into PLAN.md. No template changes (deferred to v0.4).
 - Gating discipline honored: Phase 173 produces a ship-v0.2 / iterate / kill decision artifact before any v0.2+ work is scheduled.

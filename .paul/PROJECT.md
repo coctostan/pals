@@ -42,6 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
+- [~] CODI module (v0.1 scaffolding) — registry-discovered pre-plan advisory overlay at priority 220; v0.1 hello-world ships without tool calls or prerequisite checks; call-time failure handling and `impact` integration arrive in Phase 171 (Phase 170, v2.39 in progress)
 
 ### Must Have
 All validated — see below.
@@ -141,6 +142,8 @@ All validated — see below.
 - ✓ Workflow-first context reduction implementation — thin wrappers, slice-based roadmap reads, slimmer warm-path workflow prose, and semantic installed-surface validation shipped across Phases 161-163 (v2.36)
 - ✓ Implementer config contract alignment — explicit `agents.implementer` defaults now flow through init, migration, schema docs, README guidance, and installed-surface validation across Phases 164-166 (v2.37)
 - ✓ Delegated APPLY expansion — `pals-implementer` now covers broader bounded parent-verifiable task packets while keeping verification, module enforcement, fallback, and `.paul/*` lifecycle authority in the parent (Phases 165-166, v2.37)
+- ✓ Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface shipped across Phases 167-169 (v2.38)
+- ✓ CODI module scaffolding — registry-discovered pre-plan advisory overlay at priority 220, hello-world dispatch, no tool calls in v0.1; installer is already registry-driven so zero installer/kernel/workflow edits were required (Phase 170, v2.39 in progress)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -306,6 +309,9 @@ All validated — see below.
 || 2026-04-01: Use semantic lifecycle color for meaning, not decoration, and keep v2.38 bounded to polish of the existing surface | 167 | Preserves the additive Pi model without expanding into a new widget system or shifting lifecycle truth into Pi |
 | 2026-04-01: Keep the compact Pi lifecycle status text-first and preserve direct `renderLoopBadge(state.loop)` wiring while Phase 169 owns docs/validation alignment | 168 | Delivers the calmer Phase 168 runtime polish without broadening scope into validation-contract churn or fragile styling experiments |
 | 2026-04-01: Keep Phase 169 lifecycle alignment semantic and documentation-first when runtime wording already matches | 169 | The shipped runtime already fit the calmer contract, so the safest closeout was docs + validation alignment rather than unnecessary render-path churn |
+| 2026-04-16: CODI v0.1 ships with no prerequisite checks and no tool calls; tool-availability handling is deferred to Phase 171 call-time failure handling rather than a pre-dispatch proxy check | 170 | Honest about what a markdown hook description can reliably introspect; keeps v0.1 minimal and honors the source-plan's "skip cleanly rather than erroring" intent at the correct layer |
+| 2026-04-16: Installer is already fully registry-driven; adding a new PALS module requires zero installer/kernel/workflow code changes | 170 | Establishes the canonical pattern for future module additions and is the reason Phase 170's scope shrank from "4 phases of scaffolding" to "2 files" |
+| 2026-04-16: CODI uses "halt" and "skip" instead of "block" in its manifest description | 170 | The shared dispatch classifier in `plan-phase.md` uses strict substring matching on "block" to distinguish advisory from enforcement hooks; documented in the reference doc so future maintainers don't reintroduce the token |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -324,4 +330,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-01 after Phase 169 completion*
+*Last updated: 2026-04-16 after Phase 170 completion (CODI v0.1 module scaffolding shipped, v2.39 in progress)*
