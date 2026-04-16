@@ -4,3 +4,6 @@
 # Scratch planning files
 github-flow-hardening-followup.md
 github-flow-prompt.md
+
+# Pi runtime caches (generated, should not be tracked)
+.pi/prompt-assembler/

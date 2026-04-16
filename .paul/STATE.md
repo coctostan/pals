@@ -8,17 +8,18 @@ See: .paul/PROJECT.md (updated 2026-04-01)
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
 Phase: 171 of 4 (`impact` Integration & Symbol Extraction)
-Plan: 171-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-16 — Created .paul/phases/171-impact-integration-symbol-extraction/171-01-PLAN.md
+Plan: 171-01 complete
+Status: Loop complete — Phase 171 ready for transition
+Last activity: 2026-04-16 — UNIFY complete for Plan 171-01; SUMMARY.md authored; all 4 AC PASS; pi-end-to-end-validation.sh 159/159
 Progress:
-- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███░░░░░░░] 25% (1 of 4 phases complete)
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [█████░░░░░] 50% (2 of 4 phases complete)
 - Phase 170: [██████████] 100% ✓
+- Phase 171: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 171-01 created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — ready for phase transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -129,6 +130,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-16: CODI v0.1 ships with no prerequisite checks and no tool calls; tool-availability handling is deferred to Phase 171 call-time failure handling rather than a pre-dispatch proxy check | 170 | Honest about what a markdown hook description can reliably introspect; keeps v0.1 minimal |
 | 2026-04-16: Installer is already fully registry-driven; adding a new PALS module requires zero installer/kernel/workflow code changes | 170 | Canonical pattern for future module additions; Phase 170 scope shrank accordingly |
 | 2026-04-16: CODI uses "halt" and "skip" instead of "block" in its manifest description | 170 | The shared dispatch classifier uses strict substring matching on "block" to distinguish advisory from enforcement hooks |
+| 2026-04-16: CODI call pattern is per-symbol, NOT batched — `impact` is all-or-nothing on unresolved input and batching would destroy partial results | 171 | Generalizes to future codegraph tool integrations (`symbol_graph` v0.2, `trace` v0.3); documented alongside the input-self-filter quirk discovered during Phase 171 planning |
+| 2026-04-16: Classifier-safety invariant tightens at the module surface — the halt-keyword token is now avoided across manifest description AND reference doc natural prose, not just intent-bearing text | 171 | "Sub-section" and "code region" replace the common alternative; prevents future module edits from reintroducing the time bomb via innocent prose |
+| 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; worth codifying as a CODI-family pattern |
+| 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -192,21 +197,18 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 0a64311 feat(170-codi-module-scaffolding): CODI module hello-world pre-plan hook (#80)
-PR: https://github.com/coctostan/pals/pull/80 (state: MERGED)
-CI: passing
+Branch: feature/171-impact-integration-symbol-extraction
+Last commit: 4ebd86e feat(171-impact-integration-symbol-extraction): CODI per-symbol impact integration with call-time failure handling
+PR: https://github.com/coctostan/pals/pull/81 (state: OPEN)
+CI: not configured (no checks on this branch, same posture as Phase 170)
 ## Session Continuity
 Last session: 2026-04-16
-Stopped at: Plan 171-01 created, awaiting approval
-Next action: Review and approve plan, then run /paul-apply .paul/phases/171-impact-integration-symbol-extraction/171-01-PLAN.md
-Resume file: .paul/phases/171-impact-integration-symbol-extraction/171-01-PLAN.md
+Stopped at: UNIFY complete for Plan 171-01; SUMMARY.md authored; entering merge gate + phase transition
+Next action: Merge gate resolution → phase transition → /paul-plan for Phase 172 (Plan-Phase Coupling & Distribution)
+Resume file: .paul/phases/171-impact-integration-symbol-extraction/171-01-SUMMARY.md
 Resume context:
-- Plan 171-01 created under milestone v2.39 CODI v0.1 — upgrades CODI from Phase 170 hello-world to live `impact` integration with explicit-symbol extractor + call-time failure handling.
-- Planning posture: high collaboration, direct-requirements, pure-manifest-contract approach (α) — logic lives in manifest description + reference doc; no new scripts, no kernel/workflow/installer changes.
-- 3 tasks: (1) rewrite `modules/codi/module.yaml` `hooks.pre-plan.description` with full contract; (2) rewrite `modules/codi/references/codi.md` (≤150 lines) with extractor rules, impact call contract, impact response format, Blast Radius format with worked example, call-time failure handling with partial-success invariant; (3) regenerate installed registry via `drivers/pi/install.sh`, verify CODI block correctness, run `pi-end-to-end-validation.sh` (expect 159/159).
-- 4 AC: manifest contract, reference doc structure, installer-regenerated registry advisory-classified, no regression in shared validation.
-- Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
-- Key invariants preserved from Phase 170: priority 220, single `pre-plan` hook, no "block" token anywhere, advisory-only classification, call-time failure handling philosophy.
-- Plan revision based on empirical `impact` probing: PER-SYMBOL call pattern (not batched — batching is all-or-nothing on unresolved input), plain-text response shape preserved raw in fenced blocks, 5 per-symbol outcomes (resolved-with-call-sites / resolved-but-empty / unresolved / call-errored / tool-unavailable), partial-success invariant, input-self-filter quirk documented. Success log: `impact × N symbols → R resolved, U unresolved, K total call-sites`.
-- Next gating: Phase 173 produces a ship-v0.2 / iterate / kill decision artifact before any v0.2+ work is scheduled.
+- UNIFY complete: all 4 AC PASS with evidence captured in SUMMARY.md. Loop position ✓/✓/✓.
+- SUMMARY.md highlights: empirical-probing-during-PLAN pattern worth codifying, classifier-safety invariant tightened to full module surface, per-symbol call pattern documented as generalizable to future codegraph tool integrations (symbol_graph v0.2, trace v0.3), partial-success invariant decouples per-symbol outcomes from hook-level skip paths.
+- Phase 171 is the last plan in its phase directory (1 of 1). Phase transition MANDATORY before Phase 172 planning.
+- Merge gate: `git.require_pr_before_next_phase: true` → PR #81 must merge before phase transition completes. CI not configured on this repo; `require_reviews: false`.
+- Deviations logged for transition / future reference: mid-plan correction from empirical probing (high-collab win, not a failure); Task 1 in-loop "block"→"sub-section" rename (tightened classifier-safety invariant); `.pi/prompt-assembler/` untracked runtime cache (consider future gitignore).
