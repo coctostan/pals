@@ -7,17 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-01)
 **Current focus:** v2.39 CODI v0.1 — ship a minimum-viable pre-plan PALS module that injects codegraph `impact` results into PLAN.md, then measure whether plans improve before stacking v0.2+
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 170 of 4 (CODI Module Scaffolding & Hello-World Hook)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-16 — Milestone v2.39 created (Phases 170–173) with high-collaboration + direct-requirements posture
+Phase: 170 of 4 (CODI Module Scaffolding & Hello-World Hook) — APPLY complete
+Plan: 170-01 executed; 3/3 tasks PASS; 0 deviations
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-16 — Pushed feature/170-codi-module-scaffolding, opened PR #80
 Progress:
-- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [░░░░░░░░░░] 0%
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [██░░░░░░░░] ~16% (Phase 170 APPLY done; UNIFY pending)
+- Phase 170: [███████░░░] 66% (APPLY done; UNIFY pending)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN — Phase 170]
+  ✓        ✓        ○     [APPLY complete — ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -188,20 +189,22 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: d86067f feat(169-supporting-ux-alignment-validation): align Pi docs and validation (#79)
-PR: https://github.com/coctostan/pals/pull/79 (state: MERGED)
-CI: passing
+Branch: feature/170-codi-module-scaffolding
+Last commit: 4b0d89e feat(170-codi-module-scaffolding): CODI module hello-world pre-plan hook
+PR: https://github.com/coctostan/pals/pull/80 (state: OPEN)
+CI: Socket Security pending (informational; merge gate enforcement is in UNIFY)
 ## Session Continuity
 Last session: 2026-04-16
-Stopped at: Plan 170-01 created, awaiting approval before APPLY
-Next action: Review and approve plan, then run /paul-apply .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
+Stopped at: Phase 170 APPLY complete; PR #80 open; ready for UNIFY
+Next action: /paul-unify .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
 Resume file: .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
 Resume context:
-- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection defined with 4 phases (170–173).
+- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection defined with 4 phases (170–173). Phase 170 APPLY just completed.
 - Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
 - Planning posture: high collaboration, direct-requirements. Project default `planning.default_collaboration` is now `high`.
-- Phase 170 scope: 2 new files (`modules/codi/module.yaml`, `modules/codi/references/codi.md`). No installer, kernel, or workflow edits. Plan is autonomous (no checkpoints). Dispatch classifier relies on registry-driven discovery already implemented.
-- Key decisions preserved: module lives at `modules/codi/`, advisory-only (priority 220), default-on with graceful skip when `pi-codegraph` or codegraph index absent, measurement is manual, no PLAN.md template changes in v0.1.
-- Pre-plan dispatch produced no blocks; post-plan TODD skipped (execute type, no tdd_candidates).
+- Phase 170 shipped: `modules/codi/module.yaml` + `modules/codi/references/codi.md`. Zero installer, kernel, or workflow edits needed (installer is registry-driven).
+- CODI registered in `~/.pi/agent/skills/pals/modules.yaml` with `hook_details.pre-plan.priority: 220`, refs correct, no "block" token — advisory classification confirmed.
+- v0.1 decision locked: **no prerequisite checks and no tool calls**. Tool-availability handling is deferred to Phase 171 call-time failure handling (not a pre-dispatch check). This corrects my earlier plan draft that proposed `.codegraph/` or TS/JS skip heuristics.
+- Plan execution: 3/3 tasks PASS, 0 deviations. All advisory and enforcement post-apply modules PASS or skip. `tests/pi-end-to-end-validation.sh`: 159/159.
+- PR #80 open on `feature/170-codi-module-scaffolding` (base: main); Socket Security CI check pending.
 - Gating discipline honored: Phase 173 produces a ship-v0.2 / iterate / kill decision artifact before any v0.2+ work is scheduled.
