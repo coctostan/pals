@@ -71,7 +71,7 @@
     }
   },
   "planning": {
-    "default_collaboration": "medium"
+    "default_collaboration": "high"
   },
   "preferences": {
     "auto_commit": false,

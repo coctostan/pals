@@ -4,22 +4,20 @@
 
 See: .paul/PROJECT.md (updated 2026-04-01)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.38 Pi Lifecycle UX Polish is complete — ready to define the next milestone
+**Current focus:** v2.39 CODI v0.1 — ship a minimum-viable pre-plan PALS module that injects codegraph `impact` results into PLAN.md, then measure whether plans improve before stacking v0.2+
 ## Current Position
-Milestone: v2.38 Pi Lifecycle UX Polish — Complete
-Phase: Milestone complete — ready for next milestone
-Plan: None active
-Status: Ready for next milestone discussion
-Last activity: 2026-04-01T19:56:53Z — Merged PR #79 and completed transition for Phase 169 / milestone v2.38
+Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
+Phase: 170 of 4 (CODI Module Scaffolding & Hello-World Hook)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-16 — Milestone v2.39 created (Phases 170–173) with high-collaboration + direct-requirements posture
 Progress:
-- v2.38 Pi Lifecycle UX Polish: [██████████] 100%
-- Phase 168: [██████████] 100% ✓
-- Phase 169: [██████████] 100% ✓
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ○        ○        ○     [Ready for first PLAN — Phase 170]
 ```
 ## Accumulated Context
 ### Decisions
@@ -195,11 +193,15 @@ Last commit: d86067f feat(169-supporting-ux-alignment-validation): align Pi docs
 PR: https://github.com/coctostan/pals/pull/79 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-01T19:56:53Z
-Stopped at: Milestone v2.38 complete
-Next action: /paul-milestone to define the next milestone
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-16
+Stopped at: Plan 170-01 created, awaiting approval before APPLY
+Next action: Review and approve plan, then run /paul-apply .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
+Resume file: .paul/phases/170-codi-module-scaffolding/170-01-PLAN.md
 Resume context:
-- v2.38 is complete: runtime polish (Phase 168) and the docs/validation contract alignment (Phase 169) are both merged.
-- The Pi lifecycle surface now ships as a calm milestone / phase / loop / next-action hierarchy with semantic validation guardrails against legacy widget clutter.
-- The next lifecycle choice is milestone-level: define the next milestone scope or review accomplishments before planning again.
+- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection defined with 4 phases (170–173).
+- Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
+- Planning posture: high collaboration, direct-requirements. Project default `planning.default_collaboration` is now `high`.
+- Phase 170 scope: 2 new files (`modules/codi/module.yaml`, `modules/codi/references/codi.md`). No installer, kernel, or workflow edits. Plan is autonomous (no checkpoints). Dispatch classifier relies on registry-driven discovery already implemented.
+- Key decisions preserved: module lives at `modules/codi/`, advisory-only (priority 220), default-on with graceful skip when `pi-codegraph` or codegraph index absent, measurement is manual, no PLAN.md template changes in v0.1.
+- Pre-plan dispatch produced no blocks; post-plan TODD skipped (execute type, no tdd_candidates).
+- Gating discipline honored: Phase 173 produces a ship-v0.2 / iterate / kill decision artifact before any v0.2+ work is scheduled.
