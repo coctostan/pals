@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-01)
 **Current focus:** v2.39 CODI v0.1 — ship a minimum-viable pre-plan PALS module that injects codegraph `impact` results into PLAN.md, then measure whether plans improve before stacking v0.2+
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 170 of 4 (CODI Module Scaffolding & Hello-World Hook) — APPLY complete
-Plan: 170-01 executed; 3/3 tasks PASS; 0 deviations
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-16 — Pushed feature/170-codi-module-scaffolding, opened PR #80
+Phase: 170 of 4 (CODI Module Scaffolding & Hello-World Hook) — Complete
+Plan: 170-01 complete (SUMMARY.md written; all 4 ACs PASS)
+Status: UNIFY complete; merge gate pending, then Phase 171 planning
+Last activity: 2026-04-16 — Phase 170 UNIFY complete; SUMMARY.md + quality-history updated
 Progress:
-- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [██░░░░░░░░] ~16% (Phase 170 APPLY done; UNIFY pending)
-- Phase 170: [███████░░░] 66% (APPLY done; UNIFY pending)
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███░░░░░░░] 25% (1 of 4 phases complete)
+- Phase 170: [██████████] 100% ✓
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete — ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — merge gate, then Phase 171]
 ```
 ## Accumulated Context
 ### Decisions
