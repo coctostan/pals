@@ -283,6 +283,11 @@ if os.path.exists(pals_json_path):
 else:
     pals_config = {}
 modules_config = pals_config.get('modules', {})
+codi_cfg = modules_config.get('codi', {})
+codi_enabled = not (isinstance(codi_cfg, dict) and codi_cfg.get('enabled') is False)
+codegraph_index_path = os.path.join(pals_root, '.codegraph', 'graph.db')
+show_codi_index_hint = codi_enabled and not os.path.exists(codegraph_index_path)
+
 
 # ── Discover and install modules ──────────────────────────────────
 if not os.path.isdir(modules_src):
@@ -394,6 +399,8 @@ modules_yaml_path = os.path.join(skill_dir, 'modules.yaml')
 with open(modules_yaml_path, 'w') as f:
     f.write('\n'.join(lines) + '\n')
 print(f"  [ok] modules.yaml generated ({len(installed)} modules)")
+if show_codi_index_hint:
+    print('CODI is enabled but no codegraph index detected — see modules/codi/references/codi.md for setup')
 PYEOF
 
 # ── 7. Summary ───────────────────────────────────────────────────

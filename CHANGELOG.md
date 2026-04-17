@@ -2,6 +2,11 @@
 
 All notable changes to PALS are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Changed
+- Pi installs now emit the `CODI is enabled but no codegraph index detected` recommendation when `.codegraph/graph.db` is absent, and CODI docs now clarify the value envelope plus the `resolved-with-call-sites only` success-log convention.
+
 ## [2.34.0] — 2026-03-27 — Validation & Polish
 
 ### Added

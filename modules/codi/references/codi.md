@@ -109,6 +109,14 @@ CODI does not pre-check codegraph tool availability. There is no reliable filesy
 
 **Partial-success invariant.** The hook MUST inject resolved outcomes together with the unresolved list whenever at least one per-symbol result was produced. Never all-or-nothing at the hook level. No error propagates to the plan; no partial structural facts are silently dropped.
 
+## When CODI helps
+
+- CODI helps most on TS/JS-touching indexed code where `impact` can return structural call-sites.
+- It is usually quiet on markdown, config, or workflow-only phases because there may be no extractable symbols or no usable codegraph surface.
+- In this Phase 175 planning run, the read-only `drivers/pi/extensions/pals-hooks.ts` symbols `renderCompactLoopSummary`, `renderLifecycleStatus`, `syncLifecycleUi`, and `renderLoopBadge` all resolved with call-sites; this is the kind of surface where CODI can improve boundary specificity without promising broad planner wins.
+- `R` in the success log means resolved-with-call-sites only. Resolved-but-empty outcomes still inject as `_(no downstream call-sites)_` and do not increment `R`; Phase 173 `173-01-TRIAL-DATA.md` remains the authoritative mixed-outcome example.
+- Pi installs may warn `CODI is enabled but no codegraph index detected` when `.codegraph/graph.db` is absent, but v0.1 still does not create a hard `.codegraph/` gate.
+
 ## Setup & Safe-Skip Distribution
 
 - `modules.codi.enabled` defaults to `true` in fresh and migrated `pals.json`.

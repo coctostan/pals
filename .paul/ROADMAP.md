@@ -45,7 +45,7 @@ Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 174 | Source-File Symbol Extraction | 1/1 | ✅ Complete | 2026-04-17 |
-| 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | TBD | Not started | - |
+| 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | 1/1 | Planning | - |
 | 176 | Dispatch-Outcome Instrumentation | TBD | Not started | - |
 | 177 | Re-Trial + Gating Decision | TBD | Not started | - |
 
@@ -55,7 +55,7 @@ Plans: `174-01` complete — source-file selector extraction shipped, installed,
 
 ### Phase 175: Install-Time Detection + Value-Envelope Docs + Format Fix
 Focus: Bundled docs/install pass covering three related loose ends from Phase 173's DECISION.md. (a) `drivers/pi/install.sh` probes codegraph availability at install time; surfaces a one-line recommendation when absent ("CODI is enabled but no codegraph index detected — see `modules/codi/references/codi.md` for setup"). (b) `modules/codi/references/codi.md` gains a "When CODI helps" section framing the TS-touching-on-indexed-code value envelope honestly; `README.md` CODI overview aligned. (c) Manifest success-log format explicitly pins the R=resolved-with-call-sites convention (Cross-cutting observation 6 from Phase 173 TRIAL-DATA) — 10-line manifest patch + matching reference-doc note. **Meta-bootstrap note:** this phase edits `drivers/pi/install.sh` itself. APPLY must run the installer twice — once to deploy the edit, once to exercise the new probe — both passes as verification. Also the first phase where the v2.40 source-file extractor (shipped in Phase 174) can fire live against this plan's scope, per Invariant 2.
-Plans: TBD (defined during /paul:plan)
+Plans: `175-01` created — awaiting approval
 
 ### Phase 176: Dispatch-Outcome Instrumentation
 Focus: Lightweight observability so Phase 177 (and future trials) can measure CODI's contribution at scale without manual reconstruction. Post-unify hook records one row per phase — dispatch outcome category, R/U/K counts, blast_radius injected y/n — to a tally file (e.g., `.paul/codi-dispatch-history.md`, mirroring `quality-history.md`'s shape). Target files: `modules/codi/module.yaml` (add post-unify hook), `modules/codi/references/codi.md` (new Instrumentation section), `kernel/workflows/unify-phase.md` (dispatch ordering, if needed), plus the new tally artifact. APPLY MUST re-run installer. Phase 176's own planning run is itself a live CODI-active session and will be part of Phase 177's trial set.
