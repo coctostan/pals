@@ -206,8 +206,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: aea7bab feat(172-plan-phase-coupling-distribution): wire CODI planning contract (#82)
-PR: https://github.com/coctostan/pals/pull/82 (state: MERGED)
+Last commit: 38c439a feat(173-real-world-trial-gating-decision): CODI v0.1 trial + ITERATE_V0_1 verdict (#83)
+PR: https://github.com/coctostan/pals/pull/83 (state: MERGED)
 CI: passing
 ## Session Continuity
 Last session: 2026-04-17T03:30:00Z
