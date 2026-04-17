@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.39 CODI v0.1 — Phases 170–171 shipped (hello-world scaffolding + live `impact` integration); Phase 172 adds plan-phase coupling & distribution; Phase 173 produces the ship/iterate/kill decision
+**Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 produces the ship/iterate/kill decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 172 of 4 (Plan-Phase Coupling & Distribution) — Applying
-Plan: 172-01 APPLY complete, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-17T01:14:15Z — Created .paul/HANDOFF-2026-04-17-phase172-apply-complete.md and paused before UNIFY
+Phase: 172 of 4 (Plan-Phase Coupling & Distribution) — Complete
+Plan: 172-01 complete
+Status: Ready for next PLAN
+Last activity: 2026-04-17T01:28:59Z — Unified Phase 172 results and prepared phase transition
 Progress:
-- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [█████░░░░░] 50% (2 of 4 phases complete)
-- Phase 172: [█████░░░░░] 50%
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███████░░░] 75% (3 of 4 phases complete)
+- Phase 172: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Applied, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -152,6 +152,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Fix 05 applied manually instead of /paul:fix | Phase 100 | Should have used standard fix workflow |
 | Phase 156 implementation expanded to include installer-backed global agent installation after initial APPLY scope | Phase 156 | Small scope expansion via `drivers/pi/install.sh` so `pals-implementer` works outside the PALS repo |
 | Phase 161 Task 3 used `install.sh` and `tests/cross-harness-validation.sh` as verification surfaces, but only `tests/pi-end-to-end-validation.sh` required repo changes | Phase 161 | Minor plan metadata over-scoping; APPLY completed successfully and the variance should be documented in UNIFY |
+| Phase 172 reconciliation required branch-diff recovery because the last-commit diff only showed state/pause artifacts after the implementation commit | Phase 172 | SUMMARY used `main...HEAD` and commit `4021255` to recover the real changed-file set; no implementation was lost, but the pause/resume shape under-reported it |
 ### Skill Audit (Phase 156)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -188,6 +189,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /carl | ✓ | Session-boundary routing remained active while the phase moved across APPLY and UNIFY |
 | TODD | ✓ | APPLY preserved disciplined validation sequencing on the shell-based Pi validation surface |
 | WALT | ✓ | Validation ran during APPLY and quality history was recorded during UNIFY |
+### Skill Audit (Phase 172)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the CODI plan-phase coupling and distribution work |
+| /carl | ✓ | Session-boundary routing remained active across the pause/resume boundary into UNIFY |
+| TODD | ✓ | Required verification overlay stayed active even though this phase did not require TDD restructuring |
+| WALT | ✓ | Installer-backed validation passed during APPLY and quality history was recorded during UNIFY |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -202,11 +210,11 @@ Last commit: b0fdcc1 chore(172-plan-phase-coupling-distribution): update apply s
 PR: https://github.com/coctostan/pals/pull/82 (state: OPEN)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-17T01:14:15Z
-Stopped at: Phase 172 APPLY complete; session paused before UNIFY
-Next action: Run /paul:unify .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md to reconcile APPLY results and close the loop
-Resume file: .paul/HANDOFF-2026-04-17-phase172-apply-complete.md
+Last session: 2026-04-17T01:28:59Z
+Stopped at: Phase 172 complete; merge gate and phase transition next
+Next action: Complete merge/transition flow, then run /paul:plan for Phase 173
+Resume file: .paul/phases/172-plan-phase-coupling-distribution/172-01-SUMMARY.md
 Resume context:
-- Phase 172 APPLY is complete and validated; UNIFY is the only remaining loop step for this plan.
-- CODI seed-pass workflow updates, default-on `modules.codi` docs/config changes, and semantic validation coverage all landed in the feature branch.
-- PR `#82` is open on `feature/172-plan-phase-coupling-distribution`; CI is passing and the branch is up to date with `main`.
+- Phase 172 APPLY and UNIFY are complete; SUMMARY.md now records the delivered CODI seed/config/docs contract.
+- PR `#82` remains the active GitHub Flow merge target for the feature branch.
+- After merge + transition, Phase 173 will define the real-world CODI trial and gating decision.
