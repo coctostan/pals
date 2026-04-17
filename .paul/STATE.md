@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.40 CODI v0.1 — Extractor & Coverage Iteration. Phase 173 verdict ITERATE_V0_1 selected 4-phase shape: 174 source-file extraction → 175 install-detection/docs/format-fix → 176 dispatch-outcome instrumentation → 177 re-trial + gating decision. Milestone invariant: nothing takes effect until `bash drivers/pi/install.sh` runs.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 174 of 4 (Source-File Symbol Extraction) — APPLY complete
-Plan: 174-01 applied, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-17T13:45:45Z — Applied .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md, reinstalled Pi surfaces, and opened PR #84
+Phase: 174 of 4 (Source-File Symbol Extraction) — Complete
+Plan: 174-01 complete
+Status: Ready for next PLAN
+Last activity: 2026-04-17T13:54:41Z — Unified .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md and prepared summary/quality artifacts
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█░░░░░░░░░] 10%
-- Phase 174: [███████░░░] 70%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [███░░░░░░░] 25%
+- Phase 174: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Complete - ready for next PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -135,6 +135,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
 | 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
 | 2026-04-17: Phase 173 verdict ITERATE_V0_1 — CODI v0.1 has bounded value envelope (Signal 3 projected-pass on TS-touching counterfactual), live PALS sample uniformly CODI_NULL; iterate on extractor-vs-scope alignment in v2.40 before considering v0.2 | 173 | Sets v2.40 milestone direction (source-file symbol extraction); defers symbol_graph/trace/template formalization until re-trial validates iteration |
+| 2026-04-17: Treat upcoming-plan `<context>` repo-relative `.ts/.tsx/.js/.jsx` files as bounded source selectors and promote only extracted stable identifiers to `impact` candidates | 174 | Fixes CODI extractor-vs-scope alignment without widening v0.1 beyond bounded no-magic advisory behavior |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -208,15 +209,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Branch: feature/174-source-file-symbol-extraction
 Last commit: b5d56e5 feat(174-source-file-symbol-extraction): add source-file selector extraction
 PR: https://github.com/coctostan/pals/pull/84 (state: open)
-CI: no checks reported
+CI: Socket Security checks passing
 ## Session Continuity
-Last session: 2026-04-17T13:45:45Z
-Stopped at: APPLY complete for 174-01
-Next action: Run /paul:unify .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
-Resume file: .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
-Resume context:
-- APPLY completed with bounded repo changes in `modules/codi/module.yaml`, `modules/codi/references/codi.md`, `kernel/workflows/plan-phase.md`, and the two validation scripts.
-- `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` completed successfully.
-- `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh` both passed after reinstall.
-- Invariant 2 still holds: Phase 174's own planning run was CODI_NULL under the old install; Phase 175 planning is the first live session expected to exercise the new extractor.
+Last session: 2026-04-17T13:54:41Z
+Stopped at: UNIFY complete for 174-01
+Next action: Merge PR #84 and transition to Phase 175
+Resume file: .paul/phases/174-source-file-symbol-extraction/174-01-SUMMARY.md
+- SUMMARY created at `.paul/phases/174-source-file-symbol-extraction/174-01-SUMMARY.md`.
+- `.paul/QUALITY-HISTORY.md` updated with `174-01` as `166 pass + 70 pass` (trend `↑ improving`).
+- Post-unify module evidence recorded for WALT, SKIP, and RUBY in the summary.
+- PR #84 is open on `feature/174-source-file-symbol-extraction`; required checks are currently passing.
+- Next transition target is Phase 175 (`Install-Time Detection + Value-Envelope Docs + Format Fix`).
 - PR #84 is open on `feature/174-source-file-symbol-extraction`; GitHub reports no checks yet.

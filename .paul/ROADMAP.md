@@ -31,7 +31,7 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-04-17
 Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2. Selected by Phase 173 verdict ITERATE_V0_1 (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete
 
 ### Milestone Invariants
 
@@ -44,14 +44,14 @@ Phases: 0 of 4 complete
 ### Phases
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 174 | Source-File Symbol Extraction | 1 (`174-01`) | Planning | - |
+| 174 | Source-File Symbol Extraction | 1/1 | ✅ Complete | 2026-04-17 |
 | 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | TBD | Not started | - |
 | 176 | Dispatch-Outcome Instrumentation | TBD | Not started | - |
 | 177 | Re-Trial + Gating Decision | TBD | Not started | - |
 
 ### Phase 174: Source-File Symbol Extraction
 Focus: Highest-leverage v2.40 iteration. During `prepare_codi_seed_candidates`, read PLAN's `<context>` source-file list and parse top-level declarations (functions, classes, exports — TS/JS first, extensible) to seed `impact` calls in addition to the existing prose-based extraction. Phase 173 counterfactual established that Phase 168's scope (`drivers/pi/extensions/pals-hooks.ts`) would have yielded 4 resolved-with-call-sites symbols if source-file extraction had been active. Target files: `modules/codi/module.yaml` (manifest description Step 1: extraction rules), `modules/codi/references/codi.md` (Symbol Extraction Rules section), `kernel/workflows/plan-phase.md` (`prepare_codi_seed_candidates` step from Phase 172). APPLY MUST re-run `bash drivers/pi/install.sh` as a verification step (Milestone Invariant 1). Phase 174's own CODI dispatch is expected CODI_NULL per Invariant 2.
-Plans: `174-01` created — awaiting approval
+Plans: `174-01` complete — source-file selector extraction shipped, installed, and validated; Phase 175 planning is the first live session expected to exercise it
 
 ### Phase 175: Install-Time Detection + Value-Envelope Docs + Format Fix
 Focus: Bundled docs/install pass covering three related loose ends from Phase 173's DECISION.md. (a) `drivers/pi/install.sh` probes codegraph availability at install time; surfaces a one-line recommendation when absent ("CODI is enabled but no codegraph index detected — see `modules/codi/references/codi.md` for setup"). (b) `modules/codi/references/codi.md` gains a "When CODI helps" section framing the TS-touching-on-indexed-code value envelope honestly; `README.md` CODI overview aligned. (c) Manifest success-log format explicitly pins the R=resolved-with-call-sites convention (Cross-cutting observation 6 from Phase 173 TRIAL-DATA) — 10-line manifest patch + matching reference-doc note. **Meta-bootstrap note:** this phase edits `drivers/pi/install.sh` itself. APPLY must run the installer twice — once to deploy the edit, once to exercise the new probe — both passes as verification. Also the first phase where the v2.40 source-file extractor (shipped in Phase 174) can fire live against this plan's scope, per Invariant 2.
@@ -714,4 +714,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-17 — Phase 174 plan `174-01` created; v2.40 remains 0 of 4 phases complete*
+*Last updated: 2026-04-17 — Phase 174 complete; v2.40 is 1 of 4 phases complete and ready for Phase 175 planning*
