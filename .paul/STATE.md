@@ -4,22 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-16)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.39 CODI v0.1 — Phases 170–171 shipped (hello-world scaffolding + live `impact` integration); Phase 172 adds plan-phase coupling & distribution; Phase 173 produces the ship/iterate/kill decision
+**Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 produces the ship/iterate/kill decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 172 of 4 (Plan-Phase Coupling & Distribution)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-16 — Phase 171 complete and merged (PR #81); transitioned to Phase 172
+Phase: 172 of 4 (Plan-Phase Coupling & Distribution) — Complete
+Plan: 172-01 complete
+Status: Ready for next PLAN
+Last activity: 2026-04-17T01:28:59Z — Unified Phase 172 results and prepared phase transition
 Progress:
-- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [█████░░░░░] 50% (2 of 4 phases complete)
-- Phase 170: [██████████] 100% ✓
-- Phase 171: [██████████] 100% ✓
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███████░░░] 75% (3 of 4 phases complete)
+- Phase 172: [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 171 merged; ready for Phase 172 PLAN]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -134,6 +133,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-16: Classifier-safety invariant tightens at the module surface — the halt-keyword token is now avoided across manifest description AND reference doc natural prose, not just intent-bearing text | 171 | "Sub-section" and "code region" replace the common alternative; prevents future module edits from reintroducing the time bomb via innocent prose |
 | 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; worth codifying as a CODI-family pattern |
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
+| 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -152,6 +152,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Fix 05 applied manually instead of /paul:fix | Phase 100 | Should have used standard fix workflow |
 | Phase 156 implementation expanded to include installer-backed global agent installation after initial APPLY scope | Phase 156 | Small scope expansion via `drivers/pi/install.sh` so `pals-implementer` works outside the PALS repo |
 | Phase 161 Task 3 used `install.sh` and `tests/cross-harness-validation.sh` as verification surfaces, but only `tests/pi-end-to-end-validation.sh` required repo changes | Phase 161 | Minor plan metadata over-scoping; APPLY completed successfully and the variance should be documented in UNIFY |
+| Phase 172 reconciliation required branch-diff recovery because the last-commit diff only showed state/pause artifacts after the implementation commit | Phase 172 | SUMMARY used `main...HEAD` and commit `4021255` to recover the real changed-file set; no implementation was lost, but the pause/resume shape under-reported it |
 ### Skill Audit (Phase 156)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -188,6 +189,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | /carl | ✓ | Session-boundary routing remained active while the phase moved across APPLY and UNIFY |
 | TODD | ✓ | APPLY preserved disciplined validation sequencing on the shell-based Pi validation surface |
 | WALT | ✓ | Validation ran during APPLY and quality history was recorded during UNIFY |
+### Skill Audit (Phase 172)
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY → UNIFY for the CODI plan-phase coupling and distribution work |
+| /carl | ✓ | Session-boundary routing remained active across the pause/resume boundary into UNIFY |
+| TODD | ✓ | Required verification overlay stayed active even though this phase did not require TDD restructuring |
+| WALT | ✓ | Installer-backed validation passed during APPLY and quality history was recorded during UNIFY |
 ### Deferred Issues
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
@@ -197,21 +205,16 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 1db871e feat(171-impact-integration-symbol-extraction): CODI per-symbol impact integration (#81)
-PR: https://github.com/coctostan/pals/pull/81 (state: MERGED)
-CI: passing (Socket Security: 2/2 SUCCESS at merge time)
+Branch: feature/172-plan-phase-coupling-distribution
+Last commit: b0fdcc1 chore(172-plan-phase-coupling-distribution): update apply state
+PR: https://github.com/coctostan/pals/pull/82 (state: OPEN)
+CI: passing
 ## Session Continuity
-Last session: 2026-04-16
-Stopped at: Phase 171 complete and merged (PR #81); transitioned to Phase 172 ready-to-plan
-Next action: /paul-plan for Phase 172 (Plan-Phase Coupling & Distribution)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-17T01:28:59Z
+Stopped at: Phase 172 complete; merge gate and phase transition next
+Next action: Complete merge/transition flow, then run /paul:plan for Phase 173
+Resume file: .paul/phases/172-plan-phase-coupling-distribution/172-01-SUMMARY.md
 Resume context:
-- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection: 2 of 4 phases complete (Phases 170, 171). Next: Phase 172.
-- Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
-- Planning posture default: high collaboration, direct-requirements (project `planning.default_collaboration: high`).
-- Phase 171 shipped: live `impact` integration on CODI — per-symbol call pattern, 5-outcome categorization, partial-success invariant, Blast Radius sub-section via `context_inject.blast_radius`, 4 hook-level skip paths, full-module-surface classifier-safety (no "block" token anywhere). `pi-end-to-end-validation.sh`: 159/159 (no regression).
-- Phase 172 scope: (a) lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, (b) register CODI default-on in `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, (c) document setup UX. **No PLAN.md template changes** (deferred to v0.4).
-- Phase 172 complements Phase 171's hook-side contract with plan-side ergonomic improvements — tests whether the live contract produces useful injections on prose-heavy objectives that don't already contain explicit symbols.
-- Phase 173 runs the real-world trial on 2–3 live PALS planning sessions and produces the ship-v0.2 / iterate / kill decision artifact that gates all v0.2+ work.
-- Phase 171 lessons worth reusing: empirical-probing-during-PLAN when a tool contract materially shapes the plan; classifier-safety discipline at the full module surface; per-symbol call pattern (likely to generalize to `symbol_graph` v0.2 and `trace` v0.3).
+- Phase 172 APPLY and UNIFY are complete; SUMMARY.md now records the delivered CODI seed/config/docs contract.
+- PR `#82` remains the active GitHub Flow merge target for the feature branch.
+- After merge + transition, Phase 173 will define the real-world CODI trial and gating decision.

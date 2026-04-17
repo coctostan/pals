@@ -84,6 +84,25 @@ templates/PLAN.md
 7. Store `collaboration_level`, `planning_mode`, and any carried `review_preference` for later review routing.
 </step>
 
+<step name="prepare_codi_seed_candidates" priority="before-pre-plan-advisory">
+**Prepare bounded CODI seeds for prose-heavy scopes before advisory dispatch.**
+1. Review the target phase detail plus any carried context already selected for this planning run.
+2. If the phase detail already contains extractor-friendly explicit symbols or repo-relative source paths, keep those as the primary CODI input and skip extra seed reads.
+3. If the phase detail is still prose-heavy:
+   - Do a lightweight, read-only seed pass against only the immediately relevant source/context reads for this phase.
+   - Extract at most 1-5 explicit repo-confirmed identifiers or repo-relative paths.
+   - Store the result as `codi_seed_candidates`.
+4. Candidate rules:
+   - Every candidate must be directly observed in the phase detail, carried context, or targeted source reads.
+   - Prefer explicit symbol identifiers named in the phase detail/objective.
+   - Then repo-relative source paths named there.
+   - Then explicit identifiers or repo-relative paths surfaced by carried context or targeted source reads.
+   - Preserve first-observed order within each bucket.
+5. Guardrails:
+   - No semantic guessing, no invented abstractions, and no codebase-wide fishing.
+   - If no confirmed seeds exist, record none; CODI may skip cleanly and planning continues.
+6. Pass `codi_seed_candidates` forward to pre-plan advisory dispatch and later reuse them inside the existing objective/context/source-file structure. Do NOT add new PLAN template sections.
+</step>
 <step name="pre_plan_advisory_hooks" priority="before-scope-analysis">
 **Dispatch advisory pre-plan hooks first — these inform the plan but never block.**
 1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-plan advisory: modules.yaml NOT FOUND — WARNING` and skip dispatch.
@@ -92,8 +111,9 @@ templates/PLAN.md
    - IRIS (p150): scan files for anti-pattern signatures, inject review_flags
    - DAVE (p200): check for CI/CD config patterns, inject deploy_warning
    - DOCS (p200): scan for stale/missing docs, inject doc_warnings
+   - CODI (p220): use `codi_seed_candidates` when present; otherwise fall back to explicit phase-scope extraction, inject `blast_radius`, or safe-skip
    - RUBY (p250): check files for tech debt heuristics, inject debt_flags
-3. For each: load refs, follow description, collect `context_inject`
+3. For each: load refs, follow description, collect `context_inject`. Pass `codi_seed_candidates` to CODI when populated.
 4. Output dispatch log: `[dispatch] pre-plan advisory: {MODULE(priority) → N inject keys | skip} | ...`
 5. Display all advisory findings to the user.
 </step>
@@ -122,14 +142,15 @@ templates/PLAN.md
 
 <step name="analyze_scope">
 1. Review the target phase detail in ROADMAP.md rather than re-reading unrelated milestone history.
-2. Assess change size to scale planning depth: 1-2 files with clear scope → lighter plan; 3-5 files → standard plan; 5+ files or cross-cutting work → consider splitting.
-3. Target 2-3 tasks per plan; if the work needs more than 3, consider splitting into multiple plans.
-4. Identify files that will be modified and whether checkpoints are needed:
+2. If `codi_seed_candidates` exist, keep them in working scope notes and reuse them inside the plan's existing objective/context/source-file text so CODI sees the same explicit names without any PLAN template change.
+3. Assess change size to scale planning depth: 1-2 files with clear scope → lighter plan; 3-5 files → standard plan; 5+ files or cross-cutting work → consider splitting.
+4. Target 2-3 tasks per plan; if the work needs more than 3, consider splitting into multiple plans.
+5. Identify files that will be modified and whether checkpoints are needed:
    - Visual verification required? → checkpoint:human-verify
    - Architecture decision needed? → checkpoint:decision
    - Unavoidable manual action? → checkpoint:human-action
-5. Set `autonomous: true` if no checkpoints are needed; otherwise `false`.
-6. Default plan type is `execute`. If a pre-plan hook suggests a different type, present the suggestion to the user and let the user confirm or override it.
+6. Set `autonomous: true` if no checkpoints are needed; otherwise `false`.
+7. Default plan type is `execute`. If a pre-plan hook suggests a different type, present the suggestion to the user and let the user confirm or override it.
 </step>
 <step name="load_context">
 1. Read `.paul/PROJECT.md` first as the hot-path brief for the core value, description, scope snapshot, top constraints, success metrics, and key decisions.

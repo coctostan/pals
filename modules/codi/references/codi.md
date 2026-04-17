@@ -103,6 +103,13 @@ CODI does not pre-check codegraph tool availability. There is no reliable filesy
 
 **Partial-success invariant.** The hook MUST inject resolved outcomes together with the unresolved list whenever at least one per-symbol result was produced. Never all-or-nothing at the hook level. No error propagates to the plan; no partial structural facts are silently dropped.
 
+## Setup & Safe-Skip Distribution
+
+- `modules.codi.enabled` defaults to `true` in fresh and migrated `pals.json`.
+- Optional setup: install `pi-codegraph` and keep a usable codegraph index for the repo.
+- v0.1 does **not** create a hard `.codegraph/` gate; repository state alone does not prove runtime tool availability.
+- If `pi-codegraph` is unavailable, the index is missing or unusable, or the repo sits outside CODI's current codegraph surface, planning continues cleanly and CODI emits a safe skip (`[dispatch] CODI: skipped — codegraph tools unavailable` or `[dispatch] CODI: skipped — no extractable symbols in phase scope`).
+
 ## Codegraph Tool Dependency (forward-looking)
 
 - `impact` — **IN USE** starting Phase 171 (this phase). Provides the downstream blast-radius surface.

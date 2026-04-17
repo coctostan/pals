@@ -392,6 +392,74 @@ else
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 2C: CODI PLAN-PHASE DISTRIBUTION
+# ════════════════════════════════════════════════════════════════════
+
+section "CODI PLAN-PHASE DISTRIBUTION"
+
+CC_PLAN_WORKFLOW="$CC_KERNEL_DIR/workflows/plan-phase.md"
+PI_PLAN_WORKFLOW="$PI_KERNEL_DIR/workflows/plan-phase.md"
+CC_CODI_REF="$CC_KERNEL_DIR/references/codi.md"
+PI_CODI_REF="$PI_KERNEL_DIR/references/codi.md"
+
+if [ -f "$CC_PLAN_WORKFLOW" ] && [ -f "$PI_PLAN_WORKFLOW" ] \
+  && grep -Fq 'codi_seed_candidates' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'codi_seed_candidates' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'first-observed order within each bucket' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'first-observed order within each bucket' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'CODI may skip cleanly and planning continues' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'CODI may skip cleanly and planning continues' "$PI_PLAN_WORKFLOW"; then
+  tap_ok "Both installed shared plan workflows preserve CODI seed markers"
+else
+  tap_not_ok "Both installed shared plan workflows preserve CODI seed markers" "Expected codi_seed_candidates, first-observed ordering, and safe-skip markers in both installed plan-phase.md files"
+fi
+
+if [ -f "$CC_INIT_WORKFLOW" ] && [ -f "$PI_INIT_WORKFLOW" ] \
+  && grep -Fq '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' "$CC_INIT_WORKFLOW" \
+  && grep -Fq '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' "$PI_INIT_WORKFLOW"; then
+  tap_ok "Both installed shared init workflows expose CODI default-on config guidance"
+else
+  tap_not_ok "Both installed shared init workflows expose CODI default-on config guidance" "Expected CODI default-on config block in both installed init-project.md files"
+fi
+
+if [ -f "$CC_SCHEMA_REF" ] && [ -f "$PI_SCHEMA_REF" ] \
+  && grep -Fq '`modules.codi.enabled`' "$CC_SCHEMA_REF" \
+  && grep -Fq '`modules.codi.enabled`' "$PI_SCHEMA_REF" \
+  && grep -Fq '`modules.codi.description`' "$CC_SCHEMA_REF" \
+  && grep -Fq '`modules.codi.description`' "$PI_SCHEMA_REF" \
+  && grep -Fq 'CODI is safe to leave enabled by default' "$CC_SCHEMA_REF" \
+  && grep -Fq 'CODI is safe to leave enabled by default' "$PI_SCHEMA_REF"; then
+  tap_ok "Both installed schema references document CODI config fields"
+else
+  tap_not_ok "Both installed schema references document CODI config fields" "Expected CODI config-field and safe-default markers in both installed pals-json-schema.md files"
+fi
+
+if [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ] \
+  && grep -Fq 'Setup & Safe-Skip Distribution' "$CC_CODI_REF" \
+  && grep -Fq 'Setup & Safe-Skip Distribution' "$PI_CODI_REF" \
+  && grep -Fq 'pi-codegraph' "$CC_CODI_REF" \
+  && grep -Fq 'pi-codegraph' "$PI_CODI_REF" \
+  && grep -Fq '.codegraph/' "$CC_CODI_REF" \
+  && grep -Fq '.codegraph/' "$PI_CODI_REF" \
+  && grep -Fq 'planning continues cleanly' "$CC_CODI_REF" \
+  && grep -Fq 'planning continues cleanly' "$PI_CODI_REF"; then
+  tap_ok "Both installed CODI references preserve safe-setup markers"
+else
+  tap_not_ok "Both installed CODI references preserve safe-setup markers" "Expected Setup & Safe-Skip Distribution markers in both installed codi.md refs"
+fi
+
+if grep -Fq 'codi_seed_candidates' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
+  && grep -Fq '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' "$REPO_ROOT/kernel/workflows/init-project.md" \
+  && grep -Fq '`modules.codi.enabled`' "$REPO_ROOT/kernel/references/pals-json-schema.md" \
+  && grep -Fq 'Setup & Safe-Skip Distribution' "$REPO_ROOT/modules/codi/references/codi.md" \
+  && grep -Fq '### CODI setup (optional)' "$REPO_ROOT/README.md" \
+  && grep -Fq '"codi": {' "$REPO_ROOT/pals.json"; then
+  tap_ok "Repo source surfaces retain the CODI plan/config/docs contract"
+else
+  tap_not_ok "Repo source surfaces retain the CODI plan/config/docs contract" "Expected CODI markers across repo plan workflow, init workflow, schema ref, module ref, README, and pals.json"
+fi
+
+# ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: ARTIFACT SPEC COMPLIANCE
 # ════════════════════════════════════════════════════════════════════
 

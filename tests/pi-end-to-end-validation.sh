@@ -526,6 +526,64 @@ tap_file_contains_all \
   'one question at a time' \
   'planning.default_collaboration' \
   'Would you like to see the plan before I update ROADMAP.md?' 
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 2C: CODI PLAN-PHASE DISTRIBUTION
+# ════════════════════════════════════════════════════════════════════
+
+section "CODI PLAN-PHASE DISTRIBUTION"
+
+PI_PLAN_WORKFLOW="$SKILL_DIR/workflows/plan-phase.md"
+PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
+PI_SCHEMA_REF="$SKILL_DIR/references/pals-json-schema.md"
+PI_CODI_REF="$SKILL_DIR/references/codi.md"
+README_MAIN="$REPO_ROOT/README.md"
+PALS_JSON="$REPO_ROOT/pals.json"
+
+tap_file_contains_all \
+  "Installed shared plan workflow keeps CODI seed markers" \
+  "$PI_PLAN_WORKFLOW" \
+  'codi_seed_candidates' \
+  'first-observed order within each bucket' \
+  'CODI may skip cleanly and planning continues' \
+  'CODI (p220)'
+
+tap_file_contains_all \
+  "Installed shared init workflow exposes CODI default-on config guidance" \
+  "$PI_INIT_WORKFLOW" \
+  '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' \
+  'includes CODI safe-skip planning support'
+
+tap_file_contains_all \
+  "Installed shared schema reference documents CODI config fields" \
+  "$PI_SCHEMA_REF" \
+  '`modules.codi.enabled`' \
+  '`modules.codi.description`' \
+  'CODI is safe to leave enabled by default'
+
+tap_file_contains_all \
+  "Installed CODI reference keeps safe-setup markers" \
+  "$PI_CODI_REF" \
+  'Setup & Safe-Skip Distribution' \
+  'modules.codi.enabled' \
+  'pi-codegraph' \
+  '.codegraph/' \
+  'planning continues cleanly'
+
+tap_file_contains_all \
+  "README keeps the CODI user-facing setup contract" \
+  "$README_MAIN" \
+  '### CODI setup (optional)' \
+  'modules.codi.enabled' \
+  'pi-codegraph' \
+  '.codegraph/' \
+  'planning continues cleanly'
+
+tap_file_contains_all \
+  "Repo pals.json dogfoods the CODI default-on block" \
+  "$PALS_JSON" \
+  '"codi": {' \
+  'Codegraph-driven structural injection (safe skip when codegraph is unavailable)'
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: EXTENSION STRUCTURAL VALIDITY
 # ════════════════════════════════════════════════════════════════════

@@ -8,6 +8,10 @@
       "continue_threshold": 0.4,
       "safety_ceiling": 0.8
     },
+    "codi": {
+      "enabled": true,
+      "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)"
+    },
     "todd": {
       "enabled": true,
       "description": "Test-driven development enforcement"

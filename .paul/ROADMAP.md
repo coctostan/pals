@@ -36,7 +36,7 @@ Phases: 2 of 4 complete
 |-------|------|-------|--------|-----------|
 | 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
 | 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | ✅ Complete | 2026-04-16 |
-| 172 | Plan-Phase Coupling & Distribution | TBD | Not started | - |
+| 172 | Plan-Phase Coupling & Distribution | 1 (`172-01`) | Planning | - |
 | 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
 
 ### Phase 170: CODI Module Scaffolding & Hello-World Hook
@@ -45,11 +45,11 @@ Plans: 1 (`170-01`) — complete
 
 ### Phase 171: `impact` Integration & Symbol Extraction
 Focus: Add an explicit-symbol extractor (backtick-quoted names, file paths, explicit mentions — no magic inference), call `impact({ symbols, changeType: "behavior_change" })` per target, and inject a formatted Blast Radius block via `context_inject`. Advisory hook priority (~p200, after TODD/IRIS, before DEAN). Records dispatch in `<module_dispatch>`. Never blocks.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`171-01`) — complete
 
 ### Phase 172: Plan-Phase Coupling & Distribution
 Focus: Add a lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, register CODI default-on in the `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, and document setup UX. No PLAN.md template changes (deferred to v0.4).
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`172-01`) — planning
 
 ### Phase 173: Real-World Trial & Gating Decision
 Focus: Run CODI on 2–3 real PALS planning sessions and manually observe the 4 success signals (fewer unexpected files, drop in mid-APPLY codegraph calls, more specific `<boundaries>`, no need for understand/verify brokers). Produce a decision artifact: ship v0.2, iterate v0.1, or kill the thesis. Honors the plan's explicit gating discipline.
@@ -685,4 +685,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-16 — Phase 170 complete (CODI module scaffolding shipped); v2.39 at 1 of 4 phases*
+*Last updated: 2026-04-17 — Phase 172 plan created (`172-01`); v2.39 remains 2 of 4 phases complete*
