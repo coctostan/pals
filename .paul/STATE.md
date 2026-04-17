@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 runs the real-world trial and gating decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 173 of 4 (Real-World Trial & Gating Decision) — APPLY complete
-Plan: 173-01 executed; verdict: ITERATE_V0_1 (see 173-01-DECISION.md)
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-17T03:00:00Z — APPLY complete, PR #83 opened
+Phase: 173 of 4 (Real-World Trial & Gating Decision) — Complete
+Plan: 173-01 complete; verdict: ITERATE_V0_1; v2.39 milestone closed
+Status: Loop complete — ready for next milestone (v2.40) planning
+Last activity: 2026-04-17T03:30:00Z — UNIFY complete, SUMMARY written, PR #83 ready for merge gate
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [██████████] 100% (4 of 4 phases complete)
-- Phase 173: [███████▓▓▓] 70% (APPLY done, UNIFY pending)
+- Phase 173: [██████████] 100% (PLAN ✓ APPLY ✓ UNIFY ✓)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — ready for next milestone planning]
 ```
 ## Accumulated Context
 ### Decisions
@@ -210,10 +210,10 @@ Last commit: aea7bab feat(172-plan-phase-coupling-distribution): wire CODI plann
 PR: https://github.com/coctostan/pals/pull/82 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-17T03:00:00Z
-Stopped at: Phase 173 APPLY complete, awaiting UNIFY
-Next action: Run /paul:unify .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
-Resume file: .paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md
+Last session: 2026-04-17T03:30:00Z
+Stopped at: Phase 173 complete; v2.39 milestone closed; PR #83 ready for merge gate / next milestone planning
+Next action: Merge PR #83, then run /paul:plan to start v2.40 — CODI v0.1 — Extractor & Coverage Iteration (Phase 174)
+Resume file: .paul/phases/173-real-world-trial-gating-decision/173-01-SUMMARY.md
 Resume context:
 - Phase 173 verdict: **ITERATE_V0_1** — mechanically derived from Q1=yes(caveat), Q2=uncertain(1/4 projected-pass), Q3=yes(qualified), S_pass_nonnull=1, S_pass_signal3=pass.
 - 4 live PALS planning sessions all CODI_NULL=true; 1 TS-touching counterfactual (Session E, Phase 168 scope) confirmed CODI's value envelope on indexed code (4 resolved, fan-out 21 on `palsHooks`).
