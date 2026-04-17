@@ -42,7 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
-- [~] CODI module (v0.1 live integration) — registry-discovered pre-plan advisory overlay at priority 220; Phase 170 shipped hello-world scaffolding; Phase 171 upgraded to live `impact` integration with per-symbol call pattern, 5-outcome categorization, partial-success invariant, and call-time failure handling; Phase 172 shipped plan-phase coupling/default-on distribution; real-world trial and gating decision remain in Phase 173 (v2.39 in progress)
+- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict: **ITERATE_V0_1** — Signal 3 projected-pass on TS-touching counterfactual; live PALS sample uniformly CODI_NULL; v2.40 iterates on source-file symbol extraction before considering v0.2 (verdict and full evidence in `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`)
 
 ### Must Have
 All validated — see below.
