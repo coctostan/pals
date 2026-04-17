@@ -7,34 +7,40 @@ PALS plans need accurate structural facts — which files are actually affected,
 ## v0.1 Scope (Current)
 
 - **Hook:** `pre-plan` only, priority 220, advisory-only. The manifest description must never contain the classifier-reserved halt-keyword in any casing — the shared dispatch classifier in `plan-phase.md` uses strict substring matching to distinguish advisory from enforcement hooks, so CODI uses "halt", "skip", "stop", or "reject" instead.
-- **Behavior:** on dispatch, CODI extracts explicit symbols from phase scope, calls `impact` ONCE PER SYMBOL with `changeType: "behavior_change"`, formats the aggregated per-symbol responses as a Blast Radius markdown sub-section, and returns it as `context_inject.blast_radius`.
+- **Behavior:** on dispatch, CODI extracts explicit symbols from phase scope plus bounded repo-relative source selectors from the upcoming plan `<context>` file list, calls `impact` ONCE PER SYMBOL with `changeType: "behavior_change"`, formats the aggregated per-symbol responses as a Blast Radius markdown sub-section, and returns it as `context_inject.blast_radius`.
 - **Partial-success invariant:** if some symbols resolve and others don't, both halves are surfaced together — never all-or-nothing.
 - Emit exactly one `[dispatch] CODI: ...` log line per dispatch.
-- NO MAGIC INFERENCE — only explicit textual matches feed `impact`.
+- NO MAGIC INFERENCE — only explicit textual matches and bounded selector reads feed `impact`.
 
 ## Symbol Extraction Rules
 
 **Scanned sources:**
-
 1. The current-phase detail section in `.paul/ROADMAP.md`.
 2. The in-progress objective text for the plan being created.
-3. Source-file path tokens explicitly mentioned in phase scope (e.g., in a source plan reference or the roadmap phase focus text).
+3. Explicit repo-relative source files named for the upcoming plan `<context>` file list.
 
-**Accept rules:**
-
+**Direct symbol seeds:**
 - Backtick-quoted identifiers: `fooFn`, `Bar.baz`, `snake_case`, `camelCase`.
-- File-path-shaped tokens — contain `/` AND either end with a known source-code extension OR start with a repo-root directory such as `src/`, `modules/`, `kernel/`, `drivers/`, `.paul/`.
 - Explicit phrases of the form "symbol X" or "the function X".
+**Repo-relative source selectors:**
+
+- `.ts`, `.tsx`, `.js`, and `.jsx` paths in the upcoming plan `<context>` file list act as bounded source selectors, not final `impact` inputs.
+- For each selector, do a read-only pass and extract only the stable identifiers surfaced by top-level function declarations, top-level class declarations, exported named declarations, and exported const / arrow bindings.
+- Nested declarations, type-only constructs, re-export-only barrels, installed-runtime paths, and codebase-wide search stay out of scope.
+
+**Ordering:**
+
+- Explicit phase/objective identifiers first.
+- Source-derived declarations second, preserving source-file mention order and declaration order within each file.
+- Cap the final candidate set at 1-5 stable extracted identifiers.
 
 **Reject rules:**
-
 - English prose words.
 - Shell-command backticks: `ls`, `git status`, `grep -n`, and similar.
 - Config literals: `true`, `false`, quoted option values.
 - Tokens of 2 characters or fewer.
 - Stopwords (minimum set): `yes`, `no`, `on`, `off`, `null`, `none`. The manifest may extend this set without reference-doc updates.
-
-**Guardrail:** When in doubt, extract fewer symbols — CODI tolerates an empty unresolved list and the partial-success path handles unknowns gracefully.
+**Guardrail:** When in doubt, extract fewer symbols. NO MAGIC INFERENCE — only explicit textual matches and bounded selector reads feed `impact`.
 
 ## `impact` Call Contract
 
@@ -42,7 +48,7 @@ PALS plans need accurate structural facts — which files are actually affected,
 - **`changeType` rationale:** `"behavior_change"` captures the broadest semantic downstream impact without assuming signature or removal changes; matches the source-plan recommendation.
 - **Call pattern: PER SYMBOL, NOT BATCHED.** For each extracted symbol, issue one `impact({ symbols: [singleSymbol], changeType: "behavior_change" })` call. **Rationale:** empirical testing during Phase 171 planning showed `impact` is all-or-nothing on unresolved input — a batched call containing any unknown symbol returns only `Symbol "..." not found` and destroys ALL resolved data. Per-symbol calls give per-symbol outcome isolation and enable the partial-success invariant.
 - **Input-self-filter quirk:** `impact` excludes input symbols from their own downstream output. Resolving `fooFn` returns `fooFn`'s callers, not `fooFn` itself. This is a property of the tool, not CODI; document but do not compensate.
-- **Cost:** N calls per dispatch, where N is the extracted-symbol count (typically ≤10 given strict accept rules). Acceptable for pre-plan advisory dispatch.
+- **Cost:** N calls per dispatch, where N is the extracted-symbol count (typically ≤5 given the strict accept rules and bounded source-selector cap). Acceptable for pre-plan advisory dispatch.
 
 ## `impact` Response Format
 
@@ -108,6 +114,7 @@ CODI does not pre-check codegraph tool availability. There is no reliable filesy
 - `modules.codi.enabled` defaults to `true` in fresh and migrated `pals.json`.
 - Optional setup: install `pi-codegraph` and keep a usable codegraph index for the repo.
 - v0.1 does **not** create a hard `.codegraph/` gate; repository state alone does not prove runtime tool availability.
+- Repo-source contract updates do not affect live planning until `install.sh` or `drivers/pi/install.sh` refreshes the installed registry and copied refs.
 - If `pi-codegraph` is unavailable, the index is missing or unusable, or the repo sits outside CODI's current codegraph surface, planning continues cleanly and CODI emits a safe skip (`[dispatch] CODI: skipped — codegraph tools unavailable` or `[dispatch] CODI: skipped — no extractable symbols in phase scope`).
 
 ## Codegraph Tool Dependency (forward-looking)

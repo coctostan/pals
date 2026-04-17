@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.40 CODI v0.1 — Extractor & Coverage Iteration. Phase 173 verdict ITERATE_V0_1 selected 4-phase shape: 174 source-file extraction → 175 install-detection/docs/format-fix → 176 dispatch-outcome instrumentation → 177 re-trial + gating decision. Milestone invariant: nothing takes effect until `bash drivers/pi/install.sh` runs.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 174 of 4 (Source-File Symbol Extraction) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-17T04:00:00Z — v2.40 milestone created (4 phases, 3 invariants, phase dirs initialized)
+Phase: 174 of 4 (Source-File Symbol Extraction) — Planning
+Plan: 174-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-17T13:19:16Z — Created .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [░░░░░░░░░░] 0%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█░░░░░░░░░] 10%
 - Phase 174: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN of v2.40]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 ## Accumulated Context
 ### Decisions
@@ -205,19 +205,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 38c439a feat(173-real-world-trial-gating-decision): CODI v0.1 trial + ITERATE_V0_1 verdict (#83)
-PR: https://github.com/coctostan/pals/pull/83 (state: MERGED)
-CI: passing
+Branch: feature/174-source-file-symbol-extraction
+Last commit: ce3b96f wip(174-source-file-symbol-extraction): paused before PLAN (handoff written)
+PR: none (state: N/A)
+CI: N/A
 ## Session Continuity
-Last session: 2026-04-17T04:10:00Z
-Stopped at: PAUSED — v2.40 milestone created, Phase 174 ready to plan (handoff written)
-Next action: /paul:resume (or /paul:plan directly for Phase 174)
-Resume file: .paul/HANDOFF-2026-04-17-v2.40-phase174-ready-to-plan.md
+Last session: 2026-04-17T13:19:16Z
+Stopped at: Plan 174-01 created
+Next action: Review and approve plan, then run /paul:apply .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
+Resume file: .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
 Resume context:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration is the current milestone. 4 phases: 174 extractor change → 175 install-detection/docs/format-fix → 176 instrumentation → 177 re-trial + gating.
-- **Invariant 1:** nothing takes effect until `bash drivers/pi/install.sh` runs. Every phase editing `modules/codi/*`, `kernel/workflows/*`, or `drivers/pi/install.sh` itself MUST re-run installer in APPLY verification. Phase 175 additionally requires TWO installer runs (meta-bootstrap: deploy the installer edit, then exercise the new probe).
-- **Invariant 2:** Phase 174's own CODI dispatch is expected CODI_NULL (plans against v2.39 prose extractor; v2.40 extractor not yet installed). Phase 175-plan is the first session where v2.40 extractor fires live.
-- **Invariant 3:** Phase 177's trial set = {175-plan, 176-plan, 177-plan-self} + counterfactual re-run. Sessions observed against stale installed manifests are excluded.
-- Phase 174 focus: add source-file symbol extraction to `prepare_codi_seed_candidates` (reads PLAN's `<context>` list, parses TS/JS top-level declarations, seeds `impact`). Target files: `modules/codi/module.yaml`, `modules/codi/references/codi.md`, `kernel/workflows/plan-phase.md`. Phase 173 counterfactual proved viability (`palsHooks` depth 3 fan-out 21 would have resolved).
-- git state: main synced at 00eecf6 (transition commit) ← 38c439a (PR #83 squash merge). WALT baseline: 165/165 + 69/69.
+- Planning posture used: high collaboration, direct-requirements mode.
+- Phase 174 plan scope is bounded to `modules/codi/module.yaml`, `modules/codi/references/codi.md`, and `kernel/workflows/plan-phase.md`.
+- **Invariant 1:** APPLY MUST run `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` because this phase edits `modules/codi/*` and `kernel/workflows/*`.
+- **Invariant 2:** Phase 174's own planning session is expected CODI_NULL; Phase 175 planning is the first live session expected to exercise the new extractor.
+- **Invariant 3:** Phase 177's trial set = {175-plan, 176-plan, 177-plan-self} + counterfactual re-run; stale installed manifests invalidate observations.
+- APPLY verification target: installer + `bash tests/pi-end-to-end-validation.sh` + `bash tests/cross-harness-validation.sh`.
