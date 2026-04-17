@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-16)
+See: .paul/PROJECT.md (updated 2026-04-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 produces the ship/iterate/kill decision
+**Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 runs the real-world trial and gating decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 172 of 4 (Plan-Phase Coupling & Distribution) — Complete
-Plan: 172-01 complete
-Status: Ready for next PLAN
-Last activity: 2026-04-17T01:28:59Z — Unified Phase 172 results and prepared phase transition
+Phase: 173 of 4 (Real-World Trial & Gating Decision) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-17T01:32:43Z — Phase 172 complete, transitioned to Phase 173
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███████░░░] 75% (3 of 4 phases complete)
-- Phase 172: [██████████] 100%
+- Phase 173: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ○        ○        ○     [Ready to plan]
 ```
 ## Accumulated Context
 ### Decisions
@@ -200,21 +200,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - ci-generation.md and sonarqube-integration.md — future module candidates
 - Agent SDK hook dispatch shelved — not an active milestone driver
 - Tree-sitter repo map deferred
-Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 - Multi-model routing: implemented in Phase 43 — pals.json `agents` section, agent-dispatch.md reference, apply-phase dispatch logic
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/172-plan-phase-coupling-distribution
-Last commit: b0fdcc1 chore(172-plan-phase-coupling-distribution): update apply state
-PR: https://github.com/coctostan/pals/pull/82 (state: OPEN)
+Branch: main
+Last commit: aea7bab feat(172-plan-phase-coupling-distribution): wire CODI planning contract (#82)
+PR: https://github.com/coctostan/pals/pull/82 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-17T01:28:59Z
-Stopped at: Phase 172 complete; merge gate and phase transition next
-Next action: Complete merge/transition flow, then run /paul:plan for Phase 173
-Resume file: .paul/phases/172-plan-phase-coupling-distribution/172-01-SUMMARY.md
+Last session: 2026-04-17T01:32:43Z
+Stopped at: Phase 172 complete, ready to plan Phase 173
+Next action: /paul:plan
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 172 APPLY and UNIFY are complete; SUMMARY.md now records the delivered CODI seed/config/docs contract.
-- PR `#82` remains the active GitHub Flow merge target for the feature branch.
-- After merge + transition, Phase 173 will define the real-world CODI trial and gating decision.
+- Phase 172 shipped the CODI seed/config/docs contract and recorded `172-01` in `.paul/QUALITY-HISTORY.md`.
+- PR `#82` is merged and the feature work is now on `main`.
+- Phase 173 should define 2–3 real PALS planning trials plus the ship/iterate/kill decision artifact.

@@ -31,12 +31,12 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-04-16
 Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
 | 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | ✅ Complete | 2026-04-16 |
-| 172 | Plan-Phase Coupling & Distribution | 1 (`172-01`) | Planning | - |
+| 172 | Plan-Phase Coupling & Distribution | 1 (`172-01`) | ✅ Complete | 2026-04-17 |
 | 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
 
 ### Phase 170: CODI Module Scaffolding & Hello-World Hook
@@ -49,7 +49,7 @@ Plans: 1 (`171-01`) — complete
 
 ### Phase 172: Plan-Phase Coupling & Distribution
 Focus: Add a lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, register CODI default-on in the `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, and document setup UX. No PLAN.md template changes (deferred to v0.4).
-Plans: 1 (`172-01`) — planning
+Plans: 1 (`172-01`) — complete
 
 ### Phase 173: Real-World Trial & Gating Decision
 Focus: Run CODI on 2–3 real PALS planning sessions and manually observe the 4 success signals (fewer unexpected files, drop in mid-APPLY codegraph calls, more specific `<boundaries>`, no need for understand/verify brokers). Produce a decision artifact: ship v0.2, iterate v0.1, or kill the thesis. Honors the plan's explicit gating discipline.
@@ -685,4 +685,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-17 — Phase 172 plan created (`172-01`); v2.39 remains 2 of 4 phases complete*
+*Last updated: 2026-04-17 — Phase 172 complete (`172-01`); v2.39 is now 3 of 4 phases complete*

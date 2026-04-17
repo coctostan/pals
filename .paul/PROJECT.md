@@ -42,7 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
-- [~] CODI module (v0.1 live integration) — registry-discovered pre-plan advisory overlay at priority 220; Phase 170 shipped hello-world scaffolding; Phase 171 upgraded to live `impact` integration with per-symbol call pattern, 5-outcome categorization, partial-success invariant, and call-time failure handling; plan-phase coupling and real-world trial remain in Phases 172–173 (v2.39 in progress)
+- [~] CODI module (v0.1 live integration) — registry-discovered pre-plan advisory overlay at priority 220; Phase 170 shipped hello-world scaffolding; Phase 171 upgraded to live `impact` integration with per-symbol call pattern, 5-outcome categorization, partial-success invariant, and call-time failure handling; Phase 172 shipped plan-phase coupling/default-on distribution; real-world trial and gating decision remain in Phase 173 (v2.39 in progress)
 
 ### Must Have
 All validated — see below.
@@ -145,6 +145,7 @@ All validated — see below.
 - ✓ Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface shipped across Phases 167-169 (v2.38)
 - ✓ CODI module scaffolding — registry-discovered pre-plan advisory overlay at priority 220, hello-world dispatch, no tool calls in v0.1; installer is already registry-driven so zero installer/kernel/workflow edits were required (Phase 170, v2.39 in progress)
 - ✓ CODI live `impact` integration — per-symbol call pattern (not batched, because `impact` is all-or-nothing on unresolved input), 5 per-symbol outcome categories, partial-success invariant, Blast Radius markdown sub-section returned as `context_inject.blast_radius`, 4 hook-level skip paths, classifier-safety invariant extended to full module surface (Phase 171, v2.39 in progress)
+- ✓ CODI plan-phase coupling & distribution — prose-heavy planning scopes now seed explicit repo-confirmed CODI targets, `modules.codi` ships default-on across config/schema/docs, and semantic validation guards the contract across repo + installed surfaces (Phase 172, v2.39 in progress)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -317,6 +318,7 @@ All validated — see below.
 | 2026-04-16: Classifier-safety invariant tightens at the module surface — the halt-keyword token is now avoided across manifest description AND reference doc natural prose | 171 | Prevents future module edits from reintroducing the time bomb via innocent prose; "sub-section" and "code region" replace the common alternative across all CODI surfaces |
 | 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; pattern worth codifying for future CODI-family phases |
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
+| 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -335,4 +337,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-16 after Phase 171 completion (CODI live `impact` integration shipped, v2.39 at 50% — Phases 172–173 remain)*
+*Last updated: 2026-04-17 after Phase 172 completion (CODI plan-phase coupling shipped, v2.39 at 75% — Phase 173 remains)*
