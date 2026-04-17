@@ -42,7 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
-- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict: **ITERATE_V0_1** — Signal 3 projected-pass on TS-touching counterfactual; live PALS sample uniformly CODI_NULL; v2.40 iterates on source-file symbol extraction before considering v0.2 (verdict and full evidence in `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`)
+- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict ITERATE_V0_1 selected v2.40, and Phase 174 shipped bounded source-file selector extraction so upcoming-plan `<context>` TS/JS paths now seed stable `impact` candidates without widening CODI beyond its no-magic advisory scope.
 
 ### Must Have
 All validated — see below.
@@ -319,6 +319,7 @@ All validated — see below.
 | 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; pattern worth codifying for future CODI-family phases |
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
 | 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
+| 2026-04-17: Treat upcoming-plan `<context>` repo-relative `.ts/.tsx/.js/.jsx` files as bounded source selectors and promote only extracted stable identifiers to `impact` candidates | 174 | Fixes extractor-vs-scope alignment without turning CODI into semantic guessing or raw-path `impact` dispatch |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -337,4 +338,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-17 after Phase 172 completion (CODI plan-phase coupling shipped, v2.39 at 75% — Phase 173 remains)*
+*Last updated: 2026-04-17 after Phase 174 completion (source-file selector extraction shipped; v2.40 at 25% — Phase 175 ready)*

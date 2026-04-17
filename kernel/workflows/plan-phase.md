@@ -87,20 +87,23 @@ templates/PLAN.md
 <step name="prepare_codi_seed_candidates" priority="before-pre-plan-advisory">
 **Prepare bounded CODI seeds for prose-heavy scopes before advisory dispatch.**
 1. Review the target phase detail plus any carried context already selected for this planning run.
-2. If the phase detail already contains extractor-friendly explicit symbols or repo-relative source paths, keep those as the primary CODI input and skip extra seed reads.
-3. If the phase detail is still prose-heavy:
-   - Do a lightweight, read-only seed pass against only the immediately relevant source/context reads for this phase.
-   - Extract at most 1-5 explicit repo-confirmed identifiers or repo-relative paths.
-   - Store the result as `codi_seed_candidates`.
+2. Assemble the repo-relative source-file set that will appear in the upcoming plan context block (`<context>`):
+   - Keep only explicitly named repo files from the phase detail or carried context.
+   - Keep only `.ts`, `.tsx`, `.js`, and `.jsx` files as CODI source selectors.
+   - Treat those paths as bounded source selectors, not final `impact` candidates.
+3. Build `codi_seed_candidates` deterministically:
+   - First keep extractor-friendly explicit symbol identifiers already named in the phase detail/objective.
+   - If the remaining scope is still prose-heavy, do a lightweight, read-only pass over only the selected source selectors for this upcoming plan context block.
+   - From each selected source file, extract only stable top-level declarations: top-level `function` declarations, top-level `class` declarations, exported named declarations, and exported `const` / arrow bindings.
+   - Ignore nested declarations, type-only constructs, re-export-only barrels, installed-runtime paths, and non-code files.
 4. Candidate rules:
-   - Every candidate must be directly observed in the phase detail, carried context, or targeted source reads.
-   - Prefer explicit symbol identifiers named in the phase detail/objective.
-   - Then repo-relative source paths named there.
-   - Then explicit identifiers or repo-relative paths surfaced by carried context or targeted source reads.
-   - Preserve first-observed order within each bucket.
+   - Every candidate must be directly observed in the phase detail/objective, carried context, or the bounded read over selected source selectors.
+   - Prefer explicit phase/objective identifiers first.
+   - Then source-derived declarations, preserving source-file mention order and declaration order within each file.
+   - Cap the final candidate set at 1-5 stable extracted identifiers.
 5. Guardrails:
-   - No semantic guessing, no invented abstractions, and no codebase-wide fishing.
-   - If no confirmed seeds exist, record none; CODI may skip cleanly and planning continues.
+   - No semantic guessing, no invented abstractions, no codebase-wide fishing, and no reread of a previously written PLAN artifact.
+   - Markdown/config-only phases may record no seeds; CODI may skip cleanly and planning continues.
 6. Pass `codi_seed_candidates` forward to pre-plan advisory dispatch and later reuse them inside the existing objective/context/source-file structure. Do NOT add new PLAN template sections.
 </step>
 <step name="pre_plan_advisory_hooks" priority="before-scope-analysis">

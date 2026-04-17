@@ -197,6 +197,16 @@ if [ -f "$SKILL_DIR/modules.yaml" ]; then
   fi
 fi
 
+tap_file_contains_all \
+  "Installed modules.yaml preserves CODI source-selector markers" \
+  "$SKILL_DIR/modules.yaml" \
+  'source selectors' \
+  'top-level function declarations' \
+  'exported const / arrow bindings' \
+  '.tsx' \
+  '.jsx' \
+  'stable identifiers surfaced'
+
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 1B: MODULE EXECUTION EVIDENCE
 # ════════════════════════════════════════════════════════════════════
@@ -541,12 +551,15 @@ README_MAIN="$REPO_ROOT/README.md"
 PALS_JSON="$REPO_ROOT/pals.json"
 
 tap_file_contains_all \
-  "Installed shared plan workflow keeps CODI seed markers" \
+  "Installed shared plan workflow keeps CODI source-selector markers" \
   "$PI_PLAN_WORKFLOW" \
   'codi_seed_candidates' \
-  'first-observed order within each bucket' \
-  'CODI may skip cleanly and planning continues' \
-  'CODI (p220)'
+  'upcoming plan context block' \
+  'source selectors' \
+  'source-file mention order' \
+  'declaration order within each file' \
+  'stable extracted identifiers' \
+  'CODI may skip cleanly and planning continues'
 
 tap_file_contains_all \
   "Installed shared init workflow exposes CODI default-on config guidance" \
@@ -562,10 +575,16 @@ tap_file_contains_all \
   'CODI is safe to leave enabled by default'
 
 tap_file_contains_all \
-  "Installed CODI reference keeps safe-setup markers" \
+  "Installed CODI reference keeps source-selector and safe-setup markers" \
   "$PI_CODI_REF" \
   'Setup & Safe-Skip Distribution' \
   'modules.codi.enabled' \
+  'source selectors' \
+  'top-level function declarations' \
+  'exported const / arrow bindings' \
+  'source-file mention order' \
+  'declaration order within each file' \
+  'stable identifiers surfaced' \
   'pi-codegraph' \
   '.codegraph/' \
   'planning continues cleanly'

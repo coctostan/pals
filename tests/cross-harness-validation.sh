@@ -204,6 +204,24 @@ if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ]; then
     tap_not_ok "Both modules.yaml registries include hook metadata and refs" "Expected hook_details with TODD/WALT refs in both installed registries"
   fi
 fi
+
+if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ] \
+  && grep -Fq 'source selectors' "$CC_MODULES_YAML" \
+  && grep -Fq 'source selectors' "$PI_MODULES_YAML" \
+  && grep -Fq 'top-level function declarations' "$CC_MODULES_YAML" \
+  && grep -Fq 'top-level function declarations' "$PI_MODULES_YAML" \
+  && grep -Fq 'exported const / arrow bindings' "$CC_MODULES_YAML" \
+  && grep -Fq 'exported const / arrow bindings' "$PI_MODULES_YAML" \
+  && grep -Fq '.tsx' "$CC_MODULES_YAML" \
+  && grep -Fq '.tsx' "$PI_MODULES_YAML" \
+  && grep -Fq '.jsx' "$CC_MODULES_YAML" \
+  && grep -Fq '.jsx' "$PI_MODULES_YAML" \
+  && grep -Fq 'stable identifiers surfaced' "$CC_MODULES_YAML" \
+  && grep -Fq 'stable identifiers surfaced' "$PI_MODULES_YAML"; then
+  tap_ok "Both modules.yaml registries preserve CODI source-selector markers"
+else
+  tap_not_ok "Both modules.yaml registries preserve CODI source-selector markers" "Expected source-selector extraction markers in both installed CODI descriptions"
+fi
   if grep -q '^  walt:' "$CC_MODULES_YAML" \
     && grep -q '^  skip:' "$CC_MODULES_YAML" \
     && grep -q '^  ruby:' "$CC_MODULES_YAML" \
@@ -405,13 +423,21 @@ PI_CODI_REF="$PI_KERNEL_DIR/references/codi.md"
 if [ -f "$CC_PLAN_WORKFLOW" ] && [ -f "$PI_PLAN_WORKFLOW" ] \
   && grep -Fq 'codi_seed_candidates' "$CC_PLAN_WORKFLOW" \
   && grep -Fq 'codi_seed_candidates' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'first-observed order within each bucket' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'first-observed order within each bucket' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'upcoming plan context block' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'upcoming plan context block' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'source selectors' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'source selectors' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'source-file mention order' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'source-file mention order' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'declaration order within each file' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'declaration order within each file' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'stable extracted identifiers' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'stable extracted identifiers' "$PI_PLAN_WORKFLOW" \
   && grep -Fq 'CODI may skip cleanly and planning continues' "$CC_PLAN_WORKFLOW" \
   && grep -Fq 'CODI may skip cleanly and planning continues' "$PI_PLAN_WORKFLOW"; then
-  tap_ok "Both installed shared plan workflows preserve CODI seed markers"
+  tap_ok "Both installed shared plan workflows preserve CODI source-selector markers"
 else
-  tap_not_ok "Both installed shared plan workflows preserve CODI seed markers" "Expected codi_seed_candidates, first-observed ordering, and safe-skip markers in both installed plan-phase.md files"
+  tap_not_ok "Both installed shared plan workflows preserve CODI source-selector markers" "Expected codi_seed_candidates, upcoming plan context block, source-selector ordering, and safe-skip markers in both installed plan-phase.md files"
 fi
 
 if [ -f "$CC_INIT_WORKFLOW" ] && [ -f "$PI_INIT_WORKFLOW" ] \
@@ -437,26 +463,44 @@ fi
 if [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ] \
   && grep -Fq 'Setup & Safe-Skip Distribution' "$CC_CODI_REF" \
   && grep -Fq 'Setup & Safe-Skip Distribution' "$PI_CODI_REF" \
+  && grep -Fq 'source selectors' "$CC_CODI_REF" \
+  && grep -Fq 'source selectors' "$PI_CODI_REF" \
+  && grep -Fq 'top-level function declarations' "$CC_CODI_REF" \
+  && grep -Fq 'top-level function declarations' "$PI_CODI_REF" \
+  && grep -Fq 'exported const / arrow bindings' "$CC_CODI_REF" \
+  && grep -Fq 'exported const / arrow bindings' "$PI_CODI_REF" \
+  && grep -Fq 'source-file mention order' "$CC_CODI_REF" \
+  && grep -Fq 'source-file mention order' "$PI_CODI_REF" \
+  && grep -Fq 'declaration order within each file' "$CC_CODI_REF" \
+  && grep -Fq 'declaration order within each file' "$PI_CODI_REF" \
+  && grep -Fq 'stable identifiers surfaced' "$CC_CODI_REF" \
+  && grep -Fq 'stable identifiers surfaced' "$PI_CODI_REF" \
   && grep -Fq 'pi-codegraph' "$CC_CODI_REF" \
   && grep -Fq 'pi-codegraph' "$PI_CODI_REF" \
   && grep -Fq '.codegraph/' "$CC_CODI_REF" \
   && grep -Fq '.codegraph/' "$PI_CODI_REF" \
   && grep -Fq 'planning continues cleanly' "$CC_CODI_REF" \
   && grep -Fq 'planning continues cleanly' "$PI_CODI_REF"; then
-  tap_ok "Both installed CODI references preserve safe-setup markers"
+  tap_ok "Both installed CODI references preserve source-selector and safe-setup markers"
 else
-  tap_not_ok "Both installed CODI references preserve safe-setup markers" "Expected Setup & Safe-Skip Distribution markers in both installed codi.md refs"
+  tap_not_ok "Both installed CODI references preserve source-selector and safe-setup markers" "Expected source-selector and safe-setup markers in both installed codi.md refs"
 fi
 
 if grep -Fq 'codi_seed_candidates' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
+  && grep -Fq 'upcoming plan context block' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
+  && grep -Fq 'declaration order within each file' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
+  && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'top-level function declarations' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/references/codi.md" \
+  && grep -Fq 'stable extracted identifiers' "$REPO_ROOT/modules/codi/references/codi.md" \
   && grep -Fq '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' "$REPO_ROOT/kernel/workflows/init-project.md" \
   && grep -Fq '`modules.codi.enabled`' "$REPO_ROOT/kernel/references/pals-json-schema.md" \
   && grep -Fq 'Setup & Safe-Skip Distribution' "$REPO_ROOT/modules/codi/references/codi.md" \
   && grep -Fq '### CODI setup (optional)' "$REPO_ROOT/README.md" \
   && grep -Fq '"codi": {' "$REPO_ROOT/pals.json"; then
-  tap_ok "Repo source surfaces retain the CODI plan/config/docs contract"
+  tap_ok "Repo source surfaces retain the CODI source-selector contract"
 else
-  tap_not_ok "Repo source surfaces retain the CODI plan/config/docs contract" "Expected CODI markers across repo plan workflow, init workflow, schema ref, module ref, README, and pals.json"
+  tap_not_ok "Repo source surfaces retain the CODI source-selector contract" "Expected Phase 174 source-selector markers across repo plan workflow, module manifest, module ref, init workflow, schema ref, README, and pals.json"
 fi
 
 # ════════════════════════════════════════════════════════════════════

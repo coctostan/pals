@@ -18,17 +18,22 @@ hooks:
     priority: 220
     description: >-
       CODI injects structural blast-radius facts from the codegraph `impact` tool into PLAN.md so plans carry graph-derived truth
-      about affected call-sites. ADVISORY ONLY — MUST NEVER halt plan creation. Run the four steps below in order.
+      about affected call-sites. ADVISORY ONLY — MUST NEVER halt plan creation. Run the steps below in order.
 
-      STEP 1 — EXTRACT SYMBOLS. Scan three source text regions: the current-phase detail section in `.paul/ROADMAP.md`, the
-      in-progress plan objective text, and source-file path tokens explicitly mentioned in phase scope. Accept rules: (a)
-      backtick-quoted identifiers (e.g., `fooFn`, `Bar.baz`, `snake_case`, `camelCase`); (b) tokens that look like file paths
-      — contain `/` AND either end with a known source-code extension OR start with a repo-root directory such as `src/`,
-      `modules/`, `kernel/`, `drivers/`, `.paul/`; (c) explicit phrases of the form "symbol X" or "the function X". Reject
-      rules: English prose; shell-command backticks such as `ls`, `git status`, `grep -n`; config literals such as `true`,
-      `false`, quoted option values; tokens of 2 characters or fewer; stopwords at minimum `yes`, `no`, `on`, `off`, `null`,
-      `none`. State plainly in operation: NO MAGIC INFERENCE — only explicit textual matches. When in doubt extract fewer
-      symbols. If zero symbols extracted, skip directly to the "no extractable symbols" hook-level skip log in Step 7.
+      STEP 1 — EXTRACT SYMBOLS. Scan three inputs in order: the current-phase detail section in `.paul/ROADMAP.md`, the
+      in-progress plan objective text, and the explicitly named repo-relative source files prepared for the upcoming plan
+      `<context>` list. Accept direct symbol seeds from prose via (a) backtick-quoted identifiers (e.g., `fooFn`, `Bar.baz`,
+      `snake_case`, `camelCase`) and (b) explicit phrases of the form "symbol X" or "the function X". Treat repo-relative
+      `.ts`, `.tsx`, `.js`, and `.jsx` paths in that upcoming `<context>` list as bounded source selectors, not direct `impact`
+      inputs. For each selector, do a read-only pass over that file and extract only the stable identifiers surfaced by top-level function declarations,
+      function declarations, top-level class declarations, exported named declarations, and exported const / arrow bindings.
+      Preserve source-file mention order and declaration order within each file. Reject nested declarations, type-only
+      constructs, re-export-only barrels, installed-runtime paths, English prose, shell-command backticks such as `ls`,
+      `git status`, `grep -n`, config literals such as `true`, `false`, quoted option values, tokens of 2 characters or fewer,
+      stopwords at minimum `yes`, `no`, `on`, `off`, `null`, `none`, codebase-wide search, and semantic guessing. State
+      plainly in operation: NO MAGIC INFERENCE — only explicit textual matches plus bounded selector reads. When in doubt
+      extract fewer symbols. If zero symbols extracted, skip directly to the "no extractable symbols" hook-level skip log in Step
+      7.
 
       STEP 2 — CALL `impact` PER SYMBOL. For EACH extracted symbol, invoke `impact({ symbols: [singleSymbol], changeType:
       "behavior_change" })` as a separate call. DO NOT batch all symbols into a single call. Rationale: `impact` is

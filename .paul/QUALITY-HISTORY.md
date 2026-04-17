@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: 123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→143 pass + 60 pass→143 pass + 60 pass→149 pass + 60 pass→151 pass + 62 pass→156 pass→159 pass→159 pass→159 pass→165 pass + 69 pass→165 pass + 69 pass
+Tests: 123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→143 pass + 60 pass→143 pass + 60 pass→149 pass + 60 pass→151 pass + 62 pass→156 pass→159 pass→159 pass→159 pass→165 pass + 69 pass→165 pass + 69 pass→166 pass + 70 pass
 Coverage: —
 Lint: —
 Types: —
@@ -23,6 +23,7 @@ Types: —
 | 171-01 | 2026-04-16 | 159 pass | — | — | — | → stable |
 | 172-01 | 2026-04-17 | 165 pass + 69 pass | — | — | — | ↑ improving |
 | 173-01 | 2026-04-17 | 165 pass + 69 pass | — | — | — | → stable |
+| 174-01 | 2026-04-17 | 166 pass + 70 pass | — | — | — | ↑ improving |
 
 ---
 *Updated after every /paul:unify*
