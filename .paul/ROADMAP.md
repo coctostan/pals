@@ -27,51 +27,71 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.39 CODI v0.1 — Pre-Plan Structural Injection**
-Status: ✅ Complete
-Started: 2026-04-16
-Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
-Phases: 4 of 4 complete — verdict: ITERATE_V0_1 (closes v2.39)
+**v2.40 CODI v0.1 — Extractor & Coverage Iteration**
+Status: 🚧 In Progress
+Started: 2026-04-17
+Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2. Selected by Phase 173 verdict ITERATE_V0_1 (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
+Phases: 0 of 4 complete
+
+### Milestone Invariants
+
+1. **Nothing takes effect until `bash drivers/pi/install.sh` runs.** The installed surface (`~/.pi/agent/skills/pals/modules.yaml`, `~/.pi/agent/skills/pals/kernel/workflows/*`, `~/.pi/agent/skills/pals/modules/codi/*`) is what CODI dispatches against at plan time. Repo-source edits to `modules/codi/*`, `kernel/workflows/*`, or `drivers/pi/install.sh` itself are invisible until the installer regenerates the installed tree. Every v2.40 phase that edits any of those surfaces MUST include `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` as a verification step in APPLY. Phases that do NOT edit those surfaces are exempt.
+
+2. **Self-test phasing.** Phase 174 plans-and-applies against the v2.39 (prose-only) extractor because the v2.40 extractor doesn't go live until 174's APPLY + installer re-run complete. Phase 174's own CODI dispatch is therefore expected to be CODI_NULL. The first session where the v2.40 extractor demonstrates itself live is **Phase 175's planning run**. Phase 177's re-trial set is therefore {175-plan, 176-plan, 177-plan-self} plus any representative counterfactual, NOT {174-plan, ...}.
+
+3. **Trial integrity (Phase 177).** Before observing each trial session's dispatch, confirm `~/.pi/agent/skills/pals/modules.yaml` reflects the latest repo-source `modules/codi/module.yaml`. Any session observed against a stale installed manifest is excluded from the trial set.
+
+### Phases
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
-| 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | ✅ Complete | 2026-04-16 |
-| 172 | Plan-Phase Coupling & Distribution | 1 (`172-01`) | ✅ Complete | 2026-04-17 |
-| 173 | Real-World Trial & Gating Decision | 1 (`173-01`) | ✅ Complete | 2026-04-17 |
+| 174 | Source-File Symbol Extraction | TBD | Not started | - |
+| 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | TBD | Not started | - |
+| 176 | Dispatch-Outcome Instrumentation | TBD | Not started | - |
+| 177 | Re-Trial + Gating Decision | TBD | Not started | - |
 
-### Phase 170: CODI Module Scaffolding & Hello-World Hook
-Focus: Create `modules/codi/` with manifest and reference doc as a registry-discovered pre-plan advisory overlay. v0.1 ships with a hello-world dispatch, no codegraph tool calls, and no prerequisite checks — tool-availability handling is deferred to Phase 171 call-time failure handling. First concrete step from the integration plan.
-Plans: 1 (`170-01`) — complete
+### Phase 174: Source-File Symbol Extraction
+Focus: Highest-leverage v2.40 iteration. During `prepare_codi_seed_candidates`, read PLAN's `<context>` source-file list and parse top-level declarations (functions, classes, exports — TS/JS first, extensible) to seed `impact` calls in addition to the existing prose-based extraction. Phase 173 counterfactual established that Phase 168's scope (`drivers/pi/extensions/pals-hooks.ts`) would have yielded 4 resolved-with-call-sites symbols if source-file extraction had been active. Target files: `modules/codi/module.yaml` (manifest description Step 1: extraction rules), `modules/codi/references/codi.md` (Symbol Extraction Rules section), `kernel/workflows/plan-phase.md` (`prepare_codi_seed_candidates` step from Phase 172). APPLY MUST re-run `bash drivers/pi/install.sh` as a verification step (Milestone Invariant 1). Phase 174's own CODI dispatch is expected CODI_NULL per Invariant 2.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 171: `impact` Integration & Symbol Extraction
-Focus: Add an explicit-symbol extractor (backtick-quoted names, file paths, explicit mentions — no magic inference), call `impact({ symbols, changeType: "behavior_change" })` per target, and inject a formatted Blast Radius block via `context_inject`. Advisory hook priority (~p200, after TODD/IRIS, before DEAN). Records dispatch in `<module_dispatch>`. Never blocks.
-Plans: 1 (`171-01`) — complete
+### Phase 175: Install-Time Detection + Value-Envelope Docs + Format Fix
+Focus: Bundled docs/install pass covering three related loose ends from Phase 173's DECISION.md. (a) `drivers/pi/install.sh` probes codegraph availability at install time; surfaces a one-line recommendation when absent ("CODI is enabled but no codegraph index detected — see `modules/codi/references/codi.md` for setup"). (b) `modules/codi/references/codi.md` gains a "When CODI helps" section framing the TS-touching-on-indexed-code value envelope honestly; `README.md` CODI overview aligned. (c) Manifest success-log format explicitly pins the R=resolved-with-call-sites convention (Cross-cutting observation 6 from Phase 173 TRIAL-DATA) — 10-line manifest patch + matching reference-doc note. **Meta-bootstrap note:** this phase edits `drivers/pi/install.sh` itself. APPLY must run the installer twice — once to deploy the edit, once to exercise the new probe — both passes as verification. Also the first phase where the v2.40 source-file extractor (shipped in Phase 174) can fire live against this plan's scope, per Invariant 2.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 172: Plan-Phase Coupling & Distribution
-Focus: Add a lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, register CODI default-on in the `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, and document setup UX. No PLAN.md template changes (deferred to v0.4).
-Plans: 1 (`172-01`) — complete
+### Phase 176: Dispatch-Outcome Instrumentation
+Focus: Lightweight observability so Phase 177 (and future trials) can measure CODI's contribution at scale without manual reconstruction. Post-unify hook records one row per phase — dispatch outcome category, R/U/K counts, blast_radius injected y/n — to a tally file (e.g., `.paul/codi-dispatch-history.md`, mirroring `quality-history.md`'s shape). Target files: `modules/codi/module.yaml` (add post-unify hook), `modules/codi/references/codi.md` (new Instrumentation section), `kernel/workflows/unify-phase.md` (dispatch ordering, if needed), plus the new tally artifact. APPLY MUST re-run installer. Phase 176's own planning run is itself a live CODI-active session and will be part of Phase 177's trial set.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 173: Real-World Trial & Gating Decision
-Focus: Run CODI on 2–3 real PALS planning sessions and manually observe the 4 success signals (fewer unexpected files, drop in mid-APPLY codegraph calls, more specific `<boundaries>`, no need for understand/verify brokers). Produce a decision artifact: ship v0.2, iterate v0.1, or kill the thesis. Honors the plan's explicit gating discipline.
-Plans: 1 (`173-01`) — complete. Verdict: **ITERATE_V0_1** (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
+### Phase 177: Re-Trial + Gating Decision
+Focus: The v2.40 version of Phase 173. Observe CODI dispatch across the v2.40 live sessions {175-plan, 176-plan, 177-plan-self} (see Invariant 2) plus at least one TS-touching counterfactual re-run (Phase 168 scope again, or a new counterfactual) to test whether the iteration converted the trial signals from "weak" to "strong" and whether `S_pass_nonnull ≥ 3` is now achievable. Produce a SHIP_V0_2 / ITERATE_V0_1 / KILL decision with the same CODI-null-aware rubric + structured 3-question checklist as Phase 173. SHIP opens v0.2 (`symbol_graph`); ITERATE queues another v2.41 iteration cycle; KILL closes the thesis with bounded retention/removal. APPLY verification includes Invariant 3 trial-integrity check (installed manifest parity for each observed session). Per Invariant 1, Phase 177 edits no repo-source surfaces that require install (research/decision phase like Phase 173).
+Plans: TBD (defined during /paul:plan)
 ## Next Milestone
-**v2.40 CODI v0.1 — Extractor & Coverage Iteration** (selected by Phase 173 verdict ITERATE_V0_1; see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
-Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2.
+TBD after v2.40 completion. Directly depends on Phase 177's verdict:
+- **SHIP_V0_2** → next milestone is v0.2 "CODI + `symbol_graph` upstream dependency context" (mirrors v2.39's 4-phase shape: scaffolding / live integration / coupling+distribution / trial+gate).
+- **ITERATE_V0_1** → next milestone is v2.41 with a concrete iteration target surfaced by 177's evidence.
+- **KILL** → next milestone is retention/removal of CODI surfaces plus a post-mortem artifact.
 
-Proposed phase shape (subject to /paul-plan refinement):
-- Phase 174 — Source-file symbol extraction (high-leverage iteration)
-- Phase 175 — Install-time codegraph detection + value-envelope docs + success-log format ambiguity fix
-- Phase 176 — Dispatch-outcome instrumentation across phases
-- Phase 177 — Re-trial + gating decision (the v2.40 version of Phase 173)
-
-Deferred (gated on v2.40 re-trial outcome):
-- v0.2 — add `symbol_graph` for upstream dependency context
+Deferred (gated on v2.40 Phase 177 verdict):
+- v0.2 — `symbol_graph` for upstream dependency context
 - v0.3 — conditional `trace` for runtime-behavior plans
 - v0.4 — formalize `<impact>` / `<dependencies>` / `<runtime_paths>` PLAN.md template sections
 - v0.5+ — CODI at other PALS hooks (pre-apply / post-task / pre-unify)
 - Cross-repo trials if v2.40 re-trial still leaves doubt about CODI's value envelope.
 
 ## Completed Milestones
+<details>
+<summary>v2.39 CODI v0.1 — Pre-Plan Structural Injection - 2026-04-17 (4 phases)</summary>
+
+Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
+Outcome: Phase 173 verdict **ITERATE_V0_1** (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`). CODI value envelope confirmed on TS-touching counterfactual (Signal 3 projected-pass); live PALS sample uniformly CODI_NULL due to extractor-vs-scope misalignment. v2.40 iterates on source-file symbol extraction.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 170 | CODI Module Scaffolding & Hello-World Hook | 1 | 2026-04-16 |
+| 171 | `impact` Integration & Symbol Extraction | 1 | 2026-04-16 |
+| 172 | Plan-Phase Coupling & Distribution | 1 | 2026-04-17 |
+| 173 | Real-World Trial & Gating Decision | 1 | 2026-04-17 |
+
+</details>
 <details>
 <summary>v2.38 Pi Lifecycle UX Polish - 2026-04-01 (3 phases)</summary>
 
