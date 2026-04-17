@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 runs the real-world trial and gating decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 173 of 4 (Real-World Trial & Gating Decision) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-17T01:32:43Z — Phase 172 complete, transitioned to Phase 173
+Phase: 173 of 4 (Real-World Trial & Gating Decision) — Planning
+Plan: 173-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-17T02:00:00Z — Created .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███████░░░] 75% (3 of 4 phases complete)
 - Phase 173: [░░░░░░░░░░] 0%
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 ## Accumulated Context
 ### Decisions
@@ -134,6 +134,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; worth codifying as a CODI-family pattern |
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
 | 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
+| 2026-04-17: Phase 173 verdict ITERATE_V0_1 — CODI v0.1 has bounded value envelope (Signal 3 projected-pass on TS-touching counterfactual), live PALS sample uniformly CODI_NULL; iterate on extractor-vs-scope alignment in v2.40 before considering v0.2 | 173 | Sets v2.40 milestone direction (source-file symbol extraction); defers symbol_graph/trace/template formalization until re-trial validates iteration |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -209,11 +210,13 @@ Last commit: aea7bab feat(172-plan-phase-coupling-distribution): wire CODI plann
 PR: https://github.com/coctostan/pals/pull/82 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-17T01:32:43Z
-Stopped at: Phase 172 complete, ready to plan Phase 173
-Next action: /paul:plan
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-17T02:30:00Z
+Stopped at: Plan 173-01 revised after pre-APPLY review (4 tasks; counterfactual probe added)
+Next action: Review revised plan, then run /paul:apply .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
+Resume file: .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
 Resume context:
-- Phase 172 shipped the CODI seed/config/docs contract and recorded `172-01` in `.paul/QUALITY-HISTORY.md`.
-- PR `#82` is merged and the feature work is now on `main`.
-- Phase 173 should define 2–3 real PALS planning trials plus the ship/iterate/kill decision artifact.
+- Phase 173 trial structure: 4 live PALS planning sessions (170-01, 171-01, 172-01, 173-01-self-trial) PLUS 1 TS-touching counterfactual session (Phase 168 scope re-run as CODI dry-run against live codegraph).
+- Empirical probe during PLAN construction reframed concern about repo representativeness: codegraph DOES index PALS TypeScript (e.g., `palsHooks` resolved depth 3, fan-out 21 in `drivers/pi/extensions/pals-hooks.ts`). The 0/4 unresolved on this plan reflects extractor-vs-scope alignment (markdown-layer scope), not a CODI failure or non-representative repo.
+- Rubric is CODI-null-aware: signals 1/2/4 exclude CODI_NULL=true rows from numerator-and-denominator; signal 3 includes all rows plus a counterfactual sub-comparison.
+- Verdict gated by structured 3-question checklist (Q1: sufficient non-null evidence? Q2: counterfactual material? Q3: cost justified by value envelope?) mechanically applied via stated decision rule.
+- Plan produces 3 artifacts: 173-01-TRIAL-DATA.md, 173-01-DECISION.md, 173-01-SUMMARY.md. AC-4 lifecycle patches applied in Task 4 (not deferred to UNIFY).

@@ -28,16 +28,16 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.39 CODI v0.1 — Pre-Plan Structural Injection**
-Status: 🚧 In Progress
+Status: ✅ Complete
 Started: 2026-04-16
 Theme: Ship CODI as a minimum-viable PALS pre-plan module that injects codegraph `impact` results into PLAN.md, then measure plan-quality improvements (manually) before stacking v0.2+.
-Phases: 3 of 4 complete
+Phases: 4 of 4 complete — verdict: ITERATE_V0_1 (closes v2.39)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 170 | CODI Module Scaffolding & Hello-World Hook | 1 (`170-01`) | ✅ Complete | 2026-04-16 |
 | 171 | `impact` Integration & Symbol Extraction | 1 (`171-01`) | ✅ Complete | 2026-04-16 |
 | 172 | Plan-Phase Coupling & Distribution | 1 (`172-01`) | ✅ Complete | 2026-04-17 |
-| 173 | Real-World Trial & Gating Decision | TBD | Not started | - |
+| 173 | Real-World Trial & Gating Decision | 1 (`173-01`) | ✅ Complete | 2026-04-17 |
 
 ### Phase 170: CODI Module Scaffolding & Hello-World Hook
 Focus: Create `modules/codi/` with manifest and reference doc as a registry-discovered pre-plan advisory overlay. v0.1 ships with a hello-world dispatch, no codegraph tool calls, and no prerequisite checks — tool-availability handling is deferred to Phase 171 call-time failure handling. First concrete step from the integration plan.
@@ -53,14 +53,23 @@ Plans: 1 (`172-01`) — complete
 
 ### Phase 173: Real-World Trial & Gating Decision
 Focus: Run CODI on 2–3 real PALS planning sessions and manually observe the 4 success signals (fewer unexpected files, drop in mid-APPLY codegraph calls, more specific `<boundaries>`, no need for understand/verify brokers). Produce a decision artifact: ship v0.2, iterate v0.1, or kill the thesis. Honors the plan's explicit gating discipline.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`173-01`) — complete. Verdict: **ITERATE_V0_1** (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
 ## Next Milestone
-TBD after v2.39 completion. Candidate directions (gated on v0.1 results):
-- **v0.2** — add `symbol_graph` for upstream dependency context
-- **v0.3** — conditional `trace` for runtime-behavior plans
-- **v0.4** — formalize `<impact>` / `<dependencies>` / `<runtime_paths>` PLAN.md template sections
-- **v0.5+** — CODI at other PALS hooks (pre-apply / post-task / pre-unify)
-- Gate CODI module registration on `pi-codegraph` install detection (not just runtime skip).
+**v2.40 CODI v0.1 — Extractor & Coverage Iteration** (selected by Phase 173 verdict ITERATE_V0_1; see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
+Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2.
+
+Proposed phase shape (subject to /paul-plan refinement):
+- Phase 174 — Source-file symbol extraction (high-leverage iteration)
+- Phase 175 — Install-time codegraph detection + value-envelope docs + success-log format ambiguity fix
+- Phase 176 — Dispatch-outcome instrumentation across phases
+- Phase 177 — Re-trial + gating decision (the v2.40 version of Phase 173)
+
+Deferred (gated on v2.40 re-trial outcome):
+- v0.2 — add `symbol_graph` for upstream dependency context
+- v0.3 — conditional `trace` for runtime-behavior plans
+- v0.4 — formalize `<impact>` / `<dependencies>` / `<runtime_paths>` PLAN.md template sections
+- v0.5+ — CODI at other PALS hooks (pre-apply / post-task / pre-unify)
+- Cross-repo trials if v2.40 re-trial still leaves doubt about CODI's value envelope.
 
 ## Completed Milestones
 <details>
