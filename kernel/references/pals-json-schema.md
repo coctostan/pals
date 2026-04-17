@@ -21,6 +21,8 @@ Module enable/disable config. All modules default to `enabled: true` if absent.
 | `modules.carl.session_strategy` | string | "phase-boundary" | v2.11 |
 | `modules.carl.continue_threshold` | number | 0.4 | v2.11 |
 | `modules.carl.safety_ceiling` | number | 0.8 | v2.11 |
+| `modules.codi.enabled` | bool | true | v2.39 |
+| `modules.codi.description` | string | "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" | v2.39 |
 | `modules.todd.enabled` | bool | true | v0.4 |
 | `modules.todd.description` | string | "Test-driven development enforcement" | v0.4 |
 | `modules.walt.enabled` | bool | true | v0.4 |
@@ -62,6 +64,8 @@ Module enable/disable config. All modules default to `enabled: true` if absent.
 | `modules.rev.model` | string\|null | `null` | v2.33 |
 | `modules.rev.pr_review` | bool | `false` | v2.33 |
 | `modules.rev.pr_review_block_on_critical` | bool | `true` | v2.33 |
+
+CODI is safe to leave enabled by default: if `pi-codegraph` or a usable index is unavailable, planning continues and CODI logs a skip instead of blocking.
 
 **Note:** Runtime dispatch reads `modules.yaml` (installed registry), not this section. Per-project module disable at runtime is a planned future feature. Until then, this section is informational — all installed modules dispatch regardless.
 

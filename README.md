@@ -142,6 +142,7 @@ PALS uses `pals.json` at the project root:
   "schema_version": "2.0.0",
   "modules": {
     "carl": { "enabled": true, "description": "Session boundary manager" },
+    "codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
     "walt": { "enabled": true, "description": "Quality gating & validation" },
     "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },
@@ -182,8 +183,12 @@ PALS uses `pals.json` at the project root:
 }
 ```
 
-All 18 modules are enabled by default. Expert modules (ARCH, SETH, etc.) are configured in `modules.yaml` and dispatch automatically — they don't need entries in `pals.json` unless you want to disable them.
+Fresh generated configs keep core and expert modules enabled by default, including `modules.codi`. Runtime dispatch still follows `modules.yaml`; if `pi-codegraph` or a usable index is absent, CODI stays enabled but planning safely skips its blast-radius injection.
 Current top-level sections for a fresh generated config are `modules`, `agents`, `git`, `planning`, `preferences`, and `guided_workflow` (plus `schema_version`).
+
+### CODI setup (optional)
+
+`modules.codi.enabled` defaults to `true` in generated and migrated configs. If `pi-codegraph` or a usable repo index is unavailable, planning continues cleanly and CODI logs a safe skip instead of blocking. Phase 172 does not create a hard `.codegraph/` gate. To opt into richer structural injection, install `pi-codegraph` and keep the repo indexed.
 
 ### Git Workflow
 

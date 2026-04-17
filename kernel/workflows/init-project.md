@@ -65,7 +65,7 @@ All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE
 3. Read installed `modules.yaml` to discover all currently installed modules.
 
 4. Compare existing pals.json against expected fields. For each missing field:
-   - **modules:** For each module in `modules.yaml` not present in `pals.json.modules`, add it with `{ "enabled": true, "description": "..." }` using the description from the module's manifest.
+   - **modules:** For each module in `modules.yaml` not present in `pals.json.modules`, add it with `{ "enabled": true, "description": "..." }` using the description from the module's manifest. This includes `codi` when installed; keep it enabled by default because planning safely skips if codegraph support is unavailable.
    - **git fields:** Add missing git fields with their schema defaults. Do NOT overwrite existing values. Special case: if `git.branching` exists but `git.workflow` does not, add `git.workflow: "legacy"` (preserves the user's existing behavior).
    - **agents:** Add `agents.implementer: { "enabled": true, "model": null }` if missing. Do NOT overwrite existing agent settings.
    - **planning:** Add `planning.default_collaboration: "medium"` if missing.
@@ -657,8 +657,8 @@ Note: Users can configure specialized flows later via `/paul:flows`.
 **Module configuration — greenfield skips, brownfield gets grouped descriptions.**
 
 **If greenfield (`brownfield = false`):**
-- All 20 modules enabled by default (silent)
-- Display: "All 20 modules enabled by default. (Adjust later via /paul:config)"
+- All configurable modules enabled by default (includes CODI safe-skip planning support)
+- Display: "All configurable modules enabled by default. (Adjust later via /paul:config)"
 - Skip the interactive toggle question
 - Store `module_selections` with all enabled
 - Continue to configure_git
@@ -695,17 +695,16 @@ Data & Infrastructure:
 Observability & Resilience:
   [14] OMAR  ✓  Logging and observability review
   [15] REED  ✓  Resilience patterns (timeouts, retries, error handling)
-
 Privacy & Session:
   [16] VERA  ✓  PII detection and privacy compliance
   [17] CARL  ✓  Session boundary manager (Pi extension)
-
-Knowledge & Documentation:
-  [18] SKIP  ✓  Captures decisions, rationale, and lessons learned
-  [19] DOCS  ✓  Documentation drift detection and lifecycle oversight
-
+Planning / Structural Context:
+  [18] CODI  ✓  Codegraph-driven structural injection (safe skip when codegraph is unavailable)
+Knowledge / Documentation:
+  [19] SKIP  ✓  Captures decisions, rationale, and lessons learned
+  [20] DOCS  ✓  Documentation drift detection and lifecycle oversight
 Code Review:
-  [20] REV   ✓  Thorough code review via subagent
+  [21] REV   ✓  Thorough code review via subagent
 ```
 
 Wait for user response.
@@ -721,6 +720,7 @@ Wait for user response.
   "schema_version": "2.0.0",
   "modules": {
     "carl": { "enabled": true, "description": "Session boundary manager (Pi extension)", "session_strategy": "phase-boundary", "continue_threshold": 0.4, "safety_ceiling": 0.8 },
+    "codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" },
     "todd": { "enabled": true, "description": "Test-driven development enforcement" },
     "walt": { "enabled": true, "description": "Quality gating & validation" },
     "dean": { "enabled": true, "description": "Dependency evaluation & audit notifier" },

@@ -7,19 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-16)
 **Current focus:** v2.39 CODI v0.1 — Phases 170–171 shipped (hello-world scaffolding + live `impact` integration); Phase 172 adds plan-phase coupling & distribution; Phase 173 produces the ship/iterate/kill decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 172 of 4 (Plan-Phase Coupling & Distribution)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-16 — Phase 171 complete and merged (PR #81); transitioned to Phase 172
+Phase: 172 of 4 (Plan-Phase Coupling & Distribution) — Applying
+Plan: 172-01 APPLY complete, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-17T01:08:58Z — Completed APPLY for .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [█████░░░░░] 50% (2 of 4 phases complete)
-- Phase 170: [██████████] 100% ✓
-- Phase 171: [██████████] 100% ✓
+- Phase 172: [█████░░░░░] 50%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 171 merged; ready for Phase 172 PLAN]
+  ✓        ✓        ○     [Applied, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -134,6 +133,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-16: Classifier-safety invariant tightens at the module surface — the halt-keyword token is now avoided across manifest description AND reference doc natural prose, not just intent-bearing text | 171 | "Sub-section" and "code region" replace the common alternative; prevents future module edits from reintroducing the time bomb via innocent prose |
 | 2026-04-16: Empirical probing during PLAN is a high-value practice when a tool's contract materially shapes the plan | 171 | Phase 171 spent ~5 tool calls during PLAN to surface 3 assumption errors that would have caused silent data loss in APPLY; worth codifying as a CODI-family pattern |
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
+| 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -202,16 +202,11 @@ Last commit: 1db871e feat(171-impact-integration-symbol-extraction): CODI per-sy
 PR: https://github.com/coctostan/pals/pull/81 (state: MERGED)
 CI: passing (Socket Security: 2/2 SUCCESS at merge time)
 ## Session Continuity
-Last session: 2026-04-16
-Stopped at: Phase 171 complete and merged (PR #81); transitioned to Phase 172 ready-to-plan
-Next action: /paul-plan for Phase 172 (Plan-Phase Coupling & Distribution)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-17T01:08:58Z
+Stopped at: Phase 172 APPLY complete; validation green; awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md to reconcile APPLY results and update phase state
+Resume file: .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md
 Resume context:
-- Milestone v2.39 CODI v0.1 — Pre-Plan Structural Injection: 2 of 4 phases complete (Phases 170, 171). Next: Phase 172.
-- Source plan: `~/pi/workspace/thinkingSpace/plans/pals-codi-integration-plan.md` (v0.1 slice only; v0.2–v0.5+ deferred).
-- Planning posture default: high collaboration, direct-requirements (project `planning.default_collaboration: high`).
-- Phase 171 shipped: live `impact` integration on CODI — per-symbol call pattern, 5-outcome categorization, partial-success invariant, Blast Radius sub-section via `context_inject.blast_radius`, 4 hook-level skip paths, full-module-surface classifier-safety (no "block" token anywhere). `pi-end-to-end-validation.sh`: 159/159 (no regression).
-- Phase 172 scope: (a) lightweight optional symbol-enumeration tweak to `analyze_scope` so prose-heavy objectives still produce CODI targets, (b) register CODI default-on in `pals.json` schema with graceful skip when `pi-codegraph` or the codegraph index is absent, (c) document setup UX. **No PLAN.md template changes** (deferred to v0.4).
-- Phase 172 complements Phase 171's hook-side contract with plan-side ergonomic improvements — tests whether the live contract produces useful injections on prose-heavy objectives that don't already contain explicit symbols.
-- Phase 173 runs the real-world trial on 2–3 live PALS planning sessions and produces the ship-v0.2 / iterate / kill decision artifact that gates all v0.2+ work.
-- Phase 171 lessons worth reusing: empirical-probing-during-PLAN when a tool contract materially shapes the plan; classifier-safety discipline at the full module surface; per-symbol call pattern (likely to generalize to `symbol_graph` v0.2 and `trace` v0.3).
+- Task 1 added a bounded `codi_seed_candidates` seed pass to `kernel/workflows/plan-phase.md`, including deterministic first-observed candidate ordering and explicit safe-skip guidance.
+- Task 2 added default-on `modules.codi` contract coverage across `kernel/workflows/init-project.md`, `kernel/references/pals-json-schema.md`, repo-root `pals.json`, `modules/codi/references/codi.md`, and `README.md`.
+- Task 3 added semantic CODI contract checks to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`; `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` all passed.
