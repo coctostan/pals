@@ -210,10 +210,10 @@ Last commit: 38c439a feat(173-real-world-trial-gating-decision): CODI v0.1 trial
 PR: https://github.com/coctostan/pals/pull/83 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-17T04:00:00Z
-Stopped at: v2.40 milestone created — Phase 174 ready to plan
-Next action: /paul:plan for Phase 174 (Source-File Symbol Extraction)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-17T04:10:00Z
+Stopped at: PAUSED — v2.40 milestone created, Phase 174 ready to plan (handoff written)
+Next action: /paul:resume (or /paul:plan directly for Phase 174)
+Resume file: .paul/HANDOFF-2026-04-17-v2.40-phase174-ready-to-plan.md
 Resume context:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration is the current milestone. 4 phases: 174 extractor change → 175 install-detection/docs/format-fix → 176 instrumentation → 177 re-trial + gating.
 - **Invariant 1:** nothing takes effect until `bash drivers/pi/install.sh` runs. Every phase editing `modules/codi/*`, `kernel/workflows/*`, or `drivers/pi/install.sh` itself MUST re-run installer in APPLY verification. Phase 175 additionally requires TWO installer runs (meta-bootstrap: deploy the installer edit, then exercise the new probe).
