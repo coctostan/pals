@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.40 CODI v0.1 — Extractor & Coverage Iteration. Phase 173 verdict ITERATE_V0_1 selected 4-phase shape: 174 source-file extraction → 175 install-detection/docs/format-fix → 176 dispatch-outcome instrumentation → 177 re-trial + gating decision. Milestone invariant: nothing takes effect until `bash drivers/pi/install.sh` runs.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 174 of 4 (Source-File Symbol Extraction) — Planning
-Plan: 174-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-17T13:19:16Z — Created .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
+Phase: 174 of 4 (Source-File Symbol Extraction) — APPLY complete
+Plan: 174-01 applied, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-17T13:45:45Z — Applied .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md, reinstalled Pi surfaces, and opened PR #84
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█░░░░░░░░░] 10%
-- Phase 174: [░░░░░░░░░░] 0%
+- Phase 174: [███████░░░] 70%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -206,18 +206,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/174-source-file-symbol-extraction
-Last commit: ce3b96f wip(174-source-file-symbol-extraction): paused before PLAN (handoff written)
-PR: none (state: N/A)
-CI: N/A
+Last commit: b5d56e5 feat(174-source-file-symbol-extraction): add source-file selector extraction
+PR: https://github.com/coctostan/pals/pull/84 (state: open)
+CI: no checks reported
 ## Session Continuity
-Last session: 2026-04-17T13:19:16Z
-Stopped at: Plan 174-01 created
-Next action: Review and approve plan, then run /paul:apply .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
+Last session: 2026-04-17T13:45:45Z
+Stopped at: APPLY complete for 174-01
+Next action: Run /paul:unify .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
 Resume file: .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md
 Resume context:
-- Planning posture used: high collaboration, direct-requirements mode.
-- Phase 174 plan scope is bounded to `modules/codi/module.yaml`, `modules/codi/references/codi.md`, and `kernel/workflows/plan-phase.md`.
-- **Invariant 1:** APPLY MUST run `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` because this phase edits `modules/codi/*` and `kernel/workflows/*`.
-- **Invariant 2:** Phase 174's own planning session is expected CODI_NULL; Phase 175 planning is the first live session expected to exercise the new extractor.
-- **Invariant 3:** Phase 177's trial set = {175-plan, 176-plan, 177-plan-self} + counterfactual re-run; stale installed manifests invalidate observations.
-- APPLY verification target: installer + `bash tests/pi-end-to-end-validation.sh` + `bash tests/cross-harness-validation.sh`.
+- APPLY completed with bounded repo changes in `modules/codi/module.yaml`, `modules/codi/references/codi.md`, `kernel/workflows/plan-phase.md`, and the two validation scripts.
+- `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` completed successfully.
+- `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh` both passed after reinstall.
+- Invariant 2 still holds: Phase 174's own planning run was CODI_NULL under the old install; Phase 175 planning is the first live session expected to exercise the new extractor.
+- PR #84 is open on `feature/174-source-file-symbol-extraction`; GitHub reports no checks yet.
