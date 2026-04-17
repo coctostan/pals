@@ -10,7 +10,7 @@ Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
 Phase: 172 of 4 (Plan-Phase Coupling & Distribution) — Applying
 Plan: 172-01 APPLY complete, ready for UNIFY
 Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-17T01:08:58Z — Completed APPLY for .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md
+Last activity: 2026-04-17T01:10:01Z — Completed APPLY, pushed feature/172-plan-phase-coupling-distribution, and opened PR #82
 Progress:
 - v2.39 CODI v0.1 — Pre-Plan Structural Injection: [█████░░░░░] 50% (2 of 4 phases complete)
 - Phase 172: [█████░░░░░] 50%
@@ -197,12 +197,12 @@ Last commit: a9b47a3 feat(167-ux-audit-target-design): complete phase transition
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 1db871e feat(171-impact-integration-symbol-extraction): CODI per-symbol impact integration (#81)
-PR: https://github.com/coctostan/pals/pull/81 (state: MERGED)
-CI: passing (Socket Security: 2/2 SUCCESS at merge time)
+Branch: feature/172-plan-phase-coupling-distribution
+Last commit: 4021255 feat(172-plan-phase-coupling-distribution): wire CODI planning contract
+PR: https://github.com/coctostan/pals/pull/82 (state: OPEN)
+CI: pending
 ## Session Continuity
-Last session: 2026-04-17T01:08:58Z
+Last session: 2026-04-17T01:10:01Z
 Stopped at: Phase 172 APPLY complete; validation green; awaiting UNIFY
 Next action: Run /paul:unify .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md to reconcile APPLY results and update phase state
 Resume file: .paul/phases/172-plan-phase-coupling-distribution/172-01-PLAN.md
@@ -210,3 +210,4 @@ Resume context:
 - Task 1 added a bounded `codi_seed_candidates` seed pass to `kernel/workflows/plan-phase.md`, including deterministic first-observed candidate ordering and explicit safe-skip guidance.
 - Task 2 added default-on `modules.codi` contract coverage across `kernel/workflows/init-project.md`, `kernel/references/pals-json-schema.md`, repo-root `pals.json`, `modules/codi/references/codi.md`, and `README.md`.
 - Task 3 added semantic CODI contract checks to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`; `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` all passed.
+- GitHub Flow postflight created `feature/172-plan-phase-coupling-distribution` and PR `#82`; CI is currently pending.
