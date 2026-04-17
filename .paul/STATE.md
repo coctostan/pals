@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.39 CODI v0.1 — Phases 170–172 shipped (hello-world scaffolding + live `impact` integration + plan-phase coupling/distribution); Phase 173 runs the real-world trial and gating decision
 ## Current Position
 Milestone: v2.39 CODI v0.1 — Pre-Plan Structural Injection
-Phase: 173 of 4 (Real-World Trial & Gating Decision) — Planning
-Plan: 173-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-17T02:00:00Z — Created .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
+Phase: 173 of 4 (Real-World Trial & Gating Decision) — APPLY complete
+Plan: 173-01 executed; verdict: ITERATE_V0_1 (see 173-01-DECISION.md)
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-17T03:00:00Z — APPLY complete, PR #83 opened
 Progress:
-- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [███████░░░] 75% (3 of 4 phases complete)
-- Phase 173: [░░░░░░░░░░] 0%
+- v2.39 CODI v0.1 — Pre-Plan Structural Injection: [██████████] 100% (4 of 4 phases complete)
+- Phase 173: [███████▓▓▓] 70% (APPLY done, UNIFY pending)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -210,13 +210,14 @@ Last commit: aea7bab feat(172-plan-phase-coupling-distribution): wire CODI plann
 PR: https://github.com/coctostan/pals/pull/82 (state: MERGED)
 CI: passing
 ## Session Continuity
-Last session: 2026-04-17T02:30:00Z
-Stopped at: Plan 173-01 revised after pre-APPLY review (4 tasks; counterfactual probe added)
-Next action: Review revised plan, then run /paul:apply .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
-Resume file: .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
+Last session: 2026-04-17T03:00:00Z
+Stopped at: Phase 173 APPLY complete, awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/173-real-world-trial-gating-decision/173-01-PLAN.md
+Resume file: .paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md
 Resume context:
-- Phase 173 trial structure: 4 live PALS planning sessions (170-01, 171-01, 172-01, 173-01-self-trial) PLUS 1 TS-touching counterfactual session (Phase 168 scope re-run as CODI dry-run against live codegraph).
-- Empirical probe during PLAN construction reframed concern about repo representativeness: codegraph DOES index PALS TypeScript (e.g., `palsHooks` resolved depth 3, fan-out 21 in `drivers/pi/extensions/pals-hooks.ts`). The 0/4 unresolved on this plan reflects extractor-vs-scope alignment (markdown-layer scope), not a CODI failure or non-representative repo.
-- Rubric is CODI-null-aware: signals 1/2/4 exclude CODI_NULL=true rows from numerator-and-denominator; signal 3 includes all rows plus a counterfactual sub-comparison.
-- Verdict gated by structured 3-question checklist (Q1: sufficient non-null evidence? Q2: counterfactual material? Q3: cost justified by value envelope?) mechanically applied via stated decision rule.
-- Plan produces 3 artifacts: 173-01-TRIAL-DATA.md, 173-01-DECISION.md, 173-01-SUMMARY.md. AC-4 lifecycle patches applied in Task 4 (not deferred to UNIFY).
+- Phase 173 verdict: **ITERATE_V0_1** — mechanically derived from Q1=yes(caveat), Q2=uncertain(1/4 projected-pass), Q3=yes(qualified), S_pass_nonnull=1, S_pass_signal3=pass.
+- 4 live PALS planning sessions all CODI_NULL=true; 1 TS-touching counterfactual (Session E, Phase 168 scope) confirmed CODI's value envelope on indexed code (4 resolved, fan-out 21 on `palsHooks`).
+- Signal 3 (`<boundaries>` specificity) is the strongest evidence: live pass with causation caveat (planner-discipline attribution); counterfactual projected-pass (10–25% specificity gain on TS scope).
+- AC-4 patches applied in Task 4: PROJECT.md v2.39 line → [x] with verdict marker; ROADMAP.md Phase 173 → ✅ Complete + v2.40 milestone direction; STATE.md Decisions row added.
+- v2.40 "CODI v0.1 — Extractor & Coverage Iteration" proposed: source-file symbol extraction, install-time codegraph detection, value-envelope docs, format-ambiguity fix, dispatch-outcome instrumentation, then re-trial.
+- WALT validation: 165/165 + 69/69 passing. PR #83 opened: https://github.com/coctostan/pals/pull/83
