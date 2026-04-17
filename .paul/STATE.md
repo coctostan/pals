@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (updated 2026-04-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 — Extractor & Coverage Iteration. Phase 173 verdict ITERATE_V0_1 selected 4-phase shape: 174 source-file extraction → 175 install-detection/docs/format-fix → 176 dispatch-outcome instrumentation → 177 re-trial + gating decision. Milestone invariant: nothing takes effect until `bash drivers/pi/install.sh` runs.
+**Current focus:** v2.40 CODI v0.1 — Phase 175 install-time detection, value-envelope docs, and success-log format fix. Phase 174's source-file selector extraction is complete and live after reinstall; Phase 175 planning is the first live session expected to exercise it.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 174 of 4 (Source-File Symbol Extraction) — Complete
-Plan: 174-01 complete
-Status: Ready for next PLAN
-Last activity: 2026-04-17T13:54:41Z — Unified .paul/phases/174-source-file-symbol-extraction/174-01-PLAN.md and prepared summary/quality artifacts
+Phase: 175 of 4 (Install-Time Detection + Value-Envelope Docs + Format Fix)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-17T13:56:50Z — Phase 174 complete, PR #84 merged, transitioned to Phase 175
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [███░░░░░░░] 25%
-- Phase 174: [██████████] 100%
+- Phase 175: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
@@ -206,18 +206,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/174-source-file-symbol-extraction
-Last commit: b5d56e5 feat(174-source-file-symbol-extraction): add source-file selector extraction
-PR: https://github.com/coctostan/pals/pull/84 (state: open)
-CI: Socket Security checks passing
+Branch: main
+Last commit: 5d57bc0 feat(174-source-file-symbol-extraction): add source-file selector extraction (#84)
+PR: https://github.com/coctostan/pals/pull/84 (state: MERGED)
+CI: Socket Security checks passed
 ## Session Continuity
-Last session: 2026-04-17T13:54:41Z
-Stopped at: UNIFY complete for 174-01
-Next action: Merge PR #84 and transition to Phase 175
-Resume file: .paul/phases/174-source-file-symbol-extraction/174-01-SUMMARY.md
-- SUMMARY created at `.paul/phases/174-source-file-symbol-extraction/174-01-SUMMARY.md`.
-- `.paul/QUALITY-HISTORY.md` updated with `174-01` as `166 pass + 70 pass` (trend `↑ improving`).
-- Post-unify module evidence recorded for WALT, SKIP, and RUBY in the summary.
-- PR #84 is open on `feature/174-source-file-symbol-extraction`; required checks are currently passing.
-- Next transition target is Phase 175 (`Install-Time Detection + Value-Envelope Docs + Format Fix`).
-- PR #84 is open on `feature/174-source-file-symbol-extraction`; GitHub reports no checks yet.
+Last session: 2026-04-17T13:56:50Z
+Stopped at: Phase 174 complete, ready to plan Phase 175
+Next action: /paul:plan for Phase 175
+Resume file: .paul/ROADMAP.md
+- Phase 174 summary is recorded at `.paul/phases/174-source-file-symbol-extraction/174-01-SUMMARY.md`.
+- `.paul/QUALITY-HISTORY.md` now includes `174-01` as `166 pass + 70 pass` (`↑ improving`).
+- The Phase 174 extractor iteration is live on the installed Pi surface because APPLY reran `drivers/pi/install.sh`.
+- Phase 175 planning is the first live session expected to exercise source-file selector extraction.
+- Next work remains bounded to install-time detection, honest value-envelope docs, and the deferred success-log format clarification.
