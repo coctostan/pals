@@ -28,9 +28,9 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** (selected by Phase 177 verdict ITERATE_V0_1 — see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`).
-Status: 🚧 In Progress (Phase 178 APPLY complete; UNIFY pending)
+Status: 🚧 In Progress (Phase 178 complete; Phase 179 observation pending)
 Theme: Observe CODI dispatch on real TS work in a separate repo (quark) — specifically the user's in-flight quark patches, authored before CODI was enabled in quark — so Signal 1 / Signal 2 live evidence can be isolated from planner-discipline causation with zero selection bias. Closes the Q2 gap Phase 177 flagged.
-Phases: 1 of ~3 in progress (178 APPLY complete; 179 observation pending; 180 re-trial pending). Proposal: `.paul/proposals/v2.41-cross-repo-trial-quark.md`.
+Phases: 1 of ~3 complete (178 complete; 179 observation pending; 180 re-trial pending). Proposal: `.paul/proposals/v2.41-cross-repo-trial-quark.md`.
 
 ### Milestone Invariants
 
@@ -40,17 +40,17 @@ Phases: 1 of ~3 in progress (178 APPLY complete; 179 observation pending; 180 re
 ### Phases
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 178 | CODI Cross-Repo Install (quark) | 1 (`178-01`) | APPLY complete — UNIFY pending | — |
+| 178 | CODI Cross-Repo Install (quark) | 1 (`178-01`) | ✅ Complete | 2026-04-18 |
 | 179 | Organic Observation Window | — | Not started | — |
 | 180 | Re-Trial + Gating Decision | — | Not started | — |
 
 ### Phase 178: CODI Cross-Repo Install (quark)
 Focus: Enable CODI in quark without touching quark source or pals CODI source. Add `modules.codi` to `quark/pals.json`, refresh `quark/.codegraph/graph.db`, seed `quark/.paul/CODI-HISTORY.md`, and capture a direct codegraph smoke test proving current-TS symbol resolution.
-Plans: `178-01` APPLY complete — `quark/pals.json` now includes `modules.codi`; `quark/.codegraph/graph.db` reindexed successfully; direct smoke test resolved `deriveTools` to `src/kernel/context.ts:40` (`assembleContext`) with behavioral depth 1; `quark/.paul/CODI-HISTORY.md` is seeded with the canonical zero-row header. UNIFY still needs to close the loop before Phase 178 is marked complete.
+Plans: `178-01` complete — `quark/pals.json` now includes `modules.codi`; `quark/.codegraph/graph.db` reindexed successfully; direct smoke test resolved `deriveTools` to `src/kernel/context.ts:40` (`assembleContext`) with behavioral depth 1; `quark/.paul/CODI-HISTORY.md` is seeded with the canonical zero-row header and still contains zero data rows at Phase 178 exit.
 
 ### Phase 179: Organic Observation Window
 Focus: Let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI. Trial row count follows natural engineering decomposition, not trial convenience.
-Plans: Not started — opens after Phase 178 UNIFY.
+Plans: Not started — opens once the Phase 178 PR is merged and transition routing lands back on `main`.
 
 ### Phase 180: Re-Trial + Gating Decision
 Focus: Re-run the unchanged Phase 173/177 rubric against the quark row set produced in Phase 179 to resolve Q2.
@@ -717,4 +717,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-18 — Phase 178 APPLY executed in quark; v2.41 remains in progress with UNIFY pending before Phase 179 observation opens.*
+*Last updated: 2026-04-18 — Phase 178 UNIFY complete; v2.41 remains in progress with Phase 179 observation pending after merge/transition.*

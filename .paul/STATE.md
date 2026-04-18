@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 178 APPLY executed at `.paul/phases/178-codi-cross-repo-install/178-01-PLAN.md`: CODI is enabled in quark, quark's codegraph is refreshed, and `quark/.paul/CODI-HISTORY.md` is seeded. UNIFY is next; Phase 179 remains the natural observation window for the user's pre-authored quark patches.
+**Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 178 is UNIFY-complete at `.paul/phases/178-codi-cross-repo-install/178-01-{PLAN,SUMMARY}.md`: CODI is enabled in quark, quark's codegraph is refreshed, and `quark/.paul/CODI-HISTORY.md` is seeded with zero rows. Merge/transition is the only remaining gate before Phase 179's natural observation window opens.
 ## Current Position
 Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — 🚧 In Progress; prior milestone: v2.40 ✅ complete (verdict ITERATE_V0_1)
-Phase: 178 of ~3 in v2.41 — APPLY complete, ready for UNIFY
-Plan: 178-01 executed (`.paul/phases/178-codi-cross-repo-install/178-01-PLAN.md`)
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-18 — Phase 178 APPLY executed in quark; `modules.codi` added, codegraph refreshed, `quark/.paul/CODI-HISTORY.md` seeded, and direct codegraph smoke test resolved `deriveTools`
+Phase: 178 of ~3 in v2.41 — UNIFY complete; awaiting merge/transition
+Plan: 178-01 complete (`.paul/phases/178-codi-cross-repo-install/178-01-SUMMARY.md`)
+Status: Loop complete, merge gate active
+Last activity: 2026-04-18 — Phase 178 SUMMARY written; quality history updated; Phase 179 remains the next natural observation step once PR #88 merges
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██░░░░░░░░] 20% (Phase 178 APPLY complete; UNIFY pending before Phase 179 observation)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [███░░░░░░░] 30% (Phase 178 complete; merge/transition pending before Phase 179 observation)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 178 APPLY complete — ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — merge gate active before transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -220,18 +220,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 Branch: feature/178-codi-cross-repo-install
 Last commit: feat(178-codi-cross-repo-install): execute phase 178 apply (feature branch head)
 PR: https://github.com/coctostan/pals/pull/88 (state: OPEN)
-CI: pending (Socket Security report queued)
+CI: passed (Socket Security checks both green on PR #88)
 Prior milestone: PR #87 merged as dbf2d7a on main (Phase 177 complete, v2.40 closed); PR #86 merged as 1d9ce95 (Phase 176); PR #85 merged as 7e3a728 (Phase 175)
 ## Session Continuity
-Last session: 2026-04-18 — Phase 178 APPLY executed in quark; UNIFY pending
-Stopped at: APPLY complete for `178-01`; quark now has `modules.codi`, a refreshed codegraph, and seeded `CODI-HISTORY.md`; pals lifecycle reconciliation and SUMMARY remain to be written in UNIFY
-Next action: /paul:unify .paul/phases/178-codi-cross-repo-install/178-01-PLAN.md
-Resume file: .paul/phases/178-codi-cross-repo-install/178-01-PLAN.md
+Last session: 2026-04-18 — Phase 178 UNIFY completed; merge gate active
+Stopped at: `178-01-SUMMARY.md` written, lifecycle artifacts reconciled, and PR #88 is open with CI passing; merge/transition is the remaining gate before Phase 179 opens
+Next action: Merge PR #88, sync `main`, and complete the Phase 178 → Phase 179 transition
+Resume file: .paul/phases/178-codi-cross-repo-install/178-01-SUMMARY.md
 Resume context:
-- Direct codegraph smoke test succeeded via a local `pi-codegraph` Bun invocation after reindexing quark: `deriveTools` resolved to `src/kernel/context.ts:40:506b  assembleContext  behavioral  depth:1`.
+- Direct codegraph smoke test succeeded via local `pi-codegraph` execution after reindexing quark: `deriveTools` resolved to `src/kernel/context.ts:40:506b  assembleContext  behavioral  depth:1`.
 - `quark/.paul/CODI-HISTORY.md` exists with the canonical 7-line header and zero data rows. Phase 179's first natural quark UNIFY should write line 8.
 - `quark/pals.json` now includes `modules.codi` with the same 2-field shape (`enabled`, `description`) as pals.
-- quark regression check ran from the real quark cwd and returned `949 passed | 1 failed | 1 skipped (951)`; the sole failure is `test/e2e/hello.test.ts` due Anthropic API credit exhaustion, not a source/config regression introduced by Phase 178.
-- pals validation baseline remains green: `tests/pi-end-to-end-validation.sh` = 172/172, `tests/cross-harness-validation.sh` = 75/75.
+- quark regression check returned `949 passed | 1 failed | 1 skipped (951)`; the sole failure is `test/e2e/hello.test.ts` due Anthropic API credit exhaustion, not a source/config regression introduced by Phase 178.
+- pals validation baseline remains green: `tests/pi-end-to-end-validation.sh` = 172/172, `tests/cross-harness-validation.sh` = 75/75. `.paul/QUALITY-HISTORY.md` now records `178-01` as `→ stable`.
 - Phase 179 remains the same natural trial design: user's quark patches predate CODI enablement, so causal independence and zero selection bias still hold.
 - Deferred (gated on v2.41 Phase 180 verdict): v0.2 `symbol_graph`; v0.3 `trace`; v0.4 PLAN-template `<impact>`/`<dependencies>`/`<runtime_paths>` formalization; v0.5+ other CODI hooks; multi-repo observation (wealthVizr, max-pai, atpeace) as v2.42 candidate if Phase 180 is still inconclusive.
