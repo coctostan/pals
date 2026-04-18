@@ -616,6 +616,53 @@ tap_file_contains_all \
   "$PALS_JSON" \
   '"codi": {' \
   'Codegraph-driven structural injection (safe skip when codegraph is unavailable)'
+
+# Phase 176: CODI post-unify dispatch-outcome instrumentation
+PI_CODI_INSTRUMENTATION_REF="$SKILL_DIR/references/codi-instrumentation.md"
+
+tap_file_contains_all \
+  "Installed modules.yaml carries CODI post-unify dispatch-outcome instrumentation hook" \
+  "$SKILL_DIR/modules.yaml" \
+  'CODI-HISTORY.md' \
+  'references/codi-instrumentation.md' \
+  'no-dispatch-found' \
+  'post_unify_hooks' \
+  'finalize_summary'
+
+if [ -f "$PI_CODI_INSTRUMENTATION_REF" ]; then
+  tap_ok "Installed CODI instrumentation reference exists at $PI_CODI_INSTRUMENTATION_REF"
+else
+  tap_not_ok "Installed CODI instrumentation reference exists" "File not found: $PI_CODI_INSTRUMENTATION_REF"
+fi
+
+tap_file_contains_all \
+  "Installed CODI instrumentation reference documents schema, taxonomy, and read order" \
+  "$PI_CODI_INSTRUMENTATION_REF" \
+  '## Outcome taxonomy' \
+  '## Data-source read order' \
+  '## Plan-path resolution' \
+  '## Hotfix behavior' \
+  'no-dispatch-found' \
+  'CODI-HISTORY.md' \
+  '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |'
+
+tap_file_contains_all \
+  "CODI-HISTORY.md literal appears in both installed manifest and instrumentation ref" \
+  "$PI_CODI_INSTRUMENTATION_REF" \
+  '.paul/CODI-HISTORY.md' \
+  'modules/codi/module.yaml post-unify hook'
+
+# Phase 176 drift guard: all 5 pre-plan skip-log strings + success-log template
+# must remain verbatim in the installed CODI manifest so the post-unify parser
+# never silently falls through to no-dispatch-found on a renamed token.
+tap_file_contains_all \
+  "Installed CODI manifest preserves all pre-plan skip-log strings (drift guard)" \
+  "$SKILL_DIR/modules.yaml" \
+  'no extractable symbols in phase scope' \
+  'codegraph tools unavailable' \
+  'impact loop errored:' \
+  'impact returned empty blast radius for all symbols' \
+  'impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius'
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: EXTENSION STRUCTURAL VALIDITY
 # ════════════════════════════════════════════════════════════════════
