@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-18)
 **Current focus:** v2.40 CODI v0.1 — Phase 176 plan created for the post-unify dispatch-outcome tally (`.paul/CODI-HISTORY.md`). Plan was drafted in high-collaboration + exploratory mode after the user accepted all 8 recommended defaults.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 176 of 4 (Dispatch-Outcome Instrumentation) — Planning
-Plan: 176-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-18T03:00:00Z — Revised 176-01-PLAN.md after self-review (6 fixes); paused for user approval before APPLY
+Phase: 176 of 4 (Dispatch-Outcome Instrumentation) — UNIFY drafted
+Plan: 176-01 complete (SUMMARY.md written); awaiting merge gate + transition
+Status: UNIFY SUMMARY drafted, ready for merge gate + phase transition
+Last activity: 2026-04-18T05:35:00Z — SUMMARY.md written; all 3 ACs PASS; skill audit clean
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█████░░░░░] 50%
-- Phase 176: [██░░░░░░░░] 20%
+- Phase 176: [████████░░] 85%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ◒     [SUMMARY drafted, awaiting merge gate + transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -209,20 +209,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/176-dispatch-outcome-instrumentation
-Last commit (main): 145e4bd feat(175-install-time-detection-value-envelope-docs-format-fix): complete phase transition
-PR: none yet for Phase 176 (will be created during/after APPLY)
-CI: N/A
+Last commit: 9798f55 feat(176-dispatch-outcome-instrumentation): add CODI post-unify hook, CODI-HISTORY.md, and drift guard
+PR: https://github.com/coctostan/pals/pull/86 (state: open)
+CI: pending at APPLY completion (informational; merge gate enforced in UNIFY)
 Prior milestone: PR #85 merged as 7e3a728 on main (Phase 175 complete)
 ## Session Continuity
-Last session: 2026-04-18T03:00:00Z
-Stopped at: Plan 176-01 v2 revised after self-review; user chose [3] Pause here at post-revision review gate
-Next action: Review the revised plan, then run /paul:apply .paul/phases/176-dispatch-outcome-instrumentation/176-01-PLAN.md when approved
-Resume file: .paul/HANDOFF-2026-04-18-phase-176-plan-ready.md
+Last session: 2026-04-18T05:30:00Z
+Stopped at: APPLY complete for Phase 176-01; ready for /paul:unify
+Next action: /paul:unify .paul/phases/176-dispatch-outcome-instrumentation/176-01-PLAN.md
+Resume file: .paul/phases/176-dispatch-outcome-instrumentation/176-01-PLAN.md
 Resume context:
-- Plan v2 applies 6 self-review fixes (341 lines). On feature branch `feature/176-dispatch-outcome-instrumentation`, WIP commit pending.
-- Data-source read order was INVERTED vs v1 after discovering `post_unify_hooks` runs before `finalize_summary`: PLAN.md `<module_dispatch>` is now PRIMARY, SUMMARY.md fallback.
-- 150-line ref cap respected by splitting into new focused ref `modules/codi/references/codi-instrumentation.md` (target 90–140 lines); `codi.md` gets only a 1-line pointer.
-- C12 preflight confirmed green baseline: 167/167 pi-end-to-end, 70/70 cross-harness. Any APPLY failures will attribute cleanly to Phase 176.
-- 175-01-PLAN.md post-merge integrity verified: seed-row source data (success-log + 4 symbols in canonical order) confirmed present at their documented line numbers.
-- Milestone Invariant 1 applies: APPLY Task 3 MUST include `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` (edits `modules/codi/*`).
-- Expected validation totals after APPLY: pi-end-to-end 172/172, cross-harness 75/75 (+5 per suite, incl. 5-string drift guard on pre-plan skip-log contract).
+- All 3 tasks executed: Task 1 (post-unify hook in modules/codi/module.yaml) PASS; Task 2 (codi-instrumentation.md ref + codi.md pointer + seeded .paul/CODI-HISTORY.md) PASS_WITH_CONCERNS (seed format follows Task 1 STEP 6 canonical header rather than Task 2's inline example — internal consistency fix); Task 3 (reinstall + validation + drift guard) PASS.
+- Divergence: +6 cross-harness assertions vs plan's +5 estimate; split into more atomic checks + repo-source contract assertion to land at 75/75 total.
+- Validation green: pi-end-to-end 172/172 (+5 from 167), cross-harness 75/75 (+5 from 70). Drift guard asserts all 5 pre-plan skip-log strings + success-log template verbatim in both installed CODI manifests.
+- Installer ran clean: PALS_ROOT="$(pwd)" bash drivers/pi/install.sh → exit 0; CODI post-unify block present in installed modules.yaml; codi-instrumentation.md deployed at ~/.pi/agent/skills/pals/references/.
+- Post-apply advisory: IRIS 0, DOCS pass, RUBY 0, SKIP 1 candidate ("post-unify hook that parses its own prior dispatch artifacts" — flag for UNIFY knowledge capture).
+- Post-apply enforcement: WALT PASS (zero regressions; additive +5/+5), DEAN skip, TODD skip.
+- Commit 9798f55 pushed to origin; PR #86 opened against main with auto-generated summary.
+- Phase 176's own UNIFY will be the first hook-triggered CODI-HISTORY.md write; expected 176-01 row outcome = `skipped-no-symbols` per this planning run's pre-plan CODI dispatch.
