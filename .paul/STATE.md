@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 complete — Phase 177 re-trial verdict ITERATE_V0_1 (`S_pass_nonnull` 1 → 3; SHIP gate fails on Q2=uncertain). Next milestone v2.41 focuses on natural-scope TS implementation evidence for Q2 validation.
+**Current focus:** v2.40 CODI v0.1 complete — Phase 177 verdict ITERATE_V0_1 merged to main (PR #87 / commit dbf2d7a). Ready to transition into v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation.
 ## Current Position
-Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration — ✅ Complete (verdict ITERATE_V0_1); next: v2.41 Natural-Scope Evidence & Signal-1/2 Validation
-Phase: 177 of 4 (Re-Trial + Gating Decision) — ✅ Complete
-Plan: 177-01 complete
-Status: Loop complete — ready for v2.41 transition (PR #87 merge gate pending)
-Last activity: 2026-04-18 — Phase 177 UNIFY complete; SUMMARY written; post-unify hooks fired (WALT quality-history appended, CODI-HISTORY appended third row, SKIP captured 2 decision records)
+Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration — ✅ Complete (all 4 phases merged); next milestone: v2.41 Natural-Scope Evidence & Signal-1/2 Validation (not started)
+Phase: 0 of ~3 in v2.41 (not started); last completed: Phase 177 of v2.40
+Plan: Not started (awaiting /paul:milestone or /paul:plan Phase 178)
+Status: Ready to plan v2.41
+Last activity: 2026-04-18 — Phase 177 transition complete; PR #87 merged (squash dbf2d7a); branch cleaned; v2.40 milestone closed
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- Phase 177: [██████████] 100% complete
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [░░░░░░░░░░] 0% (not started)
 ## Loop Position
 Current loop state:
 ```
@@ -212,19 +212,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/177-re-trial-gating-decision
-Last commit: ed77f78 feat(177-re-trial-gating-decision): v2.40 CODI re-trial verdict ITERATE_V0_1
-PR: https://github.com/coctostan/pals/pull/87 (state: open)
-CI: pending (no checks reported yet — merge gate in UNIFY will enforce)
-Prior milestone: PR #86 merged as 1d9ce95 on main (Phase 176 complete); PR #85 merged as 7e3a728 on main (Phase 175 complete); Phase 177 APPLY commit ed77f78 pushed on feature/177-re-trial-gating-decision
+Branch: main
+Last commit: dbf2d7a feat(177-re-trial-gating-decision): v2.40 CODI re-trial verdict ITERATE_V0_1 (#87)
+PR: https://github.com/coctostan/pals/pull/87 (state: MERGED)
+CI: passed (Socket Security checks both green)
+Prior milestone: PR #87 merged as dbf2d7a on main (Phase 177 complete, v2.40 closed); PR #86 merged as 1d9ce95 (Phase 176); PR #85 merged as 7e3a728 (Phase 175)
 ## Session Continuity
-Last session: 2026-04-18 — Phase 177 APPLY complete
-Stopped at: Phase 177 UNIFY complete (verdict ITERATE_V0_1; SUMMARY written; v2.40 milestone closed; PR #87 merge gate pending)
-Next action: Complete the GitHub Flow merge gate for PR #87 (currently open with no CI checks); then run /paul:milestone to transition into v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation
-Resume file: .paul/phases/177-re-trial-gating-decision/177-01-SUMMARY.md
+Last session: 2026-04-18 — Phase 177 UNIFY + transition complete
+Stopped at: v2.40 milestone closed; all 4 phases merged to main; .paul/CODI-HISTORY.md has 3 rows (175-01 injected, 176-01 skipped-no-symbols, 177-01 injected)
+Next action: /paul:milestone to start v2.41, or /paul:plan to begin Phase 178 (natural-scope TS implementation observation)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 176 shipped: CODI post-unify hook (priority 220) + `codi-instrumentation.md` ref (85 lines) + seeded `.paul/CODI-HISTORY.md` + drift guard in both validation suites. Hook's first fire appended `| 176-01 | 2026-04-18 | skipped-no-symbols | — | — | — | — | n |` end-to-end (matches plan's self-test prediction for markdown/yaml/shell scope).
-- `.paul/CODI-HISTORY.md` has 2 rows: 175-01 (injected, 4 resolved, 10 call-sites, y) + 176-01 (skipped-no-symbols, n). Phase 177's re-trial reads this file directly.
-- Phase 177 scope: observe CODI dispatch across {175-plan, 176-plan, 177-plan-self} — see Invariant 2 — plus at least one TS-touching counterfactual. Produce SHIP_V0_2 / ITERATE_V0_1 / KILL decision against `S_pass_nonnull ≥ 3` rubric. Per Invariant 1, Phase 177 edits no repo-source surfaces requiring install (research/decision phase like Phase 173).
-- Invariant 3 (trial integrity) check: before observing each trial session, confirm `~/.pi/agent/skills/pals/modules.yaml` reflects latest repo-source; any session observed against a stale installed manifest is excluded.
-- Validation baseline after Phase 176: pi-end-to-end 172/172; cross-harness 75/75; quality-history.md trend ↑ improving.
+- v2.40 closed with Phase 177 verdict **ITERATE_V0_1**. Trial-data and decision artifacts: `.paul/phases/177-re-trial-gating-decision/177-01-{TRIAL-DATA,DECISION,SUMMARY}.md`.
+- `.paul/CODI-HISTORY.md` has 3 rows: 175-01 (injected, R=4 U=0 K=10, y), 176-01 (skipped-no-symbols, n), 177-01 (injected, R=4 U=0 K=10, y). Third row was appended by the CODI post-unify hook end-to-end during Phase 177 UNIFY — first hook-written `injected` outcome.
+- Scoring delta from Phase 173: `S_pass_nonnull` 1 → 3 (first time mechanically crossing the SHIP threshold). Signal 3 still clears on live + counterfactual projected-pass. SHIP fails on Q2=uncertain (only Signal 3 reaches projected-pass; Signals 1/2 live-partial).
+- v2.41 focus: natural-scope TS implementation evidence whose `files_modified` actually consumes the injected blast_radius at APPLY time. Proposed phase shape — Phase 178 observation (piggybacks on next organic TS-touching PALS phase), Phase 179 optional pre-plan guidance (wording only), Phase 180 re-trial + gating decision.
+- Validation baseline entering v2.41: pi-end-to-end 172/172; cross-harness 75/75; QUALITY-HISTORY trend → stable (research-only phase).
+- Deferred (gated on v2.41 Phase 180 verdict): v0.2 `symbol_graph`; v0.3 `trace`; v0.4 PLAN-template `<impact>`/`<dependencies>`/`<runtime_paths>` formalization; v0.5+ other CODI hooks; cross-repo trials as backup if no natural TS phase surfaces.
