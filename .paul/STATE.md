@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-17)
 **Current focus:** v2.40 CODI v0.1 — Phase 175 plan created for install-time detection, honest value-envelope docs, and the success-log format fix. This planning run used read-only `drivers/pi/extensions/pals-hooks.ts` evidence to exercise the live Phase 174 source-selector extractor.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 175 of 4 (Install-Time Detection + Value-Envelope Docs + Format Fix) — Planning
-Plan: 175-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-17T14:12:22Z — Created .paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-PLAN.md
+Phase: 175 of 4 (Install-Time Detection + Value-Envelope Docs + Format Fix) — UNIFY in progress
+Plan: 175-01 reconciled, merge gate ready
+Status: SUMMARY drafted, post-unify reporting recorded, awaiting merge confirmation
+Last activity: 2026-04-17T16:21:18Z — Drafted 175-01 summary, recorded quality history, and cleared merge-gate checks for PR #85
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [███░░░░░░░] 25%
-- Phase 175: [░░░░░░░░░░] 0%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████░░░░] 60%
+- Phase 175: [████████░░] 85%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -206,16 +206,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 5d57bc0 feat(174-source-file-symbol-extraction): add source-file selector extraction (#84)
-PR: https://github.com/coctostan/pals/pull/84 (state: MERGED)
-CI: Socket Security checks passed
+Branch: feature/175-install-time-detection-value-envelope-docs-format-fix
+Last commit: c451db4 feat(175-install-time-detection-value-envelope-docs-format-fix): add CODI install hint and docs alignment
+PR: https://github.com/coctostan/pals/pull/85 (state: OPEN)
+CI: passing (Socket Security checks passed)
 ## Session Continuity
-Last session: 2026-04-17T15:41:13Z
-Stopped at: Phase 175 plan refined and paused before APPLY approval
-Next action: Read .paul/HANDOFF-2026-04-17-phase-175-plan.md, confirm the Phase 175 plan, then run /paul:apply .paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-04-17-phase-175-plan.md
+Last session: 2026-04-17T16:21:18Z
+Stopped at: Phase 175 UNIFY reached merge gate; summary and quality history are ready
+Next action: Merge PR #85 from /paul:unify, then complete transition to Phase 176
+Resume file: .paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-SUMMARY.md
 Resume context:
-- Phase 175 plan `175-01` exists and is ready, but APPLY has not started.
-- Planning was intentionally refined to exploratory + high, with the installer probe narrowed to `.codegraph/graph.db` and an explicit temp-root no-index smoke test command.
-- The plan now includes a bounded `CHANGELOG.md` `Unreleased` entry and uses Phase 173 `173-01-TRIAL-DATA.md` as the authority for CODI `R`-format clarification.
+- SUMMARY draft exists at `.paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-SUMMARY.md`.
+- `.paul/QUALITY-HISTORY.md` now includes `175-01 | 2026-04-17 | 167 pass + 70 pass | — | — | — | ↑ improving`.
+- PR #85 is open with passing CI; merge gate is waiting only on explicit merge confirmation before transition work continues.
