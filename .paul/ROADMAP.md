@@ -31,7 +31,7 @@ Phases: 3 of 3 complete
 Status: 🚧 In Progress
 Started: 2026-04-17
 Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2. Selected by Phase 173 verdict ITERATE_V0_1 (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 ### Milestone Invariants
 
@@ -46,7 +46,7 @@ Phases: 2 of 4 complete
 |-------|------|-------|--------|-----------|
 | 174 | Source-File Symbol Extraction | 1/1 | ✅ Complete | 2026-04-17 |
 | 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | 1/1 | ✅ Complete | 2026-04-17 |
-| 176 | Dispatch-Outcome Instrumentation | 1 | Planning | - |
+| 176 | Dispatch-Outcome Instrumentation | 1/1 | ✅ Complete | 2026-04-18 |
 | 177 | Re-Trial + Gating Decision | TBD | Not started | - |
 
 ### Phase 174: Source-File Symbol Extraction
@@ -59,7 +59,7 @@ Plans: `175-01` complete — bounded CODI install-time hint shipped in `drivers/
 
 ### Phase 176: Dispatch-Outcome Instrumentation
 Focus: Lightweight observability so Phase 177 (and future trials) can measure CODI's contribution at scale without manual reconstruction. Post-unify hook records one row per phase — dispatch outcome category (6 tokens including `no-dispatch-found` fallback), R/U/K counts, symbols probed, blast_radius injected y/n — to `.paul/CODI-HISTORY.md` (mirroring `QUALITY-HISTORY.md`'s shape). Target files: `modules/codi/module.yaml` (add post-unify hook at priority 220), `modules/codi/references/codi.md` (new Instrumentation section), `.paul/CODI-HISTORY.md` (new, seeded with Phase 175 row from `173-01-TRIAL-DATA.md` evidence), plus minimal semantic assertions in both validation suites. `kernel/workflows/unify-phase.md` needs NO change — post-unify dispatch is already registry-driven and picks up new hooks after installer re-run. APPLY MUST re-run installer (Milestone Invariant 1). Phase 176's own planning run is itself a live CODI-active session and will be part of Phase 177's trial set — the first hook-triggered row written to `.paul/CODI-HISTORY.md`.
-Plans: `176-01` created — awaiting approval
+Plans: `176-01` complete — CODI post-unify hook added at priority 220 (7-step contract, PLAN.md primary / SUMMARY.md fallback, hotfix-aware), `codi-instrumentation.md` ref created (85 lines), `.paul/CODI-HISTORY.md` seeded with 175-01 and first hook-triggered 176-01 row appended (skipped-no-symbols, matching pre-plan dispatch prediction), installed-surface (172 checks) and cross-harness (75 checks) validation both pass with +5/+5 drift guard assertions
 
 ### Phase 177: Re-Trial + Gating Decision
 Focus: The v2.40 version of Phase 173. Observe CODI dispatch across the v2.40 live sessions {175-plan, 176-plan, 177-plan-self} (see Invariant 2) plus at least one TS-touching counterfactual re-run (Phase 168 scope again, or a new counterfactual) to test whether the iteration converted the trial signals from "weak" to "strong" and whether `S_pass_nonnull ≥ 3` is now achievable. Produce a SHIP_V0_2 / ITERATE_V0_1 / KILL decision with the same CODI-null-aware rubric + structured 3-question checklist as Phase 173. SHIP opens v0.2 (`symbol_graph`); ITERATE queues another v2.41 iteration cycle; KILL closes the thesis with bounded retention/removal. APPLY verification includes Invariant 3 trial-integrity check (installed manifest parity for each observed session). Per Invariant 1, Phase 177 edits no repo-source surfaces that require install (research/decision phase like Phase 173).
@@ -714,4 +714,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-18 — Phase 175 complete; v2.40 is 2 of 4 phases complete and ready for Phase 176 planning*
+*Last updated: 2026-04-18 — Phase 176 complete; v2.40 is 3 of 4 phases complete and ready for Phase 177 planning*

@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 — Phase 176 plan created for the post-unify dispatch-outcome tally (`.paul/CODI-HISTORY.md`). Plan was drafted in high-collaboration + exploratory mode after the user accepted all 8 recommended defaults.
+**Current focus:** v2.40 CODI v0.1 — Phase 176 complete (CODI post-unify dispatch-outcome tally shipped; `.paul/CODI-HISTORY.md` live with 2 rows, hook first fire succeeded end-to-end). v2.40 at 75% (3 of 4 phases); Phase 177 (Re-Trial + Gating Decision) is next.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 176 of 4 (Dispatch-Outcome Instrumentation) — UNIFY drafted
-Plan: 176-01 complete (SUMMARY.md written); awaiting merge gate + transition
-Status: UNIFY SUMMARY drafted, ready for merge gate + phase transition
-Last activity: 2026-04-18T05:35:00Z — SUMMARY.md written; all 3 ACs PASS; skill audit clean
+Phase: 177 of 4 (Re-Trial + Gating Decision) — Not started
+Plan: Not started
+Status: Ready to plan Phase 177
+Last activity: 2026-04-18T05:45:00Z — Phase 176 complete, transitioned to Phase 177
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█████░░░░░] 50%
-- Phase 176: [████████░░] 85%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [███████░░░] 75%
+- Phase 177: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ◒     [SUMMARY drafted, awaiting merge gate + transition]
+  ○        ○        ○     [Phase 176 complete; ready to plan Phase 177]
 ```
 ## Accumulated Context
 ### Decisions
@@ -138,6 +138,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-17: Treat upcoming-plan `<context>` repo-relative `.ts/.tsx/.js/.jsx` files as bounded source selectors and promote only extracted stable identifiers to `impact` candidates | 174 | Fixes CODI extractor-vs-scope alignment without widening v0.1 beyond bounded no-magic advisory behavior |
 | 2026-04-17: Use `.codegraph/graph.db` only as a bounded install-time CODI heuristic; never auto-disable CODI or gate install on its absence | 175 | Keeps CODI's advisory posture honest — installer surfaces a single recommendation without mutating config or conflating repo state with runtime tool availability |
 | 2026-04-17: Document CODI as a TS/JS-touching indexed-code helper and pin success-log `R` to resolved-with-call-sites only | 175 | Aligns manifest, reference doc, README, and changelog around one honest value envelope and removes the resolved-but-empty ambiguity before Phase 177's re-trial |
+| 2026-04-18: Add CODI post-unify hook at priority 220 reading PLAN.md `<module_dispatch>` primary / SUMMARY.md fallback / hotfix-aware `no-dispatch-found`, split instrumentation contract into a new `codi-instrumentation.md` ref to respect the 150-line module-ref cap, and add a 5-string drift guard between pre-plan and post-unify hooks | 176 | Establishes post-unify artifact-parsing pattern (distinct from WALT's runtime-gathered measurements); Phase 177's re-trial rubric `S_pass_nonnull ≥ 3` can now read `.paul/CODI-HISTORY.md` directly instead of manually reconstructing dispatch outcomes from per-phase artifacts |
+| 2026-04-18: Classifier-safety token hygiene extended — hook descriptions in `modules/*/module.yaml` must avoid the halt-keyword token (`block`) in generic prose, not just intent-bearing text | 176 | Extends Phase 171's classifier-safety invariant to new hooks; post-unify description uses "region" / "section" / "header" instead |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -208,22 +210,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/176-dispatch-outcome-instrumentation
-Last commit: 9798f55 feat(176-dispatch-outcome-instrumentation): add CODI post-unify hook, CODI-HISTORY.md, and drift guard
-PR: https://github.com/coctostan/pals/pull/86 (state: open)
-CI: pending at APPLY completion (informational; merge gate enforced in UNIFY)
-Prior milestone: PR #85 merged as 7e3a728 on main (Phase 175 complete)
+Branch: main
+Last commit: 1d9ce95 feat(176-dispatch-outcome-instrumentation): CODI post-unify dispatch-outcome tally (#86)
+PR: https://github.com/coctostan/pals/pull/86 (state: MERGED)
+CI: passed (Socket Security checks both green)
+Prior milestone: PR #86 merged as 1d9ce95 on main (Phase 176 complete); PR #85 merged as 7e3a728 on main (Phase 175 complete)
 ## Session Continuity
 Last session: 2026-04-18T05:30:00Z
-Stopped at: APPLY complete for Phase 176-01; ready for /paul:unify
-Next action: /paul:unify .paul/phases/176-dispatch-outcome-instrumentation/176-01-PLAN.md
-Resume file: .paul/phases/176-dispatch-outcome-instrumentation/176-01-PLAN.md
+Stopped at: Phase 176 complete and merged (PR #86 → main as 1d9ce95); v2.40 now at 75% — Phase 177 ready to plan
+Next action: /paul:plan for Phase 177 (Re-Trial + Gating Decision)
+Resume file: .paul/ROADMAP.md (Phase 177 detail section)
 Resume context:
-- All 3 tasks executed: Task 1 (post-unify hook in modules/codi/module.yaml) PASS; Task 2 (codi-instrumentation.md ref + codi.md pointer + seeded .paul/CODI-HISTORY.md) PASS_WITH_CONCERNS (seed format follows Task 1 STEP 6 canonical header rather than Task 2's inline example — internal consistency fix); Task 3 (reinstall + validation + drift guard) PASS.
-- Divergence: +6 cross-harness assertions vs plan's +5 estimate; split into more atomic checks + repo-source contract assertion to land at 75/75 total.
-- Validation green: pi-end-to-end 172/172 (+5 from 167), cross-harness 75/75 (+5 from 70). Drift guard asserts all 5 pre-plan skip-log strings + success-log template verbatim in both installed CODI manifests.
-- Installer ran clean: PALS_ROOT="$(pwd)" bash drivers/pi/install.sh → exit 0; CODI post-unify block present in installed modules.yaml; codi-instrumentation.md deployed at ~/.pi/agent/skills/pals/references/.
-- Post-apply advisory: IRIS 0, DOCS pass, RUBY 0, SKIP 1 candidate ("post-unify hook that parses its own prior dispatch artifacts" — flag for UNIFY knowledge capture).
-- Post-apply enforcement: WALT PASS (zero regressions; additive +5/+5), DEAN skip, TODD skip.
-- Commit 9798f55 pushed to origin; PR #86 opened against main with auto-generated summary.
-- Phase 176's own UNIFY will be the first hook-triggered CODI-HISTORY.md write; expected 176-01 row outcome = `skipped-no-symbols` per this planning run's pre-plan CODI dispatch.
+- Phase 176 shipped: CODI post-unify hook (priority 220) + `codi-instrumentation.md` ref (85 lines) + seeded `.paul/CODI-HISTORY.md` + drift guard in both validation suites. Hook's first fire appended `| 176-01 | 2026-04-18 | skipped-no-symbols | — | — | — | — | n |` end-to-end (matches plan's self-test prediction for markdown/yaml/shell scope).
+- `.paul/CODI-HISTORY.md` has 2 rows: 175-01 (injected, 4 resolved, 10 call-sites, y) + 176-01 (skipped-no-symbols, n). Phase 177's re-trial reads this file directly.
+- Phase 177 scope: observe CODI dispatch across {175-plan, 176-plan, 177-plan-self} — see Invariant 2 — plus at least one TS-touching counterfactual. Produce SHIP_V0_2 / ITERATE_V0_1 / KILL decision against `S_pass_nonnull ≥ 3` rubric. Per Invariant 1, Phase 177 edits no repo-source surfaces requiring install (research/decision phase like Phase 173).
+- Invariant 3 (trial integrity) check: before observing each trial session, confirm `~/.pi/agent/skills/pals/modules.yaml` reflects latest repo-source; any session observed against a stale installed manifest is excluded.
+- Validation baseline after Phase 176: pi-end-to-end 172/172; cross-harness 75/75; quality-history.md trend ↑ improving.

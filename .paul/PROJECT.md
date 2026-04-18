@@ -42,7 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
-- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict ITERATE_V0_1 selected v2.40, Phase 174 shipped bounded source-file selector extraction so upcoming-plan `<context>` TS/JS paths now seed stable `impact` candidates, and Phase 175 aligned install-time detection, value-envelope docs, and the success-log `R` convention without widening CODI beyond its no-magic advisory scope.
+- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict ITERATE_V0_1 selected v2.40, Phase 174 shipped bounded source-file selector extraction so upcoming-plan `<context>` TS/JS paths now seed stable `impact` candidates, Phase 175 aligned install-time detection, value-envelope docs, and the success-log `R` convention without widening CODI beyond its no-magic advisory scope, and Phase 176 added a bounded CODI post-unify hook that appends one row per UNIFY to `.paul/CODI-HISTORY.md` (PLAN.md `<module_dispatch>` primary / SUMMARY.md fallback / hotfix-aware `no-dispatch-found`) with a 5-string drift guard between pre-plan and post-unify hooks — first hook-triggered row (`176-01 skipped-no-symbols`) written successfully end-to-end.
 
 ### Must Have
 All validated — see below.
@@ -341,4 +341,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-18 after Phase 175 completion (install-time detection + value-envelope docs + format fix shipped; v2.40 at 50% — Phase 176 ready)*
+*Last updated: 2026-04-18 after Phase 176 completion (CODI post-unify dispatch-outcome tally shipped; `.paul/CODI-HISTORY.md` live with seeded 175-01 + first hook-triggered 176-01 row; v2.40 at 75% — Phase 177 re-trial next)*
