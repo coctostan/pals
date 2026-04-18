@@ -42,7 +42,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 - [x] REV code review module — on-demand subagent-powered review with configurable model selection, `/paul:review`, opt-in PR merge-gate review, and degraded in-session fallback (Phases 151-153)
 - [x] PALS-native implementer path — parent-controlled delegated APPLY via `pals-implementer`, minimal Pi guidance/config, and installer-backed global agent availability (Phases 154-156)
 - [x] Pi lifecycle UX polish — calm 4-line lifecycle panel, semantic color, and reduced persistent clutter across the existing Pi lifecycle surface (Phases 167-169)
-- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict ITERATE_V0_1 selected v2.40, and Phase 174 shipped bounded source-file selector extraction so upcoming-plan `<context>` TS/JS paths now seed stable `impact` candidates without widening CODI beyond its no-magic advisory scope.
+- [x] CODI module (v0.1) — registry-discovered pre-plan advisory overlay at priority 220 across Phases 170–172 (hello-world scaffolding → live `impact` integration → plan-phase coupling/default-on distribution); Phase 173 trial verdict ITERATE_V0_1 selected v2.40, Phase 174 shipped bounded source-file selector extraction so upcoming-plan `<context>` TS/JS paths now seed stable `impact` candidates, and Phase 175 aligned install-time detection, value-envelope docs, and the success-log `R` convention without widening CODI beyond its no-magic advisory scope.
 
 ### Must Have
 All validated — see below.
@@ -146,6 +146,7 @@ All validated — see below.
 - ✓ CODI module scaffolding — registry-discovered pre-plan advisory overlay at priority 220, hello-world dispatch, no tool calls in v0.1; installer is already registry-driven so zero installer/kernel/workflow edits were required (Phase 170, v2.39 in progress)
 - ✓ CODI live `impact` integration — per-symbol call pattern (not batched, because `impact` is all-or-nothing on unresolved input), 5 per-symbol outcome categories, partial-success invariant, Blast Radius markdown sub-section returned as `context_inject.blast_radius`, 4 hook-level skip paths, classifier-safety invariant extended to full module surface (Phase 171, v2.39 in progress)
 - ✓ CODI plan-phase coupling & distribution — prose-heavy planning scopes now seed explicit repo-confirmed CODI targets, `modules.codi` ships default-on across config/schema/docs, and semantic validation guards the contract across repo + installed surfaces (Phase 172, v2.39 in progress)
+- ✓ CODI install-time detection + value-envelope docs + format fix — bounded `.codegraph/graph.db` install hint (advisory only, never auto-disables CODI), honest `When CODI helps` framing across manifest/reference/README/changelog, and explicit success-log `R = resolved-with-call-sites only` convention; installed-surface + cross-harness validation extended with minimal semantic markers (Phase 175, v2.40 in progress)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -320,6 +321,8 @@ All validated — see below.
 | 2026-04-16: Partial-success invariant decouples per-symbol outcomes (5 categories) from hook-level skip paths (4 paths) | 171 | Two-layer separation is what makes the partial-success guarantee coherent; R/U/K success log carries diagnostic granularity for Phase 173's real-world trial |
 | 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
 | 2026-04-17: Treat upcoming-plan `<context>` repo-relative `.ts/.tsx/.js/.jsx` files as bounded source selectors and promote only extracted stable identifiers to `impact` candidates | 174 | Fixes extractor-vs-scope alignment without turning CODI into semantic guessing or raw-path `impact` dispatch |
+| 2026-04-17: Use `.codegraph/graph.db` only as a bounded install-time CODI heuristic; never auto-disable CODI or gate install on its absence | 175 | Keeps CODI's advisory posture honest — installer surfaces a single recommendation without mutating config or conflating repo state with runtime tool availability |
+| 2026-04-17: Document CODI as a TS/JS-touching indexed-code helper and pin success-log `R` to resolved-with-call-sites only | 175 | Aligns manifest, reference doc, README, and changelog around one honest value envelope and removes the resolved-but-empty ambiguity before Phase 177's re-trial |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -338,4 +341,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-17 after Phase 174 completion (source-file selector extraction shipped; v2.40 at 25% — Phase 175 ready)*
+*Last updated: 2026-04-18 after Phase 175 completion (install-time detection + value-envelope docs + format fix shipped; v2.40 at 50% — Phase 176 ready)*

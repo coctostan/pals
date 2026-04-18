@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-17)
+See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 — Phase 175 plan created for install-time detection, honest value-envelope docs, and the success-log format fix. This planning run used read-only `drivers/pi/extensions/pals-hooks.ts` evidence to exercise the live Phase 174 source-selector extractor.
+**Current focus:** v2.40 CODI v0.1 — Phase 175 complete (install-time detection, honest value-envelope docs, success-log format fix shipped via PR #85). Phase 176 (Dispatch-Outcome Instrumentation) is next and is itself a live CODI-active planning session for the Phase 177 trial set.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 175 of 4 (Install-Time Detection + Value-Envelope Docs + Format Fix) — UNIFY in progress
-Plan: 175-01 reconciled, merge gate ready
-Status: SUMMARY drafted, post-unify reporting recorded, awaiting merge confirmation
-Last activity: 2026-04-17T16:21:18Z — Drafted 175-01 summary, recorded quality history, and cleared merge-gate checks for PR #85
+Phase: 176 of 4 (Dispatch-Outcome Instrumentation) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-18T02:00:00Z — Phase 175 UNIFY complete, PR #85 merged (squash 7e3a728), local main synced, feature branch cleaned
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████░░░░] 60%
-- Phase 175: [████████░░] 85%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█████░░░░░] 50%
+- Phase 176: [░░░░░░░░░░] 0%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ○        ○        ○     [Loop reset — ready for /paul:plan for Phase 176]
 ```
 ## Accumulated Context
 ### Decisions
@@ -136,6 +136,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-17: Add deterministic CODI seed ordering, repo-root `modules.codi` dogfood, and semantic validation markers | 172 | Keeps prose-heavy plan coupling bounded and default-on config/docs aligned without brittle prose assertions or new runtime enforcement |
 | 2026-04-17: Phase 173 verdict ITERATE_V0_1 — CODI v0.1 has bounded value envelope (Signal 3 projected-pass on TS-touching counterfactual), live PALS sample uniformly CODI_NULL; iterate on extractor-vs-scope alignment in v2.40 before considering v0.2 | 173 | Sets v2.40 milestone direction (source-file symbol extraction); defers symbol_graph/trace/template formalization until re-trial validates iteration |
 | 2026-04-17: Treat upcoming-plan `<context>` repo-relative `.ts/.tsx/.js/.jsx` files as bounded source selectors and promote only extracted stable identifiers to `impact` candidates | 174 | Fixes CODI extractor-vs-scope alignment without widening v0.1 beyond bounded no-magic advisory behavior |
+| 2026-04-17: Use `.codegraph/graph.db` only as a bounded install-time CODI heuristic; never auto-disable CODI or gate install on its absence | 175 | Keeps CODI's advisory posture honest — installer surfaces a single recommendation without mutating config or conflating repo state with runtime tool availability |
+| 2026-04-17: Document CODI as a TS/JS-touching indexed-code helper and pin success-log `R` to resolved-with-call-sites only | 175 | Aligns manifest, reference doc, README, and changelog around one honest value envelope and removes the resolved-but-empty ambiguity before Phase 177's re-trial |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -206,16 +208,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/175-install-time-detection-value-envelope-docs-format-fix
-Last commit: c451db4 feat(175-install-time-detection-value-envelope-docs-format-fix): add CODI install hint and docs alignment
-PR: https://github.com/coctostan/pals/pull/85 (state: OPEN)
+Branch: main
+Last commit: 7e3a728 feat(175-install-time-detection-value-envelope-docs-format-fix): add CODI install hint and docs alignment (#85)
+PR: https://github.com/coctostan/pals/pull/85 (state: MERGED)
 CI: passing (Socket Security checks passed)
+Feature branches merged: feature/175-install-time-detection-value-envelope-docs-format-fix (squash-merged, deleted)
 ## Session Continuity
-Last session: 2026-04-17T16:21:18Z
-Stopped at: Phase 175 UNIFY reached merge gate; summary and quality history are ready
-Next action: Merge PR #85 from /paul:unify, then complete transition to Phase 176
-Resume file: .paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-SUMMARY.md
+Last session: 2026-04-18T02:00:00Z
+Stopped at: Phase 175 complete, transitioned to Phase 176, ready to plan
+Next action: /paul:plan for Phase 176 (Dispatch-Outcome Instrumentation)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- SUMMARY draft exists at `.paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-SUMMARY.md`.
-- `.paul/QUALITY-HISTORY.md` now includes `175-01 | 2026-04-17 | 167 pass + 70 pass | — | — | — | ↑ improving`.
-- PR #85 is open with passing CI; merge gate is waiting only on explicit merge confirmation before transition work continues.
+- Phase 175 merged via PR #85 (squash commit `7e3a728`). Local `main` is synced and the feature branch is deleted.
+- Phase 176 is Dispatch-Outcome Instrumentation: add a post-unify hook to record one row per phase (dispatch outcome category, R/U/K counts, blast_radius injected y/n) to a tally file mirroring `QUALITY-HISTORY.md`'s shape.
+- Milestone Invariant 1 applies: if Phase 176 edits `modules/codi/*`, `kernel/workflows/*`, or `drivers/pi/install.sh`, APPLY MUST include `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` as a verification step. Phase 176's own planning run is itself a live CODI-active session and will count toward Phase 177's trial set.
