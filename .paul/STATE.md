@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 complete — Phase 177 verdict ITERATE_V0_1 merged to main (PR #87 / commit dbf2d7a). Ready to transition into v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation.
+**Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 178 is UNIFY-complete at `.paul/phases/178-codi-cross-repo-install/178-01-{PLAN,SUMMARY}.md`: CODI is enabled in quark, quark's codegraph is refreshed, and `quark/.paul/CODI-HISTORY.md` is seeded with zero rows. Merge/transition is the only remaining gate before Phase 179's natural observation window opens.
 ## Current Position
-Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration — ✅ Complete (all 4 phases merged); next milestone: v2.41 Natural-Scope Evidence & Signal-1/2 Validation (not started)
-Phase: 0 of ~3 in v2.41 (not started); last completed: Phase 177 of v2.40
-Plan: Not started (awaiting /paul:milestone or /paul:plan Phase 178)
-Status: Ready to plan v2.41
-Last activity: 2026-04-18 — Phase 177 transition complete; PR #87 merged (squash dbf2d7a); branch cleaned; v2.40 milestone closed
+Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — 🚧 In Progress; prior milestone: v2.40 ✅ complete (verdict ITERATE_V0_1)
+Phase: 178 of ~3 in v2.41 — UNIFY complete; awaiting merge/transition
+Plan: 178-01 complete (`.paul/phases/178-codi-cross-repo-install/178-01-SUMMARY.md`)
+Status: Loop complete, merge gate active
+Last activity: 2026-04-18 — Phase 178 SUMMARY written; quality history updated; Phase 179 remains the next natural observation step once PR #88 merges
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [░░░░░░░░░░] 0% (not started)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [███░░░░░░░] 30% (Phase 178 complete; merge/transition pending before Phase 179 observation)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN / milestone transition]
+  ✓        ✓        ✓     [Loop complete — merge gate active before transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -142,6 +142,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-18: Classifier-safety token hygiene extended — hook descriptions in `modules/*/module.yaml` must avoid the halt-keyword token (`block`) in generic prose, not just intent-bearing text | 176 | Extends Phase 171's classifier-safety invariant to new hooks; post-unify description uses "region" / "section" / "header" instead |
 | 2026-04-18: Phase 177 verdict ITERATE_V0_1 — v2.40 re-trial improved `S_pass_nonnull` from 1 → 3 (first time mechanically crossing SHIP threshold), Signal 3 continues to clear on live + counterfactual projected-pass, but SHIP gate fails on Q2=uncertain (only Signal 3 reaches projected-pass; Signals 1/2 live-partial but not projected-pass) | 177 | Sets v2.41 milestone direction (natural-scope TS implementation evidence for Q2 validation); defers `symbol_graph`/`trace`/PLAN-template formalization until next re-trial closes the Q2 gap |
 | 2026-04-18: Treat Session C (177-01-self) as `controlled live self-trial` — counts toward non-CODI_NULL live tally and Q2 value-envelope interpretation, but capped at `partial` contribution on Signal 1 and Signal 4 | 177 | Preserves trial-set honesty across Phase 173 → Phase 177 re-trial without inflating the controlled evidence into broad live proof |
+| 2026-04-18: Open v2.41 cross-repo trial on quark — `modules/codi/*` source frozen in pals at SHA `0d667560b65944801faaee270ab920786afa471a`; pals and quark share installed registry at `~/.pi/agent/skills/pals/modules.yaml` so trial-integrity parity is by construction | 178 plan | Sets up the instrument for Q2 resolution that pals itself structurally cannot provide (1 TS file, markdown-dominated) |
+| 2026-04-18: Phase 179 trial fuel = user's in-flight quark patches, authored before CODI was enabled in quark (zero selection bias); patches land under CODI as one or more natural quark PALS phases after Phase 178 install | 178 plan | Time-based observation window dropped; row count scales with patches' natural engineering decomposition, not trial convenience. Strictly better than observing arbitrary future natural work |
+| 2026-04-18: Naturality discipline rule — when planning each quark phase applying these patches, draft `<context>` and `files_modified` from engineering logic FIRST, before CODI dispatch. Do not tune quark PLAN.md to feed CODI nicer symbols | 178 plan | Enforces the honest-scope-selection invariant that Session C (177) flagged; escapes self-fulfilling evidence without requiring cross-repo frameworks |
+| 2026-04-18: Open v2.41 cross-repo trial on quark — CODI enabled in `quark/pals.json`, quark codegraph refreshed, and `quark/.paul/CODI-HISTORY.md` seeded. Invariant: pals CODI source frozen at SHA `0d667560b65944801faaee270ab920786afa471a` for the duration of v2.41. | 178 | Sets up the instrument for the Q2 resolution test that pals itself structurally cannot provide |
+| 2026-04-18: Phase 179 is strictly observational — zero controlled self-trials, zero synthetic evidence. Natural quark phases only. | 178 | Rejects Session C-style self-fulfilling evidence; resulting trial data is either conclusive or honestly sparse |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -212,20 +217,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: dbf2d7a feat(177-re-trial-gating-decision): v2.40 CODI re-trial verdict ITERATE_V0_1 (#87)
-PR: https://github.com/coctostan/pals/pull/87 (state: MERGED)
-CI: passed (Socket Security checks both green)
+Branch: feature/178-codi-cross-repo-install
+Last commit: feat(178-codi-cross-repo-install): execute phase 178 apply (feature branch head)
+PR: https://github.com/coctostan/pals/pull/88 (state: OPEN)
+CI: passed (Socket Security checks both green on PR #88)
 Prior milestone: PR #87 merged as dbf2d7a on main (Phase 177 complete, v2.40 closed); PR #86 merged as 1d9ce95 (Phase 176); PR #85 merged as 7e3a728 (Phase 175)
 ## Session Continuity
-Last session: 2026-04-18 — Phase 177 UNIFY + transition complete
-Stopped at: v2.40 milestone closed; all 4 phases merged to main; .paul/CODI-HISTORY.md has 3 rows (175-01 injected, 176-01 skipped-no-symbols, 177-01 injected)
-Next action: /paul:milestone to start v2.41, or /paul:plan to begin Phase 178 (natural-scope TS implementation observation)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-18 — Phase 178 UNIFY completed; merge gate active
+Stopped at: `178-01-SUMMARY.md` written, lifecycle artifacts reconciled, and PR #88 is open with CI passing; merge/transition is the remaining gate before Phase 179 opens
+Next action: Merge PR #88, sync `main`, and complete the Phase 178 → Phase 179 transition
+Resume file: .paul/phases/178-codi-cross-repo-install/178-01-SUMMARY.md
 Resume context:
-- v2.40 closed with Phase 177 verdict **ITERATE_V0_1**. Trial-data and decision artifacts: `.paul/phases/177-re-trial-gating-decision/177-01-{TRIAL-DATA,DECISION,SUMMARY}.md`.
-- `.paul/CODI-HISTORY.md` has 3 rows: 175-01 (injected, R=4 U=0 K=10, y), 176-01 (skipped-no-symbols, n), 177-01 (injected, R=4 U=0 K=10, y). Third row was appended by the CODI post-unify hook end-to-end during Phase 177 UNIFY — first hook-written `injected` outcome.
-- Scoring delta from Phase 173: `S_pass_nonnull` 1 → 3 (first time mechanically crossing the SHIP threshold). Signal 3 still clears on live + counterfactual projected-pass. SHIP fails on Q2=uncertain (only Signal 3 reaches projected-pass; Signals 1/2 live-partial).
-- v2.41 focus: natural-scope TS implementation evidence whose `files_modified` actually consumes the injected blast_radius at APPLY time. Proposed phase shape — Phase 178 observation (piggybacks on next organic TS-touching PALS phase), Phase 179 optional pre-plan guidance (wording only), Phase 180 re-trial + gating decision.
-- Validation baseline entering v2.41: pi-end-to-end 172/172; cross-harness 75/75; QUALITY-HISTORY trend → stable (research-only phase).
-- Deferred (gated on v2.41 Phase 180 verdict): v0.2 `symbol_graph`; v0.3 `trace`; v0.4 PLAN-template `<impact>`/`<dependencies>`/`<runtime_paths>` formalization; v0.5+ other CODI hooks; cross-repo trials as backup if no natural TS phase surfaces.
+- Direct codegraph smoke test succeeded via local `pi-codegraph` execution after reindexing quark: `deriveTools` resolved to `src/kernel/context.ts:40:506b  assembleContext  behavioral  depth:1`.
+- `quark/.paul/CODI-HISTORY.md` exists with the canonical 7-line header and zero data rows. Phase 179's first natural quark UNIFY should write line 8.
+- `quark/pals.json` now includes `modules.codi` with the same 2-field shape (`enabled`, `description`) as pals.
+- quark regression check returned `949 passed | 1 failed | 1 skipped (951)`; the sole failure is `test/e2e/hello.test.ts` due Anthropic API credit exhaustion, not a source/config regression introduced by Phase 178.
+- pals validation baseline remains green: `tests/pi-end-to-end-validation.sh` = 172/172, `tests/cross-harness-validation.sh` = 75/75. `.paul/QUALITY-HISTORY.md` now records `178-01` as `→ stable`.
+- Phase 179 remains the same natural trial design: user's quark patches predate CODI enablement, so causal independence and zero selection bias still hold.
+- Deferred (gated on v2.41 Phase 180 verdict): v0.2 `symbol_graph`; v0.3 `trace`; v0.4 PLAN-template `<impact>`/`<dependencies>`/`<runtime_paths>` formalization; v0.5+ other CODI hooks; multi-repo observation (wealthVizr, max-pai, atpeace) as v2.42 candidate if Phase 180 is still inconclusive.
