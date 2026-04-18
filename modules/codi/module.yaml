@@ -90,10 +90,76 @@ hooks:
       example, and the complete call-time failure-handling contract.
     refs:
       - references/codi.md
+  post-unify:
+    priority: 220
+    description: >-
+      CODI appends exactly one row per UNIFY to `.paul/CODI-HISTORY.md` capturing the dispatch-outcome
+      category, R/U/K counts, symbols probed, and whether a blast_radius was injected. ADVISORY ONLY —
+      this hook is read-only against PLAN.md and SUMMARY.md and MUST NEVER halt the UNIFY flow. Run the
+      steps below in order.
+
+      STEP 1 — RESOLVE DATA SOURCE. Post-unify context provides `summary_path`. Derive `plan_path` by
+      substituting `-SUMMARY.md` → `-PLAN.md` on `summary_path`. If that file does not exist, glob
+      `.paul/phases/*/[0-9]*-PLAN.md` and match on the plan id extracted from `summary_path`. If STILL
+      no PLAN.md exists (hotfix mode: `summary_path` ends in `-HOTFIX-SUMMARY.md`), record outcome =
+      `no-dispatch-found` and proceed to STEP 5 with `—` in R, U, K, Symbols and `n` in blast_radius.
+
+      STEP 2 — PRIMARY READ (PLAN.md `<module_dispatch>`). Read the resolved PLAN.md and locate its
+      `<module_dispatch>`…`</module_dispatch>` region. Search that region first for the success-log
+      template fragment `impact × N symbols → R resolved, U unresolved, K total call-sites, injected
+      blast_radius`, then for the four hook-level skip strings: `no extractable symbols in phase scope`,
+      `codegraph tools unavailable`, `impact loop errored:`, `impact returned empty blast radius for
+      all symbols`. The primary source is PLAN.md because `post_unify_hooks` runs before
+      `finalize_summary` — SUMMARY.md's Module Execution Reports has not yet been populated with
+      carry-forward CODI content at hook-dispatch time.
+
+      STEP 3 — FALLBACK READ (SUMMARY.md Module Execution Reports). If STEP 2 found no recognized CODI
+      line, read `summary_path` and search its `## Module Execution Reports` region for the same five
+      patterns. This path serves historical / out-of-order reads where the SUMMARY.md has already been
+      finalized.
+
+      STEP 4 — CATEGORIZE OUTCOME. Map the matched line to exactly one of six outcome tokens:
+      `injected` (success-log pattern), `skipped-no-symbols` (`no extractable symbols in phase scope`),
+      `skipped-tool-unavailable` (`codegraph tools unavailable`), `skipped-loop-error` (`impact loop
+      errored:`), `skipped-all-empty` (`impact returned empty blast radius for all symbols`), or
+      `no-dispatch-found` (neither STEP 2 nor STEP 3 matched).
+
+      STEP 5 — EXTRACT FIELDS. On `injected`: parse R, U, K from the success log (the three integers
+      before `resolved`, `unresolved`, `total call-sites`); parse the Symbols list from the Blast
+      Radius sub-section by extracting every bold `**{symbol}**` subheading line from whichever source
+      matched (PLAN.md primary, SUMMARY.md fallback); blast_radius = `y`. Preserve symbol order exactly
+      as it appears in source. On any `skipped-*` or `no-dispatch-found`: R, U, K, Symbols all `—`;
+      blast_radius = `n`.
+
+      STEP 6 — APPEND ROW. If `.paul/CODI-HISTORY.md` does not exist, create it with the exact header
+      section:
+        `# CODI Dispatch History`
+        (blank line)
+        `One row per UNIFY. Source: modules/codi/module.yaml post-unify hook.`
+        `See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy, and data-source read order.`
+        (blank line)
+        `| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |`
+        `|------|------|---------|---|---|---|---------|--------------|`
+      Then append exactly one newline-terminated data row: `| {plan-id} | {YYYY-MM-DD} | {outcome} |
+      {R} | {U} | {K} | {symbols-comma-separated or —} | {y/n} |\n`. The file MUST end with a newline
+      after every append so no two rows share a line.
+
+      STEP 7 — EMIT DISPATCH LOG + CLASSIFIER SAFETY. Emit exactly ONE `[dispatch] CODI post-unify:
+      appended {outcome} row for {plan-id}` log line (or `[dispatch] CODI post-unify: skipped — no CODI
+      dispatch line found` when `no-dispatch-found` was recorded). This description MUST NOT contain
+      the halt-keyword token (the literal advisory-vs-enforcement classifier token) in any casing — the
+      shared dispatch classifier uses strict substring matching; CODI uses "skip", "stop", or "reject"
+      instead.
+
+      See references/codi-instrumentation.md for the schema, outcome taxonomy, data-source read order,
+      plan-path resolution rules, hotfix behavior, and the 175-01 worked example row.
+    refs:
+      - references/codi-instrumentation.md
 
 files:
   references:
     - references/codi.md
+    - references/codi-instrumentation.md
   workflows: []
   templates: []
   config: []

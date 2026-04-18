@@ -517,6 +517,79 @@ else
   tap_not_ok "Repo source surfaces retain the CODI source-selector contract" "Expected Phase 174 source-selector markers across repo plan workflow, module manifest, module ref, init workflow, schema ref, README, and pals.json"
 fi
 
+# Phase 176: CODI post-unify dispatch-outcome instrumentation — cross-harness
+CC_CODI_INSTRUMENTATION_REF="$CC_KERNEL_DIR/references/codi-instrumentation.md"
+PI_CODI_INSTRUMENTATION_REF="$PI_KERNEL_DIR/references/codi-instrumentation.md"
+
+if [ -f "$CC_KERNEL_DIR/modules.yaml" ] && [ -f "$PI_KERNEL_DIR/modules.yaml" ] \
+  && grep -Fq 'CODI-HISTORY.md' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'CODI-HISTORY.md' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'references/codi-instrumentation.md' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'references/codi-instrumentation.md' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'no-dispatch-found' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'no-dispatch-found' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'finalize_summary' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'finalize_summary' "$PI_KERNEL_DIR/modules.yaml"; then
+  tap_ok "Both installed modules.yaml registries carry the CODI post-unify dispatch-outcome hook"
+else
+  tap_not_ok "Both installed modules.yaml registries carry the CODI post-unify dispatch-outcome hook" "Expected Phase 176 post-unify hook markers (CODI-HISTORY.md, codi-instrumentation.md, no-dispatch-found, finalize_summary) in both installed modules.yaml files"
+fi
+
+if [ -f "$CC_CODI_INSTRUMENTATION_REF" ] && [ -f "$PI_CODI_INSTRUMENTATION_REF" ]; then
+  tap_ok "Both installed CODI instrumentation references exist"
+else
+  tap_not_ok "Both installed CODI instrumentation references exist" "Expected codi-instrumentation.md in both installed references dirs"
+fi
+
+if [ -f "$CC_CODI_INSTRUMENTATION_REF" ] && [ -f "$PI_CODI_INSTRUMENTATION_REF" ] \
+  && grep -Fq '## Outcome taxonomy' "$CC_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq '## Outcome taxonomy' "$PI_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq 'no-dispatch-found' "$CC_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq 'no-dispatch-found' "$PI_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq '.paul/CODI-HISTORY.md' "$CC_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq '.paul/CODI-HISTORY.md' "$PI_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |' "$CC_CODI_INSTRUMENTATION_REF" \
+  && grep -Fq '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |' "$PI_CODI_INSTRUMENTATION_REF"; then
+  tap_ok "Both installed CODI instrumentation references document schema, taxonomy, and history path"
+else
+  tap_not_ok "Both installed CODI instrumentation references document schema, taxonomy, and history path" "Expected Outcome taxonomy, no-dispatch-found, CODI-HISTORY.md path, and canonical header row in both installed codi-instrumentation.md refs"
+fi
+
+# Drift guard: 5 pre-plan skip-log strings must be verbatim in both installed CODI manifests
+if [ -f "$CC_KERNEL_DIR/modules.yaml" ] && [ -f "$PI_KERNEL_DIR/modules.yaml" ] \
+  && grep -Fq 'no extractable symbols in phase scope' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'no extractable symbols in phase scope' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'codegraph tools unavailable' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'codegraph tools unavailable' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'impact loop errored:' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'impact loop errored:' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'impact returned empty blast radius for all symbols' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'impact returned empty blast radius for all symbols' "$PI_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius' "$CC_KERNEL_DIR/modules.yaml" \
+  && grep -Fq 'impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius' "$PI_KERNEL_DIR/modules.yaml"; then
+  tap_ok "Both installed CODI manifests preserve all 5 pre-plan skip-log strings (drift guard)"
+else
+  tap_not_ok "Both installed CODI manifests preserve all 5 pre-plan skip-log strings (drift guard)" "Expected all 5 pre-plan skip-log strings + success-log template in both installed CODI manifests"
+fi
+
+# Phase 176 repo-source contract: manifest, new ref, seed history, and cross-reference pointer live in the repo
+if [ -f "$REPO_ROOT/modules/codi/module.yaml" ] \
+  && grep -Fq 'post-unify:' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'CODI-HISTORY.md' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'references/codi-instrumentation.md' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'no-dispatch-found' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'finalize_summary' "$REPO_ROOT/modules/codi/module.yaml" \
+  && [ -f "$REPO_ROOT/modules/codi/references/codi-instrumentation.md" ] \
+  && grep -Fq '## Outcome taxonomy' "$REPO_ROOT/modules/codi/references/codi-instrumentation.md" \
+  && grep -Fq '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |' "$REPO_ROOT/modules/codi/references/codi-instrumentation.md" \
+  && grep -Fq 'codi-instrumentation.md' "$REPO_ROOT/modules/codi/references/codi.md" \
+  && [ -f "$REPO_ROOT/.paul/CODI-HISTORY.md" ] \
+  && grep -Fq '| 175-01 | 2026-04-17 | injected | 4 | 0 | 10 | renderCompactLoopSummary, renderLifecycleStatus, syncLifecycleUi, renderLoopBadge | y |' "$REPO_ROOT/.paul/CODI-HISTORY.md"; then
+  tap_ok "Repo source surfaces carry the CODI post-unify instrumentation contract (manifest hook, instrumentation ref, codi.md pointer, seeded CODI-HISTORY.md)"
+else
+  tap_not_ok "Repo source surfaces carry the CODI post-unify instrumentation contract" "Expected post-unify hook + CODI-HISTORY markers in modules/codi/module.yaml, codi-instrumentation.md ref with taxonomy + header row, pointer line in codi.md, and seeded 175-01 row in .paul/CODI-HISTORY.md"
+fi
+
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: ARTIFACT SPEC COMPLIANCE
 # ════════════════════════════════════════════════════════════════════

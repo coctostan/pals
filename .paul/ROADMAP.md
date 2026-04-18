@@ -46,7 +46,7 @@ Phases: 2 of 4 complete
 |-------|------|-------|--------|-----------|
 | 174 | Source-File Symbol Extraction | 1/1 | ✅ Complete | 2026-04-17 |
 | 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | 1/1 | ✅ Complete | 2026-04-17 |
-| 176 | Dispatch-Outcome Instrumentation | TBD | Not started | - |
+| 176 | Dispatch-Outcome Instrumentation | 1 | Planning | - |
 | 177 | Re-Trial + Gating Decision | TBD | Not started | - |
 
 ### Phase 174: Source-File Symbol Extraction
@@ -58,8 +58,8 @@ Focus: Bundled docs/install pass covering three related loose ends from Phase 17
 Plans: `175-01` complete — bounded CODI install-time hint shipped in `drivers/pi/install.sh`, `When CODI helps` framing added across manifest/reference/README/changelog, success-log `R = resolved-with-call-sites only` pinned; installed-surface (167 checks) and cross-harness (70 checks) validation both pass
 
 ### Phase 176: Dispatch-Outcome Instrumentation
-Focus: Lightweight observability so Phase 177 (and future trials) can measure CODI's contribution at scale without manual reconstruction. Post-unify hook records one row per phase — dispatch outcome category, R/U/K counts, blast_radius injected y/n — to a tally file (e.g., `.paul/codi-dispatch-history.md`, mirroring `quality-history.md`'s shape). Target files: `modules/codi/module.yaml` (add post-unify hook), `modules/codi/references/codi.md` (new Instrumentation section), `kernel/workflows/unify-phase.md` (dispatch ordering, if needed), plus the new tally artifact. APPLY MUST re-run installer. Phase 176's own planning run is itself a live CODI-active session and will be part of Phase 177's trial set.
-Plans: TBD (defined during /paul:plan)
+Focus: Lightweight observability so Phase 177 (and future trials) can measure CODI's contribution at scale without manual reconstruction. Post-unify hook records one row per phase — dispatch outcome category (6 tokens including `no-dispatch-found` fallback), R/U/K counts, symbols probed, blast_radius injected y/n — to `.paul/CODI-HISTORY.md` (mirroring `QUALITY-HISTORY.md`'s shape). Target files: `modules/codi/module.yaml` (add post-unify hook at priority 220), `modules/codi/references/codi.md` (new Instrumentation section), `.paul/CODI-HISTORY.md` (new, seeded with Phase 175 row from `173-01-TRIAL-DATA.md` evidence), plus minimal semantic assertions in both validation suites. `kernel/workflows/unify-phase.md` needs NO change — post-unify dispatch is already registry-driven and picks up new hooks after installer re-run. APPLY MUST re-run installer (Milestone Invariant 1). Phase 176's own planning run is itself a live CODI-active session and will be part of Phase 177's trial set — the first hook-triggered row written to `.paul/CODI-HISTORY.md`.
+Plans: `176-01` created — awaiting approval
 
 ### Phase 177: Re-Trial + Gating Decision
 Focus: The v2.40 version of Phase 173. Observe CODI dispatch across the v2.40 live sessions {175-plan, 176-plan, 177-plan-self} (see Invariant 2) plus at least one TS-touching counterfactual re-run (Phase 168 scope again, or a new counterfactual) to test whether the iteration converted the trial signals from "weak" to "strong" and whether `S_pass_nonnull ≥ 3` is now achievable. Produce a SHIP_V0_2 / ITERATE_V0_1 / KILL decision with the same CODI-null-aware rubric + structured 3-question checklist as Phase 173. SHIP opens v0.2 (`symbol_graph`); ITERATE queues another v2.41 iteration cycle; KILL closes the thesis with bounded retention/removal. APPLY verification includes Invariant 3 trial-integrity check (installed manifest parity for each observed session). Per Invariant 1, Phase 177 edits no repo-source surfaces that require install (research/decision phase like Phase 173).

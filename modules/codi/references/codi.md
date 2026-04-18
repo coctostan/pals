@@ -116,6 +116,7 @@ CODI does not pre-check codegraph tool availability. There is no reliable filesy
 - In this Phase 175 planning run, the read-only `drivers/pi/extensions/pals-hooks.ts` symbols `renderCompactLoopSummary`, `renderLifecycleStatus`, `syncLifecycleUi`, and `renderLoopBadge` all resolved with call-sites; this is the kind of surface where CODI can improve boundary specificity without promising broad planner wins.
 - `R` in the success log means resolved-with-call-sites only. Resolved-but-empty outcomes still inject as `_(no downstream call-sites)_` and do not increment `R`; Phase 173 `173-01-TRIAL-DATA.md` remains the authoritative mixed-outcome example.
 - Pi installs may warn `CODI is enabled but no codegraph index detected` when `.codegraph/graph.db` is absent, but v0.1 still does not create a hard `.codegraph/` gate.
+- See also: `references/codi-instrumentation.md` for the post-unify dispatch-outcome history contract (`.paul/CODI-HISTORY.md`).
 
 ## Setup & Safe-Skip Distribution
 
