@@ -147,6 +147,7 @@ All validated — see below.
 - ✓ CODI live `impact` integration — per-symbol call pattern (not batched, because `impact` is all-or-nothing on unresolved input), 5 per-symbol outcome categories, partial-success invariant, Blast Radius markdown sub-section returned as `context_inject.blast_radius`, 4 hook-level skip paths, classifier-safety invariant extended to full module surface (Phase 171, v2.39 in progress)
 - ✓ CODI plan-phase coupling & distribution — prose-heavy planning scopes now seed explicit repo-confirmed CODI targets, `modules.codi` ships default-on across config/schema/docs, and semantic validation guards the contract across repo + installed surfaces (Phase 172, v2.39 in progress)
 - ✓ CODI install-time detection + value-envelope docs + format fix — bounded `.codegraph/graph.db` install hint (advisory only, never auto-disables CODI), honest `When CODI helps` framing across manifest/reference/README/changelog, and explicit success-log `R = resolved-with-call-sites only` convention; installed-surface + cross-harness validation extended with minimal semantic markers (Phase 175, v2.40 in progress)
+- ✓ CODI v2.40 complete — Phase 177 re-trial verdict **ITERATE_V0_1** (`S_pass_nonnull` improved from 1 → 3, Signal 3 still clears live + counterfactual projected-pass, SHIP gate fails on Q2=uncertain). v2.40 shipped source-file selector extraction (174), install-time detection + value-envelope docs + `R` convention (175), and CODI post-unify hook writing `.paul/CODI-HISTORY.md` (176). Next milestone (v2.41) focuses on natural-scope TS implementation evidence to resolve Q2 before considering v0.2. Verdict and full evidence in `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md` (Phases 174–177, v2.40 complete)
 ## Constraints
 - CARL remains architecturally independent (Pi extension event integration, not PALS workflow hooks)
 - TODD/WALT have no standalone operation — always PALS-native
@@ -341,4 +342,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-18 after Phase 176 completion (CODI post-unify dispatch-outcome tally shipped; `.paul/CODI-HISTORY.md` live with seeded 175-01 + first hook-triggered 176-01 row; v2.40 at 75% — Phase 177 re-trial next)*
+*Last updated: 2026-04-18 after Phase 177 completion (v2.40 CODI v0.1 re-trial — verdict ITERATE_V0_1; `S_pass_nonnull` 1 → 3; v2.41 focus on natural-scope TS implementation evidence for Signal 1/2 Q2 validation)*
