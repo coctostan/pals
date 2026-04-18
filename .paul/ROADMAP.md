@@ -28,57 +28,43 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** (selected by Phase 177 verdict ITERATE_V0_1 — see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`).
-Status: Not started
-Theme: Observe CODI dispatch on a natural PALS implementation phase whose `files_modified` includes a codegraph-indexed TS file (not just `<context>` carry-posture), so Signal 1 / Signal 2 live evidence can be isolated from planner-discipline causation. Closes the Q2 gap Phase 177 flagged.
-Phases: 0 of ~3 planned (proposed 178 — natural-scope TS observation, 179 — optional pre-plan guidance, 180 — re-trial + gating decision)
+Status: 🚧 In Progress (Phase 178 APPLY complete; UNIFY pending)
+Theme: Observe CODI dispatch on real TS work in a separate repo (quark) — specifically the user's in-flight quark patches, authored before CODI was enabled in quark — so Signal 1 / Signal 2 live evidence can be isolated from planner-discipline causation with zero selection bias. Closes the Q2 gap Phase 177 flagged.
+Phases: 1 of ~3 in progress (178 APPLY complete; 179 observation pending; 180 re-trial pending). Proposal: `.paul/proposals/v2.41-cross-repo-trial-quark.md`.
 
 ### Milestone Invariants
 
-1. **Nothing takes effect until `bash drivers/pi/install.sh` runs.** The installed surface (`~/.pi/agent/skills/pals/modules.yaml`, `~/.pi/agent/skills/pals/kernel/workflows/*`, `~/.pi/agent/skills/pals/modules/codi/*`) is what CODI dispatches against at plan time. Repo-source edits to `modules/codi/*`, `kernel/workflows/*`, or `drivers/pi/install.sh` itself are invisible until the installer regenerates the installed tree. Every v2.40 phase that edits any of those surfaces MUST include `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` as a verification step in APPLY. Phases that do NOT edit those surfaces are exempt.
-
-2. **Self-test phasing.** Phase 174 plans-and-applies against the v2.39 (prose-only) extractor because the v2.40 extractor doesn't go live until 174's APPLY + installer re-run complete. Phase 174's own CODI dispatch is therefore expected to be CODI_NULL. The first session where the v2.40 extractor demonstrates itself live is **Phase 175's planning run**. Phase 177's re-trial set is therefore {175-plan, 176-plan, 177-plan-self} plus any representative counterfactual, NOT {174-plan, ...}.
-
-3. **Trial integrity (Phase 177).** Before observing each trial session's dispatch, confirm `~/.pi/agent/skills/pals/modules.yaml` reflects the latest repo-source `modules/codi/module.yaml`. Any session observed against a stale installed manifest is excluded from the trial set.
-
+1. **Source freeze + parity.** pals `modules/codi/*` remains frozen at SHA `0d667560b65944801faaee270ab920786afa471a` for the duration of v2.41. pals and quark share the installed registry at `~/.pi/agent/skills/pals/modules.yaml`, so trial-integrity parity is by construction.
+2. **Natural trial fuel only.** Phase 179 uses the user's in-flight quark patches, authored before CODI was enabled in quark. No controlled self-trials and no synthetic CODI-HISTORY rows count toward the dataset.
+3. **Naturality discipline.** When planning each quark phase that applies those patches, draft `<context>` and `files_modified` from engineering logic first, then let CODI dispatch over that scope. Do not tune the quark plan to feed CODI nicer symbols.
 ### Phases
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 174 | Source-File Symbol Extraction | 1/1 | ✅ Complete | 2026-04-17 |
-| 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | 1/1 | ✅ Complete | 2026-04-17 |
-| 176 | Dispatch-Outcome Instrumentation | 1/1 | ✅ Complete | 2026-04-18 |
-| 177 | Re-Trial + Gating Decision | 1 (`177-01`) | ✅ Complete | 2026-04-18 |
+| 178 | CODI Cross-Repo Install (quark) | 1 (`178-01`) | APPLY complete — UNIFY pending | — |
+| 179 | Organic Observation Window | — | Not started | — |
+| 180 | Re-Trial + Gating Decision | — | Not started | — |
 
-### Phase 174: Source-File Symbol Extraction
-Focus: Highest-leverage v2.40 iteration. During `prepare_codi_seed_candidates`, read PLAN's `<context>` source-file list and parse top-level declarations (functions, classes, exports — TS/JS first, extensible) to seed `impact` calls in addition to the existing prose-based extraction. Phase 173 counterfactual established that Phase 168's scope (`drivers/pi/extensions/pals-hooks.ts`) would have yielded 4 resolved-with-call-sites symbols if source-file extraction had been active. Target files: `modules/codi/module.yaml` (manifest description Step 1: extraction rules), `modules/codi/references/codi.md` (Symbol Extraction Rules section), `kernel/workflows/plan-phase.md` (`prepare_codi_seed_candidates` step from Phase 172). APPLY MUST re-run `bash drivers/pi/install.sh` as a verification step (Milestone Invariant 1). Phase 174's own CODI dispatch is expected CODI_NULL per Invariant 2.
-Plans: `174-01` complete — source-file selector extraction shipped, installed, and validated; Phase 175 planning is the first live session expected to exercise it
+### Phase 178: CODI Cross-Repo Install (quark)
+Focus: Enable CODI in quark without touching quark source or pals CODI source. Add `modules.codi` to `quark/pals.json`, refresh `quark/.codegraph/graph.db`, seed `quark/.paul/CODI-HISTORY.md`, and capture a direct codegraph smoke test proving current-TS symbol resolution.
+Plans: `178-01` APPLY complete — `quark/pals.json` now includes `modules.codi`; `quark/.codegraph/graph.db` reindexed successfully; direct smoke test resolved `deriveTools` to `src/kernel/context.ts:40` (`assembleContext`) with behavioral depth 1; `quark/.paul/CODI-HISTORY.md` is seeded with the canonical zero-row header. UNIFY still needs to close the loop before Phase 178 is marked complete.
 
-### Phase 175: Install-Time Detection + Value-Envelope Docs + Format Fix
-Focus: Bundled docs/install pass covering three related loose ends from Phase 173's DECISION.md. (a) `drivers/pi/install.sh` probes codegraph availability at install time; surfaces a one-line recommendation when absent ("CODI is enabled but no codegraph index detected — see `modules/codi/references/codi.md` for setup"). (b) `modules/codi/references/codi.md` gains a "When CODI helps" section framing the TS-touching-on-indexed-code value envelope honestly; `README.md` CODI overview aligned. (c) Manifest success-log format explicitly pins the R=resolved-with-call-sites convention (Cross-cutting observation 6 from Phase 173 TRIAL-DATA) — 10-line manifest patch + matching reference-doc note. **Meta-bootstrap note:** this phase edits `drivers/pi/install.sh` itself. APPLY must run the installer twice — once to deploy the edit, once to exercise the new probe — both passes as verification. Also the first phase where the v2.40 source-file extractor (shipped in Phase 174) can fire live against this plan's scope, per Invariant 2.
-Plans: `175-01` complete — bounded CODI install-time hint shipped in `drivers/pi/install.sh`, `When CODI helps` framing added across manifest/reference/README/changelog, success-log `R = resolved-with-call-sites only` pinned; installed-surface (167 checks) and cross-harness (70 checks) validation both pass
+### Phase 179: Organic Observation Window
+Focus: Let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI. Trial row count follows natural engineering decomposition, not trial convenience.
+Plans: Not started — opens after Phase 178 UNIFY.
 
-### Phase 176: Dispatch-Outcome Instrumentation
-Focus: Lightweight observability so Phase 177 (and future trials) can measure CODI's contribution at scale without manual reconstruction. Post-unify hook records one row per phase — dispatch outcome category (6 tokens including `no-dispatch-found` fallback), R/U/K counts, symbols probed, blast_radius injected y/n — to `.paul/CODI-HISTORY.md` (mirroring `QUALITY-HISTORY.md`'s shape). Target files: `modules/codi/module.yaml` (add post-unify hook at priority 220), `modules/codi/references/codi.md` (new Instrumentation section), `.paul/CODI-HISTORY.md` (new, seeded with Phase 175 row from `173-01-TRIAL-DATA.md` evidence), plus minimal semantic assertions in both validation suites. `kernel/workflows/unify-phase.md` needs NO change — post-unify dispatch is already registry-driven and picks up new hooks after installer re-run. APPLY MUST re-run installer (Milestone Invariant 1). Phase 176's own planning run is itself a live CODI-active session and will be part of Phase 177's trial set — the first hook-triggered row written to `.paul/CODI-HISTORY.md`.
-Plans: `176-01` complete — CODI post-unify hook added at priority 220 (7-step contract, PLAN.md primary / SUMMARY.md fallback, hotfix-aware), `codi-instrumentation.md` ref created (85 lines), `.paul/CODI-HISTORY.md` seeded with 175-01 and first hook-triggered 176-01 row appended (skipped-no-symbols, matching pre-plan dispatch prediction), installed-surface (172 checks) and cross-harness (75 checks) validation both pass with +5/+5 drift guard assertions
-
-### Phase 177: Re-Trial + Gating Decision
-Focus: The v2.40 version of Phase 173. Observe CODI dispatch across the v2.40 live sessions {175-plan, 176-plan, 177-plan-self} (see Invariant 2) plus at least one TS-touching counterfactual re-run (Phase 168 scope again, or a new counterfactual) to test whether the iteration converted the trial signals from "weak" to "strong" and whether `S_pass_nonnull ≥ 3` is now achievable. Produce a SHIP_V0_2 / ITERATE_V0_1 / KILL decision with the same CODI-null-aware rubric + structured 3-question checklist as Phase 173. SHIP opens v0.2 (`symbol_graph`); ITERATE queues another v2.41 iteration cycle; KILL closes the thesis with bounded retention/removal. APPLY verification includes Invariant 3 trial-integrity check (installed manifest parity for each observed session). Per Invariant 1, Phase 177 edits no repo-source surfaces that require install (research/decision phase like Phase 173).
-Plans: `177-01` complete — v2.40 re-trial verdict **ITERATE_V0_1**; `S_pass_nonnull` improved from 1 → 3 (first time mechanically clearing the SHIP threshold), Signal 3 still passes on live + counterfactual projected-pass, but SHIP gate fails on Q2=uncertain because only Signal 3 reaches projected-pass. Next milestone v2.41 focuses on natural-scope TS implementation evidence to resolve Q2 before considering v0.2. Verdict in `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`.
+### Phase 180: Re-Trial + Gating Decision
+Focus: Re-run the unchanged Phase 173/177 rubric against the quark row set produced in Phase 179 to resolve Q2.
+Plans: Not started.
 ## Next Milestone
-**v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** (selected by Phase 177 verdict ITERATE_V0_1 — see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`).
+**TBD — gated on v2.41 Phase 180 verdict.**
 
-Theme: Close the Q2 gap surfaced by the v2.40 re-trial. v2.40 moved `S_pass_nonnull` from 1 to 3, but SHIP still fails on Q2 because only Signal 3 reaches projected-pass and the causal chain from blast_radius to APPLY quality is still indirect. The next iteration cycle should exercise CODI on a natural non-CODI-development PALS implementation phase whose `files_modified` includes codegraph-indexed TS — the test Phase 177 Observation 4 explicitly flagged as missing.
-
-Proposed phase shape (subject to `/paul:plan` refinement):
-- Phase 178 — Natural-scope TS implementation observation (piggybacks on the next real TS-touching PALS phase; no CODI-source churn).
-- Phase 179 — Optional pre-plan guidance wording (update `When CODI helps` + optional `plan-phase.md` prose so planners notice the injected Blast Radius during `<boundaries>`/`<tasks>` drafting).
-- Phase 180 — Re-trial + gating decision (the v2.41 version of Phase 177, reusing the same unchanged rubric).
-
+Theme: If Phase 180 returns SHIP, open v0.2 `symbol_graph`. If it returns ITERATE or KILL, route the next milestone from that verdict instead of pre-committing a follow-on scope.
 Deferred (gated on v2.41 Phase 180 verdict):
 - v0.2 — `symbol_graph` for upstream dependency context
 - v0.3 — conditional `trace` for runtime-behavior plans
 - v0.4 — formalize `<impact>` / `<dependencies>` / `<runtime_paths>` PLAN.md template sections
 - v0.5+ — CODI at other PALS hooks (pre-apply / post-task / pre-unify)
-- Cross-repo trials (backup path if PALS itself does not produce a natural TS-scope implementation phase in a reasonable window).
+- Multi-repo observation (wealthVizr, max-pai, atpeace) as a v2.42 candidate if Phase 180 is still inconclusive
 
 ## Completed Milestones
 <details>
@@ -731,4 +717,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-18 — Phase 177 verdict ITERATE_V0_1; v2.40 closed at 4 of 4 phases; v2.41 queued on natural-scope TS implementation evidence for Q2 validation.*
+*Last updated: 2026-04-18 — Phase 178 APPLY executed in quark; v2.41 remains in progress with UNIFY pending before Phase 179 observation opens.*
