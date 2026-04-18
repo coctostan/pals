@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 — Phase 175 complete (install-time detection, honest value-envelope docs, success-log format fix shipped via PR #85). Phase 176 (Dispatch-Outcome Instrumentation) is next and is itself a live CODI-active planning session for the Phase 177 trial set.
+**Current focus:** v2.40 CODI v0.1 — Phase 176 plan created for the post-unify dispatch-outcome tally (`.paul/CODI-HISTORY.md`). Plan was drafted in high-collaboration + exploratory mode after the user accepted all 8 recommended defaults.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 176 of 4 (Dispatch-Outcome Instrumentation) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-18T02:00:00Z — Phase 175 UNIFY complete, PR #85 merged (squash 7e3a728), local main synced, feature branch cleaned
+Phase: 176 of 4 (Dispatch-Outcome Instrumentation) — Planning
+Plan: 176-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-18T03:00:00Z — Revised 176-01-PLAN.md after self-review (6 fixes); paused for user approval before APPLY
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [█████░░░░░] 50%
-- Phase 176: [░░░░░░░░░░] 0%
+- Phase 176: [██░░░░░░░░] 20%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Loop reset — ready for /paul:plan for Phase 176]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 ## Accumulated Context
 ### Decisions
@@ -208,17 +208,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 7e3a728 feat(175-install-time-detection-value-envelope-docs-format-fix): add CODI install hint and docs alignment (#85)
-PR: https://github.com/coctostan/pals/pull/85 (state: MERGED)
-CI: passing (Socket Security checks passed)
-Feature branches merged: feature/175-install-time-detection-value-envelope-docs-format-fix (squash-merged, deleted)
+Branch: feature/176-dispatch-outcome-instrumentation
+Last commit (main): 145e4bd feat(175-install-time-detection-value-envelope-docs-format-fix): complete phase transition
+PR: none yet for Phase 176 (will be created during/after APPLY)
+CI: N/A
+Prior milestone: PR #85 merged as 7e3a728 on main (Phase 175 complete)
 ## Session Continuity
-Last session: 2026-04-18T02:00:00Z
-Stopped at: Phase 175 complete, transitioned to Phase 176, ready to plan
-Next action: /paul:plan for Phase 176 (Dispatch-Outcome Instrumentation)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-18T03:00:00Z
+Stopped at: Plan 176-01 v2 revised after self-review; user chose [3] Pause here at post-revision review gate
+Next action: Review the revised plan, then run /paul:apply .paul/phases/176-dispatch-outcome-instrumentation/176-01-PLAN.md when approved
+Resume file: .paul/HANDOFF-2026-04-18-phase-176-plan-ready.md
 Resume context:
-- Phase 175 merged via PR #85 (squash commit `7e3a728`). Local `main` is synced and the feature branch is deleted.
-- Phase 176 is Dispatch-Outcome Instrumentation: add a post-unify hook to record one row per phase (dispatch outcome category, R/U/K counts, blast_radius injected y/n) to a tally file mirroring `QUALITY-HISTORY.md`'s shape.
-- Milestone Invariant 1 applies: if Phase 176 edits `modules/codi/*`, `kernel/workflows/*`, or `drivers/pi/install.sh`, APPLY MUST include `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` as a verification step. Phase 176's own planning run is itself a live CODI-active session and will count toward Phase 177's trial set.
+- Plan v2 applies 6 self-review fixes (341 lines). On feature branch `feature/176-dispatch-outcome-instrumentation`, WIP commit pending.
+- Data-source read order was INVERTED vs v1 after discovering `post_unify_hooks` runs before `finalize_summary`: PLAN.md `<module_dispatch>` is now PRIMARY, SUMMARY.md fallback.
+- 150-line ref cap respected by splitting into new focused ref `modules/codi/references/codi-instrumentation.md` (target 90–140 lines); `codi.md` gets only a 1-line pointer.
+- C12 preflight confirmed green baseline: 167/167 pi-end-to-end, 70/70 cross-harness. Any APPLY failures will attribute cleanly to Phase 176.
+- 175-01-PLAN.md post-merge integrity verified: seed-row source data (success-log + 4 symbols in canonical order) confirmed present at their documented line numbers.
+- Milestone Invariant 1 applies: APPLY Task 3 MUST include `PALS_ROOT="$(pwd)" bash drivers/pi/install.sh` (edits `modules/codi/*`).
+- Expected validation totals after APPLY: pi-end-to-end 172/172, cross-harness 75/75 (+5 per suite, incl. 5-string drift guard on pre-plan skip-log contract).
