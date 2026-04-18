@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-18)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 — Phase 176 complete (CODI post-unify dispatch-outcome tally shipped; `.paul/CODI-HISTORY.md` live with 2 rows, hook first fire succeeded end-to-end). v2.40 at 75% (3 of 4 phases); Phase 177 (Re-Trial + Gating Decision) is next.
+**Current focus:** v2.40 CODI v0.1 complete — Phase 177 re-trial verdict ITERATE_V0_1 (`S_pass_nonnull` 1 → 3; SHIP gate fails on Q2=uncertain). Next milestone v2.41 focuses on natural-scope TS implementation evidence for Q2 validation.
 ## Current Position
-Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 177 of 4 (Re-Trial + Gating Decision) — Not started
-Plan: Not started
-Status: Ready to plan Phase 177
-Last activity: 2026-04-18T05:45:00Z — Phase 176 complete, transitioned to Phase 177
+Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration — ✅ Complete (verdict ITERATE_V0_1); next: v2.41 Natural-Scope Evidence & Signal-1/2 Validation
+Phase: 177 of 4 (Re-Trial + Gating Decision) — APPLY complete
+Plan: 177-01 APPLY complete, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-18 — Phase 177 APPLY wrote TRIAL-DATA, DECISION (verdict ITERATE_V0_1), and lifecycle patches
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [███████░░░] 75%
-- Phase 177: [░░░░░░░░░░] 0%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
+- Phase 177: [█████████░] 90% (APPLY complete; UNIFY pending)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 176 complete; ready to plan Phase 177]
+  ✓        ✓        ○     [APPLY complete; TRIAL-DATA + DECISION written; lifecycle patches applied]
 ```
 ## Accumulated Context
 ### Decisions
@@ -140,6 +140,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-17: Document CODI as a TS/JS-touching indexed-code helper and pin success-log `R` to resolved-with-call-sites only | 175 | Aligns manifest, reference doc, README, and changelog around one honest value envelope and removes the resolved-but-empty ambiguity before Phase 177's re-trial |
 | 2026-04-18: Add CODI post-unify hook at priority 220 reading PLAN.md `<module_dispatch>` primary / SUMMARY.md fallback / hotfix-aware `no-dispatch-found`, split instrumentation contract into a new `codi-instrumentation.md` ref to respect the 150-line module-ref cap, and add a 5-string drift guard between pre-plan and post-unify hooks | 176 | Establishes post-unify artifact-parsing pattern (distinct from WALT's runtime-gathered measurements); Phase 177's re-trial rubric `S_pass_nonnull ≥ 3` can now read `.paul/CODI-HISTORY.md` directly instead of manually reconstructing dispatch outcomes from per-phase artifacts |
 | 2026-04-18: Classifier-safety token hygiene extended — hook descriptions in `modules/*/module.yaml` must avoid the halt-keyword token (`block`) in generic prose, not just intent-bearing text | 176 | Extends Phase 171's classifier-safety invariant to new hooks; post-unify description uses "region" / "section" / "header" instead |
+| 2026-04-18: Phase 177 verdict ITERATE_V0_1 — v2.40 re-trial improved `S_pass_nonnull` from 1 → 3 (first time mechanically crossing SHIP threshold), Signal 3 continues to clear on live + counterfactual projected-pass, but SHIP gate fails on Q2=uncertain (only Signal 3 reaches projected-pass; Signals 1/2 live-partial but not projected-pass) | 177 | Sets v2.41 milestone direction (natural-scope TS implementation evidence for Q2 validation); defers `symbol_graph`/`trace`/PLAN-template formalization until next re-trial closes the Q2 gap |
+| 2026-04-18: Treat Session C (177-01-self) as `controlled live self-trial` — counts toward non-CODI_NULL live tally and Q2 value-envelope interpretation, but capped at `partial` contribution on Signal 1 and Signal 4 | 177 | Preserves trial-set honesty across Phase 173 → Phase 177 re-trial without inflating the controlled evidence into broad live proof |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -216,10 +218,10 @@ PR: https://github.com/coctostan/pals/pull/86 (state: MERGED)
 CI: passed (Socket Security checks both green)
 Prior milestone: PR #86 merged as 1d9ce95 on main (Phase 176 complete); PR #85 merged as 7e3a728 on main (Phase 175 complete)
 ## Session Continuity
-Last session: 2026-04-18T05:30:00Z
-Stopped at: Phase 176 complete and merged (PR #86 → main as 1d9ce95); v2.40 now at 75% — Phase 177 ready to plan
-Next action: /paul:plan for Phase 177 (Re-Trial + Gating Decision)
-Resume file: .paul/ROADMAP.md (Phase 177 detail section)
+Last session: 2026-04-18T16:19:51Z
+Stopped at: Plan 177-01 created
+Next action: Review and approve plan, then run /paul:apply .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md
+Resume file: .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md
 Resume context:
 - Phase 176 shipped: CODI post-unify hook (priority 220) + `codi-instrumentation.md` ref (85 lines) + seeded `.paul/CODI-HISTORY.md` + drift guard in both validation suites. Hook's first fire appended `| 176-01 | 2026-04-18 | skipped-no-symbols | — | — | — | — | n |` end-to-end (matches plan's self-test prediction for markdown/yaml/shell scope).
 - `.paul/CODI-HISTORY.md` has 2 rows: 175-01 (injected, 4 resolved, 10 call-sites, y) + 176-01 (skipped-no-symbols, n). Phase 177's re-trial reads this file directly.

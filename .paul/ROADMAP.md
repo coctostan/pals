@@ -27,11 +27,10 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.40 CODI v0.1 — Extractor & Coverage Iteration**
-Status: 🚧 In Progress
-Started: 2026-04-17
-Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2. Selected by Phase 173 verdict ITERATE_V0_1 (see `.paul/phases/173-real-world-trial-gating-decision/173-01-DECISION.md`).
-Phases: 3 of 4 complete
+**v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** (selected by Phase 177 verdict ITERATE_V0_1 — see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`).
+Status: Not started
+Theme: Observe CODI dispatch on a natural PALS implementation phase whose `files_modified` includes a codegraph-indexed TS file (not just `<context>` carry-posture), so Signal 1 / Signal 2 live evidence can be isolated from planner-discipline causation. Closes the Q2 gap Phase 177 flagged.
+Phases: 0 of ~3 planned (proposed 178 — natural-scope TS observation, 179 — optional pre-plan guidance, 180 — re-trial + gating decision)
 
 ### Milestone Invariants
 
@@ -47,7 +46,7 @@ Phases: 3 of 4 complete
 | 174 | Source-File Symbol Extraction | 1/1 | ✅ Complete | 2026-04-17 |
 | 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | 1/1 | ✅ Complete | 2026-04-17 |
 | 176 | Dispatch-Outcome Instrumentation | 1/1 | ✅ Complete | 2026-04-18 |
-| 177 | Re-Trial + Gating Decision | TBD | Not started | - |
+| 177 | Re-Trial + Gating Decision | 1 (`177-01`) | ✅ Complete | 2026-04-18 |
 
 ### Phase 174: Source-File Symbol Extraction
 Focus: Highest-leverage v2.40 iteration. During `prepare_codi_seed_candidates`, read PLAN's `<context>` source-file list and parse top-level declarations (functions, classes, exports — TS/JS first, extensible) to seed `impact` calls in addition to the existing prose-based extraction. Phase 173 counterfactual established that Phase 168's scope (`drivers/pi/extensions/pals-hooks.ts`) would have yielded 4 resolved-with-call-sites symbols if source-file extraction had been active. Target files: `modules/codi/module.yaml` (manifest description Step 1: extraction rules), `modules/codi/references/codi.md` (Symbol Extraction Rules section), `kernel/workflows/plan-phase.md` (`prepare_codi_seed_candidates` step from Phase 172). APPLY MUST re-run `bash drivers/pi/install.sh` as a verification step (Milestone Invariant 1). Phase 174's own CODI dispatch is expected CODI_NULL per Invariant 2.
@@ -63,21 +62,39 @@ Plans: `176-01` complete — CODI post-unify hook added at priority 220 (7-step 
 
 ### Phase 177: Re-Trial + Gating Decision
 Focus: The v2.40 version of Phase 173. Observe CODI dispatch across the v2.40 live sessions {175-plan, 176-plan, 177-plan-self} (see Invariant 2) plus at least one TS-touching counterfactual re-run (Phase 168 scope again, or a new counterfactual) to test whether the iteration converted the trial signals from "weak" to "strong" and whether `S_pass_nonnull ≥ 3` is now achievable. Produce a SHIP_V0_2 / ITERATE_V0_1 / KILL decision with the same CODI-null-aware rubric + structured 3-question checklist as Phase 173. SHIP opens v0.2 (`symbol_graph`); ITERATE queues another v2.41 iteration cycle; KILL closes the thesis with bounded retention/removal. APPLY verification includes Invariant 3 trial-integrity check (installed manifest parity for each observed session). Per Invariant 1, Phase 177 edits no repo-source surfaces that require install (research/decision phase like Phase 173).
-Plans: TBD (defined during /paul:plan)
+Plans: `177-01` complete — v2.40 re-trial verdict **ITERATE_V0_1**; `S_pass_nonnull` improved from 1 → 3 (first time mechanically clearing the SHIP threshold), Signal 3 still passes on live + counterfactual projected-pass, but SHIP gate fails on Q2=uncertain because only Signal 3 reaches projected-pass. Next milestone v2.41 focuses on natural-scope TS implementation evidence to resolve Q2 before considering v0.2. Verdict in `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`.
 ## Next Milestone
-TBD after v2.40 completion. Directly depends on Phase 177's verdict:
-- **SHIP_V0_2** → next milestone is v0.2 "CODI + `symbol_graph` upstream dependency context" (mirrors v2.39's 4-phase shape: scaffolding / live integration / coupling+distribution / trial+gate).
-- **ITERATE_V0_1** → next milestone is v2.41 with a concrete iteration target surfaced by 177's evidence.
-- **KILL** → next milestone is retention/removal of CODI surfaces plus a post-mortem artifact.
+**v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** (selected by Phase 177 verdict ITERATE_V0_1 — see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`).
 
-Deferred (gated on v2.40 Phase 177 verdict):
+Theme: Close the Q2 gap surfaced by the v2.40 re-trial. v2.40 moved `S_pass_nonnull` from 1 to 3, but SHIP still fails on Q2 because only Signal 3 reaches projected-pass and the causal chain from blast_radius to APPLY quality is still indirect. The next iteration cycle should exercise CODI on a natural non-CODI-development PALS implementation phase whose `files_modified` includes codegraph-indexed TS — the test Phase 177 Observation 4 explicitly flagged as missing.
+
+Proposed phase shape (subject to `/paul:plan` refinement):
+- Phase 178 — Natural-scope TS implementation observation (piggybacks on the next real TS-touching PALS phase; no CODI-source churn).
+- Phase 179 — Optional pre-plan guidance wording (update `When CODI helps` + optional `plan-phase.md` prose so planners notice the injected Blast Radius during `<boundaries>`/`<tasks>` drafting).
+- Phase 180 — Re-trial + gating decision (the v2.41 version of Phase 177, reusing the same unchanged rubric).
+
+Deferred (gated on v2.41 Phase 180 verdict):
 - v0.2 — `symbol_graph` for upstream dependency context
 - v0.3 — conditional `trace` for runtime-behavior plans
 - v0.4 — formalize `<impact>` / `<dependencies>` / `<runtime_paths>` PLAN.md template sections
 - v0.5+ — CODI at other PALS hooks (pre-apply / post-task / pre-unify)
-- Cross-repo trials if v2.40 re-trial still leaves doubt about CODI's value envelope.
+- Cross-repo trials (backup path if PALS itself does not produce a natural TS-scope implementation phase in a reasonable window).
 
 ## Completed Milestones
+<details>
+<summary>v2.40 CODI v0.1 — Extractor & Coverage Iteration - 2026-04-18 (4 phases)</summary>
+
+Theme: Close the extractor-vs-scope alignment gap surfaced by Phase 173's trial — extract symbols from PLAN-referenced source files, not just from prose — then re-trial against new live PALS phases before considering v0.2. Selected by Phase 173 verdict ITERATE_V0_1.
+Outcome: Phase 177 verdict **ITERATE_V0_1** (see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`). `S_pass_nonnull` improved from 1 → 3 (first time mechanically clearing the SHIP threshold), Signal 3 still passes on live + counterfactual projected-pass, but SHIP gate fails on Q2=uncertain because only Signal 3 reaches projected-pass. Next milestone v2.41 focuses on natural-scope TS implementation evidence to resolve Q2 before considering v0.2.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 174 | Source-File Symbol Extraction | 1 | 2026-04-17 |
+| 175 | Install-Time Detection + Value-Envelope Docs + Format Fix | 1 | 2026-04-17 |
+| 176 | Dispatch-Outcome Instrumentation | 1 | 2026-04-18 |
+| 177 | Re-Trial + Gating Decision | 1 | 2026-04-18 |
+
+</details>
 <details>
 <summary>v2.39 CODI v0.1 — Pre-Plan Structural Injection - 2026-04-17 (4 phases)</summary>
 
@@ -714,4 +731,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-18 — Phase 176 complete; v2.40 is 3 of 4 phases complete and ready for Phase 177 planning*
+*Last updated: 2026-04-18 — Phase 177 verdict ITERATE_V0_1; v2.40 closed at 4 of 4 phases; v2.41 queued on natural-scope TS implementation evidence for Q2 validation.*
