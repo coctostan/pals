@@ -212,15 +212,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 1d9ce95 feat(176-dispatch-outcome-instrumentation): CODI post-unify dispatch-outcome tally (#86)
-PR: https://github.com/coctostan/pals/pull/86 (state: MERGED)
-CI: passed (Socket Security checks both green)
-Prior milestone: PR #86 merged as 1d9ce95 on main (Phase 176 complete); PR #85 merged as 7e3a728 on main (Phase 175 complete)
+Branch: feature/177-re-trial-gating-decision
+Last commit: ed77f78 feat(177-re-trial-gating-decision): v2.40 CODI re-trial verdict ITERATE_V0_1
+PR: https://github.com/coctostan/pals/pull/87 (state: open)
+CI: pending (no checks reported yet — merge gate in UNIFY will enforce)
+Prior milestone: PR #86 merged as 1d9ce95 on main (Phase 176 complete); PR #85 merged as 7e3a728 on main (Phase 175 complete); Phase 177 APPLY commit ed77f78 pushed on feature/177-re-trial-gating-decision
 ## Session Continuity
-Last session: 2026-04-18T16:19:51Z
-Stopped at: Plan 177-01 created
-Next action: Review and approve plan, then run /paul:apply .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md
+Last session: 2026-04-18 — Phase 177 APPLY complete
+Stopped at: Phase 177 APPLY complete (verdict ITERATE_V0_1; lifecycle patches applied; PR #87 open)
+Next action: Run /paul:unify .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md to close the loop (CODI post-unify hook will append the 177-01 row to .paul/CODI-HISTORY.md)
 Resume file: .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md
 Resume context:
 - Phase 176 shipped: CODI post-unify hook (priority 220) + `codi-instrumentation.md` ref (85 lines) + seeded `.paul/CODI-HISTORY.md` + drift guard in both validation suites. Hook's first fire appended `| 176-01 | 2026-04-18 | skipped-no-symbols | — | — | — | — | n |` end-to-end (matches plan's self-test prediction for markdown/yaml/shell scope).
