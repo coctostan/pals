@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-18)
 **Current focus:** v2.40 CODI v0.1 complete — Phase 177 re-trial verdict ITERATE_V0_1 (`S_pass_nonnull` 1 → 3; SHIP gate fails on Q2=uncertain). Next milestone v2.41 focuses on natural-scope TS implementation evidence for Q2 validation.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration — ✅ Complete (verdict ITERATE_V0_1); next: v2.41 Natural-Scope Evidence & Signal-1/2 Validation
-Phase: 177 of 4 (Re-Trial + Gating Decision) — APPLY complete
-Plan: 177-01 APPLY complete, awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-18 — Phase 177 APPLY wrote TRIAL-DATA, DECISION (verdict ITERATE_V0_1), and lifecycle patches
+Phase: 177 of 4 (Re-Trial + Gating Decision) — ✅ Complete
+Plan: 177-01 complete
+Status: Loop complete — ready for v2.41 transition (PR #87 merge gate pending)
+Last activity: 2026-04-18 — Phase 177 UNIFY complete; SUMMARY written; post-unify hooks fired (WALT quality-history appended, CODI-HISTORY appended third row, SKIP captured 2 decision records)
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- Phase 177: [█████████░] 90% (APPLY complete; UNIFY pending)
+- Phase 177: [██████████] 100% complete
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete; TRIAL-DATA + DECISION written; lifecycle patches applied]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN / milestone transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -219,9 +219,9 @@ CI: pending (no checks reported yet — merge gate in UNIFY will enforce)
 Prior milestone: PR #86 merged as 1d9ce95 on main (Phase 176 complete); PR #85 merged as 7e3a728 on main (Phase 175 complete); Phase 177 APPLY commit ed77f78 pushed on feature/177-re-trial-gating-decision
 ## Session Continuity
 Last session: 2026-04-18 — Phase 177 APPLY complete
-Stopped at: Phase 177 APPLY complete (verdict ITERATE_V0_1; lifecycle patches applied; PR #87 open)
-Next action: Run /paul:unify .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md to close the loop (CODI post-unify hook will append the 177-01 row to .paul/CODI-HISTORY.md)
-Resume file: .paul/phases/177-re-trial-gating-decision/177-01-PLAN.md
+Stopped at: Phase 177 UNIFY complete (verdict ITERATE_V0_1; SUMMARY written; v2.40 milestone closed; PR #87 merge gate pending)
+Next action: Complete the GitHub Flow merge gate for PR #87 (currently open with no CI checks); then run /paul:milestone to transition into v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation
+Resume file: .paul/phases/177-re-trial-gating-decision/177-01-SUMMARY.md
 Resume context:
 - Phase 176 shipped: CODI post-unify hook (priority 220) + `codi-instrumentation.md` ref (85 lines) + seeded `.paul/CODI-HISTORY.md` + drift guard in both validation suites. Hook's first fire appended `| 176-01 | 2026-04-18 | skipped-no-symbols | — | — | — | — | n |` end-to-end (matches plan's self-test prediction for markdown/yaml/shell scope).
 - `.paul/CODI-HISTORY.md` has 2 rows: 175-01 (injected, 4 resolved, 10 call-sites, y) + 176-01 (skipped-no-symbols, n). Phase 177's re-trial reads this file directly.

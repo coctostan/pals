@@ -7,3 +7,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 |------|------|---------|---|---|---|---------|--------------|
 | 175-01 | 2026-04-17 | injected | 4 | 0 | 10 | renderCompactLoopSummary, renderLifecycleStatus, syncLifecycleUi, renderLoopBadge | y |
 | 176-01 | 2026-04-18 | skipped-no-symbols | — | — | — | — | n |
+| 177-01 | 2026-04-18 | injected | 4 | 0 | 10 | renderCompactLoopSummary, renderLifecycleStatus, syncLifecycleUi, renderLoopBadge | y |
