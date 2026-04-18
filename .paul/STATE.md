@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (updated 2026-04-17)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.40 CODI v0.1 — Phase 175 install-time detection, value-envelope docs, and success-log format fix. Phase 174's source-file selector extraction is complete and live after reinstall; Phase 175 planning is the first live session expected to exercise it.
+**Current focus:** v2.40 CODI v0.1 — Phase 175 plan created for install-time detection, honest value-envelope docs, and the success-log format fix. This planning run used read-only `drivers/pi/extensions/pals-hooks.ts` evidence to exercise the live Phase 174 source-selector extractor.
 ## Current Position
 Milestone: v2.40 CODI v0.1 — Extractor & Coverage Iteration
-Phase: 175 of 4 (Install-Time Detection + Value-Envelope Docs + Format Fix)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-17T13:56:50Z — Phase 174 complete, PR #84 merged, transitioned to Phase 175
+Phase: 175 of 4 (Install-Time Detection + Value-Envelope Docs + Format Fix) — UNIFY in progress
+Plan: 175-01 reconciled, merge gate ready
+Status: SUMMARY drafted, post-unify reporting recorded, awaiting merge confirmation
+Last activity: 2026-04-17T16:21:18Z — Drafted 175-01 summary, recorded quality history, and cleared merge-gate checks for PR #85
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [███░░░░░░░] 25%
-- Phase 175: [░░░░░░░░░░] 0%
+- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████░░░░] 60%
+- Phase 175: [████████░░] 85%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Complete - ready for next PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -206,17 +206,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 5d57bc0 feat(174-source-file-symbol-extraction): add source-file selector extraction (#84)
-PR: https://github.com/coctostan/pals/pull/84 (state: MERGED)
-CI: Socket Security checks passed
+Branch: feature/175-install-time-detection-value-envelope-docs-format-fix
+Last commit: c451db4 feat(175-install-time-detection-value-envelope-docs-format-fix): add CODI install hint and docs alignment
+PR: https://github.com/coctostan/pals/pull/85 (state: OPEN)
+CI: passing (Socket Security checks passed)
 ## Session Continuity
-Last session: 2026-04-17T13:56:50Z
-Stopped at: Phase 174 complete, ready to plan Phase 175
-Next action: /paul:plan for Phase 175
-Resume file: .paul/ROADMAP.md
-- Phase 174 summary is recorded at `.paul/phases/174-source-file-symbol-extraction/174-01-SUMMARY.md`.
-- `.paul/QUALITY-HISTORY.md` now includes `174-01` as `166 pass + 70 pass` (`↑ improving`).
-- The Phase 174 extractor iteration is live on the installed Pi surface because APPLY reran `drivers/pi/install.sh`.
-- Phase 175 planning is the first live session expected to exercise source-file selector extraction.
-- Next work remains bounded to install-time detection, honest value-envelope docs, and the deferred success-log format clarification.
+Last session: 2026-04-17T16:21:18Z
+Stopped at: Phase 175 UNIFY reached merge gate; summary and quality history are ready
+Next action: Merge PR #85 from /paul:unify, then complete transition to Phase 176
+Resume file: .paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-SUMMARY.md
+Resume context:
+- SUMMARY draft exists at `.paul/phases/175-install-time-detection-value-envelope-docs-format-fix/175-01-SUMMARY.md`.
+- `.paul/QUALITY-HISTORY.md` now includes `175-01 | 2026-04-17 | 167 pass + 70 pass | — | — | — | ↑ improving`.
+- PR #85 is open with passing CI; merge gate is waiting only on explicit merge confirmation before transition work continues.

@@ -217,7 +217,9 @@ if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ] \
   && grep -Fq '.jsx' "$CC_MODULES_YAML" \
   && grep -Fq '.jsx' "$PI_MODULES_YAML" \
   && grep -Fq 'stable identifiers surfaced' "$CC_MODULES_YAML" \
-  && grep -Fq 'stable identifiers surfaced' "$PI_MODULES_YAML"; then
+  && grep -Fq 'stable identifiers surfaced' "$PI_MODULES_YAML" \
+  && grep -Fq 'resolved-with-call-sites only' "$CC_MODULES_YAML" \
+  && grep -Fq 'resolved-with-call-sites only' "$PI_MODULES_YAML"; then
   tap_ok "Both modules.yaml registries preserve CODI source-selector markers"
 else
   tap_not_ok "Both modules.yaml registries preserve CODI source-selector markers" "Expected source-selector extraction markers in both installed CODI descriptions"
@@ -461,8 +463,14 @@ else
 fi
 
 if [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ] \
-  && grep -Fq 'Setup & Safe-Skip Distribution' "$CC_CODI_REF" \
-  && grep -Fq 'Setup & Safe-Skip Distribution' "$PI_CODI_REF" \
+  && grep -Fq 'When CODI helps' "$CC_CODI_REF" \
+  && grep -Fq 'When CODI helps' "$PI_CODI_REF" \
+  && grep -Fq 'TS/JS-touching indexed code' "$CC_CODI_REF" \
+  && grep -Fq 'TS/JS-touching indexed code' "$PI_CODI_REF" \
+  && grep -Fq 'boundary specificity' "$CC_CODI_REF" \
+  && grep -Fq 'boundary specificity' "$PI_CODI_REF" \
+  && grep -Fq 'resolved-with-call-sites only' "$CC_CODI_REF" \
+  && grep -Fq 'resolved-with-call-sites only' "$PI_CODI_REF" \
   && grep -Fq 'source selectors' "$CC_CODI_REF" \
   && grep -Fq 'source selectors' "$PI_CODI_REF" \
   && grep -Fq 'top-level function declarations' "$CC_CODI_REF" \
@@ -479,6 +487,8 @@ if [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ] \
   && grep -Fq 'pi-codegraph' "$PI_CODI_REF" \
   && grep -Fq '.codegraph/' "$CC_CODI_REF" \
   && grep -Fq '.codegraph/' "$PI_CODI_REF" \
+  && grep -Fq 'CODI is enabled but no codegraph index detected' "$CC_CODI_REF" \
+  && grep -Fq 'CODI is enabled but no codegraph index detected' "$PI_CODI_REF" \
   && grep -Fq 'planning continues cleanly' "$CC_CODI_REF" \
   && grep -Fq 'planning continues cleanly' "$PI_CODI_REF"; then
   tap_ok "Both installed CODI references preserve source-selector and safe-setup markers"
@@ -491,12 +501,16 @@ if grep -Fq 'codi_seed_candidates' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
   && grep -Fq 'declaration order within each file' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
   && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/module.yaml" \
   && grep -Fq 'top-level function declarations' "$REPO_ROOT/modules/codi/module.yaml" \
+  && grep -Fq 'resolved-with-call-sites only' "$REPO_ROOT/modules/codi/module.yaml" \
   && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/references/codi.md" \
   && grep -Fq 'stable extracted identifiers' "$REPO_ROOT/modules/codi/references/codi.md" \
+  && grep -Fq 'When CODI helps' "$REPO_ROOT/modules/codi/references/codi.md" \
+  && grep -Fq 'CODI is enabled but no codegraph index detected' "$REPO_ROOT/drivers/pi/install.sh" \
   && grep -Fq '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' "$REPO_ROOT/kernel/workflows/init-project.md" \
   && grep -Fq '`modules.codi.enabled`' "$REPO_ROOT/kernel/references/pals-json-schema.md" \
   && grep -Fq 'Setup & Safe-Skip Distribution' "$REPO_ROOT/modules/codi/references/codi.md" \
   && grep -Fq '### CODI setup (optional)' "$REPO_ROOT/README.md" \
+  && grep -Fq 'TS/JS-touching indexed code' "$REPO_ROOT/README.md" \
   && grep -Fq '"codi": {' "$REPO_ROOT/pals.json"; then
   tap_ok "Repo source surfaces retain the CODI source-selector contract"
 else

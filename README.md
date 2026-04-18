@@ -183,12 +183,13 @@ PALS uses `pals.json` at the project root:
 }
 ```
 
-Fresh generated configs keep core and expert modules enabled by default, including `modules.codi`. Runtime dispatch still follows `modules.yaml`; if `pi-codegraph` or a usable index is absent, CODI stays enabled but planning safely skips its blast-radius injection.
+Fresh generated configs keep core and expert modules enabled by default, including `modules.codi`. Runtime dispatch still follows `modules.yaml`; if `pi-codegraph` or a usable repo index is absent, CODI stays enabled and planning safely skips blast-radius injection rather than blocking.
 Current top-level sections for a fresh generated config are `modules`, `agents`, `git`, `planning`, `preferences`, and `guided_workflow` (plus `schema_version`).
+
 
 ### CODI setup (optional)
 
-`modules.codi.enabled` defaults to `true` in generated and migrated configs. If `pi-codegraph` or a usable repo index is unavailable, planning continues cleanly and CODI logs a safe skip instead of blocking. Phase 172 does not create a hard `.codegraph/` gate. To opt into richer structural injection, install `pi-codegraph` and keep the repo indexed.
+`modules.codi.enabled` defaults to `true` in generated and migrated configs. CODI helps most on TS/JS-touching indexed code and is often quiet on markdown, config, or workflow-only phases. When structural call-sites exist, it can improve boundary specificity, but it should not be pitched as a broad planner win. Pi installs emit a single `CODI is enabled but no codegraph index detected` recommendation when `.codegraph/graph.db` is absent, pointing to `modules/codi/references/codi.md` for setup. Phase 175 still does not create a hard `.codegraph/` gate: if `pi-codegraph` or a usable repo index is unavailable, planning continues cleanly and CODI logs a safe skip instead of blocking.
 
 ### Git Workflow
 

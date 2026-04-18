@@ -71,6 +71,7 @@ hooks:
 
       STEP 6 — EMIT EXACTLY ONE `[dispatch] CODI: ...` log line per dispatch, chosen from:
         Success (any injection, even unresolved-only):
+        `R` means resolved-with-call-sites only. Resolved-but-empty outcomes still inject but do not increment `R`; Phase 173 `173-01-TRIAL-DATA.md` remains the authoritative mixed-outcome example.
           `[dispatch] CODI: pre-plan advisory → impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius`
         Hook-level skip — no extractable symbols:
           `[dispatch] CODI: skipped — no extractable symbols in phase scope`

@@ -198,14 +198,15 @@ if [ -f "$SKILL_DIR/modules.yaml" ]; then
 fi
 
 tap_file_contains_all \
-  "Installed modules.yaml preserves CODI source-selector markers" \
+  "Installed modules.yaml preserves CODI source-selector and success-log markers" \
   "$SKILL_DIR/modules.yaml" \
   'source selectors' \
   'top-level function declarations' \
   'exported const / arrow bindings' \
   '.tsx' \
   '.jsx' \
-  'stable identifiers surfaced'
+  'stable identifiers surfaced' \
+  'resolved-with-call-sites only'
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 1B: MODULE EXECUTION EVIDENCE
@@ -260,6 +261,12 @@ tap_file_contains_all \
   'PI_AGENTS_DIR="$PALS_ROOT/.pi/agents"' \
   'AGENT_DIR="$HOME/.pi/agent/agents"' \
   'cp "$agent_path" "$AGENT_DIR/$(basename "$agent_path")"'
+
+tap_file_contains_all \
+  "Pi installer source documents the bounded CODI no-index recommendation" \
+  "$REPO_ROOT/drivers/pi/install.sh" \
+  '.codegraph' \
+  'CODI is enabled but no codegraph index detected'
 
 if [ -f "$IMPLEMENTER_AGENT" ]; then
   tap_ok "Pi installer installs ~/.pi/agent/agents/pals-implementer.md"
@@ -575,10 +582,12 @@ tap_file_contains_all \
   'CODI is safe to leave enabled by default'
 
 tap_file_contains_all \
-  "Installed CODI reference keeps source-selector and safe-setup markers" \
+  "Installed CODI reference keeps source-selector, value-envelope, and safe-setup markers" \
   "$PI_CODI_REF" \
-  'Setup & Safe-Skip Distribution' \
-  'modules.codi.enabled' \
+  'When CODI helps' \
+  'TS/JS-touching indexed code' \
+  'boundary specificity' \
+  'resolved-with-call-sites only' \
   'source selectors' \
   'top-level function declarations' \
   'exported const / arrow bindings' \
@@ -587,6 +596,7 @@ tap_file_contains_all \
   'stable identifiers surfaced' \
   'pi-codegraph' \
   '.codegraph/' \
+  'CODI is enabled but no codegraph index detected' \
   'planning continues cleanly'
 
 tap_file_contains_all \
@@ -594,8 +604,11 @@ tap_file_contains_all \
   "$README_MAIN" \
   '### CODI setup (optional)' \
   'modules.codi.enabled' \
+  'TS/JS-touching indexed code' \
+  'boundary specificity' \
   'pi-codegraph' \
   '.codegraph/' \
+  'CODI is enabled but no codegraph index detected' \
   'planning continues cleanly'
 
 tap_file_contains_all \
