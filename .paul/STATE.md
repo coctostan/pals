@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
 ## Current Position
 Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 181 of 3 in v2.42 — Root-Cause Analysis — Planning
-Plan: 181-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-04-20 — Created .paul/phases/181-root-cause-analysis/181-01-PLAN.md (type: research; parser-miss + hook-not-firing defect isolation + Phase 182 scope decision)
+Phase: 181 of 3 in v2.42 — Root-Cause Analysis — APPLY complete
+Plan: 181-01 executed; 181-01-ANALYSIS.md produced
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-20 — Committed Phase 181 analysis (f0a37190) and opened PR #91 (https://github.com/coctostan/pals/pull/91)
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
@@ -19,7 +19,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 181-01 created, awaiting approval]
+  ✓        ✓        ○     [Plan 181-01 applied; ANALYSIS.md produced; PR #91 open]
 ```
 ## Accumulated Context
 ### Decisions
@@ -223,18 +223,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/180-re-trial-gating-decision
-Latest pushed work: Phase 180 closeout and follow-up cleanup are on PR #90
-PR: https://github.com/coctostan/pals/pull/90 (state: open)
-CI: pass (Socket Security checks green)
-Prior PRs: #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
+Branch: feature/181-root-cause-analysis
+Latest pushed work: Phase 181 APPLY complete at commit f0a37190 on PR #91
+PR: https://github.com/coctostan/pals/pull/91 (state: open)
+CI: pending (Socket Security checks informational; merge gate runs in UNIFY)
+Prior PRs: #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 181 plan created.
-Stopped at: Plan 181-01 created (type: research, read-only analysis), awaiting approval.
-Next action: Review and approve plan, then run /paul:apply .paul/phases/181-root-cause-analysis/181-01-PLAN.md
-Resume file: .paul/phases/181-root-cause-analysis/181-01-PLAN.md
+Last session: 2026-04-20 — Phase 181 APPLY complete.
+Stopped at: APPLY complete; 181-01-ANALYSIS.md produced, committed (f0a37190), pushed to PR #91; awaiting UNIFY.
+Next action: Run /paul:unify .paul/phases/181-root-cause-analysis/181-01-PLAN.md
+Resume file: .paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md
 Resume context:
-- v2.42 pinned SHA is `26f262c3af3b87221ba0872b55e89fdea7c02d52`; it is distinct from the v2.41 freeze `0d667560b65944801faaee270ab920786afa471a`.
-- Scope remains bounded to parser hardening, hook-firing guard, and installer/manifest alignment if needed.
-- v2.41 artifacts remain the read-only defect-observation baseline; no retroactive `CODI-HISTORY.md` repair is allowed.
-- Phase 181 should isolate ownership of `112-01` parser-miss versus `113-01` hook-not-firing before any fix work is planned.
+- Phase 181 ownership findings: 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch with sub-sub-cause deferred to Phase 182 APPLY probe.
+- Installer/registry alignment is OUT of scope for Phase 182 (layer b rejected by artifact evidence).
+- Phase 182 authorized edit surfaces: modules/codi/module.yaml STEP 2/3 pattern widening + STEP 1 hook-firing guard; optional plan-phase.md combined-advisory wording contract.
+- v2.42 pinned SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` governs active measurement; v2.41 freeze `0d667560b65944801faaee270ab920786afa471a` remains canonical for v2.41 interpretation.
+- v2.41 artifacts remain byte-identical; no retroactive `CODI-HISTORY.md` row repair made or recommended.
