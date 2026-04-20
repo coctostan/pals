@@ -10,10 +10,10 @@ Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation �
 Phase: 179 of ~3 in v2.41 — APPLY in progress (observation window open)
 Plan: 179-01 created (`.paul/phases/179-organic-observation/179-01-PLAN.md`)
 Status: APPLY paused after plan amendment and first pre-authored row logged; awaiting concurrent-natural quark phases
-Last activity: 2026-04-18 — Amended Phase 179 plan to add `concurrent-natural` evidence class; logged quark `112-01` as first pre-authored row in provisional `.paul/phases/179-organic-observation/179-01-SUMMARY.md`
+Last activity: 2026-04-20 — Logged quark `113-01` (concurrent-natural) into Phase 179 SUMMARY: pre-plan `injected` clean (2R/3E/5K, blast_radius injected), but post-unify hook did not fire (no `CODI-HISTORY.md` row, no CODI entry in quark SUMMARY's Module Execution Reports). Second distinct instrumentation surface gap observed (different from 112-01's parser-miss).
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [█████░░░░░] 50% (Phase 179 observation window open; 1 pre-authored row logged; awaiting concurrent-natural quark phases)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████░░░░] 60% (Phase 179 observation window open; 2 natural quark phases observed: 112-01 pre-authored w/ parser-miss, 113-01 concurrent-natural w/ post-unify hook-not-firing; 1 mechanical row in `CODI-HISTORY.md`)
 ## Loop Position
 Current loop state:
 ```
@@ -148,6 +148,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-18: Open v2.41 cross-repo trial on quark — CODI enabled in `quark/pals.json`, quark codegraph refreshed, and `quark/.paul/CODI-HISTORY.md` seeded. Invariant: pals CODI source frozen at SHA `0d667560b65944801faaee270ab920786afa471a` for the duration of v2.41. | 178 | Sets up the instrument for the Q2 resolution test that pals itself structurally cannot provide |
 | 2026-04-18: Phase 179 is strictly observational — zero controlled self-trials, zero synthetic evidence. Natural quark phases only. | 178 | Rejects Session C-style self-fulfilling evidence; resulting trial data is either conclusive or honestly sparse |
 | 2026-04-18: Phase 179 plan amended mid-APPLY to broaden trial fuel from `pre-authored` only to two labeled evidence classes: `pre-authored` (zero selection bias — quark `112-01`) and `concurrent-natural` (roadmap-driven quark work after CODI enablement, honoring the Phase 178 naturality discipline rule). Single pre-authored row was structurally too thin for Phase 180; adding naturality-disciplined concurrent-natural rows gives the re-trial enough volume without contaminating it. CODI-source freeze, no-self-trial, no-synthetic, and engineering-logic-first invariants preserved unchanged. | 179 | Broadens Phase 179 observation scope without weakening trial integrity; each row in SUMMARY is class-labeled so Phase 180 can weight them honestly |
+| 2026-04-20: Phase 179 Observation #2 (quark `113-01`, concurrent-natural): pre-plan CODI `injected` clean (`impact × 5 symbols → 2R/3E/0U/5K`, blast_radius injected); post-unify hook did NOT fire (no `CODI-HISTORY.md` row, no CODI entry in quark SUMMARY's Module Execution Reports). Distinct from 112-01's parser-miss — this is hook-not-firing. Qualitative APPLY-consumption evidence reconstructible from SUMMARY (CODI's fan-out data shaped signature-change propagation through `createProcessSyscalls`→`startDaemon`; `resolved-but-empty` on `validateManifestPresence` plus call-site at `loop.ts:414` informed the Deviation #1 placement decision). No manual row repair; no mid-trial CODI patching. | 179 | Two consecutive natural quark phases, two distinct instrumentation surface gaps (parser-miss + hook-not-firing). Phase 180 must disentangle these before mechanical SHIP gating (`S_pass_nonnull ≥ 3`) can be read honestly from `CODI-HISTORY.md` |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -224,13 +225,13 @@ PR: https://github.com/coctostan/pals/pull/88 (state: MERGED)
 CI: passed (PR #88 checks green before merge)
 Prior milestone: PR #87 merged as dbf2d7a on main (Phase 177 complete, v2.40 closed); PR #86 merged as 1d9ce95 (Phase 176); PR #85 merged as 7e3a728 (Phase 175)
 ## Session Continuity
-Last session: 2026-04-18 — Phase 179 APPLY started, plan amended mid-APPLY, first pre-authored row logged; paused awaiting concurrent-natural quark phases
-Stopped at: Phase `179-01` APPLY paused after plan amendment and provisional SUMMARY with 1 pre-authored row; observation window remains open for concurrent-natural quark work
+Last session: 2026-04-20 — Phase 179 APPLY still paused; appended quark `113-01` (concurrent-natural) observation to SUMMARY — pre-plan injected clean, post-unify hook did not fire (distinct from 112-01 parser-miss)
+Stopped at: Phase `179-01` SUMMARY now records 2 natural quark observations with 2 distinct instrumentation surface gaps; observation window still open — either continue for more rows, or close Phase 179 and let Phase 180 disentangle mechanical vs qualitative signal
 Next action: Do real quark roadmap work as normal quark PALS phases under CODI (draft `<context>` / `files_modified` from engineering logic BEFORE CODI dispatch); each completed quark UNIFY appends one row to `quark/.paul/CODI-HISTORY.md`. When observation volume is sufficient, resume pals via `/paul:resume` to reconcile concurrent-natural rows into `.paul/phases/179-organic-observation/179-01-SUMMARY.md` and advance to Phase 180.
 Resume file: .paul/HANDOFF-2026-04-18-v241-phase179-apply-paused.md
 Resume context:
 - Phase 179 plan was amended mid-APPLY (2026-04-18) to broaden trial fuel from `pre-authored only` to two labeled evidence classes: `pre-authored` and `concurrent-natural`.
-- Provisional `179-01-SUMMARY.md` exists with quark `112-01` logged as the first pre-authored row (outcome: `no-dispatch-found` mechanically, CODI materially shaped APPLY qualitatively — preserved as instrumentation mismatch).
+- Provisional `179-01-SUMMARY.md` has 2 rows: quark `112-01` (pre-authored, `no-dispatch-found` parser-miss) and quark `113-01` (concurrent-natural, pre-plan `injected` clean but post-unify hook-not-firing). `CODI-HISTORY.md` mechanical count: 1 row from 2 natural phases w/ injected blast_radius. Both phases have strong qualitative APPLY-consumption evidence.
 - Next rows come from real roadmap-driven quark work honoring the Phase 178 naturality discipline rule. No new pals-side feature work during observation.
 - Integrity invariants unchanged: pals CODI source frozen at SHA `0d667560b65944801faaee270ab920786afa471a`; no synthetic rows, no controlled self-trials, no retroactive CODI runs, no manual `CODI-HISTORY.md` edits.
 - Final APPLY pass on resume: append new rows, update per-class tally + APPLY-consumption notes in `179-01-SUMMARY.md`, then run UNIFY to advance to Phase 180.
