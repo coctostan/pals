@@ -10,3 +10,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 177-01 | 2026-04-18 | injected | 4 | 0 | 10 | renderCompactLoopSummary, renderLifecycleStatus, syncLifecycleUi, renderLoopBadge | y |
 | 179-01 | 2026-04-20 | skipped-no-symbols | — | — | — | — | n |
 | 181-01 | 2026-04-20 | skipped-no-symbols | — | — | — | — | n |
+| 182-01 | 2026-04-20 | skipped-no-symbols | — | — | — | — | n |

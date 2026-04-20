@@ -7,19 +7,19 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
 ## Current Position
 Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 182 of 3 in v2.42 — Bounded Instrumentation Fix — Applying
-Plan: 182-01 executed
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-20T21:47:07Z — Completed APPLY for 182-01, committed changes, pushed feature branch, and opened PR #92
+Phase: 183 of 3 in v2.42 — Natural Validation — Ready to plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-04-20T22:01:36Z — Phase 182 complete; bounded instrumentation repair reconciled and transitioned to Phase 183 planning
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
-- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [███░░░░░░░] 33% (Phase 181 complete; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
+- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [███████░░░] 67% (Phases 181-182 complete; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Execution complete, ready for UNIFY]
+  ○        ○        ○     [Ready to plan Phase 183]
 ```
 ## Accumulated Context
 ### Decisions
@@ -160,6 +160,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-20: Null-observation evidence is rigorous for markdown-described hooks — absence of the expected STEP 7 log line is itself an observable exit pattern | 181 | Codifies an analysis technique for future CODI-family and module-contract root-cause work |
 | 2026-04-20: Phase 181 authorized to recommend workflow-wording edits (`plan-phase.md` combined-advisory contract) without reopening CODI advisory behavior — test is whether Blast Radius injection / extractor rules / R/U/K success-log semantics are preserved identical | 181 | Clarifies the boundary between advisory-behavior changes (forbidden) and workflow-wording guards (permitted) for Phase 182 scope |
 | 2026-04-20: Sub-sub-cause deferral to Phase 182 APPLY probe is a legitimate Phase 181 outcome when artifacts cannot discriminate between candidate sub-causes within a single owning layer; STEP-1 trace guard IS the probe instrument | 181 | Preserves Phase 181's read-only invariant without forcing premature sub-sub-cause commitment; establishes precedent for future root-cause phases |
+| 2026-04-20: Add CODI post-unify hook-entry tracing plus `injected-degraded` classification for Blast Radius-preserving parser drift | 182 | Makes hook non-entry observable and preserves honest `blast_radius` truth without inventing canonical counts when the success log is missing |
+| 2026-04-20: Phase 182 APPLY probe found `kernel/workflows/unify-phase.md` already explicit enough, so the bounded repair stayed inside CODI manifest/reference surfaces | 182 | Confirms the surviving workflow-side ambiguity resolves repo-locally without extra workflow churn and keeps Phase 183 focused on natural validation |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -179,6 +181,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Phase 156 implementation expanded to include installer-backed global agent installation after initial APPLY scope | Phase 156 | Small scope expansion via `drivers/pi/install.sh` so `pals-implementer` works outside the PALS repo |
 | Phase 161 Task 3 used `install.sh` and `tests/cross-harness-validation.sh` as verification surfaces, but only `tests/pi-end-to-end-validation.sh` required repo changes | Phase 161 | Minor plan metadata over-scoping; APPLY completed successfully and the variance should be documented in UNIFY |
 | Phase 172 reconciliation required branch-diff recovery because the last-commit diff only showed state/pause artifacts after the implementation commit | Phase 172 | SUMMARY used `main...HEAD` and commit `4021255` to recover the real changed-file set; no implementation was lost, but the pause/resume shape under-reported it |
+| PR #92 merged before UNIFY; final lifecycle artifacts were written after syncing `main` to the merged PR | Phase 182 | Low operational deviation; phase code was already on the base branch, but UNIFY/transition artifacts still had to be recorded cleanly on `main` |
 ### Skill Audit (Phase 156)
 | Expected | Invoked | Notes |
 |----------|---------|-------|
@@ -230,17 +233,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/182-bounded-instrumentation-fix
-Last commit: feat(182-bounded-instrumentation-fix): repair CODI post-unify instrumentation (current HEAD on feature/182-bounded-instrumentation-fix)
-PR: https://github.com/coctostan/pals/pull/92 (state: OPEN)
-CI: pass (Socket Security checks green on PR #92)
-Prior PRs: #92 open (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
+Branch: main
+Last commit: feat(182-bounded-instrumentation-fix): complete phase transition (current HEAD on main)
+PR: https://github.com/coctostan/pals/pull/92 (state: MERGED)
+CI: pass (Socket Security checks green on merged PR #92)
+Prior PRs: #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-20T21:47:07Z
-Stopped at: APPLY complete for 182-01; PR #92 open with passing checks
-Next action: Run /paul:unify .paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md
-Resume file: .paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md
+Last session: 2026-04-20T22:06:05Z
+Stopped at: Phase 182 transition committed; Phase 183 ready to plan
+Next action: Run /paul:plan for Phase 183 — Natural Validation
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Task 1 added a CODI post-unify `hook body entered` trace; the probe found `kernel/workflows/unify-phase.md` already explicit enough, so the workflow file stayed untouched.
-- Task 2 added `injected-degraded` classification for Blast Radius-preserving parser drift while keeping hotfix / no-PLAN cases on `no-dispatch-found`.
-- Task 3 reinstalled the Pi surface and both validation suites passed: `tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`.
+- Phase 182 shipped two bounded CODI measurement-surface repairs: an early post-unify `hook body entered` trace and the new `injected-degraded` outcome for Blast Radius-preserving parser drift.
+- `kernel/workflows/unify-phase.md` stayed untouched; the Phase 182 probe found its existing `post_unify_hooks` wording already explicit enough once CODI gained the entry trace.
+- Phase 183 now validates the repaired instrument on the next natural quark phase without reopening v2.41 artifacts or widening CODI to v0.2.
