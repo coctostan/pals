@@ -33,15 +33,15 @@ Started: 2026-04-20
 Theme: Repair the measurement surface surfaced by quark `112-01` parser-miss and quark `113-01` hook-not-firing without reopening v2.41 or expanding CODI to v0.2 yet.
 Proposal: `.paul/proposals/v2.42-post-unify-instrumentation-fix.md`
 Pinned SHA: `26f262c3af3b87221ba0872b55e89fdea7c02d52` (recorded at milestone open; distinct from v2.41's `0d667560b65944801faaee270ab920786afa471a`)
-Phases: 0 of 3 complete
+Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 181 | Root-Cause Analysis | 1 | Planning | - |
+| 181 | Root-Cause Analysis | 1 | ✅ Complete | 2026-04-20 |
 | 182 | Bounded Instrumentation Fix | TBD | Not started | - |
 | 183 | Natural Validation | TBD | Not started | - |
 ### Phase 181: Root-Cause Analysis
 Focus: Isolate ownership of the `112-01` parser-miss and `113-01` hook-not-firing failures across parser logic, hook registration, unify dispatch, and installed-registry alignment.
-Plans: 181-01 (`.paul/phases/181-root-cause-analysis/181-01-PLAN.md`) — type: research, read-only defect isolation + Phase 182 scope decision
+Plans: 181-01 complete (`.paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md`, `181-01-SUMMARY.md`) — type: research, read-only defect isolation + Phase 182 scope decision delivered
 ### Phase 182: Bounded Instrumentation Fix
 Focus: Implement the minimum parser / dispatch / alignment repair needed for honest post-unify measurement while preserving v2.41 artifacts and the fresh v2.42 SHA freeze.
 Plans: TBD (defined during `/paul:plan`)

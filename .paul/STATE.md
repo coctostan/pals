@@ -7,19 +7,20 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
 ## Current Position
 Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 181 of 3 in v2.42 — Root-Cause Analysis — APPLY complete
-Plan: 181-01 executed; 181-01-ANALYSIS.md produced
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-20 — Committed Phase 181 analysis (f0a37190) and opened PR #91 (https://github.com/coctostan/pals/pull/91)
+Phase: 181 of 3 in v2.42 — Root-Cause Analysis — Complete
+Plan: 181-01 closed (ANALYSIS.md + SUMMARY.md)
+Status: UNIFY complete, ready for Phase 182 PLAN (post merge gate)
+Last activity: 2026-04-20 — Completed Phase 181 UNIFY; appended CODI-HISTORY row `181-01 skipped-no-symbols`; PR #91 awaiting merge gate
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
-- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [░░░░░░░░░░] 0% (milestone opened; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
+- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [███░░░░░░░] 33% (Phase 181 complete; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
+- Phase 181 (Root-Cause Analysis): [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Plan 181-01 applied; ANALYSIS.md produced; PR #91 open]
+  ✓        ✓        ✓     [Phase 181 loop complete; awaiting merge gate then Phase 182 PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -153,6 +154,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-20: Phase 180 verdict ITERATE_V0_1 — natural-scope evidence trends Q2=yes qualitatively, but parser-miss + hook-not-firing keep the mechanical Q2 pass uncertain under the unchanged rubric | 180 | Closes v2.41 without rubric edits; preserves the qualitative/mechanical split as v2.42 input rather than a verdict override |
 | 2026-04-20: Open v2.42 as a bounded post-unify instrumentation-fix milestone under a fresh SHA freeze | 180 | Scopes next work to parser hardening, hook-firing guard, and installer/manifest alignment while keeping v2.41 artifacts untouched |
 | 2026-04-20: Pin v2.42 CODI measurement freeze at SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` when opening the milestone | v2.42 open | Keeps the repaired-instrument trial separate from v2.41's frozen `0d667560b65944801faaee270ab920786afa471a` baseline and gives Phases 181-183 one stable measurement reference |
+| 2026-04-20: Phase 181 findings — 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); all 5 STEP 2/3 patterns miss in both primary and fallback read paths despite Blast Radius actually injected and APPLY materially shaped | 181 | Phase 182 parser-widening must introduce at least one new outcome token (e.g., `injected-degraded`) so `no-dispatch-found` stops collapsing three distinct conditions |
+| 2026-04-20: Phase 181 finding — 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch; CODI(220) omitted from iteration while WALT(100)/SKIP(200)/RUBY(300) ran normally. Layers (a) config, (b) installed-registry, (d) hook self-skip all rejected by artifact null-observation | 181 | Sub-sub-cause between priority-sort / module-set enumeration / boundary condition deferred to Phase 182 APPLY probe; STEP-1 hook-firing guard IS the probe instrument |
+| 2026-04-20: Phase 181 decision — installer/registry alignment OUT of scope for Phase 182 because installed `modules.yaml` correctly exposes `installed_modules.codi.hook_details.post-unify` | 181 | Rejects v2.42 proposal's conditional installer-alignment scope; Phase 182 authorized to touch only `modules/codi/module.yaml` STEP 2/3 + STEP 1, optionally `plan-phase.md` combined-advisory wording contract |
+| 2026-04-20: STEP 5's defensive APPEND ROW logic makes CODI-HISTORY.md row absence diagnostic of pre-STEP-5 failure (rules out hook-ran-silently, narrows to either not-iterated or hook-body-never-started) | 181 | Pattern worth preserving and considering for other post-unify modules — defensive append + row-absence-is-diagnostic |
+| 2026-04-20: Null-observation evidence is rigorous for markdown-described hooks — absence of the expected STEP 7 log line is itself an observable exit pattern | 181 | Codifies an analysis technique for future CODI-family and module-contract root-cause work |
+| 2026-04-20: Phase 181 authorized to recommend workflow-wording edits (`plan-phase.md` combined-advisory contract) without reopening CODI advisory behavior — test is whether Blast Radius injection / extractor rules / R/U/K success-log semantics are preserved identical | 181 | Clarifies the boundary between advisory-behavior changes (forbidden) and workflow-wording guards (permitted) for Phase 182 scope |
+| 2026-04-20: Sub-sub-cause deferral to Phase 182 APPLY probe is a legitimate Phase 181 outcome when artifacts cannot discriminate between candidate sub-causes within a single owning layer; STEP-1 trace guard IS the probe instrument | 181 | Preserves Phase 181's read-only invariant without forcing premature sub-sub-cause commitment; establishes precedent for future root-cause phases |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -229,10 +237,10 @@ PR: https://github.com/coctostan/pals/pull/91 (state: open)
 CI: pending (Socket Security checks informational; merge gate runs in UNIFY)
 Prior PRs: #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 181 APPLY complete.
-Stopped at: APPLY complete; 181-01-ANALYSIS.md produced, committed (f0a37190), pushed to PR #91; awaiting UNIFY.
-Next action: Run /paul:unify .paul/phases/181-root-cause-analysis/181-01-PLAN.md
-Resume file: .paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md
+Last session: 2026-04-20 — Phase 181 loop complete (PLAN ✓ APPLY ✓ UNIFY ✓).
+Stopped at: UNIFY complete; SUMMARY.md written; CODI-HISTORY appended `181-01 skipped-no-symbols`; STATE + ROADMAP updated; merge gate pending on PR #91.
+Next action: Complete merge gate on PR #91, then run /paul:plan for Phase 182 (Bounded Instrumentation Fix).
+Resume file: .paul/phases/181-root-cause-analysis/181-01-SUMMARY.md
 Resume context:
 - Phase 181 ownership findings: 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch with sub-sub-cause deferred to Phase 182 APPLY probe.
 - Installer/registry alignment is OUT of scope for Phase 182 (layer b rejected by artifact evidence).
