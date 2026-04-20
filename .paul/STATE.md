@@ -231,11 +231,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/181-root-cause-analysis
-Latest pushed work: Phase 181 APPLY complete at commit f0a37190 on PR #91
-PR: https://github.com/coctostan/pals/pull/91 (state: open)
-CI: pending (Socket Security checks informational; merge gate runs in UNIFY)
-Prior PRs: #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176)
+Branch: main
+Last commit: 90ace0e8 feat(181-root-cause-analysis): isolate CODI post-unify failure ownership (#91)
+PR: https://github.com/coctostan/pals/pull/91 (state: MERGED, squash-merge)
+CI: pass (Socket Security checks green)
+Prior PRs: #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
 Last session: 2026-04-20 — Phase 181 loop complete (PLAN ✓ APPLY ✓ UNIFY ✓).
 Stopped at: UNIFY complete; SUMMARY.md written; CODI-HISTORY appended `181-01 skipped-no-symbols`; STATE + ROADMAP updated; merge gate pending on PR #91.
