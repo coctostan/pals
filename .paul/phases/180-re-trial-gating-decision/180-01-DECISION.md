@@ -28,7 +28,7 @@ Rule:
 3. **ITERATE_V0_1** in all other cases (explicit fallback, including all borderline scenarios).
 4. **Tie-breaker**: if SHIP_V0_2 and ITERATE_V0_1 both qualify under literal reading of the gates, prefer ITERATE_V0_1 (lower-risk choice; SHIP requires unambiguous yes on Q2+Q3).
 
-**No deviations.** The plan committed to reusing the Phase 173 rule unchanged and no evidence-driven deviation is required to compute the v2.40 verdict.
+**No deviations.** The plan committed to reusing the Phase 173 rule unchanged and no evidence-driven deviation is required to compute the v2.41 verdict.
 
 This rule is binding for this verdict. It is not edited below.
 
