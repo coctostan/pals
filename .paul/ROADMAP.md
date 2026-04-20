@@ -29,7 +29,7 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **No active milestone — v2.41 closed at Phase 180.**
 Status: ✅ Complete (verdict **ITERATE_V0_1** in `.paul/phases/180-re-trial-gating-decision/180-01-DECISION.md`)
-Transition note: run `/paul:milestone` to formalize the milestone close/open step. Until then, v2.42 is proposal-ready but not yet phase-planning-active.
+Transition note: run `/paul:milestone` to formalize the close/open step. Until then, v2.42 is proposal-ready and not yet phase-planning-active.
 ## Next Milestone
 **v2.42 CODI v0.1 — Post-Unify Instrumentation Fix**
 Status: Proposal ready — open via `/paul:milestone`

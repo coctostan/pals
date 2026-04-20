@@ -347,4 +347,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-20 after Phase 180 closeout (v2.41 verdict ITERATE_V0_1; v2.42 proposal ready for milestone transition).*
+*Last updated: 2026-04-20 after Phase 180 closeout (v2.41 verdict ITERATE_V0_1; v2.42 proposal queued for `/paul:milestone`).*

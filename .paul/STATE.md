@@ -9,12 +9,12 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — ✅ Complete (verdict ITERATE_V0_1); next milestone queued: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix
 Phase: 180 of ~3 in v2.41 — Complete
 Plan: 180-01 complete (`.paul/phases/180-re-trial-gating-decision/180-01-{PLAN,DECISION,SUMMARY}.md`)
-Status: Loop complete; milestone transition pending `/paul:milestone`
+Status: Loop complete; milestone transition pending via `/paul:milestone`
 Last activity: 2026-04-20 — Closed Phase 180 with verdict ITERATE_V0_1, wrote the v2.42 proposal, and updated lifecycle artifacts
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1; milestone-close next)
-- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [░░░░░░░░░░] 0% (proposal ready; not yet opened)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1; milestone transition next)
+- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [░░░░░░░░░░] 0% (proposal ready — open via `/paul:milestone`)
 ## Loop Position
 Current loop state:
 ```
@@ -223,7 +223,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/180-re-trial-gating-decision
-Latest pushed branch work: Phase 180 closeout plus follow-up cleanup fixes are on PR #90
+Latest pushed work: Phase 180 closeout and follow-up cleanup are on PR #90
 PR: https://github.com/coctostan/pals/pull/90 (state: open)
 CI: pass (Socket Security checks green)
 Prior PRs: #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
