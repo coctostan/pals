@@ -329,6 +329,7 @@ All validated — see below.
 | 2026-04-20: Concurrent-natural evidence class added mid-APPLY alongside pre-authored — real roadmap-driven quark work after CODI enablement, honoring naturality discipline (scope chosen by engineering need, `<context>` drafted before CODI dispatch runs) | 179 | Defensible boundary between self-fulfilling Session-C-style trials and legitimate natural observation; enables collecting evidence volume without weakening trial integrity |
 | 2026-04-20: Phase 180 verdict ITERATE_V0_1 — natural-scope evidence trends Q2=yes qualitatively, but parser-miss + hook-not-firing keep the mechanical Q2 pass uncertain under the unchanged rubric | 180 | Closes v2.41 without rubric edits; preserves the qualitative/mechanical split as v2.42 input rather than a verdict override |
 | 2026-04-20: Open v2.42 as a bounded post-unify instrumentation-fix milestone under a fresh SHA freeze | 180 | Scopes next work to parser hardening, hook-firing guard, and installer/manifest alignment if needed while keeping v2.41 artifacts untouched |
+| 2026-04-20: Pin v2.42 CODI measurement freeze at SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` when opening the milestone | v2.42 open | Keeps the repaired-instrument trial separate from v2.41's frozen `0d667560b65944801faaee270ab920786afa471a` baseline and gives Phases 181-183 one stable measurement reference |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
