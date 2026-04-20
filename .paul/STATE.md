@@ -7,9 +7,9 @@ See: .paul/PROJECT.md (updated 2026-04-18)
 **Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 179 planning is now open at `.paul/phases/179-organic-observation/179-01-PLAN.md`: quark is CODI-ready, `quark/.paul/CODI-HISTORY.md` is still at zero rows, and the next work is to let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI.
 ## Current Position
 Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — 🚧 In Progress; prior milestone: v2.40 ✅ complete (verdict ITERATE_V0_1)
-Phase: 179 of ~3 in v2.41 — APPLY in progress (observation window open)
+Phase: 179 of ~3 in v2.41 — APPLY complete; ready for UNIFY
 Plan: 179-01 created (`.paul/phases/179-organic-observation/179-01-PLAN.md`)
-Status: APPLY paused after plan amendment and first pre-authored row logged; awaiting concurrent-natural quark phases
+Status: APPLY complete — 2 natural quark phases observed; 179-01-SUMMARY.md finalized with three findings; ROADMAP advanced; ready for UNIFY
 Last activity: 2026-04-20 — Logged quark `113-01` (concurrent-natural) into Phase 179 SUMMARY: pre-plan `injected` clean (2R/3E/5K, blast_radius injected), but post-unify hook did not fire (no `CODI-HISTORY.md` row, no CODI entry in quark SUMMARY's Module Execution Reports). Second distinct instrumentation surface gap observed (different from 112-01's parser-miss).
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ◐        ○     [APPLY paused — observation window open, awaiting concurrent-natural rows]
+  ✓        ✓        ○     [APPLY complete — ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions

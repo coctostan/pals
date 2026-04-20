@@ -28,29 +28,29 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** (selected by Phase 177 verdict ITERATE_V0_1 — see `.paul/phases/177-re-trial-gating-decision/177-01-DECISION.md`).
-Status: 🚧 In Progress (Phase 179 planning open; observation pending APPLY)
+Status: 🚧 In Progress (Phase 179 complete; Phase 180 pending)
 Theme: Observe CODI dispatch on real TS work in a separate repo (quark) — specifically the user's in-flight quark patches, authored before CODI was enabled in quark — so Signal 1 / Signal 2 live evidence can be isolated from planner-discipline causation with zero selection bias. Closes the Q2 gap Phase 177 flagged.
-Phases: 1 of ~3 complete (178 complete; 179 planning; 180 re-trial pending). Proposal: `.paul/proposals/v2.41-cross-repo-trial-quark.md`.
+Phases: 2 of ~3 complete (178, 179 complete; 180 re-trial pending). Proposal: `.paul/proposals/v2.41-cross-repo-trial-quark.md`.
 
 ### Milestone Invariants
 1. **Source freeze + parity.** pals `modules/codi/*` remains frozen at SHA `0d667560b65944801faaee270ab920786afa471a` for the duration of v2.41. pals and quark share the installed registry at `~/.pi/agent/skills/pals/modules.yaml`, so trial-integrity parity is by construction.
-2. **Natural trial fuel only.** Phase 179 uses the user's in-flight quark patches, authored before CODI was enabled in quark. No controlled self-trials and no synthetic CODI-HISTORY rows count toward the dataset.
+2. **Natural trial fuel only.** Phase 179 used two labeled evidence classes: `pre-authored` (user's in-flight quark patches authored before CODI was enabled) and `concurrent-natural` (real roadmap-driven quark work after CODI enablement, naturality-disciplined). No controlled self-trials, no synthetic CODI-HISTORY rows.
 3. **Naturality discipline.** When planning each quark phase that applies those patches, draft `<context>` and `files_modified` from engineering logic first, then let CODI dispatch over that scope. Do not tune the quark plan to feed CODI nicer symbols.
 ### Phases
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 178 | CODI Cross-Repo Install (quark) | 1 (`178-01`) | ✅ Complete | 2026-04-18 |
-| 179 | Organic Observation Window | 1 (`179-01`) | Planning | — |
+| 179 | Organic Observation Window | 1 (`179-01`) | ✅ Complete | 2026-04-20 |
 | 180 | Re-Trial + Gating Decision | — | Not started | — |
 ### Phase 178: CODI Cross-Repo Install (quark)
 Focus: Enable CODI in quark without touching quark source or pals CODI source. Add `modules.codi` to `quark/pals.json`, refresh `quark/.codegraph/graph.db`, seed `quark/.paul/CODI-HISTORY.md`, and capture a direct codegraph smoke test proving current-TS symbol resolution.
 Plans: `178-01` complete — `quark/pals.json` now includes `modules.codi`; `quark/.codegraph/graph.db` reindexed successfully; direct smoke test resolved `deriveTools` to `src/kernel/context.ts:40` (`assembleContext`) with behavioral depth 1; `quark/.paul/CODI-HISTORY.md` is seeded with the canonical zero-row header and still contains zero data rows at Phase 178 exit.
 ### Phase 179: Organic Observation Window
-Focus: Let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI. Trial row count follows natural engineering decomposition, not trial convenience.
-Plans: `179-01` created — opens the observation window from `main` and instructs APPLY to decompose the user's pre-authored quark patches by engineering logic first, run them as one or more normal quark PALS phases under CODI, and capture the resulting rows plus qualitative APPLY-consumption notes for Phase 180.
+Focus: Observe CODI dispatch on natural quark work. Plan was amended mid-APPLY to broaden trial fuel from `pre-authored only` to two labeled classes (`pre-authored` + `concurrent-natural`).
+Outcome: 2 natural quark phases observed (`112-01` pre-authored, `113-01` concurrent-natural). Three headline findings: (1) CODI pre-plan advisory works on natural scope — both phases show CODI materially shaped APPLY placement; (2) post-unify instrumentation has a parser-miss failure mode (112-01); (3) post-unify instrumentation has a hook-not-firing failure mode (113-01). Mechanical ledger undercount is 2× from two distinct instrumentation surface gaps. Phase 180 must decide between qualitative-alone v2.41 verdict or a bounded post-unify instrumentation fix compatible with the CODI-source freeze.
 
 ### Phase 180: Re-Trial + Gating Decision
-Focus: Re-run the unchanged Phase 173/177 rubric against the quark row set produced in Phase 179 to resolve Q2.
+Focus: Re-run the unchanged Phase 173/177 rubric against the Phase 179 findings to resolve Q2. Phase 179's three-finding package reshapes the Phase 180 scoping question: does v2.41 ship on qualitative evidence with an honest instrumentation-blocked caveat, or does Phase 180 include a bounded post-unify parser+hook-firing fix that preserves the v2.41 CODI-source freeze?
 Plans: Not started.
 ## Next Milestone
 **TBD — gated on v2.41 Phase 180 verdict.**
@@ -714,4 +714,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-18 — Phase 179 plan created on main; v2.41 observation window is ready for APPLY.*
+*Last updated: 2026-04-20 — Phase 179 complete; three findings hand off to Phase 180 (CODI pre-plan value envelope + two distinct post-unify instrumentation gaps).*
