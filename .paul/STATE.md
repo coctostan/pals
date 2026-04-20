@@ -223,7 +223,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/180-re-trial-gating-decision
-Last commit: chore(state): stabilize phase 180 git state text (bac2b714)
+Latest pushed branch work: Phase 180 closeout plus follow-up cleanup fixes are on PR #90
 PR: https://github.com/coctostan/pals/pull/90 (state: open)
 CI: pass (Socket Security checks green)
 Prior PRs: #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
