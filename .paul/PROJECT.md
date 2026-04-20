@@ -325,6 +325,8 @@ All validated — see below.
 | 2026-04-17: Treat upcoming-plan `<context>` repo-relative `.ts/.tsx/.js/.jsx` files as bounded source selectors and promote only extracted stable identifiers to `impact` candidates | 174 | Fixes extractor-vs-scope alignment without turning CODI into semantic guessing or raw-path `impact` dispatch |
 | 2026-04-17: Use `.codegraph/graph.db` only as a bounded install-time CODI heuristic; never auto-disable CODI or gate install on its absence | 175 | Keeps CODI's advisory posture honest — installer surfaces a single recommendation without mutating config or conflating repo state with runtime tool availability |
 | 2026-04-17: Document CODI as a TS/JS-touching indexed-code helper and pin success-log `R` to resolved-with-call-sites only | 175 | Aligns manifest, reference doc, README, and changelog around one honest value envelope and removes the resolved-but-empty ambiguity before Phase 177's re-trial |
+| 2026-04-20: Phase 179 observation window closed with three findings — (1) CODI pre-plan advisory materially shaped APPLY placement on natural scope (Q2 trends yes qualitatively); (2) post-unify parser-miss failure mode (112-01); (3) post-unify hook-not-firing failure mode (113-01) | 179 | Two distinct post-unify instrumentation gaps from two consecutive natural phases established the measurement surface, not observation volume, as the v2.41 bottleneck. Phase 180 must decide between qualitative-alone verdict or bounded post-unify fix compatible with v2.41 CODI-source freeze |
+| 2026-04-20: Concurrent-natural evidence class added mid-APPLY alongside pre-authored — real roadmap-driven quark work after CODI enablement, honoring naturality discipline (scope chosen by engineering need, `<context>` drafted before CODI dispatch runs) | 179 | Defensible boundary between self-fulfilling Session-C-style trials and legitimate natural observation; enables collecting evidence volume without weakening trial integrity |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -343,4 +345,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-18 after Phase 178 UNIFY (v2.41 CODI cross-repo install completed in quark; Phase 179 observation window is the next planned work after merge/transition).*
+*Last updated: 2026-04-20 after Phase 179 UNIFY + merge (three findings ready for Phase 180 re-trial + gating decision; v2.41 at 70%).*

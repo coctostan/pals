@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-04-18)
 **Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 179 planning is now open at `.paul/phases/179-organic-observation/179-01-PLAN.md`: quark is CODI-ready, `quark/.paul/CODI-HISTORY.md` is still at zero rows, and the next work is to let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI.
 ## Current Position
 Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — 🚧 In Progress; prior milestone: v2.40 ✅ complete (verdict ITERATE_V0_1)
-Phase: 179 of ~3 in v2.41 — ✅ Complete (loop closed)
-Plan: 179-01 created (`.paul/phases/179-organic-observation/179-01-PLAN.md`)
-Status: Loop complete — UNIFY done; SUMMARY finalized with Module Execution Reports; CODI post-unify row appended (`skipped-no-symbols`); WALT quality history row appended; three findings ready for Phase 180
-Last activity: 2026-04-20 — UNIFY complete. Module Execution Reports finalized; post-unify hooks dispatched (WALT stable row; SKIP inline capture; CODI skipped-no-symbols row; RUBY skipped). Awaiting merge gate + Phase 180 planning.
+Phase: 180 of ~3 in v2.41 — Not started (ready to plan)
+Plan: not yet created
+Status: Ready to plan Phase 180 — Re-Trial + Gating Decision. Phase 179's three findings frame the scoping question.
+Last activity: 2026-04-20 — Phase 179 complete. PR #89 squash-merged as `1653bca`; local main synced; feature branch deleted; PROJECT.md evolved with Phase 179 decisions; ready for Phase 180 PLAN.
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [███████░░░] 70% (Phase 179 complete; three findings ready for Phase 180 re-trial + gating decision)
@@ -18,7 +18,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for merge gate + Phase 180 PLAN]
+  ○        ○        ○     [Ready to plan Phase 180]
 ```
 ## Accumulated Context
 ### Decisions
@@ -219,14 +219,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/179-organic-observation
-Last commit: feat(179-organic-observation): close Phase 179 with three findings
-PR: https://github.com/coctostan/pals/pull/89 (state: OPEN; CI pending)
+Branch: main
+Last commit: feat(179-organic-observation): close Phase 179 with three findings (#89)
+PR: https://github.com/coctostan/pals/pull/89 (state: MERGED as 1653bca)
+CI: passed (Socket Security checks green before merge)
 Prior PRs: #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 179 loop closed. APPLY + UNIFY complete; SUMMARY finalized with three findings + Module Execution Reports; post-unify hooks dispatched; PR #89 open awaiting merge gate.
-Stopped at: UNIFY complete on `feature/179-organic-observation`; awaiting merge gate (CI check + PR #89 merge) before Phase 180 PLAN.
-Next action: Run merge gate — verify CI on PR #89 and merge when green; then run `/paul:plan` to open Phase 180 (Re-Trial + Gating Decision).
+Last session: 2026-04-20 — Phase 179 loop closed and merged. PR #89 squash-merged as `1653bca`; local main synced; feature branch deleted.
+Stopped at: Phase 179 complete on main; ready to open Phase 180 (Re-Trial + Gating Decision).
+Next action: Run `/paul:plan` to open Phase 180 — Re-Trial + Gating Decision. Scoping question already framed by Phase 179's three findings.
 Resume file: .paul/phases/179-organic-observation/179-01-SUMMARY.md
 Resume context:
 - Phase 179 produced three durable findings: (1) CODI pre-plan advisory works on natural scope (Q2 trends yes qualitatively), (2) post-unify parser-miss failure mode (quark 112-01), (3) post-unify hook-not-firing failure mode (quark 113-01).
