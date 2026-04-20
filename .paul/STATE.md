@@ -219,11 +219,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: docs(v2.41): record Phase 178 quark CODI trial-bed setup (#88)
-PR: https://github.com/coctostan/pals/pull/88 (state: MERGED)
-CI: passed (PR #88 checks green before merge)
-Prior milestone: PR #87 merged as dbf2d7a on main (Phase 177 complete, v2.40 closed); PR #86 merged as 1d9ce95 (Phase 176); PR #85 merged as 7e3a728 (Phase 175)
+Branch: feature/179-organic-observation
+Last commit: feat(179-organic-observation): close Phase 179 with three findings
+PR: https://github.com/coctostan/pals/pull/89 (state: OPEN; CI pending)
+Prior PRs: #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
 ## Session Continuity
 Last session: 2026-04-20 — Phase 179 APPLY still paused; appended quark `113-01` (concurrent-natural) observation to SUMMARY — pre-plan injected clean, post-unify hook did not fire (distinct from 112-01 parser-miss)
 Stopped at: Phase `179-01` SUMMARY now records 2 natural quark observations with 2 distinct instrumentation surface gaps; observation window still open — either continue for more rows, or close Phase 179 and let Phase 180 disentangle mechanical vs qualitative signal
