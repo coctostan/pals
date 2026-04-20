@@ -2,23 +2,24 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-18)
+See: .paul/PROJECT.md (updated 2026-04-20)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 179 planning is now open at `.paul/phases/179-organic-observation/179-01-PLAN.md`: quark is CODI-ready, `quark/.paul/CODI-HISTORY.md` is still at zero rows, and the next work is to let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI.
+**Current focus:** v2.41 is closed by Phase 180 verdict ITERATE_V0_1; the next milestone proposal is v2.42 CODI v0.1 — Post-Unify Instrumentation Fix.
 ## Current Position
-Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — 🚧 In Progress; prior milestone: v2.40 ✅ complete (verdict ITERATE_V0_1)
-Phase: 180 of ~3 in v2.41 — Not started (ready to plan)
-Plan: not yet created
-Status: Ready to plan Phase 180 — Re-Trial + Gating Decision. Phase 179's three findings frame the scoping question.
-Last activity: 2026-04-20 — Phase 179 complete. PR #89 squash-merged as `1653bca`; local main synced; feature branch deleted; PROJECT.md evolved with Phase 179 decisions; ready for Phase 180 PLAN.
+Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — ✅ Complete (verdict ITERATE_V0_1); next milestone queued: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix
+Phase: 180 of ~3 in v2.41 — Complete
+Plan: 180-01 complete (`.paul/phases/180-re-trial-gating-decision/180-01-{PLAN,DECISION,SUMMARY}.md`)
+Status: Loop complete; milestone transition pending via `/paul:milestone`
+Last activity: 2026-04-20 — Closed Phase 180 with verdict ITERATE_V0_1, wrote the v2.42 proposal, and updated lifecycle artifacts
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [███████░░░] 70% (Phase 179 complete; three findings ready for Phase 180 re-trial + gating decision)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1; milestone transition next)
+- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [░░░░░░░░░░] 0% (proposal ready — open via `/paul:milestone`)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 180]
+  ✓        ✓        ✓     [Phase 180 complete; next action is milestone transition, not another phase plan]
 ```
 ## Accumulated Context
 ### Decisions
@@ -149,6 +150,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-18: Phase 179 is strictly observational — zero controlled self-trials, zero synthetic evidence. Natural quark phases only. | 178 | Rejects Session C-style self-fulfilling evidence; resulting trial data is either conclusive or honestly sparse |
 | 2026-04-18: Phase 179 plan amended mid-APPLY to broaden trial fuel from `pre-authored` only to two labeled evidence classes: `pre-authored` (zero selection bias — quark `112-01`) and `concurrent-natural` (roadmap-driven quark work after CODI enablement, honoring the Phase 178 naturality discipline rule). Single pre-authored row was structurally too thin for Phase 180; adding naturality-disciplined concurrent-natural rows gives the re-trial enough volume without contaminating it. CODI-source freeze, no-self-trial, no-synthetic, and engineering-logic-first invariants preserved unchanged. | 179 | Broadens Phase 179 observation scope without weakening trial integrity; each row in SUMMARY is class-labeled so Phase 180 can weight them honestly |
 | 2026-04-20: Phase 179 Observation #2 (quark `113-01`, concurrent-natural): pre-plan CODI `injected` clean (`impact × 5 symbols → 2R/3E/0U/5K`, blast_radius injected); post-unify hook did NOT fire (no `CODI-HISTORY.md` row, no CODI entry in quark SUMMARY's Module Execution Reports). Distinct from 112-01's parser-miss — this is hook-not-firing. Qualitative APPLY-consumption evidence reconstructible from SUMMARY (CODI's fan-out data shaped signature-change propagation through `createProcessSyscalls`→`startDaemon`; `resolved-but-empty` on `validateManifestPresence` plus call-site at `loop.ts:414` informed the Deviation #1 placement decision). No manual row repair; no mid-trial CODI patching. | 179 | Two consecutive natural quark phases, two distinct instrumentation surface gaps (parser-miss + hook-not-firing). Phase 180 must disentangle these before mechanical SHIP gating (`S_pass_nonnull ≥ 3`) can be read honestly from `CODI-HISTORY.md` |
+| 2026-04-20: Phase 180 verdict ITERATE_V0_1 — natural-scope evidence trends Q2=yes qualitatively, but parser-miss + hook-not-firing keep the mechanical Q2 pass uncertain under the unchanged rubric | 180 | Closes v2.41 without rubric edits; preserves the qualitative/mechanical split as v2.42 input rather than a verdict override |
+| 2026-04-20: Open v2.42 as a bounded post-unify instrumentation-fix milestone under a fresh SHA freeze | 180 | Scopes next work to parser hardening, hook-firing guard, and installer/manifest alignment while keeping v2.41 artifacts untouched |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -219,18 +222,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: feat(179-organic-observation): close Phase 179 with three findings (#89)
-PR: https://github.com/coctostan/pals/pull/89 (state: MERGED as 1653bca)
-CI: passed (Socket Security checks green before merge)
-Prior PRs: #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
+Branch: feature/180-re-trial-gating-decision
+Latest pushed work: Phase 180 closeout and follow-up cleanup are on PR #90
+PR: https://github.com/coctostan/pals/pull/90 (state: open)
+CI: pass (Socket Security checks green)
+Prior PRs: #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 179 loop closed and merged. PR #89 squash-merged as `1653bca`; local main synced; feature branch deleted.
-Stopped at: Phase 179 complete on main; ready to open Phase 180 (Re-Trial + Gating Decision).
-Next action: Run `/paul:plan` to open Phase 180 — Re-Trial + Gating Decision. Scoping question already framed by Phase 179's three findings.
-Resume file: .paul/phases/179-organic-observation/179-01-SUMMARY.md
+Last session: 2026-04-20 — Phase 180 APPLY completed: DECISION approved, v2.42 proposal written, and v2.41 lifecycle artifacts closed.
+Stopped at: Phase 180 complete; v2.41 artifact closeout finished.
+Next action: Run `/paul:milestone` to close v2.41 formally and open v2.42 from `.paul/proposals/v2.42-post-unify-instrumentation-fix.md` — do **not** run `/paul:plan`.
+Resume file: (none; no new handoff required for this closeout)
 Resume context:
-- Phase 179 produced three durable findings: (1) CODI pre-plan advisory works on natural scope (Q2 trends yes qualitatively), (2) post-unify parser-miss failure mode (quark 112-01), (3) post-unify hook-not-firing failure mode (quark 113-01).
-- Mechanical `CODI-HISTORY.md` undercount is 2× from two distinct instrumentation surface gaps — this is the single most important v2.41 finding so far.
-- Phase 180 scoping question: qualitative-alone v2.41 verdict with instrumentation-blocked caveat, OR bounded post-unify fix (parser hardening + hook-firing guard) compatible with the v2.41 CODI-source freeze.
-- Integrity invariants preserved: pals CODI source frozen at SHA `0d667560b65944801faaee270ab920786afa471a`; no synthetic rows, no controlled self-trials, no retroactive runs, no manual `CODI-HISTORY.md` edits.
+- Phase 180 verdict is **ITERATE_V0_1** under the unchanged Phase 173/177 rubric.
+- Qualitative Q2 evidence trends yes, but the mechanical ledger remains blocked by two distinct instrumentation gaps.
+- v2.42 scope is bounded to parser hardening + hook-firing guard + installer/manifest alignment if needed.
+- v2.41 CODI source freeze remains canonical for interpreting v2.41; v2.42 must pin a fresh SHA at milestone open.
