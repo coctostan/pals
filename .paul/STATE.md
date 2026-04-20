@@ -222,11 +222,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: feat(179-organic-observation): close Phase 179 with three findings (#89)
-PR: https://github.com/coctostan/pals/pull/89 (state: MERGED as 1653bca)
-CI: passed (Socket Security checks green before merge)
-Prior PRs: #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
+Branch: feature/180-re-trial-gating-decision
+Last commit: feat(180-re-trial-gating-decision): close v2.41 and frame v2.42 (7f587b6b)
+PR: https://github.com/coctostan/pals/pull/90 (state: open)
+CI: pending (Socket Security checks queued)
+Prior PRs: #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
 ## Session Continuity
 Last session: 2026-04-20 — Phase 180 APPLY completed: DECISION approved, v2.42 proposal written, and v2.41 lifecycle artifacts closed.
 Stopped at: Phase 180 complete; v2.41 artifact closeout finished.
