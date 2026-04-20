@@ -68,3 +68,61 @@ Phase 180 opens cleanly from this SUMMARY without reconstructing the observation
 | AC-2 | User's existing quark patches decomposed by engineering logic first | PASS | quark `112-01` was the natural single-slice decomposition; quark `113-01` was real roadmap work (v2.17 Security Correctness II, PraesKern Security Fixes Spec bugs B1–B8) with symbols traced from the bug set, not CODI convenience |
 | AC-3 | Natural quark UNIFY runs generate the authoritative Phase 179 row set | PASS with findings | 2 natural phases observed; each row traceable to a real quark phase artifact pair; per-phase qualitative APPLY-consumption notes recorded. Mechanical ledger undercount is itself the authoritative finding, not a scope gap |
 | AC-4 | pals closes Phase 179 with a SUMMARY ready as Phase 180 input | PASS | Three headline findings recorded; handoff frames Phase 180's scoping decision; `.paul/STATE.md` and `.paul/ROADMAP.md` advance to Phase 180 |
+
+## Module Execution Reports
+
+### Pre-apply dispatch
+
+- `[dispatch] pre-apply: TODD(p50) → baseline recorded` — no test-first surface in pals-side observation scope; quark-local TODD is the active surface and ran during each quark phase.
+- `[dispatch] pre-apply: WALT(p100) → baseline recorded` — pals has no application test suite for documentation-only lifecycle work; installer-backed validation unchanged.
+
+### Post-apply advisory dispatch
+
+- `[dispatch] post-apply advisory: IRIS(p250) → 0 annotations` — no TODO/FIXME/HACK anti-patterns introduced in markdown artifacts.
+- `[dispatch] post-apply advisory: DOCS(p250) → 0 annotations` — ROADMAP.md and STATE.md updated in-step with SUMMARY; no doc drift.
+- `[dispatch] post-apply advisory: RUBY(p300) → 0 annotations` — no in-repo code surface touched.
+- `[dispatch] post-apply advisory: SKIP(p300) → knowledge captured in SUMMARY's Headline Findings + Handoff to Phase 180 sections`.
+
+### Post-apply enforcement dispatch
+
+- `[dispatch] post-apply enforcement: WALT(p100) → PASS` — no pals source/test changes; baseline preserved.
+- `[dispatch] post-apply enforcement: DEAN(p150) → PASS` — no dependency manifest changes.
+- `[dispatch] post-apply enforcement: TODD(p200) → PASS` — documentation-only phase; no TDD sequencing required.
+
+### Pre-unify dispatch
+
+- `[dispatch] pre-unify: 0 modules registered for this hook` — no pre-unify hooks declared in installed registry.
+
+### Post-unify dispatch
+
+- `[dispatch] post-unify: WALT(p100) → appended stable row for 179-01` — quality history entry recorded in both `.paul/QUALITY-HISTORY.md` and `.paul/quality-history.md` (documentation-only phase; test counts unchanged at 172+75 pass).
+- `[dispatch] post-unify: SKIP(p200) → knowledge captured inline` — three headline findings deposited in SUMMARY and STATE.md Decisions; no separate artifact needed.
+- `[dispatch] post-unify: CODI(p220) → appended skipped-no-symbols row for 179-01` — matched PLAN.md `<module_dispatch>` line `CODI (p220) → skipped — no extractable symbols in phase scope`; `.paul/CODI-HISTORY.md` row appended with R/U/K/Symbols as `—` and blast_radius `n`. Honest record of this pals-side observation plan being documentation-shaped.
+- `[dispatch] post-unify: RUBY(p300) → skipped — no source-code changes in phase scope`.
+
+### Skill audit
+
+| Expected | Invoked | Notes |
+|----------|---------|-------|
+| /paul | ✓ | Lifecycle flow covered PLAN → APPLY (with mid-APPLY plan amendment checkpoint) → UNIFY for the Phase 179 observation window |
+| /carl | ✓ | Session-boundary routing remained active across the multi-session pause/resume boundary |
+| TODD | N/A | Documentation-only phase in pals; no implementation path or RED/GREEN/REFACTOR work applied. Quark-local TODD was active during each observed quark phase |
+| WALT | ✓ | Pre-apply baseline + post-apply enforcement PASS; post-unify quality history recorded |
+
+**Skill audit: all required skills either invoked or documented N/A ✓**
+
+## Deviations
+
+1. **Plan amended mid-APPLY (2026-04-18).** Scope broadened from `pre-authored only` to two labeled evidence classes (`pre-authored` + `concurrent-natural`). Logged as explicit decision in `.paul/STATE.md`. The amendment was necessary because the single pre-authored quark slice (112-01) was structurally too thin for Phase 180's SHIP gate. Integrity invariants (CODI-source freeze, no-self-trial, no-synthetic, naturality discipline, engineering-logic-first) preserved unchanged by the amendment. **Impact: broadens observation scope without weakening trial integrity.**
+
+2. **Plan's original Task 1 language assumed prospective quark-phase creation; actual quark `112-01` had already completed organically before this APPLY began.** Retrospective-in-timing but substantively PASS — the natural engineering decomposition had already happened at the right granularity (one coherent security-correctness slice). **Impact: none — AC-2 satisfied on the merits.**
+
+## Key Patterns / Decisions
+
+- **Two distinct post-unify instrumentation gaps** on two consecutive natural quark phases is strong evidence the measurement surface, not observation volume, is the v2.41 bottleneck. This reshapes Phase 180's scoping question.
+- **Concurrent-natural class** is a real category distinct from Session C-style controlled self-trials: the naturality discipline rule (scope chosen by engineering need, not CODI visibility; `<context>` drafted before CODI dispatch runs) provides a defensible boundary.
+- **Mechanical ledger alone is insufficient for Q2 resolution** when the post-unify instrumentation surface can silently undercount successful dispatches. Qualitative APPLY-consumption evidence in quark SUMMARIES carries real signal that the ledger cannot.
+
+## Next Phase
+
+Phase 180: Re-Trial + Gating Decision. Scoping question now framed by Phase 179's three findings: decide between (a) qualitative-alone v2.41 verdict with instrumentation-blocked caveat, or (b) bounded post-unify instrumentation fix (parser hardening + hook-firing guard) compatible with the v2.41 CODI-source freeze. Input: this SUMMARY.
