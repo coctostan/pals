@@ -7,20 +7,19 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
 ## Current Position
 Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 181 of 3 in v2.42 — Root-Cause Analysis — Complete
-Plan: 181-01 closed (ANALYSIS.md + SUMMARY.md)
-Status: UNIFY complete, ready for Phase 182 PLAN (post merge gate)
-Last activity: 2026-04-20 — Completed Phase 181 UNIFY; appended CODI-HISTORY row `181-01 skipped-no-symbols`; PR #91 awaiting merge gate
+Phase: 182 of 3 in v2.42 — Bounded Instrumentation Fix — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-20 — Phase 181 complete; PR #91 merged (90ace0e8); main synced; transitioned to Phase 182
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [███░░░░░░░] 33% (Phase 181 complete; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
-- Phase 181 (Root-Cause Analysis): [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 181 loop complete; awaiting merge gate then Phase 182 PLAN]
+  ○        ○        ○     [Phase 182 ready to plan]
 ```
 ## Accumulated Context
 ### Decisions
@@ -237,10 +236,10 @@ PR: https://github.com/coctostan/pals/pull/91 (state: MERGED, squash-merge)
 CI: pass (Socket Security checks green)
 Prior PRs: #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 181 loop complete (PLAN ✓ APPLY ✓ UNIFY ✓).
-Stopped at: UNIFY complete; SUMMARY.md written; CODI-HISTORY appended `181-01 skipped-no-symbols`; STATE + ROADMAP updated; merge gate pending on PR #91.
-Next action: Complete merge gate on PR #91, then run /paul:plan for Phase 182 (Bounded Instrumentation Fix).
-Resume file: .paul/phases/181-root-cause-analysis/181-01-SUMMARY.md
+Last session: 2026-04-20 — Phase 181 complete (loop closed, PR #91 merged, main synced); transitioned to Phase 182.
+Stopped at: Phase 181 closeout complete; v2.42 at 1 of 3 phases (33%); ready to plan Phase 182 (Bounded Instrumentation Fix).
+Next action: Run /paul:plan for Phase 182 — first probe task disambiguates the 113-01 (c.ii) sub-sub-cause, then parser widening + hook-firing guard land.
+Resume file: .paul/ROADMAP.md
 Resume context:
 - Phase 181 ownership findings: 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch with sub-sub-cause deferred to Phase 182 APPLY probe.
 - Installer/registry alignment is OUT of scope for Phase 182 (layer b rejected by artifact evidence).

@@ -330,6 +330,8 @@ All validated — see below.
 | 2026-04-20: Phase 180 verdict ITERATE_V0_1 — natural-scope evidence trends Q2=yes qualitatively, but parser-miss + hook-not-firing keep the mechanical Q2 pass uncertain under the unchanged rubric | 180 | Closes v2.41 without rubric edits; preserves the qualitative/mechanical split as v2.42 input rather than a verdict override |
 | 2026-04-20: Open v2.42 as a bounded post-unify instrumentation-fix milestone under a fresh SHA freeze | 180 | Scopes next work to parser hardening, hook-firing guard, and installer/manifest alignment if needed while keeping v2.41 artifacts untouched |
 | 2026-04-20: Pin v2.42 CODI measurement freeze at SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` when opening the milestone | v2.42 open | Keeps the repaired-instrument trial separate from v2.41's frozen `0d667560b65944801faaee270ab920786afa471a` baseline and gives Phases 181-183 one stable measurement reference |
+| 2026-04-20: Phase 181 owned the 112-01 parser-miss to `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary), and the 113-01 hook-not-firing to UNIFY workflow dispatch (c); ruled out installer/registry alignment for Phase 182 with direct artifact evidence from the installed `modules.yaml` | 181 | Phase 182 authorization envelope: `modules/codi/module.yaml` STEP 2/3 pattern widening + STEP 1 hook-firing guard, optional `plan-phase.md` combined-advisory wording contract; installer untouched; sub-sub-cause of (c) deferred to Phase 182 APPLY probe |
+| 2026-04-20: The actual v2.41 instrumentation defect is ledger ambiguity — `no-dispatch-found` token collapses hotfix mode, parser-miss, and hook-not-firing into one outcome indistinguishable from CODI-absent | 181 | Phase 182 parser-widening must introduce at least one new outcome token (e.g., `injected-degraded`) to break this collapse so the ledger can honestly report when CODI ran-but-drifted |
 
 ## Success Criteria
 - The ultimate user friendly end-to-end Claude Code software development framework is achieved
@@ -348,4 +350,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-20 after Phase 180 closeout (v2.41 verdict ITERATE_V0_1; v2.42 proposal queued for `/paul:milestone`).*
+*Last updated: 2026-04-20 after Phase 181 closeout (v2.42 Root-Cause Analysis complete; Phase 182 scope envelope decided).*
