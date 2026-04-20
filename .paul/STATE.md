@@ -4,22 +4,23 @@
 
 See: .paul/PROJECT.md (updated 2026-04-20)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.41 is closed by Phase 180 verdict ITERATE_V0_1; the next milestone proposal is v2.42 CODI v0.1 — Post-Unify Instrumentation Fix.
+**Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
 ## Current Position
-Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — ✅ Complete (verdict ITERATE_V0_1); next milestone queued: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix
-Phase: 180 of ~3 in v2.41 — Complete
-Plan: 180-01 complete (`.paul/phases/180-re-trial-gating-decision/180-01-{PLAN,DECISION,SUMMARY}.md`)
-Status: Loop complete; milestone transition pending via `/paul:milestone`
-Last activity: 2026-04-20 — Closed Phase 180 with verdict ITERATE_V0_1, wrote the v2.42 proposal, and updated lifecycle artifacts
+Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
+Phase: 181 of 3 in v2.42 — Root-Cause Analysis — Complete
+Plan: 181-01 closed (ANALYSIS.md + SUMMARY.md)
+Status: UNIFY complete, ready for Phase 182 PLAN (post merge gate)
+Last activity: 2026-04-20 — Completed Phase 181 UNIFY; appended CODI-HISTORY row `181-01 skipped-no-symbols`; PR #91 awaiting merge gate
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1; milestone transition next)
-- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [░░░░░░░░░░] 0% (proposal ready — open via `/paul:milestone`)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
+- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [███░░░░░░░] 33% (Phase 181 complete; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
+- Phase 181 (Root-Cause Analysis): [██████████] 100%
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 180 complete; next action is milestone transition, not another phase plan]
+  ✓        ✓        ✓     [Phase 181 loop complete; awaiting merge gate then Phase 182 PLAN]
 ```
 ## Accumulated Context
 ### Decisions
@@ -152,6 +153,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-20: Phase 179 Observation #2 (quark `113-01`, concurrent-natural): pre-plan CODI `injected` clean (`impact × 5 symbols → 2R/3E/0U/5K`, blast_radius injected); post-unify hook did NOT fire (no `CODI-HISTORY.md` row, no CODI entry in quark SUMMARY's Module Execution Reports). Distinct from 112-01's parser-miss — this is hook-not-firing. Qualitative APPLY-consumption evidence reconstructible from SUMMARY (CODI's fan-out data shaped signature-change propagation through `createProcessSyscalls`→`startDaemon`; `resolved-but-empty` on `validateManifestPresence` plus call-site at `loop.ts:414` informed the Deviation #1 placement decision). No manual row repair; no mid-trial CODI patching. | 179 | Two consecutive natural quark phases, two distinct instrumentation surface gaps (parser-miss + hook-not-firing). Phase 180 must disentangle these before mechanical SHIP gating (`S_pass_nonnull ≥ 3`) can be read honestly from `CODI-HISTORY.md` |
 | 2026-04-20: Phase 180 verdict ITERATE_V0_1 — natural-scope evidence trends Q2=yes qualitatively, but parser-miss + hook-not-firing keep the mechanical Q2 pass uncertain under the unchanged rubric | 180 | Closes v2.41 without rubric edits; preserves the qualitative/mechanical split as v2.42 input rather than a verdict override |
 | 2026-04-20: Open v2.42 as a bounded post-unify instrumentation-fix milestone under a fresh SHA freeze | 180 | Scopes next work to parser hardening, hook-firing guard, and installer/manifest alignment while keeping v2.41 artifacts untouched |
+| 2026-04-20: Pin v2.42 CODI measurement freeze at SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` when opening the milestone | v2.42 open | Keeps the repaired-instrument trial separate from v2.41's frozen `0d667560b65944801faaee270ab920786afa471a` baseline and gives Phases 181-183 one stable measurement reference |
+| 2026-04-20: Phase 181 findings — 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); all 5 STEP 2/3 patterns miss in both primary and fallback read paths despite Blast Radius actually injected and APPLY materially shaped | 181 | Phase 182 parser-widening must introduce at least one new outcome token (e.g., `injected-degraded`) so `no-dispatch-found` stops collapsing three distinct conditions |
+| 2026-04-20: Phase 181 finding — 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch; CODI(220) omitted from iteration while WALT(100)/SKIP(200)/RUBY(300) ran normally. Layers (a) config, (b) installed-registry, (d) hook self-skip all rejected by artifact null-observation | 181 | Sub-sub-cause between priority-sort / module-set enumeration / boundary condition deferred to Phase 182 APPLY probe; STEP-1 hook-firing guard IS the probe instrument |
+| 2026-04-20: Phase 181 decision — installer/registry alignment OUT of scope for Phase 182 because installed `modules.yaml` correctly exposes `installed_modules.codi.hook_details.post-unify` | 181 | Rejects v2.42 proposal's conditional installer-alignment scope; Phase 182 authorized to touch only `modules/codi/module.yaml` STEP 2/3 + STEP 1, optionally `plan-phase.md` combined-advisory wording contract |
+| 2026-04-20: STEP 5's defensive APPEND ROW logic makes CODI-HISTORY.md row absence diagnostic of pre-STEP-5 failure (rules out hook-ran-silently, narrows to either not-iterated or hook-body-never-started) | 181 | Pattern worth preserving and considering for other post-unify modules — defensive append + row-absence-is-diagnostic |
+| 2026-04-20: Null-observation evidence is rigorous for markdown-described hooks — absence of the expected STEP 7 log line is itself an observable exit pattern | 181 | Codifies an analysis technique for future CODI-family and module-contract root-cause work |
+| 2026-04-20: Phase 181 authorized to recommend workflow-wording edits (`plan-phase.md` combined-advisory contract) without reopening CODI advisory behavior — test is whether Blast Radius injection / extractor rules / R/U/K success-log semantics are preserved identical | 181 | Clarifies the boundary between advisory-behavior changes (forbidden) and workflow-wording guards (permitted) for Phase 182 scope |
+| 2026-04-20: Sub-sub-cause deferral to Phase 182 APPLY probe is a legitimate Phase 181 outcome when artifacts cannot discriminate between candidate sub-causes within a single owning layer; STEP-1 trace guard IS the probe instrument | 181 | Preserves Phase 181's read-only invariant without forcing premature sub-sub-cause commitment; establishes precedent for future root-cause phases |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -222,18 +231,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/180-re-trial-gating-decision
-Latest pushed work: Phase 180 closeout and follow-up cleanup are on PR #90
-PR: https://github.com/coctostan/pals/pull/90 (state: open)
-CI: pass (Socket Security checks green)
-Prior PRs: #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
+Branch: feature/181-root-cause-analysis
+Latest pushed work: Phase 181 APPLY complete at commit f0a37190 on PR #91
+PR: https://github.com/coctostan/pals/pull/91 (state: open)
+CI: pending (Socket Security checks informational; merge gate runs in UNIFY)
+Prior PRs: #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 180 APPLY completed: DECISION approved, v2.42 proposal written, and v2.41 lifecycle artifacts closed.
-Stopped at: Phase 180 complete; v2.41 artifact closeout finished.
-Next action: Run `/paul:milestone` to close v2.41 formally and open v2.42 from `.paul/proposals/v2.42-post-unify-instrumentation-fix.md` — do **not** run `/paul:plan`.
-Resume file: (none; no new handoff required for this closeout)
+Last session: 2026-04-20 — Phase 181 loop complete (PLAN ✓ APPLY ✓ UNIFY ✓).
+Stopped at: UNIFY complete; SUMMARY.md written; CODI-HISTORY appended `181-01 skipped-no-symbols`; STATE + ROADMAP updated; merge gate pending on PR #91.
+Next action: Complete merge gate on PR #91, then run /paul:plan for Phase 182 (Bounded Instrumentation Fix).
+Resume file: .paul/phases/181-root-cause-analysis/181-01-SUMMARY.md
 Resume context:
-- Phase 180 verdict is **ITERATE_V0_1** under the unchanged Phase 173/177 rubric.
-- Qualitative Q2 evidence trends yes, but the mechanical ledger remains blocked by two distinct instrumentation gaps.
-- v2.42 scope is bounded to parser hardening + hook-firing guard + installer/manifest alignment if needed.
-- v2.41 CODI source freeze remains canonical for interpreting v2.41; v2.42 must pin a fresh SHA at milestone open.
+- Phase 181 ownership findings: 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch with sub-sub-cause deferred to Phase 182 APPLY probe.
+- Installer/registry alignment is OUT of scope for Phase 182 (layer b rejected by artifact evidence).
+- Phase 182 authorized edit surfaces: modules/codi/module.yaml STEP 2/3 pattern widening + STEP 1 hook-firing guard; optional plan-phase.md combined-advisory wording contract.
+- v2.42 pinned SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` governs active measurement; v2.41 freeze `0d667560b65944801faaee270ab920786afa471a` remains canonical for v2.41 interpretation.
+- v2.41 artifacts remain byte-identical; no retroactive `CODI-HISTORY.md` row repair made or recommended.

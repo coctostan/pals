@@ -50,8 +50,43 @@ Completed milestone log for this project.
 | **v2.33 Code Review Module (REV)** | 2026-03-27 | 1 session | 3 phases, 4 plans. REV module + skill + merge gate + live validation. |
 | **v2.34 Pi Subagent Integration & PALS Implementer** | 2026-03-27 | 3h 41m | 4 phases, 4 plans. Parent-controlled `pals-implementer`, installer-backed Pi agent availability, and validation/docs polish. |
 | **v2.37 Implementer Config Alignment & Delegation Expansion** | 2026-03-28 | 2h 53m | 3 phases, 3 plans |
+| **v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** | 2026-04-20 | 2 days | 3 phases, 3 plans. Cross-repo quark trial; 2 natural observations; verdict ITERATE_V0_1. |
 
 ---
+## ✅ v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation
+
+**Completed:** 2026-04-20
+**Duration:** 2 days
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 178-180) |
+| Plans | 3 |
+| Trial host | quark |
+| Natural observations | 2 (`112-01` pre-authored, `113-01` concurrent-natural) |
+| Verdict | `ITERATE_V0_1` |
+
+### Key Accomplishments
+
+- Enabled CODI in quark under the shared installed registry, refreshed quark's codegraph, and seeded `quark/.paul/CODI-HISTORY.md` without synthetic rows.
+- Observed two consecutive natural quark phases where CODI's pre-plan blast radius materially shaped APPLY on real TypeScript work.
+- Isolated two distinct post-unify instrumentation gaps — parser-miss on quark `112-01` and hook-not-firing on quark `113-01` — that caused a 2× mechanical ledger undercount.
+- Applied the unchanged Phase 173/177 rubric and bound the v2.41 verdict as `ITERATE_V0_1` without retroactive evidence repair.
+- Opened the bounded v2.42 follow-on proposal focused on measurement-surface repair under a fresh SHA freeze.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Open the natural-scope CODI trial in quark under the frozen v2.41 instrument SHA `0d667560b65944801faaee270ab920786afa471a` | 178 | Moves Q2 evaluation onto real TS work while preserving trial integrity across pals and quark via the shared installed registry |
+| Keep Phase 179 strictly observational and naturality-disciplined | 178-179 | Preserves honest evidence by forbidding self-trials, synthetic rows, retroactive repairs, or CODI-friendly scope tuning |
+| Treat parser-miss (`112-01`) and hook-not-firing (`113-01`) as the milestone bottleneck rather than a value-envelope failure | 179 | Establishes the measurement surface, not observation volume, as the reason the mechanical gate remained uncertain |
+| Bind v2.41 as `ITERATE_V0_1` and route next work to bounded post-unify instrumentation repair in v2.42 | 180 | Preserves the unchanged rubric while separating v2.41 interpretation from the fresh v2.42 measurement fix |
+
+---
+
 ## ✅ v2.37 Implementer Config Alignment & Delegation Expansion
 
 **Completed:** 2026-03-28
