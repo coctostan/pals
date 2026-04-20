@@ -37,14 +37,14 @@ Phases: 1 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 181 | Root-Cause Analysis | 1 | ✅ Complete | 2026-04-20 |
-| 182 | Bounded Instrumentation Fix | TBD | Not started | - |
+| 182 | Bounded Instrumentation Fix | 1 | Planning | - |
 | 183 | Natural Validation | TBD | Not started | - |
 ### Phase 181: Root-Cause Analysis
 Focus: Isolate ownership of the `112-01` parser-miss and `113-01` hook-not-firing failures across parser logic, hook registration, unify dispatch, and installed-registry alignment.
 Plans: 181-01 complete (`.paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md`, `181-01-SUMMARY.md`) — type: research, read-only defect isolation + Phase 182 scope decision delivered
 ### Phase 182: Bounded Instrumentation Fix
 Focus: Implement the minimum parser / dispatch / alignment repair needed for honest post-unify measurement while preserving v2.41 artifacts and the fresh v2.42 SHA freeze.
-Plans: TBD (defined during `/paul:plan`)
+Plans: 182-01 pending approval (`.paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md`) — type: execute, bounded probe + parser / contract repair
 ### Phase 183: Natural Validation
 Focus: Run the repaired instrument on a new natural quark phase and confirm pre-plan dispatch, post-unify firing, and row classification all behave honestly without synthetic evidence.
 Plans: TBD (defined during `/paul:plan`)

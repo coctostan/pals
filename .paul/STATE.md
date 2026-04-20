@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
 ## Current Position
 Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 182 of 3 in v2.42 — Bounded Instrumentation Fix — Not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-20 — Phase 181 complete; PR #91 merged (90ace0e8); main synced; transitioned to Phase 182
+Phase: 182 of 3 in v2.42 — Bounded Instrumentation Fix — Applying
+Plan: 182-01 executed
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-20T21:47:07Z — Completed APPLY for 182-01, committed changes, pushed feature branch, and opened PR #92
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
@@ -19,7 +19,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 182 ready to plan]
+  ✓        ✓        ○     [Execution complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -230,19 +230,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: 90ace0e8 feat(181-root-cause-analysis): isolate CODI post-unify failure ownership (#91)
-PR: https://github.com/coctostan/pals/pull/91 (state: MERGED, squash-merge)
-CI: pass (Socket Security checks green)
-Prior PRs: #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
+Branch: feature/182-bounded-instrumentation-fix
+Last commit: feat(182-bounded-instrumentation-fix): repair CODI post-unify instrumentation (current HEAD on feature/182-bounded-instrumentation-fix)
+PR: https://github.com/coctostan/pals/pull/92 (state: OPEN)
+CI: pass (Socket Security checks green on PR #92)
+Prior PRs: #92 open (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 181 complete (loop closed, PR #91 merged, main synced); transitioned to Phase 182.
-Stopped at: Phase 181 closeout complete; v2.42 at 1 of 3 phases (33%); ready to plan Phase 182 (Bounded Instrumentation Fix).
-Next action: Run /paul:plan for Phase 182 — first probe task disambiguates the 113-01 (c.ii) sub-sub-cause, then parser widening + hook-firing guard land.
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-20T21:47:07Z
+Stopped at: APPLY complete for 182-01; PR #92 open with passing checks
+Next action: Run /paul:unify .paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md
+Resume file: .paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md
 Resume context:
-- Phase 181 ownership findings: 112-01 parser-miss owned by `parser-too-strict` (primary) + `plan-wording-non-canonical` (secondary); 113-01 hook-not-firing owned by (c) UNIFY workflow dispatch with sub-sub-cause deferred to Phase 182 APPLY probe.
-- Installer/registry alignment is OUT of scope for Phase 182 (layer b rejected by artifact evidence).
-- Phase 182 authorized edit surfaces: modules/codi/module.yaml STEP 2/3 pattern widening + STEP 1 hook-firing guard; optional plan-phase.md combined-advisory wording contract.
-- v2.42 pinned SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` governs active measurement; v2.41 freeze `0d667560b65944801faaee270ab920786afa471a` remains canonical for v2.41 interpretation.
-- v2.41 artifacts remain byte-identical; no retroactive `CODI-HISTORY.md` row repair made or recommended.
+- Task 1 added a CODI post-unify `hook body entered` trace; the probe found `kernel/workflows/unify-phase.md` already explicit enough, so the workflow file stayed untouched.
+- Task 2 added `injected-degraded` classification for Blast Radius-preserving parser drift while keeping hotfix / no-PLAN cases on `no-dispatch-found`.
+- Task 3 reinstalled the Pi surface and both validation suites passed: `tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`.
