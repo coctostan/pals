@@ -41,7 +41,7 @@ Phases: 2 of ~3 complete (178, 179 complete; 180 re-trial pending). Proposal: `.
 |-------|------|-------|--------|-----------|
 | 178 | CODI Cross-Repo Install (quark) | 1 (`178-01`) | ✅ Complete | 2026-04-18 |
 | 179 | Organic Observation Window | 1 (`179-01`) | ✅ Complete | 2026-04-20 |
-| 180 | Re-Trial + Gating Decision | — | Not started | — |
+| 180 | Re-Trial + Gating Decision | 1 (`180-01`) | Planning | — |
 ### Phase 178: CODI Cross-Repo Install (quark)
 Focus: Enable CODI in quark without touching quark source or pals CODI source. Add `modules.codi` to `quark/pals.json`, refresh `quark/.codegraph/graph.db`, seed `quark/.paul/CODI-HISTORY.md`, and capture a direct codegraph smoke test proving current-TS symbol resolution.
 Plans: `178-01` complete — `quark/pals.json` now includes `modules.codi`; `quark/.codegraph/graph.db` reindexed successfully; direct smoke test resolved `deriveTools` to `src/kernel/context.ts:40` (`assembleContext`) with behavioral depth 1; `quark/.paul/CODI-HISTORY.md` is seeded with the canonical zero-row header and still contains zero data rows at Phase 178 exit.
@@ -51,7 +51,7 @@ Outcome: 2 natural quark phases observed (`112-01` pre-authored, `113-01` concur
 
 ### Phase 180: Re-Trial + Gating Decision
 Focus: Re-run the unchanged Phase 173/177 rubric against the Phase 179 findings to resolve Q2. Phase 179's three-finding package reshapes the Phase 180 scoping question: does v2.41 ship on qualitative evidence with an honest instrumentation-blocked caveat, or does Phase 180 include a bounded post-unify parser+hook-firing fix that preserves the v2.41 CODI-source freeze?
-Plans: Not started.
+Plans: `180-01` created — Option C scoping approved. Plan computes the v2.41 verdict mechanically from Phase 179 evidence under the unchanged Phase 173/177 rubric, opens `.paul/proposals/v2.42-post-unify-instrumentation-fix.md` framing the instrumentation fix under a fresh SHA-freeze discipline, and closes v2.41 cleanly. One human-verify checkpoint after the DECISION artifact lands so the binding verdict is reviewed before v2.42 is opened.
 ## Next Milestone
 **TBD — gated on v2.41 Phase 180 verdict.**
 

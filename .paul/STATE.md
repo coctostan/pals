@@ -7,18 +7,18 @@ See: .paul/PROJECT.md (updated 2026-04-18)
 **Current focus:** v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation. Phase 179 planning is now open at `.paul/phases/179-organic-observation/179-01-PLAN.md`: quark is CODI-ready, `quark/.paul/CODI-HISTORY.md` is still at zero rows, and the next work is to let the user's pre-authored quark patches land as one or more natural quark PALS phases under CODI.
 ## Current Position
 Milestone: v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation — 🚧 In Progress; prior milestone: v2.40 ✅ complete (verdict ITERATE_V0_1)
-Phase: 180 of ~3 in v2.41 — Not started (ready to plan)
-Plan: not yet created
-Status: Ready to plan Phase 180 — Re-Trial + Gating Decision. Phase 179's three findings frame the scoping question.
-Last activity: 2026-04-20 — Phase 179 complete. PR #89 squash-merged as `1653bca`; local main synced; feature branch deleted; PROJECT.md evolved with Phase 179 decisions; ready for Phase 180 PLAN.
+Phase: 180 of ~3 in v2.41 — Planning
+Plan: 180-01 created (`.paul/phases/180-re-trial-gating-decision/180-01-PLAN.md`)
+Status: PLAN created, ready for APPLY
+Last activity: 2026-04-20 — Created `.paul/phases/180-re-trial-gating-decision/180-01-PLAN.md` (Option C scoping: qualitative-alone v2.41 verdict + v2.42 proposal for instrumentation fix under fresh SHA freeze)
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
-- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [███████░░░] 70% (Phase 179 complete; three findings ready for Phase 180 re-trial + gating decision)
+- v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [████████░░] 80% (Phase 180 PLAN.md created; decision phase awaiting APPLY approval)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 180]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 ## Accumulated Context
 ### Decisions
@@ -225,10 +225,10 @@ PR: https://github.com/coctostan/pals/pull/89 (state: MERGED as 1653bca)
 CI: passed (Socket Security checks green before merge)
 Prior PRs: #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed); #86 merged (Phase 176); #85 merged (Phase 175)
 ## Session Continuity
-Last session: 2026-04-20 — Phase 179 loop closed and merged. PR #89 squash-merged as `1653bca`; local main synced; feature branch deleted.
-Stopped at: Phase 179 complete on main; ready to open Phase 180 (Re-Trial + Gating Decision).
-Next action: Run `/paul:plan` to open Phase 180 — Re-Trial + Gating Decision. Scoping question already framed by Phase 179's three findings.
-Resume file: .paul/phases/179-organic-observation/179-01-SUMMARY.md
+Last session: 2026-04-20 — Phase 180 PLAN created. Option C scoping approved: qualitative-alone v2.41 verdict + v2.42 proposal for instrumentation fix under fresh SHA freeze. 3 tasks, 1 human-verify checkpoint after Task 1 (binding DECISION artifact).
+Stopped at: Plan 180-01 created, awaiting APPLY approval.
+Next action: Review and approve the plan, then run `/paul:apply .paul/phases/180-re-trial-gating-decision/180-01-PLAN.md`.
+Resume file: .paul/HANDOFF-2026-04-20-v241-phase180-plan-awaiting-approval.md
 Resume context:
 - Phase 179 produced three durable findings: (1) CODI pre-plan advisory works on natural scope (Q2 trends yes qualitatively), (2) post-unify parser-miss failure mode (quark 112-01), (3) post-unify hook-not-firing failure mode (quark 113-01).
 - Mechanical `CODI-HISTORY.md` undercount is 2× from two distinct instrumentation surface gaps — this is the single most important v2.41 finding so far.
