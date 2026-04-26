@@ -81,6 +81,6 @@ Stopped at: Phase 185 complete and merged; ready to plan Phase 186
 Next action: /paul:plan for Phase 186 — Workflow / Module Prose Compression
 Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 185 merged via PR #97 after passing CI; local branch is `main` at transition commit `57f8f95c`.
+- Phase 185 merged via PR #97 after passing CI; Phase 185 transition commit is `57f8f95c` on `main`.
 - Phase 185 delivered archive-link mechanics, compacted `STATE.md`, and defined PALS `ROADMAP.md` active-window/archive behavior.
 - Phase 186 should reduce repeated workflow/module prose while preserving checkpoints, dispatch evidence, merge gate behavior, exact routing, and `.paul/*` artifact authority.
