@@ -4,26 +4,26 @@
 
 See: .paul/PROJECT.md (updated 2026-04-26)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 187 Plan 187-01 APPLY is complete and ready for UNIFY.
+**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 187 Plan 187-01 UNIFY summary is created and merge gate is in progress.
 
 ## Current Position
 
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 187 of 4 in v2.43 — Regression + Anti-Regrowth Guardrails — APPLY complete
-Plan: 187-01 executed, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-26T21:53:19Z — Applied .paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md; validation passed (Pi 177/177, cross-harness 90/90)
+Phase: 187 of 4 in v2.43 — Regression + Anti-Regrowth Guardrails — UNIFY in progress
+Plan: 187-01 SUMMARY created, merge gate in progress
+Status: UNIFY in progress — GitHub Flow merge gate pending
+Last activity: 2026-04-26T21:55:36Z — Created .paul/phases/187-regression-anti-regrowth-guardrails/187-01-SUMMARY.md and post-unify history rows
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [████████░░] 75% (3 of 4 phases complete; Phase 187 PLAN created)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [████████░░] 75% (3 of 4 phases complete; Phase 187 UNIFY in progress)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ○     [UNIFY summary created; merge gate in progress]
 ```
 
 ## Accumulated Context
@@ -70,19 +70,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/187-regression-anti-regrowth-guardrails
-APPLY commit: 47234075 pushed to origin/feature/187-regression-anti-regrowth-guardrails
+APPLY commits: 47234075, 0d5fad13 pushed to origin/feature/187-regression-anti-regrowth-guardrails
 PR: https://github.com/coctostan/pals/pull/99 (OPEN)
-CI: pending — Socket Security checks pending at APPLY completion
+CI: passing — Socket Security checks passing before UNIFY artifact push
 Prior PRs: #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-26T21:53:19Z
-Stopped at: APPLY complete for Plan 187-01
-Next action: Run /paul:unify .paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md
-Resume file: .paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md
+Last session: 2026-04-26T21:55:36Z
+Stopped at: UNIFY summary created; merge gate in progress
+Next action: Complete GitHub Flow merge gate for PR #99, then transition Phase 187
+Resume file: .paul/phases/187-regression-anti-regrowth-guardrails/187-01-SUMMARY.md
 Resume context:
 - Plan 187-01 modified `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` only.
 - New guardrails enforce the Phase 186 hot-workflow ceiling (`1711`) and semantic markers for plan/apply/unify/module-dispatch contracts.
 - Validation passed: `bash tests/pi-end-to-end-validation.sh` → 177 passed, 0 failed; `bash tests/cross-harness-validation.sh` → 90 passed, 0 failed.
-- Post-apply module evidence: WALT/TODD green, DEAN skipped (no dependency manifests), DOCS advisory noted validation-script docs proximity but no required docs change.
+- Post-unify history rows were appended to `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md`.
+- Merge gate must push UNIFY artifacts, verify PR #99 CI, merge, sync `main`, then transition the phase.
