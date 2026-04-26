@@ -11,8 +11,8 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
 Phase: 185 of 4 in v2.43 — Artifact Archival + Hot-Path Compaction — In Progress
 Plan: 185-02 complete
-Status: UNIFY complete; merge gate in progress for PR #96
-Last activity: 2026-04-26T21:25:00Z — Created 185-02 SUMMARY and recorded post-unify module evidence
+Status: UNIFY complete; PR #96 merged; ready for next Phase 185 PLAN
+Last activity: 2026-04-26T21:35:00Z — PR #96 merged and main synced after 185-02 UNIFY
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -23,7 +23,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete; merge gate in progress]
+  ✓        ✓        ✓     [Loop complete; ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -67,21 +67,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/185-state-history-archive
-Last commit: feature branch HEAD — Plan 185-02 implementation plus PR metadata
-PR: https://github.com/coctostan/pals/pull/96 (state: OPEN)
-CI: passing on PR #96; local final validation passed (`tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`)
-Prior PRs: #96 open (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Last commit: c3bd2b17 feat(185-artifact-archival-hot-path-compaction): archive state history (#96)
+PR: https://github.com/coctostan/pals/pull/96 (state: MERGED)
+CI: pass (Socket Security checks green on merged PR #96; local `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` passed)
+Prior PRs: #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-26T21:25:00Z
-Stopped at: Plan 185-02 UNIFY complete; merge gate in progress
-Next action: Merge PR #96, sync main, then plan the next Phase 185 wave for `ROADMAP.md` compaction
+Last session: 2026-04-26T21:35:00Z
+Stopped at: Plan 185-02 complete and merged
+Next action: Run /paul:plan for the next Phase 185 wave: `ROADMAP.md` active-window/history compaction
 Resume file: .paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md
 Resume context:
 - `.paul/archive/state/STATE-HISTORY-v0-v2.43.md` now preserves historical STATE accumulated context.
 - `.paul/STATE.md` is compact and remains the hot lifecycle routing artifact.
 - `.paul/archive/INDEX.md` catalogs the state archive.
 - `.paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md` records reconciliation and module evidence.
+- PR #96 merged and local `main` is synced.
 - `ROADMAP.md` structural compaction remains deferred to a later Phase 185 plan.
