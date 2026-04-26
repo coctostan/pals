@@ -32,12 +32,12 @@ Status: 🚧 In Progress
 Started: 2026-04-26
 Theme: Keep PALS' disciplined PLAN/APPLY/UNIFY process, but make it cheaper to run by moving history out of hot context, compacting active artifacts, and trimming repetitive prose.
 Source context: milestone discussion on 2026-04-26 (temporary `.paul/MILESTONE-CONTEXT.md` consumed and deleted)
-Phases: 2 of 4 complete (50%)
+Phases: 3 of 4 complete (75%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 184 | Bloat Triage + Archive Design | 1/1 | ✅ Complete | 2026-04-26 |
 | 185 | Artifact Archival + Hot-Path Compaction | 3/3 | ✅ Complete | 2026-04-26 |
-| 186 | Workflow / Module Prose Compression | 1 planned | Planning | - |
+| 186 | Workflow / Module Prose Compression | 1/1 | ✅ Complete | 2026-04-26 |
 | 187 | Regression + Anti-Regrowth Guardrails | TBD | Not started | - |
 ### Phase 184: Bloat Triage + Archive Design
 Focus: Identify highest-leverage context-heavy surfaces; separate hot-path, warm-path, and cold-history content; design `.paul/archive/INDEX.md` plus archive file conventions.
@@ -47,7 +47,7 @@ Focus: Restore `PROJECT.md` as a true compact brief; compact `STATE.md`, `MILEST
 Plans: 185-01 complete (`.paul/phases/185-artifact-archival-hot-path-compaction/185-01-SUMMARY.md`) — archive index + lower-risk `MILESTONES.md`/`PROJECT.md` compaction wave complete. 185-02 complete (`.paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md`) — `STATE.md` history archived and live state compacted. 185-03 complete (`.paul/phases/185-artifact-archival-hot-path-compaction/185-03-SUMMARY.md`) — PALS process-level `ROADMAP.md` active-window/archive handling implemented and merged via PR #97.
 ### Phase 186: Workflow / Module Prose Compression
 Focus: Trim repeated PLAN/APPLY/UNIFY and module-dispatch prose; preserve checkpoints, dispatch evidence, merge gate behavior, exact routing, and artifact authority.
-Plans: 186-01 created (`.paul/phases/186-workflow-module-prose-compression/186-01-PLAN.md`) — first bounded compression wave targets shared module-dispatch prose in `module-dispatch.md`, `plan-phase.md`, `apply-phase.md`, and `unify-phase.md`.
+Plans: 186-01 complete (`.paul/phases/186-workflow-module-prose-compression/186-01-SUMMARY.md`) — shared dispatch mechanics moved into `module-dispatch.md`; PLAN/APPLY/UNIFY hook call sites compacted while preserving checkpoints, module evidence, post-unify persistence, and GitHub Flow merge-gate semantics.
 ### Phase 187: Regression + Anti-Regrowth Guardrails
 Focus: Run existing validation; add lightweight semantic/shape checks so hot artifacts do not quietly become history sinks again; keep validation practical rather than over-engineered.
 Plans: TBD (defined during /paul:plan)
@@ -728,4 +728,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-26 — Phase 185 plan `185-03` UNIFY complete locally; merge gate pending PR #97 CI before phase transition.*
+*Last updated: 2026-04-26 — Phase 186 complete and transitioned toward Phase 187 planning.*
