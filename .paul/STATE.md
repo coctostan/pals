@@ -4,26 +4,26 @@
 
 See: .paul/PROJECT.md (updated 2026-04-26)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 186 workflow/module prose compression is complete; Phase 187 is ready for regression and anti-regrowth guardrails.
+**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 187 Plan 187-01 APPLY is complete and ready for UNIFY.
 
 ## Current Position
 
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 187 of 4 in v2.43 — Regression + Anti-Regrowth Guardrails — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-04-26T21:33:29Z — Phase 186 complete, PR #98 merged, transitioned toward Phase 187
+Phase: 187 of 4 in v2.43 — Regression + Anti-Regrowth Guardrails — APPLY complete
+Plan: 187-01 executed, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-26T21:53:19Z — Applied .paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md; validation passed (Pi 177/177, cross-harness 90/90)
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [████████░░] 75% (3 of 4 phases complete; Phase 187 ready to plan)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [████████░░] 75% (3 of 4 phases complete; Phase 187 PLAN created)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 187 ready to PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -53,7 +53,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Fixes / Deviations / Skill Audits
 
 - Historical fix log, deviation log, and skill audit tables through Phase 185 Plan 185-01 are archived in [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md).
-- Current active concern: Phase 187 should add lightweight anti-regrowth guardrails without overfitting or making validation brittle.
+- Current active concern: Phase 187 guardrails should stay lightweight and semantic, avoiding brittle exact-prose checks or another compression wave.
 
 ### Deferred Issues
 
@@ -77,11 +77,12 @@ Prior PRs: #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03
 
 ## Session Continuity
 
-Last session: 2026-04-26T21:39:44Z
-Stopped at: Paused after Phase 186 completion; Phase 187 ready to plan
-Next action: /paul:plan for Phase 187 — Regression + Anti-Regrowth Guardrails
-Resume file: .paul/HANDOFF-2026-04-26-phase-187-ready.md
+Last session: 2026-04-26T21:53:19Z
+Stopped at: APPLY complete for Plan 187-01
+Next action: Run /paul:unify .paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md
+Resume file: .paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md
 Resume context:
-- Phase 186 is complete and merged; main is synced with origin/main at pause time.
-- No implementation work is in progress; next session should start by planning Phase 187.
-- Phase 187 should add lightweight semantic/shape checks to prevent hot artifacts from regrowing or silently losing key evidence markers.
+- Plan 187-01 modified `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` only.
+- New guardrails enforce the Phase 186 hot-workflow ceiling (`1711`) and semantic markers for plan/apply/unify/module-dispatch contracts.
+- Validation passed: `bash tests/pi-end-to-end-validation.sh` → 177 passed, 0 failed; `bash tests/cross-harness-validation.sh` → 90 passed, 0 failed.
+- Post-apply module evidence: WALT/TODD green, DEAN skipped (no dependency manifests), DOCS advisory noted validation-script docs proximity but no required docs change.
