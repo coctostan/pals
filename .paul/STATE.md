@@ -69,7 +69,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: ed6bbc39 (PR #97 squash merge)
+Phase transition commit: 57f8f95c (Phase 185 transition on main; PR #97 squash merge ed6bbc39)
 PR: https://github.com/coctostan/pals/pull/97 (MERGED)
 CI: passing — Socket Security checks passed before merge
 Prior PRs: #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
@@ -81,6 +81,6 @@ Stopped at: Phase 185 complete and merged; ready to plan Phase 186
 Next action: /paul:plan for Phase 186 — Workflow / Module Prose Compression
 Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 185 merged via PR #97 after passing CI; local branch is `main` at `ed6bbc39`.
+- Phase 185 merged via PR #97 after passing CI; local branch is `main` at transition commit `57f8f95c`.
 - Phase 185 delivered archive-link mechanics, compacted `STATE.md`, and defined PALS `ROADMAP.md` active-window/archive behavior.
 - Phase 186 should reduce repeated workflow/module prose while preserving checkpoints, dispatch evidence, merge gate behavior, exact routing, and `.paul/*` artifact authority.
