@@ -93,6 +93,31 @@ tap_file_contains_none() {
   fi
 }
 
+tap_hot_workflow_line_ceiling() {
+  local description="$1"
+  local ceiling="$2"
+  shift 2
+
+  local total=0
+  local file
+  for file in "$@"; do
+    if [ ! -f "$file" ]; then
+      tap_not_ok "$description" "File not found: $file"
+      return
+    fi
+
+    local count
+    count=$(wc -l < "$file" | tr -d ' ')
+    total=$((total + count))
+  done
+
+  if [ "$total" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Hot workflow total $total exceeds ceiling $ceiling"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -504,6 +529,10 @@ PI_ROADMAP="$SKILL_DIR/workflows/roadmap-management.md"
 PI_PLAN="$SKILL_DIR/workflows/plan-phase.md"
 PI_DISCUSS="$SKILL_DIR/workflows/discuss-phase.md"
 PI_MILESTONE="$SKILL_DIR/workflows/create-milestone.md"
+PI_APPLY="$SKILL_DIR/workflows/apply-phase.md"
+PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
+PI_MODULE_DISPATCH="$SKILL_DIR/references/module-dispatch.md"
+HOT_WORKFLOW_LINE_CEILING=1711
 
 tap_file_contains_all \
   "Installed shared roadmap workflow keeps slice-based status routing markers after prose cleanup" \
@@ -543,6 +572,52 @@ tap_file_contains_all \
   'one question at a time' \
   'planning.default_collaboration' \
   'Would you like to see the plan before I update ROADMAP.md?' 
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 2C: CONTEXT-DIET REGRESSION GUARDRAILS
+# ════════════════════════════════════════════════════════════════════
+
+section "CONTEXT-DIET REGRESSION GUARDRAILS"
+
+tap_hot_workflow_line_ceiling \
+  "Installed hot PLAN/APPLY/UNIFY workflows stay under the Phase 186 pre-compression ceiling" \
+  "$HOT_WORKFLOW_LINE_CEILING" \
+  "$PI_PLAN" \
+  "$PI_APPLY" \
+  "$PI_UNIFY"
+
+tap_file_contains_all \
+  "Installed plan workflow keeps targeted-read and review-menu guardrails" \
+  "$PI_PLAN" \
+  'target phase detail' \
+  'planning.default_collaboration' \
+  'Would you like to see the plan?'
+
+tap_file_contains_all \
+  "Installed apply workflow keeps parent-owned APPLY and checkpoint guardrails" \
+  "$PI_APPLY" \
+  'parent owns verification, module gates, fallback, and state/report writes' \
+  'subagent_type: "pals-implementer"' \
+  'checkpoint:*' \
+  'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline'
+
+tap_file_contains_all \
+  "Installed unify workflow keeps post-unify evidence and GitHub Flow merge-gate guardrails" \
+  "$PI_UNIFY" \
+  'post-unify' \
+  'Module Execution Reports' \
+  'MERGE GATE' \
+  'gh pr checks' \
+  'gh pr merge' \
+  'modules.yaml NOT FOUND'
+
+tap_file_contains_all \
+  "Installed module-dispatch reference keeps shared evidence-contract guardrails" \
+  "$PI_MODULE_DISPATCH" \
+  'Workflow Call-Site Contract' \
+  'Durable Evidence Requirements' \
+  'Project Config vs Installed Registry' \
+  'Do not restate generic registry mechanics'
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2C: CODI PLAN-PHASE DISTRIBUTION

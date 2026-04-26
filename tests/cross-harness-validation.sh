@@ -69,6 +69,31 @@ tap_file_contains_all() {
   fi
 }
 
+tap_hot_workflow_line_ceiling() {
+  local description="$1"
+  local ceiling="$2"
+  shift 2
+
+  local total=0
+  local file
+  for file in "$@"; do
+    if [ ! -f "$file" ]; then
+      tap_not_ok "$description" "File not found: $file"
+      return
+    fi
+
+    local count
+    count=$(wc -l < "$file" | tr -d ' ')
+    total=$((total + count))
+  done
+
+  if [ "$total" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Hot workflow total $total exceeds ceiling $ceiling"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -410,6 +435,85 @@ if grep -R 'Quick recap' "$KERNEL_DIR/workflows" >/dev/null 2>&1 \
 else
   tap_not_ok "Shared planning workflows expose the 4-option review menu across harnesses" "Expected review-menu wording in shared kernel workflows"
 fi
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 2C: CONTEXT-DIET REGRESSION GUARDRAILS
+# ════════════════════════════════════════════════════════════════════
+
+section "CONTEXT-DIET REGRESSION GUARDRAILS"
+
+HOT_WORKFLOW_LINE_CEILING=1711
+CC_PLAN_WORKFLOW="$CC_KERNEL_DIR/workflows/plan-phase.md"
+CC_APPLY_WORKFLOW="$CC_KERNEL_DIR/workflows/apply-phase.md"
+CC_UNIFY_WORKFLOW="$CC_KERNEL_DIR/workflows/unify-phase.md"
+CC_MODULE_DISPATCH="$CC_KERNEL_DIR/references/module-dispatch.md"
+PI_PLAN_WORKFLOW="$PI_KERNEL_DIR/workflows/plan-phase.md"
+PI_APPLY_WORKFLOW="$PI_KERNEL_DIR/workflows/apply-phase.md"
+PI_UNIFY_WORKFLOW="$PI_KERNEL_DIR/workflows/unify-phase.md"
+PI_MODULE_DISPATCH="$PI_KERNEL_DIR/references/module-dispatch.md"
+REPO_PLAN_WORKFLOW="$REPO_ROOT/kernel/workflows/plan-phase.md"
+REPO_APPLY_WORKFLOW="$REPO_ROOT/kernel/workflows/apply-phase.md"
+REPO_UNIFY_WORKFLOW="$REPO_ROOT/kernel/workflows/unify-phase.md"
+REPO_MODULE_DISPATCH="$REPO_ROOT/kernel/references/module-dispatch.md"
+
+tap_hot_workflow_line_ceiling \
+  "Claude Code installed hot workflows stay under the Phase 186 pre-compression ceiling" \
+  "$HOT_WORKFLOW_LINE_CEILING" \
+  "$CC_PLAN_WORKFLOW" \
+  "$CC_APPLY_WORKFLOW" \
+  "$CC_UNIFY_WORKFLOW"
+
+tap_hot_workflow_line_ceiling \
+  "Pi installed hot workflows stay under the Phase 186 pre-compression ceiling" \
+  "$HOT_WORKFLOW_LINE_CEILING" \
+  "$PI_PLAN_WORKFLOW" \
+  "$PI_APPLY_WORKFLOW" \
+  "$PI_UNIFY_WORKFLOW"
+
+tap_hot_workflow_line_ceiling \
+  "Repo source hot workflows stay under the Phase 186 pre-compression ceiling" \
+  "$HOT_WORKFLOW_LINE_CEILING" \
+  "$REPO_PLAN_WORKFLOW" \
+  "$REPO_APPLY_WORKFLOW" \
+  "$REPO_UNIFY_WORKFLOW"
+
+for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$PI_KERNEL_DIR" "Repo source:$REPO_ROOT/kernel"; do
+  label="${workflow_dir_label%%:*}"
+  root="${workflow_dir_label#*:}"
+
+  tap_file_contains_all \
+    "$label plan workflow keeps targeted-read and review-menu guardrails" \
+    "$root/workflows/plan-phase.md" \
+    'target phase detail' \
+    'planning.default_collaboration' \
+    'Would you like to see the plan?'
+
+  tap_file_contains_all \
+    "$label apply workflow keeps parent-owned APPLY and checkpoint guardrails" \
+    "$root/workflows/apply-phase.md" \
+    'parent owns verification, module gates, fallback, and state/report writes' \
+    'subagent_type: "pals-implementer"' \
+    'checkpoint:*' \
+    'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps post-unify evidence and GitHub Flow merge-gate guardrails" \
+    "$root/workflows/unify-phase.md" \
+    'post-unify' \
+    'Module Execution Reports' \
+    'MERGE GATE' \
+    'gh pr checks' \
+    'gh pr merge' \
+    'modules.yaml NOT FOUND'
+
+  tap_file_contains_all \
+    "$label module-dispatch reference keeps shared evidence-contract guardrails" \
+    "$root/references/module-dispatch.md" \
+    'Workflow Call-Site Contract' \
+    'Durable Evidence Requirements' \
+    'Project Config vs Installed Registry' \
+    'Do not restate generic registry mechanics'
+done
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2C: CODI PLAN-PHASE DISTRIBUTION
