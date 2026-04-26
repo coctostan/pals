@@ -68,10 +68,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Phase transition commit: 57f8f95c (Phase 185 transition on main; PR #97 squash merge ed6bbc39)
-PR: https://github.com/coctostan/pals/pull/97 (MERGED)
-CI: passing — Socket Security checks passed before merge
+Branch: feature/186-workflow-module-prose-compression
+Apply commit: 4c2db5b1 (Plan 186-01 APPLY implementation)
+PR: https://github.com/coctostan/pals/pull/98 (state: open)
+CI: no checks reported yet on feature branch during APPLY postflight
 Prior PRs: #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
