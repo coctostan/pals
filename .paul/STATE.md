@@ -2,28 +2,28 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-20)
+See: .paul/PROJECT.md (updated 2026-04-26)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 185 is executing archive-backed hot-path compaction waves.
+**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 186 is ready to compress workflow/module prose after Phase 185 archive-backed compaction merged.
 
 ## Current Position
 
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 185 of 4 in v2.43 — Artifact Archival + Hot-Path Compaction — In Progress
-Plan: 185-03 unified; merge gate pending CI
-Status: UNIFY complete locally; GitHub Flow merge gate waiting on PR #97 CI
-Last activity: 2026-04-26T22:45:00Z — Unified Plan 185-03 and recorded post-unify module history; PR #97 CI pending
+Phase: 186 of 4 in v2.43 — Workflow / Module Prose Compression — Ready to Plan
+Plan: Not started
+Status: Phase 185 complete and merged; ready to plan Phase 186
+Last activity: 2026-04-26T21:15:19Z — PR #97 merged; Phase 185 complete; transitioned to Phase 186 planning
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [█████████░] 90% (185-03 unified locally; merge gate pending CI before phase transition)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [█████░░░░░] 50% (2 of 4 phases complete; Phase 186 ready to plan)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete locally; merge gate pending CI]
+  ○        ○        ○     [Ready to plan Phase 186]
 ```
 
 ## Accumulated Context
@@ -32,9 +32,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 - PLAN/APPLY/UNIFY remains the authoritative PALS lifecycle loop.
 - `.paul/*` artifacts remain lifecycle truth; archives under `.paul/archive/*` are authoritative historical artifacts, not disposable summaries.
-- v2.43 is reducing hot-path context cost by moving cold history into indexed archives before compacting sensitive hot/warm artifacts.
+- v2.43 is reducing hot-path context cost by moving cold history into indexed archives, compacting hot/warm artifacts, and next compressing workflow/module prose.
 - Plan 185-01 proved archive-link mechanics on `MILESTONES.md` and `PROJECT.md`.
-- Plan 185-03 targets PALS process-level `ROADMAP.md` active-window/archive behavior; this repo's `.paul/ROADMAP.md` is evidence, not the deliverable.
+- Phase 185 completed archive-link mechanics, `STATE.md` compaction, and PALS process-level `ROADMAP.md` active-window/archive behavior.
 
 ### Current Decisions
 
@@ -52,7 +52,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Fixes / Deviations / Skill Audits
 
 - Historical fix log, deviation log, and skill audit tables through Phase 185 Plan 185-01 are archived in [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md).
-- Current active concern: preserve artifact-first truth and avoid telemetry, hidden runtime state, or Pi-owned persistence as shortcuts.
+- Current active concern: Phase 186 prose compression must preserve checkpoints, dispatch evidence, merge gate behavior, and artifact authority while reducing repeated workflow/module text.
 
 ### Deferred Issues
 
@@ -64,25 +64,23 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Blockers/Concerns
 
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence.
-- PALS process-level `ROADMAP.md` bloat prevention/repair was implemented and unified in 185-03; PR #97 CI must pass before merge/phase transition.
+- Phase 186 must trim workflow/module prose without weakening PLAN/APPLY/UNIFY, GitHub Flow, module dispatch, or archive authority.
 
 ### Git State
 
-Branch: feature/v2.43-phase185-roadmap-compaction
-Last commit: latest pushed branch commit includes Plan 185-03 APPLY artifacts, PR metadata, and pending CI state
-PR: https://github.com/coctostan/pals/pull/97 (open)
-CI: pending — Socket Security checks queued/in progress for PR #97
-Prior PRs: #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Last commit: ed6bbc39 (PR #97 squash merge)
+PR: https://github.com/coctostan/pals/pull/97 (MERGED)
+CI: passing — Socket Security checks passed before merge
+Prior PRs: #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-26T22:45:00Z
-Stopped at: Plan 185-03 UNIFY complete locally; merge gate blocked on pending PR #97 CI
-Next action: Wait for PR #97 CI to finish, then re-run /paul:unify .paul/phases/185-artifact-archival-hot-path-compaction/185-03-PLAN.md to complete merge gate
-Resume file: .paul/phases/185-artifact-archival-hot-path-compaction/185-03-SUMMARY.md
+Last session: 2026-04-26T21:15:19Z
+Stopped at: Phase 185 complete and merged; ready to plan Phase 186
+Next action: /paul:plan for Phase 186 — Workflow / Module Prose Compression
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Unified process-level `ROADMAP.md` active-window/archive behavior in kernel templates, workflows, and context reference.
-- Changed files: `kernel/templates/ROADMAP.md`, `kernel/templates/milestone-archive.md`, `kernel/workflows/complete-milestone.md`, `kernel/workflows/roadmap-management.md`, `kernel/workflows/plan-phase.md`, `kernel/references/context-management.md`.
-- Validation passed during APPLY and UNIFY: `bash tests/pi-end-to-end-validation.sh` (172/172) and `bash tests/cross-harness-validation.sh` (75/75).
-- Branch: `feature/v2.43-phase185-roadmap-compaction`; PR: https://github.com/coctostan/pals/pull/97; CI pending (Socket Security queued/in progress).
-- Post-unify history updated: `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md`.
+- Phase 185 merged via PR #97 after passing CI; local branch is `main` at `ed6bbc39`.
+- Phase 185 delivered archive-link mechanics, compacted `STATE.md`, and defined PALS `ROADMAP.md` active-window/archive behavior.
+- Phase 186 should reduce repeated workflow/module prose while preserving checkpoints, dispatch evidence, merge gate behavior, exact routing, and `.paul/*` artifact authority.

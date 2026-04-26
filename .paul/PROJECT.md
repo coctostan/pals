@@ -12,7 +12,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 v2.43 PALS Context Diet — Archive, Compact, Compress.
 
-Current work is reducing hot-path context cost without weakening PLAN/APPLY/UNIFY, module dispatch, GitHub Flow, or `.paul/*` artifact authority. Phase 185 is proving an archive-link convention on lower-risk artifacts before compacting the sensitive hot artifacts (`STATE.md`) and warm-path roadmap artifacts (`ROADMAP.md`).
+Current work is reducing hot-path context cost without weakening PLAN/APPLY/UNIFY, module dispatch, GitHub Flow, or `.paul/*` artifact authority. Phase 185 completed archive-backed compaction for lower-risk artifacts, `STATE.md`, and PALS process-level `ROADMAP.md` behavior; Phase 186 is ready to compress repeated workflow/module prose.
 
 ## Hot-path reading model
 
@@ -71,6 +71,7 @@ See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md`
 | CODI v0.1 ships as good enough after bounded instrumentation repair. | v2.42 | Future CODI work should be real-usage-driven, not prerequisite to current context-diet work. |
 | Separate total artifact growth from repeated hot-path read cost. | Phase 158 | v2.43 optimizes context pressure without deleting history. |
 | Archive cold history before compacting sensitive hot artifacts. | Phase 184 | Phase 185 proves links/indexes before touching `STATE.md` structure. |
+| Keep live roadmaps as active-window artifacts with completed detail in authoritative archives. | Phase 185 | Future roadmap writes preserve current routing inline while preventing completed-history bloat. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -103,4 +104,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Compacted: 2026-04-26 during Phase 185 archive-link rollout.*
+*Last updated: 2026-04-26 after Phase 185 transition.*
