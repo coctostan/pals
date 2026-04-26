@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-20)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is complete; CODI v0.1 shipped as good enough with fresh quark validation intentionally skipped by product decision.
+**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 184 is ready to plan.
 ## Current Position
-Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — ✅ Complete (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 183 of 3 in v2.42 — Natural Validation / Closeout — Complete
-Plan: 183-01 complete
-Status: v2.42 complete — ready for next milestone selection
-Last activity: 2026-04-26T15:05:50Z — Merged PR #93 and closed Phase 183 / v2.42 loop
+Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
+Phase: 184 of 4 in v2.43 — Bloat Triage + Archive Design — Applying
+Plan: 184-01 APPLY complete, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-26T17:05:00Z — Completed Phase 184 bloat triage/archive design report and validation
 Progress:
-- v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [██░░░░░░░░] 20% (Phase 184 APPLY complete; UNIFY pending)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v2.42 complete]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -235,17 +235,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: feat(183-natural-validation): ship CODI v0.1 closeout (`99a117b8`)
-PR: https://github.com/coctostan/pals/pull/93 (state: MERGED)
-CI: pass (Socket Security checks green on merged PR #93)
+Branch: feature/184-bloat-triage-archive-design
+Last commit: feat(184-bloat-triage-archive-design): create archive triage report (pushed to PR #94)
+PR: https://github.com/coctostan/pals/pull/94 (state: OPEN)
+CI: pass (Socket Security checks green on PR #94)
 Prior PRs: #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-26T15:05:50Z
-Stopped at: v2.42 complete after Phase 183 UNIFY and PR #93 merge
-Next action: Run /paul:discuss to choose the next milestone, or /paul:milestone if the next milestone is already known
-Resume file: .paul/phases/183-natural-validation/183-01-SUMMARY.md
+Last session: 2026-04-26T17:05:00Z
+Stopped at: Phase 184 APPLY complete after report creation and validation
+Next action: Run /paul:unify .paul/phases/184-bloat-triage-archive-design/184-01-PLAN.md
+Resume file: .paul/phases/184-bloat-triage-archive-design/184-01-PLAN.md
 Resume context:
-- Phase 183 replaced the invalid cross-repo validation plan with repo-local closeout.
-- CODI v0.1 is shipped as good enough; no fresh natural quark validation row was collected.
-- PR #93 merged; next work should start from a new milestone rather than more CODI validation unless real usage surfaces a concrete issue.
+- Created `.paul/phases/184-bloat-triage-archive-design/184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md`.
+- Report includes leverage ranking, hot/warm/cold classification, `.paul/archive/INDEX.md` convention, concrete Phase 185 migration list, and process guardrails.
+- Verification passed: task grep checks, final report grep check, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh`.

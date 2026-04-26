@@ -27,28 +27,44 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.42 CODI v0.1 — Post-Unify Instrumentation Fix**
-Status: ✅ Complete
-Started: 2026-04-20
-Theme: Shipped CODI v0.1 as good enough after bounded post-unify instrumentation repair; fresh quark natural validation was intentionally skipped by product decision rather than treated as passed.
-Proposal: `.paul/proposals/v2.42-post-unify-instrumentation-fix.md`
-Pinned SHA: `26f262c3af3b87221ba0872b55e89fdea7c02d52` (recorded at milestone open; distinct from v2.41's `0d667560b65944801faaee270ab920786afa471a`)
-Phases: 3 of 3 complete
+**v2.43 PALS Context Diet — Archive, Compact, Compress**
+Status: 🚧 In Progress
+Started: 2026-04-26
+Theme: Keep PALS' disciplined PLAN/APPLY/UNIFY process, but make it cheaper to run by moving history out of hot context, compacting active artifacts, and trimming repetitive prose.
+Source context: milestone discussion on 2026-04-26 (temporary `.paul/MILESTONE-CONTEXT.md` consumed and deleted)
+Phases: 0 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 181 | Root-Cause Analysis | 1 | ✅ Complete | 2026-04-20 |
-| 182 | Bounded Instrumentation Fix | 1 | ✅ Complete | 2026-04-20 |
-| 183 | Natural Validation / Closeout | 1 | ✅ Complete | 2026-04-26 |
-### Phase 181: Root-Cause Analysis
-Focus: Isolate ownership of the `112-01` parser-miss and `113-01` hook-not-firing failures across parser logic, hook registration, unify dispatch, and installed-registry alignment.
-Plans: 181-01 complete (`.paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md`, `181-01-SUMMARY.md`) — type: research, read-only defect isolation + Phase 182 scope decision delivered
-### Phase 182: Bounded Instrumentation Fix
-Focus: Implement the minimum parser / dispatch / alignment repair needed for honest post-unify measurement while preserving v2.41 artifacts and the fresh v2.42 SHA freeze.
-Plans: 182-01 complete (`.paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md`, `182-01-SUMMARY.md`) — type: execute, bounded probe + post-unify contract repair delivered
-### Phase 183: Natural Validation
-Focus: Close v2.42 by shipping CODI v0.1 as good enough after the bounded instrumentation repair, with fresh quark natural validation intentionally skipped by product decision rather than treated as passed.
-Plans: 183-01 complete (`.paul/phases/183-natural-validation/183-01-PLAN.md`, `183-01-SUMMARY.md`) — type: execute, repo-local closeout shipped CODI v0.1 as good enough and recorded that fresh quark validation was intentionally skipped by product decision
+| 184 | Bloat Triage + Archive Design | 1 | Planning | - |
+| 185 | Artifact Archival + Hot-Path Compaction | TBD | Not started | - |
+| 186 | Workflow / Module Prose Compression | TBD | Not started | - |
+| 187 | Regression + Anti-Regrowth Guardrails | TBD | Not started | - |
+### Phase 184: Bloat Triage + Archive Design
+Focus: Identify highest-leverage context-heavy surfaces; separate hot-path, warm-path, and cold-history content; design `.paul/archive/INDEX.md` plus archive file conventions.
+Plans: 184-01 created (`.paul/phases/184-bloat-triage-archive-design/184-01-PLAN.md`) — type: research, awaiting APPLY approval
+### Phase 185: Artifact Archival + Hot-Path Compaction
+Focus: Restore `PROJECT.md` as a true compact brief; compact `STATE.md`, `MILESTONES.md`, and possibly `ROADMAP.md`; move historical decisions and milestone detail into indexed archives while preserving findability.
+Plans: TBD (defined during /paul:plan)
+### Phase 186: Workflow / Module Prose Compression
+Focus: Trim repeated PLAN/APPLY/UNIFY and module-dispatch prose; preserve checkpoints, dispatch evidence, merge gate behavior, exact routing, and artifact authority.
+Plans: TBD (defined during /paul:plan)
+### Phase 187: Regression + Anti-Regrowth Guardrails
+Focus: Run existing validation; add lightweight semantic/shape checks so hot artifacts do not quietly become history sinks again; keep validation practical rather than over-engineered.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
+<details>
+<summary>v2.42 CODI v0.1 — Post-Unify Instrumentation Fix - 2026-04-26 (3 phases)</summary>
+
+Theme: Shipped CODI v0.1 as good enough after bounded post-unify instrumentation repair; fresh quark natural validation was intentionally skipped by product decision rather than treated as passed.
+Outcome: CODI v0.1 shipped as good enough. Phase 182 delivered hook-entry tracing and `injected-degraded` classification; Phase 183 closed the milestone honestly without collecting a fresh natural quark validation row.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 181 | Root-Cause Analysis | 1 | 2026-04-20 |
+| 182 | Bounded Instrumentation Fix | 1 | 2026-04-20 |
+| 183 | Natural Validation / Closeout | 1 | 2026-04-26 |
+
+</details>
 <details>
 <summary>v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation - 2026-04-20 (3 phases)</summary>
 
@@ -712,4 +728,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-26 — Phase 183 complete (`183-01`); v2.42 closed by shipping CODI v0.1 as good enough after bounded instrumentation repair, with fresh quark natural validation intentionally skipped by product decision under the same pinned SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`.*
+*Last updated: 2026-04-26 — Phase 184 plan created (`184-01`); ready for APPLY on PALS Context Diet bloat triage and archive design.*

@@ -51,6 +51,38 @@ Completed milestone log for this project.
 | **v2.34 Pi Subagent Integration & PALS Implementer** | 2026-03-27 | 3h 41m | 4 phases, 4 plans. Parent-controlled `pals-implementer`, installer-backed Pi agent availability, and validation/docs polish. |
 | **v2.37 Implementer Config Alignment & Delegation Expansion** | 2026-03-28 | 2h 53m | 3 phases, 3 plans |
 | **v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation** | 2026-04-20 | 2 days | 3 phases, 3 plans. Cross-repo quark trial; 2 natural observations; verdict ITERATE_V0_1. |
+| **v2.42 CODI v0.1 — Post-Unify Instrumentation Fix** | 2026-04-26 | 6 days | 3 phases, 3 plans. Bounded instrumentation repair shipped; CODI v0.1 accepted as good enough; fresh quark validation intentionally skipped. |
+
+---
+## ✅ v2.42 CODI v0.1 — Post-Unify Instrumentation Fix
+
+**Completed:** 2026-04-26
+**Duration:** 6 days
+
+### Stats
+
+| Metric | Value |
+|--------|-------|
+| Phases | 3 (Phases 181-183) |
+| Plans | 3 |
+| Verdict | SHIP CODI v0.1 as good enough |
+| Fresh quark validation | Intentionally skipped by product decision |
+
+### Key Accomplishments
+
+- Isolated the v2.41 post-unify measurement failures: parser-miss on quark `112-01` and hook-not-firing on quark `113-01`.
+- Shipped bounded CODI post-unify hook-entry tracing and `injected-degraded` classification for Blast Radius-preserving parser drift.
+- Confirmed installed registry alignment was not the root cause, keeping the repair scoped to CODI manifest/reference surfaces.
+- Closed Phase 183 by replacing the invalid cross-repo validation plan with repo-local lifecycle closeout.
+- Shipped CODI v0.1 as good enough while explicitly preserving the caveat that no fresh natural quark validation row was collected.
+
+### Key Decisions
+
+| Decision | Phase | Impact |
+|----------|-------|--------|
+| Own `112-01` parser-miss to parser strictness and `113-01` hook-not-firing to UNIFY workflow dispatch evidence | 181 | Scoped Phase 182 to measurement-surface repair without retroactive v2.41 evidence edits. |
+| Add CODI post-unify hook-entry tracing plus `injected-degraded` classification | 182 | Makes hook non-entry observable and preserves honest Blast Radius truth when parser drift occurs. |
+| Ship CODI v0.1 as good enough and skip fresh quark natural validation | 183 | Closes CODI validation loop by product decision; future CODI work should be real-usage-driven. |
 
 ---
 ## ✅ v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation
