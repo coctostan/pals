@@ -97,6 +97,12 @@ bash tests/cross-harness-validation.sh
 - RUBY/ARCH advisory: PASS_WITH_CONCERNS — changed workflow/template files remain below 500 lines; several are >300 lines by existing design, so future Phase 186 prose compression remains relevant.
 - SETH/security scan: PASS — no hardcoded secret/dangerous eval/exec patterns found in changed kernel markdown files.
 - SKIP advisory: decisions remain recorded in `.paul/STATE.md`; no new durable product decision beyond the planned roadmap active-window/archive convention.
+- WALT post-unify: PASS — appended `.paul/QUALITY-HISTORY.md` row for `185-03` with `172 pass + 75 pass`, stable trend.
+- SKIP post-unify: PASS — durable decision captured in STATE: PALS ROADMAP active-window/archive convention.
+- CODI post-unify: appended `skipped-no-symbols` row for `185-03` to `.paul/CODI-HISTORY.md`.
+- RUBY post-unify: PASS_WITH_CONCERNS — markdown line counts remain below critical 500-line threshold, with `complete-milestone.md` (481) and `roadmap-management.md` (471) still worth watching during Phase 186 prose compression.
+- [dispatch] pre-unify: 0 modules registered for this hook.
+- [dispatch] post-unify: WALT(100) → 1 side effect, SKIP(200) → 1 knowledge note, CODI(220) → 1 history row, RUBY(300) → 1 debt note.
 
 ## Deviations
 
