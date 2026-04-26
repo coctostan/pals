@@ -109,40 +109,24 @@ templates/PLAN.md
 6. Pass `codi_seed_candidates` forward to pre-plan advisory dispatch and later reuse them inside the existing objective/context/source-file structure. Do NOT add new PLAN template sections.
 </step>
 <step name="pre_plan_advisory_hooks" priority="before-scope-analysis">
-**Dispatch advisory pre-plan hooks first — these inform the plan but never block.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-plan advisory: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `pre-plan` whose hook description does NOT contain "block":
-   - TODD (p100): scan for test files/frameworks, inject tdd_candidates
-   - IRIS (p150): scan files for anti-pattern signatures, inject review_flags
-   - DAVE (p200): check for CI/CD config patterns, inject deploy_warning
-   - DOCS (p200): scan for stale/missing docs, inject doc_warnings
-   - CODI (p220): use `codi_seed_candidates` when present; otherwise fall back to explicit phase-scope extraction, inject `blast_radius`, or safe-skip
-   - RUBY (p250): check files for tech debt heuristics, inject debt_flags
-3. For each: load refs, follow description, collect `context_inject`. Pass `codi_seed_candidates` to CODI when populated.
-4. Output dispatch log: `[dispatch] pre-plan advisory: {MODULE(priority) → N inject keys | skip} | ...`
-5. Display all advisory findings to the user.
+**Dispatch advisory pre-plan hooks via `references/module-dispatch.md`; advisory output informs the plan and never blocks.**
+
+Call-site contract:
+- Hook: `pre-plan` advisory modules whose hook description does NOT contain "block".
+- Required local modules/output: TODD `tdd_candidates`, IRIS `review_flags`, DAVE `deploy_warning`, DOCS `doc_warnings`, CODI `blast_radius` using `codi_seed_candidates` when present, RUBY `debt_flags`.
+- Context: planned `files_modified`, phase scope, and prepared CODI seeds.
+- Required evidence: `[dispatch] pre-plan advisory: ...`; if registry resolution fails, `[dispatch] pre-plan advisory: modules.yaml NOT FOUND — WARNING`.
+- Display all findings and pass accumulated `context_inject` to scope analysis.
 </step>
 <step name="pre_plan_enforcement_hooks" priority="after-advisory-before-scope">
-**Dispatch enforcement pre-plan hooks — these can block plan creation.**
-1. Resolve installed modules for `pre-plan` whose hook description contains "block":
-   - DEAN (p50): run dependency audit, inject dep_warnings — block if critical
-2. For each: load refs, follow description, collect `context_inject`
-3. Output dispatch log: `[dispatch] pre-plan enforcement: {MODULE(priority) → N inject keys | BLOCK(reason)} | ...`
-4. If any block: surface with advisory context already visible, offer fix/override/stop
-5. **DEAN baseline recording (on override):** If DEAN blocked and user chose "override":
-   a. MUST create `.paul/dean-baseline.json` with current severity counts:
-      ```json
-      {
-        "created": "{ISO timestamp}",
-        "acknowledged_by": "user override during plan-phase",
-        "staleness_days": {from pals.json modules.dean.baseline_staleness_days, default 30},
-        "severity": {current counts from audit},
-        "packages": [{list of critical/high package names with versions}]
-      }
-      ```
-   b. Display: "DEAN baseline recorded. Future plans will only block on NEW vulnerabilities."
-   c. Log to STATE.md Decisions: "DEAN baseline established: {N} critical, {M} high acknowledged"
-6. Pass ALL accumulated `context_inject` (advisory + enforcement) to analyze_scope
+**Dispatch blocking pre-plan hooks via `references/module-dispatch.md`; advisory context must already be visible.**
+
+Call-site contract:
+- Hook: `pre-plan` enforcement modules whose hook description contains "block".
+- Required local module/output: DEAN (p50) dependency audit and `dep_warnings`; critical/high findings may block plan creation.
+- Required evidence: `[dispatch] pre-plan enforcement: ...` with PASS/BLOCK detail.
+- On block: offer fix/override/stop. On DEAN override, create `.paul/dean-baseline.json` with current severity counts, packages, ISO timestamp, acknowledgement, and staleness window; log the decision in STATE.md.
+- Pass ALL advisory + enforcement `context_inject` to `analyze_scope`.
 </step>
 
 <step name="analyze_scope">
@@ -255,20 +239,13 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 </step>
 
 <step name="post_plan_hooks" priority="after-plan-creation">
-**Dispatch post-plan lifecycle hooks to registered modules.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded from prerequisite read. If not found, emit `[dispatch] post-plan: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `post-plan` by finding `installed_modules.*.hook_details.post-plan`
-3. Sort by `hook_details.post-plan.priority` ascending (lower runs first)
-4. For each registered module:
-   a. Load only the hook-specific `refs` listed in `hook_details.post-plan.refs`
-   b. Follow the hook description from `hook_details.post-plan.description`
-   c. Pass the plan path, plan content, and `context_from_pre_plan`
-   d. Collect `plan_modifications` (e.g., task restructuring)
-   e. Apply modifications to the plan in priority order
-5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `post-plan`: emit `[dispatch] post-plan: 0 modules registered for this hook`
-7. Output dispatch log: `[dispatch] post-plan: {MODULE(priority) → N modifications | skip} | ...`
-8. If modifications were applied: note in plan that module overlays were applied
+**Dispatch post-plan lifecycle hooks via `references/module-dispatch.md`.**
+
+Call-site contract:
+- Hook: `post-plan`; current required module: TODD, which may restructure test-driven plans or suggest TDD conversion when existing tests cover the planned files.
+- Context: plan path, plan content, and `context_from_pre_plan`.
+- Outputs: ordered `plan_modifications` applied to PLAN.md, plus an inline note when overlays changed the plan.
+- Required evidence: `[dispatch] post-plan: ...`; if no modules are registered, emit `[dispatch] post-plan: 0 modules registered for this hook`; if registry resolution fails, emit `[dispatch] post-plan: modules.yaml NOT FOUND — WARNING`.
 </step>
 
 <step name="review_plan">

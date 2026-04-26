@@ -175,19 +175,12 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 </step>
 
 <step name="pre_unify_hooks" priority="before-reconciliation">
-**Dispatch pre-unify lifecycle hooks to registered modules.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-unify: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `pre-unify` by finding `installed_modules.*.hook_details.pre-unify`
-3. Sort by `hook_details.pre-unify.priority` ascending (lower runs first)
-4. For each registered module:
-   a. Load only the hook-specific `refs` listed in `hook_details.pre-unify.refs`
-   b. Follow the hook description from `hook_details.pre-unify.description`
-   c. Pass `annotations_from_apply` accumulated during the apply phase
-   d. Collect `context_inject` data (e.g., quality trends, audit results)
-5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `pre-unify`: emit `[dispatch] pre-unify: 0 modules registered for this hook`
-7. Output dispatch log: `[dispatch] pre-unify: {MODULE(priority) → N inject keys | skip} | ...`
-8. Store accumulated pre-unify context for reconciliation and later SUMMARY.md finalization alongside carried-forward apply annotations
+**Dispatch pre-unify lifecycle hooks via `references/module-dispatch.md`.**
+
+Call-site contract:
+- Hook: `pre-unify`; registered modules come from `installed_modules.*.hook_details.pre-unify`.
+- Context/output: `annotations_from_apply`; collect `context_inject` for reconciliation and SUMMARY finalization.
+- Required evidence: `[dispatch] pre-unify: ...`; if no modules are registered, emit `[dispatch] pre-unify: 0 modules registered for this hook`; if registry resolution fails, emit `[dispatch] pre-unify: modules.yaml NOT FOUND — WARNING`.
 </step>
 
 <step name="audit_skill_invocations">
@@ -272,36 +265,18 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 
 <step name="post_unify_hooks" priority="after-state-update">
 ⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
-STOP after state update. You MUST dispatch post-unify modules NOW.
-Post-unify hooks are the persistence layer — they record quality history,
-capture decisions, and analyze debt. Skipping them loses institutional knowledge.
-**Dispatch post-unify lifecycle hooks to registered modules.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-unify: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `post-unify` by finding `installed_modules.*.hook_details.post-unify`
-3. Sort by `hook_details.post-unify.priority` ascending (lower runs first)
-4. For each registered module:
-   a. Load only the hook-specific `refs` listed in `hook_details.post-unify.refs`
-   b. Follow the hook description from `hook_details.post-unify.description`
-   c. Pass `annotations_from_apply`, retained pre-unify context, and summary path
-   d. Collect `module_reports` for durable inclusion in `Module Execution Reports`
-   e. Collect `side_effects` (e.g., "Recorded quality delta in history")
-5. If the registry only exposes the legacy flat `hooks` list and lacks `hook_details`, warn that the install is stale and prefer regenerating `modules.yaml` before relying on fallback behavior
-6. If no modules registered for `post-unify`: emit `[dispatch] post-unify: 0 modules registered for this hook`
-7. Output dispatch log: `[dispatch] post-unify: {MODULE(priority) → N reports / N side effects | skip} | ...`
-8. Store accumulated post-unify module reports and logged side_effects for summary finalization
-9. If you did not execute any post-unify module hooks above, you MUST state why:
-   `[dispatch] post-unify: SKIPPED — {reason}`
+STOP after state update and dispatch post-unify modules via `references/module-dispatch.md`; this persistence layer records quality history, decisions, CODI history, and debt notes.
+
+Call-site contract:
+- Hook: `post-unify`; registered modules come from `installed_modules.*.hook_details.post-unify`.
+- Context/output: `annotations_from_apply`, retained pre-unify context, and summary path; collect `module_reports` plus side effects for durable `Module Execution Reports`.
+- Required evidence: `[dispatch] post-unify: ...`; if no modules are registered, emit `[dispatch] post-unify: 0 modules registered for this hook`; if none executed, state `[dispatch] post-unify: SKIPPED — {reason}`; if registry resolution fails, emit `[dispatch] post-unify: modules.yaml NOT FOUND — WARNING`.
 </step>
 <step name="finalize_summary" priority="after-post-unify">
 1. Re-open the SUMMARY.md draft before phase-completion routing.
-2. Finalize `## Module Execution Reports` using one durable reporting path:
-   - carried-forward `annotations_from_apply`
-   - any pre-unify `context_inject` that materially informed reconciliation
-   - `module_reports` returned by post-unify hooks
-   - recorded `side_effects` that should remain visible after the loop closes
-3. **Module evidence validation (MANDATORY):** If modules are enabled in `pals.json` but `## Module Execution Reports` is empty and no dispatch logs were recorded during this loop, MUST emit WARNING: "Modules enabled but zero dispatch evidence found — verify modules.yaml was loaded during PLAN and APPLY." The section MUST still be present; state why no modules fired rather than omitting it. MUST NOT proceed to check_phase_completion until the warning is recorded in SUMMARY.md.
-4. **Post-unify dispatch audit:** If post_unify_hooks dispatch log is absent or shows "SKIPPED" for all modules, MUST add to Module Execution Reports:
-   '⚠️ Post-unify hooks did not fire. Reason: {reason or "unknown — verify modules.yaml was loaded"}. Quality history, knowledge capture, and debt analysis were not recorded for this loop.'
+2. Finalize `## Module Execution Reports` from one durable path: carried-forward `annotations_from_apply`, material pre-unify `context_inject`, post-unify `module_reports`, and recorded side effects.
+3. **Module evidence validation (MANDATORY):** If modules are enabled in `pals.json` but no dispatch evidence exists, record WARNING: "Modules enabled but zero dispatch evidence found — verify modules.yaml was loaded during PLAN and APPLY." Do not proceed until the warning is in SUMMARY.md.
+4. **Post-unify dispatch audit:** If `post_unify_hooks` evidence is absent or all skipped, add: '⚠️ Post-unify hooks did not fire. Reason: {reason or "unknown — verify modules.yaml was loaded"}. Quality history, knowledge capture, and debt analysis were not recorded for this loop.'
 5. Save the finalized SUMMARY.md before `check_phase_completion` or transition routing runs.
 </step>
 
