@@ -68,7 +68,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: c3bd2b17 feat(185-artifact-archival-hot-path-compaction): archive state history (#96)
+Last commit: 4effa8bd docs(state): finalize phase 185 plan 185-02 git state
 PR: https://github.com/coctostan/pals/pull/96 (state: MERGED)
 CI: pass (Socket Security checks green on merged PR #96; local `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` passed)
 Prior PRs: #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
