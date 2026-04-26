@@ -28,17 +28,17 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.42 CODI v0.1 — Post-Unify Instrumentation Fix**
-Status: 🚧 In Progress
+Status: ✅ Complete
 Started: 2026-04-20
-Theme: Repair the measurement surface surfaced by quark `112-01` parser-miss and quark `113-01` hook-not-firing without reopening v2.41 or expanding CODI to v0.2 yet.
+Theme: Shipped CODI v0.1 as good enough after bounded post-unify instrumentation repair; fresh quark natural validation was intentionally skipped by product decision rather than treated as passed.
 Proposal: `.paul/proposals/v2.42-post-unify-instrumentation-fix.md`
 Pinned SHA: `26f262c3af3b87221ba0872b55e89fdea7c02d52` (recorded at milestone open; distinct from v2.41's `0d667560b65944801faaee270ab920786afa471a`)
-Phases: 2 of 3 complete
+Phases: 3 of 3 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 181 | Root-Cause Analysis | 1 | ✅ Complete | 2026-04-20 |
 | 182 | Bounded Instrumentation Fix | 1 | ✅ Complete | 2026-04-20 |
-| 183 | Natural Validation | TBD | Ready to plan | - |
+| 183 | Natural Validation / Closeout | 1 | ✅ Complete | 2026-04-26 |
 ### Phase 181: Root-Cause Analysis
 Focus: Isolate ownership of the `112-01` parser-miss and `113-01` hook-not-firing failures across parser logic, hook registration, unify dispatch, and installed-registry alignment.
 Plans: 181-01 complete (`.paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md`, `181-01-SUMMARY.md`) — type: research, read-only defect isolation + Phase 182 scope decision delivered
@@ -46,8 +46,8 @@ Plans: 181-01 complete (`.paul/phases/181-root-cause-analysis/181-01-ANALYSIS.md
 Focus: Implement the minimum parser / dispatch / alignment repair needed for honest post-unify measurement while preserving v2.41 artifacts and the fresh v2.42 SHA freeze.
 Plans: 182-01 complete (`.paul/phases/182-bounded-instrumentation-fix/182-01-PLAN.md`, `182-01-SUMMARY.md`) — type: execute, bounded probe + post-unify contract repair delivered
 ### Phase 183: Natural Validation
-Focus: Run the repaired instrument on a new natural quark phase and confirm pre-plan dispatch, post-unify firing, and row classification all behave honestly without synthetic evidence.
-Plans: TBD (defined during `/paul:plan`)
+Focus: Close v2.42 by shipping CODI v0.1 as good enough after the bounded instrumentation repair, with fresh quark natural validation intentionally skipped by product decision rather than treated as passed.
+Plans: 183-01 complete (`.paul/phases/183-natural-validation/183-01-PLAN.md`, `183-01-SUMMARY.md`) — type: execute, repo-local closeout shipped CODI v0.1 as good enough and recorded that fresh quark validation was intentionally skipped by product decision
 ## Completed Milestones
 <details>
 <summary>v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation - 2026-04-20 (3 phases)</summary>
@@ -712,4 +712,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-20 — Phase 182 complete; v2.42 progress is now 2 of 3 phases, with Phase 183 ready for planning under the same pinned SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`.*
+*Last updated: 2026-04-26 — Phase 183 complete (`183-01`); v2.42 closed by shipping CODI v0.1 as good enough after bounded instrumentation repair, with fresh quark natural validation intentionally skipped by product decision under the same pinned SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`.*

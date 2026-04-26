@@ -4,22 +4,22 @@
 
 See: .paul/PROJECT.md (updated 2026-04-20)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is active; fresh measurement SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` is pinned for the milestone.
+**Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is complete; CODI v0.1 shipped as good enough with fresh quark validation intentionally skipped by product decision.
 ## Current Position
-Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — 🚧 In Progress (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 183 of 3 in v2.42 — Natural Validation — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-04-20T22:01:36Z — Phase 182 complete; bounded instrumentation repair reconciled and transitioned to Phase 183 planning
+Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — ✅ Complete (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
+Phase: 183 of 3 in v2.42 — Natural Validation / Closeout — Apply complete
+Plan: 183-01 complete, ready for UNIFY
+Status: APPLY complete — ready for UNIFY
+Last activity: 2026-04-26T15:05:50Z — Completed repo-local ship-now closeout for Phase 183
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
-- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [███████░░░] 67% (Phases 181-182 complete; fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52` pinned)
+- v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 183]
+  ✓        ✓        ○     [Apply complete, ready for UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -162,6 +162,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-20: Sub-sub-cause deferral to Phase 182 APPLY probe is a legitimate Phase 181 outcome when artifacts cannot discriminate between candidate sub-causes within a single owning layer; STEP-1 trace guard IS the probe instrument | 181 | Preserves Phase 181's read-only invariant without forcing premature sub-sub-cause commitment; establishes precedent for future root-cause phases |
 | 2026-04-20: Add CODI post-unify hook-entry tracing plus `injected-degraded` classification for Blast Radius-preserving parser drift | 182 | Makes hook non-entry observable and preserves honest `blast_radius` truth without inventing canonical counts when the success log is missing |
 | 2026-04-20: Phase 182 APPLY probe found `kernel/workflows/unify-phase.md` already explicit enough, so the bounded repair stayed inside CODI manifest/reference surfaces | 182 | Confirms the surviving workflow-side ambiguity resolves repo-locally without extra workflow churn and keeps Phase 183 focused on natural validation |
+| 2026-04-20: APPLY blocked on 183-01 plan defect — Task 1/2 target absolute quark paths outside the pals repo | 183 | Requires re-plan; current APPLY workflow mandates repo-relative `<files>` and cannot ground-truth cross-repo edits |
+| 2026-04-26: Ship CODI v0.1 as good enough and skip fresh quark natural validation | 183 | Closes v2.42 by product/lifecycle decision; preserves honesty that Phase 183 did not collect a new natural quark validation row and future CODI work should be real-usage-driven |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -239,11 +241,11 @@ PR: https://github.com/coctostan/pals/pull/92 (state: MERGED)
 CI: pass (Socket Security checks green on merged PR #92)
 Prior PRs: #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-20T22:06:05Z
-Stopped at: Phase 182 transition committed; Phase 183 ready to plan
-Next action: Run /paul:plan for Phase 183 — Natural Validation
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-26T15:05:50Z
+Stopped at: APPLY complete for replacement plan 183-01
+Next action: Run /paul:unify .paul/phases/183-natural-validation/183-01-PLAN.md to reconcile and close the loop
+Resume file: .paul/phases/183-natural-validation/183-01-PLAN.md
 Resume context:
-- Phase 182 shipped two bounded CODI measurement-surface repairs: an early post-unify `hook body entered` trace and the new `injected-degraded` outcome for Blast Radius-preserving parser drift.
-- `kernel/workflows/unify-phase.md` stayed untouched; the Phase 182 probe found its existing `post_unify_hooks` wording already explicit enough once CODI gained the entry trace.
-- Phase 183 now validates the repaired instrument on the next natural quark phase without reopening v2.41 artifacts or widening CODI to v0.2.
+- Phase 183 replaced the invalid cross-repo validation plan with repo-local closeout.
+- CODI v0.1 is shipped as good enough; no fresh natural quark validation row was collected.
+- UNIFY should preserve the caveat and route to milestone completion / next milestone selection.
