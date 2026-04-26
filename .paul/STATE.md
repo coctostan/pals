@@ -10,20 +10,20 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
 Phase: 185 of 4 in v2.43 — Artifact Archival + Hot-Path Compaction — In Progress
-Plan: 185-02 complete
-Status: UNIFY complete; PR #96 merged; ready for next Phase 185 PLAN
-Last activity: 2026-04-26T21:35:00Z — PR #96 merged and main synced after 185-02 UNIFY
+Plan: 185-03 unified; merge gate pending CI
+Status: UNIFY complete locally; GitHub Flow merge gate waiting on PR #97 CI
+Last activity: 2026-04-26T22:45:00Z — Unified Plan 185-03 and recorded post-unify module history; PR #97 CI pending
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [████████░░] 80% (185-02 complete; STATE history archived; ROADMAP compaction remains pending)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [█████████░] 90% (185-03 unified locally; merge gate pending CI before phase transition)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete; ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete locally; merge gate pending CI]
 ```
 
 ## Accumulated Context
@@ -34,7 +34,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - `.paul/*` artifacts remain lifecycle truth; archives under `.paul/archive/*` are authoritative historical artifacts, not disposable summaries.
 - v2.43 is reducing hot-path context cost by moving cold history into indexed archives before compacting sensitive hot/warm artifacts.
 - Plan 185-01 proved archive-link mechanics on `MILESTONES.md` and `PROJECT.md`.
-- Plan 185-02 applies the same pattern to `STATE.md`; `ROADMAP.md` structural compaction remains deferred.
+- Plan 185-03 targets PALS process-level `ROADMAP.md` active-window/archive behavior; this repo's `.paul/ROADMAP.md` is evidence, not the deliverable.
 
 ### Current Decisions
 
@@ -45,6 +45,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Archive files remain authoritative historical truth | Phase 185 Plan 185-01 | Hot artifacts may link to cold archives instead of duplicating long history. |
 | Prove archive-link mechanics before compacting `STATE.md` | Phase 185 Plan 185-01 | `STATE.md` and `ROADMAP.md` compaction are separate risk-managed waves. |
 | Compact `STATE.md` by moving historical accumulated context to `.paul/archive/state/STATE-HISTORY-v0-v2.43.md` | Phase 185 Plan 185-02 | Resume/status stay hot-path complete while old decisions/fixes/deviations/audits remain findable. |
+| Define PALS process-level ROADMAP active-window/archive convention | Phase 185 Plan 185-03 | Future roadmap writes keep current routing inline, archive completed detail, and repair bloat without hidden state. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -63,26 +64,25 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Blockers/Concerns
 
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence.
-- `ROADMAP.md` active-window/history compaction is still pending for a later Phase 185 plan.
+- PALS process-level `ROADMAP.md` bloat prevention/repair was implemented and unified in 185-03; PR #97 CI must pass before merge/phase transition.
 
 ### Git State
 
-Branch: main
-Last commit: latest `main` includes PR #96 plus final state metadata updates
-PR: https://github.com/coctostan/pals/pull/96 (state: MERGED)
-CI: pass (Socket Security checks green on merged PR #96; local `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` passed)
+Branch: feature/v2.43-phase185-roadmap-compaction
+Last commit: latest pushed branch commit includes Plan 185-03 APPLY artifacts, PR metadata, and pending CI state
+PR: https://github.com/coctostan/pals/pull/97 (open)
+CI: pending — Socket Security checks queued/in progress for PR #97
 Prior PRs: #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-26T21:35:00Z
-Stopped at: Plan 185-02 complete and merged
-Next action: Run /paul:plan for the next Phase 185 wave: `ROADMAP.md` active-window/history compaction
-Resume file: .paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md
+Last session: 2026-04-26T22:45:00Z
+Stopped at: Plan 185-03 UNIFY complete locally; merge gate blocked on pending PR #97 CI
+Next action: Wait for PR #97 CI to finish, then re-run /paul:unify .paul/phases/185-artifact-archival-hot-path-compaction/185-03-PLAN.md to complete merge gate
+Resume file: .paul/phases/185-artifact-archival-hot-path-compaction/185-03-SUMMARY.md
 Resume context:
-- `.paul/archive/state/STATE-HISTORY-v0-v2.43.md` now preserves historical STATE accumulated context.
-- `.paul/STATE.md` is compact and remains the hot lifecycle routing artifact.
-- `.paul/archive/INDEX.md` catalogs the state archive.
-- `.paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md` records reconciliation and module evidence.
-- PR #96 merged and local `main` is synced.
-- `ROADMAP.md` structural compaction remains deferred to a later Phase 185 plan.
+- Unified process-level `ROADMAP.md` active-window/archive behavior in kernel templates, workflows, and context reference.
+- Changed files: `kernel/templates/ROADMAP.md`, `kernel/templates/milestone-archive.md`, `kernel/workflows/complete-milestone.md`, `kernel/workflows/roadmap-management.md`, `kernel/workflows/plan-phase.md`, `kernel/references/context-management.md`.
+- Validation passed during APPLY and UNIFY: `bash tests/pi-end-to-end-validation.sh` (172/172) and `bash tests/cross-harness-validation.sh` (75/75).
+- Branch: `feature/v2.43-phase185-roadmap-compaction`; PR: https://github.com/coctostan/pals/pull/97; CI pending (Socket Security queued/in progress).
+- Post-unify history updated: `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md`.

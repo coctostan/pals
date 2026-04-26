@@ -373,6 +373,43 @@ STATE.md updated ✓
 
 ---
 
+## Operation: repair-bloated-roadmap
+
+Use when `ROADMAP.md` has accumulated long completed milestone or completed phase history inline.
+
+<process>
+
+<step name="repair_detect" priority="first">
+1. Read `.paul/STATE.md` and only the current milestone section of `.paul/ROADMAP.md` first.
+2. Expand to completed-history sections only to confirm bloat indicators:
+   - Multiple completed milestones with full phase detail inline
+   - Large `<details>` blocks duplicating completed plan lists
+   - Live ROADMAP dominated by cold history instead of current routing
+3. If the active/current milestone routing is missing or malformed, preserve that routing before moving history.
+</step>
+
+<step name="repair_archive_completed_history">
+1. Create `.paul/archive/roadmap/` if needed.
+2. Move completed milestone detail into one or more roadmap archive files using the milestone archive convention.
+3. Add return links from each archive to live `ROADMAP.md`, `STATE.md`, and archive index.
+4. Treat archive files as authoritative project truth; do not delete historical detail.
+</step>
+
+<step name="repair_compact_live_roadmap">
+1. Replace the moved inline history with a compact completed milestone index.
+2. Keep the live ROADMAP focused on overview, active/current milestone, current phase table/details, and near-future planned milestone summaries.
+3. For add/remove/show-status behavior, stay scoped to the current milestone section unless broader history is genuinely required.
+4. Update footer timestamp and archive index links.
+</step>
+
+<step name="repair_confirm">
+Display the archive path(s), the compacted live ROADMAP sections, and the next lifecycle action from STATE.md. Do not change PLAN/APPLY/UNIFY loop state unless a separate lifecycle command requires it.
+</step>
+
+</process>
+
+---
+
 <output>
 **add-phase:**
 - ROADMAP.md updated with new phase

@@ -123,18 +123,22 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 2.2 → 3 → 3.1 → 4
 
 ## File Template (After v1.0 Ships)
 
-After completing first milestone, reorganize with milestone groupings:
+After completing the first milestone, keep `ROADMAP.md` as an active-window artifact: current routing stays inline; completed detail moves to authoritative archives linked from a compact index.
 
 ```markdown
 # Roadmap: [Project Name]
 
+## Overview
+
+[One paragraph describing the journey from start to finish]
+
 ## Milestones
 
-| Version | Name | Phases | Status | Completed |
-|---------|------|--------|--------|-----------|
-| v1.0 | MVP | 1-4 | ✅ Shipped | YYYY-MM-DD |
-| v1.1 | [Name] | 5-6 | 🚧 In Progress | - |
-| v2.0 | [Name] | 7-10 | 📋 Planned | - |
+| Version | Name | Phases | Status | Completed | Archive |
+|---------|------|--------|--------|-----------|---------|
+| v1.0 | MVP | 1-4 | ✅ Shipped | YYYY-MM-DD | [archive](archive/roadmap/v1.0-mvp.md) |
+| v1.1 | [Name] | 5-6 | 🚧 In Progress | - | - |
+| v2.0 | [Name] | 7-10 | 📋 Planned | - | - |
 
 ## 🚧 Active Milestone: v1.1 [Name]
 
@@ -176,39 +180,11 @@ After completing first milestone, reorganize with milestone groupings:
 
 ## ✅ Completed Milestones
 
-<details>
-<summary>v1.0 MVP (Phases 1-4) — Shipped YYYY-MM-DD</summary>
+Completed milestone detail is cold history. Keep only a completed milestone index here and link to the authoritative archive.
 
-### Phase 1: [Name]
-**Goal:** [What was delivered]
-**Plans:** 3 complete
-
-- [x] 01-01: [Description]
-- [x] 01-02: [Description]
-- [x] 01-03: [Description]
-
-### Phase 2: [Name]
-**Goal:** [What was delivered]
-**Plans:** 2 complete
-
-- [x] 02-01: [Description]
-- [x] 02-02: [Description]
-
-### Phase 3: [Name]
-**Goal:** [What was delivered]
-**Plans:** 1 complete
-
-- [x] 03-01: [Description]
-
-### Phase 4: [Name]
-**Goal:** [What was delivered]
-**Plans:** 1 complete
-
-- [x] 04-01: [Description]
-
-**Milestone archive:** See [milestones/v1.0-mvp.md](milestones/v1.0-mvp.md)
-
-</details>
+| Version | Name | Completed | Summary | Archive |
+|---------|------|-----------|---------|---------|
+| v1.0 | MVP | YYYY-MM-DD | [1-line outcome] | [archive/roadmap/v1.0-mvp.md](archive/roadmap/v1.0-mvp.md) |
 
 ---
 *Last updated: [YYYY-MM-DD]*
@@ -319,10 +295,10 @@ When `Research: Likely`:
 - NOT detailed plans (added when milestone begins)
 
 ### Completed Milestones
-**Purpose:** Historical record in collapsible sections.
+**Purpose:** Compact index of shipped milestones with links to authoritative archives.
 **Contains:**
-- Summary header with ship date
-- Phase details (collapsed by default)
-- Link to full milestone archive
+- Version/name/date/status summary
+- One-line outcome or routing note
+- Link to roadmap/milestone archive containing full completed detail
 
-**Key principle:** Completed work should not consume visual space — collapse it.
+**Key principle:** Completed work is cold history. Do not embed full completed phase detail inline; archive it and link back.

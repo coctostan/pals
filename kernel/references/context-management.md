@@ -87,6 +87,14 @@ Start with high-level, drill down only when needed:
 
 Don't load implementation details until you need them.
 
+### ROADMAP Active Window
+
+Treat `ROADMAP.md` as a warm-path active-window artifact. Read the current milestone section and target phase detail first; read completed-history archives only when a concrete dependency requires historical detail.
+
+Live ROADMAP files should keep current routing, active phase detail, near-future milestone summaries, and a compact completed milestone index with archive links. Completed phase/milestone detail belongs in authoritative archives, not in a growing inline history section.
+
+If `ROADMAP.md` already contains long completed history inline, treat that as a repair candidate: move the completed detail to a roadmap archive, replace it with links, and preserve artifact authority through the archive index and return links.
+
 ## Plan Sizing for Context
 
 ### Target: ~50% Context Usage Per Plan

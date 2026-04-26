@@ -177,33 +177,38 @@ Update footer: `*Last updated: {date} after {milestone_name}*`
 </step>
 
 <step name="archive_milestone">
-Create milestone archive:
+Create authoritative completed-milestone roadmap archive:
 
-1. Create directory:
+1. Create archive directory:
    ```bash
-   mkdir -p .paul/milestones
+   mkdir -p .paul/archive/roadmap
    ```
 
-2. Create archive file `.paul/milestones/{version}-ROADMAP.md`:
-   - Copy current ROADMAP.md content
-   - Add archive header with completion date
-   - This preserves the state at milestone completion
+2. Create archive file `.paul/archive/roadmap/{version}-{milestone-slug}.md`:
+   - Copy the completed milestone's full ROADMAP phase detail before compacting live ROADMAP.md
+   - Add archive header with completion date, phase range, plan count, and return links
+   - Include links back to `.paul/ROADMAP.md`, `.paul/STATE.md`, and `.paul/archive/INDEX.md`
+   - State that the archive remains authoritative project truth for completed milestone detail
 
 3. Archive structure:
    ```markdown
-   # {milestone_name} - Archive
+   # {milestone_name} - Roadmap Archive
 
    **Archived:** {date}
    **Status:** Complete
+   **Phases:** {phase_range}
+   **Return:** [ROADMAP.md](../../ROADMAP.md) | [STATE.md](../../STATE.md) | [Archive Index](../INDEX.md)
 
    ---
 
-   {ROADMAP.md content at time of completion}
+   {completed milestone phase detail from ROADMAP.md}
    ```
+
+4. Update `.paul/archive/INDEX.md` with a roadmap archive entry if the project maintains that index.
 </step>
 
 <step name="reorganize_roadmap">
-Update ROADMAP.md to collapse completed milestone:
+Update ROADMAP.md as an active-window artifact instead of growing completed history inline:
 
 1. **Update Current Milestone section:**
    ```markdown
@@ -211,6 +216,7 @@ Update ROADMAP.md to collapse completed milestone:
    **{milestone_name}** ({version})
    Status: ✅ Complete
    Completed: {date}
+   Archive: [archive/roadmap/{version}-{milestone-slug}.md](archive/roadmap/{version}-{milestone-slug}.md)
    ```
 
 2. **Add Next Milestone placeholder:**
@@ -219,21 +225,18 @@ Update ROADMAP.md to collapse completed milestone:
    Run /paul:discuss-milestone or /paul:milestone to define.
    ```
 
-3. **Move completed phases to Completed section:**
+3. **Replace completed phase detail with compact completed milestone index/link:**
    ```markdown
    ## Completed Milestones
 
-   <details>
-   <summary>{milestone_name} - {date} ({phases} phases)</summary>
-
-   | Phase | Name | Plans | Completed |
-   |-------|------|-------|-----------|
-   | {N} | {name} | {X/X} | {date} |
-
-   </details>
+   | Milestone | Completed | Phases | Summary | Archive |
+   |-----------|-----------|--------|---------|---------|
+   | {milestone_name} | {date} | {phase_range} | {one-line outcome} | [archive](archive/roadmap/{version}-{milestone-slug}.md) |
    ```
 
-4. **Update footer timestamp**
+4. **Preserve active routing:** Keep current/next milestone routing and near-future planning inline; do not re-embed full completed phase details in ROADMAP.md.
+
+5. **Update footer timestamp**
 </step>
 
 <step name="update_state">

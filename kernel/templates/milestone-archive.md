@@ -1,8 +1,8 @@
 # Milestone Archive Template
 
-Template for milestone archives at `.paul/milestones/v{VERSION}-{NAME}.md`.
+Template for milestone/roadmap archives at `.paul/archive/roadmap/v{VERSION}-{NAME}.md` or the project's configured archive path.
 
-**Purpose:** Preserve complete phase details for completed milestones. Created by complete-milestone workflow when a milestone ships.
+**Purpose:** Preserve complete completed-milestone phase detail as authoritative cold history while live `ROADMAP.md` keeps only active routing plus compact archive links.
 
 ---
 
@@ -82,7 +82,13 @@ None
 
 ---
 
-*For current project status, see [ROADMAP.md](../ROADMAP.md) and [STATE.md](../STATE.md)*
+## Return Links
+
+- Live roadmap: [ROADMAP.md](../../ROADMAP.md)
+- Project state: [STATE.md](../../STATE.md)
+- Archive index: [archive/INDEX.md](../INDEX.md)
+
+*This archive is authoritative historical truth. Do not copy full completed detail back into live ROADMAP.md unless repairing a broken archive link.*
 ```
 
 ---
@@ -145,9 +151,10 @@ The workflow populates from:
 
 ### After archiving
 
-1. Update ROADMAP.md — Collapse milestone in `<details>` tag
-2. Update STATE.md — Clear completed phase context
-3. Continue numbering — Never restart phase numbers at 01
+1. Update ROADMAP.md — Replace inline completed milestone detail with a compact completed milestone index row and archive link.
+2. Preserve return links — Archive points back to live ROADMAP.md, STATE.md, and the archive index.
+3. Update STATE.md — Clear completed phase context from hot-path state.
+4. Continue numbering — Never restart phase numbers at 01.
 
 ---
 
