@@ -69,9 +69,9 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/v2.43-phase185-roadmap-compaction
-Last commit: latest `main` plus uncommitted 185-03 APPLY artifacts
-PR: none yet (APPLY complete locally; postflight pending)
-CI: N/A until APPLY branch is pushed and PR is opened
+Last commit: c7582329 feat(v2.43-phase185): add roadmap active-window process
+PR: https://github.com/coctostan/pals/pull/97 (open)
+CI: no checks reported yet for PR #97
 Prior PRs: #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
@@ -84,4 +84,4 @@ Resume context:
 - Applied process-level `ROADMAP.md` active-window/archive behavior in kernel templates, workflows, and context reference.
 - Changed files: `kernel/templates/ROADMAP.md`, `kernel/templates/milestone-archive.md`, `kernel/workflows/complete-milestone.md`, `kernel/workflows/roadmap-management.md`, `kernel/workflows/plan-phase.md`, `kernel/references/context-management.md`.
 - Validation passed: `bash tests/pi-end-to-end-validation.sh` (172/172) and `bash tests/cross-harness-validation.sh` (75/75).
-- Branch: `feature/v2.43-phase185-roadmap-compaction`; PR postflight pending.
+- Branch: `feature/v2.43-phase185-roadmap-compaction`; PR: https://github.com/coctostan/pals/pull/97; CI checks not reported yet.
