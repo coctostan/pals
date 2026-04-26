@@ -7,19 +7,19 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 184 is ready to plan.
 ## Current Position
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 184 of 4 in v2.43 — Bloat Triage + Archive Design — Applying
-Plan: 184-01 APPLY complete, awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-26T17:05:00Z — Completed Phase 184 bloat triage/archive design report and validation
+Phase: 184 of 4 in v2.43 — Bloat Triage + Archive Design — Complete
+Plan: 184-01 complete
+Status: LOOP complete, merge gate/transition in progress
+Last activity: 2026-04-26T17:25:00Z — Created 184-01 SUMMARY and closed Phase 184 loop
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [██░░░░░░░░] 20% (Phase 184 APPLY complete; UNIFY pending)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [██░░░░░░░░] 25% (Phase 184 loop complete; transition/merge gate pending)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for phase transition]
 ```
 ## Accumulated Context
 ### Decisions
@@ -164,6 +164,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-20: Phase 182 APPLY probe found `kernel/workflows/unify-phase.md` already explicit enough, so the bounded repair stayed inside CODI manifest/reference surfaces | 182 | Confirms the surviving workflow-side ambiguity resolves repo-locally without extra workflow churn and keeps Phase 183 focused on natural validation |
 | 2026-04-20: APPLY blocked on 183-01 plan defect — Task 1/2 target absolute quark paths outside the pals repo | 183 | Requires re-plan; current APPLY workflow mandates repo-relative `<files>` and cannot ground-truth cross-repo edits |
 | 2026-04-26: Ship CODI v0.1 as good enough and skip fresh quark natural validation | 183 | Closes v2.42 by product/lifecycle decision; preserves honesty that Phase 183 did not collect a new natural quark validation row and future CODI work should be real-usage-driven |
+| 2026-04-26: Start v2.43 archive split with indexed cold-history migration from live artifacts | 184 | Phase 185 should implement `.paul/archive/INDEX.md` and compact `MILESTONES.md`, `PROJECT.md`, `STATE.md`, and `ROADMAP.md` without weakening artifact authority or lifecycle routing |
 ### Fixes
 | Fix | Phase | Impact |
 |-----|-------|--------|
@@ -241,11 +242,11 @@ PR: https://github.com/coctostan/pals/pull/94 (state: OPEN)
 CI: pass (Socket Security checks green on PR #94)
 Prior PRs: #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-26T17:05:00Z
-Stopped at: Phase 184 APPLY complete after report creation and validation
-Next action: Run /paul:unify .paul/phases/184-bloat-triage-archive-design/184-01-PLAN.md
-Resume file: .paul/phases/184-bloat-triage-archive-design/184-01-PLAN.md
+Last session: 2026-04-26T17:25:00Z
+Stopped at: Phase 184 UNIFY summary created; merge gate and transition pending
+Next action: Complete UNIFY merge gate, transition Phase 184, then plan Phase 185
+Resume file: .paul/phases/184-bloat-triage-archive-design/184-01-SUMMARY.md
 Resume context:
-- Created `.paul/phases/184-bloat-triage-archive-design/184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md`.
-- Report includes leverage ranking, hot/warm/cold classification, `.paul/archive/INDEX.md` convention, concrete Phase 185 migration list, and process guardrails.
-- Verification passed: task grep checks, final report grep check, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh`.
+- Created `184-01-SUMMARY.md` documenting report output, verification, module reports, and Phase 185 handoff.
+- Post-unify module reports: WALT stable quality, CODI skipped-no-symbols row, SKIP knowledge capture, RUBY markdown-only debt note.
+- PR #94 is open with Socket Security checks passing; UNIFY merge gate must commit/push SUMMARY + state/history updates, merge PR, sync `main`, and transition Phase 184.
