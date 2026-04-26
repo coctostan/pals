@@ -237,7 +237,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: main
-Last commit: feat(184-bloat-triage-archive-design): complete phase transition (`8a027b9f`)
+Last commit: Phase 184 merge/transition artifacts pushed to main
 PR: https://github.com/coctostan/pals/pull/94 (state: MERGED)
 CI: pass (Socket Security checks green on merged PR #94; transition commit pushed to main)
 Prior PRs: #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
