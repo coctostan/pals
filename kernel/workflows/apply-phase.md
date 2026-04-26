@@ -259,14 +259,13 @@ references/subagent-criteria.md
 </step>
 
 <step name="pre_apply_hooks" priority="before-tasks">
-**Dispatch pre-apply baseline hooks. These record baselines for post-apply comparison.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`). If not found, emit `[dispatch] pre-apply: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `pre-apply`:
-   - TODD (p50): verify test files exist, record test baseline
-   - WALT (p100): run test suite, record baseline counts (total/passing/failing)
-3. For each: load refs, follow description, collect `context_inject` (baselines)
-4. If module returns `action: block` (e.g., TODD finds no test files): surface reason, offer fix/override/stop
-5. Output dispatch log: `[dispatch] pre-apply: {MODULE(priority) → baseline recorded | BLOCK(reason)} | ...`
+**Dispatch pre-apply baseline hooks via `references/module-dispatch.md`.**
+
+Call-site contract:
+- Hook: `pre-apply`; modules: TODD (p50) test-file/RED-phase guard, WALT (p100) quality baseline.
+- Context/output: plan task order and detected validation commands; record `context_inject` baselines for post-task and post-apply comparison.
+- Blocking: surface TODD/WALT `action: block` with fix/override/stop options.
+- Required evidence: `[dispatch] pre-apply: ...`; if registry resolution fails, `[dispatch] pre-apply: modules.yaml NOT FOUND — WARNING`.
 </step>
 
 <step name="execute_tasks">
@@ -378,18 +377,11 @@ For each <task> in order:
      Actual: [what happened]
      Continue? [yes/adjust plan/stop]
      ```
-9. **Dispatch post-task enforcement hooks:**
-   a. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-task: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-   b. Resolve installed modules for `post-task` (currently: TODD at p100)
-   c. For each registered module:
-      - Load hook-specific `refs`
-      - Follow hook description (e.g., run test suite, compare against baseline)
-      - Pass task name, task result, and `context_inject` from pre-apply
-   d. If module returns `action: block`:
-      - Surface the reason to the user
-      - Offer: fix the issue / skip this task / stop APPLY
-   e. Output dispatch log: `[dispatch] post-task(Task N): {MODULE(priority) → PASS | BLOCK(reason)} | ...`
-   f. Note: post-task has no advisory modules — only TODD enforcement. Advisory output comes at post-apply.
+9. **Dispatch post-task enforcement hooks via `references/module-dispatch.md`:**
+   - Hook: `post-task`; current module: TODD (p100).
+   - Context: task name, task result, and pre-apply baselines.
+   - Required behavior: run/compare the test suite, block on regression, and surface fix/skip/stop options.
+   - Required evidence: `[dispatch] post-task(Task N): {MODULE(priority) → PASS | BLOCK(reason)} | ...`; advisory modules wait for post-apply.
 
 **If type="checkpoint:human-verify":**
 1. Stop execution
@@ -466,47 +458,24 @@ For each <task> in order:
 
 <step name="advisory_module_dispatch" priority="after-tasks">
 ⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
-STOP after task execution. You MUST dispatch advisory modules NOW before proceeding to enforcement.
-**Dispatch advisory (non-blocking) post-apply modules. This step runs BEFORE enforcement so advisory output is ALWAYS visible.**
-1. Read `modules.yaml` (installed module registry; see `references/module-dispatch.md`), or confirm already loaded. If not found, emit `[dispatch] post-apply advisory: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `post-apply` whose hook description does NOT contain "block" — these are advisory-only modules:
-   - IRIS (review patterns, p250)
-   - DOCS (doc drift detection, p250)
-   - RUBY (debt detection, p300)
-   - SKIP (knowledge extraction, p300)
-3. Sort by priority ascending, run each:
-   a. Load hook-specific `refs`
-   b. Follow hook description
-   c. Pass `context_inject` from pre-apply
-   d. Collect `annotations` (code smells, security flags, debt reports, doc drift, knowledge suggestions)
-4. Output dispatch log: `[dispatch] post-apply advisory: {MODULE(priority) → N annotations | skip} | ...`
-5. Display ALL advisory annotations to the user.
-6. This step NEVER blocks — advisory modules inform, they do not gate.
-7. If you did not execute any advisory module hooks above, you MUST state why:
-   `[dispatch] post-apply advisory: SKIPPED — {reason}`
+STOP after task execution and dispatch advisory post-apply modules via `references/module-dispatch.md` before enforcement so advisory output is always visible.
+
+Call-site contract:
+- Hook: `post-apply` advisory modules whose description does NOT contain "block": IRIS (p250), DOCS (p250), RUBY (p300), SKIP (p300).
+- Context/output: changed files plus pre-apply context; collect code smells, doc drift, debt, and knowledge annotations for UNIFY.
+- Required evidence: `[dispatch] post-apply advisory: ...`; if none ran, state `[dispatch] post-apply advisory: SKIPPED — {reason}`; if registry resolution fails, `[dispatch] post-apply advisory: modules.yaml NOT FOUND — WARNING`.
+- Never block here; display all annotations.
 </step>
 <step name="enforcement_module_dispatch" priority="after-advisory">
 ⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
-STOP after advisory dispatch. You MUST dispatch enforcement modules NOW.
-**Dispatch enforcement (blocking) post-apply modules. Advisory output is already visible above.**
-1. Read `modules.yaml` if not already loaded. If not found, emit `[dispatch] post-apply enforcement: modules.yaml NOT FOUND — WARNING` and skip dispatch.
-2. Resolve installed modules for `post-apply` whose hook description contains "block" — these are enforcement modules:
-   - WALT (quality gate: tests + lint + typecheck vs baseline, p100)
-   - DEAN (dependency audit vs baseline, p150)
-   - TODD (full test suite + refactor candidates, p200)
-3. Sort by priority ascending, run each:
-   a. Load hook-specific `refs`
-   b. Follow hook description
-   c. Pass `context_inject` and baselines from pre-apply
-   d. Collect result: PASS or BLOCK with reason
-4. Output dispatch log: `[dispatch] post-apply enforcement: {MODULE(priority) → PASS | BLOCK(reason)} | ...`
-5. If any module returned `action: block`:
-   - The user already has full advisory context from the step above
-   - Surface blocking reason(s) with fix/override/stop options
-6. If all enforcement modules pass: proceed to finalize
-7. Store accumulated `annotations` from both steps for inclusion in finalize step
-8. If you did not execute any enforcement module hooks above, you MUST state why:
-   `[dispatch] post-apply enforcement: SKIPPED — {reason}`
+STOP after advisory dispatch and run blocking post-apply modules via `references/module-dispatch.md`.
+
+Call-site contract:
+- Hook: `post-apply` enforcement modules whose description contains "block": WALT (p100), DEAN (p150), TODD (p200).
+- Context/output: changed files, task results, annotations, and pre-apply baselines; collect PASS/BLOCK gate results for finalize/UNIFY.
+- Required behavior: compare tests/lint/typecheck/audit/full-suite results against baselines; surface any BLOCK with fix/override/stop options.
+- Required evidence: `[dispatch] post-apply enforcement: ...`; if none ran, state `[dispatch] post-apply enforcement: SKIPPED — {reason}`; if registry resolution fails, `[dispatch] post-apply enforcement: modules.yaml NOT FOUND — WARNING`.
+- If all enforcement passes, proceed to finalize with accumulated annotations.
 </step>
 
 <step name="handle_failures">

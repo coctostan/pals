@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-26)
 ## Current Position
 
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 186 of 4 in v2.43 — Workflow / Module Prose Compression — Ready to Plan
-Plan: Not started
-Status: Phase 185 complete and merged; ready to plan Phase 186
-Last activity: 2026-04-26T21:15:19Z — PR #97 merged; Phase 185 complete; transitioned to Phase 186 planning
+Phase: 186 of 4 in v2.43 — Workflow / Module Prose Compression — Applying
+Plan: 186-01 applied
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-26T21:27:54Z — Completed APPLY for .paul/phases/186-workflow-module-prose-compression/186-01-PLAN.md
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -23,7 +23,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 186]
+  ✓        ✓        ○     [Plan 186-01 applied, awaiting UNIFY]
 ```
 
 ## Accumulated Context
@@ -76,11 +76,11 @@ Prior PRs: #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02
 
 ## Session Continuity
 
-Last session: 2026-04-26T21:15:19Z
-Stopped at: Phase 185 complete and merged; ready to plan Phase 186
-Next action: /paul:plan for Phase 186 — Workflow / Module Prose Compression
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-26T21:27:54Z
+Stopped at: APPLY complete for Plan 186-01
+Next action: Run /paul:unify .paul/phases/186-workflow-module-prose-compression/186-01-PLAN.md
+Resume file: .paul/phases/186-workflow-module-prose-compression/186-01-PLAN.md
 Resume context:
-- Phase 185 merged via PR #97 after passing CI; Phase 185 transition commit is `57f8f95c` on `main`.
-- Phase 185 delivered archive-link mechanics, compacted `STATE.md`, and defined PALS `ROADMAP.md` active-window/archive behavior.
-- Phase 186 should reduce repeated workflow/module prose while preserving checkpoints, dispatch evidence, merge gate behavior, exact routing, and `.paul/*` artifact authority.
+- Plan 186-01 compressed shared module-dispatch mechanics into `kernel/references/module-dispatch.md` and shortened PLAN/APPLY/UNIFY hook call sites.
+- Combined hot workflow line count is now 1632, below the 1711 pre-APPLY baseline, while preserving dispatch evidence, checkpoint handling, post-unify persistence, and GitHub Flow merge-gate markers.
+- Verification passed: `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`.
