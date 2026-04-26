@@ -63,6 +63,8 @@ templates/PLAN.md
 1. Read the current milestone section in ROADMAP.md to identify the first incomplete phase, its scope/goals, and any dependencies.
 2. Expand to the target phase detail only after the candidate phase is identified.
 3. If multiple phases are viable, ask the user which to plan and confirm the selection.
+4. Treat completed milestone history as cold context: do not read completed-history archives unless a concrete dependency, regression, or decision record materially affects the target phase.
+5. If ROADMAP.md is already bloated or malformed, identify only enough structure to find the active/current milestone, then route cleanup through `roadmap-management.md` repair guidance instead of loading all historical detail into the plan.
 </step>
 
 <step name="determine_planning_posture">
@@ -162,6 +164,8 @@ templates/PLAN.md
 4. If a prior phase exists, read its SUMMARY.md for what was built, decisions made, and deferred issues.
 5. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries.
 6. Read only the source files relevant to this phase; do not reflexively chain unrelated prior artifacts.
+7. If completed-history archive links exist, prefer the archive index/summary label over full archive reads; open the full archive only for a specific dependency.
+8. If the live ROADMAP is bloated with completed history, note the repair candidate and keep the plan context bounded to the current milestone section plus target phase slice.
 </step>
 
 <step name="check_specialized_flows">
