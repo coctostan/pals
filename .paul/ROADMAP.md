@@ -28,17 +28,17 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.43 PALS Context Diet — Archive, Compact, Compress**
-Status: 🚧 In Progress
+Status: ✅ Complete
 Started: 2026-04-26
 Theme: Keep PALS' disciplined PLAN/APPLY/UNIFY process, but make it cheaper to run by moving history out of hot context, compacting active artifacts, and trimming repetitive prose.
 Source context: milestone discussion on 2026-04-26 (temporary `.paul/MILESTONE-CONTEXT.md` consumed and deleted)
-Phases: 3 of 4 complete (75%)
+Phases: 4 of 4 complete (100%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 184 | Bloat Triage + Archive Design | 1/1 | ✅ Complete | 2026-04-26 |
 | 185 | Artifact Archival + Hot-Path Compaction | 3/3 | ✅ Complete | 2026-04-26 |
 | 186 | Workflow / Module Prose Compression | 1/1 | ✅ Complete | 2026-04-26 |
-| 187 | Regression + Anti-Regrowth Guardrails | 1/1 | Planning | - |
+| 187 | Regression + Anti-Regrowth Guardrails | 1/1 | ✅ Complete | 2026-04-26 |
 ### Phase 184: Bloat Triage + Archive Design
 Focus: Identify highest-leverage context-heavy surfaces; separate hot-path, warm-path, and cold-history content; design `.paul/archive/INDEX.md` plus archive file conventions.
 Plans: 184-01 complete — produced `.paul/phases/184-bloat-triage-archive-design/184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md` and `.paul/phases/184-bloat-triage-archive-design/184-01-SUMMARY.md`
@@ -50,7 +50,7 @@ Focus: Trim repeated PLAN/APPLY/UNIFY and module-dispatch prose; preserve checkp
 Plans: 186-01 complete (`.paul/phases/186-workflow-module-prose-compression/186-01-SUMMARY.md`) — shared dispatch mechanics moved into `module-dispatch.md`; PLAN/APPLY/UNIFY hook call sites compacted while preserving checkpoints, module evidence, post-unify persistence, and GitHub Flow merge-gate semantics.
 ### Phase 187: Regression + Anti-Regrowth Guardrails
 Focus: Run existing validation; add lightweight semantic/shape checks so hot artifacts do not quietly become history sinks again; keep validation practical rather than over-engineered.
-Plans: 187-01 created (`.paul/phases/187-regression-anti-regrowth-guardrails/187-01-PLAN.md`) — lightweight validation-script guardrails for hot-workflow line envelope and semantic marker retention; awaiting approval.
+Plans: 187-01 complete (`.paul/phases/187-regression-anti-regrowth-guardrails/187-01-SUMMARY.md`) — lightweight validation-script guardrails for hot-workflow line envelope and semantic marker retention implemented and merged via PR #99.
 ## Completed Milestones
 <details>
 <summary>v2.42 CODI v0.1 — Post-Unify Instrumentation Fix - 2026-04-26 (3 phases)</summary>
@@ -728,4 +728,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-26 — Phase 187 Plan 187-01 created and awaiting approval.*
+*Last updated: 2026-04-26 — v2.43 complete after Phase 187 transition.*

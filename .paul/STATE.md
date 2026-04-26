@@ -4,26 +4,26 @@
 
 See: .paul/PROJECT.md (updated 2026-04-26)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 187 Plan 187-01 UNIFY summary is created and merge gate is in progress.
+**Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is complete; next step is to start the next milestone or pause with the completed milestone state.
 
 ## Current Position
 
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 187 of 4 in v2.43 — Regression + Anti-Regrowth Guardrails — UNIFY in progress
-Plan: 187-01 SUMMARY created, merge gate in progress
-Status: UNIFY in progress — GitHub Flow merge gate pending
-Last activity: 2026-04-26T21:55:36Z — Created .paul/phases/187-regression-anti-regrowth-guardrails/187-01-SUMMARY.md and post-unify history rows
+Phase: 187 of 4 in v2.43 — Regression + Anti-Regrowth Guardrails — Complete
+Plan: 187-01 complete
+Status: v2.43 complete; ready for next milestone decision
+Last activity: 2026-04-26T21:55:36Z — Phase 187 complete, PR #99 merged, v2.43 transitioned to complete
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [████████░░] 75% (3 of 4 phases complete; Phase 187 UNIFY in progress)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [UNIFY summary created; merge gate in progress]
+  ✓        ✓        ✓     [Loop complete - milestone complete]
 ```
 
 ## Accumulated Context
@@ -47,13 +47,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Compact `STATE.md` by moving historical accumulated context to `.paul/archive/state/STATE-HISTORY-v0-v2.43.md` | Phase 185 Plan 185-02 | Resume/status stay hot-path complete while old decisions/fixes/deviations/audits remain findable. |
 | Define PALS process-level ROADMAP active-window/archive convention | Phase 185 Plan 185-03 | Future roadmap writes keep current routing inline, archive completed detail, and repair bloat without hidden state. |
 | Centralize shared dispatch mechanics in `kernel/references/module-dispatch.md` while workflows keep hook-local call-site obligations | Phase 186 Plan 186-01 | Hot PLAN/APPLY/UNIFY workflow prose is shorter without weakening module evidence, post-unify persistence, or merge-gate safety. |
+| Guard context-diet gains with semantic validation and a practical line ceiling | Phase 187 Plan 187-01 | Future hot workflow edits must retain lifecycle/module/merge-gate markers and stay under the 1711 Phase 186 pre-compression ceiling. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
 
 - Historical fix log, deviation log, and skill audit tables through Phase 185 Plan 185-01 are archived in [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md).
-- Current active concern: Phase 187 guardrails should stay lightweight and semantic, avoiding brittle exact-prose checks or another compression wave.
+- Phase 187 completed without implementation deviations; validation now guards context-diet gains against hot workflow regrowth and semantic marker loss.
 
 ### Deferred Issues
 
@@ -69,21 +70,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/187-regression-anti-regrowth-guardrails
-APPLY commits: 47234075, 0d5fad13 pushed to origin/feature/187-regression-anti-regrowth-guardrails
-PR: https://github.com/coctostan/pals/pull/99 (OPEN)
-CI: passing — Socket Security checks passing before UNIFY artifact push
-Prior PRs: #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Phase transition commit: main transition commit after PR #99 squash merge 6bcd96d0
+PR: https://github.com/coctostan/pals/pull/99 (MERGED)
+CI: passing — Socket Security checks passed before merge
+Prior PRs: #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
 Last session: 2026-04-26T21:55:36Z
-Stopped at: UNIFY summary created; merge gate in progress
-Next action: Complete GitHub Flow merge gate for PR #99, then transition Phase 187
+Stopped at: v2.43 complete after Phase 187 transition
+Next action: Start the next milestone or pause at completed v2.43 state
 Resume file: .paul/phases/187-regression-anti-regrowth-guardrails/187-01-SUMMARY.md
 Resume context:
-- Plan 187-01 modified `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` only.
-- New guardrails enforce the Phase 186 hot-workflow ceiling (`1711`) and semantic markers for plan/apply/unify/module-dispatch contracts.
-- Validation passed: `bash tests/pi-end-to-end-validation.sh` → 177 passed, 0 failed; `bash tests/cross-harness-validation.sh` → 90 passed, 0 failed.
-- Post-unify history rows were appended to `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md`.
-- Merge gate must push UNIFY artifacts, verify PR #99 CI, merge, sync `main`, then transition the phase.
+- v2.43 is complete: archive split, hot artifact compaction, workflow prose compression, and anti-regrowth validation guardrails all shipped.
+- PR #99 merged Phase 187 guardrails; final validation passed: Pi 177/177 and cross-harness 90/90.
+- Next lifecycle move is milestone-level routing: start the next milestone, review v2.43 accomplishments, or pause.

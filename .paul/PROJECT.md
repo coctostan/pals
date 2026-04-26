@@ -12,7 +12,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 v2.43 PALS Context Diet — Archive, Compact, Compress.
 
-Current work is reducing hot-path context cost without weakening PLAN/APPLY/UNIFY, module dispatch, GitHub Flow, or `.paul/*` artifact authority. Phase 186 completed shared workflow/module prose compression; Phase 187 is ready to add regression and anti-regrowth guardrails.
+v2.43 context-diet work is complete: cold history has been archived/indexed, hot artifacts compacted, repeated workflow/module prose centralized, and regression guardrails added to prevent hot-path regrowth or silent evidence loss.
 
 ## Hot-path reading model
 
@@ -45,7 +45,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 |-----------|--------|---------|
 | v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation | Complete | Natural quark observations showed qualitative value but measurement gaps. |
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | Complete | Shipped bounded parser/hook instrumentation repair and accepted CODI v0.1 as good enough. |
-| v2.43 PALS Context Diet — Archive, Compact, Compress | Active | Move cold history into indexed archives, compact hot/warm artifacts, then compress workflow prose. |
+| v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
 
 See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md` for phase sequencing.
 
@@ -73,6 +73,7 @@ See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md`
 | Archive cold history before compacting sensitive hot artifacts. | Phase 184 | Phase 185 proves links/indexes before touching `STATE.md` structure. |
 | Keep live roadmaps as active-window artifacts with completed detail in authoritative archives. | Phase 185 | Future roadmap writes preserve current routing inline while preventing completed-history bloat. |
 | Centralize shared module-dispatch mechanics in `kernel/references/module-dispatch.md` while keeping hook-local obligations in workflows. | Phase 186 | Reduces hot-path workflow prose and drift risk without hiding post-unify persistence or GitHub Flow merge-gate semantics. |
+| Guard context-diet gains with semantic validation and a practical line ceiling | Phase 187 | Future hot workflow edits must retain lifecycle/module/merge-gate markers and stay under the 1711 Phase 186 pre-compression ceiling. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -105,4 +106,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-26 after Phase 186 transition.*
+*Last updated: 2026-04-26 after Phase 187 transition.*
