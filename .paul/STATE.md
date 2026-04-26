@@ -7,19 +7,19 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 184 is ready to plan.
 ## Current Position
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 184 of 4 in v2.43 — Bloat Triage + Archive Design — Complete
-Plan: 184-01 complete
-Status: LOOP complete, merge gate/transition in progress
-Last activity: 2026-04-26T17:25:00Z — Created 184-01 SUMMARY and closed Phase 184 loop
+Phase: 185 of 4 in v2.43 — Artifact Archival + Hot-Path Compaction — Ready to plan
+Plan: Not started
+Status: Ready for next PLAN
+Last activity: 2026-04-26T17:35:00Z — Phase 184 complete and transitioned to Phase 185
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [██░░░░░░░░] 25% (Phase 184 loop complete; transition/merge gate pending)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [███░░░░░░░] 25% (Phase 184 complete; Phase 185 ready to plan)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for phase transition]
+  ○        ○        ○     [Ready to plan Phase 185]
 ```
 ## Accumulated Context
 ### Decisions
@@ -236,17 +236,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: feature/184-bloat-triage-archive-design
-Last commit: feat(184-bloat-triage-archive-design): create archive triage report (pushed to PR #94)
-PR: https://github.com/coctostan/pals/pull/94 (state: OPEN)
+Branch: main
+Last commit: Phase 184 merged to main via PR #94 (`63e57ecf`)
+PR: https://github.com/coctostan/pals/pull/94 (state: MERGED)
 CI: pass (Socket Security checks green on PR #94)
-Prior PRs: #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
+Prior PRs: #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-26T17:25:00Z
-Stopped at: Phase 184 UNIFY summary created; merge gate and transition pending
-Next action: Complete UNIFY merge gate, transition Phase 184, then plan Phase 185
-Resume file: .paul/phases/184-bloat-triage-archive-design/184-01-SUMMARY.md
+Last session: 2026-04-26T17:35:00Z
+Stopped at: Phase 184 complete, ready to plan Phase 185
+Next action: /paul:plan for Phase 185
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Created `184-01-SUMMARY.md` documenting report output, verification, module reports, and Phase 185 handoff.
-- Post-unify module reports: WALT stable quality, CODI skipped-no-symbols row, SKIP knowledge capture, RUBY markdown-only debt note.
-- PR #94 is open with Socket Security checks passing; UNIFY merge gate must commit/push SUMMARY + state/history updates, merge PR, sync `main`, and transition Phase 184.
+- Phase 184 produced `184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md` and `184-01-SUMMARY.md`.
+- PR #94 merged with Socket Security checks passing; local `main` synced.
+- Phase 185 should implement `.paul/archive/INDEX.md` plus first live-artifact compaction wave, starting lower-risk before `STATE.md`.

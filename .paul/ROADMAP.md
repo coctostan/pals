@@ -32,16 +32,16 @@ Status: 🚧 In Progress
 Started: 2026-04-26
 Theme: Keep PALS' disciplined PLAN/APPLY/UNIFY process, but make it cheaper to run by moving history out of hot context, compacting active artifacts, and trimming repetitive prose.
 Source context: milestone discussion on 2026-04-26 (temporary `.paul/MILESTONE-CONTEXT.md` consumed and deleted)
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete (25%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 184 | Bloat Triage + Archive Design | 1 | Planning | - |
-| 185 | Artifact Archival + Hot-Path Compaction | TBD | Not started | - |
+| 184 | Bloat Triage + Archive Design | 1/1 | ✅ Complete | 2026-04-26 |
+| 185 | Artifact Archival + Hot-Path Compaction | TBD | 🔵 Ready to plan | - |
 | 186 | Workflow / Module Prose Compression | TBD | Not started | - |
 | 187 | Regression + Anti-Regrowth Guardrails | TBD | Not started | - |
 ### Phase 184: Bloat Triage + Archive Design
 Focus: Identify highest-leverage context-heavy surfaces; separate hot-path, warm-path, and cold-history content; design `.paul/archive/INDEX.md` plus archive file conventions.
-Plans: 184-01 created (`.paul/phases/184-bloat-triage-archive-design/184-01-PLAN.md`) — type: research, awaiting APPLY approval
+Plans: 184-01 complete — produced `.paul/phases/184-bloat-triage-archive-design/184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md` and `.paul/phases/184-bloat-triage-archive-design/184-01-SUMMARY.md`
 ### Phase 185: Artifact Archival + Hot-Path Compaction
 Focus: Restore `PROJECT.md` as a true compact brief; compact `STATE.md`, `MILESTONES.md`, and possibly `ROADMAP.md`; move historical decisions and milestone detail into indexed archives while preserving findability.
 Plans: TBD (defined during /paul:plan)
@@ -728,4 +728,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-26 — Phase 184 plan created (`184-01`); ready for APPLY on PALS Context Diet bloat triage and archive design.*
+*Last updated: 2026-04-26 — Phase 184 complete; Phase 185 ready to plan artifact archival and hot-path compaction.*

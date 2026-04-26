@@ -352,4 +352,4 @@ Quick Reference:
 
 ---
 *Created: 2026-03-11*
-*Last updated: 2026-04-20 after Phase 182 closeout (bounded instrumentation repair shipped; Phase 183 natural validation ready to plan).*
+*Last updated: 2026-04-26 after Phase 184 closeout (bloat triage/archive design complete; Phase 185 artifact archival and hot-path compaction ready to plan).*

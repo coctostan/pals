@@ -181,8 +181,8 @@ Lifecycle note: PAUL lifecycle artifacts (`STATE.md`, `ROADMAP.md`, `MILESTONES.
 
 ## Merge Gate Status
 
-Pending at summary draft time; PR #94 is open and CI is passing. UNIFY merge gate will merge/sync before final loop close.
+PR #94 merged successfully: https://github.com/coctostan/pals/pull/94. Socket Security checks passed before merge and local `main` was synced to `63e57ecf`.
 
 ## Next Phase
 
-After merge and transition, Phase 185 should implement the archive index plus first live-artifact compaction wave described in the Phase 184 report.
+Phase 185 should implement the archive index plus first live-artifact compaction wave described in the Phase 184 report.
