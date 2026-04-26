@@ -181,7 +181,7 @@ Lifecycle note: PAUL lifecycle artifacts (`STATE.md`, `ROADMAP.md`, `MILESTONES.
 
 ## Merge Gate Status
 
-PR #94 merged successfully: https://github.com/coctostan/pals/pull/94. Socket Security checks passed before merge and local `main` was synced to `63e57ecf`.
+PR #94 merged successfully: https://github.com/coctostan/pals/pull/94. Socket Security checks passed before merge; local `main` was synced and transition commit `8a027b9f` was pushed.
 
 ## Next Phase
 
