@@ -67,11 +67,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/185-artifact-archival-hot-path-compaction
-Last commit: ca798d53 feat(185-artifact-archival-hot-path-compaction): archive and compact hot artifacts (#95)
-PR: none yet for Plan 185-02 (postflight pending)
-CI: local pre-apply baseline passed (`tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`)
-Prior PRs: #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: feature/185-state-history-archive
+Last commit: feature branch HEAD — Plan 185-02 implementation plus PR metadata
+PR: https://github.com/coctostan/pals/pull/96 (state: OPEN)
+CI: pending on PR #96; local final validation passed (`tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`)
+Prior PRs: #96 open (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
