@@ -7,19 +7,19 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.43 PALS Context Diet — Archive, Compact, Compress is open; Phase 184 is ready to plan.
 ## Current Position
 Milestone: v2.43 PALS Context Diet — Archive, Compact, Compress
-Phase: 185 of 4 in v2.43 — Artifact Archival + Hot-Path Compaction — Ready to plan
-Plan: Not started
-Status: Ready for next PLAN
-Last activity: 2026-04-26T17:35:00Z — Phase 184 complete and transitioned to Phase 185
+Phase: 185 of 4 in v2.43 — Artifact Archival + Hot-Path Compaction — APPLY complete
+Plan: 185-01 applied, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-26T18:35:00Z — Applied .paul/phases/185-artifact-archival-hot-path-compaction/185-01-PLAN.md; archive index and compact MILESTONES/PROJECT artifacts implemented
 Progress:
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
-- v2.43 PALS Context Diet — Archive, Compact, Compress: [███░░░░░░░] 25% (Phase 184 complete; Phase 185 ready to plan)
+- v2.43 PALS Context Diet — Archive, Compact, Compress: [█████░░░░░] 50% (Phase 185 apply complete; ready for UNIFY)
 ## Loop Position
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 185]
+  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
 ```
 ## Accumulated Context
 ### Decisions
@@ -242,11 +242,11 @@ PR: https://github.com/coctostan/pals/pull/94 (state: MERGED)
 CI: pass (Socket Security checks green on merged PR #94; transition commit pushed to main)
 Prior PRs: #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
-Last session: 2026-04-26T17:35:00Z
-Stopped at: Phase 184 complete, ready to plan Phase 185
-Next action: /paul:plan for Phase 185
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-26T18:35:00Z
+Stopped at: Plan 185-01 APPLY complete
+Next action: Run /paul:unify .paul/phases/185-artifact-archival-hot-path-compaction/185-01-PLAN.md
+Resume file: .paul/phases/185-artifact-archival-hot-path-compaction/185-01-PLAN.md
 Resume context:
-- Phase 184 produced `184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md` and `184-01-SUMMARY.md`.
-- PR #94 merged with Socket Security checks passing; local `main` synced.
-- Phase 185 should implement `.paul/archive/INDEX.md` plus first live-artifact compaction wave, starting lower-risk before `STATE.md`.
+- Plan 185-01 implemented the first lower-risk archive-compaction wave: `.paul/archive/INDEX.md`, milestone archive/index compaction, and project-history archive/brief compaction.
+- `STATE.md` and `ROADMAP.md` structural compaction are intentionally deferred to later Phase 185 plans after archive-link mechanics are proven.
+- APPLY verification passed: semantic archive-link checks, `tests/pi-end-to-end-validation.sh`, and `tests/cross-harness-validation.sh`.
