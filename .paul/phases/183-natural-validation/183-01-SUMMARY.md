@@ -74,14 +74,24 @@ The honest final statement is: **v2.42 shipped the bounded instrumentation repai
 
 ## Module Execution Reports
 
-### Pre-apply
+### Pre-apply / Apply
 
 - `TODD` — no test-first restructuring surface for markdown-only lifecycle reconciliation.
 - `WALT` — no root test command detected; baseline is zero for this markdown-only lifecycle plan.
+- `DEAN` — skipped/pass; no dependency manifest changed and no supported root package manifest was present.
+- `SETH` — pass; no secret patterns found in changed lifecycle artifacts.
+- `DOCS` / `IRIS` / `RUBY` / `SKIP` — no blocking concerns; changed files were lifecycle markdown only.
 
-### Post-apply expectation
+### Pre-unify
 
-Post-apply module checks should remain lightweight because changed files are lifecycle markdown only. Any source-code finding would indicate scope creep and should be treated as a deviation.
+- `[dispatch] pre-unify: 0 modules registered for this hook`
+
+### Post-unify
+
+- `[dispatch] post-unify: WALT(100) → 1 side effect` — appended `| 183-01 | 2026-04-26 | no executable test suite | — | — | — | → stable |` to `.paul/QUALITY-HISTORY.md`.
+- `[dispatch] post-unify: SKIP(200) → 1 report` — decision captured in STATE: ship CODI v0.1 as good enough and skip fresh quark natural validation by product decision.
+- `[dispatch] CODI post-unify: hook body entered for 183-01` followed by `[dispatch] post-unify: CODI(220) → appended skipped-no-symbols row for 183-01` — markdown-only closeout had no extractable source symbols, so `.paul/CODI-HISTORY.md` records `skipped-no-symbols` honestly.
+- `[dispatch] post-unify: RUBY(300) → skipped` — no source-code files changed.
 
 ## Deviations
 
@@ -93,7 +103,7 @@ Post-apply module checks should remain lightweight because changed files are lif
 
 **SHIP CODI v0.1.**
 
-v2.42 is complete once ROADMAP and STATE are reconciled. Future CODI work is deferred until real usage surfaces a concrete need.
+v2.42 is complete. Future CODI work is deferred until real usage surfaces a concrete need.
 
 ---
 

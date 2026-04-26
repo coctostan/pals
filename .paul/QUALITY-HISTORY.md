@@ -31,6 +31,7 @@ Types: —
 | 179-01 | 2026-04-20 | 172 pass + 75 pass | — | — | — | → stable |
 | 181-01 | 2026-04-20 | 172 pass + 75 pass | — | — | — | → stable |
 | 182-01 | 2026-04-20 | 172 pass + 75 pass | — | — | — | → stable |
+| 183-01 | 2026-04-26 | no executable test suite | — | — | — | → stable |
 
 ---
 *Updated after every /paul:unify*

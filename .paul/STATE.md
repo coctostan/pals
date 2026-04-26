@@ -7,10 +7,10 @@ See: .paul/PROJECT.md (updated 2026-04-20)
 **Current focus:** v2.42 CODI v0.1 — Post-Unify Instrumentation Fix is complete; CODI v0.1 shipped as good enough with fresh quark validation intentionally skipped by product decision.
 ## Current Position
 Milestone: v2.42 CODI v0.1 — Post-Unify Instrumentation Fix — ✅ Complete (fresh SHA `26f262c3af3b87221ba0872b55e89fdea7c02d52`)
-Phase: 183 of 3 in v2.42 — Natural Validation / Closeout — Apply complete
-Plan: 183-01 complete, ready for UNIFY
-Status: APPLY complete — ready for UNIFY
-Last activity: 2026-04-26T15:05:50Z — Completed repo-local ship-now closeout for Phase 183
+Phase: 183 of 3 in v2.42 — Natural Validation / Closeout — Complete
+Plan: 183-01 complete
+Status: UNIFY complete — merge gate in progress
+Last activity: 2026-04-26T15:05:50Z — UNIFY reconciled Phase 183 and prepared merge gate for PR #93
 Progress:
 - v2.40 CODI v0.1 — Extractor & Coverage Iteration: [██████████] 100% (verdict ITERATE_V0_1)
 - v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation: [██████████] 100% (Phase 180 complete; verdict ITERATE_V0_1)
@@ -19,7 +19,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Apply complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — merge gate in progress]
 ```
 ## Accumulated Context
 ### Decisions
@@ -236,16 +236,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
 Branch: feature/183-natural-validation
-Last commit: feat(183-natural-validation): ship codi v0.1 closeout (`f3f2119e`)
+Last commit: chore(183-natural-validation): record apply postflight (`cd361ae2`)
 PR: https://github.com/coctostan/pals/pull/93 (state: OPEN)
-CI: no checks reported yet on PR #93
+CI: Socket Security checks passing on PR #93
 Prior PRs: #93 open (Phase 183); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
 Last session: 2026-04-26T15:05:50Z
-Stopped at: APPLY complete for replacement plan 183-01
-Next action: Run /paul:unify .paul/phases/183-natural-validation/183-01-PLAN.md to reconcile and close the loop
-Resume file: .paul/phases/183-natural-validation/183-01-PLAN.md
+Stopped at: UNIFY complete for replacement plan 183-01; merge gate in progress
+Next action: Complete merge gate for PR #93, then route to next milestone selection
+Resume file: .paul/phases/183-natural-validation/183-01-SUMMARY.md
 Resume context:
 - Phase 183 replaced the invalid cross-repo validation plan with repo-local closeout.
 - CODI v0.1 is shipped as good enough; no fresh natural quark validation row was collected.
-- UNIFY should preserve the caveat and route to milestone completion / next milestone selection.
+- Post-unify WALT/SKIP/CODI/RUBY reports were recorded; merge gate should merge PR #93 when checks remain green.
