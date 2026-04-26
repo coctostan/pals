@@ -236,10 +236,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Blockers/Concerns
 - Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence
 ### Git State
-Branch: main
-Last commit: Phase 184 merge/transition artifacts pushed to main
-PR: https://github.com/coctostan/pals/pull/94 (state: MERGED)
-CI: pass (Socket Security checks green on merged PR #94; transition commit pushed to main)
+Branch: feature/185-artifact-archival-hot-path-compaction
+Last commit: Phase 185 APPLY implementation committed; PR #95 opened for review/UNIFY
+PR: https://github.com/coctostan/pals/pull/95 (state: open)
+CI: no checks reported yet for PR #95; local validation passed (`tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`)
 Prior PRs: #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed); #89 merged (Phase 179); #88 merged (Phase 178); #87 merged (Phase 177, v2.40 closed)
 ## Session Continuity
 Last session: 2026-04-26T18:35:00Z
