@@ -80,20 +80,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main after PR #105 merge gate completes
-Last feature commit: Phase 191 Plan 191-01 UNIFY/transition artifacts on PR #105
-PR: #105 OPEN — https://github.com/coctostan/pals/pull/105 (Phase 191 Plan 191-01 APPLY + UNIFY/transition artifacts)
-CI: local validation passing — Pi 183/183 and cross-harness 100/100; PR checks must pass after UNIFY/transition push
-Prior PRs: #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Last commit: 144ee543 — feat(191-validation-anti-regrowth): update guardrails (#105)
+PR: #105 MERGED — https://github.com/coctostan/pals/pull/105 (Phase 191 Plan 191-01 APPLY + UNIFY/transition artifacts)
+CI: local validation passing — Pi 183/183 and cross-harness 100/100; GitHub status checks reported none after final push and PR #105 was mergeable/clean
+Prior PRs: #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T12:20:44Z
-Stopped at: Phase 191 and v2.44 milestone complete; merge gate pending for PR #105
-Next action: Complete GitHub Flow merge gate for PR #105, then choose next milestone/release action
+Last session: 2026-04-27T12:28:00Z
+Stopped at: Phase 191 and v2.44 milestone complete; PR #105 merged to main
+Next action: Choose next milestone/release action
 Resume file: .paul/phases/191-validation-anti-regrowth-update/191-01-SUMMARY.md
 Resume context:
 - Phase 191 added structural anti-regrowth helpers/checks to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`.
 - Validation passes: Pi 183/183 and cross-harness 100/100.
 - Post-unify persistence updated `.paul/quality-history.md` and `.paul/CODI-HISTORY.md`.
-- v2.44 is complete once PR #105 merge gate is finalized.
+- v2.44 is complete and PR #105 is merged to main.
