@@ -2,35 +2,35 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-27 after v2.46 milestone creation)
+See: .paul/PROJECT.md (updated 2026-04-27 after Phase 201 / v2.46 completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.46 Pi-Native Implementation Planning is active; Phase 200 Validation + Evidence Strategy is complete and Phase 201 Final Implementation Plan Proposal is ready to plan after PR #114 merge.
+**Current focus:** v2.46 Pi-Native Implementation Planning is complete; next recommended milestone is Artifact-Slice Contract Hardening.
 
 ## Current Position
 
-Milestone: v2.46 Pi-Native Implementation Planning
-Phase: 201 of 201 (Final Implementation Plan Proposal) — ready to plan
-Plan: Not started
-Status: Ready to plan Phase 201
-Last activity: 2026-04-27T21:12:00Z — Phase 200 UNIFY and PR #114 merge gate complete; local main synced and Phase 201 is ready to plan
+Milestone: v2.46 Pi-Native Implementation Planning — Complete
+Phase: 201 of 201 (Final Implementation Plan Proposal) — Complete
+Plan: 201-01 unified
+Status: v2.46 complete; GitHub Flow merge gate pending for PR #115
+Last activity: 2026-04-27T21:50:00Z — Created Phase 201 SUMMARY, updated lifecycle/module histories, and prepared PR #115 merge-gate metadata
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
 - v2.45 Pi-Native PALS Architecture: [██████████] 100% (5 of 5 phases complete; final architecture proposal complete)
-- v2.46 Pi-Native Implementation Planning: [████████░░] 80% (4 of 5 phases complete; Phase 201 ready to plan)
+- v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - Phase 197 v2.45 Findings Triage: [██████████] 100% complete — findings triage artifact created and unified
 - Phase 198 Implementation Workstream Design: [██████████] 100% complete — workstream design artifact unified
 - Phase 199 Sequencing + Dependency Plan: [██████████] 100% complete — sequencing/dependency artifact unified
 - Phase 200 Validation + Evidence Strategy: [██████████] 100% complete — validation/evidence strategy artifact unified
-- Phase 201 Final Implementation Plan Proposal: [░░░░░░░░░░] 0% not started — ready to plan
+- Phase 201 Final Implementation Plan Proposal: [██████████] 100% complete — final implementation plan proposal created and unified
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete — ready for next milestone after merge gate]
 ```
 
 ## Accumulated Context
@@ -56,6 +56,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 198 created `docs/PI-NATIVE-IMPLEMENTATION-WORKSTREAMS.md`, a source-cited planning-only workstream design artifact classifying six candidate workstreams, per-workstream outputs/surfaces/validation/boundaries/dependencies/open questions, and Phase 199 sequencing/dependency handoff inputs.
 - Phase 199 created `docs/PI-NATIVE-SEQUENCING-DEPENDENCY-PLAN.md`, a source-cited planning-only sequencing/dependency artifact recommending default workstream order, viable alternatives, dependency matrix, risk gates, split/merge recommendations, Phase 200 validation/evidence handoff, Phase 201 roadmap inputs, and sequencing readiness criteria.
 - Phase 200 created and unified `docs/PI-NATIVE-VALIDATION-EVIDENCE-STRATEGY.md`, defining command-output validation truth, validation-class taxonomy, current Pi/cross-harness suite classification, future workstream evidence requirements, durable artifact evidence rules, Phase 201 handoff, and readiness checklist while preserving docs-only scope and green validation.
+- Phase 201 created and unified `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md`, the final v2.46 implementation-plan proposal recommending Artifact-Slice Contract Hardening first, Guided Workflow Evidence Hardening second, Workflow/Resource Capsule Contract third, Delegated APPLY Packet/Report Contract fourth, Pi-Native Validation Classification fifth, and Legacy Retention / Install-Surface Cleanup last while preserving docs-only scope and command-output validation truth.
 
 ### Current Decisions
 
@@ -85,6 +86,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Keep validation classification before legacy cleanup | Phase 198 Plan 198-01 UNIFY | Legacy retention/install-surface cleanup remains deferred until shared-invariant vs frozen-parity validation checks are classified and protected. |
 | Recommend artifact-slice contract hardening first, guided workflow evidence second, workflow/resource capsules third, helper packet/report compression fourth, validation classification fifth, and legacy cleanup last as the default sequencing hypothesis | Phase 199 Plan 199-01 UNIFY | Phase 200 should pressure-test the order through validation/evidence strategy, and Phase 201 should decide final executable build milestones without treating Phase 199 as implementation authorization. |
 | Require command-output validation truth and validation-class labeling before future Pi-native implementation plans weaken, relocate, archive, or delete checks | Phase 200 Plan 200-01 UNIFY | Phase 201 must carry explicit validation classes, command-output evidence, durable artifact evidence, fallback triggers, and non-authority boundaries into executable implementation milestone proposals. |
+| Recommend Artifact-Slice Contract Hardening as the next Pi-native build milestone | Phase 201 Plan 201-01 UNIFY | The next milestone should harden activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback before broader capsules, helper compression, validation classification, or legacy cleanup. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -104,6 +106,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 198: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 - Skill audit Phase 199: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 - Skill audit Phase 200: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
+- Skill audit Phase 201: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 
 ### Deferred Issues
 
@@ -120,20 +123,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: 0e2c6e66 — docs(200): validation evidence strategy (#114)
-PR: #114 MERGED — https://github.com/coctostan/pals/pull/114
-CI: PR #114 Socket Security checks passed; local UNIFY validation passed — Pi 186/186 and cross-harness 100/100
-Prior PRs: #113 merged (Phase 199 sequencing dependency plan); #109 merged (Phase 195 exploratory Pi-native spikes); #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: feature/201-final-implementation-plan-proposal
+Last commit: 2b956979 — docs(201-01): propose pi-native implementation roadmap; UNIFY metadata prepared for merge-gate commit
+PR: #115 OPEN — https://github.com/coctostan/pals/pull/115
+CI: passing — Socket Security Project Report SUCCESS; Pull Request Alerts SUCCESS; local validation passed Pi 186/186 and cross-harness 100/100
+Prior PRs: #114 merged (Phase 200 validation evidence strategy); #113 merged (Phase 199 sequencing dependency plan); #109 merged (Phase 195 exploratory Pi-native spikes); #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T21:12:00Z
-Stopped at: Phase 200 complete and PR #114 merged; ready for Phase 201 planning
-Next action: Run /paul:plan for Phase 201 — Final Implementation Plan Proposal
-Resume file: .paul/phases/200-validation-evidence-strategy/200-01-SUMMARY.md
+Last session: 2026-04-27T21:50:00Z
+Stopped at: Phase 201 UNIFY complete; PR #115 merge gate pending
+Next action: Complete GitHub Flow merge gate for PR #115, then create the next milestone for Artifact-Slice Contract Hardening
+Resume file: .paul/phases/201-final-implementation-plan-proposal/201-01-SUMMARY.md
 Resume context:
-- Phase 200 Plan 200-01 created and unified `docs/PI-NATIVE-VALIDATION-EVIDENCE-STRATEGY.md`.
-- Validation is green: Pi 186/186 and cross-harness 100/100.
-- PR #114 is merged and local main is synced.
-- Next planning target is Phase 201 — Final Implementation Plan Proposal.
+- Phase 201 Plan 201-01 created and unified `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md`.
+- Validation passed during UNIFY: marker checks, Pi validation 186/186, cross-harness validation 100/100.
+- Post-unify WALT/SKIP/CODI/RUBY persistence is recorded in the Phase 201 SUMMARY and module histories.
+- Active handoff was consumed and archived under `.paul/handoffs/archive/`.
+- PR #115 is open and passing; merge gate should push UNIFY metadata, verify CI, squash merge, sync `main`, and then route to the next milestone.

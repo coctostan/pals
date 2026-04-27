@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.46 Pi-Native Implementation Planning | `.paul/ROADMAP.md` phases 197-201 |
+| Current milestone | v2.46 Pi-Native Implementation Planning (complete) | `.paul/ROADMAP.md` phases 197-201 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -64,10 +64,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.43 PALS Context Diet — Archive, Compact, Compress | 2026-04-26 | 1 day | 4 phases, 6 plans | `.paul/ROADMAP.md` completed-milestone section |
 | v2.44 PALS Context Optimization — Process & Artifacts | 2026-04-27 | ~14 hours | 4 phases, 5 plans | [archive](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md) |
 | v2.45 Pi-Native PALS Architecture | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` |
+| v2.46 Pi-Native Implementation Planning | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.46 Pi-Native Implementation Planning is active. Phase 197 v2.45 Findings Triage is complete; Phase 198 Implementation Workstream Design is ready to plan.
+v2.46 Pi-Native Implementation Planning is complete. The recommended next milestone is Artifact-Slice Contract Hardening, to be created through normal `/paul:milestone` / `/paul:plan` lifecycle routing.
 
 ## Archive
 
@@ -75,4 +76,4 @@ v2.46 Pi-Native Implementation Planning is active. Phase 197 v2.45 Findings Tria
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 197 transition: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 201 / v2.46 completion: 2026-04-27.*
