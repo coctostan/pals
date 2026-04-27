@@ -87,10 +87,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/192-support-tier-reset-surface-inventory (pending merge gate)
-Last commit: Phase 192 UNIFY/transition metadata pending commit
-PR: #106 OPEN — https://github.com/coctostan/pals/pull/106 (Phase 192 support-tier reset; merge gate in progress)
-CI: local validation passing — Pi 183/183 and cross-harness 100/100; remote checks not reported by gh
+Branch: main
+Last commit: 0c7eaf48 — docs(192-01): complete support-tier reset (PR #106 squash merge)
+PR: #106 MERGED — https://github.com/coctostan/pals/pull/106 (Phase 192 support-tier reset + UNIFY/transition artifacts)
+CI: PR checks passed — Socket Security Project Report and Pull Request Alerts; local validation passed Pi 183/183 and cross-harness 100/100
 Prior PRs: #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
