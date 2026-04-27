@@ -42,7 +42,7 @@ const MAX_ARTIFACT_SLICE_LINES = 8;
 const ARTIFACT_SLICE_SOURCE_STATE = ".paul/STATE.md";
 const ARTIFACT_SLICE_SOURCE_ROADMAP = ".paul/ROADMAP.md";
 const ARTIFACT_SLICE_FALLBACK = "full authoritative read required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion.";
-const ARTIFACT_SLICE_AUTHORITY = "Derived aid only; shared .paul/* artifacts and markdown workflows remain authoritative. No Pi-owned lifecycle/module/validation ledger.";
+const ARTIFACT_SLICE_AUTHORITY = "Derived aid only; shared .paul/* artifacts and markdown workflows remain authoritative. No hidden persistence, cache, telemetry, report, or Pi-owned lifecycle/module/validation ledger.";
 const ARTIFACT_SLICE_SCHEMA_MARKERS = [
   "Slice: current-lifecycle-state",
   "Slice: active-roadmap-phase",
