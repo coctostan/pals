@@ -39,7 +39,18 @@ const DISPATCH_MARKER = "[dispatch]";
 const MODULE_REPORTS_HEADER = "Module Execution Reports";
 const MAX_ARTIFACT_SLICE_CHARS = 3_000;
 const MAX_ARTIFACT_SLICE_LINES = 8;
-const ARTIFACT_SLICE_SOURCES = [".paul/STATE.md", ".paul/ROADMAP.md"];
+const ARTIFACT_SLICE_SOURCE_STATE = ".paul/STATE.md";
+const ARTIFACT_SLICE_SOURCE_ROADMAP = ".paul/ROADMAP.md";
+const ARTIFACT_SLICE_FALLBACK = "full authoritative read required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion.";
+const ARTIFACT_SLICE_AUTHORITY = "Derived aid only; shared .paul/* artifacts and markdown workflows remain authoritative. No Pi-owned lifecycle/module/validation ledger.";
+const ARTIFACT_SLICE_SCHEMA_MARKERS = [
+  "Slice: current-lifecycle-state",
+  "Slice: active-roadmap-phase",
+  "Slice: approved-plan-task-packet",
+  "Artifact slices (read-only, bounded)",
+  "Fallback: full authoritative read",
+  "Authority: Derived aid only",
+] as const;
 
 // -- CARL Session Boundary Manager constants --
 const CARL_NEW_SESSION_TIMEOUT_MS = 10_000;
@@ -78,9 +89,20 @@ type ActivationState = {
 
 
 type ArtifactSlice = {
+  name: string;
   source: string;
   freshness: string;
+  bounds: string;
   lines: string[];
+  fallback: string;
+  authority: string;
+};
+
+type ArtifactSliceSpec = {
+  name: string;
+  source: string;
+  patterns: RegExp[];
+  bounds: string;
 };
 
 type GuidedWorkflowOption = {
@@ -221,47 +243,76 @@ function extractPlanPath(nextAction?: string): string | undefined {
   return match?.[0];
 }
 
-function buildArtifactSlice(cwd: string, source: string, patterns: RegExp[]): ArtifactSlice {
-  const absolute = join(cwd, source);
+function buildArtifactSlice(cwd: string, spec: ArtifactSliceSpec): ArtifactSlice {
+  const absolute = join(cwd, spec.source);
   const content = readFileOr(absolute, "");
-  const lines = content ? selectBoundedLines(content, patterns) : [];
+  const lines = content ? selectBoundedLines(content, spec.patterns) : [];
   return {
-    source,
+    name: spec.name,
+    source: spec.source,
     freshness: getFileFreshness(absolute),
-    lines: lines.length > 0 ? lines : ["unavailable-source note: no bounded slice content available; use full authoritative read if needed."],
+    bounds: spec.bounds,
+    lines: lines.length > 0
+      ? lines
+      : [`unavailable-source note: no bounded slice content available from ${spec.source}; ${ARTIFACT_SLICE_FALLBACK}`],
+    fallback: ARTIFACT_SLICE_FALLBACK,
+    authority: ARTIFACT_SLICE_AUTHORITY,
   };
 }
 
-function renderArtifactSlices(cwd: string, state: PalsStateSnapshot): string[] {
+function getArtifactSliceSpecs(state: PalsStateSnapshot): ArtifactSliceSpec[] {
   const phaseNumber = state.phase?.match(/^(\d+)/)?.[1];
-  const sources = [...ARTIFACT_SLICE_SOURCES];
   const planPath = extractPlanPath(state.nextAction);
-  if (planPath) sources.push(planPath);
+  const specs: ArtifactSliceSpec[] = [
+    {
+      name: "current-lifecycle-state",
+      source: ARTIFACT_SLICE_SOURCE_STATE,
+      patterns: [/^Milestone:/, /^Phase:/, /^Plan:/, /^Status:/, /^Last activity:/, /^Next action:/, /^Resume file:/],
+      bounds: `repo-relative ${ARTIFACT_SLICE_SOURCE_STATE}; first ${MAX_ARTIFACT_SLICE_LINES} matching lifecycle lines; max payload ${MAX_ARTIFACT_SLICE_CHARS} chars`,
+    },
+    {
+      name: "active-roadmap-phase",
+      source: ARTIFACT_SLICE_SOURCE_ROADMAP,
+      patterns: [new RegExp(`Phase\\s+${phaseNumber ?? "[0-9]+"}`, "i"), /Runtime Slice Hardening/i, /artifact-slice/i, /bounded/i],
+      bounds: `repo-relative ${ARTIFACT_SLICE_SOURCE_ROADMAP}; active phase markers only; no completed-history expansion; first ${MAX_ARTIFACT_SLICE_LINES} matching lines`,
+    },
+  ];
 
-  const slices = sources.map((source) => {
-    const patterns = source.endsWith("STATE.md")
-      ? [/^Milestone:/, /^Phase:/, /^Plan:/, /^Status:/, /^Last activity:/, /^Next action:/, /^Resume file:/]
-      : source.endsWith("ROADMAP.md")
-        ? [new RegExp(`Phase\\s+${phaseNumber ?? "[0-9]+"}`, "i"), /Exploratory Pi-Native Spikes/i, /artifact-slice/i, /bounded/i]
-        : [/^## Goal/, /^## Purpose/, /^## Output/, /^## AC-/, /artifact-slice/i, /Source:/, /Freshness:/, /Fallback:/];
-    return buildArtifactSlice(cwd, source, patterns);
-  });
+  if (planPath) {
+    specs.push({
+      name: "approved-plan-task-packet",
+      source: planPath,
+      patterns: [/^## Goal/, /^## Purpose/, /^## Output/, /^<task/, /^\s*<name>/, /^\s*<files>/, /^\s*<verify>/, /^## AC-/, /artifact-slice/i],
+      bounds: `repo-relative current PLAN path discovered from STATE next action; first ${MAX_ARTIFACT_SLICE_LINES} task/objective/verification lines; max payload ${MAX_ARTIFACT_SLICE_CHARS} chars`,
+    });
+  }
 
+  return specs;
+}
+
+function renderArtifactSlices(cwd: string, state: PalsStateSnapshot): string[] {
+  const slices = getArtifactSliceSpecs(state).map((spec) => buildArtifactSlice(cwd, spec));
   const rendered = [
-    "Artifact slices (read-only, bounded)",
+    "Artifact slices (read-only, bounded, activation-gated)",
     `Bounds: MAX_ARTIFACT_SLICE_CHARS=${MAX_ARTIFACT_SLICE_CHARS}; MAX_ARTIFACT_SLICE_LINES=${MAX_ARTIFACT_SLICE_LINES}`,
-    "Fallback: full authoritative read required for edits, lifecycle decisions, ambiguity, stale data, contested facts, and GitHub Flow gates.",
+    `Fallback: ${ARTIFACT_SLICE_FALLBACK}`,
+    `Authority: ${ARTIFACT_SLICE_AUTHORITY}`,
   ];
 
   for (const slice of slices) {
+    rendered.push(`Slice: ${slice.name}`);
     rendered.push(`Source: ${slice.source}`);
     rendered.push(`Freshness: ${slice.freshness}`);
+    rendered.push(`Bounds: ${slice.bounds}`);
+    rendered.push("Content:");
     rendered.push(...slice.lines.map((line) => `- ${line}`));
+    rendered.push(`Fallback: ${slice.fallback}`);
+    rendered.push(`Authority: ${slice.authority}`);
   }
 
   const joined = rendered.join("\n");
   if (joined.length <= MAX_ARTIFACT_SLICE_CHARS) return rendered;
-  return joined.slice(0, MAX_ARTIFACT_SLICE_CHARS).split(/\n/).concat("[artifact slice truncated at MAX_ARTIFACT_SLICE_CHARS]");
+  return joined.slice(0, MAX_ARTIFACT_SLICE_CHARS).split(/\n/).concat("[artifact slice truncated at MAX_ARTIFACT_SLICE_CHARS; full authoritative read required]");
 }
 
 function getCommand(name: CommandDef["name"]): CommandDef | undefined {
