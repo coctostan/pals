@@ -29,12 +29,12 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.46 Pi-Native Implementation Planning**
 Status: 🚧 In Progress
-Phases: 1 of 5 complete
+Phases: 2 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
-| 198 | Implementation Workstream Design | TBD | Ready to plan | - |
+| 198 | Implementation Workstream Design | 1/1 | Complete | 2026-04-27 |
 | 199 | Sequencing + Dependency Plan | TBD | Not started | - |
 | 200 | Validation + Evidence Strategy | TBD | Not started | - |
 | 201 | Final Implementation Plan Proposal | TBD | Not started | - |
@@ -45,7 +45,7 @@ Plans: 197-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-FI
 
 ### Phase 198: Implementation Workstream Design
 Focus: Convert the v2.45 migration and implementation roadmap into concrete workstreams across artifact slices, workflow/resource capsules, guided UI evidence, helper-agent packets, validation classification, and legacy retention.
-Plans: TBD (defined during /paul:plan)
+Plans: 198-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-WORKSTREAMS.md` with source-cited candidate workstreams, readiness classifications, repo surfaces, validation/evidence expectations, authority boundaries, dependency edges, risk gates, unresolved decisions, and Phase 199 sequencing handoff inputs.
 
 ### Phase 199: Sequencing + Dependency Plan
 Focus: Define ordering, dependencies, proof points, risk gates, and boundaries for implementation milestones so later build work proceeds safely.
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 197 complete and merged; Phase 198 ready to plan.*
+*Last updated: 2026-04-27 — Phase 198 complete; ready for Phase 199 sequencing and dependency planning.*

@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: 123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→143 pass + 60 pass→143 pass + 60 pass→149 pass→151 pass + 62 pass→156 pass→159 pass→159 pass→159 pass→165 pass + 69 pass→165 pass + 69 pass→166 pass + 70 pass→167 pass + 70 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass
+Tests: 123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→143 pass + 60 pass→143 pass + 60 pass→149 pass→151 pass + 62 pass→156 pass→159 pass→159 pass→159 pass→165 pass + 69 pass→165 pass + 69 pass→166 pass + 70 pass→167 pass + 70 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass
 Coverage: —
 Lint: —
 Types: —
@@ -49,6 +49,7 @@ Types: —
 | 195-01 | 2026-04-27 | 186 pass + 100 pass | — | — | — | ↑ improving |
 | 196-01 | 2026-04-27 | 186 pass + 100 pass | — | — | — | → stable |
 | 197-01 | 2026-04-27 | 186 pass + 100 pass | — | — | — | → stable |
+| 198-01 | 2026-04-27 | 186 pass + 100 pass | — | — | — | → stable |
 
 ---
 *Updated after every /paul:unify*

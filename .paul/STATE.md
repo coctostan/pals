@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-27 after v2.46 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.46 Pi-Native Implementation Planning is active; Phase 198 Implementation Workstream Design is ready to plan after Phase 197 findings triage completion.
+**Current focus:** v2.46 Pi-Native Implementation Planning is active; Phase 198 Implementation Workstream Design is complete and Phase 199 Sequencing + Dependency Plan is next after merge/transition.
 
 ## Current Position
 
 Milestone: v2.46 Pi-Native Implementation Planning
-Phase: 198 of 201 (Implementation Workstream Design) — Ready to Plan
-Plan: Not started
-Status: Ready to plan Phase 198
-Last activity: 2026-04-27T18:12:00Z — Phase 197 complete, PR #111 merged, transitioned to Phase 198
+Phase: 198 of 201 (Implementation Workstream Design) — Complete
+Plan: 198-01 complete
+Status: UNIFY complete; merge gate pending
+Last activity: 2026-04-27T19:25:00Z — Completed UNIFY draft for .paul/phases/198-implementation-workstream-design/198-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -20,7 +20,7 @@ Progress:
 - v2.45 Pi-Native PALS Architecture: [██████████] 100% (5 of 5 phases complete; final architecture proposal complete)
 - v2.46 Pi-Native Implementation Planning: [██░░░░░░░░] 20% (1 of 5 phases complete; Phase 197 complete)
 - Phase 197 v2.45 Findings Triage: [██████████] 100% complete — findings triage artifact created and unified
-- Phase 198 Implementation Workstream Design: [░░░░░░░░░░] 0% ready to plan
+- Phase 198 Implementation Workstream Design: [██████████] 100% complete — workstream design artifact unified
 - Phase 199 Sequencing + Dependency Plan: [░░░░░░░░░░] 0% not started
 - Phase 200 Validation + Evidence Strategy: [░░░░░░░░░░] 0% not started
 - Phase 201 Final Implementation Plan Proposal: [░░░░░░░░░░] 0% not started
@@ -30,7 +30,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN: Phase 198]
+  ✓        ✓        ✓     [Loop complete - merge gate/transition pending]
 ```
 
 ## Accumulated Context
@@ -53,6 +53,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 196 created the final Pi-native architecture proposal in `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md`, promoting activation-gated artifact-slice loading as the first proven context-efficiency implementation pattern and defining migration, implementation, validation, legacy-surface, and follow-on milestone guidance.
 - v2.46 has been created as an implementation-planning milestone: process v2.45 findings and architecture into concrete workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan before build milestones begin.
 - Phase 197 completed v2.45 findings triage in `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md`, giving Phases 198-201 source-cited planning input across settled decisions, authority boundaries, promoted/rejected options, workstream seeds, open questions, handoff recommendations, and readiness criteria.
+- Phase 198 created `docs/PI-NATIVE-IMPLEMENTATION-WORKSTREAMS.md`, a source-cited planning-only workstream design artifact classifying six candidate workstreams, per-workstream outputs/surfaces/validation/boundaries/dependencies/open questions, and Phase 199 sequencing/dependency handoff inputs.
 
 ### Current Decisions
 
@@ -78,6 +79,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Promote activation-gated artifact-slice loading as the first implementation pattern for Pi-native context efficiency | Phase 196 Plan 196-01 UNIFY | Next implementation milestone should harden the artifact-slice contract before workflow capsules, guided UI hardening, helper-agent packet compression, validation classification, or legacy cleanup. |
 | Create v2.46 as implementation-planning before implementation hardening | v2.46 milestone creation | The next milestone should process v2.45 findings and architecture into an executable implementation plan before starting artifact-slice contract hardening or later build work. |
 | Complete Phase 197 findings triage before designing workstreams | Phase 197 Plan 197-01 UNIFY | `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md` is the Phase 198-201 planning input: it classifies v2.45 decisions, boundaries, promoted/rejected patterns, workstream seeds, open questions, and readiness criteria without authorizing implementation hardening. |
+| Treat artifact-slice contract hardening as the most implementation-ready candidate while leaving final sequencing to Phase 199 | Phase 198 Plan 198-01 UNIFY | Phase 199 should test whether artifact slices go first and whether the workstream should split; Phase 198 does not finalize build order. |
+| Keep validation classification before legacy cleanup | Phase 198 Plan 198-01 UNIFY | Legacy retention/install-surface cleanup remains deferred until shared-invariant vs frozen-parity validation checks are classified and protected. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -94,6 +97,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Phase 195 validation adaptation: installer verification used `PALS_ROOT="$PWD" bash drivers/pi/install.sh`; no implementation deviation.
 - Skill audit Phase 196: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 - Skill audit Phase 197: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
+- Skill audit Phase 198: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 
 ### Deferred Issues
 
@@ -110,22 +114,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: 2ddf5fca — docs: triage v2.45 implementation findings (#111)
-PR: #111 MERGED — https://github.com/coctostan/pals/pull/111
-CI: PR #111 Socket Security checks passed; local UNIFY validation passed — Pi 186/186 and cross-harness 100/100
+Branch: feature/198-implementation-workstream-design
+Last commit: ca0d8218 — docs(198-01): add sequencing handoff
+PR: #112 OPEN — https://github.com/coctostan/pals/pull/112
+CI: PR #112 checks not yet reported; local APPLY/UNIFY validation passed — Pi 186/186 and cross-harness 100/100
 Prior PRs: #109 merged (Phase 195 exploratory Pi-native spikes); #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T18:12:00Z
-Stopped at: Phase 197 complete; transitioned to Phase 198
-Next action: /paul:plan for Phase 198 Implementation Workstream Design
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-27T19:25:00Z
+Stopped at: UNIFY complete for Phase 198 Plan 198-01; merge gate/transition pending
+Next action: Resolve GitHub Flow merge gate, then transition to Phase 199
+Resume file: .paul/phases/198-implementation-workstream-design/198-01-SUMMARY.md
 Resume context:
-- Plan 197-01 created and unified `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md` with source inputs, classified findings, Phase 198-201 handoff recommendations, and readiness checklist.
-- Validation passed locally during UNIFY: Pi 186/186 and cross-harness 100/100.
-- SUMMARY created at `.paul/phases/197-v245-findings-triage/197-01-SUMMARY.md`.
-- Active handoff context integrated and archived to `.paul/handoffs/archive/HANDOFF-2026-04-27-phase-197-apply-complete-unify-pending.md`.
-- Next lifecycle route: `/paul:plan` for Phase 198 Implementation Workstream Design.
-- PR #111 merged and local `main` synced; feature branch cleaned.
+- Created and unified `docs/PI-NATIVE-IMPLEMENTATION-WORKSTREAMS.md` as the planning-only Phase 198 workstream design artifact.
+- Task commits: `c2f88a1c` source map, `f872f4d5` workstream details, `ca0d8218` Phase 199 handoff.
+- Local validation passed: marker greps, Pi validation 186/186, cross-harness validation 100/100.
+- Active handoff consumed and archived to `.paul/handoffs/archive/HANDOFF-2026-04-27-phase-198-plan-created-awaiting-approval.md`.
+- PR #112 is open; merge gate should commit/push UNIFY artifacts, merge PR, sync `main`, then transition to Phase 199.
