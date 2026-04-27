@@ -187,3 +187,55 @@ Goal: decide what frozen legacy surfaces stay installed, move to archives, or re
 - Do not delete or archive Claude Code, Agent SDK, portability, or cross-harness validation surfaces as part of this proposal.
 - Do not rewrite validation scripts, workflows, drivers, module manifests, installers, or dependency manifests as part of this proposal.
 - Do not treat runtime slices or workflow capsules as substitutes for full authoritative reads when facts are stale, ambiguous, contested, or lifecycle-changing.
+
+## Validation Strategy
+
+Future implementation should validate both the supported Pi runtime and the shared lifecycle invariants that make PALS portable. Validation should be classified by purpose rather than by historical harness parity.
+
+| Validation class | Purpose | Example evidence |
+|---|---|---|
+| Pi-supported runtime checks | Prove active Pi behavior works as designed. | Pi installer structure, `/paul-*` routing, skill references, extension commands/hooks, lifecycle UI, context injection, guided UI, CARL, helper-agent installation, module registry generation. |
+| Shared invariant checks | Protect lifecycle semantics independent of runtime. | `.paul/*` authority markers, PLAN/APPLY/UNIFY loop markers, module evidence requirements, GitHub Flow safety markers, parent-owned APPLY language, context-diet budgets. |
+| Frozen legacy parity checks | Preserve useful historical compatibility evidence without blocking Pi-native work solely for parity. | Claude wrapper shape, legacy installer parity, cross-harness path assumptions, historical portability docs. |
+| Runtime lens checks | Prove context lenses remain bounded and derived. | Source citations, freshness markers, slice size limits, activation gating, duplicate-context trimming, full-read fallback language. |
+| Guided UI safety checks | Prove native UI cannot silently continue lifecycle work. | Explicit canonical replies, checkpoint blocking, no auto-approval, no merge-gate bypass, transcript-visible decisions. |
+| Helper-agent delegation checks | Prove delegation remains parent-owned. | Required report fields, file-scope boundaries, fallback triggers, parent verification evidence, no `.paul/*` lifecycle writes by helper. |
+
+### Pi-supported runtime evidence
+
+Pi validation should become the primary local proof for new runtime-assistance behavior. Each new Pi context slice, capsule, guided UI affordance, module lens, or helper-agent packet improvement should add structural checks for source citations, bounded output, activation gating, explicit user intent, fallback text, and no hidden authoritative state.
+
+### Shared invariant evidence
+
+Shared invariant checks should remain strongly protected even if they run from cross-harness validation during the transition. The invariants are the product contract: artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approvals/checkpoints, and archive/handoff traceability.
+
+### Frozen legacy evidence
+
+Frozen legacy checks should be labeled before they are weakened or removed. A failing parity-only assertion should not automatically block a Pi-native design after the relevant surface has been classified as frozen, but no check should be deleted until the shared invariant it protected has either been retained elsewhere or intentionally retired by plan.
+
+## Evidence Future APPLY/UNIFY Must Preserve
+
+- PLAN artifacts must record source inputs, acceptance criteria, boundaries, module-dispatch evidence, and any Pi-assisted context/capsule usage that materially shaped the plan.
+- APPLY must preserve task verification output, post-task gate results, advisory annotations, enforcement outcomes, fallback/deviation decisions, and parent-owned review of any delegated work.
+- SUMMARY artifacts must reconcile acceptance criteria, actual changed files, validation command results, module reports, deviations, decisions, GitHub Flow state, and follow-on recommendations.
+- STATE must remain the live lifecycle truth for current phase, loop position, last activity, decisions, blockers, git state, and session continuity.
+- GitHub Flow evidence must remain based on branch, PR, CI, review, merge, and base-sync command output, not Pi UI readiness.
+
+## Readiness Checklist
+
+Before moving from architecture into implementation milestones:
+
+- [ ] The next milestone preserves `.paul/*` artifact authority and PLAN/APPLY/UNIFY ownership.
+- [ ] The implementation target is explicitly classified as a Pi-supported runtime improvement, shared invariant change, or frozen legacy retention/removal decision.
+- [ ] Each runtime context aid has source citations, freshness handling, bounded output, and full-read fallback language.
+- [ ] Each guided UI improvement proves explicit canonical user intent and cannot auto-continue or skip checkpoints.
+- [ ] Each helper-agent improvement preserves parent APPLY ownership of eligibility, verification, fallback, module gates, checkpoints, and lifecycle writes.
+- [ ] Each validation change preserves or relocates shared invariant protection before weakening parity-only checks.
+- [ ] GitHub Flow branch/PR/CI/merge gates remain workflow-owned and command-evidence-backed.
+- [ ] Legacy-surface removal or archive work is planned separately from runtime feature work.
+
+## Final Recommendation
+
+Close v2.45 with artifact-slice loading promoted as the first proven Pi-native context-efficiency pattern, and open the next implementation milestone around hardening that pattern into a stable contract. Sequence riskier workflow capsules, guided UI hardening, helper-agent report compression, validation classification, and legacy cleanup after that foundation is validated.
+
+The architecture is ready for implementation when future plans keep the same rule: Pi can make PALS easier to use, cheaper to run in context, and clearer to navigate, but it must stay a derived runtime shell over artifact-first lifecycle truth.
