@@ -1,5 +1,7 @@
 # PALS Portability Roadmap
 
+> **Status: historical/frozen reference.** This roadmap preserves prior cross-harness portability planning, artifact-first constraints, and hidden-state warnings. It is no longer the active product roadmap for current PALS development. Pi-native architecture work should use `docs/PI-NATIVE-SUPPORT-INVENTORY.md` for current support-tier classification and follow-up decisions.
+
 ## Objective
 
 Make PALS portable across harnesses while preserving the same `.paul/` artifacts as the authoritative runtime state.

@@ -2,28 +2,30 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-27 after v2.44 milestone completion)
+See: .paul/PROJECT.md (updated 2026-04-27 after v2.45 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is complete and archived; next milestone scope is awaiting discussion.
+**Current focus:** v2.45 Pi-Native PALS Architecture is created; Phase 192 is ready for planning.
 
 ## Current Position
 
-Milestone: Awaiting next milestone
-Phase: None active
-Plan: None
-Status: v2.44 PALS Context Optimization — Process & Artifacts complete — ready for next milestone discussion
-Last activity: 2026-04-27T12:45:00Z — Finalized v2.44 milestone archive and completion index
+Milestone: v2.45 Pi-Native PALS Architecture
+Phase: 192 of 196 (Support-Tier Reset + Surface Inventory) — APPLY complete
+Plan: 192-01 applied, ready for UNIFY
+Status: APPLY complete; implementation verified; ready for UNIFY
+Last activity: 2026-04-27T14:45:47Z — Applied 192-01 support-tier reset and inventory docs; validation passed Pi 183/183 and cross-harness 100/100
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
+- v2.45 Pi-Native PALS Architecture: [█░░░░░░░░░] 10% (0 of 5 phases complete; Phase 192 APPLY complete, UNIFY pending)
+- Phase 192 Support-Tier Reset + Surface Inventory: [███████░░░] 70% (PLAN ✓, APPLY ✓, UNIFY ○)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -38,6 +40,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
   - Phase 189 measured remaining hot-path reads and identified 8 findings (F1–F8) and 10 recommendations (R1–R10).
   - Phase 190 moved completed ROADMAP history into `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`, compacted live `.paul/ROADMAP.md`, centralized GitHub Flow mechanics in `kernel/references/git-strategy.md`, hoisted module-dispatch taxonomy into `kernel/references/module-dispatch.md`, made APPLY optional refs conditional, and reduced target workflow/reference files by a net 335 lines.
   - Phase 191 updated Pi and cross-harness validation with structural anti-regrowth guardrails for active ROADMAP budgets, hot workflow/reference budgets, archive-link presence, bounded GitHub Flow duplication, and critical semantic markers; final validation passed Pi 183/183 and cross-harness 100/100.
+- v2.45 has been created as an architecture/design milestone: reset Claude Code support tier to unsupported/frozen, map Pi runtime capabilities, design context-efficiency architecture, allow bounded Pi-native code spikes, and produce a final migration/implementation roadmap.
 
 ### Current Decisions
 
@@ -53,6 +56,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Centralize GitHub Flow mechanics in `kernel/references/git-strategy.md` while keeping workflow-local merge/CI/review gates explicit | Phase 190 Plan 190-02 | Reduces duplicated workflow prose without weakening github-flow enforcement or status routing. |
 | Make R5 Pi adapter modularization a future driver-quality milestone rather than Phase 190 scope | Phase 190 Plan 190-02 | v2.44 preserved current Pi adapter behavior while focusing on artifact/workflow read-cost reductions. |
 | Prefer structural anti-regrowth checks over long exact-prose assertions | Phase 191 Plan 191-01 | Validation now protects context-diet gains with line budgets, archive pointers, occurrence ceilings, and short semantic anchors. |
+| Declare Claude Code compatibility unsupported/frozen and allow PALS architecture to become Pi-native | v2.45 milestone creation | Future work may stop maintaining Claude-specific wrappers/prompts and leverage Pi extensions without preserving cross-harness parity. |
+| Record Pi as the supported runtime and classify Claude Code / Agent SDK as unsupported/frozen historical surfaces | Phase 192 Plan 192-01 APPLY | README, portability docs, and new inventory now route future v2.45 work through Pi-native support-tier assumptions while preserving `.paul/*` artifact authority. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -75,25 +80,24 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Blockers/Concerns
 
-- Future work should preserve artifact-first truth and resist telemetry, Pi-owned execution state, or reopening the settled Phase 69/70 contract without new evidence.
-- Future context optimization must not weaken PLAN/APPLY/UNIFY, GitHub Flow, module dispatch, archive authority, parent-owned APPLY boundaries, or Phase 191 anti-regrowth validation; future work should clarify Claude Code support tier before investing in Claude-specific polish.
+- Future work should preserve artifact-first truth and resist telemetry, Pi-owned authoritative execution state, or reopening the settled Phase 69/70 contract without new evidence.
+- The v2.45 architecture may use Pi runtime assistance aggressively, but it must reduce model context burden without creating an opaque control plane or weakening PLAN/APPLY/UNIFY, module evidence, GitHub Flow safety, or parent-owned APPLY boundaries.
 
 ### Git State
 
-Branch: main
+Branch: feature/192-support-tier-reset-surface-inventory
 Last commit: 8fe5dfed — chore: finalize v2.44 milestone completion; tag v2.44 pushed
 PR: #105 MERGED — https://github.com/coctostan/pals/pull/105 (Phase 191 Plan 191-01 APPLY + UNIFY/transition artifacts)
-CI: local validation passing — Pi 183/183 and cross-harness 100/100; completion commit and tag v2.44 pushed to origin
+CI: local validation passing — Pi 183/183 and cross-harness 100/100 after Phase 192 Plan 192-01 APPLY
 Prior PRs: #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T12:45:00Z
-Stopped at: v2.44 milestone archived and completion index updated
-Next action: /paul:discuss-milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-04-27T14:45:47Z
+Stopped at: Plan 192-01 APPLY complete
+Next action: Run /paul:unify .paul/phases/192-support-tier-reset-surface-inventory/192-01-PLAN.md
+Resume file: .paul/phases/192-support-tier-reset-surface-inventory/192-01-PLAN.md
 Resume context:
-- v2.44 completed four phases and five plans: wrapper slimming, hot-path read audit, ROADMAP archive split, workflow/reference centralization, and anti-regrowth validation.
-- Milestone archive created at `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md`.
-- Validation at closeout remains Pi 183/183 and cross-harness 100/100.
-- Next action is to discuss scope for the next milestone before creating phases.
+- APPLY created `docs/PI-NATIVE-SUPPORT-INVENTORY.md`, updated README to Pi-supported / Claude Code and Agent SDK unsupported/frozen messaging, and marked portability docs as historical/frozen reference.
+- Verification passed: `tests/pi-end-to-end-validation.sh` 183/183 and `tests/cross-harness-validation.sh` 100/100.
+- Ready for UNIFY to create `192-01-SUMMARY.md`, record module reports, and reconcile deferred Phase 193–196 questions.

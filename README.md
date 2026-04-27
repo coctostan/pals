@@ -1,8 +1,8 @@
 # PALS
 
-PALS (Project Automation & Lifecycle System) is an end-to-end development framework for agentic coding. It manages the full plan-apply-unify lifecycle, enforces quality gates, loads context-aware modules, and tracks state across sessions — all through a modular architecture that runs on any agentic coding platform.
+PALS (Project Automation & Lifecycle System) is an end-to-end development framework for agentic coding. It manages the full plan-apply-unify lifecycle, enforces quality gates, loads context-aware modules, and tracks state across sessions.
 
-Built for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Pi](https://github.com/nicholasgasior/pi-coding-agent), and the Agent SDK. Eighteen modules. One kernel. Zero boilerplate.
+**Support status:** Pi is the supported runtime for current PALS development. Claude Code and Agent SDK compatibility are unsupported/frozen historical surfaces: existing drivers and docs may remain as reference, but active product work no longer targets cross-harness parity. Eighteen modules. One kernel. Pi-first runtime assistance.
 
 ## Quick Start
 
@@ -12,7 +12,7 @@ cd pals
 ./install.sh
 ```
 
-Start a new Claude Code or Pi session, then in any project:
+Start a new Pi session, then in any project:
 
 ```
 /paul:init        # Set up PALS in your project
@@ -21,8 +21,10 @@ Start a new Claude Code or Pi session, then in any project:
 /paul:unify       # Reconcile results and close the loop
 ```
 
-In Claude Code, those commands are installed as slash commands. In Pi, the runtime is split across three shipped surfaces: the shared kernel and canonical skills under `~/.pi/agent/skills/pals/`, the Pi extension at `~/.pi/agent/extensions/pals-hooks.ts`, and project-shipped agents under `~/.pi/agent/agents/`.
-Driver surfaces: Claude Code · Pi · Agent SDK. Pi driver installs canonical skills plus an extension-backed command/hook layer.
+Pi is the supported runtime: PALS installs canonical skills under `~/.pi/agent/skills/pals/`, the Pi extension at `~/.pi/agent/extensions/pals-hooks.ts`, and project-shipped helper agents under `~/.pi/agent/agents/`.
+
+Claude Code and Agent SDK surfaces are unsupported/frozen historical compatibility references. They may remain in the repository, but new architecture work should use the Pi-native surfaces and preserve `.paul/*` artifact authority.
+Driver inventory remains documented for maintenance context: Claude Code · Pi · Agent SDK. Pi driver installs canonical skills plus an extension-backed command/hook layer; the other surfaces are frozen legacy references.
 
 That split keeps the operating model explicit. `/paul-*` remains the Pi-native command layer, `/skill:paul-*` remains the canonical workflow entry layer, and shared markdown workflows plus `.paul/*` remain the only lifecycle truth. Pi can expose bounded helper surfaces such as the repo-local `pals-implementer`, but it does not become the owner of PLAN/APPLY/UNIFY state.
 That's the core loop. PALS tracks state, enforces quality, and manages context across sessions — you focus on the work.
@@ -43,7 +45,7 @@ PALS uses a three-layer stack inspired by operating system design:
 │  PAUL — lifecycle, commands, workflows            │
 ├─────────────────────────────────────────────────┤
 │                    Platforms                        │
-│  Claude Code · Pi                      │
+│  Pi supported · Claude/SDK frozen               │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -51,7 +53,7 @@ PALS uses a three-layer stack inspired by operating system design:
 
 **Modules** — Each module registers for lifecycle events (pre-plan, post-apply, etc.) and participates automatically. Enable or disable any module without affecting the rest. 8 core pals handle lifecycle concerns; 10 expert modules cover architecture, security, accessibility, performance, data, API design, UX, observability, resilience, and privacy.
 
-**Platforms** — Wiring layer that connects the kernel to a specific platform. The Claude Code driver installs slash commands and hooks. The Pi driver installs canonical skills plus an extension-backed command/hook layer.
+**Platforms** — Wiring layer that connects the kernel to a specific platform. Pi is the supported runtime and installs canonical skills plus an extension-backed command/hook layer. Claude Code and Agent SDK drivers are frozen historical surfaces, not active compatibility targets.
 
 ## Key Features
 
@@ -254,12 +256,11 @@ cd pals
 ./install.sh
 ```
 
-The installer:
-- Detects available harnesses (Claude Code, Pi) and installs matching driver surfaces
-- **Claude Code:** Wires slash commands into `~/.claude/`
+The installer currently prioritizes Pi-first use:
 - **Pi skill/kernel surface:** Installs shared workflows, references, templates, rules, and canonical skills to `~/.pi/agent/skills/pals/`
 - **Pi extension surface:** Installs `pals-hooks.ts` to `~/.pi/agent/extensions/`
 - **Pi project-agent surface:** Installs project-shipped agent definitions, including `pals-implementer`, to `~/.pi/agent/agents/`
+- **Frozen legacy surfaces:** Existing Claude Code and Agent SDK files may remain for historical/reference compatibility, but they are unsupported/frozen and not active support targets
 - Generates `modules.yaml` registry for all 18 modules
 - Reads `pals.json` to determine which modules to install
 - Detects and cleans up legacy installations if present
@@ -277,7 +278,7 @@ Removes all PALS files from installed driver locations without affecting unrelat
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and/or [Pi](https://github.com/nicholasgasior/pi-coding-agent)
+- [Pi](https://github.com/nicholasgasior/pi-coding-agent) — supported runtime. Claude Code and Agent SDK surfaces are unsupported/frozen historical references.
 - `gh` CLI (optional — required only for GitHub Flow enforcement)
 
 ## Documentation

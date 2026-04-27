@@ -1,5 +1,7 @@
 # PALS Harness Portability Notes
 
+> **Status: historical/frozen reference.** This document preserves prior cross-harness design thinking, artifact-first constraints, and hidden-state warnings. It is no longer the active product roadmap for current PALS development. Pi-native architecture work should use `docs/PI-NATIVE-SUPPORT-INVENTORY.md` for current support-tier classification and follow-up decisions.
+
 ## Goal
 
 PALS should become a **portable artifact-driven workflow kernel** whose state and process can move between harnesses (Claude Code, pi, Codex, future adapters) without migrating project data.

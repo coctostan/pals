@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Awaiting next milestone | See `.paul/STATE.md`; run `/paul:discuss-milestone` to define scope |
+| Current milestone | v2.45 Pi-Native PALS Architecture | See `.paul/ROADMAP.md`; Phase 192 ready for `/paul:plan` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -66,7 +66,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.44 is complete and archived. Next milestone scope is not yet defined; run `/paul:discuss-milestone` to explore the next release direction before creating phases.
+v2.45 Pi-Native PALS Architecture is active with phases 192–196. Phase 192 is ready for `/paul:plan`.
 
 ## Archive
 
@@ -74,4 +74,4 @@ v2.44 is complete and archived. Next milestone scope is not yet defined; run `/p
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for v2.44 completion: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for v2.45 creation: 2026-04-27.*
