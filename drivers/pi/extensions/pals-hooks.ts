@@ -9,7 +9,7 @@
  * Requires: Pi coding agent with extension support
  */
 
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, existsSync, statSync } from "fs";
 import { join } from "path";
 import { Key } from "@mariozechner/pi-tui";
 
@@ -37,6 +37,9 @@ const MAX_VISIBLE_MODULES = 3;
 const MAX_WIDGET_MODULE_DETAILS = 4;
 const DISPATCH_MARKER = "[dispatch]";
 const MODULE_REPORTS_HEADER = "Module Execution Reports";
+const MAX_ARTIFACT_SLICE_CHARS = 3_000;
+const MAX_ARTIFACT_SLICE_LINES = 8;
+const ARTIFACT_SLICE_SOURCES = [".paul/STATE.md", ".paul/ROADMAP.md"];
 
 // -- CARL Session Boundary Manager constants --
 const CARL_NEW_SESSION_TIMEOUT_MS = 10_000;
@@ -71,6 +74,13 @@ type ActivationState = {
   signal: string;
   expiresAt: number;
   turnsRemaining: number;
+};
+
+
+type ArtifactSlice = {
+  source: string;
+  freshness: string;
+  lines: string[];
 };
 
 type GuidedWorkflowOption = {
@@ -185,6 +195,73 @@ function parsePalsState(cwd: string): PalsStateSnapshot {
       : undefined,
     nextAction: compactWhitespace(nextMatch?.[1]),
   };
+}
+
+function getFileFreshness(path: string): string {
+  try {
+    return existsSync(path) ? statSync(path).mtime.toISOString() : "unavailable";
+  } catch {
+    return "unavailable";
+  }
+}
+
+function selectBoundedLines(content: string, patterns: RegExp[]): string[] {
+  const selected: string[] = [];
+  for (const line of content.split(/\r?\n/)) {
+    const compact = compactWhitespace(line);
+    if (!compact) continue;
+    if (patterns.some((pattern) => pattern.test(compact))) selected.push(compact);
+    if (selected.length >= MAX_ARTIFACT_SLICE_LINES) break;
+  }
+  return selected;
+}
+
+function extractPlanPath(nextAction?: string): string | undefined {
+  const match = nextAction?.match(/\.paul\/phases\/[^\s`]+\/\d+-\d+-PLAN\.md/);
+  return match?.[0];
+}
+
+function buildArtifactSlice(cwd: string, source: string, patterns: RegExp[]): ArtifactSlice {
+  const absolute = join(cwd, source);
+  const content = readFileOr(absolute, "");
+  const lines = content ? selectBoundedLines(content, patterns) : [];
+  return {
+    source,
+    freshness: getFileFreshness(absolute),
+    lines: lines.length > 0 ? lines : ["unavailable-source note: no bounded slice content available; use full authoritative read if needed."],
+  };
+}
+
+function renderArtifactSlices(cwd: string, state: PalsStateSnapshot): string[] {
+  const phaseNumber = state.phase?.match(/^(\d+)/)?.[1];
+  const sources = [...ARTIFACT_SLICE_SOURCES];
+  const planPath = extractPlanPath(state.nextAction);
+  if (planPath) sources.push(planPath);
+
+  const slices = sources.map((source) => {
+    const patterns = source.endsWith("STATE.md")
+      ? [/^Milestone:/, /^Phase:/, /^Plan:/, /^Status:/, /^Last activity:/, /^Next action:/, /^Resume file:/]
+      : source.endsWith("ROADMAP.md")
+        ? [new RegExp(`Phase\\s+${phaseNumber ?? "[0-9]+"}`, "i"), /Exploratory Pi-Native Spikes/i, /artifact-slice/i, /bounded/i]
+        : [/^## Goal/, /^## Purpose/, /^## Output/, /^## AC-/, /artifact-slice/i, /Source:/, /Freshness:/, /Fallback:/];
+    return buildArtifactSlice(cwd, source, patterns);
+  });
+
+  const rendered = [
+    "Artifact slices (read-only, bounded)",
+    `Bounds: MAX_ARTIFACT_SLICE_CHARS=${MAX_ARTIFACT_SLICE_CHARS}; MAX_ARTIFACT_SLICE_LINES=${MAX_ARTIFACT_SLICE_LINES}`,
+    "Fallback: full authoritative read required for edits, lifecycle decisions, ambiguity, stale data, contested facts, and GitHub Flow gates.",
+  ];
+
+  for (const slice of slices) {
+    rendered.push(`Source: ${slice.source}`);
+    rendered.push(`Freshness: ${slice.freshness}`);
+    rendered.push(...slice.lines.map((line) => `- ${line}`));
+  }
+
+  const joined = rendered.join("\n");
+  if (joined.length <= MAX_ARTIFACT_SLICE_CHARS) return rendered;
+  return joined.slice(0, MAX_ARTIFACT_SLICE_CHARS).split(/\n/).concat("[artifact slice truncated at MAX_ARTIFACT_SLICE_CHARS]");
 }
 
 function getCommand(name: CommandDef["name"]): CommandDef | undefined {
@@ -468,7 +545,7 @@ function shouldInjectPalsContext(state: PalsStateSnapshot, activation: Activatio
   return Boolean(state.detected && activation && activation.turnsRemaining > 0);
 }
 
-function buildPalsContextPayload(state: PalsStateSnapshot, activation: ActivationState): string {
+function buildPalsContextPayload(state: PalsStateSnapshot, activation: ActivationState, cwd: string): string {
   return [
     "## PALS Context (bounded injection)",
     "",
@@ -480,6 +557,8 @@ function buildPalsContextPayload(state: PalsStateSnapshot, activation: Activatio
     "Delegated APPLY may use repo-local `pals-implementer` only for eligible bounded tasks; parent APPLY remains authoritative for verification, module enforcement, fallback, and `.paul/*` lifecycle writes.",
     "",
     "Use shared .paul/* artifacts and loaded SKILL.md/workflow instructions as the authoritative lifecycle source.",
+    "",
+    ...renderArtifactSlices(cwd, state),
   ]
     .filter(Boolean)
     .join("\n");
@@ -1286,7 +1365,7 @@ export default function palsHooks(pi: any): void {
 
     if (!shouldInjectPalsContext(state, activeActivation)) return;
 
-    const contextPayload = buildPalsContextPayload(state, activeActivation as ActivationState);
+    const contextPayload = buildPalsContextPayload(state, activeActivation as ActivationState, cwd);
     consumeActivationTurn();
 
     return {
