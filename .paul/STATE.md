@@ -72,11 +72,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/188-workflow-prompt-skill-slimming
-Phase transition commit: current feature branch commit feat(188): slim workflow prompt and skill wrappers
-PR: https://github.com/coctostan/pals/pull/100 (OPEN)
-CI: passing — local Pi 177/177, cross-harness 90/90, and Socket Security checks passing on PR #100
-Prior PRs: #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Phase transition commit: main transition commit after PR #100 squash merge 5d03e3b7
+PR: https://github.com/coctostan/pals/pull/100 (MERGED)
+CI: passing — local Pi 177/177, cross-harness 90/90, and Socket Security checks passed before merge
+Prior PRs: #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
