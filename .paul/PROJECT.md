@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.44 PALS Context Optimization — Process & Artifacts is complete.
+v2.45 Pi-Native PALS Architecture is active; Phase 192 is complete and Phase 193 Pi Runtime Capability Mapping is next.
 
-v2.44 completed context optimization across PALS process and artifacts: Phase 188 slimmed workflow prompt/skill wrappers; Phase 189 measured remaining hot-path reads and ranked reductions; Phase 190 simplified active artifact structure by archiving completed ROADMAP history, centralizing GitHub Flow stanzas, hoisting module-dispatch taxonomy, and making APPLY optional refs conditional; Phase 191 refreshed anti-regrowth validation to lock the new budgets across Pi, Claude Code, and repo-source surfaces.
+v2.45 is an architecture/design milestone to reposition PALS around Pi as the supported runtime, keep Claude Code and Agent SDK as unsupported/frozen historical surfaces, and explore how Pi extensions can reduce context pollution while making PLAN/APPLY/UNIFY more guided, enforceable, and effective.
 
 ## Hot-path reading model
 
@@ -38,6 +38,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns verification, module gates, fallback, and `.paul/*` lifecycle writes.
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
 - v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
+- v2.45 explores Pi-native runtime assistance as the primary future architecture direction while keeping `.paul/*` artifacts authoritative; Phase 192 established the support-tier inventory and frozen-legacy classifications.
 
 ## Current milestone posture
 
@@ -47,8 +48,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | Complete | Shipped bounded parser/hook instrumentation repair and accepted CODI v0.1 as good enough. |
 | v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
 | v2.44 PALS Context Optimization — Process & Artifacts | Complete | Reduced recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety; Phase 191 validation now protects the gains. |
+| v2.45 Pi-Native PALS Architecture | Active | Explores dropping Claude Code as an active support target and designing PALS around Pi extension commands, tools, hooks, UI, and compaction/context assistance. |
 
-See `.paul/MILESTONES.md` for the compact milestone index, `.paul/ROADMAP.md` for active routing, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
+See `.paul/ROADMAP.md` for the active v2.45 phase plan, `.paul/MILESTONES.md` for the compact milestone index, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
 
@@ -80,15 +82,17 @@ See `.paul/MILESTONES.md` for the compact milestone index, `.paul/ROADMAP.md` fo
 | Phase 190 artifact simplification uses active-window artifacts plus reference-owned shared mechanics. | Phase 190 Plans 190-01/190-02 | ROADMAP history and duplicated workflow mechanics are authoritative but no longer repeated in hot-path reads. |
 | Defer Pi adapter modularization to a future driver-quality milestone. | Phase 190 Plan 190-02 | Keeps v2.44 focused on process/artifact read-cost reductions without changing Pi runtime behavior. |
 | Prefer structural anti-regrowth checks over long exact-prose assertions. | Phase 191 Plan 191-01 | Validation protects context-diet gains through line budgets, archive pointers, occurrence ceilings, and short semantic anchors across source and installed surfaces. |
+| Claude Code compatibility is unsupported/frozen; PALS may become Pi-native. | v2.45 milestone creation | Future architecture can leverage Pi extensions without preserving cross-harness parity, while keeping `.paul/*` artifacts authoritative. |
+| Pi is the supported runtime; Claude Code and Agent SDK are unsupported/frozen historical surfaces. | Phase 192 Plan 192-01 | Current architecture work should use `docs/PI-NATIVE-SUPPORT-INVENTORY.md` as the support-tier classification source while preserving `.paul/*` artifact authority. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
 
-- Single `git clone` + install path gets PALS working across supported harnesses.
+- Single `git clone` + install path gets PALS working on the supported Pi runtime.
 - Full PLAN/APPLY/UNIFY loop works on real projects with module dispatch evidence.
 - Context optimization materially reduces hot-path read cost while preserving history and lifecycle authority.
-- PALS remains the user-friendly end-to-end agentic coding framework for Claude Code, Pi, and future harnesses.
+- PALS remains the user-friendly end-to-end agentic coding framework for Pi-first development while preserving historical artifact-first constraints.
 
 ## Specialized Flows
 
@@ -112,4 +116,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after v2.44 milestone completion.*
+*Last updated: 2026-04-27 after Phase 192 support-tier reset completion.*

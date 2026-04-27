@@ -27,21 +27,40 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.44 PALS Context Optimization — Process & Artifacts**
-Status: ✅ Complete
-Completed: 2026-04-27
-Archive: [archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
-Phases: 4 of 4 complete
+**v2.45 Pi-Native PALS Architecture**
+Status: 🚧 In Progress
+Phases: 1 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
-| 189 | Hot-Path Read Audit | 1/1 | ✅ Complete | 2026-04-27 |
-| 190 | Artifact Structure Simplification | 2/2 | ✅ Complete | 2026-04-27 |
-| 191 | Validation + Anti-Regrowth Update | 1/1 | ✅ Complete | 2026-04-27 |
+| 192 | Support-Tier Reset + Surface Inventory | 1/1 | ✅ Complete | 2026-04-27 |
+| 193 | Pi Runtime Capability Mapping | TBD | Next | - |
+| 194 | Context-Efficiency Architecture | TBD | Not started | - |
+| 195 | Exploratory Pi-Native Spikes | TBD | Not started | - |
+| 196 | Final Pi-Native Architecture Proposal | TBD | Not started | - |
+
+### Phase 192: Support-Tier Reset + Surface Inventory
+Focus: Declare Claude Code unsupported/frozen; inventory cross-harness assumptions, wrappers, prompts, docs, and validation expectations.
+Plans: 192-01 complete — support-tier reset documented and Pi-native support inventory created.
+
+### Phase 193: Pi Runtime Capability Mapping
+Focus: Map PLAN/APPLY/UNIFY, modules, GitHub Flow, context injection, and handoffs onto Pi extension primitives.
+Plans: Ready for /paul:plan
+
+### Phase 194: Context-Efficiency Architecture
+Focus: Design how runtime assistance reduces repeated prompt, workflow, artifact, and context cost while preserving artifact-first truth.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 195: Exploratory Pi-Native Spikes
+Focus: Run optional small prototypes to validate extension commands, lifecycle status, artifact tools, compaction hooks, UI dialogs, or related runtime-assistance ideas.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 196: Final Pi-Native Architecture Proposal
+Focus: Produce the final design doc, migration plan, implementation roadmap, explicit non-goals, and recommendations for follow-on implementation milestones.
+Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+Defined after v2.45 completion.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -52,4 +71,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — v2.44 archived; awaiting next milestone definition.*
+*Last updated: 2026-04-27 — Phase 192 complete; ready to plan Phase 193.*
