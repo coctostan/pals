@@ -9,21 +9,21 @@ See: .paul/PROJECT.md (updated 2026-04-27 after Phase 190 transition)
 ## Current Position
 
 Milestone: v2.44 PALS Context Optimization — Process & Artifacts
-Phase: 191 of 4 in v2.44 — Validation + Anti-Regrowth Update — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-04-27T02:45:00Z — Phase 190 complete; PR #104 merged; transitioned to Phase 191
+Phase: 191 of 4 in v2.44 — Validation + Anti-Regrowth Update — APPLY complete
+Plan: 191-01 executed, ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-27T12:07:07Z — Completed APPLY for .paul/phases/191-validation-anti-regrowth-update/191-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
-- v2.44 PALS Context Optimization — Process & Artifacts: [███████░░░] 75% (3 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓)
+- v2.44 PALS Context Optimization — Process & Artifacts: [████████░░] 75% (3 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓; Phase 191 APPLY complete)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to PLAN Phase 191]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -79,20 +79,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Phase transition commit: 7022bbcb — feat(190-artifact-structure-simplification): complete phase transition
-PR: #104 MERGED (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); prior #103/#102 MERGED (Phase 190 Plan 190-01 UNIFY/APPLY artifacts)
-CI: local validation passing — Pi 177/177 and cross-harness 90/90; PR #104 checks passed before merge
+Branch: feature/191-validation-anti-regrowth-update
+APPLY commit: latest pushed commit on feature/191-validation-anti-regrowth-update — feat(191-validation-anti-regrowth): update guardrails
+PR: #105 OPEN — https://github.com/coctostan/pals/pull/105 (Phase 191 Plan 191-01 APPLY artifacts); prior #104/#103/#102 MERGED
+CI: local validation passing — Pi 183/183 and cross-harness 100/100; PR #105 Socket checks passed
 Prior PRs: #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T02:45:00Z
-Stopped at: Phase 190 complete; transitioned to Phase 191
-Next action: Run /paul:plan for Phase 191
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-27T12:07:07Z
+Stopped at: Plan 191-01 APPLY complete
+Next action: Run /paul:unify .paul/phases/191-validation-anti-regrowth-update/191-01-PLAN.md
+Resume file: .paul/phases/191-validation-anti-regrowth-update/191-01-PLAN.md
 Resume context:
-- Phase 190 is complete: R1 ROADMAP archive split plus R2/R3/R4 workflow centralization shipped and merged via PRs #102, #103, and #104.
-- Phase 190 Plan 190-02 validation passed: semantic marker checks, `bash tests/pi-end-to-end-validation.sh` (177/177), and `bash tests/cross-harness-validation.sh` (90/90).
-- Post-unify WALT/CODI/SKIP/RUBY reports persisted in `190-02-SUMMARY.md`, `.paul/QUALITY-HISTORY.md`, and `.paul/CODI-HISTORY.md`.
-- Phase 191 should refresh validation/anti-regrowth guardrails so the v2.44 slimming gains remain protected across harnesses without brittle exact-prose overfitting.
+- Added structural anti-regrowth helpers/checks to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`.
+- Validation passes: Pi 183/183 and cross-harness 100/100.
+- Module dispatch: TODD/WALT validation gates passed; advisory scans found no blocking issues, with existing large shell validation files noted.
+- Ready to reconcile via UNIFY and create `191-01-SUMMARY.md`.
