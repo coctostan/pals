@@ -70,3 +70,56 @@ Pi runtime primitives are most useful when they make the existing lifecycle easi
 - Module evidence stays visible through `[dispatch] ...` lines and durable reports; live module visibility is only a display of those shared signals.
 - GitHub Flow gates cannot be bypassed by Pi shortcuts, UI automation, or next-action routing.
 - Parent APPLY owns verification, fallback, checkpoint handling, module enforcement, and lifecycle artifact writes even when `pals-implementer` helps with bounded implementation.
+
+## Phase 194 Design Inputs
+
+The current Pi runtime already has enough primitives to support a context-efficiency architecture, but the next phase should design explicit boundaries before increasing automation.
+
+| Design input | Candidate opportunity | Boundary to preserve |
+|---|---|---|
+| Artifact-indexed context loading | Let Pi or a Pi-adjacent tool load compact slices of `.paul/STATE.md`, active ROADMAP sections, PLAN/SUMMARY artifacts, and installed workflow refs on demand instead of repeatedly injecting long prose. | Tool output must cite artifact paths and never become hidden memory. |
+| Command-aware activation | Use explicit `/paul-*` or `/skill:paul-*` activation as the strongest signal for bounded PALS context payloads. | No ambient broad context injection for unrelated prompts. |
+| Workflow-summary resources | Expose short, canonical summaries of PLAN/APPLY/UNIFY and module dispatch semantics from installed resources. | Summaries must point back to shared workflow/reference files and cannot override them. |
+| Guided workflow responses | Use Pi `confirm`/`select` to reduce friction at known canonical prompts. | Every continuation must still be an explicit canonical user reply. |
+| Module-dispatch assistance | Use installed `modules.yaml` metadata to present hook-local guidance and recent module evidence compactly. | PLAN/SUMMARY/STATE remain the durable evidence destinations; Pi must not keep a separate module ledger. |
+| Helper-agent task packets | Improve parent-owned task packet templates for `pals-implementer` and structured result checks. | Parent APPLY still owns eligibility, verification, fallback, and lifecycle writes. |
+| GitHub Flow status surfacing | Surface branch/PR/CI/readiness in status and guided next-action displays. | Merge-gate enforcement and CI failure handling stay in shared workflows. |
+| Session continuity | Use CARL bootstrap prompts plus archived handoffs to reduce fresh-session reloading. | Resume always reads `.paul/STATE.md` first and treats handoff files as context, not authority over newer state. |
+
+### Open Design Questions
+
+1. Which artifact slices should be tool-addressable by name, and which should remain normal markdown reads?
+2. Should Pi expose a dedicated lifecycle-context tool, or should installed skills keep using ordinary file reads with better summaries?
+3. How can guided workflow UI prove that user approval was explicit and canonical in transcripts/artifacts?
+4. What module evidence should appear in the status/widget versus only in PLAN/SUMMARY reports?
+5. Can helper-agent reports be made machine-checkable enough to reduce parent review context without weakening parent verification?
+6. Which validation checks should become Pi-native runtime behavior tests rather than cross-harness parity checks?
+
+## Validation and Redesign Notes
+
+| Validation surface | Keep protecting | Redesign input for Pi-native architecture |
+|---|---|---|
+| `tests/pi-end-to-end-validation.sh` | Pi install structure, skill wrapper shape, extension command/hook surfaces, module registry generation, lifecycle UI markers, context-diet guardrails, and bounded helper-agent language. | Add checks for any Phase 194 context-loading tools, artifact-slice outputs, guided UI behavior, and explicit authority boundaries. |
+| `tests/cross-harness-validation.sh` | Shared kernel invariants, module evidence contract, artifact spec basics, GitHub Flow guardrails, and context-diet ceilings that remain harness-independent. | Reclassify or retire checks whose only purpose is active Claude Code parity; keep shared-invariant checks that still protect Pi. |
+| GitHub Flow CI/status checks | PR readiness, CI state, and merge-safety visibility. | If Pi surfaces richer PR state, tests should assert that UI/status cannot bypass workflow merge gates. |
+| Module-dispatch validation | Installed registry metadata, hook refs, and durable report markers. | If Pi adds compact module guidance, validate it derives from installed `modules.yaml` and still emits workflow evidence. |
+| CARL/session validation | Fresh-session bootstrap and resume routing from state/handoff artifacts. | Validate safety-boundary and phase-boundary behavior without depending on hidden Pi state. |
+
+Validation should move from "Pi plus cross-harness parity" toward "Pi-supported runtime plus shared invariant protection." Cross-harness checks can remain during the transition, but they should not block a Pi-native design solely because a frozen legacy surface does not receive equivalent new behavior.
+
+## Non-Goals for Phase 193
+
+- Do not implement new Pi commands, hooks, tools, dialogs, context compaction, or lifecycle UI behavior.
+- Do not edit `drivers/pi/extensions/pals-hooks.ts`, installed skills, shared workflows, module references, validation scripts, or GitHub Flow mechanics.
+- Do not move lifecycle authority from `.paul/*` artifacts into Pi extension state, helper agents, UI widgets, or hidden context messages.
+- Do not delete, archive, or redesign Claude Code, Agent SDK, portability, or cross-harness files in this phase.
+- Do not decide the final Phase 194 architecture; this map only supplies inputs and guardrails.
+
+## Recommended Next Questions
+
+1. What is the smallest Pi-native context-efficiency architecture that reduces hot-path reads while preserving explicit artifact citations?
+2. Should Phase 194 prioritize lifecycle-context tools, installed resource summaries, guided UI, helper-agent packet improvements, or validation redesign first?
+3. Which current repeated reads are pure orientation cost and safe to replace with Pi-derived summaries?
+4. Where must the model still read the full authoritative markdown because summarization would hide important lifecycle semantics?
+5. How should PALS record Pi-assisted context decisions in PLAN/SUMMARY artifacts so future sessions can audit what happened?
+6. Which frozen legacy surfaces should remain untouched until the final v2.45 proposal, and which should receive explicit retention/removal options?
