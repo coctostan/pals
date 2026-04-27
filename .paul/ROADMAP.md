@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.46 Pi-Native Implementation Planning**
 Status: 🚧 In Progress
-Phases: 3 of 5 complete
+Phases: 4 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
 | 198 | Implementation Workstream Design | 1/1 | Complete | 2026-04-27 |
 | 199 | Sequencing + Dependency Plan | 1/1 | Complete | 2026-04-27 |
-| 200 | Validation + Evidence Strategy | TBD | Ready to plan | - |
+| 200 | Validation + Evidence Strategy | 1/1 | Complete | 2026-04-27 |
 | 201 | Final Implementation Plan Proposal | TBD | Not started | - |
 
 ### Phase 197: v2.45 Findings Triage
@@ -53,7 +53,7 @@ Plans: 199-01 complete — created and unified `docs/PI-NATIVE-SEQUENCING-DEPEND
 
 ### Phase 200: Validation + Evidence Strategy
 Focus: Define how implementation will preserve Pi-supported runtime checks, shared invariants, frozen legacy evidence, runtime lens checks, guided UI safety, and helper-agent delegation checks.
-Plans: TBD (next: run /paul:plan)
+Plans: 200-01 complete — created and unified `docs/PI-NATIVE-VALIDATION-EVIDENCE-STRATEGY.md` with validation taxonomy, current-suite classification, future workstream evidence requirements, command-output/durable artifact evidence rules, Phase 201 handoff, readiness checklist, and stable validation evidence.
 
 ### Phase 201: Final Implementation Plan Proposal
 Focus: Produce the executable Pi-native implementation roadmap for the next build milestone(s), with acceptance criteria, phase recommendations, and non-negotiable authority boundaries.
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 199 complete; Phase 200 ready to plan.*
+*Last updated: 2026-04-27 — Phase 200 complete; Phase 201 Final Implementation Plan Proposal ready to plan.*
