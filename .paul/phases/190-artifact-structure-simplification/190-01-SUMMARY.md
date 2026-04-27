@@ -98,4 +98,4 @@ Phase 190 continues. Next planned work is Plan 190-02: workflow centralization w
 - Hoist module-dispatch priority/taxonomy verbiage.
 - Make conditional references in `apply-phase.md` more targeted.
 
-PRs for this loop: APPLY artifacts merged via https://github.com/coctostan/pals/pull/102; UNIFY artifacts carried by follow-up PR after PR #102 merged before SUMMARY/state-history updates landed.
+PRs for this loop: APPLY artifacts merged via https://github.com/coctostan/pals/pull/102; UNIFY artifacts merged via https://github.com/coctostan/pals/pull/103 after PR #102 merged before SUMMARY/state-history updates landed.

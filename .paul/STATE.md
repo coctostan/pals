@@ -75,21 +75,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/190-artifact-structure-simplification-unify
-Phase transition commit: PR #102 squash merge 42d72a8a; UNIFY artifact follow-up branch pending
-PR: #102 merged for APPLY artifacts; UNIFY follow-up PR pending creation
-CI: local validation passing — Pi 177/177 and cross-harness 90/90; PR #102 Socket Security checks passed
-Prior PRs: #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Phase transition commit: PR #102 squash merge 42d72a8a; PR #103 squash merge 15dc8e57 for UNIFY artifacts
+PR: #102 MERGED (APPLY artifacts), #103 MERGED (UNIFY artifacts)
+CI: local validation passing — Pi 177/177 and cross-harness 90/90; PR #102 and #103 Socket Security checks passed
+Prior PRs: #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T01:37:00Z
-Stopped at: Plan 190-01 UNIFY complete; UNIFY artifact follow-up PR pending
-Next action: Complete GitHub Flow merge gate for UNIFY artifacts, then run /paul:plan for Phase 190 Plan 190-02
+Last session: 2026-04-27T01:45:00Z
+Stopped at: Plan 190-01 loop complete and merged; ready for Phase 190 Plan 190-02 planning
+Next action: Run /paul:plan for Phase 190 Plan 190-02
 Resume file: .paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md
 Resume context:
 - Phase 190 Plan 190-01 completed R1 (ROADMAP archive split): created `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`, compacted `.paul/ROADMAP.md` to 68 lines, registered the archive in `.paul/archive/INDEX.md`, and documented results in `.paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md`.
-- Validation passed: `bash tests/pi-end-to-end-validation.sh` (177/177), `bash tests/cross-harness-validation.sh` (90/90), and PR #102 Socket Security checks. PR #102 merged APPLY artifacts before UNIFY artifacts were added, so UNIFY artifacts are being carried by a follow-up branch.
+- Validation passed: `bash tests/pi-end-to-end-validation.sh` (177/177), `bash tests/cross-harness-validation.sh` (90/90), and PR #102/#103 Socket Security checks. PR #102 merged APPLY artifacts before UNIFY artifacts were added; PR #103 merged the follow-up UNIFY artifacts.
 - UNIFY recorded the verification-count deviation: source ROADMAP had 57 `<details>` lines under 11 `## Completed Milestones` headings; the approved plan expected 11 conceptual blocks, so actual source history was preserved verbatim.
 - Plan 190-02 next: R2 + R3 + R4 — workflow centralization wave (centralize GitHub Flow stanzas, hoist module-dispatch taxonomy, conditional refs in apply-phase.md).
 - Plan 190-03 deferred: R5 — Pi adapter modular split. Decision: defer per user.
