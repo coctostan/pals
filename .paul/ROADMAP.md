@@ -36,7 +36,7 @@ Phases: 1 of 4 complete (25%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
-| 189 | Hot-Path Read Audit | TBD | Not started | - |
+| 189 | Hot-Path Read Audit | 189-01 applied | APPLY ✓ — UNIFY pending | - |
 | 190 | Artifact Structure Simplification | TBD | Not started | - |
 | 191 | Validation + Anti-Regrowth Update | TBD | Not started | - |
 ### Phase 188: Workflow Prompt/Skill Slimming
@@ -44,7 +44,7 @@ Focus: Reduce recurring prompt, skill, and workflow read cost without weakening 
 Plans: 188-01 complete (`.paul/phases/188-workflow-prompt-skill-slimming/188-01-SUMMARY.md`) — selected wrapper total reduced from 406 to 296 lines while Pi and cross-harness validation remained green.
 ### Phase 189: Hot-Path Read Audit
 Focus: Measure what PALS reads repeatedly during normal PLAN/APPLY/UNIFY and identify remaining avoidable context load across workflows and lifecycle artifacts.
-Plans: TBD (defined during /paul:plan)
+Plans: 189-01 applied (`.paul/phases/189-hot-path-read-audit/189-01-PLAN.md`); audit report at `.paul/phases/189-hot-path-read-audit/189-01-HOT-PATH-READ-AUDIT.md`; UNIFY pending.
 ### Phase 190: Artifact Structure Simplification
 Focus: Simplify active `.paul/*` artifacts and conventions where they still create avoidable context load while preserving archive authority and resume/status completeness.
 Plans: TBD (defined during /paul:plan)
@@ -742,4 +742,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 188 complete, Phase 189 ready to plan.*
+*Last updated: 2026-04-27 — Phase 189 Plan 189-01 created.*
