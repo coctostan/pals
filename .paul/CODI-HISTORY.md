@@ -27,3 +27,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 193-01 | 2026-04-27 | injected | 5 | 0 | 11 | parsePalsState, syncLifecycleUi, buildPalsContextPayload, detectGuidedWorkflowMoment, carlEvaluatePhaseCompletion | y |
 | 194-01 | 2026-04-27 | skipped-no-symbols | — | — | — | — | n |
 | 195-01 | 2026-04-27 | injected | 4 | 0 | 9 | buildPalsContextPayload, shouldInjectPalsContext, parsePalsState, keepOnlyLatestPalsContextMessage | y |
+| 196-01 | 2026-04-27 | skipped-no-symbols | — | — | — | — | n |

@@ -28,8 +28,8 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.45 Pi-Native PALS Architecture**
-Status: 🚧 In Progress
-Phases: 4 of 5 complete
+Status: ✅ Complete
+Phases: 5 of 5 complete — 2026-04-27
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -37,7 +37,7 @@ Phases: 4 of 5 complete
 | 193 | Pi Runtime Capability Mapping | 1/1 | ✅ Complete | 2026-04-27 |
 | 194 | Context-Efficiency Architecture | 1/1 | ✅ Complete | 2026-04-27 |
 | 195 | Exploratory Pi-Native Spikes | 1/1 | ✅ Complete | 2026-04-27 |
-| 196 | Final Pi-Native Architecture Proposal | TBD | Ready to plan | - |
+| 196 | Final Pi-Native Architecture Proposal | 1/1 | ✅ Complete | 2026-04-27 |
 
 ### Phase 192: Support-Tier Reset + Surface Inventory
 Focus: Declare Claude Code unsupported/frozen; inventory cross-harness assumptions, wrappers, prompts, docs, and validation expectations.
@@ -57,18 +57,19 @@ Plans: 195-01 complete — bounded, read-only artifact-slice context loading imp
 
 ### Phase 196: Final Pi-Native Architecture Proposal
 Focus: Produce the final design doc, migration plan, implementation roadmap, explicit non-goals, and recommendations for follow-on implementation milestones.
-Plans: TBD (defined during /paul:plan); ready to plan after Phase 195 artifact-slice spike completion.
+Plans: 196-01 complete — created `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` with final target architecture, promoted artifact-slice pattern, migration roadmap, implementation roadmap, validation strategy, explicit non-goals, legacy-surface guidance, and follow-on milestone recommendations.
 
 ## Next Milestone
-Defined after v2.45 completion.
+Follow-on implementation milestone to be selected from `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` recommendations.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
 |-----------|-----------|--------|---------|---------|
 | v2.44 PALS Context Optimization — Process & Artifacts | 2026-04-27 | 188-191 | Reduced recurring PALS context cost across wrappers, hot artifacts, workflow references, and validation guardrails. | [archive](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md) |
+| v2.45 Pi-Native PALS Architecture | 2026-04-27 | 192-196 | Repositioned PALS around Pi as the supported runtime, mapped Pi capabilities, designed context-efficiency architecture, validated artifact-slice context loading, and produced the final Pi-native architecture proposal. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 195 complete; Phase 196 ready to plan.*
+*Last updated: 2026-04-27 — v2.45 complete; Phase 196 Plan 196-01 final Pi-native architecture proposal unified.*
