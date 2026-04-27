@@ -35,7 +35,7 @@ Phases: 2 of 5 complete
 |-------|------|-------|--------|-----------|
 | 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
 | 198 | Implementation Workstream Design | 1/1 | Complete | 2026-04-27 |
-| 199 | Sequencing + Dependency Plan | TBD | Not started | - |
+| 199 | Sequencing + Dependency Plan | TBD | Ready to plan | - |
 | 200 | Validation + Evidence Strategy | TBD | Not started | - |
 | 201 | Final Implementation Plan Proposal | TBD | Not started | - |
 
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 198 complete; ready for Phase 199 sequencing and dependency planning.*
+*Last updated: 2026-04-27 — Phase 198 complete; Phase 199 ready to plan sequencing and dependency constraints.*
