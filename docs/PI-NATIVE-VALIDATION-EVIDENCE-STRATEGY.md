@@ -54,3 +54,66 @@ Non-negotiable boundaries for all later validation decisions:
 6. **Keep guided UI auditable.** Any UI confirmation, selection, checkpoint, approval, continue-to-UNIFY, or merge-gate route must emit explicit canonical transcript or artifact evidence.
 7. **Keep helper delegation parent-verifiable.** Helper-agent context compression is safe only when packet fields, report fields, changed files, attempted commands, fallback triggers, and parent official verification remain inspectable.
 8. **Do not combine validation classification with cleanup.** Legacy retention or install-surface cleanup waits until shared-invariant coverage is identified and product approval is explicit.
+
+## Validation Class Taxonomy
+
+| Class | Purpose | Blocking posture | Example evidence |
+|---|---|---|---|
+| Pi-Supported Runtime | Proves active Pi behavior and install/runtime surfaces work as designed. | Blocking for Pi-native implementation milestones that touch Pi runtime or install behavior. | Pi installer output, `/paul-*` routing, skill/resource installation, extension commands/hooks, lifecycle UI, context injection, guided workflow UX, CARL behavior, helper-agent installation, module registry generation. |
+| Shared Invariant | Protects PALS lifecycle semantics independent of runtime. | Blocking until a future plan intentionally relocates or retires the invariant with equivalent evidence. | `.paul/*` authority markers, PLAN/APPLY/UNIFY loop markers, module evidence requirements, GitHub Flow safety markers, parent-owned APPLY language, explicit approval/checkpoint rules, context-diet budgets, archive/handoff traceability. |
+| Frozen Legacy Parity | Preserves historical compatibility evidence for Claude Code, Agent SDK, and cross-harness installation surfaces after the support-tier reset. | Non-authorizing by itself for new Pi behavior; do not weaken or delete until shared-invariant coverage is identified. | Claude Code wrapper parity, legacy installer parity, exact cross-harness path assumptions, historical portability docs, driver parity checks. |
+| Runtime Lens | Proves Pi-derived context assistance remains bounded, cited, freshness-aware, disposable, and backed by full reads. | Blocking for artifact-slice, workflow/resource capsule, module lens, GitHub Flow lens, CARL bootstrap, or context-injection changes. | Source citations, freshness markers, size/bounds checks, activation gating, duplicate-context trimming, no hidden persistence, full-read fallback text. |
+| Guided UI Safety | Proves Pi UI assistance cannot silently continue lifecycle work or hide user intent. | Blocking for guided workflow, checkpoint, approval, continue-to-UNIFY, or merge-gate UI changes. | Canonical transcript replies, explicit user action, checkpoint blocking, no auto-approval, no auto-continue, no UI-only lifecycle decisions, no merge-gate bypass. |
+| Helper Delegation | Proves `pals-implementer` remains bounded and parent-verifiable. | Blocking for helper-agent packet/report compression or delegated APPLY ergonomics changes. | Required packet/report fields, allowed/forbidden file scope, changed-file diff checks, fallback triggers, parent official verification, no helper-owned `.paul/*` lifecycle writes. |
+| GitHub Flow Safety | Proves branch/PR/CI/review/merge/base-sync behavior remains workflow- and command-evidence-owned. | Blocking for any git status, route, PR, CI, merge-gate, or next-action automation change. | `git branch`, ahead/behind counts, `gh pr view`, `gh pr checks`, merge-gate summaries, PR URL/state, CI status, base sync and branch cleanup output. |
+| Artifact / Process | Proves lifecycle artifacts, reports, plans, summaries, and validation reports remain reviewable and fresh. | Blocking for lifecycle writes and documentation artifacts that shape implementation planning. | PLAN source inputs and boundaries, SUMMARY AC results, STATE/ROADMAP updates, Module Execution Reports, validation report freshness labels, historical-report disclaimers. |
+
+## Current Suite Classification
+
+### `tests/pi-end-to-end-validation.sh`
+
+| Current suite area | Primary class | Secondary class | Preserve / future use |
+|---|---|---|---|
+| Installer Deployment | Pi-Supported Runtime | Shared Invariant | Keep blocking for Pi install structure, skill/resource deployment, modules.yaml generation, extension installation, and helper-agent install evidence. |
+| Module Execution Evidence | Shared Invariant | Pi-Supported Runtime | Keep blocking because installed registry metadata, post-unify module refs, durable summary evidence, and helper-agent boundary markers protect visible module evidence. |
+| Skill Structural Validity | Pi-Supported Runtime | Shared Invariant | Keep blocking for installed Pi skill shape and workflow references; wrapper validity remains active Pi runtime evidence. |
+| Thin Wrapper Contract | Shared Invariant | Pi-Supported Runtime | Keep blocking where wrappers preserve explicit approval, parent-owned APPLY, collaboration, resume routing, GitHub Flow status, and reconciliation semantics. |
+| Delegated APPLY / REV Boundaries | Helper Delegation | Shared Invariant | Keep blocking for bounded `pals-implementer` installation and parent-authority language; add future packet/report field checks here or nearby. |
+| Shared Workflow Prose Contract | Shared Invariant | Runtime Lens | Keep blocking for targeted reads, review menus, roadmap routing, and module-dispatch evidence markers that future capsules must not obscure. |
+| Context-Diet Regression Guardrails | Shared Invariant | Runtime Lens | Keep blocking for active-window line budgets, archive pointers, duplicated GitHub Flow prose ceilings, and hot workflow/reference anti-regrowth budgets. |
+| CODI Plan-Phase Distribution | Shared Invariant | Helper Delegation | Keep blocking for source-selector and CODI evidence markers; classify as module/helper evidence rather than UI runtime behavior. |
+| Extension Structural Validity | Pi-Supported Runtime | Runtime Lens / Guided UI Safety | Keep blocking for command registration, lifecycle UI, context injection, artifact-slice markers, guided workflow detection, module visibility, and bounded lifecycle widgets. |
+| Driver Manifest Accuracy | Pi-Supported Runtime | Shared Invariant | Keep blocking for Pi declared capabilities and installer target accuracy. |
+| Pi Discovery Surfaces | Pi-Supported Runtime | Runtime Lens / Helper Delegation | Keep blocking for command/skill/workflow mapping, shortcuts, install boundaries, helper-agent explanation, and live module visibility as derived-only behavior. |
+| Collaborative Planning Model | Shared Invariant | Guided UI Safety | Keep blocking for collaboration defaults, mode selection, and plan review menu visibility. |
+| UX Readability & Color Enrichment | Pi-Supported Runtime | Guided UI Safety | Keep blocking only when it protects lifecycle clarity; treat visual polish as lower risk than explicit intent and checkpoint evidence. |
+
+### `tests/cross-harness-validation.sh`
+
+| Current suite area | Primary class | Secondary class | Preserve / future use |
+|---|---|---|---|
+| Installer Parity | Frozen Legacy Parity | Shared Invariant | Reclassify carefully: file-count parity and Claude install behavior are frozen legacy evidence, while shared kernel/resource generation can protect shared invariants. |
+| Shared APPLY / REV Boundaries | Shared Invariant | Helper Delegation | Keep blocking because delegated APPLY guardrails and REV separation protect parent-owned APPLY across runtimes. |
+| Durable Module Evidence Path | Shared Invariant | Artifact / Process | Keep blocking because module evidence must remain durable in workflows, specs, templates, and summaries. |
+| Portability Compliance | Shared Invariant | Frozen Legacy Parity | Keep blocking where it prevents harness-specific kernel/module language; parity-only path assumptions need explicit classification before weakening. |
+| Shared Collaborative Planning Model | Shared Invariant | Guided UI Safety | Keep blocking for collaboration modes and review menu preservation independent of runtime. |
+| Context-Diet Regression Guardrails | Shared Invariant | Runtime Lens | Keep blocking for shared workflow ceilings, GitHub Flow markers, module dispatch markers, and context-diet budgets. |
+| CODI Plan-Phase Distribution | Shared Invariant | Helper Delegation | Keep blocking for source-selector contracts and durable CODI instrumentation across installed registries. |
+| Artifact Spec Compliance | Shared Invariant | Artifact / Process | Keep blocking for STATE/PROJECT/ROADMAP structure and artifact-first contract. |
+| Driver Manifests | Frozen Legacy Parity | Shared Invariant | Treat cross-driver capability parity as frozen legacy evidence unless the check protects a still-current shared driver contract. |
+
+## Historical Validation Reports
+
+| Report | Status | How future plans may use it |
+|---|---|---|
+| `docs/PI-VALIDATION-REPORT.md` | Historical example generated 2026-03-14; counts are stale relative to current 186-check Pi validation output. | Use as report-format history only. Do not cite it as current validation truth or update it in Phase 200 APPLY. |
+| `docs/VALIDATION-REPORT.md` | Historical example generated 2026-03-14; counts are stale relative to current 100-check cross-harness validation output. | Use as report-format history only. Do not cite it as current validation truth or update it in Phase 200 APPLY. |
+
+## Preservation Rules
+
+- Do not delete, weaken, or relabel a Shared Invariant check until a future approved plan identifies equivalent command evidence or explicitly retires the invariant.
+- Do not let Frozen Legacy Parity checks silently block a Pi-native implementation proposal solely because a frozen surface does not receive equivalent new behavior.
+- Do not remove parity-only checks in the same step that first classifies them; retention/removal requires a later product/support-surface decision.
+- Do not let Pi summaries, widgets, reports, or context slices replace validation command output.
+- Do not rewrite validation scripts as part of a runtime feature plan unless that plan is explicitly scoped to validation classification or validation-script implementation.
+- Keep fresh APPLY/UNIFY command output as the source of truth even when historical reports exist.
