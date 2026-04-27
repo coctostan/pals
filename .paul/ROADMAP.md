@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.45 Pi-Native PALS Architecture**
 Status: 🚧 In Progress
-Phases: 3 of 5 complete
+Phases: 4 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 192 | Support-Tier Reset + Surface Inventory | 1/1 | ✅ Complete | 2026-04-27 |
 | 193 | Pi Runtime Capability Mapping | 1/1 | ✅ Complete | 2026-04-27 |
 | 194 | Context-Efficiency Architecture | 1/1 | ✅ Complete | 2026-04-27 |
-| 195 | Exploratory Pi-Native Spikes | TBD | Planning next | - |
+| 195 | Exploratory Pi-Native Spikes | 1/1 | ✅ Complete | 2026-04-27 |
 | 196 | Final Pi-Native Architecture Proposal | TBD | Not started | - |
 
 ### Phase 192: Support-Tier Reset + Surface Inventory
@@ -53,7 +53,7 @@ Plans: 194-01 complete — created `docs/PI-NATIVE-CONTEXT-EFFICIENCY-ARCHITECTU
 
 ### Phase 195: Exploratory Pi-Native Spikes
 Focus: Run optional small prototypes to validate extension commands, lifecycle status, artifact tools, compaction hooks, UI dialogs, or related runtime-assistance ideas.
-Plans: TBD (next `/paul:plan`; recommended first candidate is a bounded, read-only artifact-slice context loading spike from Phase 194).
+Plans: 195-01 complete — bounded, read-only artifact-slice context loading implemented for explicit Pi/PALS activation payloads; docs, structural validation, and module history updated; final validation passed Pi 186/186 and cross-harness 100/100.
 
 ### Phase 196: Final Pi-Native Architecture Proposal
 Focus: Produce the final design doc, migration plan, implementation roadmap, explicit non-goals, and recommendations for follow-on implementation milestones.
@@ -71,4 +71,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 194 complete; Phase 195 ready for planning.*
+*Last updated: 2026-04-27 — Phase 195 Plan 195-01 UNIFY complete; phase transition pending.*
