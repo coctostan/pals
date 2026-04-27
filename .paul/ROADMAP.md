@@ -35,7 +35,7 @@ Phases: 2 of 5 complete
 |-------|------|-------|--------|-----------|
 | 192 | Support-Tier Reset + Surface Inventory | 1/1 | ✅ Complete | 2026-04-27 |
 | 193 | Pi Runtime Capability Mapping | 1/1 | ✅ Complete | 2026-04-27 |
-| 194 | Context-Efficiency Architecture | TBD | Planning next | - |
+| 194 | Context-Efficiency Architecture | 1/1 | UNIFY complete; transition pending | - |
 | 195 | Exploratory Pi-Native Spikes | TBD | Not started | - |
 | 196 | Final Pi-Native Architecture Proposal | TBD | Not started | - |
 
@@ -49,7 +49,7 @@ Plans: 193-01 complete — Pi runtime capability map created in `docs/PI-RUNTIME
 
 ### Phase 194: Context-Efficiency Architecture
 Focus: Design how runtime assistance reduces repeated prompt, workflow, artifact, and context cost while preserving artifact-first truth.
-Plans: TBD (next `/paul:plan`; use `docs/PI-RUNTIME-CAPABILITY-MAP.md` and `docs/PI-NATIVE-SUPPORT-INVENTORY.md` as primary inputs)
+Plans: 194-01 complete — created `docs/PI-NATIVE-CONTEXT-EFFICIENCY-ARCHITECTURE.md` with context-cost surfaces, Pi-native assistance architecture, read/citation contract, Phase 195 spike backlog, validation redesign requirements, and Phase 196 open decisions.
 
 ### Phase 195: Exploratory Pi-Native Spikes
 Focus: Run optional small prototypes to validate extension commands, lifecycle status, artifact tools, compaction hooks, UI dialogs, or related runtime-assistance ideas.
@@ -71,4 +71,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 193 complete; Phase 194 ready for planning.*
+*Last updated: 2026-04-27 — Phase 194 Plan 194-01 UNIFY complete; merge gate/transition pending.*
