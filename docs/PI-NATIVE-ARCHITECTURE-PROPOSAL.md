@@ -92,3 +92,98 @@ It rejected opaque Pi memory, telemetry-owned context engines, auto-approval, hi
 Phase 195 validated the first concrete implementation pattern: activation-gated, read-only artifact slices for explicit PALS activations. The spike added bounded slices for `.paul/STATE.md`, `.paul/ROADMAP.md`, and discoverable current PLAN artifacts, with source citations, freshness markers, fallback language, and structural validation.
 
 This pattern is safe to promote because it is derived, bounded, disposable, source-cited, freshness-marked, and explicitly backed by full authoritative reads for edits, lifecycle decisions, stale or contested facts, and GitHub Flow gates.
+
+## Promoted Patterns
+
+### Promote: Activation-Gated Artifact-Slice Loading
+
+Artifact-slice loading should become the first implementation-grade Pi-native context-efficiency pattern. The promoted contract is:
+
+- Trigger only after explicit PALS activation such as `/paul-*` or `/skill:paul-*`.
+- Read repo-local authoritative artifacts only.
+- Keep output bounded and intentionally shallow.
+- Include `Source:` path citations and freshness markers.
+- Include fallback language requiring full authoritative reads for edits, lifecycle decisions, stale or contested facts, and GitHub Flow gates.
+- Avoid `.paul/*` writes, hidden persistence, telemetry, caches that act as truth, and lifecycle ledgers.
+
+This pattern should be generalized cautiously from current state/roadmap/plan slices into named lifecycle slices only after each slice has a citation schema, a size bound, a freshness rule, and a validation check.
+
+### Promote Later: Workflow/Resource Capsules
+
+Workflow/resource capsules are valuable but riskier than artifact slices because they summarize authoritative process prose. They should follow artifact slices and must cite installed workflow/reference paths. Capsules are appropriate for stable orientation content such as task anatomy, checkpoint prompt shape, module-dispatch evidence conventions, and GitHub Flow preflight/postflight reminders.
+
+Capsules must not replace full reads of workflow sections that include blocking behavior, override paths, STOP/DO NOT SKIP semantics, checkpoint handling, lifecycle writes, or merge gates.
+
+### Promote Later: Guided Workflow Evidence Hardening
+
+Pi guided UI should continue to reduce prompt friction only when it sends explicit canonical user replies into the transcript. Future work should strengthen auditability for plan review, APPLY approval, checkpoint decisions, continue-to-UNIFY prompts, and merge-gate routing.
+
+### Promote Later: Helper-Agent Packet and Report Compression
+
+`pals-implementer` can reduce parent context burden for bounded repo-local tasks, but only with parent-owned task packets and structured result reports. Future work should formalize packet fields, required report schema, allowed-file checks, fallback triggers, and parent verification obligations.
+
+## Deferred or Rejected Options
+
+| Option | Decision | Reason |
+|---|---|---|
+| Hidden Pi lifecycle state | Reject | Breaks portable markdown truth and makes future sessions unauditable. |
+| Telemetry-owned context engine | Reject | Creates opaque runtime authority and privacy/scope risk. |
+| Auto-approval or auto-continue | Reject | Violates explicit approval and checkpoint invariants. |
+| Merge-gate bypass from Pi status/widget | Reject | Risks merging behind-base or failing-CI work. |
+| Helper-agent-owned APPLY | Reject | Undermines parent verification, fallback, module gates, checkpoints, and `.paul/*` writes. |
+| Broad replacement of workflow reads with summaries | Reject | Summaries can omit blocking semantics; use capsules for orientation only. |
+| Active Claude Code / Agent SDK parity as a constraint | Reject for current work | Conflicts with Phase 192 support-tier reset; preserve historical references and shared invariants instead. |
+| Validation-script rewrite during architecture closure | Defer | The final proposal may route validation redesign, but implementation belongs in a later bounded milestone. |
+
+## Migration Roadmap
+
+1. **Stabilize artifact-slice contracts.** Define the stable output schema for source path, slice label, freshness, size bounds, and fallback instructions. Keep slices read-only and activation-gated.
+2. **Expand named artifact slices gradually.** Add only high-value slices for current lifecycle state, active roadmap phase, current PLAN task packet, recent SUMMARY decisions, and module evidence. Each new slice needs validation and source citations.
+3. **Add workflow/resource capsules.** Introduce installed-resource capsules for stable orientation content after artifact-slice citation and fallback behavior is proven.
+4. **Harden guided workflow replies.** Make Pi confirm/select flows visibly canonical in transcripts and impossible to confuse with auto-approval or UI-only decisions.
+5. **Formalize helper-agent packet/report compression.** Improve delegated APPLY ergonomics while keeping parent APPLY authoritative for eligibility, verification, fallback, and lifecycle writes.
+6. **Reclassify validation.** Move reporting toward Pi-supported runtime checks, shared invariant checks, and frozen legacy parity checks while keeping existing validation green during transition.
+7. **Decide legacy retention/removal.** Make explicit product decisions for Claude Code wrappers, Agent SDK surfaces, portability docs, and cross-harness parity checks after Pi-native implementation patterns are validated.
+
+## Legacy Surface Guidance
+
+| Surface | Guidance | Timing |
+|---|---|---|
+| Claude Code command wrappers and driver | Keep frozen as legacy/reference. Do not expand active parity. | Revisit after Pi-native context patterns and validation classification are stable. |
+| Agent SDK driver | Keep as proof-of-concept/historical reference. Do not optimize new architecture around SDK limits. | Revisit in a retention/removal milestone. |
+| Portability docs | Keep as historical reference, especially artifact-first and hidden-state warnings. Mark current product direction as Pi-supported. | Update only when needed for clarity, not as active parity work. |
+| Cross-harness validation | Continue running while it protects shared invariants. Reclassify parity-only checks before deletion or weakening. | Validation classification milestone. |
+| Pi validation | Treat as primary local validation for supported runtime behavior. Expand for artifact slices, capsules, guided UI safety, helper-agent reports, and GitHub Flow surfacing. | Ongoing Pi-native implementation milestones. |
+
+## Implementation Roadmap
+
+### Recommended Follow-On Milestone A — Artifact Slice Contract Hardening
+
+Goal: turn the Phase 195 spike into a stable Pi-native context-slice contract. Candidate work includes schema documentation, additional slice names, source/freshness formatting, validation coverage, and fallback marker checks.
+
+### Recommended Follow-On Milestone B — Workflow Capsules and Guided UI Evidence
+
+Goal: reduce recurring workflow prompt cost without weakening lifecycle semantics. Candidate work includes installed workflow/resource capsules, explicit path citations, plan-review/apply/checkpoint UI auditability, and tests that prove no auto-continue path exists.
+
+### Recommended Follow-On Milestone C — Delegated APPLY Packet Compression
+
+Goal: make `pals-implementer` delegation cheaper to inspect while preserving parent authority. Candidate work includes task-packet templates, required structured reports, allowed-file diff checks, stop/fallback triggers, and parent-owned verification evidence.
+
+### Recommended Follow-On Milestone D — Pi-Native Validation Classification
+
+Goal: classify validation as Pi-supported runtime, shared invariant, or frozen legacy parity. Candidate work includes clearer validation reports, guardrails for newly implemented Pi runtime lenses, and non-destructive migration of parity-only assertions.
+
+### Recommended Follow-On Milestone E — Legacy Retention and Install Surface Cleanup
+
+Goal: decide what frozen legacy surfaces stay installed, move to archives, or remain source-only references. This milestone should happen after validation classification so shared invariants are not accidentally removed.
+
+## Non-Goals
+
+- Do not move lifecycle truth out of `.paul/*` artifacts.
+- Do not create hidden Pi memory, telemetry-owned context, persistent caches that act as truth, or a new lifecycle ledger.
+- Do not allow Pi UI to auto-approve, auto-continue, skip checkpoints, or merge work.
+- Do not let helper agents own APPLY, checkpoints, official verification, module gates, fallback, or `.paul/*` writes.
+- Do not bypass GitHub Flow branch, PR, CI, review, merge, base-sync, or cleanup gates.
+- Do not delete or archive Claude Code, Agent SDK, portability, or cross-harness validation surfaces as part of this proposal.
+- Do not rewrite validation scripts, workflows, drivers, module manifests, installers, or dependency manifests as part of this proposal.
+- Do not treat runtime slices or workflow capsules as substitutes for full authoritative reads when facts are stale, ambiguous, contested, or lifecycle-changing.
