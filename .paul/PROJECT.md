@@ -12,7 +12,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 v2.44 PALS Context Optimization — Process & Artifacts.
 
-v2.44 continues context optimization across PALS process and artifacts. Phase 188 slimmed workflow prompt/skill wrappers; Phase 189 measured remaining hot-path reads and ranked the next reductions; Phase 190 will simplify active artifact structure (apply STATE archive pattern to ROADMAP, centralize GitHub Flow stanzas, hoist module-dispatch taxonomy, conditional refs); Phase 191 will refresh anti-regrowth validation to lock the new budgets.
+v2.44 continues context optimization across PALS process and artifacts. Phase 188 slimmed workflow prompt/skill wrappers; Phase 189 measured remaining hot-path reads and ranked reductions; Phase 190 simplified active artifact structure by archiving completed ROADMAP history, centralizing GitHub Flow stanzas, hoisting module-dispatch taxonomy, and making APPLY optional refs conditional; Phase 191 will refresh anti-regrowth validation to lock the new budgets.
 
 ## Hot-path reading model
 
@@ -77,6 +77,8 @@ See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md`
 | Guard context-diet gains with semantic validation and a practical line ceiling | Phase 187 | Future hot workflow edits must retain lifecycle/module/merge-gate markers and stay under the 1711 Phase 186 pre-compression ceiling. |
 | Treat Claude Code command wrappers as legacy/reference thin pointers while keeping Pi skills as the active user-facing surface | Phase 188 | Reduces recurring wrapper context cost without expanding Claude-specific support beyond routing parity. |
 | Hot-path read cost is concentrated in `.paul/ROADMAP.md` (744 lines, ~690 historical) and duplicated GitHub Flow stanzas across 5+ workflows; Pi adapter and Claude wrappers are deferred. | Phase 189 Plan 189-01 | Phase 190 primary work is ROADMAP archive split + GitHub Flow centralization; Pi adapter modularization and Claude wrapper handling are gated on a product-level Claude Code support-tier decision. |
+| Phase 190 artifact simplification uses active-window artifacts plus reference-owned shared mechanics. | Phase 190 Plans 190-01/190-02 | ROADMAP history and duplicated workflow mechanics are authoritative but no longer repeated in hot-path reads. |
+| Defer Pi adapter modularization to a future driver-quality milestone. | Phase 190 Plan 190-02 | Keeps v2.44 focused on process/artifact read-cost reductions without changing Pi runtime behavior. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -109,4 +111,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 189 transition.*
+*Last updated: 2026-04-27 after Phase 190 transition.*

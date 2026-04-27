@@ -32,13 +32,13 @@ Status: 🚧 In Progress
 Started: 2026-04-26
 Theme: Continue reducing recurring context cost across PALS workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety.
 Source context: direct exploratory milestone creation on 2026-04-26 via `/skill:paul-milestone`
-Phases: 2 of 4 complete (50%)
+Phases: 3 of 4 complete (75%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
 | 189 | Hot-Path Read Audit | 1/1 | ✅ Complete | 2026-04-27 |
-| 190 | Artifact Structure Simplification | 2/2 complete; transition pending | UNIFY complete — merge gate pending | - |
-| 191 | Validation + Anti-Regrowth Update | TBD | Not started | - |
+| 190 | Artifact Structure Simplification | 2/2 | ✅ Complete | 2026-04-27 |
+| 191 | Validation + Anti-Regrowth Update | TBD | 🔵 Ready to plan | - |
 ### Phase 188: Workflow Prompt/Skill Slimming
 Focus: Reduce recurring prompt, skill, and workflow read cost without weakening lifecycle semantics, module dispatch evidence, artifact authority, or GitHub Flow safety.
 Plans: 188-01 complete (`.paul/phases/188-workflow-prompt-skill-slimming/188-01-SUMMARY.md`) — selected wrapper total reduced from 406 to 296 lines while Pi and cross-harness validation remained green.
@@ -55,15 +55,15 @@ Primary inputs from Phase 189 audit (R1–R5):
 - R5 (stretch) — Split `drivers/pi/extensions/pals-hooks.ts` into responsibility-scoped modules.
 Plans:
 - 190-01 complete (`.paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md`) — R1: ROADMAP archive split; compacted live roadmap to 68 lines and moved completed milestone detail to `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`.
-- 190-02 complete (`.paul/phases/190-artifact-structure-simplification/190-02-SUMMARY.md`) — R2 + R3 + R4: workflow centralization wave unified; GitHub Flow stanzas and module-dispatch taxonomy centralized, APPLY conditional refs encoded; merge gate and phase transition pending.
-- R5 (Pi adapter modular split) deferred to a future driver-quality milestone.
+- 190-02 complete (`.paul/phases/190-artifact-structure-simplification/190-02-SUMMARY.md`) — R2 + R3 + R4: workflow centralization wave unified and merged via PR #104; GitHub Flow stanzas and module-dispatch taxonomy centralized, APPLY conditional refs encoded, target workflow/reference docs reduced by net 335 lines.
+- R5 (Pi adapter modular split) deferred to a future driver-quality milestone outside Phase 190.
 ### Phase 191: Validation + Anti-Regrowth Update
 Focus: Extend validation guardrails so v2.44 slimming work stays protected across harnesses without brittle exact-prose checks.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (ready for `/paul:plan`)
 ## Completed Milestones
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md) and the per-milestone phase narratives are preserved in the archive linked above.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 190 Plan 190-02 UNIFY complete; merge gate pending.*
+*Last updated: 2026-04-27 — Phase 190 complete; Phase 191 ready to plan.*
