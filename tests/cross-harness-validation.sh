@@ -94,6 +94,48 @@ tap_hot_workflow_line_ceiling() {
   fi
 }
 
+tap_file_line_ceiling() {
+  local description="$1"
+  local file="$2"
+  local ceiling="$3"
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local count
+  count=$(wc -l < "$file" | tr -d ' ')
+  if [ "$count" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "$file has $count lines; ceiling is $ceiling"
+  fi
+}
+
+tap_pattern_count_at_most() {
+  local description="$1"
+  local pattern="$2"
+  local ceiling="$3"
+  shift 3
+
+  local count=0
+  local file
+  for file in "$@"; do
+    if [ ! -e "$file" ]; then
+      tap_not_ok "$description" "Path not found: $file"
+      return
+    fi
+  done
+
+  count=$(grep -R "$pattern" "$@" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$count" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Pattern count $count exceeds ceiling $ceiling for $pattern"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -447,14 +489,52 @@ CC_PLAN_WORKFLOW="$CC_KERNEL_DIR/workflows/plan-phase.md"
 CC_APPLY_WORKFLOW="$CC_KERNEL_DIR/workflows/apply-phase.md"
 CC_UNIFY_WORKFLOW="$CC_KERNEL_DIR/workflows/unify-phase.md"
 CC_MODULE_DISPATCH="$CC_KERNEL_DIR/references/module-dispatch.md"
+CC_GIT_STRATEGY="$CC_KERNEL_DIR/references/git-strategy.md"
 PI_PLAN_WORKFLOW="$PI_KERNEL_DIR/workflows/plan-phase.md"
 PI_APPLY_WORKFLOW="$PI_KERNEL_DIR/workflows/apply-phase.md"
 PI_UNIFY_WORKFLOW="$PI_KERNEL_DIR/workflows/unify-phase.md"
 PI_MODULE_DISPATCH="$PI_KERNEL_DIR/references/module-dispatch.md"
+PI_GIT_STRATEGY="$PI_KERNEL_DIR/references/git-strategy.md"
 REPO_PLAN_WORKFLOW="$REPO_ROOT/kernel/workflows/plan-phase.md"
 REPO_APPLY_WORKFLOW="$REPO_ROOT/kernel/workflows/apply-phase.md"
 REPO_UNIFY_WORKFLOW="$REPO_ROOT/kernel/workflows/unify-phase.md"
 REPO_MODULE_DISPATCH="$REPO_ROOT/kernel/references/module-dispatch.md"
+REPO_GIT_STRATEGY="$REPO_ROOT/kernel/references/git-strategy.md"
+REPO_ROADMAP="$REPO_ROOT/.paul/ROADMAP.md"
+# Phase 191 anti-regrowth budgets: active ROADMAP <=120 lines;
+# post-190 hot workflow/reference source set was 1901 lines, so 2100
+# catches broad regrowth without failing harmless small edits.
+ACTIVE_ROADMAP_LINE_CEILING=120
+HOT_CONTEXT_SOURCE_SET_LINE_CEILING=2100
+GITHUB_FLOW_JQ_DUPLICATION_CEILING=6
+
+tap_file_line_ceiling \
+  "Repo ROADMAP stays within active-window line budget" \
+  "$REPO_ROADMAP" \
+  "$ACTIVE_ROADMAP_LINE_CEILING"
+
+tap_file_contains_all \
+  "Repo ROADMAP keeps authoritative completed-history archive pointers" \
+  "$REPO_ROADMAP" \
+  '.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md' \
+  '.paul/MILESTONES.md' \
+  'Detailed completed milestone history through v2.43 is archived'
+
+tap_hot_workflow_line_ceiling \
+  "Repo source hot workflow/reference set stays under post-190 anti-regrowth budget" \
+  "$HOT_CONTEXT_SOURCE_SET_LINE_CEILING" \
+  "$REPO_PLAN_WORKFLOW" \
+  "$REPO_APPLY_WORKFLOW" \
+  "$REPO_UNIFY_WORKFLOW" \
+  "$REPO_MODULE_DISPATCH" \
+  "$REPO_GIT_STRATEGY" \
+  "$REPO_ROADMAP"
+
+tap_pattern_count_at_most \
+  "Repo workflows keep duplicated inline GitHub Flow jq extraction bounded" \
+  'jq -r.*\.git' \
+  "$GITHUB_FLOW_JQ_DUPLICATION_CEILING" \
+  "$REPO_ROOT/kernel/workflows"
 
 tap_hot_workflow_line_ceiling \
   "Claude Code installed hot workflows stay under the Phase 186 pre-compression ceiling" \
@@ -464,6 +544,15 @@ tap_hot_workflow_line_ceiling \
   "$CC_UNIFY_WORKFLOW"
 
 tap_hot_workflow_line_ceiling \
+  "Claude Code installed hot workflow/reference set stays under post-190 anti-regrowth budget" \
+  "$HOT_CONTEXT_SOURCE_SET_LINE_CEILING" \
+  "$CC_PLAN_WORKFLOW" \
+  "$CC_APPLY_WORKFLOW" \
+  "$CC_UNIFY_WORKFLOW" \
+  "$CC_MODULE_DISPATCH" \
+  "$CC_GIT_STRATEGY"
+
+tap_hot_workflow_line_ceiling \
   "Pi installed hot workflows stay under the Phase 186 pre-compression ceiling" \
   "$HOT_WORKFLOW_LINE_CEILING" \
   "$PI_PLAN_WORKFLOW" \
@@ -471,11 +560,29 @@ tap_hot_workflow_line_ceiling \
   "$PI_UNIFY_WORKFLOW"
 
 tap_hot_workflow_line_ceiling \
+  "Pi installed hot workflow/reference set stays under post-190 anti-regrowth budget" \
+  "$HOT_CONTEXT_SOURCE_SET_LINE_CEILING" \
+  "$PI_PLAN_WORKFLOW" \
+  "$PI_APPLY_WORKFLOW" \
+  "$PI_UNIFY_WORKFLOW" \
+  "$PI_MODULE_DISPATCH" \
+  "$PI_GIT_STRATEGY"
+
+tap_hot_workflow_line_ceiling \
   "Repo source hot workflows stay under the Phase 186 pre-compression ceiling" \
   "$HOT_WORKFLOW_LINE_CEILING" \
   "$REPO_PLAN_WORKFLOW" \
   "$REPO_APPLY_WORKFLOW" \
   "$REPO_UNIFY_WORKFLOW"
+
+tap_hot_workflow_line_ceiling \
+  "Repo source hot workflow/reference install-equivalent set stays under post-190 anti-regrowth budget" \
+  "$HOT_CONTEXT_SOURCE_SET_LINE_CEILING" \
+  "$REPO_PLAN_WORKFLOW" \
+  "$REPO_APPLY_WORKFLOW" \
+  "$REPO_UNIFY_WORKFLOW" \
+  "$REPO_MODULE_DISPATCH" \
+  "$REPO_GIT_STRATEGY"
 
 for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$PI_KERNEL_DIR" "Repo source:$REPO_ROOT/kernel"; do
   label="${workflow_dir_label%%:*}"
@@ -513,6 +620,15 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'Durable Evidence Requirements' \
     'Project Config vs Installed Registry' \
     'Do not restate generic registry mechanics'
+
+
+  tap_file_contains_all \
+    "$label git-strategy reference keeps shared GitHub Flow ownership markers" \
+    "$root/references/git-strategy.md" \
+    'GitHub Flow' \
+    'GIT_WORKFLOW' \
+    'auto_pr' \
+    'merge gate'
 done
 
 # ════════════════════════════════════════════════════════════════════

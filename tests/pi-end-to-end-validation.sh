@@ -118,6 +118,48 @@ tap_hot_workflow_line_ceiling() {
   fi
 }
 
+tap_file_line_ceiling() {
+  local description="$1"
+  local file="$2"
+  local ceiling="$3"
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local count
+  count=$(wc -l < "$file" | tr -d ' ')
+  if [ "$count" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "$file has $count lines; ceiling is $ceiling"
+  fi
+}
+
+tap_pattern_count_at_most() {
+  local description="$1"
+  local pattern="$2"
+  local ceiling="$3"
+  shift 3
+
+  local count=0
+  local file
+  for file in "$@"; do
+    if [ ! -e "$file" ]; then
+      tap_not_ok "$description" "Path not found: $file"
+      return
+    fi
+  done
+
+  count=$(grep -R "$pattern" "$@" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$count" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Pattern count $count exceeds ceiling $ceiling for $pattern"
+  fi
+}
+
 section() {
   echo ""
   echo "# ════════════════════════════════════════"
@@ -532,6 +574,7 @@ PI_MILESTONE="$SKILL_DIR/workflows/create-milestone.md"
 PI_APPLY="$SKILL_DIR/workflows/apply-phase.md"
 PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
 PI_MODULE_DISPATCH="$SKILL_DIR/references/module-dispatch.md"
+PI_GIT_STRATEGY="$SKILL_DIR/references/git-strategy.md"
 HOT_WORKFLOW_LINE_CEILING=1711
 
 tap_file_contains_all \
@@ -579,12 +622,64 @@ tap_file_contains_all \
 
 section "CONTEXT-DIET REGRESSION GUARDRAILS"
 
+# Phase 191 anti-regrowth budgets. These protect structural context-diet gains
+# without pinning long prose: active ROADMAP window <=120 lines; the post-190
+# source hot workflow/reference set was 1901 lines, so 2100 allows small edits
+# while catching broad regrowth; duplicated inline GitHub Flow jq extraction
+# should stay sparse after git-strategy.md centralization.
+ACTIVE_ROADMAP_LINE_CEILING=120
+HOT_CONTEXT_SOURCE_SET_LINE_CEILING=2100
+GITHUB_FLOW_JQ_DUPLICATION_CEILING=6
+REPO_ROADMAP="$REPO_ROOT/.paul/ROADMAP.md"
+REPO_PLAN_WORKFLOW="$REPO_ROOT/kernel/workflows/plan-phase.md"
+REPO_APPLY_WORKFLOW="$REPO_ROOT/kernel/workflows/apply-phase.md"
+REPO_UNIFY_WORKFLOW="$REPO_ROOT/kernel/workflows/unify-phase.md"
+REPO_MODULE_DISPATCH="$REPO_ROOT/kernel/references/module-dispatch.md"
+REPO_GIT_STRATEGY="$REPO_ROOT/kernel/references/git-strategy.md"
+
+tap_file_line_ceiling \
+  "Repo ROADMAP stays within active-window line budget" \
+  "$REPO_ROADMAP" \
+  "$ACTIVE_ROADMAP_LINE_CEILING"
+
+tap_file_contains_all \
+  "Repo ROADMAP keeps authoritative completed-history archive pointers" \
+  "$REPO_ROADMAP" \
+  '.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md' \
+  '.paul/MILESTONES.md' \
+  'Detailed completed milestone history through v2.43 is archived'
+
+tap_hot_workflow_line_ceiling \
+  "Repo source hot workflow/reference set stays under post-190 anti-regrowth budget" \
+  "$HOT_CONTEXT_SOURCE_SET_LINE_CEILING" \
+  "$REPO_PLAN_WORKFLOW" \
+  "$REPO_APPLY_WORKFLOW" \
+  "$REPO_UNIFY_WORKFLOW" \
+  "$REPO_MODULE_DISPATCH" \
+  "$REPO_GIT_STRATEGY" \
+  "$REPO_ROADMAP"
+
+tap_pattern_count_at_most \
+  "Repo workflows keep duplicated inline GitHub Flow jq extraction bounded" \
+  'jq -r.*\.git' \
+  "$GITHUB_FLOW_JQ_DUPLICATION_CEILING" \
+  "$REPO_ROOT/kernel/workflows"
+
 tap_hot_workflow_line_ceiling \
   "Installed hot PLAN/APPLY/UNIFY workflows stay under the Phase 186 pre-compression ceiling" \
   "$HOT_WORKFLOW_LINE_CEILING" \
   "$PI_PLAN" \
   "$PI_APPLY" \
   "$PI_UNIFY"
+
+tap_hot_workflow_line_ceiling \
+  "Installed hot workflow/reference set stays under post-190 anti-regrowth budget" \
+  "$HOT_CONTEXT_SOURCE_SET_LINE_CEILING" \
+  "$PI_PLAN" \
+  "$PI_APPLY" \
+  "$PI_UNIFY" \
+  "$PI_MODULE_DISPATCH" \
+  "$PI_GIT_STRATEGY"
 
 tap_file_contains_all \
   "Installed plan workflow keeps targeted-read and review-menu guardrails" \
@@ -618,6 +713,15 @@ tap_file_contains_all \
   'Durable Evidence Requirements' \
   'Project Config vs Installed Registry' \
   'Do not restate generic registry mechanics'
+
+
+tap_file_contains_all \
+  "Installed git-strategy reference keeps shared GitHub Flow ownership markers" \
+  "$PI_GIT_STRATEGY" \
+  'GitHub Flow' \
+  'GIT_WORKFLOW' \
+  'auto_pr' \
+  'merge gate'
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2C: CODI PLAN-PHASE DISTRIBUTION

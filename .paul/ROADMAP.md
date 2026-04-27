@@ -28,17 +28,17 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 **v2.44 PALS Context Optimization — Process & Artifacts**
-Status: 🚧 In Progress
+Status: ✅ Complete
 Started: 2026-04-26
 Theme: Continue reducing recurring context cost across PALS workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety.
 Source context: direct exploratory milestone creation on 2026-04-26 via `/skill:paul-milestone`
-Phases: 3 of 4 complete (75%)
+Phases: 4 of 4 complete (100%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
 | 189 | Hot-Path Read Audit | 1/1 | ✅ Complete | 2026-04-27 |
 | 190 | Artifact Structure Simplification | 2/2 | ✅ Complete | 2026-04-27 |
-| 191 | Validation + Anti-Regrowth Update | TBD | 🔵 Ready to plan | - |
+| 191 | Validation + Anti-Regrowth Update | 1/1 | ✅ Complete | 2026-04-27 |
 ### Phase 188: Workflow Prompt/Skill Slimming
 Focus: Reduce recurring prompt, skill, and workflow read cost without weakening lifecycle semantics, module dispatch evidence, artifact authority, or GitHub Flow safety.
 Plans: 188-01 complete (`.paul/phases/188-workflow-prompt-skill-slimming/188-01-SUMMARY.md`) — selected wrapper total reduced from 406 to 296 lines while Pi and cross-harness validation remained green.
@@ -59,11 +59,11 @@ Plans:
 - R5 (Pi adapter modular split) deferred to a future driver-quality milestone outside Phase 190.
 ### Phase 191: Validation + Anti-Regrowth Update
 Focus: Extend validation guardrails so v2.44 slimming work stays protected across harnesses without brittle exact-prose checks.
-Plans: TBD (ready for `/paul:plan`)
+Plans: 191-01 complete (`.paul/phases/191-validation-anti-regrowth-update/191-01-SUMMARY.md`) — validation/anti-regrowth guardrails added across Pi and cross-harness suites; Pi 183/183 and cross-harness 100/100 passing.
 ## Completed Milestones
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md) and the per-milestone phase narratives are preserved in the archive linked above.
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 190 complete; Phase 191 ready to plan.*
+*Last updated: 2026-04-27 — Phase 191 complete; v2.44 milestone complete.*
