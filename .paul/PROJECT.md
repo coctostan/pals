@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.46 Pi-Native Implementation Planning is active. Phase 198 completed implementation workstream design; Phase 199 is next and will turn the workstream map into sequencing, dependency, proof-point, risk-gate, and boundary decisions before validation/evidence strategy and the final executable implementation plan.
+v2.46 Pi-Native Implementation Planning is active. Phase 199 completed sequencing/dependency planning; Phase 200 is next and will define validation/evidence strategy before Phase 201 produces the final executable implementation plan proposal.
 
 v2.45 repositioned PALS around Pi as the supported runtime while keeping Claude Code and Agent SDK as unsupported/frozen historical surfaces. It preserved `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, and parent-owned APPLY while defining how Pi runtime assistance can reduce context burden safely.
 
@@ -96,6 +96,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Complete v2.45 findings triage before workstream design. | Phase 197 Plan 197-01 | Phase 198-201 planning should use `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md` as the classified source input while preserving planning-only boundaries until sequencing and validation strategy are complete. |
 | Treat artifact-slice contract hardening as the most implementation-ready candidate while leaving final sequencing to Phase 199. | Phase 198 Plan 198-01 | Phase 199 should test whether artifact slices go first and whether the workstream should split; Phase 198 does not finalize build order. |
 | Classify validation before legacy cleanup. | Phase 198 Plan 198-01 | Legacy retention/install-surface cleanup remains deferred until shared-invariant vs frozen-parity validation checks are classified and protected. |
+| Use artifact-slice contract hardening → guided workflow evidence → workflow/resource capsules → delegated APPLY packet/report compression → Pi-native validation classification → legacy cleanup as the default sequencing hypothesis. | Phase 199 Plan 199-01 | Phase 200 should pressure-test validation/evidence needs, and Phase 201 should decide final executable build milestones without treating Phase 199 as implementation authorization. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -127,4 +128,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 198 Implementation Workstream Design completion / Phase 199 transition.*
+*Last updated: 2026-04-27 after Phase 199 Sequencing + Dependency Plan completion / Phase 200 transition.*
