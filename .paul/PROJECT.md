@@ -48,7 +48,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
 | v2.44 PALS Context Optimization — Process & Artifacts | Complete | Reduced recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety; Phase 191 validation now protects the gains. |
 
-See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md` for phase sequencing.
+See `.paul/MILESTONES.md` for the compact milestone index, `.paul/ROADMAP.md` for active routing, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
 
@@ -112,4 +112,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 191 transition.*
+*Last updated: 2026-04-27 after v2.44 milestone completion.*

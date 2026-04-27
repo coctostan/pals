@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-27 after Phase 191 transition)
+See: .paul/PROJECT.md (updated 2026-04-27 after v2.44 milestone completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is complete; all four phases (188-191) are unified and validation now protects the context-diet gains.
+**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is complete and archived; next milestone scope is awaiting discussion.
 
 ## Current Position
 
-Milestone: v2.44 PALS Context Optimization — Process & Artifacts — Complete
-Phase: 191 of 4 in v2.44 — Validation + Anti-Regrowth Update — Complete
-Plan: 191-01 complete (`.paul/phases/191-validation-anti-regrowth-update/191-01-SUMMARY.md`)
-Status: Milestone complete, ready for next milestone or release decision
-Last activity: 2026-04-27T12:20:44Z — Completed UNIFY for Phase 191 Plan 191-01 and transitioned v2.44 to complete
+Milestone: Awaiting next milestone
+Phase: None active
+Plan: None
+Status: v2.44 PALS Context Optimization — Process & Artifacts complete — ready for next milestone discussion
+Last activity: 2026-04-27T12:45:00Z — Finalized v2.44 milestone archive and completion index
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - v2.44 milestone complete]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -81,19 +81,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 144ee543 — feat(191-validation-anti-regrowth): update guardrails (#105)
+Last commit: 144ee543 — feat(191-validation-anti-regrowth): update guardrails (#105); v2.44 completion artifacts pending commit
 PR: #105 MERGED — https://github.com/coctostan/pals/pull/105 (Phase 191 Plan 191-01 APPLY + UNIFY/transition artifacts)
 CI: local validation passing — Pi 183/183 and cross-harness 100/100; GitHub status checks reported none after final push and PR #105 was mergeable/clean
 Prior PRs: #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T12:28:00Z
-Stopped at: Phase 191 and v2.44 milestone complete; PR #105 merged to main
-Next action: Choose next milestone/release action
-Resume file: .paul/phases/191-validation-anti-regrowth-update/191-01-SUMMARY.md
+Last session: 2026-04-27T12:45:00Z
+Stopped at: v2.44 milestone archived and completion index updated
+Next action: /paul:discuss-milestone
+Resume file: .paul/MILESTONES.md
 Resume context:
-- Phase 191 added structural anti-regrowth helpers/checks to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`.
-- Validation passes: Pi 183/183 and cross-harness 100/100.
-- Post-unify persistence updated `.paul/quality-history.md` and `.paul/CODI-HISTORY.md`.
-- v2.44 is complete and PR #105 is merged to main.
+- v2.44 completed four phases and five plans: wrapper slimming, hot-path read audit, ROADMAP archive split, workflow/reference centralization, and anti-regrowth validation.
+- Milestone archive created at `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md`.
+- Validation at closeout remains Pi 183/183 and cross-harness 100/100.
+- Next action is to discuss scope for the next milestone before creating phases.

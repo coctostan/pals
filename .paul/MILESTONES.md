@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.44 PALS Context Optimization — Process & Artifacts | See `.paul/ROADMAP.md` and `.paul/STATE.md` |
+| Current milestone | Awaiting next milestone | See `.paul/STATE.md`; run `/paul:discuss-milestone` to define scope |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -62,14 +62,16 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation | 2026-04-20 | 2 days | 3 phases, 3 plans | Archive |
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | 2026-04-26 | 6 days | 3 phases, 3 plans | Archive |
 | v2.43 PALS Context Diet — Archive, Compact, Compress | 2026-04-26 | 1 day | 4 phases, 6 plans | `.paul/ROADMAP.md` completed-milestone section |
+| v2.44 PALS Context Optimization — Process & Artifacts | 2026-04-27 | ~14 hours | 4 phases, 5 plans | [archive](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md) |
 
 ## Current / Future Milestone Pointer
 
-v2.44 is active. Use `.paul/ROADMAP.md` for phase sequencing and `.paul/STATE.md` for current loop position. When v2.44 closes, add the compact row here and archive any detailed closeout material instead of expanding this hot index.
+v2.44 is complete and archived. Next milestone scope is not yet defined; run `/paul:discuss-milestone` to explore the next release direction before creating phases.
 
 ## Archive
 
 - Detailed history and Key Decisions: [.paul/archive/milestones/MILESTONES-v0-v2.42.md](archive/milestones/MILESTONES-v0-v2.42.md)
+- v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for v2.44 completion: 2026-04-27.*
