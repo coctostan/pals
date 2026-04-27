@@ -54,6 +54,14 @@ When one of those moments appears, Pi may use lightweight native surfaces such a
 
 This layer is additive only: it never auto-continues a workflow, never skips human verification or human-action checkpoints, and never stores a Pi-owned workflow state. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
 
+## Artifact-Slice Context Loading
+
+The extension may add an `Artifact slices` block to the bounded PALS context payload, but only after an explicit `/paul-*` or `/skill:paul-*` activation signal. The slices are source-cited, freshness-marked, bounded by explicit constants, disposable, and read-only against repo-local `.paul/*` artifacts.
+
+Each emitted slice labels its `Source:` path and `Freshness:` marker, or reports an unavailable source. These slices are convenience context only: they never replace a full authoritative read for edits, lifecycle decisions, ambiguous or stale facts, contested facts, GitHub Flow gates, or PLAN/APPLY/UNIFY authority.
+
+This layer introduces no hidden Pi state, telemetry, persistence, or Pi-owned lifecycle ledger. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
+
 ## Live Module Visibility
 
 The always-visible Pi status/widget now includes a bounded recent module activity summary when a trustworthy signal is present. That visibility is dispatch-derived from recent shared workflow/reporting output plus shared artifacts — especially canonical markers such as `[dispatch] pre-plan: ...`, `[dispatch] post-apply: ...`, and `Module Execution Reports`.

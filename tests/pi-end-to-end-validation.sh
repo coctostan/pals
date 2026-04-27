@@ -979,6 +979,38 @@ else
     tap_not_ok "Extension keeps one bounded automatic injection path and a support-only context hook" "Expected 0 messages.push, exactly one pals-context injection definition, and context normalization support"
 fi
 
+  # Artifact-slice spike contract: activation-gated, source-cited, fresh, bounded, and fallback-safe.
+  tap_file_contains_all \
+    "Extension preserves artifact-slice context loading guardrails" \
+    "$EXT_SRC" \
+    'Artifact slices (read-only, bounded)' \
+    'Source:' \
+    'Freshness:' \
+    'Fallback: full authoritative read' \
+    'MAX_ARTIFACT_SLICE_CHARS' \
+    'MAX_ARTIFACT_SLICE_LINES' \
+    'shouldInjectPalsContext' \
+    '.paul/STATE.md' \
+    '.paul/ROADMAP.md'
+
+  tap_file_contains_all \
+    "Extension docs preserve artifact-slice citation/freshness/fallback contract" \
+    "$REPO_ROOT/drivers/pi/extensions/README.md" \
+    'Artifact-Slice Context Loading' \
+    'source-cited' \
+    'freshness-marked' \
+    'full authoritative read' \
+    'no hidden Pi state'
+
+  tap_file_contains_all \
+    "Skill map frames artifact slices as adapter-side context aid" \
+    "$REPO_ROOT/drivers/pi/skill-map.md" \
+    'adapter-side context aid' \
+    'source-cited' \
+    'freshness-marked' \
+    'hidden Pi state' \
+    'full authoritative read'
+
   # Guided workflow contract: detect canonical workflow markers from shared prompts
   if grep -q 'Continue to APPLY' "$EXT_SRC" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_SRC" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_SRC" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension detects canonical workflow markers for guided UX"
