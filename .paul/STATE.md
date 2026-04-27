@@ -120,10 +120,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/200-validation-evidence-strategy
-Last commit: 3c412f29 — feat(200): complete validation evidence strategy
-PR: #114 OPEN — https://github.com/coctostan/pals/pull/114
-CI: PR #114 Socket Security Project Report and Pull Request Alerts passed; local UNIFY validation passed — Pi 186/186 and cross-harness 100/100
+Branch: main
+Last commit: 0e2c6e66 — docs(200): validation evidence strategy (#114)
+PR: #114 MERGED — https://github.com/coctostan/pals/pull/114
+CI: PR #114 Socket Security checks passed; local UNIFY validation passed — Pi 186/186 and cross-harness 100/100
 Prior PRs: #113 merged (Phase 199 sequencing dependency plan); #109 merged (Phase 195 exploratory Pi-native spikes); #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
