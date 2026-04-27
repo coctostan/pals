@@ -102,3 +102,88 @@ Legend: `none` = no prerequisite, `soft` = benefits from earlier proof, `blocks`
 - **Do not merge capsules with blocking workflow edits.** Capsule work can cite and orient, but full workflow semantics should remain separately reviewable.
 - **Keep helper packet/report compression separate** from lifecycle workflow rewrites until the report schema and parent file-scope verification are stable.
 - **Keep validation classification before legacy cleanup.** Classification is evidence strategy; cleanup is a support-surface/product decision.
+
+## Phase 200 Handoff
+
+Phase 200 owns validation and evidence strategy. It should use this sequencing plan to decide what future implementation milestones must prove before runtime hardening, validation-script changes, or support-surface cleanup begins.
+
+### Validation / Evidence Questions
+
+| Question | Why it matters | Suggested evidence |
+|---|---|---|
+| Which current Pi validation checks prove supported runtime behavior? | New artifact-slice, guided UI, capsule, and helper work should add to Pi-supported evidence rather than legacy parity. | Annotated map of `tests/pi-end-to-end-validation.sh` assertions to Pi-supported runtime classes. |
+| Which cross-harness checks protect shared invariants? | Shared invariants must remain blocking even when Claude Code / Agent SDK parity is frozen. | Annotated map of `tests/cross-harness-validation.sh` assertions to shared invariant vs frozen parity classes. |
+| What command output must future APPLY/UNIFY preserve? | Validation truth must remain command-evidence-backed, not Pi-summary-backed. | SUMMARY verification table requirements for marker grep, Pi validation, cross-harness validation, git/gh checks, and module reports. |
+| What new runtime-lens checks are needed? | Artifact slices and capsules need structural proof for citations, bounds, freshness, activation gating, and fallback. | Marker assertions for `Source:`, freshness language, full-read fallback text, no hidden persistence, and bounded output. |
+| What new guided UI safety checks are needed? | Guided UX must reduce friction without auto-approval or UI-only decisions. | Tests or structural checks for canonical transcript replies, explicit user action, checkpoint blocking, and no auto-continue paths. |
+| What new helper delegation checks are needed? | Packet/report compression is only safe if parent verification remains inspectable. | Required report-field checks, allowed-file diff checks, fallback trigger markers, and no `.paul/*` helper-owned lifecycle writes. |
+| What must remain green during transition? | Existing green validation is the safety baseline for implementation planning. | Pi validation 186/186 and cross-harness validation 100/100 or updated expected counts with documented classification rationale. |
+
+### Validation-Class Dependencies
+
+- Artifact-slice hardening needs runtime-lens checks plus shared invariant checks for `.paul/*` authority and full-read fallback.
+- Guided workflow evidence hardening needs guided UI safety checks before any UI affordance is treated as lower risk.
+- Workflow/resource capsule design needs shared invariant checks that prove blocking workflow semantics remain intact and full reads remain required.
+- Delegated APPLY packet/report compression needs helper delegation checks plus parent-owned APPLY invariant checks.
+- Legacy cleanup must wait for classification proving each affected parity check is either frozen-only or has shared-invariant coverage elsewhere.
+
+## Phase 201 Handoff
+
+Phase 201 owns the final executable implementation-plan proposal. It should choose concrete build milestone scope only after Phase 200 defines validation classes and evidence requirements.
+
+### Implementation Roadmap Inputs
+
+| Input | Recommendation for Phase 201 |
+|---|---|
+| Default first build candidate | Propose Artifact-Slice Contract Hardening first unless Phase 200 finds validation classification must precede any runtime-context changes. |
+| Likely second candidate | Propose Guided Workflow Evidence Hardening early because it is close to existing Pi behavior and proves explicit intent before broader UX/capsule work. |
+| Capsule timing | Keep Workflow/Resource Capsule Design after slice citation/fallback proof and explicit blocking-semantics exclusions. |
+| Helper compression timing | Keep Delegated APPLY Packet/Report Compression after packet/report schema clarity and parent file-scope verification rules. |
+| Validation classification | Treat as either Phase 200 output feeding the roadmap or a dedicated early build milestone if script/report changes are required. |
+| Legacy cleanup | Defer to a final/product-decision milestone after classification and shared-invariant protection are proven. |
+
+### Candidate Milestone Splits
+
+| Candidate split | Contents | Rationale |
+|---|---|---|
+| Split 1: Artifact-slice contract only | Slice schema, source/freshness/fallback language, size bounds, validation markers. | Keeps first build milestone small and validates the foundational contract. |
+| Split 2: Artifact-slice inventory expansion | Additional lifecycle, roadmap, plan, summary, and module-evidence slices. | Avoids mixing schema design with many new runtime outputs. |
+| Split 3: Guided workflow evidence | Canonical replies, no-auto-continue proof, checkpoint/approval transcript evidence. | Proves explicit intent before broader Pi UX or capsule work. |
+| Split 4: Capsule contract | Eligibility rules, installed path citations, exclusion list, validation markers. | Keeps risky workflow summarization separate from runtime behavior expansion. |
+| Split 5: Helper packet/report contract | Packet template, report schema, fallback triggers, allowed-file checks. | Reduces parent context only after equivalence to inline APPLY can be verified. |
+| Split 6: Validation classification | Assertion mapping, report classifications, migration rules. | Required before weakening parity or cleanup. |
+| Split 7: Legacy retention cleanup | Retention/removal matrix, archive/source-only decisions, install-surface adjustments. | Product/support-surface decision that should remain last. |
+
+### Readiness Criteria for Phase 201 Proposals
+
+- The proposed milestone names exact repo surfaces, protected files, validation commands, and expected evidence.
+- Acceptance criteria preserve `.paul/*` authority, PLAN/APPLY/UNIFY ownership, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, and full-read fallback.
+- The proposal states which validation class each changed check belongs to: Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, or GitHub Flow safety.
+- The proposal defers or excludes hidden Pi state, telemetry, auto-approval, helper-owned APPLY, merge-gate bypass, lifecycle ledger, dependency additions, and unclassified legacy cleanup.
+- The proposal includes command-output evidence requirements for APPLY and durable reconciliation requirements for SUMMARY/STATE/ROADMAP during UNIFY.
+
+### Non-Goals to Carry Forward
+
+- Do not treat Phase 199 sequencing as final build authorization.
+- Do not rewrite validation scripts in a build milestone until Phase 200 defines the evidence strategy or the plan is explicitly scoped to validation classification.
+- Do not delete, archive, or remove installed legacy surfaces before classification and product decision.
+- Do not let runtime slices, capsules, UI status, or helper reports replace full authoritative reads for lifecycle-changing decisions.
+
+## Sequencing Readiness Checklist
+
+A workstream is ready to be promoted into a future build milestone proposal only when all applicable items are true:
+
+- [ ] Source inputs and repo surfaces are named precisely enough for a bounded PLAN.
+- [ ] Dependencies on earlier proof points are satisfied or explicitly deferred.
+- [ ] Scope limits and protected files are explicit.
+- [ ] Acceptance criteria preserve `.paul/*` authority, PLAN/APPLY/UNIFY ownership, module evidence, GitHub Flow gates, and parent-owned APPLY.
+- [ ] Runtime assistance remains derived, bounded, disposable, source-cited, freshness-aware where needed, and backed by full authoritative reads.
+- [ ] Explicit approval, checkpoint, and guided UI behavior remain visible as canonical transcript/artifact evidence.
+- [ ] Helper-agent work, if any, remains parent-packeted, parent-verified, file-scoped, and fallback-safe.
+- [ ] Validation commands and expected evidence are named before implementation begins.
+- [ ] Shared invariants remain protected before any parity-only check or frozen legacy surface is weakened.
+- [ ] No hidden Pi state, telemetry, auto-approval, UI-only decisions, helper-owned APPLY, merge-gate bypass, or lifecycle ledger is introduced.
+
+## Phase 199 Conclusion
+
+The recommended default sequence is Artifact-Slice Contract Hardening, Guided Workflow Evidence Hardening, Workflow/Resource Capsule Design, Delegated APPLY Packet/Report Compression, Pi-Native Validation Classification, then Legacy Retention and Install-Surface Cleanup. Phase 200 should pressure-test this order through validation/evidence classification, and Phase 201 should convert the surviving order into an executable implementation-plan proposal without treating this planning artifact as build approval.
