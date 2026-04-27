@@ -95,3 +95,65 @@ Future implementation plans must preserve these non-negotiable boundaries from `
 5. What helper-agent report fields are sufficient for parent APPLY to inspect equivalent output without weakening parent authority?
 6. Which validation assertions protect shared invariants, and which are frozen legacy parity only?
 7. What legacy-surface retention/removal decisions are safe only after validation classification is complete?
+
+## Handoff Recommendations
+
+### Phase 198 — Implementation Workstream Design
+
+Use the `Workstream Seeds` table as the starting inventory, but do not assume each seed becomes one build milestone. Phase 198 should define workstream outputs, required source files, validation expectations, and scope boundaries for each candidate. The artifact-slice workstream should be treated as foundational because it is the only implementation pattern already proven by Phase 195.
+
+Key Phase 198 questions:
+
+- Which workstreams are implementation-ready after source review?
+- Which workstreams are still architecture-only and need more design?
+- Which repo surfaces are likely to change for each workstream?
+- Which `.paul/*`, workflow, module, GitHub Flow, and parent-APPLY guarantees must each workstream explicitly preserve?
+
+### Phase 199 — Sequencing + Dependency Plan
+
+Use the promoted-pattern ordering from `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` as the default sequence: artifact slices first, then workflow/resource capsules and guided UI evidence, then helper-agent packet compression, then validation classification, then legacy retention/cleanup. Phase 199 should test that sequence against dependencies, risk, validation burden, and implementation size.
+
+Key Phase 199 questions:
+
+- What proof must artifact-slice hardening produce before capsules or guided UI work begins?
+- Should guided UI evidence hardening happen before workflow capsules because it is closer to existing Pi behavior?
+- Which workstreams should be split into separate milestones to keep APPLY bounded?
+- Which changes must wait until validation classification protects shared invariants elsewhere?
+
+### Phase 200 — Validation + Evidence Strategy
+
+Use the validation classes from `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` as the baseline taxonomy. Phase 200 should define how future implementation proves Pi-supported runtime behavior while preserving shared invariants and labeling frozen legacy parity without prematurely deleting checks.
+
+Key Phase 200 questions:
+
+- Which existing `tests/pi-end-to-end-validation.sh` checks are Pi-supported runtime checks?
+- Which `tests/cross-harness-validation.sh` checks protect shared invariants and must remain blocking during transition?
+- Which parity checks are frozen legacy evidence only?
+- What new runtime-lens, guided UI safety, and helper-agent delegation checks are required before implementation hardening ships?
+
+### Phase 201 — Final Implementation Plan Proposal
+
+Use the outputs of Phases 197-200 to produce an executable roadmap for build milestones. Phase 201 should choose the next implementation milestone(s), define acceptance criteria and boundaries, and explicitly state what is not yet ready to implement.
+
+Key Phase 201 outputs:
+
+- recommended next implementation milestone,
+- candidate phase breakdown,
+- acceptance criteria families,
+- protected authority boundaries,
+- validation command requirements,
+- legacy-surface retention/removal timing,
+- explicit non-goals for the first build milestone.
+
+## Readiness Checklist
+
+Before PALS leaves v2.46 planning and starts implementation hardening:
+
+- [ ] Each proposed workstream has source files, scope limits, and authority boundaries.
+- [ ] Artifact-slice hardening has a stable contract proposal for labels, citations, freshness, size bounds, and fallback language.
+- [ ] Workflow/resource capsule work has an exclusion rule for blocking workflow semantics that require full reads.
+- [ ] Guided UI work has explicit canonical transcript-reply proof and no-auto-continue checks.
+- [ ] Helper-agent packet work preserves parent APPLY ownership of eligibility, verification, fallback, module gates, checkpoints, and `.paul/*` writes.
+- [ ] Validation changes are classified as Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, or helper delegation.
+- [ ] Legacy retention/removal is deferred until shared-invariant protection is preserved or intentionally retired by plan.
+- [ ] GitHub Flow gates remain workflow-owned and command-evidence-backed.
