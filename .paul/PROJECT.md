@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.45 Pi-Native PALS Architecture is active; Phase 192 is complete and Phase 193 Pi Runtime Capability Mapping is next.
+v2.45 Pi-Native PALS Architecture is active; Phase 193 is complete and Phase 194 Context-Efficiency Architecture is next.
 
 v2.45 is an architecture/design milestone to reposition PALS around Pi as the supported runtime, keep Claude Code and Agent SDK as unsupported/frozen historical surfaces, and explore how Pi extensions can reduce context pollution while making PLAN/APPLY/UNIFY more guided, enforceable, and effective.
 
@@ -38,7 +38,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns verification, module gates, fallback, and `.paul/*` lifecycle writes.
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
 - v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
-- v2.45 explores Pi-native runtime assistance as the primary future architecture direction while keeping `.paul/*` artifacts authoritative; Phase 192 established the support-tier inventory and frozen-legacy classifications.
+- v2.45 explores Pi-native runtime assistance as the primary future architecture direction while keeping `.paul/*` artifacts authoritative; Phase 192 established support-tier classifications and Phase 193 mapped current Pi runtime capabilities into Phase 194 design inputs.
 
 ## Current milestone posture
 
@@ -84,6 +84,7 @@ See `.paul/ROADMAP.md` for the active v2.45 phase plan, `.paul/MILESTONES.md` fo
 | Prefer structural anti-regrowth checks over long exact-prose assertions. | Phase 191 Plan 191-01 | Validation protects context-diet gains through line budgets, archive pointers, occurrence ceilings, and short semantic anchors across source and installed surfaces. |
 | Claude Code compatibility is unsupported/frozen; PALS may become Pi-native. | v2.45 milestone creation | Future architecture can leverage Pi extensions without preserving cross-harness parity, while keeping `.paul/*` artifacts authoritative. |
 | Pi is the supported runtime; Claude Code and Agent SDK are unsupported/frozen historical surfaces. | Phase 192 Plan 192-01 | Current architecture work should use `docs/PI-NATIVE-SUPPORT-INVENTORY.md` as the support-tier classification source while preserving `.paul/*` artifact authority. |
+| Pi runtime assistance must stay derived, bounded, and artifact-backed rather than authoritative lifecycle state. | Phase 193 Plan 193-01 | Phase 194 may design context-efficiency helpers using Pi commands, hooks, UI, context injection, module visibility, CARL, and helper agents, but must cite artifacts and preserve PLAN/APPLY/UNIFY, module evidence, GitHub Flow, and parent-owned APPLY boundaries. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -116,4 +117,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 192 support-tier reset completion.*
+*Last updated: 2026-04-27 after Phase 193 Pi runtime capability mapping completion.*

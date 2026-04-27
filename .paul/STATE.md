@@ -4,29 +4,30 @@
 
 See: .paul/PROJECT.md (updated 2026-04-27 after v2.45 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.45 Pi-Native PALS Architecture is active; Phase 193 loop is complete and GitHub Flow merge gate is pending.
+**Current focus:** v2.45 Pi-Native PALS Architecture is active; Phase 193 is complete and Phase 194 Context-Efficiency Architecture is ready for planning.
 
 ## Current Position
 
 Milestone: v2.45 Pi-Native PALS Architecture
-Phase: 193 of 196 (Pi Runtime Capability Mapping) — Complete, merge gate pending
-Plan: 193-01 complete
-Status: UNIFY complete; GitHub Flow merge gate and phase transition pending
-Last activity: 2026-04-27T15:08:55Z — Completed 193-01 SUMMARY and post-unify module persistence
+Phase: 194 of 196 (Context-Efficiency Architecture) — Planning
+Plan: Not started
+Status: Ready to plan Phase 194
+Last activity: 2026-04-27T15:08:55Z — Phase 193 complete, PR #107 merged, transitioned to Phase 194 planning
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
-- v2.45 Pi-Native PALS Architecture: [████░░░░░░] 40% (2 of 5 phases complete after Phase 193 merge/transition)
+- v2.45 Pi-Native PALS Architecture: [████░░░░░░] 40% (2 of 5 phases complete; Phase 194 planning next)
 - Phase 192 Support-Tier Reset + Surface Inventory: [██████████] 100% complete
-- Phase 193 Pi Runtime Capability Mapping: [██████████] 100% (SUMMARY complete; merge gate pending)
+- Phase 193 Pi Runtime Capability Mapping: [██████████] 100% complete
+- Phase 194 Context-Efficiency Architecture: [░░░░░░░░░░] 0% (ready for PLAN)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - merge gate pending]
+  ○        ○        ○     [Ready for PLAN: Phase 194]
 ```
 
 ## Accumulated Context
@@ -43,7 +44,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
   - Phase 191 updated Pi and cross-harness validation with structural anti-regrowth guardrails for active ROADMAP budgets, hot workflow/reference budgets, archive-link presence, bounded GitHub Flow duplication, and critical semantic markers; final validation passed Pi 183/183 and cross-harness 100/100.
 - v2.45 has been created as an architecture/design milestone: reset Claude Code support tier to unsupported/frozen, map Pi runtime capabilities, design context-efficiency architecture, allow bounded Pi-native code spikes, and produce a final migration/implementation roadmap.
 - Phase 192 completed the support-tier reset: Pi is documented as the supported runtime, Claude Code / Agent SDK are unsupported/frozen historical surfaces, portability docs are historical/frozen references, and `docs/PI-NATIVE-SUPPORT-INVENTORY.md` is the source artifact for Phase 193+ capability mapping.
-- Phase 193 APPLY created `docs/PI-RUNTIME-CAPABILITY-MAP.md`, mapping Pi runtime primitives to PLAN/APPLY/UNIFY, module dispatch, GitHub Flow, session continuity, context injection, validation redesign, and parent-owned delegated APPLY boundaries.
+- Phase 193 completed the Pi runtime capability map in `docs/PI-RUNTIME-CAPABILITY-MAP.md`, classifying current Pi primitives and documenting Phase 194 design inputs while preserving `.paul/*` authority, module evidence, GitHub Flow gates, and parent-owned APPLY boundaries.
 
 ### Current Decisions
 
@@ -89,20 +90,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/193-pi-runtime-capability-mapping
-Last commit: 46177f35 — docs(193-01): record Phase 194 Pi architecture inputs
-PR: #107 OPEN — https://github.com/coctostan/pals/pull/107 (Phase 193 runtime capability map; implementation commits pushed)
-CI: no checks reported yet at APPLY postflight; local validation passed Pi 183/183 and cross-harness 100/100
+Branch: main
+Last commit: 7cf67bcd — docs(193-01): map Pi runtime capabilities (PR #107 squash merge)
+PR: #107 MERGED — https://github.com/coctostan/pals/pull/107 (Phase 193 runtime capability map and UNIFY artifacts)
+CI: PR checks passed — Socket Security Project Report and Pull Request Alerts; local validation passed Pi 183/183 and cross-harness 100/100
 Prior PRs: #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
 Last session: 2026-04-27T15:08:55Z
-Stopped at: 193-01 UNIFY complete; GitHub Flow merge gate and phase transition pending
-Next action: Commit/push UNIFY artifacts, complete PR #107 merge gate, then transition Phase 193 to Phase 194
-Resume file: .paul/phases/193-pi-runtime-capability-mapping/193-01-SUMMARY.md
+Stopped at: Phase 193 complete; ready to plan Phase 194
+Next action: Run /paul:plan for Phase 194 Context-Efficiency Architecture
+Resume file: .paul/ROADMAP.md
 Resume context:
-- APPLY created `docs/PI-RUNTIME-CAPABILITY-MAP.md` and committed three docs task commits on `feature/193-pi-runtime-capability-mapping`.
-- Verification passed: plan grep checks, artifact-authority grep, Pi validation 183/183, and cross-harness validation 100/100.
-- GitHub Flow postflight pushed PR #107: https://github.com/coctostan/pals/pull/107; CI had no checks reported yet at APPLY completion.
-- Consumed handoff archived at `.paul/handoffs/archive/HANDOFF-2026-04-27-phase-193-plan.md`; working tree still has uncommitted `.paul/*` planning/state artifacts for UNIFY metadata reconciliation.
+- Phase 193 created and merged `docs/PI-RUNTIME-CAPABILITY-MAP.md` via PR #107.
+- Phase 194 should use `docs/PI-RUNTIME-CAPABILITY-MAP.md`, `docs/PI-NATIVE-SUPPORT-INVENTORY.md`, and the Phase 193 SUMMARY as primary inputs.
+- Validation baseline remains green: Pi 183/183 and cross-harness 100/100.
+- Preserve artifact-first truth while designing Pi-native context-efficiency helpers.
