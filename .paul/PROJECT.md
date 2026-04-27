@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.45 Pi-Native PALS Architecture is active; Phase 195 Exploratory Pi-Native Spikes is complete and Phase 196 Final Pi-Native Architecture Proposal is ready for planning.
+v2.45 Pi-Native PALS Architecture is complete. The final proposal in `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` now routes follow-on work toward artifact-slice contract hardening, workflow/resource capsules, guided UI evidence hardening, delegated APPLY packet compression, validation classification, and legacy-surface retention decisions.
 
-v2.45 is an architecture/design milestone to reposition PALS around Pi as the supported runtime, keep Claude Code and Agent SDK as unsupported/frozen historical surfaces, and explore how Pi extensions can reduce context pollution while making PLAN/APPLY/UNIFY more guided, enforceable, and effective.
+v2.45 repositioned PALS around Pi as the supported runtime while keeping Claude Code and Agent SDK as unsupported/frozen historical surfaces. It preserved `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, and parent-owned APPLY while defining how Pi runtime assistance can reduce context burden safely.
 
 ## Hot-path reading model
 
@@ -38,7 +38,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns verification, module gates, fallback, and `.paul/*` lifecycle writes.
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
 - v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
-- v2.45 explores Pi-native runtime assistance as the primary future architecture direction while keeping `.paul/*` artifacts authoritative; Phases 192-194 established support-tier classifications, mapped current Pi runtime capabilities, and produced the context-efficiency architecture for Phase 195 spikes.
+- v2.45 established Pi-native runtime assistance as the primary future architecture direction: Phases 192-196 reset support tiers, mapped Pi capabilities, designed context-efficiency guardrails, validated artifact-slice loading, and produced the final implementation roadmap while keeping `.paul/*` artifacts authoritative.
 
 ## Current milestone posture
 
@@ -48,9 +48,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | Complete | Shipped bounded parser/hook instrumentation repair and accepted CODI v0.1 as good enough. |
 | v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
 | v2.44 PALS Context Optimization — Process & Artifacts | Complete | Reduced recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety; Phase 191 validation now protects the gains. |
-| v2.45 Pi-Native PALS Architecture | Active | Explores dropping Claude Code as an active support target and designing PALS around Pi extension commands, tools, hooks, UI, and compaction/context assistance. |
+| v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
 
-See `.paul/ROADMAP.md` for the active v2.45 phase plan, `.paul/MILESTONES.md` for the compact milestone index, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
+See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 follow-on recommendations, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
 
@@ -89,6 +89,8 @@ See `.paul/ROADMAP.md` for the active v2.45 phase plan, `.paul/MILESTONES.md` fo
 | Artifact-slice context loading is the recommended first Phase 195 spike. | Phase 194 Plan 194-01 | Start with a read-only prototype that proves citation, freshness, bounded output, and fallback-to-full-read behavior before broader workflow capsules or UI changes. |
 | Validation should separate Pi-supported runtime checks, shared invariants, and frozen legacy parity. | Phase 194 Plan 194-01 | Future validation redesign can preserve safety while preventing unsupported Claude Code / Agent SDK parity from silently blocking Pi-native architecture decisions. |
 | Artifact-slice context loading is a validated Pi-native context-efficiency candidate. | Phase 195 Plan 195-01 | Phase 196 should decide whether to promote activation-gated, bounded, source-cited, freshness-marked, read-only slices into the final architecture proposal. |
+| Promote activation-gated artifact-slice loading as the first Pi-native context-efficiency implementation pattern. | Phase 196 Plan 196-01 | Next implementation milestone should harden the source-cited/freshness-marked/full-read-fallback slice contract before workflow capsules, guided UI hardening, helper-agent packet compression, validation classification, or legacy cleanup. |
+| Classify validation as Pi-supported runtime, shared invariant, or frozen legacy parity before weakening checks. | Phase 196 Plan 196-01 | Future validation redesign can optimize for Pi without accidentally deleting shared invariant protection. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -121,4 +123,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 195 Exploratory Pi-Native Spikes completion.*
+*Last updated: 2026-04-27 after Phase 196 Final Pi-Native Architecture Proposal / v2.45 completion.*

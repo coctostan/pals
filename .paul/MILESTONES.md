@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.45 Pi-Native PALS Architecture | See `.paul/ROADMAP.md`; Phase 192 ready for `/paul:plan` |
+| Current milestone | Next milestone not yet selected | See `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` follow-on recommendations |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -63,10 +63,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | 2026-04-26 | 6 days | 3 phases, 3 plans | Archive |
 | v2.43 PALS Context Diet — Archive, Compact, Compress | 2026-04-26 | 1 day | 4 phases, 6 plans | `.paul/ROADMAP.md` completed-milestone section |
 | v2.44 PALS Context Optimization — Process & Artifacts | 2026-04-27 | ~14 hours | 4 phases, 5 plans | [archive](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md) |
+| v2.45 Pi-Native PALS Architecture | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.45 Pi-Native PALS Architecture is active with phases 192–196. Phase 192 is ready for `/paul:plan`.
+v2.45 Pi-Native PALS Architecture is complete. Next milestone should be selected from `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md`, starting with Artifact Slice Contract Hardening unless redirected.
 
 ## Archive
 
@@ -74,4 +75,4 @@ v2.45 Pi-Native PALS Architecture is active with phases 192–196. Phase 192 is 
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for v2.45 creation: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for v2.45 completion: 2026-04-27.*
