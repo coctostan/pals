@@ -37,7 +37,7 @@ Phases: 2 of 4 complete (50%)
 |-------|------|-------|--------|-----------|
 | 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
 | 189 | Hot-Path Read Audit | 1/1 | ✅ Complete | 2026-04-27 |
-| 190 | Artifact Structure Simplification | 190-01 planned | Planning | - |
+| 190 | Artifact Structure Simplification | 1/3 complete | In progress | - |
 | 191 | Validation + Anti-Regrowth Update | TBD | Not started | - |
 ### Phase 188: Workflow Prompt/Skill Slimming
 Focus: Reduce recurring prompt, skill, and workflow read cost without weakening lifecycle semantics, module dispatch evidence, artifact authority, or GitHub Flow safety.
@@ -54,7 +54,7 @@ Primary inputs from Phase 189 audit (R1–R5):
 - R4 — Conditional references in `apply-phase.md` (checkpoints / subagent-criteria).
 - R5 (stretch) — Split `drivers/pi/extensions/pals-hooks.ts` into responsibility-scoped modules.
 Plans:
-- 190-01 planned (`.paul/phases/190-artifact-structure-simplification/190-01-PLAN.md`) — R1: ROADMAP archive split.
+- 190-01 complete (`.paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md`) — R1: ROADMAP archive split; compacted live roadmap to 68 lines and moved completed milestone detail to `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`.
 - 190-02 planned (not yet drafted) — R2 + R3 + R4: workflow centralization wave (GitHub Flow stanzas, module-dispatch taxonomy, conditional refs).
 - R5 (Pi adapter modular split) deferred to a future driver-quality milestone.
 ### Phase 191: Validation + Anti-Regrowth Update
@@ -66,4 +66,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 189 Plan 189-01 created.*
+*Last updated: 2026-04-27 — Phase 190 Plan 190-01 complete; Phase 190 Plan 190-02 ready to plan.*

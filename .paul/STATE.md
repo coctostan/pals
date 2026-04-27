@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-27 after Phase 189 transition)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is active; Phases 188 and 189 are complete (50%) and Phase 190 Plan 190-01 APPLY is complete, awaiting UNIFY.
+**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is active; Phases 188 and 189 are complete (50%) and Phase 190 Plan 190-01 is complete; Plan 190-02 is ready to plan.
 
 ## Current Position
 
 Milestone: v2.44 PALS Context Optimization — Process & Artifacts
-Phase: 190 of 4 in v2.44 — Artifact Structure Simplification — APPLY complete
-Plan: 190-01 applied, awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-27T01:19:00Z — Applied .paul/phases/190-artifact-structure-simplification/190-01-PLAN.md (ROADMAP archive split); validation passed.
+Phase: 190 of 4 in v2.44 — Artifact Structure Simplification — In progress
+Plan: 190-01 complete
+Status: Loop complete, ready for next PLAN in Phase 190
+Last activity: 2026-04-27T01:37:00Z — Unified Plan 190-01 ROADMAP archive split; created SUMMARY and updated module histories.
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
+  ✓        ✓        ✓     [Loop complete — ready for Plan 190-02]
 ```
 
 ## Accumulated Context
@@ -36,6 +36,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.44 continues context optimization across PALS process and artifacts; Phase 188 reduced recurring prompt/skill wrapper read cost.
 - Phase 188 completed workflow prompt/skill slimming: selected wrapper total dropped from 406 to 296 lines while Pi 177/177 and cross-harness 90/90 validation stayed green.
 - Phase 189 audit measured remaining hot-path reads and identified 8 findings (F1–F8) and 10 recommendations (R1–R10); ROADMAP archive split and GitHub Flow centralization are the largest reducible wins.
+- Phase 190 Plan 190-01 moved completed ROADMAP history into `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`, compacted live `.paul/ROADMAP.md` to 68 lines, and preserved archive authority through `.paul/archive/INDEX.md`.
 
 ### Current Decisions
 
@@ -58,6 +59,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 - Historical fix log, deviation log, and skill audit tables through Phase 185 Plan 185-01 are archived in [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md).
 - Phase 188 auto-fixed initial Pi validation marker loss by restoring exact guardrail phrases in thinner Pi skill wrappers; final validation passed.
+- Phase 190 Plan 190-01 recorded a verification-count deviation: approved plan expected 11 `<details>` blocks, actual ROADMAP source had 57 `<details>` lines under 11 completed-milestone headings; APPLY preserved actual history verbatim.
 
 ### Deferred Issues
 
@@ -73,23 +75,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/190-artifact-structure-simplification
-Phase transition commit: main transition commit after PR #101 squash merge 14251498; current APPLY commit 4c52a7df on feature branch
-PR: https://github.com/coctostan/pals/pull/102 (OPEN)
-CI: local validation passing — Pi 177/177 and cross-harness 90/90 passed during APPLY; remote CI pending/monitoring on PR #102
+Branch: feature/190-artifact-structure-simplification-unify
+Phase transition commit: PR #102 squash merge 42d72a8a; UNIFY artifact follow-up branch pending
+PR: #102 merged for APPLY artifacts; UNIFY follow-up PR pending creation
+CI: local validation passing — Pi 177/177 and cross-harness 90/90; PR #102 Socket Security checks passed
 Prior PRs: #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T01:19:00Z
-Stopped at: Plan 190-01 APPLY complete; awaiting UNIFY
-Next action: Run /paul:unify .paul/phases/190-artifact-structure-simplification/190-01-PLAN.md
-Resume file: .paul/phases/190-artifact-structure-simplification/190-01-PLAN.md
+Last session: 2026-04-27T01:37:00Z
+Stopped at: Plan 190-01 UNIFY complete; UNIFY artifact follow-up PR pending
+Next action: Complete GitHub Flow merge gate for UNIFY artifacts, then run /paul:plan for Phase 190 Plan 190-02
+Resume file: .paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md
 Resume context:
-- Phase 190 Plan 190-01 applied R1 (ROADMAP archive split): created `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`, compacted `.paul/ROADMAP.md` to 68 lines, and registered the archive in `.paul/archive/INDEX.md`.
-- Validation passed: `bash tests/pi-end-to-end-validation.sh` (177/177) and `bash tests/cross-harness-validation.sh` (90/90).
-- Plan verification deviation to record in UNIFY: source ROADMAP had 57 `<details>` lines under 11 `## Completed Milestones` headings; the approved plan's literal `<details>` count checks expected 11, so APPLY preserved the actual source verbatim and used adjusted evidence (57 details + 11 headings).
-- Plan 190-02 (planned, not yet drafted): R2 + R3 + R4 — workflow centralization wave (centralize GitHub Flow stanzas, hoist module-dispatch taxonomy, conditional refs in apply-phase.md).
-- Plan 190-03 (deferred): R5 — Pi adapter modular split. Decision: defer per user.
-- Phase 191 follows with anti-regrowth validation that locks the new hot-path budgets (R6–R7).
-- Validation guardrail updates intentionally deferred to Phase 191 (not done inline during Phase 190 plans).
+- Phase 190 Plan 190-01 completed R1 (ROADMAP archive split): created `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`, compacted `.paul/ROADMAP.md` to 68 lines, registered the archive in `.paul/archive/INDEX.md`, and documented results in `.paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md`.
+- Validation passed: `bash tests/pi-end-to-end-validation.sh` (177/177), `bash tests/cross-harness-validation.sh` (90/90), and PR #102 Socket Security checks. PR #102 merged APPLY artifacts before UNIFY artifacts were added, so UNIFY artifacts are being carried by a follow-up branch.
+- UNIFY recorded the verification-count deviation: source ROADMAP had 57 `<details>` lines under 11 `## Completed Milestones` headings; the approved plan expected 11 conceptual blocks, so actual source history was preserved verbatim.
+- Plan 190-02 next: R2 + R3 + R4 — workflow centralization wave (centralize GitHub Flow stanzas, hoist module-dispatch taxonomy, conditional refs in apply-phase.md).
+- Plan 190-03 deferred: R5 — Pi adapter modular split. Decision: defer per user.
+- Phase 191 follows after Phase 190 with anti-regrowth validation that locks the new hot-path budgets (R6–R7).
