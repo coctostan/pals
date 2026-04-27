@@ -61,3 +61,98 @@ The architecture goal is not to hide these sources. It is to make Pi load, summa
 - Full authoritative markdown reads remain required whenever a summary is ambiguous, stale, contested, or used for a decision that changes lifecycle semantics.
 - Frozen legacy surfaces can be referenced for history or shared invariant protection, but Phase 194 must not optimize around active Claude Code or Agent SDK parity.
 - Phase 194 is design-only: no commands, hooks, tools, dialogs, validation rewrites, dependency changes, legacy deletions, or workflow semantic changes.
+
+## Architecture Overview
+
+The architecture uses a layered model. Each layer may reduce context cost, but authority flows upward only from durable artifacts and workflow evidence.
+
+```text
+┌────────────────────────────────────────────────────────────┐
+│ Pi presentation and routing surfaces                       │
+│ status/widget, shortcuts, guided UI, bounded context lens  │
+└──────────────────────────────▲─────────────────────────────┘
+                               │ derived, cited, disposable
+┌──────────────────────────────┴─────────────────────────────┐
+│ Transient context lenses and task packets                   │
+│ artifact slices, workflow capsules, module evidence lens,  │
+│ GitHub Flow lens, CARL bootstrap, helper-agent reports      │
+└──────────────────────────────▲─────────────────────────────┘
+                               │ reads and summarizes
+┌──────────────────────────────┴─────────────────────────────┐
+│ Installed resources and external evidence                  │
+│ workflows, references, templates, modules.yaml, git/gh,    │
+│ validation command output                                  │
+└──────────────────────────────▲─────────────────────────────┘
+                               │ interpreted by workflows
+┌──────────────────────────────┴─────────────────────────────┐
+│ Authoritative project artifacts                            │
+│ .paul/STATE.md, PROJECT.md, ROADMAP.md, PLAN, SUMMARY,     │
+│ handoffs, archives                                          │
+└────────────────────────────────────────────────────────────┘
+```
+
+The important property is reversibility: every Pi-derived context slice must be traceable back to a path, command output, or explicit user reply. If a model or reviewer cannot answer “what artifact or evidence did this come from?”, that slice is not safe enough to reduce authoritative reads.
+
+## Assistance Components
+
+| Component | Authoritative source | Allowed runtime assistance | Forbidden ownership | Evidence destination | Lifecycle surfaces |
+|---|---|---|---|---|---|
+| Artifact-indexed context loading | `.paul/STATE.md`, `.paul/PROJECT.md`, `.paul/ROADMAP.md`, active PLAN/SUMMARY files, archive indexes | Load named slices such as current loop, active phase, next action, current decisions, prior summary highlights, or active roadmap section. Return compact text with source paths. | Owning lifecycle state, inventing missing decisions, hiding stale source age, or replacing full reads for contested decisions. | Transcript output with cited paths; later PLAN/SUMMARY notes when materially used. | PLAN, APPLY, UNIFY, RESUME, STATUS |
+| Workflow/resource capsules | Installed `workflows/**`, `references/**`, `templates/**`, `rules/**` | Present short summaries of hook-local obligations, task anatomy, checkpoint semantics, or GitHub Flow recipes with links to full installed resources. | Rewriting workflow semantics, silently shortening mandatory STOP/DO NOT SKIP rules, or making capsules the final source of truth. | PLAN/SUMMARY dispatch notes when used; full workflow path citations. | PLAN, APPLY, UNIFY |
+| Module-dispatch evidence lens | Installed `modules.yaml`; `[dispatch] ...` lines; `Module Execution Reports`; module refs | Show active hook cohort, module order, skip/pass/block evidence, and recent module activity in a compact view. | Maintaining a separate Pi-owned ledger, marking hooks complete without workflow evidence, or bypassing module refs. | PLAN `<module_dispatch>` and SUMMARY `Module Execution Reports`. | PLAN, APPLY, UNIFY, STATUS |
+| Guided workflow reply UI | Shared workflow prompts; `.paul/STATE.md`; user interaction transcript | Convert known prompts into Pi `confirm`/`select` affordances and send exact canonical replies such as `1`, `approved`, `yes`, or selected option id. | Auto-continuing, approving, skipping checkpoints, hiding user intent, or creating UI-only decisions. | Visible transcript reply; relevant STATE/SUMMARY decision rows for checkpoint decisions. | PLAN review, APPLY approval, checkpoints, continue-to-UNIFY |
+| GitHub Flow status lens | `pals.json`; git branch/ahead-behind state; `gh pr` state; `kernel/references/git-strategy.md` | Display branch, base, PR URL/state, CI state, and one next canonical action. | Creating merge-anyway paths, hiding failing CI, treating UI readiness as merge authorization, or skipping base-sync. | Git command output, PR URL/state, STATE Git State, SUMMARY merge-gate report. | APPLY preflight/postflight, UNIFY merge gate, RESUME/STATUS |
+| CARL/session continuity lens | `.paul/STATE.md`; handoff files; CARL bootstrap prompt; `pals.json` CARL config | Bootstrap fresh sessions with bounded state, route `/skill:paul-resume`, and identify whether a handoff is active or archived. | Treating handoff content as newer than STATE, persisting hidden session memory as truth, or skipping resume workflow. | STATE Session Continuity; archived handoff lifecycle; transcript bootstrap. | RESUME, PAUSE, phase boundary, safety boundary |
+| Helper-agent task packet/report compression | Approved PLAN task; parent APPLY instructions; `pals-implementer` report; git diff; verification output | Create bounded task packets, require structured reports, and summarize changed files/commands/verification for parent review. | Letting the helper own `.paul/*` writes, checkpoints, official verification, fallback, module gates, or APPLY completion judgment. | Parent APPLY notes; git diff; verification results; SUMMARY task/deviation report. | APPLY |
+| Validation redesign hooks | Existing validation scripts; future Pi behavior tests; shared invariant checks | Surface which validations are Pi-supported, shared-invariant, or frozen-legacy parity; run commands and summarize results. | Marking validation green without command output, deleting shared invariants for convenience, or blocking Pi-native design solely for frozen parity. | Command output logs; SUMMARY verification table; WALT quality history. | APPLY, UNIFY, CI |
+
+## Read Model and Citation Contract
+
+### Read tiers
+
+| Tier | Use for | Examples | Citation requirement |
+|---|---|---|---|
+| Full authoritative read | Decisions, edits, semantic ambiguity, plan approval, task execution, merge gates, or contested facts. | Current PLAN tasks, workflow STOP rules, STATE before lifecycle writes, GitHub Flow gate details. | Cite exact path and, when useful, section or line range. |
+| Bounded artifact slice | Orientation, next-action routing, current phase summary, prior result lookup, or dispatch recap. | STATE Current Position, ROADMAP current milestone, prior SUMMARY decisions, Module Execution Reports. | Cite source path and slice label. |
+| Installed resource capsule | Repeated workflow/reference reminder where the full file has stable semantics and no ambiguity. | Task anatomy, checkpoint protocol, module-dispatch evidence convention, GitHub Flow preflight summary. | Cite installed logical path and capsule version/source section. |
+| Runtime lens | UI/status/context injection for low-risk orientation. | Current branch display, lifecycle widget, recent module activity, CARL bootstrap payload. | Cite source artifact or command evidence inside the lens output. |
+| Cold archive lookup | Historical decisions only when a concrete dependency requires them. | Archived roadmap history, old handoffs, project history. | Cite archive path; do not summarize as current state unless STATE/PROJECT still agrees. |
+
+### Citation rules
+
+- Every Pi-assisted context output should include `Source:` or equivalent path citations for artifact-derived claims.
+- Runtime lenses should include freshness markers when the source can change during the session, especially git/PR/CI state and STATE loop position.
+- If the model will edit a file, it must read that file normally and use anchored edits where available; a summary is not enough.
+- If a summary conflicts with an artifact, trust the artifact and record the discrepancy for UNIFY or STATE repair.
+- If a user decision changes lifecycle semantics, record it in durable artifacts through the workflow rather than relying on transcript memory.
+
+### What can be summarized safely
+
+- Current lifecycle orientation: milestone, phase, plan, loop marks, next action.
+- Active ROADMAP current milestone and near-future phase rows.
+- Prior SUMMARY accomplishments, decisions, deviations, blockers, and validation baseline.
+- Installed module hook order, hook-local refs, and recent dispatch evidence.
+- GitHub Flow status after running explicit git/gh commands.
+- Repeated prompt menus and checkpoint reply formats, when the underlying workflow prompt is still visible.
+
+### What still requires full markdown or command reads
+
+- Approved PLAN tasks, boundaries, verification, and acceptance criteria before APPLY.
+- Workflow instructions that include blocking behavior, override paths, or lifecycle writes.
+- STATE before updating lifecycle position or resolving resume routing.
+- SUMMARY/ROADMAP changes during UNIFY or phase transition.
+- GitHub Flow merge gates and CI state before merge.
+- Any artifact whose summary is stale, missing citations, or used for a new product/support-tier decision.
+
+## Risks and Rejected Designs
+
+| Rejected design | Why rejected | Safer alternative |
+|---|---|---|
+| Opaque Pi memory as lifecycle state | Breaks portable markdown truth and makes future sessions unauditable. | Derived lenses over `.paul/*` with path citations. |
+| Telemetry-owned context engine | Moves authority into hidden runtime observations and risks privacy/scope creep. | User-visible artifact slices and command outputs only. |
+| Auto-approval or auto-continue UI | Violates explicit approval and checkpoint invariants. | Guided UI sends explicit canonical replies after user choice. |
+| Hidden module execution ledger | Splits evidence between Pi and PLAN/SUMMARY artifacts. | Render recent activity from installed registry plus durable reports. |
+| Merge-gate bypass from status widget | Risks merging behind-base or failing-CI work. | Status lens shows one next canonical workflow action only. |
+| Helper-agent-owned APPLY | Undermines parent verification, fallback, module gates, and `.paul/*` writes. | Parent-owned task packets and structured helper reports. |
+| Full replacement of workflow reads with short summaries | Summaries can omit blocking semantics or edge cases. | Capsules for orientation; full reads for authority and ambiguity. |
+| Active Claude Code / Agent SDK parity constraint | Conflicts with Phase 192 support-tier reset and preserves unnecessary context burden. | Preserve historical references and shared invariants; optimize Pi-supported runtime. |
