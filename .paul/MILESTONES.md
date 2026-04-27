@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.46 Pi-Native Implementation Planning (complete) | `.paul/ROADMAP.md` phases 197-201 |
+| Current milestone | v2.47 Artifact-Slice Contract Hardening (in progress) | `.paul/ROADMAP.md` phases 202-205 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -68,7 +68,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.46 Pi-Native Implementation Planning is complete. The recommended next milestone is Artifact-Slice Contract Hardening, to be created through normal `/paul:milestone` / `/paul:plan` lifecycle routing.
+v2.47 Artifact-Slice Contract Hardening is active. Phase 202 is complete; the next action is `/paul:plan` for Phase 203 Runtime Slice Hardening.
 
 ## Archive
 
@@ -76,4 +76,4 @@ v2.46 Pi-Native Implementation Planning is complete. The recommended next milest
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 201 / v2.46 completion: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 202 completion: 2026-04-27.*

@@ -28,38 +28,32 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.46 Pi-Native Implementation Planning**
-Status: ✅ Complete
-Completed: 2026-04-27
-Phases: 5 of 5 complete
+**v2.47 Artifact-Slice Contract Hardening**
+Status: 🚧 In Progress
+Phases: 1 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
-| 198 | Implementation Workstream Design | 1/1 | Complete | 2026-04-27 |
-| 199 | Sequencing + Dependency Plan | 1/1 | Complete | 2026-04-27 |
-| 200 | Validation + Evidence Strategy | 1/1 | Complete | 2026-04-27 |
-| 201 | Final Implementation Plan Proposal | 1/1 | Complete | 2026-04-27 |
+| 202 | Slice Inventory + Contract Baseline | 1/1 | ✅ Complete | 2026-04-27 |
+| 203 | Runtime Slice Hardening | TBD | Ready to plan | - |
+| 204 | Documentation + Skill Map Surfacing | TBD | Not started | - |
+| 205 | Validation + Evidence Reconciliation | TBD | Not started | - |
 
-### Phase 197: v2.45 Findings Triage
-Focus: Extract and classify v2.45 findings, decisions, promoted patterns, rejected options, constraints, and unresolved implementation questions before planning build work.
-Plans: 197-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md` with source-cited v2.45 findings, authority boundaries, workstream seeds, open questions, Phase 198-201 handoff recommendations, and readiness checklist.
+### Phase 202: Slice Inventory + Contract Baseline
+Focus: Define the named artifact-slice inventory, stable schema fields, freshness/bounds/fallback rules, protected files, validation classes, and non-goals before runtime hardening begins.
+Plans: 202-01 complete — created and unified `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md` with named slice inventory, schema fields, freshness/bounds/fallback rules, validation classes, marker-check families, protected files, failure conditions, durable evidence requirements, and Phase 203 handoff.
 
-### Phase 198: Implementation Workstream Design
-Focus: Convert the v2.45 migration and implementation roadmap into concrete workstreams across artifact slices, workflow/resource capsules, guided UI evidence, helper-agent packets, validation classification, and legacy retention.
-Plans: 198-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-WORKSTREAMS.md` with source-cited candidate workstreams, readiness classifications, repo surfaces, validation/evidence expectations, authority boundaries, dependency edges, risk gates, unresolved decisions, and Phase 199 sequencing handoff inputs.
+### Phase 203: Runtime Slice Hardening
+Focus: Harden Pi extension artifact-slice output so slices remain activation-gated, bounded, source-cited, freshness-aware, read-only, and backed by full authoritative reads.
+Plans: TBD (defined during /paul:plan). Ready to plan next.
 
-### Phase 199: Sequencing + Dependency Plan
-Focus: Define ordering, dependencies, proof points, risk gates, and boundaries for implementation milestones so later build work proceeds safely.
-Plans: 199-01 complete — created and unified `docs/PI-NATIVE-SEQUENCING-DEPENDENCY-PLAN.md` with source-cited sequencing principles, dependency matrix, recommended order, ordering alternatives, risk gates, split/merge recommendations, Phase 200 validation/evidence handoff, Phase 201 roadmap inputs, and sequencing readiness checklist.
+### Phase 204: Documentation + Skill Map Surfacing
+Focus: Update Pi extension documentation and skill-map surfacing so artifact slices are documented as orientation aids and full reads remain required for edits, lifecycle writes, stale facts, ambiguity, and decisions.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 200: Validation + Evidence Strategy
-Focus: Define how implementation will preserve Pi-supported runtime checks, shared invariants, frozen legacy evidence, runtime lens checks, guided UI safety, and helper-agent delegation checks.
-Plans: 200-01 complete — created and unified `docs/PI-NATIVE-VALIDATION-EVIDENCE-STRATEGY.md` with validation taxonomy, current-suite classification, future workstream evidence requirements, command-output/durable artifact evidence rules, Phase 201 handoff, readiness checklist, and stable validation evidence.
-
-### Phase 201: Final Implementation Plan Proposal
-Focus: Produce the executable Pi-native implementation roadmap for the next build milestone(s), with acceptance criteria, phase recommendations, and non-negotiable authority boundaries.
-Plans: 201-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md` with the recommended next build milestone (Artifact-Slice Contract Hardening), candidate follow-on sequence, validation classes, command-output evidence, durable artifact evidence, explicit deferrals, and next-build handoff.
+### Phase 205: Validation + Evidence Reconciliation
+Focus: Add or adjust runtime-lens validation markers, preserve Pi and cross-harness command-output evidence, reconcile module/GitHub Flow proof, and hand off safely to the next Pi-native build milestone.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -72,4 +66,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — v2.46 complete after Phase 201 final implementation-plan proposal UNIFY.*
+*Last updated: 2026-04-27 — Phase 202 complete; ready to plan Phase 203 Runtime Slice Hardening.*
