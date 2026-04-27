@@ -5,25 +5,27 @@ Git integration for PAUL workflow.
 <configuration>
 ## Git Configuration (pals.json)
 Set during `/paul:init` or manually.
+
 ### Workflow Modes
 
 PALS supports three git workflow modes, configured via the `workflow` field:
 
 | Mode | Behavior | Enforcement |
 |------|----------|-------------|
-| `github-flow` | Strict GitHub Flow — branch validation, auto-PR, merge gate blocks next phase until PR is merged. Requires `gh` CLI. | Active: preflight/postflight in apply-phase, 6-gate merge gate in unify-phase, git-aware routing in resume/pause |
+| `github-flow` | Strict GitHub Flow — branch validation, auto-PR, merge gate blocks next phase until PR is merged. Requires `gh` CLI. | Active: preflight/postflight in apply-phase, merge gate in unify-phase, git-aware routing in status/resume/pause |
 | `legacy` | Advisory git ops — feature-per-phase branching, optional push/PR/CI. Current behavior for existing projects. | Passive: no blocking gates, all automation optional |
 | `none` | No git operations. All git steps are no-ops. | None |
 
-### Config Resolution (3-Tier)
+### Workflow Resolution (3-Tier)
 
-Workflow mode is resolved using a 3-tier priority:
+Call sites in `kernel/workflows/apply-phase.md`, `kernel/workflows/unify-phase.md`, `kernel/workflows/transition-phase.md`, `kernel/workflows/roadmap-management.md`, and `kernel/workflows/pause-work.md` must resolve workflow mode the same way:
 
-```
-function resolveGitWorkflow(config):
-  if config.git.workflow exists:     → use it (github-flow | legacy | none)
-  if config.git.branching exists:    → "legacy" (backward compatible)
-  else:                              → "none"
+```bash
+GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
+if [ -z "$GIT_WORKFLOW" ]; then
+  GIT_BRANCHING=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
+  [ -n "$GIT_BRANCHING" ] && GIT_WORKFLOW="legacy" || GIT_WORKFLOW="none"
+fi
 ```
 
 **Backward compatibility:** Existing projects with `branching: "feature-per-phase"` or `branching: "direct-to-main"` automatically resolve to `workflow: "legacy"` with zero behavior change. No migration required.
@@ -32,40 +34,77 @@ function resolveGitWorkflow(config):
 
 | Field | Type | Default | Modes | Read by |
 |-------|------|---------|-------|---------|
-| `workflow` | `"github-flow"` \| `"legacy"` \| `"none"` | `"none"` | All | All workflows |
+| `workflow` | `"github-flow" \| "legacy" \| "none"` | `"none"` | All | All workflows |
 | `remote` | `string` \| `null` | `null` | All | transition-phase, complete-milestone |
-| `base_branch` | `string` | `"main"` | github-flow | apply-phase (preflight), transition-phase, resume-project |
-| `merge_method` | `"squash"` \| `"merge"` \| `"rebase"` | `"squash"` | github-flow | transition-phase |
-| `auto_push` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase (postflight), transition-phase |
-| `auto_pr` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase (postflight), unify-phase (merge gate) |
-| `ci_checks` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | unify-phase (merge gate), transition-phase |
-| `delete_branch_on_merge` | `boolean` | `true` | github-flow | transition-phase, unify-phase (merge gate) |
-| `update_branch_when_behind` | `boolean` | `true` | github-flow | apply-phase (preflight) |
-| `require_pr_before_next_phase` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow | unify-phase (merge gate), resume-project |
-| `require_reviews` | `boolean` | `false` | github-flow | unify-phase (merge gate) |
+| `base_branch` | `string` | `"main"` | github-flow | apply-phase, unify-phase, transition-phase, roadmap-management, pause-work |
+| `merge_method` | `"squash" \| "merge" \| "rebase"` | `"squash"` | github-flow | unify-phase, transition-phase |
+| `auto_push` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase, transition-phase, complete-milestone |
+| `auto_pr` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase, unify-phase, transition-phase |
+| `ci_checks` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow, legacy | apply-phase, unify-phase, transition-phase, roadmap-management, pause-work |
+| `delete_branch_on_merge` | `boolean` | `true` | github-flow | unify-phase, transition-phase |
+| `update_branch_when_behind` | `boolean` | `true` | github-flow | apply-phase, transition-phase |
+| `require_pr_before_next_phase` | `boolean` | `true` (github-flow), `false` (legacy) | github-flow | unify-phase |
+| `require_reviews` | `boolean` | `false` | github-flow | unify-phase, roadmap-management |
 
 **Legacy fields:** `branching` is preserved for backward compatibility in legacy and none templates. GitHub Flow templates omit `branching` entirely — the `workflow` field is authoritative. `worktree_isolation` is orthogonal to workflow mode.
 
-### Key Behavioral Patterns
+### Shared GitHub Flow Recipes
 
-**Preflight (apply-phase):** Before task execution in github-flow mode, validates: correct branch, not behind base, base is fresh from remote, clean working tree. Creates feature branch if needed.
+When a workflow says to follow `references/git-strategy.md`, it should keep only call-site gates, skip conditions, and displayed evidence inline.
 
-**Postflight (apply-phase):** After task execution in github-flow mode, pushes feature branch (if `auto_push`), creates PR (if `auto_pr`), surfaces CI state.
+#### APPLY preflight responsibilities
 
-**Merge Gate (unify-phase):** After SUMMARY.md creation in github-flow mode, enforces 6 sequential gates before routing to next PLAN: PR exists → CI passing → reviews approved → PR merged → base synced → branch cleaned. CI failure is blocking with no escape hatch.
+- Resolve `GIT_WORKFLOW`; skip the step when the mode is not `github-flow`.
+- Read `base_branch`, `update_branch_when_behind`, `remote`, and the current phase context.
+- Ensure work starts on a non-base feature branch; create `feature/{phase-name}` from the base branch when currently on the base branch.
+- Resolve `CURRENT_BRANCH` after any branch creation and use it for every downstream command.
+- Refresh the local base branch from remote when a remote is configured.
+- If the working branch is behind base, rebase when `update_branch_when_behind=true`; otherwise warn and continue.
+- Check working-tree cleanliness and require stash/continue/stop handling when unrelated changes are present.
+- Emit the visible `GitHub Flow Preflight ✓` summary with branch, base, behind, and tree status.
 
-**Lifecycle Awareness (init/resume/pause):** Init offers GitHub Flow as a first-class option with `gh` CLI and `gh auth status` validation (distinguishes CLI-missing from CLI-present-but-unauthenticated). Resume surfaces git/PR/CI state and routes next action based on git state priority (CI failing → fix CI, behind base → update branch, PR ready → merge). Pause captures git/PR continuity data in handoff using `git add -A` for complete staging.
+#### APPLY postflight responsibilities
 
-**Status Parity (progress):** The `/paul:progress` command surfaces the same GitHub Flow git state as resume — branch, base, PR URL/state, CI state, and ahead/behind sync. Both status and resume use identical git-aware routing tables, ensuring they never disagree about the next step.
-**Reading config in workflows:**
-```bash
-GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
-# 3-tier fallback if workflow field absent:
-if [ -z "$GIT_WORKFLOW" ]; then
-  BRANCHING=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
-  [ -n "$BRANCHING" ] && GIT_WORKFLOW="legacy" || GIT_WORKFLOW="none"
-fi
-```
+- Resolve `GIT_WORKFLOW`; skip the step when the mode is not `github-flow`.
+- Read `auto_push`, `auto_pr`, `ci_checks`, `remote`, `base_branch`, and resolve `CURRENT_BRANCH`.
+- Stage and commit implementation work on the current feature branch before any remote operations.
+- If a remote exists and `auto_push=true`, push `CURRENT_BRANCH`.
+- If a remote exists and `auto_pr=true`, create or reuse the PR targeting `base_branch`, then record the PR URL/state.
+- If `ci_checks=true`, surface PR check state for visibility only; blocking enforcement happens in UNIFY.
+- Emit the visible `GitHub Flow Postflight ✓` summary with branch, push, PR, and CI status.
+
+#### UNIFY merge-gate responsibilities
+
+- Resolve `GIT_WORKFLOW`; skip the gate when the mode is not `github-flow`.
+- Read `require_pr_before_next_phase`, `ci_checks`, `require_reviews`, `merge_method`, `delete_branch_on_merge`, `base_branch`, `remote`, `auto_pr`, and resolve `CURRENT_BRANCH`.
+- If PR enforcement is off, display `Merge gate: skipped (not required)` and continue.
+- Commit and push the latest UNIFY artifacts on the feature branch before checking PR state.
+- Gate order is fixed: PR exists/create-if-allowed → CI passing → reviews approved (if required) → PR merged → base synced → branch cleaned.
+- `CI failure is blocking` in github-flow mode; there is no merge-anyway path.
+- Update `STATE.md` Git State after merge and show the final merge-gate summary.
+- Workflow-local extras, such as REV code review, stay inline in the workflow between review approval and merge.
+
+#### Status / resume / roadmap routing responsibilities
+
+- Resolve `GIT_WORKFLOW`; only github-flow collects git state.
+- Gather `CURRENT_BRANCH`, `GIT_BASE_BRANCH`, ahead/behind counts, PR URL/state, and CI state.
+- Use the same routing priority everywhere: behind base → PR open + CI failing → PR open + CI passing + reviews pending → PR open + CI passing + ready to merge → normal loop routing.
+- Status displays and resume guidance must surface exactly one next action from that priority order.
+
+#### Pause / WIP continuity responsibilities
+
+- Resolve `GIT_WORKFLOW`; if github-flow, capture branch/base/PR/CI/behind state in the handoff.
+- Offer WIP commit only when workflow mode is not `none`.
+- Use `git add -A` for the WIP commit path.
+- In github-flow, commit only on the current feature branch.
+- In legacy mode, offer the config-driven default between main and feature-branch WIP strategies and record the chosen strategy in STATE when it affects later reconciliation.
+
+#### Phase transition / milestone tagging responsibilities
+
+- Resolve the shared git fields once and reuse `CURRENT_BRANCH`; never assume a phase-derived branch name.
+- In github-flow, UNIFY owns the feature-to-base merge; transition-phase stages and commits phase metadata on the current branch and must not locally merge the feature branch back to base.
+- Post-transition remote automation follows the same push/CI/PR rules above, including the blocking github-flow CI rule.
+- Milestone/tag flows reuse the same base branch, remote, and auto-push expectations when creating annotated release tags.
 </configuration>
 
 <core_principle>
