@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.44 PALS Context Optimization — Process & Artifacts.
+v2.44 PALS Context Optimization — Process & Artifacts is complete.
 
-v2.44 continues context optimization across PALS process and artifacts. Phase 188 slimmed workflow prompt/skill wrappers; Phase 189 measured remaining hot-path reads and ranked reductions; Phase 190 simplified active artifact structure by archiving completed ROADMAP history, centralizing GitHub Flow stanzas, hoisting module-dispatch taxonomy, and making APPLY optional refs conditional; Phase 191 will refresh anti-regrowth validation to lock the new budgets.
+v2.44 completed context optimization across PALS process and artifacts: Phase 188 slimmed workflow prompt/skill wrappers; Phase 189 measured remaining hot-path reads and ranked reductions; Phase 190 simplified active artifact structure by archiving completed ROADMAP history, centralizing GitHub Flow stanzas, hoisting module-dispatch taxonomy, and making APPLY optional refs conditional; Phase 191 refreshed anti-regrowth validation to lock the new budgets across Pi, Claude Code, and repo-source surfaces.
 
 ## Hot-path reading model
 
@@ -37,7 +37,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - GitHub Flow mode enforces branch/PR/CI/merge discipline when enabled in `pals.json`.
 - `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns verification, module gates, fallback, and `.paul/*` lifecycle writes.
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
-- v2.44 context optimization must preserve archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while reducing recurring read cost.
+- v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
 
 ## Current milestone posture
 
@@ -46,7 +46,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation | Complete | Natural quark observations showed qualitative value but measurement gaps. |
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | Complete | Shipped bounded parser/hook instrumentation repair and accepted CODI v0.1 as good enough. |
 | v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
-| v2.44 PALS Context Optimization — Process & Artifacts | Active | Continue reducing recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety. |
+| v2.44 PALS Context Optimization — Process & Artifacts | Complete | Reduced recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety; Phase 191 validation now protects the gains. |
 
 See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md` for phase sequencing.
 
@@ -79,6 +79,7 @@ See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md`
 | Hot-path read cost is concentrated in `.paul/ROADMAP.md` (744 lines, ~690 historical) and duplicated GitHub Flow stanzas across 5+ workflows; Pi adapter and Claude wrappers are deferred. | Phase 189 Plan 189-01 | Phase 190 primary work is ROADMAP archive split + GitHub Flow centralization; Pi adapter modularization and Claude wrapper handling are gated on a product-level Claude Code support-tier decision. |
 | Phase 190 artifact simplification uses active-window artifacts plus reference-owned shared mechanics. | Phase 190 Plans 190-01/190-02 | ROADMAP history and duplicated workflow mechanics are authoritative but no longer repeated in hot-path reads. |
 | Defer Pi adapter modularization to a future driver-quality milestone. | Phase 190 Plan 190-02 | Keeps v2.44 focused on process/artifact read-cost reductions without changing Pi runtime behavior. |
+| Prefer structural anti-regrowth checks over long exact-prose assertions. | Phase 191 Plan 191-01 | Validation protects context-diet gains through line budgets, archive pointers, occurrence ceilings, and short semantic anchors across source and installed surfaces. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -111,4 +112,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 190 transition.*
+*Last updated: 2026-04-27 after Phase 191 transition.*
