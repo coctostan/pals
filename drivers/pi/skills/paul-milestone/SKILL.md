@@ -13,6 +13,5 @@ Create or complete a milestone.
 
 ## Command-local notes
 - Detect create vs complete mode from project state and user intent.
-- Reuse `.paul/MILESTONE-CONTEXT.md` when a prior discuss step prepared milestone context.
-- Create mode preserves the shared collaboration and review behavior before writing milestone structure.
-- Complete mode verifies the milestone is actually closed before updating roadmap/history artifacts.
+- Reuse `.paul/MILESTONE-CONTEXT.md` when present.
+- Preserve collaboration/review behavior before writes; verify closure before completion.

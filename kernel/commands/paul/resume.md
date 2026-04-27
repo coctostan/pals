@@ -6,11 +6,7 @@ allowed-tools: [Read, Glob, Bash]
 ---
 
 <objective>
-Restore PAUL context after a session break, determine current position, and suggest exactly ONE next action.
-
-**When to use:** Starting a new session on an existing PAUL project.
-
-**Handoff lifecycle:** Detects handoffs, presents content, and archives active consumed handoffs after work proceeds while still allowing archived handoffs to be used as fallback resume context.
+Restore PAUL context after a session break and suggest exactly one next action.
 </objective>
 
 <execution_context>
@@ -24,28 +20,19 @@ $ARGUMENTS (optional handoff path)
 </context>
 
 <process>
-**Follow workflow: kernel/workflows/resume-project.md**
+Follow workflow: kernel/workflows/resume-project.md
 
-The workflow implements:
-1. Verify .paul/ exists
-2. Detect handoff files (use $ARGUMENTS if provided, else prefer most recent active handoff and fall back to archived handoffs)
-3. Load STATE.md
-4. Present handoff content if detected
-5. Reconcile handoff vs STATE.md
-6. Determine exactly ONE next action based on loop position
-7. Display resume status with single routing
-8. After work proceeds: archive/delete consumed active handoff as appropriate
-
-**Key behavior:** Suggest exactly ONE next action, not multiple options.
-
-**Handoff pattern:** `.paul/HANDOFF-{context}.md` (e.g., `HANDOFF-phase10-audit.md`)
-**Archive fallback:** `.paul/handoffs/archive/HANDOFF*.md`
+Command-local obligations:
+- Prefer an explicit handoff argument, then newest active `.paul/HANDOFF*.md`, then archived handoff fallback.
+- Treat STATE.md as authoritative when state and handoff disagree.
+- Surface GitHub Flow state only when configured.
+- Present exactly one next action.
+- Archive only a consumed active handoff after work proceeds; leave archived handoffs in place.
 </process>
 
 <success_criteria>
 - [ ] Context restored from STATE.md and/or handoff
-- [ ] Archived handoffs remain discoverable as fallback resume context
 - [ ] Loop position correctly identified
-- [ ] Exactly ONE next action suggested (not multiple options)
-- [ ] User can proceed or redirect with context
+- [ ] Exactly one next action suggested
+- [ ] Handoff lifecycle handled when work proceeds
 </success_criteria>

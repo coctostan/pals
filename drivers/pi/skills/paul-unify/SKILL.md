@@ -12,7 +12,6 @@ Close the loop by reconciling plan vs actual execution.
 - `../modules.yaml`
 
 ## Command-local notes
-- Compare the executed plan with the actual results and write `SUMMARY.md` beside the plan.
-- Record deviations, execution decisions, and lessons learned for future context.
-- Update `STATE.md`, refresh `ROADMAP.md` when phase/milestone state changes, and run shared post-unify module/reporting steps.
-- A successful unify closes the current loop and routes to the next planning decision.
+- Write `SUMMARY.md` beside the plan with results, deviations, decisions, and lessons.
+- Update `STATE.md` and `ROADMAP.md` as needed; run shared post-unify module/reporting steps.
+- Successful UNIFY closes the loop and routes to the next planning decision.

@@ -27,31 +27,45 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.43 PALS Context Diet — Archive, Compact, Compress**
-Status: ✅ Complete
+**v2.44 PALS Context Optimization — Process & Artifacts**
+Status: 🚧 In Progress
 Started: 2026-04-26
-Theme: Keep PALS' disciplined PLAN/APPLY/UNIFY process, but make it cheaper to run by moving history out of hot context, compacting active artifacts, and trimming repetitive prose.
-Source context: milestone discussion on 2026-04-26 (temporary `.paul/MILESTONE-CONTEXT.md` consumed and deleted)
-Phases: 4 of 4 complete (100%)
+Theme: Continue reducing recurring context cost across PALS workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety.
+Source context: direct exploratory milestone creation on 2026-04-26 via `/skill:paul-milestone`
+Phases: 1 of 4 complete (25%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 184 | Bloat Triage + Archive Design | 1/1 | ✅ Complete | 2026-04-26 |
-| 185 | Artifact Archival + Hot-Path Compaction | 3/3 | ✅ Complete | 2026-04-26 |
-| 186 | Workflow / Module Prose Compression | 1/1 | ✅ Complete | 2026-04-26 |
-| 187 | Regression + Anti-Regrowth Guardrails | 1/1 | ✅ Complete | 2026-04-26 |
-### Phase 184: Bloat Triage + Archive Design
-Focus: Identify highest-leverage context-heavy surfaces; separate hot-path, warm-path, and cold-history content; design `.paul/archive/INDEX.md` plus archive file conventions.
-Plans: 184-01 complete — produced `.paul/phases/184-bloat-triage-archive-design/184-01-BLOAT-TRIAGE-ARCHIVE-DESIGN.md` and `.paul/phases/184-bloat-triage-archive-design/184-01-SUMMARY.md`
-### Phase 185: Artifact Archival + Hot-Path Compaction
-Focus: Restore `PROJECT.md` as a true compact brief; compact `STATE.md`, `MILESTONES.md`, and possibly `ROADMAP.md`; move historical decisions and milestone detail into indexed archives while preserving findability.
-Plans: 185-01 complete (`.paul/phases/185-artifact-archival-hot-path-compaction/185-01-SUMMARY.md`) — archive index + lower-risk `MILESTONES.md`/`PROJECT.md` compaction wave complete. 185-02 complete (`.paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md`) — `STATE.md` history archived and live state compacted. 185-03 complete (`.paul/phases/185-artifact-archival-hot-path-compaction/185-03-SUMMARY.md`) — PALS process-level `ROADMAP.md` active-window/archive handling implemented and merged via PR #97.
-### Phase 186: Workflow / Module Prose Compression
-Focus: Trim repeated PLAN/APPLY/UNIFY and module-dispatch prose; preserve checkpoints, dispatch evidence, merge gate behavior, exact routing, and artifact authority.
-Plans: 186-01 complete (`.paul/phases/186-workflow-module-prose-compression/186-01-SUMMARY.md`) — shared dispatch mechanics moved into `module-dispatch.md`; PLAN/APPLY/UNIFY hook call sites compacted while preserving checkpoints, module evidence, post-unify persistence, and GitHub Flow merge-gate semantics.
-### Phase 187: Regression + Anti-Regrowth Guardrails
-Focus: Run existing validation; add lightweight semantic/shape checks so hot artifacts do not quietly become history sinks again; keep validation practical rather than over-engineered.
-Plans: 187-01 complete (`.paul/phases/187-regression-anti-regrowth-guardrails/187-01-SUMMARY.md`) — lightweight validation-script guardrails for hot-workflow line envelope and semantic marker retention implemented and merged via PR #99.
+| 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
+| 189 | Hot-Path Read Audit | TBD | Not started | - |
+| 190 | Artifact Structure Simplification | TBD | Not started | - |
+| 191 | Validation + Anti-Regrowth Update | TBD | Not started | - |
+### Phase 188: Workflow Prompt/Skill Slimming
+Focus: Reduce recurring prompt, skill, and workflow read cost without weakening lifecycle semantics, module dispatch evidence, artifact authority, or GitHub Flow safety.
+Plans: 188-01 complete (`.paul/phases/188-workflow-prompt-skill-slimming/188-01-SUMMARY.md`) — selected wrapper total reduced from 406 to 296 lines while Pi and cross-harness validation remained green.
+### Phase 189: Hot-Path Read Audit
+Focus: Measure what PALS reads repeatedly during normal PLAN/APPLY/UNIFY and identify remaining avoidable context load across workflows and lifecycle artifacts.
+Plans: TBD (defined during /paul:plan)
+### Phase 190: Artifact Structure Simplification
+Focus: Simplify active `.paul/*` artifacts and conventions where they still create avoidable context load while preserving archive authority and resume/status completeness.
+Plans: TBD (defined during /paul:plan)
+### Phase 191: Validation + Anti-Regrowth Update
+Focus: Extend validation guardrails so v2.44 slimming work stays protected across harnesses without brittle exact-prose checks.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
+<details>
+<summary>v2.43 PALS Context Diet — Archive, Compact, Compress - 2026-04-26 (4 phases)</summary>
+
+Theme: Kept PALS' disciplined PLAN/APPLY/UNIFY process while making it cheaper to run by moving history out of hot context, compacting active artifacts, and trimming repetitive prose.
+Outcome: Cold history was archived and indexed, hot artifacts were compacted, repeated workflow/module prose was centralized, and validation guardrails now protect hot workflow line envelopes and semantic evidence markers.
+
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 184 | Bloat Triage + Archive Design | 1 | 2026-04-26 |
+| 185 | Artifact Archival + Hot-Path Compaction | 3 | 2026-04-26 |
+| 186 | Workflow / Module Prose Compression | 1 | 2026-04-26 |
+| 187 | Regression + Anti-Regrowth Guardrails | 1 | 2026-04-26 |
+
+</details>
 <details>
 <summary>v2.42 CODI v0.1 — Post-Unify Instrumentation Fix - 2026-04-26 (3 phases)</summary>
 
@@ -728,4 +742,4 @@ Theme: Make PALS loop progression aware of branch/PR/merge/CI state so GitHub Fl
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-26 — v2.43 complete after Phase 187 transition.*
+*Last updated: 2026-04-27 — Phase 188 complete, Phase 189 ready to plan.*
