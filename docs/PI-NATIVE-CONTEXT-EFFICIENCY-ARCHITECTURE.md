@@ -156,3 +156,56 @@ The important property is reversibility: every Pi-derived context slice must be 
 | Helper-agent-owned APPLY | Undermines parent verification, fallback, module gates, and `.paul/*` writes. | Parent-owned task packets and structured helper reports. |
 | Full replacement of workflow reads with short summaries | Summaries can omit blocking semantics or edge cases. | Capsules for orientation; full reads for authority and ambiguity. |
 | Active Claude Code / Agent SDK parity constraint | Conflicts with Phase 192 support-tier reset and preserves unnecessary context burden. | Preserve historical references and shared invariants; optimize Pi-supported runtime. |
+
+## Phase 195 Spike Backlog
+
+These candidates are intentionally small. Phase 195 should pick one or more bounded spikes rather than implementing the entire architecture at once.
+
+| Priority | Spike candidate | Purpose | Likely repo files for a future plan | Validation proof | Guardrails |
+|---|---|---|---|---|---|
+| 1 | Artifact-slice context tool or command | Prototype a Pi-native way to request cited slices for current lifecycle state, active roadmap phase, prior summary decisions, and module evidence without loading entire artifacts. | `drivers/pi/extensions/pals-hooks.ts`; `drivers/pi/extensions/README.md`; `drivers/pi/skill-map.md`; `tests/pi-end-to-end-validation.sh` | Unit/structural checks for source citations, bounded output size, activation gating, and fallback to full reads. | Read-only against `.paul/*`; no hidden persistence; no lifecycle writes; full artifact path citations required. |
+| 2 | Workflow/resource capsule surface | Prototype installed resource summaries for PLAN/APPLY/UNIFY task anatomy, checkpoints, module-dispatch evidence, and GitHub Flow preflight/postflight. | `drivers/pi/skills/**`; `drivers/pi/install.sh`; installed skill templates; `tests/pi-end-to-end-validation.sh` | Validation confirms capsules reference canonical workflow/reference paths and preserve STOP/DO NOT SKIP markers. | Capsules orient only; full workflow files remain authority for ambiguity or blocking behavior. |
+| 3 | Guided approval evidence hardening | Make Pi guided UI responses visibly canonical and auditable for plan review, APPLY approval, checkpoints, and continue-to-UNIFY. | `drivers/pi/extensions/pals-hooks.ts`; `drivers/pi/extensions/README.md`; `tests/pi-end-to-end-validation.sh` | Tests assert no auto-continue path, canonical reply text is sent, and checkpoint prompts remain blocking. | Explicit user action required; no UI-only decisions; no checkpoint skip. |
+| 4 | Helper-agent report compression | Improve parent-owned `pals-implementer` task packets and result-report structure so parent review is compact but equivalent to inline APPLY. | `.pi/agents/pals-implementer.md`; `kernel/workflows/apply-phase.md`; `drivers/pi/skill-map.md`; validation scripts as needed | Validation checks required report fields, file-scope boundaries, fallback triggers, and parent-owned verification language. | Parent APPLY owns eligibility, official verification, fallback, module enforcement, checkpoints, and `.paul/*` writes. |
+| 5 | Validation classification refactor | Reclassify validation checks into Pi-supported runtime, shared invariant, and frozen legacy parity groups without deleting protections prematurely. | `tests/pi-end-to-end-validation.sh`; `tests/cross-harness-validation.sh`; `docs/PI-VALIDATION-REPORT.md`; `docs/VALIDATION-REPORT.md` | Both validation suites remain green while reporting categories are explicit. | Preserve shared invariants; do not let frozen parity block Pi-native work solely for parity reasons. |
+
+## Recommended Sequence
+
+1. **Start with artifact-slice context loading.** It targets the central context-efficiency problem, is read-only, and exercises the citation contract without changing workflow authority.
+2. **Then harden guided approval evidence.** It is already close to current Pi behavior and can prove UI friction reduction without weakening explicit user intent.
+3. **Then add workflow/resource capsules.** This should happen after the citation pattern is proven, because capsules are riskier: they summarize authoritative workflow prose.
+4. **Use helper-agent report compression when Phase 195 includes implementation-heavy work.** It is valuable, but less foundational than artifact slicing.
+5. **Treat validation classification as either a small spike or part of Phase 196 planning.** It may touch large validation files, so it should stay bounded and avoid broad rewrites.
+
+Phase 196 should turn whichever spikes succeed into a final migration and implementation roadmap. It should also decide which frozen legacy files stay, move to archives, or remain untouched.
+
+## Validation Redesign Requirements
+
+| Validation class | Keep / add | Examples | Notes |
+|---|---|---|---|
+| Pi-supported runtime checks | Keep and expand | Pi install structure, skill references, extension command registration, lifecycle UI, context injection, guided UI, CARL, helper-agent install, module registry generation. | This becomes the primary validation class for new runtime-assistance behavior. |
+| Shared invariant checks | Keep across suites | Artifact authority markers, PLAN/APPLY/UNIFY loop markers, module evidence requirements, GitHub Flow safety markers, parent APPLY boundaries, context-diet line ceilings. | These still protect PALS even if Claude Code / Agent SDK are frozen. |
+| Frozen legacy parity checks | Reclassify before changing | Claude command wrapper parity, cross-harness exact path assumptions, parity-only install expectations. | Do not delete in Phase 194; future work should make their status explicit so they do not block Pi-native improvements unnecessarily. |
+| Runtime lens behavior checks | Add when implemented | Bounded output size, source path citations, freshness markers, duplicate context trimming, explicit activation gating. | Needed for artifact-slice and context-lens spikes. |
+| Guided UI safety checks | Add or strengthen when implemented | No auto-continue, explicit canonical replies, checkpoint blocking, no merge-gate bypass. | Needed for approval-evidence and workflow UX spikes. |
+| Helper-agent delegation checks | Add or strengthen when implemented | Required report schema, allowed file scope, fallback triggers, parent verification, no `.paul/*` writes by helper. | Needed for task-packet/report compression spikes. |
+
+Validation should move toward “Pi-supported runtime plus shared invariant protection.” Cross-harness validation can continue during the transition, but checks should declare whether they protect a live invariant or only frozen historical parity.
+
+## Open Decisions for Phase 196
+
+- Which Phase 195 spikes are worth promoting into the implementation roadmap?
+- Should artifact-slice loading be implemented as an extension command, a Pi tool, installed skill helper prose, or a combination?
+- What stable schema should context-slice outputs use for citations, freshness, and fallback-to-full-read instructions?
+- Which workflow/resource capsules are safe enough to ship, and which workflow sections must always be fully read?
+- Should helper-agent report compression become a formal APPLY packet/report contract in the kernel workflow?
+- Which Claude Code wrapper, Agent SDK, portability, and cross-harness validation surfaces should remain frozen reference, move to archive, or be removed from active install paths?
+- What minimum validation suite defines “Pi-native PALS architecture ready for implementation” after v2.45?
+
+## Non-Goals for Phase 194
+
+- Do not implement new Pi commands, tools, hooks, dialogs, widgets, compaction behavior, context-slice tooling, or helper-agent protocol changes.
+- Do not edit `drivers/pi/extensions/pals-hooks.ts`, installed skill wrappers, shared workflows, module manifests, validation scripts, dependency manifests, or GitHub Flow mechanics.
+- Do not move lifecycle authority from `.paul/*`, shared workflows, installed `modules.yaml`, git/PR evidence, or PLAN/SUMMARY reports into Pi runtime memory.
+- Do not delete, archive, or make final retention decisions for Claude Code, Agent SDK, portability, or cross-harness files.
+- Do not treat summaries, capsules, UI surfaces, or helper-agent reports as substitutes for full authoritative reads when decisions, edits, merges, or lifecycle writes are at stake.
