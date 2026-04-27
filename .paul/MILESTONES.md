@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Next milestone not yet selected | See `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` follow-on recommendations |
+| Current milestone | v2.46 Pi-Native Implementation Planning | `.paul/ROADMAP.md` phases 197-201 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -67,7 +67,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.45 Pi-Native PALS Architecture is complete. Next milestone should be selected from `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md`, starting with Artifact Slice Contract Hardening unless redirected.
+v2.46 Pi-Native Implementation Planning is active. Phase 197 v2.45 Findings Triage is complete; Phase 198 Implementation Workstream Design is ready to plan after merge gate.
 
 ## Archive
 
@@ -75,4 +75,4 @@ v2.45 Pi-Native PALS Architecture is complete. Next milestone should be selected
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for v2.45 completion: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 197 UNIFY: 2026-04-27.*

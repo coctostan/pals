@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.45 Pi-Native PALS Architecture is complete. The final proposal in `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` now routes follow-on work toward artifact-slice contract hardening, workflow/resource capsules, guided UI evidence hardening, delegated APPLY packet compression, validation classification, and legacy-surface retention decisions.
+v2.46 Pi-Native Implementation Planning is active. It processes v2.45's findings and architecture into concrete implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan.
 
 v2.45 repositioned PALS around Pi as the supported runtime while keeping Claude Code and Agent SDK as unsupported/frozen historical surfaces. It preserved `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, and parent-owned APPLY while defining how Pi runtime assistance can reduce context burden safely.
 
@@ -49,8 +49,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
 | v2.44 PALS Context Optimization — Process & Artifacts | Complete | Reduced recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety; Phase 191 validation now protects the gains. |
 | v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
+| v2.46 Pi-Native Implementation Planning | In Progress | Processes v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable plan before build milestones begin. |
 
-See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 follow-on recommendations, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
+See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
 
