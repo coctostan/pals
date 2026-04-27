@@ -34,7 +34,7 @@ Phases: 1 of 5 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
-| 198 | Implementation Workstream Design | TBD | Not started | - |
+| 198 | Implementation Workstream Design | TBD | Ready to plan | - |
 | 199 | Sequencing + Dependency Plan | TBD | Not started | - |
 | 200 | Validation + Evidence Strategy | TBD | Not started | - |
 | 201 | Final Implementation Plan Proposal | TBD | Not started | - |
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 197 Plan 197-01 complete; Phase 198 ready to plan after merge gate.*
+*Last updated: 2026-04-27 — Phase 197 complete and merged; Phase 198 ready to plan.*

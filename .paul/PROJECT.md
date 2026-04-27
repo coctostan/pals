@@ -93,6 +93,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Promote activation-gated artifact-slice loading as the first Pi-native context-efficiency implementation pattern. | Phase 196 Plan 196-01 | Next implementation milestone should harden the source-cited/freshness-marked/full-read-fallback slice contract before workflow capsules, guided UI hardening, helper-agent packet compression, validation classification, or legacy cleanup. |
 | Classify validation as Pi-supported runtime, shared invariant, or frozen legacy parity before weakening checks. | Phase 196 Plan 196-01 | Future validation redesign can optimize for Pi without accidentally deleting shared invariant protection. |
 
+| Complete v2.45 findings triage before workstream design. | Phase 197 Plan 197-01 | Phase 198-201 planning should use `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md` as the classified source input while preserving planning-only boundaries until sequencing and validation strategy are complete. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -124,4 +125,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 196 Final Pi-Native Architecture Proposal / v2.45 completion.*
+*Last updated: 2026-04-27 after Phase 197 Findings Triage completion / Phase 198 transition.*

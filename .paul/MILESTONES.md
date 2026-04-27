@@ -67,7 +67,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.46 Pi-Native Implementation Planning is active. Phase 197 v2.45 Findings Triage is complete; Phase 198 Implementation Workstream Design is ready to plan after merge gate.
+v2.46 Pi-Native Implementation Planning is active. Phase 197 v2.45 Findings Triage is complete; Phase 198 Implementation Workstream Design is ready to plan.
 
 ## Archive
 
@@ -75,4 +75,4 @@ v2.46 Pi-Native Implementation Planning is active. Phase 197 v2.45 Findings Tria
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 197 UNIFY: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 197 transition: 2026-04-27.*
