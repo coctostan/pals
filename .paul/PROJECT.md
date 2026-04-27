@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.43 PALS Context Diet — Archive, Compact, Compress.
+v2.44 PALS Context Optimization — Process & Artifacts.
 
-v2.43 context-diet work is complete: cold history has been archived/indexed, hot artifacts compacted, repeated workflow/module prose centralized, and regression guardrails added to prevent hot-path regrowth or silent evidence loss.
+v2.44 continues context optimization across PALS process and artifacts. Phase 188 slimmed workflow prompt/skill wrappers; next work audits remaining hot-path reads before simplifying active artifact structure and refreshing anti-regrowth validation.
 
 ## Hot-path reading model
 
@@ -37,7 +37,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - GitHub Flow mode enforces branch/PR/CI/merge discipline when enabled in `pals.json`.
 - `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns verification, module gates, fallback, and `.paul/*` lifecycle writes.
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
-- v2.43 reduction work must preserve archive links and historical authority while making hot artifacts materially smaller.
+- v2.44 context optimization must preserve archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while reducing recurring read cost.
 
 ## Current milestone posture
 
@@ -46,6 +46,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation | Complete | Natural quark observations showed qualitative value but measurement gaps. |
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | Complete | Shipped bounded parser/hook instrumentation repair and accepted CODI v0.1 as good enough. |
 | v2.43 PALS Context Diet — Archive, Compact, Compress | Complete | Moved cold history into indexed archives, compacted hot/warm artifacts, compressed workflow prose, and added anti-regrowth validation guardrails. |
+| v2.44 PALS Context Optimization — Process & Artifacts | Active | Continue reducing recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety. |
 
 See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md` for phase sequencing.
 
@@ -74,6 +75,7 @@ See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md`
 | Keep live roadmaps as active-window artifacts with completed detail in authoritative archives. | Phase 185 | Future roadmap writes preserve current routing inline while preventing completed-history bloat. |
 | Centralize shared module-dispatch mechanics in `kernel/references/module-dispatch.md` while keeping hook-local obligations in workflows. | Phase 186 | Reduces hot-path workflow prose and drift risk without hiding post-unify persistence or GitHub Flow merge-gate semantics. |
 | Guard context-diet gains with semantic validation and a practical line ceiling | Phase 187 | Future hot workflow edits must retain lifecycle/module/merge-gate markers and stay under the 1711 Phase 186 pre-compression ceiling. |
+| Treat Claude Code command wrappers as legacy/reference thin pointers while keeping Pi skills as the active user-facing surface | Phase 188 | Reduces recurring wrapper context cost without expanding Claude-specific support beyond routing parity. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -81,7 +83,7 @@ Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HIS
 
 - Single `git clone` + install path gets PALS working across supported harnesses.
 - Full PLAN/APPLY/UNIFY loop works on real projects with module dispatch evidence.
-- Context diet work materially reduces hot-path read cost while preserving history and lifecycle authority.
+- Context optimization materially reduces hot-path read cost while preserving history and lifecycle authority.
 - PALS remains the user-friendly end-to-end agentic coding framework for Claude Code, Pi, and future harnesses.
 
 ## Specialized Flows
@@ -106,4 +108,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-26 after Phase 187 transition.*
+*Last updated: 2026-04-27 after Phase 188 transition.*

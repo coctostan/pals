@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.43 PALS Context Diet — Archive, Compact, Compress | See `.paul/ROADMAP.md` and `.paul/STATE.md` |
+| Current milestone | v2.44 PALS Context Optimization — Process & Artifacts | See `.paul/ROADMAP.md` and `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -61,10 +61,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.37 Implementer Config Alignment & Delegation Expansion | 2026-03-28 | 2h 53m | 3 phases, 3 plans | Archive |
 | v2.41 CODI v0.1 — Natural-Scope Evidence & Signal-1/2 Validation | 2026-04-20 | 2 days | 3 phases, 3 plans | Archive |
 | v2.42 CODI v0.1 — Post-Unify Instrumentation Fix | 2026-04-26 | 6 days | 3 phases, 3 plans | Archive |
+| v2.43 PALS Context Diet — Archive, Compact, Compress | 2026-04-26 | 1 day | 4 phases, 6 plans | `.paul/ROADMAP.md` completed-milestone section |
 
 ## Current / Future Milestone Pointer
 
-v2.43 is active. Use `.paul/ROADMAP.md` for phase sequencing and `.paul/STATE.md` for current loop position. When v2.43 closes, add the compact row here and archive any detailed closeout material instead of expanding this hot index.
+v2.44 is active. Use `.paul/ROADMAP.md` for phase sequencing and `.paul/STATE.md` for current loop position. When v2.44 closes, add the compact row here and archive any detailed closeout material instead of expanding this hot index.
 
 ## Archive
 

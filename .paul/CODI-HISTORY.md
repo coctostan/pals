@@ -18,3 +18,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 185-03 | 2026-04-26 | skipped-no-symbols | — | — | — | — | n |
 | 186-01 | 2026-04-26 | skipped-no-symbols | — | — | — | — | n |
 | 187-01 | 2026-04-26 | skipped-no-symbols | — | — | — | — | n |
+| 188-01 | 2026-04-27 | skipped-no-symbols | — | — | — | — | n |

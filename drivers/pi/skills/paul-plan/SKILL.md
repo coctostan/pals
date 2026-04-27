@@ -14,8 +14,7 @@ Create the next executable PLAN.md.
 - `../modules.yaml`
 
 ## Command-local notes
-- Use the shared planning model: `planning.default_collaboration`, optional per-run override, and low / medium / high collaboration depth.
-- Distinguish `exploratory` planning from `direct-requirements` planning.
-- Keep `PROJECT.md` on the hot path and read `PRD.md` only when deeper framing materially helps.
-- Offer the shared 4-option review menu before finalizing the plan for APPLY.
-- The wrapper stays thin; the shared workflow owns plan structure, module dispatch, and lifecycle rules.
+- Use `planning.default_collaboration` with low / medium / high override support.
+- Distinguish exploratory vs direct-requirements planning.
+- Keep `PROJECT.md` hot; read `PRD.md` only when materially useful.
+- Offer the shared 4-option review menu before APPLY routing.

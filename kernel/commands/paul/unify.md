@@ -6,11 +6,9 @@ allowed-tools: [Read, Write, AskUserQuestion]
 ---
 
 <objective>
-Reconcile plan versus actual results, create SUMMARY.md, and close the loop.
+Close the current loop by reconciling planned work against actual APPLY results.
 
-**When to use:** After APPLY phase complete. This is MANDATORY - never skip UNIFY.
-
-Creates SUMMARY.md documenting what was built, decisions made, and any deferred issues.
+UNIFY is mandatory after APPLY; never skip it.
 </objective>
 
 <execution_context>
@@ -22,66 +20,24 @@ kernel/templates/SUMMARY.md
 Plan path: $ARGUMENTS
 
 .paul/STATE.md
-@{plan-path} (the PLAN.md being unified)
+@{plan-path}
 </context>
 
 <process>
-
-<step name="validate_preconditions">
-1. Confirm PLAN.md exists at $ARGUMENTS path
-2. Confirm APPLY phase was executed (tasks completed)
-3. If SUMMARY.md already exists: "Loop already closed. SUMMARY: {path}"
-</step>
-
-<step name="reconcile">
 Follow workflow: kernel/workflows/unify-phase.md
 
-Compare plan to actual:
-- Which tasks completed as planned?
-- Any deviations from plan?
-- Decisions made during execution?
-- Issues discovered but deferred?
-</step>
-
-<step name="create_summary">
-Create SUMMARY.md in same directory as PLAN.md:
-- Document what was built
-- Record acceptance criteria results
-- Note any deferred issues
-- Capture decisions made
-- List files created/modified
-</step>
-
-<step name="update_state">
-Update STATE.md:
-- Loop position: PLAN ✓ → APPLY ✓ → UNIFY ✓
-- Phase progress if plan completes phase
-- Performance metrics (duration)
-- Session continuity (next action)
-</step>
-
-<step name="report">
-Display:
-```
-Loop Closed
-════════════════════════════════════════
-
-Plan: {plan-path}
-Summary: {summary-path}
-
-PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓
-
-Next: [phase complete message or next plan]
-
-════════════════════════════════════════
-```
-</step>
-
+Command-local obligations:
+- Confirm PLAN exists, APPLY completed, and SUMMARY does not already close the loop.
+- Compare planned tasks/acceptance criteria with actual results.
+- Create SUMMARY.md beside the PLAN with results, deviations, decisions, deferred issues, changed files, and module execution reports.
+- Update STATE.md and ROADMAP.md as needed so loop position becomes PLAN ✓ / APPLY ✓ / UNIFY ✓.
+- Route to the next single lifecycle action.
 </process>
 
 <success_criteria>
-- [ ] SUMMARY.md created
+- [ ] SUMMARY.md created beside PLAN.md
+- [ ] Plan-vs-actual reconciliation recorded
 - [ ] STATE.md updated with loop closure
-- [ ] User knows next action
+- [ ] ROADMAP.md refreshed if phase/milestone state changed
+- [ ] User knows the next action
 </success_criteria>

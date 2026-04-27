@@ -6,78 +6,40 @@ allowed-tools: [Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion]
 ---
 
 <objective>
-Execute an approved PLAN.md file, handling checkpoints as they occur.
+Execute an explicitly approved PLAN.md and leave the loop ready for UNIFY.
 
-**When to use:** After PLAN phase complete and plan is approved.
-
-Executes tasks in sequence, pauses at checkpoints for user input, reports completion.
+Use only after PLAN is complete and the user has approved execution.
 </objective>
 
 <execution_context>
 kernel/workflows/apply-phase.md
 kernel/references/checkpoints.md
+kernel/references/subagent-criteria.md
 </execution_context>
 
 <context>
 Plan path: $ARGUMENTS
 
 .paul/STATE.md
+@{plan-path}
 </context>
 
 <process>
-
-<step name="validate_plan">
-1. Confirm plan file exists at $ARGUMENTS path
-2. Error if not found: "Plan not found: {path}"
-3. Derive SUMMARY path (replace PLAN.md with SUMMARY.md)
-4. If SUMMARY exists: "Plan already executed. SUMMARY: {path}"
-   - Offer: re-execute or exit
-</step>
-
-<step name="execute">
 Follow workflow: kernel/workflows/apply-phase.md
 
-Execute tasks sequentially. For each task:
-- Read task definition
-- Execute action
-- Run verification
-- Confirm done criteria
-</step>
-
-<step name="handle_checkpoints">
-When a checkpoint task is reached:
-
-**checkpoint:decision**
-- Present decision context and options
-- Wait for user selection
-- Record decision
-- Continue execution
-
-**checkpoint:human-verify**
-- Present what was built
-- Present verification steps
-- Wait for "approved" or issue description
-- If issues: address and re-verify
-- Continue execution
-
-**checkpoint:human-action**
-- Present required action
-- Wait for "done" confirmation
-- Continue execution
-</step>
-
-<step name="complete">
-After all tasks complete:
-- Report: "APPLY complete. Run /paul:unify to close loop."
-- Show files modified
-- Show SUMMARY path to create
-</step>
-
+Command-local obligations:
+- Confirm the plan exists and has not already been executed.
+- Require explicit approval; do not infer approval from context.
+- Execute tasks sequentially, verifying each task's `<verify>` and `<done>` criteria.
+- Handle checkpoint tasks by pausing for the required user decision, verification, or action.
+- Parent APPLY owns verification, module gates, fallback judgment, and `.paul/*` lifecycle writes even if bounded delegation is used.
+- When all tasks complete, report APPLY complete and route to `/paul:unify`.
 </process>
 
 <success_criteria>
-- [ ] All tasks executed
+- [ ] Plan approval confirmed
+- [ ] All tasks executed and verified
 - [ ] All checkpoints handled
-- [ ] User informed of completion
-- [ ] Next action clear (run /paul:unify)
+- [ ] Parent verification/module ownership preserved
+- [ ] Next action clear: run /paul:unify
 </success_criteria>
