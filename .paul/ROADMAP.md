@@ -27,40 +27,37 @@ Completed: 2026-03-12
 Phases: 3 of 3 complete
 
 ## Current Milestone
-**v2.45 Pi-Native PALS Architecture**
-Status: ✅ Complete
-Phases: 5 of 5 complete — 2026-04-27
+**v2.46 Pi-Native Implementation Planning**
+Status: 🚧 In Progress
+Phases: 1 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 192 | Support-Tier Reset + Surface Inventory | 1/1 | ✅ Complete | 2026-04-27 |
-| 193 | Pi Runtime Capability Mapping | 1/1 | ✅ Complete | 2026-04-27 |
-| 194 | Context-Efficiency Architecture | 1/1 | ✅ Complete | 2026-04-27 |
-| 195 | Exploratory Pi-Native Spikes | 1/1 | ✅ Complete | 2026-04-27 |
-| 196 | Final Pi-Native Architecture Proposal | 1/1 | ✅ Complete | 2026-04-27 |
+| 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
+| 198 | Implementation Workstream Design | TBD | Not started | - |
+| 199 | Sequencing + Dependency Plan | TBD | Not started | - |
+| 200 | Validation + Evidence Strategy | TBD | Not started | - |
+| 201 | Final Implementation Plan Proposal | TBD | Not started | - |
 
-### Phase 192: Support-Tier Reset + Surface Inventory
-Focus: Declare Claude Code unsupported/frozen; inventory cross-harness assumptions, wrappers, prompts, docs, and validation expectations.
-Plans: 192-01 complete — support-tier reset documented and Pi-native support inventory created.
+### Phase 197: v2.45 Findings Triage
+Focus: Extract and classify v2.45 findings, decisions, promoted patterns, rejected options, constraints, and unresolved implementation questions before planning build work.
+Plans: 197-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-FINDINGS.md` with source-cited v2.45 findings, authority boundaries, workstream seeds, open questions, Phase 198-201 handoff recommendations, and readiness checklist.
 
-### Phase 193: Pi Runtime Capability Mapping
-Focus: Map PLAN/APPLY/UNIFY, modules, GitHub Flow, context injection, and handoffs onto Pi extension primitives.
-Plans: 193-01 complete — Pi runtime capability map created in `docs/PI-RUNTIME-CAPABILITY-MAP.md`; Phase 194 inputs and validation redesign notes documented.
+### Phase 198: Implementation Workstream Design
+Focus: Convert the v2.45 migration and implementation roadmap into concrete workstreams across artifact slices, workflow/resource capsules, guided UI evidence, helper-agent packets, validation classification, and legacy retention.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 194: Context-Efficiency Architecture
-Focus: Design how runtime assistance reduces repeated prompt, workflow, artifact, and context cost while preserving artifact-first truth.
-Plans: 194-01 complete — created `docs/PI-NATIVE-CONTEXT-EFFICIENCY-ARCHITECTURE.md` with context-cost surfaces, Pi-native assistance architecture, read/citation contract, Phase 195 spike backlog, validation redesign requirements, and Phase 196 open decisions.
+### Phase 199: Sequencing + Dependency Plan
+Focus: Define ordering, dependencies, proof points, risk gates, and boundaries for implementation milestones so later build work proceeds safely.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 195: Exploratory Pi-Native Spikes
-Focus: Run optional small prototypes to validate extension commands, lifecycle status, artifact tools, compaction hooks, UI dialogs, or related runtime-assistance ideas.
-Plans: 195-01 complete — bounded, read-only artifact-slice context loading implemented for explicit Pi/PALS activation payloads; docs, structural validation, and module history updated; final validation passed Pi 186/186 and cross-harness 100/100.
+### Phase 200: Validation + Evidence Strategy
+Focus: Define how implementation will preserve Pi-supported runtime checks, shared invariants, frozen legacy evidence, runtime lens checks, guided UI safety, and helper-agent delegation checks.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 196: Final Pi-Native Architecture Proposal
-Focus: Produce the final design doc, migration plan, implementation roadmap, explicit non-goals, and recommendations for follow-on implementation milestones.
-Plans: 196-01 complete — created `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` with final target architecture, promoted artifact-slice pattern, migration roadmap, implementation roadmap, validation strategy, explicit non-goals, legacy-surface guidance, and follow-on milestone recommendations.
-
-## Next Milestone
-Follow-on implementation milestone to be selected from `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` recommendations.
+### Phase 201: Final Implementation Plan Proposal
+Focus: Produce the executable Pi-native implementation roadmap for the next build milestone(s), with acceptance criteria, phase recommendations, and non-negotiable authority boundaries.
+Plans: TBD (defined during /paul:plan)
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -72,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — v2.45 complete; Phase 196 Plan 196-01 final Pi-native architecture proposal unified.*
+*Last updated: 2026-04-27 — Phase 197 Plan 197-01 complete; Phase 198 ready to plan after merge gate.*
