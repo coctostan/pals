@@ -37,7 +37,7 @@ Phases: 2 of 4 complete (50%)
 |-------|------|-------|--------|-----------|
 | 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
 | 189 | Hot-Path Read Audit | 1/1 | ✅ Complete | 2026-04-27 |
-| 190 | Artifact Structure Simplification | 1/3 complete; 190-02 APPLY complete | In progress — ready for UNIFY | - |
+| 190 | Artifact Structure Simplification | 2/2 complete; transition pending | UNIFY complete — merge gate pending | - |
 | 191 | Validation + Anti-Regrowth Update | TBD | Not started | - |
 ### Phase 188: Workflow Prompt/Skill Slimming
 Focus: Reduce recurring prompt, skill, and workflow read cost without weakening lifecycle semantics, module dispatch evidence, artifact authority, or GitHub Flow safety.
@@ -55,7 +55,7 @@ Primary inputs from Phase 189 audit (R1–R5):
 - R5 (stretch) — Split `drivers/pi/extensions/pals-hooks.ts` into responsibility-scoped modules.
 Plans:
 - 190-01 complete (`.paul/phases/190-artifact-structure-simplification/190-01-SUMMARY.md`) — R1: ROADMAP archive split; compacted live roadmap to 68 lines and moved completed milestone detail to `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`.
-- 190-02 APPLY complete (`.paul/phases/190-artifact-structure-simplification/190-02-PLAN.md`) — R2 + R3 + R4: workflow centralization wave applied; GitHub Flow stanzas and module-dispatch taxonomy centralized, APPLY conditional refs encoded; awaiting UNIFY summary.
+- 190-02 complete (`.paul/phases/190-artifact-structure-simplification/190-02-SUMMARY.md`) — R2 + R3 + R4: workflow centralization wave unified; GitHub Flow stanzas and module-dispatch taxonomy centralized, APPLY conditional refs encoded; merge gate and phase transition pending.
 - R5 (Pi adapter modular split) deferred to a future driver-quality milestone.
 ### Phase 191: Validation + Anti-Regrowth Update
 Focus: Extend validation guardrails so v2.44 slimming work stays protected across harnesses without brittle exact-prose checks.
@@ -66,4 +66,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 190 Plan 190-02 APPLY complete; awaiting UNIFY.*
+*Last updated: 2026-04-27 — Phase 190 Plan 190-02 UNIFY complete; merge gate pending.*
