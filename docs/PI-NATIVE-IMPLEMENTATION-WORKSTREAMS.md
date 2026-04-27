@@ -261,3 +261,70 @@ Non-negotiable authority boundaries from the source set:
 **Dependencies:** Validation classification; explicit product decision; archive/retention plan.
 
 **Open Questions:** Which legacy files remain useful as historical proof, which install surfaces impose active context cost, and which parity checks protect real shared invariants?
+
+
+## Phase 199 Handoff
+
+Phase 199 owns sequencing and dependency planning. The notes below are sequencing inputs, not final ordering decisions.
+
+### Sequencing Inputs
+
+| Input | Source pressure | Phase 199 planning use |
+|---|---|---|
+| Artifact slices before capsules | Phase 195 proved slices; architecture recommends stabilizing citation/fallback schema first. | Test whether artifact-slice contract hardening should be first build milestone or split into schema + implementation phases. |
+| Guided UI evidence near current Pi behavior | Current guided UX already exists as a guardrail-only primitive. | Consider whether no-auto-continue and canonical transcript proof can ship before or alongside capsules. |
+| Helper packet compression after report schema clarity | Delegation safety depends on parent-readable packets, structured reports, allowed-file checks, and fallback triggers. | Sequence after packet/report schema is explicit enough for parent verification. |
+| Validation classification before weakening parity | Existing scripts protect both Pi-supported behavior and shared invariants. | Classify assertions before deleting, weakening, or relabeling frozen legacy parity checks. |
+| Legacy cleanup last | Source guidance defers retention/removal until validation classification protects shared invariants. | Keep legacy install and documentation cleanup out of early build milestones unless it is purely labeling. |
+
+### Dependency Edges
+
+- Artifact-slice contract hardening should define reusable source/freshness/fallback language before workflow/resource capsules use similar citation conventions.
+- Workflow/resource capsules depend on a blocking-semantics exclusion list so they do not replace full workflow reads for APPLY, UNIFY, checkpoints, lifecycle writes, or merge gates.
+- Guided workflow evidence hardening depends on an inventory of canonical workflow prompts and transcript reply values.
+- Delegated APPLY packet/report compression depends on clear parent-owned packet/report schemas and allowed-file diff checks.
+- Pi-native validation classification should precede any validation-script weakening, frozen parity retirement, or legacy install-surface cleanup.
+- Legacy retention and install-surface cleanup depends on explicit product approval plus evidence that shared invariants remain covered.
+
+### Split / Merge Cautions
+
+- Do not merge artifact-slice hardening with workflow capsules unless the plan can keep APPLY bounded and separately verify slice schema vs capsule semantics.
+- Consider splitting artifact-slice hardening into contract/schema and additional slice inventory if validation cost grows.
+- Consider pairing guided workflow evidence with small validation additions because the behavior is close to existing Pi UX.
+- Keep helper-agent compression separate from lifecycle workflow rewrites unless packet/report schema and parent verification are stable.
+- Keep validation classification separate from legacy cleanup; classification is evidence strategy, cleanup is product/support-surface decision.
+
+### Risk Gates
+
+Before any workstream moves into implementation planning, Phase 199 or later plans should verify:
+
+- `.paul/*` remains authoritative and no hidden runtime state, telemetry, local memory, or lifecycle ledger is introduced.
+- PLAN/APPLY/UNIFY ownership, module evidence, GitHub Flow gates, and parent-owned APPLY remain explicit in acceptance criteria.
+- Every runtime context aid has source path citations, freshness handling where relevant, bounds, and full-read fallback language.
+- Pi UI decisions appear as explicit canonical transcript replies and cannot auto-continue, auto-approve, skip checkpoints, or merge.
+- Validation changes preserve shared invariants and keep command-output evidence as the source of validation truth.
+
+### Unresolved Decisions for Phase 199
+
+1. Should artifact-slice hardening be one milestone or split into schema, lifecycle slices, and module-evidence slices?
+2. Should guided workflow evidence hardening happen before workflow/resource capsules because it is closer to current Pi behavior?
+3. Which workflow/resource capsule topics are safe enough for first implementation: task anatomy, checkpoint prompt shape, module-dispatch evidence convention, or GitHub Flow preflight/postflight reminders?
+4. What helper-agent report fields are required before parent review context can safely shrink?
+5. Which validation assertions are shared invariants vs frozen legacy parity, and which new Pi-native checks are required before build milestones ship?
+6. What explicit product decision is needed before any frozen legacy install surface is removed, archived, or made source-only?
+
+## Readiness Checklist
+
+A workstream can move from design to an implementation-plan proposal only when all applicable items are true:
+
+- [ ] Source inputs and repo surfaces are named precisely enough for a bounded PLAN.
+- [ ] Scope limits and protected files are explicit.
+- [ ] Acceptance criteria preserve `.paul/*` authority, PLAN/APPLY/UNIFY ownership, module evidence, GitHub Flow gates, and parent-owned APPLY.
+- [ ] Runtime assistance remains derived, bounded, disposable, source-cited, freshness-aware where needed, and backed by full authoritative reads.
+- [ ] Validation commands and expected evidence are named before implementation begins.
+- [ ] No hidden Pi state, telemetry, auto-approval, UI-only decisions, helper-owned APPLY, or merge-gate bypass is introduced.
+- [ ] Dependencies on validation classification or legacy retention decisions are resolved or deferred explicitly.
+
+## Phase 198 Non-Implementation Statement
+
+This artifact does not choose the final implementation sequence and does not authorize edits to runtime, workflow, validation, dependency, GitHub Flow, or legacy-support surfaces. Its output is the workstream map that Phase 199 should use to design sequencing and dependency constraints.
