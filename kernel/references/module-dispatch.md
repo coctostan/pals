@@ -41,33 +41,52 @@ installed_modules:
 
 ## Workflow Call-Site Contract
 
-Lifecycle workflows are call sites for this shared contract. Each workflow step should specify only:
+Lifecycle workflows are call sites for shared dispatch mechanics. Each workflow step should specify only:
 
 - the hook name (`pre-plan`, `post-plan`, `pre-apply`, `post-task`, `post-apply`, `pre-unify`, `post-unify`)
-- the phase-specific module list or selection rule, including advisory vs blocking semantics
+- any local cohort split or phase-specific selection rule (for example `[dispatch] post-apply advisory` vs `[dispatch] post-apply enforcement`)
 - the context passed to modules (`files_modified`, plan content, apply annotations, summary path, baselines)
 - the outputs that must be preserved in PLAN/SUMMARY/STATE or returned to the next phase
 - the exact blocking behavior, user override options, and mandatory visible dispatch log line
 
 Do not restate generic registry mechanics in every workflow. Reference this file and keep local prose limited to hook-specific obligations.
 
+## Shared Hook Taxonomy
+
+### Hook classes
+
+- **Advisory** hooks or workflow cohorts never block; they annotate, summarize, or persist results and must still emit visible evidence when skipped.
+- **Enforcement** hooks or workflow cohorts can block and must surface fix/override/stop handling whenever the workflow allows it.
+- `post-apply` may be split into advisory and enforcement cohorts at the workflow call site; use the shared installed-hook priority ordering inside each cohort.
+
+### Hook order and priority source
+
+- Lifecycle order is fixed: `pre-plan` → `post-plan` → `pre-apply` → `post-task` → `post-apply` → `pre-unify` → `post-unify`.
+- The installed registry is authoritative. Priority comes from `installed_modules.*.hook_details.{hook}.priority`; lower numbers run first.
+- Load only the hook-local refs listed in `installed_modules.*.hook_details.{hook}.refs`.
+
+### Evidence-line convention
+
+- Every dispatch attempt emits a visible `[dispatch] ...` line, even when 0 modules are registered, the hook is `SKIPPED`, the registry is stale, or `modules.yaml` is missing.
+- If a workflow splits a hook into local labels, preserve that exact label in evidence, e.g. `[dispatch] post-apply advisory: ...`, `[dispatch] post-apply enforcement: ...`, or `[dispatch] post-unify: ...`.
+- Mandatory STOP/DO NOT SKIP workflow semantics stay inline at the call site; this reference owns shared mechanics, not lifecycle authority.
+
 ## Dispatch Procedure
 
 For hook `{hook_name}`:
 
-1. Read `modules.yaml`. If not found, emit WARNING: `[dispatch] {hook_name}: modules.yaml NOT FOUND — module hooks will not fire. Run install.sh to regenerate.` and stop dispatch for this hook.
-2. Require registry metadata at `installed_modules.*.hook_details.{hook_name}`; stale registries without `hook_details` must warn and prefer reinstall/regeneration.
+1. Read `modules.yaml`. If not found, emit WARNING: `[dispatch] {hook_name}: modules.yaml NOT FOUND — module hooks will not fire. Run install.sh to regenerate.` If the workflow uses a specialized label, keep the same `modules.yaml NOT FOUND` wording under that label. Stop dispatch for this hook or cohort.
+2. Require registry metadata at `installed_modules.*.hook_details.{hook_name}`; stale registries without `hook_details` must warn visibly and prefer reinstall/regeneration.
 3. Keep only modules that define the hook, sort by `priority` ascending, and load only that hook's listed `refs`.
 4. Follow each hook `description`, merge outputs in priority order, and stop only when a module returns `action: block`.
-5. Emit a visible `[dispatch] {hook_name}: ...` log even when no modules fire, the registry is stale, or the hook is skipped.
+5. Emit a visible `[dispatch] {hook_name}: ...` log even when no modules fire, the registry is stale, or the hook is `SKIPPED`.
 
-## Durable Evidence Requirements
+## Durable Evidence Requirements and Destinations
 
 - `modules.yaml NOT FOUND` and stale-registry warnings must be visible; never silently skip dispatch.
 - PLAN must record pre-plan/post-plan dispatch evidence when modules are enabled.
 - APPLY must retain advisory annotations, enforcement results, quality/test baselines, and task-level gate outcomes for UNIFY.
 - UNIFY must persist post-unify reports and side effects in `SUMMARY.md` `Module Execution Reports`; if post-unify dispatch is missing or skipped, record the warning in the summary before phase-completion routing.
-
 ## Guardrails
 
 - Do **not** assume every module reference should load; use only hook-specific `refs`.

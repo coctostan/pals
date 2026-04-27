@@ -24,6 +24,7 @@ modules.yaml (installed module registry — MUST read; drives pre-unify and post
 <references>
 references/loop-phases.md
 references/module-dispatch.md
+references/git-strategy.md
 templates/SUMMARY.md
 workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
 <!-- Module references are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
@@ -178,8 +179,9 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 **Dispatch pre-unify lifecycle hooks via `references/module-dispatch.md`.**
 
 Call-site contract:
-- Hook: `pre-unify`; registered modules come from `installed_modules.*.hook_details.pre-unify`.
+- Hook: `pre-unify` lifecycle dispatch.
 - Context/output: `annotations_from_apply`; collect `context_inject` for reconciliation and SUMMARY finalization.
+- Blocking: follow enforcement semantics only if a module explicitly returns `action: block`; otherwise continue.
 - Required evidence: `[dispatch] pre-unify: ...`; if no modules are registered, emit `[dispatch] pre-unify: 0 modules registered for this hook`; if registry resolution fails, emit `[dispatch] pre-unify: modules.yaml NOT FOUND — WARNING`.
 </step>
 
@@ -268,8 +270,9 @@ Call-site contract:
 STOP after state update and dispatch post-unify modules via `references/module-dispatch.md`; this persistence layer records quality history, decisions, CODI history, and debt notes.
 
 Call-site contract:
-- Hook: `post-unify`; registered modules come from `installed_modules.*.hook_details.post-unify`.
+- Hook: `post-unify` persistence dispatch.
 - Context/output: `annotations_from_apply`, retained pre-unify context, and summary path; collect `module_reports` plus side effects for durable `Module Execution Reports`.
+- Blocking: follow enforcement semantics only if a module explicitly returns `action: block`; otherwise persist results and continue.
 - Required evidence: `[dispatch] post-unify: ...`; if no modules are registered, emit `[dispatch] post-unify: 0 modules registered for this hook`; if none executed, state `[dispatch] post-unify: SKIPPED — {reason}`; if registry resolution fails, emit `[dispatch] post-unify: modules.yaml NOT FOUND — WARNING`.
 </step>
 <step name="finalize_summary" priority="after-post-unify">
@@ -281,99 +284,52 @@ Call-site contract:
 </step>
 
 <step name="merge_gate_resolve" priority="after-summary">
-**Merge Gate Step 1 of 5: Resolve config and check if merge gate applies.**
+**Merge Gate Step 1 of 5: Resolve config and check if merge gate applies via `references/git-strategy.md`.**
 
-1. MUST resolve workflow mode:
-   ```bash
-   GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
-   if [ -z "$GIT_WORKFLOW" ]; then
-     GIT_BRANCHING_CHECK=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
-     if [ -n "$GIT_BRANCHING_CHECK" ]; then GIT_WORKFLOW="legacy"; else GIT_WORKFLOW="none"; fi
-   fi
-   ```
-
-2. **If GIT_WORKFLOW != "github-flow":** Display: "Merge gate: skipped (not github-flow)". Skip all merge_gate_* steps. Proceed to check_phase_completion.
-
-3. MUST read enforcement config:
-   ```bash
-   GIT_REQUIRE_PR=$(jq -r '.git.require_pr_before_next_phase // false' pals.json 2>/dev/null)
-   GIT_CI_CHECKS=$(jq -r '.git.ci_checks // false' pals.json 2>/dev/null)
-   GIT_REQUIRE_REVIEWS=$(jq -r '.git.require_reviews // false' pals.json 2>/dev/null)
-   GIT_MERGE_METHOD=$(jq -r '.git.merge_method // "squash"' pals.json 2>/dev/null)
-   GIT_DELETE_BRANCH=$(jq -r '.git.delete_branch_on_merge // true' pals.json 2>/dev/null)
-   GIT_BASE_BRANCH=$(jq -r '.git.base_branch // "main"' pals.json 2>/dev/null)
-   GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
-   GIT_AUTO_PR=$(jq -r '.git.auto_pr // false' pals.json 2>/dev/null)
-   PHASE_NAME={phase-name}
-   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-   ```
-
-4. **If require_pr_before_next_phase != true:** Display: "Merge gate: skipped (not required)". Skip remaining merge_gate_* steps. Proceed to check_phase_completion.
-
-5. MUST push latest changes (SUMMARY.md and STATE.md updates are on feature branch):
-   ```bash
-   git add -A
-   git commit -m "docs(${PHASE_NAME}): UNIFY artifacts" --allow-empty
-   git push origin ${CURRENT_BRANCH} 2>/dev/null || true
-   ```
-
-6. Display: "Merge gate: resolving... config loaded, proceeding to PR checks."
+1. Resolve `GIT_WORKFLOW` with the shared 3-tier recipe in `references/git-strategy.md`.
+2. **If `GIT_WORKFLOW != "github-flow"`:** Display: `Merge gate: skipped (not github-flow)`. Skip all `merge_gate_*` steps. Proceed to `check_phase_completion`.
+3. Read the github-flow gate fields from `pals.json`: `require_pr_before_next_phase`, `ci_checks`, `require_reviews`, `merge_method`, `delete_branch_on_merge`, `base_branch`, `remote`, `auto_pr`; resolve `CURRENT_BRANCH`.
+4. **If `require_pr_before_next_phase != true`:** Display: `Merge gate: skipped (not required)`. Skip remaining `merge_gate_*` steps. Proceed to `check_phase_completion`.
+5. Stage and commit the latest UNIFY artifacts, then push `CURRENT_BRANCH` before PR checks, following `references/git-strategy.md`.
+6. Display: `Merge gate: resolving... config loaded, proceeding to PR checks.`
 </step>
 
 <step name="merge_gate_pr" priority="after-merge-gate-resolve">
 ⚠️ **MANDATORY if merge_gate_resolve did not skip.**
-**Merge Gate Step 2 of 5: Ensure PR exists, CI passes, reviews approved.**
-   **Gate 1 - PR exists:**
-MUST run:
-```bash
-PR_JSON=$(gh pr view ${CURRENT_BRANCH} --json url,state,reviewDecision 2>/dev/null || echo "")
-```
-- If empty (no PR):
-  - If `GIT_AUTO_PR` = true and remote set: MUST create PR:
-    ```bash
-    gh pr create --base ${GIT_BASE_BRANCH} --head ${CURRENT_BRANCH} \
-      --title "feat(${PHASE_NAME}): {description}" \
-      --body "Phase {N} — auto-generated by PALS."
-    ```
-    Re-read PR_JSON after creation.
-  - If not auto_pr:
-    ```
-    ⛔ MERGE GATE: No PR exists for ${CURRENT_BRANCH}
-    Next action: Create a PR, then re-run /paul:unify
-    ```
-    BLOCK — do not proceed.
+**Merge Gate Step 2 of 5: Ensure PR exists, CI passes, and reviews are approved.**
+Use `references/git-strategy.md` for the exact command sequence.
+
+1. **Gate 1 — PR exists:**
+   - Read PR state for `CURRENT_BRANCH`.
+   - If no PR exists and `GIT_AUTO_PR = true` with a remote, create it and re-read PR state.
+   - Otherwise BLOCK with:
+     ```
+     ⛔ MERGE GATE: No PR exists for ${CURRENT_BRANCH}
+     Next action: Create a PR, then re-run /paul:unify
+     ```
    - Record PR URL in STATE.md `### Git State` if newly created.
-MUST run:
-```bash
-gh pr checks ${CURRENT_BRANCH}
-```
-- If any check failing:
-  ```
-  ⛔ MERGE GATE: CI checks failing.
-  CI failure is blocking in github-flow mode. There is no "merge anyway" option.
-  Next action: Fix CI failures and re-push, then re-run /paul:unify
-  ```
-  BLOCK — do not proceed.
-   - If ci_checks=false: skip this gate (mark as "skipped").
-MUST run:
-```bash
-REVIEW_DECISION=$(echo $PR_JSON | jq -r '.reviewDecision // "REVIEW_REQUIRED"')
-```
-- If `$REVIEW_DECISION` != "APPROVED":
-  ```
-  ⛔ MERGE GATE: PR review required. Status: ${REVIEW_DECISION}
-  Next action: Get PR reviewed, then re-run /paul:unify
-  ```
-  BLOCK — do not proceed.
-   - If require_reviews=false: skip this gate (mark as "skipped").
-Display gate status:
-```
-────────────────────────────────────────
-1. PR exists:     ✓
-2. CI passing:    ✓ / skipped
-3. Reviews:       ✓ / skipped
-────────────────────────────────────────
-```
+2. **Gate 2 — CI passing:**
+   - Surface PR checks with `gh pr checks ${CURRENT_BRANCH}`.
+   - If `ci_checks=true` and any check is failing, BLOCK with:
+     ```
+     ⛔ MERGE GATE: CI checks failing.
+     CI failure is blocking in github-flow mode. There is no "merge anyway" option.
+     Next action: Fix CI failures and re-push, then re-run /paul:unify
+     ```
+3. **Gate 3 — Reviews approved:**
+   - If `require_reviews=true`, require an approved review decision or BLOCK with:
+     ```
+     ⛔ MERGE GATE: PR review required. Status: ${REVIEW_DECISION}
+     Next action: Get PR reviewed, then re-run /paul:unify
+     ```
+4. Display gate status:
+   ```
+   ────────────────────────────────────────
+   1. PR exists:     ✓
+   2. CI passing:    ✓ / skipped
+   3. Reviews:       ✓ / skipped
+   ────────────────────────────────────────
+   ```
 </step>
 
 <step name="merge_gate_review" priority="after-merge-gate-pr" condition="rev_pr_review_enabled">
@@ -428,65 +384,44 @@ Display gate status:
 <step name="merge_gate_merge" priority="after-merge-gate-review">
 ⚠️ **MANDATORY if merge_gate_pr passed.**
 **Merge Gate Step 4 of 5: Merge PR and sync local base branch.**
-   **Gate 5 — PR merged:**
-MUST run:
-```bash
-PR_STATE=$(echo $PR_JSON | jq -r '.state')
-```
-- If `$PR_STATE` != "MERGED":
-  ```
-  ────────────────────────────────────────
-     PR is approved and CI passing. Ready to merge.
-  [2] Merge manually, then re-run /paul:unify
-  ────────────────────────────────────────
-  ```
-  - If "1": MUST run:
-    ```bash
-    gh pr merge ${CURRENT_BRANCH} --${GIT_MERGE_METHOD} --delete-branch
-    ```
-     - If "2": BLOCK — user will merge manually and re-run.
-MUST run:
-```bash
-git checkout ${GIT_BASE_BRANCH}
-git pull origin ${GIT_BASE_BRANCH}
-```
-Display: `Synced local ${GIT_BASE_BRANCH} with remote`
+Use `references/git-strategy.md` for the exact merge/sync commands.
+
+1. **Gate 4 — PR merged:**
+   - If the PR is not already merged, either merge it with `gh pr merge ${CURRENT_BRANCH} --${GIT_MERGE_METHOD} --delete-branch` or BLOCK for manual merge and re-run `/paul:unify`.
+2. **Gate 5 — Base synced:**
+   - After merge, switch to `GIT_BASE_BRANCH` and pull the latest remote state.
+3. Display: `Synced local ${GIT_BASE_BRANCH} with remote`
 </step>
 
 <step name="merge_gate_cleanup" priority="after-merge-gate-merge">
 **Merge Gate Step 5 of 5: Branch cleanup and state update.**
-   **Gate 7 — Feature branch cleanup (if delete_branch_on_merge=true):**
-MUST run:
-```bash
-git branch -d ${CURRENT_BRANCH} 2>/dev/null || true
-```
-   Display: `Cleaned up ${CURRENT_BRANCH}` or `Branch already removed`
-**Display final merge gate summary:**
-```
-────────────────────────────────────────
-MERGE GATE STATUS
-────────────────────────────────────────
-1. PR exists:     ✓
-2. CI passing:    ✓ / skipped
-3. Code review:   ✓ READY / ⚠️ CONCERNS / ⛔ BLOCKED / skipped
-4. Reviews:       ✓ / skipped
-5. PR merged:     ✓
-6. Base synced:   ✓
-7. Branch clean:  ✓
-────────────────────────────────────────
-```
 
-**MUST update STATE.md Git State:**
-```markdown
-### Git State
-Branch: ${GIT_BASE_BRANCH}
-Last commit: {short-hash after merge}
-PR: {url} (state: MERGED)
-```
+1. **Gate 6 — Branch clean:**
+   - If `delete_branch_on_merge=true`, delete `CURRENT_BRANCH` locally per `references/git-strategy.md`; otherwise preserve it and note why.
+2. **Display final merge gate summary:**
+   ```
+   ────────────────────────────────────────
+   MERGE GATE STATUS
+   ────────────────────────────────────────
+   1. PR exists:     ✓
+   2. CI passing:    ✓ / skipped
+   3. Code review:   ✓ READY / ⚠️ CONCERNS / ⛔ BLOCKED / skipped
+   4. Reviews:       ✓ / skipped
+   5. PR merged:     ✓
+   6. Base synced:   ✓
+   7. Branch clean:  ✓
+   ────────────────────────────────────────
+   ```
+3. **MUST update STATE.md Git State:**
+   ```markdown
+   ### Git State
+   Branch: ${GIT_BASE_BRANCH}
+   Last commit: {short-hash after merge}
+   PR: {url} (state: MERGED)
+   ```
+4. **Proceed to `check_phase_completion`.**
 
-**Proceed to check_phase_completion.**
-
-**Note:** Retroactive UNIFY (hotfix mode) skips all merge_gate_* steps entirely — hotfixes are exempt from the merge gate per design decision D6. The `detect_retroactive` step at the top of unify-phase already short-circuits before reaching these gates.
+**Note:** Retroactive UNIFY (hotfix mode) skips all `merge_gate_*` steps entirely — hotfixes are exempt from the merge gate per design decision D6. The `detect_retroactive` step at the top of unify-phase already short-circuits before reaching these gates.
 </step>
 
 <step name="check_phase_completion">

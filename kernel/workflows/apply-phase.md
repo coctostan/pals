@@ -21,10 +21,11 @@ modules.yaml (installed module registry — MUST read; drives pre-apply, post-ta
 </required_reading>
 
 <references>
-references/checkpoints.md (if plan has checkpoints)
+references/checkpoints.md — load-only-if the approved PLAN contains any `checkpoint:*` task
 references/loop-phases.md
 references/module-dispatch.md
-references/subagent-criteria.md
+references/git-strategy.md
+references/subagent-criteria.md — load-only-if APPLY is actively considering delegation of an eligible auto task to repo-local `pals-implementer`
 <!-- Module references (e.g., execution overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
@@ -44,103 +45,18 @@ references/subagent-criteria.md
 
 <step name="github_flow_preflight" priority="after-approval">
 **Conditional: GitHub Flow branch validation before work begins.**
+Use `references/git-strategy.md` for the exact bash recipe.
 
-1. **Resolve workflow mode:**
-   ```bash
-   GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
-   if [ -z "$GIT_WORKFLOW" ]; then
-     GIT_BRANCHING_CHECK=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
-     if [ -n "$GIT_BRANCHING_CHECK" ]; then
-       GIT_WORKFLOW="legacy"
-     else
-       GIT_WORKFLOW="none"
-     fi
-   fi
-   ```
-
-2. **If GIT_WORKFLOW != "github-flow":** Skip entire step (no-op). Proceed to load_plan.
-
-3. **Read config fields:**
-   ```bash
-   GIT_BASE_BRANCH=$(jq -r '.git.base_branch // "main"' pals.json 2>/dev/null)
-   GIT_UPDATE_WHEN_BEHIND=$(jq -r '.git.update_branch_when_behind // true' pals.json 2>/dev/null)
-   GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
-   PHASE_NAME={phase-name}  # e.g., "85-core-loop-enforcement"
-   ```
-
-4. **Check 1 — Not on base_branch:**
-   ```bash
-   CURRENT=$(git rev-parse --abbrev-ref HEAD)
-   ```
-   - If `$CURRENT` = `$GIT_BASE_BRANCH`: create feature branch:
-     ```bash
-     git checkout -b "feature/${PHASE_NAME}" "${GIT_BASE_BRANCH}"
-     ```
-     Display: `Created feature/${PHASE_NAME} from ${GIT_BASE_BRANCH}`
-   - If already on a non-base branch (e.g., `feature/{phase}*` or any other): continue on current branch
-
-   After branch creation or detection, resolve the actual working branch:
-   ```bash
-   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-   ```
-   All subsequent steps use `${CURRENT_BRANCH}` — never assume branch name from phase name.
-
-5. **Check 2 — base_branch up-to-date with remote (if remote set):**
-   ```bash
-   git fetch origin ${GIT_BASE_BRANCH} 2>/dev/null || true
-   LOCAL=$(git rev-parse ${GIT_BASE_BRANCH})
-   REMOTE=$(git rev-parse origin/${GIT_BASE_BRANCH} 2>/dev/null || echo "$LOCAL")
-   ```
-   If `$LOCAL` != `$REMOTE`:
-   ```bash
-   git checkout ${GIT_BASE_BRANCH} && git pull origin ${GIT_BASE_BRANCH}
-   git checkout ${CURRENT_BRANCH}
-   ```
-   Display: `Updated ${GIT_BASE_BRANCH} from remote`
-
-6. **Check 3 — Feature branch not behind base_branch:**
-   ```bash
-   BEHIND=$(git rev-list --count HEAD..${GIT_BASE_BRANCH})
-   ```
-   - If `$BEHIND` > 0 and `$GIT_UPDATE_WHEN_BEHIND` = true:
-     ```bash
-     git rebase ${GIT_BASE_BRANCH}
-     ```
-     Display: `Rebased feature branch onto ${GIT_BASE_BRANCH}`
-   - If `$BEHIND` > 0 and `$GIT_UPDATE_WHEN_BEHIND` = false:
-     ```
-     ⚠️ Feature branch is ${BEHIND} commits behind ${GIT_BASE_BRANCH}.
-     update_branch_when_behind is false — proceeding without rebase.
-     ```
-
-7. **Check 4 — Clean working tree:**
-   ```bash
-   git status --porcelain
-   ```
-   If dirty with unrelated changes (files outside plan scope):
-   ```
-   ⚠️ Working tree has unrelated changes:
-   {git status --porcelain output}
-
-   [1] Stash changes and continue
-   [2] Continue anyway
-   [3] Stop
-   ```
-   - If "1": `git stash push -m "pals-preflight-stash"`
-   - If "2": proceed with warning logged
-   - If "3": halt APPLY
-
-8. **Display preflight summary:**
-   ```
-   ────────────────────────────────────────
-   GitHub Flow Preflight ✓
-   ────────────────────────────────────────
-   Branch:     ${CURRENT_BRANCH}
-   Base:       ${GIT_BASE_BRANCH}
-   Behind:     0 commits
-   Tree:       clean
-   ────────────────────────────────────────
-   ```
+1. Resolve `GIT_WORKFLOW` with the shared 3-tier recipe in `references/git-strategy.md`.
+2. **If `GIT_WORKFLOW != "github-flow"`:** Skip the entire step (no-op). Proceed to `load_plan`.
+3. Read the github-flow preflight fields from `pals.json`: `base_branch`, `update_branch_when_behind`, `remote`, and phase context.
+4. Before work starts, enforce the shared preflight gates from `references/git-strategy.md`:
+   - create or reuse a non-base feature branch
+   - refresh the base branch from remote when configured
+   - rebase if the working branch is behind base and `update_branch_when_behind=true`
+   - if unrelated working-tree changes exist, require stash/continue/stop handling
+5. Resolve `CURRENT_BRANCH` after any branch creation and use it for all downstream commands — never assume a branch name from phase name.
+6. Emit the visible `GitHub Flow Preflight ✓` summary with branch, base, behind, and tree status.
 </step>
 
 <step name="load_plan">
@@ -262,22 +178,25 @@ references/subagent-criteria.md
 **Dispatch pre-apply baseline hooks via `references/module-dispatch.md`.**
 
 Call-site contract:
-- Hook: `pre-apply`; modules: TODD (p50) test-file/RED-phase guard, WALT (p100) quality baseline.
-- Context/output: plan task order and detected validation commands; record `context_inject` baselines for post-task and post-apply comparison.
-- Blocking: surface TODD/WALT `action: block` with fix/override/stop options.
-- Required evidence: `[dispatch] pre-apply: ...`; if registry resolution fails, `[dispatch] pre-apply: modules.yaml NOT FOUND — WARNING`.
+- Hook: `pre-apply` baseline dispatch.
+- Context/output: plan task order and detected validation commands; record baselines for post-task and post-apply comparison.
+- Blocking: honor enforcement-capable `action: block` responses with fix/override/stop options.
+- Required evidence: `[dispatch] pre-apply: ...`; if nothing fires, still emit the visible hook line; if registry resolution fails, `[dispatch] pre-apply: modules.yaml NOT FOUND — WARNING`.
 </step>
 
 <step name="execute_tasks">
 **Note:** Module-provided execution overlays (loaded via post-plan hooks during planning) may have modified the plan's task structure. Execute tasks as they appear in the approved plan — overlays are already applied.
 
 For each <task> in order:
+Load-only-if note: if the approved plan contains any `checkpoint:*` task, read `references/checkpoints.md` before checkpoint execution; otherwise do not load it.
+
 
 **If type="auto":**
 1. Log task start: "Task N: [name]"
 2. Decide execution mode:
    - Default to inline APPLY in the parent session.
-   - Delegation to a repo-local `pals-implementer` is optional, task-bounded, and allowed only when the task satisfies `references/subagent-criteria.md` plus the Phase 155 contract:
+   - load-only-if delegation is being considered for this eligible auto task: read `references/subagent-criteria.md`, then evaluate delegation against that reference plus the Phase 155 contract.
+   - Delegation to a repo-local `pals-implementer` is optional, task-bounded, and allowed only when all of the following are true:
      - approved plan is `autonomous: true`
      - the task is a bounded autonomous unit the parent can describe, inspect, and verify as equivalent to inline APPLY
      - `<files>`, `<action>`, and `<verify>` are clear and bounded
@@ -378,10 +297,10 @@ For each <task> in order:
      Continue? [yes/adjust plan/stop]
      ```
 9. **Dispatch post-task enforcement hooks via `references/module-dispatch.md`:**
-   - Hook: `post-task`; current module: TODD (p100).
-   - Context: task name, task result, and pre-apply baselines.
-   - Required behavior: run/compare the test suite, block on regression, and surface fix/skip/stop options.
-   - Required evidence: `[dispatch] post-task(Task N): {MODULE(priority) → PASS | BLOCK(reason)} | ...`; advisory modules wait for post-apply.
+   - Hook: `post-task` enforcement dispatch.
+   - Context/output: current task name/result plus pre-apply baselines; record regression signals for UNIFY.
+   - Blocking: compare validation results against baselines, block on regression, and surface fix/skip/stop options.
+   - Required evidence: `[dispatch] post-task(Task N): ...`; if nothing runs, emit a visible `SKIPPED` line; if registry resolution fails, `[dispatch] post-task(Task N): modules.yaml NOT FOUND — WARNING`.
 
 **If type="checkpoint:human-verify":**
 1. Stop execution
@@ -461,20 +380,20 @@ For each <task> in order:
 STOP after task execution and dispatch advisory post-apply modules via `references/module-dispatch.md` before enforcement so advisory output is always visible.
 
 Call-site contract:
-- Hook: `post-apply` advisory modules whose description does NOT contain "block": IRIS (p250), DOCS (p250), RUBY (p300), SKIP (p300).
+- Hook: `post-apply` advisory cohort.
 - Context/output: changed files plus pre-apply context; collect code smells, doc drift, debt, and knowledge annotations for UNIFY.
-- Required evidence: `[dispatch] post-apply advisory: ...`; if none ran, state `[dispatch] post-apply advisory: SKIPPED — {reason}`; if registry resolution fails, `[dispatch] post-apply advisory: modules.yaml NOT FOUND — WARNING`.
-- Never block here; display all annotations.
+- Blocking: never block here; display all annotations.
+- Required evidence: `[dispatch] post-apply advisory: ...`; if none executed, state `[dispatch] post-apply advisory: SKIPPED — {reason}`; if registry resolution fails, `[dispatch] post-apply advisory: modules.yaml NOT FOUND — WARNING`.
 </step>
 <step name="enforcement_module_dispatch" priority="after-advisory">
 ⚠️ **MANDATORY — DO NOT SKIP THIS STEP.**
 STOP after advisory dispatch and run blocking post-apply modules via `references/module-dispatch.md`.
 
 Call-site contract:
-- Hook: `post-apply` enforcement modules whose description contains "block": WALT (p100), DEAN (p150), TODD (p200).
-- Context/output: changed files, task results, annotations, and pre-apply baselines; collect PASS/BLOCK gate results for finalize/UNIFY.
-- Required behavior: compare tests/lint/typecheck/audit/full-suite results against baselines; surface any BLOCK with fix/override/stop options.
-- Required evidence: `[dispatch] post-apply enforcement: ...`; if none ran, state `[dispatch] post-apply enforcement: SKIPPED — {reason}`; if registry resolution fails, `[dispatch] post-apply enforcement: modules.yaml NOT FOUND — WARNING`.
+- Hook: `post-apply` enforcement cohort.
+- Context/output: changed files, task results, annotations, and pre-apply baselines; collect PASS/BLOCK gate results for finalize and UNIFY.
+- Blocking: compare tests/lint/typecheck/audit/full-suite results against baselines and surface any BLOCK with fix/override/stop options.
+- Required evidence: `[dispatch] post-apply enforcement: ...`; if none executed, state `[dispatch] post-apply enforcement: SKIPPED — {reason}`; if registry resolution fails, `[dispatch] post-apply enforcement: modules.yaml NOT FOUND — WARNING`.
 - If all enforcement passes, proceed to finalize with accumulated annotations.
 </step>
 
@@ -536,84 +455,14 @@ Throughout execution:
 
 <step name="github_flow_postflight" priority="after-hooks">
 **Conditional: Push branch and create PR after successful execution.**
+Use `references/git-strategy.md` for the exact bash recipe.
 
-1. **Resolve workflow mode** (same pattern as preflight):
-   ```bash
-   GIT_WORKFLOW=$(jq -r '.git.workflow // empty' pals.json 2>/dev/null)
-   if [ -z "$GIT_WORKFLOW" ]; then
-     GIT_BRANCHING_CHECK=$(jq -r '.git.branching // empty' pals.json 2>/dev/null)
-     if [ -n "$GIT_BRANCHING_CHECK" ]; then GIT_WORKFLOW="legacy"; else GIT_WORKFLOW="none"; fi
-   fi
-   ```
-
-2. **If GIT_WORKFLOW != "github-flow":** Skip entire step (no-op). Proceed to finalize.
-
-3. **Read config fields:**
-   ```bash
-   GIT_AUTO_PUSH=$(jq -r '.git.auto_push // false' pals.json 2>/dev/null)
-   GIT_AUTO_PR=$(jq -r '.git.auto_pr // false' pals.json 2>/dev/null)
-   GIT_CI_CHECKS=$(jq -r '.git.ci_checks // false' pals.json 2>/dev/null)
-   GIT_REMOTE=$(jq -r '.git.remote // empty' pals.json 2>/dev/null)
-   GIT_BASE_BRANCH=$(jq -r '.git.base_branch // "main"' pals.json 2>/dev/null)
-   PHASE_NAME={phase-name}
-   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-   ```
-
-4. **If no remote set:** Skip all remote operations silently. Proceed to finalize.
-
-5. **Stage and commit implementation work:**
-   ```bash
-   git add -A
-   git commit -m "feat(${PHASE_NAME}): {description}" --allow-empty
-   ```
-
-6. **Push feature branch (if auto_push=true):**
-   ```bash
-   git push origin ${CURRENT_BRANCH}
-   ```
-   Display: `Pushed ${CURRENT_BRANCH} to origin`
-
-7. **Create PR (if auto_pr=true):**
-   ```bash
-   # Check if PR already exists for this branch
-   EXISTING_PR=$(gh pr view ${CURRENT_BRANCH} --json url -q '.url' 2>/dev/null || echo "")
-   ```
-   - If PR exists: Display `PR already exists: ${EXISTING_PR}`
-   - If no PR:
-     ```bash
-     gh pr create --base ${GIT_BASE_BRANCH} --head ${CURRENT_BRANCH} \
-       --title "feat(${PHASE_NAME}): {description}" \
-       --body "Phase {N} — auto-generated by PALS."
-     ```
-   - Record PR URL in STATE.md `### Git State` section:
-     ```markdown
-     PR: {url} (state: open)
-     ```
-
-8. **Surface CI check state (if ci_checks=true):**
-   ```bash
-   gh pr checks ${CURRENT_BRANCH}
-   ```
-   Display CI results (informational — blocking enforcement happens in unify-phase merge gate, not here):
-   ```
-   ────────────────────────────────────────
-   CI Status: {passing|failing|pending}
-   Note: CI is informational here. Merge gate
-   in UNIFY will enforce before next phase.
-   ────────────────────────────────────────
-   ```
-
-9. **Display postflight summary:**
-   ```
-   ────────────────────────────────────────
-   GitHub Flow Postflight ✓
-   ────────────────────────────────────────
-   Branch:  ${CURRENT_BRANCH}
-   Pushed:  {yes/no}
-   PR:      {url or "not created"}
-   CI:      {status or "not checked"}
-   ────────────────────────────────────────
-   ```
+1. Resolve `GIT_WORKFLOW` with the shared 3-tier recipe in `references/git-strategy.md`.
+2. **If `GIT_WORKFLOW != "github-flow"`:** Skip the entire step (no-op). Proceed to `finalize`.
+3. Read the github-flow postflight fields from `pals.json`: `auto_push`, `auto_pr`, `ci_checks`, `remote`, `base_branch`; resolve `CURRENT_BRANCH`.
+4. Stage and commit the implementation work on `CURRENT_BRANCH` before any remote operations.
+5. If a remote is configured, follow the shared postflight recipe from `references/git-strategy.md` to push when `auto_push=true`, create or reuse a PR when `auto_pr=true`, record the PR URL/state, and surface CI when `ci_checks=true`.
+6. Emit the visible `GitHub Flow Postflight ✓` summary with branch, push, PR, and CI status. CI remains informational here; blocking enforcement happens in UNIFY.
 </step>
 
 <step name="finalize">

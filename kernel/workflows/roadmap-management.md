@@ -20,6 +20,7 @@ Can be invoked at any time during a milestone.
 
 <references>
 @src/templates/ROADMAP.md (phase section format)
+references/git-strategy.md
 </references>
 
 ---
@@ -35,51 +36,21 @@ Can be invoked at any time during a milestone.
 
 <step name="check_git_state">
 **Surface git/PR state for github-flow projects.**
+Use `references/git-strategy.md` for the shared resolution and state-collection recipe.
 
-1. Read pals.json and resolve GIT_WORKFLOW using 3-tier resolution:
-   ```
-   if git.workflow exists → use it
-   else if git.branching exists → "legacy"
-   else → "none"
-   ```
-
-2. **If GIT_WORKFLOW = "github-flow":**
-   a. Detect current branch:
-      ```bash
-      git branch --show-current
-      ```
-   b. Read GIT_BASE_BRANCH from pals.json `git.base_branch` (default: "main")
-   c. Check ahead/behind base:
-      ```bash
-      git fetch origin {GIT_BASE_BRANCH} --quiet 2>/dev/null
-      git rev-list --left-right --count origin/{GIT_BASE_BRANCH}...HEAD 2>/dev/null
-      ```
-      Parse output: first number = BEHIND_COUNT, second = AHEAD_COUNT
-   d. Check for open PR:
-      ```bash
-      gh pr view --json url,state,statusCheckRollup 2>/dev/null
-      ```
-   e. If PR exists, extract:
-      - PR_URL from `url`
-      - PR_STATE from `state` (OPEN, MERGED, CLOSED)
-      - CI_STATE from `statusCheckRollup`: all SUCCESS → "passing", any FAILURE → "failing", else → "pending"
-   f. If no PR exists: PR_URL = "none", PR_STATE = "N/A", CI_STATE = "N/A"
-   g. Store: CURRENT_BRANCH, GIT_BASE_BRANCH, PR_URL, PR_STATE, CI_STATE, AHEAD_COUNT, BEHIND_COUNT
-
-3. **If GIT_WORKFLOW != "github-flow":** skip entirely (no git state surfacing)
+1. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `references/git-strategy.md`.
+2. **If `GIT_WORKFLOW = "github-flow"`:** collect `CURRENT_BRANCH`, `GIT_BASE_BRANCH`, ahead/behind counts, PR URL/state, and CI state using the shared status recipe.
+3. **If `GIT_WORKFLOW != "github-flow"`:** skip entirely (no git state surfacing).
 </step>
 
 <step name="determine_next_action">
 **Git-aware routing (github-flow only):**
-If GIT_WORKFLOW = "github-flow" AND git state was collected:
-
-| Git State | Override Next Action |
-|-----------|---------------------|
-| BEHIND_COUNT > 0 (branch behind base) | "Update branch from base: `git fetch origin {GIT_BASE_BRANCH} && git rebase origin/{GIT_BASE_BRANCH}` then re-push and recheck CI" |
-| PR open + CI failing | "Fix CI failures, then merge PR" |
-| PR open + CI passing + reviews pending (if `require_reviews: true`) | "Get PR reviewed" |
-| PR open + CI passing + ready to merge | "Merge PR: `gh pr merge`" |
-| No PR + loop complete (all ✓) | Normal routing (next PLAN will create branch) |
+If `GIT_WORKFLOW = "github-flow"` and git state was collected, apply the shared routing priority from `references/git-strategy.md`:
+- behind base
+- PR open + CI failing
+- PR open + CI passing + reviews pending (if `require_reviews: true`)
+- PR open + CI passing + ready to merge
+- otherwise fall through to loop-position routing
 
 Behind-base routing takes precedence over merge readiness; otherwise fall through to the loop-position routing below.
 
