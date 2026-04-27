@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.46 Pi-Native Implementation Planning**
 Status: 🚧 In Progress
-Phases: 2 of 5 complete
+Phases: 3 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 197 | v2.45 Findings Triage | 1/1 | Complete | 2026-04-27 |
 | 198 | Implementation Workstream Design | 1/1 | Complete | 2026-04-27 |
-| 199 | Sequencing + Dependency Plan | TBD | Ready to plan | - |
-| 200 | Validation + Evidence Strategy | TBD | Not started | - |
+| 199 | Sequencing + Dependency Plan | 1/1 | Complete | 2026-04-27 |
+| 200 | Validation + Evidence Strategy | TBD | Ready to plan | - |
 | 201 | Final Implementation Plan Proposal | TBD | Not started | - |
 
 ### Phase 197: v2.45 Findings Triage
@@ -49,11 +49,11 @@ Plans: 198-01 complete — created and unified `docs/PI-NATIVE-IMPLEMENTATION-WO
 
 ### Phase 199: Sequencing + Dependency Plan
 Focus: Define ordering, dependencies, proof points, risk gates, and boundaries for implementation milestones so later build work proceeds safely.
-Plans: TBD (defined during /paul:plan)
+Plans: 199-01 complete — created and unified `docs/PI-NATIVE-SEQUENCING-DEPENDENCY-PLAN.md` with source-cited sequencing principles, dependency matrix, recommended order, ordering alternatives, risk gates, split/merge recommendations, Phase 200 validation/evidence handoff, Phase 201 roadmap inputs, and sequencing readiness checklist.
 
 ### Phase 200: Validation + Evidence Strategy
 Focus: Define how implementation will preserve Pi-supported runtime checks, shared invariants, frozen legacy evidence, runtime lens checks, guided UI safety, and helper-agent delegation checks.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next: run /paul:plan)
 
 ### Phase 201: Final Implementation Plan Proposal
 Focus: Produce the executable Pi-native implementation roadmap for the next build milestone(s), with acceptance criteria, phase recommendations, and non-negotiable authority boundaries.
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 198 complete; Phase 199 ready to plan sequencing and dependency constraints.*
+*Last updated: 2026-04-27 — Phase 199 complete; Phase 200 ready to plan.*
