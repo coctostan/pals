@@ -117,3 +117,71 @@ Non-negotiable boundaries for all later validation decisions:
 - Do not let Pi summaries, widgets, reports, or context slices replace validation command output.
 - Do not rewrite validation scripts as part of a runtime feature plan unless that plan is explicitly scoped to validation classification or validation-script implementation.
 - Keep fresh APPLY/UNIFY command output as the source of truth even when historical reports exist.
+
+## Future Workstream Evidence Requirements
+
+| Workstream | Minimum command-output evidence | Durable artifact evidence | Additional risk gate |
+|---|---|---|---|
+| Artifact-Slice Contract Hardening | Marker checks plus `bash tests/pi-end-to-end-validation.sh`; keep `bash tests/cross-harness-validation.sh` green for shared invariants. | PLAN cites slice source inputs, schema, bounds, freshness rules, fallback language, and protected files; SUMMARY records exact validation output and changed files. | Block if slices omit `Source:` citations, omit freshness for changing facts, write `.paul/*`, create hidden persistence, or replace full reads for edits/lifecycle decisions. |
+| Guided Workflow Evidence Hardening | Structural checks for canonical replies/no-auto-continue plus Pi validation; cross-harness validation remains green for shared approval/checkpoint invariants. | PLAN names guided moments and reply schema; SUMMARY records transcript-visible evidence, checkpoint/approval behavior, and no UI-only decision proof. | Block if UI state alone records a decision, prompts auto-continue, checkpoints can be skipped, or approval/merge intent is inferred. |
+| Workflow/Resource Capsule Design | Marker checks proving citations and blocking-semantics exclusions, plus Pi and cross-harness validation. | PLAN records installed resource paths, capsule eligibility rules, exclusion list, and full-read fallback criteria; SUMMARY confirms full workflow reads remain required for blocking semantics. | Block if capsules hide STOP/DO NOT SKIP, override paths, checkpoints, lifecycle writes, module gates, merge gates, or ambiguity handling. |
+| Delegated APPLY Packet/Report Compression | Static checks for packet/report fields, allowed-file rules, fallback markers, and parent official verification; Pi and cross-harness validation remain green. | PLAN records packet template, report schema, allowed/forbidden files, verification rules, and parent lifecycle reminder; SUMMARY records helper report review, parent official verify, file-scope check, and fallback decisions. | Block if helper owns `.paul/*` writes, checkpoints, module gates, official verification, fallback judgment, or APPLY completion status. |
+| Pi-Native Validation Classification | Marker checks over validation scripts/reports plus full Pi and cross-harness validation. | PLAN identifies exact assertions/classes changed; SUMMARY records before/after counts, classification rationale, and unchanged shared-invariant coverage. | Block if shared invariants are weakened, parity-only checks are removed before classification, or reports replace command output. |
+| Legacy Retention and Install-Surface Cleanup | Classification marker checks, retained shared-invariant validation, fresh Pi/cross-harness validation, and GitHub Flow evidence if install surfaces change. | PLAN records product decision, retention/removal matrix, archive/source-only handling, and preserved shared-invariant evidence; SUMMARY records exact removed/retained surfaces and validation proof. | Block unless validation classification is complete and product approval is explicit. Do not silently delete historical proof or shared-invariant coverage. |
+
+## Command-Output Evidence
+
+Future APPLY/UNIFY phases should preserve command output in a way a reviewer can audit without trusting Pi summaries:
+
+- Marker greps must show matched lines or enough output to identify the checked file and marker family.
+- `bash tests/pi-end-to-end-validation.sh` output must include TAP summary counts and final pass/fail status; current Phase 200 baseline is 186/186.
+- `bash tests/cross-harness-validation.sh` output must include TAP summary counts and final pass/fail status; current Phase 200 baseline is 100/100.
+- GitHub Flow evidence must include current branch, base branch, ahead/behind status, PR URL/state when applicable, CI/check state, and merge-gate result during UNIFY.
+- Dependency or security audit evidence, when applicable, must include command name, severity counts, baseline comparison, and any override decision.
+- Helper delegation evidence must include the parent-owned task packet, helper report fields, parent file-scope diff check, and parent-run official verification output.
+- When expected validation counts change in a future approved plan, SUMMARY must state the old count, new count, reason, class affected, and shared-invariant preservation rationale.
+
+## Durable Artifact Evidence
+
+| Artifact | Required evidence when future work uses this strategy |
+|---|---|
+| PLAN | Source inputs, acceptance criteria, validation classes affected, protected files, boundaries, module-dispatch evidence, command-output verification plan, and any Pi-assisted context/capsule/helper usage that materially shaped the plan. |
+| APPLY notes / task results | Per-task PASS/PASS_WITH_CONCERNS/BLOCKED status, official verify command output, changed-file check, deviations, fallback/retry decisions, and post-task/post-apply module outputs. |
+| SUMMARY | Acceptance-criteria results, actual changed files, validation command output, module reports, GitHub Flow state, deviations, decisions, helper-agent review results if used, and follow-on validation recommendations. |
+| STATE | Current lifecycle position, loop state, current decisions, blockers/concerns, Git state, and session continuity only after workflow-owned writes. |
+| ROADMAP | Phase status, completion notes, next-phase routing, and milestone progress without replacing SUMMARY detail. |
+| Historical reports | Report freshness label and explicit note that current validation truth comes from command output, unless a future approved plan updates reports as part of classification work. |
+
+## Phase 201 Handoff
+
+Phase 201 should produce the final executable implementation-plan proposal only after applying these validation constraints:
+
+- Name the validation class for every proposed build milestone and every changed check: Pi-Supported Runtime, Shared Invariant, Frozen Legacy Parity, Runtime Lens, Guided UI Safety, Helper Delegation, GitHub Flow Safety, or Artifact / Process.
+- Propose Artifact-Slice Contract Hardening first unless this strategy or later evidence shows validation classification must precede any runtime-context change.
+- Keep Guided Workflow Evidence Hardening early because explicit intent/no-auto-continue proof lowers risk before broader workflow/resource capsules.
+- Keep Workflow/Resource Capsule Design after citation/fallback and blocking-semantics exclusion rules are explicit.
+- Keep Delegated APPLY Packet/Report Compression after packet/report schema and allowed-file verification rules are explicit.
+- Treat Pi-Native Validation Classification as either a dedicated early build milestone or an explicit prerequisite slice inside the first validation-script/report-changing milestone.
+- Defer Legacy Retention and Install-Surface Cleanup until validation classification protects shared invariants and product approval is explicit.
+- For every proposed milestone, include exact repo surfaces, protected files, validation commands, expected TAP/count evidence, module evidence, GitHub Flow evidence, and durable artifact writes.
+- Exclude hidden Pi state, telemetry, auto-approval, auto-continue, helper-owned APPLY, merge-gate bypass, lifecycle ledgers, dependency additions, and unclassified legacy cleanup from the first build proposal.
+
+## Validation Readiness Checklist
+
+A future workstream is ready to enter a build milestone only when all applicable items are true:
+
+- [ ] Source inputs and repo surfaces are named precisely enough for a bounded PLAN.
+- [ ] The workstream's validation class or classes are explicit.
+- [ ] Protected files and scope limits are explicit.
+- [ ] Acceptance criteria preserve `.paul/*` authority, PLAN/APPLY/UNIFY ownership, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approvals/checkpoints, and full-read fallback.
+- [ ] Runtime assistance remains derived, bounded, disposable, source-cited, freshness-aware where needed, and backed by full authoritative reads.
+- [ ] Guided UI behavior, if touched, creates explicit canonical transcript/artifact evidence and cannot auto-approve, auto-continue, skip checkpoints, or merge.
+- [ ] Helper-agent work, if touched, remains parent-packeted, parent-verified, file-scoped, fallback-safe, and forbidden from lifecycle ownership.
+- [ ] Validation commands and expected evidence are named before implementation begins.
+- [ ] Shared invariants remain protected before any parity-only check or frozen legacy surface is weakened.
+- [ ] Historical validation reports are either explicitly treated as stale examples or updated by an approved validation-classification plan.
+- [ ] No hidden Pi state, telemetry, UI-only decision, helper-owned APPLY, merge-gate bypass, lifecycle ledger, or Pi-owned validation pass signal is introduced.
+
+## Phase 200 Conclusion
+
+Validation strategy should move toward Pi-supported runtime proof plus shared invariant protection, while clearly labeling frozen legacy parity. Phase 201 can now propose executable implementation milestones with explicit command-output evidence, durable artifact evidence, and class-specific risk gates instead of treating validation as an undifferentiated parity suite.
