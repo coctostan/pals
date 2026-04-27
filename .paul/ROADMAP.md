@@ -37,7 +37,7 @@ Phases: 4 of 5 complete
 | 193 | Pi Runtime Capability Mapping | 1/1 | ✅ Complete | 2026-04-27 |
 | 194 | Context-Efficiency Architecture | 1/1 | ✅ Complete | 2026-04-27 |
 | 195 | Exploratory Pi-Native Spikes | 1/1 | ✅ Complete | 2026-04-27 |
-| 196 | Final Pi-Native Architecture Proposal | TBD | Not started | - |
+| 196 | Final Pi-Native Architecture Proposal | TBD | Ready to plan | - |
 
 ### Phase 192: Support-Tier Reset + Surface Inventory
 Focus: Declare Claude Code unsupported/frozen; inventory cross-harness assumptions, wrappers, prompts, docs, and validation expectations.
@@ -57,7 +57,7 @@ Plans: 195-01 complete — bounded, read-only artifact-slice context loading imp
 
 ### Phase 196: Final Pi-Native Architecture Proposal
 Focus: Produce the final design doc, migration plan, implementation roadmap, explicit non-goals, and recommendations for follow-on implementation milestones.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (defined during /paul:plan); ready to plan after Phase 195 artifact-slice spike completion.
 
 ## Next Milestone
 Defined after v2.45 completion.
@@ -71,4 +71,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 195 Plan 195-01 UNIFY complete; phase transition pending.*
+*Last updated: 2026-04-27 — Phase 195 complete; Phase 196 ready to plan.*

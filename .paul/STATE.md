@@ -4,31 +4,32 @@
 
 See: .paul/PROJECT.md (updated 2026-04-27 after v2.45 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.45 Pi-Native PALS Architecture is active; Phase 195 Exploratory Pi-Native Spikes has completed Plan 195-01 and is ready for phase transition to Phase 196.
+**Current focus:** v2.45 Pi-Native PALS Architecture is active; Phase 196 Final Pi-Native Architecture Proposal is ready for planning.
 
 ## Current Position
 
 Milestone: v2.45 Pi-Native PALS Architecture
-Phase: 195 of 196 (Exploratory Pi-Native Spikes) — Complete
-Plan: 195-01 complete
-Status: UNIFY complete, ready for phase transition
-Last activity: 2026-04-27T16:46:15Z — Completed Plan 195-01 UNIFY; summary, module history, and validation evidence recorded
+Phase: 196 of 196 (Final Pi-Native Architecture Proposal) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-27T16:50:00Z — Phase 195 complete and transitioned to Phase 196
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
-- v2.45 Pi-Native PALS Architecture: [████████░░] 80% (4 of 5 phases complete after Phase 195 transition)
+- v2.45 Pi-Native PALS Architecture: [████████░░] 80% (4 of 5 phases complete; Phase 196 ready to plan)
 - Phase 192 Support-Tier Reset + Surface Inventory: [██████████] 100% complete
 - Phase 193 Pi Runtime Capability Mapping: [██████████] 100% complete
 - Phase 194 Context-Efficiency Architecture: [██████████] 100% complete
-- Phase 195 Exploratory Pi-Native Spikes: [██████████] 100% (Plan 195-01 complete)
+- Phase 195 Exploratory Pi-Native Spikes: [██████████] 100% complete
+- Phase 196 Final Pi-Native Architecture Proposal: [░░░░░░░░░░] 0% (ready to plan)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for phase transition]
+  ○        ○        ○     [Ready to plan Phase 196]
 ```
 
 ## Accumulated Context
@@ -100,22 +101,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/195-exploratory-pi-native-spikes
-Last commit: 375eade9 — test(195-01): guard artifact slice contract (UNIFY metadata pending commit)
-PR: #109 OPEN — https://github.com/coctostan/pals/pull/109 (Phase 195 artifact-slice spike; UNIFY artifacts pending push)
-CI: PR #109 Socket Security checks passing; local UNIFY validation passed — installer with `PALS_ROOT`, Pi 186/186, cross-harness 100/100, ESLint complexity clean
+Branch: main
+Last commit: c47024ac — Phase 195: Pi-native artifact slice spike (#109) (transition commit pending)
+PR: #109 MERGED — https://github.com/coctostan/pals/pull/109
+CI: PR #109 Socket Security checks passed; local UNIFY validation passed — installer with `PALS_ROOT`, Pi 186/186, cross-harness 100/100, ESLint complexity clean
 Prior PRs: #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T16:46:15Z
-Stopped at: Plan 195-01 UNIFY complete; phase transition required
-Next action: Execute phase transition for Phase 195, then route to Phase 196 planning
-Resume file: .paul/phases/195-exploratory-pi-native-spikes/195-01-SUMMARY.md
+Last session: 2026-04-27T16:50:00Z
+Stopped at: Phase 195 complete; transitioned to Phase 196
+Next action: /paul:plan for Phase 196 Final Pi-Native Architecture Proposal
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 195 Plan 195-01 completed the bounded artifact-slice context loading spike.
-- Summary created at `.paul/phases/195-exploratory-pi-native-spikes/195-01-SUMMARY.md`.
-- Validation passed during UNIFY: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (186/186), `bash tests/cross-harness-validation.sh` (100/100), and ESLint complexity check.
-- Post-unify module persistence recorded WALT quality history, SKIP knowledge capture, CODI history row, and RUBY debt notes.
-- Active handoff was archived to `.paul/handoffs/archive/HANDOFF-2026-04-27-phase-195-apply-complete-unify-pending.md` after resume proceeded.
-- GitHub Flow merge gate still needs the UNIFY metadata commit pushed to PR #109 before merge.
+- Phase 195 Plan 195-01 completed and PR #109 merged.
+- Artifact-slice loading is validated as an activation-gated, bounded, source-cited, freshness-marked, read-only Pi adapter context aid.
+- Phase 196 should produce the final Pi-native architecture proposal, migration plan, implementation roadmap, explicit non-goals, and recommendations for follow-on milestones.
+- Preserve `.paul/*` artifact authority, module evidence, GitHub Flow gates, parent-owned APPLY, and full-read fallback rules when planning Phase 196.

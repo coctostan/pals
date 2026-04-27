@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.45 Pi-Native PALS Architecture is active; Phase 194 Context-Efficiency Architecture is complete and Phase 195 Exploratory Pi-Native Spikes is ready for planning.
+v2.45 Pi-Native PALS Architecture is active; Phase 195 Exploratory Pi-Native Spikes is complete and Phase 196 Final Pi-Native Architecture Proposal is ready for planning.
 
 v2.45 is an architecture/design milestone to reposition PALS around Pi as the supported runtime, keep Claude Code and Agent SDK as unsupported/frozen historical surfaces, and explore how Pi extensions can reduce context pollution while making PLAN/APPLY/UNIFY more guided, enforceable, and effective.
 
@@ -88,6 +88,7 @@ See `.paul/ROADMAP.md` for the active v2.45 phase plan, `.paul/MILESTONES.md` fo
 | Pi-native context assistance must remain derived, bounded, disposable, and source-cited. | Phase 194 Plan 194-01 | Phase 195 spikes may reduce context cost through artifact slices, workflow/resource capsules, runtime lenses, guided UI, and helper reports, but `.paul/*`, installed resources, git/PR evidence, and validation output stay authoritative. |
 | Artifact-slice context loading is the recommended first Phase 195 spike. | Phase 194 Plan 194-01 | Start with a read-only prototype that proves citation, freshness, bounded output, and fallback-to-full-read behavior before broader workflow capsules or UI changes. |
 | Validation should separate Pi-supported runtime checks, shared invariants, and frozen legacy parity. | Phase 194 Plan 194-01 | Future validation redesign can preserve safety while preventing unsupported Claude Code / Agent SDK parity from silently blocking Pi-native architecture decisions. |
+| Artifact-slice context loading is a validated Pi-native context-efficiency candidate. | Phase 195 Plan 195-01 | Phase 196 should decide whether to promote activation-gated, bounded, source-cited, freshness-marked, read-only slices into the final architecture proposal. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -120,4 +121,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 194 Context-Efficiency Architecture completion.*
+*Last updated: 2026-04-27 after Phase 195 Exploratory Pi-Native Spikes completion.*
