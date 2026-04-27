@@ -4,28 +4,29 @@
 
 See: .paul/PROJECT.md (updated 2026-04-27 after v2.45 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.45 Pi-Native PALS Architecture is created; Phase 192 is ready for planning.
+**Current focus:** v2.45 Pi-Native PALS Architecture is active; Phase 192 complete, Phase 193 ready for planning.
 
 ## Current Position
 
 Milestone: v2.45 Pi-Native PALS Architecture
-Phase: 192 of 196 (Support-Tier Reset + Surface Inventory) — APPLY complete
-Plan: 192-01 applied, ready for UNIFY
-Status: APPLY complete; implementation verified; ready for UNIFY
-Last activity: 2026-04-27T14:45:47Z — Applied 192-01 support-tier reset and inventory docs; validation passed Pi 183/183 and cross-harness 100/100
+Phase: 193 of 196 (Pi Runtime Capability Mapping) — Ready to plan
+Plan: Not started
+Status: Phase 192 complete; ready for Phase 193 PLAN
+Last activity: 2026-04-27T15:05:00Z — Completed Phase 192 transition to Phase 193 after 192-01 UNIFY
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
-- v2.45 Pi-Native PALS Architecture: [█░░░░░░░░░] 10% (0 of 5 phases complete; Phase 192 APPLY complete, UNIFY pending)
-- Phase 192 Support-Tier Reset + Surface Inventory: [███████░░░] 70% (PLAN ✓, APPLY ✓, UNIFY ○)
+- v2.45 Pi-Native PALS Architecture: [██░░░░░░░░] 20% (1 of 5 phases complete; Phase 193 ready for planning)
+- Phase 192 Support-Tier Reset + Surface Inventory: [██████████] 100% complete
+- Phase 193 Pi Runtime Capability Mapping: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ○        ○        ○     [Ready for Phase 193 PLAN]
 ```
 
 ## Accumulated Context
@@ -41,6 +42,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
   - Phase 190 moved completed ROADMAP history into `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`, compacted live `.paul/ROADMAP.md`, centralized GitHub Flow mechanics in `kernel/references/git-strategy.md`, hoisted module-dispatch taxonomy into `kernel/references/module-dispatch.md`, made APPLY optional refs conditional, and reduced target workflow/reference files by a net 335 lines.
   - Phase 191 updated Pi and cross-harness validation with structural anti-regrowth guardrails for active ROADMAP budgets, hot workflow/reference budgets, archive-link presence, bounded GitHub Flow duplication, and critical semantic markers; final validation passed Pi 183/183 and cross-harness 100/100.
 - v2.45 has been created as an architecture/design milestone: reset Claude Code support tier to unsupported/frozen, map Pi runtime capabilities, design context-efficiency architecture, allow bounded Pi-native code spikes, and produce a final migration/implementation roadmap.
+- Phase 192 completed the support-tier reset: Pi is documented as the supported runtime, Claude Code / Agent SDK are unsupported/frozen historical surfaces, portability docs are historical/frozen references, and `docs/PI-NATIVE-SUPPORT-INVENTORY.md` is the source artifact for Phase 193+ capability mapping.
 
 ### Current Decisions
 
@@ -85,19 +87,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/192-support-tier-reset-surface-inventory
-Last commit: feature branch pushed with Phase 192 Plan 192-01 APPLY implementation and PR metadata
-PR: #106 OPEN — https://github.com/coctostan/pals/pull/106 (Phase 192 Plan 192-01 APPLY; merge gate pending UNIFY)
-CI: local validation passing — Pi 183/183 and cross-harness 100/100; PR checks pending (Socket Security Project Report / Pull Request Alerts)
+Branch: feature/192-support-tier-reset-surface-inventory (pending merge gate)
+Last commit: Phase 192 UNIFY/transition metadata pending commit
+PR: #106 OPEN — https://github.com/coctostan/pals/pull/106 (Phase 192 support-tier reset; merge gate in progress)
+CI: local validation passing — Pi 183/183 and cross-harness 100/100; remote checks not reported by gh
 Prior PRs: #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T14:45:47Z
-Stopped at: Plan 192-01 APPLY complete
-Next action: Run /paul:unify .paul/phases/192-support-tier-reset-surface-inventory/192-01-PLAN.md
-Resume file: .paul/phases/192-support-tier-reset-surface-inventory/192-01-PLAN.md
+Last session: 2026-04-27T15:05:00Z
+Stopped at: Phase 192 complete; ready to plan Phase 193
+Next action: /paul:plan for Phase 193 Pi Runtime Capability Mapping
+Resume file: .paul/ROADMAP.md
 Resume context:
-- APPLY created `docs/PI-NATIVE-SUPPORT-INVENTORY.md`, updated README to Pi-supported / Claude Code and Agent SDK unsupported/frozen messaging, and marked portability docs as historical/frozen reference.
-- Verification passed: `tests/pi-end-to-end-validation.sh` 183/183 and `tests/cross-harness-validation.sh` 100/100.
-- Ready for UNIFY to create `192-01-SUMMARY.md`, record module reports, and reconcile deferred Phase 193–196 questions.
+- Phase 192 shipped the support-tier reset and inventory: README is Pi-first, portability docs are historical/frozen, and `docs/PI-NATIVE-SUPPORT-INVENTORY.md` lists active/frozen/future-decision surfaces.
+- Phase 192 verification passed: `tests/pi-end-to-end-validation.sh` 183/183 and `tests/cross-harness-validation.sh` 100/100.
+- Next phase should map Pi runtime primitives against PLAN/APPLY/UNIFY, module dispatch, GitHub Flow, context injection, handoffs, and helper-agent surfaces.

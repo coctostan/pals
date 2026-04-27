@@ -29,23 +29,23 @@ Phases: 3 of 3 complete
 ## Current Milestone
 **v2.45 Pi-Native PALS Architecture**
 Status: 🚧 In Progress
-Phases: 0 of 5 complete
+Phases: 1 of 5 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 192 | Support-Tier Reset + Surface Inventory | 1/1 | Planning | - |
-| 193 | Pi Runtime Capability Mapping | TBD | Not started | - |
+| 192 | Support-Tier Reset + Surface Inventory | 1/1 | ✅ Complete | 2026-04-27 |
+| 193 | Pi Runtime Capability Mapping | TBD | Next | - |
 | 194 | Context-Efficiency Architecture | TBD | Not started | - |
 | 195 | Exploratory Pi-Native Spikes | TBD | Not started | - |
 | 196 | Final Pi-Native Architecture Proposal | TBD | Not started | - |
 
 ### Phase 192: Support-Tier Reset + Surface Inventory
 Focus: Declare Claude Code unsupported/frozen; inventory cross-harness assumptions, wrappers, prompts, docs, and validation expectations.
-Plans: 192-01 created, awaiting approval
+Plans: 192-01 complete — support-tier reset documented and Pi-native support inventory created.
 
 ### Phase 193: Pi Runtime Capability Mapping
 Focus: Map PLAN/APPLY/UNIFY, modules, GitHub Flow, context injection, and handoffs onto Pi extension primitives.
-Plans: TBD (defined during /paul:plan)
+Plans: Ready for /paul:plan
 
 ### Phase 194: Context-Efficiency Architecture
 Focus: Design how runtime assistance reduces repeated prompt, workflow, artifact, and context cost while preserving artifact-first truth.
@@ -71,4 +71,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 192 plan 192-01 created; awaiting approval.*
+*Last updated: 2026-04-27 — Phase 192 complete; ready to plan Phase 193.*
