@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-27)
+See: .paul/PROJECT.md (updated 2026-04-27 after Phase 189 transition)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is active; Phase 188 is complete and Phase 189 Hot-Path Read Audit is ready to plan.
+**Current focus:** v2.44 PALS Context Optimization — Process & Artifacts is active; Phases 188 and 189 are complete (50%) and Phase 190 Artifact Structure Simplification is ready to plan.
 
 ## Current Position
 
 Milestone: v2.44 PALS Context Optimization — Process & Artifacts
-Phase: 189 of 4 in v2.44 — Hot-Path Read Audit — Complete
-Plan: 189-01 complete; SUMMARY recorded
-Status: PLAN ✓ / APPLY ✓ / UNIFY ✓ — ready for next PLAN (Phase 190)
-Last activity: 2026-04-27T01:05:00Z — UNIFY closed Plan 189-01; SUMMARY at .paul/phases/189-hot-path-read-audit/189-01-SUMMARY.md; merge gate pending (PR #101 OPEN, CI pending).
+Phase: 190 of 4 in v2.44 — Artifact Structure Simplification — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-27T01:10:00Z — Phase 189 complete; transitioned to Phase 190; PR #101 squash-merged as 14251498; main synced.
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ○        ○        ○     [Phase 190 not yet planned]
 ```
 
 ## Accumulated Context
@@ -35,7 +35,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.43 completed the first context-diet wave: indexed archives, compact hot artifacts, centralized workflow/module prose, and anti-regrowth validation.
 - v2.44 continues context optimization across PALS process and artifacts; Phase 188 reduced recurring prompt/skill wrapper read cost.
 - Phase 188 completed workflow prompt/skill slimming: selected wrapper total dropped from 406 to 296 lines while Pi 177/177 and cross-harness 90/90 validation stayed green.
-- Phase 189 will audit remaining hot-path reads during normal PLAN/APPLY/UNIFY to identify the next avoidable context costs.
+- Phase 189 audit measured remaining hot-path reads and identified 8 findings (F1–F8) and 10 recommendations (R1–R10); ROADMAP archive split and GitHub Flow centralization are the largest reducible wins.
 
 ### Current Decisions
 
@@ -50,6 +50,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Centralize shared dispatch mechanics in `kernel/references/module-dispatch.md` while workflows keep hook-local call-site obligations | Phase 186 Plan 186-01 | Hot PLAN/APPLY/UNIFY workflow prose is shorter without weakening module evidence, post-unify persistence, or merge-gate safety. |
 | Guard context-diet gains with semantic validation and a practical line ceiling | Phase 187 Plan 187-01 | Future hot workflow edits must retain lifecycle/module/merge-gate markers and stay under the 1711 Phase 186 pre-compression ceiling. |
 | Treat Claude Code command wrappers as legacy/reference thin pointers while keeping Pi skills as the active user-facing surface | Phase 188 Plan 188-01 | Future prompt-slimming should avoid expanding Claude-specific polish unless product strategy changes. |
+| Hot-path read cost concentrates in `.paul/ROADMAP.md` history and duplicated GitHub Flow stanzas; Pi adapter modularization and Claude wrapper handling deferred to product decision | Phase 189 Plan 189-01 | Phase 190 should target ROADMAP archive split + GitHub Flow centralization first; Pi adapter and Claude wrappers wait for explicit product-level support-tier decision. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -72,21 +73,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/189-hot-path-read-audit (ahead 1, behind 0 vs main)
-Phase transition commit: 9bc27198 — feat(189-hot-path-read-audit): apply 189-01 — hot-path read audit report
-PR: https://github.com/coctostan/pals/pull/101 (OPEN)
-CI: pending (Socket Security); local Pi 177/177 and cross-harness 90/90 unchanged from baseline; merge-gate enforcement is UNIFY's responsibility
-Prior PRs: #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
+Branch: main
+Phase transition commit: main transition commit after PR #101 squash merge 14251498
+PR: https://github.com/coctostan/pals/pull/101 (MERGED)
+CI: passing — local Pi 177/177, cross-harness 90/90, and Socket Security checks passed before merge
+Prior PRs: #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T01:05:00Z
-Stopped at: Phase 189 UNIFY complete; merge gate pending (PR #101 OPEN, CI pending)
-Next action: Resolve merge gate for PR #101 (wait for CI / merge), then run /paul:plan for Phase 190 (Artifact Structure Simplification)
-Resume file: .paul/phases/189-hot-path-read-audit/189-01-SUMMARY.md
+Last session: 2026-04-27T01:10:00Z
+Stopped at: Phase 189 complete; ready to plan Phase 190
+Next action: /paul:plan for Phase 190 (Artifact Structure Simplification)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 189 single plan (189-01) complete; loop is PLAN ✓ / APPLY ✓ / UNIFY ✓.
-- Audit identified 8 findings (F1–F8) and 10 recommendations (R1–R10) for Phase 190 / Phase 191 / future product decisions.
-- Phase 190 primary inputs: R1 (apply STATE archive pattern to ROADMAP), R2 (centralize GitHub Flow stanzas), R3 (hoist module-dispatch taxonomy), R4 (conditional refs in apply-phase.md), R5 stretch (split pals-hooks.ts).
-- Validation: pi-end-to-end 177/177 + cross-harness 90/90 unchanged from pre-apply baseline.
-- PR #101 (https://github.com/coctostan/pals/pull/101) OPEN with squash + delete-branch enabled; require_pr_before_next_phase=true so Phase 190 PLAN must wait until merge gate resolves.
+- Phases 188 and 189 of v2.44 are complete (50%); Phase 190 is next.
+- Phase 190 primary inputs from the Phase 189 audit: R1 (ROADMAP archive split), R2 (centralize GitHub Flow stanzas in `git-strategy.md`), R3 (hoist module-dispatch taxonomy out of hot workflows), R4 (conditional refs in `apply-phase.md`), R5 stretch (split `pals-hooks.ts`).
+- Phase 191 follows with anti-regrowth validation that locks the new hot-path budgets (R6–R7).
+- Out of scope for v2.44: R8 (Claude Code support-tier product decision), R9 (handoff archive index), R10 (Pi adapter as standalone milestone).
+- PR #101 merged (commit 14251498); main is the working branch; require_pr_before_next_phase=true — Phase 190 will create its own feature branch on first APPLY.

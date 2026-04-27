@@ -32,21 +32,27 @@ Status: 🚧 In Progress
 Started: 2026-04-26
 Theme: Continue reducing recurring context cost across PALS workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety.
 Source context: direct exploratory milestone creation on 2026-04-26 via `/skill:paul-milestone`
-Phases: 1 of 4 complete (25%)
+Phases: 2 of 4 complete (50%)
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 188 | Workflow Prompt/Skill Slimming | 1/1 | ✅ Complete | 2026-04-27 |
-| 189 | Hot-Path Read Audit | 189-01 applied | APPLY ✓ — UNIFY pending | - |
-| 190 | Artifact Structure Simplification | TBD | Not started | - |
+| 189 | Hot-Path Read Audit | 1/1 | ✅ Complete | 2026-04-27 |
+| 190 | Artifact Structure Simplification | TBD | 🔵 Next | - |
 | 191 | Validation + Anti-Regrowth Update | TBD | Not started | - |
 ### Phase 188: Workflow Prompt/Skill Slimming
 Focus: Reduce recurring prompt, skill, and workflow read cost without weakening lifecycle semantics, module dispatch evidence, artifact authority, or GitHub Flow safety.
 Plans: 188-01 complete (`.paul/phases/188-workflow-prompt-skill-slimming/188-01-SUMMARY.md`) — selected wrapper total reduced from 406 to 296 lines while Pi and cross-harness validation remained green.
 ### Phase 189: Hot-Path Read Audit
 Focus: Measure what PALS reads repeatedly during normal PLAN/APPLY/UNIFY and identify remaining avoidable context load across workflows and lifecycle artifacts.
-Plans: 189-01 applied (`.paul/phases/189-hot-path-read-audit/189-01-PLAN.md`); audit report at `.paul/phases/189-hot-path-read-audit/189-01-HOT-PATH-READ-AUDIT.md`; UNIFY pending.
+Plans: 189-01 complete (`.paul/phases/189-hot-path-read-audit/189-01-SUMMARY.md`) — audit report `.paul/phases/189-hot-path-read-audit/189-01-HOT-PATH-READ-AUDIT.md` produced 8 findings (F1–F8) and 10 recommendations (R1–R10); pi 177/177 + cross-harness 90/90 unchanged; PR #101 merged.
 ### Phase 190: Artifact Structure Simplification
 Focus: Simplify active `.paul/*` artifacts and conventions where they still create avoidable context load while preserving archive authority and resume/status completeness.
+Primary inputs from Phase 189 audit (R1–R5):
+- R1 — Apply STATE archive pattern to ROADMAP (move completed milestones to `.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md`).
+- R2 — Centralize duplicated GitHub Flow stanzas (apply Phase 186 module-dispatch precedent to `kernel/references/git-strategy.md`).
+- R3 — Hoist module-dispatch priority/taxonomy verbiage out of `apply-phase.md`/`unify-phase.md`.
+- R4 — Conditional references in `apply-phase.md` (checkpoints / subagent-criteria).
+- R5 (stretch) — Split `drivers/pi/extensions/pals-hooks.ts` into responsibility-scoped modules.
 Plans: TBD (defined during /paul:plan)
 ### Phase 191: Validation + Anti-Regrowth Update
 Focus: Extend validation guardrails so v2.44 slimming work stays protected across harnesses without brittle exact-prose checks.

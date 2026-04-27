@@ -12,7 +12,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 v2.44 PALS Context Optimization — Process & Artifacts.
 
-v2.44 continues context optimization across PALS process and artifacts. Phase 188 slimmed workflow prompt/skill wrappers; next work audits remaining hot-path reads before simplifying active artifact structure and refreshing anti-regrowth validation.
+v2.44 continues context optimization across PALS process and artifacts. Phase 188 slimmed workflow prompt/skill wrappers; Phase 189 measured remaining hot-path reads and ranked the next reductions; Phase 190 will simplify active artifact structure (apply STATE archive pattern to ROADMAP, centralize GitHub Flow stanzas, hoist module-dispatch taxonomy, conditional refs); Phase 191 will refresh anti-regrowth validation to lock the new budgets.
 
 ## Hot-path reading model
 
@@ -76,6 +76,7 @@ See `.paul/MILESTONES.md` for the compact milestone index and `.paul/ROADMAP.md`
 | Centralize shared module-dispatch mechanics in `kernel/references/module-dispatch.md` while keeping hook-local obligations in workflows. | Phase 186 | Reduces hot-path workflow prose and drift risk without hiding post-unify persistence or GitHub Flow merge-gate semantics. |
 | Guard context-diet gains with semantic validation and a practical line ceiling | Phase 187 | Future hot workflow edits must retain lifecycle/module/merge-gate markers and stay under the 1711 Phase 186 pre-compression ceiling. |
 | Treat Claude Code command wrappers as legacy/reference thin pointers while keeping Pi skills as the active user-facing surface | Phase 188 | Reduces recurring wrapper context cost without expanding Claude-specific support beyond routing parity. |
+| Hot-path read cost is concentrated in `.paul/ROADMAP.md` (744 lines, ~690 historical) and duplicated GitHub Flow stanzas across 5+ workflows; Pi adapter and Claude wrappers are deferred. | Phase 189 Plan 189-01 | Phase 190 primary work is ROADMAP archive split + GitHub Flow centralization; Pi adapter modularization and Claude wrapper handling are gated on a product-level Claude Code support-tier decision. |
 
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
@@ -108,4 +109,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 188 transition.*
+*Last updated: 2026-04-27 after Phase 189 transition.*
