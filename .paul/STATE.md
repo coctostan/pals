@@ -159,10 +159,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/210-workflow-resource-capsule-contract-baseline
-Last commit: 6a5a80be — docs(210-01): create workflow resource capsule contract
+Last commit: latest feature branch HEAD — APPLY postflight state/CI metadata (see git log)
 PR: #125 OPEN — https://github.com/coctostan/pals/pull/125
-CI: no checks reported yet for PR #125; local validation passed focused marker greps, Pi 193/193, and cross-harness 109/109
-Working tree: clean after APPLY postflight metadata update pending commit
+CI: passed for PR #125 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 193/193, and cross-harness 109/109
+Working tree: clean after APPLY postflight and PR check evidence updates
 Prior PRs: #125 open (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
