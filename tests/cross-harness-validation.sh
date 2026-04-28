@@ -868,6 +868,7 @@ fi
 ARTIFACT_SLICE_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md"
 PI_VALIDATION_SUITE="$REPO_ROOT/tests/pi-end-to-end-validation.sh"
 CROSS_VALIDATION_SUITE="$REPO_ROOT/tests/cross-harness-validation.sh"
+GUIDED_WORKFLOW_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md"
 
 tap_file_contains_all \
   "Artifact-slice contract preserves command-output evidence reconciliation markers" \
@@ -876,6 +877,20 @@ tap_file_contains_all \
   'command output' \
   'TAP summary counts' \
   'SUMMARY must state old count, new count' \
+  'old count' \
+  'new count' \
+  'validation class affected' \
+  'shared-invariant preservation rationale'
+
+tap_file_contains_all \
+  "Guided workflow contract preserves v2.48 closure evidence baselines" \
+  "$GUIDED_WORKFLOW_CONTRACT" \
+  'Historical Phase 205/Phase 206 starting baseline: Pi 188/188' \
+  'Historical Phase 205/Phase 206 starting baseline: cross-harness 104/104' \
+  'Current post-Phase-207/208 v2.48 closure baseline: Pi 192/192 and cross-harness 108/108' \
+  'canonical transcript' \
+  'GitHub Flow evidence' \
+  'command output' \
   'old count' \
   'new count' \
   'validation class affected' \
