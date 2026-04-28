@@ -16,6 +16,7 @@ In Pi:
 - planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
 - delegated APPLY stays task-bounded: Pi may surface `pals-implementer`, but parent APPLY keeps verification, fallback, checkpoints, module gates, and `.paul/*` authority; the helper is only for eligible bounded repo-local work
 - artifact-slice loading is an adapter-side context aid behind explicit `/paul-*` activation: implemented slices are `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet`; they are source-cited, freshness-marked, bounded, read-only, disposable, labeled `Derived aid only`, and never a new skill, workflow authority, hidden Pi state, or replacement for a full authoritative read
+- workflow/resource capsule loading is another adapter-side context aid behind explicit `/paul-*` activation: implemented capsules are `plan-task-anatomy`, `checkpoint-type-orientation`, `module-dispatch-evidence-orientation`, and `github-flow-phase-orientation`; they cite installed resources, expose `Source type`, freshness, bounds, full authoritative read fallback, and `Derived aid only`, and never become a new skill, workflow authority, hidden Pi state, module/validation ledger, or replacement for installed workflow/reference reads
 - guided workflow UX is an adapter-side reply-routing aid, not a standalone skill or workflow authority: it may surface `plan-review`, `apply-approval`, checkpoint, resume-next, continue-to-UNIFY, phase/milestone transition, and `merge-gate-routing` prompts, but it sends canonical transcript replies only after explicit confirm/select user action; notify-only mode sends no reply, and no auto-approval, no auto-continue, no skipped checkpoints, no UI-only lifecycle decisions, and no inferred merge intent are allowed
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
@@ -45,6 +46,23 @@ Artifact-slice loading is produced by the Pi extension after explicit `/paul-*` 
 These slices remain source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. They do not create hidden Pi state, approvals, lifecycle writes, APPLY/UNIFY completion, GitHub Flow proof, or a Pi-owned module/validation ledger.
 
 A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. Shared workflows plus `.paul/*` artifacts remain authoritative.
+
+## Workflow/Resource Capsule Context Surface
+
+Workflow/resource capsule loading is produced by the Pi extension after explicit `/paul-*` or `/skill:paul-*` activation. It is not a separate Pi skill, not a kernel workflow, not a shortcut command, and not workflow authority; it is an adapter-side context aid over installed resources.
+
+| Capsule | Orientation role |
+|---------|------------------|
+| `plan-task-anatomy` | Orients PLAN task anatomy from installed plan-format resources. |
+| `checkpoint-type-orientation` | Orients checkpoint categories while preserving checkpoint blocking and transcript-visible user intent. |
+| `module-dispatch-evidence-orientation` | Orients module-dispatch evidence conventions without replacing module reports or enforcement. |
+| `github-flow-phase-orientation` | Orients GitHub Flow phase reminders without replacing git/gh command evidence. |
+
+These capsules remain source-cited, include `Source type`, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. A full authoritative read remains required before approved PLAN execution, APPLY/UNIFY, lifecycle writes, checkpoints, module reports/enforcement, GitHub Flow decisions, validation assessment, stale/conflicting output, or edits/actions based on capsule content.
+
+Validation classes: `Workflow/Resource Capsule Context — Pi-Supported Runtime` covers runtime and Pi documentation markers; `Workflow/Resource Capsule Context — Shared Invariant` covers `.paul/*` authority, PLAN/APPLY/UNIFY, checkpoint blocking, module evidence, GitHub Flow safety, parent-owned APPLY, command-output truth, STOP/DO NOT SKIP exclusion from capsule authority, and full authoritative read fallback.
+
+Workflow/resource capsules do not create hidden Pi state, approvals, lifecycle writes, APPLY/UNIFY completion, module completion, GitHub Flow proof, validation pass/fail proof, or a Pi-owned module/validation ledger. Shared workflows, installed workflow/reference reads, `.paul/*` artifacts, transcript-visible user intent, module reports, GitHub Flow command evidence, validation command output, and parent-owned APPLY remain authoritative.
 
 ## Internal Workflows (not standalone skills)
 

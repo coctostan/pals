@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.49 Workflow/Resource Capsule Contract is active as the third Pi-native build milestone after v2.46. Phase 210 completed the contract baseline and Phase 211 completed runtime capsule loading hardening; Phase 212 Documentation + Validation Surfacing is next.
+v2.49 Workflow/Resource Capsule Contract is active as the third Pi-native build milestone after v2.46. Phase 210 completed the contract baseline, Phase 211 completed runtime capsule loading hardening, and Phase 212 Documentation + Validation Surfacing APPLY is complete and awaiting UNIFY.
 
-The immediate next step is planning Phase 212 Documentation + Validation Surfacing. Phase 211 hardened `drivers/pi/extensions/pals-hooks.ts` so explicit activation can emit bounded workflow/resource capsules with installed/logical resource citations, source type, freshness, bounds, full-read fallback, and `Derived aid only` authority markers while preserving `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work. Later recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
+The immediate next step is running `/paul:unify .paul/phases/212-documentation-validation-surfacing/212-01-PLAN.md`. Phase 212 surfaced workflow/resource capsule guarantees in README/Pi docs/skill-map and validation suites while preserving `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work. Later recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
 
 ## Hot-path reading model
 
@@ -51,7 +51,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
 | v2.46 Pi-Native Implementation Planning | Complete | Processed v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan proposal before build milestones begin. |
 | v2.47 Artifact-Slice Contract Hardening | Complete | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
-| v2.49 Workflow/Resource Capsule Contract | In progress | Defines safe orientation capsules for installed resources without replacing authoritative workflow reads; Phases 210 and 211 are complete, and Phase 212 Documentation + Validation Surfacing is next. |
+| v2.49 Workflow/Resource Capsule Contract | In progress | Defines safe orientation capsules for installed resources without replacing authoritative workflow reads; Phases 210 and 211 are complete, and Phase 212 Documentation + Validation Surfacing APPLY is awaiting UNIFY. |
 
 Recently completed: v2.48 Guided Workflow Evidence Hardening hardened guided workflow evidence so Pi UI assistance sends explicit canonical transcript replies and cannot silently approve, continue, skip checkpoints, infer merge intent, or become lifecycle authority; final validation passed Pi 193/193 and cross-harness 109/109.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.

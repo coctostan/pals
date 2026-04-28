@@ -968,6 +968,33 @@ tap_file_contains_all \
   'no hidden Pi state' \
   'Pi-owned lifecycle/module/validation ledger'
 
+
+tap_file_contains_all \
+  "Workflow/resource capsule docs preserve shared authority and validation-class markers" \
+  "$README_MD" \
+  'Workflow/Resource Capsule Context' \
+  'Workflow/Resource Capsule Context — Pi-Supported Runtime' \
+  'Workflow/Resource Capsule Context — Shared Invariant' \
+  'full authoritative read' \
+  'STOP/DO NOT SKIP' \
+  'checkpoint blocking' \
+  'module evidence' \
+  'GitHub Flow safety' \
+  'parent-owned APPLY' \
+  'command-output truth'
+
+tap_file_contains_all \
+  "Validation suites preserve workflow/resource capsule evidence and non-authority markers" \
+  "$PI_VALIDATION_SUITE" \
+  'Workflow/resource capsule runtime markers preserve schema, fallback, and non-authority' \
+  'Workflow/resource capsule Pi docs preserve source, fallback, and validation-class markers' \
+  'Workflow/resource capsule skill map frames capsules as adapter-side context aids' \
+  'Capsule:' \
+  'Source type' \
+  'Derived aid only' \
+  'command-output truth' \
+  'parent-owned APPLY'
+
 # Kernel layered-artifact assets
 if [ -f "$REPO_ROOT/kernel/templates/PRD.md" ]; then
   tap_ok "Kernel includes PRD.md template"

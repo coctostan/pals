@@ -29,6 +29,7 @@ Driver inventory remains documented for maintenance context: Claude Code · Pi �
 That split keeps the operating model explicit. `/paul-*` remains the Pi-native command layer, `/skill:paul-*` remains the canonical workflow entry layer, and shared markdown workflows plus `.paul/*` remain the only lifecycle truth. Pi can expose bounded helper surfaces such as the repo-local `pals-implementer`, but it does not become the owner of PLAN/APPLY/UNIFY state.
 Pi may also inject bounded artifact-slice context after explicit `/paul-*` or `/skill:paul-*` activation. The implemented slices — `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet` — are orientation aids only; full authoritative reads of the cited artifacts remain required before edits, approved PLAN execution, lifecycle writes, stale or ambiguous facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. See `drivers/pi/extensions/README.md` and `drivers/pi/skill-map.md` for operational details.
 Pi guided workflow UX is also a derived aid only. It may surface plan review, APPLY approval, checkpoint, resume-next, continue-to-UNIFY, phase/milestone transition, and merge-gate routing prompts, but it sends a canonical transcript reply only after explicit confirm/select user action. Notify-only mode sends no reply; no auto-approval, no auto-continue, no skipped checkpoints, no UI-only lifecycle decisions, and no inferred merge intent are allowed. GitHub Flow decisions still require git/gh command evidence plus workflow artifacts.
+Pi workflow/resource capsules extend the same derived-aid model to installed resources. After explicit activation, the extension may emit bounded capsule orientation for `plan-task-anatomy`, `checkpoint-type-orientation`, `module-dispatch-evidence-orientation`, and `github-flow-phase-orientation` with source citations, `Source type`, freshness, bounds, full authoritative read fallback, and `Derived aid only` authority language. Validation class markers classify this surface as `Workflow/Resource Capsule Context — Pi-Supported Runtime` and `Workflow/Resource Capsule Context — Shared Invariant`; capsules do not replace `.paul/*`, installed workflow/reference reads, transcript-visible user intent, module reports/enforcement, GitHub Flow command evidence, validation command output, parent-owned APPLY, checkpoints, approvals, or lifecycle writes.
 That's the core loop. PALS tracks state, enforces quality, and manages context across sessions — you focus on the work.
 
 ## Architecture
@@ -65,6 +66,7 @@ PALS uses a three-layer stack inspired by operating system design:
 - **Collaborative Planning** — Low/medium/high collaboration levels with 4-option review menu before execution
 - **Guided Workflow UX** (Pi) — Confirm/select assistance for canonical transcript replies at plan review, APPLY approval, checkpoints, continue-to-UNIFY, resume-next, phase/milestone transition, and merge-gate routing moments; display-only config never approves, continues, skips checkpoints, or infers merge intent
 - **Artifact-Slice Context Loading** (Pi) — Activation-gated, source-cited, freshness-marked orientation aids for lifecycle state, active roadmap phase, and approved plan task packets; never a replacement for full authoritative reads
+- **Workflow/Resource Capsule Context Loading** (Pi) — Activation-gated, installed-resource orientation aids for plan tasks, checkpoints, module evidence, and GitHub Flow routing; includes source citations, `Source type`, freshness/bounds, full authoritative read fallback, `Derived aid only`, and validation class markers without replacing authoritative workflow reads
 - **E2E Test Protocol** — Reusable methodology for validating PALS across 8 dimensions with structured reporting
 - **Session Continuity** — State tracked in `.paul/STATE.md` with handoff/resume support across sessions
 - **Three Init Flows** — Quick (~1 question), greenfield (~8), brownfield (~12+) with smart defaults
@@ -205,6 +207,14 @@ Current top-level sections for a fresh generated config are `modules`, `agents`,
 | `none` | No git operations (default for new projects without git config). |
 
 Both `/paul:status` and `/paul:resume` surface live git state (branch, PR, CI, sync status) and route the next action based on git state — e.g., "fix CI" if checks failing, "update branch" if behind base, "merge PR" when ready.
+
+### Workflow/Resource Capsules (Pi)
+
+Workflow/resource capsules are Pi runtime context aids over installed resources, not new workflow authority. After explicit `/paul-*` or `/skill:paul-*` activation, Pi may emit bounded orientation for `plan-task-anatomy`, `checkpoint-type-orientation`, `module-dispatch-evidence-orientation`, and `github-flow-phase-orientation`.
+
+Each capsule must remain source-cited and expose `Capsule:`, `Source:`, `Source type:`, `Freshness:`, `Bounds:`, `Fallback:`, and `Authority: Derived aid only` markers. The fallback is a full authoritative read before consequential work, including approved PLAN execution, APPLY/UNIFY, lifecycle writes, checkpoints, module reports/enforcement, GitHub Flow decisions, validation assessment, stale/conflicting output, or edits/actions based on capsule content.
+
+Validation classes: `Workflow/Resource Capsule Context — Pi-Supported Runtime` protects the runtime/doc marker surface, and `Workflow/Resource Capsule Context — Shared Invariant` protects `.paul/*` authority, PLAN/APPLY/UNIFY, checkpoint blocking, module evidence, GitHub Flow safety, parent-owned APPLY, command-output truth, and full authoritative read fallback. Capsules exclude STOP/DO NOT SKIP authority and never replace installed workflow/reference reads, transcript-visible user intent, module reports/enforcement, GitHub Flow command evidence, validation command output, parent-owned APPLY, checkpoints, approvals, or lifecycle writes.
 
 ### Guided Workflow (Pi)
 
