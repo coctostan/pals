@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.49 Workflow/Resource Capsule Contract**
-Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-28; Phase 212 complete, Phase 213 Plan 213-01 created and awaiting approval
+Status: ✅ Complete
+Phases: 4 of 4 complete — started 2026-04-28; completed 2026-04-28 via PR #128
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 211 | Runtime Capsule Loading Hardening | 1/1 | ✅ Complete | 2026-04-28 |
 | 212 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 213 | Evidence Reconciliation + Milestone Closure | 1/1 | 🟡 Planning | — |
+| 213 | Evidence Reconciliation + Milestone Closure | 1/1 | ✅ Complete | 2026-04-28 |
 
 ### Phase 210: Workflow/Resource Capsule Contract Baseline
 Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
@@ -53,7 +53,7 @@ Plans: `212-01` complete; SUMMARY: `.paul/phases/212-documentation-validation-su
 
 ### Phase 213: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile workflow/resource capsule validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: `213-01` created, awaiting approval. PLAN: `.paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md`.
+Plans: `213-01` complete; SUMMARY: `.paul/phases/213-evidence-reconciliation-milestone-closure/213-01-SUMMARY.md`. Evidence: contract closure baselines reconciled, Pi validation 197/197 and cross-harness validation 112/112 passed, PR #128 merged.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -63,9 +63,10 @@ Plans: `213-01` created, awaiting approval. PLAN: `.paul/phases/213-evidence-rec
 | v2.46 Pi-Native Implementation Planning | 2026-04-27 | 197-201 | Converted v2.45 architecture into implementation findings, workstreams, sequencing, validation/evidence strategy, and a final executable Pi-native implementation-plan proposal. | active artifacts |
 | v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | 202-205 | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback across contract baseline, runtime hardening, docs/skill-map surfacing, and validation/evidence reconciliation. | active artifacts |
 | v2.48 Guided Workflow Evidence Hardening | 2026-04-28 | 206-209 | Proved guided workflow evidence across contract baseline, runtime canonical replies, docs/settings validation surfacing, and final evidence reconciliation while preserving explicit user intent and command-output truth. | active artifacts |
+| v2.49 Workflow/Resource Capsule Contract | 2026-04-28 | 210-213 | Defined and hardened source-cited, bounded, derived-only workflow/resource capsules; surfaced docs/validation evidence; closed with Pi 197/197 and cross-harness 112/112. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 213 Plan 213-01 created, awaiting approval.*
+*Last updated: 2026-04-28 — v2.49 complete; next recommended milestone is Delegated APPLY Packet/Report Contract.*

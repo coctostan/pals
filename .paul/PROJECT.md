@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.49 Workflow/Resource Capsule Contract is active as the third Pi-native build milestone after v2.46. Phases 210-212 are complete, and Phase 213 Evidence Reconciliation + Milestone Closure Plan 213-01 is created and awaiting approval.
+v2.49 Workflow/Resource Capsule Contract is complete. The milestone defined the workflow/resource capsule contract, hardened Pi runtime capsule loading, surfaced capsule behavior in docs/validation, and reconciled final closure evidence with Pi 197/197 and cross-harness 112/112 validation.
 
-The immediate next step is reviewing and approving `.paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md`, then running `/paul:apply .paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md`. Phase 213 will reconcile final workflow/resource capsule evidence baselines, command-output proof, module/GitHub Flow evidence, lifecycle metadata, and v2.49 milestone closure while preserving `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work. Later recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
+The immediate next recommended milestone is Delegated APPLY Packet/Report Contract, followed by Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup. Future work should preserve `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work.
 
 ## Hot-path reading model
 
@@ -51,9 +51,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
 | v2.46 Pi-Native Implementation Planning | Complete | Processed v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan proposal before build milestones begin. |
 | v2.47 Artifact-Slice Contract Hardening | Complete | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
-| v2.49 Workflow/Resource Capsule Contract | In progress | Defines safe orientation capsules for installed resources without replacing authoritative workflow reads; Phases 210-212 are complete, and Phase 213 Evidence Reconciliation + Milestone Closure Plan 213-01 is awaiting approval. |
+| v2.49 Workflow/Resource Capsule Contract | Complete | Defined and hardened safe orientation capsules for installed resources without replacing authoritative workflow reads; final validation passed Pi 197/197 and cross-harness 112/112. |
 
-Recently completed: v2.48 Guided Workflow Evidence Hardening hardened guided workflow evidence so Pi UI assistance sends explicit canonical transcript replies and cannot silently approve, continue, skip checkpoints, infer merge intent, or become lifecycle authority; final validation passed Pi 193/193 and cross-harness 109/109.
+Recently completed: v2.49 Workflow/Resource Capsule Contract closed the third Pi-native build milestone with source-cited, bounded, derived-only workflow/resource capsules, final evidence reconciliation, PR #128, Pi validation 197/197, and cross-harness validation 112/112.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -142,4 +142,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-28 after Phase 210 merge-gate completion.*
+*Last updated: 2026-04-28 after Phase 213 / v2.49 merge-gate completion.*

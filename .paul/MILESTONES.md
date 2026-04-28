@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.49 Workflow/Resource Capsule Contract (in progress) | `.paul/ROADMAP.md` phases 210-213 |
+| Current milestone | None active — next recommended: Delegated APPLY Packet/Report Contract | `.paul/ROADMAP.md` completed v2.49 phases 210-213 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -67,10 +67,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.46 Pi-Native Implementation Planning | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md` |
 | v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md` |
 | v2.48 Guided Workflow Evidence Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md` |
+| v2.49 Workflow/Resource Capsule Contract | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.49 Workflow/Resource Capsule Contract is active. Phase 210 Workflow/Resource Capsule Contract Baseline is ready to plan; later recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
+v2.49 Workflow/Resource Capsule Contract is complete. Next recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
 
 ## Archive
 

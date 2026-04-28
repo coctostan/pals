@@ -183,9 +183,11 @@ GitHub Flow evidence:
 | Branch | `feature/213-evidence-reconciliation-milestone-closure` |
 | Base | `main` |
 | PR | https://github.com/coctostan/pals/pull/128 |
-| PR state before UNIFY merge gate | OPEN |
-| Checks before UNIFY merge gate | Socket Security Project Report PASS; Socket Security Pull Request Alerts PASS |
+| PR state after UNIFY merge gate | MERGED at 2026-04-28T19:43:56Z |
+| Checks before merge | Socket Security Project Report PASS; Socket Security Pull Request Alerts PASS |
 | APPLY commits | `a44cc5e2` source/lifecycle apply commit; `fae53193` APPLY postflight metadata commit |
+| Merge commit | `619db5ae` |
+| Merge gate result | PASS — PR exists, CI passing, reviews skipped by config, code review skipped because REV pr_review disabled, PR merged, base synced, branch cleaned. |
 
 ## Module Execution Reports
 
@@ -325,14 +327,14 @@ None.
 
 ## v2.49 Milestone Closure
 
-v2.49 Workflow/Resource Capsule Contract is complete once PR #128 merge gate finishes. The milestone delivered:
+v2.49 Workflow/Resource Capsule Contract is complete. PR #128 passed GitHub Flow merge gate and merged at 2026-04-28T19:43:56Z. The milestone delivered:
 
 1. Contract baseline defining workflow/resource capsule eligibility, schema, citations, fallback, validation classes, exclusions, and failure conditions.
 2. Runtime hardening that emits bounded, activation-gated, derived-only workflow/resource capsules with full-read fallback.
 3. Docs/skill-map/validation surfacing for capsule inventory, schema, validation classes, and shared-invariant boundaries.
 4. Final evidence reconciliation protecting closure baselines and count-change requirements with command-backed validation.
 
-Final validation posture before merge:
+Final validation posture:
 
 | Suite | Closure baseline | Final Phase 213 count | Status |
 |---|---:|---:|---|
@@ -348,10 +350,10 @@ Final validation posture before merge:
 
 **Concerns:**
 - Existing shell validation harness size remains a future driver-quality concern; avoid broad refactors unless a dedicated plan scopes them.
-- GitHub Flow merge gate must complete PR #128 before transitioning to the next milestone.
+- Existing shell validation harness size remains a future driver-quality concern, but it did not block v2.49 closure.
 
 **Blockers:**
-- None after PR #128 merge gate passes and merges.
+- None.
 
 ---
 
