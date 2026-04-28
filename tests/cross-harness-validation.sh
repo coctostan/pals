@@ -895,6 +895,46 @@ tap_file_contains_all \
   'Pi-owned lifecycle/module/validation ledger'
 
 tap_file_contains_all \
+  "Shared Invariant docs preserve guided workflow authority boundaries" \
+  "$README_MD" \
+  'canonical transcript reply' \
+  'explicit confirm/select user action' \
+  'Notify-only mode sends no reply' \
+  'no auto-approval' \
+  'no auto-continue' \
+  'no skipped checkpoints' \
+  'no UI-only lifecycle decisions' \
+  'no inferred merge intent' \
+  'GitHub Flow decisions still require git/gh command evidence'
+
+tap_file_contains_all \
+  "GitHub Flow Safety docs keep merge-gate routing non-authoritative" \
+  "$README_PI" \
+  'merge-gate-routing' \
+  'route assistance' \
+  'must not run git/gh commands' \
+  'bypass CI or review checks' \
+  'infer merge intent' \
+  'GitHub Flow command evidence'
+
+tap_file_contains_all \
+  "Artifact / Process docs preserve command-output truth for guided workflow evidence" \
+  "$SKILL_MAP_PI" \
+  'adapter-side reply-routing aid' \
+  'not a standalone skill or workflow authority' \
+  'canonical transcript replies' \
+  'UI state alone is not lifecycle evidence' \
+  'full authoritative read'
+
+tap_file_contains_all \
+  "Validation scripts preserve guided workflow command-output truth markers" \
+  "$PI_VALIDATION_SUITE" \
+  'Guided UI Safety' \
+  'Pi-Supported Runtime' \
+  'canonical replies' \
+  'no-auto boundaries'
+
+tap_file_contains_all \
   "Validation suites preserve artifact-slice evidence reconciliation markers" \
   "$PI_VALIDATION_SUITE" \
   'Artifact-slice runtime-lens contract' \
