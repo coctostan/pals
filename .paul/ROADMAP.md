@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.49 Workflow/Resource Capsule Contract**
 Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-28; Phase 212 complete, Phase 213 ready to plan
+Phases: 3 of 4 complete — started 2026-04-28; Phase 212 complete, Phase 213 Plan 213-01 created and awaiting approval
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 211 | Runtime Capsule Loading Hardening | 1/1 | ✅ Complete | 2026-04-28 |
 | 212 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 213 | Evidence Reconciliation + Milestone Closure | 0/1 | 🔵 Ready to plan | — |
+| 213 | Evidence Reconciliation + Milestone Closure | 1/1 | 🟡 Planning | — |
 
 ### Phase 210: Workflow/Resource Capsule Contract Baseline
 Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
@@ -53,7 +53,7 @@ Plans: `212-01` complete; SUMMARY: `.paul/phases/212-documentation-validation-su
 
 ### Phase 213: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile workflow/resource capsule validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: Ready to plan.
+Plans: `213-01` created, awaiting approval. PLAN: `.paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md`.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -68,4 +68,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 212 complete; Phase 213 ready to plan.*
+*Last updated: 2026-04-28 — Phase 213 Plan 213-01 created, awaiting approval.*

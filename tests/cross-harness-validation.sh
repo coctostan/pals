@@ -995,6 +995,28 @@ tap_file_contains_all \
   'command-output truth' \
   'parent-owned APPLY'
 
+
+tap_file_contains_all \
+  "Workflow/resource capsule contract closure evidence preserves shared invariant boundaries" \
+  "$REPO_ROOT/docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md" \
+  'Phase 210/211 historical baseline' \
+  'Phase 212 closure-entry baseline' \
+  'PR #127' \
+  'Pi 196/196' \
+  'cross-harness 111/111' \
+  'Pi 197/197' \
+  'cross-harness 112/112' \
+  '.paul/*' \
+  'STOP/DO NOT SKIP' \
+  'checkpoint blocking' \
+  'module evidence' \
+  'GitHub Flow safety' \
+  'parent-owned APPLY' \
+  'command-output truth' \
+  'validation class affected' \
+  'shared-invariant preservation rationale' \
+  'full authoritative read'
+
 # Kernel layered-artifact assets
 if [ -f "$REPO_ROOT/kernel/templates/PRD.md" ]; then
   tap_ok "Kernel includes PRD.md template"

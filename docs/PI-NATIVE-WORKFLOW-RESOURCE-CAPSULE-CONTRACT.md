@@ -5,9 +5,9 @@
 | Field | Value |
 |---|---|
 | Milestone | v2.49 Workflow/Resource Capsule Contract |
-| Phase | 210 — Workflow/Resource Capsule Contract Baseline |
-| Artifact status | Contract baseline for Phase 211+ runtime/docs/validation hardening |
-| Implementation status | No runtime capsule loading, validation-script change, dependency change, CI change, helper-compression change, legacy cleanup, GitHub Flow automation change, or lifecycle-authority change is approved by this artifact |
+| Phase | 213 — Evidence Reconciliation + Milestone Closure |
+| Artifact status | v2.49 closure contract: Phase 210 baseline, Phase 211 runtime hardening, Phase 212 docs/validation surfacing, and Phase 213 evidence reconciliation are reconciled |
+| Implementation status | Phase 213 closes evidence only; no runtime capsule loading, installer behavior, dependency, CI, helper-compression, legacy cleanup, GitHub Flow automation, broad validation classification, or lifecycle-authority change is approved by this artifact |
 
 ## Purpose
 
@@ -20,6 +20,17 @@ Capsules are deliberately narrower than authoritative workflow reads. They may o
 Phase 210 creates this contract only. It does not implement capsule generation or loading, alter Pi runtime behavior, update validation scripts, change installed runtime copies, revise kernel workflow semantics, add dependencies, modify CI, compress delegated APPLY packets/reports, classify broad validation suites, clean legacy surfaces, or change lifecycle authority.
 
 Later phases must still use normal PALS lifecycle controls: approved PLAN, parent-owned APPLY, official verification commands, module dispatch evidence, GitHub Flow gates when enabled, UNIFY reconciliation, and `.paul/*` lifecycle writes.
+
+## v2.49 Closure Evidence
+
+| Evidence item | Closure record |
+|---|---|
+| Phase 210/211 historical baseline | Contract baseline and runtime hardening preserved Pi 193/193 and cross-harness 109/109. |
+| Phase 212 closure-entry baseline | PR #127 merged docs/validation surfacing with local focused greps, Pi 196/196, cross-harness 111/111, and Socket Security checks passing. |
+| Phase 213 final closure validation count | Closure marker checks add command-output protection for the final evidence record; expected final counts are Pi 197/197 and cross-harness 112/112 after this phase. |
+| Validation class evidence | `Workflow/Resource Capsule Context — Pi-Supported Runtime` and `Workflow/Resource Capsule Context — Shared Invariant` remain the exact validation class names for capsule evidence reconciliation. |
+| Count-change rule | Future validation count changes must record old count, new count, reason, validation class affected, and shared-invariant preservation rationale. |
+| Authority boundary | Workflow/resource capsules remain source-cited orientation aids with `Capsule:`, `Source type`, `Freshness:`, `Bounds:`, `Fallback:`, `Derived aid only`, and full authoritative read fallback markers; they do not replace `.paul/*`, PLAN/APPLY/UNIFY, checkpoint blocking, module evidence, GitHub Flow safety, parent-owned APPLY, or command-output truth. |
 
 ## Source Inputs
 
