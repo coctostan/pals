@@ -210,7 +210,7 @@ None.
 | Branch | `feature/209-evidence-reconciliation-milestone-closure` during APPLY/UNIFY. |
 | PR | #124 — https://github.com/coctostan/pals/pull/124 |
 | CI before merge | Passing: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS. |
-| Merge gate | To be finalized during UNIFY merge gate after SUMMARY/transition artifacts are committed and pushed. |
+| Merge gate | PR #124 merged via squash as `9a74cbe5`; local `main` synced with `origin/main`; feature branch deleted remotely. |
 
 ## Milestone Closure
 
@@ -227,7 +227,7 @@ Final closure evidence:
 - Runtime guided replies are hardened in the repo-source Pi extension from Phase 207.
 - Pi-facing docs/settings/skill-map surfaces describe canonical transcript replies, display-only settings, notify-only no-reply behavior, checkpoint blocking, and no-auto/no-UI-only/no-inferred-merge boundaries.
 - Validation is green at Pi 193/193 and cross-harness 109/109.
-- GitHub Flow evidence is carried through PR #124.
+- GitHub Flow evidence carried through PR #124, merged via squash as `9a74cbe5`.
 
 ## Next Milestone Handoff
 

@@ -153,21 +153,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 60a9d113 — docs(208-01): complete guided workflow evidence surfacing (#123)
-PR: #123 MERGED — https://github.com/coctostan/pals/pull/123
-CI: passed for PR #123 - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed marker greps, installer, Pi 192/192, and cross-harness 108/108
-Working tree: dirty only with post-merge-gate lifecycle evidence updates
-Prior PRs: #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); #120 merged (Phase 205 lifecycle finalization); #119 merged (Phase 205 validation/evidence source changes); #118 merged (Phase 204 docs/skill-map surfacing); #117 merged (Phase 203 runtime slice hardening); #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); earlier PR history archived in STATE history.
+Last commit: 9a74cbe5 — docs(209-01): complete guided workflow evidence closure (#124)
+PR: #124 MERGED — https://github.com/coctostan/pals/pull/124
+CI: passed for PR #124 - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, installer, Pi 193/193, and cross-harness 109/109
+Working tree: clean after post-merge-gate lifecycle evidence updates
+Prior PRs: #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); #120 merged (Phase 205 lifecycle finalization); #119 merged (Phase 205 validation/evidence source changes); #118 merged (Phase 204 docs/skill-map surfacing); #117 merged (Phase 203 runtime slice hardening); #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T14:35:00Z
-Stopped at: v2.48 milestone complete; merge gate pending/finalizing for PR #124
-Next action: Complete GitHub Flow merge gate for PR #124, then start next milestone planning
-Resume file: .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-SUMMARY.md
+Last session: 2026-04-28T14:45:00Z
+Stopped at: v2.48 milestone complete; PR #124 merged and main synced
+Next action: Start next milestone planning: Workflow/Resource Capsule Contract
+Resume file: .paul/ROADMAP.md
 Resume context:
 - v2.48 Guided Workflow Evidence Hardening is complete: phases 206-209 all unified.
 - Phase 209 SUMMARY records acceptance criteria, command-output evidence, module reports, GitHub Flow evidence, and next milestone handoff.
-- Final validation: installer passed; Pi validation 193/193; cross-harness validation 109/109; PR #124 Socket checks passed.
+- Final validation: installer passed; Pi validation 193/193; cross-harness validation 109/109; PR #124 Socket checks passed and merged via squash as `9a74cbe5`.
 - Next recommended Pi-native build milestone: Workflow/Resource Capsule Contract.
 - Deferred milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
