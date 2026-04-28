@@ -8,11 +8,11 @@ See: .paul/PROJECT.md (updated 2026-04-28 after Phase 207 Runtime Guided Reply H
 
 ## Current Position
 
-Milestone: v2.48 Guided Workflow Evidence Hardening
-Phase: 209 of 209 (Evidence Reconciliation + Milestone Closure) — APPLY complete
-Plan: 209-01 executed; ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-28T14:25:00Z — Applied .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md; validation passed Pi 193/193 and cross-harness 109/109
+Milestone: v2.48 Guided Workflow Evidence Hardening — Complete
+Phase: 209 of 209 (Evidence Reconciliation + Milestone Closure) — Complete
+Plan: 209-01 complete
+Status: Milestone complete, ready for next milestone decision
+Last activity: 2026-04-28T14:35:00Z — Completed Phase 209 and closed v2.48 Guided Workflow Evidence Hardening
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -20,18 +20,18 @@ Progress:
 - v2.45 Pi-Native PALS Architecture: [██████████] 100% (5 of 5 phases complete; final architecture proposal complete)
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.48 Guided Workflow Evidence Hardening: [█████████░] 90% (3 of 4 phases complete; Phase 209 APPLY complete, ready for UNIFY)
+- v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
-- Phase 209 Evidence Reconciliation + Milestone Closure: [████████░░] 80% APPLY complete, ready for UNIFY
+- Phase 209 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - milestone complete]
 ```
 
 ## Accumulated Context
@@ -67,6 +67,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 206 created and unified `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`, defining guided workflow moment inventory, canonical transcript replies, explicit no-auto/no-UI-only boundaries, validation classes, failure conditions, and Phase 207/208/209 handoffs; marker greps passed, Pi validation passed 188/188, cross-harness validation passed 104/104, and PR #121 merge gate was handled during UNIFY.
 - Phase 207 completed runtime hardening in `drivers/pi/extensions/pals-hooks.ts` with contract-backed `merge-gate-routing`, display-only guided workflow config handling, explicit confirm/select-only canonical reply delivery, notify-only no-reply behavior, and durable no-auto/no-UI-only/no-inferred-merge markers; `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi validation 188/188, and cross-harness validation 104/104 passed; PR #122 merged via squash as `688532cc`.
 - Phase 208 completed docs/settings and validation surfacing for guided workflow evidence: README/Pi docs/skill-map/schema docs now describe canonical transcript replies, explicit confirm/select behavior, notify-only no-reply behavior, display-only `guided_workflow.auto_present`, checkpoint blocking, no-auto/no-UI-only/no-inferred-merge boundaries, and command-output truth; Pi validation now passes 192/192 and cross-harness validation passes 108/108; PR #123 merged via squash as `60a9d113`.
+- Phase 209 completed evidence reconciliation and milestone closure for v2.48: `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md` now distinguishes historical Phase 205/206 baselines (Pi 188/188, cross-harness 104/104) from the post-Phase-207/208 closure baseline (Pi 192/192, cross-harness 108/108); validation suites now protect the closure markers and pass Pi 193/193 and cross-harness 109/109; SUMMARY `.paul/phases/209-evidence-reconciliation-milestone-closure/209-01-SUMMARY.md` hands off to the Workflow/Resource Capsule Contract milestone.
 
 ### Current Decisions
 
@@ -106,6 +107,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Treat merge-gate routing as a guided runtime moment without merge authority | Phase 207 Plan 207-01 UNIFY | Pi may surface GitHub Flow route prompts and send exact selected canonical replies, but it must never run git/gh commands, bypass CI/reviews, or infer merge approval from displayed state. |
 | Keep guided_workflow.auto_present display-only | Phase 207 Plan 207-01 UNIFY | Future docs/validation should describe guided workflow config as UI display behavior only; it cannot approve, continue, complete checkpoints, or create lifecycle state. |
 | Surface guided_workflow.auto_present as display-only and protect guided workflow evidence with structural marker checks | Phase 208 Plan 208-01 UNIFY | Future docs/validation must keep Pi guided workflow UX as adapter-side canonical reply routing only; marker checks should protect semantics without brittle exact-prose assertions. |
+| Close v2.48 with evidence reconciliation only and hand off to Workflow/Resource Capsule Contract | Phase 209 Plan 209-01 UNIFY | Guided Workflow Evidence Hardening is complete; future work should build workflow/resource capsule contracts without reopening runtime guided reply behavior, broad validation classification, helper compression, legacy cleanup, or lifecycle authority. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -133,6 +135,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 206: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY. Active handoff archived after resume proceeded.
 - Skill audit Phase 207: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed with no regression. Active handoff archived after resume proceeded. Advisory DOCS drift noted as expected Phase 208 scope; ARCH/RUBY large-file debt remains pre-existing.
 - Skill audit Phase 208: `/paul`, `/carl`, TODD, WALT, DOCS, CODI, SKIP, and RUBY invoked or active via module dispatch; post-apply and post-unify validation/persistence passed. `.gitignore` Workguard artifact ignore was added at user request and reconciled into plan scope.
+- Skill audit Phase 209: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. Validation count increase was expected and reconciled (Pi 192→193, cross-harness 108→109).
 
 ### Deferred Issues
 
@@ -158,13 +161,13 @@ Prior PRs: #123 merged (Phase 208 documentation + validation surfacing); #122 me
 
 ## Session Continuity
 
-Last session: 2026-04-28T14:25:00Z
-Stopped at: APPLY complete for Plan 209-01
-Next action: Run /paul:unify .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md
-Resume file: .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md
+Last session: 2026-04-28T14:35:00Z
+Stopped at: v2.48 milestone complete; merge gate pending/finalizing for PR #124
+Next action: Complete GitHub Flow merge gate for PR #124, then start next milestone planning
+Resume file: .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-SUMMARY.md
 Resume context:
-- APPLY completed all 3 tasks for Phase 209. Source commits: `2724f279` docs baseline reconciliation; `ec04f9a3` validation closure markers.
-- Evidence: focused marker grep passed; `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed; Pi validation passed 193/193; cross-harness validation passed 109/109.
-- Count reconciliation: pre-apply baseline was Pi 192/192 and cross-harness 108/108; Task 2 added one focused closure marker to each suite, producing Pi 193/193 and cross-harness 109/109.
-- Post-apply dispatch: advisory checks completed; enforcement PASS (TODD/WALT green, DEAN no manifest changes, SETH no secret/danger markers, scope within approved files).
-- Ready for `/paul:unify .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md` to create SUMMARY, run post-unify persistence, and handle GitHub Flow merge gate.
+- v2.48 Guided Workflow Evidence Hardening is complete: phases 206-209 all unified.
+- Phase 209 SUMMARY records acceptance criteria, command-output evidence, module reports, GitHub Flow evidence, and next milestone handoff.
+- Final validation: installer passed; Pi validation 193/193; cross-harness validation 109/109; PR #124 Socket checks passed.
+- Next recommended Pi-native build milestone: Workflow/Resource Capsule Contract.
+- Deferred milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.

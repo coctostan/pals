@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.48 Guided Workflow Evidence Hardening is active as the second Pi-native build milestone after v2.46. Phase 206 completed the guided workflow evidence contract baseline; Phase 207 completed runtime guided reply hardening; Phase 208 Documentation + Validation Surfacing is complete; Phase 209 Evidence Reconciliation + Milestone Closure is ready to plan.
+v2.48 Guided Workflow Evidence Hardening is complete as the second Pi-native build milestone after v2.46. Phase 206 completed the guided workflow evidence contract baseline; Phase 207 completed runtime guided reply hardening; Phase 208 completed documentation/settings and validation surfacing; Phase 209 completed evidence reconciliation and milestone closure.
 
-The immediate next step is running `/paul:plan` for Phase 209 Evidence Reconciliation + Milestone Closure. Phase 208 implemented Pi-facing docs, skill-map/settings documentation, focused validation markers, and Workguard artifact ignores at user request; local validation passed installer, Pi 192/192, and cross-harness 108/108. PR #123 merged via squash as `60a9d113`. Phase 207 hardened repo-source Pi runtime guided replies in `drivers/pi/extensions/pals-hooks.ts`; PR #122 merged and validation passed Pi 188/188 and cross-harness 104/104. Later recommended milestones remain Workflow/Resource Capsule Contract, Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup. Future work should preserve `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work.
+The immediate next step is choosing and planning the next Pi-native build milestone. Recommended next milestone: Workflow/Resource Capsule Contract, followed by Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup. v2.48 final validation passed installer, Pi 193/193, and cross-harness 109/109. PR #124 carries the closure evidence through GitHub Flow. Future work should preserve `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work.
 
 ## Hot-path reading model
 
@@ -51,7 +51,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
 | v2.46 Pi-Native Implementation Planning | Complete | Processed v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan proposal before build milestones begin. |
 | v2.47 Artifact-Slice Contract Hardening | Complete | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
-| v2.48 Guided Workflow Evidence Hardening | In progress | Hardens guided workflow evidence so Pi UI assistance sends explicit canonical transcript replies and cannot silently approve, continue, skip checkpoints, infer merge intent, or become lifecycle authority; Phase 208 Plan 208-01 is awaiting approval. |
+| v2.48 Guided Workflow Evidence Hardening | Complete | Hardened guided workflow evidence so Pi UI assistance sends explicit canonical transcript replies and cannot silently approve, continue, skip checkpoints, infer merge intent, or become lifecycle authority; final validation passes Pi 193/193 and cross-harness 109/109. |
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
@@ -108,6 +108,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Close v2.47 with validation/evidence reconciliation only. | Phase 205 Plan 205-01 | Artifact-slice contract hardening is complete; broader guided workflow evidence, capsules, helper compression, validation classification, and legacy cleanup remain separate future milestones. |
 | Create v2.48 Guided Workflow Evidence Hardening as the second Pi-native build milestone. | Phase 206 Plan 206-01 creation | Phase 206 starts with a docs-only contract baseline for guided moments, canonical replies, transcript evidence, validation classes, and no-auto/no-UI-only boundaries before runtime guided reply hardening. |
 | Define the guided workflow evidence contract baseline before runtime hardening. | Phase 206 Plan 206-01 UNIFY | Phase 207 should harden `drivers/pi/extensions/pals-hooks.ts` against `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`, preserving transcript-visible canonical replies and no-auto/no-UI-only boundaries. |
+| Close v2.48 with evidence reconciliation only. | Phase 209 Plan 209-01 | Workflow/Resource Capsule Contract is the next recommended Pi-native build milestone; do not reopen guided workflow runtime hardening, helper compression, broad validation classification, legacy cleanup, or lifecycle authority without a new approved plan. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -139,4 +140,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-28 after Phase 206 Guided Workflow Evidence Contract Baseline completion.*
+*Last updated: 2026-04-28 after v2.48 Guided Workflow Evidence Hardening completion.*
