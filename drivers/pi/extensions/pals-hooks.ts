@@ -1051,6 +1051,7 @@ async function presentGuidedWorkflowMoment(
     const optionLabels = moment.options.map((option) => `[${option.id}] ${option.label}`);
     const choice = await ctx.ui.select(moment.title, optionLabels);
     const selected = moment.options.find((option) => choice === `[${option.id}] ${option.label}`);
+    // Arbitrary UI text is ignored; only displayed options mapped to known GuidedWorkflowOption ids can send.
     if (selected) {
       ctx.ui.notify(`PALS guided workflow → sending "${selected.canonicalResponse}"`, "success");
       sendCanonicalWorkflowResponse(pi, ctx, selected.canonicalResponse);
