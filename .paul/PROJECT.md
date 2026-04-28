@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.49 Workflow/Resource Capsule Contract is complete. The milestone defined the workflow/resource capsule contract, hardened Pi runtime capsule loading, surfaced capsule behavior in docs/validation, and reconciled final closure evidence with Pi 197/197 and cross-harness 112/112 validation.
+v2.50 Delegated APPLY Packet/Report Contract is active as the fourth Pi-native build milestone after v2.46. Phase 214 Delegated APPLY Packet/Report Contract Baseline is complete; Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan.
 
-The immediate next recommended milestone is Delegated APPLY Packet/Report Contract, followed by Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup. Future work should preserve `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work.
+This milestone will reduce parent context cost for bounded `pals-implementer` work through formal task packets and structured reports while preserving parent APPLY authority, official verification, file-scope checks, fallback judgment, module gates, checkpoints, `.paul/*` lifecycle writes, and command-output truth. Later recommended milestones remain Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup.
 
 ## Hot-path reading model
 
@@ -52,8 +52,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.46 Pi-Native Implementation Planning | Complete | Processed v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan proposal before build milestones begin. |
 | v2.47 Artifact-Slice Contract Hardening | Complete | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
 | v2.49 Workflow/Resource Capsule Contract | Complete | Defined and hardened safe orientation capsules for installed resources without replacing authoritative workflow reads; final validation passed Pi 197/197 and cross-harness 112/112. |
+| v2.50 Delegated APPLY Packet/Report Contract | In progress | Formalizes helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority. |
 
-Recently completed: v2.49 Workflow/Resource Capsule Contract closed the third Pi-native build milestone with source-cited, bounded, derived-only workflow/resource capsules, final evidence reconciliation, PR #128, Pi validation 197/197, and cross-harness validation 112/112.
+Recently completed: Phase 214 created `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`, establishing parent-owned task packets, structured helper reports, allowed/forbidden file scope, fallback triggers, validation classes, command-output evidence, failure conditions, and Phase 215-217 handoffs while preserving parent APPLY authority. Current: Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -111,6 +112,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Define the guided workflow evidence contract baseline before runtime hardening. | Phase 206 Plan 206-01 UNIFY | Phase 207 should harden `drivers/pi/extensions/pals-hooks.ts` against `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`, preserving transcript-visible canonical replies and no-auto/no-UI-only boundaries. |
 | Close v2.48 with evidence reconciliation only. | Phase 209 Plan 209-01 | Workflow/Resource Capsule Contract is the next recommended Pi-native build milestone; do not reopen guided workflow runtime hardening, helper compression, broad validation classification, legacy cleanup, or lifecycle authority without a new approved plan. |
 | Define workflow/resource capsule contract before runtime loading. | Phase 210 Plan 210-01 | Phase 211 must harden runtime capsule loading against `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md`, preserving installed-resource citations, schema markers, full-read fallback, blocking-semantics exclusions, command-output truth, and derived-only non-authority boundaries. |
+| Define the delegated APPLY packet/report contract before runtime hardening. | Phase 214 Plan 214-01 | Phase 215 must harden repo-source APPLY/helper-agent delegation against `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` while preserving parent-owned official verification, module gates, fallback judgment, changed-file scope checks, checkpoints, and lifecycle writes. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -142,4 +144,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-28 after Phase 213 / v2.49 merge-gate completion.*
+*Last updated: 2026-04-28 after Phase 214 completion.*

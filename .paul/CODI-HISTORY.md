@@ -45,3 +45,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 211-01 | 2026-04-28 | injected | 4 | 0 | 9 | buildPalsContextPayload, renderArtifactSlices, getArtifactSliceSpecs, buildArtifactSlice | y |
 | 212-01 | 2026-04-28 | skipped-no-symbols | — | — | — | — | n |
 | 213-01 | 2026-04-28 | skipped-no-symbols | — | — | — | — | n |
+| 214-01 | 2026-04-28 | skipped-no-symbols | — | — | — | — | n |
