@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | None active — next recommended: Delegated APPLY Packet/Report Contract | `.paul/ROADMAP.md` completed v2.49 phases 210-213 |
+| Current milestone | v2.50 Delegated APPLY Packet/Report Contract (in progress) | `.paul/ROADMAP.md` phases 214-217 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -71,7 +71,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.49 Workflow/Resource Capsule Contract is complete. Next recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
+v2.50 Delegated APPLY Packet/Report Contract is active. Phase 214 Delegated APPLY Packet/Report Contract Baseline is complete; Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan. Later recommended milestones remain Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup.
 
 ## Archive
 
@@ -79,4 +79,4 @@ v2.49 Workflow/Resource Capsule Contract is complete. Next recommended milestone
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.49 creation: 2026-04-28.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 214 completion: 2026-04-28.*

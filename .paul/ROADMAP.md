@@ -28,32 +28,32 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.49 Workflow/Resource Capsule Contract**
-Status: ✅ Complete
-Phases: 4 of 4 complete — started 2026-04-28; completed 2026-04-28 via PR #128
+**v2.50 Delegated APPLY Packet/Report Contract**
+Status: 🚧 In progress
+Phases: 1 of 4 complete — started 2026-04-28; Phase 214 complete, ready for Phase 215 planning
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
-| 211 | Runtime Capsule Loading Hardening | 1/1 | ✅ Complete | 2026-04-28 |
-| 212 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 213 | Evidence Reconciliation + Milestone Closure | 1/1 | ✅ Complete | 2026-04-28 |
+| 214 | Delegated APPLY Packet/Report Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
+| 215 | Runtime Delegation Packet/Report Hardening | TBD | 🔵 Not started | — |
+| 216 | Documentation + Validation Surfacing | TBD | 🔵 Not started | — |
+| 217 | Evidence Reconciliation + Milestone Closure | TBD | 🔵 Not started | — |
 
-### Phase 210: Workflow/Resource Capsule Contract Baseline
-Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
-Plans: `210-01` complete; SUMMARY: `.paul/phases/210-workflow-resource-capsule-contract-baseline/210-01-SUMMARY.md`.
+### Phase 214: Delegated APPLY Packet/Report Contract Baseline
+Focus: Define the bounded delegated APPLY packet/report contract before implementation: parent-owned packet fields, allowed/forbidden file scope, fallback triggers, structured report schema, validation classes, and no helper-owned `.paul/*` writes.
+Plans: 214-01 complete. Created `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` with parent-owned task packet schema, structured helper report schema, allowed/forbidden file scope, fallback triggers, validation classes, command-output evidence requirements, failure conditions, and Phase 215-217 handoffs.
 
-### Phase 211: Runtime Capsule Loading Hardening
-Focus: Harden repo-source Pi runtime capsule loading so workflow/resource capsules orient users to installed resources while preserving source citations, freshness/bounds, STOP/DO NOT SKIP/checkpoint/lifecycle/merge-gate exclusions, and full authoritative reads for consequential workflow decisions.
-Plans: `211-01` complete; SUMMARY: `.paul/phases/211-runtime-capsule-loading-hardening/211-01-SUMMARY.md`. Runtime source commit: `a59afe91`; PR: #126.
+### Phase 215: Runtime Delegation Packet/Report Hardening
+Focus: Harden repo-source APPLY/helper-agent delegation behavior against the contract so task packets and reports are cheaper to inspect while parent APPLY still owns official verification, module gates, fallback judgment, file-scope checks, checkpoints, and lifecycle writes.
+Plans: TBD (defined during `/paul:plan`).
 
-### Phase 212: Documentation + Validation Surfacing
-Focus: Surface workflow/resource capsule guarantees in Pi docs, skill map, and validation suites while adding focused marker checks for capsule eligibility, installed path citations, blocking-semantics exclusions, fallback behavior, and command-output truth.
-Plans: `212-01` complete; SUMMARY: `.paul/phases/212-documentation-validation-surfacing/212-01-SUMMARY.md`. Evidence: README/Pi docs/skill-map surfaced capsule inventory, schema, fallback, non-authority, and validation-class markers; Pi validation 196/196 and cross-harness validation 111/111 passed; PR #127.
+### Phase 216: Documentation + Validation Surfacing
+Focus: Surface the delegated APPLY packet/report guarantees in user-facing docs, Pi docs/skill map, helper-agent docs, and validation suites with command-output proof for Helper Delegation and Shared Invariant coverage.
+Plans: TBD (defined during `/paul:plan`).
 
-### Phase 213: Evidence Reconciliation + Milestone Closure
-Focus: Reconcile workflow/resource capsule validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: `213-01` complete; SUMMARY: `.paul/phases/213-evidence-reconciliation-milestone-closure/213-01-SUMMARY.md`. Evidence: contract closure baselines reconciled, Pi validation 197/197 and cross-harness validation 112/112 passed, PR #128 merged.
+### Phase 217: Evidence Reconciliation + Milestone Closure
+Focus: Reconcile helper delegation validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to Pi-Native Validation Classification.
+Plans: TBD (defined during `/paul:plan`).
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — v2.49 complete; next recommended milestone is Delegated APPLY Packet/Report Contract.*
+*Last updated: 2026-04-28 — Phase 214 complete; ready to plan Runtime Delegation Packet/Report Hardening.*
