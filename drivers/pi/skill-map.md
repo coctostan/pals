@@ -31,6 +31,20 @@ In Pi:
 | /paul-discuss | paul-discuss | discuss-phase, discuss-milestone | /skill:paul-discuss |
 | /paul-help | paul-help | (self-contained) | /skill:paul-help |
 
+## Artifact-Slice Context Surface
+
+Artifact-slice loading is produced by the Pi extension after explicit `/paul-*` or `/skill:paul-*` activation. It is not a separate Pi skill, not a kernel workflow, and not a shortcut command; it is an adapter-side context aid that helps orient the active conversation.
+
+| Slice | Orientation role |
+|-------|------------------|
+| `current-lifecycle-state` | Summarizes current `.paul/STATE.md` lifecycle position and next action. |
+| `active-roadmap-phase` | Summarizes the active `.paul/ROADMAP.md` milestone/phase routing. |
+| `approved-plan-task-packet` | Summarizes approved PLAN task names, files, verification commands, acceptance criteria, and boundaries for APPLY orientation. |
+
+These slices remain source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. They do not create hidden Pi state, approvals, lifecycle writes, APPLY/UNIFY completion, GitHub Flow proof, or a Pi-owned module/validation ledger.
+
+A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. Shared workflows plus `.paul/*` artifacts remain authoritative.
+
 ## Internal Workflows (not standalone skills)
 
 These are invoked by other workflows and do not need their own skill entry point:

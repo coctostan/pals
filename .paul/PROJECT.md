@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.47 Artifact-Slice Contract Hardening is in progress as the first Pi-native build milestone after v2.46. Phase 202 completed the contract baseline and Phase 203 shipped runtime slice hardening; the immediate focus is Phase 204: Documentation + Skill Map Surfacing.
+v2.47 Artifact-Slice Contract Hardening is in progress as the first Pi-native build milestone after v2.46. Phase 202 completed the contract baseline, Phase 203 shipped runtime slice hardening, and Phase 204 completed documentation/skill-map surfacing; the immediate focus is Phase 205: Validation + Evidence Reconciliation.
 
-v2.46 produced the final executable Pi-native implementation-plan proposal and recommended Artifact-Slice Contract Hardening first. v2.45 repositioned PALS around Pi as the supported runtime while keeping Claude Code and Agent SDK as unsupported/frozen historical surfaces. Current Phase 204 work should surface the hardened artifact-slice contract in documentation and skill-map guidance while preserving `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, and full-read fallback.
+v2.46 produced the final executable Pi-native implementation-plan proposal and recommended Artifact-Slice Contract Hardening first. v2.45 repositioned PALS around Pi as the supported runtime while keeping Claude Code and Agent SDK as unsupported/frozen historical surfaces. Current Phase 205 work should reconcile validation/evidence markers for the hardened artifact-slice surfaces while preserving `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, and full authoritative reads for consequential work.
 
 ## Hot-path reading model
 
@@ -50,7 +50,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.44 PALS Context Optimization — Process & Artifacts | Complete | Reduced recurring context cost across workflows and lifecycle artifacts while preserving artifact-first truth, module evidence, and GitHub Flow safety; Phase 191 validation now protects the gains. |
 | v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
 | v2.46 Pi-Native Implementation Planning | Complete | Processed v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan proposal before build milestones begin. |
-| v2.47 Artifact-Slice Contract Hardening | In Progress — Phases 202-203 complete | Hardens activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
+| v2.47 Artifact-Slice Contract Hardening | In Progress — Phases 202-204 complete | Hardens activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
@@ -103,6 +103,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Create v2.47 Artifact-Slice Contract Hardening as the first Pi-native build milestone. | v2.47 milestone creation | Phase 202 starts with slice inventory, schema, freshness/bounds/fallback rules, protected files, validation classes, and non-goals before runtime hardening. |
 | Define artifact-slice contract baseline before runtime hardening. | Phase 202 Plan 202-01 | Phase 203 must cite `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md`, implement only approved slice-hardening surfaces, and preserve source citations, freshness, bounds, fallback, read-only behavior, and non-authority language. |
 | Harden runtime artifact slices before broader surfacing work. | Phase 203 Plan 203-01 | The Pi extension now emits named, contract-shaped slices for `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet`; Phase 204 can document/surface this behavior without reopening broader capsules, helper compression, validation classification, or legacy cleanup. |
+| Surface artifact slices as orientation aids without weakening full-read fallback or command-output truth. | Phase 204 Plan 204-01 | User-facing docs now make `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet` discoverable while preserving `.paul/*`, workflow artifacts, GitHub Flow evidence, module reports, and validation command output as authority. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -134,4 +135,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-27 after Phase 203 Runtime Slice Hardening completion.*
+*Last updated: 2026-04-28 after Phase 204 Documentation + Skill Map Surfacing completion.*

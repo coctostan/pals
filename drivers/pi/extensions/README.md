@@ -56,13 +56,21 @@ This layer is additive only: it never auto-continues a workflow, never skips hum
 
 ## Artifact-Slice Context Loading
 
-The extension may add an `Artifact slices` block to the bounded PALS context payload, but only after an explicit `/paul-*` or `/skill:paul-*` activation signal. The implemented runtime slice subset is named `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet` when a current plan path is discoverable from `.paul/STATE.md`.
+The extension may add an `Artifact slices` block to the bounded PALS context payload, but only after an explicit `/paul-*` or `/skill:paul-*` activation signal. Slices are orientation aids for the active conversation; they do not approve work, execute tasks, mark validation, or update lifecycle state.
 
-Each emitted slice is activation-gated, source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. The schema exposes `Slice:`, `Source:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` markers so the payload is easy to audit without making Pi lifecycle state.
+Implemented slice inventory:
 
-A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion.
+| Slice | Source authority | Orientation use |
+|-------|------------------|-----------------|
+| `current-lifecycle-state` | `.paul/STATE.md` | Shows current milestone, phase, plan, loop marks, and next action after explicit activation. |
+| `active-roadmap-phase` | `.paul/ROADMAP.md` | Shows current milestone/phase routing without expanding completed-history archives. |
+| `approved-plan-task-packet` | `.paul/phases/**/{plan}-PLAN.md` from `.paul/STATE.md` routing | Shows approved task names, files, verification commands, acceptance criteria, and boundaries for APPLY orientation. |
 
-This layer introduces no hidden Pi state, telemetry, persistence, cache, report, or Pi-owned lifecycle/module/validation ledger. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
+Each emitted slice is activation-gated, source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. The visible schema exposes `Slice:`, `Source:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` markers so the payload is easy to audit without making Pi lifecycle state.
+
+A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale facts, ambiguous facts, contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. If slice content conflicts with a full read or command output, the full read or command output wins.
+
+This layer introduces no hidden Pi state, telemetry, persistence, cache, report, or Pi-owned lifecycle/module/validation ledger. Shared `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, explicit user replies, GitHub Flow command evidence, and validation command output remain authoritative.
 
 ## Live Module Visibility
 
