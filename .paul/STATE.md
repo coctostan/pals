@@ -169,11 +169,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/213-evidence-reconciliation-milestone-closure
-Last commit: c6781d55 — docs(212-01): surface workflow resource capsule validation (#127)
-PR: #127 MERGED — https://github.com/coctostan/pals/pull/127
-CI: passed for PR #127 - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 196/196, and cross-harness 111/111
-Working tree: APPLY source changes and lifecycle metadata pending commit/postflight
-Prior PRs: #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
+Last commit: APPLY postflight metadata commit on PR #128 branch — docs(213-01): record apply postflight state
+PR: #128 OPEN — https://github.com/coctostan/pals/pull/128
+CI: pending for PR #128 - Socket Security Project Report IN_PROGRESS; Socket Security Pull Request Alerts IN_PROGRESS; local validation passed focused marker greps, installer verification, Pi 197/197, and cross-harness 112/112
+Working tree: clean after APPLY postflight commit/push
+Prior PRs: #128 open (Phase 213 evidence reconciliation + milestone closure APPLY); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
