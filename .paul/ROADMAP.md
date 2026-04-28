@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.47 Artifact-Slice Contract Hardening**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete after Phase 203 merge gate
+Phases: 2 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 202 | Slice Inventory + Contract Baseline | 1/1 | ✅ Complete | 2026-04-27 |
-| 203 | Runtime Slice Hardening | 1/1 | Complete (merge gate pending) | 2026-04-27 |
-| 204 | Documentation + Skill Map Surfacing | TBD | Not started | - |
+| 203 | Runtime Slice Hardening | 1/1 | ✅ Complete | 2026-04-27 |
+| 204 | Documentation + Skill Map Surfacing | TBD | Ready to plan | - |
 | 205 | Validation + Evidence Reconciliation | TBD | Not started | - |
 
 ### Phase 202: Slice Inventory + Contract Baseline
@@ -45,11 +45,11 @@ Plans: 202-01 complete — created and unified `docs/PI-NATIVE-ARTIFACT-SLICE-CO
 
 ### Phase 203: Runtime Slice Hardening
 Focus: Harden Pi extension artifact-slice output so slices remain activation-gated, bounded, source-cited, freshness-aware, read-only, and backed by full authoritative reads.
-Plans: 203-01 complete — hardened repo-source Pi artifact-slice runtime output against the Phase 202 contract with named slice labels, source/freshness/bounds/fallback/authority markers, docs surfacing, and runtime-lens validation markers; local validation passed Pi 187/187 and cross-harness 100/100; PR #117 merge gate pending.
+Plans: 203-01 complete — hardened repo-source Pi artifact-slice runtime output against the Phase 202 contract with named slice labels, source/freshness/bounds/fallback/authority markers, docs surfacing, and runtime-lens validation markers; local validation passed Pi 187/187 and cross-harness 100/100; PR #117 merged.
 
 ### Phase 204: Documentation + Skill Map Surfacing
 Focus: Update Pi extension documentation and skill-map surfacing so artifact slices are documented as orientation aids and full reads remain required for edits, lifecycle writes, stale facts, ambiguity, and decisions.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next: /paul:plan)
 
 ### Phase 205: Validation + Evidence Reconciliation
 Focus: Add or adjust runtime-lens validation markers, preserve Pi and cross-harness command-output evidence, reconcile module/GitHub Flow proof, and hand off safely to the next Pi-native build milestone.
@@ -66,4 +66,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 203 Plan 203-01 UNIFY complete; PR #117 merge gate pending.*
+*Last updated: 2026-04-27 — Phase 203 complete and merged; Phase 204 ready to plan.*

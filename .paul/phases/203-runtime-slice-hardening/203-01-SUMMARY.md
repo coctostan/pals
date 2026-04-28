@@ -104,7 +104,7 @@ git diff --stat main...HEAD
 |-----------|--------|--------|
 | Task 3 touched `drivers/pi/extensions/pals-hooks.ts` in addition to `tests/pi-end-to-end-validation.sh` | The new Task 3 validation needed the runtime authority string to expose the exact no-hidden-persistence marker it enforces. | Minor, beneficial alignment with AC-4; still within approved repo-source runtime surface and no out-of-scope behavior added. |
 | Root `README.md` and `CHANGELOG.md` were not updated | Plan scoped user-facing docs to `drivers/pi/extensions/README.md` and `drivers/pi/skill-map.md`. | No product-doc drift for this phase; module DOCS warning accepted as scope-specific. |
-| Remote CI pending at APPLY completion | GitHub Flow postflight created PR #117; Socket Security was pending when APPLY completed. | UNIFY merge gate will block merge until CI passes. |
+| Remote CI was pending at APPLY completion | GitHub Flow postflight created PR #117 and Socket Security was initially pending. | Resolved during UNIFY merge gate: Socket Security Project Report and Pull Request Alerts passed, and PR #117 merged. |
 
 ## Key Patterns / Decisions
 
@@ -114,13 +114,13 @@ git diff --stat main...HEAD
 
 ## Git / PR State
 
-- Branch: `feature/203-runtime-slice-hardening`
+- Branch: `main` after PR #117 squash merge
 - Commits:
   - `e5543c16` — `feat(203-01): harden Pi artifact slice schema`
   - `6b6a3fa2` — `docs(203-01): document hardened artifact slices`
   - `e6fcbcdf` — `test(203-01): validate artifact slice contract markers`
-- PR: #117 OPEN — https://github.com/coctostan/pals/pull/117
-- CI at UNIFY: Socket Security Project Report pending on PR #117; local validation green.
+- PR: #117 MERGED — https://github.com/coctostan/pals/pull/117
+- CI at UNIFY: Socket Security Project Report PASS; Pull Request Alerts PASS; local validation green.
 
 ## Phase 204 Handoff
 
