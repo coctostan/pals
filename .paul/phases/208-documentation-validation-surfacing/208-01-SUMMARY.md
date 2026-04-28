@@ -220,7 +220,7 @@ Plan metadata: committed during UNIFY after lifecycle reconciliation.
 | Branch | `feature/208-documentation-validation-surfacing` during APPLY/UNIFY. |
 | PR | #123 — https://github.com/coctostan/pals/pull/123 |
 | CI before merge | Passing: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS. |
-| Merge gate | Pending final metadata commit/push at summary creation; UNIFY merge gate will merge PR #123, sync `main`, and record final state before routing onward. |
+| Merge gate | PR #123 merged via squash as `60a9d113`; local `main` synced with `origin/main`; feature branch deleted remotely. |
 
 ## Next Phase Readiness
 
@@ -234,7 +234,7 @@ Plan metadata: committed during UNIFY after lifecycle reconciliation.
 - Validation harness size debt remains pre-existing.
 
 **Blockers:**
-- None for Phase 209 planning after GitHub Flow merge gate completes.
+- None for Phase 209 planning.
 
 ---
 

@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.48 Guided Workflow Evidence Hardening**
 Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-28; Phase 208 complete, Phase 209 ready after transition
+Phases: 3 of 4 complete — started 2026-04-28; Phase 209 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 206 | Guided Workflow Evidence Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 207 | Runtime Guided Reply Hardening | 1/1 | ✅ Complete | 2026-04-28 |
 | 208 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 209 | Evidence Reconciliation + Milestone Closure | 0/1 | Not started | — |
+| 209 | Evidence Reconciliation + Milestone Closure | 0/1 | 🔵 Ready to plan | — |
 
 ### Phase 206: Guided Workflow Evidence Contract Baseline
 Focus: Defined the guided workflow moment inventory, canonical transcript reply schema, explicit-intent/no-auto-continue boundaries, validation classes, failure conditions, and Phase 207+ handoff before runtime guided reply hardening begins.
@@ -49,11 +49,11 @@ Plans: 207-01 complete — `.paul/phases/207-runtime-guided-reply-hardening/207-
 
 ### Phase 208: Documentation + Validation Surfacing
 Focus: Surface guided workflow evidence rules in Pi extension docs, skill map, and guided workflow settings documentation while adding focused validation markers for canonical replies, no-auto/no-UI-only boundaries, checkpoint blocking, and command-output truth.
-Plans: 208-01 complete — `.paul/phases/208-documentation-validation-surfacing/208-01-PLAN.md`; docs/settings surfacing and validation markers implemented; Pi 192/192 and cross-harness 108/108 passing; PR #123 open with CI passing before merge gate.
+Plans: 208-01 complete — `.paul/phases/208-documentation-validation-surfacing/208-01-PLAN.md`; docs/settings surfacing and validation markers implemented; Pi 192/192 and cross-harness 108/108 passing; PR #123 merged via squash as `60a9d113`.
 
 ### Phase 209: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile guided workflow validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: Not started — depends on Phases 206-208.
+Plans: Not started — ready to plan.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -67,4 +67,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 208 complete; transition to Phase 209 pending.*
+*Last updated: 2026-04-28 — Phase 208 complete; Phase 209 ready to plan.*
