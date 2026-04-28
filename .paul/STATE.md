@@ -167,12 +167,13 @@ Prior PRs: #124 merged (Phase 209 evidence reconciliation + milestone closure); 
 
 ## Session Continuity
 
-Last session: 2026-04-28T14:55:00Z
-Stopped at: v2.49 milestone created; Phase 210 ready to plan
+Last session: 2026-04-28T15:00:00Z
+Stopped at: Session paused after v2.49 milestone creation; Phase 210 ready to plan
 Next action: Run /paul:plan for Phase 210 Workflow/Resource Capsule Contract Baseline
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-04-28-v2.49-ready-to-plan.md
 Resume context:
 - v2.49 Workflow/Resource Capsule Contract is active with phases 210-213.
 - Phase 210 should define the capsule contract baseline: eligibility, schema, installed-resource citations, blocking-semantics exclusions, full-read fallback, validation classes, failure conditions, and Phase 211+ handoffs.
 - v2.48 final validation remains green: installer passed; Pi validation 193/193; cross-harness validation 109/109; PR #124 merged via squash as `9a74cbe5`.
+- Milestone creation commit `d48b067e` was pushed to `origin/main`; active pause handoff is `.paul/HANDOFF-2026-04-28-v2.49-ready-to-plan.md`.
 - Future milestones after v2.49 remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
