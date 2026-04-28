@@ -114,7 +114,7 @@ completed: 2026-04-28T00:40:35Z
 | Task 2: Expand Pi extension artifact-slice documentation | `d93a610f` | docs | Documented slice inventory, schema markers, fallback triggers, and non-authority boundaries. |
 | Task 3: Clarify skill-map surfacing and run docs verification | `d7e88778` | docs | Mapped artifact-slice loading as adapter-side context aid and preserved lifecycle authority. |
 
-Plan metadata: `docs(204-01): complete documentation skill map surfacing` committed before PR #118 merge gate.
+Plan metadata: feature-branch UNIFY commit was squash-merged as `6bd5ada9` — `docs(204-01): surface artifact-slice guidance (#118)`.
 
 ## Files Created/Modified
 

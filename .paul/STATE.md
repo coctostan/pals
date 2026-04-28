@@ -138,7 +138,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main after PR #118 squash merge
-Last commit: Phase 204 UNIFY metadata committed on feature branch before PR #118 merge
+Last commit: 6bd5ada9 — docs(204-01): surface artifact-slice guidance (#118)
 PR: #118 MERGED — https://github.com/coctostan/pals/pull/118
 CI: passing — Socket Security Project Report PASS; Pull Request Alerts PASS; local validation passed marker grep, Pi 187/187 and cross-harness 100/100
 Prior PRs: #117 merged (Phase 203 runtime slice hardening); #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); #114 merged (Phase 200 validation evidence strategy); #113 merged (Phase 199 sequencing dependency plan); #109 merged (Phase 195 exploratory Pi-native spikes); #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
