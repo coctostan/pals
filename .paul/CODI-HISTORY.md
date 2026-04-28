@@ -39,3 +39,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 205-01 | 2026-04-28 | injected | 5 | 0 | 10 | buildArtifactSlice, getArtifactSliceSpecs, renderArtifactSlices, shouldInjectPalsContext, buildPalsContextPayload | y |
 | 206-01 | 2026-04-28 | injected | 5 | 0 | 12 | detectGuidedWorkflowMoment, presentGuidedWorkflowMoment, sendCanonicalWorkflowResponse, loadGuidedWorkflowConfig, shouldAutoPresent | y |
 | 207-01 | 2026-04-28 | injected | 5 | 0 | 12 | detectGuidedWorkflowMoment, presentGuidedWorkflowMoment, sendCanonicalWorkflowResponse, loadGuidedWorkflowConfig, shouldAutoPresent | y |
+| 208-01 | 2026-04-28 | skipped-no-symbols | — | — | — | — | n |

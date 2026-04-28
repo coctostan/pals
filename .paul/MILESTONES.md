@@ -69,7 +69,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.48 Guided Workflow Evidence Hardening is active. Phases 206 and 207 are complete; Phase 208 Documentation + Validation Surfacing is ready to plan.
+v2.48 Guided Workflow Evidence Hardening is active. Phases 206, 207, and 208 are complete; transition to Phase 209 Evidence Reconciliation + Milestone Closure is pending.
 
 ## Archive
 
@@ -77,4 +77,4 @@ v2.48 Guided Workflow Evidence Hardening is active. Phases 206 and 207 are compl
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 207 plan creation: 2026-04-28.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 208 UNIFY completion: 2026-04-28.*
