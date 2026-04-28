@@ -28,32 +28,32 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.47 Artifact-Slice Contract Hardening**
-Status: ✅ Complete
-Phases: 4 of 4 complete — 2026-04-28
+**v2.48 Guided Workflow Evidence Hardening**
+Status: 🚧 In progress
+Phases: 1 of 4 complete — started 2026-04-28
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 202 | Slice Inventory + Contract Baseline | 1/1 | ✅ Complete | 2026-04-27 |
-| 203 | Runtime Slice Hardening | 1/1 | ✅ Complete | 2026-04-27 |
-| 204 | Documentation + Skill Map Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 205 | Validation + Evidence Reconciliation | 1/1 | ✅ Complete | 2026-04-28 |
+| 206 | Guided Workflow Evidence Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
+| 207 | Runtime Guided Reply Hardening | 0/1 | 🔵 Ready to plan | — |
+| 208 | Documentation + Validation Surfacing | 0/1 | Not started | — |
+| 209 | Evidence Reconciliation + Milestone Closure | 0/1 | Not started | — |
 
-### Phase 202: Slice Inventory + Contract Baseline
-Focus: Define the named artifact-slice inventory, stable schema fields, freshness/bounds/fallback rules, protected files, validation classes, and non-goals before runtime hardening begins.
-Plans: 202-01 complete — created and unified `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md` with named slice inventory, schema fields, freshness/bounds/fallback rules, validation classes, marker-check families, protected files, failure conditions, durable evidence requirements, and Phase 203 handoff.
+### Phase 206: Guided Workflow Evidence Contract Baseline
+Focus: Defined the guided workflow moment inventory, canonical transcript reply schema, explicit-intent/no-auto-continue boundaries, validation classes, failure conditions, and Phase 207+ handoff before runtime guided reply hardening begins.
+Plans: 206-01 complete — created `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`; validation passed Pi 188/188 and cross-harness 104/104; PR #121 merge gate handled during UNIFY.
 
-### Phase 203: Runtime Slice Hardening
-Focus: Harden Pi extension artifact-slice output so slices remain activation-gated, bounded, source-cited, freshness-aware, read-only, and backed by full authoritative reads.
-Plans: 203-01 complete — hardened repo-source Pi artifact-slice runtime output against the Phase 202 contract with named slice labels, source/freshness/bounds/fallback/authority markers, docs surfacing, and runtime-lens validation markers; local validation passed Pi 187/187 and cross-harness 100/100; PR #117 merged.
+### Phase 207: Runtime Guided Reply Hardening
+Focus: Harden repo-source Pi extension guided workflow behavior so plan review, APPLY approval, checkpoint choices, resume-next, continue-to-UNIFY, phase/milestone transition, and merge-gate routing remain explicit canonical user-message replies with no auto-approval, no auto-continue, no skipped checkpoints, and no UI-only lifecycle decisions.
+Plans: Ready to plan — depends on Phase 206 contract baseline.
 
-### Phase 204: Documentation + Skill Map Surfacing
-Focus: Update Pi extension documentation and skill-map surfacing so artifact slices are documented as orientation aids and full reads remain required for edits, lifecycle writes, stale facts, ambiguity, and decisions.
-Plans: 204-01 complete — surfaced artifact-slice orientation-aid and full-read fallback guidance in `README.md`, `drivers/pi/extensions/README.md`, and `drivers/pi/skill-map.md`; marker grep passed; local validation passed Pi 187/187 and cross-harness 100/100; PR #118 merged.
+### Phase 208: Documentation + Validation Surfacing
+Focus: Surface guided workflow evidence rules in Pi extension docs, skill map, and guided workflow settings documentation while adding focused validation markers for canonical replies, no-auto/no-UI-only boundaries, checkpoint blocking, and command-output truth.
+Plans: Not started — depends on Phase 207 runtime hardening.
 
-### Phase 205: Validation + Evidence Reconciliation
-Focus: Add or adjust runtime-lens validation markers, preserve Pi and cross-harness command-output evidence, reconcile module/GitHub Flow proof, and hand off safely to the next Pi-native build milestone.
-Plans: 205-01 complete — added focused artifact-slice marker checks in `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`, updated current evidence baseline wording in `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md`, preserved command-output/module/GitHub Flow proof without runtime or lifecycle-authority changes, local validation passed Pi 188/188 and cross-harness 104/104, and PR #119 merged.
+### Phase 209: Evidence Reconciliation + Milestone Closure
+Focus: Reconcile guided workflow validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
+Plans: Not started — depends on Phases 206-208.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -67,4 +67,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — v2.47 complete; next milestone decision pending.*
+*Last updated: 2026-04-28 — Phase 206 complete; Phase 207 ready to plan.*

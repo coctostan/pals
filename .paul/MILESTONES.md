@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.47 Artifact-Slice Contract Hardening (in progress) | `.paul/ROADMAP.md` phases 202-205 |
+| Current milestone | v2.48 Guided Workflow Evidence Hardening (in progress) | `.paul/ROADMAP.md` phases 206-209 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -65,10 +65,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.44 PALS Context Optimization — Process & Artifacts | 2026-04-27 | ~14 hours | 4 phases, 5 plans | [archive](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md) |
 | v2.45 Pi-Native PALS Architecture | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` |
 | v2.46 Pi-Native Implementation Planning | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md` |
+| v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.47 Artifact-Slice Contract Hardening is active. Phase 202 is complete; the next action is `/paul:plan` for Phase 203 Runtime Slice Hardening.
+v2.48 Guided Workflow Evidence Hardening is active. Phase 206 is complete; the next action is `/paul:plan` for Phase 207 Runtime Guided Reply Hardening.
 
 ## Archive
 
@@ -76,4 +77,4 @@ v2.47 Artifact-Slice Contract Hardening is active. Phase 202 is complete; the ne
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 202 completion: 2026-04-27.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 206 completion: 2026-04-28.*
