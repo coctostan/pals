@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-28 after Phase 207 Runtime Guided Reply H
 ## Current Position
 
 Milestone: v2.48 Guided Workflow Evidence Hardening
-Phase: 209 of 209 (Evidence Reconciliation + Milestone Closure) — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-04-28T13:45:00Z — Phase 208 complete; PR #123 merged and main synced
+Phase: 209 of 209 (Evidence Reconciliation + Milestone Closure) — APPLY complete
+Plan: 209-01 executed; ready for UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-28T14:25:00Z — Applied .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md; validation passed Pi 193/193 and cross-harness 109/109
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -20,18 +20,18 @@ Progress:
 - v2.45 Pi-Native PALS Architecture: [██████████] 100% (5 of 5 phases complete; final architecture proposal complete)
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.48 Guided Workflow Evidence Hardening: [███████░░░] 75% (3 of 4 phases complete; Phase 209 ready to plan)
+- v2.48 Guided Workflow Evidence Hardening: [█████████░] 90% (3 of 4 phases complete; Phase 209 APPLY complete, ready for UNIFY)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
-- Phase 209 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% ready to plan
+- Phase 209 Evidence Reconciliation + Milestone Closure: [████████░░] 80% APPLY complete, ready for UNIFY
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -158,13 +158,13 @@ Prior PRs: #123 merged (Phase 208 documentation + validation surfacing); #122 me
 
 ## Session Continuity
 
-Last session: 2026-04-28T13:45:00Z
-Stopped at: Phase 208 complete; PR #123 merged and main synced
-Next action: Run /paul:plan for Phase 209 Evidence Reconciliation + Milestone Closure
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-28T14:25:00Z
+Stopped at: APPLY complete for Plan 209-01
+Next action: Run /paul:unify .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md
+Resume file: .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md
 Resume context:
-- Phase 208 documentation and validation surfacing is complete; SUMMARY is `.paul/phases/208-documentation-validation-surfacing/208-01-SUMMARY.md`.
-- Verification evidence: focused marker greps passed; `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed; Pi validation passed 192/192; cross-harness validation passed 108/108.
-- GitHub Flow: PR #123 merged via squash as `60a9d113`; local `main` synced with `origin/main`; feature branch deleted remotely.
-- Phase 209 should reconcile v2.48 evidence, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before milestone closure.
-- Ready for `/paul:plan` for Phase 209 Evidence Reconciliation + Milestone Closure.
+- APPLY completed all 3 tasks for Phase 209. Source commits: `2724f279` docs baseline reconciliation; `ec04f9a3` validation closure markers.
+- Evidence: focused marker grep passed; `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed; Pi validation passed 193/193; cross-harness validation passed 109/109.
+- Count reconciliation: pre-apply baseline was Pi 192/192 and cross-harness 108/108; Task 2 added one focused closure marker to each suite, producing Pi 193/193 and cross-harness 109/109.
+- Post-apply dispatch: advisory checks completed; enforcement PASS (TODD/WALT green, DEAN no manifest changes, SETH no secret/danger markers, scope within approved files).
+- Ready for `/paul:unify .paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md` to create SUMMARY, run post-unify persistence, and handle GitHub Flow merge gate.

@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.48 Guided Workflow Evidence Hardening**
 Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-28; Phase 209 ready to plan
+Phases: 3 of 4 complete — started 2026-04-28; Phase 209 APPLY complete, ready for UNIFY
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 206 | Guided Workflow Evidence Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 207 | Runtime Guided Reply Hardening | 1/1 | ✅ Complete | 2026-04-28 |
 | 208 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 209 | Evidence Reconciliation + Milestone Closure | 0/1 | 🔵 Ready to plan | — |
+| 209 | Evidence Reconciliation + Milestone Closure | 0/1 | 🟠 APPLY complete | — |
 
 ### Phase 206: Guided Workflow Evidence Contract Baseline
 Focus: Defined the guided workflow moment inventory, canonical transcript reply schema, explicit-intent/no-auto-continue boundaries, validation classes, failure conditions, and Phase 207+ handoff before runtime guided reply hardening begins.
@@ -53,7 +53,7 @@ Plans: 208-01 complete — `.paul/phases/208-documentation-validation-surfacing/
 
 ### Phase 209: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile guided workflow validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: Not started — ready to plan.
+Plans: 209-01 applied — `.paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md`; evidence baselines reconciled; validation passed Pi 193/193 and cross-harness 109/109; ready for UNIFY.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -67,4 +67,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 208 complete; Phase 209 ready to plan.*
+*Last updated: 2026-04-28 — Phase 209 APPLY complete; ready for UNIFY.*
