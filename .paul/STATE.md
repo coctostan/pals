@@ -158,12 +158,12 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: 9a74cbe5 — docs(209-01): complete guided workflow evidence closure (#124)
-PR: #124 MERGED — https://github.com/coctostan/pals/pull/124
-CI: passed for PR #124 - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, installer, Pi 193/193, and cross-harness 109/109
-Working tree: clean after post-merge-gate lifecycle evidence updates
-Prior PRs: #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); #120 merged (Phase 205 lifecycle finalization); #119 merged (Phase 205 validation/evidence source changes); #118 merged (Phase 204 docs/skill-map surfacing); #117 merged (Phase 203 runtime slice hardening); #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); earlier PR history archived in STATE history.
+Branch: feature/210-workflow-resource-capsule-contract-baseline
+Last commit: 6a5a80be — docs(210-01): create workflow resource capsule contract
+PR: #125 OPEN — https://github.com/coctostan/pals/pull/125
+CI: no checks reported yet for PR #125; local validation passed focused marker greps, Pi 193/193, and cross-harness 109/109
+Working tree: clean after APPLY postflight metadata update pending commit
+Prior PRs: #125 open (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
