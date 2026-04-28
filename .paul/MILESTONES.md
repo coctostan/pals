@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | None — ready for next milestone decision | Next recommended: Workflow/Resource Capsule Contract |
+| Current milestone | v2.49 Workflow/Resource Capsule Contract (in progress) | `.paul/ROADMAP.md` phases 210-213 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -70,7 +70,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.48 Guided Workflow Evidence Hardening is complete. Next recommended milestone: Workflow/Resource Capsule Contract, followed by Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
+v2.49 Workflow/Resource Capsule Contract is active. Phase 210 Workflow/Resource Capsule Contract Baseline is ready to plan; later recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
 
 ## Archive
 
@@ -78,4 +78,4 @@ v2.48 Guided Workflow Evidence Hardening is complete. Next recommended milestone
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.48 completion: 2026-04-28.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.49 creation: 2026-04-28.*

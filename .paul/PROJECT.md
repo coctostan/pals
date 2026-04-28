@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.48 Guided Workflow Evidence Hardening is complete as the second Pi-native build milestone after v2.46. Phase 206 completed the guided workflow evidence contract baseline; Phase 207 completed runtime guided reply hardening; Phase 208 completed documentation/settings and validation surfacing; Phase 209 completed evidence reconciliation and milestone closure.
+v2.49 Workflow/Resource Capsule Contract is active as the third Pi-native build milestone after v2.46. It follows completed v2.47 Artifact-Slice Contract Hardening and v2.48 Guided Workflow Evidence Hardening.
 
-The immediate next step is choosing and planning the next Pi-native build milestone. Recommended next milestone: Workflow/Resource Capsule Contract, followed by Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup. v2.48 final validation passed installer, Pi 193/193, and cross-harness 109/109. PR #124 carried the closure evidence through GitHub Flow and merged via squash as `9a74cbe5`. Future work should preserve `.paul/*` artifact authority, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, and full authoritative reads for consequential work.
+The immediate next step is running `/paul:plan` for Phase 210 Workflow/Resource Capsule Contract Baseline. v2.49 will define safe orientation capsules for installed resources without replacing authoritative workflow reads, `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow gates, parent-owned APPLY, explicit approval/checkpoint behavior, command-output validation truth, or full authoritative reads for consequential work. Later recommended milestones remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
 
 ## Hot-path reading model
 
@@ -51,8 +51,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.45 Pi-Native PALS Architecture | Complete | Repositioned PALS around Pi as the supported runtime, validated artifact-slice context loading, and produced the final architecture proposal plus implementation roadmap. |
 | v2.46 Pi-Native Implementation Planning | Complete | Processed v2.45 findings and architecture into implementation workstreams, sequencing, validation/evidence strategy, and a final executable implementation plan proposal before build milestones begin. |
 | v2.47 Artifact-Slice Contract Hardening | Complete | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
-| v2.48 Guided Workflow Evidence Hardening | Complete | Hardened guided workflow evidence so Pi UI assistance sends explicit canonical transcript replies and cannot silently approve, continue, skip checkpoints, infer merge intent, or become lifecycle authority; final validation passes Pi 193/193 and cross-harness 109/109. |
+| v2.49 Workflow/Resource Capsule Contract | In progress | Defines safe orientation capsules for installed resources without replacing authoritative workflow reads; Phase 210 contract baseline is ready to plan. |
 
+Recently completed: v2.48 Guided Workflow Evidence Hardening hardened guided workflow evidence so Pi UI assistance sends explicit canonical transcript replies and cannot silently approve, continue, skip checkpoints, infer merge intent, or become lifecycle authority; final validation passed Pi 193/193 and cross-harness 109/109.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -140,4 +141,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-28 after v2.48 Guided Workflow Evidence Hardening completion.*
+*Last updated: 2026-04-28 after v2.49 Workflow/Resource Capsule Contract creation.*

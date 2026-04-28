@@ -28,32 +28,32 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.48 Guided Workflow Evidence Hardening**
-Status: ✅ Complete
-Phases: 4 of 4 complete — started 2026-04-28; completed 2026-04-28
+**v2.49 Workflow/Resource Capsule Contract**
+Status: 🚧 In progress
+Phases: 0 of 4 complete — started 2026-04-28; Phase 210 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 206 | Guided Workflow Evidence Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
-| 207 | Runtime Guided Reply Hardening | 1/1 | ✅ Complete | 2026-04-28 |
-| 208 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 209 | Evidence Reconciliation + Milestone Closure | 1/1 | ✅ Complete | 2026-04-28 |
+| 210 | Workflow/Resource Capsule Contract Baseline | 0/1 | 🔵 Ready to plan | — |
+| 211 | Runtime Capsule Loading Hardening | 0/1 | ⬜ Not started | — |
+| 212 | Documentation + Validation Surfacing | 0/1 | ⬜ Not started | — |
+| 213 | Evidence Reconciliation + Milestone Closure | 0/1 | ⬜ Not started | — |
 
-### Phase 206: Guided Workflow Evidence Contract Baseline
-Focus: Defined the guided workflow moment inventory, canonical transcript reply schema, explicit-intent/no-auto-continue boundaries, validation classes, failure conditions, and Phase 207+ handoff before runtime guided reply hardening begins.
-Plans: 206-01 complete — created `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`; validation passed Pi 188/188 and cross-harness 104/104; PR #121 merge gate handled during UNIFY.
+### Phase 210: Workflow/Resource Capsule Contract Baseline
+Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
+Plans: Not started — ready to plan.
 
-### Phase 207: Runtime Guided Reply Hardening
-Focus: Harden repo-source Pi extension guided workflow behavior so plan review, APPLY approval, checkpoint choices, resume-next, continue-to-UNIFY, phase/milestone transition, and merge-gate routing remain explicit canonical user-message replies with no auto-approval, no auto-continue, no skipped checkpoints, and no UI-only lifecycle decisions.
-Plans: 207-01 complete — `.paul/phases/207-runtime-guided-reply-hardening/207-01-PLAN.md`; runtime hardening merged via PR #122 as `688532cc`; Pi 188/188 and cross-harness 104/104 passing.
+### Phase 211: Runtime Capsule Loading Hardening
+Focus: Harden repo-source Pi runtime capsule loading so workflow/resource capsules orient users to installed resources while preserving source citations, freshness/bounds, STOP/DO NOT SKIP/checkpoint/lifecycle/merge-gate exclusions, and full authoritative reads for consequential workflow decisions.
+Plans: Not started.
 
-### Phase 208: Documentation + Validation Surfacing
-Focus: Surface guided workflow evidence rules in Pi extension docs, skill map, and guided workflow settings documentation while adding focused validation markers for canonical replies, no-auto/no-UI-only boundaries, checkpoint blocking, and command-output truth.
-Plans: 208-01 complete — `.paul/phases/208-documentation-validation-surfacing/208-01-PLAN.md`; docs/settings surfacing and validation markers implemented; Pi 192/192 and cross-harness 108/108 passing; PR #123 merged via squash as `60a9d113`.
+### Phase 212: Documentation + Validation Surfacing
+Focus: Surface workflow/resource capsule guarantees in Pi docs, skill map, and validation suites while adding focused marker checks for capsule eligibility, installed path citations, blocking-semantics exclusions, fallback behavior, and command-output truth.
+Plans: Not started.
 
-### Phase 209: Evidence Reconciliation + Milestone Closure
-Focus: Reconcile guided workflow validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: 209-01 complete — `.paul/phases/209-evidence-reconciliation-milestone-closure/209-01-PLAN.md`; evidence baselines reconciled; validation passed Pi 193/193 and cross-harness 109/109; SUMMARY `.paul/phases/209-evidence-reconciliation-milestone-closure/209-01-SUMMARY.md`; PR #124 merge gate handled during UNIFY.
+### Phase 213: Evidence Reconciliation + Milestone Closure
+Focus: Reconcile workflow/resource capsule validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
+Plans: Not started.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -68,4 +68,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — v2.48 complete; ready for next milestone decision.*
+*Last updated: 2026-04-28 — v2.49 created; Phase 210 ready to plan.*
