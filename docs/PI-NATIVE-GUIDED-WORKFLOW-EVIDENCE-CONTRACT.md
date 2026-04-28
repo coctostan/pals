@@ -119,8 +119,9 @@ Later phases should add or preserve marker checks in these families:
 A future APPLY/UNIFY that changes guided workflow behavior must preserve command output a reviewer can audit:
 
 - Focused marker greps must print matched lines or enough context to identify the file and marker family.
-- `bash tests/pi-end-to-end-validation.sh` must show TAP summary counts and final pass/fail status. The Phase 205/Phase 206 starting baseline is Pi 188/188.
-- `bash tests/cross-harness-validation.sh` must show TAP summary counts and final pass/fail status. The Phase 205/Phase 206 starting baseline is cross-harness 104/104.
+- `bash tests/pi-end-to-end-validation.sh` must show TAP summary counts and final pass/fail status. Historical Phase 205/Phase 206 starting baseline: Pi 188/188.
+- `bash tests/cross-harness-validation.sh` must show TAP summary counts and final pass/fail status. Historical Phase 205/Phase 206 starting baseline: cross-harness 104/104.
+- Current post-Phase-207/208 v2.48 closure baseline: Pi 192/192 and cross-harness 108/108 after Phase 207 runtime guided reply hardening and Phase 208 docs/validation surfacing.
 - If validation counts change, SUMMARY must state old count, new count, reason, validation class affected, and shared-invariant preservation rationale.
 - GitHub Flow evidence must include current branch, base branch, ahead/behind status, PR URL/state when applicable, CI/check state, and merge-gate result during UNIFY.
 - Reports, widgets, notifications, slices, or helper summaries may explain evidence, but they cannot replace fresh command output.
