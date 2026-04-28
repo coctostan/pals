@@ -1057,6 +1057,57 @@ fi
     'validation pass/fail' \
     'module completion'
 
+  # Workflow/Resource Capsule Context — Pi-Supported Runtime: Phase 211 capsule markers stay command-verifiable without runtime edits.
+  tap_file_contains_all \
+    "Workflow/resource capsule runtime markers preserve schema, fallback, and non-authority" \
+    "$EXT_SRC" \
+    'Workflow/resource capsules (read-only, bounded, activation-gated)' \
+    'Capsule: plan-task-anatomy' \
+    'Capsule: checkpoint-type-orientation' \
+    'Capsule: module-dispatch-evidence-orientation' \
+    'Capsule: github-flow-phase-orientation' \
+    'Source type:' \
+    'Freshness:' \
+    'Bounds:' \
+    'Fallback:' \
+    'Authority: Derived aid only' \
+    'full authoritative read required' \
+    'no hidden persistence' \
+    'no lifecycle authority' \
+    'no auto-approval' \
+    'no skipped checkpoints'
+
+  tap_file_contains_all \
+    "Workflow/resource capsule Pi docs preserve source, fallback, and validation-class markers" \
+    "$REPO_ROOT/drivers/pi/extensions/README.md" \
+    'Workflow/Resource Capsule Context Loading' \
+    'plan-task-anatomy' \
+    'checkpoint-type-orientation' \
+    'module-dispatch-evidence-orientation' \
+    'github-flow-phase-orientation' \
+    'Source type' \
+    'Derived aid only' \
+    'full authoritative read' \
+    'Workflow/Resource Capsule Context — Pi-Supported Runtime' \
+    'Workflow/Resource Capsule Context — Shared Invariant' \
+    'command-output truth'
+
+  tap_file_contains_all \
+    "Workflow/resource capsule skill map frames capsules as adapter-side context aids" \
+    "$REPO_ROOT/drivers/pi/skill-map.md" \
+    'Workflow/Resource Capsule Context Surface' \
+    'adapter-side context aid' \
+    'plan-task-anatomy' \
+    'checkpoint-type-orientation' \
+    'module-dispatch-evidence-orientation' \
+    'github-flow-phase-orientation' \
+    'Source type' \
+    'Derived aid only' \
+    'full authoritative read' \
+    'not a separate Pi skill' \
+    'not workflow authority' \
+    'parent-owned APPLY'
+
   # Guided workflow contract: detect canonical workflow markers from shared prompts
   if grep -q 'Continue to APPLY' "$EXT_SRC" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_SRC" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_SRC" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension detects canonical workflow markers for guided UX"

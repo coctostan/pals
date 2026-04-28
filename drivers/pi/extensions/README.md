@@ -76,6 +76,25 @@ A full authoritative read remains required before edits, approved PLAN execution
 
 This layer introduces no hidden Pi state, telemetry, persistence, cache, report, or Pi-owned lifecycle/module/validation ledger. Shared `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, explicit user replies, GitHub Flow command evidence, and validation command output remain authoritative.
 
+## Workflow/Resource Capsule Context Loading
+
+The extension may add a `Workflow/resource capsules` block after artifact slices in the bounded PALS context payload, but only after explicit `/paul-*` or `/skill:paul-*` activation. Capsules are activation-gated installed-resource orientation aids only; they do not approve work, execute tasks, mark validation, update lifecycle state, or replace full authoritative reads.
+
+Implemented capsule inventory:
+
+| Capsule | Source authority | Source type | Orientation use |
+|---------|------------------|-------------|-----------------|
+| `plan-task-anatomy` | `kernel/references/plan-format.md` | repo installed resource | Orients PLAN task shape, fields, and task-local verification expectations. |
+| `checkpoint-type-orientation` | `kernel/references/checkpoints.md` | repo installed resource | Orients checkpoint categories without carrying checkpoint approval or action authority. |
+| `module-dispatch-evidence-orientation` | `kernel/references/module-dispatch.md` | repo installed resource | Orients module dispatch evidence conventions without replacing module reports or enforcement. |
+| `github-flow-phase-orientation` | `kernel/references/git-strategy.md` | repo installed resource | Orients GitHub Flow preflight/postflight/merge-gate reminders without replacing git/gh command evidence. |
+
+Each emitted capsule is source-cited, includes `Source type`, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. The visible schema exposes `Capsule:`, `Source:`, `Source type:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` markers so the payload is auditable without making Pi lifecycle state.
+
+A full authoritative read remains required before approved PLAN execution, APPLY/UNIFY, lifecycle writes, checkpoints, module reports/enforcement, GitHub Flow decisions, validation assessment, stale/conflicting output, or edits/actions based on capsule content. Capsules must not replace `.paul/*`, installed workflow/reference reads, transcript-visible user intent, module reports/enforcement, GitHub Flow command evidence, validation command output, parent-owned APPLY, checkpoints, approvals, or lifecycle writes.
+
+Validation classes: `Workflow/Resource Capsule Context — Pi-Supported Runtime` protects runtime and Pi docs marker checks; `Workflow/Resource Capsule Context — Shared Invariant` protects `.paul/*` authority, PLAN/APPLY/UNIFY, checkpoint blocking, module evidence, GitHub Flow safety, parent-owned APPLY, command-output truth, and full authoritative read fallback. Capsule docs and validation also protect STOP/DO NOT SKIP exclusion from derived capsule authority.
+
 ## Live Module Visibility
 
 The always-visible Pi status/widget now includes a bounded recent module activity summary when a trustworthy signal is present. That visibility is dispatch-derived from recent shared workflow/reporting output plus shared artifacts — especially canonical markers such as `[dispatch] pre-plan: ...`, `[dispatch] post-apply: ...`, and `Module Execution Reports`.
