@@ -161,20 +161,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/210-workflow-resource-capsule-contract-baseline
-Last commit: pending UNIFY metadata commit on feature branch
-PR: #125 OPEN - https://github.com/coctostan/pals/pull/125
-CI: passed for PR #125 - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 193/193, and cross-harness 109/109
-Working tree: UNIFY metadata in progress before merge-gate commit
-Prior PRs: #125 open (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
+Branch: main
+Last commit: 3a03d315 — docs(210-01): create workflow resource capsule contract (#125)
+PR: #125 MERGED — https://github.com/coctostan/pals/pull/125
+CI: passed for PR #125 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 193/193, and cross-harness 109/109
+Working tree: clean after post-merge-gate lifecycle evidence updates
+Prior PRs: #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T16:55:00Z
-Stopped at: Phase 210 complete; ready to plan Phase 211 after merge gate
+Last session: 2026-04-28T16:58:00Z
+Stopped at: Phase 210 complete; PR #125 merged and main synced
 Next action: Run /paul:plan for Phase 211 Runtime Capsule Loading Hardening
 Resume file: .paul/ROADMAP.md
 Resume context:
 - Phase 210 SUMMARY `.paul/phases/210-workflow-resource-capsule-contract-baseline/210-01-SUMMARY.md` records acceptance criteria, command-output evidence, module reports, GitHub Flow evidence, and Phase 211 handoff.
 - Final local validation for Phase 210: focused marker greps passed; Pi validation 193/193; cross-harness validation 109/109.
+- GitHub Flow merge gate completed: PR #125 merged via squash as `3a03d315`; local `main` is synced with `origin/main`.
 - Preserve capsule orientation-only boundaries in Phase 211: installed-resource citations, schema markers, blocking-semantics exclusions, full-read fallback, command-output truth, and derived-only non-authority.

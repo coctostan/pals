@@ -142,4 +142,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-28 after Phase 210 Workflow/Resource Capsule Contract Baseline completion.*
+*Last updated: 2026-04-28 after Phase 210 merge-gate completion.*

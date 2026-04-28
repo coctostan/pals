@@ -209,7 +209,7 @@ None.
 | Branch | `feature/210-workflow-resource-capsule-contract-baseline` during APPLY/UNIFY. |
 | PR | #125 — https://github.com/coctostan/pals/pull/125 |
 | CI before merge | Passing: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS. |
-| Merge gate | Pending at SUMMARY draft time; final STATE/SUMMARY Git evidence is updated after `gh pr merge` and local base sync. |
+| Merge gate | PR #125 merged via squash as `3a03d315`; local `main` synced with `origin/main`; feature branch deleted remotely. |
 
 ## Next Phase Handoff
 
