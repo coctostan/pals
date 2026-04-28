@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.47 Artifact-Slice Contract Hardening**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete
+Status: ✅ Complete
+Phases: 4 of 4 complete — 2026-04-28
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 202 | Slice Inventory + Contract Baseline | 1/1 | ✅ Complete | 2026-04-27 |
 | 203 | Runtime Slice Hardening | 1/1 | ✅ Complete | 2026-04-27 |
 | 204 | Documentation + Skill Map Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
-| 205 | Validation + Evidence Reconciliation | TBD | Not started | - |
+| 205 | Validation + Evidence Reconciliation | 1/1 | ✅ Complete | 2026-04-28 |
 
 ### Phase 202: Slice Inventory + Contract Baseline
 Focus: Define the named artifact-slice inventory, stable schema fields, freshness/bounds/fallback rules, protected files, validation classes, and non-goals before runtime hardening begins.
@@ -53,7 +53,7 @@ Plans: 204-01 complete — surfaced artifact-slice orientation-aid and full-read
 
 ### Phase 205: Validation + Evidence Reconciliation
 Focus: Add or adjust runtime-lens validation markers, preserve Pi and cross-harness command-output evidence, reconcile module/GitHub Flow proof, and hand off safely to the next Pi-native build milestone.
-Plans: TBD (ready for /paul:plan)
+Plans: 205-01 complete — added focused artifact-slice marker checks in `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`, updated current evidence baseline wording in `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md`, preserved command-output/module/GitHub Flow proof without runtime or lifecycle-authority changes, local validation passed Pi 188/188 and cross-harness 104/104, and PR #119 merged.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -61,9 +61,10 @@ Plans: TBD (ready for /paul:plan)
 | v2.44 PALS Context Optimization — Process & Artifacts | 2026-04-27 | 188-191 | Reduced recurring PALS context cost across wrappers, hot artifacts, workflow references, and validation guardrails. | [archive](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md) |
 | v2.45 Pi-Native PALS Architecture | 2026-04-27 | 192-196 | Repositioned PALS around Pi as the supported runtime, mapped Pi capabilities, designed context-efficiency architecture, validated artifact-slice context loading, and produced the final Pi-native architecture proposal. | active artifacts |
 | v2.46 Pi-Native Implementation Planning | 2026-04-27 | 197-201 | Converted v2.45 architecture into implementation findings, workstreams, sequencing, validation/evidence strategy, and a final executable Pi-native implementation-plan proposal. | active artifacts |
+| v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | 202-205 | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback across contract baseline, runtime hardening, docs/skill-map surfacing, and validation/evidence reconciliation. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 204 complete; Phase 205 ready to plan.*
+*Last updated: 2026-04-28 — v2.47 complete; next milestone decision pending.*
