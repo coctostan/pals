@@ -12,7 +12,7 @@ Milestone: v2.48 Guided Workflow Evidence Hardening
 Phase: 208 of 209 (Documentation + Validation Surfacing) — Ready to plan
 Plan: Not started
 Status: Ready for PLAN
-Last activity: 2026-04-28T12:55:46Z — Completed Phase 207 UNIFY artifacts; PR #122 merge gate pending final metadata push
+Last activity: 2026-04-28T12:58:59Z — Phase 207 PR #122 merged; local main synced; ready to plan Phase 208
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -65,7 +65,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 205 reconciled validation/evidence markers for the hardened artifact-slice surfaces: Pi validation now passes 188/188, cross-harness validation passes 104/104, the artifact-slice contract records current baselines, and PR #119 merged with Socket checks passing.
 - v2.48 has been created as the second Pi-native build milestone after v2.46: Guided Workflow Evidence Hardening will prove explicit canonical transcript replies, no-auto-continue behavior, no UI-only lifecycle decisions, checkpoint/approval blocking, and merge-gate routing evidence before broader workflow/resource capsules or helper packet/report compression.
 - Phase 206 created and unified `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`, defining guided workflow moment inventory, canonical transcript replies, explicit no-auto/no-UI-only boundaries, validation classes, failure conditions, and Phase 207/208/209 handoffs; marker greps passed, Pi validation passed 188/188, cross-harness validation passed 104/104, and PR #121 merge gate was handled during UNIFY.
-- Phase 207 completed runtime hardening in `drivers/pi/extensions/pals-hooks.ts` with contract-backed `merge-gate-routing`, display-only guided workflow config handling, explicit confirm/select-only canonical reply delivery, notify-only no-reply behavior, and durable no-auto/no-UI-only/no-inferred-merge markers; `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi validation 188/188, and cross-harness validation 104/104 passed; PR #122 is open with Socket checks passing pending final merge gate.
+- Phase 207 completed runtime hardening in `drivers/pi/extensions/pals-hooks.ts` with contract-backed `merge-gate-routing`, display-only guided workflow config handling, explicit confirm/select-only canonical reply delivery, notify-only no-reply behavior, and durable no-auto/no-UI-only/no-inferred-merge markers; `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi validation 188/188, and cross-harness validation 104/104 passed; PR #122 merged via squash as `688532cc`.
 
 ### Current Decisions
 
@@ -146,22 +146,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/207-runtime-guided-reply-hardening
-Last commit: pending UNIFY metadata commit after `a5118652` — feat(207-01): guard guided canonical replies
-PR: #122 OPEN — https://github.com/coctostan/pals/pull/122
-CI: passing for PR #122 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed marker greps, installer, Pi 188/188, and cross-harness 104/104
-Working tree: dirty with Phase 207 UNIFY/transition metadata ready to commit and push
-Prior PRs: #121 merged (Phase 206 guided workflow evidence contract baseline); #120 merged (Phase 205 lifecycle finalization); #119 merged (Phase 205 validation/evidence source changes); #118 merged (Phase 204 docs/skill-map surfacing); #117 merged (Phase 203 runtime slice hardening); #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); earlier PR history archived in STATE history.
+Branch: main
+Last commit: 688532cc — docs(207-01): complete runtime guided reply hardening (#122)
+PR: #122 MERGED — https://github.com/coctostan/pals/pull/122
+CI: passed for PR #122 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed marker greps, installer, Pi 188/188, and cross-harness 104/104
+Working tree: dirty only with post-merge-gate lifecycle evidence updates
+Prior PRs: #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); #120 merged (Phase 205 lifecycle finalization); #119 merged (Phase 205 validation/evidence source changes); #118 merged (Phase 204 docs/skill-map surfacing); #117 merged (Phase 203 runtime slice hardening); #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T12:55:46Z
-Stopped at: Phase 207 complete; PR #122 merge gate pending final metadata commit/push
-Next action: Complete GitHub Flow merge gate for PR #122, then plan Phase 208
-Resume file: .paul/phases/207-runtime-guided-reply-hardening/207-01-SUMMARY.md
+Last session: 2026-04-28T12:58:59Z
+Stopped at: Phase 207 complete; PR #122 merged and main synced
+Next action: Run /paul:plan for Phase 208 Documentation + Validation Surfacing
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 207 runtime implementation is complete in `drivers/pi/extensions/pals-hooks.ts` and committed on `feature/207-runtime-guided-reply-hardening` (`210bf9f0`, `a5118652`).
-- `207-01-SUMMARY.md`, `.paul/QUALITY-HISTORY.md`, `.paul/CODI-HISTORY.md`, STATE/ROADMAP/PROJECT/MILESTONES, and archived handoff metadata are ready for UNIFY commit.
-- PR #122 is open: https://github.com/coctostan/pals/pull/122; Socket checks are passing.
+- Phase 207 runtime implementation is complete in `drivers/pi/extensions/pals-hooks.ts` and merged via PR #122 as `688532cc`.
 - Verification evidence: focused marker greps passed; `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed; Pi validation passed 188/188; cross-harness validation passed 104/104.
-- After metadata commit/push and merge, sync `main`, record final merge-gate state, then plan Phase 208 Documentation + Validation Surfacing.
+- Phase 208 should surface runtime guarantees in Pi extension docs, skill map, guided workflow settings documentation, and focused validation markers without expanding into capsules/helper compression/validation classification/legacy cleanup.
+- Ready for `/paul:plan` for Phase 208 Documentation + Validation Surfacing.

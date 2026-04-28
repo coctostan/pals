@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.48 Guided Workflow Evidence Hardening**
 Status: 🚧 In progress
-Phases: 2 of 4 complete — started 2026-04-28; Phase 208 ready to plan after PR #122 merge gate
+Phases: 2 of 4 complete — started 2026-04-28; Phase 208 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -45,11 +45,11 @@ Plans: 206-01 complete — created `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONT
 
 ### Phase 207: Runtime Guided Reply Hardening
 Focus: Harden repo-source Pi extension guided workflow behavior so plan review, APPLY approval, checkpoint choices, resume-next, continue-to-UNIFY, phase/milestone transition, and merge-gate routing remain explicit canonical user-message replies with no auto-approval, no auto-continue, no skipped checkpoints, and no UI-only lifecycle decisions.
-Plans: 207-01 complete — `.paul/phases/207-runtime-guided-reply-hardening/207-01-PLAN.md`; runtime hardening committed on PR #122 with Pi 188/188 and cross-harness 104/104 passing; merge gate pending final metadata push.
+Plans: 207-01 complete — `.paul/phases/207-runtime-guided-reply-hardening/207-01-PLAN.md`; runtime hardening merged via PR #122 as `688532cc`; Pi 188/188 and cross-harness 104/104 passing.
 
 ### Phase 208: Documentation + Validation Surfacing
 Focus: Surface guided workflow evidence rules in Pi extension docs, skill map, and guided workflow settings documentation while adding focused validation markers for canonical replies, no-auto/no-UI-only boundaries, checkpoint blocking, and command-output truth.
-Plans: Not started — ready to plan after PR #122 merge gate completion.
+Plans: Not started — ready to plan.
 
 ### Phase 209: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile guided workflow validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
@@ -67,4 +67,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 207 complete; Phase 208 ready to plan after PR #122 merge gate.*
+*Last updated: 2026-04-28 — Phase 207 complete; Phase 208 ready to plan.*

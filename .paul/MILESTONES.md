@@ -69,7 +69,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.48 Guided Workflow Evidence Hardening is active. Phases 206 and 207 are complete; Phase 208 Documentation + Validation Surfacing is ready to plan after PR #122 merge-gate completion.
+v2.48 Guided Workflow Evidence Hardening is active. Phases 206 and 207 are complete; Phase 208 Documentation + Validation Surfacing is ready to plan.
 
 ## Archive
 
