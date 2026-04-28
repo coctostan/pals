@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.47 Artifact-Slice Contract Hardening**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 202 | Slice Inventory + Contract Baseline | 1/1 | ✅ Complete | 2026-04-27 |
 | 203 | Runtime Slice Hardening | 1/1 | ✅ Complete | 2026-04-27 |
-| 204 | Documentation + Skill Map Surfacing | TBD | Ready to plan | - |
+| 204 | Documentation + Skill Map Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
 | 205 | Validation + Evidence Reconciliation | TBD | Not started | - |
 
 ### Phase 202: Slice Inventory + Contract Baseline
@@ -49,11 +49,11 @@ Plans: 203-01 complete — hardened repo-source Pi artifact-slice runtime output
 
 ### Phase 204: Documentation + Skill Map Surfacing
 Focus: Update Pi extension documentation and skill-map surfacing so artifact slices are documented as orientation aids and full reads remain required for edits, lifecycle writes, stale facts, ambiguity, and decisions.
-Plans: TBD (next: /paul:plan)
+Plans: 204-01 complete — surfaced artifact-slice orientation-aid and full-read fallback guidance in `README.md`, `drivers/pi/extensions/README.md`, and `drivers/pi/skill-map.md`; marker grep passed; local validation passed Pi 187/187 and cross-harness 100/100; PR #118 merged.
 
 ### Phase 205: Validation + Evidence Reconciliation
 Focus: Add or adjust runtime-lens validation markers, preserve Pi and cross-harness command-output evidence, reconcile module/GitHub Flow proof, and hand off safely to the next Pi-native build milestone.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (ready for /paul:plan)
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -66,4 +66,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-27 — Phase 203 complete and merged; Phase 204 ready to plan.*
+*Last updated: 2026-04-28 — Phase 204 complete; Phase 205 ready to plan.*
