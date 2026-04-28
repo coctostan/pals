@@ -11,8 +11,8 @@ See: .paul/PROJECT.md (updated 2026-04-28 after Phase 210 Workflow/Resource Caps
 Milestone: v2.49 Workflow/Resource Capsule Contract
 Phase: 211 of 213 (Runtime Capsule Loading Hardening) — Complete
 Plan: 211-01 complete
-Status: Loop complete; ready for Phase 212 planning after merge gate
-Last activity: 2026-04-28T17:51:49Z — Created .paul/phases/211-runtime-capsule-loading-hardening/211-01-SUMMARY.md and completed UNIFY reconciliation
+Status: Loop complete; ready for Phase 212 planning
+Last activity: 2026-04-28T17:53:48Z — PR #126 merged and Phase 211 merge gate complete
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -21,7 +21,7 @@ Progress:
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.49 Workflow/Resource Capsule Contract: [█████░░░░░] 50% (2 of 4 phases complete; Phase 212 ready to plan after merge gate)
+- v2.49 Workflow/Resource Capsule Contract: [█████░░░░░] 50% (2 of 4 phases complete; Phase 212 ready to plan)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -164,22 +164,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/211-runtime-capsule-loading-hardening
-Last commit: a59afe91 — feat(211-01): add workflow resource capsules
-PR: #126 OPEN — https://github.com/coctostan/pals/pull/126
-CI: pending/unavailable at APPLY postflight; local validation passed focused marker greps, installer verification, Pi 193/193, and cross-harness 109/109
-Working tree: dirty with post-APPLY lifecycle artifacts only (`.paul/*`); runtime source committed on feature branch
-Prior PRs: #126 open (Phase 211 runtime capsule loading hardening APPLY); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
+Branch: main
+Last commit: e561e463 — feat(211-01): runtime capsule loading hardening (#126)
+PR: #126 MERGED — https://github.com/coctostan/pals/pull/126
+CI: passed for PR #126 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, installer verification, Pi 193/193, and cross-harness 109/109
+Working tree: clean after merge-gate lifecycle evidence updates
+Prior PRs: #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T17:51:49Z
-Stopped at: Completed Phase 211 Plan 211-01 UNIFY; merge gate in progress
-Next action: Complete GitHub Flow merge gate for PR #126, then plan Phase 212 Documentation + Validation Surfacing
+Last session: 2026-04-28T17:53:48Z
+Stopped at: Phase 211 complete; PR #126 merged
+Next action: Run /paul:plan for Phase 212 Documentation + Validation Surfacing
 Resume file: .paul/phases/211-runtime-capsule-loading-hardening/211-01-SUMMARY.md
 Resume context:
 - Phase 211 SUMMARY `.paul/phases/211-runtime-capsule-loading-hardening/211-01-SUMMARY.md` reconciles plan vs actual results.
 - Runtime source commit `a59afe91` added bounded workflow/resource capsules with repo/logical installed-resource citations, source type, freshness, bounds, fallback, and `Derived aid only` markers.
 - Validation passed: focused source/safety marker greps, `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, installed-copy marker greps, Pi 193/193, cross-harness 109/109, and Workguard scope report.
 - Post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`.
-- PR #126 is open at https://github.com/coctostan/pals/pull/126 with Socket checks passing before merge gate.
+- PR #126 merged at 2026-04-28T17:53:48Z; main is synced at `e561e463`.

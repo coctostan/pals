@@ -172,7 +172,7 @@ None.
 | Implementation commit | `a59afe91 feat(211-01): add workflow resource capsules` |
 | PR | #126 — https://github.com/coctostan/pals/pull/126 |
 | PR checks before merge | Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS |
-| Merge result | Pending merge gate finalization; PR checks were passing before merge. |
+| Merge result | PR #126 merged via squash at 2026-04-28T17:53:48Z; main synced at `e561e463`. |
 
 ## Skill Audit
 
