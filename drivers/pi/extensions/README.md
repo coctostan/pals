@@ -48,11 +48,15 @@ The always-visible lifecycle surface stays centered on milestone, phase, loop, a
 These shortcuts are entry points, not persistent widget rows. They stay adapter-only: they route into the existing `/paul-*` wrapper layer, which in turn routes to canonical `/skill:paul-*` entries. They do not create new workflow semantics or Pi-owned lifecycle truth.
 ## Guided Workflow UX
 
-The extension adds a bounded guided workflow layer for canonical PALS lifecycle moments already emitted by shared workflows. It inspects recent assistant output plus `.paul/STATE.md` for stable markers such as `Would you like to see the plan?`, `Continue to APPLY`, `Continue to UNIFY`, `CHECKPOINT:`, and `▶ NEXT:`.
+The extension adds a bounded guided workflow layer for canonical PALS lifecycle moments already emitted by shared workflows. It inspects recent assistant output plus `.paul/STATE.md` for stable markers such as `Would you like to see the plan?`, `Continue to APPLY`, `Continue to UNIFY`, `CHECKPOINT:`, `▶ NEXT:`, and GitHub Flow branch/PR/CI/merge-gate route prompts.
 
-When one of those moments appears, Pi may use lightweight native surfaces such as `notify`, `confirm`, or `select` to help the user respond. If the user explicitly continues, the extension routes the exact canonical reply back through normal user-message flow via `pi.sendUserMessage(...)` (`1`, `approved`, `yes`, selected option id, etc.).
+Supported guided moments are `plan-review`, `apply-approval`, `checkpoint-decision`, `checkpoint-human-verify`, `checkpoint-human-action`, `resume-next`, `continue-to-unify`, `phase-transition`, `milestone-transition`, and `merge-gate-routing`.
 
-This layer is additive only: it never auto-continues a workflow, never skips human verification or human-action checkpoints, and never stores a Pi-owned workflow state. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
+When one of those moments appears, Pi may use lightweight native surfaces such as `notify`, `confirm`, or `select` to help the user respond. If the user explicitly continues, `sendCanonicalWorkflowResponse` routes the exact canonical reply back through normal user-message flow via `pi.sendUserMessage(...)` (`1`, `approved`, `yes`, selected option id, etc.), using follow-up delivery only when the parent context is already busy. An explicit confirm/select user action is required before any canonical transcript reply is sent.
+
+This layer is additive only: it never auto-approves, never auto-continues a workflow, never skips human verification or human-action checkpoints, never treats UI state as a lifecycle decision, and never stores a Pi-owned workflow state. Notify-only mode never sends a canonical reply. Merge-gate routing is notify/select-only route assistance; Pi must not run git/gh commands, bypass CI or review checks, or infer merge intent from displayed branch/PR/CI status.
+
+Shared `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, transcript-visible canonical replies, GitHub Flow command evidence, and validation command output remain authoritative. Widgets, notifications, runtime memory, context payloads, and helper transcripts are not a hidden Pi state or Pi-owned lifecycle/module/validation ledger.
 
 ## Artifact-Slice Context Loading
 

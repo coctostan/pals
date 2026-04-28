@@ -16,6 +16,7 @@ In Pi:
 - planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
 - delegated APPLY stays task-bounded: Pi may surface `pals-implementer`, but parent APPLY keeps verification, fallback, checkpoints, module gates, and `.paul/*` authority; the helper is only for eligible bounded repo-local work
 - artifact-slice loading is an adapter-side context aid behind explicit `/paul-*` activation: implemented slices are `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet`; they are source-cited, freshness-marked, bounded, read-only, disposable, labeled `Derived aid only`, and never a new skill, workflow authority, hidden Pi state, or replacement for a full authoritative read
+- guided workflow UX is an adapter-side reply-routing aid, not a standalone skill or workflow authority: it may surface `plan-review`, `apply-approval`, checkpoint, resume-next, continue-to-UNIFY, phase/milestone transition, and `merge-gate-routing` prompts, but it sends canonical transcript replies only after explicit confirm/select user action; notify-only mode sends no reply, and no auto-approval, no auto-continue, no skipped checkpoints, no UI-only lifecycle decisions, and no inferred merge intent are allowed
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
 |------------|------------|--------------------|-----------------|
@@ -103,7 +104,7 @@ Planning-oriented Pi entry points stay aligned with shared workflow truth:
 - `init`, `discuss`, `milestone`, and `plan` all respect `planning.default_collaboration`
 - each run may keep the default or override it to `low`, `medium`, or `high`
 - planning runs explicitly distinguish `exploratory` vs `direct-requirements`
-- Pi guided workflow UX may surface the review menu (`Quick recap`, `Detailed recap`, `Full plan`, `No review needed`) but still sends canonical numeric replies through normal message flow
+- Pi guided workflow UX may surface the review menu (`Quick recap`, `Detailed recap`, `Full plan`, `No review needed`) but still sends canonical numeric replies through normal message flow only after explicit confirm/select user action; UI state alone is not lifecycle evidence
 
 ## Design Decisions
 

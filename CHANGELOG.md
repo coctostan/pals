@@ -4,6 +4,9 @@ All notable changes to PALS are documented here. Format follows [Keep a Changelo
 
 ## [Unreleased]
 
+### Added
+- Guided workflow evidence surfacing in Pi docs, skill map, guided_workflow settings docs, and validation markers for canonical transcript replies, explicit confirm/select behavior, notify-only no-reply behavior, no auto-approval, no auto-continue, no skipped checkpoints, no UI-only lifecycle decisions, no inferred merge intent, and command-output truth.
+
 ### Changed
 - Pi installs now emit the `CODI is enabled but no codegraph index detected` recommendation when `.codegraph/graph.db` is absent, and CODI docs now clarify the value envelope plus the `resolved-with-call-sites only` success-log convention.
 
