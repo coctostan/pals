@@ -15,7 +15,7 @@ In Pi:
 - the visible lifecycle surface stays centered on milestone, phase, loop, and next action; shortcuts remain separate routing affordances rather than extra persistent panel rows
 - planning-oriented wrappers surface the shared collaboration model: `planning.default_collaboration`, per-run override, `exploratory` vs `direct-requirements`, and the 4-option review menu
 - delegated APPLY stays task-bounded: Pi may surface `pals-implementer`, but parent APPLY keeps verification, fallback, checkpoints, module gates, and `.paul/*` authority; the helper is only for eligible bounded repo-local work
-- artifact-slice loading is an adapter-side context aid behind explicit `/paul-*` activation: slices are source-cited, freshness-marked, bounded, read-only, and never a new skill, workflow authority, hidden Pi state, or replacement for a full authoritative read
+- artifact-slice loading is an adapter-side context aid behind explicit `/paul-*` activation: implemented slices are `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet`; they are source-cited, freshness-marked, bounded, read-only, disposable, labeled `Derived aid only`, and never a new skill, workflow authority, hidden Pi state, or replacement for a full authoritative read
 
 | Pi Command | Skill Name | Kernel Workflow(s) | Canonical Entry |
 |------------|------------|--------------------|-----------------|

@@ -4,24 +4,24 @@
 
 See: .paul/PROJECT.md (updated 2026-04-27 after Phase 202 contract baseline completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.47 Artifact-Slice Contract Hardening is in progress; Phase 202 is complete and Phase 203 Runtime Slice Hardening is ready to plan.
+**Current focus:** v2.47 Artifact-Slice Contract Hardening is in progress; Phase 203 Runtime Slice Hardening Plan 203-01 UNIFY completed and is at the GitHub Flow merge gate.
 
 ## Current Position
 
 Milestone: v2.47 Artifact-Slice Contract Hardening
-Phase: 203 of 205 (Runtime Slice Hardening) — Ready to plan
-Plan: Not started
-Status: Ready for Phase 203 PLAN
-Last activity: 2026-04-27T23:05:00Z — Phase 202 Plan 202-01 UNIFY completed and transitioned to Phase 203 planning
+Phase: 203 of 205 (Runtime Slice Hardening) — Complete
+Plan: 203-01 complete
+Status: UNIFY complete; GitHub Flow merge gate pending CI/merge
+Last activity: 2026-04-27T23:55:00Z — Created .paul/phases/203-runtime-slice-hardening/203-01-SUMMARY.md; post-unify history updated; merge gate pending PR #117 CI/merge
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
 - v2.45 Pi-Native PALS Architecture: [██████████] 100% (5 of 5 phases complete; final architecture proposal complete)
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
-- v2.47 Artifact-Slice Contract Hardening: [███░░░░░░░] 25% (1 of 4 phases complete; ready for Phase 203 planning)
+- v2.47 Artifact-Slice Contract Hardening: [█████░░░░░] 50% (2 of 4 phases complete after Phase 203 merge gate)
 - Phase 202 Slice Inventory + Contract Baseline: [██████████] 100% complete — artifact-slice contract baseline created and unified
-- Phase 203 Runtime Slice Hardening: [░░░░░░░░░░] 0% (ready to plan)
+- Phase 203 Runtime Slice Hardening: [██████████] 100% (UNIFY complete; merge gate pending)
 - Phase 197 v2.45 Findings Triage: [██████████] 100% complete — findings triage artifact created and unified
 - Phase 198 Implementation Workstream Design: [██████████] 100% complete — workstream design artifact unified
 - Phase 199 Sequencing + Dependency Plan: [██████████] 100% complete — sequencing/dependency artifact unified
@@ -33,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for Phase 203 PLAN]
+  ✓        ✓        ✓     [Loop complete - merge gate pending]
 ```
 
 ## Accumulated Context
@@ -62,6 +62,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 201 created and unified `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md`, the final v2.46 implementation-plan proposal recommending Artifact-Slice Contract Hardening first, Guided Workflow Evidence Hardening second, Workflow/Resource Capsule Contract third, Delegated APPLY Packet/Report Contract fourth, Pi-Native Validation Classification fifth, and Legacy Retention / Install-Surface Cleanup last while preserving docs-only scope and command-output validation truth.
 - v2.47 has been created as the first Pi-native build milestone after v2.46: Artifact-Slice Contract Hardening will harden the activation-gated, bounded, source-cited, freshness-aware artifact-slice contract and full-read fallback before broader capsules, helper compression, validation classification, or legacy cleanup.
 - Phase 202 created and unified `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md`, defining the named slice inventory, stable output schema, freshness/bounds/fallback rules, validation classes, marker-check families, failure conditions, durable evidence requirements, and Phase 203 runtime-hardening handoff while preserving docs-only scope and green validation.
+- Phase 203 APPLY hardened the repo-source Pi artifact-slice runtime for `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet`; updated Pi extension docs and skill map; extended runtime-lens validation markers; final validation passed Pi 187/187 and cross-harness 100/100.
 
 ### Current Decisions
 
@@ -115,6 +116,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 200: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 - Skill audit Phase 201: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
 - Skill audit Phase 202: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY.
+- Skill audit Phase 203 APPLY: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-task and post-apply validation passed with no regression. Minor adaptation: Task 3 tightened `drivers/pi/extensions/pals-hooks.ts` authority wording to add the enforced no-hidden-persistence marker.
 
 ### Deferred Issues
 
@@ -131,20 +133,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: current main HEAD — merge-gate state recorded after PR #116 squash commit `8c7932cd`
-PR: #116 MERGED — https://github.com/coctostan/pals/pull/116
-CI: passing — Socket Security Project Report SUCCESS; Pull Request Alerts SUCCESS; local validation passed Pi 186/186 and cross-harness 100/100
+Branch: feature/203-runtime-slice-hardening
+Last commit: e6fcbcdf — test(203-01): validate artifact slice contract markers
+PR: #117 OPEN — https://github.com/coctostan/pals/pull/117
+CI: local validation passed Pi 187/187 and cross-harness 100/100; remote Socket Security Project Report pending on PR #117; merge gate pending
 Prior PRs: #116 merged (Phase 202 artifact-slice contract baseline); #115 merged (Phase 201 final implementation plan proposal); #114 merged (Phase 200 validation evidence strategy); #113 merged (Phase 199 sequencing dependency plan); #109 merged (Phase 195 exploratory Pi-native spikes); #108 merged (Phase 194 context-efficiency architecture); #107 merged (Phase 193 runtime capability map and UNIFY artifacts); #106 merged (Phase 192 support-tier reset + UNIFY/transition artifacts); #105 merged (Phase 191 / v2.44 closed); #104 merged (Phase 190 Plan 190-02 APPLY/UNIFY artifacts); #103 merged (Phase 190 Plan 190-01 UNIFY artifacts); #102 merged (Phase 190 Plan 190-01 APPLY artifacts); #101 merged (Phase 189 Plan 189-01); #100 merged (Phase 188 Plan 188-01); #99 merged (Phase 187 Plan 187-01 / v2.43 closed); #98 merged (Phase 186 Plan 186-01); #97 merged (Phase 185 Plan 185-03); #96 merged (Phase 185 Plan 185-02); #95 merged (Phase 185 Plan 185-01); #94 merged (Phase 184); #93 merged (Phase 183 / v2.42 closed); #92 merged (Phase 182); #91 merged (Phase 181); #90 merged (Phase 180 / v2.41 closed)
 
 ## Session Continuity
 
-Last session: 2026-04-27T23:05:00Z
-Stopped at: Phase 202 complete, ready to plan Phase 203 Runtime Slice Hardening
-Next action: /paul:plan for Phase 203 Runtime Slice Hardening
-Resume file: .paul/phases/202-slice-inventory-contract-baseline/202-01-SUMMARY.md
+Last session: 2026-04-27T23:55:00Z
+Stopped at: Plan 203-01 UNIFY complete; GitHub Flow merge gate pending
+Next action: Wait for PR #117 CI to pass, then merge PR #117 and complete Phase 203 transition
+Resume file: .paul/phases/203-runtime-slice-hardening/203-01-SUMMARY.md
 Resume context:
-- Phase 202 Plan 202-01 created and unified `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md`.
-- Validation passed during UNIFY: marker checks, Pi validation 186/186, and cross-harness validation 100/100.
-- Post-unify WALT/SKIP/CODI/RUBY persistence is recorded in the Phase 202 SUMMARY and module histories.
-- PR #116 was squash-merged into `main` as `8c7932cd`; local `main` is synced and ready for Phase 203 planning.
+- Phase 203 Plan 203-01 UNIFY completed; SUMMARY created at `.paul/phases/203-runtime-slice-hardening/203-01-SUMMARY.md`.
+- Runtime slices are named/schema-shaped with full-read fallback and derived-only authority; docs and validation markers were updated.
+- Merge gate is waiting on PR #117 remote CI/merge; local validation passed Pi 187/187 and cross-harness 100/100.

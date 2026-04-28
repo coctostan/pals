@@ -56,11 +56,13 @@ This layer is additive only: it never auto-continues a workflow, never skips hum
 
 ## Artifact-Slice Context Loading
 
-The extension may add an `Artifact slices` block to the bounded PALS context payload, but only after an explicit `/paul-*` or `/skill:paul-*` activation signal. The slices are source-cited, freshness-marked, bounded by explicit constants, disposable, and read-only against repo-local `.paul/*` artifacts.
+The extension may add an `Artifact slices` block to the bounded PALS context payload, but only after an explicit `/paul-*` or `/skill:paul-*` activation signal. The implemented runtime slice subset is named `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet` when a current plan path is discoverable from `.paul/STATE.md`.
 
-Each emitted slice labels its `Source:` path and `Freshness:` marker, or reports an unavailable source. These slices are convenience context only: they never replace a full authoritative read for edits, lifecycle decisions, ambiguous or stale facts, contested facts, GitHub Flow gates, or PLAN/APPLY/UNIFY authority.
+Each emitted slice is activation-gated, source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. The schema exposes `Slice:`, `Source:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` markers so the payload is easy to audit without making Pi lifecycle state.
 
-This layer introduces no hidden Pi state, telemetry, persistence, or Pi-owned lifecycle ledger. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
+A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion.
+
+This layer introduces no hidden Pi state, telemetry, persistence, cache, report, or Pi-owned lifecycle/module/validation ledger. Shared `.paul/*` artifacts and shared markdown workflows remain authoritative.
 
 ## Live Module Visibility
 

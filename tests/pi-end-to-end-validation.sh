@@ -979,14 +979,20 @@ else
     tap_not_ok "Extension keeps one bounded automatic injection path and a support-only context hook" "Expected 0 messages.push, exactly one pals-context injection definition, and context normalization support"
 fi
 
-  # Artifact-slice spike contract: activation-gated, source-cited, fresh, bounded, and fallback-safe.
+  # Artifact-slice runtime-lens contract: activation-gated, source-cited, fresh, bounded, schema-shaped, and fallback-safe.
   tap_file_contains_all \
-    "Extension preserves artifact-slice context loading guardrails" \
+    "Extension preserves contract-shaped artifact-slice runtime guardrails" \
     "$EXT_SRC" \
     'Artifact slices (read-only, bounded)' \
+    'Slice: current-lifecycle-state' \
+    'Slice: active-roadmap-phase' \
+    'Slice: approved-plan-task-packet' \
     'Source:' \
     'Freshness:' \
+    'Bounds:' \
     'Fallback: full authoritative read' \
+    'Authority:' \
+    'Derived aid only' \
     'MAX_ARTIFACT_SLICE_CHARS' \
     'MAX_ARTIFACT_SLICE_LINES' \
     'shouldInjectPalsContext' \
@@ -994,20 +1000,44 @@ fi
     '.paul/ROADMAP.md'
 
   tap_file_contains_all \
-    "Extension docs preserve artifact-slice citation/freshness/fallback contract" \
-    "$REPO_ROOT/drivers/pi/extensions/README.md" \
-    'Artifact-Slice Context Loading' \
-    'source-cited' \
-    'freshness-marked' \
-    'full authoritative read' \
-    'no hidden Pi state'
+    "Extension runtime slices preserve full-read fallback and non-authority boundaries" \
+    "$EXT_SRC" \
+    'approved PLAN execution' \
+    'lifecycle writes' \
+    'stale/ambiguous/contested facts' \
+    'decisions' \
+    'GitHub Flow gates' \
+    'validation pass/fail' \
+    'module completion' \
+    'APPLY completion' \
+    'UNIFY completion' \
+    'No hidden persistence' \
+    'Pi-owned lifecycle/module/validation ledger'
 
   tap_file_contains_all \
-    "Skill map frames artifact slices as adapter-side context aid" \
-    "$REPO_ROOT/drivers/pi/skill-map.md" \
-    'adapter-side context aid' \
+    "Extension docs preserve named artifact-slice citation/freshness/fallback contract" \
+    "$REPO_ROOT/drivers/pi/extensions/README.md" \
+    'Artifact-Slice Context Loading' \
+    'current-lifecycle-state' \
+    'active-roadmap-phase' \
+    'approved-plan-task-packet' \
     'source-cited' \
     'freshness-marked' \
+    'Derived aid only' \
+    'full authoritative read' \
+    'no hidden Pi state' \
+    'Pi-owned lifecycle/module/validation ledger'
+
+  tap_file_contains_all \
+    "Skill map frames named artifact slices as adapter-side context aid" \
+    "$REPO_ROOT/drivers/pi/skill-map.md" \
+    'adapter-side context aid' \
+    'current-lifecycle-state' \
+    'active-roadmap-phase' \
+    'approved-plan-task-packet' \
+    'source-cited' \
+    'freshness-marked' \
+    'Derived aid only' \
     'hidden Pi state' \
     'full authoritative read'
 
