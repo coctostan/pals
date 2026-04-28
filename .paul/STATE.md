@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-28 after Phase 210 Workflow/Resource Capsule Contract Baseline completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.49 Workflow/Resource Capsule Contract is active; Phases 210-212 are complete; Phase 213 Evidence Reconciliation + Milestone Closure APPLY completed, awaiting UNIFY.
+**Current focus:** v2.49 Workflow/Resource Capsule Contract is in final UNIFY/merge-gate closure; Phase 213 Summary is created and PR #128 is ready for merge gate.
 
 ## Current Position
 
 Milestone: v2.49 Workflow/Resource Capsule Contract
-Phase: 213 of 213 (Evidence Reconciliation + Milestone Closure) — APPLY complete
-Plan: 213-01 applied; ready for UNIFY
-Status: APPLY complete; UNIFY pending
-Last activity: 2026-04-28T19:21:00Z — Applied .paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md; validation passed Pi 197/197 and cross-harness 112/112
+Phase: 213 of 213 (Evidence Reconciliation + Milestone Closure) — UNIFY merge gate
+Plan: 213-01 unified; merge gate pending
+Status: UNIFY summary complete; GitHub Flow merge gate pending
+Last activity: 2026-04-28T19:40:48Z — Created 213-01 SUMMARY; post-unify WALT/CODI/SKIP/RUBY reports recorded; PR #128 checks passing before merge gate
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -21,7 +21,7 @@ Progress:
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.49 Workflow/Resource Capsule Contract: [█████████░] 90% (3 of 4 phases complete; Phase 213 APPLY complete, UNIFY pending)
+- v2.49 Workflow/Resource Capsule Contract: [█████████░] 95% (4 of 4 phases unified; PR #128 merge gate pending)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -29,14 +29,14 @@ Progress:
 - Phase 210 Workflow/Resource Capsule Contract Baseline: [██████████] 100% complete
 - Phase 211 Runtime Capsule Loading Hardening: [██████████] 100% complete
 - Phase 212 Documentation + Validation Surfacing: [██████████] 100% complete
-- Phase 213 Evidence Reconciliation + Milestone Closure: [███████░░░] 70% APPLY complete — UNIFY pending
+- Phase 213 Evidence Reconciliation + Milestone Closure: [█████████░] 95% UNIFY complete — merge gate pending
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete; UNIFY pending]
+  ✓        ✓        ✓     [UNIFY complete; merge gate pending]
 ```
 
 ## Accumulated Context
@@ -169,21 +169,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/213-evidence-reconciliation-milestone-closure
-Last commit: APPLY postflight metadata commit on PR #128 branch — docs(213-01): record apply postflight state
+Last commit: APPLY postflight metadata commit on PR #128 branch; UNIFY summary pending commit
 PR: #128 OPEN — https://github.com/coctostan/pals/pull/128
-CI: pending for PR #128 - Socket Security Project Report IN_PROGRESS; Socket Security Pull Request Alerts IN_PROGRESS; local validation passed focused marker greps, installer verification, Pi 197/197, and cross-harness 112/112
-Working tree: clean after APPLY postflight commit/push
+CI: passed for PR #128 before UNIFY merge gate - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, installer verification, Pi 197/197, and cross-harness 112/112
+Working tree: UNIFY summary/history/state updates pending commit
 Prior PRs: #128 open (Phase 213 evidence reconciliation + milestone closure APPLY); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T19:21:00Z
-Stopped at: Plan 213-01 APPLY complete
-Next action: Run /paul:unify .paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md
-Resume file: .paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md
+Last session: 2026-04-28T19:40:48Z
+Stopped at: Plan 213-01 UNIFY summary complete; merge gate pending
+Next action: Commit/push UNIFY artifacts, then complete GitHub Flow merge gate for PR #128
+Resume file: .paul/phases/213-evidence-reconciliation-milestone-closure/213-01-SUMMARY.md
 Resume context:
 - Phase 213 PLAN `.paul/phases/213-evidence-reconciliation-milestone-closure/213-01-PLAN.md` scopes final evidence reconciliation and v2.49 milestone closure.
 - Planned source targets: `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md`, `tests/pi-end-to-end-validation.sh`, and `tests/cross-harness-validation.sh`.
 - Plan preserves Phase 211 runtime behavior and Phase 212 docs surfacing; no `drivers/pi/extensions/pals-hooks.ts`, README/Pi docs/skill-map, dependency, CI, helper, legacy, or broad validation-classification changes unless a future approved re-plan changes scope.
-- APPLY verification passed focused contract/validation marker greps, installer verification, Pi validation 197/197, cross-harness validation 112/112, module dispatch checks, and scope diff.
-- Phase 213 UNIFY should close v2.49 and hand off to the next Pi-native build milestone.
+- UNIFY summary records acceptance criteria, marker grep evidence, installer verification, Pi validation 197/197, cross-harness validation 112/112, module reports, count reconciliation, GitHub Flow evidence, and v2.49 closure handoff.
+- After PR #128 merge gate completes, transition should mark v2.49 complete and route to the next recommended milestone: Delegated APPLY Packet/Report Contract.
