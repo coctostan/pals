@@ -1093,6 +1093,27 @@ fi
     'command-output truth'
 
   tap_file_contains_all \
+    "Workflow/resource capsule contract records v2.49 closure evidence" \
+    "$REPO_ROOT/docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md" \
+    'Phase 210/211 historical baseline' \
+    'Pi 193/193' \
+    'cross-harness 109/109' \
+    'Phase 212 closure-entry baseline' \
+    'PR #127' \
+    'Pi 196/196' \
+    'cross-harness 111/111' \
+    'Pi 197/197' \
+    'cross-harness 112/112' \
+    'Workflow/Resource Capsule Context — Pi-Supported Runtime' \
+    'Workflow/Resource Capsule Context — Shared Invariant' \
+    'old count' \
+    'new count' \
+    'validation class affected' \
+    'shared-invariant preservation rationale' \
+    'Derived aid only' \
+    'full authoritative read'
+
+  tap_file_contains_all \
     "Workflow/resource capsule skill map frames capsules as adapter-side context aids" \
     "$REPO_ROOT/drivers/pi/skill-map.md" \
     'Workflow/Resource Capsule Context Surface' \
