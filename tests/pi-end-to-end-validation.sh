@@ -1041,6 +1041,22 @@ fi
     'hidden Pi state' \
     'full authoritative read'
 
+  tap_file_contains_all \
+    "Pi validation suite preserves artifact-slice evidence reconciliation markers" \
+    "$REPO_ROOT/tests/pi-end-to-end-validation.sh" \
+    'Artifact-slice runtime-lens contract' \
+    'activation-gated' \
+    'source-cited' \
+    'Freshness:' \
+    'Bounds:' \
+    'Fallback: full authoritative read' \
+    'Derived aid only' \
+    'No hidden persistence' \
+    'Pi-owned lifecycle/module/validation ledger' \
+    'GitHub Flow gates' \
+    'validation pass/fail' \
+    'module completion'
+
   # Guided workflow contract: detect canonical workflow markers from shared prompts
   if grep -q 'Continue to APPLY' "$EXT_SRC" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_SRC" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_SRC" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension detects canonical workflow markers for guided UX"

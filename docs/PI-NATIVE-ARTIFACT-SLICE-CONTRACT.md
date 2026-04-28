@@ -178,8 +178,8 @@ Runtime hardening must include marker checks for the families below. The exact c
 Future APPLY/UNIFY phases that implement this contract must preserve reviewer-auditable command output:
 
 - Marker greps over changed runtime/docs/validation files showing schema, fallback, source, freshness, bounds, read-only/no-hidden-state, and activation-gating markers.
-- `bash tests/pi-end-to-end-validation.sh` output with TAP summary counts and final pass/fail status; Phase 200/201/202 baseline is 186/186 before any new Phase 203 checks.
-- `bash tests/cross-harness-validation.sh` output with TAP summary counts and final pass/fail status; current baseline is 100/100 for shared invariants.
+- `bash tests/pi-end-to-end-validation.sh` output with TAP summary counts and final pass/fail status; Phase 200/201/202 baseline was 186/186 before Phase 203 runtime-lens checks, and the current post-Phase-203/204 baseline is Pi 187/187.
+- `bash tests/cross-harness-validation.sh` output with TAP summary counts and final pass/fail status; the current post-Phase-203/204 baseline is cross-harness 100/100 for shared invariants.
 - `git diff --stat` and changed-file review proving work stayed inside approved repo-source surfaces.
 - GitHub Flow evidence during UNIFY: current branch, base branch, ahead/behind state, PR URL/state, CI/check state, and merge-gate result.
 - Module evidence in PLAN/SUMMARY, including `[dispatch] ...` lines and WALT/TODD validation outcomes.

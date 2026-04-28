@@ -865,6 +865,54 @@ else
   tap_not_ok "Repo Pi docs preserve the bounded helper-agent contract" "Expected bounded helper-agent wording across drivers/pi/extensions/README.md and drivers/pi/skill-map.md"
 fi
 
+ARTIFACT_SLICE_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md"
+PI_VALIDATION_SUITE="$REPO_ROOT/tests/pi-end-to-end-validation.sh"
+CROSS_VALIDATION_SUITE="$REPO_ROOT/tests/cross-harness-validation.sh"
+
+tap_file_contains_all \
+  "Artifact-slice contract preserves command-output evidence reconciliation markers" \
+  "$ARTIFACT_SLICE_CONTRACT" \
+  'Command-Output Evidence' \
+  'command output' \
+  'TAP summary counts' \
+  'SUMMARY must state old count, new count' \
+  'old count' \
+  'new count' \
+  'validation class affected' \
+  'shared-invariant preservation rationale'
+
+tap_file_contains_all \
+  "Repo Pi docs preserve artifact-slice full-read and authority boundaries" \
+  "$README_PI" \
+  'current-lifecycle-state' \
+  'active-roadmap-phase' \
+  'approved-plan-task-packet' \
+  'source-cited' \
+  'freshness-marked' \
+  'Derived aid only' \
+  'full authoritative read' \
+  'no hidden Pi state' \
+  'Pi-owned lifecycle/module/validation ledger'
+
+tap_file_contains_all \
+  "Validation suites preserve artifact-slice evidence reconciliation markers" \
+  "$PI_VALIDATION_SUITE" \
+  'Artifact-slice runtime-lens contract' \
+  'Fallback: full authoritative read' \
+  'GitHub Flow gates' \
+  'validation pass/fail' \
+  'module completion'
+
+tap_file_contains_all \
+  "Cross-harness suite preserves artifact-slice shared-evidence markers" \
+  "$CROSS_VALIDATION_SUITE" \
+  'Artifact-slice contract preserves command-output evidence reconciliation markers' \
+  'command-output evidence' \
+  'module evidence' \
+  'GitHub Flow evidence' \
+  'no hidden Pi state' \
+  'Pi-owned lifecycle/module/validation ledger'
+
 # Kernel layered-artifact assets
 if [ -f "$REPO_ROOT/kernel/templates/PRD.md" ]; then
   tap_ok "Kernel includes PRD.md template"
