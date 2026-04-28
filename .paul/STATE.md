@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-28 after Phase 210 Workflow/Resource Capsule Contract Baseline completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.49 Workflow/Resource Capsule Contract is active; Phase 210 and Phase 211 are complete; Phase 212 Documentation + Validation Surfacing APPLY is complete and awaiting UNIFY.
+**Current focus:** v2.49 Workflow/Resource Capsule Contract is active; Phases 210-212 are complete; Phase 213 Evidence Reconciliation + Milestone Closure is ready to plan.
 
 ## Current Position
 
 Milestone: v2.49 Workflow/Resource Capsule Contract
-Phase: 212 of 213 (Documentation + Validation Surfacing) — APPLY complete
-Plan: 212-01 executed; awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-28T18:58:00Z — Completed Phase 212 docs/validation surfacing APPLY; Pi validation 196/196 and cross-harness validation 111/111 passed
+Phase: 213 of 213 (Evidence Reconciliation + Milestone Closure) — Ready to plan
+Plan: Not started
+Status: Phase 212 complete; ready for Phase 213 planning
+Last activity: 2026-04-28T19:08:00Z — Phase 212 unified; SUMMARY created at .paul/phases/212-documentation-validation-surfacing/212-01-SUMMARY.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -21,22 +21,22 @@ Progress:
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.49 Workflow/Resource Capsule Contract: [███████░░░] 75% (2 of 4 phases complete; Phase 212 APPLY complete, awaiting UNIFY)
+- v2.49 Workflow/Resource Capsule Contract: [███████░░░] 75% (3 of 4 phases complete; Phase 213 ready to plan)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
 - Phase 209 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 210 Workflow/Resource Capsule Contract Baseline: [██████████] 100% complete
 - Phase 211 Runtime Capsule Loading Hardening: [██████████] 100% complete
-- Phase 212 Documentation + Validation Surfacing: [████████░░] 80% apply complete — Plan 212-01 awaiting UNIFY
-- Phase 213 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
+- Phase 212 Documentation + Validation Surfacing: [██████████] 100% complete
+- Phase 213 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% ready to plan
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -76,7 +76,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.49 Workflow/Resource Capsule Contract has been created as the third Pi-native build milestone after v2.46: it will define and harden safe orientation capsules for installed resources without replacing authoritative workflow reads, blocking semantics, `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow evidence, or command-output validation truth.
 - Phase 210 completed the workflow/resource capsule contract baseline in `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md`: capsules are installed-resource orientation aids only, must expose source/type/freshness/bounds/fallback/`Derived aid only` markers, exclude STOP/DO NOT SKIP/checkpoint/lifecycle/module/GitHub Flow/validation authority, and require full authoritative reads before consequential workflow action; validation remained Pi 193/193 and cross-harness 109/109.
 - Phase 211 completed runtime capsule loading hardening in `drivers/pi/extensions/pals-hooks.ts`: the Pi runtime now emits bounded workflow/resource capsules after artifact slices only through explicit PALS activation; capsules include `Capsule:`, `Source:`, `Source type:`, `Freshness:`, `Bounds:`, `Fallback:`, and `Authority: Derived aid only` markers, cite repo/logical installed resources, degrade safely to full-read fallback, and preserve no hidden persistence/no lifecycle authority/no auto-approval/no skipped-checkpoint boundaries; validation remained Pi 193/193 and cross-harness 109/109.
-- Phase 212 APPLY surfaced workflow/resource capsule behavior in README/Pi docs/skill-map and validation suites without runtime edits: docs now name `plan-task-anatomy`, `checkpoint-type-orientation`, `module-dispatch-evidence-orientation`, and `github-flow-phase-orientation`; validation protects runtime/doc/schema/fallback/non-authority markers with `Workflow/Resource Capsule Context — Pi-Supported Runtime` and `Workflow/Resource Capsule Context — Shared Invariant`; focused greps passed; Pi validation increased 193→196 and passed 196/196; cross-harness validation increased 109→111 and passed 111/111.
+- Phase 212 completed docs and validation surfacing for workflow/resource capsules without runtime edits: README/Pi docs/skill-map now name `plan-task-anatomy`, `checkpoint-type-orientation`, `module-dispatch-evidence-orientation`, and `github-flow-phase-orientation`; validation protects runtime/doc/schema/fallback/non-authority markers with `Workflow/Resource Capsule Context — Pi-Supported Runtime` and `Workflow/Resource Capsule Context — Shared Invariant`; focused greps passed; Pi validation increased 193→196 and passed 196/196; cross-harness validation increased 109→111 and passed 111/111; SUMMARY `.paul/phases/212-documentation-validation-surfacing/212-01-SUMMARY.md` hands off to Phase 213 evidence reconciliation.
 
 ### Current Decisions
 
@@ -119,6 +119,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Close v2.48 with evidence reconciliation only and hand off to Workflow/Resource Capsule Contract | Phase 209 Plan 209-01 UNIFY | Guided Workflow Evidence Hardening is complete; future work should build workflow/resource capsule contracts without reopening runtime guided reply behavior, broad validation classification, helper compression, legacy cleanup, or lifecycle authority. |
 | Define workflow/resource capsule contract before runtime loading | Phase 210 Plan 210-01 UNIFY | Phase 211 must harden runtime capsule loading against `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md`, preserving installed-resource citations, schema markers, blocking-semantics exclusions, full-read fallback, command-output truth, and derived-only non-authority boundaries. |
 | Keep workflow/resource capsules as activation-gated derived aids with mandatory full-read fallback | Phase 211 Plan 211-01 UNIFY | Future capsule surfacing must cite repo/logical installed resources, stay bounded and fallback-safe, and never replace `.paul/*`, installed workflow/reference reads, module/GitHub Flow/validation evidence, checkpoints, approvals, parent-owned APPLY, or lifecycle writes. |
+| Use explicit workflow/resource capsule validation class names across docs and validation | Phase 212 Plan 212-01 UNIFY | Future capsule evidence should cite `Workflow/Resource Capsule Context — Pi-Supported Runtime` and `Workflow/Resource Capsule Context — Shared Invariant` when reconciling runtime/docs/shared-invariant marker coverage. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -149,6 +150,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 209: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. Validation count increase was expected and reconciled (Pi 192→193, cross-harness 108→109).
 - Skill audit Phase 210: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. Validation counts stayed stable (Pi 193/193, cross-harness 109/109). Active stale handoff archived after resume proceeded.
 - Skill audit Phase 211: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. DOCS drift was expected and deferred to Phase 212 by approved scope. ARCH/RUBY large-file debt remains pre-existing/future driver-quality scope.
+- Skill audit Phase 212: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. Validation count increase was expected and reconciled (Pi 193→196, cross-harness 109→111). Runtime source remained unchanged by approved adaptation.
 
 ### Deferred Issues
 
@@ -165,22 +167,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: e561e463 — feat(211-01): runtime capsule loading hardening (#126)
-PR: #126 MERGED — https://github.com/coctostan/pals/pull/126
-CI: passed for PR #126 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, installer verification, Pi 193/193, and cross-harness 109/109
-Working tree: clean after merge-gate lifecycle evidence updates
-Prior PRs: #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); #123 merged (Phase 208 documentation + validation surfacing); #122 merged (Phase 207 runtime guided reply hardening); #121 merged (Phase 206 guided workflow evidence contract baseline); earlier PR history archived in STATE history.
+Branch: feature/212-documentation-validation-surfacing
+Last commit: pending merge — Phase 212 UNIFY artifacts staged on PR #127
+PR: #127 OPEN — https://github.com/coctostan/pals/pull/127
+CI: passed for PR #127 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 196/196, and cross-harness 111/111
+Working tree: clean after Phase 212 UNIFY commit once staged/committed
+Prior PRs: #127 open (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T18:58:00Z
-Stopped at: Phase 212 APPLY complete
-Next action: Run /paul:unify .paul/phases/212-documentation-validation-surfacing/212-01-PLAN.md
-Resume file: .paul/phases/212-documentation-validation-surfacing/212-01-PLAN.md
+Last session: 2026-04-28T19:08:00Z
+Stopped at: Phase 212 complete, ready to plan Phase 213
+Next action: /paul:plan for Phase 213 Evidence Reconciliation + Milestone Closure
+Resume file: .paul/phases/212-documentation-validation-surfacing/212-01-SUMMARY.md
 Resume context:
-- Phase 212 APPLY completed docs and validation surfacing for workflow/resource capsules.
-- Modified approved source/doc targets only: `README.md`, `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, `tests/pi-end-to-end-validation.sh`, and `tests/cross-harness-validation.sh`.
+- Phase 212 completed docs and validation surfacing for workflow/resource capsules.
+- SUMMARY: `.paul/phases/212-documentation-validation-surfacing/212-01-SUMMARY.md`.
+- Validation count reconciliation: Pi baseline 193/193 → 196/196 (+3), cross-harness baseline 109/109 → 111/111 (+2).
 - Runtime source `drivers/pi/extensions/pals-hooks.ts` was not modified; validation adapted to existing Phase 211 runtime markers as approved by the user.
-- Validation count reconciliation for UNIFY: Pi baseline 193/193 → 196/196 (+3), cross-harness baseline 109/109 → 111/111 (+2).
-- Required UNIFY evidence includes focused docs/validation marker greps, `bash tests/pi-end-to-end-validation.sh`, `bash tests/cross-harness-validation.sh`, git diff scope, module dispatch reports, GitHub Flow PR/CI evidence, and Phase 213 handoff.
+- Phase 213 should reconcile final workflow/resource capsule baselines, PR #127 merge-gate evidence, and v2.49 milestone closure before routing to the next Pi-native build milestone.

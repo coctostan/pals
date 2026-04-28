@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.49 Workflow/Resource Capsule Contract**
 Status: 🚧 In progress
-Phases: 2 of 4 complete — started 2026-04-28; Phase 211 complete, Phase 212 APPLY complete and awaiting UNIFY
+Phases: 3 of 4 complete — started 2026-04-28; Phase 212 complete, Phase 213 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 211 | Runtime Capsule Loading Hardening | 1/1 | ✅ Complete | 2026-04-28 |
-| 212 | Documentation + Validation Surfacing | 1/1 | 🟠 APPLY complete | — |
-| 213 | Evidence Reconciliation + Milestone Closure | 0/1 | ⬜ Not started | — |
+| 212 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-28 |
+| 213 | Evidence Reconciliation + Milestone Closure | 0/1 | 🔵 Ready to plan | — |
 
 ### Phase 210: Workflow/Resource Capsule Contract Baseline
 Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
@@ -49,11 +49,11 @@ Plans: `211-01` complete; SUMMARY: `.paul/phases/211-runtime-capsule-loading-har
 
 ### Phase 212: Documentation + Validation Surfacing
 Focus: Surface workflow/resource capsule guarantees in Pi docs, skill map, and validation suites while adding focused marker checks for capsule eligibility, installed path citations, blocking-semantics exclusions, fallback behavior, and command-output truth.
-Plans: `212-01` APPLY complete, awaiting UNIFY. PLAN: `.paul/phases/212-documentation-validation-surfacing/212-01-PLAN.md`. Evidence: README/Pi docs/skill-map surfaced capsule inventory, schema, fallback, non-authority, and validation-class markers; Pi validation 196/196 and cross-harness validation 111/111 passed.
+Plans: `212-01` complete; SUMMARY: `.paul/phases/212-documentation-validation-surfacing/212-01-SUMMARY.md`. Evidence: README/Pi docs/skill-map surfaced capsule inventory, schema, fallback, non-authority, and validation-class markers; Pi validation 196/196 and cross-harness validation 111/111 passed; PR #127.
 
 ### Phase 213: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile workflow/resource capsule validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to the next Pi-native build milestone.
-Plans: Not started.
+Plans: Ready to plan.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -68,4 +68,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 212 APPLY complete, awaiting UNIFY.*
+*Last updated: 2026-04-28 — Phase 212 complete; Phase 213 ready to plan.*
