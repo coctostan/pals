@@ -121,6 +121,7 @@ type GuidedWorkflowMoment = {
     | "resume-next"
     | "phase-transition"
     | "milestone-transition"
+    | "merge-gate-routing"
     | "continue-to-unify";
   title: string;
   summary: string;
@@ -160,6 +161,7 @@ type GuidedWorkflowAutoPresent = {
   resume_next: boolean;
   phase_transition: boolean;
   milestone_transition: boolean;
+  merge_gate_routing: boolean;
 };
 
 type GuidedWorkflowConfig = {
@@ -176,7 +178,13 @@ const GUIDED_WORKFLOW_DEFAULTS: GuidedWorkflowAutoPresent = {
   resume_next: true,
   phase_transition: false,
   milestone_transition: false,
+  merge_gate_routing: true,
 };
+
+// Guided workflow runtime guardrails: no auto-approval, no auto-continue,
+// no skipped checkpoints, no UI-only lifecycle decisions, no inferred merge intent.
+// notify-only mode never sends a canonical reply; guided_workflow.auto_present is display behavior only.
+// Widgets, notifications, and runtime memory are not lifecycle authority; .paul/* artifacts stay authoritative.
 
 type CarlState = {
   stashedCmdCtx: any | undefined;
@@ -780,6 +788,26 @@ function detectExplicitCanonicalResponse(text: string): string | undefined {
   return undefined;
 }
 
+function isMergeGateRoutingPrompt(text: string): boolean {
+  const hasGitStateMarker = /(Git State|GitHub Flow|Merge gate|Branch:|Base:|PR:|CI:|Sync:)/i.test(text);
+  const hasMergeRouteMarker =
+    /merge-gate-routing|merge[- ]gate|Fix CI|CI:\s*(failing|passing|pending)|CI failing|CI passing|reviews? pending|ready to merge|Merge PR|gh pr|Update branch|behind base|rebase origin|delete branch|cleanup/i.test(
+      text,
+    );
+  return hasGitStateMarker && hasMergeRouteMarker;
+}
+
+function extractMergeGateRoutingSummary(text: string): string {
+  const nextAction = extractNextActionSummary(text);
+  if (nextAction !== "A PALS next action is available.") {
+    return nextAction;
+  }
+  return summarizeWorkflowPrompt(
+    text,
+    "GitHub Flow routing is visible; use only explicit workflow options or the canonical transcript prompt.",
+  );
+}
+
 function makeGuidedWorkflowSignature(kind: GuidedWorkflowMoment["kind"], state: PalsStateSnapshot, text: string): string {
   return compactWhitespace(
     `${kind} | ${state.phase ?? "unknown-phase"} | ${state.loop ?? "unknown-loop"} | ${text.slice(0, GUIDED_WORKFLOW_SIGNATURE_BYTES)}`,
@@ -787,7 +815,7 @@ function makeGuidedWorkflowSignature(kind: GuidedWorkflowMoment["kind"], state: 
 }
 
 // Guided workflow layer: detect canonical prompts like Continue to APPLY, Continue to UNIFY,
-// CHECKPOINT, and ▶ NEXT from recent assistant messages plus authoritative STATE.md context.
+// CHECKPOINT, ▶ NEXT, and merge-gate-routing handoffs from recent assistant messages plus authoritative STATE.md context.
 function detectGuidedWorkflowMoment(
   state: PalsStateSnapshot,
   recentAssistantTexts: string[],
@@ -915,6 +943,18 @@ function detectGuidedWorkflowMoment(
       };
     }
 
+    if (isMergeGateRoutingPrompt(text)) {
+      const options = parseGuidedWorkflowOptions(text);
+      return {
+        kind: "merge-gate-routing",
+        title: "GitHub Flow route",
+        summary: extractMergeGateRoutingSummary(text),
+        signature: makeGuidedWorkflowSignature("merge-gate-routing", state, text),
+        ui: options.length > 0 ? "select" : "notify",
+        options,
+      };
+    }
+
     if (text.includes("▶ NEXT:") && /Type\s+"yes"\s+to\s+proceed/i.test(text)) {
       return {
         kind: "resume-next",
@@ -957,6 +997,8 @@ function detectGuidedWorkflowMoment(
 }
 
 function sendCanonicalWorkflowResponse(pi: any, ctx: any, canonicalResponse?: string): void {
+  // Canonical guided workflow replies have one transcript-visible send path:
+  // explicit confirm/select result → sendCanonicalWorkflowResponse → pi.sendUserMessage.
   const response = compactWhitespace(canonicalResponse);
   if (!response) return;
 
@@ -978,11 +1020,18 @@ async function presentGuidedWorkflowMoment(
   const autoPresent = config ? shouldAutoPresent(config, moment.kind) : true;
 
   if (!autoPresent) {
-    // Notify-only mode: inform user of the workflow moment but do not auto-present interactive dialog
+    // guided_workflow.auto_present is display behavior only; disabling it never approves,
+    // continues, completes checkpoints, records validation, or creates lifecycle state.
     ctx.ui.notify(
       `PALS workflow: ${moment.title} — respond in the chat prompt when ready. ${moment.summary}`,
       "info",
     );
+    return;
+  }
+
+  if (moment.ui === "notify") {
+    // notify-only mode never sends a canonical reply and never creates UI-only lifecycle decisions.
+    ctx.ui.notify(`${moment.title}: ${moment.summary}`, "info");
     return;
   }
 
@@ -1002,6 +1051,7 @@ async function presentGuidedWorkflowMoment(
     const optionLabels = moment.options.map((option) => `[${option.id}] ${option.label}`);
     const choice = await ctx.ui.select(moment.title, optionLabels);
     const selected = moment.options.find((option) => choice === `[${option.id}] ${option.label}`);
+    // Arbitrary UI text is ignored; only displayed options mapped to known GuidedWorkflowOption ids can send.
     if (selected) {
       ctx.ui.notify(`PALS guided workflow → sending "${selected.canonicalResponse}"`, "success");
       sendCanonicalWorkflowResponse(pi, ctx, selected.canonicalResponse);
@@ -1058,6 +1108,8 @@ function loadGuidedWorkflowConfig(cwd: string): GuidedWorkflowConfig {
   }
 
   const autoPresent: GuidedWorkflowAutoPresent = { ...GUIDED_WORKFLOW_DEFAULTS };
+  // guided_workflow.auto_present changes only whether Pi displays a guided UI affordance;
+  // it must not skip prompts, mark approvals, persist checkpoint results, or infer merge intent.
   for (const key of Object.keys(GUIDED_WORKFLOW_DEFAULTS) as (keyof GuidedWorkflowAutoPresent)[]) {
     if (typeof gw[key] === "boolean") {
       autoPresent[key] = gw[key];
@@ -1068,7 +1120,7 @@ function loadGuidedWorkflowConfig(cwd: string): GuidedWorkflowConfig {
 }
 
 function shouldAutoPresent(config: GuidedWorkflowConfig, momentKind: GuidedWorkflowMoment["kind"]): boolean {
-  // Map hyphenated moment kind to underscored config key
+  // Map hyphenated moment kind to underscored display-config key; this is not lifecycle state.
   const configKey = momentKind.replace(/-/g, "_") as keyof GuidedWorkflowAutoPresent;
   return config.auto_present[configKey] ?? true;
 }
