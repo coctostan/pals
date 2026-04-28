@@ -12,7 +12,7 @@ Milestone: v2.50 Delegated APPLY Packet/Report Contract
 Phase: 215 of 217 (Runtime Delegation Packet/Report Hardening) — ready to plan
 Plan: Not started
 Status: Ready for next PLAN
-Last activity: 2026-04-28T20:49:02Z — Phase 214 complete; transitioned to Phase 215 planning
+Last activity: 2026-04-28T20:51:42Z — Phase 214 complete, PR #129 merged, transitioned to Phase 215 planning
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -180,20 +180,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/214-delegated-apply-packet-report-contract-baseline
-Last commit: pending Phase 214 metadata commit after UNIFY
-PR: #129 OPEN - https://github.com/coctostan/pals/pull/129
-CI: local validation passed Pi 197/197 and cross-harness 112/112; GitHub Socket checks passing before merge gate
-Working tree: Phase 214 UNIFY lifecycle metadata pending commit/merge gate
-Prior PRs: #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
+Branch: main
+Last commit: c70bba3a Phase 214: Delegated APPLY packet/report contract baseline (#129)
+PR: #129 MERGED — https://github.com/coctostan/pals/pull/129
+CI: local validation passed Pi 197/197 and cross-harness 112/112; GitHub Socket checks passed before merge
+Working tree: clean after merge-gate state update pending local metadata commit
+Prior PRs: #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T20:49:02Z
+Last session: 2026-04-28T20:51:42Z
 Stopped at: Phase 214 complete, ready to plan Phase 215
 Next action: Run /paul:plan for Phase 215 Runtime Delegation Packet/Report Hardening
 Resume file: .paul/phases/214-delegated-apply-packet-report-contract-baseline/214-01-SUMMARY.md
 Resume context:
-- Phase 214 created and unified `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`.
+- Phase 214 created and unified `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`; PR #129 merged as `c70bba3a`.
 - Phase 215 should implement runtime delegation packet/report hardening only after reading the Phase 214 contract and current ROADMAP/STATE.
 - Validation baseline remains Pi 197/197 and cross-harness 112/112.
