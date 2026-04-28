@@ -42,3 +42,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 208-01 | 2026-04-28 | skipped-no-symbols | — | — | — | — | n |
 | 209-01 | 2026-04-28 | skipped-no-symbols | — | — | — | — | n |
 | 210-01 | 2026-04-28 | injected | 4 | 0 | 9 | buildArtifactSlice, getArtifactSliceSpecs, renderArtifactSlices, buildPalsContextPayload | y |
+| 211-01 | 2026-04-28 | injected | 4 | 0 | 9 | buildPalsContextPayload, renderArtifactSlices, getArtifactSliceSpecs, buildArtifactSlice | y |
