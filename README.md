@@ -28,6 +28,7 @@ Driver inventory remains documented for maintenance context: Claude Code · Pi �
 
 That split keeps the operating model explicit. `/paul-*` remains the Pi-native command layer, `/skill:paul-*` remains the canonical workflow entry layer, and shared markdown workflows plus `.paul/*` remain the only lifecycle truth. Pi can expose bounded helper surfaces such as the repo-local `pals-implementer`, but it does not become the owner of PLAN/APPLY/UNIFY state.
 Pi may also inject bounded artifact-slice context after explicit `/paul-*` or `/skill:paul-*` activation. The implemented slices — `current-lifecycle-state`, `active-roadmap-phase`, and `approved-plan-task-packet` — are orientation aids only; full authoritative reads of the cited artifacts remain required before edits, approved PLAN execution, lifecycle writes, stale or ambiguous facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. See `drivers/pi/extensions/README.md` and `drivers/pi/skill-map.md` for operational details.
+Pi guided workflow UX is also a derived aid only. It may surface plan review, APPLY approval, checkpoint, resume-next, continue-to-UNIFY, phase/milestone transition, and merge-gate routing prompts, but it sends a canonical transcript reply only after explicit confirm/select user action. Notify-only mode sends no reply; no auto-approval, no auto-continue, no skipped checkpoints, no UI-only lifecycle decisions, and no inferred merge intent are allowed. GitHub Flow decisions still require git/gh command evidence plus workflow artifacts.
 That's the core loop. PALS tracks state, enforces quality, and manages context across sessions — you focus on the work.
 
 ## Architecture
@@ -62,7 +63,7 @@ PALS uses a three-layer stack inspired by operating system design:
 - **18 Modules** — From TDD enforcement (TODD) to accessibility auditing (ARIA), each module hooks into lifecycle events and contributes automatically
 - **GitHub Flow Enforcement** — Strict branch/PR/CI gating with merge gates, or advisory mode for lighter workflows
 - **Collaborative Planning** — Low/medium/high collaboration levels with 4-option review menu before execution
-- **Guided Workflow UX** (Pi) — Per-transition-type auto-approve config so users retain control at critical decision points
+- **Guided Workflow UX** (Pi) — Confirm/select assistance for canonical transcript replies at plan review, APPLY approval, checkpoints, continue-to-UNIFY, resume-next, phase/milestone transition, and merge-gate routing moments; display-only config never approves, continues, skips checkpoints, or infers merge intent
 - **Artifact-Slice Context Loading** (Pi) — Activation-gated, source-cited, freshness-marked orientation aids for lifecycle state, active roadmap phase, and approved plan task packets; never a replacement for full authoritative reads
 - **E2E Test Protocol** — Reusable methodology for validating PALS across 8 dimensions with structured reporting
 - **Session Continuity** — State tracked in `.paul/STATE.md` with handoff/resume support across sessions

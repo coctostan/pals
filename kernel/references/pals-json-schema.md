@@ -130,9 +130,11 @@ Values: `"low"`, `"medium"`, `"high"`.
 | `guided_workflow.auto_present.phase_transition` | bool | `false` | v2.30 |
 | `guided_workflow.auto_present.milestone_transition` | bool | `false` | v2.30 |
 
-Controls whether the Pi guided workflow extension auto-presents interactive dialogs for each transition type.
-- `false` = notify-only (user responds in chat prompt)
-- `true` = auto-present interactive confirm/select dialog
+Controls whether the Pi guided workflow extension auto-presents interactive dialogs for each transition type. These keys are display-only settings.
+- `false` = notify-only (user responds in chat prompt); notify-only mode sends no canonical reply.
+- `true` = auto-present interactive confirm/select dialog; the dialog still cannot approve, continue, complete checkpoints, infer merge intent, write lifecycle state, or replace artifacts/command output.
+
+`guided_workflow.auto_present` never changes lifecycle authority. No setting may create auto-approval, auto-continue, skipped checkpoints, UI-only lifecycle decisions, hidden Pi state, a Pi-owned lifecycle/module/validation ledger, or GitHub Flow readiness/merge evidence. Canonical transcript replies, `.paul/*` artifacts, PLAN/APPLY/UNIFY workflows, module reports, git/gh command evidence, and validation command output remain authoritative.
 
 ## integrations
 

@@ -1,5 +1,7 @@
 # Tool artifacts
 .codegraph/
+.pi/workguard/
+runs/workguards/
 
 # Scratch planning files
 github-flow-hardening-followup.md

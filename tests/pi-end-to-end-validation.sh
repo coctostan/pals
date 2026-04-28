@@ -1078,6 +1078,37 @@ fi
     tap_not_ok "Extension keeps guided workflow interpretation derived-only and non-persistent" "Expected session-derived inspection and no appendEntry-based workflow persistence"
   fi
 
+  # Guided UI Safety / Pi-Supported Runtime: Phase 207 hardening markers stay command-verifiable
+  tap_file_contains_all \
+    "Guided UI Safety markers protect canonical replies and no-auto boundaries" \
+    "$EXT_SRC" \
+    'merge-gate-routing' \
+    'sendCanonicalWorkflowResponse' \
+    'pi.sendUserMessage' \
+    'ctx.ui.confirm' \
+    'ctx.ui.select' \
+    'notify-only mode never sends a canonical reply' \
+    'no auto-approval' \
+    'no auto-continue' \
+    'no skipped checkpoints' \
+    'no UI-only lifecycle decisions' \
+    'no inferred merge intent'
+
+  tap_file_contains_all \
+    "Pi-Supported Runtime docs surface guided workflow reply evidence" \
+    "$REPO_ROOT/drivers/pi/extensions/README.md" \
+    'merge-gate-routing' \
+    'sendCanonicalWorkflowResponse' \
+    'explicit confirm/select user action' \
+    'Notify-only mode never sends a canonical reply' \
+    'never auto-approves' \
+    'never auto-continues' \
+    'never skips human verification or human-action checkpoints' \
+    'never treats UI state as a lifecycle decision' \
+    'infer merge intent' \
+    'GitHub Flow command evidence' \
+    'validation command output'
+
   # Live module visibility contract: bounded parser/renderer path for canonical workflow signals
   if grep -q 'extractRecentModuleActivity' "$EXT_SRC" 2>/dev/null \
     && grep -q 'renderModuleActivity' "$EXT_SRC" 2>/dev/null \
@@ -1201,6 +1232,33 @@ if grep -qi 'Guided Workflow UX' "$README_PI" && grep -qi 'checkpoint' "$README_
 else
   tap_not_ok "Extension README documents guided workflow guardrails" "Expected guided workflow, checkpoint, canonical reply, and authoritative wording in drivers/pi/extensions/README.md"
 fi
+
+tap_file_contains_all \
+  "Guided workflow docs document display-only config and no UI-only lifecycle authority" \
+  "$REPO_ROOT/kernel/references/pals-json-schema.md" \
+  'display-only settings' \
+  'notify-only mode sends no canonical reply' \
+  'cannot approve, continue, complete checkpoints, infer merge intent, write lifecycle state, or replace artifacts/command output' \
+  'No setting may create auto-approval' \
+  'auto-continue' \
+  'skipped checkpoints' \
+  'UI-only lifecycle decisions' \
+  'hidden Pi state' \
+  'Pi-owned lifecycle/module/validation ledger'
+
+tap_file_contains_all \
+  "Runtime Lens docs keep guided workflow assistance derived and auditable" \
+  "$SKILL_MAP" \
+  'adapter-side reply-routing aid' \
+  'canonical transcript replies' \
+  'explicit confirm/select user action' \
+  'notify-only mode sends no reply' \
+  'no auto-approval' \
+  'no auto-continue' \
+  'no skipped checkpoints' \
+  'no UI-only lifecycle decisions' \
+  'no inferred merge intent' \
+  'UI state alone is not lifecycle evidence'
 
 if grep -q 'Command → Skill → Workflow Mapping' "$SKILL_MAP" && grep -q 'canonical' "$SKILL_MAP"; then
   tap_ok "Skill map documents command → skill → workflow model"
