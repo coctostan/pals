@@ -198,6 +198,7 @@ None introduced by this plan. Existing ARCH/RUBY large-file debt remains: `tests
 | PR state before UNIFY merge gate | OPEN, merge state CLEAN |
 | CI checks | Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS |
 | Reviews | Not required (`require_reviews=false`) |
+| Merge gate result | PR #127 merged via squash; base `main` synced to `c6781d55`; branch deleted remotely. |
 
 ## Next Phase Readiness
 

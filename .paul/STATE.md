@@ -167,12 +167,12 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/212-documentation-validation-surfacing
-Last commit: pending merge — Phase 212 UNIFY artifacts staged on PR #127
-PR: #127 OPEN — https://github.com/coctostan/pals/pull/127
-CI: passed for PR #127 — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 196/196, and cross-harness 111/111
-Working tree: clean after Phase 212 UNIFY commit once staged/committed
-Prior PRs: #127 open (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
+Branch: main
+Last commit: c6781d55 — docs(212-01): surface workflow resource capsule validation (#127)
+PR: #127 MERGED — https://github.com/coctostan/pals/pull/127
+CI: passed for PR #127 - Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; local validation passed focused marker greps, Pi 196/196, and cross-harness 111/111
+Working tree: clean after merge-gate lifecycle evidence updates
+Prior PRs: #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
