@@ -30,18 +30,18 @@ Phases: 3 of 3 complete
 
 **v2.49 Workflow/Resource Capsule Contract**
 Status: 🚧 In progress
-Phases: 0 of 4 complete — started 2026-04-28; Phase 210 ready to plan
+Phases: 0 of 4 complete — started 2026-04-28; Phase 210 plan created, awaiting approval
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 210 | Workflow/Resource Capsule Contract Baseline | 0/1 | 🔵 Ready to plan | — |
+| 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | 🟡 Planning | — |
 | 211 | Runtime Capsule Loading Hardening | 0/1 | ⬜ Not started | — |
 | 212 | Documentation + Validation Surfacing | 0/1 | ⬜ Not started | — |
 | 213 | Evidence Reconciliation + Milestone Closure | 0/1 | ⬜ Not started | — |
 
 ### Phase 210: Workflow/Resource Capsule Contract Baseline
 Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
-Plans: Not started — ready to plan.
+Plans: `210-01` created, awaiting approval.
 
 ### Phase 211: Runtime Capsule Loading Hardening
 Focus: Harden repo-source Pi runtime capsule loading so workflow/resource capsules orient users to installed resources while preserving source citations, freshness/bounds, STOP/DO NOT SKIP/checkpoint/lifecycle/merge-gate exclusions, and full authoritative reads for consequential workflow decisions.
@@ -68,4 +68,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — v2.49 created; Phase 210 ready to plan.*
+*Last updated: 2026-04-28 — Phase 210 PLAN created; awaiting approval.*

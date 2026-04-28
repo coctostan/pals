@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-28 after Phase 207 Runtime Guided Reply Hardening completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.48 Guided Workflow Evidence Hardening is active; Phase 208 Documentation + Validation Surfacing is complete and Phase 209 Evidence Reconciliation + Milestone Closure is ready to plan.
+**Current focus:** v2.49 Workflow/Resource Capsule Contract is active; Phase 210 Workflow/Resource Capsule Contract Baseline APPLY is complete and ready for UNIFY.
 
 ## Current Position
 
 Milestone: v2.49 Workflow/Resource Capsule Contract
-Phase: 210 of 213 (Workflow/Resource Capsule Contract Baseline) — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-04-28T14:55:00Z — Created v2.49 Workflow/Resource Capsule Contract milestone
+Phase: 210 of 213 (Workflow/Resource Capsule Contract Baseline) — APPLY complete
+Plan: 210-01 applied, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-28T16:39:53Z — Completed APPLY for Phase 210 Plan 210-01; validation passed Pi 193/193 and cross-harness 109/109
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -21,12 +21,12 @@ Progress:
 - v2.46 Pi-Native Implementation Planning: [██████████] 100% (5 of 5 phases complete; final implementation plan proposal complete)
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.49 Workflow/Resource Capsule Contract: [░░░░░░░░░░] 0% (0 of 4 phases complete; Phase 210 ready to plan)
+- v2.49 Workflow/Resource Capsule Contract: [░░░░░░░░░░] 0% (0 of 4 phases complete; Phase 210 APPLY complete, awaiting UNIFY)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
 - Phase 209 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
-- Phase 210 Workflow/Resource Capsule Contract Baseline: [░░░░░░░░░░] 0% ready to plan
+- Phase 210 Workflow/Resource Capsule Contract Baseline: [████████░░] 80% APPLY complete, awaiting UNIFY
 - Phase 211 Runtime Capsule Loading Hardening: [░░░░░░░░░░] 0% not started
 - Phase 212 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
 - Phase 213 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
@@ -36,7 +36,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -167,13 +167,12 @@ Prior PRs: #124 merged (Phase 209 evidence reconciliation + milestone closure); 
 
 ## Session Continuity
 
-Last session: 2026-04-28T15:00:00Z
-Stopped at: Session paused after v2.49 milestone creation; Phase 210 ready to plan
-Next action: Run /paul:plan for Phase 210 Workflow/Resource Capsule Contract Baseline
-Resume file: .paul/HANDOFF-2026-04-28-v2.49-ready-to-plan.md
+Last session: 2026-04-28T16:39:53Z
+Stopped at: APPLY complete for Plan 210-01; contract baseline created and validated
+Next action: Run /paul:unify .paul/phases/210-workflow-resource-capsule-contract-baseline/210-01-PLAN.md
+Resume file: .paul/phases/210-workflow-resource-capsule-contract-baseline/210-01-PLAN.md
 Resume context:
-- v2.49 Workflow/Resource Capsule Contract is active with phases 210-213.
-- Phase 210 should define the capsule contract baseline: eligibility, schema, installed-resource citations, blocking-semantics exclusions, full-read fallback, validation classes, failure conditions, and Phase 211+ handoffs.
-- v2.48 final validation remains green: installer passed; Pi validation 193/193; cross-harness validation 109/109; PR #124 merged via squash as `9a74cbe5`.
-- Milestone creation commit `d48b067e` was pushed to `origin/main`; active pause handoff is `.paul/HANDOFF-2026-04-28-v2.49-ready-to-plan.md`.
-- Future milestones after v2.49 remain Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
+- Phase 210 APPLY created `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md` as the only non-`.paul/*` source artifact.
+- Official validation passed: focused marker greps, Pi validation 193/193, cross-harness validation 109/109, and changed-file scope review.
+- Preserve capsule orientation-only boundaries: installed-resource citations, blocking-semantics exclusions, full authoritative read fallback, validation classes, failure conditions, and Phase 211/212/213 handoffs.
+- Prior active resume handoff `.paul/HANDOFF-2026-04-28-v2.49-ready-to-plan.md` was consumed and archived under `.paul/handoffs/archive/`.
