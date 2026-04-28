@@ -187,7 +187,7 @@ None.
 | Branch | `feature/206-guided-workflow-evidence-contract-baseline` during APPLY/UNIFY. |
 | PR | #121 — https://github.com/coctostan/pals/pull/121 |
 | CI before merge | Passing: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS. |
-| Merge gate | To be completed after UNIFY metadata commit and push. |
+| Merge gate | PR #121 merged via squash as `e0683a8e`; local `main` synced with `origin/main`; feature branch deleted remotely. |
 
 ## Next Phase Readiness
 
@@ -201,7 +201,7 @@ None.
 - Phase 208/209 should preserve command-output evidence and not treat UI state or Pi context as lifecycle truth.
 
 **Blockers:**
-- None for Phase 207 planning after Phase 206 merge gate completes.
+- None for Phase 207 planning.
 
 ---
 
