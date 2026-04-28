@@ -30,22 +30,22 @@ Phases: 3 of 3 complete
 
 **v2.49 Workflow/Resource Capsule Contract**
 Status: 🚧 In progress
-Phases: 0 of 4 complete — started 2026-04-28; Phase 210 plan created, awaiting approval
+Phases: 1 of 4 complete — started 2026-04-28; Phase 210 complete, Phase 211 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | 🟡 Planning | — |
-| 211 | Runtime Capsule Loading Hardening | 0/1 | ⬜ Not started | — |
+| 210 | Workflow/Resource Capsule Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
+| 211 | Runtime Capsule Loading Hardening | 0/1 | 🔵 Ready to plan | — |
 | 212 | Documentation + Validation Surfacing | 0/1 | ⬜ Not started | — |
 | 213 | Evidence Reconciliation + Milestone Closure | 0/1 | ⬜ Not started | — |
 
 ### Phase 210: Workflow/Resource Capsule Contract Baseline
 Focus: Define safe orientation capsule eligibility, schema, installed-resource citation requirements, blocking-semantics exclusion list, full-read fallback rules, validation classes, failure conditions, and Phase 211+ handoffs before runtime capsule loading changes begin.
-Plans: `210-01` created, awaiting approval.
+Plans: `210-01` complete; SUMMARY: `.paul/phases/210-workflow-resource-capsule-contract-baseline/210-01-SUMMARY.md`.
 
 ### Phase 211: Runtime Capsule Loading Hardening
 Focus: Harden repo-source Pi runtime capsule loading so workflow/resource capsules orient users to installed resources while preserving source citations, freshness/bounds, STOP/DO NOT SKIP/checkpoint/lifecycle/merge-gate exclusions, and full authoritative reads for consequential workflow decisions.
-Plans: Not started.
+Plans: Ready to plan.
 
 ### Phase 212: Documentation + Validation Surfacing
 Focus: Surface workflow/resource capsule guarantees in Pi docs, skill map, and validation suites while adding focused marker checks for capsule eligibility, installed path citations, blocking-semantics exclusions, fallback behavior, and command-output truth.
@@ -68,4 +68,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-28 — Phase 210 PLAN created; awaiting approval.*
+*Last updated: 2026-04-28 — Phase 210 complete; Phase 211 ready to plan.*
