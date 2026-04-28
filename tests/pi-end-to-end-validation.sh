@@ -1109,6 +1109,17 @@ fi
     'GitHub Flow command evidence' \
     'validation command output'
 
+  tap_file_contains_all \
+    "Guided workflow contract records v2.48 closure validation baselines" \
+    "$REPO_ROOT/docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md" \
+    'Historical Phase 205/Phase 206 starting baseline: Pi 188/188' \
+    'Historical Phase 205/Phase 206 starting baseline: cross-harness 104/104' \
+    'Current post-Phase-207/208 v2.48 closure baseline: Pi 192/192 and cross-harness 108/108' \
+    'old count' \
+    'new count' \
+    'validation class affected' \
+    'shared-invariant preservation rationale'
+
   # Live module visibility contract: bounded parser/renderer path for canonical workflow signals
   if grep -q 'extractRecentModuleActivity' "$EXT_SRC" 2>/dev/null \
     && grep -q 'renderModuleActivity' "$EXT_SRC" 2>/dev/null \

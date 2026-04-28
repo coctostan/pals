@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.48 Guided Workflow Evidence Hardening (in progress) | `.paul/ROADMAP.md` phases 206-209 |
+| Current milestone | None — ready for next milestone decision | Next recommended: Workflow/Resource Capsule Contract |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -66,10 +66,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.45 Pi-Native PALS Architecture | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` |
 | v2.46 Pi-Native Implementation Planning | 2026-04-27 | same-day | 5 phases, 5 plans | `docs/PI-NATIVE-IMPLEMENTATION-PLAN.md` |
 | v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md` |
+| v2.48 Guided Workflow Evidence Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.48 Guided Workflow Evidence Hardening is active. Phases 206, 207, and 208 are complete; Phase 209 Evidence Reconciliation + Milestone Closure is ready to plan.
+v2.48 Guided Workflow Evidence Hardening is complete. Next recommended milestone: Workflow/Resource Capsule Contract, followed by Delegated APPLY Packet/Report Contract, Pi-Native Validation Classification, and Legacy Retention / Install-Surface Cleanup.
 
 ## Archive
 
@@ -77,4 +78,4 @@ v2.48 Guided Workflow Evidence Hardening is active. Phases 206, 207, and 208 are
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 208 completion: 2026-04-28.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.48 completion: 2026-04-28.*
