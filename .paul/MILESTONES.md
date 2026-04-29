@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.50 Delegated APPLY Packet/Report Contract (in progress) | `.paul/ROADMAP.md` phases 214-217 |
+| Current milestone | Pi-Native Validation Classification (ready to create) | `.paul/ROADMAP.md` current milestone candidate |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -68,10 +68,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md` |
 | v2.48 Guided Workflow Evidence Hardening | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md` |
 | v2.49 Workflow/Resource Capsule Contract | 2026-04-28 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md` |
+| v2.50 Delegated APPLY Packet/Report Contract | 2026-04-29 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.50 Delegated APPLY Packet/Report Contract is active. Phase 214 Delegated APPLY Packet/Report Contract Baseline is complete; Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan. Later recommended milestones remain Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup.
+v2.50 Delegated APPLY Packet/Report Contract is complete. Next recommended milestone is Pi-Native Validation Classification, followed by Legacy Retention / Install-Surface Cleanup after classification establishes safe cleanup boundaries.
 
 ## Archive
 
@@ -79,4 +80,4 @@ v2.50 Delegated APPLY Packet/Report Contract is active. Phase 214 Delegated APPL
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 214 completion: 2026-04-28.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.50 completion: 2026-04-29.*

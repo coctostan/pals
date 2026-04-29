@@ -28,16 +28,14 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.50 Delegated APPLY Packet/Report Contract**
-Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-28; Phase 216 complete, Phase 217 SUMMARY created
+**Next recommended milestone: Pi-Native Validation Classification**
+Status: 🔵 Ready to create
+Previous milestone v2.50 completed 2026-04-29; next milestone should classify Pi-supported runtime checks, shared invariants, frozen legacy parity, and future validation evidence requirements.
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 214 | Delegated APPLY Packet/Report Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
-| 215 | Runtime Delegation Packet/Report Hardening | 1/1 | ✅ Complete | 2026-04-29 |
-| 216 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-29 |
-| 217 | Evidence Reconciliation + Milestone Closure | 1/1 | 🟣 UNIFY in progress | — |
+| Candidate | Purpose | Status |
+|-----------|---------|--------|
+| Pi-Native Validation Classification | Classify current validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, helper delegation, artifact/process, guided UI safety, GitHub Flow safety, and future cleanup categories. | Recommended next |
+| Legacy Retention / Install-Surface Cleanup | Follow-on cleanup after validation classification establishes what may be weakened, removed, or retained. | Deferred |
 
 ### Phase 214: Delegated APPLY Packet/Report Contract Baseline
 Focus: Define the bounded delegated APPLY packet/report contract before implementation: parent-owned packet fields, allowed/forbidden file scope, fallback triggers, structured report schema, validation classes, and no helper-owned `.paul/*` writes.
@@ -51,9 +49,9 @@ Plans: 215-01 complete. Hardened `kernel/workflows/apply-phase.md` and `.pi/agen
 Focus: Surface the delegated APPLY packet/report guarantees in user-facing docs, Pi docs/skill map, helper-agent docs, and validation suites with command-output proof for Helper Delegation and Shared Invariant coverage.
 Plans: 216-01 complete. Surfaced delegated APPLY packet/report guarantees in README/Pi docs/skill-map/helper-agent docs and validation suites with Helper Delegation + Shared Invariant command-output proof; validation passed Pi 199/199 and cross-harness 115/115.
 
-### Phase 217: Evidence Reconciliation + Milestone Closure
-Focus: Reconcile helper delegation validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to Pi-Native Validation Classification.
-Plans: 217-01 SUMMARY created. Reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence inputs, and lifecycle metadata; validation now passes Pi 200/200 and cross-harness 116/116. PR #132 merge gate and final transition will close v2.50 and hand off to Pi-Native Validation Classification.
+### Completed v2.50: Delegated APPLY Packet/Report Contract
+Focus: Reduce parent APPLY context cost for bounded `pals-implementer` work through formal task packets and structured helper reports while preserving parent authority, command-output truth, module evidence, GitHub Flow safety, checkpoints, fallback, and `.paul/*` lifecycle writes.
+Result: Phases 214-217 complete. Phase 217 reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 200/200 and cross-harness 116/116; PR #132 merged. v2.50 hands off to Pi-Native Validation Classification.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -64,9 +62,10 @@ Plans: 217-01 SUMMARY created. Reconciled Phase 214/215 baseline evidence, Phase
 | v2.47 Artifact-Slice Contract Hardening | 2026-04-28 | 202-205 | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback across contract baseline, runtime hardening, docs/skill-map surfacing, and validation/evidence reconciliation. | active artifacts |
 | v2.48 Guided Workflow Evidence Hardening | 2026-04-28 | 206-209 | Proved guided workflow evidence across contract baseline, runtime canonical replies, docs/settings validation surfacing, and final evidence reconciliation while preserving explicit user intent and command-output truth. | active artifacts |
 | v2.49 Workflow/Resource Capsule Contract | 2026-04-28 | 210-213 | Defined and hardened source-cited, bounded, derived-only workflow/resource capsules; surfaced docs/validation evidence; closed with Pi 197/197 and cross-harness 112/112. | active artifacts |
+| v2.50 Delegated APPLY Packet/Report Contract | 2026-04-29 | 214-217 | Formalized parent-owned delegated APPLY task packets and structured helper reports; hardened runtime/helper boundaries; surfaced docs/validation markers; closed with Pi 200/200 and cross-harness 116/116. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 217 SUMMARY created; merge gate pending.*
+*Last updated: 2026-04-29 — v2.50 complete; Pi-Native Validation Classification ready to create.*

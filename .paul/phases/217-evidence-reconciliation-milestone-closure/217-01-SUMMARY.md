@@ -171,11 +171,13 @@ Workguard APPLY scope report passed with `outside_allowed=0` and `over_budget=fa
 | Branch | `feature/217-evidence-reconciliation-milestone-closure` |
 | PR | https://github.com/coctostan/pals/pull/132 |
 | APPLY commit | `068aa43e` |
-| PR state before UNIFY merge gate | OPEN |
+| UNIFY commit | `c65d3db1` |
+| Squash merge commit | `b2c8d28d` |
+| PR final state | MERGED |
 | Socket Security: Project Report | SUCCESS |
 | Socket Security: Pull Request Alerts | SUCCESS |
 
-UNIFY merge-gate evidence is finalized after this SUMMARY is committed and PR #132 is merged.
+Merge gate passed: PR #132 existed, Socket Security checks passed, reviews were skipped by config, REV PR review was disabled, PR merged via squash, local `main` synced, and the feature branch was deleted.
 
 ## Validation Count Reconciliation
 
