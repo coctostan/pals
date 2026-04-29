@@ -524,6 +524,31 @@ tap_file_contains_all \
   'delegation may be used for a single eligible task or sequential task step' \
   'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline'
 
+tap_file_contains_all \
+  "Pi docs surface Helper Delegation packet/report and parent-authority markers" \
+  "$REPO_ROOT/README.md" \
+  'Helper Delegation' \
+  'Parent-owned task packet' \
+  'structured helper report' \
+  'Allowed files:' \
+  'Forbidden files:' \
+  'Fallback triggers:' \
+  'Parent-run official verification:' \
+  'changed-file diff' \
+  'Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.'
+
+tap_file_contains_all \
+  "Installed pals-implementer agent surfaces packet/report fallback boundaries" \
+  "$IMPLEMENTER_AGENT" \
+  'Parent-owned task packet' \
+  'Allowed files:' \
+  'Forbidden files:' \
+  'Fallback triggers:' \
+  'Parent-run official verification:' \
+  'structured helper report' \
+  'changed-file diff' \
+  'Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.'
+
 PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
 PI_SCHEMA_REF="$SKILL_DIR/references/pals-json-schema.md"
 

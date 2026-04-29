@@ -241,9 +241,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Delegated APPLY Operating Model
 
-Parent APPLY remains authoritative even when an eligible auto task is delegated. The parent workflow still owns approval, official verify steps, module dispatch and gates, checkpoints, fallback judgment, and all `.paul/*` lifecycle writes.
+Parent APPLY remains authoritative even when an eligible auto task is delegated. The parent workflow still owns approval, official verify steps, module dispatch and gates, checkpoints, fallback judgment, task status, GitHub Flow decisions, and all `.paul/*` lifecycle writes.
 
 For eligible bounded repo-local work only, the parent may delegate a single task or sequential task step to the repo-shipped `pals-implementer`. In Pi, `install.sh` makes that agent visible at `~/.pi/agent/agents/pals-implementer.md` so parent-controlled APPLY can invoke a helper without moving lifecycle ownership into the adapter.
+
+Helper Delegation uses a parent-owned packet/report contract:
+- `Parent-owned task packet` before dispatch, including `Allowed files:`, `Forbidden files:`, `Fallback triggers:`, `Parent-run official verification:`, and `Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.`
+- A `structured helper report` after execution, including files changed, commands run, verification attempted, deviations, concerns, fallback recommendation, and `parent_review_required`.
+- Parent review of the actual `changed-file diff` (`git diff --name-only`) against allowed files before PASS.
+- Parent-run official verification and module gates; helper-attempted checks are advisory only.
+
 This is distinct from review. `/paul:review` remains a separate on-demand path that dispatches `code-reviewer` for isolated review work; it does not replace APPLY verification and it does not become lifecycle truth.
 
 ### Lifecycle Hooks
