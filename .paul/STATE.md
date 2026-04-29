@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-29 after v2.51 milestone creation)
 ## Current Position
 
 Milestone: v2.51 Pi-Native Validation Classification
-Phase: 218 of 221 (Validation Classification Baseline) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-29T13:08:31Z — Created v2.51 Pi-Native Validation Classification milestone
+Phase: 218 of 221 (Validation Classification Baseline) — APPLY complete
+Plan: 218-01 applied; awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-29T13:40:00Z — Applied .paul/phases/218-validation-classification-baseline/218-01-PLAN.md and created docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.51 Pi-Native Validation Classification: [░░░░░░░░░░] 0% (0 of 4 phases complete; Phase 218 ready to plan)
+- v2.51 Pi-Native Validation Classification: [░░░░░░░░░░] 0% (0 of 4 phases complete; Phase 218 APPLY complete, UNIFY pending)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -36,7 +36,7 @@ Progress:
 - Phase 215 Runtime Delegation Packet/Report Hardening: [██████████] 100% complete
 - Phase 216 Documentation + Validation Surfacing: [██████████] 100% complete
 - Phase 217 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
-- Phase 218 Validation Classification Baseline: [░░░░░░░░░░] 0% ready to plan
+- Phase 218 Validation Classification Baseline: [████████░░] APPLY complete; UNIFY pending
 - Phase 219 Runtime/Validation Suite Classification Hardening: [░░░░░░░░░░] 0% not started
 - Phase 220 Documentation + Report Surfacing: [░░░░░░░░░░] 0% not started
 - Phase 221 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
@@ -46,7 +46,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN]
+  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
 ```
 
 ## Accumulated Context
@@ -95,6 +95,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 217 APPLY reconciled v2.50 delegated APPLY closure evidence in the contract and validation suites: Phase 214/215 baseline remains Pi 197/197 and cross-harness 112/112; Phase 216 closure-entry remains Pi 199/199 and cross-harness 115/115 with PR #131 evidence; final APPLY validation passes Pi 200/200 and cross-harness 116/116 after adding localized closure marker checks.
 - Phase 217 UNIFY created `.paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md`, recording AC results, marker grep evidence, installer verification, Pi 200/200, cross-harness 116/116, validation count reconciliation (Pi 199→200, cross-harness 115→116), module reports, helper delegation evidence (not used), and PR #132 merge-gate evidence; PR #132 merged and v2.50 closed.
 - v2.51 Pi-Native Validation Classification has been created as the fifth Pi-native build milestone after v2.46: it will classify current and future validation checks by support purpose before any check is weakened, relocated, archived, deleted, or treated as legacy-only. It follows v2.50 delegated APPLY closure and precedes Legacy Retention / Install-Surface Cleanup.
+- Phase 218 APPLY created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md`, defining the v2.51 validation class taxonomy, current Pi/cross-harness suite-family inventory, preservation rules, count-change reconciliation requirements, and Phase 219 hardening handoff while keeping validation scripts read-only; validation passed Pi 200/200 and cross-harness 116/116.
 
 ### Current Decisions
 
@@ -197,22 +198,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: v2.51 milestone creation commit
-PR: none (N/A) — milestone creation metadata committed directly on main after PR #132 merge
-CI: local lifecycle update only; last full validation remained Pi 200/200 and cross-harness 116/116 during v2.50 closure
-Working tree: clean after v2.51 milestone creation commit
+Branch: feature/218-validation-classification-baseline
+Last commit: Phase 218 APPLY commits created validation classification baseline contract; APPLY metadata ready for postflight commit/PR
+PR: pending postflight — APPLY complete locally on feature branch
+CI: N/A until PR creation; local validation passed Pi 200/200 and cross-harness 116/116 during Phase 218 APPLY
+Working tree: dirty with APPLY lifecycle artifacts ready for postflight commit
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T13:08:31Z
-Stopped at: v2.51 milestone created; Phase 218 ready to plan
-Next action: Run /paul:plan for Phase 218 Validation Classification Baseline
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-29T13:40:00Z
+Stopped at: Phase 218 APPLY complete; awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/218-validation-classification-baseline/218-01-PLAN.md
+Resume file: .paul/phases/218-validation-classification-baseline/218-01-PLAN.md
 Resume context:
-- v2.50 Delegated APPLY Packet/Report Contract is closed and merged via PR #132.
-- v2.51 Pi-Native Validation Classification now owns Phases 218-221.
-- Phase 218 should create the classification baseline for Pi/cross-harness checks using Phase 200 taxonomy and current validation evidence.
-- Legacy Retention / Install-Surface Cleanup remains deferred until classification completes.
-- Next action is `/paul:plan` for Phase 218.
+- APPLY created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` and kept validation scripts read-only.
+- Validation passed: `bash tests/pi-end-to-end-validation.sh` 200/200 and `bash tests/cross-harness-validation.sh` 116/116.
+- Active handoff was archived to `.paul/handoffs/archive/HANDOFF-2026-04-29-phase-218-plan-awaiting-approval.md` after work proceeded.
+- Next lifecycle step is UNIFY for PLAN 218-01.
