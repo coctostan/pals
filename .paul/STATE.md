@@ -183,20 +183,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/215-runtime-delegation-packet-report-hardening
-Last commit: pending Phase 215 UNIFY/transition metadata commit
-PR: #130 OPEN — https://github.com/coctostan/pals/pull/130
-CI: local validation passed Pi 197/197 and cross-harness 112/112 during UNIFY; PR #130 Socket checks passing before UNIFY commit
-Working tree: Phase 215 UNIFY lifecycle artifacts pending commit
-Prior PRs: #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
+Branch: main
+Last commit: a4a53cc4 (Phase 215 PR #130 squash merge)
+PR: #130 MERGED — https://github.com/coctostan/pals/pull/130
+CI: local validation passed Pi 197/197 and cross-harness 112/112 during UNIFY; PR #130 Socket checks passed before merge
+Working tree: clean after merge gate
+Prior PRs: #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T01:48:21Z
-Stopped at: Phase 215 complete; ready to plan Phase 216 after GitHub Flow merge gate completes
-Next action: Complete GitHub Flow merge gate for PR #130, then run /paul:plan for Phase 216
+Last session: 2026-04-29T01:50:57Z
+Stopped at: Phase 215 complete and PR #130 merged; ready to plan Phase 216
+Next action: Run /paul:plan for Phase 216 Documentation + Validation Surfacing
 Resume file: .paul/phases/215-runtime-delegation-packet-report-hardening/215-01-SUMMARY.md
 Resume context:
-- PLAN 215-01 completed and unified; SUMMARY records runtime/helper-agent hardening, review-fix patches, module persistence, and stable validation.
+- PLAN 215-01 completed, unified, and merged; SUMMARY records runtime/helper-agent hardening, review-fix patches, module persistence, and stable validation.
 - Phase 216 owns docs/skill-map/helper-agent docs and validation surfacing for delegated APPLY packet/report guarantees.
 - Do not close v2.50 during Phase 216; Phase 217 owns milestone evidence reconciliation and closure.
