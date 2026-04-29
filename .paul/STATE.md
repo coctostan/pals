@@ -185,15 +185,15 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: phase-216-docs-validation-surfacing
-Last commit: a4a53cc4 (Phase 215 PR #130 squash merge)
-PR: #130 MERGED — https://github.com/coctostan/pals/pull/130
-CI: local validation passed Pi 199/199 and cross-harness 115/115 during APPLY; PR pending
-Working tree: Phase 216 APPLY changes pending commit/push
+Last commit: 108d921b (Phase 216 APPLY docs/validation surfacing)
+PR: #131 OPEN — https://github.com/coctostan/pals/pull/131
+CI: local validation passed Pi 199/199 and cross-harness 115/115 during APPLY; PR #131 Socket Security check in progress at postflight
+Working tree: postflight STATE update pending commit
 Prior PRs: #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T02:03:51Z
+Last session: 2026-04-29T02:05:30Z
 Stopped at: APPLY complete for PLAN 216-01
 Next action: Run /paul:unify .paul/phases/216-documentation-validation-surfacing/216-01-PLAN.md
 Resume file: .paul/phases/216-documentation-validation-surfacing/216-01-PLAN.md
