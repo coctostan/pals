@@ -195,16 +195,16 @@ Load-only-if note: if the approved plan contains any `checkpoint:*` task, read `
 1. Log task start: "Task N: [name]"
 2. Decide execution mode:
    - Default to inline APPLY in the parent session.
-   - load-only-if delegation is being considered for this eligible auto task: read `references/subagent-criteria.md`, then evaluate delegation against that reference plus the Phase 155 contract.
-   - Delegation to a repo-local `pals-implementer` is optional, task-bounded, and allowed only when all of the following are true:
+   - load-only-if delegation is being considered for this eligible auto task: read `references/subagent-criteria.md`, then evaluate delegation against that reference plus the Delegated APPLY Packet/Report Contract.
+   - Delegation to repo-local `pals-implementer` is optional, task-bounded, and allowed only when all of the following are true:
      - approved plan is `autonomous: true`
      - the task is a bounded autonomous unit the parent can describe, inspect, and verify as equivalent to inline APPLY
-     - `<files>`, `<action>`, and `<verify>` are clear and bounded
-     - no checkpoint or human decision/action is required inside the task
-     - file scope is repo-local only
-     - `.paul/*` lifecycle ownership, official verification, module enforcement, fallback judgment, and state/report writes remain in the parent
+     - `<files>`, `<action>`, `<verify>`, and `<done>` are clear and bounded
+     - no checkpoint, human decision/action, external approval, GitHub Flow decision, or merge intent is required inside the task
+     - file scope is repo-local and explicit
+     - `.paul/*` lifecycle ownership, official verification, module enforcement, fallback judgment, task status, checkpoints, GitHub Flow gates, and state/report writes remain in the parent
      - delegation may be used for a single eligible task or sequential task step; it is not limited to parallel-only work
-     - ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline in the parent session
+     - ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline in the parent session; decision-heavy work also stays inline
 3. **If delegation is considered:**
    a. Read config:
       ```bash
@@ -215,16 +215,22 @@ Load-only-if note: if the approved plan contains any `checkpoint:*` task, read `
       - `Agent()` is available
       - repo-local `.pi/agents/pals-implementer.md` exists and is valid
       - `IMPLEMENTER_ENABLED = true`
-   c. Build a parent-owned task packet with:
-      - task identity
-      - lifecycle reminder (`.paul/*` remains authoritative; parent owns verification, module gates, fallback, and state/report writes)
-      - exact task objective and `<action>` content
-      - allowed files and forbidden files
-      - relevant plan/design excerpts and immediate supporting repo files
-      - task-local module expectations from pre-apply context
-      - task-local verification to attempt before returning
-      - required report format
-      - stop conditions and fallback triggers
+   c. Build a **Parent-owned task packet** before dispatch. Include a lifecycle reminder and these fields:
+      - `packet_id`: stable identifier such as `{phase}-{plan}-task-{N}`
+      - `plan_path`: repo-relative approved PLAN path
+      - `task_name`: exact task name from the PLAN
+      - `objective` and exact task `<action>` content
+      - `Allowed files:` repo-relative files the helper may create or modify
+      - `Forbidden files:` `.paul/*` lifecycle artifacts, installed absolute paths, generated install outputs, dependency manifests/lockfiles, CI config, GitHub Flow automation, plan-protected files, and any other file not explicitly allowed
+      - `context_sources`: relevant plan/design excerpts and immediate supporting repo files
+      - `verification_to_attempt`: task-local checks the helper may run before reporting
+      - `Parent-run official verification:` the exact `<verify>` command/check the parent will rerun before PASS
+      - `module_caveats`: task-local module expectations from pre-apply context
+      - `checkpoint_status`: explicit statement that no checkpoint/human action is delegated, or that the task is ineligible if one is required
+      - `Fallback triggers:` missing or stale packet/PLAN/context, ambiguity, scope creep, checkpoint or human-decision needs, unverifiable checks, out-of-scope edits, `.paul/*` lifecycle needs, GitHub Flow/CI/review/merge questions, hidden helper state, report defects, or non-equivalent results
+      - `report_schema`: required structured helper report fields
+      - `Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.` Parent APPLY owns verification, module gates, fallback, task status, checkpoints, GitHub Flow, and lifecycle writes.
+      - Compatibility marker: parent owns verification, module gates, fallback, and state/report writes.
    d. Resolve model in this order:
       - explicit per-dispatch override from the parent workflow
       - `pals.json` `agents.implementer.model`
@@ -241,29 +247,44 @@ Load-only-if note: if the approved plan contains any `checkpoint:*` task, read `
         model: IMPLEMENTER_MODEL || undefined,
       })
       ```
-   f. Require a structured report from the subagent covering:
-      - `status`
+   f. Require a **structured helper report** from the subagent covering:
+      - `status`: complete, blocked, or fallback_recommended
+      - `packet_id`
       - `task_name`
       - `files_changed`
+      - `summary`
       - `commands_run`
       - `verification_attempted`
       - `verification_results`
+      - `deviations`
       - `concerns`
       - `fallback_recommended`
-      - `summary`
-   g. Fall back immediately to inline APPLY if any of the following is true:
+      - `parent_review_required`
+   g. Parent acceptance is mandatory before any PASS:
+      - read the structured helper report and reject missing/malformed/unverifiable fields
+      - run a changed-file diff check: compare report `files_changed`, `git diff --name-only -- {allowed_files}`, and full `git diff --name-only` against `Allowed files:` and PLAN boundaries
+      - inspect content diffs for changed files
+      - rerun the official `<verify>` in the parent session as `Parent-run official verification:`
+      - run required module hooks and classify task status only by parent judgment
+   h. Fall back immediately to inline APPLY if any of the following is true:
       - the task fails eligibility
       - config disables the path
       - `Agent()` is unavailable
       - `.pi/agents/pals-implementer.md` is missing or invalid
       - the subagent returns `blocked`
       - `fallback_recommended = true`
-      - the report is incomplete or unverifiable
-      - the run touched files outside approved scope
+      - the report is incomplete, malformed, stale, or unverifiable
+      - the helper proposes touching files outside approved scope
+      - helper output claims `.paul/*` lifecycle writes, official validation authority, module gate satisfaction, checkpoint completion, GitHub Flow/CI/review/merge readiness, hidden helper state, or lifecycle truth
       - the parent cannot judge the result as equivalent to inline APPLY
+   i. Treat actual out-of-scope helper edits as a blocking boundary event, not a simple fallback:
+      - inspect full `git diff --name-only` and identify every changed file outside `Allowed files:`
+      - revert or repair unauthorized file changes before any inline retry
+      - if the parent cannot safely revert/repair the contaminated tree, halt and ask the user for guidance
+      - do not continue inline APPLY, run official verification, or classify PASS while out-of-scope helper edits remain in the diff
 4. Execute `<action>` content:
    - If delegated path is accepted: review the returned report, inspect claimed file changes, and continue under parent control.
-   - If inline path is used or fallback is triggered: create/modify files specified in `<files>`, follow specific instructions, and respect boundaries (DO NOT CHANGE protected files).
+   - If inline path is used or fallback is triggered after any required boundary cleanup: create/modify files specified in `<files>`, follow specific instructions, and respect boundaries (DO NOT CHANGE protected files).
 5. Run the official `<verify>` command/check in the parent session.
 6. Record result using structured status (adapted from Superpowers status protocol):
    - PASS: verification succeeded, task complete
