@@ -186,11 +186,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: phase-216-docs-validation-surfacing
-Last commit: pending Phase 216 UNIFY/transition metadata commit
-PR: #131 OPEN - https://github.com/coctostan/pals/pull/131
-CI: local validation passed Pi 199/199 and cross-harness 115/115 during UNIFY; PR merge gate pending after metadata push
-Working tree: Phase 216 UNIFY metadata staged for commit
+Branch: main
+Last commit: 6ac2eaa6 (Phase 216 complete; PR #131 merged)
+PR: #131 MERGED — https://github.com/coctostan/pals/pull/131
+CI: PR #131 Socket Security checks passed; local validation passed Pi 199/199 and cross-harness 115/115 during UNIFY
+Working tree: clean after Phase 216 merge gate
 Prior PRs: #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity

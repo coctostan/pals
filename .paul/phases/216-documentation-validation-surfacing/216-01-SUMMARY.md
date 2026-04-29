@@ -125,7 +125,7 @@ RUBY ran file-size screening over changed files. Documentation/helper files stay
 | Tasks 1-3 | `108d921b` | docs | Surfaced delegated APPLY docs/helper-agent wording and validation marker coverage. |
 | APPLY postflight | `5b7a7765` | docs | Recorded Phase 216 APPLY postflight in `STATE.md`. |
 
-Plan metadata: pending UNIFY metadata commit.
+Plan metadata: `e6586410` (feature branch), merged via PR #131 as `6ac2eaa6`.
 
 ## Files Created/Modified
 
