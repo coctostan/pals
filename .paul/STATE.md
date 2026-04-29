@@ -181,15 +181,15 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/215-runtime-delegation-packet-report-hardening
-Last commit: c70bba3a Phase 214: Delegated APPLY packet/report contract baseline (#129)
-PR: none yet — APPLY source changes complete locally; GitHub Flow postflight pending commit/push/PR
-CI: local validation passed Pi 197/197 and cross-harness 112/112 during APPLY
-Working tree: APPLY source changes and lifecycle artifacts uncommitted (`kernel/workflows/apply-phase.md`, `.pi/agents/pals-implementer.md`, `.paul/ROADMAP.md`, `.paul/STATE.md`, Phase 215 PLAN, archived handoff)
+Last commit: 60dbf7e7 feat(215-01): harden delegated apply packet reports
+PR: #130 OPEN — https://github.com/coctostan/pals/pull/130
+CI: local validation passed Pi 197/197 and cross-harness 112/112 during APPLY; GitHub statusCheckRollup empty immediately after PR creation
+Working tree: clean after APPLY postflight except this Git State metadata refresh pending commit/push
 Prior PRs: #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T00:38:31Z
+Last session: 2026-04-29T00:42:00Z
 Stopped at: APPLY 215-01 complete; awaiting UNIFY
 Next action: Run /paul:unify .paul/phases/215-runtime-delegation-packet-report-hardening/215-01-PLAN.md
 Resume file: .paul/handoffs/archive/HANDOFF-2026-04-28-phase-215-plan-awaiting-approval.md
