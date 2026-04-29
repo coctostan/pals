@@ -57,7 +57,41 @@ These counts are not self-validating when copied into artifacts. Each APPLY/UNIF
 
 ## Current suite classification inventory
 
-Phase 218 records this section as the baseline location for current Pi and cross-harness validation families. Phase 219 owns validation-suite marker hardening against this inventory.
+The current suite families below are derived from the visible category sections in `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`. Phase 218 does not edit those scripts; Phase 219 should add explicit markers or leave categories as read-only baseline evidence according to the `Phase 219 action` column.
+
+### `tests/pi-end-to-end-validation.sh`
+
+| Current suite family | Primary class | Secondary class | Preserve / future-use note | Phase 219 action |
+|---|---|---|---|---|
+| Installer Deployment | Pi-Supported Runtime | Shared Invariant | Preserve as blocking proof that the Pi installer deploys skills, kernel resources, generated `modules.yaml`, extension files, and helper-agent surfaces. | Add explicit classification markers near installer/deployment checks if script hardening touches this family. |
+| Module Execution Evidence | Shared Invariant | Pi-Supported Runtime | Preserve as blocking proof that installed module metadata, hook refs, durable summary evidence, and helper boundary markers remain visible. | Add explicit Shared Invariant / Pi-Supported Runtime labels for module-evidence checks. |
+| Skill Structural Validity | Pi-Supported Runtime | Shared Invariant | Preserve as active Pi runtime evidence for installed skill frontmatter, workflow references, and wrapper shape. | Add labels where structural skill checks protect current Pi runtime behavior. |
+| Thin Wrapper Contract | Shared Invariant | Pi-Supported Runtime | Preserve because thin wrappers carry explicit approval, parent-owned APPLY, collaboration, resume routing, GitHub Flow status, and reconciliation semantics. | Add labels for lifecycle-invariant wrapper checks; do not treat as cosmetic wrapper parity. |
+| Delegated APPLY / REV Boundaries | Helper Delegation | Shared Invariant | Preserve as blocking proof for bounded `pals-implementer`, parent authority, REV separation, and helper-agent install evidence. | Add Helper Delegation markers and keep parent-owned APPLY language command-checked. |
+| Shared Workflow Prose Contract | Shared Invariant | Runtime Lens | Preserve targeted-read, review-menu, roadmap routing, and module-dispatch evidence markers that future capsules must not obscure. | Add Shared Invariant markers; leave prose-volume checks structural rather than exact-copy where possible. |
+| Context-Diet Regression Guardrails | Shared Invariant | Runtime Lens | Preserve active-window budgets, archive pointers, duplicated GitHub Flow ceilings, and hot workflow/reference anti-regrowth budgets. | Add labels for guardrail checks that protect shared semantics and runtime-lens context cost. |
+| CODI Plan-Phase Distribution | Shared Invariant | Helper Delegation | Preserve source-selector, safe-skip, instrumentation, and durable CODI evidence markers as module/helper evidence. | Add classification labels if CODI checks move or split; otherwise keep as read-only baseline evidence. |
+| Extension Structural Validity | Pi-Supported Runtime | Runtime Lens / Guided UI Safety | Preserve command registration, lifecycle UI, context injection, artifact-slice markers, guided workflow detection, module visibility, and derived-only lifecycle widgets. | Add Pi-Supported Runtime labels, with Runtime Lens / Guided UI Safety labels for context and guided UI checks. |
+| Driver Manifest Accuracy | Pi-Supported Runtime | Shared Invariant | Preserve declared Pi capabilities and installer target accuracy. | Add classification labels if manifest checks are reorganized. |
+| Pi Discovery Surfaces | Pi-Supported Runtime | Runtime Lens / Helper Delegation | Preserve command/skill/workflow mapping, shortcuts, installation boundaries, helper-agent explanation, and live module visibility as derived-only behavior. | Add labels for Pi-facing discovery and helper/lens subfamilies. |
+| Collaborative Planning Model | Shared Invariant | Guided UI Safety | Preserve collaboration defaults, exploratory/direct mode selection, and plan review menu visibility. | Add Shared Invariant / Guided UI Safety labels before any review-menu or planning-surface cleanup. |
+| UX Readability & Color Enrichment | Pi-Supported Runtime | Guided UI Safety | Preserve when readability protects lifecycle clarity and explicit intent; treat pure visual polish as lower risk than checkpoint/approval evidence. | Label intent/readability checks; avoid upgrading purely cosmetic checks into lifecycle blockers without rationale. |
+
+### `tests/cross-harness-validation.sh`
+
+| Current suite family | Primary class | Secondary class | Preserve / future-use note | Phase 219 action |
+|---|---|---|---|---|
+| Installer Parity | Frozen Legacy Parity | Shared Invariant | Preserve carefully: file-count parity and Claude install behavior are frozen legacy evidence, while shared kernel/resource generation can still protect shared invariants. | Add labels that distinguish parity-only checks from shared-invariant install/resource checks. |
+| Shared APPLY / REV Boundaries | Shared Invariant | Helper Delegation | Preserve because delegated APPLY guardrails, parent-owned APPLY, and REV separation protect semantics across runtimes. | Add Shared Invariant / Helper Delegation markers before any helper or review-routing cleanup. |
+| Durable Module Evidence Path | Shared Invariant | Artifact / Process | Preserve durable workflow/template/spec/SUMMARY module evidence. | Add Artifact / Process labels where checks prove durable reporting rather than runtime behavior. |
+| Portability Compliance | Shared Invariant | Frozen Legacy Parity | Preserve where checks prevent harness-specific kernel/module language; classify exact path assumptions before weakening. | Add labels separating active portability invariants from frozen parity assumptions. |
+| Shared Collaborative Planning Model | Shared Invariant | Guided UI Safety | Preserve collaboration modes and review-menu semantics independent of runtime. | Add labels if planning UX checks are moved or merged. |
+| Context-Diet Regression Guardrails | Shared Invariant | Runtime Lens | Preserve shared workflow ceilings, GitHub Flow markers, module-dispatch markers, delegated APPLY markers, and context-diet budgets. | Add labels that show which checks protect shared invariants versus runtime-lens context cost. |
+| CODI Plan-Phase Distribution | Shared Invariant | Helper Delegation | Preserve CODI source-selector contracts, safe setup, and durable instrumentation across installed registries. | Add labels if CODI checks are split; otherwise leave as read-only baseline evidence. |
+| Artifact Spec Compliance | Shared Invariant | Artifact / Process | Preserve STATE/PROJECT/ROADMAP structure, artifact-first contract, report freshness, validation evidence, and lifecycle artifact requirements. | Add Artifact / Process labels and keep command-output truth distinct from report text. |
+| Driver Manifest Completeness | Frozen Legacy Parity | Shared Invariant | Treat cross-driver capability parity as frozen legacy evidence unless a check protects a current shared driver contract. | Add labels before weakening driver parity or driver-manifest completeness checks. |
+
+Baseline counts remain Pi validation passed 200/200 and cross-harness validation passed 116/116 until a future approved plan changes and reconciles them.
 
 ## Preservation rules
 
