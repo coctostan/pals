@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-29 after Phase 217 APPLY completion)
+See: .paul/PROJECT.md (updated 2026-04-29 during Phase 217 UNIFY)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.50 Delegated APPLY Packet/Report Contract is active; Phase 217 Evidence Reconciliation + Milestone Closure has APPLY complete and is ready for UNIFY.
+**Current focus:** v2.50 Delegated APPLY Packet/Report Contract is in UNIFY; Phase 217 Evidence Reconciliation + Milestone Closure SUMMARY is created and merge gate is next.
 
 ## Current Position
 
 Milestone: v2.50 Delegated APPLY Packet/Report Contract
-Phase: 217 of 217 (Evidence Reconciliation + Milestone Closure) — APPLY complete
-Plan: 217-01 APPLY complete, ready for UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-29T12:58:07Z — Completed APPLY for .paul/phases/217-evidence-reconciliation-milestone-closure/217-01-PLAN.md
+Phase: 217 of 217 (Evidence Reconciliation + Milestone Closure) — UNIFY in progress
+Plan: 217-01 SUMMARY created, merge gate pending
+Status: UNIFY in progress; PR #132 checks passing; merge gate next
+Last activity: 2026-04-29T13:01:32Z — Created .paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -22,7 +22,7 @@ Progress:
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.50 Delegated APPLY Packet/Report Contract: [█████████░] 90% (3 of 4 phases complete; Phase 217 APPLY complete, UNIFY pending)
+- v2.50 Delegated APPLY Packet/Report Contract: [██████████] 95% (3 of 4 phases complete; Phase 217 UNIFY in progress, merge gate pending)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -34,14 +34,14 @@ Progress:
 - Phase 214 Delegated APPLY Packet/Report Contract Baseline: [██████████] 100% complete
 - Phase 215 Runtime Delegation Packet/Report Hardening: [██████████] 100% complete
 - Phase 216 Documentation + Validation Surfacing: [██████████] 100% complete
-- Phase 217 Evidence Reconciliation + Milestone Closure: [███████░░░] 70% APPLY complete, ready for UNIFY
+- Phase 217 Evidence Reconciliation + Milestone Closure: [█████████░] 95% SUMMARY created, merge gate pending
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [SUMMARY created; merge gate and transition pending]
 ```
 
 ## Accumulated Context
@@ -88,6 +88,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 215 completed runtime delegation packet/report hardening in `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md`: parent-owned packets now name required fields and authority boundaries, structured helper reports feed parent review, actual changed-file diffs are checked against allowed files, out-of-scope helper edits block until repaired or guidance is requested, and helper output cannot claim lifecycle/validation/module/checkpoint/GitHub Flow authority; validation remained Pi 197/197 and cross-harness 112/112.
 - Phase 216 completed documentation and validation surfacing for delegated APPLY packet/report guarantees in README, Pi extension docs, Pi skill map, the repo-local `pals-implementer` contract, and validation suites; validation passes Pi 199/199 and cross-harness 115/115, with Phase 217 still owning final milestone evidence reconciliation and closure.
 - Phase 217 APPLY reconciled v2.50 delegated APPLY closure evidence in the contract and validation suites: Phase 214/215 baseline remains Pi 197/197 and cross-harness 112/112; Phase 216 closure-entry remains Pi 199/199 and cross-harness 115/115 with PR #131 evidence; final APPLY validation passes Pi 200/200 and cross-harness 116/116 after adding localized closure marker checks.
+- Phase 217 UNIFY created `.paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md`, recording AC results, marker grep evidence, installer verification, Pi 200/200, cross-harness 116/116, validation count reconciliation (Pi 199→200, cross-harness 115→116), module reports, helper delegation evidence (not used), and PR #132 merge-gate evidence.
 
 ### Current Decisions
 
@@ -171,6 +172,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 214: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and enforcement/advisory modules invoked or active via module dispatch; pre-plan, post-plan, APPLY, validation, post-unify persistence, and GitHub Flow evidence recorded. Validation stayed stable (Pi 197/197, cross-harness 112/112). Active handoff archived after resume proceeded.
 - Skill audit Phase 215: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and enforcement/advisory modules invoked or active via module dispatch; pre-plan, post-plan, APPLY, review-fix validation, and post-unify persistence passed with no regression. Validation stayed stable (Pi 197/197, cross-harness 112/112). Active handoff archived after resume proceeded. No helper delegation was used because the phase edited the delegation contract itself.
 - Skill audit Phase 216: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; validation passed Pi 199/199 and cross-harness 115/115. CODI recorded skipped-no-symbols; WALT quality history improved to 199 pass + 115 pass; RUBY noted existing validation-script size debt remains pre-existing/future driver-quality scope.
+- Skill audit Phase 217: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; APPLY validation passed Pi 200/200 and cross-harness 116/116; CODI expected skipped-no-symbols; WALT quality history improved to 200 pass + 116 pass; RUBY noted existing validation-script size debt remains pre-existing/future driver-quality scope.
 
 ### Deferred Issues
 
@@ -188,21 +190,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/217-evidence-reconciliation-milestone-closure
-Last commit: Phase 217 APPLY postflight commit (PR #132 opened)
+Last commit: 068aa43e (Phase 217 APPLY postflight commit; UNIFY summary pending commit)
 PR: #132 OPEN — https://github.com/coctostan/pals/pull/132
-CI: pending on PR #132; local validation passed installer verification, Pi 200/200, and cross-harness 116/116 during APPLY
-Working tree: clean after Phase 217 APPLY postflight commit
+CI: PR #132 Socket Security checks passed; local validation passed installer verification, Pi 200/200, and cross-harness 116/116 during APPLY
+Working tree: dirty with UNIFY lifecycle artifacts pending commit
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T12:58:07Z
-Stopped at: Phase 217 APPLY complete; UNIFY not started
-Next action: Run /paul:unify .paul/phases/217-evidence-reconciliation-milestone-closure/217-01-PLAN.md
-Resume file: .paul/phases/217-evidence-reconciliation-milestone-closure/217-01-PLAN.md
+Last session: 2026-04-29T13:01:32Z
+Stopped at: Phase 217 SUMMARY created; merge gate pending
+Next action: Commit/push UNIFY artifacts, then resolve PR #132 merge gate
+Resume file: .paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md
 Resume context:
-- Phase 217 APPLY completed all three tasks inline in the parent session; no delegated `pals-implementer` helper was used.
-- Source changes stayed inside `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`, `tests/pi-end-to-end-validation.sh`, and `tests/cross-harness-validation.sh`; lifecycle changes are normal `.paul/*` artifacts.
-- Verification passed: focused closure marker grep; `PALS_ROOT="$PWD" bash drivers/pi/install.sh`; `bash tests/pi-end-to-end-validation.sh` = 200/200; `bash tests/cross-harness-validation.sh` = 116/116.
-- Validation count reconciliation for UNIFY: Pi 199→200 and cross-harness 115→116 because Phase 217 added one localized v2.50 closure marker check to each suite; affected classes are Helper Delegation and Shared Invariant.
-- Next recommended milestone after closure remains Pi-Native Validation Classification.
+- Phase 217 SUMMARY records all acceptance criteria as PASS and reconciles validation count increases.
+- PR #132 is open with Socket Security checks passing; merge gate will commit/push UNIFY artifacts before merging.
+- Post-unify persistence expected: CODI skipped-no-symbols row, WALT quality history row with 200 pass + 116 pass, SKIP knowledge capture, RUBY existing validation-script size debt note.
+- After merge gate, transition should mark Phase 217 and v2.50 complete and route to the next milestone decision.
+- Next recommended milestone remains Pi-Native Validation Classification.

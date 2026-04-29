@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.50 Delegated APPLY Packet/Report Contract is active as the fourth Pi-native build milestone after v2.46. Phase 216 Documentation + Validation Surfacing is complete; Phase 217 Evidence Reconciliation + Milestone Closure has APPLY complete and is ready for UNIFY.
+v2.50 Delegated APPLY Packet/Report Contract is active as the fourth Pi-native build milestone after v2.46. Phase 217 Evidence Reconciliation + Milestone Closure has SUMMARY 217-01 created; PR #132 merge gate and final transition are pending.
 
 This milestone will reduce parent context cost for bounded `pals-implementer` work through formal task packets and structured reports while preserving parent APPLY authority, official verification, file-scope checks, fallback judgment, module gates, checkpoints, `.paul/*` lifecycle writes, and command-output truth. Later recommended milestones remain Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup.
 
@@ -54,7 +54,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.49 Workflow/Resource Capsule Contract | Complete | Defined and hardened safe orientation capsules for installed resources without replacing authoritative workflow reads; final validation passed Pi 197/197 and cross-harness 112/112. |
 | v2.50 Delegated APPLY Packet/Report Contract | In progress | Formalizes helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority. |
 
-Recently completed: Phase 216 surfaced delegated APPLY packet/report guarantees in README, Pi extension docs, Pi skill map, the repo-local `pals-implementer` contract, and validation suites. Current: Phase 217 Evidence Reconciliation + Milestone Closure has APPLY complete with validation passing Pi 200/200 and cross-harness 116/116; v2.50 remains open until UNIFY completes final evidence reconciliation.
+Recently completed: Phase 216 surfaced delegated APPLY packet/report guarantees in README, Pi extension docs, Pi skill map, the repo-local `pals-implementer` contract, and validation suites. Current: Phase 217 Evidence Reconciliation + Milestone Closure has SUMMARY 217-01 created with validation passing Pi 200/200 and cross-harness 116/116; v2.50 remains open until PR #132 merge gate and final transition complete.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
