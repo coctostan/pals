@@ -205,7 +205,7 @@ Branch: main
 Last commit: Phase 218 transition metadata pushed on main after PR #133 merge; Phase 219 ready to plan
 PR: https://github.com/coctostan/pals/pull/133 (MERGED)
 CI: Socket Security checks passed; local validation passed Pi 200/200 and cross-harness 116/116 during Phase 218 APPLY
-Working tree: clean after transition commit
+Working tree: dirty with final transition routing cleanup before commit
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
@@ -218,4 +218,4 @@ Resume context:
 - Phase 218 complete: `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` and SUMMARY record taxonomy, inventory, preservation rules, unchanged validation counts, and Phase 219 readiness.
 - PR #133 merged via squash as `5e560bea`; Socket Security checks passed.
 - Phase 219 should harden validation-suite classification markers using the Phase 218 contract baseline.
-- Next lifecycle work is merge gate and phase transition to Phase 219.
+- Next lifecycle work is Phase 219 planning.
