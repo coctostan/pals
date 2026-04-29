@@ -274,12 +274,17 @@ Load-only-if note: if the approved plan contains any `checkpoint:*` task, read `
       - the subagent returns `blocked`
       - `fallback_recommended = true`
       - the report is incomplete, malformed, stale, or unverifiable
-      - the run touched or proposes touching files outside approved scope
+      - the helper proposes touching files outside approved scope
       - helper output claims `.paul/*` lifecycle writes, official validation authority, module gate satisfaction, checkpoint completion, GitHub Flow/CI/review/merge readiness, hidden helper state, or lifecycle truth
       - the parent cannot judge the result as equivalent to inline APPLY
+   i. Treat actual out-of-scope helper edits as a blocking boundary event, not a simple fallback:
+      - inspect full `git diff --name-only` and identify every changed file outside `Allowed files:`
+      - revert or repair unauthorized file changes before any inline retry
+      - if the parent cannot safely revert/repair the contaminated tree, halt and ask the user for guidance
+      - do not continue inline APPLY, run official verification, or classify PASS while out-of-scope helper edits remain in the diff
 4. Execute `<action>` content:
    - If delegated path is accepted: review the returned report, inspect claimed file changes, and continue under parent control.
-   - If inline path is used or fallback is triggered: create/modify files specified in `<files>`, follow specific instructions, and respect boundaries (DO NOT CHANGE protected files).
+   - If inline path is used or fallback is triggered after any required boundary cleanup: create/modify files specified in `<files>`, follow specific instructions, and respect boundaries (DO NOT CHANGE protected files).
 5. Run the official `<verify>` command/check in the parent session.
 6. Record result using structured status (adapted from Superpowers status protocol):
    - PASS: verification succeeded, task complete
