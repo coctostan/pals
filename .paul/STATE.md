@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-28 after Phase 214 Delegated APPLY Packet/Report Contract Baseline completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.50 Delegated APPLY Packet/Report Contract is active; Phase 214 is complete and Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan.
+**Current focus:** v2.50 Delegated APPLY Packet/Report Contract is active; Phase 214 is complete and Phase 215 Runtime Delegation Packet/Report Hardening has PLAN 215-01 created, awaiting approval.
 
 ## Current Position
 
 Milestone: v2.50 Delegated APPLY Packet/Report Contract
-Phase: 215 of 217 (Runtime Delegation Packet/Report Hardening) — ready to plan
-Plan: Not started
-Status: Ready for next PLAN
-Last activity: 2026-04-28T20:51:42Z — Phase 214 complete, PR #129 merged, transitioned to Phase 215 planning
+Phase: 215 of 217 (Runtime Delegation Packet/Report Hardening) — Applying
+Plan: 215-01 APPLY complete, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-29T00:38:31Z — Completed APPLY for PLAN 215-01; validation passed Pi 197/197 and cross-harness 112/112
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -22,7 +22,7 @@ Progress:
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.50 Delegated APPLY Packet/Report Contract: [███░░░░░░░] 25% (1 of 4 phases complete; Phase 215 ready to plan)
+- v2.50 Delegated APPLY Packet/Report Contract: [███░░░░░░░] 25% (1 of 4 phases complete; Phase 215 APPLY complete, awaiting UNIFY)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -32,7 +32,7 @@ Progress:
 - Phase 212 Documentation + Validation Surfacing: [██████████] 100% complete
 - Phase 213 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 214 Delegated APPLY Packet/Report Contract Baseline: [██████████] 100% complete
-- Phase 215 Runtime Delegation Packet/Report Hardening: [░░░░░░░░░░] 0% ready to plan
+- Phase 215 Runtime Delegation Packet/Report Hardening: [███████░░░] 70% APPLY complete, awaiting UNIFY
 - Phase 216 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
 - Phase 217 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 
@@ -41,7 +41,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
+  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
 ```
 
 ## Accumulated Context
@@ -180,20 +180,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
+Branch: feature/215-runtime-delegation-packet-report-hardening
 Last commit: c70bba3a Phase 214: Delegated APPLY packet/report contract baseline (#129)
-PR: #129 MERGED — https://github.com/coctostan/pals/pull/129
-CI: local validation passed Pi 197/197 and cross-harness 112/112; GitHub Socket checks passed before merge
-Working tree: clean after merge-gate state update pending local metadata commit
+PR: none yet — APPLY source changes complete locally; GitHub Flow postflight pending commit/push/PR
+CI: local validation passed Pi 197/197 and cross-harness 112/112 during APPLY
+Working tree: APPLY source changes and lifecycle artifacts uncommitted (`kernel/workflows/apply-phase.md`, `.pi/agents/pals-implementer.md`, `.paul/ROADMAP.md`, `.paul/STATE.md`, Phase 215 PLAN, archived handoff)
 Prior PRs: #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-28T20:51:42Z
-Stopped at: Phase 214 complete, ready to plan Phase 215
-Next action: Run /paul:plan for Phase 215 Runtime Delegation Packet/Report Hardening
-Resume file: .paul/phases/214-delegated-apply-packet-report-contract-baseline/214-01-SUMMARY.md
+Last session: 2026-04-29T00:38:31Z
+Stopped at: APPLY 215-01 complete; awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/215-runtime-delegation-packet-report-hardening/215-01-PLAN.md
+Resume file: .paul/handoffs/archive/HANDOFF-2026-04-28-phase-215-plan-awaiting-approval.md
 Resume context:
-- Phase 214 created and unified `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`; PR #129 merged as `c70bba3a`.
-- Phase 215 should implement runtime delegation packet/report hardening only after reading the Phase 214 contract and current ROADMAP/STATE.
-- Validation baseline remains Pi 197/197 and cross-harness 112/112.
+- APPLY 215-01 completed inline in the parent session; no helper delegation was used because the tasks modified the delegation workflow/agent contract itself.
+- Source edits were bounded to `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md`; `.paul/*` changes are lifecycle-only.
+- Parent-owned official verification, module gates, fallback judgment, changed-file checks, checkpoints, GitHub Flow safety, command-output truth, and `.paul/*` lifecycle writes were preserved.
+- Validation passed: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (197/197), and `bash tests/cross-harness-validation.sh` (112/112).
