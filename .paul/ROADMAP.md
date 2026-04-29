@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.51 Pi-Native Validation Classification**
 Status: 🚧 In progress
-Phases: 2 of 4 complete pending PR #134 merge — started 2026-04-29; Phase 219 UNIFY summary created
+Phases: 2 of 4 complete — started 2026-04-29; Phase 220 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
-| 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete pending merge | 2026-04-29 |
-| 220 | Documentation + Report Surfacing | TBD | Not started | — |
+| 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete | 2026-04-29 |
+| 220 | Documentation + Report Surfacing | TBD | 🔵 Ready to plan | — |
 | 221 | Evidence Reconciliation + Milestone Closure | TBD | Not started | — |
 
 ### Phase 218: Validation Classification Baseline
@@ -77,4 +77,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 219 UNIFY summary created; PR #134 merge gate pending.*
+*Last updated: 2026-04-29 — Phase 219 complete; Phase 220 ready to plan.*

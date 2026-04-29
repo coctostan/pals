@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-29 after v2.51 milestone creation)
 ## Current Position
 
 Milestone: v2.51 Pi-Native Validation Classification
-Phase: 219 of 221 (Runtime/Validation Suite Classification Hardening) — Unifying
-Plan: 219-01 UNIFY summary created; merge gate pending
-Status: UNIFY in progress; SUMMARY created and post-unify persistence/merge gate pending
-Last activity: 2026-04-29T15:43:00Z — Created .paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md with AC results, validation evidence, count reconciliation, module reports, and Phase 220 handoff
+Phase: 220 of 221 (Documentation + Report Surfacing) — Ready to Plan
+Plan: Not started
+Status: Ready to plan Phase 220
+Last activity: 2026-04-29T23:45:00Z — Phase 219 complete; PR #134 merged and transitioned to Phase 220 Documentation + Report Surfacing
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.51 Pi-Native Validation Classification: [█████░░░░░] 50% (2 of 4 phases complete pending PR #134 merge; Phase 219 UNIFY in progress)
+- v2.51 Pi-Native Validation Classification: [█████░░░░░] 50% (2 of 4 phases complete; Phase 220 ready to plan)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -37,8 +37,8 @@ Progress:
 - Phase 216 Documentation + Validation Surfacing: [██████████] 100% complete
 - Phase 217 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 218 Validation Classification Baseline: [██████████] 100% complete
-- Phase 219 Runtime/Validation Suite Classification Hardening: [██████████] 100% UNIFY summary created; merge gate pending
-- Phase 220 Documentation + Report Surfacing: [░░░░░░░░░░] 0% not started
+- Phase 219 Runtime/Validation Suite Classification Hardening: [██████████] 100% complete
+- Phase 220 Documentation + Report Surfacing: [░░░░░░░░░░] 0% ready to plan
 - Phase 221 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 
 ## Loop Position
@@ -46,7 +46,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [UNIFY summary created; merge gate pending]
+  ○        ○        ○     [Ready for Phase 220 PLAN]
 ```
 
 ## Accumulated Context
@@ -100,6 +100,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 218 UNIFY created `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md`, recording AC results, source accounting, marker greps, Pi 200/200, cross-harness 116/116, unchanged validation counts, module reports, PR #133 evidence, and Phase 219 readiness.
 - Phase 219 APPLY added explicit validation-classification inventory sections and exactly one localized TAP guardrail to each validation suite; final validation passed Pi 201/201 and cross-harness 117/117, with count changes reconciled as classification guardrail additions only and report/docs/runtime/installer/dependency/CI/legacy cleanup surfaces unchanged.
 - Phase 219 UNIFY created `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md`, recording AC results, focused grep evidence, Pi 201/201, cross-harness 117/117, validation count reconciliation (Pi 200→201, cross-harness 116→117), module reports, PR #134 evidence, and Phase 220 readiness.
+- Phase 219 transition merged PR #134, synced `main`, confirmed Socket Security checks passed, and routed v2.51 to Phase 220 Documentation + Report Surfacing.
 
 ### Current Decisions
 
@@ -189,6 +190,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 217: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; APPLY validation passed Pi 200/200 and cross-harness 116/116; CODI expected skipped-no-symbols; WALT quality history improved to 200 pass + 116 pass; RUBY noted existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 218: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; APPLY and UNIFY validation/persistence passed with no regression. Validation stayed stable (Pi 200/200, cross-harness 116/116); CODI expected skipped-no-symbols; RUBY noted existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 219 APPLY: `/paul`, `/carl`, TODD, WALT, advisory modules, and enforcement modules invoked or active via module dispatch; pre-apply baseline passed Pi 200/200 and cross-harness 116/116; final validation passed Pi 201/201 and cross-harness 117/117; RUBY/ARCH noted existing validation-script size debt remains pre-existing/future driver-quality scope. Minor process adaptation: Tasks 1 and 2 source edits were applied in one localized pass before sequential parent verification.
+- Skill audit Phase 219 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; PR #134 merge gate passed and merged.
 
 ### Deferred Issues
 
@@ -205,21 +207,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/219-runtime-validation-suite-classification-hardening
-Last commit: Phase 219 APPLY validation classification guardrails pushed to PR #134
-PR: https://github.com/coctostan/pals/pull/134 (OPEN)
+Branch: main
+Last commit: Phase 219 transition metadata committed on main after PR #134 merge
+PR: https://github.com/coctostan/pals/pull/134 (MERGED)
 CI: Socket Security checks passed on PR #134; local validation passed Pi 201/201 and cross-harness 117/117 during Phase 219 APPLY/UNIFY
-Working tree: dirty with Phase 219 UNIFY SUMMARY/lifecycle metadata before merge-gate commit
+Working tree: clean after Phase 219 transition metadata commit
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T15:43:00Z
-Stopped at: Phase 219 UNIFY summary created; merge gate pending
-Next action: Complete UNIFY merge gate for PR #134, then transition to Phase 220 planning
-Resume file: .paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md
+Last session: 2026-04-29T23:45:00Z
+Stopped at: Phase 219 complete; ready to plan Phase 220
+Next action: Run /paul:plan for Phase 220 Documentation + Report Surfacing
+Resume file: .paul/ROADMAP.md
 Resume context:
-- PLAN 219-01 hardens validation suites only: `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`.
-- Expected count changes are Pi 200→201 and cross-harness 116→117 due to one localized classification guardrail per suite.
-- Validation reports, README/docs surfacing, runtime files, installer files, dependency manifests, CI, GitHub Flow automation, and legacy cleanup remain out of scope.
-- Next lifecycle work is merge gate and transition after UNIFY summary finalization.
+- Phase 219 completed validation-suite hardening: Pi suite and cross-harness suite now declare and command-check classification inventories.
+- Final Phase 219 validation evidence: Pi 201/201 and cross-harness 117/117; count increases were reconciled as one new classification guardrail per suite.
+- Phase 220 owns documentation/report surfacing; legacy cleanup remains deferred until v2.51 evidence reconciliation closes.
+- Next lifecycle work is PLAN for Phase 220.
