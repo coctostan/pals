@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: 123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→143 pass + 60 pass→143 pass + 60 pass→149 pass→151 pass + 62 pass→156 pass→159 pass→159 pass→159 pass→165 pass + 69 pass→165 pass + 69 pass→166 pass + 70 pass→167 pass + 70 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→187 pass + 100 pass→187 pass + 100 pass→188 pass + 104 pass→188 pass + 104 pass→188 pass + 104 pass→192 pass + 108 pass→193 pass + 109 pass→193 pass + 109 pass→193 pass + 109 pass→196 pass + 111 pass→197 pass + 112 pass→197 pass + 112 pass→197 pass + 112 pass→199 pass + 115 pass→200 pass + 116 pass
+Tests: 123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→123 pass + 60 pass→143 pass + 60 pass→143 pass + 60 pass→149 pass→151 pass + 62 pass→156 pass→159 pass→159 pass→159 pass→165 pass + 69 pass→165 pass + 69 pass→166 pass + 70 pass→167 pass + 70 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→172 pass + 75 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→177 pass + 90 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→183 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→186 pass + 100 pass→187 pass + 100 pass→187 pass + 100 pass→188 pass + 104 pass→188 pass + 104 pass→188 pass + 104 pass→192 pass + 108 pass→193 pass + 109 pass→193 pass + 109 pass→193 pass + 109 pass→196 pass + 111 pass→197 pass + 112 pass→197 pass + 112 pass→197 pass + 112 pass→199 pass + 115 pass→200 pass + 116 pass→200 pass + 116 pass
 Coverage: —
 Lint: —
 Types: —
@@ -69,6 +69,7 @@ Types: —
 | 215-01 | 2026-04-29 | 197 pass + 112 pass | — | — | — | → stable |
 | 216-01 | 2026-04-29 | 199 pass + 115 pass | — | — | — | ↑ improving |
 | 217-01 | 2026-04-29 | 200 pass + 116 pass | — | — | — | ↑ improving |
+| 218-01 | 2026-04-29 | 200 pass + 116 pass | — | — | — | → stable |
 
 ---
 *Updated after every /paul:unify*

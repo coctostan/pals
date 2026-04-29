@@ -30,18 +30,20 @@ Phases: 3 of 3 complete
 
 **v2.51 Pi-Native Validation Classification**
 Status: 🚧 In progress
-Phases: 0 of 4 complete — started 2026-04-29; Phase 218 ready to plan
+Phases: 1 of 4 complete — started 2026-04-29; Phase 218 complete, Phase 219 ready to plan after merge gate
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 218 | Validation Classification Baseline | TBD | 🔵 Ready to plan | — |
+| 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
 | 219 | Runtime/Validation Suite Classification Hardening | TBD | Not started | — |
 | 220 | Documentation + Report Surfacing | TBD | Not started | — |
 | 221 | Evidence Reconciliation + Milestone Closure | TBD | Not started | — |
 
 ### Phase 218: Validation Classification Baseline
 Focus: Define the validation classification inventory and taxonomy for current Pi and cross-harness suites before weakening, relocating, archiving, or deleting any validation check.
-Plans: TBD (defined during /paul:plan)
+Plans: 218-01 — create the validation classification baseline contract for current Pi/cross-harness suite families, preservation rules, count-change reconciliation, and Phase 219 hardening handoff.
+APPLY result: Created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` with taxonomy, suite-family inventory, preservation rules, count-change reconciliation, and Phase 219 handoff. Validation passed Pi 200/200 and cross-harness 116/116; validation scripts remained read-only.
+UNIFY result: SUMMARY `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md` records AC results, source accounting, unchanged validation counts, module reports, PR #133 evidence, and Phase 219 readiness.
 
 ### Phase 219: Runtime/Validation Suite Classification Hardening
 Focus: Apply classification markers and guardrails to validation suites so Pi-Supported Runtime, Shared Invariant, Frozen Legacy Parity, Runtime Lens, Guided UI Safety, Helper Delegation, GitHub Flow Safety, and Artifact / Process checks are distinguishable and command-output-backed.
@@ -73,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — v2.51 Pi-Native Validation Classification created; Phase 218 ready to plan.*
+*Last updated: 2026-04-29 — Phase 218 UNIFY complete; merge gate/transition in progress.*
