@@ -95,12 +95,51 @@ Baseline counts remain Pi validation passed 200/200 and cross-harness validation
 
 ## Preservation rules
 
-Phase 218 records this section as the baseline location for class-aware preservation and count-change reconciliation rules. Phase 219 owns validation-suite marker hardening against these rules.
+Future plans must apply these rules before changing validation checks, validation reports, support-tier surfaces, or cleanup scope:
+
+1. Always classify before weakening, relocating, archiving, deleting, or treating checks as legacy-only.
+2. Do not remove parity-only checks in the same step that first classifies them; retention/removal requires a later product/support-surface decision.
+3. Do not weaken Shared Invariant checks without equivalent command evidence and explicit rationale.
+4. Do not let stale validation reports, widgets, summaries, helper reports, or this contract replace command-output truth.
+5. Do not combine broad validation cleanup with unrelated runtime, installer, helper-agent, GitHub Flow, dependency, CI, or lifecycle-authority changes.
+6. Keep validation scripts read-only unless the approved plan explicitly scopes validation-suite classification hardening.
+7. Keep Legacy Retention / Install-Surface Cleanup deferred until classification hardening completes and product approval is explicit.
+
+## Count-change reconciliation
+
+When any future plan changes validation counts, moves checks, archives checks, deletes checks, or changes blocking posture, the PLAN and SUMMARY must record:
+
+| Required field | Purpose |
+|---|---|
+| Old count | The prior command-output total for the affected suite or family. |
+| New count | The new command-output total after the approved change. |
+| Reason | Why the count or posture changed, tied to approved scope. |
+| Validation class affected | The primary and secondary classes changed or preserved. |
+| Shared-invariant preservation rationale | How `.paul/*`, PLAN/APPLY/UNIFY, module evidence, GitHub Flow safety, parent-owned APPLY, explicit approvals/checkpoints, artifact/process evidence, and command-output truth remain protected. |
+| Command-output evidence | Fresh focused marker output and full validation output proving the new state. |
+| Cleanup authorization | Product/support-surface approval when Frozen Legacy Parity or install-surface cleanup is involved. |
+
+A count decrease is not automatically a regression, and a count increase is not automatically an improvement. The classification, rationale, and fresh command output decide whether the change is acceptable.
 
 ## Phase 219 handoff
 
-Phase 219 should use this contract as the source taxonomy and inventory for validation-suite classification hardening.
+Phase 219 should harden the validation suites against this baseline without reopening runtime behavior or legacy cleanup. Its bounded scope should be:
+
+- add explicit classification markers or local guardrail checks to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` only where they make existing validation purpose more reviewable;
+- preserve the baseline families listed above unless an approved plan gives class-aware rationale;
+- record old count, new count, reason, validation class affected, shared-invariant preservation rationale, and command-output evidence for any count change;
+- keep reports and documentation surfacing for Phase 220 unless marker hardening needs a narrow contract citation;
+- keep Legacy Retention / Install-Surface Cleanup deferred until Phase 219 completes and product approval is explicit.
 
 ## Readiness checklist
 
-A future validation-changing plan is ready only when it names affected validation classes, expected command-output evidence, changed checks, protected shared invariants, and count-change reconciliation requirements.
+A future validation-changing plan is ready only when all applicable items are true:
+
+- [ ] Source inputs and affected validation-suite families are named.
+- [ ] Primary and secondary validation classes are explicit.
+- [ ] Protected Shared Invariant coverage is listed.
+- [ ] Frozen Legacy Parity checks are separated from active shared-invariant evidence.
+- [ ] Command-output verification commands and expected evidence are listed.
+- [ ] Count-change reconciliation fields are planned before edits begin.
+- [ ] Reports, widgets, summaries, helper reports, and classification contracts are explicitly non-authoritative for pass/fail status.
+- [ ] Legacy Retention / Install-Surface Cleanup is either out of scope or backed by explicit post-classification product approval.
