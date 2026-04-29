@@ -30,12 +30,12 @@ Phases: 3 of 3 complete
 
 **v2.50 Delegated APPLY Packet/Report Contract**
 Status: 🚧 In progress
-Phases: 1 of 4 complete — started 2026-04-28; Phase 214 complete, Phase 215 APPLY 215-01 complete awaiting UNIFY
+Phases: 2 of 4 complete — started 2026-04-28; Phase 215 complete, Phase 216 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 214 | Delegated APPLY Packet/Report Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
-| 215 | Runtime Delegation Packet/Report Hardening | 1/1 | 🟠 Applying | — |
+| 215 | Runtime Delegation Packet/Report Hardening | 1/1 | ✅ Complete | 2026-04-29 |
 | 216 | Documentation + Validation Surfacing | TBD | 🔵 Not started | — |
 | 217 | Evidence Reconciliation + Milestone Closure | TBD | 🔵 Not started | — |
 
@@ -45,7 +45,7 @@ Plans: 214-01 complete. Created `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CO
 
 ### Phase 215: Runtime Delegation Packet/Report Hardening
 Focus: Harden repo-source APPLY/helper-agent delegation behavior against the contract so task packets and reports are cheaper to inspect while parent APPLY still owns official verification, module gates, fallback judgment, file-scope checks, checkpoints, and lifecycle writes.
-Plans: 215-01 APPLY complete, awaiting UNIFY. Hardened `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md` for parent-owned task packets, structured helper reports, allowed/forbidden file scope, fallback triggers, changed-file diff checks, parent-run official verification, and no helper-owned lifecycle/validation/module/GitHub Flow authority. Validation passed Pi 197/197 and cross-harness 112/112.
+Plans: 215-01 complete. Hardened `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md` for parent-owned task packets, structured helper reports, allowed/forbidden file scope, fallback triggers, changed-file diff checks, parent-run official verification, actual out-of-scope helper edit blocking, and no helper-owned lifecycle/validation/module/GitHub Flow authority. Validation passed Pi 197/197 and cross-harness 112/112.
 
 ### Phase 216: Documentation + Validation Surfacing
 Focus: Surface the delegated APPLY packet/report guarantees in user-facing docs, Pi docs/skill map, helper-agent docs, and validation suites with command-output proof for Helper Delegation and Shared Invariant coverage.
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 215 APPLY 215-01 complete; awaiting UNIFY for Runtime Delegation Packet/Report Hardening.*
+*Last updated: 2026-04-29 — Phase 215 complete; Phase 216 Documentation + Validation Surfacing ready to plan.*

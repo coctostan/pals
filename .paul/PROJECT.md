@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.50 Delegated APPLY Packet/Report Contract is active as the fourth Pi-native build milestone after v2.46. Phase 214 Delegated APPLY Packet/Report Contract Baseline is complete; Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan.
+v2.50 Delegated APPLY Packet/Report Contract is active as the fourth Pi-native build milestone after v2.46. Phase 215 Runtime Delegation Packet/Report Hardening is complete; Phase 216 Documentation + Validation Surfacing is ready to plan.
 
 This milestone will reduce parent context cost for bounded `pals-implementer` work through formal task packets and structured reports while preserving parent APPLY authority, official verification, file-scope checks, fallback judgment, module gates, checkpoints, `.paul/*` lifecycle writes, and command-output truth. Later recommended milestones remain Pi-Native Validation Classification and Legacy Retention / Install-Surface Cleanup.
 
@@ -35,7 +35,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - Pi integration remains a thin, artifact-safe shell with command routing, lifecycle UI, guided workflow helpers, and bounded context injection.
 - Module overlays dispatch from the installed `modules.yaml` registry and surface evidence through canonical workflow artifacts.
 - GitHub Flow mode enforces branch/PR/CI/merge discipline when enabled in `pals.json`.
-- `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns verification, module gates, fallback, and `.paul/*` lifecycle writes.
+- `pals-implementer` may help with bounded delegated APPLY tasks, but parent APPLY owns task packets, structured report acceptance, actual changed-file diff checks, verification, module gates, fallback, checkpoints, GitHub Flow gates, and `.paul/*` lifecycle writes.
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
 - v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
 - v2.45 established Pi-native runtime assistance as the primary future architecture direction: Phases 192-196 reset support tiers, mapped Pi capabilities, designed context-efficiency guardrails, validated artifact-slice loading, and produced the final implementation roadmap while keeping `.paul/*` artifacts authoritative.
@@ -54,7 +54,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.49 Workflow/Resource Capsule Contract | Complete | Defined and hardened safe orientation capsules for installed resources without replacing authoritative workflow reads; final validation passed Pi 197/197 and cross-harness 112/112. |
 | v2.50 Delegated APPLY Packet/Report Contract | In progress | Formalizes helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority. |
 
-Recently completed: Phase 214 created `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`, establishing parent-owned task packets, structured helper reports, allowed/forbidden file scope, fallback triggers, validation classes, command-output evidence, failure conditions, and Phase 215-217 handoffs while preserving parent APPLY authority. Current: Phase 215 Runtime Delegation Packet/Report Hardening is ready to plan.
+Recently completed: Phase 215 hardened `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md` against `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`, adding explicit parent-owned task packet fields, structured helper report acceptance, allowed/forbidden file scope, fallback triggers, actual changed-file diff checks, parent-run official verification, and no helper-owned lifecycle/validation/module/GitHub Flow authority. Current: Phase 216 Documentation + Validation Surfacing is ready to plan.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -113,6 +113,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Close v2.48 with evidence reconciliation only. | Phase 209 Plan 209-01 | Workflow/Resource Capsule Contract is the next recommended Pi-native build milestone; do not reopen guided workflow runtime hardening, helper compression, broad validation classification, legacy cleanup, or lifecycle authority without a new approved plan. |
 | Define workflow/resource capsule contract before runtime loading. | Phase 210 Plan 210-01 | Phase 211 must harden runtime capsule loading against `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md`, preserving installed-resource citations, schema markers, full-read fallback, blocking-semantics exclusions, command-output truth, and derived-only non-authority boundaries. |
 | Define the delegated APPLY packet/report contract before runtime hardening. | Phase 214 Plan 214-01 | Phase 215 must harden repo-source APPLY/helper-agent delegation against `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` while preserving parent-owned official verification, module gates, fallback judgment, changed-file scope checks, checkpoints, and lifecycle writes. |
+| Parent acceptance of delegated APPLY helper work requires packet/report and actual diff evidence. | Phase 215 Plan 215-01 | Helper output is derived review input: parent APPLY must inspect structured reports, actual changed-file diffs, content diffs, and parent-run verification before PASS; actual out-of-scope helper edits block until repaired or guidance is requested. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -144,4 +145,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-28 after Phase 214 completion.*
+*Last updated: 2026-04-29 after Phase 215 completion.*

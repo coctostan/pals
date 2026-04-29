@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-28 after Phase 214 Delegated APPLY Packet/Report Contract Baseline completion)
+See: .paul/PROJECT.md (updated 2026-04-29 after Phase 215 Runtime Delegation Packet/Report Hardening completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.50 Delegated APPLY Packet/Report Contract is active; Phase 214 is complete and Phase 215 Runtime Delegation Packet/Report Hardening has PLAN 215-01 created, awaiting approval.
+**Current focus:** v2.50 Delegated APPLY Packet/Report Contract is active; Phase 215 Runtime Delegation Packet/Report Hardening is complete and Phase 216 Documentation + Validation Surfacing is ready to plan.
 
 ## Current Position
 
 Milestone: v2.50 Delegated APPLY Packet/Report Contract
-Phase: 215 of 217 (Runtime Delegation Packet/Report Hardening) — Applying
-Plan: 215-01 APPLY complete, awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-29T00:38:31Z — Completed APPLY for PLAN 215-01; validation passed Pi 197/197 and cross-harness 112/112
+Phase: 216 of 217 (Documentation + Validation Surfacing) — Ready to plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-04-29T01:48:21Z — Completed UNIFY for PLAN 215-01; validation passed Pi 197/197 and cross-harness 112/112
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -22,7 +22,7 @@ Progress:
 - v2.47 Artifact-Slice Contract Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.50 Delegated APPLY Packet/Report Contract: [███░░░░░░░] 25% (1 of 4 phases complete; Phase 215 APPLY complete, awaiting UNIFY)
+- v2.50 Delegated APPLY Packet/Report Contract: [█████░░░░░] 50% (2 of 4 phases complete; Phase 216 ready to plan)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -32,7 +32,7 @@ Progress:
 - Phase 212 Documentation + Validation Surfacing: [██████████] 100% complete
 - Phase 213 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 214 Delegated APPLY Packet/Report Contract Baseline: [██████████] 100% complete
-- Phase 215 Runtime Delegation Packet/Report Hardening: [███████░░░] 70% APPLY complete, awaiting UNIFY
+- Phase 215 Runtime Delegation Packet/Report Hardening: [██████████] 100% complete
 - Phase 216 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
 - Phase 217 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 
@@ -41,7 +41,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
+  ○        ○        ○     [Ready to plan Phase 216]
 ```
 
 ## Accumulated Context
@@ -85,6 +85,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 213 completed evidence reconciliation and milestone closure for v2.49: `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md` now records Phase 210/211 historical baselines (Pi 193/193, cross-harness 109/109), Phase 212 PR #127 closure-entry evidence (Pi 196/196, cross-harness 111/111), and final Phase 213 counts (Pi 197/197, cross-harness 112/112); validation suites protect closure markers and count-change reconciliation requirements; PR #128 merged.
 - v2.50 Delegated APPLY Packet/Report Contract has been created as the fourth Pi-native build milestone after v2.46: it will reduce parent context cost for bounded `pals-implementer` tasks through formal task packets and structured reports while preserving parent APPLY authority, official verification, file-scope checks, fallback judgment, module gates, checkpoints, `.paul/*` lifecycle writes, and command-output truth.
 - Phase 214 completed the delegated APPLY packet/report contract baseline in `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`: the contract defines parent-owned task packets, structured helper reports, allowed/forbidden file scope, full-read fallback triggers, validation classes including Helper Delegation and Shared Invariant, marker-check families, command-output evidence requirements, failure conditions, and Phase 215/216/217 handoffs while preserving parent APPLY authority; validation remained Pi 197/197 and cross-harness 112/112.
+- Phase 215 completed runtime delegation packet/report hardening in `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md`: parent-owned packets now name required fields and authority boundaries, structured helper reports feed parent review, actual changed-file diffs are checked against allowed files, out-of-scope helper edits block until repaired or guidance is requested, and helper output cannot claim lifecycle/validation/module/checkpoint/GitHub Flow authority; validation remained Pi 197/197 and cross-harness 112/112.
 
 ### Current Decisions
 
@@ -131,6 +132,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Close v2.49 with evidence reconciliation only and hand off to Delegated APPLY Packet/Report Contract | Phase 213 Plan 213-01 UNIFY | Workflow/resource capsules are complete; future work should focus on bounded delegated APPLY packet/report compression while preserving parent-owned APPLY and command-output truth. |
 | Create v2.50 Delegated APPLY Packet/Report Contract as the next Pi-native build milestone | v2.50 milestone creation | Phase 214 should define the packet/report contract before runtime helper compression, preserving parent-owned APPLY, allowed-file boundaries, fallback triggers, and helper delegation validation evidence. |
 | Define the delegated APPLY packet/report contract before runtime hardening | Phase 214 Plan 214-01 UNIFY | Phase 215 should harden repo-source APPLY/helper-agent delegation against `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md`, preserving parent-owned official verification, module gates, fallback judgment, changed-file scope checks, checkpoints, GitHub Flow gates, command-output truth, and `.paul/*` lifecycle writes. |
+| Enforce parent-owned task packets and actual changed-file diff checks before accepting delegated helper work | Phase 215 Plan 215-01 UNIFY | Future bounded `pals-implementer` tasks can reduce parent context cost through packet/report structure, but parent APPLY must inspect report completeness, actual `git diff --name-only` output, content diffs, and parent-run verification before PASS; actual out-of-scope helper edits block until reverted/repaired or halted for guidance. |
 
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
@@ -164,6 +166,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 212: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. Validation count increase was expected and reconciled (Pi 193→196, cross-harness 109→111). Runtime source remained unchanged by approved adaptation.
 - Skill audit Phase 213 APPLY: `/paul`, `/carl`, TODD, WALT, DOCS, SKIP, and enforcement modules invoked or active via module dispatch; pre-apply, post-task, and post-apply validation passed with no regression. Validation count increase was expected and reconciled for UNIFY (Pi 196→197, cross-harness 111→112). Minor process adaptation: source edits for Tasks 1 and 2 were applied in one localized pass before the combined validation run; final changed-file scope matched the approved contract/tests only.
 - Skill audit Phase 214: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and enforcement/advisory modules invoked or active via module dispatch; pre-plan, post-plan, APPLY, validation, post-unify persistence, and GitHub Flow evidence recorded. Validation stayed stable (Pi 197/197, cross-harness 112/112). Active handoff archived after resume proceeded.
+- Skill audit Phase 215: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and enforcement/advisory modules invoked or active via module dispatch; pre-plan, post-plan, APPLY, review-fix validation, and post-unify persistence passed with no regression. Validation stayed stable (Pi 197/197, cross-harness 112/112). Active handoff archived after resume proceeded. No helper delegation was used because the phase edited the delegation contract itself.
 
 ### Deferred Issues
 
@@ -181,20 +184,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/215-runtime-delegation-packet-report-hardening
-Last commit: feature branch includes Phase 215 APPLY and review-fix commits; see `git log` for latest hash
+Last commit: pending Phase 215 UNIFY/transition metadata commit
 PR: #130 OPEN — https://github.com/coctostan/pals/pull/130
-CI: local validation passed Pi 197/197 and cross-harness 112/112 after APPLY and review-fix patches; PR #130 Socket check pending/in progress at last check
-Working tree: expected clean after review-fix postflight commit/push
+CI: local validation passed Pi 197/197 and cross-harness 112/112 during UNIFY; PR #130 Socket checks passing before UNIFY commit
+Working tree: Phase 215 UNIFY lifecycle artifacts pending commit
 Prior PRs: #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-29T00:53:51Z
-Stopped at: APPLY 215-01 complete; awaiting UNIFY
-Next action: Run /paul:unify .paul/phases/215-runtime-delegation-packet-report-hardening/215-01-PLAN.md
-Resume file: none (APPLY complete; use Next action)
+Last session: 2026-04-29T01:48:21Z
+Stopped at: Phase 215 complete; ready to plan Phase 216 after GitHub Flow merge gate completes
+Next action: Complete GitHub Flow merge gate for PR #130, then run /paul:plan for Phase 216
+Resume file: .paul/phases/215-runtime-delegation-packet-report-hardening/215-01-SUMMARY.md
 Resume context:
-- APPLY 215-01 completed inline in the parent session; no helper delegation was used because the tasks modified the delegation workflow/agent contract itself.
-- Source edits were bounded to `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md`; `.paul/*` changes are lifecycle-only.
-- Parent-owned official verification, module gates, fallback judgment, changed-file checks, checkpoints, GitHub Flow safety, command-output truth, and `.paul/*` lifecycle writes were preserved.
-- Validation passed: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (197/197), and `bash tests/cross-harness-validation.sh` (112/112).
+- PLAN 215-01 completed and unified; SUMMARY records runtime/helper-agent hardening, review-fix patches, module persistence, and stable validation.
+- Phase 216 owns docs/skill-map/helper-agent docs and validation surfacing for delegated APPLY packet/report guarantees.
+- Do not close v2.50 during Phase 216; Phase 217 owns milestone evidence reconciliation and closure.
