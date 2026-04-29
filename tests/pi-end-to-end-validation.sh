@@ -1587,6 +1587,45 @@ if grep -q '~/.pi/agent/extensions/pals-hooks.ts' "$SKILL_MAP_P64" 2>/dev/null; 
 else
   tap_not_ok "Skill map documents the extension install target" "Expected ~/.pi/agent/extensions/pals-hooks.ts in drivers/pi/skill-map.md"
 fi
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY 7: VALIDATION CLASSIFICATION INVENTORY
+# ════════════════════════════════════════════════════════════════════
+
+section "VALIDATION CLASSIFICATION INVENTORY"
+
+# Validation Classification Inventory — Pi Suite
+# Installer Deployment => Pi-Supported Runtime / Shared Invariant
+# Module Execution Evidence => Shared Invariant / Pi-Supported Runtime
+# Skill Structural Validity => Pi-Supported Runtime / Shared Invariant
+# Thin Wrapper Contract => Shared Invariant / Pi-Supported Runtime
+# Delegated APPLY / REV Boundaries => Helper Delegation / Shared Invariant
+# Shared Workflow Prose Contract => Shared Invariant / Runtime Lens
+# Context-Diet Regression Guardrails => Shared Invariant / Runtime Lens
+# CODI Plan-Phase Distribution => Shared Invariant / Helper Delegation
+# Extension Structural Validity => Pi-Supported Runtime / Runtime Lens / Guided UI Safety
+# Driver Manifest Accuracy => Pi-Supported Runtime / Shared Invariant
+# Pi Discovery Surfaces => Pi-Supported Runtime / Runtime Lens / Helper Delegation
+# Collaborative Planning Model => Shared Invariant / Guided UI Safety
+# UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety
+
+tap_file_contains_all \
+  "Pi validation suite declares validation classification inventory" \
+  "$REPO_ROOT/tests/pi-end-to-end-validation.sh" \
+  "Validation Classification Inventory — Pi Suite" \
+  "Installer Deployment => Pi-Supported Runtime / Shared Invariant" \
+  "Module Execution Evidence => Shared Invariant / Pi-Supported Runtime" \
+  "Skill Structural Validity => Pi-Supported Runtime / Shared Invariant" \
+  "Thin Wrapper Contract => Shared Invariant / Pi-Supported Runtime" \
+  "Delegated APPLY / REV Boundaries => Helper Delegation / Shared Invariant" \
+  "Shared Workflow Prose Contract => Shared Invariant / Runtime Lens" \
+  "Context-Diet Regression Guardrails => Shared Invariant / Runtime Lens" \
+  "CODI Plan-Phase Distribution => Shared Invariant / Helper Delegation" \
+  "Extension Structural Validity => Pi-Supported Runtime / Runtime Lens / Guided UI Safety" \
+  "Driver Manifest Accuracy => Pi-Supported Runtime / Shared Invariant" \
+  "Pi Discovery Surfaces => Pi-Supported Runtime / Runtime Lens / Helper Delegation" \
+  "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
+  "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

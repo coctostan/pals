@@ -1178,6 +1178,36 @@ if [ -f "$PI_YAML" ]; then
 fi
 
 # ════════════════════════════════════════════════════════════════════
+# CATEGORY 5: VALIDATION CLASSIFICATION INVENTORY
+# ════════════════════════════════════════════════════════════════════
+
+section "VALIDATION CLASSIFICATION INVENTORY"
+
+# Validation Classification Inventory — Cross-Harness Suite
+# Installer Parity => Frozen Legacy Parity / Shared Invariant
+# Shared APPLY / REV Boundaries => Shared Invariant / Helper Delegation
+# Durable Module Evidence Path => Shared Invariant / Artifact / Process
+# Portability Compliance => Shared Invariant / Frozen Legacy Parity
+# Shared Collaborative Planning Model => Shared Invariant / Guided UI Safety
+# Context-Diet Regression Guardrails => Shared Invariant / Runtime Lens
+# CODI Plan-Phase Distribution => Shared Invariant / Helper Delegation
+# Artifact Spec Compliance => Shared Invariant / Artifact / Process
+# Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant
+
+tap_file_contains_all \
+  "Cross-harness validation suite declares validation classification inventory" \
+  "$REPO_ROOT/tests/cross-harness-validation.sh" \
+  "Validation Classification Inventory — Cross-Harness Suite" \
+  "Installer Parity => Frozen Legacy Parity / Shared Invariant" \
+  "Shared APPLY / REV Boundaries => Shared Invariant / Helper Delegation" \
+  "Durable Module Evidence Path => Shared Invariant / Artifact / Process" \
+  "Portability Compliance => Shared Invariant / Frozen Legacy Parity" \
+  "Shared Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
+  "Context-Diet Regression Guardrails => Shared Invariant / Runtime Lens" \
+  "CODI Plan-Phase Distribution => Shared Invariant / Helper Delegation" \
+  "Artifact Spec Compliance => Shared Invariant / Artifact / Process" \
+  "Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant"
+# ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 

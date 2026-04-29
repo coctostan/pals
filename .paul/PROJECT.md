@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 218 Validation Classification Baseline is complete; Phase 219 Runtime/Validation Suite Classification Hardening is ready to plan.
+v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 219 Runtime/Validation Suite Classification Hardening APPLY is complete and awaiting UNIFY.
 
 This milestone will classify current and future validation checks by support purpose before weakening, relocating, archiving, deleting, or treating any check as legacy-only, while preserving command-output truth, `.paul/*` authority, shared invariants, GitHub Flow safety, module evidence, parent-owned APPLY, and explicit approval/checkpoint boundaries. Legacy Retention / Install-Surface Cleanup remains deferred until classification is complete.
 
@@ -55,7 +55,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.50 Delegated APPLY Packet/Report Contract | Complete | Formalized helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority; final validation passed Pi 200/200 and cross-harness 116/116. |
 | v2.51 Pi-Native Validation Classification | In progress | Classifies validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories before cleanup. |
 
-Recently completed: Phase 218 created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md`, classified current Pi/cross-harness suite families, preserved unchanged validation counts (Pi 200/200, cross-harness 116/116), produced SUMMARY `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md`, and merged PR #133. Current: plan Phase 219 Runtime/Validation Suite Classification Hardening.
+Recently completed: Phase 218 created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md`, classified current Pi/cross-harness suite families, preserved unchanged validation counts (Pi 200/200, cross-harness 116/116), produced SUMMARY `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md`, and merged PR #133. Current: Phase 219 APPLY added validation-classification inventory markers plus one local TAP guardrail per validation suite; validation now passes Pi 201/201 and cross-harness 117/117, awaiting UNIFY.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
