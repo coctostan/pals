@@ -28,29 +28,34 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**Next recommended milestone: Pi-Native Validation Classification**
-Status: 🔵 Ready to create
-Previous milestone v2.50 completed 2026-04-29; next milestone should classify Pi-supported runtime checks, shared invariants, frozen legacy parity, and future validation evidence requirements.
+**v2.51 Pi-Native Validation Classification**
+Status: 🚧 In progress
+Phases: 0 of 4 complete — started 2026-04-29; Phase 218 ready to plan
 
-| Candidate | Purpose | Status |
-|-----------|---------|--------|
-| Pi-Native Validation Classification | Classify current validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, helper delegation, artifact/process, guided UI safety, GitHub Flow safety, and future cleanup categories. | Recommended next |
-| Legacy Retention / Install-Surface Cleanup | Follow-on cleanup after validation classification establishes what may be weakened, removed, or retained. | Deferred |
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 218 | Validation Classification Baseline | TBD | 🔵 Ready to plan | — |
+| 219 | Runtime/Validation Suite Classification Hardening | TBD | Not started | — |
+| 220 | Documentation + Report Surfacing | TBD | Not started | — |
+| 221 | Evidence Reconciliation + Milestone Closure | TBD | Not started | — |
 
-### Phase 214: Delegated APPLY Packet/Report Contract Baseline
-Focus: Define the bounded delegated APPLY packet/report contract before implementation: parent-owned packet fields, allowed/forbidden file scope, fallback triggers, structured report schema, validation classes, and no helper-owned `.paul/*` writes.
-Plans: 214-01 complete. Created `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` with parent-owned task packet schema, structured helper report schema, allowed/forbidden file scope, fallback triggers, validation classes, command-output evidence requirements, failure conditions, and Phase 215-217 handoffs.
+### Phase 218: Validation Classification Baseline
+Focus: Define the validation classification inventory and taxonomy for current Pi and cross-harness suites before weakening, relocating, archiving, or deleting any validation check.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 215: Runtime Delegation Packet/Report Hardening
-Focus: Harden repo-source APPLY/helper-agent delegation behavior against the contract so task packets and reports are cheaper to inspect while parent APPLY still owns official verification, module gates, fallback judgment, file-scope checks, checkpoints, and lifecycle writes.
-Plans: 215-01 complete. Hardened `kernel/workflows/apply-phase.md` and `.pi/agents/pals-implementer.md` for parent-owned task packets, structured helper reports, allowed/forbidden file scope, fallback triggers, changed-file diff checks, parent-run official verification, actual out-of-scope helper edit blocking, and no helper-owned lifecycle/validation/module/GitHub Flow authority. Validation passed Pi 197/197 and cross-harness 112/112.
+### Phase 219: Runtime/Validation Suite Classification Hardening
+Focus: Apply classification markers and guardrails to validation suites so Pi-Supported Runtime, Shared Invariant, Frozen Legacy Parity, Runtime Lens, Guided UI Safety, Helper Delegation, GitHub Flow Safety, and Artifact / Process checks are distinguishable and command-output-backed.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 216: Documentation + Validation Surfacing
-Focus: Surface the delegated APPLY packet/report guarantees in user-facing docs, Pi docs/skill map, helper-agent docs, and validation suites with command-output proof for Helper Delegation and Shared Invariant coverage.
-Plans: 216-01 complete. Surfaced delegated APPLY packet/report guarantees in README/Pi docs/skill-map/helper-agent docs and validation suites with Helper Delegation + Shared Invariant command-output proof; validation passed Pi 199/199 and cross-harness 115/115.
+### Phase 220: Documentation + Report Surfacing
+Focus: Surface the classification model in docs and any explicitly scoped report artifacts without making stale reports replace current command-output truth.
+Plans: TBD (defined during /paul:plan)
 
-### Completed v2.50: Delegated APPLY Packet/Report Contract
-Focus: Reduce parent APPLY context cost for bounded `pals-implementer` work through formal task packets and structured helper reports while preserving parent authority, command-output truth, module evidence, GitHub Flow safety, checkpoints, fallback, and `.paul/*` lifecycle writes.
+### Phase 221: Evidence Reconciliation + Milestone Closure
+Focus: Reconcile classification evidence, validation count changes, module/GitHub Flow evidence, lifecycle metadata, and handoff boundaries before any Legacy Retention / Install-Surface Cleanup milestone begins.
+Plans: TBD (defined during /paul:plan)
+
+### Previous milestone: v2.50 Delegated APPLY Packet/Report Contract
 Result: Phases 214-217 complete. Phase 217 reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 200/200 and cross-harness 116/116; PR #132 merged. v2.50 hands off to Pi-Native Validation Classification.
 ## Completed Milestones
 
@@ -68,4 +73,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — v2.50 complete; Pi-Native Validation Classification ready to create.*
+*Last updated: 2026-04-29 — v2.51 Pi-Native Validation Classification created; Phase 218 ready to plan.*

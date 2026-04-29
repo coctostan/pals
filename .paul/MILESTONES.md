@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Pi-Native Validation Classification (ready to create) | `.paul/ROADMAP.md` current milestone candidate |
+| Current milestone | v2.51 Pi-Native Validation Classification (in progress) | `.paul/ROADMAP.md` phases 218-221 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -72,7 +72,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.50 Delegated APPLY Packet/Report Contract is complete. Next recommended milestone is Pi-Native Validation Classification, followed by Legacy Retention / Install-Surface Cleanup after classification establishes safe cleanup boundaries.
+v2.51 Pi-Native Validation Classification is active. Phase 218 Validation Classification Baseline is ready to plan. Follow-on Legacy Retention / Install-Surface Cleanup remains deferred until classification establishes safe cleanup boundaries.
 
 ## Archive
 
@@ -80,4 +80,4 @@ v2.50 Delegated APPLY Packet/Report Contract is complete. Next recommended miles
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.50 completion: 2026-04-29.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.51 creation: 2026-04-29.*
