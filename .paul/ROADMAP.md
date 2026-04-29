@@ -30,12 +30,12 @@ Phases: 3 of 3 complete
 
 **v2.51 Pi-Native Validation Classification**
 Status: 🚧 In progress
-Phases: 1 of 4 complete — started 2026-04-29; Phase 219 APPLY complete, awaiting UNIFY
+Phases: 2 of 4 complete pending PR #134 merge — started 2026-04-29; Phase 219 UNIFY summary created
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
-| 219 | Runtime/Validation Suite Classification Hardening | 219-01 | 🟠 APPLY complete | — |
+| 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete pending merge | 2026-04-29 |
 | 220 | Documentation + Report Surfacing | TBD | Not started | — |
 | 221 | Evidence Reconciliation + Milestone Closure | TBD | Not started | — |
 
@@ -49,6 +49,7 @@ UNIFY result: SUMMARY `.paul/phases/218-validation-classification-baseline/218-0
 Focus: Apply classification markers and guardrails to validation suites so Pi-Supported Runtime, Shared Invariant, Frozen Legacy Parity, Runtime Lens, Guided UI Safety, Helper Delegation, GitHub Flow Safety, and Artifact / Process checks are distinguishable and command-output-backed.
 Plans: 219-01 — add explicit validation-classification inventory markers and one localized TAP guardrail per validation suite, reconciling expected counts Pi 200→201 and cross-harness 116→117 while deferring cleanup and broad report surfacing.
 APPLY result: Added `VALIDATION CLASSIFICATION INVENTORY` sections to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`, with one localized self-checking TAP guardrail per suite. Validation passed Pi 201/201 and cross-harness 117/117; count changes are limited to the new classification guardrails and legacy cleanup/report surfacing remain deferred.
+UNIFY result: SUMMARY `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` records AC results, focused marker evidence, Pi 201/201, cross-harness 117/117, validation count reconciliation, module reports, PR #134 evidence, and Phase 220 readiness.
 
 ### Phase 220: Documentation + Report Surfacing
 Focus: Surface the classification model in docs and any explicitly scoped report artifacts without making stale reports replace current command-output truth.
@@ -76,4 +77,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 219 APPLY complete; awaiting UNIFY.*
+*Last updated: 2026-04-29 — Phase 219 UNIFY summary created; PR #134 merge gate pending.*
