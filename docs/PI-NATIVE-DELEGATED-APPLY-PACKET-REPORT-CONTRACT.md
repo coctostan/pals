@@ -5,15 +5,16 @@
 | Field | Value |
 |---|---|
 | Milestone | v2.50 Delegated APPLY Packet/Report Contract |
-| Phase | 214 — Delegated APPLY Packet/Report Contract Baseline |
-| Artifact status | Contract baseline for later runtime, documentation, validation, and evidence reconciliation hardening |
-| Implementation status | This document does not change runtime delegation behavior, helper-agent definitions, validation scripts, dependencies, CI, GitHub Flow automation, installed runtime copies, broad validation classification, legacy surfaces, or lifecycle authority |
+| Baseline phase | 214 — Delegated APPLY Packet/Report Contract Baseline |
+| Closure phase | 217 — Evidence Reconciliation + Milestone Closure |
+| Artifact status | Contract baseline plus v2.50 closure evidence for runtime, documentation, validation, and evidence reconciliation hardening |
+| Implementation status | Phase 214 created the baseline only; Phase 215 hardened runtime/helper workflow behavior; Phase 216 surfaced docs/helper-agent/validation markers; Phase 217 reconciles evidence without changing runtime delegation behavior, helper-agent definitions, dependencies, CI, GitHub Flow automation, installed runtime copies, broad validation classification, legacy surfaces, or lifecycle authority |
 
 ## Purpose and boundary
 
 This contract defines how parent APPLY may delegate a bounded autonomous task to repo-local `pals-implementer` while keeping lifecycle authority in the parent workflow. Delegation is a context-efficiency aid: it may reduce how much implementation detail the parent must hold while a bounded task is edited, but it cannot replace parent-owned task packets, full plan reads, official verification, module enforcement, file-scope checks, fallback judgment, checkpoints, GitHub Flow gates, command-output truth, or `.paul/*` lifecycle writes.
 
-Phase 214 creates this baseline only. Phase 215 may harden runtime delegation behavior against the baseline; Phase 216 may surface docs and validation markers; Phase 217 may reconcile evidence and close the milestone.
+Phase 214 created this baseline only. Phase 215 hardened runtime delegation behavior against the baseline; Phase 216 surfaced docs and validation markers; Phase 217 reconciles command-backed evidence and closes the milestone.
 
 ## Source inputs
 
@@ -24,6 +25,19 @@ Phase 214 creates this baseline only. Phase 215 may harden runtime delegation be
 | `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md` | Explicit user intent requires transcript/artifact-visible canonical replies and protects no auto-approval, no auto-continue, no skipped checkpoints, no UI-only decisions, and no inferred merge intent. | Delegation must not approve APPLY/UNIFY, satisfy checkpoints, continue lifecycle work, or infer human decisions. |
 | `docs/PI-NATIVE-WORKFLOW-RESOURCE-CAPSULE-CONTRACT.md` | Orientation aids must expose source, freshness/bounds/fallback, `Derived aid only`, blocking-semantics exclusions, and full authoritative reads before action. | Helper packets and reports may orient execution/review, but full PLAN/workflow reads and command output remain authoritative. |
 | `.paul/phases/214-delegated-apply-packet-report-contract-baseline/214-01-PLAN.md` | Phase 214 approved a docs-only contract baseline with packet fields, report fields, allowed/forbidden file scope, fallback triggers, validation classes, and handoffs. | APPLY for this phase must stay within this new contract artifact plus normal lifecycle writes. |
+
+## v2.50 closure evidence chain
+
+Phase 217 reconciles the delegated APPLY packet/report milestone with these baselines and closure-entry facts:
+
+| Evidence point | Command-backed result | Closure implication |
+|---|---|---|
+| Phase 214/215 historical baseline | Pi validation passed 197/197 and cross-harness validation passed 112/112. | The contract baseline and runtime/helper delegation hardening were established without broad validation-count changes. |
+| Phase 216 closure-entry baseline | Pi validation passed 199/199 and cross-harness validation passed 115/115. | Documentation/helper-agent/validation surfacing added durable delegated APPLY markers before final closure. |
+| PR #131 | Phase 216 documentation and validation surfacing merged in PR #131; local validation and Socket Security checks passed. | Final closure can treat Phase 216 surfacing as landed GitHub Flow evidence while preserving UNIFY merge-gate evidence for Phase 217. |
+| Count reconciliation requirement | Future validation count changes must record old count, new count, reason, validation class affected, and shared-invariant preservation rationale. | Command-output truth remains reviewable when Helper Delegation or Shared Invariant marker totals change. |
+
+Closure remains valid only while delegated APPLY stays parent-owned: Parent-owned task packet, structured helper report, helper reports as review input, Allowed files:, Forbidden files:, Fallback triggers:, Parent-run official verification:, changed-file diff review, Helper Delegation, Shared Invariant, GitHub Flow safety, command-output truth, and Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.
 
 ## Settled authority rules
 

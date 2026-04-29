@@ -643,6 +643,28 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'merge gate'
 done
 
+DELEGATED_APPLY_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md"
+
+tap_file_contains_all \
+  "Delegated APPLY contract preserves v2.50 Shared Invariant closure markers" \
+  "$DELEGATED_APPLY_CONTRACT" \
+  '.paul/*' \
+  'parent-owned APPLY' \
+  'module evidence' \
+  'checkpoint' \
+  'GitHub Flow safety' \
+  'helper reports as review input' \
+  'Parent-run official verification:' \
+  'changed-file diff' \
+  'command-output truth' \
+  'Helper Delegation' \
+  'Shared Invariant' \
+  'old count' \
+  'new count' \
+  'validation class affected' \
+  'shared-invariant preservation rationale' \
+  'Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.'
+
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2C: CODI PLAN-PHASE DISTRIBUTION
 # ════════════════════════════════════════════════════════════════════

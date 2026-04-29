@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.50 Delegated APPLY Packet/Report Contract**
 Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-28; Phase 216 complete, Phase 217 ready to plan
+Phases: 3 of 4 complete — started 2026-04-28; Phase 216 complete, Phase 217 SUMMARY created
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 214 | Delegated APPLY Packet/Report Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 215 | Runtime Delegation Packet/Report Hardening | 1/1 | ✅ Complete | 2026-04-29 |
 | 216 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-29 |
-| 217 | Evidence Reconciliation + Milestone Closure | TBD | 🔵 Not started | — |
+| 217 | Evidence Reconciliation + Milestone Closure | 1/1 | 🟣 UNIFY in progress | — |
 
 ### Phase 214: Delegated APPLY Packet/Report Contract Baseline
 Focus: Define the bounded delegated APPLY packet/report contract before implementation: parent-owned packet fields, allowed/forbidden file scope, fallback triggers, structured report schema, validation classes, and no helper-owned `.paul/*` writes.
@@ -53,7 +53,7 @@ Plans: 216-01 complete. Surfaced delegated APPLY packet/report guarantees in REA
 
 ### Phase 217: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile helper delegation validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to Pi-Native Validation Classification.
-Plans: TBD (defined during `/paul:plan`); ready to plan after Phase 216 completion.
+Plans: 217-01 SUMMARY created. Reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence inputs, and lifecycle metadata; validation now passes Pi 200/200 and cross-harness 116/116. PR #132 merge gate and final transition will close v2.50 and hand off to Pi-Native Validation Classification.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 216 complete; Phase 217 ready to plan.*
+*Last updated: 2026-04-29 — Phase 217 SUMMARY created; merge gate pending.*
