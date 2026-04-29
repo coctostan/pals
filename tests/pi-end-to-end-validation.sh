@@ -549,6 +549,32 @@ tap_file_contains_all \
   'changed-file diff' \
   'Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.'
 
+DELEGATED_APPLY_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md"
+
+tap_file_contains_all \
+  "Delegated APPLY contract records v2.50 closure evidence markers" \
+  "$DELEGATED_APPLY_CONTRACT" \
+  '197/197' \
+  '112/112' \
+  '199/199' \
+  '115/115' \
+  'PR #131' \
+  'Helper Delegation' \
+  'Shared Invariant' \
+  'Parent-owned task packet' \
+  'structured helper report' \
+  'Allowed files:' \
+  'Forbidden files:' \
+  'Fallback triggers:' \
+  'Parent-run official verification:' \
+  'changed-file diff' \
+  'command-output truth' \
+  'old count' \
+  'new count' \
+  'validation class affected' \
+  'shared-invariant preservation rationale' \
+  'Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.'
+
 PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
 PI_SCHEMA_REF="$SKILL_DIR/references/pals-json-schema.md"
 
