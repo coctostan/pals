@@ -199,10 +199,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/218-validation-classification-baseline
-Last commit: Phase 218 APPLY commits created validation classification baseline contract; APPLY metadata ready for postflight commit/PR
-PR: pending postflight — APPLY complete locally on feature branch
-CI: N/A until PR creation; local validation passed Pi 200/200 and cross-harness 116/116 during Phase 218 APPLY
-Working tree: dirty with APPLY lifecycle artifacts ready for postflight commit
+Last commit: `eba4a89f` — Phase 218 APPLY lifecycle metadata; branch pushed to origin
+PR: https://github.com/coctostan/pals/pull/133 (OPEN)
+CI: pending — Socket Security Project Report queued; local validation passed Pi 200/200 and cross-harness 116/116 during Phase 218 APPLY
+Working tree: dirty only with postflight PR-state lifecycle update until committed
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
