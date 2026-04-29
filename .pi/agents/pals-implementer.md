@@ -14,10 +14,11 @@ Your parent APPLY workflow is authoritative for lifecycle state, official verifi
 
 Eligible delegated APPLY work may be a single bounded task or sequential task step — not just parallel fan-out — but only when the parent can still inspect the result and judge it equivalent to inline APPLY.
 
-Required parent packet:
-- The parent prompt must provide `packet_id`, `plan_path`, `task_name`, task objective/action, `allowed_files`, `forbidden_files`, context sources, verification to attempt, parent official verification, fallback triggers, and report schema.
+Required parent packet (`Parent-owned task packet`):
+- The parent prompt must provide `packet_id`, `plan_path`, `task_name`, task objective/action, `Allowed files:`, `Forbidden files:`, context sources, verification to attempt, `Parent-run official verification:`, `Fallback triggers:`, and report schema.
 - Treat the parent prompt as authoritative for task scope, allowed files, forbidden files, stop conditions, and output format.
 - Stop and return control if any required packet field is missing, stale, ambiguous, or contested.
+- Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.
 
 Rules:
 - `allowed_files` are explicit repo-relative paths; edit only those paths.
@@ -27,7 +28,7 @@ Rules:
 - Do not invent PLAN/APPLY/UNIFY state, checkpoint outcomes, validation truth, module gate results, PR/CI/review/merge readiness, or lifecycle decisions.
 - Do not claim official verification, module gate satisfaction, checkpoint completion, APPLY/UNIFY completion, GitHub Flow readiness, validation pass/fail authority, or lifecycle truth.
 - Prefer explicit reporting over hidden assumptions; never create hidden persistence, telemetry, or local state.
-- If the parent asks for task-local verification, run it when feasible and report exact commands and results. Helper-attempted checks are advisory until the parent reruns official verification.
+- If the parent asks for task-local verification, run it when feasible and report exact commands and results. Helper-attempted checks are advisory until the parent reruns official verification, reviews the actual changed-file diff, and completes module gates.
 - Treat ambiguity, scope creep, cross-repo work, verification uncertainty/failure, lifecycle needs, or non-equivalent outcomes as reasons to stop and return control.
 - Stop on ambiguity instead of guessing.
 
@@ -46,6 +47,7 @@ Return control to the parent immediately when:
 - inline APPLY fallback is safer than continuing here
 - ambiguity appears after execution starts or the requested change turns exploratory
 - the result would no longer be equivalent to what the parent could safely accept inline
+- parent review of the structured helper report or actual changed-file diff would be needed before continuing
 
 Output format:
 

@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.50 Delegated APPLY Packet/Report Contract**
 Status: 🚧 In progress
-Phases: 2 of 4 complete — started 2026-04-28; Phase 215 complete, Phase 216 ready to plan
+Phases: 3 of 4 complete — started 2026-04-28; Phase 216 complete, Phase 217 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 214 | Delegated APPLY Packet/Report Contract Baseline | 1/1 | ✅ Complete | 2026-04-28 |
 | 215 | Runtime Delegation Packet/Report Hardening | 1/1 | ✅ Complete | 2026-04-29 |
-| 216 | Documentation + Validation Surfacing | TBD | 🔵 Not started | — |
+| 216 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-29 |
 | 217 | Evidence Reconciliation + Milestone Closure | TBD | 🔵 Not started | — |
 
 ### Phase 214: Delegated APPLY Packet/Report Contract Baseline
@@ -49,11 +49,11 @@ Plans: 215-01 complete. Hardened `kernel/workflows/apply-phase.md` and `.pi/agen
 
 ### Phase 216: Documentation + Validation Surfacing
 Focus: Surface the delegated APPLY packet/report guarantees in user-facing docs, Pi docs/skill map, helper-agent docs, and validation suites with command-output proof for Helper Delegation and Shared Invariant coverage.
-Plans: TBD (defined during `/paul:plan`).
+Plans: 216-01 complete. Surfaced delegated APPLY packet/report guarantees in README/Pi docs/skill-map/helper-agent docs and validation suites with Helper Delegation + Shared Invariant command-output proof; validation passed Pi 199/199 and cross-harness 115/115.
 
 ### Phase 217: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile helper delegation validation/evidence markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata before handing off to Pi-Native Validation Classification.
-Plans: TBD (defined during `/paul:plan`).
+Plans: TBD (defined during `/paul:plan`); ready to plan after Phase 216 completion.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -69,4 +69,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 215 complete; Phase 216 Documentation + Validation Surfacing ready to plan.*
+*Last updated: 2026-04-29 — Phase 216 complete; Phase 217 ready to plan.*

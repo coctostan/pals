@@ -24,7 +24,9 @@ Only the first two are direct lifecycle entry surfaces. Project-shipped agents a
 
 Each `/paul-*` command is a brief Pi-native convenience wrapper that routes to the corresponding canonical skill (`/skill:paul-*`). The extension provides the command/hook layer only; shared workflows and canonical skills remain the implementation truth, and command guidance stays local so workflow-context injection does not expand as part of discovery.
 Pi also installs enabled PALS modules into the same skill tree and records them in `~/.pi/agent/skills/pals/modules.yaml`. Those modules are not separate Pi skills; workflows read that registry and dispatch module guidance from shared markdown at plan/apply/unify time. Because Pi resolves file access from the active workspace, the Pi installer renders the installed `SKILL.md` files with absolute install-root paths (for workflows, references, templates, rules, and `modules.yaml`) so module dispatch does not fall back to repo-local lookup.
-Delegated APPLY stays bounded. If `/skill:paul-apply` uses `pals-implementer`, the parent workflow still owns verification, checkpoints, module gates, fallback judgment, and `.paul/*` artifacts. Pi surfaces the helper only for eligible bounded repo-local work; Pi does not become lifecycle truth.
+Delegated APPLY stays bounded. If `/skill:paul-apply` uses `pals-implementer`, the parent workflow still owns verification, checkpoints, module gates, fallback judgment, task status, GitHub Flow decisions, and `.paul/*` artifacts. Pi surfaces the helper only for eligible bounded repo-local work; Pi does not become lifecycle truth.
+
+Helper Delegation is protected by explicit packet/report markers: `Parent-owned task packet`, `structured helper report`, `Allowed files:`, `Forbidden files:`, `Fallback triggers:`, `Parent-run official verification:`, actual `changed-file diff` review, and `Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.` Helper-attempted checks are review input only until parent APPLY reruns official verification and module gates.
 
 ## Collaboration-Aware Planning
 

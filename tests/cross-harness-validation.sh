@@ -604,6 +604,18 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline'
 
   tap_file_contains_all \
+    "$label apply workflow keeps Helper Delegation parent-acceptance markers" \
+    "$root/workflows/apply-phase.md" \
+    'Parent-owned task packet' \
+    'Allowed files:' \
+    'Forbidden files:' \
+    'Fallback triggers:' \
+    'Parent-run official verification:' \
+    'structured helper report' \
+    'changed-file diff check' \
+    'Authority: Derived aid only; no helper-owned .paul/* lifecycle writes.'
+
+  tap_file_contains_all \
     "$label unify workflow keeps post-unify evidence and GitHub Flow merge-gate guardrails" \
     "$root/workflows/unify-phase.md" \
     'post-unify' \
