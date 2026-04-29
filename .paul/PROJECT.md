@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 218 Validation Classification Baseline APPLY is complete for PLAN 218-01 and awaiting UNIFY.
+v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 218 Validation Classification Baseline is complete for PLAN 218-01; merge gate/transition is in progress before Phase 219 planning.
 
 This milestone will classify current and future validation checks by support purpose before weakening, relocating, archiving, deleting, or treating any check as legacy-only, while preserving command-output truth, `.paul/*` authority, shared invariants, GitHub Flow safety, module evidence, parent-owned APPLY, and explicit approval/checkpoint boundaries. Legacy Retention / Install-Surface Cleanup remains deferred until classification is complete.
 
@@ -55,7 +55,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.50 Delegated APPLY Packet/Report Contract | Complete | Formalized helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority; final validation passed Pi 200/200 and cross-harness 116/116. |
 | v2.51 Pi-Native Validation Classification | In progress | Classifies validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories before cleanup. |
 
-Recently completed: Phase 217 reconciled v2.50 delegated APPLY packet/report closure evidence, added durable Pi/shared marker checks, recorded validation count reconciliation (Pi 199→200, cross-harness 115→116), and merged PR #132. Current: Phase 218 APPLY created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md`; validation passed Pi 200/200 and cross-harness 116/116; UNIFY is next.
+Recently completed: Phase 218 created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md`, classified current Pi/cross-harness suite families, preserved unchanged validation counts (Pi 200/200, cross-harness 116/116), and produced SUMMARY `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md`. Current: complete PR #133 merge gate, then plan Phase 219 Runtime/Validation Suite Classification Hardening.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
