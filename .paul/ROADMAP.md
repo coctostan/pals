@@ -77,4 +77,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 229 UNIFY complete; v2.53 milestone closed pending merge-gate finalization.*
+*Last updated: 2026-04-30 — Phase 229 UNIFY complete; v2.53 milestone closed and PR #144 merged.*
