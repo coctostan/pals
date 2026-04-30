@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-30 after Phase 231 transition)
 ## Current Position
 
 Milestone: v2.54 Contextual Verbosity Paring
-Phase: 232 of 233 (Skill Verbosity Pass) — Planning
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-04-30T20:02:00Z — Phase 231 complete; transitioned to Phase 232
+Phase: 232 of 233 (Skill Verbosity Pass) — Unifying
+Plan: 232-01 complete
+Status: UNIFY complete, merge gate/transition in progress
+Last activity: 2026-04-30T20:30:45Z — Created .paul/phases/232-skill-verbosity-pass/232-01-SUMMARY.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -26,10 +26,10 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-- v2.54 Contextual Verbosity Paring: [█████░░░░░] 50% (2 of 4 phases complete; Phase 232 ready to plan)
+- v2.54 Contextual Verbosity Paring: [███████░░░] 70% (2 of 4 phases complete; Phase 232 UNIFY complete, transition in progress)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
-- Phase 232 Skill Verbosity Pass: [░░░░░░░░░░] 0% ready to plan
+- Phase 232 Skill Verbosity Pass: [██████████] 100% UNIFY complete; merge gate/transition in progress
 - Phase 233 Validation + Evidence Closure: [░░░░░░░░░░] 0% not started
 - Phase 226 Pi Integration Efficiency Discovery: [██████████] 100% complete
 - Phase 227 Effectiveness Improvement Candidate Design: [██████████] 100% complete
@@ -61,7 +61,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN]
+  ✓        ✓        ✓     [Loop complete - merge gate/transition in progress]
 ```
 
 ## Accumulated Context
@@ -276,21 +276,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last recorded lifecycle transition: Phase 231 complete; transitioned to Phase 232.
-PR: https://github.com/coctostan/pals/pull/146 (MERGED)
-CI: PR #146 Socket Security checks passed before merge.
-Working tree: Transition metadata pending final transition commit on main.
+Branch: phase-232-skill-verbosity-pass
+Last recorded lifecycle transition: Phase 232 UNIFY complete; merge gate/transition in progress.
+PR: https://github.com/coctostan/pals/pull/147 (OPEN)
+CI: PR #147 Socket Security Project Report and Pull Request Alerts passed before UNIFY merge gate.
+Working tree: Phase 232 source commit `5bc0d1d8` pushed; UNIFY artifacts prepared for phase metadata commit.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T20:02:00Z
-Stopped at: Phase 231 complete; transitioned to Phase 232
-Next action: Run /paul:plan for Phase 232 Skill Verbosity Pass
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-30T20:30:45Z
+Stopped at: UNIFY summary created for plan 232-01
+Next action: Complete merge gate and transition Phase 232 to Phase 233
+Resume file: .paul/phases/232-skill-verbosity-pass/232-01-SUMMARY.md
 Resume context:
-- Phase 231 Plan 231-01 SUMMARY exists at `.paul/phases/231-process-workflow-verbosity-paring/231-01-SUMMARY.md`.
-- PR #146 merged, local `main` synced, and Phase 231 is marked complete in ROADMAP/PROJECT/STATE.
-- Phase 232 should pare skill wrapper/default reply verbosity using Phase 230 audit inputs and Phase 231 contextual verbosity guidance.
-- Preserve lifecycle authority, explicit approvals, module dispatch evidence, validation truth, GitHub Flow gates, parent-owned APPLY, and `.paul/*` artifact truth.
+- Phase 232 PLAN/APPLY/UNIFY loop complete for plan 232-01.
+- Summary created at `.paul/phases/232-skill-verbosity-pass/232-01-SUMMARY.md`.
+- Post-unify WALT, SKIP, CODI, and RUBY evidence recorded in SUMMARY and history files.
+- PR #147 checks passed before merge gate; proceed with UNIFY phase metadata commit, merge gate, and mandatory transition.
+- Next UNIFY should create `.paul/phases/232-skill-verbosity-pass/232-01-SUMMARY.md`, record module evidence, update ROADMAP/STATE, and route Phase 233.
