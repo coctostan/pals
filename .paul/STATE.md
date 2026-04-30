@@ -223,8 +223,8 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 Branch: feature/222-legacy-install-surface-cleanup-contract-baseline
 Last commit: APPLY commit on current branch (`docs(222-01): create cleanup contract baseline`)
 PR: https://github.com/coctostan/pals/pull/137 (OPEN)
-CI: pending / no checks reported yet at APPLY completion
-Working tree: dirty only for postflight PR-state lifecycle update
+CI: pending — Socket Security Project Report IN_PROGRESS; Pull Request Alerts QUEUED at APPLY completion
+Working tree: clean after APPLY postflight state commit
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
