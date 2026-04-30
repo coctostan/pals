@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.51 Pi-Native Validation Classification**
 Status: 🚧 In progress
-Phases: 3 of 4 complete after Phase 220 transition — started 2026-04-29; PR #135 merge gate pending
+Phases: 3 of 4 complete — started 2026-04-29; Phase 221 ready to plan
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
 | 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete | 2026-04-29 |
 | 220 | Documentation + Report Surfacing | 220-01 | ✅ Complete | 2026-04-30 |
-| 221 | Evidence Reconciliation + Milestone Closure | TBD | Not started | — |
+| 221 | Evidence Reconciliation + Milestone Closure | TBD | Ready to plan | — |
 
 ### Phase 218: Validation Classification Baseline
 Focus: Define the validation classification inventory and taxonomy for current Pi and cross-harness suites before weakening, relocating, archiving, or deleting any validation check.
@@ -54,11 +54,11 @@ UNIFY result: SUMMARY `.paul/phases/219-runtime-validation-suite-classification-
 ### Phase 220: Documentation + Report Surfacing
 Focus: Surface the classification model in docs and any explicitly scoped report artifacts without making stale reports replace current command-output truth.
 Plans: 220-01 — surface the validation-classification model in README, Pi docs, the classification contract, and historical validation reports, then add one localized docs/report surfacing guardrail per validation suite with expected counts Pi 201→202 and cross-harness 117→118 while preserving command-output truth.
-UNIFY result: SUMMARY `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` records docs/report surfacing evidence, historical report non-authority notices, Pi 202/202, cross-harness 118/118, count reconciliation (Pi 201→202, cross-harness 117→118), module reports, and PR #135. Merge gate/transition pending before Phase 221 planning.
+UNIFY result: SUMMARY `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` records docs/report surfacing evidence, historical report non-authority notices, Pi 202/202, cross-harness 118/118, count reconciliation (Pi 201→202, cross-harness 117→118), module reports, and merged PR #135.
 
 ### Phase 221: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile classification evidence, validation count changes, module/GitHub Flow evidence, lifecycle metadata, and handoff boundaries before any Legacy Retention / Install-Surface Cleanup milestone begins.
-Plans: TBD (defined during /paul:plan)
+Plans: next `/paul:plan` should define the final v2.51 evidence reconciliation and milestone closure plan.
 
 ### Previous milestone: v2.50 Delegated APPLY Packet/Report Contract
 Result: Phases 214-217 complete. Phase 217 reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 200/200 and cross-harness 116/116; PR #132 merged. v2.50 hands off to Pi-Native Validation Classification.
@@ -78,4 +78,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 220 UNIFY complete; PR #135 merge gate/transition pending.*
+*Last updated: 2026-04-30 — Phase 220 complete and merged; Phase 221 ready to plan.*

@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-29 after v2.51 milestone creation)
 ## Current Position
 
 Milestone: v2.51 Pi-Native Validation Classification
-Phase: 220 of 221 (Documentation + Report Surfacing) — UNIFY complete
-Plan: 220-01 complete
-Status: UNIFY complete; merge gate and phase transition pending
-Last activity: 2026-04-30T00:28:00Z — Created .paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md
+Phase: 221 of 221 (Evidence Reconciliation + Milestone Closure) — Ready to Plan
+Plan: Not started
+Status: Ready for Phase 221 PLAN
+Last activity: 2026-04-30T00:35:00Z — Phase 220 complete, PR #135 merged, transitioned to Phase 221
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.51 Pi-Native Validation Classification: [███████░░░] 75% (3 of 4 phases complete after Phase 220 transition; merge gate pending)
+- v2.51 Pi-Native Validation Classification: [███████░░░] 75% (3 of 4 phases complete; Phase 221 ready to plan)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -38,15 +38,15 @@ Progress:
 - Phase 217 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 218 Validation Classification Baseline: [██████████] 100% complete
 - Phase 219 Runtime/Validation Suite Classification Hardening: [██████████] 100% complete
-- Phase 220 Documentation + Report Surfacing: [██████████] 100% UNIFY complete, transition pending
-- Phase 221 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
+- Phase 220 Documentation + Report Surfacing: [██████████] 100% complete
+- Phase 221 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% ready to plan
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - merge gate/transition pending]
+  ○        ○        ○     [Ready for Phase 221 PLAN]
 ```
 
 ## Accumulated Context
@@ -102,6 +102,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 219 UNIFY created `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md`, recording AC results, focused grep evidence, Pi 201/201, cross-harness 117/117, validation count reconciliation (Pi 200→201, cross-harness 116→117), module reports, PR #134 evidence, and Phase 220 readiness.
 - Phase 219 transition merged PR #134, synced `main`, confirmed Socket Security checks passed, and routed v2.51 to Phase 220 Documentation + Report Surfacing.
 - Phase 220 UNIFY created `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md`, recording docs/report surfacing evidence, historical report non-authority notices, Pi 202/202, cross-harness 118/118, count reconciliation (Pi 201→202, cross-harness 117→118), module reports, and PR #135 evidence.
+- Phase 220 transition merged PR #135, synced `main`, confirmed Socket Security checks passed, and routed v2.51 to Phase 221 Evidence Reconciliation + Milestone Closure.
 
 ### Current Decisions
 
@@ -209,21 +210,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/220-documentation-report-surfacing
-Last commit: Phase 220 APPLY committed on feature branch (tasks + lifecycle plan state)
-PR: https://github.com/coctostan/pals/pull/135 (OPEN)
-CI: PR checks pending before merge gate; local validation passed Pi 202/202 and cross-harness 118/118 during Phase 220 APPLY/UNIFY
-Working tree: dirty from UNIFY SUMMARY/history/state updates; commit before merge gate
+Branch: main
+Last commit: f800880a (PR #135 squash merge)
+PR: https://github.com/coctostan/pals/pull/135 (MERGED)
+CI: Socket Security Project Report PASS; Socket Security Pull Request Alerts PASS
+Working tree: dirty from Phase 220→221 transition metadata; commit before finalizing transition
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T00:28:00Z
-Stopped at: UNIFY complete for Plan 220-01
-Next action: Commit/push UNIFY artifacts, resolve PR #135 merge gate, then transition to Phase 221
-Resume file: .paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md
+Last session: 2026-04-30T00:35:00Z
+Stopped at: Phase 220 complete; ready to plan Phase 221
+Next action: Run /paul:plan for Phase 221 Evidence Reconciliation + Milestone Closure
+Resume file: .paul/ROADMAP.md
 Resume context:
-- SUMMARY created for Phase 220 Documentation + Report Surfacing.
-- Validation passed Pi 202/202 and cross-harness 118/118; count changes are bounded to docs/report surfacing guardrails only.
-- PR #135 merge gate and Phase 220 transition remain to be completed.
-- Next lifecycle work is merge gate, then Phase 221 Evidence Reconciliation + Milestone Closure planning.
+- Phase 220 Documentation + Report Surfacing is complete and merged via PR #135.
+- Final validation baseline after Phase 220 is Pi 202/202 and cross-harness 118/118.
+- Phase 221 should reconcile v2.51 evidence, closure baselines, module/GitHub Flow evidence, and deferred legacy-cleanup boundaries.
+- Legacy Retention / Install-Surface Cleanup remains deferred until v2.51 closure completes.
