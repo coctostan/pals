@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.53 Pi Integration Efficiency & Effectiveness Exploration**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 226 | Pi Integration Efficiency Discovery | 226-01 | ✅ Complete | 2026-04-30 |
 | 227 | Effectiveness Improvement Candidate Design | 227-01 | ✅ Complete | 2026-04-30 |
-| 228 | Bounded Pi Integration Spike | 228-01 | Planning | - |
+| 228 | Bounded Pi Integration Spike | 228-01 | ✅ Complete | 2026-04-30 |
 | 229 | Validation + Evidence Closure | TBD | Not started | - |
 
 ### Phase 226: Pi Integration Efficiency Discovery
@@ -49,7 +49,7 @@ Plans: 1/1 complete — Phase 227 created `docs/PI-INTEGRATION-EFFECTIVENESS-CAN
 
 ### Phase 228: Bounded Pi Integration Spike
 Focus: Prototype the selected improvement or improvements in bounded scope while preserving lifecycle gates, command-output truth, parent-owned APPLY, module evidence, and GitHub Flow safety.
-Plans: 228-01 created — bounded artifact-slice targeting/deduplication runtime spike scoped to `drivers/pi/extensions/pals-hooks.ts`, Pi docs/skill-map surfacing, and localized Pi validation guardrails. Expected validation count change: Pi 205→207, cross-harness remains 121.
+Plans: 1/1 complete — Phase 228 implemented bounded artifact-slice targeting/deduplication in the Pi extension, surfaced the behavior in Pi docs/skill-map, added localized runtime/docs validation guardrails, and reconciled validation at Pi 207/207 with cross-harness 121/121; PR #143 merged.
 
 ### Phase 229: Validation + Evidence Closure
 Focus: Reconcile evidence, update docs and validation surfaces as needed, record validation count changes, and close the exploration milestone without expanding scope beyond approved Pi integration gains.
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 228 Plan 228-01 created; awaiting approval.*
+*Last updated: 2026-04-30 — Phase 228 complete; Phase 229 ready to plan.*

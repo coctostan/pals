@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-30 after Phase 227 completion and transition to Phase 228)
+See: .paul/PROJECT.md (updated 2026-04-30 after Phase 228 completion and transition to Phase 229)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 228 Plan 228-01 UNIFY is complete and entering GitHub Flow merge gate/phase transition.
+**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 228 is complete and Phase 229 Validation + Evidence Closure is ready to plan.
 
 ## Current Position
 
 Milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
-Phase: 228 of 229 (Bounded Pi Integration Spike) — UNIFY complete
-Plan: 228-01 complete
-Status: UNIFY complete; merge gate and phase transition pending
-Last activity: 2026-04-30T17:26:00Z — Created .paul/phases/228-bounded-pi-integration-spike/228-01-SUMMARY.md; post-unify WALT/SKIP/CODI/RUBY persistence recorded; validation passed Pi 207/207 and cross-harness 121/121
+Phase: 229 of 229 (Validation + Evidence Closure) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-30T17:31:00Z — Phase 228 complete; PR #143 merged; transitioned to Phase 229 validation/evidence closure planning
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -25,9 +25,10 @@ Progress:
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.53 Pi Integration Efficiency & Effectiveness Exploration: [█████░░░░░] 50% (2 of 4 phases complete: 226 ✓, 227 ✓)
+- v2.53 Pi Integration Efficiency & Effectiveness Exploration: [███████░░░] 75% (3 of 4 phases complete: 226 ✓, 227 ✓, 228 ✓)
 - Phase 226 Pi Integration Efficiency Discovery: [██████████] 100% complete
 - Phase 227 Effectiveness Improvement Candidate Design: [██████████] 100% complete
+- Phase 228 Bounded Pi Integration Spike: [██████████] 100% complete
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -54,7 +55,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - merge gate and phase transition pending]
+  ○        ○        ○     [Ready for Phase 229 PLAN]
 ```
 
 ## Accumulated Context
@@ -132,6 +133,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 228 PLAN created `.paul/phases/228-bounded-pi-integration-spike/228-01-PLAN.md`, scoping the smallest safe artifact-slice targeting/deduplication runtime spike across `drivers/pi/extensions/pals-hooks.ts`, Pi extension docs, skill map, and localized Pi validation guardrails. Expected validation count change: Pi 205→207; cross-harness remains 121.
 - Phase 228 APPLY implemented runtime artifact-slice targeting/deduplication in `drivers/pi/extensions/pals-hooks.ts`, surfaced the behavior in Pi extension docs and skill map, and added two localized Pi validation guardrails. Focused marker checks passed; `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed; Pi validation passed 207/207; cross-harness validation passed 121/121; changed implementation/docs/test files stayed inside the approved scope.
 - Phase 228 UNIFY created `.paul/phases/228-bounded-pi-integration-spike/228-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 207/207, cross-harness 121/121, validation count reconciliation (Pi 205→207, cross-harness stable 121), module reports, Workguard scope evidence, PR #143 evidence, and Phase 229 validation/evidence closure handoff.
+- Phase 228 transitioned complete after PR #143 merge. The shipped spike narrowed existing artifact-slice selection and added deterministic duplicate trimming while preserving source/freshness/fallback/authority markers and full authoritative read requirements. Phase 229 should close v2.53 validation/evidence using Pi 207/207, cross-harness 121/121, Workguard scope, PR #143, and module-history evidence.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -258,21 +260,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/228-bounded-pi-integration-spike
-Last recorded lifecycle transition: Phase 228 UNIFY complete; summary and post-unify persistence prepared for merge gate.
-PR: https://github.com/coctostan/pals/pull/143 (open, mergeable)
-CI: Local validation passed Pi 207/207 and cross-harness 121/121 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh`; GitHub Socket Security checks passed on PR #143 at UNIFY merge-gate precheck.
-Working tree: UNIFY metadata pending commit/push before merge gate.
+Branch: main
+Last recorded lifecycle transition: Phase 228 complete; transitioned to Phase 229.
+PR: https://github.com/coctostan/pals/pull/143 (state: MERGED)
+CI: PR #143 Socket Security checks passed; local validation passed Pi 207/207 and cross-harness 121/121 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh`.
+Working tree: phase transition metadata pending commit/push on main.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T17:26:00Z
-Stopped at: Plan 228-01 UNIFY complete; merge gate/phase transition pending
-Next action: Commit/push UNIFY artifacts, complete PR #143 merge gate, then transition to Phase 229
-Resume file: .paul/phases/228-bounded-pi-integration-spike/228-01-SUMMARY.md
+Last session: 2026-04-30T17:31:00Z
+Stopped at: Phase 228 complete, ready to plan Phase 229
+Next action: /paul:plan for Phase 229 Validation + Evidence Closure
+Resume file: .paul/ROADMAP.md
 Resume context:
-- UNIFY summary records AC results, validation evidence, module reports, Workguard scope evidence, PR #143 evidence, and Phase 229 handoff.
-- Validation baseline for next phase: Pi 207/207, cross-harness 121/121.
-- Post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`.
-- Scope caution for transition/Phase 229: do not expand to guided UI, helper delegation, GitHub Flow, install, dependency, CI, or lifecycle-authority changes unless separately approved.
+- Phase 228 is complete and merged via PR #143.
+- Phase 228 summary: `.paul/phases/228-bounded-pi-integration-spike/228-01-SUMMARY.md`.
+- Validation baseline for Phase 229: Pi 207/207, cross-harness 121/121; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`.
+- Phase 229 should close validation/evidence for v2.53 without expanding guided UI, helper delegation, GitHub Flow, install, dependency, CI, or lifecycle-authority scope unless separately planned.

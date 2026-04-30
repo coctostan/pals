@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.53 Pi Integration Efficiency & Effectiveness Exploration is active. Phase 227 completed the candidate design and selected artifact-slice targeting/deduplication as the bounded Phase 228 spike candidate. Phase 228 should prototype the smallest safe runtime-lens improvement that reduces repeated lifecycle/roadmap/plan orientation context while preserving `.paul/*` artifact authority.
+v2.53 Pi Integration Efficiency & Effectiveness Exploration is active. Phase 228 completed the bounded artifact-slice targeting/deduplication runtime spike: existing Pi artifact slices now target active lifecycle/roadmap/plan lines more narrowly, trim duplicate orientation facts deterministically, preserve derived-only/full-read authority markers, and validate at Pi 207/207 with cross-harness 121/121.
 
-Phases 228-229 should proceed from bounded integration spike to validation/evidence closure while preserving shared invariants, command-output truth, Pi-supported runtime behavior, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries. The Phase 227 design handoff requires smarter slice selection, duplicate trimming, output bounds, freshness/fallback markers, validation evidence, and explicit stop/defer rules; guided UI, helper delegation, GitHub Flow, install, dependency, CI, and lifecycle-authority changes remain out of scope unless separately planned. v2.52 remains complete with Pi 205/205 and cross-harness 121/121; validation-script size debt remains separate driver-quality scope unless explicitly selected later.
+Phase 229 should close v2.53 with validation/evidence reconciliation using Phase 226 discovery, Phase 227 design, and Phase 228 implementation/PR #143 evidence while preserving shared invariants, command-output truth, Pi-supported runtime behavior, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries. Guided UI, helper delegation, GitHub Flow, install, dependency, CI, and lifecycle-authority changes remain out of scope unless separately planned; validation-script size debt remains separate driver-quality scope unless explicitly selected later.
 
 ## Hot-path reading model
 
@@ -56,7 +56,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
 | v2.52 Legacy Retention / Install-Surface Cleanup | Complete | Cleaned frozen legacy/installation surfaces only where validation classification proved it safe; root install/uninstall are Pi-first by default, frozen legacy/source-only paths require explicit opt-in, and final validation passed Pi 205/205 plus cross-harness 121/121. |
 
-Current milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration is active. Phase 226 completed discovery of current context-cost and workflow-friction hotspots; Phase 227 completed a source-cited candidate design selecting artifact-slice targeting/deduplication as the bounded Phase 228 spike candidate. Phase 228 should use `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md` to plan the smallest safe implementation spike. v2.52 remains complete with Pi 205/205 and cross-harness 121/121; command-output truth remains authoritative.
+Current milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration is active. Phase 226 completed discovery of current context-cost and workflow-friction hotspots; Phase 227 completed a source-cited candidate design selecting artifact-slice targeting/deduplication; Phase 228 shipped the bounded runtime/docs/test spike with validation passing Pi 207/207 and cross-harness 121/121. Phase 229 should close validation/evidence for v2.53. Command-output truth remains authoritative.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -122,6 +122,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Surface completed install-posture cleanup through docs/reports/validation without changing runtime behavior. | Phase 224 Plan 224-01 | Makes Pi-first defaults and explicit frozen legacy/source-only opt-ins discoverable while preserving command-output truth and reconciling validation counts as docs/install-posture guardrails only. |
 | Prioritize artifact-slice targeting and deduplication as the leading v2.53 design candidate. | Phase 226 Plan 226-01 | Phase 227 should start from the discovery artifact's ranked shortlist and design a bounded improvement without authorizing implementation, runtime/source/test/install/dependency/CI/GitHub Flow/helper/lifecycle-authority changes. |
 | 2026-04-30: Select artifact-slice targeting/deduplication as the bounded Phase 228 spike candidate | Phase 227 Plan 227-01 UNIFY | Phase 228 should implement the smallest safe runtime-lens spike for smarter slice selection, duplicate trimming, output bounds, freshness/fallback markers, and validation evidence without pairing guided UI, helper delegation, GitHub Flow, install, dependency, CI, or lifecycle-authority changes. |
+| 2026-04-30: Keep artifact-slice targeting/deduplication bounded to existing Pi runtime slices | Phase 228 Plan 228-01 UNIFY | Runtime now narrows active lifecycle/roadmap/plan selection and trims duplicate orientation facts while preserving source/freshness/fallback/authority markers; Phase 229 should reconcile evidence rather than reopen guided UI, helper delegation, install, dependency, CI, GitHub Flow, or lifecycle-authority scope. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -153,4 +154,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-30 after Phase 227 completion and transition to Phase 228.*
+*Last updated: 2026-04-30 after Phase 228 completion and transition to Phase 229.*
