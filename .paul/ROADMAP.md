@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.51 Pi-Native Validation Classification**
 Status: 🚧 In progress
-Phases: 2 of 4 complete — started 2026-04-29; Phase 220 ready to plan
+Phases: 2 of 4 complete — started 2026-04-29; Phase 220 APPLY complete, UNIFY pending
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
 | 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete | 2026-04-29 |
-| 220 | Documentation + Report Surfacing | TBD | 🔵 Ready to plan | — |
+| 220 | Documentation + Report Surfacing | 220-01 | 🟠 APPLY complete | — |
 | 221 | Evidence Reconciliation + Milestone Closure | TBD | Not started | — |
 
 ### Phase 218: Validation Classification Baseline
@@ -53,7 +53,8 @@ UNIFY result: SUMMARY `.paul/phases/219-runtime-validation-suite-classification-
 
 ### Phase 220: Documentation + Report Surfacing
 Focus: Surface the classification model in docs and any explicitly scoped report artifacts without making stale reports replace current command-output truth.
-Plans: TBD (defined during /paul:plan)
+Plans: 220-01 — surface the validation-classification model in README, Pi docs, the classification contract, and historical validation reports, then add one localized docs/report surfacing guardrail per validation suite with expected counts Pi 201→202 and cross-harness 117→118 while preserving command-output truth.
+APPLY result: Surfaced validation classification in README, Pi docs, the classification contract, and historical validation reports while preserving command-output truth. Added one localized docs/report surfacing guardrail per validation suite; validation passed Pi 202/202 and cross-harness 118/118 with count changes limited to Pi 201→202 and cross-harness 117→118.
 
 ### Phase 221: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile classification evidence, validation count changes, module/GitHub Flow evidence, lifecycle metadata, and handoff boundaries before any Legacy Retention / Install-Surface Cleanup milestone begins.
@@ -77,4 +78,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-29 — Phase 219 complete; Phase 220 ready to plan.*
+*Last updated: 2026-04-30 — Phase 220 APPLY complete; UNIFY pending.*

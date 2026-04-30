@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-29 after v2.51 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.51 Pi-Native Validation Classification is active; Phase 218 Validation Classification Baseline is ready to plan.
+**Current focus:** v2.51 Pi-Native Validation Classification is active; Phase 220 Documentation + Report Surfacing PLAN 220-01 is created and awaiting approval.
 
 ## Current Position
 
 Milestone: v2.51 Pi-Native Validation Classification
-Phase: 220 of 221 (Documentation + Report Surfacing) — Ready to Plan
-Plan: Not started
-Status: Ready to plan Phase 220
-Last activity: 2026-04-29T23:45:00Z — Phase 219 complete; PR #134 merged and transitioned to Phase 220 Documentation + Report Surfacing
+Phase: 220 of 221 (Documentation + Report Surfacing) — APPLY complete
+Plan: 220-01 created, awaiting approval
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-30T00:25:00Z — Completed APPLY for .paul/phases/220-documentation-report-surfacing/220-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.51 Pi-Native Validation Classification: [█████░░░░░] 50% (2 of 4 phases complete; Phase 220 ready to plan)
+- v2.51 Pi-Native Validation Classification: [███████░░░] 75% (2 of 4 phases complete; Phase 220 APPLY complete, UNIFY pending)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -38,7 +38,7 @@ Progress:
 - Phase 217 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 218 Validation Classification Baseline: [██████████] 100% complete
 - Phase 219 Runtime/Validation Suite Classification Hardening: [██████████] 100% complete
-- Phase 220 Documentation + Report Surfacing: [░░░░░░░░░░] 0% ready to plan
+- Phase 220 Documentation + Report Surfacing: [███████░░░] 75% APPLY complete, UNIFY pending
 - Phase 221 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 
 ## Loop Position
@@ -46,7 +46,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for Phase 220 PLAN]
+  ✓        ✓        ○     [APPLY complete, UNIFY pending]
 ```
 
 ## Accumulated Context
@@ -216,12 +216,12 @@ Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 me
 
 ## Session Continuity
 
-Last session: 2026-04-29T23:45:00Z
-Stopped at: Phase 219 complete; ready to plan Phase 220
-Next action: Run /paul:plan for Phase 220 Documentation + Report Surfacing
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-30T00:25:00Z
+Stopped at: APPLY complete for Plan 220-01
+Next action: Run /paul:unify .paul/phases/220-documentation-report-surfacing/220-01-PLAN.md
+Resume file: .paul/phases/220-documentation-report-surfacing/220-01-PLAN.md
 Resume context:
-- Phase 219 completed validation-suite hardening: Pi suite and cross-harness suite now declare and command-check classification inventories.
-- Final Phase 219 validation evidence: Pi 201/201 and cross-harness 117/117; count increases were reconciled as one new classification guardrail per suite.
-- Phase 220 owns documentation/report surfacing; legacy cleanup remains deferred until v2.51 evidence reconciliation closes.
-- Next lifecycle work is PLAN for Phase 220.
+- APPLY updated README, Pi docs, the validation classification contract, and historical validation reports to surface validation classification non-authoritatively.
+- Added one localized docs/report surfacing guardrail per validation suite; validation passed Pi 202/202 and cross-harness 118/118.
+- Count changes are bounded to docs/report surfacing guardrails only: Pi 201→202 and cross-harness 117→118.
+- Next lifecycle work is UNIFY for Phase 220.
