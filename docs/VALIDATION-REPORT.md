@@ -1,5 +1,7 @@
 # PALS Cross-Harness Validation Report
 
+> **Historical validation report.** This 2026-03-14 report is archival evidence only; its 45/45 count must not be used as current pass/fail proof. The current Phase 219 command baseline is Pi validation 201/201 and cross-harness validation 117/117. For current validation truth, run `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`; use `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` for taxonomy and preservation rules.
+
 **Date:** 2026-03-14
 **Branch:** v2.0/portability-and-cross-harness
 **Commit:** 98dce92

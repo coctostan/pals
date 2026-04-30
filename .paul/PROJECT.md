@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 219 Runtime/Validation Suite Classification Hardening is complete; Phase 220 Documentation + Report Surfacing is ready to plan.
+v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 220 Documentation + Report Surfacing UNIFY is complete; PR #135 merge gate and transition to Phase 221 remain.
 
 This milestone will classify current and future validation checks by support purpose before weakening, relocating, archiving, deleting, or treating any check as legacy-only, while preserving command-output truth, `.paul/*` authority, shared invariants, GitHub Flow safety, module evidence, parent-owned APPLY, and explicit approval/checkpoint boundaries. Legacy Retention / Install-Surface Cleanup remains deferred until classification is complete.
 
@@ -55,7 +55,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.50 Delegated APPLY Packet/Report Contract | Complete | Formalized helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority; final validation passed Pi 200/200 and cross-harness 116/116. |
 | v2.51 Pi-Native Validation Classification | In progress | Classifies validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories before cleanup. |
 
-Recently completed: Phase 219 added validation-classification inventory markers plus one local TAP guardrail per validation suite, validation now passes Pi 201/201 and cross-harness 117/117, SUMMARY `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` records count reconciliation and module/PR evidence, and PR #134 merged. Current: Phase 220 is ready to plan documentation/report surfacing while preserving command-output truth and deferring legacy cleanup.
+Recently completed: Phase 220 surfaced validation classification in README, Pi docs, the classification contract, and historical validation reports while preserving command-output truth; validation now passes Pi 202/202 and cross-harness 118/118 after one localized docs/report surfacing guardrail per suite. SUMMARY `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` records AC evidence, count reconciliation, module reports, and PR #135. Current: resolve merge gate, transition to Phase 221, then plan Evidence Reconciliation + Milestone Closure while keeping legacy cleanup deferred.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints

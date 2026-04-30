@@ -63,6 +63,7 @@ These capsules remain source-cited, include `Source type`, freshness-marked, bou
 Validation classes: `Workflow/Resource Capsule Context — Pi-Supported Runtime` covers runtime and Pi documentation markers; `Workflow/Resource Capsule Context — Shared Invariant` covers `.paul/*` authority, PLAN/APPLY/UNIFY, checkpoint blocking, module evidence, GitHub Flow safety, parent-owned APPLY, command-output truth, STOP/DO NOT SKIP exclusion from capsule authority, and full authoritative read fallback.
 
 Workflow/resource capsules do not create hidden Pi state, approvals, lifecycle writes, APPLY/UNIFY completion, module completion, GitHub Flow proof, validation pass/fail proof, or a Pi-owned module/validation ledger. Shared workflows, installed workflow/reference reads, `.paul/*` artifacts, transcript-visible user intent, module reports, GitHub Flow command evidence, validation command output, and parent-owned APPLY remain authoritative.
+Validation Classification/report surfacing is discovery-only in Pi: docs may name Pi-Supported Runtime, Shared Invariant, Frozen Legacy Parity, Runtime Lens, Guided UI Safety, Helper Delegation, GitHub Flow Safety, and Artifact / Process, and may cite the current command baseline (Pi 201/201, cross-harness 117/117), but `.paul/*` artifacts plus fresh validation command output remain authoritative. Pi discovery must not become a hidden or Pi-owned validation ledger.
 
 ## Internal Workflows (not standalone skills)
 

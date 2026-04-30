@@ -1207,6 +1207,20 @@ tap_file_contains_all \
   "CODI Plan-Phase Distribution => Shared Invariant / Helper Delegation" \
   "Artifact Spec Compliance => Shared Invariant / Artifact / Process" \
   "Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant"
+
+# Expected TAP total after docs/report surfacing: 1..118
+if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
+  && grep -Fq "Pi 201/201" "$REPO_ROOT/README.md" \
+  && grep -Fq "cross-harness 117/117" "$REPO_ROOT/README.md" \
+  && grep -Fq "Historical validation report" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
+  && grep -Fq "current pass/fail proof" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
+  && grep -Fq "bash tests/pi-end-to-end-validation.sh" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
+  && grep -Fq "bash tests/cross-harness-validation.sh" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
+  && grep -Fq "Phase 220 documentation/report surfacing boundary" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
+  tap_ok "Cross-harness docs/report surfaces validation classification non-authoritatively"
+else
+  tap_not_ok "Cross-harness docs/report surfaces validation classification non-authoritatively" "Expected shared docs/report surfaces to preserve classification baseline and non-authority markers"
+fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
