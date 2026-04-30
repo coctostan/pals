@@ -231,10 +231,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: phase-224-documentation-validation-surfacing
-Last commit: e596346c (Phase 223 transition metadata; PR #138 squash merge is 8698b4e2); Phase 224 APPLY work is uncommitted pending GitHub Flow postflight/UNIFY routing
-PR: none active for Phase 224 yet
-CI: N/A — no active PR; APPLY validation passed locally (Pi 204/204, cross-harness 120/120)
-Working tree: dirty from Phase 224 APPLY source/doc/validation edits plus expected `.paul/*` lifecycle artifacts
+Last commit: 576cbfbc (Phase 224 documentation validation surfacing) pushed to origin/phase-224-documentation-validation-surfacing
+PR: https://github.com/coctostan/pals/pull/139 (OPEN)
+CI: pending/unknown after PR creation; local APPLY validation passed (Pi 204/204, cross-harness 120/120)
+Working tree: dirty only from postflight STATE.md update until committed/pushed
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
