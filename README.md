@@ -277,14 +277,16 @@ cd pals
 ./install.sh
 ```
 
-The installer currently prioritizes Pi-first use:
-- **Pi skill/kernel surface:** Installs shared workflows, references, templates, rules, and canonical skills to `~/.pi/agent/skills/pals/`
-- **Pi extension surface:** Installs `pals-hooks.ts` to `~/.pi/agent/extensions/`
-- **Pi project-agent surface:** Installs project-shipped agent definitions, including `pals-implementer`, to `~/.pi/agent/agents/`
-- **Frozen legacy surfaces:** Existing Claude Code and Agent SDK files may remain for historical/reference compatibility, but they are unsupported/frozen and not active support targets
-- Generates `modules.yaml` registry for all 18 modules
-- Reads `pals.json` to determine which modules to install
-- Detects and cleans up legacy installations if present
+The root installer is Pi-first by default. With no `PALS_DRIVER` set, `./install.sh` installs the supported Pi driver only when a Pi home surface (`~/.pi`) is present; it does not silently install frozen legacy drivers just because `~/.claude` exists.
+
+Install targets and opt-ins:
+- **Default supported target:** Pi skill/kernel surface, extension surface, and project-agent surface (`~/.pi/agent/skills/pals/`, `~/.pi/agent/extensions/pals-hooks.ts`, `~/.pi/agent/agents/`)
+- **Explicit Pi target:** `PALS_DRIVER=pi ./install.sh`
+- **Frozen legacy/source-only compatibility targets:** `PALS_DRIVER=claude-code ./install.sh` or `PALS_DRIVER=agent-sdk ./install.sh`
+- **All-driver maintenance mode:** `PALS_DRIVER=all ./install.sh` is explicit parity/maintenance opt-in, not the normal user path
+- Generates `modules.yaml` registry for all 18 modules and reads `pals.json` to determine module configuration
+
+Command-output truth remains authoritative for install validation: use fresh installer output plus `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh`, not stale reports or docs status.
 
 Start a new session after installing.
 
@@ -295,7 +297,7 @@ cd pals
 ./uninstall.sh
 ```
 
-Removes all PALS files from installed driver locations without affecting unrelated harness configuration.
+With no `PALS_DRIVER` set, `./uninstall.sh` mirrors the install posture: it prefers the supported Pi cleanup surface when `~/.pi` is present, keeps shared `~/.pals` framework cleanup intact, and does not implicitly clean frozen legacy driver locations. Use `PALS_DRIVER=claude-code`, `PALS_DRIVER=agent-sdk`, or `PALS_DRIVER=all` only for explicit frozen legacy/source-only maintenance cleanup.
 
 ## Requirements
 
