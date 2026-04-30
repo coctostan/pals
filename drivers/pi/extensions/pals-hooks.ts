@@ -278,6 +278,26 @@ function selectBoundedLines(content: string, patterns: RegExp[], maxLines = MAX_
   return selected;
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeArtifactSliceLine(line: string): string {
+  return compactWhitespace(line).toLowerCase();
+}
+
+function deduplicateArtifactSliceLines(lines: string[], emittedKeys: Set<string>): string[] {
+  const deduplicated: string[] = [];
+  for (const line of lines) {
+    const key = normalizeArtifactSliceLine(line);
+    if (!key) continue;
+    if (emittedKeys.has(key)) continue;
+    emittedKeys.add(key);
+    deduplicated.push(line);
+  }
+  return deduplicated;
+}
+
 function extractPlanPath(nextAction?: string): string | undefined {
   const match = nextAction?.match(/\.paul\/phases\/[^\s`]+\/\d+-\d+-PLAN\.md/);
   return match?.[0];
@@ -303,6 +323,12 @@ function buildArtifactSlice(cwd: string, spec: ArtifactSliceSpec): ArtifactSlice
 function getArtifactSliceSpecs(state: PalsStateSnapshot): ArtifactSliceSpec[] {
   const phaseNumber = state.phase?.match(/^(\d+)/)?.[1];
   const planPath = extractPlanPath(state.nextAction);
+  const activeRoadmapPatterns = [
+    ...(phaseNumber
+      ? [new RegExp(`^\\|\\s*${phaseNumber}\\s*\\|`), new RegExp(`Phase\\s+${phaseNumber}\\b`, "i")]
+      : [/^\|\s*Phase\s*\|/i]),
+    ...(state.milestone ? [new RegExp(escapeRegExp(state.milestone), "i")] : []),
+  ];
   const specs: ArtifactSliceSpec[] = [
     {
       name: "current-lifecycle-state",
@@ -313,8 +339,8 @@ function getArtifactSliceSpecs(state: PalsStateSnapshot): ArtifactSliceSpec[] {
     {
       name: "active-roadmap-phase",
       source: ARTIFACT_SLICE_SOURCE_ROADMAP,
-      patterns: [new RegExp(`Phase\\s+${phaseNumber ?? "[0-9]+"}`, "i"), /Runtime Slice Hardening/i, /artifact-slice/i, /bounded/i],
-      bounds: `repo-relative ${ARTIFACT_SLICE_SOURCE_ROADMAP}; active phase markers only; no completed-history expansion; first ${MAX_ARTIFACT_SLICE_LINES} matching lines`,
+      patterns: activeRoadmapPatterns,
+      bounds: `repo-relative ${ARTIFACT_SLICE_SOURCE_ROADMAP}; artifact-slice targeting selects active phase/current milestone markers only; no generic keyword or completed-history expansion; first ${MAX_ARTIFACT_SLICE_LINES} matching lines`,
     },
   ];
 
@@ -322,8 +348,8 @@ function getArtifactSliceSpecs(state: PalsStateSnapshot): ArtifactSliceSpec[] {
     specs.push({
       name: "approved-plan-task-packet",
       source: planPath,
-      patterns: [/^## Goal/, /^## Purpose/, /^## Output/, /^<task/, /^\s*<name>/, /^\s*<files>/, /^\s*<verify>/, /^## AC-/, /artifact-slice/i],
-      bounds: `repo-relative current PLAN path discovered from STATE next action; first ${MAX_ARTIFACT_SLICE_LINES} task/objective/verification lines; max payload ${MAX_ARTIFACT_SLICE_CHARS} chars`,
+      patterns: [/^## Goal/, /^## Output/, /^<task/, /^<boundaries>/, /^## AC-/, /^\s*<name>/, /^\s*<files>/, /^\s*<verify>/, /artifact-slice targeting/i, /deduplication/i, /duplicate trimming/i, /full authoritative read/i],
+      bounds: `repo-relative current PLAN path discovered from STATE next action; artifact-slice targeting selects task names, files, verification, acceptance criteria, boundaries, and handoff markers; first ${MAX_ARTIFACT_SLICE_LINES} matching lines; max payload ${MAX_ARTIFACT_SLICE_CHARS} chars`,
     });
   }
 
@@ -332,20 +358,25 @@ function getArtifactSliceSpecs(state: PalsStateSnapshot): ArtifactSliceSpec[] {
 
 function renderArtifactSlices(cwd: string, state: PalsStateSnapshot): string[] {
   const slices = getArtifactSliceSpecs(state).map((spec) => buildArtifactSlice(cwd, spec));
+  const emittedArtifactSliceKeys = new Set<string>();
   const rendered = [
-    "Artifact slices (read-only, bounded, activation-gated)",
+    "Artifact slices (read-only, bounded, activation-gated, artifact-slice targeting + deduplication enabled)",
     `Bounds: MAX_ARTIFACT_SLICE_CHARS=${MAX_ARTIFACT_SLICE_CHARS}; MAX_ARTIFACT_SLICE_LINES=${MAX_ARTIFACT_SLICE_LINES}`,
     `Fallback: ${ARTIFACT_SLICE_FALLBACK}`,
     `Authority: ${ARTIFACT_SLICE_AUTHORITY}`,
   ];
 
   for (const slice of slices) {
+    const deduplicatedLines = deduplicateArtifactSliceLines(slice.lines, emittedArtifactSliceKeys);
     rendered.push(`Slice: ${slice.name}`);
     rendered.push(`Source: ${slice.source}`);
     rendered.push(`Freshness: ${slice.freshness}`);
-    rendered.push(`Bounds: ${slice.bounds}`);
+    rendered.push(`Bounds: ${slice.bounds}; deterministic duplicate trimming preserves first cited occurrence`);
     rendered.push("Content:");
-    rendered.push(...slice.lines.map((line) => `- ${line}`));
+    rendered.push(...(deduplicatedLines.length > 0
+      ? deduplicatedLines
+      : [`duplicate-trim note: all bounded content from ${slice.source} duplicated an earlier artifact slice; ${ARTIFACT_SLICE_FALLBACK}`]
+    ).map((line) => `- ${line}`));
     rendered.push(`Fallback: ${slice.fallback}`);
     rendered.push(`Authority: ${slice.authority}`);
   }

@@ -1051,6 +1051,15 @@ fi
     '.paul/ROADMAP.md'
 
   tap_file_contains_all \
+    "Extension targets and deduplicates artifact-slice runtime content" \
+    "$EXT_SRC" \
+    'artifact-slice targeting + deduplication enabled' \
+    'active phase/current milestone markers only' \
+    'deterministic duplicate trimming preserves first cited occurrence' \
+    'duplicate-trim note:' \
+    'full authoritative read required'
+
+  tap_file_contains_all \
     "Extension runtime slices preserve full-read fallback and non-authority boundaries" \
     "$EXT_SRC" \
     'approved PLAN execution' \
