@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.51 Pi-Native Validation Classification is complete. The next milestone decision is pending; Legacy Retention / Install-Surface Cleanup remains deferred until a separate approved milestone/plan.
+v2.52 Legacy Retention / Install-Surface Cleanup is active; Phase 222 is unified with the cleanup contract baseline complete and PR #137 merge gate pending.
 
-This milestone classified current and future validation checks by support purpose before weakening, relocating, archiving, deleting, or treating any check as legacy-only, while preserving command-output truth, `.paul/*` authority, shared invariants, GitHub Flow safety, module evidence, parent-owned APPLY, and explicit approval/checkpoint boundaries.
+This milestone will clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, Pi-supported runtime behavior, `.paul/*` authority, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries.
 
 ## Hot-path reading model
 
@@ -54,8 +54,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.49 Workflow/Resource Capsule Contract | Complete | Defined and hardened safe orientation capsules for installed resources without replacing authoritative workflow reads; final validation passed Pi 197/197 and cross-harness 112/112. |
 | v2.50 Delegated APPLY Packet/Report Contract | Complete | Formalized helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority; final validation passed Pi 200/200 and cross-harness 116/116. |
 | v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
+| v2.52 Legacy Retention / Install-Surface Cleanup | In Progress | Clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, and Pi-supported runtime behavior. |
 
-Recently completed: Phase 221 UNIFY closed v2.51 with final evidence reconciliation, count-change reconciliation (Pi 202→203, cross-harness 118→119), module reports, PR #136 evidence, and the boundary that Legacy Retention / Install-Surface Cleanup remains deferred to a separate future milestone/plan.
+Current milestone: v2.52 began with Phase 222 Legacy / Install-Surface Cleanup Contract Baseline; Phase 222 created and unified `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` with Pi 203/203 and cross-harness 119/119 validation evidence. Phase 223 can plan safe cleanup implementation after PR #137 merge-gate completion.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
