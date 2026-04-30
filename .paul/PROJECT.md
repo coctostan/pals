@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.51 Pi-Native Validation Classification is active as the fifth Pi-native build milestone after v2.46. Phase 220 Documentation + Report Surfacing is complete and merged; Phase 221 Evidence Reconciliation + Milestone Closure is ready to plan.
+v2.51 Pi-Native Validation Classification is complete. The next milestone decision is pending; Legacy Retention / Install-Surface Cleanup remains deferred until a separate approved milestone/plan.
 
-This milestone will classify current and future validation checks by support purpose before weakening, relocating, archiving, deleting, or treating any check as legacy-only, while preserving command-output truth, `.paul/*` authority, shared invariants, GitHub Flow safety, module evidence, parent-owned APPLY, and explicit approval/checkpoint boundaries. Legacy Retention / Install-Surface Cleanup remains deferred until classification is complete.
+This milestone classified current and future validation checks by support purpose before weakening, relocating, archiving, deleting, or treating any check as legacy-only, while preserving command-output truth, `.paul/*` authority, shared invariants, GitHub Flow safety, module evidence, parent-owned APPLY, and explicit approval/checkpoint boundaries.
 
 ## Hot-path reading model
 
@@ -53,9 +53,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.47 Artifact-Slice Contract Hardening | Complete | Hardened activation-gated, bounded, source-cited, freshness-aware artifact slices and full-read fallback as the first Pi-native context-efficiency build milestone. |
 | v2.49 Workflow/Resource Capsule Contract | Complete | Defined and hardened safe orientation capsules for installed resources without replacing authoritative workflow reads; final validation passed Pi 197/197 and cross-harness 112/112. |
 | v2.50 Delegated APPLY Packet/Report Contract | Complete | Formalized helper-agent task packets and structured reports so bounded delegation is cheaper to inspect without weakening parent APPLY authority; final validation passed Pi 200/200 and cross-harness 116/116. |
-| v2.51 Pi-Native Validation Classification | In progress | Classifies validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories before cleanup. |
+| v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
 
-Recently completed: Phase 220 surfaced validation classification in README, Pi docs, the classification contract, and historical validation reports while preserving command-output truth; validation now passes Pi 202/202 and cross-harness 118/118 after one localized docs/report surfacing guardrail per suite. SUMMARY `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` records AC evidence, count reconciliation, module reports, and merged PR #135. Current: plan Phase 221 Evidence Reconciliation + Milestone Closure while keeping legacy cleanup deferred.
+Recently completed: Phase 221 UNIFY closed v2.51 with final evidence reconciliation, count-change reconciliation (Pi 202→203, cross-harness 118→119), module reports, PR #136 evidence, and the boundary that Legacy Retention / Install-Surface Cleanup remains deferred to a separate future milestone/plan.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -116,6 +116,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Define the delegated APPLY packet/report contract before runtime hardening. | Phase 214 Plan 214-01 | Phase 215 must harden repo-source APPLY/helper-agent delegation against `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` while preserving parent-owned official verification, module gates, fallback judgment, changed-file scope checks, checkpoints, and lifecycle writes. |
 | Parent acceptance of delegated APPLY helper work requires packet/report and actual diff evidence. | Phase 215 Plan 215-01 | Helper output is derived review input: parent APPLY must inspect structured reports, actual changed-file diffs, content diffs, and parent-run verification before PASS; actual out-of-scope helper edits block until repaired or guidance is requested. |
 | Surface delegated APPLY as parent-owned Helper Delegation, not an independent lifecycle authority. | Phase 216 Plan 216-01 | Future docs, helper-agent wording, and validation should preserve parent-owned packets, structured reports as review input, parent-run official verification, changed-file diff review, and no helper-owned `.paul/*` lifecycle writes. |
+| Close v2.51 with evidence reconciliation only. | Phase 221 Plan 221-01 | Validation Classification is complete with Pi 203/203 and cross-harness 119/119; Legacy Retention / Install-Surface Cleanup remains deferred to a separately approved future milestone/plan. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -147,4 +148,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-29 after Phase 216 completion.*
+*Last updated: 2026-04-30 after Phase 221 / v2.51 completion.*
