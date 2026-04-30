@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.54 Contextual Verbosity Paring**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 230 | Baseline Verbosity Audit | 230-01 | Complete | 2026-04-30 |
 | 231 | Process / Workflow Verbosity Paring | 231-01 | Complete | 2026-04-30 |
-| 232 | Skill Verbosity Pass | 232-01 | Unifying | - |
+| 232 | Skill Verbosity Pass | 232-01 | Complete | 2026-04-30 |
 | 233 | Validation + Evidence Closure | TBD | Not started | - |
 
 ### Phase 230: Baseline Verbosity Audit
@@ -49,11 +49,11 @@ Plans: 231-01 — complete; added shared contextual verbosity guidance and compa
 
 ### Phase 232: Skill Verbosity Pass
 Focus: Review and update PALS skills so default replies are minimally verbose unless the task, evidence, or user request requires more detail.
-Plans: 232-01 — UNIFY complete; pared `drivers/pi/skills/*/SKILL.md` wrappers/default reply guidance while preserving canonical workflow links, lifecycle authority, evidence gates, validation-protected markers, and validation truth.
+Plans: 232-01 — complete; added concise-by-default output guidance across 13 Pi skill wrappers, pared config/help/review wrappers, preserved validation-protected markers, validation passed, PR #147 merged
 
 ### Phase 233: Validation + Evidence Closure
 Focus: Reconcile evidence, update validation or documentation surfaces as needed, and close the milestone without expanding beyond approved verbosity-paring scope.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD — ready to plan
 
 ### Previous milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
 Result: Phases 226-229 complete. v2.53 identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped a bounded runtime/docs/test spike, and closed with Pi 208/208 plus cross-harness 122/122 after PR #144 merged.
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 232 UNIFY complete for plan 232-01; merge gate/transition in progress.*
+*Last updated: 2026-04-30 — Phase 232 complete; Phase 233 ready to plan.*

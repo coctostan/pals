@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.54 Contextual Verbosity Paring is in progress. Phase 230 created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md`, and Phase 231 implemented the first workflow/process paring slice by adding contextual verbosity and compact dispatch guidance while preserving lifecycle/evidence gates.
+v2.54 Contextual Verbosity Paring is in progress. Phase 230 created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md`; Phase 231 implemented shared contextual verbosity and compact dispatch guidance across kernel workflows/references; Phase 232 completed the skill wrapper paring slice by adding concise-by-default output guidance across 13 Pi PALS skill wrappers and reducing verbose config/help/review wrappers while preserving lifecycle/evidence gates and validation-protected markers.
 
-Phase 232 should pare skill wrapper/default reply verbosity using the Phase 231 contextual verbosity guidance and Phase 230 audit while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, and evidence closure. Deferred/non-goals unless separately planned include weakening lifecycle authority, hiding required evidence, removing module-dispatch proof, changing validation command truth, changing GitHub Flow gates, changing helper-delegation authority, or broad unrelated process refactors.
+Phase 233 should close v2.54 with validation/evidence closure and any user-facing docs/readme surfacing needed after Phase 231/232 paring. Preserve lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, and `.paul/*` artifact truth. Deferred/non-goals unless separately planned include weakening lifecycle authority, hiding required evidence, removing module-dispatch proof, changing validation command truth, changing GitHub Flow gates, changing helper-delegation authority, or broad unrelated process refactors.
 
 ## Hot-path reading model
 
