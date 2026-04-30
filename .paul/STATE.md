@@ -273,20 +273,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/230-baseline-verbosity-audit
-Last recorded lifecycle transition: Phase 230 UNIFY complete; Phase 231 ready to plan.
-PR: https://github.com/coctostan/pals/pull/145 (OPEN)
-CI: Socket Security checks passed for PR #145 before merge-gate continuation.
-Working tree: feature branch contains committed audit artifact plus local `.paul/*` UNIFY artifacts awaiting metadata commit/merge gate.
+Branch: main
+Last recorded lifecycle transition: Phase 230 UNIFY complete; PR #145 merged; Phase 231 ready to plan.
+PR: https://github.com/coctostan/pals/pull/145 (MERGED 2026-04-30T19:08:46Z)
+CI: Socket Security Project Report and Pull Request Alerts passed before merge.
+Working tree: main synced with origin/main after PR #145 squash merge.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
 Last session: 2026-04-30T19:05:59Z
-Stopped at: Phase 230 UNIFY complete; merge gate pending
-Next action: Complete GitHub Flow merge gate for PR #145, then /paul:plan for Phase 231
+Stopped at: Phase 230 complete; PR #145 merged
+Next action: /paul:plan for Phase 231
 Resume file: .paul/phases/230-baseline-verbosity-audit/230-01-SUMMARY.md
 Resume context:
 - Phase 230 created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` and summary `.paul/phases/230-baseline-verbosity-audit/230-01-SUMMARY.md`.
-- Verification passed: focused artifact markers, Pi validation 208/208, cross-harness validation 122/122, Workguard changed=5/outside_allowed=0/over_budget=false, and PR #145 Socket checks passed.
-- Finish merge gate for PR #145, then plan Phase 231 Process / Workflow Verbosity Paring.
+- Verification passed: focused artifact markers, Pi validation 208/208, cross-harness validation 122/122, Workguard changed=8/outside_allowed=0/over_budget=false, Socket checks passed, and PR #145 merged.
+- Next: plan Phase 231 Process / Workflow Verbosity Paring using the Phase 230 audit.

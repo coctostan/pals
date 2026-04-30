@@ -53,7 +53,7 @@ Phase 230 created the v2.54 baseline audit artifact that separates wasteful PALS
 | Completed | 2026-04-30T19:05:59Z |
 | Tasks | 3 completed |
 | Files modified | 1 source/docs file + `.paul/*` lifecycle artifacts |
-| PR | https://github.com/coctostan/pals/pull/145 |
+| PR | https://github.com/coctostan/pals/pull/145 (MERGED 2026-04-30T19:08:46Z) |
 
 ## Acceptance Criteria Results
 
@@ -74,7 +74,7 @@ Phase 230 created the v2.54 baseline audit artifact that separates wasteful PALS
 | `bash tests/pi-end-to-end-validation.sh` | PASS — 208/208, zero failures. |
 | `bash tests/cross-harness-validation.sh` | PASS — 122/122, zero failures. |
 | Workguard final report | PASS — `runs/workguards/20260430T184411Z-phase-230-apply/workguard-report.json`, changed=5, outside_allowed=0, over_budget=false. |
-| GitHub Flow PR checks | PASS — Socket Security Project Report and Pull Request Alerts passed for PR #145 before merge-gate continuation. |
+| GitHub Flow PR checks / merge | PASS — Socket Security Project Report and Pull Request Alerts passed; PR #145 squash-merged at 2026-04-30T19:08:46Z. |
 
 ## Module Execution Reports
 
