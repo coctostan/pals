@@ -35,7 +35,7 @@ Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 226 | Pi Integration Efficiency Discovery | 226-01 | ✅ Complete | 2026-04-30 |
-| 227 | Effectiveness Improvement Candidate Design | TBD | Not started | - |
+| 227 | Effectiveness Improvement Candidate Design | 227-01 | APPLY complete; UNIFY pending | - |
 | 228 | Bounded Pi Integration Spike | TBD | Not started | - |
 | 229 | Validation + Evidence Closure | TBD | Not started | - |
 
@@ -45,7 +45,7 @@ Plans: 1/1 complete — Phase 226 created `docs/PI-INTEGRATION-EFFICIENCY-EFFECT
 
 ### Phase 227: Effectiveness Improvement Candidate Design
 Focus: Select and design the highest-value Pi-native improvements with explicit boundaries, evidence needs, fallback rules, and preservation of `.paul/*` artifact authority.
-Plans: TBD (defined during /paul:plan)
+Plans: 227-01 APPLY complete — created `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md`, selecting artifact-slice targeting/deduplication as the Phase 228 candidate and defining expected future repo surfaces, output bounds, validation classes, marker checks, command-output verification requirements, Workguard scope, and stop/defer conditions. UNIFY reconciliation pending.
 
 ### Phase 228: Bounded Pi Integration Spike
 Focus: Prototype the selected improvement or improvements in bounded scope while preserving lifecycle gates, command-output truth, parent-owned APPLY, module evidence, and GitHub Flow safety.
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 226 complete and transitioned; Phase 227 ready to plan.*
+*Last updated: 2026-04-30 — Phase 227 Plan 227-01 APPLY complete; awaiting UNIFY reconciliation.*
