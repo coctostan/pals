@@ -30,18 +30,18 @@ Phases: 3 of 3 complete
 
 **v2.52 Legacy Retention / Install-Surface Cleanup**
 Status: 🚧 In Progress
-Phases: 0 of 4 complete — starts 2026-04-30
+Phases: 1 of 4 complete — starts 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 222 | Legacy / Install-Surface Cleanup Contract Baseline | 222-01 | APPLY complete — ready for UNIFY | - |
+| 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
 | 223 | Safe Cleanup Implementation | TBD | Not started | - |
 | 224 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 225 | Evidence Reconciliation + Milestone Closure | TBD | Not started | - |
 
 ### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
 Focus: Define exact safe cleanup targets and preservation boundaries using v2.51 validation classification before any frozen legacy or install-surface removal/relocation.
-Plans: 222-01 — create the baseline cleanup contract for frozen legacy/install surfaces, retention/removal decision rules, protected shared invariants, verification requirements, failure conditions, and Phase 223 handoff before any cleanup implementation.
+Plans: 222-01 — ✅ Complete. Created the baseline cleanup contract for frozen legacy/install surfaces, retention/removal decision rules, protected shared invariants, verification requirements, failure conditions, and Phase 223 handoff before any cleanup implementation.
 
 ### Phase 223: Safe Cleanup Implementation
 Focus: Apply bounded legacy retention and install-surface cleanup only where the baseline proves Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees remain protected.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 222 APPLY created the cleanup contract baseline and is ready for UNIFY.*
+*Last updated: 2026-04-30 — Phase 222 complete; cleanup contract baseline unified and PR #137 merge gate pending.*
