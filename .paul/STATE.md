@@ -264,7 +264,7 @@ Branch: main
 Last recorded lifecycle transition: Phase 228 complete; transitioned to Phase 229.
 PR: https://github.com/coctostan/pals/pull/143 (state: MERGED)
 CI: PR #143 Socket Security checks passed; local validation passed Pi 207/207 and cross-harness 121/121 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh`.
-Working tree: clean after phase transition commit `b8c2396b` pushed to `main`.
+Working tree: clean after phase transition metadata pushed to `main`.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
