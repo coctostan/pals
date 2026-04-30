@@ -11,6 +11,10 @@ Run the quick-fix side loop.
 - `../workflows/fix-loop.md`
 - `../references/fix-types.md`
 
+## Default output
+- Concise by default: name the fix mode, current status, required evidence, and one next action.
+- Expand for blockers, skipped hooks, hotfix risk, failed verification, or user request.
+
 ## Command-local notes
 - Supports `standard`, `fast-forward`, and `hotfix` modes.
 - `standard` compresses plan/apply/unify; `fast-forward` intentionally skips hooks; `hotfix` executes first and documents retroactively.

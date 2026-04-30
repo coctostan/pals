@@ -11,6 +11,10 @@ Create or complete a milestone.
 - `../workflows/create-milestone.md`
 - `../workflows/complete-milestone.md`
 
+## Default output
+- Concise by default: identify create/complete mode, key evidence, and one next action.
+- Expand for milestone review choices, blockers, validation failures, or user request.
+
 ## Command-local notes
 - Detect create vs complete mode from project state and user intent.
 - Reuse `.paul/MILESTONE-CONTEXT.md` when present.

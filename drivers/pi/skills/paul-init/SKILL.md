@@ -12,6 +12,10 @@ Initialize PALS in the current project.
 - `../templates/PROJECT.md`
 - `../templates/PRD.md`
 
+## Default output
+- Concise by default: ask one onboarding question or show one migration/resume next action.
+- Expand for stale config migration, destructive choices, blockers, or user-requested detail.
+
 ## Command-local notes
 - Supports both greenfield and brownfield onboarding while converging on the same layered artifacts: `PROJECT.md`, `PRD.md`, `ROADMAP.md`, `STATE.md`, and `pals.json`.
 - Ask for onboarding inputs one question at a time.

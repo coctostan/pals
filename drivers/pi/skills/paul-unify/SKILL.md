@@ -11,6 +11,10 @@ Close the loop by reconciling plan vs actual execution.
 - `../workflows/unify-phase.md`
 - `../modules.yaml`
 
+## Default output
+- Concise by default: summarize actual results, required evidence, durable writes, and one next routed action.
+- Expand for deviations, module findings, validation failures, GitHub Flow gates, or user request.
+
 ## Command-local notes
 - Write `SUMMARY.md` beside the plan with results, deviations, decisions, and lessons.
 - Update `STATE.md` and `ROADMAP.md` as needed; run shared post-unify module/reporting steps.

@@ -5,86 +5,22 @@ description: "Run thorough code review via REV subagent — spawns an isolated r
 
 # PAUL Review
 
-Run a thorough code review by dispatching an isolated reviewer subagent.
+Run an on-demand REV review by dispatching an isolated `code-reviewer` subagent.
 
-## What This Does
+## Canonical references
+- `../references/review-prompt.md`
+- `../references/review-checklist.md`
 
-Assembles diff context and changed files, then dispatches a `code-reviewer` subagent (via pi-subagents Agent() tool) with the full review prompt template. The reviewer checks 8 dimensions (correctness, edge cases, naming, architecture, performance, security, test coverage, rollback safety) and returns structured findings with a verdict.
+## Default output
+- Concise by default: show scope, reviewer dispatch status, findings summary, verdict, and one next action.
+- Expand for critical/high findings, unavailable subagent support, oversized diffs, degraded review mode, or user request.
 
-## How to Execute
-
-1. Read project state:
-   - File: `.paul/STATE.md`
-   - File: `pals.json` (check `modules.rev` config — enabled, model, pr_review settings)
-
-2. Read the installed review references:
-   - File: `../references/review-prompt.md` (prompt template with placeholders)
-   - File: `../references/review-checklist.md` (8 dimensions with severity guides)
-
-3. Present scope selection:
-   ```
-   ════════════════════════════════════════
-   CODE REVIEW
-   ════════════════════════════════════════
-
-   What should I review?
-
-   [1] Current plan's changes (diff since branch start)
-   [2] Specific files (you pick)
-   [3] Full branch vs base_branch
-   [4] Uncommitted changes
-   ════════════════════════════════════════
-   ```
-   Wait for user selection. Map to diff command per review-prompt.md scope table.
-
-4. Assemble context:
-   - Run the diff command for the selected scope
-   - Read each changed file in full
-   - Read `AGENTS.md` from project root (if exists)
-   - Find related test files (`*.test.*`, `*.spec.*` matching changed file names)
-
-5. Check pi-subagents dependency:
-   - Verify the `Agent` tool is available in the current session
-   - If not available:
-     ```
-     ⚠️ REV requires pi-subagents for isolated code review.
-     Install: pi install npm:@tintinweb/pi-subagents
-
-     [1] Skip review
-     [2] Run in-session review (same model, no isolation — degraded mode)
-     ```
-   - If "2": use the prompt template inline without subagent dispatch
-
-6. Build prompt from review-prompt.md template:
-   - Substitute `{project_name}`, `{diff}`, `{changed_files}`, `{test_files}`, `{agents_md}`
-   - If diff exceeds 5000 lines, warn and offer to pick specific files
-
-7. Dispatch reviewer:
-   - Use `Agent()` with `subagent_type: "code-reviewer"`, `run_in_background: false`
-   - If `pals.json modules.rev.model` is set (not null), pass as `model` override
-   - Display: `Dispatching reviewer ({model})...`
-
-8. Display results:
-   ```
-   ════════════════════════════════════════
-   REVIEW COMPLETE
-   ════════════════════════════════════════
-
-   {reviewer's structured output — findings, strengths, verdict}
-
-   ────────────────────────────────────────
-   Verdict: {READY / NOT READY / READY WITH CONCERNS}
-   ────────────────────────────────────────
-   ```
-
-## Key Behavior
-
-- On-demand only — NOT a lifecycle hook. Does not fire during PLAN/APPLY/UNIFY.
-- Foreground dispatch — blocks until review completes
-- Configurable model via `pals.json modules.rev.model` (null = agent default)
-- Graceful degradation if pi-subagents not installed
-
-## Output
-
-- Reviewer findings displayed inline with severity, location, and suggestions
-- Verdict: READY / NOT READY / READY WITH CONCERNS
+## Command-local notes
+- Read `.paul/STATE.md` and `pals.json` (`modules.rev.enabled`, `model`, `pr_review`, blocking settings).
+- Ask for one review scope: current plan changes, specific files, branch vs base, or uncommitted changes; map scope using `review-prompt.md`.
+- Assemble diff, changed files, optional `AGENTS.md`, and related `*.test.*` / `*.spec.*` files.
+- Dispatch `Agent({ subagent_type: "code-reviewer", run_in_background: false })`; pass `modules.rev.model` when configured.
+- Review dimensions stay in the referenced checklist: correctness, edge cases, naming, architecture, performance, security, test coverage, rollback safety.
+- If `Agent` is unavailable, offer skip or degraded in-session review; label degraded mode clearly.
+- Preserve structured findings with severity, location, suggestion, strengths, and verdict: `READY`, `READY WITH CONCERNS`, or `NOT READY`.
+- On-demand only — NOT a lifecycle hook; REV does not fire automatically during PLAN/APPLY/UNIFY.
