@@ -1627,7 +1627,7 @@ tap_file_contains_all \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 
-# Expected TAP total after Phase 224 documentation/install surfacing: 1..204
+# Expected TAP total after Phase 225 v2.52 closure evidence reconciliation: 1..205
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1668,6 +1668,18 @@ if grep -Fq "Pi-first by default" "$REPO_ROOT/README.md" \
   tap_ok "Pi docs/report surfaces install cleanup posture non-authoritatively"
 else
   tap_not_ok "Pi docs/report surfaces install cleanup posture non-authoritatively" "Expected Pi docs/report surfaces to cite install cleanup posture, explicit driver opt-ins, Pi 203/203 baseline, and command-output truth"
+fi
+
+if grep -Fq "Phase 225 v2.52 closure evidence" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "PR #137" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "PR #138" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "PR #139" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "command-output truth remains authoritative" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "204→205" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "bash tests/pi-end-to-end-validation.sh" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md"; then
+  tap_ok "Pi v2.52 closure evidence reconciles install cleanup posture"
+else
+  tap_not_ok "Pi v2.52 closure evidence reconciles install cleanup posture" "Expected v2.52 closure, PR #137/#138/#139, command-output truth, and Pi 204→205 reconciliation markers"
 fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
