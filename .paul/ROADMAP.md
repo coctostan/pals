@@ -37,7 +37,7 @@ Phases: 3 of 4 complete — starts 2026-04-30
 | 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
 | 223 | Safe Cleanup Implementation | 1/1 | ✅ Complete | 2026-04-30 |
 | 224 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-30 |
-| 225 | Evidence Reconciliation + Milestone Closure | TBD | 🔵 Ready to plan | - |
+| 225 | Evidence Reconciliation + Milestone Closure | 1/1 | 🟠 APPLY Complete | - |
 
 ### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
 Focus: Define exact safe cleanup targets and preservation boundaries using v2.51 validation classification before any frozen legacy or install-surface removal/relocation.
@@ -53,7 +53,7 @@ Plans: 224-01 — ✅ Complete. Surfaced Phase 223 Pi-first install/uninstall po
 
 ### Phase 225: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
-Plans: TBD (next action: /paul:plan)
+Plans: 225-01 — 🟠 APPLY complete, awaiting UNIFY. Added final v2.52 closure evidence to the cleanup contract and exactly one localized closure guardrail per validation suite; reconciled counts Pi 204→205 and cross-harness 120→121; APPLY validation passed installer, Pi 205/205, and cross-harness 121/121. UNIFY must record final module/GitHub Flow evidence and close the milestone.
 
 ### Previous milestone: v2.51 Pi-Native Validation Classification
 Result: Phases 218-221 complete. Phase 221 reconciled v2.51 evidence, final classification markers, validation counts, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 203/203 and cross-harness 119/119; PR #136 merged. v2.51 hands off to Legacy Retention / Install-Surface Cleanup.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 224 complete; Phase 225 ready to plan.*
+*Last updated: 2026-04-30 — Phase 225 APPLY complete for plan 225-01, awaiting UNIFY.*
