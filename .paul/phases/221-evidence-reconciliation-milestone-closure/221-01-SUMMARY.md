@@ -130,8 +130,8 @@ Final v2.51 validation-classification closure evidence shipped: the contract now
 | Base | `main` |
 | APPLY commits | `12d38573` contract reconciliation; `38a45ffe` validation guardrails |
 | PR | https://github.com/coctostan/pals/pull/136 |
-| APPLY postflight CI | pending/none |
-| UNIFY merge gate | Pending metadata commit, PR checks, merge, base sync, and branch cleanup |
+| APPLY postflight CI | pending/none before merge; Socket Security project report appeared IN_PROGRESS after merge |
+| UNIFY merge gate | PR #136 merged; local `main` synced; feature branch cleaned; reviews skipped by config; REV PR review skipped (`pr_review=false`) |
 
 ## Accomplishments
 

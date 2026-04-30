@@ -213,21 +213,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/221-evidence-reconciliation-milestone-closure (pending merge gate)
-Last commit: pending UNIFY metadata commit
-PR: https://github.com/coctostan/pals/pull/136 (OPEN before merge gate)
-CI: pending/none before merge gate
-Working tree: dirty from UNIFY/transition lifecycle artifacts before metadata commit
+Branch: main
+Last commit: b3b75dbb (PR #136 merged)
+PR: https://github.com/coctostan/pals/pull/136 (MERGED)
+CI: no blocking checks before merge; Socket Security project report appeared IN_PROGRESS after merge
+Working tree: clean after merge-gate state update commit pending
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
 Last session: 2026-04-30T01:42:00Z
-Stopped at: v2.51 milestone closed; GitHub Flow merge gate pending
-Next action: Complete GitHub Flow merge gate for PR #136, then choose the next milestone
+Stopped at: v2.51 milestone closed and PR #136 merged
+Next action: Choose the next milestone
 Resume file: .paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md
 Resume context:
 - UNIFY created `221-01-SUMMARY.md` with AC results, validation evidence, count reconciliation, module reports, and GitHub Flow evidence.
 - Final validation passed Pi 203/203 and cross-harness 119/119; installer verification passed.
 - v2.51 Pi-Native Validation Classification is complete after Phase 221.
 - Legacy Retention / Install-Surface Cleanup remains deferred until a separate approved milestone/plan.
+- GitHub Flow merge gate completed: PR #136 merged, local `main` synced, feature branch cleaned.
