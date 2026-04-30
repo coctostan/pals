@@ -1645,7 +1645,7 @@ tap_file_contains_all \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 
-# Expected TAP total after Phase 225 v2.52 closure evidence reconciliation: 1..205
+# Expected TAP total after Phase 229 v2.53 closure evidence reconciliation: 1..208
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1699,6 +1699,22 @@ if grep -Fq "Phase 225 v2.52 closure evidence" "$REPO_ROOT/docs/PI-NATIVE-LEGACY
 else
   tap_not_ok "Pi v2.52 closure evidence reconciles install cleanup posture" "Expected v2.52 closure, PR #137/#138/#139, command-output truth, and Pi 204→205 reconciliation markers"
 fi
+
+# Phase 229 v2.53 closure guardrail — localized marker-only validation for Pi-supported runtime evidence closure.
+tap_file_contains_all \
+  "Pi v2.53 closure evidence reconciles artifact-slice targeting and runtime boundaries" \
+  "$REPO_ROOT/docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md" \
+  "v2.53 closure" \
+  "PR #141" \
+  "PR #142" \
+  "PR #143" \
+  "artifact-slice targeting/deduplication" \
+  "Pi validation 207/207" \
+  "207→208" \
+  "command-output truth" \
+  "full authoritative read fallback" \
+  "Derived aid only" \
+  "no hidden Pi state"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

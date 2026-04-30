@@ -1208,7 +1208,7 @@ tap_file_contains_all \
   "Artifact Spec Compliance => Shared Invariant / Artifact / Process" \
   "Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant"
 
-# Expected TAP total after Phase 225 v2.52 closure evidence reconciliation: 1..121
+# Expected TAP total after Phase 229 v2.53 closure evidence reconciliation: 1..122
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1267,6 +1267,25 @@ if grep -Fq "Phase 225 v2.52 closure evidence" "$REPO_ROOT/docs/PI-NATIVE-LEGACY
 else
   tap_not_ok "Cross-harness v2.52 closure evidence preserves shared cleanup boundaries" "Expected v2.52 closure, PR #137/#138/#139, Shared Invariant / Artifact Process / Frozen Legacy Parity, command-output truth, and cross-harness 120→121 markers"
 fi
+
+# Phase 229 v2.53 closure guardrail — localized marker-only validation for shared milestone closure invariants.
+tap_file_contains_all \
+  "Cross-harness v2.53 closure evidence preserves shared authority boundaries" \
+  "$REPO_ROOT/docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md" \
+  "v2.53 closure" \
+  "PR #141" \
+  "PR #142" \
+  "PR #143" \
+  "cross-harness validation 121/121" \
+  "121→122" \
+  ".paul/* authority" \
+  "PLAN/APPLY/UNIFY authority" \
+  "module evidence" \
+  "GitHub Flow safety" \
+  "parent-owned APPLY" \
+  "explicit approval/checkpoint boundaries" \
+  "command-output truth" \
+  "full authoritative read fallback"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
