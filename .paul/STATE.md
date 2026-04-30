@@ -235,17 +235,17 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/225-evidence-reconciliation-milestone-closure
-Last commit: source APPLY commits created for v2.52 closure evidence and validation guardrails
-PR: pending postflight creation
-CI: pending PR creation; APPLY validation passed installer, Pi 205/205, cross-harness 121/121
-Working tree: dirty only from Phase 225 PLAN/STATE/ROADMAP lifecycle artifacts and archived resume handoff before postflight commit
+Last commit: `3b0be7d2` apply lifecycle state pushed after source commits `6124a1ae` and `d6c130e4`
+PR: https://github.com/coctostan/pals/pull/140 (OPEN)
+CI: Socket Security Project Report queued at postflight; APPLY validation passed installer, Pi 205/205, cross-harness 121/121
+Working tree: clean after postflight state update pending commit/push
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T13:32:44Z
+Last session: 2026-04-30T13:33:55Z
 Stopped at: APPLY complete for plan 225-01
-Next action: Run /paul:unify .paul/phases/225-evidence-reconciliation-milestone-closure/225-01-PLAN.md after GitHub Flow postflight/PR state is recorded
+Next action: Run /paul:unify .paul/phases/225-evidence-reconciliation-milestone-closure/225-01-PLAN.md after PR #140 CI is checked
 Resume file: .paul/phases/225-evidence-reconciliation-milestone-closure/225-01-PLAN.md
 Resume context:
 - Phase 225 APPLY completed all three tasks from plan 225-01.
