@@ -30,18 +30,18 @@ Phases: 3 of 3 complete
 
 **v2.53 Pi Integration Efficiency & Effectiveness Exploration**
 Status: 🚧 In Progress
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 226 | Pi Integration Efficiency Discovery | 226-01 | APPLY complete | - |
+| 226 | Pi Integration Efficiency Discovery | 226-01 | ✅ Complete | 2026-04-30 |
 | 227 | Effectiveness Improvement Candidate Design | TBD | Not started | - |
 | 228 | Bounded Pi Integration Spike | TBD | Not started | - |
 | 229 | Validation + Evidence Closure | TBD | Not started | - |
 
 ### Phase 226: Pi Integration Efficiency Discovery
 Focus: Identify current context-cost and workflow-friction hotspots in Pi integration, using recent v2.45-v2.52 evidence and current Pi surfaces without authorizing implementation changes.
-Plans: 226-01 — APPLY complete, ready for UNIFY. Created `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md` with current Pi integration surface inventory, ranked efficiency/effectiveness hotspots, authority boundaries, and Phase 227 handoff; validation passed installer, Pi 205/205, and cross-harness 121/121.
+Plans: 1/1 complete — Phase 226 created `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md` with current Pi integration surface inventory, ranked efficiency/effectiveness hotspots, authority boundaries, and Phase 227 handoff; validation passed installer, Pi 205/205, and cross-harness 121/121.
 
 ### Phase 227: Effectiveness Improvement Candidate Design
 Focus: Select and design the highest-value Pi-native improvements with explicit boundaries, evidence needs, fallback rules, and preservation of `.paul/*` artifact authority.
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 226 Plan 226-01 APPLY complete, ready for UNIFY.*
+*Last updated: 2026-04-30 — Phase 226 complete; Phase 227 ready to plan after PR #141 merge gate and transition.*
