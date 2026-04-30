@@ -6,8 +6,8 @@
 |---|---|
 | Milestone | v2.51 Pi-Native Validation Classification |
 | Baseline phase | 218 — Validation Classification Baseline |
-| Artifact status | Baseline contract for validation-suite classification and Phase 219 hardening |
-| Implementation status | Phase 218 creates this contract only. Validation scripts, runtime files, install surfaces, reports, dependency manifests, CI config, GitHub Flow automation, legacy wrappers, and lifecycle authority semantics remain unchanged. |
+| Artifact status | Baseline contract for validation-suite classification, Phase 219 hardening, and Phase 220 documentation/report surfacing |
+| Implementation status | Phase 219 hardened the validation suites with command-output-backed classification inventories. Phase 220 may surface that classification in docs/reports/Pi discovery only as non-authoritative context; validation truth still comes from fresh command output. Runtime files, install surfaces, dependency manifests, CI config, GitHub Flow automation, legacy wrappers, and lifecycle authority semantics remain unchanged. |
 
 ## Purpose and boundary
 
@@ -15,7 +15,7 @@ PALS must classify validation checks by support purpose before any check is weak
 
 Command-output truth remains authoritative: reports, widgets, summaries, helper reports, lenses, and this classification contract may explain validation posture, but they do not mark validation green by themselves. Fresh command output from focused marker checks, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` remains the validation truth for APPLY/UNIFY.
 
-Phase 218 is baseline-only. It inventories current validation families and records preservation rules so Phase 219 can add explicit classification markers and guardrails without re-deciding taxonomy. Legacy Retention / Install-Surface Cleanup remains deferred until classification hardening is complete and product approval is explicit.
+Phase 218 was baseline-only; Phase 219 added explicit classification markers and local guardrails. Phase 220 may update docs/report surfaces so the model is discoverable, but reports, widgets, summaries, helper reports, and Pi surfaces remain non-authoritative. Legacy Retention / Install-Surface Cleanup remains deferred until classification hardening and evidence reconciliation complete and product approval is explicit.
 
 ## Source inputs
 
@@ -30,6 +30,8 @@ Phase 218 is baseline-only. It inventories current validation families and recor
 | `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` | Helper Delegation evidence for parent-owned packets, structured reports, allowed/forbidden files, fallback triggers, parent verification, and no helper-owned lifecycle writes. | Helper delegation validation remains parent-verifiable command evidence, not helper-owned lifecycle authority. |
 | `tests/pi-end-to-end-validation.sh` | Current Pi validation suite category families and TAP output. | Read-only Phase 218 input; Phase 219 may add explicit classification markers. |
 | `tests/cross-harness-validation.sh` | Current cross-harness validation suite category families and TAP output. | Read-only Phase 218 input; Phase 219 may add explicit classification markers. |
+| `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` | Phase 219 command evidence: Pi validation passed 201/201 and cross-harness validation passed 117/117 after one localized classification guardrail per suite. | Establishes the hardened current command baseline that Phase 220 docs/report surfacing must cite without making reports authoritative. |
+| `docs/PI-VALIDATION-REPORT.md` and `docs/VALIDATION-REPORT.md` | Historical 2026-03-14 report artifacts with old counts. | Reports must be labeled archival/non-authoritative for current status and route readers to fresh suite commands plus this contract. |
 
 ## Validation class taxonomy
 
@@ -46,12 +48,12 @@ Phase 218 is baseline-only. It inventories current validation families and recor
 
 ## Current command-output baseline
 
-The current v2.51 baseline is inherited from Phase 217 closure evidence:
+The original v2.51 baseline was inherited from Phase 217 closure evidence and then hardened by Phase 219:
 
-| Suite | Current baseline | Source |
-|---|---:|---|
-| `bash tests/pi-end-to-end-validation.sh` | 200/200 passing | `.paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md` |
-| `bash tests/cross-harness-validation.sh` | 116/116 passing | `.paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md` |
+| Suite | Original Phase 217 baseline | Hardened Phase 219 baseline | Source |
+|---|---:|---:|---|
+| `bash tests/pi-end-to-end-validation.sh` | 200/200 passing | 201/201 passing | `.paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md`; `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` |
+| `bash tests/cross-harness-validation.sh` | 116/116 passing | 117/117 passing | `.paul/phases/217-evidence-reconciliation-milestone-closure/217-01-SUMMARY.md`; `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` |
 
 These counts are not self-validating when copied into artifacts. Each APPLY/UNIFY must preserve fresh command output and reconcile count changes with class-aware rationale.
 
@@ -130,6 +132,12 @@ Phase 219 should harden the validation suites against this baseline without reop
 - record old count, new count, reason, validation class affected, shared-invariant preservation rationale, and command-output evidence for any count change;
 - keep reports and documentation surfacing for Phase 220 unless marker hardening needs a narrow contract citation;
 - keep Legacy Retention / Install-Surface Cleanup deferred until Phase 219 completes and product approval is explicit.
+
+## Phase 220 documentation/report surfacing boundary
+
+Phase 220 may update README, Pi-facing docs, this contract, and historical validation reports so validation classification is easier to discover. That surfacing must preserve command-output truth: docs/reports/widgets/summaries/helper reports/Pi surfaces may cite Pi 201/201 and cross-harness 117/117 as the current Phase 219 command baseline, but they do not mark validation green and must point to fresh `bash tests/pi-end-to-end-validation.sh` and `bash tests/cross-harness-validation.sh` output for current pass/fail status.
+
+Any Phase 220 validation count change must be bounded to documentation/report surfacing guardrails only, with explicit reconciliation. The planned surfacing guardrails are Pi 201→202 and cross-harness 117→118; no validation cleanup, runtime behavior change, installer change, dependency change, CI change, GitHub Flow change, helper delegation change, or lifecycle-authority change is authorized.
 
 ## Readiness checklist
 
