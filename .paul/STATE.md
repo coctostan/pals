@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-29 after v2.51 milestone creation)
 ## Current Position
 
 Milestone: v2.51 Pi-Native Validation Classification
-Phase: 220 of 221 (Documentation + Report Surfacing) — APPLY complete
-Plan: 220-01 created, awaiting approval
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-30T00:25:00Z — Completed APPLY for .paul/phases/220-documentation-report-surfacing/220-01-PLAN.md
+Phase: 220 of 221 (Documentation + Report Surfacing) — UNIFY complete
+Plan: 220-01 complete
+Status: UNIFY complete; merge gate and phase transition pending
+Last activity: 2026-04-30T00:28:00Z — Created .paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -23,7 +23,7 @@ Progress:
 - v2.48 Guided Workflow Evidence Hardening: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.51 Pi-Native Validation Classification: [███████░░░] 75% (2 of 4 phases complete; Phase 220 APPLY complete, UNIFY pending)
+- v2.51 Pi-Native Validation Classification: [███████░░░] 75% (3 of 4 phases complete after Phase 220 transition; merge gate pending)
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -38,7 +38,7 @@ Progress:
 - Phase 217 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 218 Validation Classification Baseline: [██████████] 100% complete
 - Phase 219 Runtime/Validation Suite Classification Hardening: [██████████] 100% complete
-- Phase 220 Documentation + Report Surfacing: [███████░░░] 75% APPLY complete, UNIFY pending
+- Phase 220 Documentation + Report Surfacing: [██████████] 100% UNIFY complete, transition pending
 - Phase 221 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 
 ## Loop Position
@@ -46,7 +46,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, UNIFY pending]
+  ✓        ✓        ✓     [Loop complete - merge gate/transition pending]
 ```
 
 ## Accumulated Context
@@ -101,6 +101,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 219 APPLY added explicit validation-classification inventory sections and exactly one localized TAP guardrail to each validation suite; final validation passed Pi 201/201 and cross-harness 117/117, with count changes reconciled as classification guardrail additions only and report/docs/runtime/installer/dependency/CI/legacy cleanup surfaces unchanged.
 - Phase 219 UNIFY created `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md`, recording AC results, focused grep evidence, Pi 201/201, cross-harness 117/117, validation count reconciliation (Pi 200→201, cross-harness 116→117), module reports, PR #134 evidence, and Phase 220 readiness.
 - Phase 219 transition merged PR #134, synced `main`, confirmed Socket Security checks passed, and routed v2.51 to Phase 220 Documentation + Report Surfacing.
+- Phase 220 UNIFY created `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md`, recording docs/report surfacing evidence, historical report non-authority notices, Pi 202/202, cross-harness 118/118, count reconciliation (Pi 201→202, cross-harness 117→118), module reports, and PR #135 evidence.
 
 ### Current Decisions
 
@@ -191,6 +192,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 218: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; APPLY and UNIFY validation/persistence passed with no regression. Validation stayed stable (Pi 200/200, cross-harness 116/116); CODI expected skipped-no-symbols; RUBY noted existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 219 APPLY: `/paul`, `/carl`, TODD, WALT, advisory modules, and enforcement modules invoked or active via module dispatch; pre-apply baseline passed Pi 200/200 and cross-harness 116/116; final validation passed Pi 201/201 and cross-harness 117/117; RUBY/ARCH noted existing validation-script size debt remains pre-existing/future driver-quality scope. Minor process adaptation: Tasks 1 and 2 source edits were applied in one localized pass before sequential parent verification.
 - Skill audit Phase 219 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; PR #134 merge gate passed and merged.
+- Skill audit Phase 220 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 202/202 and cross-harness 118/118. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 
 ### Deferred Issues
 
@@ -210,18 +212,18 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 Branch: feature/220-documentation-report-surfacing
 Last commit: Phase 220 APPLY committed on feature branch (tasks + lifecycle plan state)
 PR: https://github.com/coctostan/pals/pull/135 (OPEN)
-CI: PR checks pending/not yet reported; local validation passed Pi 202/202 and cross-harness 118/118 during Phase 220 APPLY
-Working tree: dirty only from post-PR STATE.md git-state update; commit during UNIFY before merge gate
+CI: PR checks pending before merge gate; local validation passed Pi 202/202 and cross-harness 118/118 during Phase 220 APPLY/UNIFY
+Working tree: dirty from UNIFY SUMMARY/history/state updates; commit before merge gate
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T00:25:00Z
-Stopped at: APPLY complete for Plan 220-01
-Next action: Run /paul:unify .paul/phases/220-documentation-report-surfacing/220-01-PLAN.md
-Resume file: .paul/phases/220-documentation-report-surfacing/220-01-PLAN.md
+Last session: 2026-04-30T00:28:00Z
+Stopped at: UNIFY complete for Plan 220-01
+Next action: Commit/push UNIFY artifacts, resolve PR #135 merge gate, then transition to Phase 221
+Resume file: .paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md
 Resume context:
-- APPLY updated README, Pi docs, the validation classification contract, and historical validation reports to surface validation classification non-authoritatively.
-- Added one localized docs/report surfacing guardrail per validation suite; validation passed Pi 202/202 and cross-harness 118/118.
-- Count changes are bounded to docs/report surfacing guardrails only: Pi 201→202 and cross-harness 117→118.
-- Next lifecycle work is UNIFY for Phase 220.
+- SUMMARY created for Phase 220 Documentation + Report Surfacing.
+- Validation passed Pi 202/202 and cross-harness 118/118; count changes are bounded to docs/report surfacing guardrails only.
+- PR #135 merge gate and Phase 220 transition remain to be completed.
+- Next lifecycle work is merge gate, then Phase 221 Evidence Reconciliation + Milestone Closure planning.
