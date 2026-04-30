@@ -176,6 +176,7 @@ Based on loop position, determine **exactly ONE** next action:
 </step>
 
 <step name="report_and_route">
+Use contextual verbosity for routine resumes: concise state, Git State when github-flow applies, and exactly ONE next action; expand only for blocker, stale/conflicting handoff, failed git check, or user-requested detail.
 Display to user with ONE next action:
 ```
 ════════════════════════════════════════

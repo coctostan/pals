@@ -50,6 +50,7 @@ If user doesn't provide, summarize from:
 </step>
 
 <step name="create_handoff">
+Apply contextual verbosity: make the handoff self-contained but avoid repeated background; include only state, decisions, blockers, changed files, Git State when relevant, and the exact resume action.
 **Create HANDOFF file:**
 
 ```bash
@@ -184,6 +185,7 @@ Use `references/git-strategy.md` for shared workflow resolution and WIP continui
 </step>
 
 <step name="confirm">
+Use contextual verbosity for routine pause confirmation: short artifact path, current loop position, and resume command; expand only for blockers, WIP commit failures, or user-requested detail.
 **Display confirmation:**
 
 ```

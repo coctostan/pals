@@ -35,7 +35,7 @@ Phases: 1 of 4 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 230 | Baseline Verbosity Audit | 230-01 | Complete | 2026-04-30 |
-| 231 | Process / Workflow Verbosity Paring | TBD | Ready to plan | - |
+| 231 | Process / Workflow Verbosity Paring | 231-01 | Complete | 2026-04-30 |
 | 232 | Skill Verbosity Pass | TBD | Not started | - |
 | 233 | Validation + Evidence Closure | TBD | Not started | - |
 
@@ -45,7 +45,7 @@ Plans: 230-01 — complete; created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` ba
 
 ### Phase 231: Process / Workflow Verbosity Paring
 Focus: Update PALS process and workflow guidance to prefer concise, context-sensitive agent output while preserving lifecycle authority, approval gates, module evidence, validation truth, and GitHub Flow safety.
-Plans: TBD (defined during /paul:plan)
+Plans: 231-01 — complete; added shared contextual verbosity guidance and compact high-frequency PLAN/milestone/resume/pause workflow reply templates; validation passed; PR #146 merge gate/phase transition in progress
 
 ### Phase 232: Skill Verbosity Pass
 Focus: Review and update PALS skills so default replies are minimally verbose unless the task, evidence, or user request requires more detail.
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 230 complete; Phase 231 ready to plan.*
+*Last updated: 2026-04-30 — Phase 231 Plan 231-01 UNIFY complete; merge gate and transition in progress.*
