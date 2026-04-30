@@ -17,25 +17,41 @@ fi
 
 echo "Uninstalling PALS ..."
 
-# ── 1. Detect and run driver uninstaller ─────────────────────────
-# Same detection order as install.sh
+# ── 1. Detect and run driver uninstaller(s) ───────────────────────
+# Mirrors install.sh support posture:
+#   - PALS_DRIVER env var → uninstall that one explicit driver only
+#   - PALS_DRIVER=all → explicit maintenance opt-in for all driver uninstallers
+#   - Otherwise: prefer supported Pi cleanup when a Pi home surface exists
+#   - Frozen legacy cleanup requires explicit opt-in
+
+run_driver_uninstall() {
+  local DRIVER="$1"
+  local DRIVER_DIR="$PALS_ROOT/drivers/$DRIVER"
+  local DRIVER_UNINSTALL="$DRIVER_DIR/uninstall.sh"
+  if [ -f "$DRIVER_UNINSTALL" ]; then
+    echo "  [ok] Uninstalling driver: $DRIVER"
+    bash "$DRIVER_UNINSTALL"
+  else
+    echo "  [skip] No driver uninstaller for '$DRIVER'"
+  fi
+}
+
 if [ -n "$PALS_DRIVER" ]; then
-  DRIVER="$PALS_DRIVER"
-elif [ -d "$HOME/.claude" ]; then
-  DRIVER="claude-code"
-elif [ -n "$ANTHROPIC_AGENT_SDK" ]; then
-  DRIVER="agent-sdk"
+  if [ "$PALS_DRIVER" = "all" ]; then
+    echo "  [info] PALS_DRIVER=all selected: explicit maintenance opt-in for all driver uninstallers."
+    run_driver_uninstall "pi"
+    run_driver_uninstall "claude-code"
+    run_driver_uninstall "agent-sdk"
+  else
+    run_driver_uninstall "$PALS_DRIVER"
+  fi
+elif [ -d "$HOME/.pi" ]; then
+  run_driver_uninstall "pi"
 else
-  DRIVER="claude-code"
-fi
-
-DRIVER_DIR="$PALS_ROOT/drivers/$DRIVER"
-DRIVER_UNINSTALL="$DRIVER_DIR/uninstall.sh"
-
-if [ -f "$DRIVER_UNINSTALL" ]; then
-  bash "$DRIVER_UNINSTALL"
-else
-  echo "  [skip] No driver uninstaller for '$DRIVER'"
+  echo "  [info] Pi is the supported default runtime for PALS."
+  echo "  [info] No Pi home surface detected at ~/.pi; skipping driver-specific uninstall by default."
+  echo "  [info] To clean up a frozen legacy driver explicitly, rerun with PALS_DRIVER=claude-code or PALS_DRIVER=agent-sdk."
+  echo "  [info] For maintenance parity only, use PALS_DRIVER=all."
 fi
 
 # ── 2. Remove framework files ───────────────────────────────────

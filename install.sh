@@ -33,10 +33,10 @@ echo "  [ok] Kernel files installed to ~/.pals/"
 
 # ── 2. Detect and run driver installer(s) ─────────────────────────
 # Strategy:
-#   - PALS_DRIVER env var → install that one driver only
-#   - Otherwise: auto-detect ALL available harnesses and install for each
-#   - Multiple drivers can coexist (different install paths, no conflict)
-#   - Fallback: claude-code if nothing detected
+#   - PALS_DRIVER env var → install that one explicit driver only
+#   - PALS_DRIVER=all → explicit maintenance opt-in for all driver installers
+#   - Otherwise: Pi is the supported default when a Pi home surface exists
+#   - Frozen legacy drivers require explicit opt-in and are not auto-installed
 
 DRIVERS_INSTALLED=0
 
@@ -58,23 +58,24 @@ run_driver() {
 }
 
 if [ -n "$PALS_DRIVER" ]; then
-  # Explicit override: install only the specified driver
-  run_driver "$PALS_DRIVER"
-else
-  # Auto-detect: install for every detected harness
-  if [ -d "$HOME/.claude" ]; then
+  if [ "$PALS_DRIVER" = "all" ]; then
+    echo "  [info] PALS_DRIVER=all selected: explicit maintenance opt-in for all driver installers."
+    run_driver "pi"
     run_driver "claude-code"
+    run_driver "agent-sdk"
+  else
+    # Explicit override: install only the specified driver.
+    run_driver "$PALS_DRIVER"
   fi
+else
+  # Pi is the supported default. Frozen legacy drivers require explicit opt-in.
   if [ -d "$HOME/.pi" ]; then
     run_driver "pi"
-  fi
-  if [ -n "$ANTHROPIC_AGENT_SDK" ]; then
-    run_driver "agent-sdk"
-  fi
-  # Fallback: if nothing detected, default to claude-code
-  if [ $DRIVERS_INSTALLED -eq 0 ]; then
-    echo "  [info] No harness detected, defaulting to claude-code"
-    run_driver "claude-code"
+  else
+    echo "  [info] Pi is the supported default runtime for PALS."
+    echo "  [info] No Pi home surface detected at ~/.pi; no driver installed by default."
+    echo "  [info] To install a frozen legacy driver explicitly, rerun with PALS_DRIVER=claude-code or PALS_DRIVER=agent-sdk."
+    echo "  [info] For maintenance parity only, use PALS_DRIVER=all."
   fi
 fi
 
