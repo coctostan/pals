@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.54 Contextual Verbosity Paring**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete
+Status: ✅ Complete
+Phases: 4 of 4 complete — 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 230 | Baseline Verbosity Audit | 230-01 | Complete | 2026-04-30 |
 | 231 | Process / Workflow Verbosity Paring | 231-01 | Complete | 2026-04-30 |
 | 232 | Skill Verbosity Pass | 232-01 | Complete | 2026-04-30 |
-| 233 | Validation + Evidence Closure | TBD | Not started | - |
+| 233 | Validation + Evidence Closure | 233-01 | Complete | 2026-04-30 |
 
 ### Phase 230: Baseline Verbosity Audit
 Focus: Identify where PALS workflows, prompts, skills, module surfaces, and lifecycle artifacts create wasteful agent verbosity, distinguishing necessary evidence from redundant prose.
@@ -53,10 +53,13 @@ Plans: 232-01 — complete; added concise-by-default output guidance across 13 P
 
 ### Phase 233: Validation + Evidence Closure
 Focus: Reconcile evidence, update validation or documentation surfaces as needed, and close the milestone without expanding beyond approved verbosity-paring scope.
-Plans: TBD — ready to plan
+Plans: 233-01 — complete; closed v2.54 evidence in `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md`, added one localized closure guardrail per validation suite, passed Pi 209/209 and cross-harness 123/123, and opened PR #148.
 
 ### Previous milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
 Result: Phases 226-229 complete. v2.53 identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped a bounded runtime/docs/test spike, and closed with Pi 208/208 plus cross-harness 122/122 after PR #144 merged.
+
+### Latest completed milestone: v2.54 Contextual Verbosity Paring
+Result: Phases 230-233 complete. v2.54 established contextual verbosity guidance, compact dispatch skip/no-scope evidence, concise-by-default Pi skill wrappers, and final closure evidence protected by Pi 209/209 plus cross-harness 123/123 validation.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -71,9 +74,10 @@ Result: Phases 226-229 complete. v2.53 identified Pi integration context-cost/wo
 | v2.51 Pi-Native Validation Classification | 2026-04-30 | 218-221 | Defined validation classification taxonomy, hardened suite inventories, surfaced non-authoritative docs/report evidence, and closed with final evidence reconciliation; validation passes Pi 203/203 and cross-harness 119/119; cleanup remains deferred. | active artifacts |
 | v2.52 Legacy Retention / Install-Surface Cleanup | 2026-04-30 | 222-225 | Established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced posture in docs/reports/validation, and closed with final evidence reconciliation; validation passes Pi 205/205 and cross-harness 121/121. | active artifacts |
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | 2026-04-30 | 226-229 | Identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; validation passes Pi 208/208 and cross-harness 122/122. | active artifacts |
+| v2.54 Contextual Verbosity Paring | 2026-04-30 | 230-233 | Audited PALS verbosity surfaces, added contextual verbosity and compact dispatch guidance, pared Pi skill wrappers, and closed with validation/evidence guardrails; validation passes Pi 209/209 and cross-harness 123/123. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 232 complete; Phase 233 ready to plan.*
+*Last updated: 2026-04-30 — v2.54 complete after Phase 233 validation/evidence closure.*
