@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-30 after Phase 223 completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phases 222 and 223 are complete and Phase 224 Documentation + Validation Surfacing is ready to plan.
+**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phases 222 and 223 are complete and Phase 224 Documentation + Validation Surfacing has completed APPLY, awaiting UNIFY.
 
 ## Current Position
 
 Milestone: v2.52 Legacy Retention / Install-Surface Cleanup
-Phase: 224 of 225 (Documentation + Validation Surfacing) — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-04-30T03:05:00Z — Phase 223 complete, PR #138 merged, transitioned to Phase 224
+Phase: 224 of 225 (Documentation + Validation Surfacing) — APPLY complete
+Plan: 224-01 applied, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-30T13:08:59Z — Applied Phase 224 PLAN 224-01; validation passed Pi 204/204 and cross-harness 120/120
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -24,10 +24,10 @@ Progress:
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.52 Legacy Retention / Install-Surface Cleanup: [█████░░░░░] 50% (2 of 4 phases complete; Phase 224 ready to plan)
+- v2.52 Legacy Retention / Install-Surface Cleanup: [███████░░░] 75% (2 of 4 phases complete; Phase 224 APPLY complete, awaiting UNIFY)
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
-- Phase 224 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
+- Phase 224 Documentation + Validation Surfacing: [████████░░] 80% APPLY complete, awaiting UNIFY
 - Phase 225 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
@@ -51,7 +51,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to plan Phase 224]
+  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
 ```
 
 ## Accumulated Context
@@ -113,6 +113,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 222 UNIFY created `.paul/phases/222-legacy-install-surface-cleanup-contract-baseline/222-01-SUMMARY.md`, recording AC results, marker grep evidence, installer verification, Pi 203/203, cross-harness 119/119, unchanged count reconciliation, module reports, PR #137 evidence, and Phase 223 readiness.
 - Phase 223 UNIFY created `.paul/phases/223-safe-cleanup-implementation/223-01-SUMMARY.md`, recording Pi-first root install/uninstall behavior, explicit frozen legacy/source-only opt-ins, README support-posture alignment, stable validation counts (Pi 203/203, cross-harness 119/119), module reports, PR #138 evidence, and Phase 224 readiness.
 - Phase 223 transition merged PR #138, synced `main`, confirmed Socket Security checks passed, and routed v2.52 to Phase 224 Documentation + Validation Surfacing.
+- Phase 224 PLAN 224-01 created `.paul/phases/224-documentation-validation-surfacing/224-01-PLAN.md`, scoping documentation/report surfacing and exactly one localized validation guardrail per suite for Phase 223 Pi-first install cleanup posture; expected validation count changes are Pi 203→204 and cross-harness 119→120 if approved and applied.
+- Phase 224 APPLY updated README/Pi docs/skill-map, cleanup and validation-classification contracts, historical validation reports, and exactly one localized docs/install-posture validation guardrail per suite. Final APPLY validation passed `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi validation 204/204, and cross-harness validation 120/120; validation count changes are reconciled as documentation/install-posture surfacing only.
 
 ### Current Decisions
 
@@ -211,6 +213,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 221 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 203/203 and cross-harness 119/119. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 222 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation remained stable at Pi 203/203 and cross-harness 119/119.
 - Skill audit Phase 223 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; validation stayed stable at Pi 203/203 and cross-harness 119/119. No helper delegation was used; parent APPLY owned verification.
+- Skill audit Phase 224 APPLY: `/paul`, `/carl`, TODD, WALT, DOCS, RUBY, ARCH, SETH, IRIS, and advisory/enforcement modules invoked or active via module dispatch; validation passed Pi 204/204 and cross-harness 120/120. Active handoff archived after resume proceeded. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 
 ### Deferred Issues
 
@@ -227,21 +230,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: 8698b4e2 (PR #138 squash merge for Phase 223 safe cleanup implementation)
-PR: https://github.com/coctostan/pals/pull/138 (MERGED)
-CI: Socket Security Project Report SUCCESS; Pull Request Alerts SUCCESS
-Working tree: transition metadata pending commit
+Branch: phase-224-documentation-validation-surfacing
+Last commit: e596346c (Phase 223 transition metadata; PR #138 squash merge is 8698b4e2); Phase 224 APPLY work is uncommitted pending GitHub Flow postflight/UNIFY routing
+PR: none active for Phase 224 yet
+CI: N/A — no active PR; APPLY validation passed locally (Pi 204/204, cross-harness 120/120)
+Working tree: dirty from Phase 224 APPLY source/doc/validation edits plus expected `.paul/*` lifecycle artifacts
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T03:05:00Z
-Stopped at: Phase 223 complete; Phase 224 ready to plan
-Next action: /paul:plan for Phase 224 Documentation + Validation Surfacing
-Resume file: .paul/ROADMAP.md
+Last session: 2026-04-30T13:08:59Z
+Stopped at: Phase 224 APPLY complete; awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/224-documentation-validation-surfacing/224-01-PLAN.md
+Resume file: .paul/phases/224-documentation-validation-surfacing/224-01-PLAN.md
 Resume context:
-- Phase 223 Safe Cleanup Implementation is complete and PR #138 is merged.
-- Root install/uninstall now default to Pi-first behavior and require explicit frozen legacy/source-only opt-in via `PALS_DRIVER=...`.
-- Validation stayed stable: Pi 203/203 and cross-harness 119/119.
-- Phase 224 should surface the new install posture in docs/validation evidence without changing runtime behavior unless separately planned.
+- Phase 224 PLAN 224-01 APPLY is complete; UNIFY has not started.
+- Modified planned docs/report/validation files only, plus expected `.paul/*` lifecycle artifacts and archived handoffs.
+- Validation passed: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (204/204), and `bash tests/cross-harness-validation.sh` (120/120).
+- Validation count changes are reconciled as docs/install-posture surfacing only: Pi 203→204 and cross-harness 119→120.
+- Runtime behavior, installer behavior, dependencies, CI, GitHub Flow automation, helper delegation semantics, lifecycle authority, and unrelated validation semantics remained unchanged.

@@ -1627,10 +1627,10 @@ tap_file_contains_all \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 
-# Expected TAP total after v2.51 closure: 1..203
+# Expected TAP total after Phase 224 documentation/install surfacing: 1..204
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
-  && grep -Fq "Pi 201/201" "$REPO_ROOT/README.md" \
-  && grep -Fq "cross-harness 117/117" "$REPO_ROOT/README.md" \
+  && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
+  && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi-owned validation ledger" "$REPO_ROOT/drivers/pi/extensions/README.md" \
   && grep -Fq "Pi-owned validation ledger" "$REPO_ROOT/drivers/pi/skill-map.md" \
   && grep -Fq "Historical validation report" "$REPO_ROOT/docs/PI-VALIDATION-REPORT.md" \
@@ -1652,10 +1652,22 @@ if grep -Fq "Phase 218" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CON
   && grep -Fq "202→203" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
   && grep -Fq "118→119" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
   && grep -Fq "fresh command output remains authoritative" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
-  && grep -Fq "Legacy Retention / Install-Surface Cleanup remains deferred" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
+  && grep -Fq "Legacy Retention / Install-Surface Cleanup moved to v2.52" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
   tap_ok "Pi validation classification milestone closure evidence is reconciled"
 else
-  tap_not_ok "Pi validation classification milestone closure evidence is reconciled" "Expected final v2.51 closure evidence, PR chain, count reconciliation, command-output truth, and cleanup deferral markers"
+  tap_not_ok "Pi validation classification milestone closure evidence is reconciled" "Expected final v2.51 closure evidence, PR chain, count reconciliation, command-output truth, and cleanup handoff markers"
+fi
+
+if grep -Fq "Pi-first by default" "$REPO_ROOT/README.md" \
+  && grep -Fq "PALS_DRIVER=claude-code" "$REPO_ROOT/README.md" \
+  && grep -Fq "PALS_DRIVER=agent-sdk" "$REPO_ROOT/README.md" \
+  && grep -Fq "PALS_DRIVER=all" "$REPO_ROOT/README.md" \
+  && grep -Fq "Pi 203/203" "$REPO_ROOT/docs/PI-VALIDATION-REPORT.md" \
+  && grep -Fq "command-output truth" "$REPO_ROOT/drivers/pi/extensions/README.md" \
+  && grep -Fq "Phase 223 implementation evidence" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md"; then
+  tap_ok "Pi docs/report surfaces install cleanup posture non-authoritatively"
+else
+  tap_not_ok "Pi docs/report surfaces install cleanup posture non-authoritatively" "Expected Pi docs/report surfaces to cite install cleanup posture, explicit driver opt-ins, Pi 203/203 baseline, and command-output truth"
 fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY

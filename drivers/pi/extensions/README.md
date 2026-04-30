@@ -59,7 +59,7 @@ When one of those moments appears, Pi may use lightweight native surfaces such a
 This layer is additive only: it never auto-approves, never auto-continues a workflow, never skips human verification or human-action checkpoints, never treats UI state as a lifecycle decision, and never stores a Pi-owned workflow state. Notify-only mode never sends a canonical reply. Merge-gate routing is notify/select-only route assistance; Pi must not run git/gh commands, bypass CI or review checks, or infer merge intent from displayed branch/PR/CI status.
 
 Shared `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, transcript-visible canonical replies, GitHub Flow command evidence, and validation command output remain authoritative. Widgets, notifications, runtime memory, context payloads, and helper transcripts are not a hidden Pi state or Pi-owned lifecycle/module/validation ledger.
-Validation Classification and report surfacing follow the same boundary. Pi may show validation-classification/report context as a derived aid, including the current command baseline of Pi 201/201 and cross-harness 117/117, but Pi must not create a Pi-owned validation ledger or replace fresh `bash tests/pi-end-to-end-validation.sh` / `bash tests/cross-harness-validation.sh` output.
+Validation Classification and report surfacing follow the same boundary. Pi may show validation-classification/report context as a derived aid, including the current command baseline of Pi 203/203 and cross-harness 119/119, but Pi must not create a Pi-owned validation ledger or replace fresh `bash tests/pi-end-to-end-validation.sh` / `bash tests/cross-harness-validation.sh` output.
 
 ## Artifact-Slice Context Loading
 
@@ -197,6 +197,8 @@ The extension registers these slash commands:
 | Project-shipped agents | `~/.pi/agent/agents/{agent-name}.md` | Helper agents such as `pals-implementer` for parent-authoritative, task-bounded delegation |
 | Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
 These are distinct install targets. Skills and kernel files live under `~/.pi/agent/skills/pals/`, the extension lives under `~/.pi/agent/extensions/`, and project-shipped agents live under `~/.pi/agent/agents/`. Removing one surface does not transfer lifecycle ownership to Pi or remove the others; `uninstall.sh` handles the full cleanup of all targets.
+
+The root install/uninstall posture is Pi-first by default: with no `PALS_DRIVER` set, the root scripts target the supported Pi surface when `~/.pi` exists. Frozen legacy/source-only compatibility surfaces require explicit opt-in (`PALS_DRIVER=claude-code`, `PALS_DRIVER=agent-sdk`, or `PALS_DRIVER=all`). This note is cited context only; command-output truth remains authoritative for current install and validation status.
 
 ## Development Workflow
 

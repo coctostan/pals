@@ -36,7 +36,7 @@ Phases: 2 of 4 complete — starts 2026-04-30
 |-------|------|-------|--------|-----------|
 | 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
 | 223 | Safe Cleanup Implementation | 1/1 | ✅ Complete | 2026-04-30 |
-| 224 | Documentation + Validation Surfacing | TBD | Ready to plan | - |
+| 224 | Documentation + Validation Surfacing | 1/TBD | Planning | - |
 | 225 | Evidence Reconciliation + Milestone Closure | TBD | Not started | - |
 
 ### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
@@ -49,7 +49,7 @@ Plans: 223-01 — ✅ Complete. Root install/uninstall now use Pi-first default 
 
 ### Phase 224: Documentation + Validation Surfacing
 Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
-Plans: TBD (next /paul:plan)
+Plans: 224-01 — APPLY complete, awaiting UNIFY. Surfaced Phase 223 Pi-first install/uninstall posture in docs/report surfaces, updated stale validation baselines to Pi 203/203 and cross-harness 119/119, and added one localized validation guardrail per suite with reconciled counts Pi 203→204 and cross-harness 119→120.
 
 ### Phase 225: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 223 complete; Phase 224 Documentation + Validation Surfacing ready to plan.*
+*Last updated: 2026-04-30 — Phase 224 PLAN 224-01 APPLY complete; awaiting UNIFY.*

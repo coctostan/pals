@@ -6,8 +6,8 @@
 |---|---|
 | Milestone | v2.52 Legacy Retention / Install-Surface Cleanup |
 | Baseline phase | 222 — Legacy / Install-Surface Cleanup Contract Baseline |
-| Artifact status | Phase 222 baseline-only contract for later cleanup planning |
-| Implementation status | This contract creates the decision framework only. It does not remove, relocate, archive, source-only convert, or delete any legacy/install surface. Runtime behavior, installers, validation scripts, dependency manifests, CI config, GitHub Flow automation, helper delegation semantics, lifecycle authority, and actual legacy surfaces remain unchanged. |
+| Artifact status | Phase 222 baseline contract plus Phase 223 implementation evidence and Phase 224 documentation/validation surfacing expectations |
+| Implementation status | Phase 223 completed the first approved cleanup: root install/uninstall entry points are Pi-first by default when `~/.pi` exists, while frozen legacy/source-only Claude Code and Agent SDK paths require explicit `PALS_DRIVER` opt-in. Phase 224 may surface that evidence in docs/reports/validation only; it does not authorize additional runtime behavior, installer behavior, dependency, CI, GitHub Flow, helper delegation, lifecycle-authority, or cleanup changes. |
 | Current validation baseline | Pi validation 203/203 and cross-harness validation 119/119 from fresh command output after v2.51 closure. |
 
 ## Purpose and non-authority boundary
@@ -15,6 +15,8 @@
 v2.52 may clean frozen legacy and install surfaces only where validation classification proves cleanup is safe. Phase 222 is baseline-only: it defines source inputs, cleanup target inventory, retention/removal rules, preservation boundaries, verification requirements, failure conditions, and the Phase 223 handoff before any cleanup implementation begins.
 
 Command-output truth remains authoritative. This contract, reports, widgets, summaries, helper reports, Pi surfaces, and historical validation reports may explain cleanup posture, but they do not prove pass/fail status and they do not authorize cleanup by themselves. Fresh focused marker checks, `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` remain the current validation truth for APPLY/UNIFY.
+
+Phase 223 implementation evidence: no-`PALS_DRIVER` root install/uninstall flows now prefer the supported Pi surface when `~/.pi` exists; `PALS_DRIVER=claude-code`, `PALS_DRIVER=agent-sdk`, and `PALS_DRIVER=all` are explicit frozen legacy/source-only or all-driver maintenance opt-ins. Validation stayed stable at Pi 203/203 and cross-harness 119/119. Phase 224 surfacing may document and command-check this posture, but it creates no new cleanup authorization.
 
 ## Source inputs
 
@@ -25,6 +27,7 @@ Command-output truth remains authoritative. This contract, reports, widgets, sum
 | `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` | Suite inventory markers, one localized guardrail per suite, Pi 201/201, cross-harness 117/117, and no validation cleanup. | Cleanup must not weaken the command-checked classification inventory. |
 | `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` | Non-authoritative docs/report surfacing, Pi 202/202, cross-harness 118/118, and report freshness boundaries. | Cleanup must keep docs/reports subordinate to command output and must not rely on stale report status. |
 | `.paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md` | v2.51 closure evidence, Pi 203/203, cross-harness 119/119, PR #136 evidence, and explicit cleanup deferral. | This is the current command-output baseline and the handoff into v2.52 cleanup. |
+| `.paul/phases/223-safe-cleanup-implementation/223-01-SUMMARY.md` | Phase 223 implementation evidence: Pi-first root install/uninstall defaults, explicit frozen legacy/source-only `PALS_DRIVER` opt-ins, stable Pi 203/203 and cross-harness 119/119 validation, and PR #138 evidence. | Phase 224 may surface the completed posture in docs/reports/validation while preserving command-output truth and not authorizing additional cleanup. |
 | `docs/PI-NATIVE-IMPLEMENTATION-WORKSTREAMS.md` | Workstream inventory that marks Legacy Retention and Install-Surface Cleanup as last/deferred and dependent on validation classification. | Cleanup remains a separate product/support-surface decision, not an early context-efficiency shortcut. |
 | `docs/PI-NATIVE-SEQUENCING-DEPENDENCY-PLAN.md` | Recommended order and risk gates requiring validation classification before legacy cleanup. | Phase 223 must preserve shared-invariant coverage and explicit product/support-surface authorization before cleanup. |
 | `docs/PI-NATIVE-SUPPORT-INVENTORY.md` | Pi active support tier, Claude Code and Agent SDK frozen legacy posture, portability docs as historical reference, and active Pi install surfaces. | Candidate surfaces must be separated by support role: active Pi, frozen legacy, historical reference, validation-redesign, or future-decision. |
