@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-04-30 after v2.52 milestone creation)
 ## Current Position
 
 Milestone: v2.52 Legacy Retention / Install-Surface Cleanup
-Phase: 223 of 225 (Safe Cleanup Implementation) — APPLY complete
-Plan: 223-01 applied; awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-04-30T02:47:00Z — Applied .paul/phases/223-safe-cleanup-implementation/223-01-PLAN.md; validation passed Pi 203/203 and cross-harness 119/119
+Phase: 223 of 225 (Safe Cleanup Implementation) — UNIFY complete
+Plan: 223-01 complete
+Status: Loop complete; transition to Phase 224 pending
+Last activity: 2026-04-30T02:55:00Z — Unified Phase 223 Plan 223-01; SUMMARY created with Pi 203/203 and cross-harness 119/119 evidence
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -24,9 +24,9 @@ Progress:
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.52 Legacy Retention / Install-Surface Cleanup: [██░░░░░░░░] 25% (1 of 4 phases complete)
+- v2.52 Legacy Retention / Install-Surface Cleanup: [█████░░░░░] 50% (2 of 4 phases complete after Phase 223 transition)
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
-- Phase 223 Safe Cleanup Implementation: [████████░░] 80% APPLY complete — awaiting UNIFY
+- Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
 - Phase 225 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
@@ -51,7 +51,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for transition]
 ```
 
 ## Accumulated Context
@@ -111,6 +111,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 221 UNIFY created `.paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 203/203, cross-harness 119/119, validation count reconciliation (Pi 202→203, cross-harness 118→119), module reports, PR #136 evidence, and v2.51 milestone closure with Legacy Retention / Install-Surface Cleanup deferred.
 - v2.52 Legacy Retention / Install-Surface Cleanup has been created as the next milestone after v2.51: it will clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, and Pi-supported runtime behavior.
 - Phase 222 UNIFY created `.paul/phases/222-legacy-install-surface-cleanup-contract-baseline/222-01-SUMMARY.md`, recording AC results, marker grep evidence, installer verification, Pi 203/203, cross-harness 119/119, unchanged count reconciliation, module reports, PR #137 evidence, and Phase 223 readiness.
+- Phase 223 UNIFY created `.paul/phases/223-safe-cleanup-implementation/223-01-SUMMARY.md`, recording Pi-first root install/uninstall behavior, explicit frozen legacy/source-only opt-ins, README support-posture alignment, stable validation counts (Pi 203/203, cross-harness 119/119), module reports, PR #138 evidence, and Phase 224 readiness.
 
 ### Current Decisions
 
@@ -166,6 +167,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Close v2.51 with evidence reconciliation only and defer Legacy Retention / Install-Surface Cleanup | Phase 221 Plan 221-01 UNIFY | Pi-Native Validation Classification is complete; cleanup remains a separate future milestone/plan that must preserve classified Shared Invariant and Artifact / Process checks. |
 | Create v2.52 Legacy Retention / Install-Surface Cleanup as the next milestone | v2.52 milestone creation | Phase 222 should establish the cleanup contract baseline before any removal, relocation, archive, or install-surface change, preserving classified Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees. |
 | Establish a baseline-only cleanup contract before implementation and treat Frozen Legacy Parity as non-authorizing for deletion unless Shared Invariant evidence is retained or replaced | Phase 222 Plan 222-01 UNIFY | Phase 223 must choose retain/archive/source-only/remove/defer with validation class, shared-invariant risk, evidence, and cleanup authorization. |
+| 2026-04-30: Make root install/uninstall surfaces Pi-first by default with explicit frozen legacy/source-only opt-ins | Phase 223 Plan 223-01 UNIFY | Aligns public install entry points with the Pi-supported runtime posture while preserving legacy source access and command-output validation truth. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -207,6 +209,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 220 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 202/202 and cross-harness 118/118. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 221 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 203/203 and cross-harness 119/119. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 222 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation remained stable at Pi 203/203 and cross-harness 119/119.
+- Skill audit Phase 223 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; validation stayed stable at Pi 203/203 and cross-harness 119/119. No helper delegation was used; parent APPLY owned verification.
 
 ### Deferred Issues
 
@@ -223,22 +226,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: c04fa0ab (PR #137 squash merge)
-PR: https://github.com/coctostan/pals/pull/137 (MERGED)
+Branch: feature/223-safe-cleanup-implementation
+Last commit: ed024d44 (Phase 223 APPLY lifecycle state)
+PR: https://github.com/coctostan/pals/pull/138 (OPEN during UNIFY)
 CI: Socket Security Project Report SUCCESS; Pull Request Alerts SUCCESS
-Working tree: dirty with transition metadata pending commit
+Working tree: dirty with UNIFY metadata pending commit
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T02:47:00Z
-Stopped at: Phase 223 APPLY complete
-Next action: Run /paul:unify .paul/phases/223-safe-cleanup-implementation/223-01-PLAN.md
-Resume file: .paul/phases/223-safe-cleanup-implementation/223-01-PLAN.md
+Last session: 2026-04-30T02:55:00Z
+Stopped at: Phase 223 UNIFY complete; transition pending
+Next action: Complete transition and merge PR #138
+Resume file: .paul/phases/223-safe-cleanup-implementation/223-01-SUMMARY.md
 Resume context:
-- v2.52 Legacy Retention / Install-Surface Cleanup is active.
-- Phase 223 Plan 223-01 has been applied.
-- Source changes committed on `feature/223-safe-cleanup-implementation`: `install.sh`, `uninstall.sh`, `README.md`.
+- Phase 223 Plan 223-01 SUMMARY has been created.
 - Root install/uninstall now default to Pi-first behavior and require explicit frozen legacy/source-only opt-in via `PALS_DRIVER=...`.
-- Validation passed: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (203/203), and `bash tests/cross-harness-validation.sh` (119/119).
+- Validation stayed stable: Pi 203/203 and cross-harness 119/119.
+- PR #138 is open with Socket checks passing; GitHub Flow merge gate remains authoritative.
