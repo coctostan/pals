@@ -49,7 +49,7 @@ Plans: 223-01 — ✅ Complete. Root install/uninstall now use Pi-first default 
 
 ### Phase 224: Documentation + Validation Surfacing
 Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
-Plans: 224-01 — APPLY complete, awaiting UNIFY. Surfaced Phase 223 Pi-first install/uninstall posture in docs/report surfaces, updated stale validation baselines to Pi 203/203 and cross-harness 119/119, and added one localized validation guardrail per suite with reconciled counts Pi 203→204 and cross-harness 119→120.
+Plans: 224-01 — UNIFY complete; merge/transition in progress. Surfaced Phase 223 Pi-first install/uninstall posture in docs/report surfaces, updated stale validation baselines to Pi 203/203 and cross-harness 119/119, added one localized validation guardrail per suite with reconciled counts Pi 203→204 and cross-harness 119→120, and recorded summary evidence in `.paul/phases/224-documentation-validation-surfacing/224-01-SUMMARY.md`.
 
 ### Phase 225: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 224 PLAN 224-01 APPLY complete; awaiting UNIFY.*
+*Last updated: 2026-04-30 — Phase 224 PLAN 224-01 UNIFY complete; merge/transition in progress.*
