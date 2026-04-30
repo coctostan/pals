@@ -11,6 +11,10 @@ Explore scope before locking a plan or milestone.
 - `../workflows/discuss-milestone.md`
 - `../workflows/discuss-phase.md`
 
+## Default output
+- Concise by default: answer first, capture only decision-relevant context, and show one next action.
+- Expand for ambiguity, review decisions, blockers, or user-requested detail.
+
 ## Command-local notes
 - Detect whether the discussion is for milestone creation or the next phase inside an active milestone.
 - Use the shared collaboration model: project default from `planning.default_collaboration`, optional per-run override, and low / medium / high depth.

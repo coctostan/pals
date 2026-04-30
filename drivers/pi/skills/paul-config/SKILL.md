@@ -7,39 +7,18 @@ description: "Manage PALS module configuration and integrations. View, enable, a
 
 Manage PALS module configuration, integrations, and preferences.
 
-## What This Does
+## Canonical command
+- `../commands/paul/config.md`
+- `../modules.yaml`
 
-Reads the project's `pals.json` and the installed module registry to:
-- Show all installed modules with their enable/disable status
-- Toggle modules on/off
-- Manage integrations (SonarQube)
-- Edit preferences (auto_commit, verbose_output)
-- View raw config
+## Default output
+- Concise by default: show the requested config view/change, evidence source, and one next action.
+- Expand for migration, invalid config, write failures, or user-requested detail.
 
-## How to Execute
-
-1. Read the config command definition:
-   - File: `../commands/paul/config.md`
-2. Read the installed module registry (MUST — installed at ../modules.yaml):
-   - File: `../modules.yaml`
-   - This is the source of truth for which modules exist
-3. Follow the config command process:
-   - Locate project pals.json (project root where .paul/ exists)
-   - Read modules from installed modules.yaml (not a hardcoded list)
-   - Display dashboard showing all installed modules with status
-   - Handle user toggle/edit requests
-   - Write updated pals.json
-
-## Key Behavior
-
-- Module list comes from installed modules.yaml, not hardcoded
-- Modules not in project pals.json shown as `[on]*` (default: enabled)
-- Toggling a module not yet in pals.json adds it first, then toggles
-- Module enable/disable is informational until per-project runtime disable is implemented
-- Never modifies modules.yaml — only reads it for the module list
-
-## Output
-
-- pals.json updated with user's changes
-- Dashboard display of current configuration
-- Clear indication of what changed
+## Command-local notes
+- Read project `pals.json` and the installed `../modules.yaml`; the installed registry is the module list source of truth.
+- Update only `pals.json`; never modify `modules.yaml`.
+- Modules missing from `pals.json` display as `[on]*` by default.
+- Toggling a missing module adds it to `pals.json` first, then applies the requested state.
+- Per-project module enable/disable is informational until runtime disable is implemented.
+- Supported surfaces: module toggles, SonarQube integration, preferences, raw config view.
