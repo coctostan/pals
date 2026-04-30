@@ -207,11 +207,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: Phase 219 transition metadata committed on main after PR #134 merge
-PR: https://github.com/coctostan/pals/pull/134 (MERGED)
-CI: Socket Security checks passed on PR #134; local validation passed Pi 201/201 and cross-harness 117/117 during Phase 219 APPLY/UNIFY
-Working tree: clean after Phase 219 transition metadata commit
+Branch: feature/220-documentation-report-surfacing
+Last commit: Phase 220 APPLY committed on feature branch (tasks + lifecycle plan state)
+PR: https://github.com/coctostan/pals/pull/135 (OPEN)
+CI: PR checks pending/not yet reported; local validation passed Pi 202/202 and cross-harness 118/118 during Phase 220 APPLY
+Working tree: dirty only from post-PR STATE.md git-state update; commit during UNIFY before merge gate
 Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
