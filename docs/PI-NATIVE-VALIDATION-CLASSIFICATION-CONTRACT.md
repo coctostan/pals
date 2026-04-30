@@ -7,7 +7,7 @@
 | Milestone | v2.51 Pi-Native Validation Classification |
 | Baseline phase | 218 — Validation Classification Baseline |
 | Artifact status | Final v2.51 closure contract for validation-suite classification, Phase 219 hardening, Phase 220 documentation/report surfacing, and Phase 221 evidence reconciliation |
-| Implementation status | Phase 218 established the baseline contract with Pi 200/200 and cross-harness 116/116 command evidence and PR #133. Phase 219 hardened the validation suites with command-output-backed classification inventories, Pi 201/201 and cross-harness 117/117, and PR #134. Phase 220 surfaced the classification in docs/reports/Pi discovery only as non-authoritative context, with Pi 202/202 and cross-harness 118/118 and PR #135. Phase 221 closes v2.51 by adding one final closure guardrail per suite; expected final counts are Pi 202→203 and cross-harness 118→119. Runtime files, install surfaces, dependency manifests, CI config, GitHub Flow automation, legacy wrappers, cleanup scope, and lifecycle authority semantics remain unchanged. |
+| Implementation status | Phase 218 established the baseline contract with Pi 200/200 and cross-harness 116/116 command evidence and PR #133. Phase 219 hardened the validation suites with command-output-backed classification inventories, Pi 201/201 and cross-harness 117/117, and PR #134. Phase 220 surfaced the classification in docs/reports/Pi discovery only as non-authoritative context, with Pi 202/202 and cross-harness 118/118 and PR #135. Phase 221 closed v2.51 with one final closure guardrail per suite, final Pi 203/203 and cross-harness 119/119 command evidence, and PR #136. v2.52 cleanup must use this completed classify-before-cleanup safety gate; fresh command output remains authoritative. |
 
 ## Purpose and boundary
 
@@ -15,7 +15,7 @@ PALS must classify validation checks by support purpose before any check is weak
 
 Command-output truth remains authoritative: reports, widgets, summaries, helper reports, lenses, and this classification contract may explain validation posture, but they do not mark validation green by themselves. Fresh command output from focused marker checks, `bash tests/pi-end-to-end-validation.sh`, and `bash tests/cross-harness-validation.sh` remains the validation truth for APPLY/UNIFY.
 
-Phase 218 was baseline-only; Phase 219 added explicit classification markers and local guardrails. Phase 220 updated docs/report surfaces so the model is discoverable, but reports, widgets, summaries, helper reports, and Pi surfaces remain non-authoritative. Phase 221 reconciles final v2.51 closure evidence while preserving the rule that fresh command output remains authoritative. Legacy Retention / Install-Surface Cleanup remains deferred until classification closure completes and separate product approval is explicit.
+Phase 218 was baseline-only; Phase 219 added explicit classification markers and local guardrails. Phase 220 updated docs/report surfaces so the model is discoverable, but reports, widgets, summaries, helper reports, and Pi surfaces remain non-authoritative. Phase 221 completed final v2.51 closure evidence while preserving the rule that fresh command output remains authoritative. v2.52 Legacy Retention / Install-Surface Cleanup may proceed only through separately approved plans that preserve Shared Invariant and Artifact / Process evidence.
 
 ## Source inputs
 
@@ -52,7 +52,7 @@ Phase 218 was baseline-only; Phase 219 added explicit classification markers and
 
 The v2.51 evidence chain starts with the Phase 218 baseline, then adds one localized guardrail per suite in each approved hardening/surfacing/closure step:
 
-| Suite | Phase 218 baseline | Phase 219 hardening | Phase 220 surfacing | Phase 221 closure target | Source |
+| Suite | Phase 218 baseline | Phase 219 hardening | Phase 220 surfacing | Phase 221 final closure | Source |
 |---|---:|---:|---:|---:|---|
 | `bash tests/pi-end-to-end-validation.sh` | 200/200 passing | 201/201 passing | 202/202 passing | 203/203 passing | `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md`; `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md`; `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` |
 | `bash tests/cross-harness-validation.sh` | 116/116 passing | 117/117 passing | 118/118 passing | 119/119 passing | `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md`; `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md`; `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` |
@@ -95,7 +95,7 @@ The current suite families below are derived from the visible category sections 
 | Artifact Spec Compliance | Shared Invariant | Artifact / Process | Preserve STATE/PROJECT/ROADMAP structure, artifact-first contract, report freshness, validation evidence, and lifecycle artifact requirements. | Add Artifact / Process labels and keep command-output truth distinct from report text. |
 | Driver Manifest Completeness | Frozen Legacy Parity | Shared Invariant | Treat cross-driver capability parity as frozen legacy evidence unless a check protects a current shared driver contract. | Add labels before weakening driver parity or driver-manifest completeness checks. |
 
-Baseline counts were Pi validation passed 200/200 and cross-harness validation passed 116/116 at Phase 218; current closure-entry counts are Pi 202/202 and cross-harness 118/118 after Phase 220; Phase 221 may add only the approved final closure guardrails and must reconcile Pi 202→203 and cross-harness 118→119.
+Baseline counts were Pi validation passed 200/200 and cross-harness validation passed 116/116 at Phase 218; final v2.51 closure counts are Pi 203/203 and cross-harness 119/119 after Phase 221. v2.52 cleanup starts from that completed baseline and must preserve classify-before-cleanup plus command-output truth.
 
 ## Preservation rules
 
@@ -107,7 +107,7 @@ Future plans must apply these rules before changing validation checks, validatio
 4. Do not let stale validation reports, widgets, summaries, helper reports, or this contract replace command-output truth.
 5. Do not combine broad validation cleanup with unrelated runtime, installer, helper-agent, GitHub Flow, dependency, CI, or lifecycle-authority changes.
 6. Keep validation scripts read-only unless the approved plan explicitly scopes validation-suite classification hardening.
-7. Keep Legacy Retention / Install-Surface Cleanup remains deferred until classification closure completes and separate product approval is explicit.
+7. Keep Legacy Retention / Install-Surface Cleanup gated by completed classification evidence, separate product approval, Shared Invariant preservation, and fresh command-output proof.
 
 ## Count-change reconciliation
 
@@ -152,16 +152,16 @@ Final v2.51 closure evidence requirements:
 | Phase 218 | Validation classification contract baseline created from the Phase 200 taxonomy and v2.50 closure evidence. | Pi 200/200; cross-harness 116/116 | PR #133 | Establishes classify-before-cleanup, command-output truth, no-cleanup preservation rules, and count-change reconciliation requirements. |
 | Phase 219 | Validation-suite inventory markers and one localized classification guardrail per suite. | Pi 201/201; cross-harness 117/117 | PR #134 | Hardens Shared Invariant, Artifact / Process, Helper Delegation, Runtime Lens, and Pi-Supported Runtime markers without changing runtime or cleanup semantics. |
 | Phase 220 | README, Pi docs, skill map, contract, and historical report surfacing with non-authority notices. | Pi 202/202; cross-harness 118/118 | PR #135 | Makes classification discoverable while preserving command-output truth and routing current pass/fail proof to fresh validation commands. |
-| Phase 221 | Final v2.51 closure markers and count reconciliation guardrails. | Pi 202→203; cross-harness 118→119 | Current phase PR | Closes the milestone with final command-output evidence while Legacy Retention / Install-Surface Cleanup remains deferred. |
+| Phase 221 | Final v2.51 closure markers and count reconciliation guardrails. | Pi 203/203; cross-harness 119/119 | PR #136 | Closed the milestone with final command-output evidence; Legacy Retention / Install-Surface Cleanup moved to v2.52 under this classify-before-cleanup gate. |
 
 Count-change reconciliation for Phase 221:
 
 | Suite | Old count | New count | Reason | Validation class affected | Shared-invariant preservation rationale | Command-output evidence |
 |---|---:|---:|---|---|---|---|
-| Pi validation | 202 | 203 | One final v2.51 closure guardrail checks Phase 218/219/220 evidence, PR #133/#134/#135, command-output truth, count-change reconciliation, and cleanup deferral. | Shared Invariant; Artifact / Process; Pi-Supported Runtime; Runtime Lens | PLAN/APPLY/UNIFY, `.paul/*`, module evidence, parent-owned APPLY, explicit approval/checkpoint boundaries, and command-output truth remain protected; runtime, installer, dependency, CI, GitHub Flow, helper delegation, and lifecycle-authority semantics remain unchanged. | `bash tests/pi-end-to-end-validation.sh` must pass 203/203 after APPLY. |
-| Cross-harness validation | 118 | 119 | One final shared closure guardrail checks Phase 218/219/220 evidence, PR #133/#134/#135, Shared Invariant / Artifact / Process markers, command-output truth, count-change reconciliation, and cleanup deferral. | Shared Invariant; Artifact / Process; Frozen Legacy Parity only where existing parity checks remain preserved | Shared lifecycle semantics stay covered across harnesses; frozen legacy parity is classified but not cleaned up; current pass/fail proof remains fresh command output. | `bash tests/cross-harness-validation.sh` must pass 119/119 after APPLY. |
+| Pi validation | 202 | 203 | One final v2.51 closure guardrail checks Phase 218/219/220 evidence, PR #133/#134/#135, command-output truth, count-change reconciliation (202→203), and cleanup deferral. | Shared Invariant; Artifact / Process; Pi-Supported Runtime; Runtime Lens | PLAN/APPLY/UNIFY, `.paul/*`, module evidence, parent-owned APPLY, explicit approval/checkpoint boundaries, and command-output truth remain protected; runtime, installer, dependency, CI, GitHub Flow, helper delegation, and lifecycle-authority semantics remain unchanged. | `bash tests/pi-end-to-end-validation.sh` must pass 203/203 after APPLY. |
+| Cross-harness validation | 118 | 119 | One final shared closure guardrail checks Phase 218/219/220 evidence, PR #133/#134/#135, Shared Invariant / Artifact / Process markers, command-output truth, count-change reconciliation (118→119), and cleanup deferral. | Shared Invariant; Artifact / Process; Frozen Legacy Parity only where existing parity checks remain preserved | Shared lifecycle semantics stay covered across harnesses; frozen legacy parity is classified but not cleaned up; current pass/fail proof remains fresh command output. | `bash tests/cross-harness-validation.sh` must pass 119/119 after APPLY. |
 
-Reports, widgets, summaries, helper reports, Pi surfaces, and this contract do not mark validation green. Fresh command output remains authoritative for final v2.51 closure.
+Reports, widgets, summaries, helper reports, Pi surfaces, and this contract do not mark validation green. Fresh command output remains authoritative for final v2.51 closure and for v2.52 install-surface cleanup surfacing.
 
 ## Readiness checklist
 
@@ -174,4 +174,4 @@ A future validation-changing plan is ready only when all applicable items are tr
 - [ ] Command-output verification commands and expected evidence are listed.
 - [ ] Count-change reconciliation fields are planned before edits begin.
 - [ ] Reports, widgets, summaries, helper reports, and classification contracts are explicitly non-authoritative for pass/fail status.
-- [ ] Legacy Retention / Install-Surface Cleanup remains deferred unless a separate post-classification product approval and milestone explicitly authorize it.
+- [ ] Legacy Retention / Install-Surface Cleanup cites the completed v2.51 baseline, preserves Shared Invariant / Artifact Process evidence, and remains separately approved with fresh command-output proof.

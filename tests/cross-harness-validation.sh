@@ -1208,10 +1208,10 @@ tap_file_contains_all \
   "Artifact Spec Compliance => Shared Invariant / Artifact / Process" \
   "Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant"
 
-# Expected TAP total after v2.51 closure: 1..119
+# Expected TAP total after Phase 224 documentation/install surfacing: 1..120
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
-  && grep -Fq "Pi 201/201" "$REPO_ROOT/README.md" \
-  && grep -Fq "cross-harness 117/117" "$REPO_ROOT/README.md" \
+  && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
+  && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
   && grep -Fq "Historical validation report" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
   && grep -Fq "current pass/fail proof" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
   && grep -Fq "bash tests/pi-end-to-end-validation.sh" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
@@ -1235,10 +1235,23 @@ if grep -Fq "Phase 218" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CON
   && grep -Fq "202→203" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
   && grep -Fq "118→119" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
   && grep -Fq "fresh command output remains authoritative" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
-  && grep -Fq "Legacy Retention / Install-Surface Cleanup remains deferred" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
+  && grep -Fq "Legacy Retention / Install-Surface Cleanup moved to v2.52" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
   tap_ok "Cross-harness validation classification milestone closure evidence is reconciled"
 else
-  tap_not_ok "Cross-harness validation classification milestone closure evidence is reconciled" "Expected shared final v2.51 closure evidence, PR chain, class markers, count reconciliation, command-output truth, and cleanup deferral markers"
+  tap_not_ok "Cross-harness validation classification milestone closure evidence is reconciled" "Expected shared final v2.51 closure evidence, PR chain, class markers, count reconciliation, command-output truth, and cleanup handoff markers"
+fi
+
+if grep -Fq "frozen legacy/source-only" "$REPO_ROOT/README.md" \
+  && grep -Fq "PALS_DRIVER=claude-code" "$REPO_ROOT/README.md" \
+  && grep -Fq "PALS_DRIVER=agent-sdk" "$REPO_ROOT/README.md" \
+  && grep -Fq "PALS_DRIVER=all" "$REPO_ROOT/README.md" \
+  && grep -Fq "cross-harness 119/119" "$REPO_ROOT/docs/VALIDATION-REPORT.md" \
+  && grep -Fq "Shared Invariant" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "Artifact / Process" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "command-output truth" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md"; then
+  tap_ok "Cross-harness docs/report surfaces install cleanup posture non-authoritatively"
+else
+  tap_not_ok "Cross-harness docs/report surfaces install cleanup posture non-authoritatively" "Expected shared docs/report/contract surfaces to cite frozen legacy opt-ins, cross-harness 119/119 baseline, Shared Invariant / Artifact Process boundaries, and command-output truth"
 fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
