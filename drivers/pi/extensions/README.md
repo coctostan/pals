@@ -70,14 +70,16 @@ Implemented slice inventory:
 | Slice | Source authority | Orientation use |
 |-------|------------------|-----------------|
 | `current-lifecycle-state` | `.paul/STATE.md` | Shows current milestone, phase, plan, loop marks, and next action after explicit activation. |
-| `active-roadmap-phase` | `.paul/ROADMAP.md` | Shows current milestone/phase routing without expanding completed-history archives. |
-| `approved-plan-task-packet` | `.paul/phases/**/{plan}-PLAN.md` from `.paul/STATE.md` routing | Shows approved task names, files, verification commands, acceptance criteria, and boundaries for APPLY orientation. |
+| `active-roadmap-phase` | `.paul/ROADMAP.md` | Shows targeted current milestone/phase routing without broad generic keyword matches or completed-history archive expansion. |
+| `approved-plan-task-packet` | `.paul/phases/**/{plan}-PLAN.md` from `.paul/STATE.md` routing | Shows targeted approved task names, files, verification commands, acceptance criteria, boundaries, and artifact-slice handoff markers for APPLY orientation. |
 
-Each emitted slice is activation-gated, source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. The visible schema exposes `Slice:`, `Source:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` markers so the payload is easy to audit without making Pi lifecycle state.
+The runtime now applies artifact-slice targeting and deterministic deduplication across the bounded PALS context payload. Targeting chooses the active lifecycle, active roadmap phase/current milestone, and approved plan task-packet lines; duplicate trimming keeps the first cited occurrence and avoids re-emitting the same lifecycle/roadmap/plan orientation fact in later slices.
+
+Each emitted slice is activation-gated, source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. The visible schema exposes `Slice:`, `Source:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` markers so the payload is easy to audit without making Pi lifecycle state. Duplicate trimming does not remove source citations, freshness markers, fallback markers, or `Derived aid only` authority language.
 
 A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale facts, ambiguous facts, contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. If slice content conflicts with a full read or command output, the full read or command output wins.
 
-This layer introduces no hidden Pi state, telemetry, persistence, cache, report, or Pi-owned lifecycle/module/validation ledger. Shared `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, explicit user replies, GitHub Flow command evidence, and validation command output remain authoritative.
+This layer introduces no hidden Pi state, telemetry, persistence, cache, report, or Pi-owned lifecycle/module/validation ledger. Shared `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, explicit user replies, GitHub Flow command evidence, and validation command output remain authoritative. Artifact-slice targeting/deduplication does not change guided workflow, helper delegation, GitHub Flow routing, install-surface, dependency/CI, or lifecycle-authority behavior.
 
 ## Workflow/Resource Capsule Context Loading
 

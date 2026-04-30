@@ -39,11 +39,13 @@ Artifact-slice loading is produced by the Pi extension after explicit `/paul-*` 
 
 | Slice | Orientation role |
 |-------|------------------|
-| `current-lifecycle-state` | Summarizes current `.paul/STATE.md` lifecycle position and next action. |
-| `active-roadmap-phase` | Summarizes the active `.paul/ROADMAP.md` milestone/phase routing. |
-| `approved-plan-task-packet` | Summarizes approved PLAN task names, files, verification commands, acceptance criteria, and boundaries for APPLY orientation. |
+| `current-lifecycle-state` | Targets current `.paul/STATE.md` lifecycle position and next action. |
+| `active-roadmap-phase` | Targets the active `.paul/ROADMAP.md` milestone/phase routing without broad generic keyword matches or completed-history expansion. |
+| `approved-plan-task-packet` | Targets approved PLAN task names, files, verification commands, acceptance criteria, boundaries, and artifact-slice handoff markers for APPLY orientation. |
 
-These slices remain source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. They do not create hidden Pi state, approvals, lifecycle writes, APPLY/UNIFY completion, GitHub Flow proof, or a Pi-owned module/validation ledger.
+Artifact-slice targeting chooses active lifecycle, active roadmap phase/current milestone, and approved plan task-packet lines. Deterministic deduplication trims duplicate lifecycle/roadmap/plan orientation facts across the bounded PALS context payload while keeping the first cited occurrence.
+
+These slices preserve the visible `Slice:`, `Source:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback:`, and `Authority:` schema. Duplicate trimming does not remove source citations, freshness markers, fallback markers, or `Derived aid only` authority language. The slices remain source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`. They do not create hidden Pi state, approvals, lifecycle writes, APPLY/UNIFY completion, GitHub Flow proof, helper delegation authority, guided-workflow authority, install/dependency/CI behavior, or a Pi-owned module/validation ledger.
 
 A full authoritative read remains required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion. Shared workflows plus `.paul/*` artifacts remain authoritative.
 
