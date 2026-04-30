@@ -259,8 +259,8 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 Branch: feature/228-bounded-pi-integration-spike
 Last recorded lifecycle transition: Phase 228 APPLY complete on feature branch; implementation commits created for Tasks 1-3.
 PR: https://github.com/coctostan/pals/pull/143 (open, mergeable)
-CI: Local validation passed Pi 207/207 and cross-harness 121/121 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh`; GitHub Socket Project Report passed, Socket PR Alerts in progress at APPLY postflight.
-Working tree: `.paul/STATE.md` updated with PR postflight evidence; commit/push before final handoff.
+CI: Local validation passed Pi 207/207 and cross-harness 121/121 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh`; GitHub Socket Project Report is in progress at APPLY postflight.
+Working tree: clean after postflight PR evidence commit/push.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
