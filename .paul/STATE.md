@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-30 after v2.52 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phase 222 baseline cleanup contract is unified and awaiting merge-gate completion before Phase 223 planning.
+**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phase 222 is complete and Phase 223 Safe Cleanup Implementation is ready to plan.
 
 ## Current Position
 
 Milestone: v2.52 Legacy Retention / Install-Surface Cleanup
-Phase: 222 of 225 (Legacy / Install-Surface Cleanup Contract Baseline) — UNIFY complete, merge gate pending
-Plan: 222-01 complete
-Status: UNIFY complete, merge gate pending
-Last activity: 2026-04-30T02:20:00Z — Phase 222 UNIFY created SUMMARY, recorded CODI/WALT evidence, and prepared PR #137 merge gate
+Phase: 223 of 225 (Safe Cleanup Implementation) — ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-30T02:27:00Z — Phase 222 complete, PR #137 merged, transitioned to Phase 223
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -24,9 +24,9 @@ Progress:
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.52 Legacy Retention / Install-Surface Cleanup: [░░░░░░░░░░] 0% (0 of 4 phases complete)
-- Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% UNIFY complete — merge gate pending
-- Phase 223 Safe Cleanup Implementation: [░░░░░░░░░░] 0% not started
+- v2.52 Legacy Retention / Install-Surface Cleanup: [██░░░░░░░░] 25% (1 of 4 phases complete)
+- Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
+- Phase 223 Safe Cleanup Implementation: [░░░░░░░░░░] 0% ready to plan
 - Phase 224 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
 - Phase 225 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
@@ -51,7 +51,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — merge gate pending]
+  ○        ○        ○     [Ready to plan Phase 223]
 ```
 
 ## Accumulated Context
@@ -223,23 +223,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/222-legacy-install-surface-cleanup-contract-baseline
-Last commit: UNIFY metadata pending commit on current branch
-PR: https://github.com/coctostan/pals/pull/137 (OPEN; checks SUCCESS before merge gate)
+Branch: main
+Last commit: c04fa0ab (PR #137 squash merge)
+PR: https://github.com/coctostan/pals/pull/137 (MERGED)
 CI: Socket Security Project Report SUCCESS; Pull Request Alerts SUCCESS
-Working tree: dirty with UNIFY lifecycle artifacts pending commit
+Working tree: dirty with transition metadata pending commit
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T02:20:00Z
-Stopped at: Phase 222 UNIFY complete; merge gate pending
-Next action: Resolve PR #137 merge gate, then transition to Phase 223 planning
-Resume file: .paul/phases/222-legacy-install-surface-cleanup-contract-baseline/222-01-SUMMARY.md
+Last session: 2026-04-30T02:27:00Z
+Stopped at: Phase 222 complete, transitioned to Phase 223
+Next action: Run /paul:plan for Phase 223 Safe Cleanup Implementation
+Resume file: .paul/ROADMAP.md
 Resume context:
 - v2.52 Legacy Retention / Install-Surface Cleanup is active.
-- Phase 222 created and unified `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`.
-- SUMMARY records AC results, unchanged validation count reconciliation (Pi 203/203, cross-harness 119/119), module reports, PR #137 evidence, and Phase 223 readiness.
-- CODI history row: `222-01 | skipped-no-symbols | ... | n`.
-- WALT quality history row: `222-01 | 203 pass + 119 pass | → stable`.
-- PR #137 checks are SUCCESS; merge gate remains to be completed.
+- Phase 222 is complete: `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` and `222-01-SUMMARY.md` are merged via PR #137.
+- PR #137 Socket Security Project Report and Pull Request Alerts passed; squash merge commit is `c04fa0ab`.
+- Phase 223 Safe Cleanup Implementation is ready to plan.
+- Use the Phase 222 contract as the safety gate for retain/archive/source-only/remove/defer decisions.

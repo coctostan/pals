@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.52 Legacy Retention / Install-Surface Cleanup is active; Phase 222 is unified with the cleanup contract baseline complete and PR #137 merge gate pending.
+v2.52 Legacy Retention / Install-Surface Cleanup is active; Phase 222 is complete and Phase 223 Safe Cleanup Implementation is ready to plan.
 
 This milestone will clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, Pi-supported runtime behavior, `.paul/*` authority, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries.
 
@@ -56,7 +56,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
 | v2.52 Legacy Retention / Install-Surface Cleanup | In Progress | Clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, and Pi-supported runtime behavior. |
 
-Current milestone: v2.52 began with Phase 222 Legacy / Install-Surface Cleanup Contract Baseline; Phase 222 created and unified `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` with Pi 203/203 and cross-harness 119/119 validation evidence. Phase 223 can plan safe cleanup implementation after PR #137 merge-gate completion.
+Current milestone: v2.52 began with Phase 222 Legacy / Install-Surface Cleanup Contract Baseline; Phase 222 created and unified `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` with Pi 203/203 and cross-harness 119/119 validation evidence, then merged via PR #137. Phase 223 can now plan safe cleanup implementation from that contract.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints

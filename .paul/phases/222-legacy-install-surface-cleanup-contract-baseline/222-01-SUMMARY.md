@@ -145,7 +145,7 @@ Phase 222 created the v2.52 cleanup contract baseline: a class-aware, command-ou
 | PR | https://github.com/coctostan/pals/pull/137 |
 | APPLY commits | `284e49ed` cleanup contract baseline; `20c74566` apply postflight state; `a3708f08` apply CI state update |
 | PR checks before UNIFY merge gate | Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS |
-| UNIFY merge gate | Pending final merge-gate resolution during transition closeout. |
+| UNIFY merge gate | PR #137 merged; local `main` synced to `c04fa0ab`; feature branch cleaned remotely; reviews skipped by config; Socket Security checks SUCCESS. |
 
 ## Accomplishments
 
@@ -218,7 +218,7 @@ Apply postflight commits: `20c74566`, `a3708f08`.
 - Existing validation-suite large-file debt remains pre-existing/future driver-quality scope.
 
 **Blockers:**
-- None for Phase 223 planning after PR #137 merge-gate completion.
+- None. Phase 223 planning is unblocked after PR #137 merge-gate completion.
 
 ---
 *Phase: 222-legacy-install-surface-cleanup-contract-baseline, Plan: 01*
