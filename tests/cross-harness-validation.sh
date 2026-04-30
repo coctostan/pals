@@ -1208,7 +1208,7 @@ tap_file_contains_all \
   "Artifact Spec Compliance => Shared Invariant / Artifact / Process" \
   "Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant"
 
-# Expected TAP total after Phase 224 documentation/install surfacing: 1..120
+# Expected TAP total after Phase 225 v2.52 closure evidence reconciliation: 1..121
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1252,6 +1252,20 @@ if grep -Fq "frozen legacy/source-only" "$REPO_ROOT/README.md" \
   tap_ok "Cross-harness docs/report surfaces install cleanup posture non-authoritatively"
 else
   tap_not_ok "Cross-harness docs/report surfaces install cleanup posture non-authoritatively" "Expected shared docs/report/contract surfaces to cite frozen legacy opt-ins, cross-harness 119/119 baseline, Shared Invariant / Artifact Process boundaries, and command-output truth"
+fi
+
+if grep -Fq "Phase 225 v2.52 closure evidence" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "PR #137" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "PR #138" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "PR #139" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "Shared Invariant" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "Artifact / Process" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "Frozen Legacy Parity" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "command-output truth remains authoritative" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md" \
+  && grep -Fq "120→121" "$REPO_ROOT/docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md"; then
+  tap_ok "Cross-harness v2.52 closure evidence preserves shared cleanup boundaries"
+else
+  tap_not_ok "Cross-harness v2.52 closure evidence preserves shared cleanup boundaries" "Expected v2.52 closure, PR #137/#138/#139, Shared Invariant / Artifact Process / Frozen Legacy Parity, command-output truth, and cross-harness 120→121 markers"
 fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY

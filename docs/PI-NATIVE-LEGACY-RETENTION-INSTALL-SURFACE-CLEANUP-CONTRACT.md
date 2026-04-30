@@ -6,9 +6,9 @@
 |---|---|
 | Milestone | v2.52 Legacy Retention / Install-Surface Cleanup |
 | Baseline phase | 222 — Legacy / Install-Surface Cleanup Contract Baseline |
-| Artifact status | Phase 222 baseline contract plus Phase 223 implementation evidence and Phase 224 documentation/validation surfacing expectations |
-| Implementation status | Phase 223 completed the first approved cleanup: root install/uninstall entry points are Pi-first by default when `~/.pi` exists, while frozen legacy/source-only Claude Code and Agent SDK paths require explicit `PALS_DRIVER` opt-in. Phase 224 may surface that evidence in docs/reports/validation only; it does not authorize additional runtime behavior, installer behavior, dependency, CI, GitHub Flow, helper delegation, lifecycle-authority, or cleanup changes. |
-| Current validation baseline | Pi validation 203/203 and cross-harness validation 119/119 from fresh command output after v2.51 closure. |
+| Artifact status | Phase 222 baseline contract plus Phase 223 implementation evidence, Phase 224 documentation/validation surfacing evidence, and Phase 225 v2.52 closure evidence |
+| Implementation status | Phase 223 completed the first approved cleanup: root install/uninstall entry points are Pi-first by default when `~/.pi` exists, while frozen legacy/source-only Claude Code and Agent SDK paths require explicit `PALS_DRIVER` opt-in. Phase 224 surfaced that evidence in docs/reports/validation without authorizing additional runtime behavior, installer behavior, dependency, CI, GitHub Flow, helper delegation, lifecycle-authority, or cleanup changes. Phase 225 closes v2.52 by reconciling evidence only. |
+| Current validation baseline | Phase 224 command-output baseline is Pi validation 204/204 and cross-harness validation 120/120; Phase 225 v2.52 closure expects one localized evidence-reconciliation guardrail per suite, moving Pi 204→205 and cross-harness 120→121 after fresh validation output. |
 
 ## Purpose and non-authority boundary
 
@@ -165,6 +165,26 @@ Phase 223 may plan safe cleanup implementation only if it starts from this contr
 - `bash tests/pi-end-to-end-validation.sh` with expected Pi 203/203 unless count changes are explicitly reconciled.
 - `bash tests/cross-harness-validation.sh` with expected cross-harness 119/119 unless count changes are explicitly reconciled.
 - `git diff --name-only` proving changes are limited to approved cleanup surfaces plus normal `.paul/*` lifecycle artifacts.
+
+## Phase 225 v2.52 closure evidence
+
+Phase 225 closes v2.52 by reconciling the complete cleanup evidence chain without approving any additional cleanup. The closure evidence is explanatory and artifact-backed, but command-output truth remains authoritative: fresh focused marker checks, `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh`, `bash tests/cross-harness-validation.sh`, and GitHub Flow PR/CI/merge evidence prove the current state.
+
+| Phase | Evidence reconciled | Validation counts | PR evidence | Closure implication |
+|---|---|---:|---|---|
+| Phase 222 | Baseline-only cleanup contract, class-aware retain/archive/source-only/remove/defer matrix, preservation rules, failure conditions, and Phase 223 handoff. | Pi 203/203; cross-harness 119/119 | PR #137 | Established cleanup authorization rules before implementation and kept runtime, installer, validation, dependency, CI, GitHub Flow, helper delegation, and lifecycle-authority behavior unchanged. |
+| Phase 223 | First safe install-surface cleanup: root install/uninstall defaults are Pi-first when `~/.pi` exists; frozen legacy/source-only Claude Code and Agent SDK actions require explicit `PALS_DRIVER=claude-code`, `PALS_DRIVER=agent-sdk`, or `PALS_DRIVER=all`. | Pi 203/203; cross-harness 119/119 | PR #138 | Completed the approved source-only/install-posture cleanup while preserving Pi-supported runtime behavior and Shared Invariant evidence. |
+| Phase 224 | Documentation, historical report, contract, and validation surfacing for the Phase 223 posture; reports and copied counts remain non-authoritative. | Pi 204/204; cross-harness 120/120 | PR #139 | Added exactly one docs/install-posture guardrail per suite and reconciled Pi 203→204 plus cross-harness 119→120 as surfacing-only evidence. |
+| Phase 225 | Final v2.52 closure evidence, module/GitHub Flow evidence reconciliation, and milestone-closure guardrails. | Expected Pi 204→205; expected cross-harness 120→121 | Phase 225 PR evidence during UNIFY | Adds evidence-reconciliation guardrails only; does not authorize broader legacy removal, validation cleanup, runtime behavior change, installer behavior change, dependency change, CI change, helper-delegation change, GitHub Flow automation change, or lifecycle-authority change. |
+
+Count-change reconciliation for Phase 225:
+
+| Suite | Old count | New count | Reason | Validation class affected | Shared-invariant preservation rationale | Command-output evidence | Cleanup authorization |
+|---|---:|---:|---|---|---|---|---|
+| Pi validation | 204 | 205 | One final v2.52 closure guardrail checks Phase 222/223/224 evidence, PR #137/#138/#139, command-output truth, count-change reconciliation (204→205), and deferred cleanup boundaries. | Pi-Supported Runtime; Shared Invariant; Artifact / Process; GitHub Flow Safety; Helper Delegation | PLAN/APPLY/UNIFY, `.paul/*`, module evidence, parent-owned APPLY, explicit approvals/checkpoints, GitHub Flow safety, active Pi install behavior, and command-output truth remain protected. | `bash tests/pi-end-to-end-validation.sh` must pass 205/205 after APPLY. | Evidence reconciliation only; no additional cleanup authorized. |
+| Cross-harness validation | 120 | 121 | One final v2.52 closure guardrail checks Phase 222/223/224 evidence, PR #137/#138/#139, Shared Invariant / Artifact / Process / Frozen Legacy Parity safety, command-output truth, count-change reconciliation (120→121), and deferred cleanup boundaries. | Shared Invariant; Artifact / Process; Frozen Legacy Parity; GitHub Flow Safety; Helper Delegation | Frozen legacy parity remains source-only/frozen where applicable; shared lifecycle semantics, artifact history, parent-owned APPLY, GitHub Flow evidence, and command-output truth remain protected. | `bash tests/cross-harness-validation.sh` must pass 121/121 after APPLY. | Evidence reconciliation only; no additional cleanup authorized. |
+
+Remaining deferred boundaries after v2.52 closure: no broader legacy removal, no validation-check weakening/deletion, no runtime or installer behavior changes, no dependency or CI changes, no helper-owned lifecycle authority, no GitHub Flow automation changes, and no `.paul/*` archive deletion without a separate approved plan and equivalent provenance.
 
 ## Readiness checklist
 
