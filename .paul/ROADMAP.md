@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.53 Pi Integration Efficiency & Effectiveness Exploration**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete
+Status: ✅ Complete
+Phases: 4 of 4 complete — 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 226 | Pi Integration Efficiency Discovery | 226-01 | ✅ Complete | 2026-04-30 |
 | 227 | Effectiveness Improvement Candidate Design | 227-01 | ✅ Complete | 2026-04-30 |
 | 228 | Bounded Pi Integration Spike | 228-01 | ✅ Complete | 2026-04-30 |
-| 229 | Validation + Evidence Closure | TBD | Not started | - |
+| 229 | Validation + Evidence Closure | 229-01 | ✅ Complete | 2026-04-30 |
 
 ### Phase 226: Pi Integration Efficiency Discovery
 Focus: Identify current context-cost and workflow-friction hotspots in Pi integration, using recent v2.45-v2.52 evidence and current Pi surfaces without authorizing implementation changes.
@@ -53,7 +53,7 @@ Plans: 1/1 complete — Phase 228 implemented bounded artifact-slice targeting/d
 
 ### Phase 229: Validation + Evidence Closure
 Focus: Reconcile evidence, update docs and validation surfaces as needed, record validation count changes, and close the exploration milestone without expanding scope beyond approved Pi integration gains.
-Plans: TBD (defined during /paul:plan)
+Plans: 1/1 complete — Phase 229 closed v2.53 by updating the candidate design artifact with Phase 226/227/228 evidence, PR #141/#142/#143 chain, command-output truth, full authoritative read fallback, and deferred boundaries; added exactly one localized closure guardrail per validation suite; validation passed installer, Pi 208/208, and cross-harness 122/122; PR #144 opened with passing checks.
 
 ### Previous milestone: v2.52 Legacy Retention / Install-Surface Cleanup
 Result: Phases 222-225 complete. v2.52 established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced the posture in docs/reports/validation, reconciled final closure evidence, and closed with Pi 205/205 plus cross-harness 121/121 after PR #140 merged.
@@ -71,9 +71,10 @@ Result: Phases 222-225 complete. v2.52 established safe cleanup boundaries, made
 | v2.50 Delegated APPLY Packet/Report Contract | 2026-04-29 | 214-217 | Formalized parent-owned delegated APPLY task packets and structured helper reports; hardened runtime/helper boundaries; surfaced docs/validation markers; closed with Pi 200/200 and cross-harness 116/116. | active artifacts |
 | v2.51 Pi-Native Validation Classification | 2026-04-30 | 218-221 | Defined validation classification taxonomy, hardened suite inventories, surfaced non-authoritative docs/report evidence, and closed with final evidence reconciliation; validation passes Pi 203/203 and cross-harness 119/119; cleanup remains deferred. | active artifacts |
 | v2.52 Legacy Retention / Install-Surface Cleanup | 2026-04-30 | 222-225 | Established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced posture in docs/reports/validation, and closed with final evidence reconciliation; validation passes Pi 205/205 and cross-harness 121/121. | active artifacts |
+| v2.53 Pi Integration Efficiency & Effectiveness Exploration | 2026-04-30 | 226-229 | Identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; validation passes Pi 208/208 and cross-harness 122/122. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 228 complete; Phase 229 ready to plan.*
+*Last updated: 2026-04-30 — Phase 229 UNIFY complete; v2.53 milestone closed pending merge-gate finalization.*
