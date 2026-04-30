@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-30 after Phase 226 completion and transition to Phase 227)
+See: .paul/PROJECT.md (updated 2026-04-30 after Phase 227 completion and transition to Phase 228)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 227 Plan 227-01 UNIFY reconciliation is complete and merge-gate/transition handling is in progress.
+**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 228 is ready to plan a bounded artifact-slice targeting/deduplication spike.
 
 ## Current Position
 
 Milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
-Phase: 227 of 229 (Effectiveness Improvement Candidate Design) — UNIFY complete
-Plan: 227-01 unified
-Status: UNIFY complete; merge gate and phase transition in progress
-Last activity: 2026-04-30T17:00:46Z — UNIFY created Phase 227 summary and reconciled candidate-design evidence
+Phase: 228 of 229 (Bounded Pi Integration Spike)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-30T17:03:53Z — Phase 227 complete, PR #142 merged, transitioned to Phase 228
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -25,9 +25,9 @@ Progress:
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██░░░░░░░░] 25% (1 of 4 phases complete after Phase 226 transition)
+- v2.53 Pi Integration Efficiency & Effectiveness Exploration: [█████░░░░░] 50% (2 of 4 phases complete: 226 ✓, 227 ✓)
 - Phase 226 Pi Integration Efficiency Discovery: [██████████] 100% complete
-- Phase 227 Effectiveness Improvement Candidate Design: [██████████] 100% complete (UNIFY reconciled; transition pending)
+- Phase 227 Effectiveness Improvement Candidate Design: [██████████] 100% complete
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -54,7 +54,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - merge gate/transition pending]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Accumulated Context
@@ -128,6 +128,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 227 PLAN created `.paul/phases/227-effectiveness-improvement-candidate-design/227-01-PLAN.md`, scoping a docs-only candidate design artifact for artifact-slice targeting and deduplication: `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md`. The plan remains research/design only and does not authorize runtime/source/test/install/dependency/CI/GitHub Flow/helper/lifecycle-authority changes.
 - Phase 227 APPLY created `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md`, selecting artifact-slice targeting/deduplication as the Phase 228 candidate, documenting deferred alternates, defining the bounded Phase 228 spike contract, output bounds, validation classes, marker checks, Workguard scope, and scope-safety proof. Focused marker checks passed, Pi validation stayed 205/205, cross-harness validation stayed 121/121, and changed-file scope remained the approved design artifact plus expected `.paul/*` lifecycle metadata.
 - Phase 227 UNIFY created `.paul/phases/227-effectiveness-improvement-candidate-design/227-01-SUMMARY.md`, recording AC results, candidate design artifact path, focused grep evidence, Pi 205/205, cross-harness 121/121, stable validation counts, module reports, PR #142 evidence, and Phase 228 bounded spike readiness.
+- PR #142 merged Phase 227 by squash to `main` as `85e6e449`; local `main` was synced and Phase 227 transitioned to Phase 228 Bounded Pi Integration Spike.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -188,6 +189,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-30: Create v2.53 Pi Integration Efficiency & Effectiveness Exploration as the next milestone | v2.53 milestone creation | Future work should explore and prototype Pi-native efficiency/effectiveness gains without weakening `.paul/*` artifact authority, command-output truth, lifecycle gates, module evidence, parent-owned APPLY, or GitHub Flow safety. |
 | 2026-04-30: Prioritize artifact-slice targeting and deduplication as the leading v2.53 design candidate | Phase 226 Plan 226-01 UNIFY | Phase 227 should start from the discovery artifact's ranked shortlist and design a bounded improvement without authorizing implementation, runtime/source/test/install/dependency/CI/GitHub Flow/helper/lifecycle-authority changes. |
 | 2026-04-30: Select artifact-slice targeting/deduplication as the bounded Phase 228 spike candidate | Phase 227 Plan 227-01 APPLY | Phase 228 should implement the smallest safe runtime-lens spike for smarter slice selection, duplicate trimming, output bounds, freshness/fallback markers, and validation evidence without pairing guided UI, helper delegation, GitHub Flow, install, dependency, CI, or lifecycle-authority changes. |
+| 2026-04-30: Close Phase 227 and transition to bounded implementation spike | Phase 227 Plan 227-01 UNIFY | Phase 228 should plan implementation from the candidate design artifact, keeping scope limited to artifact-slice targeting/deduplication unless a later approved plan expands it. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -252,21 +254,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/227-effectiveness-improvement-candidate-design
-Last recorded lifecycle transition: 8075bc80; git-state record: 8e93102b; PR #141 squash merge `5e10133d`; latest Phase 227 APPLY commit pushed to `origin/feature/227-effectiveness-improvement-candidate-design`.
-PR: #142 https://github.com/coctostan/pals/pull/142 (open; Phase 227 APPLY branch)
-CI: Local APPLY/UNIFY validation passed Pi 205/205 and cross-harness 121/121; PR #142 Socket checks passed before UNIFY metadata.
-Working tree: UNIFY metadata pending commit/push.
+Branch: main
+Last recorded lifecycle transition: PR #142 squash merge `85e6e449`; Phase 227 complete and transitioned to Phase 228.
+PR: #142 https://github.com/coctostan/pals/pull/142 (MERGED)
+CI: PR #142 Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS. Local validation passed Pi 205/205 and cross-harness 121/121.
+Working tree: Phase 227 transition metadata pending commit on main.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T17:00:46Z
-Stopped at: Phase 227 UNIFY complete; merge gate/transition in progress
-Next action: Complete GitHub Flow merge gate for PR #142, then transition to Phase 228
-Resume file: .paul/phases/227-effectiveness-improvement-candidate-design/227-01-SUMMARY.md
+Last session: 2026-04-30T17:03:53Z
+Stopped at: Phase 227 complete, ready to plan Phase 228
+Next action: /paul:plan for Phase 228
+Resume file: .paul/ROADMAP.md
 Resume context:
-- UNIFY created `.paul/phases/227-effectiveness-improvement-candidate-design/227-01-SUMMARY.md` with AC results, verification evidence, module reports, validation count reconciliation, and Phase 228 readiness.
+- Phase 227 created `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md` and `.paul/phases/227-effectiveness-improvement-candidate-design/227-01-SUMMARY.md`.
+- Phase 227 PR #142 merged to `main` as `85e6e449`; Socket checks passed and local `main` is synced.
 - Phase 228 should plan the bounded artifact-slice targeting/deduplication runtime-lens spike from `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md`.
-- Scope remained docs-only for Phase 227: no runtime/source/test/install/dependency/CI/GitHub Flow/helper/lifecycle-authority changes were made.
-- Required transition path: commit/push UNIFY metadata, merge PR #142, sync `main`, then update lifecycle routing to Phase 228.
+- Scope caution for Phase 228: do not pair guided UI, helper delegation, GitHub Flow, install, dependency, CI, or lifecycle-authority changes unless separately approved.

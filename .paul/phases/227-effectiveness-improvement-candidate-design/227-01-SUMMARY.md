@@ -152,7 +152,7 @@ Fresh command output remains authoritative. The unchanged counts are stability e
 | APPLY commit | `477d4600` before UNIFY metadata |
 | PR | https://github.com/coctostan/pals/pull/142 |
 | PR checks before UNIFY | Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS |
-| Merge gate | Pending final UNIFY metadata commit and merge-gate execution. |
+| Merge gate | PR #142 checks passed (Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS), PR merged by squash to `main` as `85e6e449`, local `main` synced, and remote feature branch deleted. |
 
 ## Accomplishments
 
