@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Next milestone decision pending | `.paul/ROADMAP.md` completed v2.53 phases 226-229 |
+| Current milestone | v2.54 Contextual Verbosity Paring in progress | `.paul/ROADMAP.md` phases 230-233; Phase 230 complete; Phase 231 ready to plan |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -75,12 +75,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.53 Pi Integration Efficiency & Effectiveness Exploration is complete. Next milestone decision is pending; known deferred scope includes future driver-quality work for large validation scripts, guided UI/helper/GitHub Flow automation improvements, install-surface changes, dependency/CI changes, and lifecycle-authority changes only if separately planned.
-
+v2.54 Contextual Verbosity Paring is in progress. It should reduce wasteful PALS agent verbosity and make all skills minimally verbose while preserving required lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow safety, parent-owned APPLY, and evidence closure. Phase 230 Baseline Verbosity Audit is complete; Phase 231 Process / Workflow Verbosity Paring is ready to plan.
 ## Archive
 
 - Detailed history and Key Decisions: [.paul/archive/milestones/MILESTONES-v0-v2.42.md](archive/milestones/MILESTONES-v0-v2.42.md)
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.53 completion: 2026-04-30.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 230 UNIFY: 2026-04-30.*

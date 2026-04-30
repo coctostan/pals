@@ -28,36 +28,35 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.53 Pi Integration Efficiency & Effectiveness Exploration**
-Status: ✅ Complete
-Phases: 4 of 4 complete — 2026-04-30
+**v2.54 Contextual Verbosity Paring**
+Status: 🚧 In Progress
+Phases: 1 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 226 | Pi Integration Efficiency Discovery | 226-01 | ✅ Complete | 2026-04-30 |
-| 227 | Effectiveness Improvement Candidate Design | 227-01 | ✅ Complete | 2026-04-30 |
-| 228 | Bounded Pi Integration Spike | 228-01 | ✅ Complete | 2026-04-30 |
-| 229 | Validation + Evidence Closure | 229-01 | ✅ Complete | 2026-04-30 |
+| 230 | Baseline Verbosity Audit | 230-01 | Complete | 2026-04-30 |
+| 231 | Process / Workflow Verbosity Paring | TBD | Ready to plan | - |
+| 232 | Skill Verbosity Pass | TBD | Not started | - |
+| 233 | Validation + Evidence Closure | TBD | Not started | - |
 
-### Phase 226: Pi Integration Efficiency Discovery
-Focus: Identify current context-cost and workflow-friction hotspots in Pi integration, using recent v2.45-v2.52 evidence and current Pi surfaces without authorizing implementation changes.
-Plans: 1/1 complete — Phase 226 created `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md` with current Pi integration surface inventory, ranked efficiency/effectiveness hotspots, authority boundaries, and Phase 227 handoff; validation passed installer, Pi 205/205, and cross-harness 121/121.
+### Phase 230: Baseline Verbosity Audit
+Focus: Identify where PALS workflows, prompts, skills, module surfaces, and lifecycle artifacts create wasteful agent verbosity, distinguishing necessary evidence from redundant prose.
+Plans: 230-01 — complete; created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` baseline audit artifact and Phase 231/232 inputs
 
-### Phase 227: Effectiveness Improvement Candidate Design
-Focus: Select and design the highest-value Pi-native improvements with explicit boundaries, evidence needs, fallback rules, and preservation of `.paul/*` artifact authority.
-Plans: 1/1 complete — Phase 227 created `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md`, selecting artifact-slice targeting/deduplication as the Phase 228 candidate and defining expected future repo surfaces, output bounds, validation classes, marker checks, command-output verification requirements, Workguard scope, and stop/defer conditions. Validation stayed stable at Pi 205/205 and cross-harness 121/121; PR #142 merged.
+### Phase 231: Process / Workflow Verbosity Paring
+Focus: Update PALS process and workflow guidance to prefer concise, context-sensitive agent output while preserving lifecycle authority, approval gates, module evidence, validation truth, and GitHub Flow safety.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 228: Bounded Pi Integration Spike
-Focus: Prototype the selected improvement or improvements in bounded scope while preserving lifecycle gates, command-output truth, parent-owned APPLY, module evidence, and GitHub Flow safety.
-Plans: 1/1 complete — Phase 228 implemented bounded artifact-slice targeting/deduplication in the Pi extension, surfaced the behavior in Pi docs/skill-map, added localized runtime/docs validation guardrails, and reconciled validation at Pi 207/207 with cross-harness 121/121; PR #143 merged.
+### Phase 232: Skill Verbosity Pass
+Focus: Review and update PALS skills so default replies are minimally verbose unless the task, evidence, or user request requires more detail.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 229: Validation + Evidence Closure
-Focus: Reconcile evidence, update docs and validation surfaces as needed, record validation count changes, and close the exploration milestone without expanding scope beyond approved Pi integration gains.
-Plans: 1/1 complete — Phase 229 closed v2.53 by updating the candidate design artifact with Phase 226/227/228 evidence, PR #141/#142/#143 chain, command-output truth, full authoritative read fallback, and deferred boundaries; added exactly one localized closure guardrail per validation suite; validation passed installer, Pi 208/208, and cross-harness 122/122; PR #144 opened with passing checks.
+### Phase 233: Validation + Evidence Closure
+Focus: Reconcile evidence, update validation or documentation surfaces as needed, and close the milestone without expanding beyond approved verbosity-paring scope.
+Plans: TBD (defined during /paul:plan)
 
-### Previous milestone: v2.52 Legacy Retention / Install-Surface Cleanup
-Result: Phases 222-225 complete. v2.52 established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced the posture in docs/reports/validation, reconciled final closure evidence, and closed with Pi 205/205 plus cross-harness 121/121 after PR #140 merged.
-
+### Previous milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
+Result: Phases 226-229 complete. v2.53 identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped a bounded runtime/docs/test spike, and closed with Pi 208/208 plus cross-harness 122/122 after PR #144 merged.
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -77,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 229 UNIFY complete; v2.53 milestone closed and PR #144 merged.*
+*Last updated: 2026-04-30 — Phase 230 complete; Phase 231 ready to plan.*
