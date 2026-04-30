@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.54 Contextual Verbosity Paring is in progress. Phase 230 created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md`; Phase 231 implemented shared contextual verbosity and compact dispatch guidance across kernel workflows/references; Phase 232 completed the skill wrapper paring slice by adding concise-by-default output guidance across 13 Pi PALS skill wrappers and reducing verbose config/help/review wrappers while preserving lifecycle/evidence gates and validation-protected markers.
+v2.54 Contextual Verbosity Paring is complete. Phase 230 created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md`; Phase 231 implemented shared contextual verbosity and compact dispatch guidance across kernel workflows/references; Phase 232 completed the skill wrapper paring slice across 13 Pi PALS wrappers; Phase 233 reconciled closure evidence and added localized validation guardrails, with final validation passing Pi 209/209 and cross-harness 123/123.
 
-Phase 233 should close v2.54 with validation/evidence closure and any user-facing docs/readme surfacing needed after Phase 231/232 paring. Preserve lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, and `.paul/*` artifact truth. Deferred/non-goals unless separately planned include weakening lifecycle authority, hiding required evidence, removing module-dispatch proof, changing validation command truth, changing GitHub Flow gates, changing helper-delegation authority, or broad unrelated process refactors.
+Next milestone is not yet selected. Preserve lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Deferred/non-goals unless separately planned include weakening lifecycle authority, hiding required evidence, removing module-dispatch proof, changing validation command truth, changing GitHub Flow gates, changing helper-delegation authority, broad validation refactors, CODI manifest compaction, and deep init/map-codebase compaction.
 
 ## Hot-path reading model
 
@@ -56,9 +56,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
 | v2.52 Legacy Retention / Install-Surface Cleanup | Complete | Cleaned frozen legacy/installation surfaces only where validation classification proved it safe; root install/uninstall are Pi-first by default, frozen legacy/source-only paths require explicit opt-in, and final validation passed Pi 205/205 plus cross-harness 121/121. |
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | Complete | Found context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; final validation passed Pi 208/208 and cross-harness 122/122. |
-| v2.54 Contextual Verbosity Paring | In progress | Reduce wasteful PALS agent verbosity and make all skills minimally verbose without weakening required lifecycle/evidence gates. |
+| v2.54 Contextual Verbosity Paring | Complete | Reduced wasteful PALS agent verbosity and made skills minimally verbose without weakening required lifecycle/evidence gates; final validation passed Pi 209/209 and cross-harness 123/123. |
 
-Current milestone pointer: v2.54 Contextual Verbosity Paring is in progress. Phase 230 Baseline Verbosity Audit and Phase 231 Process / Workflow Verbosity Paring are complete; Phase 232 Skill Verbosity Pass is ready to plan; v2.53 is complete and archived in the milestone index/roadmap history.
+Current milestone pointer: v2.54 Contextual Verbosity Paring is complete. Phase 230 Baseline Verbosity Audit, Phase 231 Process / Workflow Verbosity Paring, Phase 232 Skill Verbosity Pass, and Phase 233 Validation + Evidence Closure are complete; next milestone is not yet selected.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -160,4 +160,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-30 after Phase 231 transition.*
+*Last updated: 2026-04-30 after Phase 233 / v2.54 closure.*
