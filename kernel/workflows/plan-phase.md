@@ -27,6 +27,7 @@ modules.yaml (installed module registry — MUST read; drives pre-plan and post-
 references/plan-format.md
 references/checkpoints.md (if plan will have checkpoints)
 references/module-dispatch.md
+references/context-management.md
 templates/PLAN.md
 <!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
@@ -249,23 +250,24 @@ Call-site contract:
 </step>
 
 <step name="review_plan">
-Offer progressive disclosure before APPLY routing:
+Apply contextual verbosity: default to a quick recap unless the user asks for detail, but keep the review choices explicit.
 
 ```
+Plan created: [plan-path]
+Goal: [one-line goal]
+Tasks: [N] ([short task names])
+Constraints: [major constraints]
+
 Would you like to see the plan?
-
-[1] Quick recap
-[2] Detailed recap
-[3] Full plan
-[4] No review needed
+[1] Quick recap | [2] Detailed recap | [3] Full plan | [4] No review needed
 ```
 
-- **Quick recap:** show the goal, main tasks, major constraints, and open questions/assumptions
-- **Detailed recap:** show the acceptance criteria, task structure, files, constraints, deferred items, and open questions
-- **Full plan:** show the full PLAN.md artifact
-- **No review needed:** continue immediately
+- **Quick recap:** goal, main tasks, major constraints, and open questions/assumptions.
+- **Detailed recap:** acceptance criteria, task structure, files, constraints, deferred items, and open questions.
+- **Full plan:** full PLAN.md artifact.
+- **No review needed:** continue immediately.
 
-If the user requests changes after a review, refine the plan before proceeding to APPLY routing.
+If the user requests changes after review, refine the plan before APPLY routing.
 Store the selected path as `review_preference`.
 </step>
 
@@ -308,6 +310,7 @@ Store the selected path as `review_preference`.
    - Update phase status: "Not started" → "Planning"
 
 3. **Report with quick continuation prompt:**
+   Use contextual verbosity for routine success output: short status, key task summary, preserved review choices, and no repeated background unless requested.
    ```
    ════════════════════════════════════════
    PLAN CREATED

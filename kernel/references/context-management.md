@@ -95,6 +95,30 @@ Live ROADMAP files should keep current routing, active phase detail, near-future
 
 If `ROADMAP.md` already contains long completed history inline, treat that as a repair candidate: move the completed detail to a roadmap archive, replace it with links, and preserve artifact authority through the archive index and return links.
 
+## Contextual Verbosity
+
+### Concise by default
+Routine PAUL replies should be short, action-oriented, and sized to the user's current decision. Prefer a brief status line, the minimum evidence needed to trust the result, and exactly one next action when routing.
+
+### Required evidence
+Never hide or compress away lifecycle proof. Keep visible:
+- PLAN/APPLY/UNIFY state and explicit approval/checkpoint requirements
+- blocking errors, failed or ambiguous verification, and enforcement module findings
+- module dispatch evidence, including at least one visible `[dispatch] ...` line per dispatch attempt
+- GitHub Flow branch/PR/CI/merge-gate state when it changes routing
+- changed-file scope, validation command results, and durable SUMMARY/STATE/ROADMAP writes
+
+### Useful context
+Include concise rationale when it helps the user decide: changed files, task outcomes, blockers, assumptions, and direct links or paths to authoritative artifacts.
+
+### Wasteful / redundant verbosity
+Avoid repeated banners, copied workflow templates, long option explanations, no-scope module tables, and historical background unless the user asks or the evidence changes the decision.
+
+### Expansion triggers
+Expand beyond the concise default only when there is a blocker, failed/ambiguous verification, enforcement warning, checkpoint/review decision, GitHub Flow/CI/merge gate, direct user request, or a material deviation from the approved plan.
+
+### Deferred complexity
+Do not introduce new reusable output patterns, adapter behavior, telemetry, or hidden state just to make replies shorter. If concise output would weaken evidence, keep the evidence and defer the compression.
 ## Plan Sizing for Context
 
 ### Target: ~50% Context Usage Per Plan

@@ -22,6 +22,7 @@ After create-milestone, project is ready for first phase PLAN.
 <references>
 @src/templates/ROADMAP.md (milestone section format)
 @src/templates/milestone-context.md (handoff structure)
+@references/context-management.md
 </references>
 
 <process>
@@ -93,21 +94,17 @@ For each phase, derive:
 </step>
 
 <step name="review_milestone_structure">
-Offer progressive review before writing milestone structure:
+Apply contextual verbosity: default to a compact quick recap, expand only when the user asks or decisions are unresolved.
 
 ```
 Would you like to see the plan before I update ROADMAP.md?
-
-[1] Quick recap
-[2] Detailed recap
-[3] Full plan
-[4] No review needed
+[1] Quick recap | [2] Detailed recap | [3] Full plan | [4] No review needed
 ```
 
-- **Quick recap:** show milestone name, theme, phase count, and top constraints
-- **Detailed recap:** show milestone scope, phase mapping, constraints, and open questions
-- **Full plan:** show the full milestone section, phase table, and roadmap structure about to be written
-- **No review needed:** continue immediately
+- **Quick recap:** milestone name, theme, phase count, and top constraints.
+- **Detailed recap:** scope, phase mapping, constraints, and open questions.
+- **Full plan:** full milestone section, phase table, and roadmap structure about to be written.
+- **No review needed:** continue immediately.
 
 If the user requests adjustments after a review, refine the milestone structure before writing files.
 Store the selected path as `review_preference`.
@@ -205,6 +202,7 @@ Display: "Cleaned up milestone context handoff."
 </step>
 
 <step name="offer_next">
+Use contextual verbosity for routine completion: concise created/updated evidence plus ONE next action; expand only for blockers, malformed context, or user-requested detail.
 Display completion with ONE next action:
 
 ```

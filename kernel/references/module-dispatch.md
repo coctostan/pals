@@ -71,6 +71,15 @@ Do not restate generic registry mechanics in every workflow. Reference this file
 - If a workflow splits a hook into local labels, preserve that exact label in evidence, e.g. `[dispatch] post-apply advisory: ...`, `[dispatch] post-apply enforcement: ...`, or `[dispatch] post-unify: ...`.
 - Mandatory STOP/DO NOT SKIP workflow semantics stay inline at the call site; this reference owns shared mechanics, not lifecycle authority.
 
+### Compact dispatch output
+
+Use contextual verbosity from `references/context-management.md`: dispatch output should be compact by default while preserving required evidence.
+
+- Routine skip/no-scope cases should be one compact skip line, e.g. `[dispatch] pre-plan advisory: ARIA skipped — no UI files in scope`.
+- A compact skip is enough only when there are no warnings, blockers, failures, or durable artifacts to preserve.
+- Expand dispatch output for blocking findings, enforcement warnings, failed or ambiguous verification, changed baselines, user-facing decisions, or content that must be copied into PLAN/SUMMARY/STATE.
+- Do not replace the mandatory `[dispatch] ...` preservation line with prose summaries; the evidence line remains lifecycle proof.
+
 ## Dispatch Procedure
 
 For hook `{hook_name}`:
