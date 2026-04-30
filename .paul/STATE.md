@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-30 after v2.54 milestone creation)
+See: .paul/PROJECT.md (updated 2026-04-30 after Phase 231 transition)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.54 Contextual Verbosity Paring is in progress. Phase 231 Plan 231-01 is created to pare process/workflow verbosity while preserving lifecycle/evidence gates.
+**Current focus:** v2.54 Contextual Verbosity Paring is in progress. Phase 231 is complete; Phase 232 Skill Verbosity Pass is ready to plan from the Phase 230 audit and Phase 231 contextual verbosity guidance.
 
 ## Current Position
 
 Milestone: v2.54 Contextual Verbosity Paring
-Phase: 231 of 233 (Process / Workflow Verbosity Paring) — Complete
-Plan: 231-01 complete
-Status: Loop complete; merge gate and phase transition in progress
-Last activity: 2026-04-30T19:55:00Z — Created Phase 231 Plan 231-01 SUMMARY and post-unify records
+Phase: 232 of 233 (Skill Verbosity Pass) — Planning
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-30T20:02:00Z — Phase 231 complete; transitioned to Phase 232
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -26,10 +26,10 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-- v2.54 Contextual Verbosity Paring: [███░░░░░░░] 33% (Phase 231 loop complete; transition to Phase 232 in progress)
+- v2.54 Contextual Verbosity Paring: [█████░░░░░] 50% (2 of 4 phases complete; Phase 232 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
-- Phase 232 Skill Verbosity Pass: [░░░░░░░░░░] 0% not started
+- Phase 232 Skill Verbosity Pass: [░░░░░░░░░░] 0% ready to plan
 - Phase 233 Validation + Evidence Closure: [░░░░░░░░░░] 0% not started
 - Phase 226 Pi Integration Efficiency Discovery: [██████████] 100% complete
 - Phase 227 Effectiveness Improvement Candidate Design: [██████████] 100% complete
@@ -61,7 +61,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for phase transition]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Accumulated Context
@@ -143,6 +143,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 228 transitioned complete after PR #143 merge. The shipped spike narrowed existing artifact-slice selection and added deterministic duplicate trimming while preserving source/freshness/fallback/authority markers and full authoritative read requirements. Phase 229 should close v2.53 validation/evidence using Pi 207/207, cross-harness 121/121, Workguard scope, PR #143, and module-history evidence.
 - Phase 229 UNIFY created `.paul/phases/229-validation-evidence-closure/229-01-SUMMARY.md`, recording AC results, closure marker evidence, installer verification, Pi 208/208, cross-harness 122/122, validation count reconciliation (Pi 207→208, cross-harness 121→122), module reports, Workguard scope evidence, PR #144 evidence, and v2.53 milestone closure.
 - v2.54 has been created as the next milestone: Contextual Verbosity Paring will reduce wasteful PALS agent verbosity and make skills minimally verbose while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow safety, parent-owned APPLY, and necessary evidence closure.
+- Phase 231 completed the first v2.54 process/workflow paring slice: `kernel/references/context-management.md` now defines contextual verbosity, `kernel/references/module-dispatch.md` defines compact dispatch skip/no-scope evidence, and PLAN/milestone/resume/pause workflows now prefer concise routine output while preserving explicit approvals, module evidence, validation truth, GitHub Flow state, parent-owned APPLY, and `.paul/*` lifecycle truth. PR #146 merged after Pi 208/208 and cross-harness 122/122 validation.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -207,6 +208,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-30: Close v2.53 with evidence reconciliation only and treat validation count increases as localized closure guardrails | Phase 229 Plan 229-01 UNIFY | Artifact-slice targeting/deduplication exploration is complete; future Pi efficiency/effectiveness work should be separately planned and preserve command-output truth, full authoritative read fallback, parent-owned APPLY, module evidence, and GitHub Flow safety. |
 | 2026-04-30: Establish baseline audit before paring verbosity | Phase 230 | Phase 231/232 should use `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` and reduce waste without weakening approval gates, module dispatch evidence, validation truth, GitHub Flow safety, parent APPLY authority, or `.paul/*` lifecycle truth. |
 | 2026-04-30: Create v2.54 Contextual Verbosity Paring as the next milestone | v2.54 milestone creation | Phase 230 should audit wasteful verbosity first, then later phases may pare process/workflow guidance and skills without weakening required evidence, lifecycle gates, module dispatch, validation truth, GitHub Flow safety, or parent-owned APPLY. |
+| 2026-04-30: Preserve evidence while making workflow replies concise by default | Phase 231 Plan 231-01 UNIFY | Phase 232 skill wrapper paring should use contextual verbosity expansion triggers and compact dispatch guidance without hiding approval, checkpoint, module, validation, GitHub Flow, parent APPLY, or `.paul/*` evidence. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -257,6 +259,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 227 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation stayed stable at Pi 205/205 and cross-harness 121/121. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 228 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 207/207 and cross-harness 121/121. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 229 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/quality-history.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing validation-script size debt remains pre-existing/future driver-quality scope.
+- Skill audit Phase 231 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing hot workflow size debt remains below critical threshold and protected by anti-regrowth validation.
 
 ### Deferred Issues
 
@@ -273,21 +276,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/231-process-workflow-verbosity-paring
-Last recorded lifecycle transition: Phase 231 loop complete; PR #146 merge gate/phase transition in progress.
-PR: https://github.com/coctostan/pals/pull/146 (OPEN; created during APPLY)
-CI: PR #146 Socket Security checks passing.
-Working tree: Source changes committed as d7ac0f93 and pushed; UNIFY lifecycle artifacts local pending merge-gate commit.
+Branch: main
+Last recorded lifecycle transition: Phase 231 complete; transitioned to Phase 232.
+PR: https://github.com/coctostan/pals/pull/146 (MERGED)
+CI: PR #146 Socket Security checks passed before merge.
+Working tree: Transition metadata pending final transition commit on main.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T19:55:00Z
-Stopped at: Phase 231 Plan 231-01 UNIFY in progress; summary created
-Next action: Complete merge gate and transition Phase 231 to Phase 232
-Resume file: .paul/phases/231-process-workflow-verbosity-paring/231-01-SUMMARY.md
+Last session: 2026-04-30T20:02:00Z
+Stopped at: Phase 231 complete; transitioned to Phase 232
+Next action: Run /paul:plan for Phase 232 Skill Verbosity Pass
+Resume file: .paul/ROADMAP.md
 Resume context:
-- SUMMARY created at `.paul/phases/231-process-workflow-verbosity-paring/231-01-SUMMARY.md` with AC results, verification evidence, module reports, deviations, and Phase 232/233 handoff.
-- Post-unify side effects appended `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md` rows for 231-01.
-- Verification passed: focused marker checks, `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi validation 208/208, cross-harness validation 122/122, Workguard scope outside_allowed=0.
-- PR #146 is open with Socket Security checks passing; merge gate and mandatory phase transition are next.
+- Phase 231 Plan 231-01 SUMMARY exists at `.paul/phases/231-process-workflow-verbosity-paring/231-01-SUMMARY.md`.
+- PR #146 merged, local `main` synced, and Phase 231 is marked complete in ROADMAP/PROJECT/STATE.
+- Phase 232 should pare skill wrapper/default reply verbosity using Phase 230 audit inputs and Phase 231 contextual verbosity guidance.
+- Preserve lifecycle authority, explicit approvals, module dispatch evidence, validation truth, GitHub Flow gates, parent-owned APPLY, and `.paul/*` artifact truth.
