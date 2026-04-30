@@ -1627,7 +1627,7 @@ tap_file_contains_all \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 
-# Expected TAP total after docs/report surfacing: 1..202
+# Expected TAP total after v2.51 closure: 1..203
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 201/201" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 117/117" "$REPO_ROOT/README.md" \
@@ -1639,6 +1639,23 @@ if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   tap_ok "Pi docs/report surfaces validation classification non-authoritatively"
 else
   tap_not_ok "Pi docs/report surfaces validation classification non-authoritatively" "Expected Pi docs/report surfaces to preserve classification baseline and non-authority markers"
+fi
+
+if grep -Fq "Phase 218" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "Phase 219" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "Phase 220" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "Phase 221" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "v2.51 closure" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "PR #133" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "PR #134" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "PR #135" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "202→203" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "118→119" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "fresh command output remains authoritative" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md" \
+  && grep -Fq "Legacy Retention / Install-Surface Cleanup remains deferred" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
+  tap_ok "Pi validation classification milestone closure evidence is reconciled"
+else
+  tap_not_ok "Pi validation classification milestone closure evidence is reconciled" "Expected final v2.51 closure evidence, PR chain, count reconciliation, command-output truth, and cleanup deferral markers"
 fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
