@@ -28,42 +28,36 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.51 Pi-Native Validation Classification**
-Status: ✅ Complete
-Phases: 4 of 4 complete — 2026-04-29 to 2026-04-30
+**v2.52 Legacy Retention / Install-Surface Cleanup**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete — starts 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
-| 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete | 2026-04-29 |
-| 220 | Documentation + Report Surfacing | 220-01 | ✅ Complete | 2026-04-30 |
-| 221 | Evidence Reconciliation + Milestone Closure | 221-01 | ✅ Complete | 2026-04-30 |
+| 222 | Legacy / Install-Surface Cleanup Contract Baseline | 222-01 | APPLY complete — ready for UNIFY | - |
+| 223 | Safe Cleanup Implementation | TBD | Not started | - |
+| 224 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 225 | Evidence Reconciliation + Milestone Closure | TBD | Not started | - |
 
-### Phase 218: Validation Classification Baseline
-Focus: Define the validation classification inventory and taxonomy for current Pi and cross-harness suites before weakening, relocating, archiving, or deleting any validation check.
-Plans: 218-01 — create the validation classification baseline contract for current Pi/cross-harness suite families, preservation rules, count-change reconciliation, and Phase 219 hardening handoff.
-APPLY result: Created `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` with taxonomy, suite-family inventory, preservation rules, count-change reconciliation, and Phase 219 handoff. Validation passed Pi 200/200 and cross-harness 116/116; validation scripts remained read-only.
-UNIFY result: SUMMARY `.paul/phases/218-validation-classification-baseline/218-01-SUMMARY.md` records AC results, source accounting, unchanged validation counts, module reports, PR #133 evidence, and Phase 219 readiness.
+### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
+Focus: Define exact safe cleanup targets and preservation boundaries using v2.51 validation classification before any frozen legacy or install-surface removal/relocation.
+Plans: 222-01 — create the baseline cleanup contract for frozen legacy/install surfaces, retention/removal decision rules, protected shared invariants, verification requirements, failure conditions, and Phase 223 handoff before any cleanup implementation.
 
-### Phase 219: Runtime/Validation Suite Classification Hardening
-Focus: Apply classification markers and guardrails to validation suites so Pi-Supported Runtime, Shared Invariant, Frozen Legacy Parity, Runtime Lens, Guided UI Safety, Helper Delegation, GitHub Flow Safety, and Artifact / Process checks are distinguishable and command-output-backed.
-Plans: 219-01 — add explicit validation-classification inventory markers and one localized TAP guardrail per validation suite, reconciling expected counts Pi 200→201 and cross-harness 116→117 while deferring cleanup and broad report surfacing.
-APPLY result: Added `VALIDATION CLASSIFICATION INVENTORY` sections to `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh`, with one localized self-checking TAP guardrail per suite. Validation passed Pi 201/201 and cross-harness 117/117; count changes are limited to the new classification guardrails and legacy cleanup/report surfacing remain deferred.
-UNIFY result: SUMMARY `.paul/phases/219-runtime-validation-suite-classification-hardening/219-01-SUMMARY.md` records AC results, focused marker evidence, Pi 201/201, cross-harness 117/117, validation count reconciliation, module reports, PR #134 evidence, and Phase 220 readiness.
+### Phase 223: Safe Cleanup Implementation
+Focus: Apply bounded legacy retention and install-surface cleanup only where the baseline proves Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees remain protected.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 220: Documentation + Report Surfacing
-Focus: Surface the classification model in docs and any explicitly scoped report artifacts without making stale reports replace current command-output truth.
-Plans: 220-01 — surface the validation-classification model in README, Pi docs, the classification contract, and historical validation reports, then add one localized docs/report surfacing guardrail per validation suite with expected counts Pi 201→202 and cross-harness 117→118 while preserving command-output truth.
-UNIFY result: SUMMARY `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md` records docs/report surfacing evidence, historical report non-authority notices, Pi 202/202, cross-harness 118/118, count reconciliation (Pi 201→202, cross-harness 117→118), module reports, and merged PR #135.
+### Phase 224: Documentation + Validation Surfacing
+Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 221: Evidence Reconciliation + Milestone Closure
-Focus: Reconcile classification evidence, validation count changes, module/GitHub Flow evidence, lifecycle metadata, and handoff boundaries before any Legacy Retention / Install-Surface Cleanup milestone begins.
-Plans: 221-01 — reconcile final v2.51 evidence in the classification contract, add one localized closure guardrail per validation suite with expected counts Pi 202→203 and cross-harness 118→119, record milestone closure evidence, and keep Legacy Retention / Install-Surface Cleanup deferred to a separate future milestone/plan.
-APPLY result: Updated `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` with the final v2.51 evidence chain, PR #133/#134/#135 references, Phase 221 closure targets, and count reconciliation. Added one localized closure guardrail to each validation suite; validation passed Pi 203/203 and cross-harness 119/119 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed. Legacy Retention / Install-Surface Cleanup remains deferred.
-UNIFY result: SUMMARY `.paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md` records AC results, focused closure marker evidence, installer verification, Pi 203/203, cross-harness 119/119, count reconciliation, module reports, PR #136 evidence, and v2.51 milestone closure. Legacy Retention / Install-Surface Cleanup remains deferred to a separate future milestone/plan.
+### Phase 225: Evidence Reconciliation + Milestone Closure
+Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
+Plans: TBD (defined during /paul:plan)
 
-### Previous milestone: v2.50 Delegated APPLY Packet/Report Contract
-Result: Phases 214-217 complete. Phase 217 reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 200/200 and cross-harness 116/116; PR #132 merged. v2.50 hands off to Pi-Native Validation Classification.
+### Previous milestone: v2.51 Pi-Native Validation Classification
+Result: Phases 218-221 complete. Phase 221 reconciled v2.51 evidence, final classification markers, validation counts, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 203/203 and cross-harness 119/119; PR #136 merged. v2.51 hands off to Legacy Retention / Install-Surface Cleanup.
+
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -81,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — v2.51 complete after Phase 221 UNIFY.*
+*Last updated: 2026-04-30 — Phase 222 APPLY created the cleanup contract baseline and is ready for UNIFY.*

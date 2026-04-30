@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-29 after v2.51 milestone creation)
+See: .paul/PROJECT.md (updated 2026-04-30 after v2.52 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.51 Pi-Native Validation Classification is complete; next milestone decision is pending, with Legacy Retention / Install-Surface Cleanup still requiring a separate approved milestone/plan.
+**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is ready for Phase 222 planning; cleanup must preserve classified Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees.
 
 ## Current Position
 
-Milestone: v2.51 Pi-Native Validation Classification
-Phase: 221 of 221 (Evidence Reconciliation + Milestone Closure) — Complete
-Plan: 221-01 complete
-Status: v2.51 milestone complete; ready for next milestone decision
-Last activity: 2026-04-30T01:42:00Z — UNIFY created .paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md and closed v2.51 validation classification with Pi 203/203 and cross-harness 119/119 evidence
+Milestone: v2.52 Legacy Retention / Install-Surface Cleanup
+Phase: 222 of 225 (Legacy / Install-Surface Cleanup Contract Baseline) — APPLY complete, ready for UNIFY
+Plan: 222-01 APPLY complete
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-30T02:12:00Z — Phase 222 APPLY created docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md and validation passed
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -24,6 +24,11 @@ Progress:
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
+- v2.52 Legacy Retention / Install-Surface Cleanup: [░░░░░░░░░░] 0% (0 of 4 phases complete)
+- Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [░░░░░░░░░░] 0% APPLY complete — ready for UNIFY
+- Phase 223 Safe Cleanup Implementation: [░░░░░░░░░░] 0% not started
+- Phase 224 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
+- Phase 225 Evidence Reconciliation + Milestone Closure: [░░░░░░░░░░] 0% not started
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -46,7 +51,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - v2.51 milestone closed]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -104,6 +109,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 220 UNIFY created `.paul/phases/220-documentation-report-surfacing/220-01-SUMMARY.md`, recording docs/report surfacing evidence, historical report non-authority notices, Pi 202/202, cross-harness 118/118, count reconciliation (Pi 201→202, cross-harness 117→118), module reports, and PR #135 evidence.
 - Phase 220 transition merged PR #135, synced `main`, confirmed Socket Security checks passed, and routed v2.51 to Phase 221 Evidence Reconciliation + Milestone Closure.
 - Phase 221 UNIFY created `.paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 203/203, cross-harness 119/119, validation count reconciliation (Pi 202→203, cross-harness 118→119), module reports, PR #136 evidence, and v2.51 milestone closure with Legacy Retention / Install-Surface Cleanup deferred.
+- v2.52 Legacy Retention / Install-Surface Cleanup has been created as the next milestone after v2.51: it will clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, and Pi-supported runtime behavior.
 
 ### Current Decisions
 
@@ -157,6 +163,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Close Phase 218 validation classification baseline before validation-suite hardening | Phase 218 Plan 218-01 UNIFY | Future Phase 219 work should use `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` as the baseline for script markers and must preserve command-output truth, count-change reconciliation, and deferred legacy cleanup. |
 
 | Close v2.51 with evidence reconciliation only and defer Legacy Retention / Install-Surface Cleanup | Phase 221 Plan 221-01 UNIFY | Pi-Native Validation Classification is complete; cleanup remains a separate future milestone/plan that must preserve classified Shared Invariant and Artifact / Process checks. |
+| Create v2.52 Legacy Retention / Install-Surface Cleanup as the next milestone | v2.52 milestone creation | Phase 222 should establish the cleanup contract baseline before any removal, relocation, archive, or install-surface change, preserving classified Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -213,22 +220,24 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: b3b75dbb (PR #136 merged)
-PR: https://github.com/coctostan/pals/pull/136 (MERGED)
-CI: Socket Security project report SUCCESS after merge
-Working tree: clean; main synced and pushed
-Prior PRs: #131 merged (Phase 216 documentation + validation surfacing); #130 merged (Phase 215 runtime delegation packet/report hardening); #129 merged (Phase 214 delegated APPLY packet/report contract baseline); #128 merged (Phase 213 evidence reconciliation + milestone closure); #127 merged (Phase 212 documentation + validation surfacing); #126 merged (Phase 211 runtime capsule loading hardening); #125 merged (Phase 210 workflow/resource capsule contract baseline); #124 merged (Phase 209 evidence reconciliation + milestone closure); earlier PR history archived in STATE history.
+Branch: feature/222-legacy-install-surface-cleanup-contract-baseline
+Last commit: APPLY commit on current branch (`docs(222-01): create cleanup contract baseline`)
+PR: pending APPLY postflight
+CI: pending APPLY postflight
+Working tree: clean after APPLY commit; PR pending postflight
+Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T01:42:00Z
-Stopped at: v2.51 milestone closed and PR #136 merged
-Next action: Choose the next milestone
-Resume file: .paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md
+Last session: 2026-04-30T02:12:00Z
+Stopped at: Phase 222 APPLY complete; ready for UNIFY
+Next action: Run /paul:unify .paul/phases/222-legacy-install-surface-cleanup-contract-baseline/222-01-PLAN.md
+Resume file: .paul/phases/222-legacy-install-surface-cleanup-contract-baseline/222-01-PLAN.md
 Resume context:
-- UNIFY created `221-01-SUMMARY.md` with AC results, validation evidence, count reconciliation, module reports, and GitHub Flow evidence.
-- Final validation passed Pi 203/203 and cross-harness 119/119; installer verification passed.
-- v2.51 Pi-Native Validation Classification is complete after Phase 221.
-- Legacy Retention / Install-Surface Cleanup remains deferred until a separate approved milestone/plan.
-- GitHub Flow merge gate completed: PR #136 merged, local `main` synced, feature branch cleaned, and Socket Security project report succeeded.
+- v2.52 Legacy Retention / Install-Surface Cleanup is active.
+- Phase 222 APPLY created `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`.
+- Focused marker grep passed for Phase 222, baseline-only, Frozen Legacy Parity, Shared Invariant, Pi-Supported Runtime, retain/archive/source-only/remove/defer, command-output truth, and Phase 223 handoff.
+- `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed.
+- `bash tests/pi-end-to-end-validation.sh` passed 203/203.
+- `bash tests/cross-harness-validation.sh` passed 119/119.
+- Active handoff archived to `.paul/handoffs/archive/HANDOFF-2026-04-30-phase-222-plan-awaiting-approval.md`.
