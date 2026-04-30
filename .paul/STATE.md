@@ -235,10 +235,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 1118e3dd (Phase 224 documentation validation surfacing squash merge from PR #139)
+Last commit: 0fc4ae75 (Record Phase 224 transition git state) pushed to origin/main
 PR: https://github.com/coctostan/pals/pull/139 (MERGED)
 CI: passing for PR #139 before merge; local validation passed Pi 204/204 and cross-harness 120/120
-Working tree: dirty from Phase 224 transition metadata until committed
+Working tree: clean after Phase 224 transition bookkeeping
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
