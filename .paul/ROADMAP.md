@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.51 Pi-Native Validation Classification**
-Status: 🚧 In progress
-Phases: 3 of 4 complete — started 2026-04-29; Phase 221 ready to plan
+Status: ✅ Complete
+Phases: 4 of 4 complete — 2026-04-29 to 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 218 | Validation Classification Baseline | 218-01 | ✅ Complete | 2026-04-29 |
 | 219 | Runtime/Validation Suite Classification Hardening | 219-01 | ✅ Complete | 2026-04-29 |
 | 220 | Documentation + Report Surfacing | 220-01 | ✅ Complete | 2026-04-30 |
-| 221 | Evidence Reconciliation + Milestone Closure | TBD | Ready to plan | — |
+| 221 | Evidence Reconciliation + Milestone Closure | 221-01 | ✅ Complete | 2026-04-30 |
 
 ### Phase 218: Validation Classification Baseline
 Focus: Define the validation classification inventory and taxonomy for current Pi and cross-harness suites before weakening, relocating, archiving, or deleting any validation check.
@@ -58,7 +58,9 @@ UNIFY result: SUMMARY `.paul/phases/220-documentation-report-surfacing/220-01-SU
 
 ### Phase 221: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile classification evidence, validation count changes, module/GitHub Flow evidence, lifecycle metadata, and handoff boundaries before any Legacy Retention / Install-Surface Cleanup milestone begins.
-Plans: next `/paul:plan` should define the final v2.51 evidence reconciliation and milestone closure plan.
+Plans: 221-01 — reconcile final v2.51 evidence in the classification contract, add one localized closure guardrail per validation suite with expected counts Pi 202→203 and cross-harness 118→119, record milestone closure evidence, and keep Legacy Retention / Install-Surface Cleanup deferred to a separate future milestone/plan.
+APPLY result: Updated `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` with the final v2.51 evidence chain, PR #133/#134/#135 references, Phase 221 closure targets, and count reconciliation. Added one localized closure guardrail to each validation suite; validation passed Pi 203/203 and cross-harness 119/119 after `PALS_ROOT="$PWD" bash drivers/pi/install.sh` passed. Legacy Retention / Install-Surface Cleanup remains deferred.
+UNIFY result: SUMMARY `.paul/phases/221-evidence-reconciliation-milestone-closure/221-01-SUMMARY.md` records AC results, focused closure marker evidence, installer verification, Pi 203/203, cross-harness 119/119, count reconciliation, module reports, PR #136 evidence, and v2.51 milestone closure. Legacy Retention / Install-Surface Cleanup remains deferred to a separate future milestone/plan.
 
 ### Previous milestone: v2.50 Delegated APPLY Packet/Report Contract
 Result: Phases 214-217 complete. Phase 217 reconciled Phase 214/215 baseline evidence, Phase 216 docs/validation surfacing evidence, final Helper Delegation and Shared Invariant validation markers, command-output proof, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 200/200 and cross-harness 116/116; PR #132 merged. v2.50 hands off to Pi-Native Validation Classification.
@@ -73,9 +75,10 @@ Result: Phases 214-217 complete. Phase 217 reconciled Phase 214/215 baseline evi
 | v2.48 Guided Workflow Evidence Hardening | 2026-04-28 | 206-209 | Proved guided workflow evidence across contract baseline, runtime canonical replies, docs/settings validation surfacing, and final evidence reconciliation while preserving explicit user intent and command-output truth. | active artifacts |
 | v2.49 Workflow/Resource Capsule Contract | 2026-04-28 | 210-213 | Defined and hardened source-cited, bounded, derived-only workflow/resource capsules; surfaced docs/validation evidence; closed with Pi 197/197 and cross-harness 112/112. | active artifacts |
 | v2.50 Delegated APPLY Packet/Report Contract | 2026-04-29 | 214-217 | Formalized parent-owned delegated APPLY task packets and structured helper reports; hardened runtime/helper boundaries; surfaced docs/validation markers; closed with Pi 200/200 and cross-harness 116/116. | active artifacts |
+| v2.51 Pi-Native Validation Classification | 2026-04-30 | 218-221 | Defined validation classification taxonomy, hardened suite inventories, surfaced non-authoritative docs/report evidence, and closed with final evidence reconciliation; validation passes Pi 203/203 and cross-harness 119/119; cleanup remains deferred. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 220 complete and merged; Phase 221 ready to plan.*
+*Last updated: 2026-04-30 — v2.51 complete after Phase 221 UNIFY.*
