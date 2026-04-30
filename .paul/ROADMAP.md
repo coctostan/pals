@@ -35,7 +35,7 @@ Phases: 1 of 4 complete — starts 2026-04-30
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
-| 223 | Safe Cleanup Implementation | TBD | Ready to plan | - |
+| 223 | Safe Cleanup Implementation | 223-01 | APPLY complete | - |
 | 224 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 225 | Evidence Reconciliation + Milestone Closure | TBD | Not started | - |
 
@@ -45,7 +45,7 @@ Plans: 222-01 — ✅ Complete. Created the baseline cleanup contract for frozen
 
 ### Phase 223: Safe Cleanup Implementation
 Focus: Apply bounded legacy retention and install-surface cleanup only where the baseline proves Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees remain protected.
-Plans: TBD (ready for /paul:plan)
+Plans: 223-01 — APPLY complete. Root install/uninstall now use Pi-first default behavior with explicit frozen legacy/source-only opt-in, and README support-posture guidance is aligned; awaiting UNIFY reconciliation.
 
 ### Phase 224: Documentation + Validation Surfacing
 Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 222 complete and PR #137 merged; Phase 223 is ready to plan.*
+*Last updated: 2026-04-30 — Phase 223 Plan 223-01 applied; awaiting UNIFY.*
