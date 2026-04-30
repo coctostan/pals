@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.52 Legacy Retention / Install-Surface Cleanup is active; Phases 222 and 223 are complete, and Phase 224 Documentation + Validation Surfacing is ready to plan.
+v2.52 Legacy Retention / Install-Surface Cleanup is active; Phases 222, 223, and 224 are complete, and Phase 225 Evidence Reconciliation + Milestone Closure is ready to plan.
 
 This milestone will clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, Pi-supported runtime behavior, `.paul/*` authority, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries.
 
@@ -56,7 +56,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
 | v2.52 Legacy Retention / Install-Surface Cleanup | In Progress | Clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, and Pi-supported runtime behavior. |
 
-Current milestone: v2.52 began with Phase 222 Legacy / Install-Surface Cleanup Contract Baseline; Phase 222 created and unified `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` with Pi 203/203 and cross-harness 119/119 validation evidence, then merged via PR #137. Phase 223 completed the first safe install-surface cleanup: root install/uninstall now default to Pi-first behavior, frozen legacy/source-only driver actions require explicit `PALS_DRIVER=...` opt-in, README support posture is aligned, validation stayed stable at Pi 203/203 and cross-harness 119/119, and PR #138 merged. Phase 224 can now plan documentation and validation surfacing for this cleanup.
+Current milestone: v2.52 began with Phase 222 Legacy / Install-Surface Cleanup Contract Baseline; Phase 222 created and unified `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` with Pi 203/203 and cross-harness 119/119 validation evidence, then merged via PR #137. Phase 223 completed the first safe install-surface cleanup: root install/uninstall now default to Pi-first behavior, frozen legacy/source-only driver actions require explicit `PALS_DRIVER=...` opt-in, README support posture is aligned, validation stayed stable at Pi 203/203 and cross-harness 119/119, and PR #138 merged. Phase 224 surfaced that posture in docs/reports/contracts and validation guardrails, reconciled Pi 203→204 and cross-harness 119→120 as documentation/install-posture checks only, preserved command-output truth, and merged PR #139. Phase 225 can now reconcile evidence and close v2.52.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -119,6 +119,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | Surface delegated APPLY as parent-owned Helper Delegation, not an independent lifecycle authority. | Phase 216 Plan 216-01 | Future docs, helper-agent wording, and validation should preserve parent-owned packets, structured reports as review input, parent-run official verification, changed-file diff review, and no helper-owned `.paul/*` lifecycle writes. |
 | Close v2.51 with evidence reconciliation only. | Phase 221 Plan 221-01 | Validation Classification is complete with Pi 203/203 and cross-harness 119/119; Legacy Retention / Install-Surface Cleanup remains deferred to a separately approved future milestone/plan. |
 | Root install/uninstall surfaces should be Pi-first by default, with frozen legacy/source-only drivers requiring explicit `PALS_DRIVER=...` opt-in. | Phase 223 Plan 223-01 | Aligns public install entry points with supported Pi runtime posture while preserving legacy source/reference access and command-output validation truth. |
+| Surface completed install-posture cleanup through docs/reports/validation without changing runtime behavior. | Phase 224 Plan 224-01 | Makes Pi-first defaults and explicit frozen legacy/source-only opt-ins discoverable while preserving command-output truth and reconciling validation counts as docs/install-posture guardrails only. |
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 
 ## Success Criteria
@@ -150,4 +151,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-04-30 after Phase 223 / v2.52 Safe Cleanup Implementation completion.*
+*Last updated: 2026-04-30 after Phase 224 / v2.52 Documentation + Validation Surfacing completion.*

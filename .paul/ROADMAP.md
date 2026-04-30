@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.52 Legacy Retention / Install-Surface Cleanup**
 Status: 🚧 In Progress
-Phases: 2 of 4 complete — starts 2026-04-30
+Phases: 3 of 4 complete — starts 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
 | 223 | Safe Cleanup Implementation | 1/1 | ✅ Complete | 2026-04-30 |
-| 224 | Documentation + Validation Surfacing | 1/TBD | Planning | - |
-| 225 | Evidence Reconciliation + Milestone Closure | TBD | Not started | - |
+| 224 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-30 |
+| 225 | Evidence Reconciliation + Milestone Closure | TBD | 🔵 Ready to plan | - |
 
 ### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
 Focus: Define exact safe cleanup targets and preservation boundaries using v2.51 validation classification before any frozen legacy or install-surface removal/relocation.
@@ -49,11 +49,11 @@ Plans: 223-01 — ✅ Complete. Root install/uninstall now use Pi-first default 
 
 ### Phase 224: Documentation + Validation Surfacing
 Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
-Plans: 224-01 — UNIFY complete; merge/transition in progress. Surfaced Phase 223 Pi-first install/uninstall posture in docs/report surfaces, updated stale validation baselines to Pi 203/203 and cross-harness 119/119, added one localized validation guardrail per suite with reconciled counts Pi 203→204 and cross-harness 119→120, and recorded summary evidence in `.paul/phases/224-documentation-validation-surfacing/224-01-SUMMARY.md`.
+Plans: 224-01 — ✅ Complete. Surfaced Phase 223 Pi-first install/uninstall posture in docs/report surfaces, updated stale validation baselines to Pi 203/203 and cross-harness 119/119, added one localized validation guardrail per suite with reconciled counts Pi 203→204 and cross-harness 119→120, recorded summary evidence, and merged PR #139.
 
 ### Phase 225: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next action: /paul:plan)
 
 ### Previous milestone: v2.51 Pi-Native Validation Classification
 Result: Phases 218-221 complete. Phase 221 reconciled v2.51 evidence, final classification markers, validation counts, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 203/203 and cross-harness 119/119; PR #136 merged. v2.51 hands off to Legacy Retention / Install-Surface Cleanup.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 224 PLAN 224-01 UNIFY complete; merge/transition in progress.*
+*Last updated: 2026-04-30 — Phase 224 complete; Phase 225 ready to plan.*
