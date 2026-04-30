@@ -212,3 +212,22 @@ This artifact preserves these boundaries:
 - no `.paul/*` authority change.
 
 The only approved non-lifecycle output for Phase 227 is `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md`. Future implementation requires a new approved Phase 228 plan.
+
+## Phase 229 / v2.53 Closure Evidence
+
+Phase 229 records final v2.53 closure evidence for the Pi Integration Efficiency & Effectiveness Exploration milestone. This section is append-only closure evidence; it does not rewrite the historical Phase 227 design or Phase 228 spike contract.
+
+| Phase | Evidence | Validation posture |
+|---|---|---|
+| Phase 226 — Pi Integration Efficiency Discovery | `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md`, `.paul/phases/226-pi-integration-efficiency-discovery/226-01-SUMMARY.md`, and PR #141 recorded the discovery inventory, ranked hotspot shortlist, and selection pressure toward artifact-slice targeting/deduplication. | Fresh APPLY evidence at closure-entry recorded Pi validation 205/205 and cross-harness validation 121/121. |
+| Phase 227 — Effectiveness Improvement Candidate Design | This candidate design artifact, `.paul/phases/227-effectiveness-improvement-candidate-design/227-01-SUMMARY.md`, and PR #142 selected artifact-slice targeting/deduplication as the bounded Phase 228 candidate while preserving stop/defer conditions. | Fresh APPLY evidence stayed stable at Pi validation 205/205 and cross-harness validation 121/121. |
+| Phase 228 — Bounded Pi Integration Spike | `.paul/phases/228-bounded-pi-integration-spike/228-01-SUMMARY.md` and PR #143 recorded the implemented artifact-slice targeting/deduplication runtime/docs/test spike, deterministic duplicate trimming, bounded output, source/freshness/fallback markers, and preserved `Derived aid only` authority text. | Fresh APPLY evidence recorded Pi validation 207/207 and cross-harness validation 121/121 after two localized Pi runtime-lens guardrails. |
+| Phase 229 — Validation + Evidence Closure | This closure section and localized validation-suite guardrails reconcile the final evidence chain for v2.53 closure. | Expected closure-only count reconciliation is Pi validation 207→208 and cross-harness validation 121→122. |
+
+Closure keeps command-output truth authoritative: copied counts, docs, reports, summaries, and marker tables explain the milestone posture but do not prove current pass/fail status. Fresh focused marker checks, `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh`, `bash tests/cross-harness-validation.sh`, Workguard scope evidence, and GitHub Flow evidence remain the proof path.
+
+The v2.53 outcome preserves full authoritative read fallback for edits, approved PLAN execution, lifecycle writes, GitHub Flow decisions, validation pass/fail, module completion, APPLY completion, and UNIFY completion. Artifact slices remain source-cited, freshness-marked, bounded, read-only, disposable, and labeled `Derived aid only`; they do not create hidden Pi state, telemetry, cache, or a Pi-owned lifecycle/module/validation ledger.
+
+Shared closure invariants remain unchanged: .paul/* authority, PLAN/APPLY/UNIFY authority, module evidence, GitHub Flow safety, parent-owned APPLY, explicit approval/checkpoint boundaries, command-output truth, and full authoritative read fallback all stay authoritative outside the Pi runtime lens.
+
+Deferred scope remains deferred after closure: no guided UI change, no helper delegation change, no GitHub Flow automation change, no install-surface change, no dependency/CI change, no lifecycle-authority change, and no validation-script size-debt refactor are part of Phase 229.
