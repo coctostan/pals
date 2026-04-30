@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-30 after v2.52 completion)
+See: .paul/PROJECT.md (updated 2026-04-30 after v2.53 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is complete; next milestone decision is pending.
+**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 226 Plan 226-01 APPLY is complete and awaiting UNIFY.
 
 ## Current Position
 
-Milestone: v2.52 Legacy Retention / Install-Surface Cleanup — Complete
-Phase: 225 of 225 (Evidence Reconciliation + Milestone Closure) — Complete
-Plan: 225-01 complete
-Status: Milestone complete, next milestone decision pending
-Last activity: 2026-04-30T14:20:04Z — Completed v2.52 after PR #140 merge and main sync
+Milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
+Phase: 226 of 229 (Pi Integration Efficiency Discovery) — APPLY complete
+Plan: 226-01 applied, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-04-30T15:54:56Z — Applied .paul/phases/226-pi-integration-efficiency-discovery/226-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -25,6 +25,8 @@ Progress:
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
+- v2.53 Pi Integration Efficiency & Effectiveness Exploration: [░░░░░░░░░░] 0% (0 of 4 phases complete)
+- Phase 226 Pi Integration Efficiency Discovery: [██████░░░░] 60% (APPLY complete; awaiting UNIFY)
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -51,7 +53,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - milestone complete]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -119,6 +121,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 224 transition merged PR #139, synced `main`, confirmed Socket Security checks passed, and routed v2.52 to Phase 225 Evidence Reconciliation + Milestone Closure.
 
 - Phase 225 UNIFY created `.paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 205/205, cross-harness 121/121, validation count reconciliation (Pi 204→205, cross-harness 120→121), module reports, and PR #140 merge-gate evidence; PR #140 merged and v2.52 closed.
+- v2.53 has been created as an exploratory Pi integration efficiency/effectiveness milestone: Phases 226-229 will discover context-cost and workflow-friction hotspots, design candidate improvements, run a bounded Pi integration spike, and reconcile validation/evidence closure while preserving `.paul/*` authority, command-output truth, lifecycle gates, module evidence, parent-owned APPLY, and GitHub Flow safety.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -176,6 +179,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-30: Make root install/uninstall surfaces Pi-first by default with explicit frozen legacy/source-only opt-ins | Phase 223 Plan 223-01 UNIFY | Aligns public install entry points with the Pi-supported runtime posture while preserving legacy source access and command-output validation truth. |
 | 2026-04-30: Surface Phase 223 install posture through docs/reports/validation without making copied baselines authoritative | Phase 224 Plan 224-01 UNIFY | Preserves command-output truth while making Pi-first defaults, explicit frozen legacy/source-only opt-ins, Pi 203→204, and cross-harness 119→120 discoverable for Phase 225 closure. |
 | 2026-04-30: Close v2.52 with evidence reconciliation only and treat validation count increases as localized closure guardrails | Phase 225 Plan 225-01 UNIFY | Final cleanup closure preserves command-output truth and deferred boundaries while reconciling Pi 204→205 and cross-harness 120→121 as one closure guardrail per suite. |
+| 2026-04-30: Create v2.53 Pi Integration Efficiency & Effectiveness Exploration as the next milestone | v2.53 milestone creation | Future work should explore and prototype Pi-native efficiency/effectiveness gains without weakening `.paul/*` artifact authority, command-output truth, lifecycle gates, module evidence, parent-owned APPLY, or GitHub Flow safety. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -237,22 +241,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: `635884b2` PR #140 squash merge before transition metadata commit
-PR: https://github.com/coctostan/pals/pull/140 (MERGED)
-CI: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; APPLY validation passed installer, Pi 205/205, cross-harness 121/121
-Working tree: dirty from final v2.52 transition metadata pending commit
+Branch: feature/226-pi-integration-efficiency-discovery
+Last commit: Phase 226 APPLY docs discovery + lifecycle metadata commit on `feature/226-pi-integration-efficiency-discovery`
+PR: https://github.com/coctostan/pals/pull/141 (OPEN)
+CI: PR checks pending/not yet reported at APPLY postflight; APPLY validation passed installer, Pi 205/205, cross-harness 121/121
+Working tree: clean after APPLY commit and PR creation
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T14:20:04Z
-Stopped at: v2.52 milestone complete after PR #140 merge and main sync
-Next action: Decide next milestone scope with /paul:milestone or pause here
-Resume file: .paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md
+Last session: 2026-04-30T15:54:56Z
+Stopped at: Phase 226 Plan 226-01 APPLY complete; ready for UNIFY
+Next action: /paul:unify .paul/phases/226-pi-integration-efficiency-discovery/226-01-PLAN.md
+Resume file: .paul/phases/226-pi-integration-efficiency-discovery/226-01-PLAN.md
 Resume context:
-- Phase 225 UNIFY summary records all AC results, validation count reconciliation, module evidence, and PR #140 merge-gate evidence.
-- Validation passed: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi 205/205, cross-harness 121/121.
-- Expected validation count changes were realized: Pi 204→205 and cross-harness 120→121 for closure guardrails only.
-- PR #140 merged, local `main` synced, and v2.52 is complete.
-- Next work should start with a new milestone decision; existing validation-script size debt remains future driver-quality scope.
+- APPLY created `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md` as the source-cited discovery artifact.
+- Task verification passed for current Pi integration surfaces, ranked hotspots, Phase 227 handoff, authority boundaries, and docs-only scope.
+- Full verification passed after APPLY: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (205/205), and `bash tests/cross-harness-validation.sh` (121/121).
+- Continue to UNIFY to reconcile AC results, module evidence, validation output, changed-file scope, and Phase 227 handoff.

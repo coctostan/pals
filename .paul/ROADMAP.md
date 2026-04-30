@@ -28,35 +28,35 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.52 Legacy Retention / Install-Surface Cleanup**
-Status: ✅ Complete
-Phases: 4 of 4 complete — completed 2026-04-30
+**v2.53 Pi Integration Efficiency & Effectiveness Exploration**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
-| 223 | Safe Cleanup Implementation | 1/1 | ✅ Complete | 2026-04-30 |
-| 224 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-30 |
-| 225 | Evidence Reconciliation + Milestone Closure | 1/1 | ✅ Complete | 2026-04-30 |
+| 226 | Pi Integration Efficiency Discovery | 226-01 | APPLY complete | - |
+| 227 | Effectiveness Improvement Candidate Design | TBD | Not started | - |
+| 228 | Bounded Pi Integration Spike | TBD | Not started | - |
+| 229 | Validation + Evidence Closure | TBD | Not started | - |
 
-### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
-Focus: Define exact safe cleanup targets and preservation boundaries using v2.51 validation classification before any frozen legacy or install-surface removal/relocation.
-Plans: 222-01 — ✅ Complete. Created the baseline cleanup contract for frozen legacy/install surfaces, retention/removal decision rules, protected shared invariants, verification requirements, failure conditions, and Phase 223 handoff before any cleanup implementation.
+### Phase 226: Pi Integration Efficiency Discovery
+Focus: Identify current context-cost and workflow-friction hotspots in Pi integration, using recent v2.45-v2.52 evidence and current Pi surfaces without authorizing implementation changes.
+Plans: 226-01 — APPLY complete, ready for UNIFY. Created `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md` with current Pi integration surface inventory, ranked efficiency/effectiveness hotspots, authority boundaries, and Phase 227 handoff; validation passed installer, Pi 205/205, and cross-harness 121/121.
 
-### Phase 223: Safe Cleanup Implementation
-Focus: Apply bounded legacy retention and install-surface cleanup only where the baseline proves Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees remain protected.
-Plans: 223-01 — ✅ Complete. Root install/uninstall now use Pi-first default behavior with explicit frozen legacy/source-only opt-in, README support-posture guidance is aligned, validation stayed stable at Pi 203/203 and cross-harness 119/119, and PR #138 merged.
+### Phase 227: Effectiveness Improvement Candidate Design
+Focus: Select and design the highest-value Pi-native improvements with explicit boundaries, evidence needs, fallback rules, and preservation of `.paul/*` artifact authority.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 224: Documentation + Validation Surfacing
-Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
-Plans: 224-01 — ✅ Complete. Surfaced Phase 223 Pi-first install/uninstall posture in docs/report surfaces, updated stale validation baselines to Pi 203/203 and cross-harness 119/119, added one localized validation guardrail per suite with reconciled counts Pi 203→204 and cross-harness 119→120, recorded summary evidence, and merged PR #139.
+### Phase 228: Bounded Pi Integration Spike
+Focus: Prototype the selected improvement or improvements in bounded scope while preserving lifecycle gates, command-output truth, parent-owned APPLY, module evidence, and GitHub Flow safety.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 225: Evidence Reconciliation + Milestone Closure
-Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
-Plans: 225-01 — ✅ Complete. Added final v2.52 closure evidence to the cleanup contract and exactly one localized closure guardrail per validation suite; reconciled counts Pi 204→205 and cross-harness 120→121; validation passed installer, Pi 205/205, and cross-harness 121/121; PR #140 merged and `main` synced. v2.52 is closed.
+### Phase 229: Validation + Evidence Closure
+Focus: Reconcile evidence, update docs and validation surfaces as needed, record validation count changes, and close the exploration milestone without expanding scope beyond approved Pi integration gains.
+Plans: TBD (defined during /paul:plan)
 
-### Previous milestone: v2.51 Pi-Native Validation Classification
-Result: Phases 218-221 complete. Phase 221 reconciled v2.51 evidence, final classification markers, validation counts, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 203/203 and cross-harness 119/119; PR #136 merged. v2.51 hands off to Legacy Retention / Install-Surface Cleanup.
+### Previous milestone: v2.52 Legacy Retention / Install-Surface Cleanup
+Result: Phases 222-225 complete. v2.52 established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced the posture in docs/reports/validation, reconciled final closure evidence, and closed with Pi 205/205 plus cross-harness 121/121 after PR #140 merged.
 
 ## Completed Milestones
 
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — v2.52 completed after Phase 225 and PR #140 merge.*
+*Last updated: 2026-04-30 — Phase 226 Plan 226-01 APPLY complete, ready for UNIFY.*

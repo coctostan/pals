@@ -10,9 +10,9 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.52 Legacy Retention / Install-Surface Cleanup is complete. Phases 222-225 established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced the posture in docs/reports/validation, and closed with final evidence reconciliation at Pi 205/205 and cross-harness 121/121.
+v2.53 Pi Integration Efficiency & Effectiveness Exploration is active. The milestone will explore and prototype Pi-native integration improvements that reduce model context burden and increase workflow reliability without weakening `.paul/*` artifact authority.
 
-The next milestone decision is pending. Future work should preserve shared invariants, command-output truth, Pi-supported runtime behavior, `.paul/*` authority, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries while treating validation-script size debt as separate driver-quality scope.
+Phases 226-229 should proceed from discovery to candidate design, bounded integration spike, and validation/evidence closure while preserving shared invariants, command-output truth, Pi-supported runtime behavior, module evidence, parent-owned APPLY, GitHub Flow safety, and explicit approval/checkpoint boundaries. v2.52 is complete with Pi 205/205 and cross-harness 121/121; validation-script size debt remains separate driver-quality scope unless explicitly selected later.
 
 ## Hot-path reading model
 
@@ -56,7 +56,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.51 Pi-Native Validation Classification | Complete | Classified validation suites and evidence into Pi-supported runtime, shared invariant, frozen legacy parity, runtime lens, guided UI safety, helper delegation, GitHub Flow safety, and artifact/process categories; final validation passed Pi 203/203 and cross-harness 119/119. |
 | v2.52 Legacy Retention / Install-Surface Cleanup | Complete | Cleaned frozen legacy/installation surfaces only where validation classification proved it safe; root install/uninstall are Pi-first by default, frozen legacy/source-only paths require explicit opt-in, and final validation passed Pi 205/205 plus cross-harness 121/121. |
 
-Current milestone: v2.52 completed with Phase 222 creating the cleanup contract baseline and PR #137, Phase 223 implementing Pi-first root install/uninstall defaults with explicit frozen legacy/source-only opt-ins and PR #138, Phase 224 surfacing the posture in docs/reports/validation with Pi 204/204 and cross-harness 120/120 via PR #139, and Phase 225 reconciling final closure evidence with Pi 205/205 and cross-harness 121/121 via PR #140. Command-output truth remains authoritative; no broader legacy cleanup, validation cleanup, runtime behavior change, installer behavior change, dependency/CI change, helper-delegation change, GitHub Flow automation change, or lifecycle-authority change is authorized by the closure.
+Current milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration is active. Phase 226 will discover current context-cost and workflow-friction hotspots in Pi integration, rank candidate efficiency/effectiveness gains, and prepare Phase 227 design inputs without authorizing runtime/source/test/install/dependency/CI/GitHub Flow/helper/lifecycle-authority changes. v2.52 remains complete with Pi 205/205 and cross-harness 121/121; command-output truth remains authoritative.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PI-NATIVE-ARCHITECTURE-PROPOSAL.md` for v2.45 architecture inputs, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
