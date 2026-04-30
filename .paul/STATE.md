@@ -235,7 +235,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 0fc4ae75 (Record Phase 224 transition git state) pushed to origin/main
+Last commit: transition bookkeeping committed and pushed to origin/main after PR #139 merge
 PR: https://github.com/coctostan/pals/pull/139 (MERGED)
 CI: passing for PR #139 before merge; local validation passed Pi 204/204 and cross-harness 120/120
 Working tree: clean after Phase 224 transition bookkeeping
