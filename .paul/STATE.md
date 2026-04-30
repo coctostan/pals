@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-30 after v2.53 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 226 Plan 226-01 UNIFY is complete and PR #141 merge gate / phase transition are next.
+**Current focus:** v2.53 Pi Integration Efficiency & Effectiveness Exploration is active; Phase 226 is complete and Phase 227 Effectiveness Improvement Candidate Design is ready to plan.
 
 ## Current Position
 
 Milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
-Phase: 226 of 229 (Pi Integration Efficiency Discovery) — UNIFY complete
-Plan: 226-01 complete
-Status: UNIFY complete, ready for PR #141 merge gate and Phase 226→227 transition
-Last activity: 2026-04-30T16:17:13Z — Unified .paul/phases/226-pi-integration-efficiency-discovery/226-01-PLAN.md
+Phase: 227 of 229 (Effectiveness Improvement Candidate Design)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-04-30T16:21:00Z — Phase 226 complete, PR #141 merged, transitioned to Phase 227
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,6 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██░░░░░░░░] 25% (1 of 4 phases complete after Phase 226 transition)
 - Phase 226 Pi Integration Efficiency Discovery: [██████████] 100% complete
+- Phase 227 Effectiveness Improvement Candidate Design: [░░░░░░░░░░] 0% (ready to plan)
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -53,7 +54,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for merge gate and phase transition]
+  ○        ○        ○     [Ready for PLAN - Phase 227]
 ```
 
 ## Accumulated Context
@@ -123,6 +124,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 225 UNIFY created `.paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 205/205, cross-harness 121/121, validation count reconciliation (Pi 204→205, cross-harness 120→121), module reports, and PR #140 merge-gate evidence; PR #140 merged and v2.52 closed.
 - v2.53 has been created as an exploratory Pi integration efficiency/effectiveness milestone: Phases 226-229 will discover context-cost and workflow-friction hotspots, design candidate improvements, run a bounded Pi integration spike, and reconcile validation/evidence closure while preserving `.paul/*` authority, command-output truth, lifecycle gates, module evidence, parent-owned APPLY, and GitHub Flow safety.
 - Phase 226 UNIFY created `.paul/phases/226-pi-integration-efficiency-discovery/226-01-SUMMARY.md`, recording AC results, discovery artifact path, focused grep evidence, installer verification, Pi 205/205, cross-harness 121/121, stable validation counts, module reports, and Phase 227 candidate-design handoff. The discovery artifact recommends artifact-slice targeting/deduplication as the leading design candidate unless Phase 227 surfaces stronger guided workflow reliability evidence.
+- PR #141 merged Phase 226 by squash to `main` as `5e10133d`; local `main` was synced and Phase 226 transitioned to Phase 227 Effectiveness Improvement Candidate Design.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -244,21 +246,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/226-pi-integration-efficiency-discovery
-Last commit: Phase 226 UNIFY metadata pending commit on `feature/226-pi-integration-efficiency-discovery`
-PR: https://github.com/coctostan/pals/pull/141 (OPEN)
-CI: APPLY and UNIFY validation passed installer, Pi 205/205, cross-harness 121/121; PR checks to be re-read during merge gate
-Working tree: UNIFY metadata changes pending commit
+Branch: main
+Last commit: PR #141 squash merge `5e10133d`; Phase 226 transition metadata pending commit
+PR: https://github.com/coctostan/pals/pull/141 (MERGED)
+CI: PR #141 checks passed — Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS. Local validation passed installer, Pi 205/205, cross-harness 121/121.
+Working tree: Phase 226 transition metadata pending commit
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T16:17:13Z
-Stopped at: Phase 226 Plan 226-01 UNIFY complete; merge gate and phase transition next
-Next action: Commit/push UNIFY metadata, complete PR #141 merge gate, then transition to Phase 227
-Resume file: .paul/phases/226-pi-integration-efficiency-discovery/226-01-SUMMARY.md
+Last session: 2026-04-30T16:21:00Z
+Stopped at: Phase 226 complete; ready to plan Phase 227
+Next action: /paul:plan for Phase 227 Effectiveness Improvement Candidate Design
+Resume file: .paul/ROADMAP.md
 Resume context:
-- UNIFY created `.paul/phases/226-pi-integration-efficiency-discovery/226-01-SUMMARY.md` with AC results, validation evidence, module reports, and Phase 227 handoff.
+- Phase 226 completed discovery and created `docs/PI-INTEGRATION-EFFICIENCY-EFFECTIVENESS-DISCOVERY.md` plus `.paul/phases/226-pi-integration-efficiency-discovery/226-01-SUMMARY.md`.
+- PR #141 merged by squash to `main` as `5e10133d`; local `main` is synced.
 - Validation stayed stable: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, `bash tests/pi-end-to-end-validation.sh` (205/205), and `bash tests/cross-harness-validation.sh` (121/121) passed.
-- Discovery recommends artifact-slice targeting/deduplication as the leading Phase 227 design candidate, with guided workflow prompt/reply reliability as the strongest alternate reliability candidate.
-- Continue with GitHub Flow merge gate for PR #141, then run phase transition to route v2.53 to Phase 227 Effectiveness Improvement Candidate Design.
+- Next plan should design a bounded improvement candidate from the discovery artifact. Leading candidate: artifact-slice targeting/deduplication; strongest alternate reliability candidate: guided workflow prompt/reply hardening.

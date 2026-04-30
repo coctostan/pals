@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 226 complete; Phase 227 ready to plan after PR #141 merge gate and transition.*
+*Last updated: 2026-04-30 — Phase 226 complete and transitioned; Phase 227 ready to plan.*
