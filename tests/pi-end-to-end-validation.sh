@@ -1051,6 +1051,15 @@ fi
     '.paul/ROADMAP.md'
 
   tap_file_contains_all \
+    "Extension targets and deduplicates artifact-slice runtime content" \
+    "$EXT_SRC" \
+    'artifact-slice targeting + deduplication enabled' \
+    'active phase/current milestone markers only' \
+    'deterministic duplicate trimming preserves first cited occurrence' \
+    'duplicate-trim note:' \
+    'full authoritative read required'
+
+  tap_file_contains_all \
     "Extension runtime slices preserve full-read fallback and non-authority boundaries" \
     "$EXT_SRC" \
     'approved PLAN execution' \
@@ -1078,6 +1087,15 @@ fi
     'full authoritative read' \
     'no hidden Pi state' \
     'Pi-owned lifecycle/module/validation ledger'
+
+  tap_file_contains_all \
+    "Extension docs surface artifact-slice targeting and deduplication" \
+    "$REPO_ROOT/drivers/pi/extensions/README.md" \
+    'artifact-slice targeting' \
+    'deterministic deduplication' \
+    'duplicate trimming keeps the first cited occurrence' \
+    'Duplicate trimming does not remove source citations' \
+    'full authoritative read remains required'
 
   tap_file_contains_all \
     "Skill map frames named artifact slices as adapter-side context aid" \
