@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-30 after v2.52 milestone creation)
+See: .paul/PROJECT.md (updated 2026-04-30 after Phase 223 completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phase 222 is complete and Phase 223 Safe Cleanup Implementation is ready to plan.
+**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phases 222 and 223 are complete and Phase 224 Documentation + Validation Surfacing is ready to plan.
 
 ## Current Position
 
 Milestone: v2.52 Legacy Retention / Install-Surface Cleanup
-Phase: 223 of 225 (Safe Cleanup Implementation) — UNIFY complete
-Plan: 223-01 complete
-Status: Loop complete; transition to Phase 224 pending
-Last activity: 2026-04-30T02:55:00Z — Unified Phase 223 Plan 223-01; SUMMARY created with Pi 203/203 and cross-harness 119/119 evidence
+Phase: 224 of 225 (Documentation + Validation Surfacing) — Ready to plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-04-30T03:05:00Z — Phase 223 complete, PR #138 merged, transitioned to Phase 224
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -24,7 +24,7 @@ Progress:
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.52 Legacy Retention / Install-Surface Cleanup: [█████░░░░░] 50% (2 of 4 phases complete after Phase 223 transition)
+- v2.52 Legacy Retention / Install-Surface Cleanup: [█████░░░░░] 50% (2 of 4 phases complete; Phase 224 ready to plan)
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [░░░░░░░░░░] 0% not started
@@ -51,7 +51,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for transition]
+  ○        ○        ○     [Ready to plan Phase 224]
 ```
 
 ## Accumulated Context
@@ -112,6 +112,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.52 Legacy Retention / Install-Surface Cleanup has been created as the next milestone after v2.51: it will clean up frozen legacy/installation surfaces only where validation classification proves it is safe, while preserving shared invariants, command-output truth, and Pi-supported runtime behavior.
 - Phase 222 UNIFY created `.paul/phases/222-legacy-install-surface-cleanup-contract-baseline/222-01-SUMMARY.md`, recording AC results, marker grep evidence, installer verification, Pi 203/203, cross-harness 119/119, unchanged count reconciliation, module reports, PR #137 evidence, and Phase 223 readiness.
 - Phase 223 UNIFY created `.paul/phases/223-safe-cleanup-implementation/223-01-SUMMARY.md`, recording Pi-first root install/uninstall behavior, explicit frozen legacy/source-only opt-ins, README support-posture alignment, stable validation counts (Pi 203/203, cross-harness 119/119), module reports, PR #138 evidence, and Phase 224 readiness.
+- Phase 223 transition merged PR #138, synced `main`, confirmed Socket Security checks passed, and routed v2.52 to Phase 224 Documentation + Validation Surfacing.
 
 ### Current Decisions
 
@@ -226,21 +227,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/223-safe-cleanup-implementation
-Last commit: ed024d44 (Phase 223 APPLY lifecycle state)
-PR: https://github.com/coctostan/pals/pull/138 (OPEN during UNIFY)
+Branch: main
+Last commit: 8698b4e2 (PR #138 squash merge for Phase 223 safe cleanup implementation)
+PR: https://github.com/coctostan/pals/pull/138 (MERGED)
 CI: Socket Security Project Report SUCCESS; Pull Request Alerts SUCCESS
-Working tree: dirty with UNIFY metadata pending commit
+Working tree: transition metadata pending commit
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T02:55:00Z
-Stopped at: Phase 223 UNIFY complete; transition pending
-Next action: Complete transition and merge PR #138
-Resume file: .paul/phases/223-safe-cleanup-implementation/223-01-SUMMARY.md
+Last session: 2026-04-30T03:05:00Z
+Stopped at: Phase 223 complete; Phase 224 ready to plan
+Next action: /paul:plan for Phase 224 Documentation + Validation Surfacing
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 223 Plan 223-01 SUMMARY has been created.
+- Phase 223 Safe Cleanup Implementation is complete and PR #138 is merged.
 - Root install/uninstall now default to Pi-first behavior and require explicit frozen legacy/source-only opt-in via `PALS_DRIVER=...`.
 - Validation stayed stable: Pi 203/203 and cross-harness 119/119.
-- PR #138 is open with Socket checks passing; GitHub Flow merge gate remains authoritative.
+- Phase 224 should surface the new install posture in docs/validation evidence without changing runtime behavior unless separately planned.

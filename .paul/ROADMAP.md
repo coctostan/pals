@@ -30,13 +30,13 @@ Phases: 3 of 3 complete
 
 **v2.52 Legacy Retention / Install-Surface Cleanup**
 Status: 🚧 In Progress
-Phases: 1 of 4 complete — starts 2026-04-30
+Phases: 2 of 4 complete — starts 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
-| 223 | Safe Cleanup Implementation | 223-01 | APPLY complete | - |
-| 224 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 223 | Safe Cleanup Implementation | 1/1 | ✅ Complete | 2026-04-30 |
+| 224 | Documentation + Validation Surfacing | TBD | Ready to plan | - |
 | 225 | Evidence Reconciliation + Milestone Closure | TBD | Not started | - |
 
 ### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
@@ -45,11 +45,11 @@ Plans: 222-01 — ✅ Complete. Created the baseline cleanup contract for frozen
 
 ### Phase 223: Safe Cleanup Implementation
 Focus: Apply bounded legacy retention and install-surface cleanup only where the baseline proves Shared Invariant, Artifact / Process, and Pi-supported runtime guarantees remain protected.
-Plans: 223-01 — APPLY complete. Root install/uninstall now use Pi-first default behavior with explicit frozen legacy/source-only opt-in, and README support-posture guidance is aligned; awaiting UNIFY reconciliation.
+Plans: 223-01 — ✅ Complete. Root install/uninstall now use Pi-first default behavior with explicit frozen legacy/source-only opt-in, README support-posture guidance is aligned, validation stayed stable at Pi 203/203 and cross-harness 119/119, and PR #138 merged.
 
 ### Phase 224: Documentation + Validation Surfacing
 Focus: Update user-facing docs and validation/report surfaces to describe the cleaned install/legacy posture without making stale reports replace command-output truth.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next /paul:plan)
 
 ### Phase 225: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
@@ -75,4 +75,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 223 Plan 223-01 applied; awaiting UNIFY.*
+*Last updated: 2026-04-30 — Phase 223 complete; Phase 224 Documentation + Validation Surfacing ready to plan.*
