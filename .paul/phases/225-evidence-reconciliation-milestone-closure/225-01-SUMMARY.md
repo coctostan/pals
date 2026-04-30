@@ -134,7 +134,7 @@ A count increase is not treated as proof by itself. The guardrails are acceptabl
 | PR | https://github.com/coctostan/pals/pull/140 |
 | APPLY commits | `6124a1ae` closure evidence contract; `d6c130e4` validation guardrails; `3b0be7d2` apply lifecycle state; `4a4c0dc4` PR postflight state |
 | PR checks before merge gate | Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS |
-| Merge gate | Pending at SUMMARY draft; UNIFY merge gate must commit/push this summary and lifecycle updates, re-check PR #140, merge, sync `main`, and clean the branch. |
+| Merge gate | PR #140 checks passed, PR merged by squash to `main` as `635884b2`, local `main` synced, and remote feature branch deleted. |
 
 ## Accomplishments
 
@@ -208,7 +208,7 @@ A count increase is not treated as proof by itself. The guardrails are acceptabl
 - Validation scripts remain large; this remains a future driver-quality/refactor concern, not a Phase 225 blocker.
 
 **Blockers:**
-- None at summary draft time. GitHub Flow merge gate still must merge PR #140 and sync `main` before final milestone transition is complete.
+- None. PR #140 merged and local `main` synced during UNIFY merge gate.
 
 ---
 *Phase: 225-evidence-reconciliation-milestone-closure, Plan: 01*

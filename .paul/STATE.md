@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-04-30 after Phase 224 completion)
+See: .paul/PROJECT.md (updated 2026-04-30 after v2.52 completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is active; Phases 222, 223, and 224 are complete, and Phase 225 Evidence Reconciliation + Milestone Closure has UNIFY summary created with merge gate pending.
+**Current focus:** v2.52 Legacy Retention / Install-Surface Cleanup is complete; next milestone decision is pending.
 
 ## Current Position
 
-Milestone: v2.52 Legacy Retention / Install-Surface Cleanup
-Phase: 225 of 225 (Evidence Reconciliation + Milestone Closure) — Unifying
-Plan: 225-01 summary created, merge gate pending
-Status: UNIFY in progress, ready for merge gate
-Last activity: 2026-04-30T14:18:13Z — Created .paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md
+Milestone: v2.52 Legacy Retention / Install-Surface Cleanup — Complete
+Phase: 225 of 225 (Evidence Reconciliation + Milestone Closure) — Complete
+Plan: 225-01 complete
+Status: Milestone complete, next milestone decision pending
+Last activity: 2026-04-30T14:20:04Z — Completed v2.52 after PR #140 merge and main sync
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -24,11 +24,11 @@ Progress:
 - v2.49 Workflow/Resource Capsule Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.50 Delegated APPLY Packet/Report Contract: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.52 Legacy Retention / Install-Surface Cleanup: [█████████░] 95% (3 of 4 phases complete; Phase 225 summary created, merge gate pending)
+- v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - Phase 222 Legacy / Install-Surface Cleanup Contract Baseline: [██████████] 100% complete
 - Phase 223 Safe Cleanup Implementation: [██████████] 100% complete
 - Phase 224 Documentation + Validation Surfacing: [██████████] 100% complete
-- Phase 225 Evidence Reconciliation + Milestone Closure: [█████████░] 95% UNIFY summary complete; merge gate/transition pending
+- Phase 225 Evidence Reconciliation + Milestone Closure: [██████████] 100% complete
 - Phase 206 Guided Workflow Evidence Contract Baseline: [██████████] 100% complete
 - Phase 207 Runtime Guided Reply Hardening: [██████████] 100% complete
 - Phase 208 Documentation + Validation Surfacing: [██████████] 100% complete
@@ -51,7 +51,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [UNIFY summary created, merge gate pending]
+  ✓        ✓        ✓     [Loop complete - milestone complete]
 ```
 
 ## Accumulated Context
@@ -118,7 +118,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 224 UNIFY created `.paul/phases/224-documentation-validation-surfacing/224-01-SUMMARY.md`, recording AC results, marker grep evidence, installer verification, Pi 204/204, cross-harness 120/120, validation count reconciliation (Pi 203→204, cross-harness 119→120), module reports, PR #139 evidence, and Phase 225 readiness.
 - Phase 224 transition merged PR #139, synced `main`, confirmed Socket Security checks passed, and routed v2.52 to Phase 225 Evidence Reconciliation + Milestone Closure.
 
-- Phase 225 UNIFY created `.paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 205/205, cross-harness 121/121, validation count reconciliation (Pi 204→205, cross-harness 120→121), module reports, and PR #140 merge-gate evidence pending final merge.
+- Phase 225 UNIFY created `.paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md`, recording AC results, focused marker evidence, installer verification, Pi 205/205, cross-harness 121/121, validation count reconciliation (Pi 204→205, cross-harness 120→121), module reports, and PR #140 merge-gate evidence; PR #140 merged and v2.52 closed.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -237,22 +237,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/225-evidence-reconciliation-milestone-closure
-Last commit: `4a4c0dc4` before UNIFY summary commit; summary/history/state updates pending commit
-PR: https://github.com/coctostan/pals/pull/140 (OPEN)
+Branch: main
+Last commit: `635884b2` PR #140 squash merge before transition metadata commit
+PR: https://github.com/coctostan/pals/pull/140 (MERGED)
 CI: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS; APPLY validation passed installer, Pi 205/205, cross-harness 121/121
-Working tree: dirty from UNIFY summary, STATE/ROADMAP, and post-unify history updates pending merge-gate commit
+Working tree: dirty from final v2.52 transition metadata pending commit
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T14:18:13Z
-Stopped at: UNIFY summary created for plan 225-01; merge gate pending
-Next action: Commit/push UNIFY artifacts, merge PR #140, sync main, then complete v2.52 transition
+Last session: 2026-04-30T14:20:04Z
+Stopped at: v2.52 milestone complete after PR #140 merge and main sync
+Next action: Decide next milestone scope with /paul:milestone or pause here
 Resume file: .paul/phases/225-evidence-reconciliation-milestone-closure/225-01-SUMMARY.md
 Resume context:
-- Phase 225 UNIFY summary records all AC results, validation count reconciliation, module evidence, and PR #140 checks.
+- Phase 225 UNIFY summary records all AC results, validation count reconciliation, module evidence, and PR #140 merge-gate evidence.
 - Validation passed: `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi 205/205, cross-harness 121/121.
 - Expected validation count changes were realized: Pi 204→205 and cross-harness 120→121 for closure guardrails only.
-- Post-unify WALT and CODI history rows were appended.
-- Merge gate must commit/push UNIFY artifacts, confirm PR #140 CI remains passing, merge, sync `main`, clean the feature branch, and complete v2.52 milestone transition.
+- PR #140 merged, local `main` synced, and v2.52 is complete.
+- Next work should start with a new milestone decision; existing validation-script size debt remains future driver-quality scope.

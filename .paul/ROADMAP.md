@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.52 Legacy Retention / Install-Surface Cleanup**
-Status: 🚧 In Progress
-Phases: 3 of 4 complete — starts 2026-04-30
+Status: ✅ Complete
+Phases: 4 of 4 complete — completed 2026-04-30
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 222 | Legacy / Install-Surface Cleanup Contract Baseline | 1/1 | ✅ Complete | 2026-04-30 |
 | 223 | Safe Cleanup Implementation | 1/1 | ✅ Complete | 2026-04-30 |
 | 224 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-04-30 |
-| 225 | Evidence Reconciliation + Milestone Closure | 1/1 | 🟣 UNIFY / Merge Gate | - |
+| 225 | Evidence Reconciliation + Milestone Closure | 1/1 | ✅ Complete | 2026-04-30 |
 
 ### Phase 222: Legacy / Install-Surface Cleanup Contract Baseline
 Focus: Define exact safe cleanup targets and preservation boundaries using v2.51 validation classification before any frozen legacy or install-surface removal/relocation.
@@ -53,7 +53,7 @@ Plans: 224-01 — ✅ Complete. Surfaced Phase 223 Pi-first install/uninstall po
 
 ### Phase 225: Evidence Reconciliation + Milestone Closure
 Focus: Reconcile cleanup evidence, validation counts, module/GitHub Flow evidence, lifecycle metadata, and remaining deferred boundaries before closing v2.52.
-Plans: 225-01 — 🟣 UNIFY summary created, merge gate pending. Added final v2.52 closure evidence to the cleanup contract and exactly one localized closure guardrail per validation suite; reconciled counts Pi 204→205 and cross-harness 120→121; validation passed installer, Pi 205/205, and cross-harness 121/121; PR #140 checks passed before merge gate. Final transition will mark v2.52 complete after PR merge/sync.
+Plans: 225-01 — ✅ Complete. Added final v2.52 closure evidence to the cleanup contract and exactly one localized closure guardrail per validation suite; reconciled counts Pi 204→205 and cross-harness 120→121; validation passed installer, Pi 205/205, and cross-harness 121/121; PR #140 merged and `main` synced. v2.52 is closed.
 
 ### Previous milestone: v2.51 Pi-Native Validation Classification
 Result: Phases 218-221 complete. Phase 221 reconciled v2.51 evidence, final classification markers, validation counts, module/GitHub Flow evidence, and lifecycle metadata; validation passes Pi 203/203 and cross-harness 119/119; PR #136 merged. v2.51 hands off to Legacy Retention / Install-Surface Cleanup.
@@ -70,9 +70,10 @@ Result: Phases 218-221 complete. Phase 221 reconciled v2.51 evidence, final clas
 | v2.49 Workflow/Resource Capsule Contract | 2026-04-28 | 210-213 | Defined and hardened source-cited, bounded, derived-only workflow/resource capsules; surfaced docs/validation evidence; closed with Pi 197/197 and cross-harness 112/112. | active artifacts |
 | v2.50 Delegated APPLY Packet/Report Contract | 2026-04-29 | 214-217 | Formalized parent-owned delegated APPLY task packets and structured helper reports; hardened runtime/helper boundaries; surfaced docs/validation markers; closed with Pi 200/200 and cross-harness 116/116. | active artifacts |
 | v2.51 Pi-Native Validation Classification | 2026-04-30 | 218-221 | Defined validation classification taxonomy, hardened suite inventories, surfaced non-authoritative docs/report evidence, and closed with final evidence reconciliation; validation passes Pi 203/203 and cross-harness 119/119; cleanup remains deferred. | active artifacts |
+| v2.52 Legacy Retention / Install-Surface Cleanup | 2026-04-30 | 222-225 | Established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced posture in docs/reports/validation, and closed with final evidence reconciliation; validation passes Pi 205/205 and cross-harness 121/121. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 225 UNIFY summary created, merge gate pending for PR #140.*
+*Last updated: 2026-04-30 — v2.52 completed after Phase 225 and PR #140 merge.*
