@@ -1208,7 +1208,7 @@ tap_file_contains_all \
   "Artifact Spec Compliance => Shared Invariant / Artifact / Process" \
   "Driver Manifest Completeness => Frozen Legacy Parity / Shared Invariant"
 
-# Expected TAP total after Phase 229 v2.53 closure evidence reconciliation: 1..122
+# Expected TAP total after Phase 233 v2.54 closure evidence reconciliation: 1..123
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1286,6 +1286,19 @@ tap_file_contains_all \
   "explicit approval/checkpoint boundaries" \
   "command-output truth" \
   "full authoritative read fallback"
+
+
+# Phase 233 v2.54 closure guardrail — localized marker-only validation for shared milestone closure invariants.
+tap_file_contains_all \
+  "Cross-harness v2.54 closure evidence preserves shared authority boundaries" \
+  "$REPO_ROOT/docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md" \
+  "v2.54 closure" \
+  "shared invariant boundaries" \
+  "cross-harness validation 122/122" \
+  "122→123" \
+  "command-output truth" \
+  ".paul/* truth" \
+  "lifecycle authority"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

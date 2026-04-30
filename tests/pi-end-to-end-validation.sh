@@ -1645,7 +1645,7 @@ tap_file_contains_all \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 
-# Expected TAP total after Phase 229 v2.53 closure evidence reconciliation: 1..208
+# Expected TAP total after Phase 233 v2.54 closure evidence reconciliation: 1..209
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1715,6 +1715,19 @@ tap_file_contains_all \
   "full authoritative read fallback" \
   "Derived aid only" \
   "no hidden Pi state"
+
+# Phase 233 v2.54 closure guardrail — localized marker-only validation for Pi-supported runtime evidence closure.
+tap_file_contains_all \
+  "Pi v2.54 closure evidence reconciles contextual verbosity boundaries" \
+  "$REPO_ROOT/docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md" \
+  "v2.54 closure" \
+  "PR #146" \
+  "PR #147" \
+  "Pi validation 208/208" \
+  "208→209" \
+  "command-output truth" \
+  "Pi-supported runtime" \
+  "lifecycle authority"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
