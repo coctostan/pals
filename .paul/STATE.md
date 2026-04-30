@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-04-30 after v2.54 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.54 Contextual Verbosity Paring is in progress. Phase 230 created the baseline audit artifact; Phase 231 is ready to plan workflow/process verbosity paring from that evidence.
+**Current focus:** v2.54 Contextual Verbosity Paring is in progress. Phase 231 Plan 231-01 is created to pare process/workflow verbosity while preserving lifecycle/evidence gates.
 
 ## Current Position
 
 Milestone: v2.54 Contextual Verbosity Paring
-Phase: 230 of 233 (Baseline Verbosity Audit) — Complete
-Plan: 230-01 complete
-Status: Phase complete, ready for Phase 231 PLAN
-Last activity: 2026-04-30T19:05:59Z — UNIFY completed for .paul/phases/230-baseline-verbosity-audit/230-01-PLAN.md
+Phase: 231 of 233 (Process / Workflow Verbosity Paring) — Complete
+Plan: 231-01 complete
+Status: Loop complete; merge gate and phase transition in progress
+Last activity: 2026-04-30T19:55:00Z — Created Phase 231 Plan 231-01 SUMMARY and post-unify records
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -26,9 +26,9 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-- v2.54 Contextual Verbosity Paring: [██░░░░░░░░] 25% (1 of 4 phases complete; Phase 231 ready to plan)
+- v2.54 Contextual Verbosity Paring: [███░░░░░░░] 33% (Phase 231 loop complete; transition to Phase 232 in progress)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
-- Phase 231 Process / Workflow Verbosity Paring: [░░░░░░░░░░] 0% ready to plan
+- Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [░░░░░░░░░░] 0% not started
 - Phase 233 Validation + Evidence Closure: [░░░░░░░░░░] 0% not started
 - Phase 226 Pi Integration Efficiency Discovery: [██████████] 100% complete
@@ -61,7 +61,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for Phase 231 PLAN]
+  ✓        ✓        ✓     [Loop complete - ready for phase transition]
 ```
 
 ## Accumulated Context
@@ -273,20 +273,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last recorded lifecycle transition: Phase 230 UNIFY complete; PR #145 merged; Phase 231 ready to plan.
-PR: https://github.com/coctostan/pals/pull/145 (MERGED 2026-04-30T19:08:46Z)
-CI: Socket Security Project Report and Pull Request Alerts passed before merge.
-Working tree: main synced with origin/main after PR #145 squash merge.
+Branch: feature/231-process-workflow-verbosity-paring
+Last recorded lifecycle transition: Phase 231 loop complete; PR #146 merge gate/phase transition in progress.
+PR: https://github.com/coctostan/pals/pull/146 (OPEN; created during APPLY)
+CI: PR #146 Socket Security checks passing.
+Working tree: Source changes committed as d7ac0f93 and pushed; UNIFY lifecycle artifacts local pending merge-gate commit.
 Prior PRs: #136 merged (Phase 221 evidence reconciliation + v2.51 closure); #135 merged (Phase 220 documentation + report surfacing); #134 merged (Phase 219 validation-suite classification hardening); #133 merged (Phase 218 validation classification baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-04-30T19:05:59Z
-Stopped at: Phase 230 complete; PR #145 merged
-Next action: /paul:plan for Phase 231
-Resume file: .paul/phases/230-baseline-verbosity-audit/230-01-SUMMARY.md
+Last session: 2026-04-30T19:55:00Z
+Stopped at: Phase 231 Plan 231-01 UNIFY in progress; summary created
+Next action: Complete merge gate and transition Phase 231 to Phase 232
+Resume file: .paul/phases/231-process-workflow-verbosity-paring/231-01-SUMMARY.md
 Resume context:
-- Phase 230 created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` and summary `.paul/phases/230-baseline-verbosity-audit/230-01-SUMMARY.md`.
-- Verification passed: focused artifact markers, Pi validation 208/208, cross-harness validation 122/122, Workguard changed=8/outside_allowed=0/over_budget=false, Socket checks passed, and PR #145 merged.
-- Next: plan Phase 231 Process / Workflow Verbosity Paring using the Phase 230 audit.
+- SUMMARY created at `.paul/phases/231-process-workflow-verbosity-paring/231-01-SUMMARY.md` with AC results, verification evidence, module reports, deviations, and Phase 232/233 handoff.
+- Post-unify side effects appended `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md` rows for 231-01.
+- Verification passed: focused marker checks, `PALS_ROOT="$PWD" bash drivers/pi/install.sh`, Pi validation 208/208, cross-harness validation 122/122, Workguard scope outside_allowed=0.
+- PR #146 is open with Socket Security checks passing; merge gate and mandatory phase transition are next.
