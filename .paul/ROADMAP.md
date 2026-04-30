@@ -36,7 +36,7 @@ Phases: 2 of 4 complete
 |-------|------|-------|--------|-----------|
 | 226 | Pi Integration Efficiency Discovery | 226-01 | ✅ Complete | 2026-04-30 |
 | 227 | Effectiveness Improvement Candidate Design | 227-01 | ✅ Complete | 2026-04-30 |
-| 228 | Bounded Pi Integration Spike | TBD | Not started | - |
+| 228 | Bounded Pi Integration Spike | 228-01 | Planning | - |
 | 229 | Validation + Evidence Closure | TBD | Not started | - |
 
 ### Phase 226: Pi Integration Efficiency Discovery
@@ -49,7 +49,7 @@ Plans: 1/1 complete — Phase 227 created `docs/PI-INTEGRATION-EFFECTIVENESS-CAN
 
 ### Phase 228: Bounded Pi Integration Spike
 Focus: Prototype the selected improvement or improvements in bounded scope while preserving lifecycle gates, command-output truth, parent-owned APPLY, module evidence, and GitHub Flow safety.
-Plans: TBD (defined during /paul:plan)
+Plans: 228-01 created — bounded artifact-slice targeting/deduplication runtime spike scoped to `drivers/pi/extensions/pals-hooks.ts`, Pi docs/skill-map surfacing, and localized Pi validation guardrails. Expected validation count change: Pi 205→207, cross-harness remains 121.
 
 ### Phase 229: Validation + Evidence Closure
 Focus: Reconcile evidence, update docs and validation surfaces as needed, record validation count changes, and close the exploration milestone without expanding scope beyond approved Pi integration gains.
@@ -76,4 +76,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — Phase 227 complete; transitioned to Phase 228 Bounded Pi Integration Spike.*
+*Last updated: 2026-04-30 — Phase 228 Plan 228-01 created; awaiting approval.*
