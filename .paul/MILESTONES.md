@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Next milestone decision pending | `.paul/ROADMAP.md` completed v2.52 phases 222-225 |
+| Current milestone | Next milestone decision pending | `.paul/ROADMAP.md` completed v2.53 phases 226-229 |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -71,10 +71,11 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.50 Delegated APPLY Packet/Report Contract | 2026-04-29 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md` |
 | v2.51 Pi-Native Validation Classification | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` |
 | v2.52 Legacy Retention / Install-Surface Cleanup | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` |
+| v2.53 Pi Integration Efficiency & Effectiveness Exploration | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.52 Legacy Retention / Install-Surface Cleanup is complete. Next milestone decision is pending; known deferred scope includes future driver-quality work for large validation scripts, not additional cleanup authorized by v2.52.
+v2.53 Pi Integration Efficiency & Effectiveness Exploration is complete. Next milestone decision is pending; known deferred scope includes future driver-quality work for large validation scripts, guided UI/helper/GitHub Flow automation improvements, install-surface changes, dependency/CI changes, and lifecycle-authority changes only if separately planned.
 
 ## Archive
 
@@ -82,4 +83,4 @@ v2.52 Legacy Retention / Install-Surface Cleanup is complete. Next milestone dec
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.52 completion: 2026-04-30.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after v2.53 completion: 2026-04-30.*

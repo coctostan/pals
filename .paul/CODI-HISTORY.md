@@ -60,3 +60,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 226-01 | 2026-04-30 | skipped-no-symbols | — | — | — | — | n |
 | 227-01 | 2026-04-30 | injected | 4 | 0 | 9 | getArtifactSliceSpecs, buildArtifactSlice, renderArtifactSlices, buildPalsContextPayload | y |
 | 228-01 | 2026-04-30 | injected | 4 | 0 | 9 | getArtifactSliceSpecs, buildArtifactSlice, renderArtifactSlices, buildPalsContextPayload | y |
+| 229-01 | 2026-04-30 | skipped-no-symbols | — | — | — | — | n |
