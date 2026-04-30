@@ -1626,6 +1626,20 @@ tap_file_contains_all \
   "Pi Discovery Surfaces => Pi-Supported Runtime / Runtime Lens / Helper Delegation" \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
+
+# Expected TAP total after docs/report surfacing: 1..202
+if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
+  && grep -Fq "Pi 201/201" "$REPO_ROOT/README.md" \
+  && grep -Fq "cross-harness 117/117" "$REPO_ROOT/README.md" \
+  && grep -Fq "Pi-owned validation ledger" "$REPO_ROOT/drivers/pi/extensions/README.md" \
+  && grep -Fq "Pi-owned validation ledger" "$REPO_ROOT/drivers/pi/skill-map.md" \
+  && grep -Fq "Historical validation report" "$REPO_ROOT/docs/PI-VALIDATION-REPORT.md" \
+  && grep -Fq "current pass/fail proof" "$REPO_ROOT/docs/PI-VALIDATION-REPORT.md" \
+  && grep -Fq "Phase 220 documentation/report surfacing boundary" "$REPO_ROOT/docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md"; then
+  tap_ok "Pi docs/report surfaces validation classification non-authoritatively"
+else
+  tap_not_ok "Pi docs/report surfaces validation classification non-authoritatively" "Expected Pi docs/report surfaces to preserve classification baseline and non-authority markers"
+fi
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
