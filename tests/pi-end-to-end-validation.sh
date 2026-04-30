@@ -1089,6 +1089,15 @@ fi
     'Pi-owned lifecycle/module/validation ledger'
 
   tap_file_contains_all \
+    "Extension docs surface artifact-slice targeting and deduplication" \
+    "$REPO_ROOT/drivers/pi/extensions/README.md" \
+    'artifact-slice targeting' \
+    'deterministic deduplication' \
+    'duplicate trimming keeps the first cited occurrence' \
+    'Duplicate trimming does not remove source citations' \
+    'full authoritative read remains required'
+
+  tap_file_contains_all \
     "Skill map frames named artifact slices as adapter-side context aid" \
     "$REPO_ROOT/drivers/pi/skill-map.md" \
     'adapter-side context aid' \
