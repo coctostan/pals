@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 2 of 8 complete
+Phases: 3 of 8 complete; Phase 237 ready to plan.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -53,7 +53,7 @@ Plans: 235-01 complete — summary at `.paul/phases/235-risk-tiered-lifecycle-co
 
 ### Phase 236: Validation Suite Decomposition Baseline
 Focus: Document and begin splitting validation concerns into maintainable sections/helpers while preserving current validation counts and command-output truth.
-Plans: TBD (defined during /paul:plan)
+Plans: 236-01 complete — summary at `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`; baseline doc at `docs/PALS-VALIDATION-SUITE-DECOMPOSITION-BASELINE.md`.
 
 ### Phase 237: Artifact Consistency Guardrails
 Focus: Add lightweight checks for STATE, ROADMAP, MILESTONES, SUMMARY, and session-continuity drift.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 235 complete; Phase 236 ready to plan.*
+*Last updated: 2026-05-01 — Phase 236 complete; Phase 237 ready to plan.*
