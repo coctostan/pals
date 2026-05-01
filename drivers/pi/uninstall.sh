@@ -18,7 +18,7 @@ echo "  This will remove:"
 echo "    - Canonical Pi skills under ~/.pi/agent/skills/pals/"
 echo "    - Extension-backed /paul-* command and hook layer at ~/.pi/agent/extensions/pals-hooks.ts"
 echo "    - ~/.pi/agent/skills/pals/"
-echo "    - ~/.pi/agent/extensions/pals-hooks.ts"
+echo "    - ~/.pi/agent/extensions/pals-hooks.ts (and ~/.pi/agent/extensions/module-activity-parsing.ts if present)"
 printf "  Continue? [y/N] "
 read -r REPLY < /dev/tty 2>/dev/null || REPLY="n"
 
@@ -32,5 +32,8 @@ echo "  [ok] Removed ~/.pi/agent/skills/pals/"
 
 rm -f "$HOME/.pi/agent/extensions/pals-hooks.ts"
 echo "  [ok] Removed ~/.pi/agent/extensions/pals-hooks.ts"
+
+rm -f "$HOME/.pi/agent/extensions/module-activity-parsing.ts"
+echo "  [ok] Removed ~/.pi/agent/extensions/module-activity-parsing.ts (if present)"
 
 echo "  Pi driver uninstall complete."

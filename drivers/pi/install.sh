@@ -87,11 +87,16 @@ echo "  [ok] Pi skills installed: $SKILL_COUNT skills (absolute install-root ref
 # ── 4. Copy Pi extension ─────────────────────────────────────────
 EXT_SRC="$PALS_ROOT/drivers/pi/extensions/pals-hooks.ts"
 EXT_DIR="$HOME/.pi/agent/extensions"
+MODULE_ACTIVITY_SRC="$PALS_ROOT/drivers/pi/extensions/module-activity-parsing.ts"
 
 if [ -f "$EXT_SRC" ]; then
   mkdir -p "$EXT_DIR"
   cp "$EXT_SRC" "$EXT_DIR/pals-hooks.ts"
   echo "  [ok] Pi extension installed: ~/.pi/agent/extensions/pals-hooks.ts"
+  if [ -f "$MODULE_ACTIVITY_SRC" ]; then
+    cp "$MODULE_ACTIVITY_SRC" "$EXT_DIR/module-activity-parsing.ts"
+    echo "  [ok] Pi extension submodule installed: ~/.pi/agent/extensions/module-activity-parsing.ts"
+  fi
 else
   echo "  [skip] No pals-hooks.ts extension found"
 fi

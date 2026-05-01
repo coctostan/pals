@@ -12,6 +12,11 @@
 import { readFileSync, existsSync, statSync } from "fs";
 import { join } from "path";
 import { Key } from "@mariozechner/pi-tui";
+import {
+  RecentModuleActivity,
+  extractRecentModuleActivity,
+  formatModuleEntryList,
+} from "./module-activity-parsing";
 
 // -- Helpers --
 
@@ -34,9 +39,7 @@ const GUIDED_WORKFLOW_LOOKBACK = 5;
 const GUIDED_WORKFLOW_SIGNATURE_BYTES = 240;
 const RECENT_MODULE_ACTIVITY_LOOKBACK = 3;
 const MAX_VISIBLE_MODULES = 3;
-const MAX_WIDGET_MODULE_DETAILS = 4;
-const DISPATCH_MARKER = "[dispatch]";
-const MODULE_REPORTS_HEADER = "Module Execution Reports";
+export const MAX_WIDGET_MODULE_DETAILS = 4;
 const MAX_ARTIFACT_SLICE_CHARS = 3_000;
 const MAX_ARTIFACT_SLICE_LINES = 8;
 const ARTIFACT_SLICE_SOURCE_STATE = ".paul/STATE.md";
@@ -163,18 +166,6 @@ type GuidedWorkflowMoment = {
   options?: GuidedWorkflowOption[];
 };
 
-type ModuleActivityEntry = {
-  name: string;
-  detail?: string;
-};
-
-type RecentModuleActivity = {
-  source: "dispatch" | "report";
-  stage: string;
-  stageLabel: string;
-  entries: ModuleActivityEntry[];
-};
-
 type CarlConfig = {
   session_strategy: "phase-boundary" | "always-fresh" | "manual";
   continue_threshold: number;
@@ -233,7 +224,7 @@ function readFileOr(path: string, fallback: string): string {
   }
 }
 
-function compactWhitespace(value?: string): string | undefined {
+export function compactWhitespace(value?: string): string | undefined {
   return value?.replace(/\s+/g, " ").trim() || undefined;
 }
 
@@ -565,134 +556,6 @@ function renderLifecycleActionLabel(state: PalsStateSnapshot): string {
   if (/review|approve|checkpoint|human verification|human action|decision required|waiting/.test(nextAction)) return "Waiting";
   if (nextAction) return "Ready";
   return "Next";
-}
-function compactModuleDetail(detail?: string): string | undefined {
-  const compact = compactWhitespace(detail);
-  if (!compact) return undefined;
-  return compact.length > 48 ? `${compact.slice(0, 47)}…` : compact;
-}
-
-function normalizeModuleEntryName(value?: string): string | undefined {
-  const cleaned = compactWhitespace(value)?.replace(/[^A-Za-z0-9_-]/g, "");
-  return cleaned ? cleaned.toUpperCase() : undefined;
-}
-
-function formatModuleStageLabel(stage?: string): string {
-  const compact = compactWhitespace(stage);
-  if (!compact) return "recent activity";
-  return compact === "module-reports" ? "module reports" : compact;
-}
-
-function parseModuleActivityEntries(raw: string): ModuleActivityEntry[] {
-  const cleaned = raw.trim().replace(/^\{/, "").replace(/\}$/, "");
-  if (!cleaned) return [];
-
-  return cleaned
-    .split(/\s+\|\s+/)
-    .map((part) => {
-      const match = compactWhitespace(part)?.match(/^([A-Za-z0-9_-]+)(?:\(\d+\))?(?:\s*→\s*(.+))?$/);
-      if (!match) return undefined;
-      const name = normalizeModuleEntryName(match[1]);
-      if (!name) return undefined;
-      return {
-        name,
-        detail: compactModuleDetail(match[2]),
-      };
-    })
-    .filter(Boolean) as ModuleActivityEntry[];
-}
-
-function extractDispatchModuleActivity(text: string): RecentModuleActivity | undefined {
-  const lines = text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  for (let i = lines.length - 1; i >= 0; i--) {
-    const line = lines[i]!;
-    if (!line.startsWith(DISPATCH_MARKER)) continue;
-    const match = line.match(/^\[dispatch\]\s*([^:]+):\s*(.+)$/);
-    if (!match) continue;
-
-    const stage = compactWhitespace(match[1]);
-    const entries = parseModuleActivityEntries(match[2]);
-    if (!stage || entries.length === 0) continue;
-
-    return {
-      source: "dispatch",
-      stage,
-      stageLabel: formatModuleStageLabel(stage),
-      entries,
-    };
-  }
-
-  return undefined;
-}
-
-function extractModuleReportActivity(text: string): RecentModuleActivity | undefined {
-  if (!text.includes(MODULE_REPORTS_HEADER)) return undefined;
-
-  const lines = text.split(/\r?\n/).map((line) => line.trim());
-  const headerIndex = lines.findIndex((line) => line.includes(MODULE_REPORTS_HEADER));
-  if (headerIndex < 0) return undefined;
-
-  const entries: ModuleActivityEntry[] = [];
-  for (let i = headerIndex + 1; i < lines.length && entries.length < MAX_WIDGET_MODULE_DETAILS; i++) {
-    const line = lines[i]!;
-    if (!line) continue;
-    if (/^##\s+/.test(line) && !line.includes(MODULE_REPORTS_HEADER)) break;
-
-    const headingMatch = line.match(/^#{3,4}\s+(?:.+?\(([A-Z][A-Z0-9_-]+)\)|([A-Z][A-Z0-9_-]+))(?:\s|$)/);
-    if (headingMatch) {
-      const name = normalizeModuleEntryName(headingMatch[1] ?? headingMatch[2]);
-      if (name && !entries.some((entry) => entry.name === name)) entries.push({ name });
-      continue;
-    }
-
-    const bulletMatch = line.match(/^-\s*([A-Z][A-Z0-9_-]+)\s*:\s*(.+)$/);
-    if (bulletMatch) {
-      const name = normalizeModuleEntryName(bulletMatch[1]);
-      if (name && !entries.some((entry) => entry.name === name)) {
-        entries.push({ name, detail: compactModuleDetail(bulletMatch[2]) });
-      }
-    }
-  }
-
-  if (entries.length === 0) return undefined;
-  return {
-    source: "report",
-    stage: "module-reports",
-    stageLabel: formatModuleStageLabel("module-reports"),
-    entries,
-  };
-}
-
-function extractRecentModuleActivity(recentAssistantTexts: string[]): RecentModuleActivity | undefined {
-  for (const text of recentAssistantTexts) {
-    const dispatchActivity = extractDispatchModuleActivity(text);
-    if (dispatchActivity) return dispatchActivity;
-
-    const reportActivity = extractModuleReportActivity(text);
-    if (reportActivity) return reportActivity;
-  }
-
-  return undefined;
-}
-
-function formatModuleEntryList(
-  entries: ModuleActivityEntry[],
-  limit: number,
-  separator: string,
-  includeDetails = false,
-): string | undefined {
-  if (entries.length === 0) return undefined;
-
-  const visible = entries.slice(0, limit).map((entry) => {
-    if (!includeDetails || !entry.detail) return entry.name;
-    return `${entry.name} → ${entry.detail}`;
-  });
-  const overflow = entries.length > limit ? `${separator}+${entries.length - limit}` : "";
-  return `${visible.join(separator)}${overflow}`;
 }
 
 function renderModuleActivity(activity?: RecentModuleActivity): string | undefined {

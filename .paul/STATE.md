@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 239 of 241 (Bounded Pi Extension Extraction Spike) — Ready to plan
-Plan: none yet
-Status: Phase 238 complete; ready for next PLAN
-Last activity: 2026-05-01T12:22:00Z — Created .paul/phases/238-pi-extension-modularization-contract/238-01-SUMMARY.md
+Phase: 239 of 241 (Bounded Pi Extension Extraction Spike) — APPLY complete
+Plan: 239-01 executed; PR #154 OPEN/MERGEABLE/CLEAN
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-05-01T13:12:00Z — APPLY complete on feature/239-pi-extension-extraction-spike; PR #154 OPEN/MERGEABLE/CLEAN; CI 2/2 SUCCESS; Pi 211/211, cross-harness 125/125, # Failed: 0; install/uninstall amendment deviation logged
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [██████░░░░] 63% (5 of 8 phases complete; Phase 239 ready to plan)
+- v2.55 Maintainability & Product Reality Hardening: [██████░░░░] 63% (5 of 8 phases complete; Phase 239 plan 239-01 awaiting approval)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -219,6 +219,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-04-30: Use short Default output notes for Pi skill wrappers | Phase 232 Plan 232-01 UNIFY | Future Pi skill wrappers should stay thin, point to canonical workflows/references, and preserve validation-protected markers while defaulting to concise replies. |
 | 2026-05-01: Treat Phase 234 as audit-only evidence before v2.55 implementation | Phase 234 Plan 234-01 UNIFY | Phases 235-241 should use `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md` as the evidence base and avoid mixing implementation fixes into discovery/reconciliation phases. |
 | 2026-05-01: Define risk tiers as focused evidence, not bypassed evidence | Phase 235 Plan 235-01 UNIFY | Future tier routing may reduce ceremony only by focusing proof; explicit approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` authority, command-output truth, full-read fallback, no hidden Pi state, and no telemetry remain non-bypass rules. |
+| 2026-05-01: Phase 239 APPLY deviation — amend Phase 238 contract bounded scope to include single-line install/uninstall edits | Phase 239 Plan 239-01 APPLY | The Phase 238 contract forbade `drivers/pi/install.sh`/`drivers/pi/uninstall.sh` edits in Phase 239, but the spike's first multi-file extraction discovered a contract gap: the install scripts only handle `pals-hooks.ts` and would break the new `import "./module-activity-parsing"` at Pi runtime. Bounded amendment per user-approved option 2: added one conditional `cp` for `module-activity-parsing.ts` to `install.sh` and a matching `rm -f` plus uninstall-notice update to `uninstall.sh`. No other behavior change; backward-compatible with extension copies that lack the submodule. UNIFY must record this deviation and Phase 240/241 should consider whether the install surface needs a generalized "copy all `*.ts` siblings under `drivers/pi/extensions/`" rule before further extractions. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -301,10 +302,10 @@ Prior PRs: #152 merged (Phase 237 artifact consistency guardrails); #151 merged 
 
 ## Session Continuity
 
-Last session: 2026-05-01T12:25:00Z
-Stopped at: Phase 238 complete and merged; user paused before starting Phase 239 PLAN
-Next action: Run /paul:resume, then /paul:plan for Phase 239 Bounded Pi Extension Extraction Spike
-Resume file: .paul/HANDOFF-2026-05-01-phase-239-ready-to-plan.md
+Last session: 2026-05-01T13:12:00Z
+Stopped at: APPLY complete on feature/239-pi-extension-extraction-spike (PR #154 ready to merge)
+Next action: Run /paul:unify .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
+Resume file: .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
 Resume context:
 - Phases 237 and 238 both shipped this session: PR #152 (artifact consistency guardrails) and PR #153 (Pi extension modularization contract) are merged into main.
 - Working tree clean on main; 0 behind / 0 ahead relative to origin/main.

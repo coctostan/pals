@@ -195,7 +195,7 @@ The extension registers these slash commands:
 |----------|---------------|---------|
 | Kernel files (`workflows/`, `references/`, `templates/`, `rules/`) | `~/.pi/agent/skills/pals/` | Shared markdown workflows referenced by skills and the extension |
 | Skill entry points (11 `SKILL.md` files) | `~/.pi/agent/skills/pals/{skill-name}/SKILL.md` | Pi skill invocation layer for `/skill:paul-*`; installer rewrites portable `../...` references to absolute install-root paths |
-| Pi extension | `~/.pi/agent/extensions/pals-hooks.ts` | Command registration, lifecycle hooks, guided workflow UX |
+| Pi extension | `~/.pi/agent/extensions/pals-hooks.ts` (+ `module-activity-parsing.ts` submodule) | Command registration, lifecycle hooks, guided workflow UX; `module-activity-parsing.ts` is the Phase 239 first-spike S5 extraction per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` |
 | Project-shipped agents | `~/.pi/agent/agents/{agent-name}.md` | Helper agents such as `pals-implementer` for parent-authoritative, task-bounded delegation |
 | Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
 These are distinct install targets. Skills and kernel files live under `~/.pi/agent/skills/pals/`, the extension lives under `~/.pi/agent/extensions/`, and project-shipped agents live under `~/.pi/agent/agents/`. Removing one surface does not transfer lifecycle ownership to Pi or remove the others; `uninstall.sh` handles the full cleanup of all targets.
