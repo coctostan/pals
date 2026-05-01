@@ -84,21 +84,32 @@ fi
 
 echo "  [ok] Pi skills installed: $SKILL_COUNT skills (absolute install-root references rendered)"
 
-# ── 4. Copy Pi extension ─────────────────────────────────────────
-EXT_SRC="$PALS_ROOT/drivers/pi/extensions/pals-hooks.ts"
+# ── 4. Copy Pi extension(s) ──────────────────────────────────────
+# Source-set rule: every *.ts file under $PALS_ROOT/drivers/pi/extensions/ is a
+# repo-owned Pi extension surface and is installed by basename into $EXT_DIR.
+# This generalizes the earlier per-submodule special case (pals-hooks.ts plus
+# module-activity-parsing.ts) so future repo-owned extension siblings install
+# without further edits to this script.
+EXT_SRC_DIR="$PALS_ROOT/drivers/pi/extensions"
 EXT_DIR="$HOME/.pi/agent/extensions"
-MODULE_ACTIVITY_SRC="$PALS_ROOT/drivers/pi/extensions/module-activity-parsing.ts"
+EXT_INSTALLED_COUNT=0
 
-if [ -f "$EXT_SRC" ]; then
+if [ -d "$EXT_SRC_DIR" ]; then
   mkdir -p "$EXT_DIR"
-  cp "$EXT_SRC" "$EXT_DIR/pals-hooks.ts"
-  echo "  [ok] Pi extension installed: ~/.pi/agent/extensions/pals-hooks.ts"
-  if [ -f "$MODULE_ACTIVITY_SRC" ]; then
-    cp "$MODULE_ACTIVITY_SRC" "$EXT_DIR/module-activity-parsing.ts"
-    echo "  [ok] Pi extension submodule installed: ~/.pi/agent/extensions/module-activity-parsing.ts"
+  for ext_src in "$EXT_SRC_DIR"/*.ts; do
+    [ -f "$ext_src" ] || continue
+    ext_base="$(basename "$ext_src")"
+    cp "$ext_src" "$EXT_DIR/$ext_base"
+    echo "  [ok] Pi extension installed: ~/.pi/agent/extensions/$ext_base"
+    EXT_INSTALLED_COUNT=$((EXT_INSTALLED_COUNT + 1))
+  done
+  if [ "$EXT_INSTALLED_COUNT" -eq 0 ]; then
+    echo "  [skip] No Pi extension *.ts files found under drivers/pi/extensions/"
+  else
+    echo "  [ok] Pi extensions installed: $EXT_INSTALLED_COUNT files"
   fi
 else
-  echo "  [skip] No pals-hooks.ts extension found"
+  echo "  [skip] No drivers/pi/extensions/ directory found"
 fi
 
 # ── 5. Copy project-shipped Pi agent definitions ───────────────────
