@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — Planning
-Plan: 241-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-01T17:16:36Z — Created `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md`
+Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — APPLY complete, ready for UNIFY
+Plan: 241-01 executed; PR #156 OPEN against main
+Status: APPLY complete (3 of 3 tasks PASS), ready for UNIFY
+Last activity: 2026-05-01T19:30:00Z — APPLY complete: generalized Pi extension install/uninstall source set, recorded driver.yaml audit decision (no edit), bounded validation guardrails (Pi 1..212/0, cross-harness 1..127/0); pushed feature branch and opened PR #156
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [████████░░] 87.5% (7 of 8 phases complete; Phase 241 plan created, awaiting approval)
+- v2.55 Maintainability & Product Reality Hardening: [████████░░] 87.5% (7 of 8 phases complete; Phase 241 APPLY complete, PR #156 OPEN, ready for UNIFY)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 241-01 created, awaiting approval]
+  ✓        ✓        ○     [Plan 241-01 APPLY complete; PR #156 OPEN; ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -297,14 +297,15 @@ Branch: main (Phase 240 closed; feature/240-first-run-happy-path squash-merged a
 Last commit on main: `30fb2b25` Phase 240: first-run happy path + scenario evidence (docs-only) (#155).
 PR: #155 (https://github.com/coctostan/pals/pull/155) — MERGED (squash + delete-branch). CI Socket Security: Project Report SUCCESS; Socket Security: Pull Request Alerts SUCCESS.
 CI: post-merge local on `main` Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
-Working tree: clean on `main` after Phase 240 UNIFY metadata write; 0 behind / 0 ahead origin/main.
-Prior PRs: #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Working tree: clean on `feature/241-evidence-closure-next-roadmap-decision`; 0 behind origin/main; 4 ahead (Phase 241-01 commits).
+Prior PRs: #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Open PR: #156 — Phase 241-01 evidence closure + Pi extension install-surface generalization (https://github.com/coctostan/pals/pull/156).
 
 ## Session Continuity
 
-Last session: 2026-05-01T19:11:42Z
-Stopped at: Paused after creating Plan 241-01; plan review/approval pending, no APPLY work started.
-Next action: Run `/paul:resume`, review/approve plan, then run `/paul:apply .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md`.
+Last session: 2026-05-01T19:30:00Z
+Stopped at: Phase 241 APPLY complete (3 of 3 tasks PASS); PR #156 OPEN; ready for UNIFY.
+Next action: Run `/paul:unify .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md` to reconcile, write SUMMARY, run merge gate, and decide v2.56 focus.
 Resume file: .paul/handoffs/archive/HANDOFF-2026-05-01-phase-241-plan-awaiting-approval.md
 Resume context:
 - Plan 241-01 exists at `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md` and is awaiting explicit approval.
