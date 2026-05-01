@@ -785,6 +785,19 @@ else
   tap_not_ok "Repo Pi docs preserve the bounded helper-agent contract" "Expected bounded helper-agent wording across drivers/pi/extensions/README.md and drivers/pi/skill-map.md"
 fi
 
+MODULE_ACTIVITY_PARSING="$REPO_ROOT/drivers/pi/extensions/module-activity-parsing.ts"
+PALS_HOOKS_SRC="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
+if [ -f "$MODULE_ACTIVITY_PARSING" ] \
+  && [ -f "$PALS_HOOKS_SRC" ] \
+  && grep -Eq '^export const DISPATCH_MARKER[[:space:]]*=[[:space:]]*"\[dispatch\]"' "$MODULE_ACTIVITY_PARSING" 2>/dev/null \
+  && grep -Eq '^export const MODULE_REPORTS_HEADER[[:space:]]*=[[:space:]]*"Module Execution Reports"' "$MODULE_ACTIVITY_PARSING" 2>/dev/null \
+  && grep -Eq 'from "\./module-activity-parsing"' "$PALS_HOOKS_SRC" 2>/dev/null \
+  && ! grep -Eq '^const (DISPATCH_MARKER|MODULE_REPORTS_HEADER)\b' "$PALS_HOOKS_SRC" 2>/dev/null; then
+  tap_ok "Pi extension S5 module-activity-parsing keeps DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth across drivers/pi/extensions/"
+else
+  tap_not_ok "Pi extension S5 module-activity-parsing keeps DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth across drivers/pi/extensions/" "Expected drivers/pi/extensions/module-activity-parsing.ts to export DISPATCH_MARKER and MODULE_REPORTS_HEADER once, pals-hooks.ts to import from ./module-activity-parsing, and pals-hooks.ts to no longer declare those constants inline"
+fi
+
 ARTIFACT_SLICE_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md"
 PI_VALIDATION_SUITE="$REPO_ROOT/tests/pi-end-to-end-validation.sh"
 CROSS_VALIDATION_SUITE="$REPO_ROOT/tests/cross-harness-validation.sh"

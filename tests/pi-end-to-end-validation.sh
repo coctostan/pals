@@ -1124,13 +1124,25 @@ fi
     'shared-invariant preservation rationale'
 
   # Live module visibility contract: bounded parser/renderer path for canonical workflow signals
+  EXT_MODULE_ACTIVITY="$REPO_ROOT/drivers/pi/extensions/module-activity-parsing.ts"
   if grep -q 'extractRecentModuleActivity' "$EXT_SRC" 2>/dev/null \
     && grep -q 'renderModuleActivity' "$EXT_SRC" 2>/dev/null \
-    && grep -q '\[dispatch\]' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'Module Execution Reports' "$EXT_SRC" 2>/dev/null; then
+    && grep -q '\[dispatch\]' "$EXT_MODULE_ACTIVITY" 2>/dev/null \
+    && grep -q 'Module Execution Reports' "$EXT_MODULE_ACTIVITY" 2>/dev/null; then
     tap_ok "Extension derives recent module activity from canonical dispatch/report markers"
   else
-    tap_not_ok "Extension derives recent module activity from canonical dispatch/report markers" "Expected extractRecentModuleActivity/renderModuleActivity plus [dispatch]/Module Execution Reports markers in pals-hooks.ts"
+    tap_not_ok "Extension derives recent module activity from canonical dispatch/report markers" "Expected extractRecentModuleActivity/renderModuleActivity in pals-hooks.ts plus [dispatch]/Module Execution Reports markers in module-activity-parsing.ts"
+  fi
+
+  # Phase 239: S5 module-activity-parsing extracted to its own module with single-defined markers and import wired in pals-hooks.ts
+  if [ -f "$EXT_MODULE_ACTIVITY" ] \
+    && grep -Eq '^export const DISPATCH_MARKER[[:space:]]*=[[:space:]]*"\[dispatch\]"' "$EXT_MODULE_ACTIVITY" 2>/dev/null \
+    && grep -Eq '^export const MODULE_REPORTS_HEADER[[:space:]]*=[[:space:]]*"Module Execution Reports"' "$EXT_MODULE_ACTIVITY" 2>/dev/null \
+    && grep -Eq 'from "\./module-activity-parsing"' "$EXT_SRC" 2>/dev/null \
+    && ! grep -Eq '^const (DISPATCH_MARKER|MODULE_REPORTS_HEADER)\b' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Phase 239 S5 module-activity-parsing extraction preserves DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth and imports them into pals-hooks.ts"
+  else
+    tap_not_ok "Phase 239 S5 module-activity-parsing extraction preserves DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth and imports them into pals-hooks.ts" "Expected drivers/pi/extensions/module-activity-parsing.ts to define DISPATCH_MARKER and MODULE_REPORTS_HEADER as exports, pals-hooks.ts to import from ./module-activity-parsing, and pals-hooks.ts to no longer declare those constants inline"
   fi
 
   # Live module visibility contract: reuse the existing lifecycle status/widget surfaces

@@ -93,7 +93,7 @@ Kernel files are installed to `~/.pi/agent/skills/pals/` with the same directory
 - `~/.pi/agent/skills/pals/templates/`
 - `~/.pi/agent/skills/pals/rules/`
 The extension is installed to Pi's extension directory — separate from the skill tree:
-- `~/.pi/agent/extensions/pals-hooks.ts` — Pi extension (command registration, lifecycle hooks, guided workflow UX)
+- `~/.pi/agent/extensions/pals-hooks.ts` — Pi extension (command registration, lifecycle hooks, guided workflow UX); `~/.pi/agent/extensions/module-activity-parsing.ts` is the Phase 239 first-spike S5 submodule per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`
 Project-shipped helper agents are installed to Pi's agent directory:
 - `~/.pi/agent/agents/pals-implementer.md` — bounded implementation worker used only when parent `/skill:paul-apply` delegates an eligible repo-local task
 This means PALS uses three Pi install surfaces: skill/kernel files under `~/.pi/agent/skills/pals/`, the extension under `~/.pi/agent/extensions/`, and helper agents under `~/.pi/agent/agents/`. Removing one surface does not move lifecycle truth into Pi; shared workflows plus `.paul/*` remain authoritative, and `uninstall.sh` handles the coordinated cleanup.
