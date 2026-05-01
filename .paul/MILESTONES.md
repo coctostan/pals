@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234-241; Phases 234-237 complete, Phase 238 Pi Extension Modularization Contract ready to plan |
+| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234-241; Phases 234-238 complete, Phase 239 Bounded Pi Extension Extraction Spike ready to plan |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -76,7 +76,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phases 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, 236 Validation Suite Decomposition Baseline, and 237 Artifact Consistency Guardrails are complete; Phase 238 Pi Extension Modularization Contract is ready to plan.
+v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phases 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, 236 Validation Suite Decomposition Baseline, 237 Artifact Consistency Guardrails, and 238 Pi Extension Modularization Contract are complete; Phase 239 Bounded Pi Extension Extraction Spike is ready to plan (selected first-spike candidate: `module-activity-parsing` / S5).
 
 ## Archive
 
@@ -84,4 +84,4 @@ v2.55 Maintainability & Product Reality Hardening is in progress. It should make
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234-236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234-237 complete and Phase 238 ready: 2026-05-01.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234-236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234-237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234-238 complete and Phase 239 ready: 2026-05-01.*

@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234-237 are complete; Phase 238 Pi Extension Modularization Contract is ready to plan.
+**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234-238 are complete; Phase 239 Bounded Pi Extension Extraction Spike is ready to plan.
 
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 238 of 241 (Pi Extension Modularization Contract) — Ready to plan
+Phase: 239 of 241 (Bounded Pi Extension Extraction Spike) — Ready to plan
 Plan: none yet
-Status: Phase 237 complete; ready for next PLAN
-Last activity: 2026-05-01T02:07:00Z — Created .paul/phases/237-artifact-consistency-guardrails/237-01-SUMMARY.md and archived handoff
+Status: Phase 238 complete; ready for next PLAN
+Last activity: 2026-05-01T12:22:00Z — Created .paul/phases/238-pi-extension-modularization-contract/238-01-SUMMARY.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [█████░░░░░] 50% (4 of 8 phases complete; Phase 238 ready to plan)
+- v2.55 Maintainability & Product Reality Hardening: [██████░░░░] 63% (5 of 8 phases complete; Phase 239 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -275,6 +275,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 235 APPLY: `/paul`, `/carl`, TODD, WALT, DOCS, SKIP, ARCH, SETH, IRIS, and advisory/enforcement modules invoked or active via module dispatch; pre-apply baseline passed Pi 209/209 and cross-harness 123/123; post-task/final validation passed Pi 209/209 and cross-harness 123/123. No helper delegation was used; parent APPLY owned verification. Process adaptation: all three docs-only task sections were created in one contract pass, then verified against each task's focused markers.
 - Skill audit Phase 235 UNIFY: `/paul`, `/carl`, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 209/209 and cross-harness 123/123. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 237 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 210/210 and cross-harness 124/124. One auto-fix during Task 2: helper plan-id parser corrected from first to second `-`-segment before Task 3 wiring. Existing validation-script size debt remains pre-existing/future driver-quality scope.
+- Skill audit Phase 238 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation stayed stable at Pi 210/210 and cross-harness 124/124 (tiny/doc-only tier produced zero count drift, as planned). No helper delegation was used; parent APPLY owned verification. Existing `pals-hooks.ts` size debt remains pre-existing and is the explicit Phase 239 spike target.
 
 ### Deferred Issues
 
@@ -291,20 +292,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: `e698062b` Phase 237 squash merge of PR #152.
-PR: #152 (https://github.com/coctostan/pals/pull/152) — MERGED at 2026-05-01T02:11:41Z.
-CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation on main passed Pi 210/210 and cross-harness 124/124.
-Working tree: main synced with origin/main after PR #152 merge; feature branch deleted locally and remotely.
-Prior PRs: #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Branch: phase-238-pi-extension-modularization-contract (active during Phase 238 APPLY/UNIFY; merge gate pending).
+Last commit: `2e806ebc` on `phase-238-pi-extension-modularization-contract` carries the Phase 238 product change; SUMMARY/state metadata commit follows during merge gate.
+PR: #153 (https://github.com/coctostan/pals/pull/153) — OPEN; CI passing.
+CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation passed Pi 210/210 and cross-harness 124/124.
+Working tree: feature branch carries Phase 238 product diff plus this UNIFY metadata update; main not yet synced for Phase 238.
+Prior PRs: #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-01T02:07:00Z
-Stopped at: Phase 237 UNIFY complete; merge gate for PR #152 pending CI
-Next action: Resolve merge gate for PR #152, then run /paul:plan for Phase 238 Pi Extension Modularization Contract
-Resume file: .paul/phases/237-artifact-consistency-guardrails/237-01-SUMMARY.md
+Last session: 2026-05-01T12:22:00Z
+Stopped at: Phase 238 UNIFY complete; merge gate for PR #153 in progress
+Next action: Resolve merge gate for PR #153, then run /paul:plan for Phase 239 Bounded Pi Extension Extraction Spike
+Resume file: .paul/phases/238-pi-extension-modularization-contract/238-01-SUMMARY.md
 Resume context:
-- Phase 237 plan, APPLY, and UNIFY are complete; SUMMARY is written; handoff archived.
-- PR #152 carries the Phase 237 implementation; CI/merge-gate completion still required before Phase 238 PLAN.
-- Validation reconciled as Pi 209→210 and cross-harness 123→124 — guardrail additions only.
+- Phase 238 plan, APPLY, and UNIFY are complete; SUMMARY is written.
+- PR #153 carries the Phase 238 implementation; CI is passing; merge-gate completion still required before Phase 239 PLAN.
+- Phase 239 first-spike candidate selected: `module-activity-parsing` (S5); bounded handoff documented in `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`.
+- Validation stable at Pi 210/210 and cross-harness 124/124 (no count drift, as planned for tiny/doc-only tier).
