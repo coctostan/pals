@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 240 of 241 (Product Happy Path + Scenario Evidence) — Planning
-Plan: 240-01 — APPLY complete; UNIFY pending
-Status: APPLY complete on feature/240-first-run-happy-path; PR #155 OPEN, ready for UNIFY
-Last activity: 2026-05-01 — APPLY 240-01 complete (Pi 211/211 unchanged; cross-harness 125→126; artifact-consistency PASS); PR #155 opened against main
+Phase: 240 of 241 (Product Happy Path + Scenario Evidence) — Active (UNIFY)
+Plan: 240-01 — UNIFY drafted; merge gate pending on PR #155
+Status: SUMMARY drafted at .paul/phases/240-product-happy-path-scenario-evidence/240-01-SUMMARY.md; merge gate enforcement (PR #155) in progress
+Last activity: 2026-05-01 — UNIFY 240-01 SUMMARY drafted (Pi 211/211, cross-harness 126/126, artifact-consistency PASS); about to enforce merge gate on PR #155
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [███████░░░] 75% (6 of 8 phases complete; Phase 240 plan 240-01 awaiting approval)
+- v2.55 Maintainability & Product Reality Hardening: [████████░░] 87.5% (7 of 8 phases at SUMMARY-drafted; Phase 240 plan 240-01 UNIFY in progress, merge gate pending)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Plan 240-01 APPLY complete; PR #155 OPEN; UNIFY pending]
+  ✓        ✓        ◐     [Plan 240-01 SUMMARY drafted; merge gate enforcement on PR #155 next]
 ```
 
 ## Accumulated Context

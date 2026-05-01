@@ -91,6 +91,7 @@ Types: —
 | 237-01 | 2026-05-01 | 210 pass + 124 pass | — | — | — | → improving |
 | 238-01 | 2026-05-01 | 210 pass + 124 pass | — | — | — | → stable |
 | 239-01 | 2026-05-01 | 211 pass + 125 pass | — | — | — | ↑ improving |
+| 240-01 | 2026-05-01 | 211 pass + 126 pass | — | — | — | ↑ improving |
 
 ---
 *Updated after every /paul:unify*
