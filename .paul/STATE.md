@@ -292,11 +292,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: phase-238-pi-extension-modularization-contract (active during Phase 238 APPLY/UNIFY; merge gate pending).
-Last commit: `2e806ebc` on `phase-238-pi-extension-modularization-contract` carries the Phase 238 product change; SUMMARY/state metadata commit follows during merge gate.
-PR: #153 (https://github.com/coctostan/pals/pull/153) — OPEN; CI passing.
-CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation passed Pi 210/210 and cross-harness 124/124.
-Working tree: feature branch carries Phase 238 product diff plus this UNIFY metadata update; main not yet synced for Phase 238.
+Branch: main
+Last commit: `d974e9ff` Phase 238 squash merge of PR #153.
+PR: #153 (https://github.com/coctostan/pals/pull/153) — MERGED at 2026-05-01T12:20:58Z.
+CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation on main passed Pi 210/210 and cross-harness 124/124; artifact consistency check PASS.
+Working tree: main synced with origin/main after PR #153 merge; feature branch deleted locally and remotely.
 Prior PRs: #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
