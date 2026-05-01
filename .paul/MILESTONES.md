@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.54 Contextual Verbosity Paring in progress | `.paul/ROADMAP.md` phases 230-233; Phase 230 complete; Phase 231 ready to plan |
+| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234-241; Phase 234 complete, Phase 235 ready to plan |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -72,14 +72,16 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.51 Pi-Native Validation Classification | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-VALIDATION-CLASSIFICATION-CONTRACT.md` |
 | v2.52 Legacy Retention / Install-Surface Cleanup | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md` |
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PI-INTEGRATION-EFFECTIVENESS-CANDIDATE-DESIGN.md` |
+| v2.54 Contextual Verbosity Paring | 2026-04-30 | same-day | 4 phases, 4 plans | `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` |
 
 ## Current / Future Milestone Pointer
 
-v2.54 Contextual Verbosity Paring is in progress. It should reduce wasteful PALS agent verbosity and make all skills minimally verbose while preserving required lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow safety, parent-owned APPLY, and evidence closure. Phase 230 Baseline Verbosity Audit is complete; Phase 231 Process / Workflow Verbosity Paring is ready to plan.
+v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phase 234 Product Reality + Drift Audit is complete; Phase 235 Risk-Tiered Lifecycle Contract is ready to plan.
+
 ## Archive
 
 - Detailed history and Key Decisions: [.paul/archive/milestones/MILESTONES-v0-v2.42.md](archive/milestones/MILESTONES-v0-v2.42.md)
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated after Phase 230 UNIFY: 2026-04-30.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01.*
