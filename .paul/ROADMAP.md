@@ -29,8 +29,8 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.55 Maintainability & Product Reality Hardening**
-Status: 🚧 In Progress
-Phases: 8 of 8 complete after PR #156 merges; Phase 241 UNIFY complete and awaiting merge gate.
+Status: ✅ Complete (closed 2026-05-01 with PR #156)
+Phases: 8 of 8 complete; PR #156 merged; milestone closed.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -41,7 +41,7 @@ Phases: 8 of 8 complete after PR #156 merges; Phase 241 UNIFY complete and await
 | 238 | Pi Extension Modularization Contract | 1/1 | ✅ Complete | 2026-05-01 |
 | 239 | Bounded Pi Extension Extraction Spike | 1/1 | ✅ Complete | 2026-05-01 |
 | 240 | Product Happy Path + Scenario Evidence | 1/1 | ✅ Complete | 2026-05-01 |
-| 241 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete (pending PR #156 merge) | 2026-05-01 |
+| 241 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete | 2026-05-01 |
 
 ### Phase 234: Product Reality + Drift Audit
 Focus: Create a grounded maintainability/product audit before changing implementation, including stale artifacts, oversized files, brittle validation areas, onboarding friction, and measurement gaps.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 241 UNIFY complete; v2.55 closure awaiting PR #156 merge gate; v2.56 recommendation = Pi extension submodule extraction wave.*
+*Last updated: 2026-05-01 — Phase 241 complete; PR #156 merged; v2.55 Maintainability & Product Reality Hardening closed; v2.56 recommendation = Pi extension submodule extraction wave (alternates: local context-cost evidence, demo project preset).*

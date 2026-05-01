@@ -9,9 +9,9 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — UNIFY complete; awaiting merge gate
-Plan: 241-01 complete (SUMMARY written); PR #156 OPEN against main
-Status: UNIFY complete; loop closed pending PR #156 merge gate
+Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — ✅ Complete (PR #156 merged); v2.55 closed
+Plan: 241-01 complete (SUMMARY written); PR #156 MERGED to main
+Status: Loop complete (PLAN ✓ APPLY ✓ UNIFY ✓); v2.55 closed; ready to scope v2.56
 Last activity: 2026-05-01T19:35:00Z — UNIFY complete: SUMMARY written at .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md; v2.55 closure evidence captured; v2.56 recommendation = Pi extension submodule extraction wave
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete after PR #156 merges; UNIFY complete; awaiting merge gate)
+- v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Plan 241-01 complete; loop closed; awaiting PR #156 merge gate to close v2.55]
+  ✓        ✓        ✓     [Plan 241-01 complete; PR #156 merged; v2.55 closed; ready to scope v2.56]
 ```
 
 ## Accumulated Context
@@ -295,17 +295,16 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 Branch: main (Phase 240 closed; feature/240-first-run-happy-path squash-merged and deleted)
 Last commit on main: `30fb2b25` Phase 240: first-run happy path + scenario evidence (docs-only) (#155).
-PR: #155 (https://github.com/coctostan/pals/pull/155) — MERGED (squash + delete-branch). CI Socket Security: Project Report SUCCESS; Socket Security: Pull Request Alerts SUCCESS.
-CI: post-merge local on `main` Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
-Working tree: clean on `feature/241-evidence-closure-next-roadmap-decision`; 0 behind origin/main; 5+ ahead (Phase 241-01 commits + UNIFY SUMMARY).
-Prior PRs: #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
-Open PR: #156 — Phase 241-01 evidence closure + Pi extension install-surface generalization (https://github.com/coctostan/pals/pull/156); awaiting CI + merge.
+PR: #156 (https://github.com/coctostan/pals/pull/156) — MERGED 2026-05-01T20:38:54Z (squash + delete-branch). No CI workflows configured (`.github/workflows/` absent); statusCheckRollup empty (no failing checks). Pi 1..212/0, cross-harness 1..127/0, artifact_consistency PASS, `git diff --check` clean prior to merge.
+Working tree: clean on `main`; 0 behind / 0 ahead origin/main after fetch + pull.
+Prior PRs: #156 merged (Phase 241-01 evidence closure + Pi extension install-surface generalization — closes v2.55); #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Open PR: none.
 
 ## Session Continuity
 
-Last session: 2026-05-01T19:35:00Z
-Stopped at: Phase 241 UNIFY complete; SUMMARY written; awaiting PR #156 CI + merge gate.
-Next action: Wait for PR #156 CI; merge via merge gate (`gh pr merge 156 --squash --delete-branch`) to close v2.55, then run `/paul:milestone` to scope v2.56 (recommended focus: Pi extension submodule extraction wave).
+Last session: 2026-05-01T20:39:00Z
+Stopped at: Phase 241 UNIFY complete and PR #156 merged; v2.55 Maintainability & Product Reality Hardening is fully closed (8 of 8 phases complete); local `main` synced.
+Next action: Run `/paul:milestone` to scope v2.56 (recommended focus per Phase 241 SUMMARY: Pi extension submodule extraction wave; alternates: local context-cost evidence, demo project preset).
 Resume file: .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md
 Resume context:
 - Plan 241-01 exists at `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md` and is awaiting explicit approval.
