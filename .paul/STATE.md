@@ -295,12 +295,12 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main (v2.56 Phase 242 Plan 242-01 created; awaiting APPLY approval)
+Branch: feature/242-extension-extraction-target-baseline (Phase 242 APPLY complete; PR #157 open)
 Last commit on main: `7fcf2b79` milestone: close v2.55 Maintainability & Product Reality Hardening.
 PR: #156 (https://github.com/coctostan/pals/pull/156) — MERGED 2026-05-01T20:38:54Z (squash + delete-branch). No CI workflows configured (`.github/workflows/` absent); statusCheckRollup empty (no failing checks). Pi 1..212/0, cross-harness 1..127/0, artifact_consistency PASS, `git diff --check` clean prior to merge.
-Working tree: v2.56 milestone + Phase 242 planning lifecycle artifacts modified locally (`.paul/ROADMAP.md`, `.paul/STATE.md`, `.paul/MILESTONES.md`, `.paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md`); phase directories 242-245 exist locally.
+Working tree: clean after APPLY commit `5cd460f9`; Phase 242 baseline doc and lifecycle metadata pushed to PR #157.
 Prior PRs: #156 merged (Phase 241-01 evidence closure + Pi extension install-surface generalization — closes v2.55); #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
-Open PR: none.
+Open PR: #157 (https://github.com/coctostan/pals/pull/157) — Phase 242 extraction target baseline; checks queued/in progress at APPLY postflight (Socket Security queued/in progress).
 
 ## Session Continuity
 
