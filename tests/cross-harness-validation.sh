@@ -798,6 +798,25 @@ else
   tap_not_ok "Pi extension S5 module-activity-parsing keeps DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth across drivers/pi/extensions/" "Expected drivers/pi/extensions/module-activity-parsing.ts to export DISPATCH_MARKER and MODULE_REPORTS_HEADER once, pals-hooks.ts to import from ./module-activity-parsing, and pals-hooks.ts to no longer declare those constants inline"
 fi
 
+# Phase 241: shared install-boundary + driver.yaml audit invariant across docs and Pi installer.
+# Cross-harness scope: docs/skill-map both name the multi-file extension install boundary, and the
+# Pi installer + uninstaller drive a generalized drivers/pi/extensions/*.ts source set.
+PI_EXT_README="$REPO_ROOT/drivers/pi/extensions/README.md"
+PI_SKILL_MAP="$REPO_ROOT/drivers/pi/skill-map.md"
+PI_INSTALL_SH_CH="$REPO_ROOT/drivers/pi/install.sh"
+PI_UNINSTALL_SH_CH="$REPO_ROOT/drivers/pi/uninstall.sh"
+if [ -f "$PI_EXT_README" ] && [ -f "$PI_SKILL_MAP" ] && [ -f "$PI_INSTALL_SH_CH" ] && [ -f "$PI_UNINSTALL_SH_CH" ] \
+  && grep -Fq 'drivers/pi/extensions/*.ts' "$PI_EXT_README" 2>/dev/null \
+  && grep -Fq 'driver.yaml' "$PI_EXT_README" 2>/dev/null \
+  && grep -Fq 'drivers/pi/extensions/*.ts' "$PI_SKILL_MAP" 2>/dev/null \
+  && grep -Fq 'driver.yaml' "$PI_SKILL_MAP" 2>/dev/null \
+  && grep -Eq 'for[[:space:]]+ext_src[[:space:]]+in[[:space:]]+"\$EXT_SRC_DIR"/\*\.ts' "$PI_INSTALL_SH_CH" 2>/dev/null \
+  && grep -Eq 'for[[:space:]]+ext_src[[:space:]]+in[[:space:]]+"\$PALS_ROOT_RESOLVED/drivers/pi/extensions"/\*\.ts' "$PI_UNINSTALL_SH_CH" 2>/dev/null; then
+  tap_ok "Phase 241 multi-file Pi extension install boundary + driver.yaml audit are consistent across drivers/pi docs and install scripts"
+else
+  tap_not_ok "Phase 241 multi-file Pi extension install boundary + driver.yaml audit are consistent across drivers/pi docs and install scripts" "Expected drivers/pi/extensions/README.md and drivers/pi/skill-map.md to name 'drivers/pi/extensions/*.ts' and 'driver.yaml', and install.sh/uninstall.sh to iterate the generalized source set"
+fi
+
 ARTIFACT_SLICE_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md"
 PI_VALIDATION_SUITE="$REPO_ROOT/tests/pi-end-to-end-validation.sh"
 CROSS_VALIDATION_SUITE="$REPO_ROOT/tests/cross-harness-validation.sh"

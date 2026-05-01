@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 241 of 241 (v2.55 closure phase) — Ready to plan
-Plan: not started
-Status: Ready to plan
-Last activity: 2026-05-01 — Phase 240 complete and transitioned; ready for /paul:plan for Phase 241
+Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — UNIFY complete; awaiting merge gate
+Plan: 241-01 complete (SUMMARY written); PR #156 OPEN against main
+Status: UNIFY complete; loop closed pending PR #156 merge gate
+Last activity: 2026-05-01T19:35:00Z — UNIFY complete: SUMMARY written at .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md; v2.55 closure evidence captured; v2.56 recommendation = Pi extension submodule extraction wave
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [████████░░] 87.5% (7 of 8 phases complete; Phase 241 v2.55 closure phase remaining)
+- v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete after PR #156 merges; UNIFY complete; awaiting merge gate)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 241 ready to plan]
+  ✓        ✓        ✓     [Plan 241-01 complete; loop closed; awaiting PR #156 merge gate to close v2.55]
 ```
 
 ## Accumulated Context
@@ -297,20 +297,19 @@ Branch: main (Phase 240 closed; feature/240-first-run-happy-path squash-merged a
 Last commit on main: `30fb2b25` Phase 240: first-run happy path + scenario evidence (docs-only) (#155).
 PR: #155 (https://github.com/coctostan/pals/pull/155) — MERGED (squash + delete-branch). CI Socket Security: Project Report SUCCESS; Socket Security: Pull Request Alerts SUCCESS.
 CI: post-merge local on `main` Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
-Working tree: clean on `main` after Phase 240 UNIFY metadata write; 0 behind / 0 ahead origin/main.
-Prior PRs: #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Working tree: clean on `feature/241-evidence-closure-next-roadmap-decision`; 0 behind origin/main; 5+ ahead (Phase 241-01 commits + UNIFY SUMMARY).
+Prior PRs: #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Open PR: #156 — Phase 241-01 evidence closure + Pi extension install-surface generalization (https://github.com/coctostan/pals/pull/156); awaiting CI + merge.
 
 ## Session Continuity
 
-Last session: 2026-05-01 (Phase 240 complete and transitioned; paused before Phase 241 plan creation)
-Stopped at: Phase 240 loop closed and transitioned (PR #155 merged; main 0/0 with origin); user paused before /paul:plan for Phase 241.
-Next action: `/paul:plan` to create Plan 241-01 for the v2.55 closure phase.
-Resume file: .paul/HANDOFF-2026-05-01-phase-241-ready-to-plan.md
+Last session: 2026-05-01T19:35:00Z
+Stopped at: Phase 241 UNIFY complete; SUMMARY written; awaiting PR #156 CI + merge gate.
+Next action: Wait for PR #156 CI; merge via merge gate (`gh pr merge 156 --squash --delete-branch`) to close v2.55, then run `/paul:milestone` to scope v2.56 (recommended focus: Pi extension submodule extraction wave).
+Resume file: .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md
 Resume context:
-- Phase 240 (Product Happy Path + Scenario Evidence) shipped: new `docs/PALS-FIRST-RUN-HAPPY-PATH.md` (201 lines, five named protections, literal `Authority: Derived aid only`, What This Scenario Does NOT Prove section, 5 onboarding-friction bullets, reading map, After the Loop — Durable Artifacts section); one bounded README pointer line under Quick Start; one bounded TAP marker assertion in `tests/cross-harness-validation.sh` (cross-harness `1..125 → 1..126`). Pi suite unchanged at `1..211`. Helpers, Pi suite, install/uninstall, drivers/, kernel/, modules/, existing PI-NATIVE / PALS contracts untouched.
-- PR #155 squash-merged into main as `30fb2b25`. Post-merge: Pi 211/211, cross-harness 126/126, artifact-consistency PASS, 0 behind / 0 ahead origin/main, `git diff --check` clean.
-- Post-unify recorded: `.paul/CODI-HISTORY.md` row appended (`skipped-no-symbols` for 240-01, R/U/K/Symbols `—`, blast_radius `n`); `.paul/quality-history.md` row appended (`211 pass + 126 pass`, direction `↑ improving`).
-- Carry-forward from Phase 239 (install-surface generalization for `drivers/pi/install.sh` / `uninstall.sh`; `drivers/pi/driver.yaml` multi-file extension audit) remains explicitly deferred to Phase 241 / v2.56. Phase 240 did not touch any forbidden surface. Recorded in 240-01-SUMMARY.md "Carry-Forward" section.
-- v2.55 Maintainability & Product Reality Hardening progresses to 7 of 8 phases complete (87.5%); Phase 241 (the v2.55 closure phase) is the natural home for the install-surface generalization and any other v2.55-closing work.
-- Validation truth (post-merge on main): Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
-- Pause handoff at `.paul/HANDOFF-2026-05-01-phase-241-ready-to-plan.md` carries the Phase 241 framing notes, the carry-forward candidate list (install-surface generalization, driver.yaml audit, local context-cost evidence measurement, S1–S8 Pi extension extractions, optional demo project preset), the hard-boundary list, and the explicit "NOT carried forward" list so the next session does not re-litigate.
+- Plan 241-01 exists at `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md` and is awaiting explicit approval.
+- Risky-tier scope: supported Pi runtime install boundary (`drivers/pi/install.sh` / `drivers/pi/uninstall.sh`) plus bounded docs and validation guardrails.
+- Planned non-lifecycle files: `drivers/pi/install.sh`, `drivers/pi/uninstall.sh`, `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, `tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`.
+- Driver.yaml is read/audit-only unless APPLY proves the existing `extensions/` directory entry is insufficient; if insufficient, stop and ask for guidance before editing it.
+- Validation caps: Pi `1..211` → at most `1..212`; cross-harness `1..126` → at most `1..127`; both must pass with zero failures plus artifact-consistency PASS and `git diff --check` clean.

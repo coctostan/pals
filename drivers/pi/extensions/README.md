@@ -195,12 +195,20 @@ The extension registers these slash commands:
 |----------|---------------|---------|
 | Kernel files (`workflows/`, `references/`, `templates/`, `rules/`) | `~/.pi/agent/skills/pals/` | Shared markdown workflows referenced by skills and the extension |
 | Skill entry points (11 `SKILL.md` files) | `~/.pi/agent/skills/pals/{skill-name}/SKILL.md` | Pi skill invocation layer for `/skill:paul-*`; installer rewrites portable `../...` references to absolute install-root paths |
-| Pi extension | `~/.pi/agent/extensions/pals-hooks.ts` (+ `module-activity-parsing.ts` submodule) | Command registration, lifecycle hooks, guided workflow UX; `module-activity-parsing.ts` is the Phase 239 first-spike S5 extraction per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` |
+| Pi extension(s) | `~/.pi/agent/extensions/{name}.ts` for every `*.ts` file under repo `drivers/pi/extensions/` | Command registration, lifecycle hooks, guided workflow UX; the install surface is a source-set rule over repo-owned `drivers/pi/extensions/*.ts` files (currently `pals-hooks.ts` plus the Phase 239 first-spike S5 extraction `module-activity-parsing.ts` per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`); future extracted siblings install without per-file installer edits |
 | Project-shipped agents | `~/.pi/agent/agents/{agent-name}.md` | Helper agents such as `pals-implementer` for parent-authoritative, task-bounded delegation |
 | Module registry | `~/.pi/agent/skills/pals/modules.yaml` | Enabled PALS module overlays (TODD, WALT, etc.) |
 These are distinct install targets. Skills and kernel files live under `~/.pi/agent/skills/pals/`, the extension lives under `~/.pi/agent/extensions/`, and project-shipped agents live under `~/.pi/agent/agents/`. Removing one surface does not transfer lifecycle ownership to Pi or remove the others; `uninstall.sh` handles the full cleanup of all targets.
 
 The root install/uninstall posture is Pi-first by default: with no `PALS_DRIVER` set, the root scripts target the supported Pi surface when `~/.pi` exists. Frozen legacy/source-only compatibility surfaces require explicit opt-in (`PALS_DRIVER=claude-code`, `PALS_DRIVER=agent-sdk`, or `PALS_DRIVER=all`). This note is cited context only; command-output truth remains authoritative for current install and validation status.
+
+## Multi-File Extension Install Boundary
+
+The Pi installer treats `drivers/pi/extensions/*.ts` as a **source set**: every repo-owned `*.ts` sibling under `drivers/pi/extensions/` is installed by basename into `~/.pi/agent/extensions/`, and the uninstaller removes only those repo-owned basenames (it never broad-deletes unrelated Pi extensions under `~/.pi/agent/extensions/`). This generalizes the earlier per-submodule special case for `pals-hooks.ts` plus `module-activity-parsing.ts`, so future extracted extension siblings install without further `install.sh` / `uninstall.sh` edits.
+
+Driver manifest audit (Phase 241): `drivers/pi/driver.yaml` already lists `extensions/` as a directory entry under `files`. That directory entry is sufficient for multi-file extension packaging — Pi packages every `*.ts` sibling under `drivers/pi/extensions/` automatically and no per-file manifest enumeration is required. `driver.yaml` is therefore left unchanged; no manifest edit is needed unless contrary evidence arises in a future phase. Source authority for the install surface remains the install/uninstall scripts plus this README; command-output truth from `bash drivers/pi/install.sh` and validation suites remains authoritative for current install status.
+
+Authority: Derived aid only. `.paul/*` artifacts, shared markdown workflows, installed `modules.yaml`, transcript-visible canonical replies, GitHub Flow command evidence, and validation command output remain authoritative.
 
 ## Development Workflow
 
