@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-01 after Phase 234 closure)
+See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phase 235 Risk-Tiered Lifecycle Contract is complete; Phase 236 Validation Suite Decomposition Baseline is ready to plan.
+**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234-236 are complete; Phase 237 Artifact Consistency Guardrails is ready to plan.
 
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 236 of 241 (Validation Suite Decomposition Baseline) — Ready to plan
+Phase: 237 of 241 (Artifact Consistency Guardrails) — Ready to plan
 Plan: Not started
-Status: Ready to plan Phase 236
-Last activity: 2026-05-01T01:22:00Z — Phase 235 complete, transitioned to Phase 236
+Status: Ready for PLAN
+Last activity: 2026-05-01T01:43:34Z — Phase 236 unified; validation-suite decomposition baseline complete
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [██░░░░░░░░] 25% (2 of 8 phases complete; Phase 236 ready to plan)
+- v2.55 Maintainability & Product Reality Hardening: [████░░░░░░] 38% (3 of 8 phases complete; Phase 237 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for Phase 236 PLAN]
+  ✓        ✓        ✓     [Loop complete; ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -150,6 +150,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.55 has been created as the next milestone: Maintainability & Product Reality Hardening will use the critical review context in `docs/PALS-CRITICAL-REVIEW-NEXT-ROADMAP.md` to make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback.
 - Phase 234 completed the v2.55 product reality + drift audit in `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md`: it ranks seven maintainability/product weaknesses, inventories validation and Pi runtime hotspots, documents artifact drift and first-run friction, identifies usefulness-evidence gaps, and maps recommendations for Phases 235-241. Validation passed Pi 209/209 and cross-harness 123/123; Phase 235 should design risk-tiered lifecycle expectations before workflow behavior changes.
 - Phase 235 completed the risk-tiered lifecycle contract in `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`: it defines tiny/doc-only, normal, risky, and hotfix tiers; per-tier evidence expectations; escalation rules; hotfix reconciliation; non-bypass rules for APPLY approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` artifact authority, command-output truth, full authoritative read fallback, no hidden Pi state, and no telemetry; and future implementation boundaries for Phases 236, 237, 240, and 241. Validation stayed green at Pi 209/209 and cross-harness 123/123.
+- Phase 236 UNIFY created `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`, recording AC results, baseline doc evidence, shared TAP helper extraction, focused marker checks, Pi 209/209, cross-harness 123/123, Workguard scope proof, module reports, and PR #151 merge-gate evidence; Phase 236 is complete and Phase 237 Artifact Consistency Guardrails is ready to plan.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -242,6 +243,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 204: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY. Active handoff archived after resume proceeded.
 - Skill audit Phase 205: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY. Process adaptation: PR #119 was manually merged before UNIFY metadata finalization; final evidence was reconciled afterward.
 - Skill audit Phase 206: `/paul`, `/carl`, TODD, and WALT invoked or active via module dispatch; post-unify WALT/SKIP/CODI/RUBY persistence recorded in SUMMARY. Active handoff archived after resume proceeded.
+| Extract TAP/reporting helpers only for the first validation-suite decomposition boundary | Phase 236 Plan 236-01 UNIFY | Future validation decomposition can reuse the safe sourced-helper pattern, but assertion logic, TAP totals, command-output truth, and structured assertion conversion require separate approved plans. |
 - Skill audit Phase 207: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed with no regression. Active handoff archived after resume proceeded. Advisory DOCS drift noted as expected Phase 208 scope; ARCH/RUBY large-file debt remains pre-existing.
 - Skill audit Phase 208: `/paul`, `/carl`, TODD, WALT, DOCS, CODI, SKIP, and RUBY invoked or active via module dispatch; post-apply and post-unify validation/persistence passed. `.gitignore` Workguard artifact ignore was added at user request and reconciled into plan scope.
 - Skill audit Phase 209: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-task, post-apply, and post-unify validation/persistence passed. Validation count increase was expected and reconciled (Pi 192→193, cross-harness 108→109).
@@ -288,21 +290,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: current `main` includes Phase 235 closure and merge-gate cleanup (see `git log`).
-PR: #150 (https://github.com/coctostan/pals/pull/150) — MERGED 2026-05-01T01:22:20Z.
-CI: PR #150 Socket Security Project Report and Pull Request Alerts passed; local UNIFY validation passed Pi 209/209 and cross-harness 123/123.
-Working tree: clean after merge-gate cleanup.
-Prior PRs: #148 merged (Phase 233 validation/evidence closure + v2.54 closure); earlier PR history archived in STATE history.
+Branch: feature/236-validation-suite-decomposition-baseline until PR #151 merge gate completes; then main.
+Last product commits: `78d22cf7` baseline doc and `3b93701e` shared TAP helper extraction.
+PR: #151 (https://github.com/coctostan/pals/pull/151) — OPEN before merge gate, checks passing.
+CI: PR checks passing (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation passed Pi 209/209 and cross-harness 123/123.
+Working tree: lifecycle metadata and history artifacts staged for UNIFY/transition commit before merge gate.
+Prior PRs: #150 merged (Phase 235 risk-tiered lifecycle contract + merge-gate cleanup); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-01T01:22:00Z
-Stopped at: Phase 235 complete, ready to plan Phase 236
-Next action: Run /paul:plan for Phase 236 Validation Suite Decomposition Baseline
+Last session: 2026-05-01T01:43:34Z
+Stopped at: Phase 236 complete; Phase 237 ready to plan
+Next action: Run /paul:plan for Phase 237 Artifact Consistency Guardrails
 Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 235 completed `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md` as a docs/design-only contract for proportional safety tiers.
-- The contract defines tiny/doc-only, normal, risky, and hotfix tiers; non-bypass rules; per-tier evidence expectations; escalation triggers; hotfix reconciliation; future implementation boundaries; and deferred/non-goals.
-- Verification evidence: focused marker checks passed; `git diff --check` passed; Pi validation passed 209/209; cross-harness validation passed 123/123; PR #150 checks passed before merge-gate handling.
-- Next phase: Phase 236 Validation Suite Decomposition Baseline should use the contract to classify validation expectations by tier without reducing command-output validation truth.
+- Phase 236 completed the validation-suite decomposition baseline and preserved Pi 209/209 plus cross-harness 123/123 validation truth.
+- Summary: `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`.
+- Next phase: 237 Artifact Consistency Guardrails.

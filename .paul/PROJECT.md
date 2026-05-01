@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-v2.55 Maintainability & Product Reality Hardening is active. Phase 234 completed the docs-first product reality + drift audit in `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md`; Phase 235 completed the risk-tiered lifecycle contract in `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`; Phase 236 should map validation-suite decomposition while preserving validation truth.
+v2.55 Maintainability & Product Reality Hardening is active. Phase 234 completed the docs-first product reality + drift audit in `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md`; Phase 235 completed the risk-tiered lifecycle contract in `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`; Phase 236 completed the validation-suite decomposition baseline in `docs/PALS-VALIDATION-SUITE-DECOMPOSITION-BASELINE.md`; Phase 237 should add artifact consistency guardrails.
 
 Phase 234 found seven ranked weaknesses: marker/prose-heavy validation suites, supported Pi runtime gravity, lifecycle/index drift, ceremony not yet proportional to risk, dense first-run product story, weaker usefulness evidence than structural evidence, and high cold-history text volume.
 
@@ -57,9 +57,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.52 Legacy Retention / Install-Surface Cleanup | Complete | Cleaned frozen legacy/installation surfaces only where validation classification proved it safe; root install/uninstall are Pi-first by default, frozen legacy/source-only paths require explicit opt-in, and final validation passed Pi 205/205 plus cross-harness 121/121. |
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | Complete | Found context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; final validation passed Pi 208/208 and cross-harness 122/122. |
 | v2.54 Contextual Verbosity Paring | Complete | Reduced wasteful PALS agent verbosity and made skills minimally verbose without weakening required lifecycle/evidence gates; final validation passed Pi 209/209 and cross-harness 123/123. |
-| v2.55 Maintainability & Product Reality Hardening | In progress | Makes PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift. Phases 234-235 are complete; Phase 236 Validation Suite Decomposition Baseline is ready to plan. |
+| v2.55 Maintainability & Product Reality Hardening | In progress | Makes PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift. Phases 234-236 are complete; Phase 237 Artifact Consistency Guardrails is ready to plan. |
 
-Current milestone pointer: v2.55 Maintainability & Product Reality Hardening is active. Phases 234-235 are complete; Phase 236 Validation Suite Decomposition Baseline is ready to plan. Phases 237-241 remain outlined in `.paul/ROADMAP.md`.
+Current milestone pointer: v2.55 Maintainability & Product Reality Hardening is active. Phases 234-236 are complete; Phase 237 Artifact Consistency Guardrails is ready to plan. Phases 238-241 remain outlined in `.paul/ROADMAP.md`.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-CRITICAL-REVIEW-NEXT-ROADMAP.md` for v2.55 source context, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
