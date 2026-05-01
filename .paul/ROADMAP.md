@@ -36,8 +36,8 @@ Phases: 3 of 8 complete; Phase 237 ready to plan.
 |-------|------|-------|--------|-----------|
 | 234 | Product Reality + Drift Audit | 1/1 | ✅ Complete | 2026-05-01 |
 | 235 | Risk-Tiered Lifecycle Contract | 1/1 | ✅ Complete | 2026-05-01 |
-| 236 | Validation Suite Decomposition Baseline | TBD | Not started | - |
-| 237 | Artifact Consistency Guardrails | TBD | Not started | - |
+| 236 | Validation Suite Decomposition Baseline | 1/1 | ✅ Complete | 2026-05-01 |
+| 237 | Artifact Consistency Guardrails | TBD | 🔵 Ready to plan | - |
 | 238 | Pi Extension Modularization Contract | TBD | Not started | - |
 | 239 | Bounded Pi Extension Extraction Spike | TBD | Not started | - |
 | 240 | Product Happy Path + Scenario Evidence | TBD | Not started | - |
