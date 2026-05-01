@@ -28,9 +28,18 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.55 Maintainability & Product Reality Hardening**
-Status: ✅ Complete (closed 2026-05-01 with PR #156)
-Phases: 8 of 8 complete; PR #156 merged; milestone closed.
+None active. v2.55 Maintainability & Product Reality Hardening closed 2026-05-01 with PR #156.
+
+## Next Milestone
+
+v2.56 — unscoped. Recommended focus per Phase 241 SUMMARY: **Pi extension submodule extraction wave** (continue extracting bounded submodules from `pals-hooks.ts` per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`, leveraging the now-generalized install surface so future submodule extractions need no installer edits). Alternates: local context-cost evidence; demo project preset.
+
+Run `/paul:discuss-milestone` or `/paul:milestone` to scope v2.56.
+
+### Latest completed milestone: v2.55 Maintainability & Product Reality Hardening
+Result: Phases 234-241 complete. v2.55 closed after PR #156 merged 2026-05-01. Shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision. Final validation: Pi 212/212 and cross-harness 127/127.
+
+Phase status (closed):
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -42,44 +51,6 @@ Phases: 8 of 8 complete; PR #156 merged; milestone closed.
 | 239 | Bounded Pi Extension Extraction Spike | 1/1 | ✅ Complete | 2026-05-01 |
 | 240 | Product Happy Path + Scenario Evidence | 1/1 | ✅ Complete | 2026-05-01 |
 | 241 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete | 2026-05-01 |
-
-### Phase 234: Product Reality + Drift Audit
-Focus: Create a grounded maintainability/product audit before changing implementation, including stale artifacts, oversized files, brittle validation areas, onboarding friction, and measurement gaps.
-Plans: 234-01 complete — summary at `.paul/phases/234-product-reality-drift-audit/234-01-SUMMARY.md`
-
-### Phase 235: Risk-Tiered Lifecycle Contract
-Focus: Design proportional safety tiers for tiny, normal, risky, and hotfix work without weakening required approval, validation truth, GitHub Flow, module blocker, or lifecycle-write gates.
-Plans: 235-01 complete — summary at `.paul/phases/235-risk-tiered-lifecycle-contract/235-01-SUMMARY.md`; contract at `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`.
-
-### Phase 236: Validation Suite Decomposition Baseline
-Focus: Document and begin splitting validation concerns into maintainable sections/helpers while preserving current validation counts and command-output truth.
-Plans: 236-01 complete — summary at `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`; baseline doc at `docs/PALS-VALIDATION-SUITE-DECOMPOSITION-BASELINE.md`.
-
-### Phase 237: Artifact Consistency Guardrails
-Focus: Add lightweight checks for STATE, ROADMAP, MILESTONES, SUMMARY, and session-continuity drift.
-Plans: 237-01 complete — summary at `.paul/phases/237-artifact-consistency-guardrails/237-01-SUMMARY.md`; contract at `docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md`.
-
-### Phase 238: Pi Extension Modularization Contract
-Focus: Define extraction boundaries for `drivers/pi/extensions/pals-hooks.ts` and select the first low-risk subsystem to extract.
-Plans: 238-01 complete — summary at `.paul/phases/238-pi-extension-modularization-contract/238-01-SUMMARY.md`; contract at `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (selected first-spike candidate: `module-activity-parsing` / S5).
-
-### Phase 239: Bounded Pi Extension Extraction Spike
-Focus: Extract one pure subsystem, validate behavior preservation, and prove the modularization path without broad runtime churn.
-Plans: 239-01 complete — summary at `.paul/phases/239-bounded-pi-extension-extraction-spike/239-01-SUMMARY.md`; new module at `drivers/pi/extensions/module-activity-parsing.ts`; PR #154 merged; Pi 211/211 and cross-harness 125/125.
-
-### Phase 240: Product Happy Path + Scenario Evidence
-Focus: Create a simple first-run path and at least one scenario-style validation/story that shows user value.
-Plans: 240-01 complete — summary at `.paul/phases/240-product-happy-path-scenario-evidence/240-01-SUMMARY.md`; new doc at `docs/PALS-FIRST-RUN-HAPPY-PATH.md` (201 lines, five named protections, literal `Authority: Derived aid only`, What This Scenario Does NOT Prove section, 5 onboarding-friction bullets); one bounded README pointer line; one bounded cross-harness TAP marker assertion (suite `1..125 → 1..126`); Pi suite unchanged at `1..211`; PR #155 merged.
-
-### Phase 241: Evidence Closure + Next Roadmap Decision
-Focus: Reconcile validation, drift, and maintainability evidence, then decide whether v2.56 should focus on validation architecture, Pi extension modularization, or module output schema.
-Plans: 241-01 complete — summary at `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md`; generalized Pi extension install/uninstall source-set rule over `drivers/pi/extensions/*.ts`; recorded `driver.yaml` audit decision (existing `extensions/` directory entry sufficient — no manifest edit); bounded validation guardrails (Pi `1..212/0`, cross-harness `1..127/0`); v2.56 recommendation = Pi extension submodule extraction wave; PR #156 OPEN against main.
-
-### Previous milestone: v2.54 Contextual Verbosity Paring
-Result: Phases 230-233 complete. v2.54 established contextual verbosity guidance, compact dispatch skip/no-scope evidence, concise-by-default Pi skill wrappers, and final closure evidence protected by Pi 209/209 plus cross-harness 123/123 validation.
-
-### Latest completed milestone: v2.54 Contextual Verbosity Paring
-Result: Phases 230-233 complete. v2.54 closed after PR #148 merged; final validation passed Pi 209/209 and cross-harness 123/123.
 
 ## Completed Milestones
 
@@ -96,6 +67,7 @@ Result: Phases 230-233 complete. v2.54 closed after PR #148 merged; final valida
 | v2.52 Legacy Retention / Install-Surface Cleanup | 2026-04-30 | 222-225 | Established safe cleanup boundaries, made root install/uninstall Pi-first by default with explicit frozen legacy/source-only opt-ins, surfaced posture in docs/reports/validation, and closed with final evidence reconciliation; validation passes Pi 205/205 and cross-harness 121/121. | active artifacts |
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | 2026-04-30 | 226-229 | Identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; validation passes Pi 208/208 and cross-harness 122/122. | active artifacts |
 | v2.54 Contextual Verbosity Paring | 2026-04-30 | 230-233 | Audited PALS verbosity surfaces, added contextual verbosity and compact dispatch guidance, pared Pi skill wrappers, and closed with validation/evidence guardrails; validation passes Pi 209/209 and cross-harness 123/123. | active artifacts |
+| v2.55 Maintainability & Product Reality Hardening | 2026-05-01 | 234-241 | Made PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift; shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision; validation passes Pi 212/212 and cross-harness 127/127. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 

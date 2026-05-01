@@ -8,11 +8,11 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 
 ## Current Position
 
-Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — ✅ Complete (PR #156 merged); v2.55 closed
-Plan: 241-01 complete (SUMMARY written); PR #156 MERGED to main
-Status: Loop complete (PLAN ✓ APPLY ✓ UNIFY ✓); v2.55 closed; ready to scope v2.56
-Last activity: 2026-05-01T19:35:00Z — UNIFY complete: SUMMARY written at .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md; v2.55 closure evidence captured; v2.56 recommendation = Pi extension submodule extraction wave
+Milestone: Awaiting next milestone (v2.55 Maintainability & Product Reality Hardening closed 2026-05-01 with PR #156)
+Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — ✅ Complete; v2.55 closed (no active phase pending v2.56 scoping)
+Plan: None
+Status: Milestone v2.55 complete — ready for next milestone
+Last activity: 2026-05-01T20:45:00Z — v2.55 milestone closed: MILESTONES.md entry added, PROJECT.md evolved to v2.55 Complete, ROADMAP.md reorganized with Next Milestone placeholder, STATE.md cleared for next milestone
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Plan 241-01 complete; PR #156 merged; v2.55 closed; ready to scope v2.56]
+  ○        ○        ○     [Milestone v2.55 complete — ready for next milestone]
 ```
 
 ## Accumulated Context
@@ -305,10 +305,9 @@ Open PR: none.
 Last session: 2026-05-01T20:39:00Z
 Stopped at: Phase 241 UNIFY complete and PR #156 merged; v2.55 Maintainability & Product Reality Hardening is fully closed (8 of 8 phases complete); local `main` synced.
 Next action: Run `/paul:milestone` to scope v2.56 (recommended focus per Phase 241 SUMMARY: Pi extension submodule extraction wave; alternates: local context-cost evidence, demo project preset).
-Resume file: .paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md
+Resume file: .paul/MILESTONES.md
 Resume context:
-- Plan 241-01 exists at `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md` and is awaiting explicit approval.
-- Risky-tier scope: supported Pi runtime install boundary (`drivers/pi/install.sh` / `drivers/pi/uninstall.sh`) plus bounded docs and validation guardrails.
-- Planned non-lifecycle files: `drivers/pi/install.sh`, `drivers/pi/uninstall.sh`, `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, `tests/pi-end-to-end-validation.sh`, `tests/cross-harness-validation.sh`.
-- Driver.yaml is read/audit-only unless APPLY proves the existing `extensions/` directory entry is insufficient; if insufficient, stop and ask for guidance before editing it.
-- Validation caps: Pi `1..211` → at most `1..212`; cross-harness `1..126` → at most `1..127`; both must pass with zero failures plus artifact-consistency PASS and `git diff --check` clean.
+- v2.55 Maintainability & Product Reality Hardening closed 2026-05-01 with PR #156. All 8 phases (234–241) complete.
+- Final v2.55 validation: Pi `1..212/0`, cross-harness `1..127/0`, artifact_consistency PASS.
+- Next milestone v2.56 is unscoped. Recommended focus per Phase 241 SUMMARY: Pi extension submodule extraction wave (continue extracting bounded submodules from `pals-hooks.ts` per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`, leveraging the now-generalized install surface). Alternates: local context-cost evidence, demo project preset.
+- Run `/paul:discuss-milestone` to explore scope, or `/paul:milestone` to create v2.56 directly.
