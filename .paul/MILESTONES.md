@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234-241; Phases 234-239 complete, Phase 240 Product Happy Path + Scenario Evidence ready to plan |
+| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234–241; Phases 234–240 complete (7 of 8, 87.5%), Phase 241 (v2.55 closure phase) ready to plan |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -76,7 +76,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phases 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, 236 Validation Suite Decomposition Baseline, 237 Artifact Consistency Guardrails, 238 Pi Extension Modularization Contract, and 239 Bounded Pi Extension Extraction Spike are complete (6 of 8 phases, 75%); Phase 240 Product Happy Path + Scenario Evidence is ready to plan.
+v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phases 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, 236 Validation Suite Decomposition Baseline, 237 Artifact Consistency Guardrails, 238 Pi Extension Modularization Contract, 239 Bounded Pi Extension Extraction Spike, and 240 Product Happy Path + Scenario Evidence are complete (7 of 8 phases, 87.5%); Phase 241 (the v2.55 closure phase — the natural home for the Phase 239 install-surface generalization carry-forward and any other v2.55-closing work) is ready to plan.
 
 ## Archive
 
@@ -84,4 +84,4 @@ v2.55 Maintainability & Product Reality Hardening is in progress. It should make
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234-236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234-237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234-238 complete and Phase 239 ready: 2026-05-01; updated for Phases 234-239 complete and Phase 240 ready: 2026-05-01.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234–236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234–237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234–238 complete and Phase 239 ready: 2026-05-01; updated for Phases 234–239 complete and Phase 240 ready: 2026-05-01; updated for Phases 234–240 complete and Phase 241 ready: 2026-05-01.*

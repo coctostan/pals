@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234-238 are complete; Phase 239 Bounded Pi Extension Extraction Spike is ready to plan.
+**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234–240 are complete (PR #155 merged, Phase 240 first-run happy-path scenario doc shipped); Phase 241 (v2.55 closure) is ready to plan.
 
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 240 of 241 (Product Happy Path + Scenario Evidence) — Active (UNIFY)
-Plan: 240-01 — UNIFY drafted; merge gate pending on PR #155
-Status: SUMMARY drafted at .paul/phases/240-product-happy-path-scenario-evidence/240-01-SUMMARY.md; merge gate enforcement (PR #155) in progress
-Last activity: 2026-05-01 — UNIFY 240-01 SUMMARY drafted (Pi 211/211, cross-harness 126/126, artifact-consistency PASS); about to enforce merge gate on PR #155
+Phase: 241 of 241 (v2.55 closure phase) — Ready to plan
+Plan: not started
+Status: Ready to plan
+Last activity: 2026-05-01 — Phase 240 complete and transitioned; ready for /paul:plan for Phase 241
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [████████░░] 87.5% (7 of 8 phases at SUMMARY-drafted; Phase 240 plan 240-01 UNIFY in progress, merge gate pending)
+- v2.55 Maintainability & Product Reality Hardening: [████████░░] 87.5% (7 of 8 phases complete; Phase 241 v2.55 closure phase remaining)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ◐     [Plan 240-01 SUMMARY drafted; merge gate enforcement on PR #155 next]
+  ○        ○        ○     [Phase 241 ready to plan]
 ```
 
 ## Accumulated Context
@@ -293,24 +293,23 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/240-first-run-happy-path (Phase 240 APPLY)
-Last commit on feature branch: `31c7ec9a` Phase 240: first-run happy path + scenario evidence (docs-only).
-Last commit on main: `0128521a` Phase 239 UNIFY: post-merge state metadata sync.
-PR: #155 (https://github.com/coctostan/pals/pull/155) — OPEN, MERGEABLE; CI rolling up after push at 2026-05-01.
-CI: pre-APPLY local Pi 211/211 and cross-harness 125/125 baseline; post-APPLY local Pi 211/211 (unchanged) and cross-harness 126/126; artifact-consistency PASS. PR-side CI (Socket Security, etc.) pending at APPLY-time and is informational here; UNIFY enforces the merge gate.
-Working tree: clean on `feature/240-first-run-happy-path` after Phase 240 APPLY commit; 0 behind / 0 ahead origin/main on the base branch.
+Branch: main (Phase 240 closed; feature/240-first-run-happy-path squash-merged and deleted)
+Last commit on main: `30fb2b25` Phase 240: first-run happy path + scenario evidence (docs-only) (#155).
+PR: #155 (https://github.com/coctostan/pals/pull/155) — MERGED (squash + delete-branch). CI Socket Security: Project Report SUCCESS; Socket Security: Pull Request Alerts SUCCESS.
+CI: post-merge local on `main` Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
+Working tree: clean on `main` after Phase 240 UNIFY metadata write; 0 behind / 0 ahead origin/main.
 Prior PRs: #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-01 (Phase 240 APPLY complete; UNIFY pending)
-Stopped at: Phase 240 APPLY complete and pushed; PR #155 OPEN; ready for `/paul:unify`
-Next action: Run `/paul:unify .paul/phases/240-product-happy-path-scenario-evidence/240-01-PLAN.md`
-Resume file: .paul/handoffs/archive/HANDOFF-2026-05-01-phase-240-plan-awaiting-approval.md
+Last session: 2026-05-01 (Phase 240 complete and transitioned; ready to plan Phase 241)
+Stopped at: Phase 240 complete and transitioned; ready to plan Phase 241 (v2.55 closure phase).
+Next action: `/paul:plan` to create Plan 241-01 for the v2.55 closure phase.
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 240 (Product Happy Path + Scenario Evidence) plan 240-01 is APPLY-complete on `feature/240-first-run-happy-path` and pushed as PR #155 against `main`. Tier: tiny / doc-only.
-- APPLY shipped: new `docs/PALS-FIRST-RUN-HAPPY-PATH.md` (201 lines; literal `Authority: Derived aid only`; five named protections; What This Scenario Does NOT Prove section; 5 onboarding-friction bullets); one bounded README pointer line under Quick Start; one bounded TAP marker assertion in `tests/cross-harness-validation.sh` (cross-harness now `1..126`). Pi suite unchanged at `1..211`. Helpers, Pi suite, install/uninstall, drivers/, kernel/, modules/, existing PI-NATIVE / PALS contracts untouched.
-- Validation truth at APPLY: Pi `1..211 / Passed: 211 / Failed: 0`; cross-harness `1..126 / Passed: 126 / Failed: 0`; artifact-consistency PASS; `git diff --check` clean. AC-1 through AC-5 pre-met locally.
-- Carry-forward from Phase 239 (install-surface generalization, `drivers/pi/driver.yaml` audit) remains explicitly deferred to Phase 241 / v2.56; Phase 240 did not touch any forbidden surface.
-- UNIFY must enforce the GitHub Flow merge gate: confirm PR #155 CI green, base 0-behind, then merge (squash + delete-branch), and write `.paul/phases/240-product-happy-path-scenario-evidence/240-01-SUMMARY.md` plus the post-unify hooks (CODI history append — likely `skipped-no-symbols` for docs-only — and quality-history append).
-- Validation truth: Pi 211/211, cross-harness 125/125, artifact consistency check PASS.
+- Phase 240 (Product Happy Path + Scenario Evidence) shipped: new `docs/PALS-FIRST-RUN-HAPPY-PATH.md` (201 lines, five named protections, literal `Authority: Derived aid only`, What This Scenario Does NOT Prove section, 5 onboarding-friction bullets, reading map, After the Loop — Durable Artifacts section); one bounded README pointer line under Quick Start; one bounded TAP marker assertion in `tests/cross-harness-validation.sh` (cross-harness `1..125 → 1..126`). Pi suite unchanged at `1..211`. Helpers, Pi suite, install/uninstall, drivers/, kernel/, modules/, existing PI-NATIVE / PALS contracts untouched.
+- PR #155 squash-merged into main as `30fb2b25`. Post-merge: Pi 211/211, cross-harness 126/126, artifact-consistency PASS, 0 behind / 0 ahead origin/main, `git diff --check` clean.
+- Post-unify recorded: `.paul/CODI-HISTORY.md` row appended (`skipped-no-symbols` for 240-01, R/U/K/Symbols `—`, blast_radius `n`); `.paul/quality-history.md` row appended (`211 pass + 126 pass`, direction `↑ improving`).
+- Carry-forward from Phase 239 (install-surface generalization for `drivers/pi/install.sh` / `uninstall.sh`; `drivers/pi/driver.yaml` multi-file extension audit) remains explicitly deferred to Phase 241 / v2.56. Phase 240 did not touch any forbidden surface. Recorded in 240-01-SUMMARY.md "Carry-Forward" section.
+- v2.55 Maintainability & Product Reality Hardening progresses to 7 of 8 phases complete (87.5%); Phase 241 (the v2.55 closure phase) is the natural home for the install-surface generalization and any other v2.55-closing work.
+- Validation truth (post-merge on main): Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
