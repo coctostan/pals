@@ -286,10 +286,10 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: feature/235-risk-tiered-lifecycle-contract
-Last commit: latest pushed `main` after merge-gate cleanup (see `git log`; PR #149 squash merge commit: 215dbda9); Phase 235 APPLY work is pending commit/push on feature branch.
-PR: #149 (https://github.com/coctostan/pals/pull/149) — MERGED 2026-05-01T00:28:59Z; Phase 235 PR not created yet.
-CI: Last merged PR checks passed; Phase 235 local APPLY validation passed Pi 209/209 and cross-harness 123/123.
-Working tree: Phase 235 APPLY changes pending (docs contract plus PAUL lifecycle artifacts).
+Last commit: latest pushed Phase 235 postflight metadata commit on feature branch (see `git log`); branch pushed to origin.
+PR: #150 (https://github.com/coctostan/pals/pull/150) — OPEN for Phase 235 APPLY branch.
+CI: PR #150 Socket Security check queued as of creation; local APPLY validation passed Pi 209/209 and cross-harness 123/123.
+Working tree: clean after postflight metadata commit/push, pending any CI/PR updates.
 Prior PRs: #148 merged (Phase 233 validation/evidence closure + v2.54 closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
