@@ -23,6 +23,12 @@ TOTAL=0
 # First extraction boundary: shared TAP/reporting helpers only.
 source "$REPO_ROOT/tests/helpers/tap.sh"
 
+# Phase 237 artifact consistency guardrail helper:
+# docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md defines drift classes for STATE,
+# ROADMAP, MILESTONES, latest SUMMARY frontmatter, resume file, and active handoffs.
+# Helper is safe to source (defines functions only) and reports drift only.
+source "$REPO_ROOT/tests/helpers/artifact_consistency.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────
 
 TEMP_DIRS=()
@@ -1501,7 +1507,8 @@ tap_file_contains_all \
   "Collaborative Planning Model => Shared Invariant / Guided UI Safety" \
   "UX Readability & Color Enrichment => Pi-Supported Runtime / Guided UI Safety"
 
-# Expected TAP total after Phase 233 v2.54 closure evidence reconciliation: 1..209
+# Expected TAP total after Phase 237 artifact consistency guardrail addition: 1..210
+# (Phase 233 v2.54 closure baseline was 1..209; Phase 237 added one localized guardrail.)
 if grep -Fq "Validation Classification" "$REPO_ROOT/README.md" \
   && grep -Fq "Pi 203/203" "$REPO_ROOT/README.md" \
   && grep -Fq "cross-harness 119/119" "$REPO_ROOT/README.md" \
@@ -1584,6 +1591,15 @@ tap_file_contains_all \
   "command-output truth" \
   "Pi-supported runtime" \
   "lifecycle authority"
+
+# Phase 237 artifact consistency guardrail — localized drift check across STATE,
+# ROADMAP, MILESTONES, latest SUMMARY frontmatter, resume file, and active handoffs.
+# Authority: Derived aid only; .paul/* artifacts remain authoritative lifecycle truth.
+artifact_consistency_check "$REPO_ROOT" 2>/dev/null
+tap_check \
+  "PALS artifact consistency guardrail (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff drift)" \
+  "$?" \
+  "Artifact drift detected; see docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md and rerun tests/helpers/artifact_consistency.sh for diagnostics"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
