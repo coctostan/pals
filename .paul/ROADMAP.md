@@ -28,38 +28,59 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.54 Contextual Verbosity Paring**
-Status: ✅ Complete
-Phases: 4 of 4 complete — 2026-04-30
+**v2.55 Maintainability & Product Reality Hardening**
+Status: 🚧 In Progress
+Phases: 1 of 8 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 230 | Baseline Verbosity Audit | 230-01 | Complete | 2026-04-30 |
-| 231 | Process / Workflow Verbosity Paring | 231-01 | Complete | 2026-04-30 |
-| 232 | Skill Verbosity Pass | 232-01 | Complete | 2026-04-30 |
-| 233 | Validation + Evidence Closure | 233-01 | Complete | 2026-04-30 |
+| 234 | Product Reality + Drift Audit | 1/1 | ✅ Complete | 2026-05-01 |
+| 235 | Risk-Tiered Lifecycle Contract | TBD | Ready to plan | - |
+| 236 | Validation Suite Decomposition Baseline | TBD | Not started | - |
+| 237 | Artifact Consistency Guardrails | TBD | Not started | - |
+| 238 | Pi Extension Modularization Contract | TBD | Not started | - |
+| 239 | Bounded Pi Extension Extraction Spike | TBD | Not started | - |
+| 240 | Product Happy Path + Scenario Evidence | TBD | Not started | - |
+| 241 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
-### Phase 230: Baseline Verbosity Audit
-Focus: Identify where PALS workflows, prompts, skills, module surfaces, and lifecycle artifacts create wasteful agent verbosity, distinguishing necessary evidence from redundant prose.
-Plans: 230-01 — complete; created `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md` baseline audit artifact and Phase 231/232 inputs
+### Phase 234: Product Reality + Drift Audit
+Focus: Create a grounded maintainability/product audit before changing implementation, including stale artifacts, oversized files, brittle validation areas, onboarding friction, and measurement gaps.
+Plans: 234-01 complete — summary at `.paul/phases/234-product-reality-drift-audit/234-01-SUMMARY.md`
 
-### Phase 231: Process / Workflow Verbosity Paring
-Focus: Update PALS process and workflow guidance to prefer concise, context-sensitive agent output while preserving lifecycle authority, approval gates, module evidence, validation truth, and GitHub Flow safety.
-Plans: 231-01 — complete; added shared contextual verbosity guidance and compact high-frequency PLAN/milestone/resume/pause workflow reply templates; validation passed; PR #146 merged
+### Phase 235: Risk-Tiered Lifecycle Contract
+Focus: Design proportional safety tiers for tiny, normal, risky, and hotfix work without weakening required approval, validation truth, GitHub Flow, module blocker, or lifecycle-write gates.
+Plans: TBD (next `/paul:plan`)
 
-### Phase 232: Skill Verbosity Pass
-Focus: Review and update PALS skills so default replies are minimally verbose unless the task, evidence, or user request requires more detail.
-Plans: 232-01 — complete; added concise-by-default output guidance across 13 Pi skill wrappers, pared config/help/review wrappers, preserved validation-protected markers, validation passed, PR #147 merged
+### Phase 236: Validation Suite Decomposition Baseline
+Focus: Document and begin splitting validation concerns into maintainable sections/helpers while preserving current validation counts and command-output truth.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 233: Validation + Evidence Closure
-Focus: Reconcile evidence, update validation or documentation surfaces as needed, and close the milestone without expanding beyond approved verbosity-paring scope.
-Plans: 233-01 — complete; closed v2.54 evidence in `docs/PALS-CONTEXTUAL-VERBOSITY-AUDIT.md`, added one localized closure guardrail per validation suite, passed Pi 209/209 and cross-harness 123/123, and opened PR #148.
+### Phase 237: Artifact Consistency Guardrails
+Focus: Add lightweight checks for STATE, ROADMAP, MILESTONES, SUMMARY, and session-continuity drift.
+Plans: TBD (defined during /paul:plan)
 
-### Previous milestone: v2.53 Pi Integration Efficiency & Effectiveness Exploration
-Result: Phases 226-229 complete. v2.53 identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped a bounded runtime/docs/test spike, and closed with Pi 208/208 plus cross-harness 122/122 after PR #144 merged.
+### Phase 238: Pi Extension Modularization Contract
+Focus: Define extraction boundaries for `drivers/pi/extensions/pals-hooks.ts` and select the first low-risk subsystem to extract.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 239: Bounded Pi Extension Extraction Spike
+Focus: Extract one pure subsystem, validate behavior preservation, and prove the modularization path without broad runtime churn.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 240: Product Happy Path + Scenario Evidence
+Focus: Create a simple first-run path and at least one scenario-style validation/story that shows user value.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 241: Evidence Closure + Next Roadmap Decision
+Focus: Reconcile validation, drift, and maintainability evidence, then decide whether v2.56 should focus on validation architecture, Pi extension modularization, or module output schema.
+Plans: TBD (defined during /paul:plan)
+
+### Previous milestone: v2.54 Contextual Verbosity Paring
+Result: Phases 230-233 complete. v2.54 established contextual verbosity guidance, compact dispatch skip/no-scope evidence, concise-by-default Pi skill wrappers, and final closure evidence protected by Pi 209/209 plus cross-harness 123/123 validation.
 
 ### Latest completed milestone: v2.54 Contextual Verbosity Paring
-Result: Phases 230-233 complete. v2.54 established contextual verbosity guidance, compact dispatch skip/no-scope evidence, concise-by-default Pi skill wrappers, and final closure evidence protected by Pi 209/209 plus cross-harness 123/123 validation.
+Result: Phases 230-233 complete. v2.54 closed after PR #148 merged; final validation passed Pi 209/209 and cross-harness 123/123.
+
 ## Completed Milestones
 
 | Milestone | Completed | Phases | Summary | Archive |
@@ -80,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-04-30 — v2.54 complete after Phase 233 validation/evidence closure.*
+*Last updated: 2026-05-01 — Phase 234 complete; Phase 235 ready to plan.*
