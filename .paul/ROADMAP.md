@@ -30,12 +30,12 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 1 of 8 complete
+Phases: 2 of 8 complete
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 234 | Product Reality + Drift Audit | 1/1 | ✅ Complete | 2026-05-01 |
-| 235 | Risk-Tiered Lifecycle Contract | TBD | Ready to plan | - |
+| 235 | Risk-Tiered Lifecycle Contract | 1/1 | ✅ Complete | 2026-05-01 |
 | 236 | Validation Suite Decomposition Baseline | TBD | Not started | - |
 | 237 | Artifact Consistency Guardrails | TBD | Not started | - |
 | 238 | Pi Extension Modularization Contract | TBD | Not started | - |
@@ -49,7 +49,7 @@ Plans: 234-01 complete — summary at `.paul/phases/234-product-reality-drift-au
 
 ### Phase 235: Risk-Tiered Lifecycle Contract
 Focus: Design proportional safety tiers for tiny, normal, risky, and hotfix work without weakening required approval, validation truth, GitHub Flow, module blocker, or lifecycle-write gates.
-Plans: TBD (next `/paul:plan`)
+Plans: 235-01 complete — summary at `.paul/phases/235-risk-tiered-lifecycle-contract/235-01-SUMMARY.md`; contract at `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`.
 
 ### Phase 236: Validation Suite Decomposition Baseline
 Focus: Document and begin splitting validation concerns into maintainable sections/helpers while preserving current validation counts and command-output truth.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 234 complete; Phase 235 ready to plan.*
+*Last updated: 2026-05-01 — Phase 235 complete; Phase 236 ready to plan.*
