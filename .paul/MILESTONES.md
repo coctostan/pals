@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | None active — v2.55 closed; ready to scope v2.56 | `.paul/ROADMAP.md` Next Milestone section; v2.56 candidate focus per Phase 241 SUMMARY: Pi extension submodule extraction wave |
+| Current milestone | v2.56 Pi Extension Submodule Extraction Wave active — Phase 242 APPLY complete, awaiting UNIFY | `.paul/ROADMAP.md` Current Milestone section; plan `.paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -79,7 +79,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 v2.55 Maintainability & Product Reality Hardening is **complete** (closed 2026-05-01 with PR #156). All 8 phases shipped: 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, 236 Validation Suite Decomposition Baseline, 237 Artifact Consistency Guardrails, 238 Pi Extension Modularization Contract, 239 Bounded Pi Extension Extraction Spike, 240 Product Happy Path + Scenario Evidence, and 241 Evidence Closure + Pi Extension Install-Surface Generalization. The milestone made PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback.
 
-**Next milestone (v2.56) is unscoped.** Recommended focus per Phase 241 SUMMARY: continue Pi extension submodule extraction (next bounded S-target from `pals-hooks.ts` per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`), leveraging the now-generalized install surface so future submodule extractions require no installer edits. Alternates: local context-cost evidence, demo project preset. Final selection happens via `/paul:discuss-milestone` or `/paul:milestone`.
+**Current milestone:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 242 Extension Extraction Target Baseline has APPLY complete and is awaiting UNIFY; Phase 243 may later extract one or more approved bounded submodules from `drivers/pi/extensions/pals-hooks.ts` after Phase 242 reconciles the target baseline.
 
 ## Archive
 
@@ -87,4 +87,4 @@ v2.55 Maintainability & Product Reality Hardening is **complete** (closed 2026-0
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234–236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234–237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234–238 complete and Phase 239 ready: 2026-05-01; updated for Phases 234–239 complete and Phase 240 ready: 2026-05-01; updated for Phases 234–240 complete and Phase 241 ready: 2026-05-01; updated for v2.55 milestone closure: 2026-05-01.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234–236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234–237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234–238 complete and Phase 239 ready: 2026-05-01; updated for Phases 234–239 complete and Phase 240 ready: 2026-05-01; updated for Phases 234–240 complete and Phase 241 ready: 2026-05-01; updated for v2.55 milestone closure: 2026-05-01; updated for v2.56 Phase 242 plan creation: 2026-05-01.*

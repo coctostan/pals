@@ -28,13 +28,34 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-None active. v2.55 Maintainability & Product Reality Hardening closed 2026-05-01 with PR #156.
+**v2.56 Pi Extension Submodule Extraction Wave** (v2.56)
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
 
-## Next Milestone
+Theme: Continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn.
 
-v2.56 — unscoped. Recommended focus per Phase 241 SUMMARY: **Pi extension submodule extraction wave** (continue extracting bounded submodules from `pals-hooks.ts` per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`, leveraging the now-generalized install surface so future submodule extractions need no installer edits). Alternates: local context-cost evidence; demo project preset.
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 242 | Extension Extraction Target Baseline | 1/1 | Apply complete | - |
+| 243 | Bounded Submodule Extraction Wave | TBD | Not started | - |
+| 244 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 245 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
-Run `/paul:discuss-milestone` or `/paul:milestone` to scope v2.56.
+### Phase 242: Extension Extraction Target Baseline
+Focus: Choose and bound multiple candidate submodules from `pals-hooks.ts` using the v2.55 modularization and install-surface evidence.
+Plans: `.paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md` (APPLY complete; awaiting UNIFY)
+
+### Phase 243: Bounded Submodule Extraction Wave
+Focus: Extract one or more approved Pi extension submodules behind safe contracts while preserving runtime behavior, lifecycle authority, and install compatibility.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 244: Documentation + Validation Surfacing
+Focus: Document extracted modules and protect install/runtime behavior with validation and artifact consistency evidence.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 245: Evidence Closure + Next Roadmap Decision
+Focus: Reconcile v2.56 evidence, close the milestone, and decide the next roadmap focus.
+Plans: TBD (defined during /paul:plan)
 
 ### Latest completed milestone: v2.55 Maintainability & Product Reality Hardening
 Result: Phases 234-241 complete. v2.55 closed after PR #156 merged 2026-05-01. Shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision. Final validation: Pi 212/212 and cross-harness 127/127.
@@ -73,4 +94,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 241 complete; PR #156 merged; v2.55 Maintainability & Product Reality Hardening closed; v2.56 recommendation = Pi extension submodule extraction wave (alternates: local context-cost evidence, demo project preset).*
+*Last updated: 2026-05-01 — Phase 242 Plan 242-01 created for v2.56 extraction target baseline.*
