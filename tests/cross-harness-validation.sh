@@ -23,6 +23,12 @@ TOTAL=0
 # First extraction boundary: shared TAP/reporting helpers only.
 source "$REPO_ROOT/tests/helpers/tap.sh"
 
+# Phase 237 artifact consistency guardrail helper:
+# docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md defines shared-invariant drift classes
+# for .paul/* lifecycle truth (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff).
+# Helper is safe to source (defines functions only) and reports drift only.
+source "$REPO_ROOT/tests/helpers/artifact_consistency.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────
 
 TEMP_DIRS=()
@@ -1179,6 +1185,15 @@ tap_file_contains_all \
   "command-output truth" \
   ".paul/* truth" \
   "lifecycle authority"
+
+# Phase 237 artifact consistency guardrail — shared-invariant drift check across
+# .paul/* lifecycle artifacts (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff).
+# Authority: Derived aid only; .paul/* artifacts remain authoritative lifecycle truth.
+artifact_consistency_check "$REPO_ROOT" 2>/dev/null
+tap_check \
+  "Shared .paul/* artifact consistency guardrail (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff drift)" \
+  "$?" \
+  "Artifact drift detected; see docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md and rerun tests/helpers/artifact_consistency.sh for diagnostics"
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

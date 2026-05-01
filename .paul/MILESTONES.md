@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234-241; Phase 234 complete, Phase 235 ready to plan |
+| Current milestone | v2.55 Maintainability & Product Reality Hardening in progress | `.paul/ROADMAP.md` phases 234-241; Phases 234-236 complete, Phase 237 Artifact Consistency Guardrails plan created and awaiting approval |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -76,7 +76,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phase 234 Product Reality + Drift Audit is complete; Phase 235 Risk-Tiered Lifecycle Contract is ready to plan.
+v2.55 Maintainability & Product Reality Hardening is in progress. It should make PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback. Phases 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, and 236 Validation Suite Decomposition Baseline are complete; Phase 237 Artifact Consistency Guardrails plan 237-01 is created and awaiting APPLY approval.
 
 ## Archive
 
@@ -84,4 +84,4 @@ v2.55 Maintainability & Product Reality Hardening is in progress. It should make
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234-236 complete and Phase 237 ready: 2026-05-01.*
