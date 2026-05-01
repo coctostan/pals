@@ -1199,6 +1199,24 @@ tap_file_contains_all \
   ".paul/* truth" \
   "lifecycle authority"
 
+# Phase 240 first-run happy-path scenario evidence — localized marker-only validation that
+# the new product-evidence doc exists with the expected derived-aid authority language and
+# the five named protections, and that README carries the one bounded pointer line.
+# Authority: Derived aid only; .paul/* artifacts remain authoritative lifecycle truth.
+FIRST_RUN_DOC="$REPO_ROOT/docs/PALS-FIRST-RUN-HAPPY-PATH.md"
+if [ -f "$FIRST_RUN_DOC" ] \
+  && grep -Fq "Authority: Derived aid only" "$FIRST_RUN_DOC" \
+  && grep -Fiq "plan approval boundary" "$FIRST_RUN_DOC" \
+  && grep -Fiq "scoped implementation" "$FIRST_RUN_DOC" \
+  && grep -Fiq "verification command truth" "$FIRST_RUN_DOC" \
+  && { grep -Fiq "summary / lifecycle continuity" "$FIRST_RUN_DOC" || grep -Fiq "summary/lifecycle continuity" "$FIRST_RUN_DOC"; } \
+  && grep -Fiq "resume state" "$FIRST_RUN_DOC" \
+  && grep -Fq "PALS-FIRST-RUN-HAPPY-PATH" "$REPO_ROOT/README.md"; then
+  tap_ok "Phase 240 first-run happy-path scenario doc carries derived-aid authority language, five named protections, and README pointer"
+else
+  tap_not_ok "Phase 240 first-run happy-path scenario doc carries derived-aid authority language, five named protections, and README pointer" "Expected docs/PALS-FIRST-RUN-HAPPY-PATH.md to exist with literal 'Authority: Derived aid only' plus the five named protections (plan approval boundary, scoped implementation, verification command truth, summary / lifecycle continuity, resume state) and README.md to reference PALS-FIRST-RUN-HAPPY-PATH"
+fi
+
 # Phase 237 artifact consistency guardrail — shared-invariant drift check across
 # .paul/* lifecycle artifacts (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff).
 # Authority: Derived aid only; .paul/* artifacts remain authoritative lifecycle truth.

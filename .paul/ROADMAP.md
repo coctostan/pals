@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 6 of 8 complete; Phase 240 Product Happy Path + Scenario Evidence is ready to plan.
+Phases: 6 of 8 complete; Phase 240 plan 240-01 awaiting approval.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -40,7 +40,7 @@ Phases: 6 of 8 complete; Phase 240 Product Happy Path + Scenario Evidence is rea
 | 237 | Artifact Consistency Guardrails | 1/1 | ✅ Complete | 2026-05-01 |
 | 238 | Pi Extension Modularization Contract | 1/1 | ✅ Complete | 2026-05-01 |
 | 239 | Bounded Pi Extension Extraction Spike | 1/1 | ✅ Complete | 2026-05-01 |
-| 240 | Product Happy Path + Scenario Evidence | TBD | Not started | - |
+| 240 | Product Happy Path + Scenario Evidence | 1/1 planning | 🛠 Planning | - |
 | 241 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 234: Product Reality + Drift Audit
@@ -69,7 +69,7 @@ Plans: 239-01 complete — summary at `.paul/phases/239-bounded-pi-extension-ext
 
 ### Phase 240: Product Happy Path + Scenario Evidence
 Focus: Create a simple first-run path and at least one scenario-style validation/story that shows user value.
-Plans: TBD (defined during /paul:plan)
+Plans: 240-01 awaiting approval — `.paul/phases/240-product-happy-path-scenario-evidence/240-01-PLAN.md` (creates `docs/PALS-FIRST-RUN-HAPPY-PATH.md` per Phase 234 weakness #5 and audit critical-review Phase 240 spec; tiny / doc-only tier).
 
 ### Phase 241: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile validation, drift, and maintainability evidence, then decide whether v2.56 should focus on validation architecture, Pi extension modularization, or module output schema.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 239 closed; PR #154 merged; v2.55 advances to 6 of 8 phases complete (75%); baseline Pi 211/211 and cross-harness 125/125.*
+*Last updated: 2026-05-01 — Phase 240 plan 240-01 created and awaiting approval; baseline Pi 211/211 and cross-harness 125/125 unchanged.*
