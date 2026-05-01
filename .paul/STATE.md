@@ -302,10 +302,10 @@ Prior PRs: #154 merged (Phase 239 bounded Pi extension extraction spike); #153 m
 
 ## Session Continuity
 
-Last session: 2026-05-01 (Phase 240 complete and transitioned; ready to plan Phase 241)
-Stopped at: Phase 240 complete and transitioned; ready to plan Phase 241 (v2.55 closure phase).
+Last session: 2026-05-01 (Phase 240 complete and transitioned; paused before Phase 241 plan creation)
+Stopped at: Phase 240 loop closed and transitioned (PR #155 merged; main 0/0 with origin); user paused before /paul:plan for Phase 241.
 Next action: `/paul:plan` to create Plan 241-01 for the v2.55 closure phase.
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-05-01-phase-241-ready-to-plan.md
 Resume context:
 - Phase 240 (Product Happy Path + Scenario Evidence) shipped: new `docs/PALS-FIRST-RUN-HAPPY-PATH.md` (201 lines, five named protections, literal `Authority: Derived aid only`, What This Scenario Does NOT Prove section, 5 onboarding-friction bullets, reading map, After the Loop — Durable Artifacts section); one bounded README pointer line under Quick Start; one bounded TAP marker assertion in `tests/cross-harness-validation.sh` (cross-harness `1..125 → 1..126`). Pi suite unchanged at `1..211`. Helpers, Pi suite, install/uninstall, drivers/, kernel/, modules/, existing PI-NATIVE / PALS contracts untouched.
 - PR #155 squash-merged into main as `30fb2b25`. Post-merge: Pi 211/211, cross-harness 126/126, artifact-consistency PASS, 0 behind / 0 ahead origin/main, `git diff --check` clean.
@@ -313,3 +313,4 @@ Resume context:
 - Carry-forward from Phase 239 (install-surface generalization for `drivers/pi/install.sh` / `uninstall.sh`; `drivers/pi/driver.yaml` multi-file extension audit) remains explicitly deferred to Phase 241 / v2.56. Phase 240 did not touch any forbidden surface. Recorded in 240-01-SUMMARY.md "Carry-Forward" section.
 - v2.55 Maintainability & Product Reality Hardening progresses to 7 of 8 phases complete (87.5%); Phase 241 (the v2.55 closure phase) is the natural home for the install-surface generalization and any other v2.55-closing work.
 - Validation truth (post-merge on main): Pi 211/211, cross-harness 126/126, artifact-consistency PASS.
+- Pause handoff at `.paul/HANDOFF-2026-05-01-phase-241-ready-to-plan.md` carries the Phase 241 framing notes, the carry-forward candidate list (install-surface generalization, driver.yaml audit, local context-cost evidence measurement, S1–S8 Pi extension extractions, optional demo project preset), the hard-boundary list, and the explicit "NOT carried forward" list so the next session does not re-litigate.
