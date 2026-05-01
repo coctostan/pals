@@ -57,9 +57,9 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.52 Legacy Retention / Install-Surface Cleanup | Complete | Cleaned frozen legacy/installation surfaces only where validation classification proved it safe; root install/uninstall are Pi-first by default, frozen legacy/source-only paths require explicit opt-in, and final validation passed Pi 205/205 plus cross-harness 121/121. |
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | Complete | Found context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; final validation passed Pi 208/208 and cross-harness 122/122. |
 | v2.54 Contextual Verbosity Paring | Complete | Reduced wasteful PALS agent verbosity and made skills minimally verbose without weakening required lifecycle/evidence gates; final validation passed Pi 209/209 and cross-harness 123/123. |
-| v2.55 Maintainability & Product Reality Hardening | In progress | Makes PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift. Phases 234-236 are complete; Phase 237 Artifact Consistency Guardrails is ready to plan. |
+| v2.55 Maintainability & Product Reality Hardening | In progress | Makes PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift. Phases 234-239 are complete (6 of 8); Phase 240 Product Happy Path + Scenario Evidence is ready to plan. |
 
-Current milestone pointer: v2.55 Maintainability & Product Reality Hardening is active. Phases 234-236 are complete; Phase 237 Artifact Consistency Guardrails is ready to plan. Phases 238-241 remain outlined in `.paul/ROADMAP.md`.
+Current milestone pointer: v2.55 Maintainability & Product Reality Hardening is active. Phases 234-239 are complete; Phase 240 Product Happy Path + Scenario Evidence is ready to plan. Phase 241 remains outlined in `.paul/ROADMAP.md`.
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-CRITICAL-REVIEW-NEXT-ROADMAP.md` for v2.55 source context, and `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail.
 
 ## Constraints
@@ -133,6 +133,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 Detailed historical decisions are archived in [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md).
 | 2026-05-01: Treat Phase 234 as audit-only evidence before v2.55 implementation | Phase 234 Plan 234-01 UNIFY | `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md` is the source context for Phases 235-241; later phases should implement fixes only through bounded approved plans. |
 | 2026-05-01: Define risk tiers as focused evidence rather than bypassed evidence | Phase 235 Plan 235-01 UNIFY | `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md` establishes tiny/doc-only, normal, risky, and hotfix tiers while preserving explicit APPLY approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` artifact authority, command-output truth, full authoritative read fallback, no hidden Pi state, and no telemetry. |
+| 2026-05-01: Bounded Pi extension extraction spike (S5 `module-activity-parsing`) is behavior-preserving and proves the modularization path | Phase 239 Plan 239-01 UNIFY | `drivers/pi/extensions/module-activity-parsing.ts` extracted from `drivers/pi/extensions/pals-hooks.ts` (1684→1547 lines) per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`; bounded TAP marker-preservation guardrails carry risky-tier evidence in lieu of a per-driver test harness; APPLY-time deviation amended `drivers/pi/install.sh`/`uninstall.sh` with single-line edits to deploy the new submodule (recorded in STATE.md Decisions). Phase 240/241 should decide whether to generalize the install surface to copy all `*.ts` siblings under `drivers/pi/extensions/` before subsequent S1/S2/S6/S7/S8 extractions. |
 
 ## Success Criteria
 
@@ -163,4 +164,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-01 after Phase 235 Risk-Tiered Lifecycle Contract closure.*
+*Last updated: 2026-05-01 after Phase 239 Bounded Pi Extension Extraction Spike closure.*

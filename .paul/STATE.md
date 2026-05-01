@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 239 of 241 (Bounded Pi Extension Extraction Spike) — APPLY complete
-Plan: 239-01 executed; PR #154 OPEN/MERGEABLE/CLEAN
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-05-01T13:12:00Z — APPLY complete on feature/239-pi-extension-extraction-spike; PR #154 OPEN/MERGEABLE/CLEAN; CI 2/2 SUCCESS; Pi 211/211, cross-harness 125/125, # Failed: 0; install/uninstall amendment deviation logged
+Phase: 240 of 241 (Product Happy Path + Scenario Evidence) — Ready to plan
+Plan: not started
+Status: Ready to plan
+Last activity: 2026-05-01T13:18:00Z — Phase 239 complete; PR #154 merged into main; v2.55 advances to 6 of 8 phases complete; Pi 211/211, cross-harness 125/125, artifact-consistency PASS
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [██████░░░░] 63% (5 of 8 phases complete; Phase 239 plan 239-01 awaiting approval)
+- v2.55 Maintainability & Product Reality Hardening: [███████░░░] 75% (6 of 8 phases complete; Phase 240 Product Happy Path + Scenario Evidence ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ○        ○        ○     [Loop complete — Phase 239 closed; Phase 240 ready to plan]
 ```
 
 ## Accumulated Context
@@ -294,21 +294,22 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: `d974e9ff` Phase 238 squash merge of PR #153.
-PR: #153 (https://github.com/coctostan/pals/pull/153) — MERGED at 2026-05-01T12:20:58Z.
-CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation on main passed Pi 210/210 and cross-harness 124/124; artifact consistency check PASS.
-Working tree: main synced with origin/main after PR #153 merge; feature branch deleted locally and remotely.
-Prior PRs: #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Last commit: `65ed645b` Phase 239 squash merge of PR #154.
+PR: #154 (https://github.com/coctostan/pals/pull/154) — MERGED at 2026-05-01T13:17:00Z.
+CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation on main passed Pi 211/211 and cross-harness 125/125; artifact consistency check PASS.
+Working tree: main synced with origin/main after PR #154 merge; feature branch deleted locally and remotely.
+Prior PRs: #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-01T13:12:00Z
-Stopped at: APPLY complete on feature/239-pi-extension-extraction-spike (PR #154 ready to merge)
-Next action: Run /paul:unify .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
-Resume file: .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
+Last session: 2026-05-01T13:18:00Z
+Stopped at: Phase 239 complete and merged (PR #154); ready to plan Phase 240
+Next action: Run /paul:plan for Phase 240 Product Happy Path + Scenario Evidence
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phases 237 and 238 both shipped this session: PR #152 (artifact consistency guardrails) and PR #153 (Pi extension modularization contract) are merged into main.
-- Working tree clean on main; 0 behind / 0 ahead relative to origin/main.
-- Phase 239 first-spike candidate is pre-selected: `module-activity-parsing` (S5), per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`.
-- Phase 239 is risky tier; bounded validation count handoff is Pi 210→211 max, cross-harness 124→125 max.
-- Validation truth: Pi 210/210, cross-harness 124/124, artifact consistency check PASS.
+- Phase 239 (Bounded Pi Extension Extraction Spike) shipped this session: PR #154 merged into main; the S5 `module-activity-parsing` subsystem is now an extracted module under `drivers/pi/extensions/module-activity-parsing.ts`.
+- `drivers/pi/extensions/pals-hooks.ts` reduced from 1684 to 1547 lines (−137); maintainability weakness #2 partially addressed; seven candidate subsystems (S1, S2, S3, S4, S6, S7, S8) remain available for future extractions.
+- APPLY-time deviation logged in Decisions: bounded amendment to `drivers/pi/install.sh` and `drivers/pi/uninstall.sh` (single-line `cp` and `rm -f`) was needed to deploy the new submodule; backward-compatible. Phase 240/241 should consider whether to generalize the install surface before subsequent extractions.
+- Working tree clean on main; 0 behind / 0 ahead relative to origin/main; PR #154 deleted from remote.
+- Validation truth: Pi 211/211, cross-harness 125/125, artifact consistency check PASS.
+- Phase 240 (Product Happy Path + Scenario Evidence) is the next focus; plan structure TBD during /paul:plan.

@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 5 of 8 complete; Phase 239 plan 239-01 awaiting approval.
+Phases: 6 of 8 complete; Phase 240 Product Happy Path + Scenario Evidence is ready to plan.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -39,7 +39,7 @@ Phases: 5 of 8 complete; Phase 239 plan 239-01 awaiting approval.
 | 236 | Validation Suite Decomposition Baseline | 1/1 | ✅ Complete | 2026-05-01 |
 | 237 | Artifact Consistency Guardrails | 1/1 | ✅ Complete | 2026-05-01 |
 | 238 | Pi Extension Modularization Contract | 1/1 | ✅ Complete | 2026-05-01 |
-| 239 | Bounded Pi Extension Extraction Spike | 1/1 planning | 🛠 Planning | - |
+| 239 | Bounded Pi Extension Extraction Spike | 1/1 | ✅ Complete | 2026-05-01 |
 | 240 | Product Happy Path + Scenario Evidence | TBD | Not started | - |
 | 241 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
@@ -65,7 +65,7 @@ Plans: 238-01 complete — summary at `.paul/phases/238-pi-extension-modularizat
 
 ### Phase 239: Bounded Pi Extension Extraction Spike
 Focus: Extract one pure subsystem, validate behavior preservation, and prove the modularization path without broad runtime churn.
-Plans: 239-01 awaiting approval — `.paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md` (extracts S5 `module-activity-parsing` per Phase 238 contract).
+Plans: 239-01 complete — summary at `.paul/phases/239-bounded-pi-extension-extraction-spike/239-01-SUMMARY.md`; new module at `drivers/pi/extensions/module-activity-parsing.ts`; PR #154 merged; Pi 211/211 and cross-harness 125/125.
 
 ### Phase 240: Product Happy Path + Scenario Evidence
 Focus: Create a simple first-run path and at least one scenario-style validation/story that shows user value.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 239 plan 239-01 created and awaiting approval; baseline Pi 210/210 and cross-harness 124/124 unchanged.*
+*Last updated: 2026-05-01 — Phase 239 closed; PR #154 merged; v2.55 advances to 6 of 8 phases complete (75%); baseline Pi 211/211 and cross-harness 125/125.*
