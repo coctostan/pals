@@ -1145,6 +1145,22 @@ fi
     tap_not_ok "Phase 239 S5 module-activity-parsing extraction preserves DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth and imports them into pals-hooks.ts" "Expected drivers/pi/extensions/module-activity-parsing.ts to define DISPATCH_MARKER and MODULE_REPORTS_HEADER as exports, pals-hooks.ts to import from ./module-activity-parsing, and pals-hooks.ts to no longer declare those constants inline"
   fi
 
+  # Phase 241: install/uninstall use a generalized source-set rule over drivers/pi/extensions/*.ts
+  # (no MODULE_ACTIVITY_SRC one-off, no broad rm of unrelated extensions, driver.yaml extensions/ entry preserved).
+  PI_INSTALL_SH="$REPO_ROOT/drivers/pi/install.sh"
+  PI_UNINSTALL_SH="$REPO_ROOT/drivers/pi/uninstall.sh"
+  PI_DRIVER_YAML="$REPO_ROOT/drivers/pi/driver.yaml"
+  if [ -f "$PI_INSTALL_SH" ] && [ -f "$PI_UNINSTALL_SH" ] && [ -f "$PI_DRIVER_YAML" ] \
+    && grep -Eq 'for[[:space:]]+ext_src[[:space:]]+in[[:space:]]+"\$EXT_SRC_DIR"/\*\.ts' "$PI_INSTALL_SH" 2>/dev/null \
+    && ! grep -Eq '^[[:space:]]*MODULE_ACTIVITY_SRC=' "$PI_INSTALL_SH" 2>/dev/null \
+    && grep -Eq 'for[[:space:]]+ext_src[[:space:]]+in[[:space:]]+"\$PALS_ROOT_RESOLVED/drivers/pi/extensions"/\*\.ts' "$PI_UNINSTALL_SH" 2>/dev/null \
+    && ! grep -Eq 'rm[[:space:]]+-f[[:space:]]+"\$HOME/\.pi/agent/extensions"/\*\.ts' "$PI_UNINSTALL_SH" 2>/dev/null \
+    && grep -Eq '^[[:space:]]*-[[:space:]]+extensions/[[:space:]]*$' "$PI_DRIVER_YAML" 2>/dev/null; then
+    tap_ok "Phase 241 Pi extension install/uninstall use a generalized drivers/pi/extensions/*.ts source set and driver.yaml retains its extensions/ directory entry"
+  else
+    tap_not_ok "Phase 241 Pi extension install/uninstall use a generalized drivers/pi/extensions/*.ts source set and driver.yaml retains its extensions/ directory entry" "Expected install.sh to loop drivers/pi/extensions/*.ts (no MODULE_ACTIVITY_SRC one-off), uninstall.sh to iterate the resolved repo source set without broad rm of ~/.pi/agent/extensions/*.ts, and drivers/pi/driver.yaml to keep the 'extensions/' directory entry under files"
+  fi
+
   # Live module visibility contract: reuse the existing lifecycle status/widget surfaces
   if grep -q 'collectRecentAssistantTexts(ctx, undefined, RECENT_MODULE_ACTIVITY_LOOKBACK)' "$EXT_SRC" 2>/dev/null \
     && grep -q 'renderLifecycleStatus(state, recentModuleActivity)' "$EXT_SRC" 2>/dev/null \
