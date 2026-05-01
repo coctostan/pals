@@ -284,11 +284,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/234-product-reality-drift-audit
-Last implementation commit: 631bd2ea (`docs(234-01): create product reality audit`)
-PR: #149 (https://github.com/coctostan/pals/pull/149) — pending merge gate during UNIFY
-CI: validation passed locally (Pi 209/209; cross-harness 123/123); GitHub checks pending/handled by merge gate
-Working tree: Phase 234 UNIFY/transition metadata staged for completion commit
+Branch: main
+Last commit: 215dbda9 (`docs(234): complete product reality drift audit`, PR #149 squash merge)
+PR: #149 (https://github.com/coctostan/pals/pull/149) — MERGED 2026-05-01T00:28:59Z
+CI: GitHub checks passed (Socket Security Project Report + Pull Request Alerts); local validation passed Pi 209/209 and cross-harness 123/123
+Working tree: Clean after merge-gate cleanup
 Prior PRs: #148 merged (Phase 233 validation/evidence closure + v2.54 closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
