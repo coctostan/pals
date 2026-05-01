@@ -192,7 +192,7 @@ None from this plan. Future implementation belongs to later approved phases.
 | PR | #150 — https://github.com/coctostan/pals/pull/150 |
 | PR checks before merge | PASS — Socket Security Project Report and Pull Request Alerts succeeded. |
 | Reviews | Not required by `pals.json`. |
-| Merge | Pending until merge-gate step after SUMMARY finalization; expected to merge PR #150 when checks remain passing. |
+| Merge | PASS — PR #150 squash-merged into `main` at 2026-05-01T01:22:20Z; local `main` synced to `2f2cafba`. |
 
 ## Next Phase Readiness
 

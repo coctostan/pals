@@ -288,11 +288,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/235-risk-tiered-lifecycle-contract
-Last commit: Phase 235 UNIFY metadata will be committed and pushed before merge-gate PR checks.
-PR: #150 (https://github.com/coctostan/pals/pull/150) — OPEN; checks passed at UNIFY merge-gate precheck.
+Branch: main
+Last commit: current `main` includes Phase 235 closure and merge-gate cleanup (see `git log`).
+PR: #150 (https://github.com/coctostan/pals/pull/150) — MERGED 2026-05-01T01:22:20Z.
 CI: PR #150 Socket Security Project Report and Pull Request Alerts passed; local UNIFY validation passed Pi 209/209 and cross-harness 123/123.
-Working tree: Phase 235 UNIFY artifacts pending commit/push.
+Working tree: clean after merge-gate cleanup.
 Prior PRs: #148 merged (Phase 233 validation/evidence closure + v2.54 closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
