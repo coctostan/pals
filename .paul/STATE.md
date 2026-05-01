@@ -291,7 +291,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: `d7ca9705` (squash merge of PR #151: Phase 236 validation-suite decomposition baseline)
+Last commit: main HEAD after merge-gate state commit; product squash merge was `d7ca9705` for PR #151.
 PR: #151 (https://github.com/coctostan/pals/pull/151) — MERGED at 2026-05-01T01:47:21Z.
 CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation passed Pi 209/209 and cross-harness 123/123.
 Working tree: main synced with origin/main after PR #151 merge; final merge-gate state update committed separately on main.
