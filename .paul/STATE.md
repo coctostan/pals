@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 239 of 241 (Bounded Pi Extension Extraction Spike) — Planning
-Plan: 239-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-01T12:40:00Z — Created .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
+Phase: 239 of 241 (Bounded Pi Extension Extraction Spike) — APPLY complete
+Plan: 239-01 executed; PR #154 OPEN/MERGEABLE/CLEAN
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-05-01T13:12:00Z — APPLY complete on feature/239-pi-extension-extraction-spike; PR #154 OPEN/MERGEABLE/CLEAN; CI 2/2 SUCCESS; Pi 211/211, cross-harness 125/125, # Failed: 0; install/uninstall amendment deviation logged
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 239-01 created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -302,9 +302,9 @@ Prior PRs: #152 merged (Phase 237 artifact consistency guardrails); #151 merged 
 
 ## Session Continuity
 
-Last session: 2026-05-01T12:40:00Z
-Stopped at: Plan 239-01 created
-Next action: Review and approve plan, then run /paul:apply .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
+Last session: 2026-05-01T13:12:00Z
+Stopped at: APPLY complete on feature/239-pi-extension-extraction-spike (PR #154 ready to merge)
+Next action: Run /paul:unify .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
 Resume file: .paul/phases/239-bounded-pi-extension-extraction-spike/239-01-PLAN.md
 Resume context:
 - Phases 237 and 238 both shipped this session: PR #152 (artifact consistency guardrails) and PR #153 (Pi extension modularization contract) are merged into main.
