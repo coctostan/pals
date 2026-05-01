@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 4 of 8 complete; Phase 238 ready to plan.
+Phases: 4 of 8 complete; Phase 238 plan created, awaiting approval.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -38,7 +38,7 @@ Phases: 4 of 8 complete; Phase 238 ready to plan.
 | 235 | Risk-Tiered Lifecycle Contract | 1/1 | ✅ Complete | 2026-05-01 |
 | 236 | Validation Suite Decomposition Baseline | 1/1 | ✅ Complete | 2026-05-01 |
 | 237 | Artifact Consistency Guardrails | 1/1 | ✅ Complete | 2026-05-01 |
-| 238 | Pi Extension Modularization Contract | TBD | Not started | - |
+| 238 | Pi Extension Modularization Contract | 0/1 | 🟡 Planning | - |
 | 239 | Bounded Pi Extension Extraction Spike | TBD | Not started | - |
 | 240 | Product Happy Path + Scenario Evidence | TBD | Not started | - |
 | 241 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
@@ -61,7 +61,7 @@ Plans: 237-01 complete — summary at `.paul/phases/237-artifact-consistency-gua
 
 ### Phase 238: Pi Extension Modularization Contract
 Focus: Define extraction boundaries for `drivers/pi/extensions/pals-hooks.ts` and select the first low-risk subsystem to extract.
-Plans: TBD (defined during /paul:plan)
+Plans: 238-01 created, awaiting approval — `.paul/phases/238-pi-extension-modularization-contract/238-01-PLAN.md`
 
 ### Phase 239: Bounded Pi Extension Extraction Spike
 Focus: Extract one pure subsystem, validate behavior preservation, and prove the modularization path without broad runtime churn.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 237 complete; Pi 210/210 and cross-harness 124/124; PR #152 awaiting merge gate.*
+*Last updated: 2026-05-01 — Phase 238 plan 238-01 created; awaiting APPLY approval; validation stable at Pi 210/210 and cross-harness 124/124.*

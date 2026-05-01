@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234-237 are complete; Phase 238 Pi Extension Modularization Contract is ready to plan.
+**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234-237 are complete; Phase 238 Pi Extension Modularization Contract plan 238-01 is created and awaiting APPLY approval.
 
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 238 of 241 (Pi Extension Modularization Contract) — Ready to plan
-Plan: none yet
-Status: Phase 237 complete; ready for next PLAN
-Last activity: 2026-05-01T02:07:00Z — Created .paul/phases/237-artifact-consistency-guardrails/237-01-SUMMARY.md and archived handoff
+Phase: 238 of 241 (Pi Extension Modularization Contract) — Planning
+Plan: 238-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-01T02:14:00Z — Created .paul/phases/238-pi-extension-modularization-contract/238-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -300,11 +300,11 @@ Prior PRs: #151 merged (Phase 236 validation-suite decomposition baseline); earl
 
 ## Session Continuity
 
-Last session: 2026-05-01T02:07:00Z
-Stopped at: Phase 237 UNIFY complete; merge gate for PR #152 pending CI
-Next action: Resolve merge gate for PR #152, then run /paul:plan for Phase 238 Pi Extension Modularization Contract
-Resume file: .paul/phases/237-artifact-consistency-guardrails/237-01-SUMMARY.md
+Last session: 2026-05-01T02:14:00Z
+Stopped at: Phase 238 plan 238-01 created; review/approval pending
+Next action: Review plan 238-01, then run /paul:apply .paul/phases/238-pi-extension-modularization-contract/238-01-PLAN.md if approved
+Resume file: .paul/phases/238-pi-extension-modularization-contract/238-01-PLAN.md
 Resume context:
-- Phase 237 plan, APPLY, and UNIFY are complete; SUMMARY is written; handoff archived.
-- PR #152 carries the Phase 237 implementation; CI/merge-gate completion still required before Phase 238 PLAN.
-- Validation reconciled as Pi 209→210 and cross-harness 123→124 — guardrail additions only.
+- Phase 238 plan created at `.paul/phases/238-pi-extension-modularization-contract/238-01-PLAN.md`; APPLY has not started.
+- Plan classified as **tiny / doc-only** tier; only one new doc plus standard lifecycle metadata writes; no runtime/source/test/install/dependency/CI/lifecycle-authority changes.
+- Expected validation: Pi `210/210` and cross-harness `124/124` remain stable; no validation assertions added by this plan.
