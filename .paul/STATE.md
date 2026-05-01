@@ -291,11 +291,11 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: phase-237-artifact-consistency-guardrails (active during Phase 237 APPLY/UNIFY; merge gate pending).
-Last commit: `d02c6f6a` on `phase-237-artifact-consistency-guardrails` carries Phase 237 product changes; SUMMARY/state metadata commit follows during merge gate.
-PR: #152 (https://github.com/coctostan/pals/pull/152) — OPEN; awaiting CI/merge.
-CI: PR checks pending at SUMMARY write; local UNIFY validation passed Pi 210/210 and cross-harness 124/124.
-Working tree: feature branch carries Phase 237 product diff plus this UNIFY metadata update; main not yet synced for Phase 237.
+Branch: main
+Last commit: `e698062b` Phase 237 squash merge of PR #152.
+PR: #152 (https://github.com/coctostan/pals/pull/152) — MERGED at 2026-05-01T02:11:41Z.
+CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation on main passed Pi 210/210 and cross-harness 124/124.
+Working tree: main synced with origin/main after PR #152 merge; feature branch deleted locally and remotely.
 Prior PRs: #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
