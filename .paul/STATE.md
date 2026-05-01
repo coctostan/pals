@@ -285,7 +285,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 215dbda9 (`docs(234): complete product reality drift audit`, PR #149 squash merge)
+Last commit: 2661a13b (`docs(234): record merge gate cleanup`); PR #149 squash merge commit: 215dbda9
 PR: #149 (https://github.com/coctostan/pals/pull/149) — MERGED 2026-05-01T00:28:59Z
 CI: GitHub checks passed (Socket Security Project Report + Pull Request Alerts); local validation passed Pi 209/209 and cross-harness 123/123
 Working tree: Clean after merge-gate cleanup
