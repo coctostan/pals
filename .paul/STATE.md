@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-01 after Phase 234 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phase 234 Product Reality + Drift Audit is complete; Phase 235 Risk-Tiered Lifecycle Contract is ready to plan.
+**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phase 235 Risk-Tiered Lifecycle Contract has completed APPLY for Plan 235-01 and is awaiting UNIFY.
 
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 235 of 241 (Risk-Tiered Lifecycle Contract) — Ready to plan
-Plan: Not started
-Status: Ready for next PLAN
-Last activity: 2026-05-01T00:35:00Z — Phase 234 UNIFY complete; transitioned to Phase 235
+Phase: 235 of 241 (Risk-Tiered Lifecycle Contract) — Applying
+Plan: 235-01 APPLY complete, awaiting UNIFY
+Status: APPLY complete, ready for UNIFY
+Last activity: 2026-05-01T00:45:00Z — APPLY completed for .paul/phases/235-risk-tiered-lifecycle-contract/235-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [█░░░░░░░░░] 12.5% (1 of 8 phases complete; Phase 235 ready to plan)
+- v2.55 Maintainability & Product Reality Hardening: [█░░░░░░░░░] 12.5% (1 of 8 phases complete; Phase 235 Plan 235-01 created)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN — Phase 235]
+  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
 ```
 
 ## Accumulated Context
@@ -268,6 +268,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 229 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/quality-history.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 231 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing hot workflow size debt remains below critical threshold and protected by anti-regrowth validation.
 - Skill audit Phase 234 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 209/209 and cross-harness 123/123. No helper delegation was used; parent APPLY owned verification. Phase 234 intentionally remained docs/audit-only.
+- Skill audit Phase 235 APPLY: `/paul`, `/carl`, TODD, WALT, DOCS, SKIP, ARCH, SETH, IRIS, and advisory/enforcement modules invoked or active via module dispatch; pre-apply baseline passed Pi 209/209 and cross-harness 123/123; post-task/final validation passed Pi 209/209 and cross-harness 123/123. No helper delegation was used; parent APPLY owned verification. Process adaptation: all three docs-only task sections were created in one contract pass, then verified against each task's focused markers.
 
 ### Deferred Issues
 
@@ -284,22 +285,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: latest pushed `main` after merge-gate cleanup (see `git log`; PR #149 squash merge commit: 215dbda9)
-PR: #149 (https://github.com/coctostan/pals/pull/149) — MERGED 2026-05-01T00:28:59Z
-CI: GitHub checks passed (Socket Security Project Report + Pull Request Alerts); local validation passed Pi 209/209 and cross-harness 123/123
-Working tree: Clean after merge-gate cleanup
+Branch: feature/235-risk-tiered-lifecycle-contract
+Last commit: latest pushed `main` after merge-gate cleanup (see `git log`; PR #149 squash merge commit: 215dbda9); Phase 235 APPLY work is pending commit/push on feature branch.
+PR: #149 (https://github.com/coctostan/pals/pull/149) — MERGED 2026-05-01T00:28:59Z; Phase 235 PR not created yet.
+CI: Last merged PR checks passed; Phase 235 local APPLY validation passed Pi 209/209 and cross-harness 123/123.
+Working tree: Phase 235 APPLY changes pending (docs contract plus PAUL lifecycle artifacts).
 Prior PRs: #148 merged (Phase 233 validation/evidence closure + v2.54 closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-01T00:35:00Z
-Stopped at: Phase 234 complete, ready to plan Phase 235
-Next action: /paul:plan for Phase 235 Risk-Tiered Lifecycle Contract
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-01T00:45:00Z
+Stopped at: Plan 235-01 APPLY complete
+Next action: Run /paul:unify .paul/phases/235-risk-tiered-lifecycle-contract/235-01-PLAN.md
+Resume file: .paul/phases/235-risk-tiered-lifecycle-contract/235-01-PLAN.md
 Resume context:
-- Phase 234 created and unified `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md` with ranked weaknesses, hotspot inventory, artifact drift inventory, validation brittleness inventory, first-run friction notes, usefulness-evidence gaps, deferred/non-goals, and recommendations for Phases 235-241.
-- Validation passed: `PALS_ROOT="$PWD" bash tests/pi-end-to-end-validation.sh` 209/209 and `PALS_ROOT="$PWD" bash tests/cross-harness-validation.sh` 123/123.
-- Implementation commit: `631bd2ea` (`docs(234-01): create product reality audit`).
-- UNIFY summary: `.paul/phases/234-product-reality-drift-audit/234-01-SUMMARY.md`.
-- Next phase: Phase 235 should create a risk-tiered lifecycle contract using the Phase 234 audit as source context.
+- Phase 235 APPLY created `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md` as a docs/design-only contract for proportional safety tiers.
+- The contract defines tiny/doc-only, normal, risky, and hotfix tiers; non-bypass rules; per-tier evidence expectations; escalation triggers; hotfix reconciliation; future implementation boundaries; and deferred/non-goals.
+- Verification evidence: focused marker checks passed; `git diff --check` passed; Pi validation passed 209/209; cross-harness validation passed 123/123.
+- Changed scope should remain the docs contract plus PAUL lifecycle artifacts generated by PLAN/APPLY/UNIFY; no runtime, workflow, validation-suite, module, dependency, CI, or GitHub Flow behavior changed.
