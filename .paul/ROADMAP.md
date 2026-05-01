@@ -30,14 +30,14 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 3 of 8 complete; Phase 237 ready to plan.
+Phases: 4 of 8 complete; Phase 238 ready to plan.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 234 | Product Reality + Drift Audit | 1/1 | ✅ Complete | 2026-05-01 |
 | 235 | Risk-Tiered Lifecycle Contract | 1/1 | ✅ Complete | 2026-05-01 |
 | 236 | Validation Suite Decomposition Baseline | 1/1 | ✅ Complete | 2026-05-01 |
-| 237 | Artifact Consistency Guardrails | TBD | 🔵 Ready to plan | - |
+| 237 | Artifact Consistency Guardrails | 1/1 | ✅ Complete | 2026-05-01 |
 | 238 | Pi Extension Modularization Contract | TBD | Not started | - |
 | 239 | Bounded Pi Extension Extraction Spike | TBD | Not started | - |
 | 240 | Product Happy Path + Scenario Evidence | TBD | Not started | - |
@@ -57,7 +57,7 @@ Plans: 236-01 complete — summary at `.paul/phases/236-validation-suite-decompo
 
 ### Phase 237: Artifact Consistency Guardrails
 Focus: Add lightweight checks for STATE, ROADMAP, MILESTONES, SUMMARY, and session-continuity drift.
-Plans: TBD (defined during /paul:plan)
+Plans: 237-01 complete — summary at `.paul/phases/237-artifact-consistency-guardrails/237-01-SUMMARY.md`; contract at `docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md`.
 
 ### Phase 238: Pi Extension Modularization Contract
 Focus: Define extraction boundaries for `drivers/pi/extensions/pals-hooks.ts` and select the first low-risk subsystem to extract.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 236 complete; Phase 237 ready to plan.*
+*Last updated: 2026-05-01 — Phase 237 complete; Pi 210/210 and cross-harness 124/124; PR #152 awaiting merge gate.*
