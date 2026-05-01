@@ -30,7 +30,7 @@ Phases: 3 of 3 complete
 
 **v2.55 Maintainability & Product Reality Hardening**
 Status: 🚧 In Progress
-Phases: 7 of 8 complete; Phase 241 (the v2.55 closure phase) has Plan 241-01 created and awaiting approval.
+Phases: 8 of 8 complete after PR #156 merges; Phase 241 UNIFY complete and awaiting merge gate.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -41,7 +41,7 @@ Phases: 7 of 8 complete; Phase 241 (the v2.55 closure phase) has Plan 241-01 cre
 | 238 | Pi Extension Modularization Contract | 1/1 | ✅ Complete | 2026-05-01 |
 | 239 | Bounded Pi Extension Extraction Spike | 1/1 | ✅ Complete | 2026-05-01 |
 | 240 | Product Happy Path + Scenario Evidence | 1/1 | ✅ Complete | 2026-05-01 |
-| 241 | Evidence Closure + Next Roadmap Decision | 0/1 | Planning | - |
+| 241 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete (pending PR #156 merge) | 2026-05-01 |
 
 ### Phase 234: Product Reality + Drift Audit
 Focus: Create a grounded maintainability/product audit before changing implementation, including stale artifacts, oversized files, brittle validation areas, onboarding friction, and measurement gaps.
@@ -73,7 +73,7 @@ Plans: 240-01 complete — summary at `.paul/phases/240-product-happy-path-scena
 
 ### Phase 241: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile validation, drift, and maintainability evidence, then decide whether v2.56 should focus on validation architecture, Pi extension modularization, or module output schema.
-Plans: 241-01 created — `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-PLAN.md`; awaiting approval for APPLY.
+Plans: 241-01 complete — summary at `.paul/phases/241-evidence-closure-next-roadmap-decision/241-01-SUMMARY.md`; generalized Pi extension install/uninstall source-set rule over `drivers/pi/extensions/*.ts`; recorded `driver.yaml` audit decision (existing `extensions/` directory entry sufficient — no manifest edit); bounded validation guardrails (Pi `1..212/0`, cross-harness `1..127/0`); v2.56 recommendation = Pi extension submodule extraction wave; PR #156 OPEN against main.
 
 ### Previous milestone: v2.54 Contextual Verbosity Paring
 Result: Phases 230-233 complete. v2.54 established contextual verbosity guidance, compact dispatch skip/no-scope evidence, concise-by-default Pi skill wrappers, and final closure evidence protected by Pi 209/209 plus cross-harness 123/123 validation.
@@ -101,4 +101,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 241 Plan 241-01 created for Evidence Closure + Install-Surface Generalization; awaiting approval for APPLY.*
+*Last updated: 2026-05-01 — Phase 241 UNIFY complete; v2.55 closure awaiting PR #156 merge gate; v2.56 recommendation = Pi extension submodule extraction wave.*
