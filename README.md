@@ -21,6 +21,7 @@ Start a new Pi session, then in any project:
 /paul:unify       # Reconcile results and close the loop
 ```
 
+> First-run scenario: see [docs/PALS-FIRST-RUN-HAPPY-PATH.md](docs/PALS-FIRST-RUN-HAPPY-PATH.md) for a concrete tiny init→plan→apply→unify walkthrough that names what PALS protected at each step.
 Pi is the supported runtime: PALS installs canonical skills under `~/.pi/agent/skills/pals/`, the Pi extension at `~/.pi/agent/extensions/pals-hooks.ts`, and project-shipped helper agents under `~/.pi/agent/agents/`.
 
 Claude Code and Agent SDK surfaces are unsupported/frozen historical compatibility references. They may remain in the repository, but new architecture work should use the Pi-native surfaces and preserve `.paul/*` artifact authority.

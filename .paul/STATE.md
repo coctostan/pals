@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 ## Current Position
 
 Milestone: v2.55 Maintainability & Product Reality Hardening
-Phase: 240 of 241 (Product Happy Path + Scenario Evidence) — Ready to plan
-Plan: not started
-Status: Ready to plan
-Last activity: 2026-05-01T13:18:00Z — Phase 239 complete; PR #154 merged into main; v2.55 advances to 6 of 8 phases complete; Pi 211/211, cross-harness 125/125, artifact-consistency PASS
+Phase: 240 of 241 (Product Happy Path + Scenario Evidence) — Planning
+Plan: 240-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-01T13:22:00Z — Created .paul/phases/240-product-happy-path-scenario-evidence/240-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -27,7 +27,7 @@ Progress:
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
-- v2.55 Maintainability & Product Reality Hardening: [███████░░░] 75% (6 of 8 phases complete; Phase 240 Product Happy Path + Scenario Evidence ready to plan)
+- v2.55 Maintainability & Product Reality Hardening: [███████░░░] 75% (6 of 8 phases complete; Phase 240 plan 240-01 awaiting approval)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +62,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Loop complete — Phase 239 closed; Phase 240 ready to plan]
+  ✓        ○        ○     [Plan 240-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -302,14 +302,15 @@ Prior PRs: #153 merged (Phase 238 Pi extension modularization contract); #152 me
 
 ## Session Continuity
 
-Last session: 2026-05-01T13:18:00Z
-Stopped at: Phase 239 complete and merged (PR #154); ready to plan Phase 240
-Next action: Run /paul:plan for Phase 240 Product Happy Path + Scenario Evidence
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-01T13:25:00Z (paused before Phase 240 APPLY)
+Stopped at: Plan 240-01 created and awaiting approval; user paused before APPLY
+Next action: Run /paul:resume, then /paul:apply .paul/phases/240-product-happy-path-scenario-evidence/240-01-PLAN.md
+Resume file: .paul/handoffs/archive/HANDOFF-2026-05-01-phase-240-plan-awaiting-approval.md
 Resume context:
-- Phase 239 (Bounded Pi Extension Extraction Spike) shipped this session: PR #154 merged into main; the S5 `module-activity-parsing` subsystem is now an extracted module under `drivers/pi/extensions/module-activity-parsing.ts`.
-- `drivers/pi/extensions/pals-hooks.ts` reduced from 1684 to 1547 lines (−137); maintainability weakness #2 partially addressed; seven candidate subsystems (S1, S2, S3, S4, S6, S7, S8) remain available for future extractions.
-- APPLY-time deviation logged in Decisions: bounded amendment to `drivers/pi/install.sh` and `drivers/pi/uninstall.sh` (single-line `cp` and `rm -f`) was needed to deploy the new submodule; backward-compatible. Phase 240/241 should consider whether to generalize the install surface before subsequent extractions.
-- Working tree clean on main; 0 behind / 0 ahead relative to origin/main; PR #154 deleted from remote.
+- Phase 239 (Bounded Pi Extension Extraction Spike) shipped earlier this session: PR #154 merged into main; the S5 `module-activity-parsing` subsystem is now an extracted module under `drivers/pi/extensions/module-activity-parsing.ts`.
+- Phase 240 (Product Happy Path + Scenario Evidence) plan 240-01 is created and awaiting approval at `.paul/phases/240-product-happy-path-scenario-evidence/240-01-PLAN.md`; tier is tiny / doc-only.
+- Phase 240 scope: create `docs/PALS-FIRST-RUN-HAPPY-PATH.md` (200-500 lines, five named protections + `Authority: Derived aid only`), one bounded README pointer line, at most one new TAP marker assertion in `tests/cross-harness-validation.sh`. Pi suite stays at `1..211`.
+- Phase 240 forbids edits to `drivers/pi/install.sh`/`uninstall.sh`/`driver.yaml`, `drivers/pi/extensions/**`, `kernel/**`, `modules/**`, `tests/helpers/**`, `tests/pi-end-to-end-validation.sh`, all existing `docs/PI-NATIVE-*` and `docs/PALS-*` contracts, and the `/paul-*` command surface.
+- Carry-forward from Phase 239 (install-surface generalization, `drivers/pi/driver.yaml` audit) is explicitly deferred to Phase 241 / v2.56; Phase 240 must not pull it in.
+- Working tree dirty with Phase 240 plan staging only (`.paul/STATE.md`, `.paul/ROADMAP.md` modified; `.paul/phases/240-product-happy-path-scenario-evidence/` untracked). 0 behind / 0 ahead relative to origin/main; on `main`.
 - Validation truth: Pi 211/211, cross-harness 125/125, artifact consistency check PASS.
-- Phase 240 (Product Happy Path + Scenario Evidence) is the next focus; plan structure TBD during /paul:plan.
