@@ -12,7 +12,7 @@ Milestone: v2.55 Maintainability & Product Reality Hardening
 Phase: 237 of 241 (Artifact Consistency Guardrails) — Ready to plan
 Plan: Not started
 Status: Ready for PLAN
-Last activity: 2026-05-01T01:43:34Z — Phase 236 unified; validation-suite decomposition baseline complete
+Last activity: 2026-05-01T01:47:21Z — Phase 236 unified and PR #151 merged; Phase 237 ready to plan
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -290,16 +290,16 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/236-validation-suite-decomposition-baseline until PR #151 merge gate completes; then main.
-Last product commits: `78d22cf7` baseline doc and `3b93701e` shared TAP helper extraction.
-PR: #151 (https://github.com/coctostan/pals/pull/151) — OPEN before merge gate, checks passing.
-CI: PR checks passing (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation passed Pi 209/209 and cross-harness 123/123.
-Working tree: lifecycle metadata and history artifacts staged for UNIFY/transition commit before merge gate.
+Branch: main
+Last commit: `d7ca9705` (squash merge of PR #151: Phase 236 validation-suite decomposition baseline)
+PR: #151 (https://github.com/coctostan/pals/pull/151) — MERGED at 2026-05-01T01:47:21Z.
+CI: PR checks passed (Socket Security Project Report and Pull Request Alerts completed SUCCESS); local UNIFY validation passed Pi 209/209 and cross-harness 123/123.
+Working tree: main synced with origin/main after PR #151 merge; final merge-gate state update committed separately on main.
 Prior PRs: #150 merged (Phase 235 risk-tiered lifecycle contract + merge-gate cleanup); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-01T01:43:34Z
+Last session: 2026-05-01T01:47:21Z
 Stopped at: Phase 236 complete; Phase 237 ready to plan
 Next action: Run /paul:plan for Phase 237 Artifact Consistency Guardrails
 Resume file: .paul/ROADMAP.md
