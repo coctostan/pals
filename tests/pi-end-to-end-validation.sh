@@ -763,6 +763,7 @@ section "EXTENSION STRUCTURAL VALIDITY"
 
 # Use source file for structural checks (same content as installed)
 EXT_SRC="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
+EXT_ARTIFACT_SLICE="$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -893,9 +894,10 @@ else
 fi
 
   # Artifact-slice runtime-lens contract: activation-gated, source-cited, fresh, bounded, schema-shaped, and fallback-safe.
+  # Phase 243: S1 artifact-slice markers were extracted into drivers/pi/extensions/artifact-slice-rendering.ts; assertions follow the new sibling.
   tap_file_contains_all \
     "Extension preserves contract-shaped artifact-slice runtime guardrails" \
-    "$EXT_SRC" \
+    "$EXT_ARTIFACT_SLICE" \
     'Artifact slices (read-only, bounded)' \
     'Slice: current-lifecycle-state' \
     'Slice: active-roadmap-phase' \
@@ -908,13 +910,18 @@ fi
     'Derived aid only' \
     'MAX_ARTIFACT_SLICE_CHARS' \
     'MAX_ARTIFACT_SLICE_LINES' \
-    'shouldInjectPalsContext' \
     '.paul/STATE.md' \
     '.paul/ROADMAP.md'
 
+  # shouldInjectPalsContext is unrelated to S1 and remains in pals-hooks.ts after the Phase 243 extraction.
+  tap_file_contains_all \
+    "Extension keeps shouldInjectPalsContext gating in pals-hooks.ts" \
+    "$EXT_SRC" \
+    'shouldInjectPalsContext'
+
   tap_file_contains_all \
     "Extension targets and deduplicates artifact-slice runtime content" \
-    "$EXT_SRC" \
+    "$EXT_ARTIFACT_SLICE" \
     'artifact-slice targeting + deduplication enabled' \
     'active phase/current milestone markers only' \
     'deterministic duplicate trimming preserves first cited occurrence' \
@@ -923,7 +930,7 @@ fi
 
   tap_file_contains_all \
     "Extension runtime slices preserve full-read fallback and non-authority boundaries" \
-    "$EXT_SRC" \
+    "$EXT_ARTIFACT_SLICE" \
     'approved PLAN execution' \
     'lifecycle writes' \
     'stale/ambiguous/contested facts' \
@@ -1143,6 +1150,25 @@ fi
     tap_ok "Phase 239 S5 module-activity-parsing extraction preserves DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth and imports them into pals-hooks.ts"
   else
     tap_not_ok "Phase 239 S5 module-activity-parsing extraction preserves DISPATCH_MARKER/MODULE_REPORTS_HEADER single-source-of-truth and imports them into pals-hooks.ts" "Expected drivers/pi/extensions/module-activity-parsing.ts to define DISPATCH_MARKER and MODULE_REPORTS_HEADER as exports, pals-hooks.ts to import from ./module-activity-parsing, and pals-hooks.ts to no longer declare those constants inline"
+  fi
+
+  # Phase 243: S1 artifact-slice-rendering extracted to its own module with single-defined ARTIFACT_SLICE markers and import wired in pals-hooks.ts
+  if [ -f "$EXT_ARTIFACT_SLICE" ] \
+    && grep -Eq '^export const MAX_ARTIFACT_SLICE_CHARS' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export const MAX_ARTIFACT_SLICE_LINES' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export const ARTIFACT_SLICE_FALLBACK' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export const ARTIFACT_SLICE_AUTHORITY' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export const ARTIFACT_SLICE_SCHEMA_MARKERS' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export function buildArtifactSlice' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export function renderArtifactSlices' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export function getArtifactSliceSpecs' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq '^export function deduplicateArtifactSliceLines' "$EXT_ARTIFACT_SLICE" 2>/dev/null \
+    && grep -Eq 'from "\./artifact-slice-rendering"' "$EXT_SRC" 2>/dev/null \
+    && ! grep -Eq '^const (MAX_ARTIFACT_SLICE_CHARS|MAX_ARTIFACT_SLICE_LINES|ARTIFACT_SLICE_FALLBACK|ARTIFACT_SLICE_AUTHORITY|ARTIFACT_SLICE_SCHEMA_MARKERS)\b' "$EXT_SRC" 2>/dev/null \
+    && ! grep -Eq '^function (buildArtifactSlice|renderArtifactSlices|getArtifactSliceSpecs)\b' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Phase 243 S1 artifact-slice-rendering extraction preserves single-defined ARTIFACT_SLICE markers and imports them into pals-hooks.ts"
+  else
+    tap_not_ok "Phase 243 S1 artifact-slice-rendering extraction preserves single-defined ARTIFACT_SLICE markers and imports them into pals-hooks.ts" "Expected drivers/pi/extensions/artifact-slice-rendering.ts to define MAX_ARTIFACT_SLICE_*, ARTIFACT_SLICE_FALLBACK/AUTHORITY/SCHEMA_MARKERS, and the buildArtifactSlice/renderArtifactSlices/getArtifactSliceSpecs/deduplicateArtifactSliceLines exports; pals-hooks.ts to import from ./artifact-slice-rendering; and pals-hooks.ts to no longer declare those constants or functions inline"
   fi
 
   # Phase 241: install/uninstall use a generalized source-set rule over drivers/pi/extensions/*.ts
