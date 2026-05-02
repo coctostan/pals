@@ -97,3 +97,4 @@ Types: —
 
 ---
 *Updated after every /paul:unify*
+| 2026-05-02 | 247-documentation-validation-surfacing-v2-57 | Pi 223/223, XH 130/130 | N/A (shell) | N/A | N/A | ↑ improving |

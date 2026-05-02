@@ -9,11 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 ## Current Position
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Phase: 247 of 248 (Documentation + Validation Surfacing)
-Plan: 247-01 APPLY complete; UNIFY pending
-Status: PLAN created, ready for APPLY
-Status: APPLY complete; ready for UNIFY
-Last activity: 2026-05-02T06:30:00Z — Plan 247-01 APPLY complete. 4/4 tasks PASS. Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, install 4 files. PR #162 opened, CI green (2× Socket SUCCESS), squash-merged to main as `2ce4c5ff`, branch deleted.
+Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. Phase 248 ready to plan.
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
@@ -29,7 +28,7 @@ Last activity: 2026-05-02T06:30:00Z — Plan 247-01 APPLY complete. 4/4 tasks PA
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
-- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████░░] 66% (2 of 3 phases; Phase 246 complete; Phase 247 APPLY complete, UNIFY pending)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [█████████░░░] 83% (2 of 3 phases complete via PRs #161/#162; Phase 248 Evidence Closure remaining)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -64,7 +63,7 @@ Last activity: 2026-05-02T06:30:00Z — Plan 247-01 APPLY complete. 4/4 tasks PA
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Plan 247-01 APPLY complete; UNIFY pending]
+  ✓        ✓        ✓     [Phase 247 loop complete; Phase 248 ready to plan]
 ```
 
 ## Accumulated Context
@@ -307,10 +306,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T06:30:00Z — Phase 247 APPLY complete; PR #162 merged to main.
-Stopped at: APPLY complete. Ready for UNIFY.
-Next action: /paul:unify .paul/phases/247-documentation-validation-surfacing-v2-57/247-01-PLAN.md
-Resume file:
+Last session: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete.
+Stopped at: Phase 247 complete; Phase 248 ready to plan.
+Next action: /paul:plan for Phase 248 (Evidence Closure + Next Roadmap Decision)
+Resume file: .paul/phases/247-documentation-validation-surfacing-v2-57/247-01-SUMMARY.md
 Resume context:
 - Phase 247 APPLY complete (4/4 tasks PASS). Main commit: 2ce4c5ff. Validation: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, install 4 files.
 - UNIFY will draft 247-01-SUMMARY.md (5 ACs), record phase transition, advance ROADMAP Phase 247 to Complete (2 of 3), then plan Phase 248 (Evidence Closure + Next Roadmap Decision).

@@ -29,13 +29,13 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering** (v2.57)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 1 of 3 complete
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 2 of 3 complete
 Theme: Continue the sibling-extraction wave by extracting S2 `workflow-resource-capsule-rendering` from `drivers/pi/extensions/pals-hooks.ts` into a new sibling Pi extension module while preserving runtime behavior, install surface, lifecycle authority, parent-owned APPLY, and command-output validation truth. Carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker) as a hard constraint on every helper-only sibling under `drivers/pi/extensions/*.ts`. Detail in Plan 246-01.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 246 | S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering) | 1/1 | ✅ Complete | 2026-05-02 |
-| 247 | Documentation + Validation Surfacing | 1 | Planning | - |
+| 247 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-02 |
 | 248 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Latest completed milestone: v2.56 Pi Extension Submodule Extraction Wave
@@ -102,4 +102,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering created (Phases 246–248, 3-phase compact); direct-requirements + high-collab; carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker) as a hard constraint on any new helper-only sibling under `drivers/pi/extensions/*.ts`.*
+*Last updated: 2026-05-02 — Phase 247 Documentation + Validation Surfacing complete (PR #162, squash-merged `2ce4c5ff`); v2.57 Pi Extension Submodule Extraction Wave 2 of 3 phases complete; Phase 248 (Evidence Closure + Next Roadmap Decision) ready to plan.*
