@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-01 after Phase 242 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 242 Extension Extraction Target Baseline is complete; Phase 243 Bounded Submodule Extraction Wave is ready to plan.
+**Current focus:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 243 Bounded Submodule Extraction Wave is in PLAN: Plan 243-01 created to extract S1 `artifact-slice-rendering` from `drivers/pi/extensions/pals-hooks.ts` to a sibling Pi extension module.
 
 ## Current Position
 
 Milestone: v2.56 Pi Extension Submodule Extraction Wave
-Phase: 242 of 245 (Extension Extraction Target Baseline) — Complete
-Plan: 242-01 complete (UNIFY done)
-Status: UNIFY complete; Phase 243 ready to plan
-Last activity: 2026-05-01T21:55:00Z — UNIFY completed for .paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md
+Phase: 243 of 245 (Bounded Submodule Extraction Wave) — Planning
+Plan: 243-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-02T00:45:00Z — Created .paul/phases/243-bounded-submodule-extraction-wave/243-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -28,7 +28,7 @@ Progress:
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
-- v2.56 Pi Extension Submodule Extraction Wave: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 243 ready to plan)
+- v2.56 Pi Extension Submodule Extraction Wave: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 243 in PLAN — Plan 243-01 created, awaiting approval)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -63,7 +63,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
+  ✓        ○        ○     [Plan 243-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -305,12 +305,13 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T00:30:00Z
-Stopped at: Phase 242 UNIFY + transition complete; PR #157 merged; Phase 243 Bounded Submodule Extraction Wave ready to plan.
-Next action: /paul:plan for Phase 243 Bounded Submodule Extraction Wave (target: `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`).
-Resume file: .paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md
+Last session: 2026-05-02T00:55:00Z
+Stopped at: Plan 243-01 revised after open-question resolution (Task 2.5 added; default-arg dropped); user paused at the "Continue to APPLY?" prompt; awaiting approval.
+Next action: Review and approve Plan 243-01, then run /paul:apply .paul/phases/243-bounded-submodule-extraction-wave/243-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-05-02-phase-243-plan-revised.md
 Resume context:
-- Phase 242 SUMMARY at `.paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md` records AC results, marker grep evidence, validation reconciliation, module reports, decisions, and Phase 243 readiness.
-- Approved Phase 243 extraction wave: S1 artifact-slice-rendering and S2 workflow-resource-capsule-rendering; Phase 243 may extract one or more approved candidates if contracts/imports/install behavior/validation/reviewability remain bounded.
-- v2.56 progress: 1 of 4 phases complete (242). Remaining: 243 Bounded Submodule Extraction Wave, 244 Documentation + Validation Surfacing, 245 Evidence Closure + Next Roadmap Decision.
-- Validation post-merge: Pi `1..212/0`, cross-harness `1..127/0`, `artifact_consistency_check: PASS`, `git diff --check` clean.
+- Plan 243-01 extracts S1 `artifact-slice-rendering` from `drivers/pi/extensions/pals-hooks.ts` into a new sibling module `drivers/pi/extensions/artifact-slice-rendering.ts`, following the S5 sibling-module pattern (Phase 239) and the Phase 241 generalized install surface.
+- S2 `workflow-resource-capsule-rendering` stays inline this plan; reserved for an approved Plan 243-02 if/when bounded.
+- Required preservation markers: `MAX_ARTIFACT_SLICE_CHARS`, `MAX_ARTIFACT_SLICE_LINES`, `ARTIFACT_SLICE_FALLBACK`, `ARTIFACT_SLICE_AUTHORITY`, `ARTIFACT_SLICE_SCHEMA_MARKERS`, plus visible `Slice:`/`Fallback:`/`Authority:` strings.
+- Plan revised after open-question resolution: Task 2.5 added to update `tests/pi-end-to-end-validation.sh` (3 existing S1 marker `tap_file_contains_all` blocks repointed to the new sibling + 1 new Phase 243 S1 guardrail mirroring the Phase 239 S5 precedent), Task 2 drops `selectBoundedLines`'s default-arg to avoid a circular import, and `tests/pi-end-to-end-validation.sh` is added to `files_modified`.
+- Validation expectations: `bash drivers/pi/install.sh` reports `[ok] Pi extensions installed: 3 files`; Pi 1..213/0 (212 baseline + 1 new guardrail); cross-harness 1..127/0; artifact_consistency PASS; `git diff --check` clean.
