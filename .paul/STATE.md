@@ -308,8 +308,8 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 Branch: feature/251-documentation-validation-surfacing
 Last commit: APPLY completion metadata committed on `feature/251-documentation-validation-surfacing`; use `git log -1` for the current hash.
-PR: not created yet for Phase 251 APPLY; Phase 250 PR #165 was merged 2026-05-02T20:43:17Z.
-Working tree: Phase 251 APPLY implementation and APPLY state committed; UNIFY metadata pending.
+PR: #166 open — https://github.com/coctostan/pals/pull/166 (created after Phase 251 APPLY). Phase 250 PR #165 was merged 2026-05-02T20:43:17Z.
+Working tree: Phase 251 APPLY implementation and APPLY state committed/pushed; UNIFY metadata pending.
 Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix); earlier PR history archived in STATE history.
 
 ## Session Continuity
