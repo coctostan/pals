@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
 Phase: 247 of 248 (Documentation + Validation Surfacing)
-Plan: 247-01 created, awaiting approval
+Plan: 247-01 APPLY complete; UNIFY pending
 Status: PLAN created, ready for APPLY
-Last activity: 2026-05-02T06:00:00Z — Plan 247-01 created (`.paul/phases/247-documentation-validation-surfacing-v2-57/247-01-PLAN.md`); 4 tasks, autonomous=true, type=execute, risk_tier=normal; mirrors canonical Phase 244 surfacing shape; expected validation deltas Pi 221→223 (+2 multi-file split), cross-harness 129→130 (+1); install surface unchanged at 4 files.
-Progress:
+Status: APPLY complete; ready for UNIFY
+Last activity: 2026-05-02T06:30:00Z — Plan 247-01 APPLY complete. 4/4 tasks PASS. Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, install 4 files. PR #162 opened, CI green (2× Socket SUCCESS), squash-merged to main as `2ce4c5ff`, branch deleted.
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
@@ -29,7 +29,7 @@ Progress:
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
-- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [███░░░░░░░] 33% (1 of 3 phases; Phase 246 complete; Phase 247 ready to plan)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████░░] 66% (2 of 3 phases; Phase 246 complete; Phase 247 APPLY complete, UNIFY pending)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -64,7 +64,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 247-01 created, awaiting approval]
+  ✓        ✓        ○     [Plan 247-01 APPLY complete; UNIFY pending]
 ```
 
 ## Accumulated Context
@@ -299,18 +299,18 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit on main: `3f3dc4b0` Phase 246: Extract S2 workflow-resource-capsule-rendering to sibling Pi extension (v2.57) (#161).
-PR: #161 (https://github.com/coctostan/pals/pull/161) — MERGED 2026-05-02 (squash + delete-branch). Pre-merge: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge validation on main: Pi 1..221/0, cross-harness 1..129/0, artifact_consistency PASS, `git diff --check` clean. Prior: PR #160 (Phase 245) MERGED 2026-05-02.
+Last commit on main: `2ce4c5ff` feat(247): Phase 247 Documentation + Validation Surfacing — S2 workflow-resource-capsule-rendering (#162).
+PR: #162 (https://github.com/coctostan/pals/pull/162) — MERGED 2026-05-02 (squash + delete-branch). CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, git diff --check clean. Prior: PR #161 merged (Phase 246 S2 extraction).
 Working tree: clean.
-Prior PRs: #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
+Prior PRs: #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
 Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T06:10:00Z — APPLY in progress (user approved; handoff consumed and archived).
-Stopped at: APPLY running — Phase 247 Documentation + Validation Surfacing.
-Next action: Execute Tasks 1-4 of Plan 247-01.
+Last session: 2026-05-02T06:30:00Z — Phase 247 APPLY complete; PR #162 merged to main.
+Stopped at: APPLY complete. Ready for UNIFY.
+Next action: /paul:unify .paul/phases/247-documentation-validation-surfacing-v2-57/247-01-PLAN.md
 Resume file:
 Resume context:
-- Phase 247 APPLY approved. Creating feature branch phase-247-documentation-validation-surfacing-v2-57. Executing 4 tasks: surface S2 sibling in README/extensions-README/skill-map, update extraction-target baseline, update modularization contract, add Pi e2e + cross-harness guardrails.
-- Pre-apply baselines: Pi 221/221, cross-harness 129/129, artifact_consistency PASS expected after clearing stale resume file pointer.
+- Phase 247 APPLY complete (4/4 tasks PASS). Main commit: 2ce4c5ff. Validation: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, install 4 files.
+- UNIFY will draft 247-01-SUMMARY.md (5 ACs), record phase transition, advance ROADMAP Phase 247 to Complete (2 of 3), then plan Phase 248 (Evidence Closure + Next Roadmap Decision).
