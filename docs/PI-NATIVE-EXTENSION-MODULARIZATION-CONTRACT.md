@@ -203,6 +203,16 @@ Rejection reasons for non-selected candidates:
 - **S7 `pals-context-injection`** — must preserve explicit authority/activation tags exactly; mutates the message stream during housekeeping; not the smallest safe spike.
 - **S8 `command-routing`** — highest user-visible blast radius (commands and shortcuts); never a first spike.
 
+## Phase 243 Outcome
+
+Phase 243 Plan 01 extracted the S1 candidate identified above as equally pure to S5; the rejection-reasons analysis and risk-readiness table preceding this section remain authoritative verbatim and were not re-litigated.
+
+- **S1 `artifact-slice-rendering` extracted** to `drivers/pi/extensions/artifact-slice-rendering.ts` following the Phase 239 S5 sibling-module pattern. The contract-protected `ARTIFACT_SLICE_SCHEMA_MARKERS` strings and the `MAX_ARTIFACT_SLICE_*` caps are preserved single-defined in the new sibling; no marker is duplicated and none was dropped.
+- **Helpers exported from `pals-hooks.ts`:** `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, and the type `PalsStateSnapshot`. Future siblings import these helpers from `./pals-hooks` rather than duplicating them.
+- **Canonical `default-arg cycle-avoidance` pattern:** any shared cap (e.g., `selectBoundedLines`'s `maxLines`) moves from a default-arg referencing a sibling-owned constant to a required parameter at the helper signature, with each call site passing its local cap explicitly. This eliminates the latent circular-import risk between `pals-hooks.ts` and any sibling module that owns the cap constant, and is the recommended cycle-avoidance recipe for future S* extractions.
+- **Validation guardrail addition was bounded** as the rejection-reasons section anticipated: Pi e2e `1..212 → 1..214` (+2; the +1 anticipated for the S1 single-defined guardrail plus +1 for splitting `shouldInjectPalsContext` into its own block, documented in `.paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md`); cross-harness unchanged at `1..127` because no contract-doc string moved.
+- **Outcome does not change the S1-S8 risk/readiness analysis above.** The selection prose (S5 first as smallest authority surface; S1 as the equally-pure runner-up) was correct: S5's smaller marker surface let it be the safest first spike, and S1's contract-protected markers were preserved by mirroring the same sibling-module pattern after S5 proved it.
+
 ## Phase 239 Handoff
 
 Phase 239 must plan inside the following bounds. Anything outside these bounds requires a separately approved later plan.

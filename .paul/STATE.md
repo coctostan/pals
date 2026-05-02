@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 ## Current Position
 
 Milestone: v2.56 Pi Extension Submodule Extraction Wave
-Phase: 244 of 245 (Documentation + Validation Surfacing) — ready to plan
-Plan: not started
-Status: Ready to plan
-Last activity: 2026-05-02T01:55:00Z — Phase 243 complete (PR #158 merged squash + delete-branch); transitioned to Phase 244 Documentation + Validation Surfacing
+Phase: 244 of 245 (Documentation + Validation Surfacing) — Planning
+Plan: 244-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-02T02:10:00Z — Created .paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -63,7 +63,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 244 ready to plan]
+  ✓        ○        ○     [Plan 244-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -306,10 +306,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T01:55:00Z
-Stopped at: Phase 243 complete and transitioned. PR #158 merged 2026-05-02 (squash + delete-branch); local main synced to `c2742213`; branch deleted. PROJECT.md / ROADMAP.md / STATE.md aligned for Phase 244.
-Next action: /paul:plan for Phase 244 Documentation + Validation Surfacing.
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-02T02:10:00Z
+Stopped at: Plan 244-01 created (Documentation + Validation Surfacing for v2.56 sibling extraction wave). Awaiting approval to APPLY.
+Next action: Review and approve plan, then run /paul:apply .paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md
+Resume file: .paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md
 Resume context:
 - v2.56 Pi Extension Submodule Extraction Wave is at 2 of 4 phases complete. Phase 244 Documentation + Validation Surfacing and Phase 245 Evidence Closure remain.
 - Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).

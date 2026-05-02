@@ -51,7 +51,7 @@ Plans: `.paul/phases/243-bounded-submodule-extraction-wave/243-01-PLAN.md` + `24
 
 ### Phase 244: Documentation + Validation Surfacing
 Focus: Document extracted modules and protect install/runtime behavior with validation and artifact consistency evidence.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md` — Planning: surface S1 sibling extraction (`artifact-slice-rendering.ts`) in README + extensions README + skill-map; surface Phase 243 outcome (S1 extracted, S2 reserved, helpers exported, default-arg cycle-avoidance pattern) in `PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` and `PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`; add exactly one localized closure guardrail per validation suite (expected Pi 214→215, cross-harness 127→128). Awaiting approval.
 
 ### Phase 245: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.56 evidence, close the milestone, and decide the next roadmap focus.
