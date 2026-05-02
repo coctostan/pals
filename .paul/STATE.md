@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.55 Maintainability & Product Reality Hardening is active. Phases 234–240 are complete (PR #155 merged, Phase 240 first-run happy-path scenario doc shipped); Phase 241 (v2.55 closure) is ready to plan.
+**Current focus:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 242 Extension Extraction Target Baseline is complete; Phase 243 Bounded Submodule Extraction Wave is ready to plan.
 
 ## Current Position
 
-Milestone: Awaiting next milestone (v2.55 Maintainability & Product Reality Hardening closed 2026-05-01 with PR #156)
-Phase: 241 of 241 (Evidence Closure + Next Roadmap Decision) — ✅ Complete; v2.55 closed (no active phase pending v2.56 scoping)
-Plan: None
-Status: Milestone v2.55 complete — ready for next milestone
-Last activity: 2026-05-01T20:45:00Z — v2.55 milestone closed: MILESTONES.md entry added, PROJECT.md evolved to v2.55 Complete, ROADMAP.md reorganized with Next Milestone placeholder, STATE.md cleared for next milestone
+Milestone: v2.56 Pi Extension Submodule Extraction Wave
+Phase: 242 of 245 (Extension Extraction Target Baseline) — Complete
+Plan: 242-01 complete (UNIFY done)
+Status: UNIFY complete; Phase 243 ready to plan
+Last activity: 2026-05-01T21:55:00Z — UNIFY completed for .paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -28,6 +28,7 @@ Progress:
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
+- v2.56 Pi Extension Submodule Extraction Wave: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 243 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -62,7 +63,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone v2.55 complete — ready for next milestone]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -151,6 +152,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 234 completed the v2.55 product reality + drift audit in `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md`: it ranks seven maintainability/product weaknesses, inventories validation and Pi runtime hotspots, documents artifact drift and first-run friction, identifies usefulness-evidence gaps, and maps recommendations for Phases 235-241. Validation passed Pi 209/209 and cross-harness 123/123; Phase 235 should design risk-tiered lifecycle expectations before workflow behavior changes.
 - Phase 235 completed the risk-tiered lifecycle contract in `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`: it defines tiny/doc-only, normal, risky, and hotfix tiers; per-tier evidence expectations; escalation rules; hotfix reconciliation; non-bypass rules for APPLY approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` artifact authority, command-output truth, full authoritative read fallback, no hidden Pi state, and no telemetry; and future implementation boundaries for Phases 236, 237, 240, and 241. Validation stayed green at Pi 209/209 and cross-harness 123/123.
 - Phase 236 UNIFY created `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`, recording AC results, baseline doc evidence, shared TAP helper extraction, focused marker checks, Pi 209/209, cross-harness 123/123, Workguard scope proof, module reports, and PR #151 merge-gate evidence; Phase 236 is complete and Phase 237 Artifact Consistency Guardrails is ready to plan.
+- v2.56 has been created as the next milestone: Pi Extension Submodule Extraction Wave will continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn. Phases 242-245 cover extraction target baselining, one-or-more approved submodule extractions, documentation/validation surfacing, and evidence closure/next-roadmap decision.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -277,6 +279,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 235 UNIFY: `/paul`, `/carl`, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 209/209 and cross-harness 123/123. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 237 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 210/210 and cross-harness 124/124. One auto-fix during Task 2: helper plan-id parser corrected from first to second `-`-segment before Task 3 wiring. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 238 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation stayed stable at Pi 210/210 and cross-harness 124/124 (tiny/doc-only tier produced zero count drift, as planned). No helper delegation was used; parent APPLY owned verification. Existing `pals-hooks.ts` size debt remains pre-existing and is the explicit Phase 239 spike target.
+- Skill audit Phase 242 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, DOCS, DEAN, IRIS, SETH, ARCH, PETE, REED, VERA, OMAR, LUKE, ARIA, GABE, DANA, and DAVE invoked or marked not-applicable via pre-plan/pre-unify advisories; post-unify persistence: CODI skipped (no symbol changes; docs-only baseline), WALT recorded stable Pi 212/212 and cross-harness 127/127, SKIP recorded the S1+S2 default approved Phase 243 wave and one-or-more multi-module extraction rule. No helper delegation was used; parent APPLY owned verification. Pre-existing `pals-hooks.ts` size debt remains the explicit Phase 243 extraction target.
 
 ### Deferred Issues
 
@@ -284,7 +287,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
 - Multi-model routing exists via `pals.json` `agents`, `agent-dispatch.md`, and apply-phase dispatch logic.
-- R5 Pi adapter modularization remains deferred to a future driver-quality milestone.
+- Pi extension submodule extraction is active in v2.56; any broader adapter modularization beyond bounded `pals-hooks.ts` extraction remains deferred.
 
 ### Blockers/Concerns
 
@@ -293,21 +296,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main (Phase 240 closed; feature/240-first-run-happy-path squash-merged and deleted)
-Last commit on main: `30fb2b25` Phase 240: first-run happy path + scenario evidence (docs-only) (#155).
-PR: #156 (https://github.com/coctostan/pals/pull/156) — MERGED 2026-05-01T20:38:54Z (squash + delete-branch). No CI workflows configured (`.github/workflows/` absent); statusCheckRollup empty (no failing checks). Pi 1..212/0, cross-harness 1..127/0, artifact_consistency PASS, `git diff --check` clean prior to merge.
-Working tree: clean on `main`; 0 behind / 0 ahead origin/main after fetch + pull.
+Branch: feature/242-extension-extraction-target-baseline (Phase 242 UNIFY artifacts pending push to PR #157)
+Last commit on main: `7fcf2b79` milestone: close v2.55 Maintainability & Product Reality Hardening.
+PR: #157 (https://github.com/coctostan/pals/pull/157) — OPEN, mergeStateStatus CLEAN, Socket Security checks SUCCESS prior to UNIFY commit.
+Working tree: UNIFY-side SUMMARY.md and lifecycle metadata staged for commit/push; Phase 242 baseline doc and APPLY-side lifecycle artifacts already pushed.
 Prior PRs: #156 merged (Phase 241-01 evidence closure + Pi extension install-surface generalization — closes v2.55); #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
-Open PR: none.
+Open PR: #157 (https://github.com/coctostan/pals/pull/157) — Phase 242 extraction target baseline + UNIFY artifacts.
 
 ## Session Continuity
 
-Last session: 2026-05-01T20:39:00Z
-Stopped at: Phase 241 UNIFY complete and PR #156 merged; v2.55 Maintainability & Product Reality Hardening is fully closed (8 of 8 phases complete); local `main` synced.
-Next action: Run `/paul:milestone` to scope v2.56 (recommended focus per Phase 241 SUMMARY: Pi extension submodule extraction wave; alternates: local context-cost evidence, demo project preset).
-Resume file: .paul/MILESTONES.md
+Last session: 2026-05-01T21:55:00Z
+Stopped at: Phase 242 UNIFY complete; awaiting commit/push of UNIFY artifacts and merge gate for PR #157.
+Next action: Commit/push UNIFY artifacts to PR #157, run merge gate, then run /paul:plan for Phase 243 Bounded Submodule Extraction Wave.
+Resume file: .paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md
 Resume context:
-- v2.55 Maintainability & Product Reality Hardening closed 2026-05-01 with PR #156. All 8 phases (234–241) complete.
-- Final v2.55 validation: Pi `1..212/0`, cross-harness `1..127/0`, artifact_consistency PASS.
-- Next milestone v2.56 is unscoped. Recommended focus per Phase 241 SUMMARY: Pi extension submodule extraction wave (continue extracting bounded submodules from `pals-hooks.ts` per `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`, leveraging the now-generalized install surface). Alternates: local context-cost evidence, demo project preset.
-- Run `/paul:discuss-milestone` to explore scope, or `/paul:milestone` to create v2.56 directly.
+- Phase 242 SUMMARY at `.paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md` records AC results, marker grep evidence, validation reconciliation, module reports, decisions, and Phase 243 readiness.
+- Approved Phase 243 extraction wave: S1 artifact-slice-rendering and S2 workflow-resource-capsule-rendering; Phase 243 may extract one or more approved candidates if contracts/imports/install behavior/validation remain bounded.
+- Validation passed during UNIFY: Pi `1..212/0`, cross-harness `1..127/0`, `artifact_consistency_check: PASS`, `git diff --check` clean.
+- PR #157 is open, clean, and Socket Security checks are green; merge gate must run before Phase 243 PLAN.
