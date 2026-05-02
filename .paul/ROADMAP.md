@@ -51,7 +51,7 @@ Plans: `.paul/phases/243-bounded-submodule-extraction-wave/243-01-PLAN.md` + `24
 
 ### Phase 244: Documentation + Validation Surfacing
 Focus: Document extracted modules and protect install/runtime behavior with validation and artifact consistency evidence.
-Plans: `.paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md` — Planning: surface S1 sibling extraction (`artifact-slice-rendering.ts`) in README + extensions README + skill-map; surface Phase 243 outcome (S1 extracted, S2 reserved, helpers exported, default-arg cycle-avoidance pattern) in `PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` and `PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`; add exactly one localized closure guardrail per validation suite (expected Pi 214→215, cross-harness 127→128). Awaiting approval.
+Plans: `.paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md` + `244-01-SUMMARY.md` — Complete: surfaced S1 sibling extraction (`artifact-slice-rendering.ts`) across `README.md` + `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`; surfaced Phase 243 outcome (S1 extracted, helpers exported, canonical `default-arg cycle-avoidance` pattern) in `PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` and `PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`; added closure guardrails (Pi `Phase 244 sibling extraction surfacing (Pi-supported runtime)` ×2; cross-harness `Phase 244 sibling extraction surfacing (Shared Invariant)` ×1). AC-1–AC-5 PASS (Pi 1..216/0, cross-harness 1..128/0, artifact_consistency PASS, install unchanged at 3 files; +2 Pi count vs planned +1 reconciled in SUMMARY). PR #159 merged 2026-05-02 (squash + delete-branch).
 
 ### Phase 245: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.56 evidence, close the milestone, and decide the next roadmap focus.
@@ -94,4 +94,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 243 complete (S1 `artifact-slice-rendering` extracted to sibling Pi extension module; PR #158 merged); transitioned to Phase 244 Documentation + Validation Surfacing.*
+*Last updated: 2026-05-02 — Phase 244 complete (S1 outcome surfaced in 5 docs + 1 closure guardrail per validation suite; PR #159 merged); transitioned to Phase 245 Evidence Closure + Next Roadmap Decision.*
