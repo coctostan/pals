@@ -2,7 +2,7 @@
 
 **Phase:** 242 Extension Extraction Target Baseline  
 **Plan:** 242-01  
-**Status:** Active Phase 243 handoff baseline
+**Status:** Active Phase 250 handoff baseline
 
 ## Purpose
 
@@ -26,7 +26,7 @@ This document is a derived aid only. It is not lifecycle truth, validation truth
 |-----------|---------------|-------------------|
 | S1 `artifact-slice-rendering` | Extracted to `drivers/pi/extensions/artifact-slice-rendering.ts` (Phase 243 / PR #158) | Shipped — sibling-module pattern repeated |
 | S2 `workflow-resource-capsule-rendering` | Extracted to `drivers/pi/extensions/workflow-resource-capsule-rendering.ts` (Phase 246 / PR #161) | Shipped — sibling-module pattern triple-confirmed |
-| S3 `guided-workflow-detection` | Still inline in `pals-hooks.ts` | Conditional secondary candidate only after S1/S2 bounds are stable |
+| S3 `guided-workflow-detection` | Still inline in `pals-hooks.ts` | Promoted to bounded Phase 250 contract target after S1/S2 stability; Phase 249 created `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` |
 | S4 `guided-workflow-canonical-reply` | Still inline in `pals-hooks.ts` | Deferred; runtime-coupled Pi message mutation |
 | S5 `module-activity-parsing` | Already extracted to `module-activity-parsing.ts` | Not a Phase 243 extraction target |
 | S6 `lifecycle-ui` | Still inline in `pals-hooks.ts` | Deferred; Pi UI mutation and S5/S7 coupling |
@@ -132,6 +132,17 @@ Phase 246 extracted the S2 `workflow-resource-capsule-rendering` subsystem from 
 
 The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain in force verbatim — this section surfaces outcome only and does not re-litigate selection.
 
+## Phase 249 Outcome
+
+Phase 249 created the S3 `guided-workflow-detection` extraction contract and bounded submodule plan without modifying runtime, source, tests, install, dependencies, CI, or lifecycle authority.
+
+- **S3 contract created:** `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` defines the 10 S3 identifiers (`detectGuidedWorkflowMoment`, `parseGuidedWorkflowOptions`, `detectExplicitCanonicalResponse`, `isMergeGateRoutingPrompt`, `extractMergeGateRoutingSummary`, `makeGuidedWorkflowSignature`, `summarizeWorkflowPrompt`, `extractNextActionSummary`, `isValidOptionId`, `GUIDED_WORKFLOW_LOOKBACK`, `GUIDED_WORKFLOW_SIGNATURE_BYTES`), the governing safety contract (`docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`), allowed Phase 250 sibling-module shape, forbidden scope, and Phase 250 handoff with marker checks, install verification, validation commands, count reconciliation, and GitHub Flow evidence requirements.
+- **S3 promoted from conditional secondary to bounded contract target:** v2.58 Phase 249 promotes S3 after S1/S2 stability was demonstrated by Phase 246. Phase 250 remains the first source-changing step.
+- **S4/S6/S7/S8 deferrals preserved:** The contract explicitly forbids S4 canonical-reply delivery, S6 lifecycle UI, S7 context injection, and S8 command routing as part of S3 extraction work.
+- **Validation baseline preserved:** Pi 223/223, cross-harness 131/131, artifact_consistency PASS, install 4 files, `git diff --check` clean.
+
+The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain in force verbatim — this section surfaces outcome only and does not re-litigate selection.
+
 ## Forbidden Scope for Phase 243 by Default
 
 - S4 canonical reply delivery, unless a new approved plan specifically covers Pi message mutation.
@@ -155,9 +166,25 @@ A Phase 243 APPLY plan should include focused source checks and full validation:
 
 If a future plan changes validation counts, it must reconcile the count change in its SUMMARY using command-output evidence.
 
+## Phase 250 Validation Expectations
+
+Phase 250 must include focused source checks and full validation before the S3 sibling module is considered extracted:
+
+- Grep/read checks that all 10 S3 identifiers (`detectGuidedWorkflowMoment`, `parseGuidedWorkflowOptions`, `detectExplicitCanonicalResponse`, `isMergeGateRoutingPrompt`, `extractMergeGateRoutingSummary`, `makeGuidedWorkflowSignature`, `summarizeWorkflowPrompt`, `extractNextActionSummary`, `isValidOptionId`, `GUIDED_WORKFLOW_LOOKBACK`, `GUIDED_WORKFLOW_SIGNATURE_BYTES`) remain present in repo source after extraction.
+- Explicit separation check: no S3 function is moved into or merged with S4 canonical-reply delivery (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`).
+- `no inferred merge intent` marker remains present in contract and validation context.
+- Repo-source-only changes: no direct edits to installed runtime copies under `~/.pi/agent/extensions/`.
+- Install source-set proof: `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reports the new sibling in its installed file count.
+- `bash tests/pi-end-to-end-validation.sh` — expected Phase 249 baseline: Pi 223/223.
+- `bash tests/cross-harness-validation.sh` — expected Phase 249 baseline: cross-harness 131/131.
+- `bash tests/helpers/artifact_consistency.sh` — must PASS.
+- `git diff --check` — must be clean.
+
+If validation counts differ from the Phase 249 baseline, the delta must be reconciled from command output in the Phase 250 SUMMARY with reason, validation class, and shared-invariant preservation rationale.
+
 ## Deferred Candidates
 
-- S3 is conditional because guided workflow detection is larger and contract-sensitive.
+- S3 is promoted to bounded Phase 250 contract target after S1/S2 stability; Phase 249 created the extraction contract.
 - S4 is deferred because it sends canonical replies through Pi message flow.
 - S6 is deferred because it mutates Pi UI and consumes module/context outputs.
 - S7 is deferred because exact authority and activation tags are lifecycle-sensitive.
@@ -165,4 +192,4 @@ If a future plan changes validation counts, it must reconcile the count change i
 
 ## Summary Decision
 
-Phase 243's approved extraction wave is S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation are preserved. S5 is already extracted. S3 is a conditional fallback/secondary candidate. S4/S6/S7/S8 remain deferred by default.
+Phase 243's approved extraction wave is S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation are preserved. S5 is already extracted. S3 was a conditional fallback/secondary candidate for Phase 243 and is now promoted to a bounded Phase 250 contract target. S4/S6/S7/S8 remain deferred by default.

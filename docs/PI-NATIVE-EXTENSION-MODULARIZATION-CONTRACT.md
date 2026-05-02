@@ -223,6 +223,14 @@ Phase 246 extracted S2 to `drivers/pi/extensions/workflow-resource-capsule-rende
 - **`pals-hooks.ts` post-extraction state** — 1273 LOC (was 1415; −142). The shared helpers `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, and the type `PalsStateSnapshot` remain defined and exported, so future S3–S8 extractions can import them without re-litigating the helper boundary.
 - **Validation evidence:** Pi `1..221/0`, cross-harness `1..129/0`, artifact_consistency PASS, install reports `[ok] Pi extensions installed: 4 files`, `git diff --check` clean. PR #161 merged 2026-05-02.
 
+## Phase 249 Outcome
+
+Phase 249 created the S3 `guided-workflow-detection` extraction contract and bounded submodule plan without modifying runtime, source, tests, install, dependencies, CI, or lifecycle authority. The S1–S8 inventory, classification table, and Phase 239/243/246 outcomes above remain authoritative verbatim; this section surfaces the Phase 249 addition only.
+
+- **S3 contract created:** `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` defines the 10 S3 identifiers, cites the governing `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`, names the allowed Phase 250 sibling-module shape (`drivers/pi/extensions/guided-workflow-detection.ts`), and preserves the loader-compat invariant, single-defined markers, and helper-import tightening from Phase 246.
+- **S3 promoted to bounded Phase 250 contract target:** S3 moves from the conditional-secondary classification in the table above to a v2.58 extraction target after S1/S2 stability was demonstrated. Phase 250 remains the first source-changing step.
+- **S4/S6/S7/S8 deferrals preserved:** The contract explicitly forbids extracting or modifying S4 canonical-reply delivery, S6 lifecycle UI, S7 context injection, and S8 command routing as part of S3 work.
+- **Validation baseline preserved:** Pi 223/223, cross-harness 131/131, artifact_consistency PASS, install 4 files, `git diff --check` clean.
 ## Phase 239 Handoff
 
 Phase 239 must plan inside the following bounds. Anything outside these bounds requires a separately approved later plan.
