@@ -30,20 +30,20 @@ Phases: 3 of 3 complete
 
 **v2.56 Pi Extension Submodule Extraction Wave** (v2.56)
 Status: 🚧 In Progress
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete
 
 Theme: Continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 242 | Extension Extraction Target Baseline | 1/1 | Apply complete | - |
+| 242 | Extension Extraction Target Baseline | 1/1 | ✅ Complete | 2026-05-01 |
 | 243 | Bounded Submodule Extraction Wave | TBD | Not started | - |
 | 244 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 245 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 242: Extension Extraction Target Baseline
 Focus: Choose and bound multiple candidate submodules from `pals-hooks.ts` using the v2.55 modularization and install-surface evidence.
-Plans: `.paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md` (APPLY complete; awaiting UNIFY)
+Plans: `.paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md` (✅ complete; SUMMARY `.paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md`)
 
 ### Phase 243: Bounded Submodule Extraction Wave
 Focus: Extract one or more approved Pi extension submodules behind safe contracts while preserving runtime behavior, lifecycle authority, and install compatibility.
@@ -94,4 +94,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 242 Plan 242-01 created for v2.56 extraction target baseline.*
+*Last updated: 2026-05-01 — Phase 242 UNIFY complete; Phase 243 Bounded Submodule Extraction Wave ready to plan.*
