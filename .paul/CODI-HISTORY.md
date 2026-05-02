@@ -72,3 +72,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 238-01 | 2026-05-01 | skipped-no-symbols | — | — | — | — | n |
 | 239-01 | 2026-05-01 | injected | 3 | 0 | 6 | parseModuleActivityEntries, extractRecentModuleActivity, formatModuleEntryList | y |
 | 240-01 | 2026-05-01 | skipped-no-symbols | — | — | — | — | n |
+| 243-01 | 2026-05-02 | injected | 2 | 0 | 5 | buildArtifactSlice, renderArtifactSlices | y |

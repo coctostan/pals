@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-01 after Phase 242 closure)
 ## Current Position
 
 Milestone: v2.56 Pi Extension Submodule Extraction Wave
-Phase: 243 of 245 (Bounded Submodule Extraction Wave) — APPLY complete, awaiting UNIFY
-Plan: 243-01 — APPLY complete (S1 `artifact-slice-rendering` extracted to sibling module)
-Status: APPLY complete (PLAN ✓, APPLY ✓, UNIFY ○); ready for /paul:unify
-Last activity: 2026-05-02T01:30:00Z — Plan 243-01 APPLY complete: extracted S1 to drivers/pi/extensions/artifact-slice-rendering.ts; Pi 1..214/0 (deviation: +2 vs planned +1, see SUMMARY), cross-harness 1..127/0, artifact_consistency PASS, install reports 3 files
+Phase: 243 of 245 (Bounded Submodule Extraction Wave) — UNIFY complete, loop closed; pending merge gate + transition
+Plan: 243-01 — UNIFY complete (SUMMARY drafted; S1 `artifact-slice-rendering` extracted to sibling module)
+Status: UNIFY complete (PLAN ✓, APPLY ✓, UNIFY ✓); pending github-flow merge gate, then phase 243 transition (last plan in phase)
+Last activity: 2026-05-02T01:40:00Z — Plan 243-01 UNIFY complete: SUMMARY at .paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md; AC-1–AC-4 PASS (AC-4 with documented +2 Pi count deviation); validation green at Pi 1..214/0, cross-harness 1..127/0, artifact_consistency PASS, install 3 files
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -28,7 +28,7 @@ Progress:
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
-- v2.56 Pi Extension Submodule Extraction Wave: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 243 in APPLY-complete state — Plan 243-01 ready for UNIFY)
+- v2.56 Pi Extension Submodule Extraction Wave: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 243 UNIFY complete — Plan 243-01 SUMMARY drafted; pending merge gate + transition)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -63,7 +63,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 243-01 created, awaiting approval]
+  ✓        ✓        ✓     [Plan 243-01 loop complete — pending merge gate + phase transition]
 ```
 
 ## Accumulated Context
@@ -305,10 +305,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T01:30:00Z
-Stopped at: Plan 243-01 APPLY complete; awaiting UNIFY. Tasks 1, 2, 2.5, 3 all PASS. Pi 1..214/0 (deviation: +2 vs planned +1 because shouldInjectPalsContext was split into a separate TAP block instead of merged with the relocated S1 block; both blocks pass; SUMMARY will reconcile).
-Next action: Run /paul:unify .paul/phases/243-bounded-submodule-extraction-wave/243-01-PLAN.md
-Resume file: .paul/handoffs/archive/HANDOFF-2026-05-02-phase-243-plan-revised.md
+Last session: 2026-05-02T01:40:00Z
+Stopped at: Plan 243-01 UNIFY complete; SUMMARY drafted at .paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md. AC-1–AC-4 PASS (AC-4 with documented +2 Pi count deviation). Pending github-flow merge gate (PR #158, CI passing) and Phase 243 transition (last plan in phase).
+Next action: Resolve github-flow merge gate (merge PR #158 squash + delete-branch + sync local main) and execute the Phase 243 transition (PROJECT/ROADMAP/MILESTONES update, route to Phase 244).
+Resume file: .paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md
 Resume context:
 - Plan 243-01 extracts S1 `artifact-slice-rendering` from `drivers/pi/extensions/pals-hooks.ts` into a new sibling module `drivers/pi/extensions/artifact-slice-rendering.ts`, following the S5 sibling-module pattern (Phase 239) and the Phase 241 generalized install surface.
 - S2 `workflow-resource-capsule-rendering` stays inline this plan; reserved for an approved Plan 243-02 if/when bounded.
