@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: Phase 246 complete (5/5 ACs PASS); Phase 247 (Documentation + Validation Surfacing) ready to plan; 1 of 3 phases complete | `.paul/ROADMAP.md` Current Milestone section; SUMMARY `.paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md` |
+| Current milestone | v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: Phase 246 complete (5/5 ACs PASS; PR #161 merged 2026-05-02); Phase 247 complete (5/5 ACs PASS; PR #162 merged 2026-05-02); Phase 248 (Evidence Closure + Next Roadmap Decision) is the current phase — 2 of 3 phases complete | `.paul/ROADMAP.md` Current Milestone section; SUMMARYs `.paul/phases/246-*/246-01-SUMMARY.md` and `.paul/phases/247-*/247-01-SUMMARY.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
