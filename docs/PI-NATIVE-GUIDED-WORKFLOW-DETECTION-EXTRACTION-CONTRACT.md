@@ -2,11 +2,11 @@
 
 **Phase:** 249 S3 Extraction Contract + Bounded Submodule Plan  
 **Plan:** 249-01  
-**Status:** Active — docs-only contract baseline. No runtime/source/test/install/dependency/CI/lifecycle-authority changes.
+**Status:** Phase 250 extraction completed; Phase 251 docs/validation surfacing active. This document remains a derived aid only; no runtime/source/install/dependency/CI/lifecycle-authority changes are authorized by this surfacing update.
 
 ## Purpose
 
-This contract defines the extraction boundary for S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` into a dedicated sibling Pi extension module. Phase 249 is planning-only: it creates the contract and bounded handoff before Phase 250 performs any source extraction.
+This contract defines the extraction boundary for S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` into the dedicated sibling Pi extension module `drivers/pi/extensions/guided-workflow-detection.ts`. Phase 249 created the docs-only contract and handoff; Phase 250 completed the source extraction while retaining S4 canonical reply delivery in `pals-hooks.ts`.
 
 This document is a **derived aid only**. It does not modify runtime behavior, validation truth, module truth, GitHub Flow truth, or `.paul/*` lifecycle authority. Shared `.paul/*` artifacts, approved PLAN/APPLY/UNIFY artifacts, module reports, GitHub Flow command evidence, and validation command output remain authoritative.
 
@@ -15,9 +15,10 @@ This document is a **derived aid only**. It does not modify runtime behavior, va
 - `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` — current S1/S2/S5 extraction state, S3 conditional-secondary classification, and deferred S4/S6/S7/S8 posture.
 - `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` — original S1–S8 inventory; S3 cited identifiers; sibling-module pattern ratified across S5+S1+S2.
 - `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md` — governing safety contract for canonical replies, no auto-approval, no auto-continue, checkpoint blocking, and merge-gate routing.
-- `drivers/pi/extensions/pals-hooks.ts` — current supported Pi runtime source; S3 identifiers remain inline at the time of this contract.
+- `drivers/pi/extensions/pals-hooks.ts` — supported Pi runtime entry source; after Phase 250 it imports S3 detection from `guided-workflow-detection.ts` while retaining S4 canonical reply delivery.
 - `drivers/pi/extensions/artifact-slice-rendering.ts` — S1 sibling-module precedent: module-level contract header, single-defined markers/constants, helper imports from `./pals-hooks`, no-op default extension factory.
 - `drivers/pi/extensions/workflow-resource-capsule-rendering.ts` — S2 sibling-module precedent: same shape as S1, triple-confirmed pattern.
+- `drivers/pi/extensions/guided-workflow-detection.ts` — Phase 250 S3 sibling module; owns detection/option parsing/merge-gate routing detection and preserves loader compatibility.
 
 ## S3 Subsystem Boundary
 
@@ -124,6 +125,16 @@ Phase 250 must plan and execute inside the following bounds.
 - Do not edit installed runtime copies under `~/.pi/agent/extensions/` directly.
 - Do not modify `drivers/pi/extensions/pals-hooks.ts` beyond the minimal import-plus-call-site delegation needed for the extracted module.
 - Do not create the sibling module before Phase 250 (Phase 249 is contract-only).
+
+## Phase 250 Outcome
+
+Phase 250 completed the bounded S3 extraction without changing S4 canonical reply delivery, S6 lifecycle UI, S7 context injection, S8 command routing, installer/uninstaller/driver manifest behavior, dependencies, CI, telemetry, hidden state, or lifecycle authority.
+
+- **S3 sibling created:** `drivers/pi/extensions/guided-workflow-detection.ts` now owns the S3 detection functions and constants named in this contract, with helper imports from `./pals-hooks` and the no-op default factory required by Pi's extension loader.
+- **S4 boundary preserved:** `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, `pi.sendUserMessage`, and notify-only canonical-reply behavior remain in `drivers/pi/extensions/pals-hooks.ts`.
+- **Install evidence:** `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reported `[ok] Pi extensions installed: 5 files`, proving the Phase 241 generalized source-set rule covered `guided-workflow-detection.ts` without installer or manifest edits.
+- **Validation evidence:** Phase 250 APPLY passed Pi validation `224/224`, cross-harness validation `131/131`, `bash tests/helpers/artifact_consistency.sh` PASS, and `git diff --check` clean. Pi count changed `223→224` because Phase 250 added one localized S3 extraction guardrail; cross-harness count stayed `131`.
+- **GitHub Flow evidence:** PR #165 carried the Phase 250 implementation and was merged on 2026-05-02; no merge intent was inferred from displayed branch/PR/CI state.
 
 ## Acceptance Checklist
 

@@ -228,9 +228,19 @@ Phase 246 extracted S2 to `drivers/pi/extensions/workflow-resource-capsule-rende
 Phase 249 created the S3 `guided-workflow-detection` extraction contract and bounded submodule plan without modifying runtime, source, tests, install, dependencies, CI, or lifecycle authority. The S1–S8 inventory, classification table, and Phase 239/243/246 outcomes above remain authoritative verbatim; this section surfaces the Phase 249 addition only.
 
 - **S3 contract created:** `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` defines the 10 S3 identifiers, cites the governing `docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md`, names the allowed Phase 250 sibling-module shape (`drivers/pi/extensions/guided-workflow-detection.ts`), and preserves the loader-compat invariant, single-defined markers, and helper-import tightening from Phase 246.
-- **S3 promoted to bounded Phase 250 contract target:** S3 moves from the conditional-secondary classification in the table above to a v2.58 extraction target after S1/S2 stability was demonstrated. Phase 250 remains the first source-changing step.
+- **S3 promoted to bounded Phase 250 contract target:** S3 moved from the conditional-secondary classification in the table above to a v2.58 extraction target after S1/S2 stability was demonstrated. Phase 250 was the first source-changing step and is now complete.
 - **S4/S6/S7/S8 deferrals preserved:** The contract explicitly forbids extracting or modifying S4 canonical-reply delivery, S6 lifecycle UI, S7 context injection, and S8 command routing as part of S3 work.
 - **Validation baseline preserved:** Pi 223/223, cross-harness 131/131, artifact_consistency PASS, install 4 files, `git diff --check` clean.
+
+## Phase 250 Outcome
+
+Phase 250 extracted S3 `guided-workflow-detection` to `drivers/pi/extensions/guided-workflow-detection.ts`, applying the S5/S1/S2 sibling-module recipe to a guided-workflow detection surface while keeping S4 delivery inline.
+
+- **S3 extracted / S4 retained:** `guided-workflow-detection.ts` now owns detection, option parsing, canonical-response detection, merge-gate routing detection, prompt summarization, next-action extraction, signatures, and S3 constants. `pals-hooks.ts` still owns S4 canonical reply delivery (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, and `pi.sendUserMessage`).
+- **S3/S4 split preserved:** Phase 250 did not extract S4, S6, S7, or S8; it did not change installer/uninstaller/driver manifest, dependencies, CI, telemetry, hidden state, or lifecycle authority.
+- **Sibling-module pattern extended:** S5 (`module-activity-parsing.ts`) + S1 (`artifact-slice-rendering.ts`) + S2 (`workflow-resource-capsule-rendering.ts`) + S3 (`guided-workflow-detection.ts`) now share the extracted sibling shape, including helper imports from `./pals-hooks`, single-defined owned markers, and the no-op default factory loader-compat invariant.
+- **Validation evidence:** install reports `[ok] Pi extensions installed: 5 files`; Pi validation passed `224/224`; cross-harness validation passed `131/131`; artifact_consistency PASS; `git diff --check` clean. PR #165 merged 2026-05-02.
+
 ## Phase 239 Handoff
 
 Phase 239 must plan inside the following bounds. Anything outside these bounds requires a separately approved later plan.

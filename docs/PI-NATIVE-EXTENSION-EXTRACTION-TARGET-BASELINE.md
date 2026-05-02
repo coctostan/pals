@@ -2,7 +2,7 @@
 
 **Phase:** 242 Extension Extraction Target Baseline  
 **Plan:** 242-01  
-**Status:** Active Phase 250 handoff baseline
+**Status:** Phase 250 extracted S3; Phase 251 documentation/validation surfacing baseline
 
 ## Purpose
 
@@ -26,7 +26,7 @@ This document is a derived aid only. It is not lifecycle truth, validation truth
 |-----------|---------------|-------------------|
 | S1 `artifact-slice-rendering` | Extracted to `drivers/pi/extensions/artifact-slice-rendering.ts` (Phase 243 / PR #158) | Shipped — sibling-module pattern repeated |
 | S2 `workflow-resource-capsule-rendering` | Extracted to `drivers/pi/extensions/workflow-resource-capsule-rendering.ts` (Phase 246 / PR #161) | Shipped — sibling-module pattern triple-confirmed |
-| S3 `guided-workflow-detection` | Still inline in `pals-hooks.ts` | Promoted to bounded Phase 250 contract target after S1/S2 stability; Phase 249 created `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` |
+| S3 `guided-workflow-detection` | Extracted to `drivers/pi/extensions/guided-workflow-detection.ts` (Phase 250 / PR #165) | Shipped — S3 detection sibling extracted; S4 canonical reply delivery retained in `pals-hooks.ts` |
 | S4 `guided-workflow-canonical-reply` | Still inline in `pals-hooks.ts` | Deferred; runtime-coupled Pi message mutation |
 | S5 `module-activity-parsing` | Already extracted to `module-activity-parsing.ts` | Not a Phase 243 extraction target |
 | S6 `lifecycle-ui` | Still inline in `pals-hooks.ts` | Deferred; Pi UI mutation and S5/S7 coupling |
@@ -61,9 +61,9 @@ Phase 243 may extract **one or more approved** candidates from this wave:
      - `WORKFLOW_RESOURCE_CAPSULE_AUTHORITY`
      - visible schema strings: `Capsule:`, `Source:`, `Source type:`, `Freshness:`, `Bounds:`, `Content:`, `Fallback: full authoritative read`, `Authority: Derived aid only`
 
-3. **S3 `guided-workflow-detection` — conditional secondary.**
-   - May be considered only if Phase 243 deliberately chooses a guided-workflow detection slice instead of, or after, the S1/S2 pure pair.
-   - It must remain separate from S4 canonical-reply delivery unless a later approved plan proves that extraction preserves transcript-visible canonical replies.
+3. **S3 `guided-workflow-detection` — Phase 250 extracted outcome.**
+   - Phase 250 moved S3 detection into `drivers/pi/extensions/guided-workflow-detection.ts` after S1/S2 stability made the contract-sensitive extraction reviewable.
+   - It remains separate from S4 canonical-reply delivery: `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, and `shouldAutoPresent` stay in `pals-hooks.ts`.
    - Required preservation markers include `GUIDED_WORKFLOW_LOOKBACK`, `GUIDED_WORKFLOW_SIGNATURE_BYTES`, option parsing semantics, merge-gate routing detection, and no inferred merge intent.
 
 S4, S6, S7, and S8 are not approved for Phase 243 extraction by default. They require a later plan or an explicit Phase 243 re-plan because they touch Pi message mutation, Pi UI mutation, authority/activation tags, or the user-facing command surface.
@@ -143,6 +143,18 @@ Phase 249 created the S3 `guided-workflow-detection` extraction contract and bou
 
 The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain in force verbatim — this section surfaces outcome only and does not re-litigate selection.
 
+## Phase 250 Outcome
+
+Phase 250 completed the S3 extraction and updated the active baseline from “contract target” to shipped sibling:
+
+- **S3 `guided-workflow-detection` extracted** to `drivers/pi/extensions/guided-workflow-detection.ts`; the sibling owns the detection/option parsing/merge-gate routing functions and constants named in the Phase 249 contract.
+- **S3/S4 split preserved:** S4 canonical reply delivery remains in `drivers/pi/extensions/pals-hooks.ts`, including `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, `pi.sendUserMessage`, and notify-only no-reply behavior.
+- **S4/S6/S7/S8 deferrals preserved:** Phase 250 did not extract or modify canonical reply delivery, lifecycle UI, context injection, command routing, installer/uninstaller/driver manifest, dependency, CI, telemetry, hidden state, or lifecycle-authority surfaces.
+- **Install / validation evidence:** `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reported `[ok] Pi extensions installed: 5 files`; Pi validation passed `224/224`; cross-harness validation passed `131/131`; artifact_consistency PASS; `git diff --check` clean. Pi count changed `223→224` due to one localized S3 extraction guardrail, and cross-harness stayed `131`.
+- **GitHub Flow evidence:** PR #165 merged the Phase 250 implementation on 2026-05-02.
+
+The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain historical context; this section records the Phase 250 outcome only and does not authorize reopening runtime behavior.
+
 ## Forbidden Scope for Phase 243 by Default
 
 - S4 canonical reply delivery, unless a new approved plan specifically covers Pi message mutation.
@@ -184,12 +196,12 @@ If validation counts differ from the Phase 249 baseline, the delta must be recon
 
 ## Deferred Candidates
 
-- S3 is promoted to bounded Phase 250 contract target after S1/S2 stability; Phase 249 created the extraction contract.
-- S4 is deferred because it sends canonical replies through Pi message flow.
-- S6 is deferred because it mutates Pi UI and consumes module/context outputs.
-- S7 is deferred because exact authority and activation tags are lifecycle-sensitive.
-- S8 is deferred because command routing is the highest user-visible compatibility surface.
+- S3 is extracted and remains bounded to detection/option parsing/merge-gate routing in `guided-workflow-detection.ts`.
+- S4 is still deferred because it sends canonical replies through Pi message flow.
+- S6 is still deferred because it mutates Pi UI and consumes module/context outputs.
+- S7 is still deferred because exact authority and activation tags are lifecycle-sensitive.
+- S8 is still deferred because command routing is the highest user-visible compatibility surface.
 
 ## Summary Decision
 
-Phase 243's approved extraction wave is S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation are preserved. S5 is already extracted. S3 was a conditional fallback/secondary candidate for Phase 243 and is now promoted to a bounded Phase 250 contract target. S4/S6/S7/S8 remain deferred by default.
+Phase 243's approved extraction wave was S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation were preserved. S5 was already extracted. S3 was promoted by Phase 249 and extracted by Phase 250 into `guided-workflow-detection.ts` with S4 canonical reply delivery retained in `pals-hooks.ts`. S4/S6/S7/S8 remain deferred by default.
