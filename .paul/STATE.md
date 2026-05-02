@@ -2,17 +2,19 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
+See: .paul/PROJECT.md (updated 2026-05-02 after Phase 248 APPLY)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering (3-phase compact: 246 extraction, 247 docs/validation surfacing, 248 evidence closure). Mode: direct-requirements; collaboration: high. Carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker comment) as a hard constraint on any new helper-only sibling under `drivers/pi/extensions/*.ts`.
+**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering is in UNIFY after Phase 248 APPLY. APPLY closed lifecycle evidence in `.paul/MILESTONES.md`, `.paul/PROJECT.md`, and `.paul/ROADMAP.md`; added one localized cross-harness closure guardrail; validation passed install 4 files, Pi 223/223, cross-harness 131/131, artifact consistency PASS, and `git diff --check` clean. v2.58 recommendation recorded only; final selection remains `/paul:milestone` after UNIFY/merge gate.
 
 ## Current Position
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. Phase 248 ready to plan.
+Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision) — APPLY complete, ready for UNIFY
+Plan: 248-01 applied successfully
+Status: APPLY complete; UNIFY required to create SUMMARY, record module/GitHub Flow evidence, and run merge gate
+Last activity: 2026-05-02T16:36:00Z — Phase 248 APPLY completed; validation green; ready for UNIFY
+
+Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
@@ -28,7 +30,7 @@ Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. P
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
-- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [█████████░░░] 83% (2 of 3 phases complete via PRs #161/#162; Phase 248 Evidence Closure remaining)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [███████████░] 92% (3 of 3 phases applied; UNIFY/merge-gate evidence still pending)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -63,7 +65,7 @@ Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. P
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 247 loop complete; Phase 248 ready to plan]
+  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -153,6 +155,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 235 completed the risk-tiered lifecycle contract in `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`: it defines tiny/doc-only, normal, risky, and hotfix tiers; per-tier evidence expectations; escalation rules; hotfix reconciliation; non-bypass rules for APPLY approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` artifact authority, command-output truth, full authoritative read fallback, no hidden Pi state, and no telemetry; and future implementation boundaries for Phases 236, 237, 240, and 241. Validation stayed green at Pi 209/209 and cross-harness 123/123.
 - Phase 236 UNIFY created `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`, recording AC results, baseline doc evidence, shared TAP helper extraction, focused marker checks, Pi 209/209, cross-harness 123/123, Workguard scope proof, module reports, and PR #151 merge-gate evidence; Phase 236 is complete and Phase 237 Artifact Consistency Guardrails is ready to plan.
 - v2.56 has been created as the next milestone: Pi Extension Submodule Extraction Wave will continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn. Phases 242-245 cover extraction target baselining, one-or-more approved submodule extractions, documentation/validation surfacing, and evidence closure/next-roadmap decision.
+- Phase 248 APPLY completed v2.57 evidence closure: `.paul/MILESTONES.md`, `.paul/PROJECT.md`, and `.paul/ROADMAP.md` mark v2.57 complete and record v2.58 recommendation S3 `guided-workflow-detection` as conditional on continued S2 stability; `tests/cross-harness-validation.sh` gained exactly one localized Phase 248 shared-invariant closure guardrail. Verification passed `PALS_ROOT="$PWD" bash drivers/pi/install.sh` (4 files), Pi validation 223/223, cross-harness 131/131, artifact consistency PASS, `git diff --check` clean, and changed non-lifecycle scope limited to `tests/cross-harness-validation.sh`.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -300,16 +303,18 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 Branch: main
 Last commit on main: `2ce4c5ff` feat(247): Phase 247 Documentation + Validation Surfacing — S2 workflow-resource-capsule-rendering (#162).
 PR: #162 (https://github.com/coctostan/pals/pull/162) — MERGED 2026-05-02 (squash + delete-branch). CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, git diff --check clean. Prior: PR #161 merged (Phase 246 S2 extraction).
-Working tree: clean.
+Working tree: Phase 248 PLAN + pause handoff created (.paul/STATE.md, .paul/ROADMAP.md, .paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-PLAN.md, .paul/HANDOFF-2026-05-02-phase-248-plan-awaiting-approval.md modified/untracked until APPLY branch/WIP handling).
 Prior PRs: #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
 Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete.
-Stopped at: Phase 247 complete; Phase 248 ready to plan.
-Next action: /paul:plan for Phase 248 (Evidence Closure + Next Roadmap Decision)
-Resume file: .paul/phases/247-documentation-validation-surfacing-v2-57/247-01-SUMMARY.md
+Last session: 2026-05-02T16:36:00Z
+Stopped at: Phase 248 APPLY complete; awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-05-02-phase-248-plan-awaiting-approval.md
 Resume context:
-- Phase 247 APPLY complete (4/4 tasks PASS). Main commit: 2ce4c5ff. Validation: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, install 4 files.
-- UNIFY will draft 247-01-SUMMARY.md (5 ACs), record phase transition, advance ROADMAP Phase 247 to Complete (2 of 3), then plan Phase 248 (Evidence Closure + Next Roadmap Decision).
+- Phase 248 APPLY is complete on branch `feature/248-evidence-closure-next-roadmap-decision-v2-57`; UNIFY must create `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md` and handle GitHub Flow post-apply/merge-gate evidence.
+- APPLY changed `.paul/MILESTONES.md`, `.paul/PROJECT.md`, `.paul/ROADMAP.md`, `.paul/STATE.md`, and `tests/cross-harness-validation.sh` within approved scope.
+- Verification evidence: install reports 4 Pi extension files; Pi validation 223/223; cross-harness validation 131/131; artifact_consistency PASS; `git diff --check` clean.
+- v2.58 recommendation is recorded only: S3 `guided-workflow-detection` as conditional on continued S2 stability; `/paul:milestone` remains the approval route.

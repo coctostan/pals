@@ -1288,6 +1288,22 @@ tap_file_contains_all \
   'Phase 243' \
   'Phase 244' \
   'Phase 245'
+
+# ═══════════════════════════════════════════════════════════════════
+# Phase 248 sibling extraction wave closure (v2.57 Shared Invariant)
+# ═══════════════════════════════════════════════════════════════════
+# Phase 248 closes v2.57 by aggregating Phases 246–248 evidence into MILESTONES.md.
+# Closure guardrail: .paul/MILESTONES.md must continue to name the v2.57 milestone,
+# the three phases, the S2 sibling basename, and the v2.58 recommendation marker.
+tap_file_contains_all \
+  "Phase 248 sibling extraction wave closure (v2.57 Shared Invariant)" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.57 Pi Extension Submodule Extraction Wave' \
+  'Phase 246' \
+  'Phase 247' \
+  'Phase 248' \
+  'workflow-resource-capsule-rendering.ts' \
+  'v2.58'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
