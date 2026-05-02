@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-02 after Phase 248 UNIFY)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering is complete locally after Phase 248 UNIFY. SUMMARY `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md` records AC results, validation evidence (install 4 files, Pi 223/223, cross-harness 131/131, artifact consistency PASS), module dispatch reports, CODI/WALT history side effects, and GitHub Flow PR #163 evidence. Merge gate is next: commit/push UNIFY artifacts, verify PR checks, merge PR #163, and sync `main`. v2.58 recommendation remains recorded only; final selection remains `/paul:milestone` after merge.
+**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering is complete and merged. SUMMARY `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md` records AC results, validation evidence (install 4 files, Pi 223/223, cross-harness 131/131, artifact consistency PASS), module dispatch reports, CODI/WALT history side effects, and GitHub Flow PR #163 evidence. PR #163 merged 2026-05-02 with squash commit `bdbc8e9a`; local `main` is synced. v2.58 recommendation remains recorded only; final selection remains `/paul:milestone`.
 
 ## Current Position
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision) — UNIFY complete locally; merge gate pending
+Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision) — Complete and merged
 Plan: 248-01 unified successfully
-Status: SUMMARY created; post-unify side effects recorded; GitHub Flow merge gate pending
-Last activity: 2026-05-02T16:48:00Z — Phase 248 UNIFY completed locally; PR #163 merge gate pending
+Status: v2.57 complete; ready for `/paul:milestone` to select v2.58
+Last activity: 2026-05-02T16:52:00Z — PR #163 merged and local `main` synced
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -30,7 +30,7 @@ Progress:
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
-- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [███████████░] 97% (3 of 3 phases unified; PR #163 merge gate pending)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -65,7 +65,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete locally - merge gate pending]
+  ✓        ✓        ✓     [Loop complete - ready for milestone selection]
 ```
 
 ## Accumulated Context
@@ -156,7 +156,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 236 UNIFY created `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`, recording AC results, baseline doc evidence, shared TAP helper extraction, focused marker checks, Pi 209/209, cross-harness 123/123, Workguard scope proof, module reports, and PR #151 merge-gate evidence; Phase 236 is complete and Phase 237 Artifact Consistency Guardrails is ready to plan.
 - v2.56 has been created as the next milestone: Pi Extension Submodule Extraction Wave will continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn. Phases 242-245 cover extraction target baselining, one-or-more approved submodule extractions, documentation/validation surfacing, and evidence closure/next-roadmap decision.
 - Phase 248 APPLY completed v2.57 evidence closure: `.paul/MILESTONES.md`, `.paul/PROJECT.md`, and `.paul/ROADMAP.md` mark v2.57 complete and record v2.58 recommendation S3 `guided-workflow-detection` as conditional on continued S2 stability; `tests/cross-harness-validation.sh` gained exactly one localized Phase 248 shared-invariant closure guardrail. Verification passed `PALS_ROOT="$PWD" bash drivers/pi/install.sh` (4 files), Pi validation 223/223, cross-harness 131/131, artifact consistency PASS, `git diff --check` clean, and changed non-lifecycle scope limited to `tests/cross-harness-validation.sh`.
-- Phase 248 UNIFY created `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`, recording AC-1 through AC-4 PASS, focused marker evidence, installer evidence, Pi 223/223, cross-harness 131/131, artifact consistency PASS, validation count reconciliation, changed-file scope, module dispatch reports, CODI/WALT post-unify side effects, PR #163 evidence, and v2.58 recommendation/alternatives. Post-unify persistence appended `.paul/CODI-HISTORY.md` row `248-01 skipped-no-symbols` and `.paul/QUALITY-HISTORY.md` row for Phase 248. Merge gate still must commit/push UNIFY artifacts, verify PR checks, merge PR #163, and sync `main`.
+- Phase 248 UNIFY created `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`, recording AC-1 through AC-4 PASS, focused marker evidence, installer evidence, Pi 223/223, cross-harness 131/131, artifact consistency PASS, validation count reconciliation, changed-file scope, module dispatch reports, CODI/WALT post-unify side effects, PR #163 evidence, and v2.58 recommendation/alternatives. Post-unify persistence appended `.paul/CODI-HISTORY.md` row `248-01 skipped-no-symbols` and `.paul/QUALITY-HISTORY.md` row for Phase 248. PR #163 merged 2026-05-02 with squash commit `bdbc8e9a`; local `main` synced.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -302,21 +302,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/248-evidence-closure-next-roadmap-decision-v2-57
-Last branch commit: `58b9f128` docs(248-01): close v2.57 evidence and roadmap recommendation.
-PR: #163 (https://github.com/coctostan/pals/pull/163) — OPEN before UNIFY metadata commit; CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS; merge state CLEAN.
-Working tree: UNIFY artifacts pending commit/push (`.paul/STATE.md`, `.paul/CODI-HISTORY.md`, `.paul/QUALITY-HISTORY.md`, `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`).
+Branch: main
+Last commit: `bdbc8e9a` — PR #163 squash merge for Phase 248 evidence closure + UNIFY artifacts.
+PR: #163 (https://github.com/coctostan/pals/pull/163) — MERGED 2026-05-02T16:49:25Z; CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS.
+Working tree: final post-merge STATE/SUMMARY cleanup pending commit on `main`.
 Prior PRs: #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-02T16:48:00Z
-Stopped at: Phase 248 UNIFY complete locally; GitHub Flow merge gate pending
-Next action: Commit and push UNIFY artifacts, then complete PR #163 merge gate
+Last session: 2026-05-02T16:52:00Z
+Stopped at: v2.57 complete and merged; final post-merge state cleanup in progress
+Next action: Commit/push post-merge STATE/SUMMARY cleanup, then run /paul:milestone for v2.58 selection
 Resume file: .paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md
 Resume context:
 - Phase 248 UNIFY summary exists at `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`; AC-1 through AC-4 are PASS.
 - Verification evidence: install reports 4 Pi extension files; Pi validation 223/223; cross-harness validation 131/131; artifact_consistency PASS; `git diff --check` clean.
 - Post-unify side effects: `.paul/CODI-HISTORY.md` appended `248-01 skipped-no-symbols`; `.paul/QUALITY-HISTORY.md` appended Phase 248 quality row.
-- PR #163 exists and had Socket checks passing before UNIFY metadata commit; commit/push UNIFY artifacts, re-check PR checks, then merge/sync `main`.
-- v2.58 recommendation is recorded only: S3 `guided-workflow-detection` as conditional on continued S2 stability; `/paul:milestone` remains the approval route after v2.57 merge.
+- PR #163 merged 2026-05-02T16:49:25Z with squash commit `bdbc8e9a`; local `main` synced. After final post-merge state cleanup is committed/pushed, next workflow action is `/paul:milestone` for v2.58 selection.
+- v2.58 recommendation is recorded only: S3 `guided-workflow-detection` as conditional on continued S2 stability; `/paul:milestone` remains the approval route.

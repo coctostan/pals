@@ -190,11 +190,11 @@ None. Verification remained green.
 
 | Gate | Status | Evidence |
 |------|--------|----------|
-| Branch | PASS | `feature/248-evidence-closure-next-roadmap-decision-v2-57` |
+| Branch | PASS | `feature/248-evidence-closure-next-roadmap-decision-v2-57` merged and local `main` synced. |
 | PR exists | PASS | PR #163: https://github.com/coctostan/pals/pull/163 |
-| CI checks before UNIFY metadata | PASS | Socket Security Project Report and Pull Request Alerts passed. |
+| CI checks | PASS | Socket Security Project Report and Pull Request Alerts passed after UNIFY metadata push. |
 | Reviews | SKIP | `require_reviews=false` in `pals.json`. |
-| Merge | Pending at summary draft time | UNIFY metadata commit and merge gate complete after this SUMMARY is finalized. |
+| Merge | PASS | PR #163 merged 2026-05-02T16:49:25Z with squash commit `bdbc8e9a`; feature branch deleted remotely; local `main` fast-forwarded to `origin/main`. |
 
 ## Next Phase Readiness
 
@@ -207,7 +207,7 @@ None. Verification remained green.
 - `tests/cross-harness-validation.sh` remains a large validation script by design; future size-debt decomposition requires separate planning.
 
 **Blockers:**
-- None for closing Phase 248 after PR #163 merge.
+- None; v2.57 is closed after PR #163 merge.
 
 ---
 *Phase: 248-evidence-closure-next-roadmap-decision-v2-57, Plan: 01*
