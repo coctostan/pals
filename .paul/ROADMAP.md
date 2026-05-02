@@ -28,18 +28,35 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.57 Pi Extension Submodule Extraction Wave - S2 Workflow/Resource Capsule Rendering** (v2.57)
-Status: ✅ Complete | Mode: direct-requirements | Collaboration: high | Phases: 3 of 3 complete | Closed 2026-05-02 via Phase 248 PR pending
-Theme: Continued the sibling-extraction wave by extracting S2 `workflow-resource-capsule-rendering` from `drivers/pi/extensions/pals-hooks.ts` into the new sibling Pi extension module `drivers/pi/extensions/workflow-resource-capsule-rendering.ts`, then surfacing docs/validation evidence and closing with durable lifecycle evidence. The Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker) remained a hard constraint on helper-only siblings under `drivers/pi/extensions/*.ts`.
+**v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection** (v2.58)
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 0 of 4 complete
+Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` while preserving option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 246 | S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering) | 1/1 | ✅ Complete | 2026-05-02 |
-| 247 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-02 |
-| 248 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete | 2026-05-02 |
+| 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | Planning | - |
+| 250 | Bounded S3 Submodule Extraction | TBD | Not started | - |
+| 251 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 252 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
+
+### Phase 249: S3 Extraction Contract + Bounded Submodule Plan
+Focus: Define the S3 `guided-workflow-detection` extraction contract, readiness evidence, preservation markers, allowed files, validation expectations, and bounded APPLY shape before source changes.
+Plans: `.paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-PLAN.md` (created; awaiting APPLY approval)
+
+### Phase 250: Bounded S3 Submodule Extraction
+Focus: Extract S3 guided workflow detection into a sibling Pi extension module while preserving option parsing semantics, merge-gate routing detection, no inferred merge intent, and S4 canonical-reply separation.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 251: Documentation + Validation Surfacing
+Focus: Surface the S3 extraction outcome across user-facing docs and contract docs, then add localized validation guardrails without broad validation-suite refactors.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 252: Evidence Closure + Next Roadmap Decision
+Focus: Reconcile v2.58 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation.
+Plans: TBD (defined during /paul:plan)
 
 ### Latest completed milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Result: Phases 246–248 complete. v2.57 closed after Phase 248 PR pending. Shipped S2 `workflow-resource-capsule-rendering` sibling extraction (`drivers/pi/extensions/workflow-resource-capsule-rendering.ts`), README/Pi docs/skill-map plus extraction contract surfacing, validation guardrails for S2 extraction/surfacing/closure, and next-roadmap recommendation for v2.58 default focus S3 `guided-workflow-detection` contingent on continued S2 stability. Final validation: Pi 223/223 and cross-harness 131/131 after the Phase 248 closure guardrail; install surface 4 files.
+Result: Phases 246–248 complete. v2.57 closed after PR #163 merged. Shipped S2 `workflow-resource-capsule-rendering` sibling extraction (`drivers/pi/extensions/workflow-resource-capsule-rendering.ts`), README/Pi docs/skill-map plus extraction contract surfacing, validation guardrails for S2 extraction/surfacing/closure, and next-roadmap recommendation for v2.58 default focus S3 `guided-workflow-detection` contingent on continued S2 stability. Final validation: Pi 223/223 and cross-harness 131/131 after the Phase 248 closure guardrail; install surface 4 files.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -96,10 +113,9 @@ Phase status (closed):
 | v2.54 Contextual Verbosity Paring | 2026-04-30 | 230-233 | Audited PALS verbosity surfaces, added contextual verbosity and compact dispatch guidance, pared Pi skill wrappers, and closed with validation/evidence guardrails; validation passes Pi 209/209 and cross-harness 123/123. | active artifacts |
 | v2.55 Maintainability & Product Reality Hardening | 2026-05-01 | 234-241 | Made PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift; shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision; validation passes Pi 212/212 and cross-harness 127/127. | active artifacts |
 | v2.56 Pi Extension Submodule Extraction Wave | 2026-05-02 | 242-245 | Continued extracting bounded Pi extension submodules from `pals-hooks.ts` using the v2.55 generalized install surface: extension-extraction target baseline, S1 `artifact-slice-rendering` sibling extraction with named default-arg cycle-avoidance pattern, 5-doc surfacing with closure guardrails, and evidence closure with sibling Pi extension loader-compat hotfix (no-op default factories appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts`). Validation passes Pi 218/218 and cross-harness 129/129; install surface unchanged at 3 files. | active artifacts |
-| v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering | 2026-05-02 | 246-248 | Completed the compact S2 extraction wave: Phase 246 extracted `workflow-resource-capsule-rendering.ts` as the fourth sibling Pi extension module (PR #161), Phase 247 surfaced S2 across README/Pi docs/skill-map and extraction contract docs with validation guardrails (PR #162), and Phase 248 reconciled milestone evidence, added the shared-invariant closure guardrail, and recorded the v2.58 recommendation (Phase 248 PR pending). Validation passes Pi 223/223 and cross-harness 131/131; install surface 4 files. | active artifacts |
+| v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering | 2026-05-02 | 246-248 | Completed the compact S2 extraction wave: Phase 246 extracted `workflow-resource-capsule-rendering.ts` as the fourth sibling Pi extension module (PR #161), Phase 247 surfaced S2 across README/Pi docs/skill-map and extraction contract docs with validation guardrails (PR #162), and Phase 248 reconciled milestone evidence, added the shared-invariant closure guardrail, and recorded the v2.58 recommendation (PR #163 merged). Validation passes Pi 223/223 and cross-harness 131/131; install surface 4 files. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
-
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 248 Evidence Closure + Next Roadmap Decision complete; v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering closed; v2.58 selection pending via `/paul:milestone` with S3 `guided-workflow-detection` recorded as the default recommendation contingent on continued S2 stability.*
+*Last updated: 2026-05-02 — Phase 249 plan created for v2.58 S3 Extraction Contract + Bounded Submodule Plan; awaiting APPLY approval.*
