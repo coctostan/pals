@@ -25,7 +25,7 @@ This document is a derived aid only. It is not lifecycle truth, validation truth
 | Candidate | Current state | Phase 243 posture |
 |-----------|---------------|-------------------|
 | S1 `artifact-slice-rendering` | Extracted to `drivers/pi/extensions/artifact-slice-rendering.ts` (Phase 243 / PR #158) | Shipped — sibling-module pattern repeated |
-| S2 `workflow-resource-capsule-rendering` | Still inline in `pals-hooks.ts` | Approved primary candidate, pairable with S1 if bounded |
+| S2 `workflow-resource-capsule-rendering` | Extracted to `drivers/pi/extensions/workflow-resource-capsule-rendering.ts` (Phase 246 / PR #161) | Shipped — sibling-module pattern triple-confirmed |
 | S3 `guided-workflow-detection` | Still inline in `pals-hooks.ts` | Conditional secondary candidate only after S1/S2 bounds are stable |
 | S4 `guided-workflow-canonical-reply` | Still inline in `pals-hooks.ts` | Deferred; runtime-coupled Pi message mutation |
 | S5 `module-activity-parsing` | Already extracted to `module-activity-parsing.ts` | Not a Phase 243 extraction target |
@@ -115,6 +115,20 @@ Phase 243 Plan 01 executed the approved primary candidate and closed the wave's 
 - **Helpers exported from `drivers/pi/extensions/pals-hooks.ts`:** `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, and the type `PalsStateSnapshot`. Future S2-S8 sibling extractions import these helpers from `./pals-hooks` rather than duplicating them.
 - **Canonical `default-arg cycle-avoidance` pattern:** any shared cap (e.g., `selectBoundedLines`'s `maxLines`) moves from a default-arg referencing a sibling-owned constant to a required parameter at the helper signature, with each call site passing its local cap explicitly. This eliminates the latent circular-import risk between `pals-hooks.ts` and any sibling module that owns the cap constant.
 - **Install / validation evidence:** `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reports `[ok] Pi extensions installed: 3 files`. Pi e2e: `1..214 / # Failed: 0`. Cross-harness: `1..127 / # Failed: 0`. `bash tests/helpers/artifact_consistency.sh` PASS. `git diff --check` clean. PR #158 merged 2026-05-02 (squash + delete-branch).
+
+The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain in force verbatim — this section surfaces outcome only and does not re-litigate selection.
+
+## Phase 246 Outcome
+
+Phase 246 extracted the S2 `workflow-resource-capsule-rendering` subsystem from `drivers/pi/extensions/pals-hooks.ts` to a new sibling Pi extension module `drivers/pi/extensions/workflow-resource-capsule-rendering.ts` (192 LOC) following the Phase 239 S5 + Phase 243 S1 sibling-module pattern.
+
+- **S2 `workflow-resource-capsule-rendering` extracted** — markers (`WORKFLOW_RESOURCE_CAPSULE_SCHEMA_MARKERS`, `MAX_WORKFLOW_RESOURCE_CAPSULE_CHARS=6_000`, `MAX_WORKFLOW_RESOURCE_CAPSULE_LINES=5`, the capsules banner, the `Fallback: full authoritative read…` line, and the `Authority: Derived aid only…` line) preserved single-defined in the new sibling.
+- **Loader-compat invariant promoted to per-extraction acceptance criterion** — the loader-compat invariant (no-op default-exported factory + `No-op Pi extension factory` marker comment) was a Phase 245 closure-phase hotfix; it is now asserted inline in the Phase 246 extraction TAP guardrail, catching Pi extension-loader breakage at extraction time rather than at the next session start.
+- **Sibling-module pattern triple-confirmed** — S5 (Phase 239) + S1 (Phase 243) + S2 (Phase 246) all follow the same shape: dedicated `drivers/pi/extensions/<name>.ts`, helpers imported from `./pals-hooks`, single-defined exact-marker exports, trailing no-op default-exported factory + marker comment.
+- **Helper-import tightening** — extracted siblings import only the helpers they actually reference (e.g., the new S2 sibling imports `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines` and omits `escapeRegExp`/`PalsStateSnapshot` because they are unreferenced).
+- **`pals-hooks.ts` shrank by 142 LOC** (1415 → 1273); shared helpers (`compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, type `PalsStateSnapshot`) remain defined and exported for future S3–S8 sibling extractions.
+- **S3 `guided-workflow-detection` is deferred to v2.58 at the earliest** per the line-29 conditional-secondary classification (“larger and contract-sensitive, conditional secondary candidate only after S1/S2 bounds are stable”). Phase 246 stabilizes S2 but does not validate S3 readiness; the baseline says wait, and v2.57 honors that.
+- **Validation evidence:** Pi `1..221/0`, cross-harness `1..129/0`, artifact_consistency PASS, install reports `[ok] Pi extensions installed: 4 files`, `git diff --check` clean. PR #161 merged 2026-05-02 (squash + delete-branch).
 
 The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain in force verbatim — this section surfaces outcome only and does not re-litigate selection.
 

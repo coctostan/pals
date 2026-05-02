@@ -10,9 +10,9 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
 Phase: 247 of 248 (Documentation + Validation Surfacing)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-02T05:45:00Z — Phase 246 transition complete: PR #161 merged (squash + delete-branch); main synced; PROJECT.md evolved with v2.57 Phase 246 outcomes + new Key Decisions row; ROADMAP Phase 246 ✅ Complete (1 of 3 in v2.57); MILESTONES Live Status advanced; STATE advanced to Phase 247.
+Plan: 247-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-02T06:00:00Z — Plan 247-01 created (`.paul/phases/247-documentation-validation-surfacing-v2-57/247-01-PLAN.md`); 4 tasks, autonomous=true, type=execute, risk_tier=normal; mirrors canonical Phase 244 surfacing shape; expected validation deltas Pi 221→223 (+2 multi-file split), cross-harness 129→130 (+1); install surface unchanged at 4 files.
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -64,7 +64,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — Phase 246 done; ready for Phase 247 PLAN]
+  ✓        ○        ○     [Plan 247-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -307,13 +307,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T05:45:00Z
-Stopped at: Phase 246 transition complete (PR #161 merged, main synced); ready for Phase 247 PLAN.
-Next action: Run /paul:plan for Phase 247 (Documentation + Validation Surfacing) — surface the new S2 sibling across `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, the extraction-target baseline, and the modularization contract; add cross-harness surfacing guardrail.
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-02T06:10:00Z — APPLY in progress (user approved; handoff consumed and archived).
+Stopped at: APPLY running — Phase 247 Documentation + Validation Surfacing.
+Next action: Execute Tasks 1-4 of Plan 247-01.
+Resume file:
 Resume context:
-- v2.56 Pi Extension Submodule Extraction Wave is at 3 of 4 phases complete. Phase 245 Evidence Closure + Next Roadmap Decision is the final phase.
-- Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).
-- Phase 244 scope (per ROADMAP): surface the documentation and validation evidence for the v2.56 wave — PROJECT/ROADMAP/MILESTONES wording, contract docs alignment, and any user-facing validation surfacing follow-ons; concrete plan structure to be defined during /paul:plan.
-- Validation baseline going into Phase 244: Pi `1..214/0`, cross-harness `1..127/0`, artifact_consistency PASS, install reports `[ok] Pi extensions installed: 3 files`, `git diff --check` clean.
-- Pre-plan reading list: `.paul/ROADMAP.md` (Phase 244 row), `.paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md` (sibling-module pattern + Patterns Established), `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (Phase 242 baseline, still authoritative for any further extractions).
+- Phase 247 APPLY approved. Creating feature branch phase-247-documentation-validation-surfacing-v2-57. Executing 4 tasks: surface S2 sibling in README/extensions-README/skill-map, update extraction-target baseline, update modularization contract, add Pi e2e + cross-harness guardrails.
+- Pre-apply baselines: Pi 221/221, cross-harness 129/129, artifact_consistency PASS expected after clearing stale resume file pointer.
