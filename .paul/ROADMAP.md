@@ -37,7 +37,7 @@ Theme: Continue extracting bounded Pi extension submodules from `pals-hooks.ts`,
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 242 | Extension Extraction Target Baseline | 1/1 | ✅ Complete | 2026-05-01 |
-| 243 | Bounded Submodule Extraction Wave | TBD | Not started | - |
+| 243 | Bounded Submodule Extraction Wave | 1 | UNIFY complete (pending merge gate + transition) | - |
 | 244 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 245 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
@@ -47,7 +47,7 @@ Plans: `.paul/phases/242-extension-extraction-target-baseline/242-01-PLAN.md` (�
 
 ### Phase 243: Bounded Submodule Extraction Wave
 Focus: Extract one or more approved Pi extension submodules behind safe contracts while preserving runtime behavior, lifecycle authority, and install compatibility.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/243-bounded-submodule-extraction-wave/243-01-PLAN.md` + `243-01-SUMMARY.md` — UNIFY complete: S1 `artifact-slice-rendering` extracted to `drivers/pi/extensions/artifact-slice-rendering.ts`; AC-1–AC-4 PASS (Pi 1..214/0, cross-harness 1..127/0, artifact_consistency PASS, install 3 files; +2 Pi count vs planned +1 reconciled in SUMMARY); pending github-flow merge gate (PR #158) and phase transition.
 
 ### Phase 244: Documentation + Validation Surfacing
 Focus: Document extracted modules and protect install/runtime behavior with validation and artifact consistency evidence.
@@ -94,4 +94,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-01 — Phase 242 UNIFY complete; Phase 243 Bounded Submodule Extraction Wave ready to plan.*
+*Last updated: 2026-05-02 — Phase 243 Plan 243-01 UNIFY complete (S1 `artifact-slice-rendering` extracted to sibling Pi extension module; pending merge gate + transition).*

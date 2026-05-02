@@ -17,6 +17,7 @@ import {
   extractRecentModuleActivity,
   formatModuleEntryList,
 } from "./module-activity-parsing";
+import { renderArtifactSlices } from "./artifact-slice-rendering";
 
 // -- Helpers --
 
@@ -40,20 +41,6 @@ const GUIDED_WORKFLOW_SIGNATURE_BYTES = 240;
 const RECENT_MODULE_ACTIVITY_LOOKBACK = 3;
 const MAX_VISIBLE_MODULES = 3;
 export const MAX_WIDGET_MODULE_DETAILS = 4;
-const MAX_ARTIFACT_SLICE_CHARS = 3_000;
-const MAX_ARTIFACT_SLICE_LINES = 8;
-const ARTIFACT_SLICE_SOURCE_STATE = ".paul/STATE.md";
-const ARTIFACT_SLICE_SOURCE_ROADMAP = ".paul/ROADMAP.md";
-const ARTIFACT_SLICE_FALLBACK = "full authoritative read required before edits, approved PLAN execution, lifecycle writes, stale/ambiguous/contested facts, decisions, GitHub Flow gates, validation pass/fail, module completion, APPLY completion, or UNIFY completion.";
-const ARTIFACT_SLICE_AUTHORITY = "Derived aid only; shared .paul/* artifacts and markdown workflows remain authoritative. No hidden persistence, cache, telemetry, report, or Pi-owned lifecycle/module/validation ledger.";
-const ARTIFACT_SLICE_SCHEMA_MARKERS = [
-  "Slice: current-lifecycle-state",
-  "Slice: active-roadmap-phase",
-  "Slice: approved-plan-task-packet",
-  "Artifact slices (read-only, bounded)",
-  "Fallback: full authoritative read",
-  "Authority: Derived aid only",
-] as const;
 const MAX_WORKFLOW_RESOURCE_CAPSULE_CHARS = 6_000;
 const MAX_WORKFLOW_RESOURCE_CAPSULE_LINES = 5;
 const WORKFLOW_RESOURCE_CAPSULE_FALLBACK = "full authoritative read required before approved PLAN execution, APPLY/UNIFY, lifecycle writes, checkpoints, module reports/enforcement, GitHub Flow decisions, validation assessment, stale/conflicting output, or edits/actions based on capsule content.";
@@ -73,7 +60,7 @@ const CARL_DEFAULT_CONTINUE_THRESHOLD = 0.4;
 const CARL_DEFAULT_SAFETY_CEILING = 0.8;
 const CARL_DEFAULT_STRATEGY: CarlConfig["session_strategy"] = "phase-boundary";
 
-type PalsStateSnapshot = {
+export type PalsStateSnapshot = {
   detected: boolean;
   milestone?: string;
   phase?: string;
@@ -103,22 +90,6 @@ type ActivationState = {
 };
 
 
-type ArtifactSlice = {
-  name: string;
-  source: string;
-  freshness: string;
-  bounds: string;
-  lines: string[];
-  fallback: string;
-  authority: string;
-};
-
-type ArtifactSliceSpec = {
-  name: string;
-  source: string;
-  patterns: RegExp[];
-  bounds: string;
-};
 
 type WorkflowResourceCapsule = {
   name: string;
@@ -216,7 +187,7 @@ type CarlState = {
   pauseAtNextBoundary: boolean;
 };
 
-function readFileOr(path: string, fallback: string): string {
+export function readFileOr(path: string, fallback: string): string {
   try {
     return existsSync(path) ? readFileSync(path, "utf-8") : fallback;
   } catch {
@@ -250,7 +221,7 @@ function parsePalsState(cwd: string): PalsStateSnapshot {
   };
 }
 
-function getFileFreshness(path: string): string {
+export function getFileFreshness(path: string): string {
   try {
     return existsSync(path) ? statSync(path).mtime.toISOString() : "unavailable";
   } catch {
@@ -258,7 +229,7 @@ function getFileFreshness(path: string): string {
   }
 }
 
-function selectBoundedLines(content: string, patterns: RegExp[], maxLines = MAX_ARTIFACT_SLICE_LINES): string[] {
+export function selectBoundedLines(content: string, patterns: RegExp[], maxLines: number): string[] {
   const selected: string[] = [];
   for (const line of content.split(/\r?\n/)) {
     const compact = compactWhitespace(line);
@@ -269,113 +240,10 @@ function selectBoundedLines(content: string, patterns: RegExp[], maxLines = MAX_
   return selected;
 }
 
-function escapeRegExp(value: string): string {
+export function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function normalizeArtifactSliceLine(line: string): string {
-  return compactWhitespace(line).toLowerCase();
-}
-
-function deduplicateArtifactSliceLines(lines: string[], emittedKeys: Set<string>): string[] {
-  const deduplicated: string[] = [];
-  for (const line of lines) {
-    const key = normalizeArtifactSliceLine(line);
-    if (!key) continue;
-    if (emittedKeys.has(key)) continue;
-    emittedKeys.add(key);
-    deduplicated.push(line);
-  }
-  return deduplicated;
-}
-
-function extractPlanPath(nextAction?: string): string | undefined {
-  const match = nextAction?.match(/\.paul\/phases\/[^\s`]+\/\d+-\d+-PLAN\.md/);
-  return match?.[0];
-}
-
-function buildArtifactSlice(cwd: string, spec: ArtifactSliceSpec): ArtifactSlice {
-  const absolute = join(cwd, spec.source);
-  const content = readFileOr(absolute, "");
-  const lines = content ? selectBoundedLines(content, spec.patterns) : [];
-  return {
-    name: spec.name,
-    source: spec.source,
-    freshness: getFileFreshness(absolute),
-    bounds: spec.bounds,
-    lines: lines.length > 0
-      ? lines
-      : [`unavailable-source note: no bounded slice content available from ${spec.source}; ${ARTIFACT_SLICE_FALLBACK}`],
-    fallback: ARTIFACT_SLICE_FALLBACK,
-    authority: ARTIFACT_SLICE_AUTHORITY,
-  };
-}
-
-function getArtifactSliceSpecs(state: PalsStateSnapshot): ArtifactSliceSpec[] {
-  const phaseNumber = state.phase?.match(/^(\d+)/)?.[1];
-  const planPath = extractPlanPath(state.nextAction);
-  const activeRoadmapPatterns = [
-    ...(phaseNumber
-      ? [new RegExp(`^\\|\\s*${phaseNumber}\\s*\\|`), new RegExp(`Phase\\s+${phaseNumber}\\b`, "i")]
-      : [/^\|\s*Phase\s*\|/i]),
-    ...(state.milestone ? [new RegExp(escapeRegExp(state.milestone), "i")] : []),
-  ];
-  const specs: ArtifactSliceSpec[] = [
-    {
-      name: "current-lifecycle-state",
-      source: ARTIFACT_SLICE_SOURCE_STATE,
-      patterns: [/^Milestone:/, /^Phase:/, /^Plan:/, /^Status:/, /^Last activity:/, /^Next action:/, /^Resume file:/],
-      bounds: `repo-relative ${ARTIFACT_SLICE_SOURCE_STATE}; first ${MAX_ARTIFACT_SLICE_LINES} matching lifecycle lines; max payload ${MAX_ARTIFACT_SLICE_CHARS} chars`,
-    },
-    {
-      name: "active-roadmap-phase",
-      source: ARTIFACT_SLICE_SOURCE_ROADMAP,
-      patterns: activeRoadmapPatterns,
-      bounds: `repo-relative ${ARTIFACT_SLICE_SOURCE_ROADMAP}; artifact-slice targeting selects active phase/current milestone markers only; no generic keyword or completed-history expansion; first ${MAX_ARTIFACT_SLICE_LINES} matching lines`,
-    },
-  ];
-
-  if (planPath) {
-    specs.push({
-      name: "approved-plan-task-packet",
-      source: planPath,
-      patterns: [/^## Goal/, /^## Output/, /^<task/, /^<boundaries>/, /^## AC-/, /^\s*<name>/, /^\s*<files>/, /^\s*<verify>/, /artifact-slice targeting/i, /deduplication/i, /duplicate trimming/i, /full authoritative read/i],
-      bounds: `repo-relative current PLAN path discovered from STATE next action; artifact-slice targeting selects task names, files, verification, acceptance criteria, boundaries, and handoff markers; first ${MAX_ARTIFACT_SLICE_LINES} matching lines; max payload ${MAX_ARTIFACT_SLICE_CHARS} chars`,
-    });
-  }
-
-  return specs;
-}
-
-function renderArtifactSlices(cwd: string, state: PalsStateSnapshot): string[] {
-  const slices = getArtifactSliceSpecs(state).map((spec) => buildArtifactSlice(cwd, spec));
-  const emittedArtifactSliceKeys = new Set<string>();
-  const rendered = [
-    "Artifact slices (read-only, bounded, activation-gated, artifact-slice targeting + deduplication enabled)",
-    `Bounds: MAX_ARTIFACT_SLICE_CHARS=${MAX_ARTIFACT_SLICE_CHARS}; MAX_ARTIFACT_SLICE_LINES=${MAX_ARTIFACT_SLICE_LINES}`,
-    `Fallback: ${ARTIFACT_SLICE_FALLBACK}`,
-    `Authority: ${ARTIFACT_SLICE_AUTHORITY}`,
-  ];
-
-  for (const slice of slices) {
-    const deduplicatedLines = deduplicateArtifactSliceLines(slice.lines, emittedArtifactSliceKeys);
-    rendered.push(`Slice: ${slice.name}`);
-    rendered.push(`Source: ${slice.source}`);
-    rendered.push(`Freshness: ${slice.freshness}`);
-    rendered.push(`Bounds: ${slice.bounds}; deterministic duplicate trimming preserves first cited occurrence`);
-    rendered.push("Content:");
-    rendered.push(...(deduplicatedLines.length > 0
-      ? deduplicatedLines
-      : [`duplicate-trim note: all bounded content from ${slice.source} duplicated an earlier artifact slice; ${ARTIFACT_SLICE_FALLBACK}`]
-    ).map((line) => `- ${line}`));
-    rendered.push(`Fallback: ${slice.fallback}`);
-    rendered.push(`Authority: ${slice.authority}`);
-  }
-
-  const joined = rendered.join("\n");
-  if (joined.length <= MAX_ARTIFACT_SLICE_CHARS) return rendered;
-  return joined.slice(0, MAX_ARTIFACT_SLICE_CHARS).split(/\n/).concat("[artifact slice truncated at MAX_ARTIFACT_SLICE_CHARS; full authoritative read required]");
-}
 
 function getWorkflowResourceCapsuleSpecs(): WorkflowResourceCapsuleSpec[] {
   return [
