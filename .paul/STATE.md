@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 ## Current Position
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Phase: 246 of 248 (S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering))
-Plan: 246-01 — ALL 5 ACs PASS (loop complete)
-Status: Phase 246 complete; ready for Phase 247 PLAN
-Last activity: 2026-05-02T05:30:00Z — Plan 246-01 UNIFY complete: SUMMARY.md authored at `.paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md` (5/5 ACs PASS; sibling-module pattern ratified by triple confirmation S5+S1+S2; loader-compat invariant promoted to per-extraction AC; helper-import tightening pattern named; S3 deferred to v2.58 per baseline). Phase 246 complete (1 of 3 in v2.57).
+Phase: 247 of 248 (Documentation + Validation Surfacing)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-02T05:45:00Z — Phase 246 transition complete: PR #161 merged (squash + delete-branch); main synced; PROJECT.md evolved with v2.57 Phase 246 outcomes + new Key Decisions row; ROADMAP Phase 246 ✅ Complete (1 of 3 in v2.57); MILESTONES Live Status advanced; STATE advanced to Phase 247.
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -299,18 +299,18 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit on main: `33aafc19` Phase 245: Evidence Closure + sibling Pi extension loader-compat hotfix (v2.56) (#160).
-PR: #160 (https://github.com/coctostan/pals/pull/160) — MERGED 2026-05-02 (squash + delete-branch). Pre-merge: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge validation on main: Pi 1..218/0, cross-harness 1..129/0, artifact_consistency PASS, `git diff --check` clean. Prior: PR #159 (Phase 244) MERGED 2026-05-02.
+Last commit on main: `3f3dc4b0` Phase 246: Extract S2 workflow-resource-capsule-rendering to sibling Pi extension (v2.57) (#161).
+PR: #161 (https://github.com/coctostan/pals/pull/161) — MERGED 2026-05-02 (squash + delete-branch). Pre-merge: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge validation on main: Pi 1..221/0, cross-harness 1..129/0, artifact_consistency PASS, `git diff --check` clean. Prior: PR #160 (Phase 245) MERGED 2026-05-02.
 Working tree: clean.
-Prior PRs: #159 merged (Phase 244 documentation/validation surfacing); #158 merged (Phase 243-01 S1 artifact-slice-rendering extraction); #157 merged (Phase 242 extraction target baseline); #156 merged (Phase 241-01 evidence closure — closes v2.55); earlier PR history archived in STATE history.
+Prior PRs: #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
 Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T05:30:00Z
-Stopped at: Phase 246 complete (Plan 246-01 ALL 5 ACs PASS; Pi 221, cross-harness 129, install 4 files); ready for Phase 247 PLAN.
+Last session: 2026-05-02T05:45:00Z
+Stopped at: Phase 246 transition complete (PR #161 merged, main synced); ready for Phase 247 PLAN.
 Next action: Run /paul:plan for Phase 247 (Documentation + Validation Surfacing) — surface the new S2 sibling across `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, the extraction-target baseline, and the modularization contract; add cross-harness surfacing guardrail.
-Resume file: .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md
+Resume file: .paul/ROADMAP.md
 Resume context:
 - v2.56 Pi Extension Submodule Extraction Wave is at 3 of 4 phases complete. Phase 245 Evidence Closure + Next Roadmap Decision is the final phase.
 - Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).
