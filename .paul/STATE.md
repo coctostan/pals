@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** No active milestone. v2.56 Pi Extension Submodule Extraction Wave is **complete** (4 of 4 phases shipped: 242 baseline, 243 S1 extraction, 244 documentation/validation surfacing, 245 evidence closure + sibling Pi extension loader-compat hotfix). PR #160 merged 2026-05-02. v2.57 selection is pending via `/paul:milestone` (recommended focus: continue sibling-extraction wave with Plan 243-02 S2 `workflow-resource-capsule-rendering`).
+**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering (3-phase compact: 246 extraction, 247 docs/validation surfacing, 248 evidence closure). Mode: direct-requirements; collaboration: high. Carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker comment) as a hard constraint on any new helper-only sibling under `drivers/pi/extensions/*.ts`.
 
 ## Current Position
 
-Milestone: none active — v2.56 Pi Extension Submodule Extraction Wave complete; v2.57 pending via /paul:milestone
-Phase: 245 of 245 (Evidence Closure + Next Roadmap Decision) — Complete (v2.56 milestone closed)
-Plan: 245-01 complete (UNIFY done; PR #160 merged 2026-05-02)
-Status: Milestone v2.56 complete — ready for next milestone selection
-Last activity: 2026-05-02T03:55:00Z — Phase 245 UNIFY complete; PR #160 squash-merged → main; v2.56 Pi Extension Submodule Extraction Wave 4 of 4 phases complete. Final validation: Pi 218/218, cross-harness 129/129; install unchanged at 3 files. v2.57 selection pending via /paul:milestone (recommended: Plan 243-02 S2 workflow-resource-capsule-rendering).
+Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
+Phase: 246 of 248 (S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering))
+Plan: 246-01 — ALL 5 ACs PASS (loop complete)
+Status: Phase 246 complete; ready for Phase 247 PLAN
+Last activity: 2026-05-02T05:30:00Z — Plan 246-01 UNIFY complete: SUMMARY.md authored at `.paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md` (5/5 ACs PASS; sibling-module pattern ratified by triple confirmation S5+S1+S2; loader-compat invariant promoted to per-extraction AC; helper-import tightening pattern named; S3 deferred to v2.58 per baseline). Phase 246 complete (1 of 3 in v2.57).
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -28,7 +28,8 @@ Progress:
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
-- v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; Phase 245 APPLY complete; v2.57 selection pending via /paul:milestone)
+- v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [███░░░░░░░] 33% (1 of 3 phases; Phase 246 complete; Phase 247 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -63,7 +64,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v2.56 milestone closed; ready for next milestone]
+  ✓        ✓        ✓     [Loop complete — Phase 246 done; ready for Phase 247 PLAN]
 ```
 
 ## Accumulated Context
@@ -306,10 +307,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T03:55:00Z
-Stopped at: v2.56 Pi Extension Submodule Extraction Wave milestone complete (4 of 4 phases). Ready for next milestone selection.
-Next action: Run /paul:milestone to select v2.57 (recommended focus: continue sibling-extraction wave with Plan 243-02 S2 `workflow-resource-capsule-rendering`; alternatives: local context-cost evidence, demo project preset, S3 conditional extraction).
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-02T05:30:00Z
+Stopped at: Phase 246 complete (Plan 246-01 ALL 5 ACs PASS; Pi 221, cross-harness 129, install 4 files); ready for Phase 247 PLAN.
+Next action: Run /paul:plan for Phase 247 (Documentation + Validation Surfacing) — surface the new S2 sibling across `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, the extraction-target baseline, and the modularization contract; add cross-harness surfacing guardrail.
+Resume file: .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md
 Resume context:
 - v2.56 Pi Extension Submodule Extraction Wave is at 3 of 4 phases complete. Phase 245 Evidence Closure + Next Roadmap Decision is the final phase.
 - Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).
