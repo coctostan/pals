@@ -55,7 +55,7 @@ Plans: `.paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md` + `2
 
 ### Phase 245: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.56 evidence, close the milestone, and decide the next roadmap focus.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/245-evidence-closure-next-roadmap-decision/245-01-PLAN.md` — APPLY complete; ready for UNIFY. Sibling Pi extension loader-compat hotfix applied (no-op default factory appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts`); v2.56 evidence aggregated into `.paul/MILESTONES.md` and `.paul/PROJECT.md`; v2.57 recommendation recorded (Plan 243-02 S2 `workflow-resource-capsule-rendering`); Pi 216→218 (+2 loader-compat), cross-harness 128→129 (+1 v2.56 closure), install unchanged at 3 files.
 
 ### Latest completed milestone: v2.55 Maintainability & Product Reality Hardening
 Result: Phases 234-241 complete. v2.55 closed after PR #156 merged 2026-05-01. Shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision. Final validation: Pi 212/212 and cross-harness 127/127.
@@ -94,4 +94,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 244 complete (S1 outcome surfaced in 5 docs + 1 closure guardrail per validation suite; PR #159 merged); transitioned to Phase 245 Evidence Closure + Next Roadmap Decision.*
+*Last updated: 2026-05-02 — Phase 245 APPLY complete (sibling loader-compat hotfix + v2.56 milestone closure aggregation + 1 Pi loader-compat guardrail + 1 cross-harness v2.56 closure guardrail); v2.56 Pi Extension Submodule Extraction Wave 4 of 4 phases complete; ready for UNIFY then v2.57 selection via /paul:milestone.*

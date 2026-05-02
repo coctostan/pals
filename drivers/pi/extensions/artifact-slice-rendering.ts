@@ -167,3 +167,17 @@ export function renderArtifactSlices(cwd: string, state: PalsStateSnapshot): str
   if (joined.length <= MAX_ARTIFACT_SLICE_CHARS) return rendered;
   return joined.slice(0, MAX_ARTIFACT_SLICE_CHARS).split(/\n/).concat("[artifact slice truncated at MAX_ARTIFACT_SLICE_CHARS; full authoritative read required]");
 }
+
+/**
+ * No-op Pi extension factory.
+ *
+ * This module is a helper consumed by `drivers/pi/extensions/pals-hooks.ts`;
+ * the default export exists only to satisfy Pi's extension loader, which
+ * scans every `*.ts` file in `~/.pi/agent/extensions/` for a default-
+ * exported factory function. Real extension behavior lives in
+ * `pals-hooks.ts`. This factory MUST remain a no-op so it never mutates Pi
+ * state, registers tools, subscribes to events, or owns lifecycle authority.
+ *
+ * Authority: Derived aid only.
+ */
+export default function (_pi: unknown): void {}

@@ -156,3 +156,17 @@ export function formatModuleEntryList(
   const overflow = entries.length > limit ? `${separator}+${entries.length - limit}` : "";
   return `${visible.join(separator)}${overflow}`;
 }
+
+/**
+ * No-op Pi extension factory.
+ *
+ * This module is a helper consumed by `drivers/pi/extensions/pals-hooks.ts`;
+ * the default export exists only to satisfy Pi's extension loader, which
+ * scans every `*.ts` file in `~/.pi/agent/extensions/` for a default-
+ * exported factory function. Real extension behavior lives in
+ * `pals-hooks.ts`. This factory MUST remain a no-op so it never mutates Pi
+ * state, registers tools, subscribes to events, or owns lifecycle authority.
+ *
+ * Authority: Derived aid only.
+ */
+export default function (_pi: unknown): void {}

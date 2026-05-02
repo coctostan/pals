@@ -1676,6 +1676,27 @@ tap_file_contains_all \
   'pals-hooks.ts' \
   'module-activity-parsing.ts' \
   'artifact-slice-rendering.ts'
+
+# ══════════════════════════════════════════════════════════════════
+# Phase 245 sibling extension loader-compat (Pi-supported runtime)
+# ══════════════════════════════════════════════════════════════════
+# Pi auto-loads every *.ts file under ~/.pi/agent/extensions/ and expects each
+# to default-export a factory function (pi) => void. The two helper siblings
+# (module-activity-parsing.ts, artifact-slice-rendering.ts) are consumed by
+# pals-hooks.ts via named imports and only need a no-op default-exported
+# factory to satisfy Pi's extension loader at session start. This guardrail
+# locks that loader-compat invariant and protects the canonical comment marker.
+tap_file_contains_all \
+  "Phase 245 sibling extension loader-compat (Pi-supported runtime): module-activity-parsing.ts carries a no-op default-exported factory" \
+  "$REPO_ROOT/drivers/pi/extensions/module-activity-parsing.ts" \
+  'export default function' \
+  'No-op Pi extension factory'
+
+tap_file_contains_all \
+  "Phase 245 sibling extension loader-compat (Pi-supported runtime): artifact-slice-rendering.ts carries a no-op default-exported factory" \
+  "$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts" \
+  'export default function' \
+  'No-op Pi extension factory'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

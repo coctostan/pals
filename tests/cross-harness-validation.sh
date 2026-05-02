@@ -1258,6 +1258,22 @@ tap_file_contains_all \
   "$REPO_ROOT/docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md" \
   'artifact-slice-rendering.ts' \
   'default-arg cycle-avoidance'
+
+# ═══════════════════════════════════════════════════════════════════
+# Phase 245 sibling extraction wave closure (v2.56 Shared Invariant)
+# ═══════════════════════════════════════════════════════════════════
+# Phase 245 closes v2.56 by aggregating Phases 242–245 evidence into MILESTONES.md.
+# Closure guardrail: .paul/MILESTONES.md must continue to name the v2.56 milestone
+# and all four phases (242 baseline, 243 S1 extraction, 244 surfacing, 245 closure)
+# so the shared invariant across docs/contract/lifecycle does not regress.
+tap_file_contains_all \
+  "Phase 245 sibling extraction wave closure (v2.56 Shared Invariant): MILESTONES.md names v2.56 and Phases 242–245" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.56 Pi Extension Submodule Extraction Wave' \
+  'Phase 242' \
+  'Phase 243' \
+  'Phase 244' \
+  'Phase 245'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
