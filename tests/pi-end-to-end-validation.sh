@@ -1654,6 +1654,28 @@ tap_check \
   "PALS artifact consistency guardrail (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff drift)" \
   "$?" \
   "Artifact drift detected; see docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md and rerun tests/helpers/artifact_consistency.sh for diagnostics"
+
+# ════════════════════════════════════════════════════════════════════
+# Phase 244 sibling extraction surfacing (Pi-supported runtime)
+# ════════════════════════════════════════════════════════════════════
+# Phase 244 surfaces the Phase 243 S1 sibling extraction (artifact-slice-rendering.ts)
+# in the Pi-runtime user-facing docs. Closure guardrail: the basename must remain
+# named in both drivers/pi/extensions/README.md and drivers/pi/skill-map.md alongside
+# pals-hooks.ts and module-activity-parsing.ts so the Pi-runtime install surface
+# documentation does not regress to a partial sibling list.
+tap_file_contains_all \
+  "Phase 244 sibling extraction surfacing (Pi-supported runtime): drivers/pi/extensions/README.md names artifact-slice-rendering.ts alongside pals-hooks.ts and module-activity-parsing.ts" \
+  "$REPO_ROOT/drivers/pi/extensions/README.md" \
+  'pals-hooks.ts' \
+  'module-activity-parsing.ts' \
+  'artifact-slice-rendering.ts'
+
+tap_file_contains_all \
+  "Phase 244 sibling extraction surfacing (Pi-supported runtime): drivers/pi/skill-map.md names artifact-slice-rendering.ts alongside pals-hooks.ts and module-activity-parsing.ts" \
+  "$REPO_ROOT/drivers/pi/skill-map.md" \
+  'pals-hooks.ts' \
+  'module-activity-parsing.ts' \
+  'artifact-slice-rendering.ts'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

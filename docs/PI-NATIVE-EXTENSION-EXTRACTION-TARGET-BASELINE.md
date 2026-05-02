@@ -24,7 +24,7 @@ This document is a derived aid only. It is not lifecycle truth, validation truth
 
 | Candidate | Current state | Phase 243 posture |
 |-----------|---------------|-------------------|
-| S1 `artifact-slice-rendering` | Still inline in `pals-hooks.ts` | Approved primary candidate |
+| S1 `artifact-slice-rendering` | Extracted to `drivers/pi/extensions/artifact-slice-rendering.ts` (Phase 243 / PR #158) | Shipped — sibling-module pattern repeated |
 | S2 `workflow-resource-capsule-rendering` | Still inline in `pals-hooks.ts` | Approved primary candidate, pairable with S1 if bounded |
 | S3 `guided-workflow-detection` | Still inline in `pals-hooks.ts` | Conditional secondary candidate only after S1/S2 bounds are stable |
 | S4 `guided-workflow-canonical-reply` | Still inline in `pals-hooks.ts` | Deferred; runtime-coupled Pi message mutation |
@@ -105,6 +105,18 @@ Any Phase 243 extraction must preserve:
 - No auto-approval, no auto-continue, no skipped checkpoints, no UI-only lifecycle decisions, and no inferred merge intent.
 - `Authority: Derived aid only` language on derived runtime orientation surfaces.
 - Existing command names, shortcuts, canonical replies, and activation behavior unless a future approved plan explicitly targets those surfaces.
+
+## Phase 243 Outcome
+
+Phase 243 Plan 01 executed the approved primary candidate and closed the wave's first extraction:
+
+- **S1 `artifact-slice-rendering` extracted** to `drivers/pi/extensions/artifact-slice-rendering.ts` per the Phase 239 S5 sibling-module precedent. Markers (`ARTIFACT_SLICE_SCHEMA_MARKERS`, `MAX_ARTIFACT_SLICE_CHARS=3000`, `MAX_ARTIFACT_SLICE_LINES=8`, the slice banner, the `Fallback: full authoritative read…` line, and the `Authority: Derived aid only…` line) are preserved single-defined in the new sibling.
+- **S2 `workflow-resource-capsule-rendering` reserved** for a future approved plan (e.g., Plan 243-02 if scheduled); it remains inline in `pals-hooks.ts` and is not extracted by Phase 243.
+- **Helpers exported from `drivers/pi/extensions/pals-hooks.ts`:** `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, and the type `PalsStateSnapshot`. Future S2-S8 sibling extractions import these helpers from `./pals-hooks` rather than duplicating them.
+- **Canonical `default-arg cycle-avoidance` pattern:** any shared cap (e.g., `selectBoundedLines`'s `maxLines`) moves from a default-arg referencing a sibling-owned constant to a required parameter at the helper signature, with each call site passing its local cap explicitly. This eliminates the latent circular-import risk between `pals-hooks.ts` and any sibling module that owns the cap constant.
+- **Install / validation evidence:** `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reports `[ok] Pi extensions installed: 3 files`. Pi e2e: `1..214 / # Failed: 0`. Cross-harness: `1..127 / # Failed: 0`. `bash tests/helpers/artifact_consistency.sh` PASS. `git diff --check` clean. PR #158 merged 2026-05-02 (squash + delete-branch).
+
+The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain in force verbatim — this section surfaces outcome only and does not re-litigate selection.
 
 ## Forbidden Scope for Phase 243 by Default
 

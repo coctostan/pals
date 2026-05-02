@@ -1244,6 +1244,20 @@ tap_check \
   "Shared .paul/* artifact consistency guardrail (STATE/ROADMAP/MILESTONES/SUMMARY/resume/handoff drift)" \
   "$?" \
   "Artifact drift detected; see docs/PALS-ARTIFACT-CONSISTENCY-GUARDRAILS.md and rerun tests/helpers/artifact_consistency.sh for diagnostics"
+
+# ════════════════════════════════════════════════════════════════════
+# Phase 244 sibling extraction surfacing (Shared Invariant)
+# ════════════════════════════════════════════════════════════════════
+# Phase 244 surfaces the Phase 243 S1 sibling extraction outcome and the canonical
+# default-arg cycle-avoidance pattern in the cross-harness extraction-target baseline.
+# Closure guardrail: docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md must
+# continue to name both the new sibling basename and the canonical pattern phrase so
+# the shared invariant across docs/contract does not regress.
+tap_file_contains_all \
+  "Phase 244 sibling extraction surfacing (Shared Invariant): extraction-target baseline names artifact-slice-rendering.ts and the default-arg cycle-avoidance pattern" \
+  "$REPO_ROOT/docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md" \
+  'artifact-slice-rendering.ts' \
+  'default-arg cycle-avoidance'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
