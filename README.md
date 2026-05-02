@@ -22,7 +22,7 @@ Start a new Pi session, then in any project:
 ```
 
 > First-run scenario: see [docs/PALS-FIRST-RUN-HAPPY-PATH.md](docs/PALS-FIRST-RUN-HAPPY-PATH.md) for a concrete tiny init→plan→apply→unify walkthrough that names what PALS protected at each step.
-Pi is the supported runtime: PALS installs canonical skills under `~/.pi/agent/skills/pals/`, Pi extension siblings under `~/.pi/agent/extensions/` (currently `pals-hooks.ts` plus the Phase 239 first-spike S5 extraction `module-activity-parsing.ts` and the Phase 243 S1 sibling extraction `artifact-slice-rendering.ts`, per the source-set rule in `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`), and project-shipped helper agents under `~/.pi/agent/agents/`.
+Pi is the supported runtime: PALS installs canonical skills under `~/.pi/agent/skills/pals/`, Pi extension siblings under `~/.pi/agent/extensions/` (currently `pals-hooks.ts` plus the Phase 239 first-spike S5 extraction `module-activity-parsing.ts`, the Phase 243 S1 sibling extraction `artifact-slice-rendering.ts`, and the Phase 246 S2 sibling extraction `workflow-resource-capsule-rendering.ts`, per the source-set rule in `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`), and project-shipped helper agents under `~/.pi/agent/agents/`.
 
 Claude Code and Agent SDK surfaces are unsupported/frozen historical compatibility references. They may remain in the repository, but new architecture work should use the Pi-native surfaces and preserve `.paul/*` artifact authority.
 Driver inventory remains documented for maintenance context: Claude Code · Pi · Agent SDK. Pi driver installs canonical skills plus an extension-backed command/hook layer; the other surfaces are frozen legacy references.

@@ -1732,6 +1732,23 @@ tap_file_contains_none \
   'function buildWorkflowResourceCapsule(' \
   'function renderWorkflowResourceCapsules(' \
   'WORKFLOW_RESOURCE_CAPSULE_SCHEMA_MARKERS = ['
+
+# ════════════════════════════════════════════════════════════════════
+# Phase 247 sibling extraction surfacing (Pi-supported runtime)
+# ════════════════════════════════════════════════════════════════════
+# Phase 247 surfaces the Phase 246 S2 sibling extraction (workflow-resource-capsule-rendering.ts)
+# in the Pi-runtime user-facing docs. Closure guardrail: the basename must remain
+# named in both drivers/pi/extensions/README.md and drivers/pi/skill-map.md alongside
+# the prior siblings so the Pi-runtime install surface documentation does not regress.
+tap_file_contains_all \
+  "Phase 247 sibling extraction surfacing (Pi-supported runtime): drivers/pi/extensions/README.md names workflow-resource-capsule-rendering.ts alongside the prior siblings" \
+  "$REPO_ROOT/drivers/pi/extensions/README.md" \
+  'workflow-resource-capsule-rendering.ts'
+
+tap_file_contains_all \
+  "Phase 247 sibling extraction surfacing (Pi-supported runtime): drivers/pi/skill-map.md names workflow-resource-capsule-rendering.ts alongside the prior siblings" \
+  "$REPO_ROOT/drivers/pi/skill-map.md" \
+  'workflow-resource-capsule-rendering.ts'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

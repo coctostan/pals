@@ -1259,6 +1259,20 @@ tap_file_contains_all \
   'artifact-slice-rendering.ts' \
   'default-arg cycle-avoidance'
 
+# ════════════════════════════════════════════════════════════════════
+# Phase 247 sibling extraction surfacing (Shared Invariant)
+# ════════════════════════════════════════════════════════════════════
+# Phase 247 surfaces the Phase 246 S2 sibling extraction outcome and the loader-compat
+# invariant promotion in the cross-harness extraction-target baseline. Closure guardrail:
+# docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md must continue to name the new
+# sibling basename and the canonical loader-compat invariant phrase so the shared
+# invariant across docs/contract does not regress.
+tap_file_contains_all \
+  "Phase 247 sibling extraction surfacing (Shared Invariant): extraction-target baseline names workflow-resource-capsule-rendering.ts and the loader-compat invariant" \
+  "$REPO_ROOT/docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md" \
+  'workflow-resource-capsule-rendering.ts' \
+  'loader-compat invariant'
+
 # ═══════════════════════════════════════════════════════════════════
 # Phase 245 sibling extraction wave closure (v2.56 Shared Invariant)
 # ═══════════════════════════════════════════════════════════════════

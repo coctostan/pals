@@ -35,7 +35,7 @@ Theme: Continue the sibling-extraction wave by extracting S2 `workflow-resource-
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 246 | S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering) | 1/1 | ✅ Complete | 2026-05-02 |
-| 247 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 247 | Documentation + Validation Surfacing | 1 | Planning | - |
 | 248 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Latest completed milestone: v2.56 Pi Extension Submodule Extraction Wave

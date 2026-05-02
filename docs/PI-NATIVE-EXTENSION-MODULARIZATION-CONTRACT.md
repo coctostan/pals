@@ -213,6 +213,16 @@ Phase 243 Plan 01 extracted the S1 candidate identified above as equally pure to
 - **Validation guardrail addition was bounded** as the rejection-reasons section anticipated: Pi e2e `1..212 → 1..214` (+2; the +1 anticipated for the S1 single-defined guardrail plus +1 for splitting `shouldInjectPalsContext` into its own block, documented in `.paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md`); cross-harness unchanged at `1..127` because no contract-doc string moved.
 - **Outcome does not change the S1-S8 risk/readiness analysis above.** The selection prose (S5 first as smallest authority surface; S1 as the equally-pure runner-up) was correct: S5's smaller marker surface let it be the safest first spike, and S1's contract-protected markers were preserved by mirroring the same sibling-module pattern after S5 proved it.
 
+## Phase 246 Outcome
+
+Phase 246 extracted S2 to `drivers/pi/extensions/workflow-resource-capsule-rendering.ts` following the Phase 239 S5 + Phase 243 S1 sibling-module pattern. The contract-protected `WORKFLOW_RESOURCE_CAPSULE_SCHEMA_MARKERS` strings and the `MAX_WORKFLOW_RESOURCE_CAPSULE_*` caps are preserved single-defined in the new sibling; no marker is duplicated and none was dropped.
+
+- **Loader-compat invariant** — every helper-only Pi extension sibling MUST end with a no-op default-exported factory `export default function (_pi: unknown): void {}` preceded by a JSDoc comment carrying the literal marker phrase `No-op Pi extension factory`. This is a per-extraction acceptance criterion (Phase 246 promotion from Phase 245’s closure-phase hotfix). Pi auto-loads every `~/.pi/agent/extensions/*.ts` and rejects modules without a default-exported factory; without the loader-compat invariant the sibling fails at session start with `Failed to load extension "...": Extension does not export a valid factory function`.
+- **Triple-confirmed sibling-module pattern** — S5 (Phase 239 `module-activity-parsing.ts`) + S1 (Phase 243 `artifact-slice-rendering.ts`) + S2 (Phase 246 `workflow-resource-capsule-rendering.ts`) all match the same shape. The pattern is now ratified rather than provisional. Future S3/S4/S6/S7/S8 extractions can apply this recipe verbatim.
+- **Helper-import tightening (canonical sibling-import discipline)** — extracted siblings import only the helpers they actually reference. The new S2 sibling imports `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines` and deliberately omits `escapeRegExp` and `PalsStateSnapshot` because the moved S2 code does not reference them; this keeps the sibling-import surface honest and the boundary minimal.
+- **`pals-hooks.ts` post-extraction state** — 1273 LOC (was 1415; −142). The shared helpers `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, and the type `PalsStateSnapshot` remain defined and exported, so future S3–S8 extractions can import them without re-litigating the helper boundary.
+- **Validation evidence:** Pi `1..221/0`, cross-harness `1..129/0`, artifact_consistency PASS, install reports `[ok] Pi extensions installed: 4 files`, `git diff --check` clean. PR #161 merged 2026-05-02.
+
 ## Phase 239 Handoff
 
 Phase 239 must plan inside the following bounds. Anything outside these bounds requires a separately approved later plan.
