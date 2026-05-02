@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-02 after Phase 248 UNIFY)
+See: .paul/PROJECT.md (updated 2026-05-02 after v2.58 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering is complete and merged. SUMMARY `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md` records AC results, validation evidence (install 4 files, Pi 223/223, cross-harness 131/131, artifact consistency PASS), module dispatch reports, CODI/WALT history side effects, and GitHub Flow PR #163 evidence. PR #163 merged 2026-05-02 with squash commit `bdbc8e9a`; local `main` is synced. v2.58 recommendation remains recorded only; final selection remains `/paul:milestone`.
+**Current focus:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is created and ready for Phase 249 planning. It continues the sibling extraction wave by targeting S3 `guided-workflow-detection` in `drivers/pi/extensions/pals-hooks.ts`, with boundaries to preserve option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 ## Current Position
 
-Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision) — Complete and merged
-Plan: 248-01 unified successfully
-Status: v2.57 complete; ready for `/paul:milestone` to select v2.58
-Last activity: 2026-05-02T16:52:00Z — PR #163 merged and local `main` synced
+Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
+Phase: 249 of 252 (S3 Extraction Contract + Bounded Submodule Plan) — APPLY complete
+Plan: 249-01 applied successfully
+Status: UNIFY complete; Phase 249 closed
+Last activity: 2026-05-02T18:20:00Z — Phase 249 UNIFY complete: SUMMARY finalized, merge gate handled, transition ready.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -31,6 +31,7 @@ Progress:
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██░░░░░░░░] 25% (1 of 4 phases complete; Phase 249 S3 contract + bounded plan applied, awaiting UNIFY)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -65,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for milestone selection]
+  ✓        ✓        ✓     [Loop complete - ready for transition]
 ```
 
 ## Accumulated Context
@@ -302,21 +303,20 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: `bdbc8e9a` — PR #163 squash merge for Phase 248 evidence closure + UNIFY artifacts.
-PR: #163 (https://github.com/coctostan/pals/pull/163) — MERGED 2026-05-02T16:49:25Z; CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS.
-Working tree: final post-merge STATE/SUMMARY cleanup pending commit on `main`.
+Branch: feature/249-s3-extraction-contract-bounded-submodule-plan
+Last commit: `78c667c6` — chore(249-01): reconcile ROADMAP line budget and archive stale handoff.
+PR: none yet (feature branch created during APPLY preflight).
+Working tree: Phase 249 APPLY complete; 3 commits on feature branch; ready for UNIFY.
 Prior PRs: #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-02T16:52:00Z
-Stopped at: v2.57 complete and merged; final post-merge state cleanup in progress
-Next action: Commit/push post-merge STATE/SUMMARY cleanup, then run /paul:milestone for v2.58 selection
-Resume file: .paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md
+Last session: 2026-05-02T17:20:51Z
+Stopped at: Plan 249-01 created
+Next action: Review and approve plan, then run /paul:apply .paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-PLAN.md
+Resume file: .paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-PLAN.md
 Resume context:
-- Phase 248 UNIFY summary exists at `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`; AC-1 through AC-4 are PASS.
-- Verification evidence: install reports 4 Pi extension files; Pi validation 223/223; cross-harness validation 131/131; artifact_consistency PASS; `git diff --check` clean.
-- Post-unify side effects: `.paul/CODI-HISTORY.md` appended `248-01 skipped-no-symbols`; `.paul/QUALITY-HISTORY.md` appended Phase 248 quality row.
-- PR #163 merged 2026-05-02T16:49:25Z with squash commit `bdbc8e9a`; local `main` synced. After final post-merge state cleanup is committed/pushed, next workflow action is `/paul:milestone` for v2.58 selection.
-- v2.58 recommendation is recorded only: S3 `guided-workflow-detection` as conditional on continued S2 stability; `/paul:milestone` remains the approval route.
+- Plan 249-01 is created for Phase 249 S3 Extraction Contract + Bounded Submodule Plan.
+- Planned APPLY scope is docs-only: create `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` and update `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` plus `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`.
+- Parent APPLY must preserve runtime/source/test/install/dependency/CI boundaries; no S3 source extraction until Phase 250.
+- Preservation boundaries: option parsing semantics, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, guided workflow authority boundaries, `.paul/*` authority, and command-output validation truth.
