@@ -764,6 +764,7 @@ section "EXTENSION STRUCTURAL VALIDITY"
 # Use source file for structural checks (same content as installed)
 EXT_SRC="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
 EXT_ARTIFACT_SLICE="$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts"
+EXT_GUIDED_WORKFLOW_DETECTION="$REPO_ROOT/drivers/pi/extensions/guided-workflow-detection.ts"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -1067,11 +1068,12 @@ fi
     'not workflow authority' \
     'parent-owned APPLY'
 
-  # Guided workflow contract: detect canonical workflow markers from shared prompts
-  if grep -q 'Continue to APPLY' "$EXT_SRC" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_SRC" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_SRC" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_SRC" 2>/dev/null; then
+  # Guided workflow contract: detect canonical workflow markers from shared prompts.
+  # Phase 250: S3 detection markers live in guided-workflow-detection.ts; S4 delivery remains in pals-hooks.ts.
+  if grep -q 'Continue to APPLY' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null; then
     tap_ok "Extension detects canonical workflow markers for guided UX"
   else
-    tap_not_ok "Extension detects canonical workflow markers for guided UX" "Expected Continue to APPLY/UNIFY, CHECKPOINT, and ▶ NEXT markers in extension source"
+    tap_not_ok "Extension detects canonical workflow markers for guided UX" "Expected Continue to APPLY/UNIFY, CHECKPOINT, and ▶ NEXT markers in guided-workflow-detection.ts"
   fi
 
   # Guided workflow contract: explicit Pi UI drives canonical continuation replies
@@ -1088,21 +1090,23 @@ fi
     tap_not_ok "Extension keeps guided workflow interpretation derived-only and non-persistent" "Expected session-derived inspection and no appendEntry-based workflow persistence"
   fi
 
-  # Guided UI Safety / Pi-Supported Runtime: Phase 207 hardening markers stay command-verifiable
-  tap_file_contains_all \
-    "Guided UI Safety markers protect canonical replies and no-auto boundaries" \
-    "$EXT_SRC" \
-    'merge-gate-routing' \
-    'sendCanonicalWorkflowResponse' \
-    'pi.sendUserMessage' \
-    'ctx.ui.confirm' \
-    'ctx.ui.select' \
-    'notify-only mode never sends a canonical reply' \
-    'no auto-approval' \
-    'no auto-continue' \
-    'no skipped checkpoints' \
-    'no UI-only lifecycle decisions' \
-    'no inferred merge intent'
+  # Guided UI Safety / Pi-Supported Runtime: Phase 207 hardening markers stay command-verifiable.
+  # Phase 250 keeps S4 canonical reply delivery in pals-hooks.ts and S3 detection/no-inferred-merge markers in guided-workflow-detection.ts.
+  if grep -q 'merge-gate-routing' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+    && grep -q 'no inferred merge intent' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'pi.sendUserMessage' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'ctx.ui.confirm' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'ctx.ui.select' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'notify-only mode never sends a canonical reply' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'no auto-approval' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'no auto-continue' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'no skipped checkpoints' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'no UI-only lifecycle decisions' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries"
+  else
+    tap_not_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries" "Expected S3 detection/no-inferred-merge markers in guided-workflow-detection.ts plus S4 canonical reply/no-auto markers in pals-hooks.ts"
+  fi
 
   tap_file_contains_all \
     "Pi-Supported Runtime docs surface guided workflow reply evidence" \
@@ -1732,6 +1736,40 @@ tap_file_contains_none \
   'function buildWorkflowResourceCapsule(' \
   'function renderWorkflowResourceCapsules(' \
   'WORKFLOW_RESOURCE_CAPSULE_SCHEMA_MARKERS = ['
+
+# ══════════════════════════════════════════════════════════════════
+# Phase 250 sibling extraction (guided-workflow-detection)
+# ══════════════════════════════════════════════════════════════════
+# Phase 250 extracts S3 `guided-workflow-detection` from pals-hooks.ts into a
+# sibling Pi extension module. This single Pi-supported-runtime guardrail locks
+# the S3 exports, import wiring, absence of inline moved symbols, S4 delivery
+# boundary retention, and Phase 245 loader-compat invariant.
+if [ -f "$EXT_GUIDED_WORKFLOW_DETECTION" ] \
+  && grep -Eq '^export const GUIDED_WORKFLOW_LOOKBACK' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export const GUIDED_WORKFLOW_SIGNATURE_BYTES' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function summarizeWorkflowPrompt' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function extractNextActionSummary' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function isValidOptionId' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function parseGuidedWorkflowOptions' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function detectExplicitCanonicalResponse' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function isMergeGateRoutingPrompt' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function extractMergeGateRoutingSummary' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function makeGuidedWorkflowSignature' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq '^export function detectGuidedWorkflowMoment' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -q 'No-op Pi extension factory' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
+  && grep -Eq 'from "\./guided-workflow-detection"' "$EXT_SRC" 2>/dev/null \
+  && ! grep -Eq '^const GUIDED_WORKFLOW_(LOOKBACK|SIGNATURE_BYTES)' "$EXT_SRC" 2>/dev/null \
+  && ! grep -Eq '^function (summarizeWorkflowPrompt|extractNextActionSummary|isValidOptionId|parseGuidedWorkflowOptions|detectExplicitCanonicalResponse|isMergeGateRoutingPrompt|extractMergeGateRoutingSummary|makeGuidedWorkflowSignature|detectGuidedWorkflowMoment)\b' "$EXT_SRC" 2>/dev/null \
+  && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
+  && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
+  && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
+  && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+  && grep -q 'pi.sendUserMessage' "$EXT_SRC" 2>/dev/null \
+  && grep -q 'notify-only mode never sends a canonical reply' "$EXT_SRC" 2>/dev/null; then
+  tap_ok "Phase 250 sibling extraction (guided-workflow-detection): S3 detection extracted with S4 delivery boundary preserved"
+else
+  tap_not_ok "Phase 250 sibling extraction (guided-workflow-detection): S3 detection extracted with S4 delivery boundary preserved" "Expected guided-workflow-detection.ts to export S3 constants/functions plus no-op factory, pals-hooks.ts to import from ./guided-workflow-detection and no longer define moved S3 symbols inline, while S4 canonical reply markers remain in pals-hooks.ts"
+fi
 
 # ════════════════════════════════════════════════════════════════════
 # Phase 247 sibling extraction surfacing (Pi-supported runtime)
