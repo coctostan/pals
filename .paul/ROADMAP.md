@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection** (v2.58)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 2 of 4 complete; Phase 250 complete, Phase 251 ready to plan
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 2 of 4 complete; Phase 251 ready to plan
 Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` while preserving option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-02 |
 | 250 | Bounded S3 Submodule Extraction | 1/1 | ✅ Complete | 2026-05-02 |
-| 251 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 251 | Documentation + Validation Surfacing | TBD | Ready to plan | - |
 | 252 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 249: S3 Extraction Contract + Bounded Submodule Plan
@@ -45,11 +45,11 @@ Plans: `.paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-PL
 
 ### Phase 250: Bounded S3 Submodule Extraction
 Focus: Extract S3 guided workflow detection into a sibling Pi extension module while preserving option parsing semantics, merge-gate routing detection, no inferred merge intent, and S4 canonical-reply separation.
-Plans: `.paul/phases/250-bounded-s3-submodule-extraction/250-01-PLAN.md` + `250-01-SUMMARY.md` — ✅ Complete: extracted S3 `guided-workflow-detection.ts`, updated `pals-hooks.ts` to import/delegate S3 detection while retaining S4 canonical reply delivery, added one localized Pi validation guardrail, and passed install/Pi/cross-harness/artifact/diff verification. Pi validation count reconciled 223→224; cross-harness remained 131/131. PR #165 created for GitHub Flow merge gate.
+Plans: `.paul/phases/250-bounded-s3-submodule-extraction/250-01-PLAN.md` + `250-01-SUMMARY.md` — ✅ Complete: extracted S3 `guided-workflow-detection.ts`, updated `pals-hooks.ts` to import/delegate S3 detection while retaining S4 canonical reply delivery, added one localized Pi validation guardrail, and passed install/Pi/cross-harness/artifact/diff verification. Pi validation count reconciled 223→224; cross-harness remained 131/131. PR #165 merged 2026-05-02.
 
 ### Phase 251: Documentation + Validation Surfacing
 Focus: Surface the S3 extraction outcome across user-facing docs and contract docs, then add localized validation guardrails without broad validation-suite refactors.
-Plans: TBD (defined during /paul:plan)
+Plans: Not started — next action `/paul:plan`.
 
 ### Phase 252: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.58 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation.

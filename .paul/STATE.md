@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-02 after v2.58 milestone creation)
+See: .paul/PROJECT.md (updated 2026-05-02 after Phase 250 completion / Phase 251 transition)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is active with Phase 249 closed and Phase 250 planned. It continues the sibling extraction wave by targeting S3 `guided-workflow-detection` in `drivers/pi/extensions/pals-hooks.ts`, with boundaries to preserve option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
+**Current focus:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is active with Phases 249–250 closed and Phase 251 ready to plan. It continues the sibling extraction wave by surfacing the extracted S3 `guided-workflow-detection` sibling across docs and validation surfaces while preserving option parsing, merge-gate routing detection, no inferred merge intent, S4 canonical reply separation, guided workflow authority boundaries, `.paul/*` authority, and command-output validation truth.
 
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
-Phase: 250 of 252 (Bounded S3 Submodule Extraction) — Complete
-Plan: 250-01 complete
-Status: UNIFY complete; merge gate/transition in progress
-Last activity: 2026-05-02T20:40:18Z — Completed Phase 250 UNIFY summary and post-unify persistence; ready for GitHub Flow merge gate
+Phase: 251 of 252 (Documentation + Validation Surfacing) — Ready to plan
+Plan: Not started
+Status: Ready for PLAN
+Last activity: 2026-05-02T20:43:17Z — Phase 250 complete and merged via PR #165; transitioned to Phase 251 Documentation + Validation Surfacing
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - ready for transition]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Accumulated Context
@@ -305,19 +305,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: feature/250-bounded-s3-submodule-extraction
-Last commit: `f4d78b34` — test(250-01): guard guided workflow detection extraction (pushed to PR #165).
-PR: #165 (https://github.com/coctostan/pals/pull/165) — OPEN; CI: no status checks reported at APPLY postflight.
-Working tree: Phase 250 UNIFY artifacts created; merge gate/transition pending.
+Branch: main
+Last commit: `4c398a1b` — Phase 250: extract guided workflow detection (squash merge PR #165).
+PR: #165 (https://github.com/coctostan/pals/pull/165) — MERGED 2026-05-02T20:43:17Z; CI: no status checks reported.
+Working tree: Phase 250 merged; Phase 251 transition metadata ready to commit.
 Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-02T20:40:18Z
-Stopped at: Phase 250 UNIFY complete; GitHub Flow merge gate/transition in progress
-Next action: Complete GitHub Flow merge gate for PR #165, then transition to Phase 251
-Resume file: .paul/phases/250-bounded-s3-submodule-extraction/250-01-SUMMARY.md
+Last session: 2026-05-02T20:43:17Z
+Stopped at: Phase 250 complete, ready to plan Phase 251
+Next action: /paul:plan for Phase 251 Documentation + Validation Surfacing
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 250 UNIFY created `.paul/phases/250-bounded-s3-submodule-extraction/250-01-SUMMARY.md`, appended CODI/WALT post-unify history, and recorded validation/workguard/GitHub Flow evidence.
-- PR #165 is open for `feature/250-bounded-s3-submodule-extraction`; merge gate must commit/push UNIFY artifacts, verify PR/CI/review requirements, merge/sync, then transition to Phase 251 Documentation + Validation Surfacing.
+- Phase 250 extracted S3 `guided-workflow-detection.ts`, added the Phase 250 Pi validation guardrail, passed install/Pi 224/224/cross-harness 131/131/artifact/diff checks, created SUMMARY, and merged PR #165 (`4c398a1b`).
 - Phase 251 should surface the S3 sibling extraction in user-facing docs and contract/validation surfaces without reopening Phase 250 runtime behavior.
+- Phase 252 remains evidence closure + next roadmap decision.
