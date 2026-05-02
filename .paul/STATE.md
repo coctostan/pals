@@ -2,7 +2,7 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-01 after Phase 236 closure)
+See: .paul/PROJECT.md (updated 2026-05-01 after Phase 242 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
 **Current focus:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 242 Extension Extraction Target Baseline is complete; Phase 243 Bounded Submodule Extraction Wave is ready to plan.
 
