@@ -28,18 +28,17 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.56 Pi Extension Submodule Extraction Wave** (v2.56)
-Status: 🚧 In Progress
-Phases: 1 of 4 complete
+**No active milestone.** v2.57 selection pending via `/paul:milestone`. Recommended focus: continue the sibling-extraction wave with Plan 243-02 S2 `workflow-resource-capsule-rendering`. Alternatives: local context-cost evidence, demo project preset, S3 `guided-workflow-detection` conditional secondary candidate.
 
-Theme: Continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn.
+### Latest completed milestone: v2.56 Pi Extension Submodule Extraction Wave
+Result: Phases 242–245 complete. v2.56 closed after PR #160 merged 2026-05-02. Shipped extension-extraction target baseline (`docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`), S1 `artifact-slice-rendering` sibling extraction (`drivers/pi/extensions/artifact-slice-rendering.ts`) with named default-arg cycle-avoidance pattern and exported helpers, 5-doc surfacing of S1 outcome with closure guardrails per validation suite, and Phase 245 evidence closure with sibling Pi extension loader-compat hotfix (no-op default factories appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts` so Pi session start no longer emits `Failed to load extension` errors). Final validation: Pi 218/218 and cross-harness 129/129; install surface 3 files.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 242 | Extension Extraction Target Baseline | 1/1 | ✅ Complete | 2026-05-01 |
 | 243 | Bounded Submodule Extraction Wave | 1 | ✅ Complete | 2026-05-02 |
-| 244 | Documentation + Validation Surfacing | TBD | Not started | - |
-| 245 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
+| 244 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-02 |
+| 245 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete | 2026-05-02 |
 
 ### Phase 242: Extension Extraction Target Baseline
 Focus: Choose and bound multiple candidate submodules from `pals-hooks.ts` using the v2.55 modularization and install-surface evidence.
@@ -55,7 +54,7 @@ Plans: `.paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md` + `2
 
 ### Phase 245: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.56 evidence, close the milestone, and decide the next roadmap focus.
-Plans: `.paul/phases/245-evidence-closure-next-roadmap-decision/245-01-PLAN.md` — APPLY complete; ready for UNIFY. Sibling Pi extension loader-compat hotfix applied (no-op default factory appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts`); v2.56 evidence aggregated into `.paul/MILESTONES.md` and `.paul/PROJECT.md`; v2.57 recommendation recorded (Plan 243-02 S2 `workflow-resource-capsule-rendering`); Pi 216→218 (+2 loader-compat), cross-harness 128→129 (+1 v2.56 closure), install unchanged at 3 files.
+Plans: `.paul/phases/245-evidence-closure-next-roadmap-decision/245-01-PLAN.md` + `245-01-SUMMARY.md` — ✅ Complete: sibling Pi extension loader-compat hotfix (no-op default factory appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts`); v2.56 evidence aggregated into `.paul/MILESTONES.md` and `.paul/PROJECT.md`; v2.57 recommendation recorded (Plan 243-02 S2 `workflow-resource-capsule-rendering`); Pi 216→218 (+2 loader-compat), cross-harness 128→129 (+1 v2.56 closure), install unchanged at 3 files. AC-0–AC-5 PASS. PR #160 merged 2026-05-02 (squash + delete-branch).
 
 ### Latest completed milestone: v2.55 Maintainability & Product Reality Hardening
 Result: Phases 234-241 complete. v2.55 closed after PR #156 merged 2026-05-01. Shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision. Final validation: Pi 212/212 and cross-harness 127/127.
@@ -89,9 +88,10 @@ Phase status (closed):
 | v2.53 Pi Integration Efficiency & Effectiveness Exploration | 2026-04-30 | 226-229 | Identified Pi integration context-cost/workflow-friction hotspots, selected artifact-slice targeting/deduplication, shipped bounded runtime/docs/test spike, and closed with evidence reconciliation; validation passes Pi 208/208 and cross-harness 122/122. | active artifacts |
 | v2.54 Contextual Verbosity Paring | 2026-04-30 | 230-233 | Audited PALS verbosity surfaces, added contextual verbosity and compact dispatch guidance, pared Pi skill wrappers, and closed with validation/evidence guardrails; validation passes Pi 209/209 and cross-harness 123/123. | active artifacts |
 | v2.55 Maintainability & Product Reality Hardening | 2026-05-01 | 234-241 | Made PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift; shipped product-reality audit, risk-tiered lifecycle contract, validation-suite decomposition baseline, artifact consistency guardrails, Pi extension modularization contract, bounded S5 extraction spike, first-run happy-path scenario doc, and generalized Pi extension install surface with driver.yaml audit decision; validation passes Pi 212/212 and cross-harness 127/127. | active artifacts |
+| v2.56 Pi Extension Submodule Extraction Wave | 2026-05-02 | 242-245 | Continued extracting bounded Pi extension submodules from `pals-hooks.ts` using the v2.55 generalized install surface: extension-extraction target baseline, S1 `artifact-slice-rendering` sibling extraction with named default-arg cycle-avoidance pattern, 5-doc surfacing with closure guardrails, and evidence closure with sibling Pi extension loader-compat hotfix (no-op default factories appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts`). Validation passes Pi 218/218 and cross-harness 129/129; install surface unchanged at 3 files. | active artifacts |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 245 APPLY complete (sibling loader-compat hotfix + v2.56 milestone closure aggregation + 1 Pi loader-compat guardrail + 1 cross-harness v2.56 closure guardrail); v2.56 Pi Extension Submodule Extraction Wave 4 of 4 phases complete; ready for UNIFY then v2.57 selection via /paul:milestone.*
+*Last updated: 2026-05-02 — Phase 245 UNIFY complete; PR #160 merged; v2.56 Pi Extension Submodule Extraction Wave 4 of 4 phases complete and milestone closed; v2.57 selection pending via /paul:milestone.*
