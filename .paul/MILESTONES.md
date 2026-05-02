@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection active; Phase 249 applied, awaiting UNIFY. | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
+| Current milestone | v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection active; Phase 249 closed, Phase 250 ready to plan. | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -85,7 +85,7 @@ v2.56 Pi Extension Submodule Extraction Wave is **complete** (closed 2026-05-02 
 
 v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering is **complete** (closed 2026-05-02; PR #163 merged). All 3 phases shipped: Phase 246 S2 `workflow-resource-capsule-rendering` extraction to `drivers/pi/extensions/workflow-resource-capsule-rendering.ts`, Phase 247 docs/validation surfacing across README/Pi docs/skill-map and extraction contract docs, and Phase 248 Evidence Closure + Next Roadmap Decision. Validation count reconciliation across v2.57: Pi 218→223 (+5); cross-harness 129→131 (+2 including the Phase 248 closure guardrail); install surface 3→4 (+1).
 
-**Current milestone:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is **active**. Phase 249 (S3 Extraction Contract + Bounded Submodule Plan) is ready for `/paul:plan`; phases 250–252 are planned as Bounded S3 Submodule Extraction, Documentation + Validation Surfacing, and Evidence Closure + Next Roadmap Decision. Scope preserves option parsing semantics, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, guided workflow authority boundaries, `.paul/*` authority, and command-output validation truth.
+**Current milestone:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is **active** (1 of 4 phases complete). Phase 249 (S3 Extraction Contract + Bounded Submodule Plan) closed successfully via PR #164 (squash merge 2026-05-02). Phase 250 (Bounded S3 Submodule Extraction) is ready for `/paul:plan`. Planned phases 251–252 remain Documentation + Validation Surfacing and Evidence Closure + Next Roadmap Decision. Scope preserves option parsing semantics, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, guided workflow authority boundaries, `.paul/*` authority, and command-output validation truth.
 
 ## Archive
 

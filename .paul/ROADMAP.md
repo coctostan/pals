@@ -29,19 +29,19 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection** (v2.58)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 0 of 4 complete
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 1 of 4 complete
 Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` while preserving option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | Planning | - |
+| 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-02 |
 | 250 | Bounded S3 Submodule Extraction | TBD | Not started | - |
 | 251 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 252 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 249: S3 Extraction Contract + Bounded Submodule Plan
 Focus: Define the S3 `guided-workflow-detection` extraction contract, readiness evidence, preservation markers, allowed files, validation expectations, and bounded APPLY shape before source changes.
-Plans: `.paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-PLAN.md` (created; awaiting APPLY approval)
+Plans: `.paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-PLAN.md` + `249-01-SUMMARY.md` — ✅ Complete: created S3 extraction contract (`docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md`) with 10 identifiers, forbidden scope, and Phase 250 handoff; updated extraction baseline and modularization contract; preserved S4/S6/S7/S8 deferrals; validation green (Pi 223/223, cross-harness 131/131). PR #164 merged 2026-05-02.
 
 ### Phase 250: Bounded S3 Submodule Extraction
 Focus: Extract S3 guided workflow detection into a sibling Pi extension module while preserving option parsing semantics, merge-gate routing detection, no inferred merge intent, and S4 canonical-reply separation.
@@ -118,4 +118,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 249 plan created for v2.58 S3 Extraction Contract + Bounded Submodule Plan; awaiting APPLY approval.*
+*Last updated: 2026-05-02 — Phase 249 complete; v2.58 1 of 4 phases done; ready for Phase 250 planning.*
