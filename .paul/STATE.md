@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 ## Current Position
 
 Milestone: v2.56 Pi Extension Submodule Extraction Wave
-Phase: 244 of 245 (Documentation + Validation Surfacing) — Planning
-Plan: 244-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-02T02:10:00Z — Created .paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md
+Phase: 244 of 245 (Documentation + Validation Surfacing) — Loop complete
+Plan: 244-01 complete
+Status: UNIFY complete, awaiting merge gate then transition
+Last activity: 2026-05-02T02:30:00Z — Phase 244 Plan 01 UNIFY complete (SUMMARY written); merge gate pending for PR #159
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -63,7 +63,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 244-01 created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — merge gate pending PR #159 then transition]
 ```
 
 ## Accumulated Context
@@ -306,10 +306,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T02:10:00Z
-Stopped at: Plan 244-01 created (Documentation + Validation Surfacing for v2.56 sibling extraction wave). Awaiting approval to APPLY.
-Next action: Review and approve plan, then run /paul:apply .paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md
-Resume file: .paul/phases/244-documentation-validation-surfacing/244-01-PLAN.md
+Last session: 2026-05-02T02:30:00Z
+Stopped at: Plan 244-01 UNIFY complete (SUMMARY written). PR #159 awaiting merge gate (CI + merge + transition).
+Next action: Resolve merge gate for PR #159, then run transition to Phase 245.
+Resume file: .paul/phases/244-documentation-validation-surfacing/244-01-SUMMARY.md
 Resume context:
 - v2.56 Pi Extension Submodule Extraction Wave is at 2 of 4 phases complete. Phase 244 Documentation + Validation Surfacing and Phase 245 Evidence Closure remain.
 - Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).
