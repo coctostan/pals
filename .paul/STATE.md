@@ -10,9 +10,9 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
 Phase: 246 of 248 (S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering))
-Plan: 246-01 APPLY complete; ready for UNIFY
-Status: APPLY complete; ready for UNIFY
-Last activity: 2026-05-02T05:15:00Z — Plan 246-01 APPLY complete: S2 `workflow-resource-capsule-rendering` extracted to sibling Pi extension (`drivers/pi/extensions/workflow-resource-capsule-rendering.ts`, 192 LOC) with no-op default factory; `pals-hooks.ts` 1415→1273 LOC (−142); shared helpers preserved; install 3→4 files; Pi 218→221 (+3, multi-block split AC-anticipated); cross-harness 129/129 stable; artifact_consistency PASS; git diff --check clean.
+Plan: 246-01 — ALL 5 ACs PASS (loop complete)
+Status: Phase 246 complete; ready for Phase 247 PLAN
+Last activity: 2026-05-02T05:30:00Z — Plan 246-01 UNIFY complete: SUMMARY.md authored at `.paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md` (5/5 ACs PASS; sibling-module pattern ratified by triple confirmation S5+S1+S2; loader-compat invariant promoted to per-extraction AC; helper-import tightening pattern named; S3 deferred to v2.58 per baseline). Phase 246 complete (1 of 3 in v2.57).
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -29,7 +29,7 @@ Progress:
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
-- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [░░░░░░░░░░] 0% (0 of 3 phases; Phase 246 ready to plan)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [███░░░░░░░] 33% (1 of 3 phases; Phase 246 complete; Phase 247 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -64,7 +64,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Plan 246-01 APPLY complete; ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete — Phase 246 done; ready for Phase 247 PLAN]
 ```
 
 ## Accumulated Context
@@ -307,10 +307,10 @@ Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T05:15:00Z
-Stopped at: Plan 246-01 APPLY complete (Pi 221, cross-harness 129, install 4 files); ready for UNIFY.
-Next action: Run /paul:unify .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-PLAN.md
-Resume file: .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-PLAN.md
+Last session: 2026-05-02T05:30:00Z
+Stopped at: Phase 246 complete (Plan 246-01 ALL 5 ACs PASS; Pi 221, cross-harness 129, install 4 files); ready for Phase 247 PLAN.
+Next action: Run /paul:plan for Phase 247 (Documentation + Validation Surfacing) — surface the new S2 sibling across `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, the extraction-target baseline, and the modularization contract; add cross-harness surfacing guardrail.
+Resume file: .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md
 Resume context:
 - v2.56 Pi Extension Submodule Extraction Wave is at 3 of 4 phases complete. Phase 245 Evidence Closure + Next Roadmap Decision is the final phase.
 - Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).

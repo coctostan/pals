@@ -29,12 +29,12 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering** (v2.57)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 0 of 3 complete
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 1 of 3 complete
 Theme: Continue the sibling-extraction wave by extracting S2 `workflow-resource-capsule-rendering` from `drivers/pi/extensions/pals-hooks.ts` into a new sibling Pi extension module while preserving runtime behavior, install surface, lifecycle authority, parent-owned APPLY, and command-output validation truth. Carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker) as a hard constraint on every helper-only sibling under `drivers/pi/extensions/*.ts`. Detail in Plan 246-01.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 246 | S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering) | 1 | Planning | - |
+| 246 | S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering) | 1/1 | ✅ Complete | 2026-05-02 |
 | 247 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 248 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
