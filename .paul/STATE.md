@@ -11,8 +11,8 @@ See: .paul/PROJECT.md (updated 2026-05-02 after v2.58 milestone creation)
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
 Phase: 249 of 252 (S3 Extraction Contract + Bounded Submodule Plan) — APPLY complete
 Plan: 249-01 applied successfully
-Status: APPLY complete; ready for UNIFY
-Last activity: 2026-05-02T18:15:00Z — Phase 249 APPLY completed: S3 contract created, extraction docs updated, validation green (Pi 223/223, cross-harness 131/131), artifact consistency PASS, `git diff --check` clean.
+Status: UNIFY complete; Phase 249 closed
+Last activity: 2026-05-02T18:20:00Z — Phase 249 UNIFY complete: SUMMARY finalized, merge gate handled, transition ready.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - ready for transition]
 ```
 
 ## Accumulated Context

@@ -107,6 +107,11 @@ artifact_consistency_check: PASS
 
 > ⚠️ WARNING: No post-apply modules fired. Verify modules.yaml was loaded. Module Execution Reports will be empty in SUMMARY.md.
 
+### Post-UNIFY Module Dispatch
+
+- **[dispatch] pre-unify:** 0 modules registered for this hook.
+- **[dispatch] post-unify:** CODI appended `no-dispatch-found` row for 249-01 (PLAN.md had no CODI blast_radius block). WALT recorded quality delta (Pi 223/223 → 223/223, cross-harness 131/131 → 131/131, artifact_consistency PASS). SKIP processed SUMMARY for knowledge capture.
+
 ## GitHub Flow Evidence
 
 - **Workflow mode:** github-flow
