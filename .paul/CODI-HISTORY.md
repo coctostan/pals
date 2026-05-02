@@ -75,3 +75,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 243-01 | 2026-05-02 | injected | 2 | 0 | 5 | buildArtifactSlice, renderArtifactSlices | y |
 | 245-01 | 2026-05-02 | skipped-no-symbols | — | — | — | — | n |
 | 248-01 | 2026-05-02 | skipped-no-symbols | — | — | — | — | n |
+| 250-01 | 2026-05-02 | injected | 4 | 1 | 11 | detectGuidedWorkflowMoment, parseGuidedWorkflowOptions, isMergeGateRoutingPrompt, makeGuidedWorkflowSignature | y |

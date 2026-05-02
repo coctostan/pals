@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-02 after v2.58 milestone creation)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is created and ready for Phase 249 planning. It continues the sibling extraction wave by targeting S3 `guided-workflow-detection` in `drivers/pi/extensions/pals-hooks.ts`, with boundaries to preserve option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
+**Current focus:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is active with Phase 249 closed and Phase 250 planned. It continues the sibling extraction wave by targeting S3 `guided-workflow-detection` in `drivers/pi/extensions/pals-hooks.ts`, with boundaries to preserve option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
-Phase: 250 of 252 (Bounded S3 Submodule Extraction) — Not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-02T18:30:00Z — Phase 249 complete, transitioned to Phase 250. PR #164 merged.
+Phase: 250 of 252 (Bounded S3 Submodule Extraction) — Complete
+Plan: 250-01 complete
+Status: UNIFY complete; merge gate/transition in progress
+Last activity: 2026-05-02T20:40:18Z — Completed Phase 250 UNIFY summary and post-unify persistence; ready for GitHub Flow merge gate
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -31,7 +31,7 @@ Progress:
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
-- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██░░░░░░░░] 25% (1 of 4 phases complete; Phase 249 closed, Phase 250 ready to plan)
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [█████░░░░░] 50% (2 of 4 phases complete; Phase 250 complete, Phase 251 next)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete - ready for transition]
 ```
 
 ## Accumulated Context
@@ -287,6 +287,8 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 238 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation stayed stable at Pi 210/210 and cross-harness 124/124 (tiny/doc-only tier produced zero count drift, as planned). No helper delegation was used; parent APPLY owned verification. Existing `pals-hooks.ts` size debt remains pre-existing and is the explicit Phase 239 spike target.
 - Skill audit Phase 242 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, DOCS, DEAN, IRIS, SETH, ARCH, PETE, REED, VERA, OMAR, LUKE, ARIA, GABE, DANA, and DAVE invoked or marked not-applicable via pre-plan/pre-unify advisories; post-unify persistence: CODI skipped (no symbol changes; docs-only baseline), WALT recorded stable Pi 212/212 and cross-harness 127/127, SKIP recorded the S1+S2 default approved Phase 243 wave and one-or-more multi-module extraction rule. No helper delegation was used; parent APPLY owned verification. Pre-existing `pals-hooks.ts` size debt remains the explicit Phase 243 extraction target.
 - Skill audit Phase 248 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 223/223 and cross-harness 131/131. Existing `tests/cross-harness-validation.sh` size debt remains pre-existing/future driver-quality scope.
+- Skill audit Phase 250 APPLY: `/paul`, TODD, WALT, and installed post-apply modules invoked or active via module dispatch; parent APPLY owned verification and no helper delegation was used. Implemented S3 `guided-workflow-detection` sibling extraction with S4 canonical-reply delivery retained in `pals-hooks.ts`; validation passed Pi 224/224 and cross-harness 131/131; install reports 5 Pi extension files; artifact consistency and `git diff --check` passed.
+- Skill audit Phase 250 UNIFY: `/paul`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; SUMMARY records ACs, validation output, module evidence, Workguard scope, and GitHub Flow PR #165. One validation repair split S3 detection markers into `guided-workflow-detection.ts` while retaining S4 delivery checks in `pals-hooks.ts`.
 
 ### Deferred Issues
 
@@ -303,20 +305,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: `e6e697e3` — docs(249-01): S3 guided-workflow-detection extraction contract + bounded submodule plan (#164). Squash merge 2026-05-02.
-PR: #164 (https://github.com/coctostan/pals/pull/164) — MERGED 2026-05-02T19:15:00Z; CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS.
-Working tree: Phase 249 closed; Phase 250 ready to plan.
-Prior PRs: #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
+Branch: feature/250-bounded-s3-submodule-extraction
+Last commit: `f4d78b34` — test(250-01): guard guided workflow detection extraction (pushed to PR #165).
+PR: #165 (https://github.com/coctostan/pals/pull/165) — OPEN; CI: no status checks reported at APPLY postflight.
+Working tree: Phase 250 UNIFY artifacts created; merge gate/transition pending.
+Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-02T18:30:00Z
-Stopped at: Phase 249 complete, ready to plan Phase 250
-Next action: /paul:plan for Phase 250 (Bounded S3 Submodule Extraction)
-Resume file: .paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-SUMMARY.md
+Last session: 2026-05-02T20:40:18Z
+Stopped at: Phase 250 UNIFY complete; GitHub Flow merge gate/transition in progress
+Next action: Complete GitHub Flow merge gate for PR #165, then transition to Phase 251
+Resume file: .paul/phases/250-bounded-s3-submodule-extraction/250-01-SUMMARY.md
 Resume context:
-- Plan 249-01 is created for Phase 249 S3 Extraction Contract + Bounded Submodule Plan.
-- Planned APPLY scope is docs-only: create `docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md` and update `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` plus `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`.
-- Parent APPLY must preserve runtime/source/test/install/dependency/CI boundaries; no S3 source extraction until Phase 250.
-- Preservation boundaries: option parsing semantics, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, guided workflow authority boundaries, `.paul/*` authority, and command-output validation truth.
+- Phase 250 UNIFY created `.paul/phases/250-bounded-s3-submodule-extraction/250-01-SUMMARY.md`, appended CODI/WALT post-unify history, and recorded validation/workguard/GitHub Flow evidence.
+- PR #165 is open for `feature/250-bounded-s3-submodule-extraction`; merge gate must commit/push UNIFY artifacts, verify PR/CI/review requirements, merge/sync, then transition to Phase 251 Documentation + Validation Surfacing.
+- Phase 251 should surface the S3 sibling extraction in user-facing docs and contract/validation surfaces without reopening Phase 250 runtime behavior.
