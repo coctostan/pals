@@ -2,17 +2,19 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
+See: .paul/PROJECT.md (updated 2026-05-02 after Phase 248 UNIFY)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering (3-phase compact: 246 extraction, 247 docs/validation surfacing, 248 evidence closure). Mode: direct-requirements; collaboration: high. Carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker comment) as a hard constraint on any new helper-only sibling under `drivers/pi/extensions/*.ts`.
+**Current focus:** v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering is complete locally after Phase 248 UNIFY. SUMMARY `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md` records AC results, validation evidence (install 4 files, Pi 223/223, cross-harness 131/131, artifact consistency PASS), module dispatch reports, CODI/WALT history side effects, and GitHub Flow PR #163 evidence. Merge gate is next: commit/push UNIFY artifacts, verify PR checks, merge PR #163, and sync `main`. v2.58 recommendation remains recorded only; final selection remains `/paul:milestone` after merge.
 
 ## Current Position
 
 Milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
-Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. Phase 248 ready to plan.
+Phase: 248 of 248 (Evidence Closure + Next Roadmap Decision) — UNIFY complete locally; merge gate pending
+Plan: 248-01 unified successfully
+Status: SUMMARY created; post-unify side effects recorded; GitHub Flow merge gate pending
+Last activity: 2026-05-02T16:48:00Z — Phase 248 UNIFY completed locally; PR #163 merge gate pending
+
+Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
 - v2.44 PALS Context Optimization — Process & Artifacts: [██████████] 100% (4 of 4 phases complete: 188 ✓, 189 ✓, 190 ✓, 191 ✓)
@@ -28,7 +30,7 @@ Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. P
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
-- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [█████████░░░] 83% (2 of 3 phases complete via PRs #161/#162; Phase 248 Evidence Closure remaining)
+- v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [███████████░] 97% (3 of 3 phases unified; PR #163 merge gate pending)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -63,7 +65,7 @@ Last activity: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete. P
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 247 loop complete; Phase 248 ready to plan]
+  ✓        ✓        ✓     [Loop complete locally - merge gate pending]
 ```
 
 ## Accumulated Context
@@ -153,6 +155,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 235 completed the risk-tiered lifecycle contract in `docs/PALS-RISK-TIERED-LIFECYCLE-CONTRACT.md`: it defines tiny/doc-only, normal, risky, and hotfix tiers; per-tier evidence expectations; escalation rules; hotfix reconciliation; non-bypass rules for APPLY approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` artifact authority, command-output truth, full authoritative read fallback, no hidden Pi state, and no telemetry; and future implementation boundaries for Phases 236, 237, 240, and 241. Validation stayed green at Pi 209/209 and cross-harness 123/123.
 - Phase 236 UNIFY created `.paul/phases/236-validation-suite-decomposition-baseline/236-01-SUMMARY.md`, recording AC results, baseline doc evidence, shared TAP helper extraction, focused marker checks, Pi 209/209, cross-harness 123/123, Workguard scope proof, module reports, and PR #151 merge-gate evidence; Phase 236 is complete and Phase 237 Artifact Consistency Guardrails is ready to plan.
 - v2.56 has been created as the next milestone: Pi Extension Submodule Extraction Wave will continue extracting bounded Pi extension submodules from `pals-hooks.ts`, using the generalized install surface from v2.55 so future extraction waves reduce maintenance risk without installer churn. Phases 242-245 cover extraction target baselining, one-or-more approved submodule extractions, documentation/validation surfacing, and evidence closure/next-roadmap decision.
+- Phase 248 APPLY completed v2.57 evidence closure: `.paul/MILESTONES.md`, `.paul/PROJECT.md`, and `.paul/ROADMAP.md` mark v2.57 complete and record v2.58 recommendation S3 `guided-workflow-detection` as conditional on continued S2 stability; `tests/cross-harness-validation.sh` gained exactly one localized Phase 248 shared-invariant closure guardrail. Verification passed `PALS_ROOT="$PWD" bash drivers/pi/install.sh` (4 files), Pi validation 223/223, cross-harness 131/131, artifact consistency PASS, `git diff --check` clean, and changed non-lifecycle scope limited to `tests/cross-harness-validation.sh`.
+- Phase 248 UNIFY created `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`, recording AC-1 through AC-4 PASS, focused marker evidence, installer evidence, Pi 223/223, cross-harness 131/131, artifact consistency PASS, validation count reconciliation, changed-file scope, module dispatch reports, CODI/WALT post-unify side effects, PR #163 evidence, and v2.58 recommendation/alternatives. Post-unify persistence appended `.paul/CODI-HISTORY.md` row `248-01 skipped-no-symbols` and `.paul/QUALITY-HISTORY.md` row for Phase 248. Merge gate still must commit/push UNIFY artifacts, verify PR checks, merge PR #163, and sync `main`.
 ### Current Decisions
 
 | Decision | Source | Impact |
@@ -273,7 +277,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 227 APPLY: `/paul`, `/carl`, TODD, WALT, DOCS, SKIP, RUBY, ARCH, SETH, and advisory/enforcement modules invoked or active via module dispatch; pre-apply baseline passed Pi 205/205 and cross-harness 121/121; final APPLY validation passed Pi 205/205 and cross-harness 121/121. No helper delegation was used; parent APPLY owned verification. Process adaptation: all three docs-only task sections were created in one artifact pass, then verified against each task's markers.
 - Skill audit Phase 227 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation stayed stable at Pi 205/205 and cross-harness 121/121. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 228 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 207/207 and cross-harness 121/121. Existing validation-script size debt remains pre-existing/future driver-quality scope.
-- Skill audit Phase 229 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/quality-history.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing validation-script size debt remains pre-existing/future driver-quality scope.
+- Skill audit Phase 229 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 231 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 208/208 and cross-harness 122/122. Existing hot workflow size debt remains below critical threshold and protected by anti-regrowth validation.
 - Skill audit Phase 234 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 209/209 and cross-harness 123/123. No helper delegation was used; parent APPLY owned verification. Phase 234 intentionally remained docs/audit-only.
 - Skill audit Phase 235 APPLY: `/paul`, `/carl`, TODD, WALT, DOCS, SKIP, ARCH, SETH, IRIS, and advisory/enforcement modules invoked or active via module dispatch; pre-apply baseline passed Pi 209/209 and cross-harness 123/123; post-task/final validation passed Pi 209/209 and cross-harness 123/123. No helper delegation was used; parent APPLY owned verification. Process adaptation: all three docs-only task sections were created in one contract pass, then verified against each task's focused markers.
@@ -281,6 +285,7 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 237 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 210/210 and cross-harness 124/124. One auto-fix during Task 2: helper plan-id parser corrected from first to second `-`-segment before Task 3 wiring. Existing validation-script size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 238 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation stayed stable at Pi 210/210 and cross-harness 124/124 (tiny/doc-only tier produced zero count drift, as planned). No helper delegation was used; parent APPLY owned verification. Existing `pals-hooks.ts` size debt remains pre-existing and is the explicit Phase 239 spike target.
 - Skill audit Phase 242 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, DOCS, DEAN, IRIS, SETH, ARCH, PETE, REED, VERA, OMAR, LUKE, ARIA, GABE, DANA, and DAVE invoked or marked not-applicable via pre-plan/pre-unify advisories; post-unify persistence: CODI skipped (no symbol changes; docs-only baseline), WALT recorded stable Pi 212/212 and cross-harness 127/127, SKIP recorded the S1+S2 default approved Phase 243 wave and one-or-more multi-module extraction rule. No helper delegation was used; parent APPLY owned verification. Pre-existing `pals-hooks.ts` size debt remains the explicit Phase 243 extraction target.
+- Skill audit Phase 248 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 223/223 and cross-harness 131/131. Existing `tests/cross-harness-validation.sh` size debt remains pre-existing/future driver-quality scope.
 
 ### Deferred Issues
 
@@ -297,19 +302,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit on main: `2ce4c5ff` feat(247): Phase 247 Documentation + Validation Surfacing — S2 workflow-resource-capsule-rendering (#162).
-PR: #162 (https://github.com/coctostan/pals/pull/162) — MERGED 2026-05-02 (squash + delete-branch). CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, git diff --check clean. Prior: PR #161 merged (Phase 246 S2 extraction).
-Working tree: clean.
-Prior PRs: #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
-Open PRs: none.
+Branch: feature/248-evidence-closure-next-roadmap-decision-v2-57
+Last branch commit: `58b9f128` docs(248-01): close v2.57 evidence and roadmap recommendation.
+PR: #163 (https://github.com/coctostan/pals/pull/163) — OPEN before UNIFY metadata commit; CI: Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS; merge state CLEAN.
+Working tree: UNIFY artifacts pending commit/push (`.paul/STATE.md`, `.paul/CODI-HISTORY.md`, `.paul/QUALITY-HISTORY.md`, `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`).
+Prior PRs: #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix — closes v2.56); #159 merged (Phase 244); #158 merged (Phase 243-01 S1 extraction); #157 merged (Phase 242 baseline); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-02T06:45:00Z — Phase 247 UNIFY + transition complete.
-Stopped at: Phase 247 complete; Phase 248 ready to plan.
-Next action: /paul:plan for Phase 248 (Evidence Closure + Next Roadmap Decision)
-Resume file: .paul/phases/247-documentation-validation-surfacing-v2-57/247-01-SUMMARY.md
+Last session: 2026-05-02T16:48:00Z
+Stopped at: Phase 248 UNIFY complete locally; GitHub Flow merge gate pending
+Next action: Commit and push UNIFY artifacts, then complete PR #163 merge gate
+Resume file: .paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md
 Resume context:
-- Phase 247 APPLY complete (4/4 tasks PASS). Main commit: 2ce4c5ff. Validation: Pi 1..223/0, cross-harness 1..130/0, artifact_consistency PASS, install 4 files.
-- UNIFY will draft 247-01-SUMMARY.md (5 ACs), record phase transition, advance ROADMAP Phase 247 to Complete (2 of 3), then plan Phase 248 (Evidence Closure + Next Roadmap Decision).
+- Phase 248 UNIFY summary exists at `.paul/phases/248-evidence-closure-next-roadmap-decision-v2-57/248-01-SUMMARY.md`; AC-1 through AC-4 are PASS.
+- Verification evidence: install reports 4 Pi extension files; Pi validation 223/223; cross-harness validation 131/131; artifact_consistency PASS; `git diff --check` clean.
+- Post-unify side effects: `.paul/CODI-HISTORY.md` appended `248-01 skipped-no-symbols`; `.paul/QUALITY-HISTORY.md` appended Phase 248 quality row.
+- PR #163 exists and had Socket checks passing before UNIFY metadata commit; commit/push UNIFY artifacts, re-check PR checks, then merge/sync `main`.
+- v2.58 recommendation is recorded only: S3 `guided-workflow-detection` as conditional on continued S2 stability; `/paul:milestone` remains the approval route after v2.57 merge.
