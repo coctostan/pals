@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.56 Pi Extension Submodule Extraction Wave active — Phase 242 complete, Phase 243 ready to plan | `.paul/ROADMAP.md` Current Milestone section; SUMMARY `.paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md` |
+| Current milestone | v2.56 Pi Extension Submodule Extraction Wave active — Phases 242 and 243 complete (2 of 4); Phase 244 Documentation + Validation Surfacing is the next planning target | `.paul/ROADMAP.md` Current Milestone section; SUMMARY `.paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -79,7 +79,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 v2.55 Maintainability & Product Reality Hardening is **complete** (closed 2026-05-01 with PR #156). All 8 phases shipped: 234 Product Reality + Drift Audit, 235 Risk-Tiered Lifecycle Contract, 236 Validation Suite Decomposition Baseline, 237 Artifact Consistency Guardrails, 238 Pi Extension Modularization Contract, 239 Bounded Pi Extension Extraction Spike, 240 Product Happy Path + Scenario Evidence, and 241 Evidence Closure + Pi Extension Install-Surface Generalization. The milestone made PALS cheaper to maintain, easier to validate, easier to explain, and harder to drift while preserving lifecycle authority, explicit approvals, module evidence, validation truth, GitHub Flow gates, parent-owned APPLY, delegated APPLY boundaries, `.paul/*` artifact truth, command-output truth, and full authoritative read fallback.
 
-**Current milestone:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 242 Extension Extraction Target Baseline is **complete** (1 of 4 phases) — `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` records the approved Phase 243 wave (S1 + S2) with permission to extract one or more approved candidates when bounded. Phase 243 Bounded Submodule Extraction Wave is ready to plan.
+**Current milestone:** v2.56 Pi Extension Submodule Extraction Wave is active. Phases 242 (Extension Extraction Target Baseline) and 243 (Bounded Submodule Extraction Wave — S1 `artifact-slice-rendering` extracted to `drivers/pi/extensions/artifact-slice-rendering.ts` via PR #158) are **complete** (2 of 4 phases). Phase 244 Documentation + Validation Surfacing is the next planning target; Phase 245 Evidence Closure follows. S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled.
 
 ## Archive
 
@@ -87,4 +87,4 @@ v2.55 Maintainability & Product Reality Hardening is **complete** (closed 2026-0
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234–236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234–237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234–238 complete and Phase 239 ready: 2026-05-01; updated for Phases 234–239 complete and Phase 240 ready: 2026-05-01; updated for Phases 234–240 complete and Phase 241 ready: 2026-05-01; updated for v2.55 milestone closure: 2026-05-01; updated for v2.56 Phase 242 plan creation: 2026-05-01; updated for v2.56 Phase 242 UNIFY complete: 2026-05-01.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; updated for Phase 234 completion: 2026-05-01; updated for Phases 234–236 complete and Phase 237 ready: 2026-05-01; updated for Phases 234–237 complete and Phase 238 ready: 2026-05-01; updated for Phases 234–238 complete and Phase 239 ready: 2026-05-01; updated for Phases 234–239 complete and Phase 240 ready: 2026-05-01; updated for Phases 234–240 complete and Phase 241 ready: 2026-05-01; updated for v2.55 milestone closure: 2026-05-01; updated for v2.56 Phase 242 plan creation: 2026-05-01; updated for v2.56 Phase 242 UNIFY complete: 2026-05-01; updated for v2.56 Phase 243 UNIFY + transition complete: 2026-05-02.*

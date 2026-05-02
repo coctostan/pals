@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-01 after Phase 242 closure)
+See: .paul/PROJECT.md (updated 2026-05-02 after Phase 243 closure)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.56 Pi Extension Submodule Extraction Wave is active. Phase 243 Bounded Submodule Extraction Wave is in PLAN: Plan 243-01 created to extract S1 `artifact-slice-rendering` from `drivers/pi/extensions/pals-hooks.ts` to a sibling Pi extension module.
+**Current focus:** v2.56 Pi Extension Submodule Extraction Wave is active (2 of 4 phases complete). Phase 243 Bounded Submodule Extraction Wave closed 2026-05-02 via PR #158 with S1 `artifact-slice-rendering` extracted to `drivers/pi/extensions/artifact-slice-rendering.ts`. Phase 244 Documentation + Validation Surfacing is the next planning target.
 
 ## Current Position
 
 Milestone: v2.56 Pi Extension Submodule Extraction Wave
-Phase: 243 of 245 (Bounded Submodule Extraction Wave) — UNIFY complete, loop closed; pending merge gate + transition
-Plan: 243-01 — UNIFY complete (SUMMARY drafted; S1 `artifact-slice-rendering` extracted to sibling module)
-Status: UNIFY complete (PLAN ✓, APPLY ✓, UNIFY ✓); pending github-flow merge gate, then phase 243 transition (last plan in phase)
-Last activity: 2026-05-02T01:40:00Z — Plan 243-01 UNIFY complete: SUMMARY at .paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md; AC-1–AC-4 PASS (AC-4 with documented +2 Pi count deviation); validation green at Pi 1..214/0, cross-harness 1..127/0, artifact_consistency PASS, install 3 files
+Phase: 244 of 245 (Documentation + Validation Surfacing) — ready to plan
+Plan: not started
+Status: Ready to plan
+Last activity: 2026-05-02T01:55:00Z — Phase 243 complete (PR #158 merged squash + delete-branch); transitioned to Phase 244 Documentation + Validation Surfacing
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
 - v2.43 PALS Context Diet — Archive, Compact, Compress: [██████████] 100% (4 of 4 phases complete)
@@ -28,7 +28,7 @@ Progress:
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
 - v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
-- v2.56 Pi Extension Submodule Extraction Wave: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 243 UNIFY complete — Plan 243-01 SUMMARY drafted; pending merge gate + transition)
+- v2.56 Pi Extension Submodule Extraction Wave: [█████▒▒▒▒▒] 50% (2 of 4 phases complete; Phase 243 closed via PR #158; Phase 244 Documentation + Validation Surfacing is the next planning target)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -63,7 +63,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Plan 243-01 loop complete — pending merge gate + phase transition]
+  ○        ○        ○     [Phase 244 ready to plan]
 ```
 
 ## Accumulated Context
@@ -222,6 +222,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-05-01: Treat Phase 234 as audit-only evidence before v2.55 implementation | Phase 234 Plan 234-01 UNIFY | Phases 235-241 should use `docs/PALS-MAINTAINABILITY-PRODUCT-REALITY-AUDIT.md` as the evidence base and avoid mixing implementation fixes into discovery/reconciliation phases. |
 | 2026-05-01: Define risk tiers as focused evidence, not bypassed evidence | Phase 235 Plan 235-01 UNIFY | Future tier routing may reduce ceremony only by focusing proof; explicit approval, validation truth, GitHub Flow gates, module blockers, parent-owned APPLY, lifecycle writes, `.paul/*` authority, command-output truth, full-read fallback, no hidden Pi state, and no telemetry remain non-bypass rules. |
 | 2026-05-01: Phase 239 APPLY deviation — amend Phase 238 contract bounded scope to include single-line install/uninstall edits | Phase 239 Plan 239-01 APPLY | The Phase 238 contract forbade `drivers/pi/install.sh`/`drivers/pi/uninstall.sh` edits in Phase 239, but the spike's first multi-file extraction discovered a contract gap: the install scripts only handle `pals-hooks.ts` and would break the new `import "./module-activity-parsing"` at Pi runtime. Bounded amendment per user-approved option 2: added one conditional `cp` for `module-activity-parsing.ts` to `install.sh` and a matching `rm -f` plus uninstall-notice update to `uninstall.sh`. No other behavior change; backward-compatible with extension copies that lack the submodule. UNIFY must record this deviation and Phase 240/241 should consider whether the install surface needs a generalized "copy all `*.ts` siblings under `drivers/pi/extensions/`" rule before further extractions. |
+| 2026-05-02: Phase 243 extracts S1 only (Option A); cycle-avoidance pattern — drop default-arg, make cap a required parameter on shared helpers; Pi e2e expectation: each sibling extraction adds a new single-defined guardrail and may add additional split-out blocks for unrelated assertions co-located in the relocated region | Phase 243 Plan 243-01 UNIFY | S1 `artifact-slice-rendering` lives single-defined in `drivers/pi/extensions/artifact-slice-rendering.ts`; `pals-hooks.ts` shrank ~135 LOC; `selectBoundedLines`'s default-arg dropped (now required); helpers `compactWhitespace`/`readFileOr`/`getFileFreshness`/`selectBoundedLines`/`escapeRegExp`/`PalsStateSnapshot` newly exported from `pals-hooks.ts`. Pi `1..214/0` (deviation: +2 vs planned +1 because `shouldInjectPalsContext` was split into its own block; reconciled in SUMMARY); cross-harness `1..127/0`; install reports `[ok] Pi extensions installed: 3 files`; artifact_consistency PASS; PR #158 merged squash + delete-branch. |
 Detailed historical decisions, fixes, deviations, skill audits, and deferred issues: [.paul/archive/state/STATE-HISTORY-v0-v2.43.md](archive/state/STATE-HISTORY-v0-v2.43.md)
 
 ### Fixes / Deviations / Skill Audits
@@ -297,21 +298,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit on main: `dbc299fe` Phase 242 transition: post-merge state metadata sync.
-PR: #157 (https://github.com/coctostan/pals/pull/157) — MERGED 2026-05-02 (squash + delete-branch). Pre-merge: mergeStateStatus CLEAN, Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge validation: Pi 1..212/0, cross-harness 1..127/0, artifact_consistency PASS, `git diff --check` clean.
+Last commit on main: `c2742213` Phase 243-01: Extract S1 artifact-slice-rendering to sibling Pi extension module (#158).
+PR: #158 (https://github.com/coctostan/pals/pull/158) — MERGED 2026-05-02 (squash + delete-branch). Pre-merge: mergeStateStatus CLEAN, Socket Security Project Report SUCCESS, Socket Security Pull Request Alerts SUCCESS. Post-merge expected validation (will rerun on main during transition): Pi 1..214/0, cross-harness 1..127/0, artifact_consistency PASS, `git diff --check` clean.
 Working tree: clean.
-Prior PRs: #157 merged (Phase 242 extraction target baseline); #156 merged (Phase 241-01 evidence closure + Pi extension install-surface generalization — closes v2.55); #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
+Prior PRs: #158 merged (Phase 243-01 S1 artifact-slice-rendering extraction); #157 merged (Phase 242 extraction target baseline); #156 merged (Phase 241-01 evidence closure + Pi extension install-surface generalization — closes v2.55); #155 merged (Phase 240 first-run happy-path scenario doc); #154 merged (Phase 239 bounded Pi extension extraction spike); #153 merged (Phase 238 Pi extension modularization contract); #152 merged (Phase 237 artifact consistency guardrails); #151 merged (Phase 236 validation-suite decomposition baseline); earlier PR history archived in STATE history.
 Open PRs: none.
 
 ## Session Continuity
 
-Last session: 2026-05-02T01:40:00Z
-Stopped at: Plan 243-01 UNIFY complete; SUMMARY drafted at .paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md. AC-1–AC-4 PASS (AC-4 with documented +2 Pi count deviation). Pending github-flow merge gate (PR #158, CI passing) and Phase 243 transition (last plan in phase).
-Next action: Resolve github-flow merge gate (merge PR #158 squash + delete-branch + sync local main) and execute the Phase 243 transition (PROJECT/ROADMAP/MILESTONES update, route to Phase 244).
-Resume file: .paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md
+Last session: 2026-05-02T01:55:00Z
+Stopped at: Phase 243 complete and transitioned. PR #158 merged 2026-05-02 (squash + delete-branch); local main synced to `c2742213`; branch deleted. PROJECT.md / ROADMAP.md / STATE.md aligned for Phase 244.
+Next action: /paul:plan for Phase 244 Documentation + Validation Surfacing.
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Plan 243-01 extracts S1 `artifact-slice-rendering` from `drivers/pi/extensions/pals-hooks.ts` into a new sibling module `drivers/pi/extensions/artifact-slice-rendering.ts`, following the S5 sibling-module pattern (Phase 239) and the Phase 241 generalized install surface.
-- S2 `workflow-resource-capsule-rendering` stays inline this plan; reserved for an approved Plan 243-02 if/when bounded.
-- Required preservation markers: `MAX_ARTIFACT_SLICE_CHARS`, `MAX_ARTIFACT_SLICE_LINES`, `ARTIFACT_SLICE_FALLBACK`, `ARTIFACT_SLICE_AUTHORITY`, `ARTIFACT_SLICE_SCHEMA_MARKERS`, plus visible `Slice:`/`Fallback:`/`Authority:` strings.
-- Plan revised after open-question resolution: Task 2.5 added to update `tests/pi-end-to-end-validation.sh` (3 existing S1 marker `tap_file_contains_all` blocks repointed to the new sibling + 1 new Phase 243 S1 guardrail mirroring the Phase 239 S5 precedent), Task 2 drops `selectBoundedLines`'s default-arg to avoid a circular import, and `tests/pi-end-to-end-validation.sh` is added to `files_modified`.
-- Validation expectations: `bash drivers/pi/install.sh` reports `[ok] Pi extensions installed: 3 files`; Pi 1..213/0 (212 baseline + 1 new guardrail); cross-harness 1..127/0; artifact_consistency PASS; `git diff --check` clean.
+- v2.56 Pi Extension Submodule Extraction Wave is at 2 of 4 phases complete. Phase 244 Documentation + Validation Surfacing and Phase 245 Evidence Closure remain.
+- Phase 243 outcome: S1 `artifact-slice-rendering` extracted to a sibling Pi extension module; S2 `workflow-resource-capsule-rendering` remains inline and is reserved for a future approved plan if scheduled (no commitment yet).
+- Phase 244 scope (per ROADMAP): surface the documentation and validation evidence for the v2.56 wave — PROJECT/ROADMAP/MILESTONES wording, contract docs alignment, and any user-facing validation surfacing follow-ons; concrete plan structure to be defined during /paul:plan.
+- Validation baseline going into Phase 244: Pi `1..214/0`, cross-harness `1..127/0`, artifact_consistency PASS, install reports `[ok] Pi extensions installed: 3 files`, `git diff --check` clean.
+- Pre-plan reading list: `.paul/ROADMAP.md` (Phase 244 row), `.paul/phases/243-bounded-submodule-extraction-wave/243-01-SUMMARY.md` (sibling-module pattern + Patterns Established), `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (Phase 242 baseline, still authoritative for any further extractions).
