@@ -998,7 +998,7 @@ fi
   # Workflow/Resource Capsule Context — Pi-Supported Runtime: Phase 211 capsule markers stay command-verifiable without runtime edits.
   tap_file_contains_all \
     "Workflow/resource capsule runtime markers preserve schema, fallback, and non-authority" \
-    "$EXT_SRC" \
+    "$REPO_ROOT/drivers/pi/extensions/workflow-resource-capsule-rendering.ts" \
     'Workflow/resource capsules (read-only, bounded, activation-gated)' \
     'Capsule: plan-task-anatomy' \
     'Capsule: checkpoint-type-orientation' \
@@ -1697,6 +1697,41 @@ tap_file_contains_all \
   "$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts" \
   'export default function' \
   'No-op Pi extension factory'
+
+# ══════════════════════════════════════════════════════════════════
+# Phase 246 sibling extraction (workflow-resource-capsule-rendering)
+# ══════════════════════════════════════════════════════════════════
+# Phase 246 extracts S2 `workflow-resource-capsule-rendering` from
+# pals-hooks.ts into a new sibling Pi extension module. The block below
+# locks the extraction (single-defined visible markers, payload caps, and
+# entry export), the import-wiring in pals-hooks.ts, the absence of the
+# moved S2 symbols inline, and the Phase 245 loader-compat invariant on the
+# new sibling.
+tap_file_contains_all \
+  "Phase 246 sibling extraction (workflow-resource-capsule-rendering): single-defined and import-wired" \
+  "$REPO_ROOT/drivers/pi/extensions/workflow-resource-capsule-rendering.ts" \
+  'Workflow/resource capsules (read-only, bounded, activation-gated)' \
+  'Capsule: plan-task-anatomy' \
+  'Capsule: checkpoint-type-orientation' \
+  'Capsule: module-dispatch-evidence-orientation' \
+  'Capsule: github-flow-phase-orientation' \
+  'export const MAX_WORKFLOW_RESOURCE_CAPSULE_CHARS = 6_000' \
+  'export const MAX_WORKFLOW_RESOURCE_CAPSULE_LINES = 5' \
+  'export function renderWorkflowResourceCapsules' \
+  'export default function' \
+  'No-op Pi extension factory'
+
+tap_file_contains_all \
+  "Phase 246 sibling extraction (workflow-resource-capsule-rendering): pals-hooks.ts imports the new sibling" \
+  "$EXT_SRC" \
+  'import { renderWorkflowResourceCapsules } from "./workflow-resource-capsule-rendering";'
+
+tap_file_contains_none \
+  "Phase 246 sibling extraction (workflow-resource-capsule-rendering): pals-hooks.ts no longer defines moved S2 symbols" \
+  "$EXT_SRC" \
+  'function buildWorkflowResourceCapsule(' \
+  'function renderWorkflowResourceCapsules(' \
+  'WORKFLOW_RESOURCE_CAPSULE_SCHEMA_MARKERS = ['
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

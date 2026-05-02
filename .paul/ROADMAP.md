@@ -28,7 +28,15 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**No active milestone.** v2.57 selection pending via `/paul:milestone`. Recommended focus: continue the sibling-extraction wave with Plan 243-02 S2 `workflow-resource-capsule-rendering`. Alternatives: local context-cost evidence, demo project preset, S3 `guided-workflow-detection` conditional secondary candidate.
+**v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering** (v2.57)
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 0 of 3 complete
+Theme: Continue the sibling-extraction wave by extracting S2 `workflow-resource-capsule-rendering` from `drivers/pi/extensions/pals-hooks.ts` into a new sibling Pi extension module while preserving runtime behavior, install surface, lifecycle authority, parent-owned APPLY, and command-output validation truth. Carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker) as a hard constraint on every helper-only sibling under `drivers/pi/extensions/*.ts`. Detail in Plan 246-01.
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 246 | S2 Bounded Submodule Extraction (workflow-resource-capsule-rendering) | 1 | Planning | - |
+| 247 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 248 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Latest completed milestone: v2.56 Pi Extension Submodule Extraction Wave
 Result: Phases 242–245 complete. v2.56 closed after PR #160 merged 2026-05-02. Shipped extension-extraction target baseline (`docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`), S1 `artifact-slice-rendering` sibling extraction (`drivers/pi/extensions/artifact-slice-rendering.ts`) with named default-arg cycle-avoidance pattern and exported helpers, 5-doc surfacing of S1 outcome with closure guardrails per validation suite, and Phase 245 evidence closure with sibling Pi extension loader-compat hotfix (no-op default factories appended to `module-activity-parsing.ts` and `artifact-slice-rendering.ts` so Pi session start no longer emits `Failed to load extension` errors). Final validation: Pi 218/218 and cross-harness 129/129; install surface 3 files.
@@ -94,4 +102,4 @@ Detailed completed milestone history through v2.43 is archived. See [.paul/archi
 
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 245 UNIFY complete; PR #160 merged; v2.56 Pi Extension Submodule Extraction Wave 4 of 4 phases complete and milestone closed; v2.57 selection pending via /paul:milestone.*
+*Last updated: 2026-05-02 — v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering created (Phases 246–248, 3-phase compact); direct-requirements + high-collab; carries the Phase 245 Pi extension loader-compat invariant (no-op default factory + `No-op Pi extension factory` marker) as a hard constraint on any new helper-only sibling under `drivers/pi/extensions/*.ts`.*
