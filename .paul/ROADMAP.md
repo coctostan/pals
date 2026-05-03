@@ -29,15 +29,15 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection** (v2.58)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 3 of 4 complete after Phase 251 UNIFY; merge gate/transition in progress
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 3 of 4 complete; Phase 252 ready to plan
 Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` while preserving option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-02 |
 | 250 | Bounded S3 Submodule Extraction | 1/1 | ✅ Complete | 2026-05-02 |
-| 251 | Documentation + Validation Surfacing | 1/1 | UNIFY Complete | 2026-05-02 |
-| 252 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
+| 251 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-02 |
+| 252 | Evidence Closure + Next Roadmap Decision | TBD | Ready to plan | - |
 
 ### Phase 249: S3 Extraction Contract + Bounded Submodule Plan
 Focus: Define the S3 `guided-workflow-detection` extraction contract, readiness evidence, preservation markers, allowed files, validation expectations, and bounded APPLY shape before source changes.
@@ -49,11 +49,11 @@ Plans: `.paul/phases/250-bounded-s3-submodule-extraction/250-01-PLAN.md` + `250-
 
 ### Phase 251: Documentation + Validation Surfacing
 Focus: Surface the S3 extraction outcome across user-facing docs and contract docs, then add localized validation guardrails without broad validation-suite refactors.
-Plans: `.paul/phases/251-documentation-validation-surfacing/251-01-PLAN.md` + `251-01-SUMMARY.md` — ✅ UNIFY Complete: surfaced `guided-workflow-detection.ts` in README/Pi docs/skill-map, reconciled S3 extraction contracts with Phase 250 outcome/evidence, and added localized Pi/cross-harness validation guardrails without runtime behavior changes. Validation evidence: Pi 227/227 (224→227), cross-harness 134/134 (131→134), artifact_consistency PASS, `git diff --check` clean. PR #166 opened; merge gate pending.
+Plans: `.paul/phases/251-documentation-validation-surfacing/251-01-PLAN.md` + `251-01-SUMMARY.md` — ✅ Complete: surfaced `guided-workflow-detection.ts` in README/Pi docs/skill-map, reconciled S3 extraction contracts with Phase 250 outcome/evidence, and added localized Pi/cross-harness validation guardrails without runtime behavior changes. Validation evidence: Pi 227/227 (224→227), cross-harness 134/134 (131→134), artifact_consistency PASS, `git diff --check` clean. PR #166 merged 2026-05-03.
 
 ### Phase 252: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.58 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation.
-Plans: TBD (defined during /paul:plan)
+Plans: Ready for `/paul:plan`.
 
 ### Latest completed milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
 Result: Phases 246–248 complete. v2.57 closed after PR #163 merged. Shipped S2 `workflow-resource-capsule-rendering` sibling extraction (`drivers/pi/extensions/workflow-resource-capsule-rendering.ts`), README/Pi docs/skill-map plus extraction contract surfacing, validation guardrails for S2 extraction/surfacing/closure, and next-roadmap recommendation for v2.58 default focus S3 `guided-workflow-detection` contingent on continued S2 stability. Final validation: Pi 223/223 and cross-harness 131/131 after the Phase 248 closure guardrail; install surface 4 files.
@@ -117,4 +117,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 251 UNIFY complete; v2.58 3 of 4 phases complete after merge gate; transition in progress.*
+*Last updated: 2026-05-03 — Phase 251 complete via PR #166; v2.58 3 of 4 phases complete; Phase 252 ready to plan.*
