@@ -1273,6 +1273,45 @@ tap_file_contains_all \
   'workflow-resource-capsule-rendering.ts' \
   'loader-compat invariant'
 
+
+# ════════════════════════════════════════════════════════════════════
+# Phase 251 sibling extraction surfacing (Shared Invariant)
+# ════════════════════════════════════════════════════════════════════
+# Phase 251 surfaces the Phase 250 S3 outcome in shared contract/baseline docs.
+# Guardrail: the docs must continue to record the extracted sibling, Phase 250
+# evidence, S4 deferral, and no inferred merge intent boundary.
+tap_file_contains_all \
+  "Phase 251 sibling extraction surfacing (Shared Invariant): guided-workflow-detection contract records Phase 250 outcome" \
+  "$REPO_ROOT/docs/PI-NATIVE-GUIDED-WORKFLOW-DETECTION-EXTRACTION-CONTRACT.md" \
+  'Phase 250 Outcome' \
+  'guided-workflow-detection.ts' \
+  'pals-hooks.ts' \
+  'S4 canonical reply delivery' \
+  '224/224' \
+  '131/131' \
+  'no merge intent was inferred'
+
+tap_file_contains_all \
+  "Phase 251 sibling extraction surfacing (Shared Invariant): extraction-target baseline records S3 extracted with S4 deferral" \
+  "$REPO_ROOT/docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md" \
+  'Phase 250 Outcome' \
+  'guided-workflow-detection.ts' \
+  'S4 canonical reply delivery' \
+  'S4/S6/S7/S8 deferrals preserved' \
+  '224/224' \
+  '131/131'
+
+tap_file_contains_all \
+  "Phase 251 sibling extraction surfacing (Shared Invariant): modularization contract ties S3 to S1-S8 inventory" \
+  "$REPO_ROOT/docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md" \
+  'Phase 250 Outcome' \
+  'guided-workflow-detection.ts' \
+  'pals-hooks.ts' \
+  'S3/S4 split preserved' \
+  'S5 (`module-activity-parsing.ts`) + S1 (`artifact-slice-rendering.ts`) + S2 (`workflow-resource-capsule-rendering.ts`) + S3 (`guided-workflow-detection.ts`)' \
+  '224/224' \
+  '131/131'
+
 # ═══════════════════════════════════════════════════════════════════
 # Phase 245 sibling extraction wave closure (v2.56 Shared Invariant)
 # ═══════════════════════════════════════════════════════════════════

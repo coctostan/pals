@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection** (v2.58)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 2 of 4 complete; Phase 251 ready to plan
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 3 of 4 complete after Phase 251 UNIFY; merge gate/transition in progress
 Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` while preserving option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-02 |
 | 250 | Bounded S3 Submodule Extraction | 1/1 | ✅ Complete | 2026-05-02 |
-| 251 | Documentation + Validation Surfacing | TBD | Ready to plan | - |
+| 251 | Documentation + Validation Surfacing | 1/1 | UNIFY Complete | 2026-05-02 |
 | 252 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 249: S3 Extraction Contract + Bounded Submodule Plan
@@ -49,7 +49,7 @@ Plans: `.paul/phases/250-bounded-s3-submodule-extraction/250-01-PLAN.md` + `250-
 
 ### Phase 251: Documentation + Validation Surfacing
 Focus: Surface the S3 extraction outcome across user-facing docs and contract docs, then add localized validation guardrails without broad validation-suite refactors.
-Plans: Not started — next action `/paul:plan`.
+Plans: `.paul/phases/251-documentation-validation-surfacing/251-01-PLAN.md` + `251-01-SUMMARY.md` — ✅ UNIFY Complete: surfaced `guided-workflow-detection.ts` in README/Pi docs/skill-map, reconciled S3 extraction contracts with Phase 250 outcome/evidence, and added localized Pi/cross-harness validation guardrails without runtime behavior changes. Validation evidence: Pi 227/227 (224→227), cross-harness 134/134 (131→134), artifact_consistency PASS, `git diff --check` clean. PR #166 opened; merge gate pending.
 
 ### Phase 252: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.58 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation.
@@ -117,4 +117,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-02 — Phase 250 plan created; v2.58 1 of 4 phases done; awaiting APPLY approval.*
+*Last updated: 2026-05-02 — Phase 251 UNIFY complete; v2.58 3 of 4 phases complete after merge gate; transition in progress.*

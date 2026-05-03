@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 250 completion / Phase 251
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
-Phase: 251 of 252 (Documentation + Validation Surfacing) — Ready to plan
-Plan: Not started
-Status: Ready for PLAN
-Last activity: 2026-05-02T20:43:17Z — Phase 250 complete and merged via PR #165; transitioned to Phase 251 Documentation + Validation Surfacing
+Phase: 251 of 252 (Documentation + Validation Surfacing) — UNIFY complete; merge gate pending
+Plan: 251-01 unified
+Status: UNIFY summary complete; ready for GitHub Flow merge gate
+Last activity: 2026-05-02T22:58:00Z — Unified .paul/phases/251-documentation-validation-surfacing/251-01-PLAN.md; SUMMARY created with Pi 227/227 and cross-harness 134/134 evidence
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -31,7 +31,7 @@ Progress:
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
-- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [█████░░░░░] 50% (2 of 4 phases complete; Phase 250 complete, Phase 251 next)
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [████████░░] 75% (3 of 4 phases complete after Phase 251 UNIFY; transition/merge gate in progress)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN]
+  ✓        ✓        ✓     [UNIFY complete - merge gate pending]
 ```
 
 ## Accumulated Context
@@ -289,6 +289,8 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 - Skill audit Phase 248 UNIFY: `/paul`, `/carl`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation passed Pi 223/223 and cross-harness 131/131. Existing `tests/cross-harness-validation.sh` size debt remains pre-existing/future driver-quality scope.
 - Skill audit Phase 250 APPLY: `/paul`, TODD, WALT, and installed post-apply modules invoked or active via module dispatch; parent APPLY owned verification and no helper delegation was used. Implemented S3 `guided-workflow-detection` sibling extraction with S4 canonical-reply delivery retained in `pals-hooks.ts`; validation passed Pi 224/224 and cross-harness 131/131; install reports 5 Pi extension files; artifact consistency and `git diff --check` passed.
 - Skill audit Phase 250 UNIFY: `/paul`, TODD, WALT, CODI, SKIP, and RUBY invoked or active via module dispatch; post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; SUMMARY records ACs, validation output, module evidence, Workguard scope, and GitHub Flow PR #165. One validation repair split S3 detection markers into `guided-workflow-detection.ts` while retaining S4 delivery checks in `pals-hooks.ts`.
+- Skill audit Phase 251 APPLY: `/paul`, TODD, WALT, DOCS, SKIP, ARCH, SETH, IRIS, and advisory/enforcement modules invoked or active via module dispatch; parent APPLY owned verification and no helper delegation was used. Surfaced S3 `guided-workflow-detection.ts` across README/Pi docs/skill-map and extraction contracts, added localized Pi and shared-invariant guardrails, and passed Pi validation 227/227, cross-harness validation 134/134, artifact consistency, and `git diff --check`. Validation repair preserved the existing skill-map `~/.pi/agent/extensions/pals-hooks.ts` install-target marker while adding source-set wording.
+- Skill audit Phase 251 UNIFY: `/paul`, TODD, WALT, CODI, SKIP, RUBY, and advisory/enforcement modules invoked or active via module dispatch; SUMMARY records ACs, validation output, module evidence, count reconciliation, and GitHub Flow PR #166. Post-unify persistence updated `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`; validation baseline for Phase 252 is Pi 227/227 and cross-harness 134/134.
 
 ### Deferred Issues
 
@@ -305,19 +307,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 
 ### Git State
 
-Branch: main
-Last commit: `4c398a1b` — Phase 250: extract guided workflow detection (squash merge PR #165).
-PR: #165 (https://github.com/coctostan/pals/pull/165) — MERGED 2026-05-02T20:43:17Z; CI: no status checks reported.
-Working tree: Phase 250 merged; Phase 251 transition metadata ready to commit.
+Branch: feature/251-documentation-validation-surfacing
+Last commit: Phase 251 APPLY commits pushed; UNIFY summary commit pending.
+PR: #166 open — https://github.com/coctostan/pals/pull/166 (created after Phase 251 APPLY). Phase 250 PR #165 was merged 2026-05-02T20:43:17Z.
+Working tree: Phase 251 UNIFY summary/history updates pending commit and push before merge gate.
 Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-02T20:43:17Z
-Stopped at: Phase 250 complete, ready to plan Phase 251
-Next action: /paul:plan for Phase 251 Documentation + Validation Surfacing
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-02T22:58:00Z
+Stopped at: Plan 251-01 UNIFY complete; merge gate pending
+Next action: Commit/push UNIFY artifacts, then complete GitHub Flow merge gate for PR #166
+Resume file: .paul/phases/251-documentation-validation-surfacing/251-01-SUMMARY.md
 Resume context:
-- Phase 250 extracted S3 `guided-workflow-detection.ts`, added the Phase 250 Pi validation guardrail, passed install/Pi 224/224/cross-harness 131/131/artifact/diff checks, created SUMMARY, and merged PR #165 (`4c398a1b`).
-- Phase 251 should surface the S3 sibling extraction in user-facing docs and contract/validation surfaces without reopening Phase 250 runtime behavior.
-- Phase 252 remains evidence closure + next roadmap decision.
+- Phase 251 APPLY surfaced `guided-workflow-detection.ts` in README, Pi extension docs, and skill map; reconciled Phase 250 outcome/evidence in extraction contracts; and added localized Pi/cross-harness guardrails.
+- Runtime TypeScript behavior, installer/uninstaller/driver manifest, dependencies, CI, S4/S6/S7/S8, CARL, and installed runtime copies are explicitly out of scope.
+- Validation evidence: Pi 227/227, cross-harness 134/134, artifact_consistency PASS, `git diff --check` clean; count deltas from Phase 250 baseline are Pi 224→227 and cross-harness 131→134.
