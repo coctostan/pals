@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 250 completion / Phase 251
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
-Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision)
-Plan: Not started
-Status: Ready to plan Phase 252
-Last activity: 2026-05-03T00:06:03Z — Phase 251 complete, PR #166 merged, transitioned to Phase 252 planning
+Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision) — ✅ Complete
+Plan: 252-01 complete; SUMMARY recorded
+Status: Loop complete (PLAN ✓ APPLY ✓ UNIFY ✓); v2.58 closed; v2.59 selection pending via `/paul:milestone`
+Last activity: 2026-05-03 — Phase 252 UNIFY complete: SUMMARY written, v2.58 closure durable, v2.59 recommendation recorded; merge gate pending PR #167
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -31,7 +31,7 @@ Progress:
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
-- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [████████░░] 75% (3 of 4 phases complete; Phase 252 ready to plan)
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; merge gate pending PR #167)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN — Phase 252]
+  ✓        ✓        ✓     [Loop complete — v2.58 closed; ready for /paul:milestone after merge gate]
 ```
 
 ## Accumulated Context
@@ -316,11 +316,13 @@ Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #16
 
 ## Session Continuity
 
-Last session: 2026-05-03T00:06:03Z
-Stopped at: Phase 251 complete, ready to plan Phase 252
-Next action: /paul:plan for Phase 252 Evidence Closure + Next Roadmap Decision
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-03
+Stopped at: Phase 252 UNIFY complete; v2.58 closed; merge gate pending PR #167
+Next action: Resolve merge gate for PR #167, then run /paul:milestone to select v2.59 (default recommendation: S7 `pals-context-injection` contract/baseline)
+Resume file: .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-SUMMARY.md
 Resume context:
-- Phase 251 closed via PR #166 and transitioned to Phase 252. S3 `guided-workflow-detection.ts` is surfaced across README/Pi docs/skill-map, contract docs record Phase 250 outcome/evidence, and localized Pi/cross-harness guardrails protect surfacing.
-- Runtime TypeScript behavior, installer/uninstaller/driver manifest, dependencies, CI, S4/S6/S7/S8, CARL, and installed runtime copies are explicitly out of scope.
-- Validation evidence: Pi 227/227, cross-harness 134/134, artifact_consistency PASS, `git diff --check` clean; count deltas from Phase 250 baseline are Pi 224→227 and cross-harness 131→134.
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection closed 2026-05-03 across MILESTONES/PROJECT/ROADMAP; v2.59 recommendation recorded (default S7 `pals-context-injection` contract/baseline; alternatives: S4/S6/S8/local context-cost/demo preset/validation-script size-debt). Recommendation only — `/paul:milestone` is the approval route.
+- Final validation: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean, install 5 Pi extension files. AC-1–AC-4 PASS.
+- Module dispatch: WALT/DEAN/SETH/TODD enforcement PASS; advisory annotations clean; CODI skipped (no extractable symbols); SKIP captured v2.59 Decision Record.
+- GitHub Flow: PR #167 OPEN at https://github.com/coctostan/pals/pull/167 ; merge gate runs in this UNIFY (require_pr_before_next_phase=true).
+- Next: complete merge gate (PR #167 merge + base sync + branch cleanup), then route to /paul:milestone for v2.59 selection.

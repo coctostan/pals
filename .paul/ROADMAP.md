@@ -29,7 +29,7 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection** (v2.58)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 3 of 4 complete; Phase 252 ready to plan
+Status: ✅ Complete | Closed 2026-05-03 | Mode: direct-requirements | Collaboration: high | Phases: 4 of 4 complete
 Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-detection` from `drivers/pi/extensions/pals-hooks.ts` while preserving option parsing, merge-gate routing detection, no inferred merge intent, transcript-visible canonical reply separation, and guided workflow authority boundaries.
 
 | Phase | Name | Plans | Status | Completed |
@@ -37,7 +37,7 @@ Theme: Continue the sibling extraction wave by extracting S3 `guided-workflow-de
 | 249 | S3 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-02 |
 | 250 | Bounded S3 Submodule Extraction | 1/1 | ✅ Complete | 2026-05-02 |
 | 251 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-02 |
-| 252 | Evidence Closure + Next Roadmap Decision | TBD | Ready to plan | - |
+| 252 | Evidence Closure + Next Roadmap Decision | 1/1 | ✅ Complete | 2026-05-03 |
 
 ### Phase 249: S3 Extraction Contract + Bounded Submodule Plan
 Focus: Define the S3 `guided-workflow-detection` extraction contract, readiness evidence, preservation markers, allowed files, validation expectations, and bounded APPLY shape before source changes.
@@ -53,7 +53,7 @@ Plans: `.paul/phases/251-documentation-validation-surfacing/251-01-PLAN.md` + `2
 
 ### Phase 252: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.58 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation.
-Plans: Ready for `/paul:plan`.
+Plans: `.paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md` + `252-01-SUMMARY.md` — ✅ Complete: aggregated Phases 249–251 evidence into MILESTONES.md/PROJECT.md/ROADMAP.md, recorded v2.59 recommendation (default: S7 `pals-context-injection` contract/baseline) without approving it, and added one localized cross-harness closure guardrail (134→135). Final validation: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean, install 5 Pi extension files. Phase 252 PR pending.
 
 ### Latest completed milestone: v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering
 Result: Phases 246–248 complete. v2.57 closed after PR #163 merged. Shipped S2 `workflow-resource-capsule-rendering` sibling extraction (`drivers/pi/extensions/workflow-resource-capsule-rendering.ts`), README/Pi docs/skill-map plus extraction contract surfacing, validation guardrails for S2 extraction/surfacing/closure, and next-roadmap recommendation for v2.58 default focus S3 `guided-workflow-detection` contingent on continued S2 stability. Final validation: Pi 223/223 and cross-harness 131/131 after the Phase 248 closure guardrail; install surface 4 files.
@@ -117,4 +117,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-03 — Phase 251 complete via PR #166; v2.58 3 of 4 phases complete; Phase 252 ready to plan.*
+*Last updated: 2026-05-03 — v2.58 closed via Phase 252 (4 of 4 phases complete). v2.59 selection pending via `/paul:milestone` with default recommendation S7 `pals-context-injection` contract/baseline.*
