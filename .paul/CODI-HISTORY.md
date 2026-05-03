@@ -77,3 +77,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 248-01 | 2026-05-02 | skipped-no-symbols | — | — | — | — | n |
 | 250-01 | 2026-05-02 | injected | 4 | 1 | 11 | detectGuidedWorkflowMoment, parseGuidedWorkflowOptions, isMergeGateRoutingPrompt, makeGuidedWorkflowSignature | y |
 | 251-01 | 2026-05-02 | skipped-no-symbols | — | — | — | — | n |
+| 252-01 | 2026-05-03 | skipped-no-symbols | — | — | — | — | n |

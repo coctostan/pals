@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 250 completion / Phase 251
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
-Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision) — Planning
-Plan: 252-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-03 — Created .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md
+Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision) — ✅ Complete
+Plan: 252-01 complete; SUMMARY recorded
+Status: Loop complete (PLAN ✓ APPLY ✓ UNIFY ✓); v2.58 closed; v2.59 selection pending via `/paul:milestone`
+Last activity: 2026-05-03 — Phase 252 UNIFY complete: SUMMARY written, v2.58 closure durable, v2.59 recommendation recorded; merge gate pending PR #167
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -31,7 +31,7 @@ Progress:
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
-- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [████████░░] 75% (3 of 4 phases complete; Phase 252 ready to plan)
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; merge gate pending PR #167)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 252-01 created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete — v2.58 closed; ready for /paul:milestone after merge gate]
 ```
 
 ## Accumulated Context
@@ -317,12 +317,12 @@ Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #16
 ## Session Continuity
 
 Last session: 2026-05-03
-Stopped at: Phase 252 APPLY complete; awaiting UNIFY
-Next action: Run /paul:unify .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md
-Resume file: .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md
+Stopped at: Phase 252 UNIFY complete; v2.58 closed; merge gate pending PR #167
+Next action: Resolve merge gate for PR #167, then run /paul:milestone to select v2.59 (default recommendation: S7 `pals-context-injection` contract/baseline)
+Resume file: .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-SUMMARY.md
 Resume context:
-- Phase 252 APPLY closed v2.58: MILESTONES.md, PROJECT.md, ROADMAP.md updated with v2.58 completion + v2.59 recommendation (default S7 `pals-context-injection` contract/baseline; alternatives recorded). Cross-harness closure guardrail added (134→135).
-- Final validation: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean, install 5 Pi extension files. No regressions vs pre-apply baseline.
-- Module dispatch: WALT/DEAN/SETH/TODD enforcement PASS. Advisory annotations (IRIS/DOCS/ARCH/RUBY) clean; CODI skipped (no extractable symbols); no UI/data/API/perf/resilience/privacy surface changed.
-- Changed files: `.paul/MILESTONES.md`, `.paul/PROJECT.md`, `.paul/ROADMAP.md`, `.paul/STATE.md`, `.paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md`, `tests/cross-harness-validation.sh` — all within plan scope.
-- Next: UNIFY writes `.paul/phases/252-evidence-closure-next-roadmap-decision/252-01-SUMMARY.md` with AC results, validation/count reconciliation, module reports, GitHub Flow + Workguard scope evidence, and v2.59 recommendation.
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection closed 2026-05-03 across MILESTONES/PROJECT/ROADMAP; v2.59 recommendation recorded (default S7 `pals-context-injection` contract/baseline; alternatives: S4/S6/S8/local context-cost/demo preset/validation-script size-debt). Recommendation only — `/paul:milestone` is the approval route.
+- Final validation: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean, install 5 Pi extension files. AC-1–AC-4 PASS.
+- Module dispatch: WALT/DEAN/SETH/TODD enforcement PASS; advisory annotations clean; CODI skipped (no extractable symbols); SKIP captured v2.59 Decision Record.
+- GitHub Flow: PR #167 OPEN at https://github.com/coctostan/pals/pull/167 ; merge gate runs in this UNIFY (require_pr_before_next_phase=true).
+- Next: complete merge gate (PR #167 merge + base sync + branch cleanup), then route to /paul:milestone for v2.59 selection.
