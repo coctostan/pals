@@ -1343,7 +1343,28 @@ tap_file_contains_all \
   'Phase 248' \
   'workflow-resource-capsule-rendering.ts' \
   'v2.58'
-# ════════════════════════════════════════════════════════════════════
+
+# ════════════════════════════════════════════════════════════════
+# Phase 252 sibling extraction wave closure (v2.58 Shared Invariant)
+# ════════════════════════════════════════════════════════════════
+# Phase 252 closes v2.58 by aggregating Phases 249–252 evidence into MILESTONES.md.
+# Closure guardrail: .paul/MILESTONES.md must continue to name the v2.58 milestone,
+# the four phases, the S3 sibling basename, the preserved S4 host module, and the
+# v2.59 recommendation marker so the shared invariant across docs/contract/lifecycle
+# does not regress.
+tap_file_contains_all \
+  "Phase 252 sibling extraction wave closure (v2.58 Shared Invariant)" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.58 Pi Extension Submodule Extraction Wave' \
+  'Phase 249' \
+  'Phase 250' \
+  'Phase 251' \
+  'Phase 252' \
+  'guided-workflow-detection.ts' \
+  'pals-hooks.ts' \
+  'v2.59'
+
+# ════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 

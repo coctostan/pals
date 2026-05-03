@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-02 after Phase 250 completion / Phase 251
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
-Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision)
-Plan: Not started
-Status: Ready to plan Phase 252
-Last activity: 2026-05-03T00:06:03Z — Phase 251 complete, PR #166 merged, transitioned to Phase 252 planning
+Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision) — Planning
+Plan: 252-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-03 — Created .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -66,7 +66,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN — Phase 252]
+  ✓        ○        ○     [Plan 252-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -316,11 +316,13 @@ Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #16
 
 ## Session Continuity
 
-Last session: 2026-05-03T00:06:03Z
-Stopped at: Phase 251 complete, ready to plan Phase 252
-Next action: /paul:plan for Phase 252 Evidence Closure + Next Roadmap Decision
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-03
+Stopped at: Phase 252 APPLY complete; awaiting UNIFY
+Next action: Run /paul:unify .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md
+Resume file: .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md
 Resume context:
-- Phase 251 closed via PR #166 and transitioned to Phase 252. S3 `guided-workflow-detection.ts` is surfaced across README/Pi docs/skill-map, contract docs record Phase 250 outcome/evidence, and localized Pi/cross-harness guardrails protect surfacing.
-- Runtime TypeScript behavior, installer/uninstaller/driver manifest, dependencies, CI, S4/S6/S7/S8, CARL, and installed runtime copies are explicitly out of scope.
-- Validation evidence: Pi 227/227, cross-harness 134/134, artifact_consistency PASS, `git diff --check` clean; count deltas from Phase 250 baseline are Pi 224→227 and cross-harness 131→134.
+- Phase 252 APPLY closed v2.58: MILESTONES.md, PROJECT.md, ROADMAP.md updated with v2.58 completion + v2.59 recommendation (default S7 `pals-context-injection` contract/baseline; alternatives recorded). Cross-harness closure guardrail added (134→135).
+- Final validation: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean, install 5 Pi extension files. No regressions vs pre-apply baseline.
+- Module dispatch: WALT/DEAN/SETH/TODD enforcement PASS. Advisory annotations (IRIS/DOCS/ARCH/RUBY) clean; CODI skipped (no extractable symbols); no UI/data/API/perf/resilience/privacy surface changed.
+- Changed files: `.paul/MILESTONES.md`, `.paul/PROJECT.md`, `.paul/ROADMAP.md`, `.paul/STATE.md`, `.paul/phases/252-evidence-closure-next-roadmap-decision/252-01-PLAN.md`, `tests/cross-harness-validation.sh` — all within plan scope.
+- Next: UNIFY writes `.paul/phases/252-evidence-closure-next-roadmap-decision/252-01-SUMMARY.md` with AC results, validation/count reconciliation, module reports, GitHub Flow + Workguard scope evidence, and v2.59 recommendation.
