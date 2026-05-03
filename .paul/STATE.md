@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-02 after Phase 250 completion / Phase 251 transition)
+See: .paul/PROJECT.md (updated 2026-05-03 after Phase 252 closure / v2.58 milestone complete)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is active with Phases 249–250 closed and Phase 251 ready to plan. It continues the sibling extraction wave by surfacing the extracted S3 `guided-workflow-detection` sibling across docs and validation surfaces while preserving option parsing, merge-gate routing detection, no inferred merge intent, S4 canonical reply separation, guided workflow authority boundaries, `.paul/*` authority, and command-output validation truth.
+**Current focus:** No milestone active. v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection closed 2026-05-03 (Phases 249–252 all complete; PRs #164/#165/#166/#167 merged). v2.59 selection is pending via `/paul:milestone` with default recommendation S7 `pals-context-injection` contract/baseline (recommendation only; alternatives: S4 canonical reply delivery, S6 lifecycle UI, S8 command routing, local context-cost evidence, demo project preset, broader validation-script size-debt work).
 
 ## Current Position
 
 Milestone: v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection
 Phase: 252 of 252 (Evidence Closure + Next Roadmap Decision) — ✅ Complete
 Plan: 252-01 complete; SUMMARY recorded
-Status: Loop complete (PLAN ✓ APPLY ✓ UNIFY ✓); v2.58 closed; v2.59 selection pending via `/paul:milestone`
-Last activity: 2026-05-03 — Phase 252 UNIFY complete: SUMMARY written, v2.58 closure durable, v2.59 recommendation recorded; merge gate pending PR #167
+Status: Loop complete (PLAN ✓ APPLY ✓ UNIFY ✓); v2.58 closed and merged; v2.59 selection pending via `/paul:milestone`
+Last activity: 2026-05-03 — Phase 252 UNIFY complete; PR #167 squash-merged into main; v2.58 milestone closed; ready for /paul:milestone (v2.59 selection)
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -309,9 +309,9 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: Transition metadata committed on main after PR #166 merge; use `git log -1` for current hash.
-PR: #166 MERGED — https://github.com/coctostan/pals/pull/166 (merged 2026-05-03T00:06:03Z). Prior PR #165 merged Phase 250.
-Working tree: Phase 251 merged; Phase 252 transition metadata ready to push on main.
+Last commit: 04970711 — Phase 252: close v2.58 evidence + record v2.59 recommendation (#167)
+PR: #167 MERGED — https://github.com/coctostan/pals/pull/167 (squash-merged 2026-05-03; feature branch deleted). Prior PR #166 merged Phase 251.
+Working tree: clean on main; v2.58 closed; ready for /paul:milestone.
 Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix); earlier PR history archived in STATE history.
 
 ## Session Continuity
