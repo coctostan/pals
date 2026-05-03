@@ -316,13 +316,12 @@ Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #16
 
 ## Session Continuity
 
-Last session: 2026-05-03
-Stopped at: Phase 252 UNIFY complete; v2.58 closed; merge gate pending PR #167
-Next action: Resolve merge gate for PR #167, then run /paul:milestone to select v2.59 (default recommendation: S7 `pals-context-injection` contract/baseline)
-Resume file: .paul/phases/252-evidence-closure-next-roadmap-decision/252-01-SUMMARY.md
+Last session: 2026-05-03 (paused after v2.58 closure)
+Stopped at: v2.58 closed and merged via PR #167; v2.59 milestone selection pending; user paused to think before committing scope.
+Next action: Run /paul:milestone to select v2.59 (default recommendation: S7 `pals-context-injection` contract/baseline; alternatives recorded in handoff and PROJECT.md Key Decisions).
+Resume file: .paul/HANDOFF-2026-05-03-v2-58-closed-v2-59-pending.md
 Resume context:
-- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection closed 2026-05-03 across MILESTONES/PROJECT/ROADMAP; v2.59 recommendation recorded (default S7 `pals-context-injection` contract/baseline; alternatives: S4/S6/S8/local context-cost/demo preset/validation-script size-debt). Recommendation only — `/paul:milestone` is the approval route.
-- Final validation: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean, install 5 Pi extension files. AC-1–AC-4 PASS.
-- Module dispatch: WALT/DEAN/SETH/TODD enforcement PASS; advisory annotations clean; CODI skipped (no extractable symbols); SKIP captured v2.59 Decision Record.
-- GitHub Flow: PR #167 OPEN at https://github.com/coctostan/pals/pull/167 ; merge gate runs in this UNIFY (require_pr_before_next_phase=true).
-- Next: complete merge gate (PR #167 merge + base sync + branch cleanup), then route to /paul:milestone for v2.59 selection.
+- v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection is fully closed (PR #167 squash-merged 2026-05-03). Final validation green: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, install 5 Pi extension files. Loop ✓✓✓.
+- v2.59 candidate menu (see HANDOFF for full table): [1] S7 `pals-context-injection` (default recommendation), [2] S4 canonical reply delivery, [3] S6 lifecycle UI, [4] S8 command routing, [5] local context-cost evidence, [6] demo project preset, [7] validation-script size-debt decomposition.
+- Discussion-level decision (not committed): user confirmed Claude Code + Agent SDK drivers are frozen since v2.52 (Phase 222–225) — not actively maintained, no urgency to remove. Eventual removal blocked on cross-harness validation decomposition (option [7] above) per `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`. Path forward: Path B (decompose first, remove second) or Path C (combined single-harness migration). Future decision.
+- Working tree clean on main; no half-done work; nothing executing. Pause is at a clean boundary.
