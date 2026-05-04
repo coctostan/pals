@@ -35,7 +35,7 @@ Theme: Continue the sibling extraction wave by extracting S7 `pals-context-injec
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 253 | S7 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-03 |
-| 254 | Bounded S7 Submodule Extraction | TBD | Not started | - |
+| 254 | Bounded S7 Submodule Extraction | 1 (254-01 awaiting APPLY) | Planning | - |
 | 255 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 256 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
@@ -113,4 +113,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-03 — v2.59 Phase 253 closed and merged via PR #168 (squash-merge into main as `f326db54`); SUMMARY at `.paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md` (AC-1…AC-4 PASS; Pi 227/227, cross-harness 135/135, artifact_consistency PASS). v2.59 progress 1 of 4. Ready for /paul:plan Phase 254. v2.58 remains closed via PR #167.*
+*Last updated: 2026-05-03 — v2.59 Phase 254 Plan 254-01 created (`.paul/phases/254-bounded-s7-submodule-extraction/254-01-PLAN.md`); source extraction of S7 `pals-context-injection` per Phase 253 contract; awaiting approval to APPLY. v2.59 progress 1 of 4 (Phase 253 closed via PR #168). v2.58 remains closed via PR #167.*
