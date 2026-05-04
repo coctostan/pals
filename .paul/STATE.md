@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone c
 ## Current Position
 
 Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
-Phase: 253 of 256 (S7 Extraction Contract + Bounded Submodule Plan) — ✅ Complete
-Plan: 253-01 complete; SUMMARY recorded
-Status: Loop complete; merge gate resolved (PR #168 squash-merged into main as `f326db54`)
-Last activity: 2026-05-03 — UNIFY 253-01 PASS; SUMMARY at `.paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md` (AC-1…AC-4 PASS); ready to merge PR #168 and route to /paul:plan Phase 254
+Phase: 254 of 256 (Bounded S7 Submodule Extraction) — APPLY complete; UNIFY pending
+Plan: 254-01 executed; PR #169 OPEN with all CI checks passing
+Status: PLAN ✓ APPLY ✓ UNIFY ○ — ready for /paul:unify
+Last activity: 2026-05-04 — APPLY complete: extracted S7 to drivers/pi/extensions/pals-context-injection.ts (88 LOC), reduced pals-hooks.ts 947→903 LOC, added bounded EXT_PALS_CONTEXT_INJECTION TAP block (Pi 227→228) + repointed assertion 133 (constant definition moved to sibling); install reports 6 Pi extension files; cross-harness 135/135 unchanged; artifact_consistency PASS; commit fabcb696 pushed; PR #169 opened against main (mergeStateStatus CLEAN, all CI SUCCESS)
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -32,7 +32,7 @@ Progress:
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
-- v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [███░░░░░░░] 25% (1 of 4 phases complete; Phase 253 closed; PR #168 merged)
+- v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [████░░░░░░] 38% (1 of 4 phases complete; Phase 254 APPLY complete, UNIFY pending; PR #169 OPEN, CI SUCCESS)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -67,7 +67,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — Phase 253 closed; PR #168 merged; next: /paul:plan Phase 254]
+  ✓        ○        ○     [Plan 254-01 created, awaiting approval / APPLY]
 ```
 
 ## Accumulated Context
@@ -317,14 +317,21 @@ Prior PRs: #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/
 
 ## Session Continuity
 
-Last session: 2026-05-03 (v2.59 Phase 253 closed and merged via PR #168)
-Stopped at: Phase 253 closed end-to-end. UNIFY 253-01 PASS (AC-1…AC-4 PASS; Pi 227/227, cross-harness 135/135, artifact_consistency PASS, git diff --check clean). PR #168 squash-merged into main as `f326db54`; local main synced; feature branch deleted on remote and locally.
-Next action: `/paul:plan` Phase 254 (Bounded S7 Submodule Extraction).
-Resume file: .paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md
+Last session: 2026-05-04 — Phase 254 APPLY complete; PR #169 OPEN against main with all CI checks SUCCESS; ready for /paul:unify
+Stopped at: APPLY complete on `feature/254-bounded-s7-submodule-extraction`. Source/test changes committed as `fabcb696` and pushed; PR #169 opened (mergeStateStatus CLEAN, Socket Security checks SUCCESS). Working tree carries only `.paul/*` lifecycle artifacts pending UNIFY (STATE.md update + handoff archive move from /skill:paul-resume + new SUMMARY.md to be authored by UNIFY).
+Next action: Run `/paul:unify .paul/phases/254-bounded-s7-submodule-extraction/254-01-PLAN.md` to author SUMMARY.md, gate the PR merge, and close Phase 254.
+Resume file: .paul/phases/254-bounded-s7-submodule-extraction/254-01-PLAN.md
 Resume context:
-- v2.59 selected default recommendation from v2.58 closure: S7 `pals-context-injection` extracted as the next sibling Pi extension module, following the S5/S1/S2/S3 sibling-module recipe ratified by Phases 239 / 243 / 246 / 250.
-- 4-phase wave (matches v2.55–v2.58 pattern): Phase 253 contract/baseline → Phase 254 bounded extraction → Phase 255 docs/validation surfacing → Phase 256 evidence closure + next-roadmap decision.
-- Markers that MUST be preserved exactly during extraction: `STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`, `LEGACY_PALS_CONTEXT_HEADER`, `PALS_CONTEXT_CUSTOM_TYPE`, `PRIMARY_INJECTION_EVENT`, `SUPPORTING_CONTEXT_EVENT`. Behavior of `keepOnlyLatestPalsContextMessage` (mutates message stream) and `buildPalsContextPayload` (pure) must be preserved.
-- Out of scope for v2.59: S4 canonical reply delivery, S6 lifecycle UI, S8 command routing, full Claude Code / Agent SDK driver removal (still blocked on cross-harness validation decomposition per `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`).
-- Authoritative references: `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (S1–S8 inventory, classification, ordering, prior outcomes) and `.paul/phases/249-s3-extraction-contract-bounded-submodule-plan/249-01-SUMMARY.md` (most-recent precedent for an S* contract phase).
-- Working tree clean on main; baseline before any v2.59 source change: Pi 227/227, cross-harness 135/135, artifact_consistency PASS, install 5 Pi extension files.
+- v2.59 active: Phase 254 (bounded S7 extraction) APPLY complete with all 4 ACs satisfied. Phase 253 contract/baseline closed via PR #168.
+- Validation evidence captured this session (to be reproduced + reconciled in SUMMARY.md):
+  - `PALS_ROOT="$PWD" bash drivers/pi/install.sh` → `[ok] Pi extensions installed: 6 files` (5 → 6 with new `pals-context-injection.ts`)
+  - `bash tests/pi-end-to-end-validation.sh` → 1..228 / Passed 228 / Failed 0 (227 → 228, +1 from EXT_PALS_CONTEXT_INJECTION block)
+  - `bash tests/cross-harness-validation.sh` → 1..135 / Passed 135 / Failed 0 (unchanged as planned)
+  - `bash tests/helpers/artifact_consistency.sh` → `artifact_consistency_check: PASS`
+  - `git diff --check` → clean
+- Files changed in commit `fabcb696`: `drivers/pi/extensions/pals-context-injection.ts` (new, 88 LOC), `drivers/pi/extensions/pals-hooks.ts` (947 → 903 LOC), `tests/pi-end-to-end-validation.sh` (+1 TAP block + 1 repointed assertion). All within plan `files_modified` scope.
+- One bounded in-flight reconciliation: pre-existing assertion 133 (which checked `PRIMARY_INJECTION_EVENT = "before_agent_start"` constant *definition* in `pals-hooks.ts`) was repointed to look for the imported identifier `PRIMARY_INJECTION_EVENT` instead — the constant definition now lives in the sibling per the planned extraction. Same file as planned; same invariant preserved (primary injection point = `before_agent_start`, handler in `pals-hooks.ts`, customType injection intact). No silent count creep; net Pi count is still +1.
+- Markers preserved (single-located in `drivers/pi/extensions/pals-context-injection.ts`): `[PALS_STATE_AUTHORITY=.paul/STATE.md]`, `[PALS_ACTIVATION_SIGNAL]`, `## PALS Context (auto-injected)`, `pals-context`, `before_agent_start`, `context`. S4 canonical-reply identifiers (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`) and shared helpers (`extractTextContent`, `collectRecentAssistantTexts`) retained inline in `pals-hooks.ts`.
+- GitHub Flow state: branch `feature/254-bounded-s7-submodule-extraction` (1 ahead origin/main pre-commit + 1 commit `fabcb696`); remote PR #169 OPEN against main; mergeStateStatus CLEAN; Socket Security: Project Report SUCCESS; Socket Security: Pull Request Alerts SUCCESS. UNIFY owns merge gate enforcement.
+- Workguard snapshot for this APPLY: `runs/workguards/20260504T122135Z-phase-254-s7-extraction` (allowed paths: `drivers/pi/extensions/pals-context-injection.ts`, `drivers/pi/extensions/pals-hooks.ts`, `tests/pi-end-to-end-validation.sh`, `.paul/**`).
+- Authoritative references: `.paul/phases/254-bounded-s7-submodule-extraction/254-01-PLAN.md` (the executed plan), `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` (Phase 253 bounding rules), `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (S1–S8 inventory), `.paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md` (Phase 253 closure).

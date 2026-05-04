@@ -32,12 +32,20 @@ const PALS_WIDGET_ID = "pals-lifecycle";
 const PRIMARY_QUICK_ACTION_LIMIT = 3;
 const MAX_QUICK_ACTIONS = 5;
 
-const PRIMARY_INJECTION_EVENT = "before_agent_start";
-const SUPPORTING_CONTEXT_EVENT = "context";
-const PALS_CONTEXT_CUSTOM_TYPE = "pals-context";
-const LEGACY_PALS_CONTEXT_HEADER = "## PALS Context (auto-injected)";
-const STATE_AUTHORITY_TAG = "[PALS_STATE_AUTHORITY=.paul/STATE.md]";
-const ACTIVATION_SIGNAL_TAG = "[PALS_ACTIVATION_SIGNAL]";
+import {
+  PRIMARY_INJECTION_EVENT,
+  SUPPORTING_CONTEXT_EVENT,
+  PALS_CONTEXT_CUSTOM_TYPE,
+  LEGACY_PALS_CONTEXT_HEADER,
+  STATE_AUTHORITY_TAG,
+  ACTIVATION_SIGNAL_TAG,
+  shouldInjectPalsContext,
+  buildPalsContextPayload,
+  isLegacyPalsContextMessage,
+  isPalsContextMessage,
+  keepOnlyLatestPalsContextMessage,
+  messagesChanged,
+} from "./pals-context-injection";
 
 const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
 const COMMAND_ACTIVATION_TURN_BUDGET = 3;
@@ -74,7 +82,7 @@ type QuickActionDef = {
   shortcutHint: string;
 };
 
-type ActivationState = {
+export type ActivationState = {
   source: "command" | "prompt";
   signal: string;
   expiresAt: number;
@@ -334,58 +342,6 @@ function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
   ]
     .filter(Boolean)
     .join(" | ");
-}
-
-function shouldInjectPalsContext(state: PalsStateSnapshot, activation: ActivationState | undefined): boolean {
-  return Boolean(state.detected && activation && activation.turnsRemaining > 0);
-}
-
-function buildPalsContextPayload(state: PalsStateSnapshot, activation: ActivationState, cwd: string): string {
-  return [
-    "## PALS Context (bounded injection)",
-    "",
-    STATE_AUTHORITY_TAG,
-    `${ACTIVATION_SIGNAL_TAG} ${activation.signal} (${activation.source})`,
-    state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
-    state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
-    state.nextAction ? `Next action: ${state.nextAction}` : null,
-    "Delegated APPLY may use repo-local `pals-implementer` only for eligible bounded tasks; parent APPLY remains authoritative for verification, module enforcement, fallback, and `.paul/*` lifecycle writes.",
-    "",
-    "Use shared .paul/* artifacts and loaded SKILL.md/workflow instructions as the authoritative lifecycle source.",
-    "",
-    ...renderArtifactSlices(cwd, state),
-    "",
-    ...renderWorkflowResourceCapsules(cwd),
-  ]
-    .filter(Boolean)
-    .join("\n");
-}
-
-function isLegacyPalsContextMessage(message: any): boolean {
-  return message?.role === "user" && typeof message?.content === "string" && message.content.includes(LEGACY_PALS_CONTEXT_HEADER);
-}
-
-function isPalsContextMessage(message: any): boolean {
-  if (message?.customType === PALS_CONTEXT_CUSTOM_TYPE) return true;
-  return isLegacyPalsContextMessage(message);
-}
-
-function keepOnlyLatestPalsContextMessage(messages: any[]): any[] {
-  let latestIndex = -1;
-  for (let i = 0; i < messages.length; i++) {
-    if (isPalsContextMessage(messages[i])) latestIndex = i;
-  }
-
-  if (latestIndex < 0) return messages;
-  return messages.filter((message, index) => !isPalsContextMessage(message) || index === latestIndex);
-}
-
-function messagesChanged(previous: any[], next: any[]): boolean {
-  if (previous.length !== next.length) return true;
-  for (let i = 0; i < previous.length; i++) {
-    if (previous[i] !== next[i]) return true;
-  }
-  return false;
 }
 
 function extractTextContent(message: any): string | undefined {
