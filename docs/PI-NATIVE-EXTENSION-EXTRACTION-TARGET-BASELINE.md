@@ -155,6 +155,35 @@ Phase 250 completed the S3 extraction and updated the active baseline from “co
 
 The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain historical context; this section records the Phase 250 outcome only and does not authorize reopening runtime behavior.
 
+## Phase 253 Outcome
+
+Phase 253 promoted S7 `pals-context-injection` from "do not extract before guided-workflow evidence semantics are stable" to a bounded contract target without modifying runtime, source, tests, install, dependencies, CI, or lifecycle authority. The S1/S2/S3/S5 extraction history above remains authoritative verbatim; this section records the Phase 253 promotion only.
+
+- **S7 contract created:** `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` defines the S7 subsystem boundary (six functions: `buildPalsContextPayload`, `shouldInjectPalsContext`, `isPalsContextMessage`, `isLegacyPalsContextMessage`, `keepOnlyLatestPalsContextMessage`, `messagesChanged`; six constants as exact-string single-defined markers: `PRIMARY_INJECTION_EVENT`, `SUPPORTING_CONTEXT_EVENT`, `PALS_CONTEXT_CUSTOM_TYPE`, `LEGACY_PALS_CONTEXT_HEADER`, `STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`), the shared-helper retention rule for `extractTextContent` and `collectRecentAssistantTexts`, the message-stream housekeeping rule for `keepOnlyLatestPalsContextMessage`, the allowed Phase 254 sibling-module shape (`drivers/pi/extensions/pals-context-injection.ts`), the forbidden scope, and the Phase 254 handoff.
+- **Precondition satisfied:** the v2.58 closure (Phases 249–252; PRs #164/#165/#166/#167; Pi 227/227, cross-harness 135/135, install 5 Pi extension files) stabilizes guided-workflow evidence semantics, satisfying the `do not extract before guided-workflow evidence semantics are stable` precondition recorded for S7.
+- **S4/S6/S8 deferrals preserved:** the Phase 253 contract explicitly forbids extracting or modifying S4 canonical-reply delivery, S6 lifecycle UI, and S8 command routing as part of S7 work. Previously extracted siblings (S5, S1, S2, S3) are also forbidden from re-extraction or modification.
+- **Phase 253 is docs-only:** no `drivers/pi/extensions/*.ts`, `tests/*.sh`, installer, dependency, CI, module registry, kernel workflow source, Claude Code driver, Agent SDK driver, or installed runtime copy is modified. The validation baseline at the close of Phase 253 remains Pi 227/227, cross-harness 135/135, artifact_consistency PASS, install 5 Pi extension files.
+
+The approved-wave selection prose above remains historical context; Phase 254 is the first source-changing step authorized for S7.
+
+## Phase 254 Validation Expectations
+
+Phase 254 must include focused source checks and full validation before the S7 sibling module is considered extracted:
+
+- Grep/read checks that the six S7 constants (`PRIMARY_INJECTION_EVENT`, `SUPPORTING_CONTEXT_EVENT`, `PALS_CONTEXT_CUSTOM_TYPE`, `LEGACY_PALS_CONTEXT_HEADER`, `STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`) are defined exactly once in repo source after extraction (single-defined markers).
+- Grep/read checks that the six S7 functions (`buildPalsContextPayload`, `shouldInjectPalsContext`, `isPalsContextMessage`, `isLegacyPalsContextMessage`, `keepOnlyLatestPalsContextMessage`, `messagesChanged`) are defined exactly once in repo source after extraction and that `drivers/pi/extensions/pals-hooks.ts` imports them from `./pals-context-injection`.
+- Shared-helper retention check: `extractTextContent` and `collectRecentAssistantTexts` remain defined in `drivers/pi/extensions/pals-hooks.ts` (shared with S3 and S5).
+- Explicit separation check: no S7 function is moved into or merged with S4 canonical-reply delivery (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`); S4 stays inline.
+- `no inferred merge intent` marker remains present in contract and validation context.
+- Repo-source-only changes: no direct edits to installed runtime copies under `~/.pi/agent/extensions/`.
+- Install source-set proof: `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reports 6 Pi extension files (current 5 + new sibling) in its installed file count.
+- `bash tests/pi-end-to-end-validation.sh` — expected Phase 253 baseline: Pi 227/227.
+- `bash tests/cross-harness-validation.sh` — expected Phase 253 baseline: cross-harness 135/135.
+- `bash tests/helpers/artifact_consistency.sh` — must PASS.
+- `git diff --check` — must be clean.
+
+If validation counts differ from the Phase 253 baseline, the delta must be reconciled from command output in the Phase 254 SUMMARY with reason, validation class, and shared-invariant preservation rationale.
+
 ## Forbidden Scope for Phase 243 by Default
 
 - S4 canonical reply delivery, unless a new approved plan specifically covers Pi message mutation.
@@ -199,9 +228,9 @@ If validation counts differ from the Phase 249 baseline, the delta must be recon
 - S3 is extracted and remains bounded to detection/option parsing/merge-gate routing in `guided-workflow-detection.ts`.
 - S4 is still deferred because it sends canonical replies through Pi message flow.
 - S6 is still deferred because it mutates Pi UI and consumes module/context outputs.
-- S7 is still deferred because exact authority and activation tags are lifecycle-sensitive.
+- S7 is promoted to a bounded Phase 254 contract target via `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md`; the exact authority/activation tags (`STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`), the legacy-header migration path (`LEGACY_PALS_CONTEXT_HEADER`), and the custom-message-type identity (`PALS_CONTEXT_CUSTOM_TYPE`) remain the binding preservation rules and are not relaxed by this promotion.
 - S8 is still deferred because command routing is the highest user-visible compatibility surface.
 
 ## Summary Decision
 
-Phase 243's approved extraction wave was S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation were preserved. S5 was already extracted. S3 was promoted by Phase 249 and extracted by Phase 250 into `guided-workflow-detection.ts` with S4 canonical reply delivery retained in `pals-hooks.ts`. S4/S6/S7/S8 remain deferred by default.
+Phase 243's approved extraction wave was S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation were preserved. S5 was already extracted. S3 was promoted by Phase 249 and extracted by Phase 250 into `guided-workflow-detection.ts` with S4 canonical reply delivery retained in `pals-hooks.ts`. S7 was promoted by Phase 253 to a bounded Phase 254 contract target via `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` (no source change yet). S4/S6/S8 remain deferred by default.
