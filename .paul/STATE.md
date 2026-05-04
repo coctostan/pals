@@ -11,7 +11,7 @@ See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone c
 Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
 Phase: 253 of 256 (S7 Extraction Contract + Bounded Submodule Plan) — ✅ Complete
 Plan: 253-01 complete; SUMMARY recorded
-Status: Loop complete; merge gate active (PR #168 OPEN, CI passing, mergeStateStatus CLEAN)
+Status: Loop complete; merge gate resolved (PR #168 squash-merged into main as `f326db54`)
 Last activity: 2026-05-03 — UNIFY 253-01 PASS; SUMMARY at `.paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md` (AC-1…AC-4 PASS); ready to merge PR #168 and route to /paul:plan Phase 254
 
 Progress:
@@ -32,7 +32,7 @@ Progress:
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
-- v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [███░░░░░░░] 25% (1 of 4 phases complete; Phase 253 closed; merge gate active for PR #168)
+- v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [███░░░░░░░] 25% (1 of 4 phases complete; Phase 253 closed; PR #168 merged)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -67,7 +67,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — Phase 253 closed; merge gate active for PR #168; next: /paul:plan Phase 254 after merge]
+  ✓        ✓        ✓     [Loop complete — Phase 253 closed; PR #168 merged; next: /paul:plan Phase 254]
 ```
 
 ## Accumulated Context
@@ -310,16 +310,16 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 04970711 — Phase 252: close v2.58 evidence + record v2.59 recommendation (#167)
-PR: #167 MERGED — https://github.com/coctostan/pals/pull/167 (squash-merged 2026-05-03; feature branch deleted). Prior PR #166 merged Phase 251.
-Working tree: clean on main after v2.59 milestone scaffolding (`.paul/ROADMAP.md`, `.paul/STATE.md`, `.paul/phases/253-256/` created). v2.59 will create its first feature branch when /paul:plan executes for Phase 253.
-Prior PRs: #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); #160 merged (Phase 245 evidence closure + loader-compat hotfix); earlier PR history archived in STATE history.
+Last commit: f326db54 — feat(253): v2.59 Phase 253 — S7 pals-context-injection extraction contract + bounded Phase 254 handoff (docs-only) (#168)
+PR: #168 MERGED — https://github.com/coctostan/pals/pull/168 (squash-merged 2026-05-03; feature/253-s7-pals-context-injection-extraction-contract deleted on remote and locally). Prior PR #167 merged v2.58 closure (Phase 252).
+Working tree: clean on main after PR #168 squash-merge; local main synced with origin/main; v2.59 Phase 253 closed (1 of 4 phases complete); ready for /paul:plan Phase 254 (Bounded S7 Submodule Extraction).
+Prior PRs: #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-03 (v2.59 Phase 253 UNIFY complete; merge gate active)
-Stopped at: UNIFY 253-01 PASS; SUMMARY at `.paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md` (AC-1…AC-4 PASS; Pi 227/227, cross-harness 135/135, artifact_consistency PASS, git diff --check clean). Merge gate active: PR #168 OPEN, CI passing (Socket Security Project Report ✓, PR Alerts ✓), mergeStateStatus CLEAN; pending squash-merge.
-Next action: Resolve merge gate (squash-merge PR #168, sync local main, delete feature branch); then `/paul:plan` Phase 254 (Bounded S7 Submodule Extraction).
+Last session: 2026-05-03 (v2.59 Phase 253 closed and merged via PR #168)
+Stopped at: Phase 253 closed end-to-end. UNIFY 253-01 PASS (AC-1…AC-4 PASS; Pi 227/227, cross-harness 135/135, artifact_consistency PASS, git diff --check clean). PR #168 squash-merged into main as `f326db54`; local main synced; feature branch deleted on remote and locally.
+Next action: `/paul:plan` Phase 254 (Bounded S7 Submodule Extraction).
 Resume file: .paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md
 Resume context:
 - v2.59 selected default recommendation from v2.58 closure: S7 `pals-context-injection` extracted as the next sibling Pi extension module, following the S5/S1/S2/S3 sibling-module recipe ratified by Phases 239 / 243 / 246 / 250.
