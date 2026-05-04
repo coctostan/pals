@@ -765,6 +765,7 @@ section "EXTENSION STRUCTURAL VALIDITY"
 EXT_SRC="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
 EXT_ARTIFACT_SLICE="$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts"
 EXT_GUIDED_WORKFLOW_DETECTION="$REPO_ROOT/drivers/pi/extensions/guided-workflow-detection.ts"
+EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -872,7 +873,9 @@ else
   fi
 
   # Guardrail: primary injection is centered on before_agent_start
-  if grep -q 'PRIMARY_INJECTION_EVENT = "before_agent_start"' "$EXT_SRC" 2>/dev/null && grep -q 'pi.on("before_agent_start"' "$EXT_SRC" 2>/dev/null && grep -q 'customType: PALS_CONTEXT_CUSTOM_TYPE' "$EXT_SRC" 2>/dev/null; then
+  # Phase 254 (S7) repoint: the PRIMARY_INJECTION_EVENT constant definition moved to ./pals-context-injection;
+  # pals-hooks.ts imports the identifier and still owns the before_agent_start handler + PALS context injection.
+  if grep -q 'PRIMARY_INJECTION_EVENT' "$EXT_SRC" 2>/dev/null && grep -q 'pi.on("before_agent_start"' "$EXT_SRC" 2>/dev/null && grep -q 'customType: PALS_CONTEXT_CUSTOM_TYPE' "$EXT_SRC" 2>/dev/null; then
     tap_ok "Extension uses before_agent_start as the primary context injection point"
   else
     tap_not_ok "Extension uses before_agent_start as the primary context injection point" "Expected before_agent_start marker, handler, and PALS context custom message injection"
@@ -1106,6 +1109,38 @@ fi
     tap_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries"
   else
     tap_not_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries" "Expected S3 detection/no-inferred-merge markers in guided-workflow-detection.ts plus S4 canonical reply/no-auto markers in pals-hooks.ts"
+  fi
+
+  # Phase 254 (S7): pals-context-injection sibling extraction guardrail.
+  # Asserts the new sibling holds the six S7 constants exactly, the six S7 functions, the literal authority/activation byte sequences,
+  # and the loader-compat marker; that pals-hooks.ts imports from ./pals-context-injection and no longer declares them inline; and
+  # that S4 canonical-reply identifiers and shared helpers remain in pals-hooks.ts.
+  if [[ -f "$EXT_PALS_CONTEXT_INJECTION" ]] \
+    && grep -q 'PRIMARY_INJECTION_EVENT = "before_agent_start"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'SUPPORTING_CONTEXT_EVENT = "context"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'PALS_CONTEXT_CUSTOM_TYPE = "pals-context"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'LEGACY_PALS_CONTEXT_HEADER = "## PALS Context (auto-injected)"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'STATE_AUTHORITY_TAG = "\[PALS_STATE_AUTHORITY=.paul/STATE.md\]"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'ACTIVATION_SIGNAL_TAG = "\[PALS_ACTIVATION_SIGNAL\]"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'function shouldInjectPalsContext' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'function buildPalsContextPayload' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'function isLegacyPalsContextMessage' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'function isPalsContextMessage' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'function keepOnlyLatestPalsContextMessage' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'function messagesChanged' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'No-op Pi extension factory' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
+    && grep -q 'from "./pals-context-injection"' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^const (PRIMARY_INJECTION_EVENT|SUPPORTING_CONTEXT_EVENT|PALS_CONTEXT_CUSTOM_TYPE|LEGACY_PALS_CONTEXT_HEADER|STATE_AUTHORITY_TAG|ACTIVATION_SIGNAL_TAG)' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^function (shouldInjectPalsContext|buildPalsContextPayload|isLegacyPalsContextMessage|isPalsContextMessage|keepOnlyLatestPalsContextMessage|messagesChanged)' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'function extractTextContent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'function collectRecentAssistantTexts' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "S7 PALS context injection extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
+  else
+    tap_not_ok "S7 PALS context injection extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected six S7 constants/functions + literal authority/activation byte sequences + No-op Pi extension factory in pals-context-injection.ts; pals-hooks.ts importing from ./pals-context-injection with no inline S7 declarations; S4 canonical-reply identifiers and shared helpers retained in pals-hooks.ts"
   fi
 
   tap_file_contains_all \
