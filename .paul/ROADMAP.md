@@ -36,7 +36,7 @@ Theme: Continue the sibling extraction wave by extracting S7 `pals-context-injec
 |-------|------|-------|--------|-----------|
 | 253 | S7 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-03 |
 | 254 | Bounded S7 Submodule Extraction | 1/1 | ✅ Complete | 2026-05-04 |
-| 255 | Documentation + Validation Surfacing | TBD | Planning | - |
+| 255 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-05 |
 | 256 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 253: S7 Extraction Contract + Bounded Submodule Plan
@@ -48,8 +48,8 @@ Focus: Extract S7 `pals-context-injection` into a sibling Pi extension module fo
 Plans: TBD (defined during /paul:plan)
 
 ### Phase 255: Documentation + Validation Surfacing
-Focus: Surface the S7 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S7 extraction contract and modularization contract; add localized Pi/cross-harness validation guardrails without broad validation-suite refactors.
-Plans: TBD (defined during /paul:plan)
+Focus: Surface the S7 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S7 extraction contract and modularization contract; add localized Pi validation guardrails without broad validation-suite refactors.
+Plans: `.paul/phases/255-documentation-validation-surfacing-v2-59/255-01-PLAN.md` + `255-01-SUMMARY.md` — ✅ Complete: surfaced S7 sibling extraction (`pals-context-injection.ts`) across `README.md` + `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`; appended `## Phase 254 Outcome` to `PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` and `PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`; appended `## Status After Phase 254` to `PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md`; added 3 bounded `Phase 255 sibling extraction surfacing (Pi-supported runtime)` TAP assertions in `tests/pi-end-to-end-validation.sh`. AC-1–AC-4 PASS (Pi 1..231/0, cross-harness 1..135/0 unchanged, artifact_consistency PASS, install unchanged at 6 files; +3 Pi count exactly as planned). PR #170 (merge gate runs in /paul:unify); fourth ratification of the sibling-surfacing recipe.
 
 ### Phase 256: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.59 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation; record v2.60 candidate selection without approving it.
@@ -113,4 +113,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-04 — v2.59 Phase 255 Plan 255-01 created on fresh `feature/255-documentation-validation-surfacing` branch (`.paul/phases/255-documentation-validation-surfacing-v2-59/255-01-PLAN.md`); 3-task docs + validation surfacing of S7 `pals-context-injection`, mirroring Phase 244/247/251 precedent; awaiting approval to APPLY. v2.59 progress 2 of 4 phases complete (Phase 253 PR #168, Phase 254 PR #169 `af1c1793`). v2.58 remains closed via PR #167.*
+*Last updated: 2026-05-05 — v2.59 Phase 255 Plan 255-01 APPLY ✓ + UNIFY (this commit). Surfaced S7 `pals-context-injection.ts` across README.md, drivers/pi/extensions/README.md, drivers/pi/skill-map.md, three contract docs (Phase 254 Outcome / Status After Phase 254), and tests/pi-end-to-end-validation.sh (+3 surfacing assertions). Validation: install 6 ✓, Pi 231/231 ✓, cross-harness 135/135 unchanged ✓, artifact_consistency PASS ✓, `git diff --check` clean ✓. PR #170 entering merge gate. v2.59 progress 3 of 4 phases complete (Phase 253 PR #168, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 pending merge). v2.58 remains closed via PR #167.*
