@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone c
 ## Current Position
 
 Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
-Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase) — Not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-05 — Phase 255 transitioned. v2.59 Phase 255 Plan 255-01 closed via PR #170 squash-merged as `0a607c43` (Phase 255 docs/validation surfacing); post-merge state-alignment commit `688b4692` on main; PROJECT.md evolution commit (this transition) records Phase 255 closure decision row + 4th ratification of the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255). Validation baseline carried into Phase 256: Pi 231/231, cross-harness 135/135, artifact_consistency PASS, install 6 Pi extension files.
+Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase) — Planning
+Plan: 256-01 created, awaiting approval / APPLY
+Status: PLAN ✓ APPLY ○ UNIFY ○ — awaiting approval to APPLY
+Last activity: 2026-05-05 — Created `.paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-PLAN.md` (3-task v2.59 evidence closure + next-roadmap recommendation, mirroring Phase 245 / 248 / 252 closure shape one-to-one; AC-1…AC-4; expected cross-harness 135 → 136 with Pi 231/231 unchanged and install 6 unchanged); fresh `feature/256-evidence-closure-next-roadmap-decision-v2-59` branch created from main as part of Phase 256 GitHub Flow preflight.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -67,7 +67,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 256 not started — ready to /paul:plan]
+  ✓        ○        ○     [Plan 256-01 created, awaiting approval / APPLY]
 ```
 
 ## Accumulated Context
@@ -317,20 +317,11 @@ Prior PRs: #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged 
 
 ## Session Continuity
 
-Last session: 2026-05-05 — Phase 255 Plan 255-01 PLAN ✓ APPLY ✓ UNIFY ✓ on `feature/255-documentation-validation-surfacing`; PR #170 squash-merged as `0a607c43`; merge gate complete; post-merge baseline confirmed on main.
-Stopped at: Phase 255 closed. v2.59 progress 3 of 4 phases complete. Working tree clean on main; post-merge validation green (install 6, Pi 231/231, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean).
-Next action: Run `/paul:plan` Phase 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase). The phase will reconcile v2.59 evidence (Phase 253 contract + Phase 254 source extraction + Phase 255 docs/validation surfacing), record the milestone closure, and recommend the next milestone roadmap.
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-05 — Phase 256 Plan 256-01 created on fresh `feature/256-evidence-closure-next-roadmap-decision-v2-59` branch; user invoked `/paul:pause` before approving APPLY.
+Stopped at: Plan 256-01 created and pending approval. 3 tasks (aggregate v2.59 closure evidence in MILESTONES.md → close v2.59 in PROJECT.md/ROADMAP.md with v2.60 recommendation → add cross-harness shared-invariant closure guardrail + run full validation), 4 ACs. Working tree carries only Phase 256 lifecycle artifacts (this STATE.md edit + ROADMAP.md row 256 Planning + new 256-01-PLAN.md); no source/doc files modified.
+Next action: Run `/paul:resume` then approve Plan 256-01 and run `/paul:apply .paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-PLAN.md`.
+Resume file: .paul/HANDOFF-2026-05-05-v2-59-phase-256-plan-awaiting-approval.md
 Resume context:
-- v2.59 active: 2 of 4 phases complete (Phase 253 closed via PR #168 merged 2026-05-03 as f326db54; Phase 254 closed via PR #169 merged 2026-05-04 as af1c1793). Wave on track: phase 253 contract → phase 254 source extraction → phase 255 docs/validation surfacing → phase 256 evidence closure.
-- Validation baseline carried forward to Phase 255 (post-merge on main):
-  - install: `[ok] Pi extensions installed: 6 files` (S7 sibling now in install set)
-  - Pi e2e: 1..228 / Passed 228 / Failed 0 (S7 EXT_PALS_CONTEXT_INJECTION block included)
-  - cross-harness: 1..135 / Passed 135 / Failed 0 (unchanged, no shared-invariant guardrail planned for v2.59 source extractions)
-  - artifact_consistency: PASS
-  - `git diff --check`: clean
-- Files now on main from PR #169: new sibling `drivers/pi/extensions/pals-context-injection.ts` (88 LOC); `drivers/pi/extensions/pals-hooks.ts` reduced 947 → 903 LOC; `tests/pi-end-to-end-validation.sh` carries one new EXT_PALS_CONTEXT_INJECTION TAP block + the Phase 254 repoint of pre-existing assertion 133. Lifecycle artifacts (`254-01-PLAN.md`, `254-01-SUMMARY.md`, archived handoff) are on main as well.
-- Markers preserved (single-located in `drivers/pi/extensions/pals-context-injection.ts`): `[PALS_STATE_AUTHORITY=.paul/STATE.md]`, `[PALS_ACTIVATION_SIGNAL]`, `## PALS Context (auto-injected)`, `pals-context`, `before_agent_start`, `context`. S4 canonical-reply identifiers (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`) and shared helpers (`extractTextContent`, `collectRecentAssistantTexts`) retained inline in `pals-hooks.ts`.
-- GitHub Flow state: on `main`; remote `feature/254-bounded-s7-submodule-extraction` deleted; PR #169 MERGED. Phase 255 GitHub Flow preflight will branch from this point.
-- Phase 255 expected scope (per v2.59 wave plan and Phase 253 outcome): surface S7 across `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, and the contract / extraction docs; add bounded surfacing-validation guardrails as needed; preserve all current count baselines (Pi 228, cross-harness 135) unless the surfacing block intentionally adds a documented +N delta.
-- Authoritative references: `.paul/phases/254-bounded-s7-submodule-extraction/254-01-SUMMARY.md` (the closed phase), `.paul/phases/253-s7-extraction-contract-bounded-submodule-plan/253-01-SUMMARY.md` (S7 contract), `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` (Phase 253 contract), `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (S1–S8 inventory and surfacing expectations), `.paul/ROADMAP.md` (v2.59 active milestone).
+- v2.59 Phase 256 Plan 256-01 created and awaiting approval; mirrors Phase 245 / 248 / 252 closure shape (3 tasks, 4 ACs, +1 cross-harness shared-invariant closure guardrail; expected count 135 → 136; Pi 231/231 unchanged; install 6 unchanged).
+- Branch `feature/256-evidence-closure-next-roadmap-decision-v2-59` already created from main (0 ahead / 0 behind); PR will be opened in APPLY postflight.
+- v2.59 progress 3 of 4 phases complete (Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`); Phase 256 closes v2.59. After UNIFY + merge, route to `/paul:milestone` for v2.60 (recorded recommendation: S6 lifecycle UI extraction; alternative S8 command routing).
