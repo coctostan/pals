@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone c
 ## Current Position
 
 Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
-Phase: 254 of 256 (Bounded S7 Submodule Extraction) — closed via PR #169 merged 2026-05-04
-Plan: 254-01 closed; PR #169 squash-merged 2026-05-04 (`af1c1793`); local main synced; feature branch deleted on remote and locally
-Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop closed; ready for next PLAN (Phase 255)
-Last activity: 2026-05-04 — Phase 254 closed: SUMMARY.md authored (`.paul/phases/254-bounded-s7-submodule-extraction/254-01-SUMMARY.md`, 225 LOC); merge gate passed (PR exists ✓, CI SUCCESS ✓, reviews skipped per config, code review skipped per REV pr_review:false, PR squash-merged as af1c1793 ✓, base synced ✓, branch deleted ✓); post-merge validation on main: install 6 Pi extension files ✓, Pi 228/228 ✓; v2.59 progress 2 of 4 phases complete
+Phase: 255 of 256 (Documentation + Validation Surfacing) — Planning
+Plan: 255-01 created, awaiting approval / APPLY
+Status: PLAN ✓ APPLY ○ UNIFY ○ — awaiting approval to APPLY
+Last activity: 2026-05-04 — Created `.paul/phases/255-documentation-validation-surfacing-v2-59/255-01-PLAN.md` (3 tasks: user-facing Pi docs surfacing → contract docs Phase 254 Outcome / Status After Phase 254 → bounded Pi surfacing TAP guardrails + full validation; AC-1…AC-4; expected Pi 228 → 231 with cross-harness 135 unchanged and install 6 unchanged); fresh `feature/255-documentation-validation-surfacing` branch created from main as part of Phase 255 GitHub Flow preflight
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -317,10 +317,10 @@ Prior PRs: #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/
 
 ## Session Continuity
 
-Last session: 2026-05-04 — Phase 254 closed via PR #169 squash-merged as af1c1793; local main synced; feature branch deleted on remote and locally; ready to plan Phase 255
-Stopped at: Loop closed for Phase 254 on main. SUMMARY.md authored, merge gate passed cleanly (CI SUCCESS, reviews skipped per config, REV pr_review skipped per config, squash merge to main, branch auto-deleted), post-merge validation on main confirms install 6 Pi extension files and Pi 228/228 are stable.
-Next action: Run `/paul:plan` to plan Phase 255 (Documentation + Validation Surfacing) of v2.59. The Phase 255 GitHub Flow preflight will create a fresh feature branch from main.
-Resume file: .paul/phases/254-bounded-s7-submodule-extraction/254-01-SUMMARY.md
+Last session: 2026-05-04 — paused via /paul:pause after Phase 255 Plan 255-01 created on fresh feature/255-documentation-validation-surfacing branch; awaiting explicit approval to APPLY
+Stopped at: Plan 255-01 created. 3 tasks (user-facing Pi docs surfacing → contract docs Phase 254 Outcome / Status After Phase 254 → bounded Pi surfacing TAP guardrails + full validation), 4 ACs. Working tree carries only Phase 255 lifecycle artifacts (this STATE.md edit + new PLAN.md + the impending ROADMAP.md update); no source files or doc files modified yet.
+Next action: Approve Plan 255-01 and run `/paul:apply .paul/phases/255-documentation-validation-surfacing-v2-59/255-01-PLAN.md`.
+Resume file: .paul/HANDOFF-2026-05-04-v2-59-phase-255-plan-awaiting-approval.md
 Resume context:
 - v2.59 active: 2 of 4 phases complete (Phase 253 closed via PR #168 merged 2026-05-03 as f326db54; Phase 254 closed via PR #169 merged 2026-05-04 as af1c1793). Wave on track: phase 253 contract → phase 254 source extraction → phase 255 docs/validation surfacing → phase 256 evidence closure.
 - Validation baseline carried forward to Phase 255 (post-merge on main):
