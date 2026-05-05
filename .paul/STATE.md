@@ -310,16 +310,16 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: f326db54 — feat(253): v2.59 Phase 253 — S7 pals-context-injection extraction contract + bounded Phase 254 handoff (docs-only) (#168)
-PR: #168 MERGED — https://github.com/coctostan/pals/pull/168 (squash-merged 2026-05-03; feature/253-s7-pals-context-injection-extraction-contract deleted on remote and locally). Prior PR #167 merged v2.58 closure (Phase 252).
-Working tree: clean on main after PR #168 squash-merge; local main synced with origin/main; v2.59 Phase 253 closed (1 of 4 phases complete); ready for /paul:plan Phase 254 (Bounded S7 Submodule Extraction).
-Prior PRs: #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); #162 merged (Phase 247 docs/validation surfacing); #161 merged (Phase 246 S2 extraction); earlier PR history archived in STATE history.
+Last commit: 0a607c43 — docs(255): surface S7 pals-context-injection extraction (#170)
+PR: #170 MERGED — https://github.com/coctostan/pals/pull/170 (squash-merged 2026-05-05 as `0a607c43`; feature/255-documentation-validation-surfacing deleted on remote and locally). Prior PR #169 merged Phase 254 (S7 source extraction); PR #168 merged Phase 253 (S7 contract).
+Working tree: clean on main after PR #170 squash-merge; local main synced with origin/main; v2.59 Phase 255 closed (3 of 4 phases complete); ready for /paul:plan Phase 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase).
+Prior PRs: #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-05 — Phase 255 Plan 255-01 PLAN ✓ APPLY ✓ UNIFY ✓ on `feature/255-documentation-validation-surfacing`; awaiting merge gate execution (PR #170 squash-merge).
-Stopped at: Phase 255 UNIFY drafted — SUMMARY.md authored at `.paul/phases/255-documentation-validation-surfacing-v2-59/255-01-SUMMARY.md`; STATE.md, ROADMAP.md, CODI-HISTORY.md, QUALITY-HISTORY.md updated. UNIFY commit + push + Phase 255 merge gate (gate order: PR exists → CI passing → PR merged → base synced → branch cleaned) is the next step within the same /paul:unify run.
-Next action: Continue inside /paul:unify — stage and commit UNIFY artifacts, push, then run the Phase 255 merge gate. After merge, run `/paul:plan` for Phase 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase).
+Last session: 2026-05-05 — Phase 255 Plan 255-01 PLAN ✓ APPLY ✓ UNIFY ✓ on `feature/255-documentation-validation-surfacing`; PR #170 squash-merged as `0a607c43`; merge gate complete; post-merge baseline confirmed on main.
+Stopped at: Phase 255 closed. v2.59 progress 3 of 4 phases complete. Working tree clean on main; post-merge validation green (install 6, Pi 231/231, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean).
+Next action: Run `/paul:plan` Phase 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase). The phase will reconcile v2.59 evidence (Phase 253 contract + Phase 254 source extraction + Phase 255 docs/validation surfacing), record the milestone closure, and recommend the next milestone roadmap.
 Resume file: .paul/phases/255-documentation-validation-surfacing-v2-59/255-01-SUMMARY.md
 Resume context:
 - v2.59 active: 2 of 4 phases complete (Phase 253 closed via PR #168 merged 2026-05-03 as f326db54; Phase 254 closed via PR #169 merged 2026-05-04 as af1c1793). Wave on track: phase 253 contract → phase 254 source extraction → phase 255 docs/validation surfacing → phase 256 evidence closure.
