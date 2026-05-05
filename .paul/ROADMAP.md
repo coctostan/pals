@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection** (v2.59)
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 2 of 4 complete (Phase 253 closed via PR #168 merged; Phase 254 APPLY+UNIFY complete; PR #169 in merge gate)
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: high | Phases: 2 of 4 complete (Phase 253 closed via PR #168 `f326db54`; Phase 254 closed via PR #169 `af1c1793` merged 2026-05-04)
 Theme: Continue the sibling extraction wave by extracting S7 `pals-context-injection` from `drivers/pi/extensions/pals-hooks.ts` while preserving the explicit `STATE_AUTHORITY_TAG` / `ACTIVATION_SIGNAL_TAG` / `LEGACY_PALS_CONTEXT_HEADER` / `PALS_CONTEXT_CUSTOM_TYPE` / `PRIMARY_INJECTION_EVENT` / `SUPPORTING_CONTEXT_EVENT` constants, the message-stream housekeeping that keeps only the latest PALS context message, and the loader-compat / sibling-import / single-defined-marker invariants ratified by Phases 239 / 243 / 246 / 250. S4 canonical reply delivery, S6 lifecycle UI, and S8 command routing remain explicitly out of scope.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 253 | S7 Extraction Contract + Bounded Submodule Plan | 1/1 | ✅ Complete | 2026-05-03 |
-| 254 | Bounded S7 Submodule Extraction | 1/1 | ✅ Complete (pending merge gate) | 2026-05-04 |
-| 255 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 254 | Bounded S7 Submodule Extraction | 1/1 | ✅ Complete | 2026-05-04 |
+| 255 | Documentation + Validation Surfacing | 1/1 | ✅ Complete | 2026-05-05 |
 | 256 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 253: S7 Extraction Contract + Bounded Submodule Plan
@@ -48,8 +48,8 @@ Focus: Extract S7 `pals-context-injection` into a sibling Pi extension module fo
 Plans: TBD (defined during /paul:plan)
 
 ### Phase 255: Documentation + Validation Surfacing
-Focus: Surface the S7 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S7 extraction contract and modularization contract; add localized Pi/cross-harness validation guardrails without broad validation-suite refactors.
-Plans: TBD (defined during /paul:plan)
+Focus: Surface the S7 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S7 extraction contract and modularization contract; add localized Pi validation guardrails without broad validation-suite refactors.
+Plans: `.paul/phases/255-documentation-validation-surfacing-v2-59/255-01-PLAN.md` + `255-01-SUMMARY.md` — ✅ Complete: surfaced S7 sibling extraction (`pals-context-injection.ts`) across `README.md` + `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`; appended `## Phase 254 Outcome` to `PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` and `PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`; appended `## Status After Phase 254` to `PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md`; added 3 bounded `Phase 255 sibling extraction surfacing (Pi-supported runtime)` TAP assertions in `tests/pi-end-to-end-validation.sh`. AC-1–AC-4 PASS (Pi 1..231/0, cross-harness 1..135/0 unchanged, artifact_consistency PASS, install unchanged at 6 files; +3 Pi count exactly as planned). PR #170 (merge gate runs in /paul:unify); fourth ratification of the sibling-surfacing recipe.
 
 ### Phase 256: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.59 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation; record v2.60 candidate selection without approving it.
@@ -113,4 +113,4 @@ Phase status (closed):
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
 *Roadmap created: 2026-03-11*
-*Last updated: 2026-05-04 — v2.59 Phase 254 APPLY+UNIFY complete (`.paul/phases/254-bounded-s7-submodule-extraction/254-01-SUMMARY.md`). Extracted S7 `pals-context-injection` sibling Pi extension (88 LOC), reduced `pals-hooks.ts` 947 → 903 LOC, added bounded `EXT_PALS_CONTEXT_INJECTION` TAP block (Pi 227 → 228, +1 reconciled), all 4 ACs PASS, install reports 6 Pi extension files, cross-harness 135/135 unchanged, artifact_consistency PASS. PR #169 OPEN against main with all CI checks SUCCESS; merge gate in progress. v2.59 progress 2 of 4 phases complete. v2.58 remains closed via PR #167; Phase 253 closed via PR #168.*
+*Last updated: 2026-05-05 — v2.59 Phase 255 Plan 255-01 APPLY ✓ + UNIFY (this commit). Surfaced S7 `pals-context-injection.ts` across README.md, drivers/pi/extensions/README.md, drivers/pi/skill-map.md, three contract docs (Phase 254 Outcome / Status After Phase 254), and tests/pi-end-to-end-validation.sh (+3 surfacing assertions). Validation: install 6 ✓, Pi 231/231 ✓, cross-harness 135/135 unchanged ✓, artifact_consistency PASS ✓, `git diff --check` clean ✓. PR #170 entering merge gate. v2.59 progress 3 of 4 phases complete (Phase 253 PR #168, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 pending merge). v2.58 remains closed via PR #167.*

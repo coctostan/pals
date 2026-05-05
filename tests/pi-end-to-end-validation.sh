@@ -1854,6 +1854,36 @@ tap_file_contains_all \
   'pals-hooks.ts' \
   'Derived aid only'
 
+# Phase 255 sibling extraction surfacing (Pi-supported runtime)
+# ═════════════════════════════════════════════════════════════════
+# Phase 255 surfaces the Phase 254 S7 sibling extraction in user-facing Pi docs.
+# Guardrail: README, Pi extension docs, and skill map must name the S7 sibling and
+# keep the S4 canonical reply delivery boundary visible.
+tap_file_contains_all \
+  "Phase 255 sibling extraction surfacing (Pi-supported runtime): user-facing docs name pals-context-injection.ts and preserve S7/S4 boundary" \
+  "$REPO_ROOT/README.md" \
+  'pals-context-injection.ts' \
+  'pals-hooks.ts' \
+  'S4 canonical reply delivery'
+
+
+tap_file_contains_all \
+  "Phase 255 sibling extraction surfacing (Pi-supported runtime): drivers/pi/extensions/README.md names pals-context-injection.ts alongside extracted siblings" \
+  "$REPO_ROOT/drivers/pi/extensions/README.md" \
+  'pals-hooks.ts' \
+  'module-activity-parsing.ts' \
+  'artifact-slice-rendering.ts' \
+  'workflow-resource-capsule-rendering.ts' \
+  'guided-workflow-detection.ts' \
+  'pals-context-injection.ts' \
+  'S4 canonical reply delivery'
+
+tap_file_contains_all \
+  "Phase 255 sibling extraction surfacing (Pi-supported runtime): drivers/pi/skill-map.md names pals-context-injection.ts and derived-only boundary" \
+  "$REPO_ROOT/drivers/pi/skill-map.md" \
+  'pals-context-injection.ts' \
+  'pals-hooks.ts' \
+  'Derived aid only'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

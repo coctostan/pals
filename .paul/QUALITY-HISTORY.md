@@ -102,3 +102,6 @@ Types: —
 | 2026-05-02 | 250-bounded-s3-submodule-extraction | Pi 224/224, XH 131/131 | N/A (shell) | N/A | N/A | ↑ improving |
 | 2026-05-02 | 251-documentation-validation-surfacing | Pi 227/227, XH 134/134 | N/A (shell) | N/A | N/A | ↑ improving |
 | 2026-05-03 | 252-evidence-closure-next-roadmap-decision | Pi 227/227, XH 135/135 | N/A (shell) | N/A | N/A | → stable |
+| 2026-05-03 | 253-s7-extraction-contract-bounded-submodule-plan | Pi 227/227, XH 135/135 | N/A (shell) | N/A | N/A | → stable |
+| 2026-05-04 | 254-bounded-s7-submodule-extraction | Pi 228/228, XH 135/135 | N/A (shell) | N/A | N/A | ↑ improving |
+| 2026-05-05 | 255-documentation-validation-surfacing-v2-59 | Pi 231/231, XH 135/135 | N/A (shell) | N/A | N/A | ↑ improving |
