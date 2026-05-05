@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone c
 ## Current Position
 
 Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
-Phase: 255 of 256 (Documentation + Validation Surfacing) — APPLY complete; UNIFY pending
-Plan: 255-01 executed; APPLY ✓; awaiting UNIFY
-Status: PLAN ✓ APPLY ✓ UNIFY ○ — APPLY executed all 3 tasks PASS; awaiting UNIFY
-Last activity: 2026-05-05 — Executed Plan 255-01 (3 tasks PASS): Task 1 surfaced `pals-context-injection.ts` across `README.md` (lines 25, 284), `drivers/pi/extensions/README.md` (lines 20, 58 followed by new Phase 254 paragraph, 199, 208), and `drivers/pi/skill-map.md` (lines 9, 20, 96); Task 2 appended `## Phase 254 Outcome` after Phase 253 Outcome in `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (+11 LOC) and `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (+13 LOC), and `## Status After Phase 254` after Status After Phase 253 in `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` (+12 LOC); Task 3 added 3 bounded TAP `Phase 255 sibling extraction surfacing` assertions in `tests/pi-end-to-end-validation.sh` immediately after the Phase 251 surfacing block. Validation: install 6 ✓, Pi 228 → 231 ✓ (+3), cross-harness 135/135 unchanged ✓, artifact_consistency PASS ✓, `git diff --check` clean ✓. All four ACs satisfied.
+Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase) — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-05 — Phase 255 transitioned. v2.59 Phase 255 Plan 255-01 closed via PR #170 squash-merged as `0a607c43` (Phase 255 docs/validation surfacing); post-merge state-alignment commit `688b4692` on main; PROJECT.md evolution commit (this transition) records Phase 255 closure decision row + 4th ratification of the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255). Validation baseline carried into Phase 256: Pi 231/231, cross-harness 135/135, artifact_consistency PASS, install 6 Pi extension files.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -67,7 +67,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Plan 255-01 complete; merge gate pending; then Phase 256 PLAN]
+  ○        ○        ○     [Phase 256 not started — ready to /paul:plan]
 ```
 
 ## Accumulated Context
@@ -320,7 +320,7 @@ Prior PRs: #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged 
 Last session: 2026-05-05 — Phase 255 Plan 255-01 PLAN ✓ APPLY ✓ UNIFY ✓ on `feature/255-documentation-validation-surfacing`; PR #170 squash-merged as `0a607c43`; merge gate complete; post-merge baseline confirmed on main.
 Stopped at: Phase 255 closed. v2.59 progress 3 of 4 phases complete. Working tree clean on main; post-merge validation green (install 6, Pi 231/231, cross-harness 135/135, artifact_consistency PASS, `git diff --check` clean).
 Next action: Run `/paul:plan` Phase 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase). The phase will reconcile v2.59 evidence (Phase 253 contract + Phase 254 source extraction + Phase 255 docs/validation surfacing), record the milestone closure, and recommend the next milestone roadmap.
-Resume file: .paul/phases/255-documentation-validation-surfacing-v2-59/255-01-SUMMARY.md
+Resume file: .paul/ROADMAP.md
 Resume context:
 - v2.59 active: 2 of 4 phases complete (Phase 253 closed via PR #168 merged 2026-05-03 as f326db54; Phase 254 closed via PR #169 merged 2026-05-04 as af1c1793). Wave on track: phase 253 contract → phase 254 source extraction → phase 255 docs/validation surfacing → phase 256 evidence closure.
 - Validation baseline carried forward to Phase 255 (post-merge on main):
