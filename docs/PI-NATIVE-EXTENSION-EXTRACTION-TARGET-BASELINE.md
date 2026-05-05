@@ -166,6 +166,19 @@ Phase 253 promoted S7 `pals-context-injection` from "do not extract before guide
 
 The approved-wave selection prose above remains historical context; Phase 254 is the first source-changing step authorized for S7.
 
+## Phase 254 Outcome
+
+Phase 254 executed the S7 extraction authorized by Phase 253, promoting `pals-context-injection` from contract target to shipped sibling and updating the active baseline accordingly:
+
+- **S7 `pals-context-injection` extracted** to `drivers/pi/extensions/pals-context-injection.ts` (88 LOC); the sibling owns the six S7 functions and the six S7 constants single-located as exact-string markers (`PRIMARY_INJECTION_EVENT`, `SUPPORTING_CONTEXT_EVENT`, `PALS_CONTEXT_CUSTOM_TYPE`, `LEGACY_PALS_CONTEXT_HEADER`, `STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`), and carries the loader-compat no-op default factory with the literal `No-op Pi extension factory` JSDoc phrase.
+- **`pals-hooks.ts` reduced 947 → 903 LOC** by importing the six S7 functions and six S7 constants from `./pals-context-injection` and exporting `ActivationState` for the sibling's type-import; S4 canonical reply delivery (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`) and shared helpers (`extractTextContent`, `collectRecentAssistantTexts`) remain in `pals-hooks.ts`.
+- **Type-only back-import + TAP repoint patterns recorded:** the new sibling type-imports `ActivationState` and `PalsStateSnapshot` from `./pals-hooks` (erased at runtime, dependency graph stays acyclic); pre-existing TAP assertion 133 was repointed in `tests/pi-end-to-end-validation.sh` from the conjunct `'PRIMARY_INJECTION_EVENT = "before_agent_start"'` definition string to the imported-identifier reference `'PRIMARY_INJECTION_EVENT'` as a bounded, no-net-count-change reconciliation.
+- **S4/S6/S8 deferrals preserved:** Phase 254 did not extract or modify canonical reply delivery, lifecycle UI, command routing, installer/uninstaller/driver manifest, dependency, CI, telemetry, hidden state, or lifecycle-authority surfaces. The new sibling enters the source set governed by `drivers/pi/install.sh` lines 88–112; broader `tests/cross-harness-validation.sh` size-debt remains deferred per v2.58 closure.
+- **Install / validation evidence:** `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reported `[ok] Pi extensions installed: 6 files` (5 → 6); Pi validation passed `228/228` (227 → 228 with the bounded `EXT_PALS_CONTEXT_INJECTION` TAP block plus the in-flight repoint of pre-existing assertion 133); cross-harness validation passed `135/135` unchanged; artifact_consistency PASS; `git diff --check` clean.
+- **GitHub Flow evidence:** PR #169 squash-merged the Phase 254 implementation on 2026-05-04 as `af1c1793`.
+
+The approved-wave selection prose, preservation constraints, forbidden-scope rules, and validation expectations above remain historical context; this section records the Phase 254 outcome only and does not authorize reopening runtime behavior.
+
 ## Phase 254 Validation Expectations
 
 Phase 254 must include focused source checks and full validation before the S7 sibling module is considered extracted:
