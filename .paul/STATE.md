@@ -10,9 +10,9 @@ See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 created 202
 
 Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
 Phase: 258 of 260 (Bounded S6 Submodule Extraction)
-Plan: 258-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-06 — Plan 258-01 created at `.paul/phases/258-bounded-s6-submodule-extraction/258-01-PLAN.md`. Bounded source-extraction phase: 3 tasks targeting `drivers/pi/extensions/lifecycle-ui.ts` (new sibling), `drivers/pi/extensions/pals-hooks.ts` (S6 region removed; four `inline → export` promotions for `MAX_VISIBLE_MODULES`/`RECENT_MODULE_ACTIVITY_LOOKBACK`/`parsePalsState`/`collectRecentAssistantTexts` per Phase 254 precedent), and `tests/pi-end-to-end-validation.sh` (one new TAP guardrail block, expected +1 to 232/232). Type-only back-imports for `PalsStateSnapshot` and `RecentModuleActivity` per Phase 254 precedent (durable for runtime-coupled S6). Symbol dependency map verified at plan-time discovery (10 S6 identifiers move; 8 helpers/types stay in `pals-hooks.ts`; 4 inline-only symbols promoted to exports). Forbidden scope explicit: S4 canonical reply delivery (integration point, never extracted), S8 command routing, UI-only lifecycle decisions, every other previously-extracted sibling, Claude Code / Agent SDK driver. Module dispatch recorded (TODD/IRIS/DAVE/DOCS/RUBY/ARCH/CODI advisory PASS; DEAN enforcement PASS). Awaiting approval before /paul:apply.
+Plan: 258-01 UNIFY complete — SUMMARY written; PR #173 awaiting merge gate
+Status: PLAN ✓ / APPLY ✓ / UNIFY ✓ — awaiting PR #173 merge gate (Socket Security CI ×2)
+Last activity: 2026-05-06 — Phase 258 APPLY complete on branch `phase/258-bounded-s6-submodule-extraction`. Created `drivers/pi/extensions/lifecycle-ui.ts` (123 LOC; eight S6 functions + two single-defined S6 constants `PALS_STATUS_ID`/`PALS_WIDGET_ID` both `"pals-lifecycle"`; type-only back-imports for `PalsStateSnapshot` and `RecentModuleActivity` per Phase 254 precedent; loader-compat no-op default factory). Reduced `drivers/pi/extensions/pals-hooks.ts` from 903 → 832 LOC; imports the eight S6 functions and two S6 constants from `./lifecycle-ui`; preserved all 5 `syncLifecycleUi(ctx)` call sites; promoted four inline symbols to exports (`MAX_VISIBLE_MODULES`, `RECENT_MODULE_ACTIVITY_LOOKBACK`, `parsePalsState`, `collectRecentAssistantTexts`); kept S4 canonical-reply identifiers and shared helpers/types inline. Added one `EXT_LIFECYCLE_UI` TAP guardrail to `tests/pi-end-to-end-validation.sh` (+1 reconciled to plan: 231 → 232) and repointed 5 pre-existing TAP assertions to the new sibling (no-net-count-change reshape per Phase 254 TAP repoint precedent). Validation: install 7 Pi extension files (6 → 7), Pi 232/232, cross-harness 136/136 unchanged, artifact_consistency PASS, `git diff --check` clean. Literal byte sequence `pals-lifecycle` single-located; no-UI-only-lifecycle-decisions invariant verified (no `.paul/*` writes, no `pi.sendUserMessage`, no S4 canonical-reply identifiers in the new sibling). PR #173 opened against `main`; Socket Security CI in progress (informational; blocking enforcement happens in UNIFY). Sibling-extraction recipe ratified a 6th time (S5 + S1 + S2 + S3 + S7 + S6); Phase 254 patterns ratified a 2nd time (type-only back-import ×2, TAP-assertion repoint ×5, `inline → export` promotion ×4).
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Status: Phase 257 closed — ready for /paul:plan Phase 258
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
-- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 257 closed via PR #172 `800552a1`; Phase 258 ready to plan)
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 257 closed via PR #172 `800552a1`; Phase 258 APPLY complete — PR #173 open, awaiting UNIFY)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Status: Phase 257 closed — ready for /paul:plan Phase 258
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 258-01 created, awaiting approval]
+  ✓        ✓        ✓     [Phase 258 loop closed; SUMMARY written; PR #173 awaiting merge gate]
 ```
 
 ## Accumulated Context
@@ -317,18 +317,18 @@ Branch: main
 Last commit: 800552a1 — Phase 257: S6 lifecycle-ui extraction contract + bounded Phase 258 plan (#172) (on `main`)
 Branch: main (phase/257-s6-extraction-contract deleted on remote and locally)
 PR: #172 MERGED — https://github.com/coctostan/pals/pull/172 (squash-merged 2026-05-06 as `800552a1`)
-Working tree: clean on main after PR #172 squash-merge; local main synced with origin/main; v2.60 Phase 257 closed (1 of 4 phases complete); ready for /paul:plan for Phase 258 (Bounded S6 Submodule Extraction). Post-merge validation on main: Pi 231/231, cross-harness 136/136, artifact_consistency PASS, install 6 — baseline preserved.
-Prior PRs: #171 merged (Phase 256 v2.59 closure `872aa4a7`); #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); earlier PR history archived in STATE history.
+Working tree: on branch `phase/258-bounded-s6-submodule-extraction`, ahead of `origin/main` by one commit (`4963c618` Phase 258 source extraction). Post-APPLY validation on the feature branch: install 7 Pi extension files (6 → 7), Pi 232/232 (231 → 232 reconciled +1 to plan), cross-harness 136/136 unchanged, artifact_consistency PASS, `git diff --check` clean. PR #173 opened against `main`; Socket Security CI in progress.
+Prior PRs: #172 merged (Phase 257 S6 contract `800552a1`); #171 merged (Phase 256 v2.59 closure `872aa4a7`); #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-06T19:11Z — paused via /paul:pause after Phase 258 PLAN was approved but APPLY had not started.
-Stopped at: Phase 258 Plan 258-01 created and approved by user; APPLY queued but interrupted by /paul:pause before any source change ran. No partially-applied source edits exist.
-Next action: /paul:resume — confirm intent with user, then /paul:apply for Phase 258 (the bounded source extraction of S6 lifecycle-ui to `drivers/pi/extensions/lifecycle-ui.ts` per `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md`).
-Resume file: .paul/handoffs/archive/HANDOFF-2026-05-06-phase-258-pre-apply.md
+Last session: 2026-05-06 — Phase 258 APPLY completed inline; PR #173 opened; ready for UNIFY.
+Stopped at: APPLY ✓ for Phase 258 Plan 258-01; awaiting CI completion + UNIFY.
+Next action: `/paul:unify .paul/phases/258-bounded-s6-submodule-extraction/258-01-PLAN.md` — reconcile plan vs actual, write 258-01-SUMMARY.md, update STATE.md and ROADMAP.md, then transition to merge gate (CI Socket Security x2) and Phase 259 (Documentation + Validation Surfacing).
+Resume file: .paul/phases/258-bounded-s6-submodule-extraction/258-01-PLAN.md
 Resume context:
-- v2.60 active; 1 of 4 phases complete (Phase 257 closed via PR #172 `800552a1`; Phase 258 PLAN approved; Phase 259 / Phase 260 remain).
-- Pre-APPLY baseline preserved on main: Pi 231/231, cross-harness 136/136, artifact_consistency PASS, install 6 Pi extension files, `git diff --check` clean.
-- Working tree at pause: 2 modified `.paul/*` files (STATE.md, ROADMAP.md — plan-creation status updates) + 1 new untracked `.paul/phases/258-…/` directory (the approved 258-01-PLAN.md). No source / test / installer / docs / dependency files modified.
-- Phase 258 plan-time discoveries to honor on resume: Phase 254 type-only back-import pattern applied a second time (`PalsStateSnapshot` + `RecentModuleActivity`); Phase 254 `inline → export` promotion pattern applied a second time (4 symbols: `MAX_VISIBLE_MODULES`, `RECENT_MODULE_ACTIVITY_LOOKBACK`, `parsePalsState`, `collectRecentAssistantTexts`); Phase 254 TAP-assertion repoint pattern applied if any pre-existing assertion names a moved source path.
-- No-UI-only-lifecycle-decisions invariant is the binding S6 boundary; preserve every `syncLifecycleUi(ctx)` call site (5 invocations) by call shape; preserve UI-element ID byte sequence `"pals-lifecycle"`; preserve render-string shapes; S4 canonical reply delivery stays inline.
+- v2.60 active; Phase 258 APPLY ✓; PR #173 open against `main`; Socket Security CI in progress (informational).
+- Post-APPLY baseline on the feature branch: install 7, Pi 232/232 (+1 reconciled to plan), cross-harness 136/136 unchanged, artifact_consistency PASS, `git diff --check` clean.
+- Changed-file scope honored: `drivers/pi/extensions/lifecycle-ui.ts` (new), `drivers/pi/extensions/pals-hooks.ts`, `tests/pi-end-to-end-validation.sh`, `.paul/STATE.md`, `.paul/ROADMAP.md`, `.paul/phases/258-…/258-01-PLAN.md`, `.paul/handoffs/archive/HANDOFF-2026-05-06-phase-258-pre-apply.md`. No installer / uninstaller / driver.yaml / cross-harness / artifact_consistency / pals.json / dependency / CI / kernel / module-registry / Claude Code driver / Agent SDK driver / installed-runtime-copy file modified.
+- Patterns ratified a second time at APPLY: type-only back-import (`PalsStateSnapshot` + `RecentModuleActivity`); TAP-assertion repoint (5 pre-existing assertions repointed to `EXT_LIFECYCLE_UI`); `inline → export` promotion (4 symbols).
+- No-UI-only-lifecycle-decisions invariant verified post-APPLY: lifecycle-ui.ts performs no `.paul/*` writes, no `pi.sendUserMessage`, no S4 canonical-reply identifier invocations. All 5 `syncLifecycleUi(ctx)` call sites in `pals-hooks.ts` preserved by call shape.
