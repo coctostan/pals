@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone created same day)
+See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 selection pending via /paul:milestone)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection. Direct-requirements / high-collaboration milestone created 2026-05-03 with the default recommendation from v2.58 closure. 4-phase wave matching v2.55–v2.58 pattern: Phase 253 contract/baseline, Phase 254 bounded extraction, Phase 255 docs/validation surfacing, Phase 256 evidence closure + next-roadmap decision. Out of scope: S4 canonical reply delivery, S6 lifecycle UI, S8 command routing, full Claude Code / Agent SDK driver removal.
+**Current focus:** None active. v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection closed 2026-05-05 (4 of 4 phases complete; PRs #168 / #169 / #170 / #171 squash-merged). v2.60 selection is pending via `/paul:milestone` with the recorded default recommendation in `.paul/MILESTONES.md`: bounded continuation of the modularization wave, ranked S6 lifecycle UI extraction preferred / S8 command routing alternative; S4 canonical reply delivery remains explicitly deferred as the integration point.
 
 ## Current Position
 
-Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
-Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision) — ✅ Complete
-Plan: 256-01 — Complete (UNIFY done; awaiting merge gate)
-Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop complete; merge gate next; v2.59 closes after PR #171 squash-merges
-Last activity: 2026-05-05 — Phase 256 Plan 256-01 APPLY+UNIFY complete on `feature/256-evidence-closure-next-roadmap-decision-v2-59`. Aggregated v2.59 closure into MILESTONES.md / PROJECT.md / ROADMAP.md, recorded the v2.60 recommendation, and added one bounded `Phase 256 sibling extraction wave closure (v2.59 Shared Invariant)` `tap_file_contains_all` block to `tests/cross-harness-validation.sh`. Final validation: install 6 ✓, Pi 1..231/231 ✓, cross-harness 1..136/136 ✓ (+1 exactly), artifact_consistency PASS ✓, `git diff --check` clean ✓. APPLY commit `da5b297b` pushed; PR #171 opened against main (auto_pr); SUMMARY at `.paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-SUMMARY.md`. AC-1, AC-2, AC-3, AC-4 all PASS.
+Milestone: None active (v2.59 closed 2026-05-05; v2.60 pending via /paul:milestone)
+Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision) — ✅ Complete (v2.59 closed)
+Plan: 256-01 — Complete (UNIFY done; PR #171 squash-merged)
+Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop complete; v2.59 closed; ready for /paul:milestone v2.60
+Last activity: 2026-05-05 — Phase 256 closed v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection. PR #171 squash-merged 2026-05-05 as `872aa4a7`; feature branch deleted on remote and locally; main synced. Post-merge validation on main: install 6 ✓, Pi 1..231/231 ✓, cross-harness 1..136/136 ✓, artifact_consistency PASS ✓, `git diff --check` clean ✓. v2.59 final wave: Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`. Count reconciliation across the wave: Pi 227→231 (+4), cross-harness 135→136 (+1), install 5→6 (+1). v2.60 selection pending via /paul:milestone.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -27,7 +27,7 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-- v2.54 Contextual Verbosity Paring: [██████████] 100% (4 of 4 phases complete; milestone closed)
+Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop complete; v2.59 closed; ready for /paul:milestone v2.60
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
@@ -313,17 +313,18 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: da5b297b — feat(256): close v2.59 — evidence closure + next-roadmap decision (on `feature/256-evidence-closure-next-roadmap-decision-v2-59`)
-PR: #171 OPEN — https://github.com/coctostan/pals/pull/171 (Phase 256 evidence closure; auto_pr opened against main; CI IN_PROGRESS at UNIFY draft time, merge gate will block on it). Prior PRs: #170 MERGED (Phase 255 surfacing `0a607c43`); #169 MERGED (Phase 254 S7 source extraction `af1c1793`); #168 MERGED (Phase 253 S7 contract `f326db54`).
-Working tree: pending UNIFY edits on `feature/256-evidence-closure-next-roadmap-decision-v2-59` (this STATE update + new SUMMARY + post-unify history rows). Branch is 1 ahead of main pre-UNIFY-commit; merge gate runs after UNIFY commit + push.
+Last commit: 872aa4a7 — feat(256): close v2.59 — evidence closure + next-roadmap decision (#171) (on `main`)
+Branch: main (feature/256-evidence-closure-next-roadmap-decision-v2-59 deleted on remote and locally)
+PR: #171 MERGED — https://github.com/coctostan/pals/pull/171 (squash-merged 2026-05-05 as `872aa4a7`)
+Working tree: clean on main after PR #171 squash-merge; local main synced with origin/main; v2.59 closed (4 of 4 phases complete); ready for /paul:milestone to decide v2.60.
 Prior PRs: #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-05 — Phase 256 Plan 256-01 APPLY+UNIFY complete on `feature/256-evidence-closure-next-roadmap-decision-v2-59`. PR #171 opened (CI in progress); merge gate next.
-Stopped at: Plan 256-01 SUMMARY authored; STATE/ROADMAP/CODI-HISTORY/QUALITY-HISTORY updated; awaiting UNIFY commit, push, and merge gate against PR #171.
-Next action: Commit UNIFY artifacts, push, run merge gate against PR #171 (CI must pass; squash-merge with delete-branch; sync main; post-merge state alignment + PROJECT evolution); then `/paul:milestone` to decide v2.60.
-Resume file: .paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-SUMMARY.md
+Last session: 2026-05-05 — Phase 256 closed and v2.59 milestone closed via PR #171 squash-merged.
+Stopped at: v2.59 closed; ready for /paul:milestone to decide v2.60.
+Next action: /paul:milestone to decide v2.60 (recorded recommendation: S6 lifecycle UI extraction preferred; S8 command routing alternative; S4 explicitly deferred).
+Resume file: .paul/MILESTONES.md
 Resume context:
 - v2.59 Phase 256 Plan 256-01 APPLY+UNIFY complete; cross-harness 135 → 136 (+1 closure guardrail); Pi 231/231 unchanged; install 6 unchanged; AC-1–AC-4 PASS.
 - PR #171 opened against main (`feat(256): close v2.59 — evidence closure + next-roadmap decision`, commit `da5b297b`); CI IN_PROGRESS at UNIFY draft time; merge gate (PR exists ✓, CI —, code review skipped REV pr_review:false, reviews skipped require_reviews:false, squash-merge + delete-branch + base sync — pending) runs at end of UNIFY.
