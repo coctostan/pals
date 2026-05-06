@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 created 202
 ## Current Position
 
 Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
-Phase: 257 of 260 (S6 Extraction Contract + Bounded Submodule Plan)
-Plan: 257-01 — APPLY complete; awaiting UNIFY
-Status: PLAN ✓ APPLY ✓ — ready for UNIFY
-Last activity: 2026-05-06 — Phase 257 APPLY complete. Three tasks executed inline (parent-owned APPLY, no delegation): (T1) created `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` (183 LOC) defining the S6 boundary; (T2) updated `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (Phase 257 Outcome + Phase 257/258 Validation Expectations sections added; S6 row promoted; S7 row updated to shipped) and `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (Phase 257 Outcome section added; prior S1/S2/S3/S5/S7 history preserved verbatim); (T3) verified docs-only scope and ran full validation. Validation evidence: Pi 231/231, cross-harness 136/136, artifact_consistency PASS, install surface 6 (unchanged), `git diff --check` clean. GitHub Flow: feature branch `phase/257-s6-extraction-contract` created from `main`, work committed `3bcb83ff`, pushed, PR #172 opened (https://github.com/coctostan/pals/pull/172, MERGEABLE, CI in progress). Module dispatch all PASS (advisory IRIS/DOCS/RUBY/ARCH/SETH; enforcement WALT/DAVE/DEAN/TODD). Ready for /paul:unify.
+Phase: 258 of 260 (Bounded S6 Submodule Extraction)
+Plan: Not started
+Status: Ready to plan Phase 258
+Last activity: 2026-05-06 — Phase 257 (S6 Extraction Contract + Bounded Submodule Plan) closed. PR #172 squash-merged 2026-05-06 as `800552a1`; feature branch deleted on remote and locally; main synced. Post-merge validation on main: Pi 231/231 ✓, cross-harness 136/136 ✓, artifact_consistency PASS ✓, install 6 (unchanged — new sibling lands Phase 258) ✓, `git diff --check` clean ✓. SUMMARY at `.paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-SUMMARY.md` (AC-1..AC-4 all PASS; deviations: none; module dispatch evidence complete). QUALITY-HISTORY and CODI-HISTORY entries appended. v2.60 progress: 1 of 4 phases complete. Ready for /paul:plan for Phase 258 — the bounded source extraction of S6 lifecycle-ui to `drivers/pi/extensions/lifecycle-ui.ts` per the contract just shipped.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -27,13 +27,13 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-Status: v2.60 created — ready for /paul:plan Phase 257
+Status: Phase 257 closed — ready for /paul:plan Phase 258
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
-- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [█▒▒▒▒▒▒▒▒▒] 12.5% (Phase 257 PLAN+APPLY complete; PR #172 open; UNIFY pending)
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██▒▒▒▒▒▒▒▒] 25% (1 of 4 phases complete; Phase 257 closed via PR #172 `800552a1`; Phase 258 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Status: v2.60 created — ready for /paul:plan Phase 257
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Plan 257-01 APPLY complete; PR #172 open; ready for UNIFY]
+  ○        ○        ○     [Phase 257 closed; ready for /paul:plan Phase 258]
 ```
 
 ## Accumulated Context
@@ -314,19 +314,19 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: 872aa4a7 — feat(256): close v2.59 — evidence closure + next-roadmap decision (#171) (on `main`)
-Branch: main (feature/256-evidence-closure-next-roadmap-decision-v2-59 deleted on remote and locally)
-PR: #171 MERGED — https://github.com/coctostan/pals/pull/171 (squash-merged 2026-05-05 as `872aa4a7`)
-Working tree: clean on main after PR #171 squash-merge; local main synced with origin/main; v2.59 closed (4 of 4 phases complete); ready for /paul:milestone to decide v2.60.
-Prior PRs: #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); #163 merged (v2.57 closure); earlier PR history archived in STATE history.
+Last commit: 800552a1 — Phase 257: S6 lifecycle-ui extraction contract + bounded Phase 258 plan (#172) (on `main`)
+Branch: main (phase/257-s6-extraction-contract deleted on remote and locally)
+PR: #172 MERGED — https://github.com/coctostan/pals/pull/172 (squash-merged 2026-05-06 as `800552a1`)
+Working tree: clean on main after PR #172 squash-merge; local main synced with origin/main; v2.60 Phase 257 closed (1 of 4 phases complete); ready for /paul:plan for Phase 258 (Bounded S6 Submodule Extraction). Post-merge validation on main: Pi 231/231, cross-harness 136/136, artifact_consistency PASS, install 6 — baseline preserved.
+Prior PRs: #171 merged (Phase 256 v2.59 closure `872aa4a7`); #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-05 — Phase 256 closed and v2.59 milestone closed via PR #171 squash-merged.
-Stopped at: v2.59 closed; ready for /paul:milestone to decide v2.60.
-Next action: /paul:milestone to decide v2.60 (recorded recommendation: S6 lifecycle UI extraction preferred; S8 command routing alternative; S4 explicitly deferred).
-Resume file: .paul/MILESTONES.md
+Last session: 2026-05-06 — v2.60 milestone created and Phase 257 (S6 Extraction Contract + Bounded Submodule Plan) closed via PR #172 squash-merged.
+Stopped at: Phase 257 closed; ready for /paul:plan for Phase 258 (Bounded S6 Submodule Extraction).
+Next action: /paul:plan for Phase 258 — the bounded source extraction of S6 lifecycle-ui to `drivers/pi/extensions/lifecycle-ui.ts` per `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md`.
+Resume file: docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md
 Resume context:
-- v2.59 Phase 256 Plan 256-01 APPLY+UNIFY complete; cross-harness 135 → 136 (+1 closure guardrail); Pi 231/231 unchanged; install 6 unchanged; AC-1–AC-4 PASS.
-- PR #171 opened against main (`feat(256): close v2.59 — evidence closure + next-roadmap decision`, commit `da5b297b`); CI IN_PROGRESS at UNIFY draft time; merge gate (PR exists ✓, CI —, code review skipped REV pr_review:false, reviews skipped require_reviews:false, squash-merge + delete-branch + base sync — pending) runs at end of UNIFY.
-- After Phase 256 merges, v2.59 closes 4 of 4 phases. Route to `/paul:milestone` for v2.60 (recorded recommendation: S6 lifecycle UI extraction preferred; S8 command routing alternative; S4 explicitly deferred).
+- v2.60 Phase 257 Plan 257-01 PLAN+APPLY+UNIFY complete; Pi 231/231 unchanged; cross-harness 136/136 unchanged; install 6 unchanged (new sibling lands Phase 258); artifact_consistency PASS; AC-1–AC-4 all PASS; deviations: none.
+- PR #172 squash-merged 2026-05-06 as `800552a1`; feature branch deleted on remote and locally; main synced.
+- Phase 258 will perform the S6 source extraction authorized by the Phase 257 contract: 8 functions and 2 constants moved to a new sibling `drivers/pi/extensions/lifecycle-ui.ts`; type-only back-imports for `PalsStateSnapshot` (from `./pals-hooks`) and `RecentModuleActivity` (from `./module-activity-parsing`); value-import only `compactWhitespace`; every existing `syncLifecycleUi(ctx)` call site preserved by call shape; install surface 6 → 7; TAP-assertion repoint discipline; loader-compat no-op default factory.

@@ -29,19 +29,19 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction**
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 0 of 4 complete
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 1 of 4 complete
 Theme: Continue the Pi-extension modularization wave by extracting S6 `lifecycle-ui` rendering paths from `drivers/pi/extensions/pals-hooks.ts` into a sibling Pi extension module, applying the ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, default-arg cycle-avoidance) while preserving S4 canonical reply delivery in `pals-hooks.ts`, the no-UI-only-lifecycle-decisions boundary, `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth. S4 canonical reply delivery remains explicitly deferred (integration point, not an extraction candidate).
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 257 | S6 Extraction Contract + Bounded Submodule Plan | 257-01 | Planning | - |
+| 257 | S6 Extraction Contract + Bounded Submodule Plan | 257-01 | ✅ Complete | 2026-05-06 |
 | 258 | Bounded S6 Submodule Extraction | TBD | Not started | - |
 | 259 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 260 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 257: S6 Extraction Contract + Bounded Submodule Plan
 Focus: Define the S6 `lifecycle-ui` extraction contract, readiness evidence, preservation markers (lifecycle-UI rendering surfaces, no-UI-only-lifecycle-decisions boundary, S4 canonical reply delivery boundary, no-inferred-merge-intent boundary), allowed files, validation expectations, and bounded APPLY shape before any source change.
-Plans: `.paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-PLAN.md` (created 2026-05-06; awaiting approval; docs-only contract; 3 tasks)
+Plans: `.paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-PLAN.md` + `257-01-SUMMARY.md` (closed 2026-05-06; PR #172 `800552a1`; AC-1–AC-4 PASS; Pi 231/231, XH 136/136, install 6 unchanged)
 
 ### Phase 258: Bounded S6 Submodule Extraction
 Focus: Extract S6 `lifecycle-ui` into a sibling Pi extension module following the S5/S1/S2/S3/S7 sibling-module recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, type-only back-import where needed, TAP-assertion repoint where surfaces move) while preserving lifecycle-UI rendering behavior, S4 canonical reply delivery in `pals-hooks.ts`, and the no-UI-only-lifecycle-decisions boundary.
