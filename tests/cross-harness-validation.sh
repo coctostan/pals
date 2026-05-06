@@ -1365,6 +1365,27 @@ tap_file_contains_all \
   'v2.59'
 
 # ════════════════════════════════════════════════════════════════
+# Phase 256 sibling extraction wave closure (v2.59 Shared Invariant)
+# ════════════════════════════════════════════════════════════════
+# Phase 256 closes v2.59 by aggregating Phases 253–256 evidence into MILESTONES.md.
+# Closure guardrail: .paul/MILESTONES.md must continue to name the v2.59 milestone,
+# the four phases, the S7 sibling basename, the preserved S3 sibling, the preserved
+# S4 host module, and the v2.60 recommendation marker so the shared invariant across
+# docs/contract/lifecycle does not regress.
+tap_file_contains_all \
+  "Phase 256 sibling extraction wave closure (v2.59 Shared Invariant)" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.59 Pi Extension Submodule Extraction Wave' \
+  'Phase 253' \
+  'Phase 254' \
+  'Phase 255' \
+  'Phase 256' \
+  'pals-context-injection.ts' \
+  'guided-workflow-detection.ts' \
+  'pals-hooks.ts' \
+  'v2.60'
+
+# ════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 
