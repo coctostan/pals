@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 selection pending via /paul:milestone)
+See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 created 2026-05-06 via /paul:milestone)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** None active. v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection closed 2026-05-05 (4 of 4 phases complete; PRs #168 / #169 / #170 / #171 squash-merged). v2.60 selection is pending via `/paul:milestone` with the recorded default recommendation in `.paul/MILESTONES.md`: bounded continuation of the modularization wave, ranked S6 lifecycle UI extraction preferred / S8 command routing alternative; S4 canonical reply delivery remains explicitly deferred as the integration point.
+**Current focus:** v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction (created 2026-05-06; 0 of 4 phases complete; Mode: direct-requirements; Collaboration: medium). Phase 257 S6 Extraction Contract + Bounded Submodule Plan is ready to plan. Scope continues the Pi-extension modularization wave by isolating S6 `lifecycle-ui` rendering paths from `drivers/pi/extensions/pals-hooks.ts` while preserving S4 canonical reply delivery, the no-UI-only-lifecycle-decisions boundary, `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth.
 
 ## Current Position
 
-Milestone: None active (v2.59 closed 2026-05-05; v2.60 pending via /paul:milestone)
-Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision) — ✅ Complete (v2.59 closed)
-Plan: 256-01 — Complete (UNIFY done; PR #171 squash-merged)
-Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop complete; v2.59 closed; ready for /paul:milestone v2.60
-Last activity: 2026-05-05 — Phase 256 closed v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection. PR #171 squash-merged 2026-05-05 as `872aa4a7`; feature branch deleted on remote and locally; main synced. Post-merge validation on main: install 6 ✓, Pi 1..231/231 ✓, cross-harness 1..136/136 ✓, artifact_consistency PASS ✓, `git diff --check` clean ✓. v2.59 final wave: Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`. Count reconciliation across the wave: Pi 227→231 (+4), cross-harness 135→136 (+1), install 5→6 (+1). v2.60 selection pending via /paul:milestone.
+Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
+Phase: 257 of 260 (S6 Extraction Contract + Bounded Submodule Plan)
+Plan: 257-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-06 — Plan 257-01 created at `.paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-PLAN.md`. Docs-only contract phase: 3 tasks targeting `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` (new), `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (update), and `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (update). Eight S6 functions and two S6 constants (`PALS_STATUS_ID`, `PALS_WIDGET_ID`) bounded for Phase 258 extraction. Shared-input disposition pinned: `PalsStateSnapshot` (owned by `pals-hooks.ts`) and `RecentModuleActivity` (owned by S5 sibling) consumed via type-only back-imports per Phase 254 precedent. Pi-UI-mutation invocation rule: `syncLifecycleUi(ctx)` call sites stay in `pals-hooks.ts`. Forbidden scope explicit: S4 canonical reply delivery, S8 command routing, UI-only lifecycle decisions, Claude Code / Agent SDK driver. Module dispatch recorded (TODD/IRIS/DAVE/DOCS/RUBY/ARCH/CODI advisory PASS; DEAN enforcement PASS). Awaiting approval before /paul:apply.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -27,12 +27,13 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop complete; v2.59 closed; ready for /paul:milestone v2.60
+Status: v2.60 created — ready for /paul:plan Phase 257
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
-- v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 awaiting merge gate)
+- v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [░░░░░░░░░░] 0% (0 of 4 phases complete; created 2026-05-06; Phase 257 ready to plan)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -67,7 +68,7 @@ Status: PLAN ✓ APPLY ✓ UNIFY ✓ — loop complete; v2.59 closed; ready for 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 256-01 created, awaiting approval / APPLY]
+  ✓        ○        ○     [Plan 257-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
