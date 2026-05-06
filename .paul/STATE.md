@@ -9,7 +9,7 @@ See: .paul/PROJECT.md (updated 2026-05-03 after v2.58 closure; v2.59 milestone c
 ## Current Position
 
 Milestone: v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection
-Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision — final v2.59 phase) — Planning
+Phase: 256 of 256 (Evidence Closure + Next Roadmap Decision) — ✅ Complete
 Plan: 256-01 created, awaiting approval / APPLY
 Status: PLAN ✓ APPLY ○ UNIFY ○ — awaiting approval to APPLY
 Last activity: 2026-05-05 — Created `.paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-PLAN.md` (3-task v2.59 evidence closure + next-roadmap recommendation, mirroring Phase 245 / 248 / 252 closure shape one-to-one; AC-1…AC-4; expected cross-harness 135 → 136 with Pi 231/231 unchanged and install 6 unchanged); fresh `feature/256-evidence-closure-next-roadmap-decision-v2-59` branch created from main as part of Phase 256 GitHub Flow preflight.
@@ -320,7 +320,7 @@ Prior PRs: #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged 
 Last session: 2026-05-05 — Phase 256 Plan 256-01 created on fresh `feature/256-evidence-closure-next-roadmap-decision-v2-59` branch; user invoked `/paul:pause` before approving APPLY.
 Stopped at: Plan 256-01 created and pending approval. 3 tasks (aggregate v2.59 closure evidence in MILESTONES.md → close v2.59 in PROJECT.md/ROADMAP.md with v2.60 recommendation → add cross-harness shared-invariant closure guardrail + run full validation), 4 ACs. Working tree carries only Phase 256 lifecycle artifacts (this STATE.md edit + ROADMAP.md row 256 Planning + new 256-01-PLAN.md); no source/doc files modified.
 Next action: Run `/paul:resume` then approve Plan 256-01 and run `/paul:apply .paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-PLAN.md`.
-Resume file: .paul/HANDOFF-2026-05-05-v2-59-phase-256-plan-awaiting-approval.md
+Resume file: .paul/handoffs/archive/HANDOFF-2026-05-05-v2-59-phase-256-plan-awaiting-approval.md
 Resume context:
 - v2.59 Phase 256 Plan 256-01 created and awaiting approval; mirrors Phase 245 / 248 / 252 closure shape (3 tasks, 4 ACs, +1 cross-harness shared-invariant closure guardrail; expected count 135 → 136; Pi 231/231 unchanged; install 6 unchanged).
 - Branch `feature/256-evidence-closure-next-roadmap-decision-v2-59` already created from main (0 ahead / 0 behind); PR will be opened in APPLY postflight.
