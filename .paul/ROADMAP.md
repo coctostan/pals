@@ -35,7 +35,7 @@ Theme: Continue the Pi-extension modularization wave by extracting S6 `lifecycle
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 257 | S6 Extraction Contract + Bounded Submodule Plan | 257-01 | ✅ Complete | 2026-05-06 |
-| 258 | Bounded S6 Submodule Extraction | TBD | Not started | - |
+| 258 | Bounded S6 Submodule Extraction | 258-01 | Planning | - |
 | 259 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 260 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
@@ -45,7 +45,7 @@ Plans: `.paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-PL
 
 ### Phase 258: Bounded S6 Submodule Extraction
 Focus: Extract S6 `lifecycle-ui` into a sibling Pi extension module following the S5/S1/S2/S3/S7 sibling-module recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, type-only back-import where needed, TAP-assertion repoint where surfaces move) while preserving lifecycle-UI rendering behavior, S4 canonical reply delivery in `pals-hooks.ts`, and the no-UI-only-lifecycle-decisions boundary.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/258-bounded-s6-submodule-extraction/258-01-PLAN.md` (created 2026-05-06; awaiting approval; bounded source extraction; 3 tasks)
 
 ### Phase 259: Documentation + Validation Surfacing
 Focus: Surface the S6 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S6 extraction contract and modularization contract; add localized Pi validation guardrails without broad validation-suite refactors. Fifth ratification target for the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255 / 259).

@@ -24,11 +24,21 @@ import {
   GuidedWorkflowMoment,
   detectGuidedWorkflowMoment,
 } from "./guided-workflow-detection";
+import {
+  PALS_STATUS_ID,
+  PALS_WIDGET_ID,
+  renderLoopBadge,
+  renderCompactLoopSummary,
+  renderLifecycleActionLabel,
+  renderModuleActivity,
+  renderModuleActivityDetails,
+  renderLifecycleStatus,
+  renderLifecycleWidget,
+  syncLifecycleUi,
+} from "./lifecycle-ui";
 
 // -- Helpers --
 
-const PALS_STATUS_ID = "pals-lifecycle";
-const PALS_WIDGET_ID = "pals-lifecycle";
 const PRIMARY_QUICK_ACTION_LIMIT = 3;
 const MAX_QUICK_ACTIONS = 5;
 
@@ -50,8 +60,8 @@ import {
 const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
 const COMMAND_ACTIVATION_TURN_BUDGET = 3;
 const PROMPT_ACTIVATION_TURN_BUDGET = 1;
-const RECENT_MODULE_ACTIVITY_LOOKBACK = 3;
-const MAX_VISIBLE_MODULES = 3;
+export const RECENT_MODULE_ACTIVITY_LOOKBACK = 3;
+export const MAX_VISIBLE_MODULES = 3;
 export const MAX_WIDGET_MODULE_DETAILS = 4;
 
 // -- CARL Session Boundary Manager constants --
@@ -151,7 +161,7 @@ export function compactWhitespace(value?: string): string | undefined {
   return value?.replace(/\s+/g, " ").trim() || undefined;
 }
 
-function parsePalsState(cwd: string): PalsStateSnapshot {
+export function parsePalsState(cwd: string): PalsStateSnapshot {
   const statePath = join(cwd, ".paul", "STATE.md");
   const content = readFileOr(statePath, "");
   if (!content) return { detected: false };
@@ -246,87 +256,6 @@ function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
     .slice(0, MAX_QUICK_ACTIONS);
 }
 
-
-function renderLoopBadge(loopString?: string): string | undefined {
-  if (!loopString) return undefined;
-  const marks = [...loopString.matchAll(/[✓○]/g)].map((m) => m[0]);
-  if (marks.length < 3) return undefined;
-  return `PLAN${marks[0]} APPLY${marks[1]} UNIFY${marks[2]}`;
-}
-
-function renderCompactLoopSummary(loopString?: string): string | undefined {
-  if (!loopString) return undefined;
-  return `Loop: ${renderLoopBadge(loopString) ?? compactWhitespace(loopString)}`;
-}
-
-function renderLifecycleActionLabel(state: PalsStateSnapshot): string {
-  const nextAction = compactWhitespace(state.nextAction)?.toLowerCase() ?? "";
-  const loopSignature = state.loop ? [...state.loop.matchAll(/[✓○]/g)].map((match) => match[0]).join("") : "";
-
-  if (loopSignature === "✓✓✓") return "Complete";
-  if (/address blocker|blocked|fix ci|failing|failure/.test(nextAction)) return "Blocked";
-  if (/review|approve|checkpoint|human verification|human action|decision required|waiting/.test(nextAction)) return "Waiting";
-  if (nextAction) return "Ready";
-  return "Next";
-}
-
-function renderModuleActivity(activity?: RecentModuleActivity): string | undefined {
-  if (!activity) return undefined;
-  const modules = formatModuleEntryList(activity.entries, MAX_VISIBLE_MODULES, ", ");
-  if (!modules) return undefined;
-  return `Modules: ${activity.stageLabel} • ${modules}`;
-}
-
-function renderModuleActivityDetails(activity?: RecentModuleActivity): string[] {
-  if (!activity) return [];
-
-  const details = formatModuleEntryList(activity.entries, MAX_WIDGET_MODULE_DETAILS, " | ", true);
-  if (!details) return [];
-  return [
-    `Recent module activity: ${activity.stageLabel}`,
-    `Modules: ${details}`,
-  ];
-}
-
-function renderLifecycleStatus(state: PalsStateSnapshot, activity?: RecentModuleActivity): string | undefined {
-  if (!state.detected) return undefined;
-  const actionLabel = renderLifecycleActionLabel(state);
-  const loopBadge = renderLoopBadge(state.loop);
-  return [
-    "PALS",
-    state.milestone ? `Milestone: ${state.milestone}` : null,
-    state.phase ? `Phase: ${state.phase}` : null,
-    loopBadge ? `Loop: ${loopBadge}` : renderCompactLoopSummary(state.loop),
-    state.nextAction ? `${actionLabel}: ${state.nextAction}` : null,
-  ]
-    .filter(Boolean)
-    .join(" • ");
-}
-
-function renderLifecycleWidget(state: PalsStateSnapshot, activity?: RecentModuleActivity): string[] | undefined {
-  if (!state.detected) return undefined;
-  return [
-    state.milestone ? `PALS Milestone: ${state.milestone}` : "PALS Milestone: unknown",
-    state.phase ? `Phase: ${state.phase}` : "Phase: unknown",
-    state.loop ? `Loop: ${state.loop}` : "Loop: unknown",
-    state.nextAction ? `Next action: ${state.nextAction}` : "Next action: unknown",
-  ];
-}
-function syncLifecycleUi(ctx: any): void {
-  const cwd = ctx?.cwd ?? process.cwd();
-  const state = parsePalsState(cwd);
-  if (!state.detected) {
-    ctx?.ui?.setStatus(PALS_STATUS_ID, undefined);
-    ctx?.ui?.setWidget(PALS_WIDGET_ID, undefined);
-    return;
-  }
-
-  const recentAssistantTexts = collectRecentAssistantTexts(ctx, undefined, RECENT_MODULE_ACTIVITY_LOOKBACK);
-  const recentModuleActivity = extractRecentModuleActivity(recentAssistantTexts);
-  ctx?.ui?.setStatus(PALS_STATUS_ID, renderLifecycleStatus(state, recentModuleActivity));
-  ctx?.ui?.setWidget(PALS_WIDGET_ID, renderLifecycleWidget(state, recentModuleActivity));
-}
-
 function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
   return [
     "PALS project detected.",
@@ -358,7 +287,7 @@ function extractTextContent(message: any): string | undefined {
   return text || undefined;
 }
 
-function collectRecentAssistantTexts(ctx: any, event: any, limit = GUIDED_WORKFLOW_LOOKBACK): string[] {
+export function collectRecentAssistantTexts(ctx: any, event: any, limit = GUIDED_WORKFLOW_LOOKBACK): string[] {
   const texts: string[] = [];
   const seen = new Set<string>();
 
