@@ -29,8 +29,8 @@ This document is a derived aid only. It is not lifecycle truth, validation truth
 | S3 `guided-workflow-detection` | Extracted to `drivers/pi/extensions/guided-workflow-detection.ts` (Phase 250 / PR #165) | Shipped — S3 detection sibling extracted; S4 canonical reply delivery retained in `pals-hooks.ts` |
 | S4 `guided-workflow-canonical-reply` | Still inline in `pals-hooks.ts` | Deferred; runtime-coupled Pi message mutation |
 | S5 `module-activity-parsing` | Already extracted to `module-activity-parsing.ts` | Not a Phase 243 extraction target |
-| S6 `lifecycle-ui` | Still inline in `pals-hooks.ts` | Deferred; Pi UI mutation and S5/S7 coupling |
-| S7 `pals-context-injection` | Still inline in `pals-hooks.ts` | Conditional later candidate; authority/activation tags make it moderate risk |
+| S6 `lifecycle-ui` | Still inline in `pals-hooks.ts`; promoted by Phase 257 to a bounded Phase 258 contract target via `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` (no source change yet) | Bounded Phase 258 target after S5/S1/S2/S3/S7 prove the pattern; Pi UI mutation through `ctx`; consumes `PalsStateSnapshot` and `RecentModuleActivity` as type-only back-imports |
+| S7 `pals-context-injection` | Extracted to `drivers/pi/extensions/pals-context-injection.ts` (Phase 254 / PR #169) | Shipped — type-only back-import + TAP-assertion repoint patterns ratified |
 | S8 `command-routing` | Still inline in `pals-hooks.ts` | Deferred; highest user-visible command/shortcut surface |
 
 S5 is already extracted and remains the proof that a sibling extension module can preserve behavior when marker ownership and import boundaries are explicit.
@@ -197,6 +197,51 @@ Phase 254 must include focused source checks and full validation before the S7 s
 
 If validation counts differ from the Phase 253 baseline, the delta must be reconciled from command output in the Phase 254 SUMMARY with reason, validation class, and shared-invariant preservation rationale.
 
+## Phase 257 Outcome
+
+Phase 257 promoted S6 `lifecycle-ui` from "should not be extracted before S1/S5 prove the pattern" to a bounded Phase 258 contract target without modifying runtime, source, tests, install, dependencies, CI, or lifecycle authority. The S1/S2/S3/S5/S7 extraction history above remains authoritative verbatim; this section records the Phase 257 promotion only.
+
+- **Precondition satisfied:** the S5/S1/S2/S3/S7 extraction wave (PRs #149/#157/#161/#165/#169) ratified the sibling-module recipe, including the type-only back-import pattern (Phase 254) and TAP-assertion repoint pattern (Phase 254). S6 is the first runtime-coupled extraction (mutates Pi UI through `ctx`), so the contract reinforces preservation of every existing `syncLifecycleUi(ctx)` call site and the no-UI-only-lifecycle-decisions invariant.
+- **Phase 258 boundary defined** via `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md`: eight S6 functions (`renderLifecycleStatus`, `renderLifecycleWidget`, `renderLoopBadge`, `renderCompactLoopSummary`, `renderLifecycleActionLabel`, `renderModuleActivity`, `renderModuleActivityDetails`, `syncLifecycleUi`); two S6 constants (`PALS_STATUS_ID`, `PALS_WIDGET_ID`) as exact-string single-defined runtime UI-element identifiers; type-only back-imports for `PalsStateSnapshot` (from `./pals-hooks`) and `RecentModuleActivity` (from `./module-activity-parsing`); value-import only `compactWhitespace` from `./pals-hooks`; loader-compat no-op default factory carrying the literal `No-op Pi extension factory` JSDoc phrase; every existing `syncLifecycleUi(ctx)` call site preserved by call shape; install surface 6 → 7 Pi extension files; TAP-assertion repoint discipline applied.
+- **S4/S8 deferrals preserved:** the Phase 257 contract explicitly forbids extracting or modifying S4 canonical-reply delivery and S8 command routing as part of S6 work. Previously extracted siblings (S5, S1, S2, S3, S7) are also forbidden from re-extraction or modification.
+- **No-UI-only-lifecycle-decisions invariant reinforced:** the contract requires the new S6 sibling to render UI from authoritative `.paul/*` and module-activity inputs only — it MUST NOT introduce any path where the UI drives lifecycle state.
+- **Phase 257 is docs-only:** no `drivers/pi/extensions/*.ts`, `tests/*.sh`, installer, dependency, CI, module registry, kernel workflow source, Claude Code driver, Agent SDK driver, or installed runtime copy is modified. The validation baseline at the close of Phase 257 remains Pi 231/231, cross-harness 136/136, artifact_consistency PASS, install 6 Pi extension files (the current v2.59 closure baseline).
+
+## Phase 257 Validation Expectations
+
+Phase 257 must include focused doc-shape checks and full validation before the S6 contract is considered final:
+
+- Grep/read checks that the new contract `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` lists each of the eight S6 functions and each of the two S6 constants as a single explicit list, plus the shared-input disposition for `PalsStateSnapshot` and `RecentModuleActivity`, the Pi-UI-mutation invocation rule for `syncLifecycleUi`, the no-UI-only-lifecycle-decisions invariant, and the Phase 258 handoff acceptance checklist.
+- Grep/read checks that the eight S6 functions and two S6 constants remain defined exactly as before in `drivers/pi/extensions/pals-hooks.ts` (no source change in Phase 257).
+- Explicit separation check in the contract: no S6 function is moved into or merged with S4 canonical-reply delivery (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`); S4 stays inline.
+- `no UI-only lifecycle decisions` and `no inferred merge intent` markers remain present in contract and validation context.
+- Repo-source-only changes: no direct edits to installed runtime copies under `~/.pi/agent/extensions/`.
+- Phase 257 is docs-only: install source-set count remains 6 Pi extension files; `bash tests/pi-end-to-end-validation.sh` — expected v2.59 closure baseline: Pi 231/231; `bash tests/cross-harness-validation.sh` — expected v2.59 closure baseline: cross-harness 136/136; `bash tests/helpers/artifact_consistency.sh` — must PASS; `git diff --check` — must be clean.
+
+If validation counts differ from the v2.59 closure baseline, the delta must be reconciled from command output in the Phase 257 SUMMARY with reason, validation class, and shared-invariant preservation rationale.
+
+## Phase 258 Validation Expectations
+
+Phase 258 must include focused source checks and full validation before the S6 sibling module is considered extracted:
+
+- Grep/read checks that the two S6 constants (`PALS_STATUS_ID`, `PALS_WIDGET_ID`) are defined exactly once in repo source after extraction (single-defined markers; both equal to `"pals-lifecycle"`).
+- Grep/read checks that the eight S6 functions (`renderLifecycleStatus`, `renderLifecycleWidget`, `renderLoopBadge`, `renderCompactLoopSummary`, `renderLifecycleActionLabel`, `renderModuleActivity`, `renderModuleActivityDetails`, `syncLifecycleUi`) are defined exactly once in repo source after extraction and that `drivers/pi/extensions/pals-hooks.ts` imports them from `./lifecycle-ui`.
+- Type-only back-import shape check: `import type { PalsStateSnapshot } from "./pals-hooks";` and `import type { RecentModuleActivity } from "./module-activity-parsing";` appear in the new sibling; runtime dependency graph stays acyclic.
+- Shared-helper retention check: `compactWhitespace`, `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, `extractTextContent`, `collectRecentAssistantTexts`, and `PalsStateSnapshot` remain defined in `drivers/pi/extensions/pals-hooks.ts`; `RecentModuleActivity` remains defined in `drivers/pi/extensions/module-activity-parsing.ts`.
+- Explicit separation check: no S6 function is moved into or merged with S4 canonical-reply delivery; S4 stays inline.
+- UI-mutation invocation-site preservation check: every existing `syncLifecycleUi(ctx)` call site in `pals-hooks.ts` is functionally identical (same call shape, same identifier, same single `ctx` argument); only the import source changes.
+- No-UI-only-lifecycle-decisions invariant check: the new sibling MUST NOT introduce any path where the UI drives lifecycle state.
+- `no inferred merge intent` marker remains present in contract and validation context.
+- Repo-source-only changes: no direct edits to installed runtime copies under `~/.pi/agent/extensions/`.
+- Install source-set proof: `PALS_ROOT="$PWD" bash drivers/pi/install.sh` reports 7 Pi extension files (current 6 + new sibling) in its installed file count.
+- `bash tests/pi-end-to-end-validation.sh` — expected Phase 257 baseline: Pi 231/231.
+- `bash tests/cross-harness-validation.sh` — expected Phase 257 baseline: cross-harness 136/136.
+- `bash tests/helpers/artifact_consistency.sh` — must PASS.
+- `git diff --check` — must be clean.
+- TAP-assertion repoint discipline: any Pi or cross-harness assertion that names the source file/path of an S6 function or constant must be repointed to the new sibling.
+
+If validation counts differ from the Phase 257 baseline, the delta must be reconciled from command output in the Phase 258 SUMMARY with reason, validation class, and shared-invariant preservation rationale.
+
 ## Forbidden Scope for Phase 243 by Default
 
 - S4 canonical reply delivery, unless a new approved plan specifically covers Pi message mutation.
@@ -240,10 +285,10 @@ If validation counts differ from the Phase 249 baseline, the delta must be recon
 
 - S3 is extracted and remains bounded to detection/option parsing/merge-gate routing in `guided-workflow-detection.ts`.
 - S4 is still deferred because it sends canonical replies through Pi message flow.
-- S6 is still deferred because it mutates Pi UI and consumes module/context outputs.
-- S7 is promoted to a bounded Phase 254 contract target via `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md`; the exact authority/activation tags (`STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`), the legacy-header migration path (`LEGACY_PALS_CONTEXT_HEADER`), and the custom-message-type identity (`PALS_CONTEXT_CUSTOM_TYPE`) remain the binding preservation rules and are not relaxed by this promotion.
+- S6 is promoted to a bounded Phase 258 contract target via `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md`; it is the first runtime-coupled extraction (mutates Pi UI through `ctx`), the no-UI-only-lifecycle-decisions invariant remains the binding preservation rule, and `PalsStateSnapshot` + `RecentModuleActivity` consumption is constrained to type-only back-imports per the Phase 254 precedent.
+- S7 is extracted to `drivers/pi/extensions/pals-context-injection.ts` (Phase 254 / PR #169) per `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md`; the exact authority/activation tags (`STATE_AUTHORITY_TAG`, `ACTIVATION_SIGNAL_TAG`), the legacy-header migration path (`LEGACY_PALS_CONTEXT_HEADER`), and the custom-message-type identity (`PALS_CONTEXT_CUSTOM_TYPE`) remain the binding preservation rules and were not relaxed by this extraction.
 - S8 is still deferred because command routing is the highest user-visible compatibility surface.
 
 ## Summary Decision
 
-Phase 243's approved extraction wave was S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation were preserved. S5 was already extracted. S3 was promoted by Phase 249 and extracted by Phase 250 into `guided-workflow-detection.ts` with S4 canonical reply delivery retained in `pals-hooks.ts`. S7 was promoted by Phase 253 to a bounded Phase 254 contract target via `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` (no source change yet). S4/S6/S8 remain deferred by default.
+Phase 243's approved extraction wave was S1 + S2, with permission to extract **one or more approved** candidates if bounded reviewability and validation were preserved. S5 was already extracted. S3 was promoted by Phase 249 and extracted by Phase 250 into `guided-workflow-detection.ts` with S4 canonical reply delivery retained in `pals-hooks.ts`. S7 was promoted by Phase 253 and extracted by Phase 254 into `pals-context-injection.ts`. S6 was promoted by Phase 257 to a bounded Phase 258 contract target via `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` (no source change yet). S4/S8 remain deferred by default; S4 is the integration point for every other sibling and is explicitly never an extraction candidate while siblings are still being shipped.

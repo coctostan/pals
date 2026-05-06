@@ -82,3 +82,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 254-01 | 2026-05-04 | skipped-no-symbols | — | — | — | — | n |
 | 255-01 | 2026-05-05 | skipped-no-symbols | — | — | — | — | n |
 | 256-01 | 2026-05-05 | skipped-no-symbols | — | — | — | — | n |
+| 257-01 | 2026-05-06 | seed-recorded-docs-only | 10 | 0 | — | renderLifecycleStatus, renderLifecycleWidget, renderLoopBadge, renderCompactLoopSummary, renderLifecycleActionLabel, renderModuleActivity, renderModuleActivityDetails, syncLifecycleUi, PALS_STATUS_ID, PALS_WIDGET_ID | n |
