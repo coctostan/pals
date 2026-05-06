@@ -766,6 +766,7 @@ EXT_SRC="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
 EXT_ARTIFACT_SLICE="$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts"
 EXT_GUIDED_WORKFLOW_DETECTION="$REPO_ROOT/drivers/pi/extensions/guided-workflow-detection.ts"
 EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
+EXT_LIFECYCLE_UI="$REPO_ROOT/drivers/pi/extensions/lifecycle-ui.ts"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -832,7 +833,7 @@ else
   fi
 
   # Check always-visible lifecycle surfaces are wired in
-  if grep -q 'setStatus' "$EXT_SRC" 2>/dev/null && grep -q 'setWidget' "$EXT_SRC" 2>/dev/null; then
+  if grep -q 'setStatus' "$EXT_LIFECYCLE_UI" 2>/dev/null && grep -q 'setWidget' "$EXT_LIFECYCLE_UI" 2>/dev/null; then
     tap_ok "Extension uses setStatus + setWidget for persistent lifecycle UI"
   else
     tap_not_ok "Extension uses setStatus + setWidget for persistent lifecycle UI" "Expected both setStatus and setWidget in extension source"
@@ -846,13 +847,13 @@ else
   fi
 
   # Guardrail: the persistent widget stays limited to the calm 4-line lifecycle hierarchy
-  if grep -q 'PALS Milestone:' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'Phase:' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'Loop:' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'Next action:' "$EXT_SRC" 2>/dev/null \
-    && ! grep -q 'Actions:' "$EXT_SRC" 2>/dev/null \
-    && ! grep -q 'More:' "$EXT_SRC" 2>/dev/null \
-    && ! grep -q 'PALS Lifecycle' "$EXT_SRC" 2>/dev/null; then
+  if grep -q 'PALS Milestone:' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'Phase:' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'Loop:' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'Next action:' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && ! grep -q 'Actions:' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && ! grep -q 'More:' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && ! grep -q 'PALS Lifecycle' "$EXT_LIFECYCLE_UI" 2>/dev/null; then
     tap_ok "Extension keeps the lifecycle widget aligned to the calm 4-line hierarchy"
   else
     tap_not_ok "Extension keeps the lifecycle widget aligned to the calm 4-line hierarchy" "Expected PALS Milestone/Phase/Loop/Next action labels and no legacy Actions:/More:/PALS Lifecycle widget copy in pals-hooks.ts"
@@ -1143,6 +1144,38 @@ fi
     tap_not_ok "S7 PALS context injection extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected six S7 constants/functions + literal authority/activation byte sequences + No-op Pi extension factory in pals-context-injection.ts; pals-hooks.ts importing from ./pals-context-injection with no inline S7 declarations; S4 canonical-reply identifiers and shared helpers retained in pals-hooks.ts"
   fi
 
+  # Phase 258: Pi-supported-runtime — S6 lifecycle-ui extracted to sibling module.
+  # Asserts the new sibling holds both S6 constants exactly with their right-hand-side string literals,
+  # all eight S6 functions, the literal No-op Pi extension factory marker, and the type-only back-imports;
+  # that pals-hooks.ts imports from ./lifecycle-ui and no longer declares them inline; and
+  # that S4 canonical-reply identifiers and shared helpers (extractTextContent, collectRecentAssistantTexts) remain in pals-hooks.ts.
+  if [[ -f "$EXT_LIFECYCLE_UI" ]] \
+    && grep -q 'PALS_STATUS_ID = "pals-lifecycle"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'PALS_WIDGET_ID = "pals-lifecycle"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderLoopBadge' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderCompactLoopSummary' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderLifecycleActionLabel' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderModuleActivity' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderModuleActivityDetails' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderLifecycleStatus' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function renderLifecycleWidget' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'function syncLifecycleUi' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'No-op Pi extension factory' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'import type { PalsStateSnapshot } from "./pals-hooks"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'import type { RecentModuleActivity } from "./module-activity-parsing"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'from "./lifecycle-ui"' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^const (PALS_STATUS_ID|PALS_WIDGET_ID)' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^function (renderLoopBadge|renderCompactLoopSummary|renderLifecycleActionLabel|renderModuleActivity|renderModuleActivityDetails|renderLifecycleStatus|renderLifecycleWidget|syncLifecycleUi)' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'function extractTextContent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'function collectRecentAssistantTexts' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
+  else
+    tap_not_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected two S6 constants exact-string + eight S6 functions + No-op Pi extension factory + type-only back-imports for PalsStateSnapshot/RecentModuleActivity in lifecycle-ui.ts; pals-hooks.ts importing from ./lifecycle-ui with no inline S6 declarations; S4 canonical-reply identifiers and shared helpers (extractTextContent, collectRecentAssistantTexts) retained in pals-hooks.ts"
+  fi
   tap_file_contains_all \
     "Pi-Supported Runtime docs surface guided workflow reply evidence" \
     "$REPO_ROOT/drivers/pi/extensions/README.md" \
@@ -1172,7 +1205,7 @@ fi
   # Live module visibility contract: bounded parser/renderer path for canonical workflow signals
   EXT_MODULE_ACTIVITY="$REPO_ROOT/drivers/pi/extensions/module-activity-parsing.ts"
   if grep -q 'extractRecentModuleActivity' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'renderModuleActivity' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'renderModuleActivity' "$EXT_LIFECYCLE_UI" 2>/dev/null \
     && grep -q '\[dispatch\]' "$EXT_MODULE_ACTIVITY" 2>/dev/null \
     && grep -q 'Module Execution Reports' "$EXT_MODULE_ACTIVITY" 2>/dev/null; then
     tap_ok "Extension derives recent module activity from canonical dispatch/report markers"
@@ -1227,9 +1260,9 @@ fi
   fi
 
   # Live module visibility contract: reuse the existing lifecycle status/widget surfaces
-  if grep -q 'collectRecentAssistantTexts(ctx, undefined, RECENT_MODULE_ACTIVITY_LOOKBACK)' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'renderLifecycleStatus(state, recentModuleActivity)' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'renderLifecycleWidget(state, recentModuleActivity)' "$EXT_SRC" 2>/dev/null; then
+  if grep -q 'collectRecentAssistantTexts(ctx, undefined, RECENT_MODULE_ACTIVITY_LOOKBACK)' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'renderLifecycleStatus(state, recentModuleActivity)' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'renderLifecycleWidget(state, recentModuleActivity)' "$EXT_LIFECYCLE_UI" 2>/dev/null; then
     tap_ok "Extension wires recent module activity into the existing lifecycle status/widget"
   else
     tap_not_ok "Extension wires recent module activity into the existing lifecycle status/widget" "Expected recent module activity derivation to flow through the existing status/widget rendering path"
@@ -1520,14 +1553,14 @@ else
 fi
 
 # Check renderLoopBadge function exists
-if grep -q 'renderLoopBadge' "$EXT_SRC_P64" 2>/dev/null; then
+if grep -q 'renderLoopBadge' "$EXT_LIFECYCLE_UI" 2>/dev/null; then
   tap_ok "Extension defines renderLoopBadge for loop state readability"
 else
   tap_not_ok "Extension defines renderLoopBadge for loop state readability" "Expected renderLoopBadge function in pals-hooks.ts"
 fi
 
 # Check loop badge is wired into status bar
-if grep -q 'renderLoopBadge(state.loop)' "$EXT_SRC_P64" 2>/dev/null; then
+if grep -q 'renderLoopBadge(state.loop)' "$EXT_LIFECYCLE_UI" 2>/dev/null; then
   tap_ok "Extension wires loop badge into renderLifecycleStatus"
 else
   tap_not_ok "Extension wires loop badge into renderLifecycleStatus" "Expected renderLoopBadge(state.loop) call inside renderLifecycleStatus"
