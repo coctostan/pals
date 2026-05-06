@@ -10,9 +10,9 @@ See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 created 202
 
 Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
 Phase: 257 of 260 (S6 Extraction Contract + Bounded Submodule Plan)
-Plan: 257-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-06 — Plan 257-01 created at `.paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-PLAN.md`. Docs-only contract phase: 3 tasks targeting `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` (new), `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (update), and `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (update). Eight S6 functions and two S6 constants (`PALS_STATUS_ID`, `PALS_WIDGET_ID`) bounded for Phase 258 extraction. Shared-input disposition pinned: `PalsStateSnapshot` (owned by `pals-hooks.ts`) and `RecentModuleActivity` (owned by S5 sibling) consumed via type-only back-imports per Phase 254 precedent. Pi-UI-mutation invocation rule: `syncLifecycleUi(ctx)` call sites stay in `pals-hooks.ts`. Forbidden scope explicit: S4 canonical reply delivery, S8 command routing, UI-only lifecycle decisions, Claude Code / Agent SDK driver. Module dispatch recorded (TODD/IRIS/DAVE/DOCS/RUBY/ARCH/CODI advisory PASS; DEAN enforcement PASS). Awaiting approval before /paul:apply.
+Plan: 257-01 — APPLY complete; awaiting UNIFY
+Status: PLAN ✓ APPLY ✓ — ready for UNIFY
+Last activity: 2026-05-06 — Phase 257 APPLY complete. Three tasks executed inline (parent-owned APPLY, no delegation): (T1) created `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` (183 LOC) defining the S6 boundary; (T2) updated `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` (Phase 257 Outcome + Phase 257/258 Validation Expectations sections added; S6 row promoted; S7 row updated to shipped) and `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` (Phase 257 Outcome section added; prior S1/S2/S3/S5/S7 history preserved verbatim); (T3) verified docs-only scope and ran full validation. Validation evidence: Pi 231/231, cross-harness 136/136, artifact_consistency PASS, install surface 6 (unchanged), `git diff --check` clean. GitHub Flow: feature branch `phase/257-s6-extraction-contract` created from `main`, work committed `3bcb83ff`, pushed, PR #172 opened (https://github.com/coctostan/pals/pull/172, MERGEABLE, CI in progress). Module dispatch all PASS (advisory IRIS/DOCS/RUBY/ARCH/SETH; enforcement WALT/DAVE/DEAN/TODD). Ready for /paul:unify.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Status: v2.60 created — ready for /paul:plan Phase 257
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
-- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [░░░░░░░░░░] 0% (0 of 4 phases complete; created 2026-05-06; Phase 257 ready to plan)
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [█▒▒▒▒▒▒▒▒▒] 12.5% (Phase 257 PLAN+APPLY complete; PR #172 open; UNIFY pending)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Status: v2.60 created — ready for /paul:plan Phase 257
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 257-01 created, awaiting approval]
+  ✓        ✓        ○     [Plan 257-01 APPLY complete; PR #172 open; ready for UNIFY]
 ```
 
 ## Accumulated Context
