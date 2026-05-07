@@ -34,7 +34,7 @@ Theme: Close the Pi-extension modularization wave by extracting S8 `command-rout
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 261 | S8 Extraction Contract + Bounded Submodule Plan | TBD | Not started | - |
+| 261 | S8 Extraction Contract + Bounded Submodule Plan | 1 | Planning | - |
 | 262 | Bounded S8 Submodule Extraction | TBD | Not started | - |
 | 263 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 264 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
