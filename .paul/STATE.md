@@ -9,9 +9,9 @@ See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 created 202
 ## Current Position
 
 Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
-Phase: 260 of 260 (Evidence Closure + Next Roadmap Decision) — ready to plan
-Plan: not started
-Status: ready to plan
+Phase: 260 of 260 (Evidence Closure + Next Roadmap Decision) — Planning
+Plan: 260-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
 Last activity: 2026-05-07 — Phase 259 (Documentation + Validation Surfacing) full PLAN-APPLY-UNIFY loop closed and merged. Branch `phase/259-documentation-validation-surfacing` squash-merged via PR #174 (`b879b372`) with Socket Security CI ×2 SUCCESS pre-merge; feature branch deleted on remote (via `gh pr merge --delete-branch`) and locally (pruned); local `main` synced with `origin/main`. SUMMARY 259-01 records 4/4 ACs PASS with two minor in-flight reconciled deviations: (1) STATE.md `Resume file:` repath at resume time — the `paul-resume` workflow archived the active handoff but left the in-state pointer stale, repaired in-flight per the resume workflow's allowance for archived handoff paths; (2) Phase 257-style pre-created `## Status After Phase 258` placeholder in the S6 contract vs the PLAN's literal-append language — filled the placeholder rather than appending a duplicate heading, the only path consistent with the verify step's `grep -c == 1` constraint, semantics identical. Surfacing scope held to plan exactly: 7 source/docs/test files in the diff (`README.md`, `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`, `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`, `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md`, `tests/pi-end-to-end-validation.sh`); Pi 232 → 235 (+3 surfacing TAPs reconciled exactly); cross-harness 136/136 unchanged; install 7 Pi extension files unchanged; artifact_consistency PASS; `git diff --check` clean on `main` post-merge. The sibling-surfacing recipe is now ratified durable across the full active S\* set (5th application: Phase 244 / 247 / 251 / 255 / 259). Together with the sibling-extraction recipe (6th application via Phase 258), the v2.59+v2.60 modularization wave has produced two durable recipes that unblock any remaining S\* candidate if ever promoted from deferred state. The no-UI-only-lifecycle-decisions invariant is now repeated verbatim in `drivers/pi/extensions/README.md` and `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` so future code-graph drift will surface as a doc-vs-code reconciliation gap detectable by Phase 260 evidence closure. 3 of 4 phases of v2.60 complete. Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase) is next.
 
 Progress:
@@ -33,7 +33,7 @@ Status: Phase 257 closed — ready for /paul:plan Phase 258
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
-- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [█████▒▒▒▒▒] 50% (2 of 4 phases complete; Phase 257 closed via PR #172 `800552a1`; Phase 258 closed via PR #173 `1531e47a`; Phase 259 next)
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [████████▒▒] 75% (3 of 4 phases complete; Phase 257 closed via PR #172 `800552a1`; Phase 258 closed via PR #173 `1531e47a`; Phase 259 closed via PR #174 `b879b372`; Phase 260 Plan 260-01 created, awaiting approval)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Status: Phase 257 closed — ready for /paul:plan Phase 258
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 259 closed via PR #174 `b879b372`; Phase 260 ready to plan]
+  ✓        ○        ○     [Plan 260-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -323,10 +323,10 @@ Prior PRs: #174 merged (Phase 259 docs/validation surfacing `b879b372`); #173 me
 
 ## Session Continuity
 
-Last session: 2026-05-07 — Phase 259 closed via PR #174 `b879b372` squash-merged; transitioned to Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase).
-Stopped at: Phase 259 loop closed; merge gate ✓ (all 7 gates PASS); transition complete; ready to plan Phase 260.
-Next action: Run `/paul:plan` to create Plan 260-01 for Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase, which adds the `+1` cross-harness closure guardrail per the recipe established by Phases 245 / 248 / 252 / 256 and reconciles the v2.60 milestone evidence + records the next-roadmap decision).
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-07T01:34Z — Plan 260-01 created via /paul:plan for Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase); user selected `[3] Pause here` at the post-plan continuation prompt; APPLY not started.
+Stopped at: Plan 260-01 created and awaiting approval; APPLY queued but explicitly paused before any closure edit ran.
+Next action: Read `.paul/HANDOFF-2026-05-07-phase-260-pre-apply.md`, confirm intent, then approve and run `/paul:apply .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-PLAN.md`.
+Resume file: .paul/HANDOFF-2026-05-07-phase-260-pre-apply.md
 Resume context:
 - v2.60 active; **3 of 4 phases complete**; Phase 257 closed via PR #172 `800552a1`; Phase 258 closed via PR #173 `1531e47a`; Phase 259 closed via PR #174 `b879b372`. Phase 260 (Evidence Closure + Next-Roadmap Decision) is the v2.60 milestone closure phase and the only remaining phase.
 - Working tree clean on `main`; 0 ahead / 0 behind `origin/main`. No feature branch exists for Phase 260 yet — `/paul:plan` will be followed by `/paul:apply` whose GitHub Flow preflight will create `phase/260-evidence-closure-next-roadmap-decision` (or equivalent slug) from `main`.

@@ -1386,6 +1386,27 @@ tap_file_contains_all \
   'v2.60'
 
 # ════════════════════════════════════════════════════════════════
+# Phase 260 sibling extraction wave closure (v2.60 Shared Invariant)
+# ════════════════════════════════════════════════════════════════
+# Phase 260 closes v2.60 by aggregating Phases 257–260 evidence into MILESTONES.md.
+# Closure guardrail: .paul/MILESTONES.md must continue to name the v2.60 milestone,
+# the four phases, the S6 sibling basename, the preserved S7 sibling, the preserved
+# S4 host module, and the v2.61 recommendation marker so the shared invariant across
+# docs/contract/lifecycle does not regress.
+tap_file_contains_all \
+  "Phase 260 sibling extraction wave closure (v2.60 Shared Invariant)" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.60 Pi Extension Submodule Extraction Wave' \
+  'Phase 257' \
+  'Phase 258' \
+  'Phase 259' \
+  'Phase 260' \
+  'lifecycle-ui.ts' \
+  'pals-context-injection.ts' \
+  'pals-hooks.ts' \
+  'v2.61'
+
+# ════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 
