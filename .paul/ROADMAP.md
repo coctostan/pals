@@ -29,14 +29,14 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction**
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 1 of 4 complete
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 3 of 4 complete
 Theme: Continue the Pi-extension modularization wave by extracting S6 `lifecycle-ui` rendering paths from `drivers/pi/extensions/pals-hooks.ts` into a sibling Pi extension module, applying the ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, default-arg cycle-avoidance) while preserving S4 canonical reply delivery in `pals-hooks.ts`, the no-UI-only-lifecycle-decisions boundary, `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth. S4 canonical reply delivery remains explicitly deferred (integration point, not an extraction candidate).
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 257 | S6 Extraction Contract + Bounded Submodule Plan | 257-01 | ✅ Complete | 2026-05-06 |
-| 258 | Bounded S6 Submodule Extraction | 258-01 | UNIFY ✓ (PR #173 awaiting merge gate) | 2026-05-06 |
-| 259 | Documentation + Validation Surfacing | 259-01 | APPLY ✓ (PR #174 OPEN; CI in flight) | - |
+| 258 | Bounded S6 Submodule Extraction | 258-01 | ✅ Complete | 2026-05-06 |
+| 259 | Documentation + Validation Surfacing | 259-01 | ✅ Complete | 2026-05-07 |
 | 260 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 257: S6 Extraction Contract + Bounded Submodule Plan
