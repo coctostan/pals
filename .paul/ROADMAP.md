@@ -36,7 +36,7 @@ Theme: Continue the Pi-extension modularization wave by extracting S6 `lifecycle
 |-------|------|-------|--------|-----------|
 | 257 | S6 Extraction Contract + Bounded Submodule Plan | 257-01 | ✅ Complete | 2026-05-06 |
 | 258 | Bounded S6 Submodule Extraction | 258-01 | UNIFY ✓ (PR #173 awaiting merge gate) | 2026-05-06 |
-| 259 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 259 | Documentation + Validation Surfacing | 259-01 | APPLY ✓ (PR #174 OPEN; CI in flight) | - |
 | 260 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 257: S6 Extraction Contract + Bounded Submodule Plan
@@ -49,7 +49,7 @@ Plans: `.paul/phases/258-bounded-s6-submodule-extraction/258-01-PLAN.md` + `.pau
 
 ### Phase 259: Documentation + Validation Surfacing
 Focus: Surface the S6 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S6 extraction contract and modularization contract; add localized Pi validation guardrails without broad validation-suite refactors. Fifth ratification target for the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255 / 259).
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/259-documentation-validation-surfacing/259-01-PLAN.md` (created 2026-05-06; awaiting approval; bounded docs + validation surfacing; 3 tasks; expected count delta Pi 232 → 235 / +3 surfacing TAP assertions; install 7 unchanged; cross-harness 136/136 unchanged — the +1 closure guardrail is reserved for Phase 260)
 
 ### Phase 260: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.60 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation; record v2.61 candidate selection without approving it.
