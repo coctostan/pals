@@ -108,3 +108,4 @@ Types: —
 | 2026-05-05 | 256-evidence-closure-next-roadmap-decision-v2-59 | Pi 231/231, XH 136/136 | N/A (shell) | N/A | N/A | ↑ improving |
 | 2026-05-06 | 257-s6-extraction-contract-bounded-submodule-plan | Pi 231/231, XH 136/136 | N/A (shell) | N/A | N/A | → stable |
 | 2026-05-06 | 258-bounded-s6-submodule-extraction | Pi 232/232, XH 136/136 | N/A (shell) | N/A | N/A | ↑ improving |
+| 2026-05-07 | 259-documentation-validation-surfacing | Pi 235/235, XH 136/136 | N/A (shell) | N/A | N/A | ↑ improving |

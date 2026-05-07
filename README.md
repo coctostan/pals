@@ -22,7 +22,7 @@ Start a new Pi session, then in any project:
 ```
 
 > First-run scenario: see [docs/PALS-FIRST-RUN-HAPPY-PATH.md](docs/PALS-FIRST-RUN-HAPPY-PATH.md) for a concrete tiny init→plan→apply→unify walkthrough that names what PALS protected at each step.
-Pi is the supported runtime: PALS installs canonical skills under `~/.pi/agent/skills/pals/`, Pi extension siblings under `~/.pi/agent/extensions/` (currently `pals-hooks.ts` plus the Phase 239 S5 extraction `module-activity-parsing.ts`, the Phase 243 S1 sibling extraction `artifact-slice-rendering.ts`, the Phase 246 S2 sibling extraction `workflow-resource-capsule-rendering.ts`, the Phase 250 S3 detection sibling `guided-workflow-detection.ts`, and the Phase 254 S7 PALS context injection sibling extraction `pals-context-injection.ts`, per the source-set rule in `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`), and project-shipped helper agents under `~/.pi/agent/agents/`.
+Pi is the supported runtime: PALS installs canonical skills under `~/.pi/agent/skills/pals/`, Pi extension siblings under `~/.pi/agent/extensions/` (currently `pals-hooks.ts` plus the Phase 239 S5 extraction `module-activity-parsing.ts`, the Phase 243 S1 sibling extraction `artifact-slice-rendering.ts`, the Phase 246 S2 sibling extraction `workflow-resource-capsule-rendering.ts`, the Phase 250 S3 detection sibling `guided-workflow-detection.ts`, the Phase 254 S7 PALS context injection sibling extraction `pals-context-injection.ts`, and the Phase 258 S6 lifecycle UI sibling extraction `lifecycle-ui.ts`, per the source-set rule in `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`), and project-shipped helper agents under `~/.pi/agent/agents/`.
 
 Claude Code and Agent SDK surfaces are unsupported/frozen historical compatibility references. They may remain in the repository, but new architecture work should use the Pi-native surfaces and preserve `.paul/*` artifact authority.
 Driver inventory remains documented for maintenance context: Claude Code · Pi · Agent SDK. Pi driver installs canonical skills plus an extension-backed command/hook layer; the other surfaces are frozen legacy references.
@@ -281,7 +281,7 @@ cd pals
 The root installer is Pi-first by default. With no `PALS_DRIVER` set, `./install.sh` installs the supported Pi driver only when a Pi home surface (`~/.pi`) is present; it does not silently install frozen legacy drivers just because `~/.claude` exists.
 
 Install targets and opt-ins:
-- **Default supported target:** Pi skill/kernel surface, extension source-set surface, and project-agent surface (`~/.pi/agent/skills/pals/`, `~/.pi/agent/extensions/{name}.ts` for repo `drivers/pi/extensions/*.ts` including `pals-hooks.ts`, `guided-workflow-detection.ts`, and `pals-context-injection.ts`, `~/.pi/agent/agents/`)
+- **Default supported target:** Pi skill/kernel surface, extension source-set surface, and project-agent surface (`~/.pi/agent/skills/pals/`, `~/.pi/agent/extensions/{name}.ts` for repo `drivers/pi/extensions/*.ts` including `pals-hooks.ts`, `guided-workflow-detection.ts`, `pals-context-injection.ts`, and `lifecycle-ui.ts`, `~/.pi/agent/agents/`)
 - **Explicit Pi target:** `PALS_DRIVER=pi ./install.sh`
 - **Frozen legacy/source-only compatibility targets:** `PALS_DRIVER=claude-code ./install.sh` or `PALS_DRIVER=agent-sdk ./install.sh`
 - **All-driver maintenance mode:** `PALS_DRIVER=all ./install.sh` is explicit parity/maintenance opt-in, not the normal user path
