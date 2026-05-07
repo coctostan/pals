@@ -2012,6 +2012,38 @@ tap_file_contains_all \
   'lifecycle-ui.ts' \
   'pals-hooks.ts' \
   'Derived aid only'
+
+# ════════════════════════════════════════════════════════════════
+# Phase 263 surfaces the Phase 262 S8 sibling extraction in user-facing Pi docs.
+# Guardrail: README, Pi extension docs, and skill map must name the S8 sibling and
+# keep the S4 canonical reply delivery boundary visible.
+tap_file_contains_all \
+  "Phase 263 sibling extraction surfacing (Pi-supported runtime): user-facing docs name command-routing.ts and preserve S8/S4 boundary" \
+  "$REPO_ROOT/README.md" \
+  'command-routing.ts' \
+  'pals-hooks.ts' \
+  'S4 canonical reply delivery'
+
+
+tap_file_contains_all \
+  "Phase 263 sibling extraction surfacing (Pi-supported runtime): drivers/pi/extensions/README.md names command-routing.ts alongside extracted siblings" \
+  "$REPO_ROOT/drivers/pi/extensions/README.md" \
+  'pals-hooks.ts' \
+  'module-activity-parsing.ts' \
+  'artifact-slice-rendering.ts' \
+  'workflow-resource-capsule-rendering.ts' \
+  'guided-workflow-detection.ts' \
+  'pals-context-injection.ts' \
+  'lifecycle-ui.ts' \
+  'command-routing.ts' \
+  'S4 canonical reply delivery'
+
+tap_file_contains_all \
+  "Phase 263 sibling extraction surfacing (Pi-supported runtime): drivers/pi/skill-map.md names command-routing.ts and derived-only boundary" \
+  "$REPO_ROOT/drivers/pi/skill-map.md" \
+  'command-routing.ts' \
+  'pals-hooks.ts' \
+  'Derived aid only'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

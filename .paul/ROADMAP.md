@@ -36,7 +36,7 @@ Theme: Close the Pi-extension modularization wave by extracting S8 `command-rout
 |-------|------|-------|--------|-----------|
 | 261 | S8 Extraction Contract + Bounded Submodule Plan | 1 | ✅ Complete | 2026-05-07 |
 | 262 | Bounded S8 Submodule Extraction | 1 | ✅ Complete — PR #177 awaiting merge gate | 2026-05-07 |
-| 263 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 263 | Documentation + Validation Surfacing | 1 | Planning | - |
 | 264 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 261: S8 Extraction Contract + Bounded Submodule Plan
@@ -49,7 +49,7 @@ Plans: `.paul/phases/262-bounded-s8-submodule-extraction/262-01-PLAN.md` + `.pau
 
 ### Phase 263: Documentation + Validation Surfacing
 Focus: Surface the S8 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S8 extraction contract and modularization contract (S1–S8 inventory now fully closed except S4); add localized Pi validation guardrails without broad validation-suite refactors. Sixth ratification target for the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255 / 259 / 263). Mirrors Phase 259 (S6 surfacing) and Phase 255 (S7 surfacing) shape one-to-one.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/263-documentation-validation-surfacing/263-01-PLAN.md` — Planning (2026-05-07; 3 tasks; T1 surface S8 across user-facing Pi docs — README / Pi extensions README / Pi skill-map; T2 append `## Phase 262 Outcome` to modularization contract docs and `## Status After Phase 262` to S8 contract; T3 add 3 bounded surfacing TAP guardrails + run install + full validation; expects install 8 unchanged, Pi 240 → 243 with 1 inherited Path A `not ok 102` unchanged, cross-harness 137 unchanged with 1 inherited `not ok 31`; 6th sibling-surfacing-recipe application target — durable across the full active S* set after this phase; Path A inherited regression carried forward to Phase 264 closure / v2.62)
 
 ### Phase 264: Evidence Closure + Next Roadmap Decision
 Focus: Reconcile v2.61 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation; record v2.62 candidate selection without approving it. The v2.61 closure also closes the per-sibling extraction wave (S1–S8 fully extracted except S4 deferred); v2.62 candidates likely shift away from per-sibling extraction (e.g., broader cross-harness validation-script size-debt work, S4 canonical reply delivery integration, full Claude Code / Agent SDK driver removal, local context-cost evidence, demo project preset). Mirrors Phase 245 / 248 / 252 / 256 / 260 closure shape one-to-one (5+1 = 6th application of the closure-guardrail recipe).
