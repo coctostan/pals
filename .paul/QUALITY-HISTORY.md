@@ -109,3 +109,6 @@ Types: —
 | 2026-05-06 | 257-s6-extraction-contract-bounded-submodule-plan | Pi 231/231, XH 136/136 | N/A (shell) | N/A | N/A | → stable |
 | 2026-05-06 | 258-bounded-s6-submodule-extraction | Pi 232/232, XH 136/136 | N/A (shell) | N/A | N/A | ↑ improving |
 | 2026-05-07 | 259-documentation-validation-surfacing | Pi 235/235, XH 136/136 | N/A (shell) | N/A | N/A | ↑ improving |
+| 2026-05-07 | 260-evidence-closure-next-roadmap-decision-v2-60 | Pi 235/235, XH 137/137 | N/A (shell) | N/A | N/A | ↑ improving |
+| 2026-05-07 | 261-s8-extraction-contract-bounded-submodule-plan | Pi 234/235 (1 inherited Path A), XH 136/137 (1 inherited Path A) | N/A (shell) | N/A | N/A | → stable (Path A inherited) |
+| 2026-05-07 | 262-bounded-s8-submodule-extraction | Pi 239/240 (1 inherited Path A), XH 136/137 (1 inherited Path A) | N/A (shell) | N/A | N/A | ↑ improving (sibling-extraction recipe 7×; pals-hooks.ts -160 LOC) |
