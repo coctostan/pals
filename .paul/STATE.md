@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 Pi Extensio
 ## Current Position
 
 Milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
-Phase: 264 of 264 (Evidence Closure + Next-Roadmap Decision) — Not started
-Plan: Not started
-Status: Ready to plan Phase 264 (the v2.61 closure phase)
-Last activity: 2026-05-07 — Phase 263 transitioned to complete after `/paul:unify` closed the PLAN-APPLY-UNIFY loop. PR #178 squash-merged 2026-05-07T17:17:57Z as `6f725276`; main synced; feature branch deleted. PROJECT.md evolved (active milestone updated to v2.61 with 3 of 4 phases complete; v2.61 milestone posture row added; Phase 261 / 262 / 263 closure decision rows added). ROADMAP.md updated (Phase 263 marked ✅ Complete with PR #178 evidence; Phase 262 status reconciled from “PR #177 awaiting merge gate” to ✅ Complete; v2.61 footer updated). v2.61 sibling-extraction recipe ratified a 7th time (Phase 262); sibling-surfacing recipe ratified a 6th time (Phase 263) — durable across the full active S* set (S5/S1/S2/S3/S7/S6/S8). Phase 264 (Evidence Closure + Next-Roadmap Decision) is the v2.61 closure phase: will record final milestone evidence, decide reconciliation/escalation of the Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`), recommend v2.62 scope, and add the bounded `+1` shared-invariant closure TAP guardrail per the recipe established by Phases 244 / 247 / 251 / 255 / 259.
+Phase: 264 of 264 (Evidence Closure + Next-Roadmap Decision) — Planning
+Plan: 264-01 created (`.paul/phases/264-evidence-closure-next-roadmap-decision-v2-61/264-01-PLAN.md`), awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-07 — `/paul:plan` Phase 264 drafted `.paul/phases/264-evidence-closure-next-roadmap-decision-v2-61/264-01-PLAN.md` (357 lines, 3 tasks, 4 ACs: T1 aggregate v2.61 closure evidence in MILESTONES.md (incl. Path A escalation decision); T2 close v2.61 in PROJECT.md + ROADMAP.md with v2.62 recommendation; T3 +1 cross-harness shared-invariant closure guardrail + run install + full validation). 6th application of the closure-guardrail recipe (Phase 245 / 248 / 252 / 256 / 260 / 264) — durable across six consecutive milestones after this phase. Mode: direct-requirements; Collaboration: medium. AC-1–AC-4 defined; module dispatch recorded; required skills (/paul, /carl, TODD, WALT) noted. Path A inherited regression decision: **escalate to v2.62** (rationale recorded in MILESTONES.md / PROJECT.md / Key Decisions row; closure scope bounded to evidence + 1 guardrail, in-flight trim would expand scope beyond closure-recipe precedent). Recommended v2.62 default focus: **broader cross-harness validation-script size-debt work** (suite is now 1430 lines; decomposition would naturally subsume the Path A reconciliation). Higher-risk alternative: S4 canonical reply delivery extraction. Lower-risk alternative: small `/paul:fix` ROADMAP active-window trim. Expected validation deltas: install 8 unchanged; Pi 243 unchanged with inherited Path A `not ok 102`; cross-harness 137 → 138 (+1 closure guardrail) with inherited `not ok 31` unchanged.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 264 not started — ready to plan]
+  ✓        ○        ○     [Plan created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -328,9 +328,9 @@ Prior PRs: #178 merged (Phase 263 Documentation + Validation Surfacing `6f725276
 ## Session Continuity
 
 Last session: 2026-05-07 — `/paul:apply` Phase 263 executed all 3 tasks (T1 surface S8 across user-facing Pi docs; T2 append `## Phase 262 Outcome` to modularization contract docs + first-ever `## Status After Phase 262` on S8 contract; T3 +3 bounded surfacing TAP guardrails). All 4 ACs PASS; install 8 unchanged; Pi 240→243 (passing 239→242 with inherited Path A `not ok 102` unchanged); cross-harness 137 unchanged; artifact_consistency PASS. `/paul:unify` closed the loop: SUMMARY.md written, merge gate green, PR #178 squash-merged as `6f725276`, main synced.
-Stopped at: Phase 263 complete and transitioned; on branch `main`. v2.61 progress 75% (3 of 4 phases complete; Phase 264 not started).
-Next action: Run `/paul:plan` for Phase 264 (Evidence Closure + Next-Roadmap Decision) — the v2.61 closure phase.
-Resume file: .paul/ROADMAP.md
+Stopped at: Phase 264 PLAN created and awaiting approval; on branch `main` (no feature branch yet — APPLY will create `feature/264-evidence-closure-next-roadmap-decision-v2-61`). v2.61 progress 75% (3 of 4 phases complete; Phase 264 in PLAN).
+Next action: Review and approve the plan, then run `/paul:apply .paul/phases/264-evidence-closure-next-roadmap-decision-v2-61/264-01-PLAN.md`.
+Resume file: .paul/phases/264-evidence-closure-next-roadmap-decision-v2-61/264-01-PLAN.md
 Resume context:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: 3 of 4 phases complete (Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 `19555747`; Phase 263 ✅ PR #178 `6f725276`). Phase 264 (Evidence Closure + Next-Roadmap Decision) is the v2.61 closure phase — mirrors Phase 245 / 248 / 252 / 256 / 260 closure shape one-to-one (6th application of the closure-guardrail recipe).
 - Working tree clean on `feature/262-bounded-s8-submodule-extraction`; ahead of `main` by 4 commits (`b1e1ca00` pre-existing on main + `b2f4a0ee` WIP plan + `956659fc` handoff archive + `61447b56` Disposition A extraction). PR #177: https://github.com/coctostan/pals/pull/177.
