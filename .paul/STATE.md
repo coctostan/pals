@@ -27,7 +27,6 @@ Progress:
 - v2.51 Pi-Native Validation Classification: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.52 Legacy Retention / Install-Surface Cleanup: [██████████] 100% (4 of 4 phases complete; milestone closed)
 - v2.53 Pi Integration Efficiency & Effectiveness Exploration: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #144 merged)
-Status: Phase 257 closed — ready for /paul:plan Phase 258
 - v2.55 Maintainability & Product Reality Hardening: [██████████] 100% (8 of 8 phases complete; milestone closed; PR #156 merged)
 - v2.56 Pi Extension Submodule Extraction Wave: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #160 merged)
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
@@ -316,21 +315,21 @@ Detailed historical decisions, fixes, deviations, skill audits, and deferred iss
 ### Git State
 
 Branch: main
-Last commit: b879b372 — Phase 259: surface S6 lifecycle-ui sibling extraction across Pi docs and validation (#174) — squash-merged 2026-05-07 (PR #174)
-PR: #174 MERGED — https://github.com/coctostan/pals/pull/174 (MERGEABLE → CLEAN → MERGED; Socket Security CI ×2 SUCCESS pre-merge; squash merge with delete-branch)
-Working tree: clean on `main`; 0 ahead / 0 behind `origin/main`; feature branch `phase/259-documentation-validation-surfacing` deleted on remote (via `gh pr merge --delete-branch`) and locally; pruned. Post-merge validation baseline on `main`: install 7 Pi extension files unchanged, Pi 235/235, cross-harness 136/136 unchanged, artifact_consistency PASS, `git diff --check` clean.
-Prior PRs: #174 merged (Phase 259 docs/validation surfacing `b879b372`); #173 merged (Phase 258 bounded S6 extraction `1531e47a`); #172 merged (Phase 257 S6 contract `800552a1`); #171 merged (Phase 256 v2.59 closure `872aa4a7`); #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); earlier PR history archived in STATE history.
+Last commit: 3201c00f — docs(260): post-merge state alignment after v2.60 milestone closure
+PR: #175 MERGED — https://github.com/coctostan/pals/pull/175 (MERGEABLE → CLEAN → MERGED; Socket Security CI ×2 SUCCESS pre-merge; squash merge `9b3b609b` 2026-05-07T02:13:47Z; --delete-branch)
+Working tree: clean on `main`; 0 ahead / 0 behind `origin/main` after the post-merge state-alignment push; feature branch `phase/260-evidence-closure-next-roadmap-decision` deleted on remote and locally; pruned. Post-merge validation baseline on `main`: install 7 Pi extension files unchanged, Pi 235/235 unchanged, cross-harness 137/137 (+1 strict from baseline 136), artifact_consistency PASS, `git diff --check` clean.
+Prior PRs: #175 merged (Phase 260 v2.60 closure `9b3b609b`); #174 merged (Phase 259 docs/validation surfacing `b879b372`); #173 merged (Phase 258 bounded S6 extraction `1531e47a`); #172 merged (Phase 257 S6 contract `800552a1`); #171 merged (Phase 256 v2.59 closure `872aa4a7`); #170 merged (Phase 255 docs/validation surfacing `0a607c43`); #169 merged (Phase 254 S7 source extraction `af1c1793`); #168 merged (Phase 253 S7 contract `f326db54`); #167 merged (v2.58 closure / Phase 252); #166 merged (Phase 251 docs/validation surfacing); #165 merged (Phase 250 S3 extraction); #164 merged (Phase 249 S3 contract); earlier PR history archived in STATE history.
 
 ## Session Continuity
 
-Last session: 2026-05-07T01:34Z — Plan 260-01 created via /paul:plan for Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase); user selected `[3] Pause here` at the post-plan continuation prompt; APPLY not started.
-Stopped at: Plan 260-01 created and awaiting approval; APPLY queued but explicitly paused before any closure edit ran.
-Next action: Read `.paul/HANDOFF-2026-05-07-phase-260-pre-apply.md`, confirm intent, then approve and run `/paul:apply .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-PLAN.md`.
-Resume file: .paul/HANDOFF-2026-05-07-phase-260-pre-apply.md
+Last session: 2026-05-07T02:14Z — Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase) APPLY+UNIFY complete; PR #175 squash-merged; v2.60 closed 4 of 4 phases.
+Stopped at: Phase 260 transition complete; v2.60 milestone closed; ready for /paul:milestone (v2.61 selection).
+Next action: /paul:milestone to select and create the next milestone. Recorded default-focus recommendation in `.paul/MILESTONES.md`: (a) S8 command routing extraction (last unclaimed sibling from S1–S8) OR (b) broader cross-harness validation-script size-debt work.
+Resume file: .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md
 Resume context:
-- v2.60 active; **3 of 4 phases complete**; Phase 257 closed via PR #172 `800552a1`; Phase 258 closed via PR #173 `1531e47a`; Phase 259 closed via PR #174 `b879b372`. Phase 260 (Evidence Closure + Next-Roadmap Decision) is the v2.60 milestone closure phase and the only remaining phase.
-- Working tree clean on `main`; 0 ahead / 0 behind `origin/main`. No feature branch exists for Phase 260 yet — `/paul:plan` will be followed by `/paul:apply` whose GitHub Flow preflight will create `phase/260-evidence-closure-next-roadmap-decision` (or equivalent slug) from `main`.
-- Post-Phase-259 validation baseline on `main`: install 7 Pi extension files, Pi 235/235, cross-harness 136/136, artifact_consistency PASS, `git diff --check` clean. Phase 260's `+1` closure guardrail will move cross-harness 136 → 137 by recipe.
-- Sibling-surfacing recipe ratified a 5th time (Phase 244 / 247 / 251 / 255 / 259) — durable across the full active S\* set; sibling-extraction recipe ratified a 6th time (S5 + S1 + S2 + S3 + S7 + S6 via Phase 258); v2.59+v2.60 modularization wave has produced two durable recipes that unblock any remaining S\* candidate if ever promoted from deferred state.
-- No-UI-only-lifecycle-decisions invariant repeated verbatim in `drivers/pi/extensions/README.md` and `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` so future code-graph drift surfaces as a doc-vs-code reconciliation gap detectable by Phase 260 evidence closure.
-- S4 canonical reply delivery and S8 command routing remain explicitly deferred. Broader cross-harness validation-script size-debt remains deferred per v2.59 closure decision. Claude Code / Agent SDK driver removal still blocked per `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`.
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction is **closed 4 of 4 phases**: Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`. No active milestone.
+- Working tree clean on `main`; 0 ahead / 0 behind `origin/main`. Local + remote `phase/260-evidence-closure-next-roadmap-decision` branches deleted via `gh pr merge --delete-branch` + cleanup.
+- Post-Phase-260 validation baseline on `main`: install 7 Pi extension files, Pi 235/235, cross-harness **137/137** (+1 from the Phase 260 closure guardrail), artifact_consistency PASS, `git diff --check` clean.
+- Closure-guardrail recipe ratified a 5th time (Phase 245 / 248 / 252 / 256 / 260) — durable across an arbitrary sequence of milestone closures. Recommendation-not-approval boundary ratified a 5th time (closure phase records v(N+1) candidate; `/paul:milestone` is the only approval route). Sibling-surfacing recipe ratified a 5th time (Phase 244 / 247 / 251 / 255 / 259) — durable across the full active S\* set. Sibling-extraction recipe ratified a 6th time (S5 + S1 + S2 + S3 + S7 + S6 via Phase 258).
+- v2.61 default-focus recommendation (recorded, not approved) in `.paul/MILESTONES.md` and PROJECT.md Phase 260 Key Decisions row: (a) S8 command routing extraction (last unclaimed sibling from S1–S8 inventory; highest user-visible compatibility surface) OR (b) broader cross-harness validation-script size-debt work (suite is now 1431 LOC and growing each milestone closure).
+- Preserved deferrals: S4 canonical reply delivery (integration point), S8 command routing (v2.61 candidate), full Claude Code / Agent SDK driver removal (still blocked per `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`), broader cross-harness validation-script size-debt (v2.61 candidate), local context-cost evidence, and demo project preset.
