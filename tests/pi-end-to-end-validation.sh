@@ -51,6 +51,7 @@ EXPECTED_SKILLS=(
   paul-pause
   paul-plan
   paul-resume
+  paul-review
   paul-status
   paul-unify
 )
@@ -101,10 +102,10 @@ for skill in "${EXPECTED_SKILLS[@]}"; do
   fi
 done
 
-if [ "$SKILL_COUNT" -eq 11 ]; then
-  tap_ok "All 11 skill directories installed with SKILL.md"
+if [ "$SKILL_COUNT" -eq 12 ]; then
+  tap_ok "All 12 skill directories installed with SKILL.md"
 else
-  tap_not_ok "All 11 skill directories installed with SKILL.md" "Found $SKILL_COUNT of 11"
+  tap_not_ok "All 12 skill directories installed with SKILL.md" "Found $SKILL_COUNT of 12"
 fi
 
 # Check modules.yaml generated
@@ -249,8 +250,8 @@ for skill in "${EXPECTED_SKILLS[@]}"; do
     tap_not_ok "$skill: frontmatter has description field" "description: not found in frontmatter"
   fi
 
-  # Check workflow reference (should reference at least one kernel workflow)
-  if grep -q 'workflow' "$SKILL_FILE" 2>/dev/null; then
+  # Check workflow reference (should reference at least one kernel workflow OR, for paul-review, a subagent dispatch via canonical references). Phase 262: paul-review wrapper uses code-reviewer subagent dispatch instead of a kernel workflow.
+  if grep -q 'workflow' "$SKILL_FILE" 2>/dev/null || grep -q 'subagent\|Canonical references' "$SKILL_FILE" 2>/dev/null; then
     tap_ok "$skill: references workflow files"
   else
     tap_not_ok "$skill: references workflow files" "No workflow reference found"
@@ -767,6 +768,7 @@ EXT_ARTIFACT_SLICE="$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts
 EXT_GUIDED_WORKFLOW_DETECTION="$REPO_ROOT/drivers/pi/extensions/guided-workflow-detection.ts"
 EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
 EXT_LIFECYCLE_UI="$REPO_ROOT/drivers/pi/extensions/lifecycle-ui.ts"
+EXT_COMMAND_ROUTING="$REPO_ROOT/drivers/pi/extensions/command-routing.ts"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -780,19 +782,19 @@ else
     tap_not_ok "Extension exports default function" "No 'export default function' found"
   fi
 
-  # Check all 11 command registrations
+  # Check all 12 command registrations (Phase 262: line-792 EXPECTED_SKILLS / CMD_COUNT 11 → 12 reconciled from command output; per-name presence repointed to EXT_COMMAND_ROUTING after S8 extraction)
   CMD_COUNT=0
   for skill in "${EXPECTED_SKILLS[@]}"; do
     # Commands use paul-* format (matching the name field in COMMANDS array)
-    if grep -q "\"$skill\"" "$EXT_SRC" 2>/dev/null; then
+    if grep -q "\"$skill\"" "$EXT_COMMAND_ROUTING" 2>/dev/null; then
       CMD_COUNT=$((CMD_COUNT + 1))
     fi
   done
 
-  if [ "$CMD_COUNT" -eq 11 ]; then
-    tap_ok "Extension registers all 11 /paul-* commands"
+  if [ "$CMD_COUNT" -eq 12 ]; then
+    tap_ok "Extension registers all 12 /paul-* commands"
   else
-    tap_not_ok "Extension registers all 11 /paul-* commands" "Found $CMD_COUNT of 11"
+    tap_not_ok "Extension registers all 12 /paul-* commands" "Found $CMD_COUNT of 12"
   fi
 
   # Check registerCommand usage
@@ -803,16 +805,16 @@ else
     tap_not_ok "Extension uses registerCommand" "No registerCommand calls found"
   fi
 
-  # Check shortcut registration for lifecycle entry points
+  # Check shortcut registration for lifecycle entry points (Phase 262: registerShortcut wrapper invocations stay inline in pals-hooks.ts; Ctrl+Alt+N shortcutHint string moved with getQuickActions to EXT_COMMAND_ROUTING — split predicate)
   SHORTCUT_COUNT=$(grep -c 'registerQuickActionShortcut\|registerShortcut' "$EXT_SRC" 2>/dev/null || echo 0)
-  if [ "$SHORTCUT_COUNT" -gt 0 ] && grep -q 'Ctrl+Alt+N' "$EXT_SRC" 2>/dev/null; then
+  if [ "$SHORTCUT_COUNT" -gt 0 ] && grep -q 'Ctrl+Alt+N' "$EXT_COMMAND_ROUTING" 2>/dev/null; then
     tap_ok "Extension registers shortcut-enabled lifecycle entry points"
   else
-    tap_not_ok "Extension registers shortcut-enabled lifecycle entry points" "Expected registerShortcut usage and Ctrl+Alt shortcut hints in extension source"
+    tap_not_ok "Extension registers shortcut-enabled lifecycle entry points" "Expected registerShortcut usage in pals-hooks.ts and Ctrl+Alt shortcut hint in command-routing.ts"
   fi
-  # Guardrail: quick-action layer stays intentionally bounded
+  # Guardrail: quick-action layer stays intentionally bounded (Phase 262: Key.ctrlAlt invocation sites stay inline in pals-hooks.ts — stays at EXT_SRC; PRIMARY_QUICK_ACTION_LIMIT/MAX_QUICK_ACTIONS constant defs moved to EXT_COMMAND_ROUTING — repointed)
   CTRL_ALT_COUNT=$(grep -o 'Key.ctrlAlt("[nsrhm]")' "$EXT_SRC" 2>/dev/null | sort -u | wc -l | tr -d ' ')
-  if [ "$CTRL_ALT_COUNT" -eq 5 ] && grep -q 'PRIMARY_QUICK_ACTION_LIMIT = 3' "$EXT_SRC" 2>/dev/null && grep -q 'MAX_QUICK_ACTIONS = 5' "$EXT_SRC" 2>/dev/null; then
+  if [ "$CTRL_ALT_COUNT" -eq 5 ] && grep -q 'PRIMARY_QUICK_ACTION_LIMIT = 3' "$EXT_COMMAND_ROUTING" 2>/dev/null && grep -q 'MAX_QUICK_ACTIONS = 5' "$EXT_COMMAND_ROUTING" 2>/dev/null; then
     tap_ok "Extension keeps the quick-action layer bounded (3 primary, 5 total)"
   else
     tap_not_ok "Extension keeps the quick-action layer bounded (3 primary, 5 total)" "Expected 5 unique Ctrl+Alt shortcuts plus explicit primary/total limits in extension source"
@@ -866,8 +868,8 @@ else
     tap_not_ok "Extension refreshes lifecycle UI on approved adapter events" "Expected before_agent_start, turn_end, and agent_end refresh hooks"
   fi
 
-  # Check canonical routing guidance is present
-  if grep -q 'canonical /skill:paul-' "$EXT_SRC" 2>/dev/null; then
+  # Check canonical routing guidance is present (Phase 262 (S8) repoint: COMMANDS guidance moved to ./command-routing)
+  if grep -q 'canonical /skill:paul-' "$EXT_COMMAND_ROUTING" 2>/dev/null; then
     tap_ok "Extension documents canonical /skill:paul-* routing"
   else
     tap_not_ok "Extension documents canonical /skill:paul-* routing" "Expected canonical routing guidance in extension source"
@@ -883,7 +885,9 @@ else
   fi
 
   # Guardrail: explicit command routing participates in activation model
-  if grep -q 'ACTIVATION_SIGNAL_TAG' "$EXT_SRC" 2>/dev/null && grep -q 'markActivation("command"' "$EXT_SRC" 2>/dev/null && grep -q 'COMMAND_ACTIVATION_TURN_BUDGET' "$EXT_SRC" 2>/dev/null; then
+  # Phase 262 (S8) repoint: ACTIVATION_SIGNAL_TAG stays imported in pals-hooks.ts (S7 surface);
+  # markActivation("command"...) and COMMAND_ACTIVATION_TURN_BUDGET moved with the closure factories to ./command-routing.
+  if grep -q 'ACTIVATION_SIGNAL_TAG' "$EXT_SRC" 2>/dev/null && grep -q 'markActivation("command"' "$EXT_COMMAND_ROUTING" 2>/dev/null && grep -q 'COMMAND_ACTIVATION_TURN_BUDGET' "$EXT_COMMAND_ROUTING" 2>/dev/null; then
     tap_ok "Extension models explicit command activation as strongest signal"
   else
     tap_not_ok "Extension models explicit command activation as strongest signal" "Expected activation markers and command-signal tracking in extension source"
@@ -1081,7 +1085,9 @@ fi
   fi
 
   # Guided workflow contract: explicit Pi UI drives canonical continuation replies
-  if grep -Eq 'ctx\.ui\.(confirm|select)' "$EXT_SRC" 2>/dev/null && grep -q 'sendUserMessage' "$EXT_SRC" 2>/dev/null && grep -q 'approved' "$EXT_SRC" 2>/dev/null; then
+  # Phase 262 (S8) repoint: confirm/select + sendUserMessage stay inline in pals-hooks.ts (S4 canonical reply path);
+  # the 'approved' literal lives in ./command-routing COMMANDS["paul-apply"] description and in ./guided-workflow-detection canonicalResponse.
+  if grep -Eq 'ctx\.ui\.(confirm|select)' "$EXT_SRC" 2>/dev/null && grep -q 'sendUserMessage' "$EXT_SRC" 2>/dev/null && (grep -q 'approved' "$EXT_COMMAND_ROUTING" 2>/dev/null || grep -q 'approved' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null); then
     tap_ok "Extension routes guided workflow responses through explicit UI and canonical user messages"
   else
     tap_not_ok "Extension routes guided workflow responses through explicit UI and canonical user messages" "Expected confirm/select UI plus canonical sendUserMessage routing in extension source"
@@ -1175,6 +1181,61 @@ fi
     tap_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
   else
     tap_not_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected two S6 constants exact-string + eight S6 functions + No-op Pi extension factory + type-only back-imports for PalsStateSnapshot/RecentModuleActivity in lifecycle-ui.ts; pals-hooks.ts importing from ./lifecycle-ui with no inline S6 declarations; S4 canonical-reply identifiers and shared helpers (extractTextContent, collectRecentAssistantTexts) retained in pals-hooks.ts"
+  fi
+
+  # Phase 262: Pi-supported-runtime — S8 command-routing extracted to sibling module.
+  # Asserts the new sibling holds the COMMANDS array (twelve entries by literal name byte sequence),
+  # the four command-routing constants exact-string, the four cited S8 functions and (under Disposition A)
+  # three closure factories, the literal No-op Pi extension factory marker, and the type-only back-imports;
+  # that pals-hooks.ts imports from ./command-routing and no longer declares them inline;
+  # that S4 canonical-reply identifiers remain in pals-hooks.ts; and that the registration loop and the
+  # five Key.ctrlAlt(...) invocation sites are still inline in pals-hooks.ts.
+  if [[ -f "$EXT_COMMAND_ROUTING" ]] \
+    && grep -q 'name: "paul-init"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-plan"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-apply"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-unify"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-resume"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-status"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-fix"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-pause"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-milestone"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-discuss"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-help"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'name: "paul-review"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'COMMAND_ACTIVATION_TURN_BUDGET = 3' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'PROMPT_ACTIVATION_TURN_BUDGET = 1' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'PRIMARY_QUICK_ACTION_LIMIT = 3' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'MAX_QUICK_ACTIONS = 5' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function getCommand' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function toWrapperCommand' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function detectCommandSignal' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function getQuickActions' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function makeRouteCommand' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function makeRouteWrapperCommand' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export function makeRegisterQuickActionShortcut' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export type CommandDef' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q '^export type QuickActionDef' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'No-op Pi extension factory' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'import type { ActivationState' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'import type { ActivationState, PalsStateSnapshot } from "./pals-hooks"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'from "./command-routing"' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^const COMMANDS' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^function (getCommand|toWrapperCommand|detectCommandSignal|getQuickActions)' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^const (COMMAND_ACTIVATION_TURN_BUDGET|PROMPT_ACTIVATION_TURN_BUDGET|PRIMARY_QUICK_ACTION_LIMIT|MAX_QUICK_ACTIONS)' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^type (CommandDef|QuickActionDef)' "$EXT_SRC" 2>/dev/null \
+    && grep -q '^export function markActivation' "$EXT_SRC" 2>/dev/null \
+    && grep -q '^export function getActiveActivation' "$EXT_SRC" 2>/dev/null \
+    && grep -q '^export function consumeActivationTurn' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'for (const cmd of COMMANDS)' "$EXT_SRC" 2>/dev/null \
+    && [ "$(grep -o 'Key.ctrlAlt("[nsrhm]")' "$EXT_SRC" 2>/dev/null | sort -u | wc -l | tr -d ' ')" -eq 5 ]; then
+    tap_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
+  else
+    tap_not_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected COMMANDS array with twelve entries verbatim + four command-routing constants exact-string + four cited S8 functions + three closure factories + two types + No-op Pi extension factory + type-only back-imports for ActivationState/PalsStateSnapshot in command-routing.ts; pals-hooks.ts importing from ./command-routing with no inline S8 declarations; markActivation/getActiveActivation/consumeActivationTurn promoted to top-level exports; S4 canonical-reply identifiers retained; registration loop and five Key.ctrlAlt(...) invocations preserved in pals-hooks.ts"
   fi
   tap_file_contains_all \
     "Pi-Supported Runtime docs surface guided workflow reply evidence" \
@@ -1539,10 +1600,12 @@ README_P64="$REPO_ROOT/drivers/pi/extensions/README.md"
 SKILL_MAP_P64="$REPO_ROOT/drivers/pi/skill-map.md"
 
 # Check routing notification uses "success" level
-if grep -q 'routing now.*"success"\|"success".*routing now' "$EXT_SRC_P64" 2>/dev/null; then
+# Phase 262 (S8) repoint: 'routing now' notify-success message moved with the closure factories to ./command-routing
+EXT_COMMAND_ROUTING_P64="$REPO_ROOT/drivers/pi/extensions/command-routing.ts"
+if grep -q 'routing now.*"success"\|"success".*routing now' "$EXT_COMMAND_ROUTING_P64" 2>/dev/null; then
   tap_ok "Extension uses 'success' notify level for command routing confirmations"
 else
-  tap_not_ok "Extension uses 'success' notify level for command routing confirmations" "Expected 'success' level on routing notify in pals-hooks.ts"
+  tap_not_ok "Extension uses 'success' notify level for command routing confirmations" "Expected 'success' level on routing notify in command-routing.ts"
 fi
 
 # Check guided workflow send notifications do not use flat "info"

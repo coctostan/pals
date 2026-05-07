@@ -35,7 +35,7 @@ Theme: Close the Pi-extension modularization wave by extracting S8 `command-rout
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 261 | S8 Extraction Contract + Bounded Submodule Plan | 1 | ✅ Complete | 2026-05-07 |
-| 262 | Bounded S8 Submodule Extraction | 1 | Planning | - |
+| 262 | Bounded S8 Submodule Extraction | 1 | APPLY complete, UNIFY pending | - |
 | 263 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 264 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
@@ -45,7 +45,7 @@ Plans: `.paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PL
 
 ### Phase 262: Bounded S8 Submodule Extraction
 Focus: Extract S8 `command-routing` into a sibling Pi extension module following the 6-time-ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, type-only back-import where needed, TAP-assertion repoint where surfaces move, `inline → export` promotion where shared symbols become cross-module) while preserving every existing `/paul-*` command registration call shape exactly, S4 canonical reply delivery in `pals-hooks.ts`, and the no-UI-only-lifecycle-decisions boundary. Mirrors Phase 258 (S6 extraction) and Phase 254 (S7 extraction) shape one-to-one. Expected install surface 7 → 8 (+1 sibling); expected `pals-hooks.ts` LOC reduction.
-Plans: `.paul/phases/262-bounded-s8-submodule-extraction/262-01-PLAN.md` — Planning (2026-05-07; 3 tasks; Disposition A default; expects install 7→8, Pi 235/236 with 1 inherited fail unchanged, cross-harness 137/137 unchanged; eleven-vs-twelve `CMD_COUNT` reconciliation 11→12 with `paul-review` added to EXPECTED_SKILLS; 7th sibling-extraction recipe application; 3rd type-only back-import / TAP-repoint / `inline→export` promotion ratification)
+Plans: `.paul/phases/262-bounded-s8-submodule-extraction/262-01-PLAN.md` — APPLY complete, UNIFY pending (2026-05-07; 3 tasks shipped Disposition A: install 7→8 Pi extension files; Pi 234/235 → 239/240 (1 inherited fail unchanged; +5 vs planned +1 reconciled as bounded discovery from `EXPECTED_SKILLS`+`paul-review` ripple through line-223 per-skill loop +4 + 1 from new EXT_COMMAND_ROUTING block); cross-harness 136/137 unchanged; artifact_consistency PASS; `git diff --check` clean; new sibling `drivers/pi/extensions/command-routing.ts` 230 LOC; `pals-hooks.ts` 832→672 LOC (-160); 7th sibling-extraction recipe application complete; 3rd type-only back-import / TAP-repoint / `inline→export` promotion ratification applied; eleven-vs-twelve `CMD_COUNT` reconciled 11→12 with `paul-review` added to EXPECTED_SKILLS)
 
 ### Phase 263: Documentation + Validation Surfacing
 Focus: Surface the S8 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S8 extraction contract and modularization contract (S1–S8 inventory now fully closed except S4); add localized Pi validation guardrails without broad validation-suite refactors. Sixth ratification target for the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255 / 259 / 263). Mirrors Phase 259 (S6 surfacing) and Phase 255 (S7 surfacing) shape one-to-one.

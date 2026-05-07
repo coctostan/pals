@@ -39,9 +39,6 @@ import {
 
 // -- Helpers --
 
-const PRIMARY_QUICK_ACTION_LIMIT = 3;
-const MAX_QUICK_ACTIONS = 5;
-
 import {
   PRIMARY_INJECTION_EVENT,
   SUPPORTING_CONTEXT_EVENT,
@@ -57,9 +54,17 @@ import {
   messagesChanged,
 } from "./pals-context-injection";
 
+import {
+  COMMANDS,
+  PROMPT_ACTIVATION_TURN_BUDGET,
+  toWrapperCommand,
+  detectCommandSignal,
+  makeRouteCommand,
+  makeRouteWrapperCommand,
+  makeRegisterQuickActionShortcut,
+} from "./command-routing";
+
 const ACTIVATION_WINDOW_MS = 15 * 60 * 1000;
-const COMMAND_ACTIVATION_TURN_BUDGET = 3;
-const PROMPT_ACTIVATION_TURN_BUDGET = 1;
 export const RECENT_MODULE_ACTIVITY_LOOKBACK = 3;
 export const MAX_VISIBLE_MODULES = 3;
 export const MAX_WIDGET_MODULE_DETAILS = 4;
@@ -78,19 +83,6 @@ export type PalsStateSnapshot = {
   nextAction?: string;
 };
 
-type CommandDef = {
-  name: string;
-  description: string;
-  skill: string;
-  guidance: string;
-};
-
-type QuickActionDef = {
-  id: string;
-  commandName: CommandDef["name"];
-  label: string;
-  shortcutHint: string;
-};
 
 export type ActivationState = {
   source: "command" | "prompt";
@@ -98,6 +90,40 @@ export type ActivationState = {
   expiresAt: number;
   turnsRemaining: number;
 };
+
+// -- Activation state (Phase 262 inline → export promotion; module-private let; three top-level export functions) --
+
+let activationState: ActivationState | undefined;
+
+export function markActivation(
+  source: ActivationState["source"],
+  signal: string,
+  turns: number,
+): void {
+  activationState = {
+    source,
+    signal,
+    turnsRemaining: turns,
+    expiresAt: Date.now() + ACTIVATION_WINDOW_MS,
+  };
+}
+
+export function getActiveActivation(): ActivationState | undefined {
+  if (!activationState) return undefined;
+  if (activationState.turnsRemaining <= 0 || activationState.expiresAt < Date.now()) {
+    activationState = undefined;
+    return undefined;
+  }
+  return activationState;
+}
+
+export function consumeActivationTurn(): void {
+  if (!activationState) return;
+  activationState.turnsRemaining -= 1;
+  if (activationState.turnsRemaining <= 0) {
+    activationState = undefined;
+  }
+}
 
 type CarlConfig = {
   session_strategy: "phase-boundary" | "always-fresh" | "manual";
@@ -204,56 +230,6 @@ export function selectBoundedLines(content: string, patterns: RegExp[], maxLines
 
 export function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-function getCommand(name: CommandDef["name"]): CommandDef | undefined {
-  return COMMANDS.find((cmd) => cmd.name === name);
-}
-
-function toWrapperCommand(commandText?: string): string | undefined {
-  const trimmed = compactWhitespace(commandText);
-  if (!trimmed) return undefined;
-  if (trimmed.startsWith("/paul-")) return trimmed;
-  if (trimmed.startsWith("/skill:paul-")) {
-    return trimmed.replace("/skill:", "/");
-  }
-  return undefined;
-}
-
-function detectCommandSignal(value?: string): string | undefined {
-  const compact = compactWhitespace(value);
-  if (!compact) return undefined;
-
-  const match = compact.match(/\/(?:skill:)?(paul-(?:init|plan|apply|unify|resume|status|fix|pause|milestone|discuss|help|review))(?:\s+(.+))?/i);
-  if (!match) return undefined;
-
-  const command = `/${match[1].toLowerCase()}`;
-  const args = compactWhitespace(match[2]);
-  return args ? `${command} ${args}` : command;
-}
-
-function getQuickActions(state: PalsStateSnapshot): QuickActionDef[] {
-  const actions: QuickActionDef[] = [];
-  const nextWrapper = toWrapperCommand(state.nextAction);
-  const nextCommandName = nextWrapper?.slice(1).split(/\s+/, 1)[0] as CommandDef["name"] | undefined;
-  if (nextCommandName && getCommand(nextCommandName)) {
-    actions.push({
-      id: "next-action",
-      commandName: nextCommandName,
-      label: "Next",
-      shortcutHint: "Ctrl+Alt+N",
-    });
-  }
-
-  actions.push(
-    { id: "status", commandName: "paul-status", label: "Status", shortcutHint: "Ctrl+Alt+S" },
-    { id: "resume", commandName: "paul-resume", label: "Resume", shortcutHint: "Ctrl+Alt+R" },
-    { id: "help", commandName: "paul-help", label: "Help", shortcutHint: "Ctrl+Alt+H" },
-    { id: "milestone", commandName: "paul-milestone", label: "Milestone", shortcutHint: "Ctrl+Alt+M" },
-  );
-
-  return actions
-    .filter((action, index, all) => all.findIndex((candidate) => candidate.commandName === action.commandName) === index)
-    .slice(0, MAX_QUICK_ACTIONS);
 }
 
 function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
@@ -475,86 +451,8 @@ function buildCarlBootstrapPrompt(state: PalsStateSnapshot, reason: string): str
     .filter((line) => line !== null)
     .join("\n");
 }
-// -- Command definitions --
-
-const COMMANDS: CommandDef[] = [
-  {
-    name: "paul-init",
-    description: "Set up PALS lifecycle files for this project",
-    skill: "paul-init",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-init",
-  },
-  {
-    name: "paul-plan",
-    description: "Plan the next PALS phase",
-    skill: "paul-plan",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-plan",
-  },
-  {
-    name: "paul-apply",
-    description: "Execute the approved PALS plan",
-    skill: "paul-apply",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-apply",
-  },
-  {
-    name: "paul-unify",
-    description: "Reconcile completed work and close the loop",
-    skill: "paul-unify",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-unify",
-  },
-  {
-    name: "paul-resume",
-    description: "Resume PALS work from current project state",
-    skill: "paul-resume",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-resume",
-  },
-  {
-    name: "paul-status",
-    description: "Show current PALS status and next action",
-    skill: "paul-status",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-status",
-  },
-  {
-    name: "paul-fix",
-    description: "Run a quick PALS fix flow",
-    skill: "paul-fix",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-fix",
-  },
-  {
-    name: "paul-pause",
-    description: "Create a PALS handoff before stopping",
-    skill: "paul-pause",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-pause",
-  },
-  {
-    name: "paul-milestone",
-    description: "Create or complete a PALS milestone",
-    skill: "paul-milestone",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-milestone",
-  },
-  {
-    name: "paul-discuss",
-    description: "Discuss scope before planning in PALS",
-    skill: "paul-discuss",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-discuss",
-  },
-  {
-    name: "paul-help",
-    description: "Show Pi command and skill guidance for PALS",
-    skill: "paul-help",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-help",
-  },
-  {
-    name: "paul-review",
-    description: "Run thorough code review via REV subagent",
-    skill: "paul-review",
-    guidance: "Pi convenience wrapper → canonical /skill:paul-review",
-  },
-];
-
 // -- Extension entry point --
 export default function palsHooks(pi: any): void {
-  let activationState: ActivationState | undefined;
   let lastGuidedWorkflowSignature: string | undefined;
 
   // -- CARL Session Boundary Manager state --
@@ -660,68 +558,9 @@ export default function palsHooks(pi: any): void {
     }
   };
 
-  const markActivation = (
-    source: ActivationState["source"],
-    signal: string,
-    turns: number,
-  ): void => {
-    activationState = {
-      source,
-      signal,
-      turnsRemaining: turns,
-      expiresAt: Date.now() + ACTIVATION_WINDOW_MS,
-    };
-  };
-
-  const getActiveActivation = (): ActivationState | undefined => {
-    if (!activationState) return undefined;
-    if (activationState.turnsRemaining <= 0 || activationState.expiresAt < Date.now()) {
-      activationState = undefined;
-      return undefined;
-    }
-    return activationState;
-  };
-
-  const consumeActivationTurn = (): void => {
-    if (!activationState) return;
-    activationState.turnsRemaining -= 1;
-    if (activationState.turnsRemaining <= 0) {
-      activationState = undefined;
-    }
-  };
-
-  const routeCommand = (commandName: CommandDef["name"], args = "", ctx?: any): void => {
-    const cmd = getCommand(commandName);
-    if (!cmd) return;
-    const trimmedArgs = args.trim();
-    const wrapperCmd = `/${commandName}${trimmedArgs ? " " + trimmedArgs : ""}`;
-    markActivation("command", wrapperCmd, COMMAND_ACTIVATION_TURN_BUDGET);
-    const skillCmd = `/skill:${cmd.skill}${trimmedArgs ? " " + trimmedArgs : ""}`;
-    ctx?.ui?.notify(`${cmd.guidance} — routing now`, "success");
-    pi.sendUserMessage(skillCmd);
-  };
-
-  const routeWrapperCommand = (commandText: string, ctx?: any): void => {
-    const wrapper = toWrapperCommand(commandText);
-    if (!wrapper) return;
-
-    const commandName = wrapper.slice(1).split(/\s+/, 1)[0] as CommandDef["name"];
-    const args = wrapper.replace(/^\/paul-[^\s]+\s*/, "");
-    routeCommand(commandName, args, ctx);
-  };
-
-  const registerQuickActionShortcut = (
-    shortcut: string,
-    description: string,
-    handler: (ctx: any) => void,
-  ): void => {
-    pi.registerShortcut(shortcut, {
-      description,
-      handler: async (ctx: any) => {
-        handler(ctx);
-      },
-    });
-  };
+  const routeCommand = makeRouteCommand({ pi, markActivation });
+  const routeWrapperCommand = makeRouteWrapperCommand({ routeCommand });
+  const registerQuickActionShortcut = makeRegisterQuickActionShortcut({ pi });
 
   const maybePresentGuidedWorkflow = async (event: any, ctx: any): Promise<void> => {
     const cwd = ctx?.cwd ?? process.cwd();
