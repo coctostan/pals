@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 Pi Extensio
 ## Current Position
 
 Milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
-Phase: 263 of 264 (Documentation + Validation Surfacing) — APPLY complete; ready for UNIFY
-Plan: 263-01 (`.paul/phases/263-documentation-validation-surfacing/263-01-PLAN.md`) approved + executed; APPLY complete, awaiting UNIFY
-Status: APPLY complete, ready for UNIFY
-Last activity: 2026-05-07 — `/paul:apply` Phase 263 executed all 3 tasks. T1 surfaced S8 (`command-routing.ts`) across user-facing Pi docs (README.md, drivers/pi/extensions/README.md, drivers/pi/skill-map.md) preserving every prior boundary phrase and naming `paul-init` / `paul-review` / `/skill:paul-*` translation in the Pi extensions README's new Phase 262 paragraph. T2 appended `## Phase 262 Outcome` (modularization contract + extraction-target baseline) and the first-ever `## Status After Phase 262` (S8 command-routing contract) without touching any prior outcome section. T3 added 3 bounded surfacing TAP assertions (one per user-facing surface). Validation reconciled from command output: install 8 files unchanged; Pi 240 → 243 / Passed 242 (inherited `not ok 102` Path A unchanged); cross-harness 137 / Passed 136 (inherited `not ok 31` Path A unchanged); artifact_consistency PASS; `git diff --check` clean. Workguard: 11 changed files, 0 outside allowed, not over budget. 6th sibling-surfacing-recipe ratification (Phase 244 / 247 / 251 / 255 / 259 / 263) — durable across the full active S* set.
+Phase: 263 of 264 (Documentation + Validation Surfacing) — Complete; ready for Phase 264
+Plan: 263-01 complete — PLAN-APPLY-UNIFY loop closed (`.paul/phases/263-documentation-validation-surfacing/263-01-SUMMARY.md`)
+Status: Phase 263 complete; ready to plan Phase 264 (Evidence Closure + Next Roadmap Decision) once PR #178 merges
+Last activity: 2026-05-07 — `/paul:unify` Phase 263 closed the PLAN-APPLY-UNIFY loop. SUMMARY.md written at `.paul/phases/263-documentation-validation-surfacing/263-01-SUMMARY.md` (12 sections, 4 ACs PASS, no deviations, full module dispatch / GitHub Flow / workguard evidence). Skill audit: /paul ✓, /carl ✓, TODD ✓, WALT ✓ (all required skills invoked). Pre-unify + post-unify dispatch recorded. PR #178 OPEN at https://github.com/coctostan/pals/pull/178 — merge gate evaluated during this UNIFY (informational Socket Security check IN_PROGRESS at APPLY close).
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete, awaiting UNIFY]
+  ✓        ✓        ✓     [Loop complete - Phase 263 closed; ready for Phase 264 PLAN]
 ```
 
 ## Accumulated Context
