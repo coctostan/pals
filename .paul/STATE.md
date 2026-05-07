@@ -4,15 +4,15 @@
 
 See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction created 2026-05-07 via /paul:milestone; Phase 261 ✅ PR #176 merged `423c467e`; Phase 262 ✅ PR #177 OPEN awaiting merge gate; ready to plan Phase 263 once #177 merges)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction (created 2026-05-07; 2 of 4 phases complete; Phase 261 ✅; Phase 262 ✅ PR #177 OPEN awaiting merge gate; Phase 263 Documentation + Validation Surfacing ready to plan once PR #177 merges). Closes the per-sibling S1–S8 modularization wave (S4 explicitly deferred as integration point); 7th sibling-extraction recipe application **shipped**. Phase structure: 261 contract ✅ → 262 extraction ✅ → 263 surfacing → 264 closure — mirrors v2.59 / v2.60 shape one-to-one. Mode: direct-requirements; Collaboration: medium.
+**Current focus:** v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction (created 2026-05-07; **3 of 4 phases complete**; Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 `19555747`; Phase 263 ✅ PR #178 `6f725276`; Phase 264 Evidence Closure + Next-Roadmap Decision is next). Closes the per-sibling S1–S8 modularization wave (S4 explicitly deferred as integration point); 7th sibling-extraction recipe application **shipped** (Phase 262); 6th sibling-surfacing recipe application **shipped** (Phase 263) — durable across the full active S* set (S5/S1/S2/S3/S7/S6/S8). Phase structure: 261 contract ✅ → 262 extraction ✅ → 263 surfacing ✅ → 264 closure — mirrors v2.59 / v2.60 shape one-to-one. Mode: direct-requirements; Collaboration: medium.
 
 ## Current Position
 
 Milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
-Phase: 263 of 264 (Documentation + Validation Surfacing) — Complete; ready for Phase 264
-Plan: 263-01 complete — PLAN-APPLY-UNIFY loop closed (`.paul/phases/263-documentation-validation-surfacing/263-01-SUMMARY.md`)
-Status: Phase 263 complete; ready to plan Phase 264 (Evidence Closure + Next Roadmap Decision) once PR #178 merges
-Last activity: 2026-05-07 — `/paul:unify` Phase 263 closed the PLAN-APPLY-UNIFY loop. SUMMARY.md written at `.paul/phases/263-documentation-validation-surfacing/263-01-SUMMARY.md` (12 sections, 4 ACs PASS, no deviations, full module dispatch / GitHub Flow / workguard evidence). Skill audit: /paul ✓, /carl ✓, TODD ✓, WALT ✓ (all required skills invoked). Pre-unify + post-unify dispatch recorded. PR #178 OPEN at https://github.com/coctostan/pals/pull/178 — merge gate evaluated during this UNIFY (informational Socket Security check IN_PROGRESS at APPLY close).
+Phase: 264 of 264 (Evidence Closure + Next-Roadmap Decision) — Not started
+Plan: Not started
+Status: Ready to plan Phase 264 (the v2.61 closure phase)
+Last activity: 2026-05-07 — Phase 263 transitioned to complete after `/paul:unify` closed the PLAN-APPLY-UNIFY loop. PR #178 squash-merged 2026-05-07T17:17:57Z as `6f725276`; main synced; feature branch deleted. PROJECT.md evolved (active milestone updated to v2.61 with 3 of 4 phases complete; v2.61 milestone posture row added; Phase 261 / 262 / 263 closure decision rows added). ROADMAP.md updated (Phase 263 marked ✅ Complete with PR #178 evidence; Phase 262 status reconciled from “PR #177 awaiting merge gate” to ✅ Complete; v2.61 footer updated). v2.61 sibling-extraction recipe ratified a 7th time (Phase 262); sibling-surfacing recipe ratified a 6th time (Phase 263) — durable across the full active S* set (S5/S1/S2/S3/S7/S6/S8). Phase 264 (Evidence Closure + Next-Roadmap Decision) is the v2.61 closure phase: will record final milestone evidence, decide reconciliation/escalation of the Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`), recommend v2.62 scope, and add the bounded `+1` shared-invariant closure TAP guardrail per the recipe established by Phases 244 / 247 / 251 / 255 / 259.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete - Phase 263 closed; ready for Phase 264 PLAN]
+  ○        ○        ○     [Phase 264 not started — ready to plan]
 ```
 
 ## Accumulated Context
@@ -327,12 +327,12 @@ Prior PRs: #178 merged (Phase 263 Documentation + Validation Surfacing `6f725276
 
 ## Session Continuity
 
-Last session: 2026-05-07 — PR #177 merged (Phase 262 ✅ `19555747`) → `/paul:plan` Phase 263 drafted `.paul/phases/263-documentation-validation-surfacing/263-01-PLAN.md` (255 lines, 3 tasks; 6th sibling-surfacing-recipe ratification target). Phase 262 closure recorded; Phase 263 awaiting APPLY approval. Working tree on `feature/263-documentation-validation-surfacing` with the new PLAN artifact + STATE/ROADMAP staged.
-Stopped at: Phase 263 PLAN created and awaiting approval; on branch `feature/263-documentation-validation-surfacing`. v2.61 progress 50% (2 of 4 phases complete; Phase 263 in PLAN).
-Next action: Review and approve the plan, then run `/paul:apply .paul/phases/263-documentation-validation-surfacing/263-01-PLAN.md` (or pause and commit the PLAN + state edits first).
-Resume file: .paul/phases/263-documentation-validation-surfacing/263-01-PLAN.md
+Last session: 2026-05-07 — `/paul:apply` Phase 263 executed all 3 tasks (T1 surface S8 across user-facing Pi docs; T2 append `## Phase 262 Outcome` to modularization contract docs + first-ever `## Status After Phase 262` on S8 contract; T3 +3 bounded surfacing TAP guardrails). All 4 ACs PASS; install 8 unchanged; Pi 240→243 (passing 239→242 with inherited Path A `not ok 102` unchanged); cross-harness 137 unchanged; artifact_consistency PASS. `/paul:unify` closed the loop: SUMMARY.md written, merge gate green, PR #178 squash-merged as `6f725276`, main synced.
+Stopped at: Phase 263 complete and transitioned; on branch `main`. v2.61 progress 75% (3 of 4 phases complete; Phase 264 not started).
+Next action: Run `/paul:plan` for Phase 264 (Evidence Closure + Next-Roadmap Decision) — the v2.61 closure phase.
+Resume file: .paul/ROADMAP.md
 Resume context:
-- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: 2 of 4 phases complete (Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 OPEN awaiting merge gate). Phase 263 (Documentation + Validation Surfacing) ready to plan once Phase 262 PR #177 merges.
+- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: 3 of 4 phases complete (Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 `19555747`; Phase 263 ✅ PR #178 `6f725276`). Phase 264 (Evidence Closure + Next-Roadmap Decision) is the v2.61 closure phase — mirrors Phase 245 / 248 / 252 / 256 / 260 closure shape one-to-one (6th application of the closure-guardrail recipe).
 - Working tree clean on `feature/262-bounded-s8-submodule-extraction`; ahead of `main` by 4 commits (`b1e1ca00` pre-existing on main + `b2f4a0ee` WIP plan + `956659fc` handoff archive + `61447b56` Disposition A extraction). PR #177: https://github.com/coctostan/pals/pull/177.
 - Post-Phase-262 validation baseline (pending merge): install 8 Pi extension files, Pi 239/240 (1 inherited Path A `not ok 102` unchanged — was `not ok 98` before EXPECTED_SKILLS expansion), cross-harness 136/137 unchanged (1 inherited `not ok 31`), artifact_consistency PASS, `git diff --check` clean. v2.61 expects Pi delta TBD per Phase 263 surfacing; cross-harness 137 → 138 (+1 closure guardrail) at Phase 264 closure.
 - Patterns active: sibling-extraction recipe ratified 7× (S5+S1+S2+S3+S7+S6→S8); type-only back-import 3× (Phase 254/258/262); TAP-assertion repoint 3× (Phase 254/258/262); `inline→export` promotion 3× (Phase 254 single type → Phase 258 four value/type → Phase 262 four value with closed-over `let` for the first time); closure-guardrail recipe 5× ratified; recommendation-not-approval boundary 5× ratified; sibling-surfacing recipe 5× ratified (Phase 263 = 6th target).
