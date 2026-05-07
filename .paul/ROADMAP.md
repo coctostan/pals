@@ -29,19 +29,19 @@ Phases: 3 of 3 complete
 ## Current Milestone
 
 **v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction**
-Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 0 of 4 complete | Created: 2026-05-07
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 1 of 4 complete | Created: 2026-05-07
 Theme: Close the Pi-extension modularization wave by extracting S8 `command-routing` paths (the `/paul-*` command registration surface) from `drivers/pi/extensions/pals-hooks.ts` into a sibling Pi extension module, applying the 6-time-ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, default-arg cycle-avoidance, type-only back-import where needed, TAP-assertion repoint where surfaces move) while preserving S4 canonical reply delivery in `pals-hooks.ts`, the no-UI-only-lifecycle-decisions boundary, every existing `/paul:plan` / `/paul:apply` / `/paul:unify` / `/paul:fix` / `/paul:milestone` / `/paul:resume` / `/paul:status` / `/paul:pause` / `/paul:discuss` / `/paul:review` etc. command-registration call shape (zero user-visible compatibility regression), `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth. S4 canonical reply delivery remains explicitly deferred (integration point, not an extraction candidate). S8 is the last unclaimed sibling from the S1–S8 modularization-contract inventory; closing it ratifies the sibling-extraction recipe a 7th time and ends the per-sibling extraction wave so future milestones don't need another "S? extraction" closure.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 261 | S8 Extraction Contract + Bounded Submodule Plan | 1 | Planning | - |
+| 261 | S8 Extraction Contract + Bounded Submodule Plan | 1 | ✅ Complete | 2026-05-07 |
 | 262 | Bounded S8 Submodule Extraction | TBD | Not started | - |
 | 263 | Documentation + Validation Surfacing | TBD | Not started | - |
 | 264 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
 
 ### Phase 261: S8 Extraction Contract + Bounded Submodule Plan
 Focus: Define the S8 `command-routing` extraction contract, readiness evidence, preservation markers (`/paul-*` command registration surface, exact existing routing call shapes for `/paul:plan` / `/paul:apply` / `/paul:unify` / `/paul:fix` / `/paul:milestone` / `/paul:resume` / `/paul:status` / `/paul:pause` / `/paul:discuss` / `/paul:review` / etc., S4 canonical reply delivery boundary, no-UI-only-lifecycle-decisions boundary, no-inferred-merge-intent boundary), allowed files, validation expectations, and bounded APPLY shape before any source change. Mirrors Phase 257 (S6 contract) and Phase 253 (S7 contract) shape one-to-one.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PLAN.md` + `261-01-SUMMARY.md` — ✅ Complete (2026-05-07; PR #176 OPEN/CLEAN/MERGEABLE; AC-1–AC-4 PASS; new docs `PI-NATIVE-COMMAND-ROUTING-EXTRACTION-CONTRACT.md` 283 LOC + 2 doc updates; Path A baseline Pi 234/235 + cross-harness 136/137 with documented inherited regression from milestone-creation commit `63607289`; install 7 unchanged; flagged for Phase 264 / v2.62 reconciliation)
 
 ### Phase 262: Bounded S8 Submodule Extraction
 Focus: Extract S8 `command-routing` into a sibling Pi extension module following the 6-time-ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, type-only back-import where needed, TAP-assertion repoint where surfaces move, `inline → export` promotion where shared symbols become cross-module) while preserving every existing `/paul-*` command registration call shape exactly, S4 canonical reply delivery in `pals-hooks.ts`, and the no-UI-only-lifecycle-decisions boundary. Mirrors Phase 258 (S6 extraction) and Phase 254 (S7 extraction) shape one-to-one. Expected install surface 7 → 8 (+1 sibling); expected `pals-hooks.ts` LOC reduction.

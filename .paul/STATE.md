@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 Pi Extensio
 ## Current Position
 
 Milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
-Phase: 261 of 264 (S8 Extraction Contract + Bounded Submodule Plan) — Planning
-Plan: 261-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-07 — `/paul:plan` Phase 261 complete: drafted `.paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PLAN.md` mirroring Phase 257 (S6 contract) + Phase 253 (S7 contract) shape one-to-one with S8 specifics. Plan: 1 plan, 4 ACs, no source change, autonomous, type=execute, scope = `docs/PI-NATIVE-COMMAND-ROUTING-EXTRACTION-CONTRACT.md` (new) + `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md` + `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`. Mode: direct-requirements; Collaboration: medium. Pre-plan dispatch: TODD/IRIS/DAVE/DOCS/RUBY/ARCH advisory + DEAN enforcement all PASS / SKIP-cleanly for docs-only contract; CODI seed candidates recorded for downstream Phase 262 reference (12 S8 identifiers). Critical invariant baked into AC-1: every existing `/paul-*` command-registration call shape catalogued exactly so Phase 262 extraction can preserve them byte-for-byte (Phase 257→258 `pals-lifecycle` byte-sequence preservation is the model). Expected counts: install 7 unchanged, Pi 235 unchanged, cross-harness 137 unchanged.
+Phase: 261 of 264 (S8 Extraction Contract + Bounded Submodule Plan) — Complete
+Plan: 261-01 complete (PLAN ✓ APPLY ✓ UNIFY ✓; 3 of 3 tasks PASS)
+Status: Loop complete; ready for Phase 262 PLAN (Bounded S8 Submodule Extraction)
+Last activity: 2026-05-07 — `/paul:apply` Phase 261 complete: 3 of 3 tasks PASS (T1 created `docs/PI-NATIVE-COMMAND-ROUTING-EXTRACTION-CONTRACT.md` 283 lines cataloguing all 12 `/paul-*` command-registration call shapes byte-for-byte; T2 updated baseline + modularization docs with Phase 261 Outcome / Phase 261 Validation Expectations / Phase 262 Validation Expectations sections preserving prior S* outcome history verbatim; T3 verified docs-only scope and ran full validation). Branch `feature/261-s8-extraction-contract-bounded-submodule-plan` (commit `88690c40`); PR #176 OPEN. Validation reconciled per Path A baseline: Pi 234/235 (one inherited `not ok 98` ROADMAP active-window line-budget regression from `/paul:milestone` v2.61 creation commit `63607289` — unchanged by Phase 261; flagged for Phase 264 / v2.62 reconciliation), cross-harness 136/137 (one inherited `not ok 31` same root cause — unchanged), install 7 Pi extension files (unchanged), artifact_consistency PASS, `git diff --check` clean. Module dispatch: post-apply advisory all PASS or SKIP-cleanly; post-apply enforcement DEAN PASS, WALT PASS-with-documented-inherited-regression; quality gate PASS. AC-1/AC-2/AC-3/AC-4 all satisfied.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Progress:
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
 - v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-07; Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`)
-- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [░░░░░░░░░░] 0% (0 of 4 phases complete; Phase 261 PLAN created `261-01-PLAN.md` awaiting approval; created 2026-05-07)
+- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [██▌░░░░░░░] 25% (1 of 4 phases complete; Phase 261 SUMMARY `261-01-SUMMARY.md` records all 4 ACs PASS, Pi 234/235 + cross-harness 136/137 with documented inherited regression from milestone-creation commit `63607289`, install 7 unchanged, PR #176 OPEN/CLEAN/MERGEABLE)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 261-01 created, awaiting approval]
+  ✓        ✓        ✓     [Loop complete - ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -323,9 +323,9 @@ Prior PRs: #175 merged (Phase 260 v2.60 closure `9b3b609b`); #174 merged (Phase 
 
 ## Session Continuity
 
-Last session: 2026-05-07 — v2.60 closed 4 of 4 phases (Phase 260 PR #175 squash-merged `9b3b609b`); v2.61 created via `/paul:milestone` (commit `63607289`); resumed via `/paul:resume`; `/paul:plan` Phase 261 drafted `261-01-PLAN.md` mirroring Phase 257/253 shape one-to-one with S8 specifics, awaiting APPLY approval.
-Stopped at: Phase 261 plan created (`.paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PLAN.md`), awaiting APPLY approval.
-Next action: Review and approve plan, then run `/paul:apply .paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PLAN.md`.
+Last session: 2026-05-07 — v2.60 closed via PR #175; v2.61 created via `/paul:milestone`; resumed via `/paul:resume`; `/paul:plan` Phase 261 drafted `261-01-PLAN.md`; `/paul:apply` Phase 261 complete with all 3 tasks PASS, branch pushed (`88690c40`), PR #176 OPEN with CI Socket Security queued.
+Stopped at: Phase 261 APPLY complete; PR #176 OPEN; awaiting UNIFY.
+Next action: Run `/paul:unify .paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PLAN.md` to reconcile and merge.
 Resume file: .paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-PLAN.md
 Resume context:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: 0 of 4 phases complete; Phase 261 ready to plan. S8 is the last unclaimed sibling from the S1–S8 modularization-contract inventory (S1 / S2 / S3 / S5 / S6 / S7 shipped via Phase 243 / 246 / 250 / 239 / 258 / 254; S4 canonical reply delivery explicitly deferred as integration point). 7th sibling-extraction recipe application target.
