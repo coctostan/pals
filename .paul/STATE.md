@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 selection pending via /paul:milestone with recorded default recommendation in .paul/MILESTONES.md)
+See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction created 2026-05-07 via /paul:milestone; ready to plan Phase 261)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** None active. v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction closed 2026-05-07 (4 of 4 phases). v2.61 selection is pending via /paul:milestone with the recorded default-focus recommendation: (a) S8 command routing extraction (last unclaimed sibling from S1–S8) OR (b) broader cross-harness validation-script size-debt work. S4 canonical reply delivery remains explicitly deferred (integration point).
+**Current focus:** v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction (created 2026-05-07; 0 of 4 phases complete; Phase 261 ready to plan). Closes the per-sibling S1–S8 modularization wave (S4 explicitly deferred as integration point); 7th sibling-extraction recipe application target. Phase structure: 261 contract → 262 extraction → 263 surfacing → 264 closure — mirrors v2.59 / v2.60 shape one-to-one. Mode: direct-requirements; Collaboration: medium.
 
 ## Current Position
 
-Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
-Phase: 260 of 260 (Evidence Closure + Next Roadmap Decision) — UNIFY complete; v2.60 closed 4 of 4 phases
-Plan: 260-01 UNIFY complete; SUMMARY at .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md
-Status: v2.60 milestone closed; ready for /paul:milestone (v2.61 selection)
-Last activity: 2026-05-07 — Phase 260 (Evidence Closure + Next Roadmap Decision) UNIFY complete; PR #175 squash-merged into `main` as `9b3b609b` (2026-05-07T02:13:47Z); local + remote `phase/260-evidence-closure-next-roadmap-decision` branch deleted; local `main` synced to remote. SUMMARY at `.paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md`. AC-1–AC-4 PASS; module dispatch evidence (pre-apply baselines, post-task hooks, post-apply advisory + enforcement, pre-unify hooks, post-unify) recorded in SUMMARY Module Execution Reports. Skill audit: /paul ✓, /carl ✓ (automatic), TODD ✓ (advisory), WALT ✓ (post-apply enforcement PASS). Final verification: install 7 unchanged, Pi 235/235 unchanged, cross-harness 137/137 (+1 strict reconciled), artifact_consistency PASS, `git diff --check` clean. Merge gate: PR exists ✓ / CI passing ✓ (Socket Security ×2 SUCCESS) / code review skipped (REV.pr_review=false) / reviews skipped (require_reviews=false) / PR merged ✓ / base synced ✓ / branch clean ✓. v2.60 milestone closed 4 of 4 phases. v2.61 selection deferred to /paul:milestone with the recorded default-focus recommendation: (a) S8 command routing extraction OR (b) broader cross-harness validation-script size-debt work.
+Milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
+Phase: 261 of 264 (S8 Extraction Contract + Bounded Submodule Plan) — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-07 — v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction created via `/paul:milestone` after v2.60 closed 4 of 4 phases. ROADMAP.md updated with v2.61 Current Milestone block (4 phases planned: 261 contract → 262 extraction → 263 surfacing → 264 closure); v2.60 narrative + v2.61 phase detail blocks both present and consistent. MILESTONES.md Live Status `Current milestone` row + Current/Future Milestone Pointer paragraph + footer trail entry refreshed to point at v2.61. Phase directories created: `.paul/phases/261-s8-extraction-contract-bounded-submodule-plan/`, `.paul/phases/262-bounded-s8-submodule-extraction/`, `.paul/phases/263-documentation-validation-surfacing-v2-61/`, `.paul/phases/264-evidence-closure-next-roadmap-decision-v2-61/`. Mode: direct-requirements; Collaboration: medium. Post-merge baseline on `main` unchanged from Phase 260 transition: install 7, Pi 235/235, cross-harness 137/137, artifact_consistency PASS, `git diff --check` clean.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,6 +33,7 @@ Progress:
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
 - v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-07; Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`)
+- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [░░░░░░░░░░] 0% (0 of 4 phases complete; Phase 261 ready to plan; created 2026-05-07)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -67,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v2.60 closed; ready for /paul:milestone]
+  ○        ○        ○     [Ready for first PLAN — Phase 261]
 ```
 
 ## Accumulated Context
@@ -322,14 +323,14 @@ Prior PRs: #175 merged (Phase 260 v2.60 closure `9b3b609b`); #174 merged (Phase 
 
 ## Session Continuity
 
-Last session: 2026-05-07T02:14Z — Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase) APPLY+UNIFY complete; PR #175 squash-merged; v2.60 closed 4 of 4 phases.
-Stopped at: Phase 260 transition complete; v2.60 milestone closed; ready for /paul:milestone (v2.61 selection).
-Next action: /paul:milestone to select and create the next milestone. Recorded default-focus recommendation in `.paul/MILESTONES.md`: (a) S8 command routing extraction (last unclaimed sibling from S1–S8) OR (b) broader cross-harness validation-script size-debt work.
-Resume file: .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md
+Last session: 2026-05-07 — v2.60 closed 4 of 4 phases (Phase 260 PR #175 squash-merged `9b3b609b`); v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction created via `/paul:milestone` (4 phases planned: 261 contract → 262 extraction → 263 surfacing → 264 closure); Phase directories created.
+Stopped at: v2.61 milestone created, ready to plan Phase 261 (S8 Extraction Contract + Bounded Submodule Plan).
+Next action: /paul:plan for Phase 261 (S8 Extraction Contract + Bounded Submodule Plan). Phase 261 mirrors Phase 257 (S6 contract) and Phase 253 (S7 contract) shape one-to-one — expect 1 plan, 4 ACs, no source change, autonomous, scope = `docs/PI-NATIVE-COMMAND-ROUTING-EXTRACTION-CONTRACT.md` (new) plus `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md` surfacing only. Mode: direct-requirements; Collaboration: medium.
+Resume file: .paul/ROADMAP.md
 Resume context:
-- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction is **closed 4 of 4 phases**: Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`. No active milestone.
-- Working tree clean on `main`; 0 ahead / 0 behind `origin/main`. Local + remote `phase/260-evidence-closure-next-roadmap-decision` branches deleted via `gh pr merge --delete-branch` + cleanup.
-- Post-Phase-260 validation baseline on `main`: install 7 Pi extension files, Pi 235/235, cross-harness **137/137** (+1 from the Phase 260 closure guardrail), artifact_consistency PASS, `git diff --check` clean.
-- Closure-guardrail recipe ratified a 5th time (Phase 245 / 248 / 252 / 256 / 260) — durable across an arbitrary sequence of milestone closures. Recommendation-not-approval boundary ratified a 5th time (closure phase records v(N+1) candidate; `/paul:milestone` is the only approval route). Sibling-surfacing recipe ratified a 5th time (Phase 244 / 247 / 251 / 255 / 259) — durable across the full active S\* set. Sibling-extraction recipe ratified a 6th time (S5 + S1 + S2 + S3 + S7 + S6 via Phase 258).
-- v2.61 default-focus recommendation (recorded, not approved) in `.paul/MILESTONES.md` and PROJECT.md Phase 260 Key Decisions row: (a) S8 command routing extraction (last unclaimed sibling from S1–S8 inventory; highest user-visible compatibility surface) OR (b) broader cross-harness validation-script size-debt work (suite is now 1431 LOC and growing each milestone closure).
-- Preserved deferrals: S4 canonical reply delivery (integration point), S8 command routing (v2.61 candidate), full Claude Code / Agent SDK driver removal (still blocked per `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`), broader cross-harness validation-script size-debt (v2.61 candidate), local context-cost evidence, and demo project preset.
+- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: 0 of 4 phases complete; Phase 261 ready to plan. S8 is the last unclaimed sibling from the S1–S8 modularization-contract inventory (S1 / S2 / S3 / S5 / S6 / S7 shipped via Phase 243 / 246 / 250 / 239 / 258 / 254; S4 canonical reply delivery explicitly deferred as integration point). 7th sibling-extraction recipe application target.
+- Working tree clean on `main`; 0 ahead / 0 behind `origin/main` after the v2.61 milestone-creation push (TBD); local + remote `phase/260-evidence-closure-next-roadmap-decision` branches already deleted at v2.60 closure.
+- Post-Phase-260 validation baseline on `main`: install 7 Pi extension files, Pi 235/235, cross-harness **137/137** (+1 from the Phase 260 closure guardrail), artifact_consistency PASS, `git diff --check` clean. v2.61 expects install 7 → 8 (+1 sibling) at Phase 262 source extraction; cross-harness 137 → 138 (+1 closure guardrail) at Phase 264 closure; Pi count delta TBD per Phase 263 surfacing.
+- Patterns active: closure-guardrail recipe (5× ratified), recommendation-not-approval boundary (5× ratified), sibling-surfacing recipe (5× ratified durable across the full active S\* set; Phase 263 = 6th target), sibling-extraction recipe (6× ratified; Phase 262 = 7th target), type-only back-import + TAP-assertion repoint + `inline → export` promotion patterns each ratified ×2 (Phase 254 → Phase 258).
+- Preserved deferrals: S4 canonical reply delivery (integration point, NOT in v2.61 scope), broader cross-harness validation-script size-debt (queued v2.62 candidate), full Claude Code / Agent SDK driver removal (still blocked per `docs/PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`), local context-cost evidence, demo project preset.
+- The strict no-user-visible-compatibility-regression boundary is the single hardest invariant for v2.61: every existing `/paul:plan` / `/paul:apply` / `/paul:unify` / `/paul:fix` / `/paul:milestone` / `/paul:resume` / `/paul:status` / `/paul:pause` / `/paul:discuss` / `/paul:review` / etc. command-registration call shape MUST be preserved exactly. Phase 261 contract will catalogue the call shapes and Phase 262 extraction will preserve them byte-for-byte (the Phase 257 S6 contract → Phase 258 S6 extraction precedent for `pals-lifecycle` byte-sequence preservation is the model).

@@ -28,16 +28,32 @@ Phases: 3 of 3 complete
 
 ## Current Milestone
 
-**v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction**
-Status: ✅ Complete | Mode: direct-requirements | Collaboration: medium | Phases: 4 of 4 complete | Closed: 2026-05-07
-Theme: Continue the Pi-extension modularization wave by extracting S6 `lifecycle-ui` rendering paths from `drivers/pi/extensions/pals-hooks.ts` into a sibling Pi extension module, applying the ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, default-arg cycle-avoidance) while preserving S4 canonical reply delivery in `pals-hooks.ts`, the no-UI-only-lifecycle-decisions boundary, `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth. S4 canonical reply delivery remains explicitly deferred (integration point, not an extraction candidate).
+**v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction**
+Status: 🚧 In Progress | Mode: direct-requirements | Collaboration: medium | Phases: 0 of 4 complete | Created: 2026-05-07
+Theme: Close the Pi-extension modularization wave by extracting S8 `command-routing` paths (the `/paul-*` command registration surface) from `drivers/pi/extensions/pals-hooks.ts` into a sibling Pi extension module, applying the 6-time-ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, default-arg cycle-avoidance, type-only back-import where needed, TAP-assertion repoint where surfaces move) while preserving S4 canonical reply delivery in `pals-hooks.ts`, the no-UI-only-lifecycle-decisions boundary, every existing `/paul:plan` / `/paul:apply` / `/paul:unify` / `/paul:fix` / `/paul:milestone` / `/paul:resume` / `/paul:status` / `/paul:pause` / `/paul:discuss` / `/paul:review` etc. command-registration call shape (zero user-visible compatibility regression), `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth. S4 canonical reply delivery remains explicitly deferred (integration point, not an extraction candidate). S8 is the last unclaimed sibling from the S1–S8 modularization-contract inventory; closing it ratifies the sibling-extraction recipe a 7th time and ends the per-sibling extraction wave so future milestones don't need another "S? extraction" closure.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 257 | S6 Extraction Contract + Bounded Submodule Plan | 257-01 | ✅ Complete | 2026-05-06 |
-| 258 | Bounded S6 Submodule Extraction | 258-01 | ✅ Complete | 2026-05-06 |
-| 259 | Documentation + Validation Surfacing | 259-01 | ✅ Complete | 2026-05-07 |
-| 260 | Evidence Closure + Next Roadmap Decision | 260-01 | ✅ Complete | 2026-05-07 |
+| 261 | S8 Extraction Contract + Bounded Submodule Plan | TBD | Not started | - |
+| 262 | Bounded S8 Submodule Extraction | TBD | Not started | - |
+| 263 | Documentation + Validation Surfacing | TBD | Not started | - |
+| 264 | Evidence Closure + Next Roadmap Decision | TBD | Not started | - |
+
+### Phase 261: S8 Extraction Contract + Bounded Submodule Plan
+Focus: Define the S8 `command-routing` extraction contract, readiness evidence, preservation markers (`/paul-*` command registration surface, exact existing routing call shapes for `/paul:plan` / `/paul:apply` / `/paul:unify` / `/paul:fix` / `/paul:milestone` / `/paul:resume` / `/paul:status` / `/paul:pause` / `/paul:discuss` / `/paul:review` / etc., S4 canonical reply delivery boundary, no-UI-only-lifecycle-decisions boundary, no-inferred-merge-intent boundary), allowed files, validation expectations, and bounded APPLY shape before any source change. Mirrors Phase 257 (S6 contract) and Phase 253 (S7 contract) shape one-to-one.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 262: Bounded S8 Submodule Extraction
+Focus: Extract S8 `command-routing` into a sibling Pi extension module following the 6-time-ratified sibling-extraction recipe (loader-compat no-op default factory, single-defined markers, sibling-import discipline, type-only back-import where needed, TAP-assertion repoint where surfaces move, `inline → export` promotion where shared symbols become cross-module) while preserving every existing `/paul-*` command registration call shape exactly, S4 canonical reply delivery in `pals-hooks.ts`, and the no-UI-only-lifecycle-decisions boundary. Mirrors Phase 258 (S6 extraction) and Phase 254 (S7 extraction) shape one-to-one. Expected install surface 7 → 8 (+1 sibling); expected `pals-hooks.ts` LOC reduction.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 263: Documentation + Validation Surfacing
+Focus: Surface the S8 extraction outcome across README, Pi extension docs, and skill-map; reconcile the S8 extraction contract and modularization contract (S1–S8 inventory now fully closed except S4); add localized Pi validation guardrails without broad validation-suite refactors. Sixth ratification target for the sibling-surfacing recipe (Phase 244 / 247 / 251 / 255 / 259 / 263). Mirrors Phase 259 (S6 surfacing) and Phase 255 (S7 surfacing) shape one-to-one.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 264: Evidence Closure + Next Roadmap Decision
+Focus: Reconcile v2.61 evidence, validation counts, install-surface behavior, module reports, GitHub Flow evidence, and the next roadmap recommendation; record v2.62 candidate selection without approving it. The v2.61 closure also closes the per-sibling extraction wave (S1–S8 fully extracted except S4 deferred); v2.62 candidates likely shift away from per-sibling extraction (e.g., broader cross-harness validation-script size-debt work, S4 canonical reply delivery integration, full Claude Code / Agent SDK driver removal, local context-cost evidence, demo project preset). Mirrors Phase 245 / 248 / 252 / 256 / 260 closure shape one-to-one (5+1 = 6th application of the closure-guardrail recipe).
+Plans: TBD (defined during /paul:plan)
 
 ### Phase 257: S6 Extraction Contract + Bounded Submodule Plan
 Focus: Define the S6 `lifecycle-ui` extraction contract, readiness evidence, preservation markers (lifecycle-UI rendering surfaces, no-UI-only-lifecycle-decisions boundary, S4 canonical reply delivery boundary, no-inferred-merge-intent boundary), allowed files, validation expectations, and bounded APPLY shape before any source change.
@@ -114,5 +130,5 @@ Phase status (closed):
 | v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction | 2026-05-07 | 257-260 | Completed the S6 extraction wave: Phase 257 created the S6 extraction contract + bounded submodule plan (PR #172 `800552a1`), Phase 258 extracted `lifecycle-ui.ts` as the seventh sibling Pi extension module (123 LOC; eight S6 functions + two single-defined runtime UI-element identifiers `PALS_STATUS_ID`/`PALS_WIDGET_ID` both `pals-lifecycle`) while preserving S4 canonical reply delivery in `pals-hooks.ts` (903 → 832 LOC) and verifying the no-UI-only-lifecycle-decisions invariant shipped (PR #173 `1531e47a`), Phase 259 surfaced S6 across README/Pi docs/skill-map and three contract docs with three bounded Pi surfacing guardrails — fifth ratification of the sibling-surfacing recipe and durable across the full active S* set (PR #174 `b879b372`), and Phase 260 reconciled milestone evidence, added the shared-invariant closure guardrail, and recorded the v2.61 recommendation. Validation passes Pi 235/235 and cross-harness 137/137; install surface 7 files. | active artifacts |
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Roadmap created: 2026-03-11*
+*Last updated: 2026-05-07 — v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction created (4 phases planned: 261 contract → 262 extraction → 263 surfacing → 264 closure). Mode: direct-requirements; Collaboration: medium. Closes the per-sibling S1–S8 modularization wave (S4 explicitly deferred as integration point); ratifies the sibling-extraction recipe a 7th time (target). Created via `/paul:milestone` after v2.60 closed 4 of 4 phases. Roadmap created: 2026-03-11; v2.60 closed 2026-05-07 (Phase 260 PR #175 `9b3b609b`).*
 *Last updated: 2026-05-07 — v2.60 Pi Extension Submodule Extraction Wave closed via Phase 260 PR placeholder/actual PR (squash-merged); 4 of 4 phases complete (PRs #172 `800552a1` / #173 `1531e47a` / #174 `b879b372` / Phase 260 PR). Cross-harness moved 136 → 137 from the Phase 260 closure guardrail; Pi remains 235/235; install remains 7 files. v2.61 selection pending via `/paul:milestone` with recorded default recommendation in `.paul/MILESTONES.md`. v2.55/v2.56/v2.57/v2.58/v2.59 remain closed.*
