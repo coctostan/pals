@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | **v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction** (created 2026-05-07; 1 of 4 phases complete; Phase 261 ✅ PR #176 squash-merged `423c467e`; Phase 262 Bounded S8 Submodule Extraction — Planning) | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
+| Current milestone | **v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction** (created 2026-05-07; 2 of 4 phases complete; Phase 261 ✅ PR #176 squash-merged `423c467e`; Phase 262 ✅ PR #177 squash-merged `19555747`; Phase 263 Documentation + Validation Surfacing — Planning) | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
