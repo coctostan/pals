@@ -180,4 +180,22 @@ This contract is final for Phase 257. It does not authorize source changes; it d
 
 ## Status After Phase 258
 
-To be filled by Phase 258 closure with: function/constant move evidence, helper-import tightening evidence, type-only back-import evidence, UI-mutation invocation-site preservation evidence, install-surface delta (6 → 7), TAP delta (Pi and cross-harness, reconciled from command output), `git diff --check` evidence, PR/CI/merge evidence, and confirmation that the no-UI-only-lifecycle-decisions invariant remains intact.
+Contract closed for Phase 258. The Phase 257 boundary has been executed end-to-end without scope drift; the placeholder above is replaced with the recorded closure facts.
+
+- **S6 function move evidence:** all eight S6 functions extracted to `drivers/pi/extensions/lifecycle-ui.ts` with no signature change — `renderLoopBadge`, `renderCompactLoopSummary`, `renderLifecycleActionLabel`, `renderModuleActivity`, `renderModuleActivityDetails`, `renderLifecycleStatus`, `renderLifecycleWidget`, `syncLifecycleUi` — each exported and single-defined in the new sibling.
+- **S6 constant move evidence:** `PALS_STATUS_ID` and `PALS_WIDGET_ID` are single-defined in the new sibling as exact-string runtime UI-element identifiers (`PALS_STATUS_ID = "pals-lifecycle"`, `PALS_WIDGET_ID = "pals-lifecycle"`); the literal byte sequence `pals-lifecycle` appears exactly once in repo source as the right-hand side of those two constants.
+- **Loader-compat invariant satisfied:** the new sibling carries the literal `No-op Pi extension factory` JSDoc marker plus `export default function (_pi: unknown): void {}`.
+- **Helper-import tightening applied:** the new sibling value-imports only what the moved S6 code calls (omits `readFileOr`, `getFileFreshness`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `extractTextContent`).
+- **Type-only back-imports for `PalsStateSnapshot` and `RecentModuleActivity`** (Phase 254 precedent ratified ×2): `PalsStateSnapshot` type-imported from `./pals-hooks`; `RecentModuleActivity` type-imported from `./module-activity-parsing`; back-imports erased at runtime so the dependency graph stays acyclic.
+- **`inline → export` promotion ratified ×2** at four-symbol scale (`MAX_VISIBLE_MODULES`, `RECENT_MODULE_ACTIVITY_LOOKBACK`, `parsePalsState`, `collectRecentAssistantTexts`); only the `export` keyword was added — bodies unchanged.
+- **TAP-assertion repoint pattern ratified ×2:** five pre-existing assertions naming moved S6 source paths against `$EXT_SRC` / `$EXT_SRC_P64` repointed in-place to `$EXT_LIFECYCLE_UI` as a no-net-count-change reshape (TAP blocks #128, #130, #160 plus the two `renderLoopBadge` blocks); one new bounded `EXT_LIFECYCLE_UI` source-shape guardrail added (`+1` net: 231 → 232).
+- **Render-string shapes preserved exactly:** loop-badge `PLAN✓ APPLY✓ UNIFY✓` derived from `[✓○]` marks; action-label heuristics (`Complete` / `Blocked` / `Waiting` / `Ready` / `Next`); module-activity `Modules: <stage> • <list>` shape; widget multi-line shape; `•`-separated status shape.
+- **UI-mutation invocation-site preservation:** all five existing `syncLifecycleUi(ctx)` call sites in `pals-hooks.ts` (lines 770, 777, 803, 808, 820) preserved by call shape — same identifier, same single argument, only the import source rebound.
+- **No-UI-only-lifecycle-decisions invariant verified shipped:** `lifecycle-ui.ts` performs no `.paul/*` writes, no `pi.sendUserMessage` calls, and no S4 canonical-reply identifier invocations.
+- **Install-surface delta:** `[ok] Pi extensions installed: 7 files` (6 → 7).
+- **TAP delta (Pi):** Pi e2e 232/232 (231 → 232 with the bounded `EXT_LIFECYCLE_UI` TAP block + the in-flight repoint of 5 pre-existing assertions).
+- **TAP delta (cross-harness):** cross-harness 136/136 unchanged (no shared-invariant surfacing guardrail planned for S6 — the +1 closure guardrail is reserved for Phase 260 evidence closure per the recipe established by Phases 244 / 247 / 251 / 255).
+- **`git diff --check` evidence:** clean.
+- **PR/CI/merge evidence:** PR #173 opened, Socket Security CI ×2 PASS, squash-merged 2026-05-06 as `1531e47a`; feature branch deleted on remote and locally; `main` synced.
+- **Phase 259 owns user-facing-doc surfacing:** root README, Pi extensions README, Pi skill-map; modularization contract docs (modularization contract + extraction-target baseline); this S6 contract; `tests/pi-end-to-end-validation.sh` (+3 surfacing TAP assertions). Phase 260 will own evidence closure + next-roadmap decision.
+- **S4 / S8 deferrals preserved;** full Claude Code / Agent SDK driver removal still blocked per `PI-NATIVE-LEGACY-RETENTION-INSTALL-SURFACE-CLEANUP-CONTRACT.md`.
