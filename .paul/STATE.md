@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-05 after v2.59 closure; v2.60 created 2026-05-06 via /paul:milestone)
+See: .paul/PROJECT.md (updated 2026-05-07 after v2.60 closure; v2.61 selection pending via /paul:milestone with recorded default recommendation in .paul/MILESTONES.md)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction (created 2026-05-06; 0 of 4 phases complete; Mode: direct-requirements; Collaboration: medium). Phase 257 S6 Extraction Contract + Bounded Submodule Plan is ready to plan. Scope continues the Pi-extension modularization wave by isolating S6 `lifecycle-ui` rendering paths from `drivers/pi/extensions/pals-hooks.ts` while preserving S4 canonical reply delivery, the no-UI-only-lifecycle-decisions boundary, `.paul/*` artifact authority, GitHub Flow gates, parent-owned APPLY, and command-output validation truth.
+**Current focus:** None active. v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction closed 2026-05-07 (4 of 4 phases). v2.61 selection is pending via /paul:milestone with the recorded default-focus recommendation: (a) S8 command routing extraction (last unclaimed sibling from S1–S8) OR (b) broader cross-harness validation-script size-debt work. S4 canonical reply delivery remains explicitly deferred (integration point).
 
 ## Current Position
 
 Milestone: v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction
-Phase: 260 of 260 (Evidence Closure + Next Roadmap Decision) — ready to plan
-Plan: not started
-Status: ready to plan
-Last activity: 2026-05-07 — Phase 259 (Documentation + Validation Surfacing) full PLAN-APPLY-UNIFY loop closed and merged. Branch `phase/259-documentation-validation-surfacing` squash-merged via PR #174 (`b879b372`) with Socket Security CI ×2 SUCCESS pre-merge; feature branch deleted on remote (via `gh pr merge --delete-branch`) and locally (pruned); local `main` synced with `origin/main`. SUMMARY 259-01 records 4/4 ACs PASS with two minor in-flight reconciled deviations: (1) STATE.md `Resume file:` repath at resume time — the `paul-resume` workflow archived the active handoff but left the in-state pointer stale, repaired in-flight per the resume workflow's allowance for archived handoff paths; (2) Phase 257-style pre-created `## Status After Phase 258` placeholder in the S6 contract vs the PLAN's literal-append language — filled the placeholder rather than appending a duplicate heading, the only path consistent with the verify step's `grep -c == 1` constraint, semantics identical. Surfacing scope held to plan exactly: 7 source/docs/test files in the diff (`README.md`, `drivers/pi/extensions/README.md`, `drivers/pi/skill-map.md`, `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md`, `docs/PI-NATIVE-EXTENSION-EXTRACTION-TARGET-BASELINE.md`, `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md`, `tests/pi-end-to-end-validation.sh`); Pi 232 → 235 (+3 surfacing TAPs reconciled exactly); cross-harness 136/136 unchanged; install 7 Pi extension files unchanged; artifact_consistency PASS; `git diff --check` clean on `main` post-merge. The sibling-surfacing recipe is now ratified durable across the full active S\* set (5th application: Phase 244 / 247 / 251 / 255 / 259). Together with the sibling-extraction recipe (6th application via Phase 258), the v2.59+v2.60 modularization wave has produced two durable recipes that unblock any remaining S\* candidate if ever promoted from deferred state. The no-UI-only-lifecycle-decisions invariant is now repeated verbatim in `drivers/pi/extensions/README.md` and `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` so future code-graph drift will surface as a doc-vs-code reconciliation gap detectable by Phase 260 evidence closure. 3 of 4 phases of v2.60 complete. Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase) is next.
+Phase: 260 of 260 (Evidence Closure + Next Roadmap Decision) — UNIFY complete; v2.60 closed 4 of 4 phases
+Plan: 260-01 UNIFY complete; SUMMARY at .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md
+Status: v2.60 milestone closed; ready for /paul:milestone (v2.61 selection)
+Last activity: 2026-05-07 — Phase 260 (Evidence Closure + Next Roadmap Decision) UNIFY complete on branch `phase/260-evidence-closure-next-roadmap-decision`. Wrote `.paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md`. AC-1–AC-4 PASS; module dispatch evidence (pre-apply baselines, post-task hooks, post-apply advisory + enforcement, pre-unify hooks) recorded in SUMMARY Module Execution Reports. Skill audit: /paul ✓, /carl ✓ (automatic), TODD ✓ (advisory), WALT ✓ (post-apply enforcement PASS). Verification: install 7 unchanged, Pi 235/235 unchanged, cross-harness 137/137 (+1 strict reconciled), artifact_consistency PASS, `git diff --check` clean. Merge gate (PR #175): Gate 1 PR exists ✓; Gate 2 CI passing ✓ (Socket Security ×2 SUCCESS, mergeStateStatus CLEAN); Gate 3 reviews skipped (require_reviews=false); Gate 4 PR merged via gh pr merge --squash --delete-branch; Gate 5 base synced; Gate 6 branch clean. v2.60 milestone closed 4 of 4 phases. v2.61 selection deferred to /paul:milestone with the recorded default-focus recommendation: (a) S8 command routing extraction OR (b) broader cross-harness validation-script size-debt work.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Status: Phase 257 closed — ready for /paul:plan Phase 258
 - v2.57 Pi Extension Submodule Extraction Wave — S2 Workflow/Resource Capsule Rendering: [████████████] 100% (3 of 3 phases complete; PR #163 merged)
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
-- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [█████▒▒▒▒▒] 50% (2 of 4 phases complete; Phase 257 closed via PR #172 `800552a1`; Phase 258 closed via PR #173 `1531e47a`; Phase 259 next)
+- v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-07; Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 squash-merged)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Status: Phase 257 closed — ready for /paul:plan Phase 258
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 259 closed via PR #174 `b879b372`; Phase 260 ready to plan]
+  ✓        ✓        ✓     [Loop complete — v2.60 closed; ready for /paul:milestone]
 ```
 
 ## Accumulated Context
@@ -323,10 +323,10 @@ Prior PRs: #174 merged (Phase 259 docs/validation surfacing `b879b372`); #173 me
 
 ## Session Continuity
 
-Last session: 2026-05-07 — Phase 259 closed via PR #174 `b879b372` squash-merged; transitioned to Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase).
-Stopped at: Phase 259 loop closed; merge gate ✓ (all 7 gates PASS); transition complete; ready to plan Phase 260.
-Next action: Run `/paul:plan` to create Plan 260-01 for Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase, which adds the `+1` cross-harness closure guardrail per the recipe established by Phases 245 / 248 / 252 / 256 and reconciles the v2.60 milestone evidence + records the next-roadmap decision).
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-07T01:34Z — Plan 260-01 created via /paul:plan for Phase 260 (Evidence Closure + Next-Roadmap Decision — the v2.60 milestone closure phase); user selected `[3] Pause here` at the post-plan continuation prompt; APPLY not started.
+Stopped at: Plan 260-01 created and awaiting approval; APPLY queued but explicitly paused before any closure edit ran.
+Next action: Read `.paul/HANDOFF-2026-05-07-phase-260-pre-apply.md`, confirm intent, then approve and run `/paul:apply .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-PLAN.md`.
+Resume file: .paul/HANDOFF-2026-05-07-phase-260-pre-apply.md
 Resume context:
 - v2.60 active; **3 of 4 phases complete**; Phase 257 closed via PR #172 `800552a1`; Phase 258 closed via PR #173 `1531e47a`; Phase 259 closed via PR #174 `b879b372`. Phase 260 (Evidence Closure + Next-Roadmap Decision) is the v2.60 milestone closure phase and the only remaining phase.
 - Working tree clean on `main`; 0 ahead / 0 behind `origin/main`. No feature branch exists for Phase 260 yet — `/paul:plan` will be followed by `/paul:apply` whose GitHub Flow preflight will create `phase/260-evidence-closure-next-roadmap-decision` (or equivalent slug) from `main`.
