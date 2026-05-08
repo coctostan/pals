@@ -23,6 +23,11 @@ Next phase: APPLY (after plan approval)
 modules.yaml (installed module registry — MUST read; drives pre-plan and post-plan hook dispatch)
 </required_reading>
 
+<hot_artifact_loading>
+When touching hot `.paul/*` lifecycle artifacts (`STATE.md`, `PROJECT.md`, `MILESTONES.md`, `ROADMAP.md`), locate the relevant heading, marker, phase row, plan ID, resume file, status line, or section label first and read the smallest useful bounded window.
+Escalate to a full read only as an explicit fallback when fields are missing or contradictory, or when the task requires whole-artifact rewrite, audit, repair, migration, lifecycle write, or whole-artifact validation.
+</hot_artifact_loading>
+
 <references>
 references/plan-format.md
 references/checkpoints.md (if plan will have checkpoints)
