@@ -89,10 +89,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/267-validation-guardrails-evidence-closure
-Last commit: `5a24fc3c` — docs(267-01): record v2.62 closure evidence
+Last commit: `f5d87f55` — docs(267-01): add approved phase plan
 PR: none active for current branch; Phase 267 PR pending UNIFY
 CI: local APPLY validation PASS — install, artifact_consistency, Pi 270/270, cross-harness 139/139, diff-check clean
-Working tree: APPLY complete; untracked Phase 267 PLAN remains for UNIFY metadata commit.
+Working tree: APPLY complete; clean after committing Phase 267 plan and APPLY artifacts.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
