@@ -21,6 +21,11 @@ Next phase: PLAN (next plan or next phase)
 modules.yaml (installed module registry — MUST read; drives pre-unify and post-unify hook dispatch)
 </required_reading>
 
+<hot_artifact_loading>
+When touching hot `.paul/*` lifecycle artifacts (`STATE.md`, `PROJECT.md`, `MILESTONES.md`, `ROADMAP.md`), locate the relevant heading, marker, phase row, plan ID, resume file, status line, or section label first and read the smallest useful bounded window.
+Escalate to a full read only as an explicit fallback when fields are missing or contradictory, or when the task requires whole-artifact rewrite, audit, repair, migration, lifecycle write, or whole-artifact validation.
+</hot_artifact_loading>
+
 <references>
 references/loop-phases.md
 references/module-dispatch.md

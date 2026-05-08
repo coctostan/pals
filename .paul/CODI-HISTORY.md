@@ -90,3 +90,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 262-01 | 2026-05-07 | injected | 12 | 0 | 0 | getCommand, toWrapperCommand, detectCommandSignal, getQuickActions, COMMANDS, COMMAND_ACTIVATION_TURN_BUDGET, PROMPT_ACTIVATION_TURN_BUDGET, PRIMARY_QUICK_ACTION_LIMIT, MAX_QUICK_ACTIONS, makeRouteCommand, makeRouteWrapperCommand, makeRegisterQuickActionShortcut | y |
 
 | 266-01 | 2026-05-08 | skipped-no-symbols | — | — | — | — | n |
+| 267-01 | 2026-05-08 | skipped-no-symbols | — | — | — | — | n |

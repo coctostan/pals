@@ -544,12 +544,28 @@ section "CONTEXT-DIET REGRESSION GUARDRAILS"
 ACTIVE_ROADMAP_LINE_CEILING=120
 HOT_CONTEXT_SOURCE_SET_LINE_CEILING=2100
 GITHUB_FLOW_JQ_DUPLICATION_CEILING=6
+STATE_BYTE_CEILING=20000
+PROJECT_BYTE_CEILING=25000
+MILESTONES_BYTE_CEILING=18000
+ROADMAP_BYTE_CEILING=12000
+REPO_STATE="$REPO_ROOT/.paul/STATE.md"
+REPO_PROJECT="$REPO_ROOT/.paul/PROJECT.md"
+REPO_MILESTONES="$REPO_ROOT/.paul/MILESTONES.md"
 REPO_ROADMAP="$REPO_ROOT/.paul/ROADMAP.md"
+REPO_RESUME_WORKFLOW="$REPO_ROOT/kernel/workflows/resume-project.md"
 REPO_PLAN_WORKFLOW="$REPO_ROOT/kernel/workflows/plan-phase.md"
 REPO_APPLY_WORKFLOW="$REPO_ROOT/kernel/workflows/apply-phase.md"
 REPO_UNIFY_WORKFLOW="$REPO_ROOT/kernel/workflows/unify-phase.md"
+REPO_PAUSE_WORKFLOW="$REPO_ROOT/kernel/workflows/pause-work.md"
+REPO_ROADMAP_WORKFLOW="$REPO_ROOT/kernel/workflows/roadmap-management.md"
+REPO_MILESTONE_WORKFLOW="$REPO_ROOT/kernel/workflows/create-milestone.md"
+REPO_TRANSITION_WORKFLOW="$REPO_ROOT/kernel/workflows/transition-phase.md"
 REPO_MODULE_DISPATCH="$REPO_ROOT/kernel/references/module-dispatch.md"
 REPO_GIT_STRATEGY="$REPO_ROOT/kernel/references/git-strategy.md"
+
+PI_RESUME="$SKILL_DIR/workflows/resume-project.md"
+PI_PAUSE="$SKILL_DIR/workflows/pause-work.md"
+PI_TRANSITION="$SKILL_DIR/workflows/transition-phase.md"
 
 tap_file_line_ceiling \
   "Repo ROADMAP stays within active-window line budget" \
@@ -562,6 +578,165 @@ tap_file_contains_all \
   '.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md' \
   '.paul/MILESTONES.md' \
   'Detailed completed milestone history through v2.43 is archived'
+
+
+tap_context_diet_byte_ceiling() {
+  local description="$1"
+  local file="$2"
+  local ceiling="$3"
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local count
+  count=$(wc -c < "$file" | tr -d ' ')
+  if [ "$count" -le "$ceiling" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "$file has $count bytes; ceiling is $ceiling"
+  fi
+}
+
+tap_context_diet_byte_ceiling \
+  "Repo STATE stays within v2.62 byte budget" \
+  "$REPO_STATE" \
+  "$STATE_BYTE_CEILING"
+
+tap_context_diet_byte_ceiling \
+  "Repo PROJECT stays within v2.62 byte budget" \
+  "$REPO_PROJECT" \
+  "$PROJECT_BYTE_CEILING"
+
+tap_context_diet_byte_ceiling \
+  "Repo MILESTONES stays within v2.62 byte budget" \
+  "$REPO_MILESTONES" \
+  "$MILESTONES_BYTE_CEILING"
+
+tap_context_diet_byte_ceiling \
+  "Repo ROADMAP stays within v2.62 byte budget" \
+  "$REPO_ROADMAP" \
+  "$ROADMAP_BYTE_CEILING"
+
+tap_file_line_ceiling \
+  "Repo STATE stays compact after v2.62 archive" \
+  "$REPO_STATE" \
+  260
+
+tap_file_line_ceiling \
+  "Repo PROJECT stays compact after v2.62 archive" \
+  "$REPO_PROJECT" \
+  260
+
+tap_file_line_ceiling \
+  "Repo MILESTONES stays compact after v2.62 archive" \
+  "$REPO_MILESTONES" \
+  220
+
+tap_file_contains_all \
+  "Repo STATE preserves v2.62 archive pointers" \
+  "$REPO_STATE" \
+  '.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md' \
+  '.paul/archive/state/STATE-HISTORY-v0-v2.43.md'
+
+tap_file_contains_all \
+  "Repo PROJECT preserves v2.62 archive pointers" \
+  "$REPO_PROJECT" \
+  '.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md' \
+  '.paul/archive/project/PROJECT-HISTORY.md'
+
+tap_file_contains_all \
+  "Repo MILESTONES preserves archive entry points" \
+  "$REPO_MILESTONES" \
+  '.paul/archive/milestones/' \
+  '.paul/archive/INDEX.md'
+
+tap_file_contains_all \
+  "Repo ROADMAP preserves archive entry points" \
+  "$REPO_ROADMAP" \
+  '.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md' \
+  '.paul/MILESTONES.md'
+
+tap_file_contains_all \
+  "Repo resume workflow defaults to selective hot artifact loading" \
+  "$REPO_RESUME_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo plan workflow defaults to selective hot artifact loading" \
+  "$REPO_PLAN_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo apply workflow defaults to selective hot artifact loading" \
+  "$REPO_APPLY_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo unify workflow defaults to selective hot artifact loading" \
+  "$REPO_UNIFY_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo pause workflow defaults to selective hot artifact loading" \
+  "$REPO_PAUSE_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo roadmap workflow defaults to selective hot artifact loading" \
+  "$REPO_ROADMAP_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo milestone workflow defaults to selective hot artifact loading" \
+  "$REPO_MILESTONE_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Repo transition workflow defaults to selective hot artifact loading" \
+  "$REPO_TRANSITION_WORKFLOW" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed resume workflow defaults to selective hot artifact loading" \
+  "$PI_RESUME" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed plan workflow defaults to selective hot artifact loading" \
+  "$PI_PLAN" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed apply workflow defaults to selective hot artifact loading" \
+  "$PI_APPLY" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed unify workflow defaults to selective hot artifact loading" \
+  "$PI_UNIFY" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed pause workflow defaults to selective hot artifact loading" \
+  "$PI_PAUSE" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed roadmap workflow defaults to selective hot artifact loading" \
+  "$PI_ROADMAP" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed milestone workflow defaults to selective hot artifact loading" \
+  "$PI_MILESTONE" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+tap_file_contains_all \
+  "Installed transition workflow defaults to selective hot artifact loading" \
+  "$PI_TRANSITION" \
+  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
 
 tap_hot_workflow_line_ceiling \
   "Repo source hot workflow/reference set stays under post-190 anti-regrowth budget" \

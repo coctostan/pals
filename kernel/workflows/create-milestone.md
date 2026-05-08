@@ -19,6 +19,11 @@ After create-milestone, project is ready for first phase PLAN.
 .paul/ROADMAP.md (consult only the slice needed to insert the new milestone and derive the next available phase number)
 </required_reading>
 
+<hot_artifact_loading>
+When touching hot `.paul/*` lifecycle artifacts (`STATE.md`, `PROJECT.md`, `MILESTONES.md`, `ROADMAP.md`), locate the relevant heading, marker, phase row, plan ID, resume file, status line, or section label first and read the smallest useful bounded window.
+Escalate to a full read only as an explicit fallback when fields are missing or contradictory, or when the task requires whole-artifact rewrite, audit, repair, migration, lifecycle write, or whole-artifact validation.
+</hot_artifact_loading>
+
 <references>
 @src/templates/ROADMAP.md (milestone section format)
 @src/templates/milestone-context.md (handoff structure)
