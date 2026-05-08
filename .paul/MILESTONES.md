@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | None active after **v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction** closure (closed 2026-05-07; Phase 261 PR #176 squash-merged `423c467e`, Phase 262 PR #177 squash-merged `19555747`, Phase 263 PR #178 squash-merged `6f725276`, Phase 264 PR #179 squash-merged). v2.62 selection pending via `/paul:milestone` with the recorded default recommendation (broader cross-harness validation-script size-debt work) — see Next-Roadmap Recommendation below. | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
+| Current milestone | **v2.62 PALS Context Diet — STATE & Hot-Path Compression** (created 2026-05-07; 0 of 3 phases complete; ready to plan Phase 265 PALS Hot-Path Context Audit + Diet Contract) | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 

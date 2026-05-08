@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-07 after v2.61 closure; v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction closed 4 of 4 phases via PRs #176 `423c467e` / #177 `19555747` / #178 `6f725276` / Phase 264 PR #179; v2.62 selection pending via `/paul:milestone` with recorded default focus = broader cross-harness validation-script size-debt work)
+See: .paul/PROJECT.md (updated 2026-05-07 after v2.61 closure; v2.62 PALS Context Diet — STATE & Hot-Path Compression created 2026-05-07 via `/paul:milestone` after `/paul:discuss`; ready to plan Phase 265)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction **closed 4 of 4 phases** (PRs #176 `423c467e` / #177 `19555747` / #178 `6f725276` / Phase 264 PR #179). Per-sibling S1–S8 modularization wave is now closed except S4 (deferred as integration point); 7th sibling-extraction recipe application **shipped** (Phase 262); 6th sibling-surfacing recipe application **shipped** (Phase 263) — durable across the full active S* set (S5/S1/S2/S3/S7/S6/S8); 6th closure-guardrail recipe application **shipped** (Phase 264) — durable across six consecutive milestones. v2.62 selection pending via `/paul:milestone` with recorded default focus = broader cross-harness validation-script size-debt work; alternatives preserved (S4 canonical reply delivery extraction = higher-risk; small `/paul:fix` ROADMAP active-window trim = lower-risk). Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`) escalated to v2.62 per Phase 264 recorded decision. Mode: direct-requirements; Collaboration: medium.
+**Current focus:** v2.62 PALS Context Diet — STATE & Hot-Path Compression (created 2026-05-07; **0 of 3 phases complete**; ready to plan Phase 265). Apply the v2.43/v2.44 Context Diet archive-and-compact recipe to STATE.md and PROJECT.md (which were never given the same treatment) to reduce hot-path resume cost. Pain: `/paul:resume` consumes ~50 KB/session; STATE.md alone is 99 KB; PROJECT.md is 67 KB. Targets: STATE.md ≤ 20 KB; PROJECT.md ≤ 25 KB; hot-path resume read total ≤ 80 KB. Path A inherited regression reconciled inline by Phase 266 (same root cause as active-window line-budget). Phase structure: 265 contract → 266 archive+compact → 267 guardrails+closure. 4th application of v2.43's archive-and-compact recipe; 7th application of the closure-guardrail recipe in Phase 267. Mode: exploratory; Collaboration: high.
 
 ## Current Position
 
-Milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
-Phase: 264 of 264 (Evidence Closure + Next-Roadmap Decision) — ✅ Complete (PLAN → APPLY → UNIFY ✓✓✓)
-Plan: 264-01 ✅ Complete (`.paul/phases/264-evidence-closure-next-roadmap-decision-v2-61/264-01-PLAN.md` + `264-01-SUMMARY.md`)
-Status: Loop complete — v2.61 milestone closed; ready for `/paul:milestone` to select v2.62
-Last activity: 2026-05-07 — Phase 264 transitioned to complete after `/paul:unify` closed the PLAN-APPLY-UNIFY loop. PR #179 squash-merged 2026-05-07T20:47:10Z as `bc81fa84`; main synced; feature branch deleted. v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction closed 4 of 4 phases. Sixth application of the closure-guardrail recipe (Phase 245 / 248 / 252 / 256 / 260 / 264) — durable across six consecutive milestones. Per-sibling S1–S8 modularization wave is now closed except S4 (deferred as integration point); seventh sibling-extraction recipe application **shipped** (Phase 262); sixth sibling-surfacing recipe application **shipped** (Phase 263) — durable across the full active S* set (S5/S1/S2/S3/S7/S6/S8). Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`) **escalated to v2.62** per Phase 264 recorded decision. Recommended v2.62 default focus: broader cross-harness validation-script size-debt work; alternatives preserved (S4 = higher-risk; small `/paul:fix` ROADMAP active-window trim = lower-risk).
+Milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
+Phase: 265 of 267 (PALS Hot-Path Context Audit + Diet Contract) — Not started
+Plan: Not started
+Status: Ready to plan Phase 265
+Last activity: 2026-05-07 — v2.62 milestone created via `/paul:milestone` after `/paul:discuss` shaped the scope (mode: exploratory; collaboration: high). Carried context from `.paul/MILESTONE-CONTEXT.md`: 6 features (cold archive split for STATE.md; archive top-up for PROJECT.md; active-window compaction across STATE/PROJECT/MILESTONES; diet contract; anti-regrowth guardrails; Path A reconciliation inline); 3 phases mirror v2.43 shape; review preference recorded as no-review (path 4) since substance was worked through during `/paul:discuss`. ROADMAP.md updated; phase directories `.paul/phases/265-.../266-.../267-...` created. Workflow files (kernel/skills) and runtime/source files (`drivers/pi/extensions/*.ts`, `tests/pi-end-to-end-validation.sh` except for bounded structural assertions in Phase 267, `tests/helpers/*`) explicitly out of scope. Cross-file narrative deduplication explicitly deferred to a future milestone.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Progress:
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
 - v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-07; Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`)
-- v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [██████████] 100% (4 of 4 phases complete; Phase 261 ✅ PR #176 squash-merged `423c467e`; Phase 262 ✅ PR #177 squash-merged `19555747`; Phase 263 ✅ PR #178 squash-merged `6f725276`; Phase 264 ✅ PR #179 squash-merged `bc81fa84`)
+- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [░░░░░░░░░░] 0% (0 of 3 phases complete; ready to plan Phase 265)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop complete — v2.61 milestone closed; ready for `/paul:milestone` to select v2.62]
+  ○        ○        ○     [Ready for first PLAN — Phase 265]
 ```
 
 ## Accumulated Context
@@ -327,10 +327,10 @@ Prior PRs: #178 merged (Phase 263 Documentation + Validation Surfacing `6f725276
 
 ## Session Continuity
 
-Last session: 2026-05-07 — `/paul:apply` Phase 264 executed all 3 tasks (T1 aggregate v2.61 closure evidence in MILESTONES.md incl. Path A escalation decision; T2 close v2.61 in PROJECT.md + ROADMAP.md with v2.62 recommendation; T3 +1 cross-harness shared-invariant closure guardrail). All 4 ACs PASS; install 8 unchanged; Pi 1..243 / 242 / 1 unchanged (inherited Path A `not ok 102`); cross-harness 1..137 → 1..138 / 137 / 1 (+1 closure guardrail; inherited `not ok 31` unchanged); artifact_consistency PASS. `/paul:unify` closed the loop: SUMMARY.md written, merge gate green, PR #179 squash-merged as `bc81fa84`, main synced.
-Stopped at: Phase 264 complete and v2.61 milestone closed; on branch `main`. v2.61 progress 100% (4 of 4 phases complete). Per-sibling S1–S8 wave closed except S4.
-Next action: Run `/paul:milestone` to select v2.62. Recommended default focus: broader cross-harness validation-script size-debt work.
-Resume file: .paul/MILESTONES.md
+Last session: 2026-05-07 — v2.61 closed via PR #179 `bc81fa84` (squash-merged 2026-05-07T20:47:10Z). `/paul:discuss` then shaped v2.62 PALS Context Diet — STATE & Hot-Path Compression (mode: exploratory; collaboration: high; review: no-review). `/paul:milestone` consumed `.paul/MILESTONE-CONTEXT.md` and created the 3-phase structure (265 contract → 266 archive+compact → 267 guardrails+closure); ROADMAP.md updated; phase directories created; STATE.md aligned.
+Stopped at: v2.62 milestone created and ready to plan Phase 265; on branch `main`. v2.62 progress 0% (0 of 3 phases complete).
+Next action: Run `/paul:plan` for Phase 265 (PALS Hot-Path Context Audit + Diet Contract) — docs-only contract baseline that audits STATE/PROJECT for active-vs-cold split, identifies preservation invariants, measures baseline hot-path read total, and produces `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`.
+Resume file: .paul/ROADMAP.md
 Resume context:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: **closed 4 of 4 phases** (Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 `19555747`; Phase 263 ✅ PR #178 `6f725276`; Phase 264 ✅ PR #179 awaiting merge gate). Sixth application of the closure-guardrail recipe (Phase 245 / 248 / 252 / 256 / 260 / 264) — durable across six consecutive milestones.
 - Branch state: on `feature/264-evidence-closure-next-roadmap-decision-v2-61`, ahead of `main` by 1 commit (`a2a53797`); PR #179: https://github.com/coctostan/pals/pull/179.
