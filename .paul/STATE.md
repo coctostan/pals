@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-07 after v2.61 closure; v2.62 PALS Contex
 ## Current Position
 
 Milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Phase: 265 of 267 (PALS Hot-Path Context Audit + Diet Contract) — Complete
-Plan: 265-01 complete (PLAN ✓ APPLY ✓ UNIFY ✓)
-Status: Phase 265 loop closed; PR #180 awaiting merge gate; ready for next /paul:plan (Phase 266) after merge
-Last activity: 2026-05-07 — Phase 265 UNIFY complete on `feature/265-pals-hot-path-context-audit-diet-contract`. Created `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-SUMMARY.md`. AC-1–AC-4 PASS. No deviations of substance. Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`) carried forward unchanged per v2.62 milestone scope; Phase 266 reconciles inline. PR #180 OPEN; CI pending (Socket Security ×2) — informational at UNIFY surface, blocking at merge_gate_pr step. Single-Write-per-artifact recipe ratified; cross-file duplication recorded as deferred debt.
+Phase: 266 of 267 (Archive + Compact Hot Artifacts) — Not started
+Plan: Not started
+Status: Phase 265 closed via PR #180 `63365822` (merged 2026-05-08T15:20:52Z); ready to plan Phase 266
+Last activity: 2026-05-08 — Phase 265 transitioned to Phase 266 after PR #180 `63365822` squash-merged 2026-05-08T15:20:52Z. PROJECT.md evolved (Active milestone block + Current milestone pointer + Key current decisions row + footer); ROADMAP.md marked Phase 265 complete. Validation post-merge: Pi 242/243, cross-harness 137/138, artifact_consistency PASS (Path A inherited regression carried forward; Phase 266 reconciles inline). New artifact `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (~39 KB / 395 lines) is the executable contract for Phase 266 mutation: hot/warm/cold split rules, archive structure (extends v2.43-era precedents), per-section live-byte budgets summing to STATE.md ≤ 20 KB / PROJECT.md ≤ 25 KB / MILESTONES.md ≤ 18 KB / ROADMAP.md ≤ 12 KB / aggregate ≤ 80 KB, 14 preservation invariants, Phase 266/267 handoff. v2.62 milestone now 1 of 3 phases complete.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Progress:
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
 - v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-07; Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`)
-- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [███░░░░░░░] 33% (1 of 3 phases complete; Phase 265 loop closed, PR #180 awaiting merge)
+- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [███░░░░░░░] 33% (1 of 3 phases complete; Phase 265 closed PR #180 `63365822`; ready to plan Phase 266)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 265 loop complete; PR #180 awaiting merge gate]
+  ○        ○        ○     [Phase 265 closed; ready for first PLAN — Phase 266]
 ```
 
 ## Accumulated Context
@@ -328,9 +328,9 @@ Prior PRs: #179 merged (Phase 264 Evidence Closure + Next-Roadmap Decision v2.61
 ## Session Continuity
 
 Last session: 2026-05-07 — v2.61 closed via PR #179 `bc81fa84` (squash-merged 2026-05-07T20:47:10Z); `/paul:discuss` shaped v2.62 PALS Context Diet — STATE & Hot-Path Compression (mode: exploratory; collaboration: high; review: no-review); `/paul:milestone` created the 3-phase structure; `/paul:pause` wrote handoff `.paul/HANDOFF-2026-05-07-v2.62-ready-to-plan-phase-265.md` for clean session break.
-Stopped at: Phase 265 UNIFY complete; SUMMARY.md written. PR #180 OPEN on `feature/265-pals-hot-path-context-audit-diet-contract`; merge gate next.
-Next action: Resolve merge gate (CI passing + merge PR #180), then `/paul:plan` for Phase 266 (Archive + Compact Hot Artifacts).
-Resume file: .paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-SUMMARY.md
+Stopped at: Phase 265 transition complete; PR #180 squash-merged as `63365822`; PROJECT.md evolved; ROADMAP.md marked complete; clean break on `main`.
+Next action: `/paul:plan` for Phase 266 (Archive + Compact Hot Artifacts).
+Resume file: .paul/ROADMAP.md
 Resume context:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: **closed 4 of 4 phases** (Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 `19555747`; Phase 263 ✅ PR #178 `6f725276`; Phase 264 ✅ PR #179 awaiting merge gate). Sixth application of the closure-guardrail recipe (Phase 245 / 248 / 252 / 256 / 260 / 264) — durable across six consecutive milestones.
 - Branch state: on `feature/264-evidence-closure-next-roadmap-decision-v2-61`, ahead of `main` by 1 commit (`a2a53797`); PR #179: https://github.com/coctostan/pals/pull/179.

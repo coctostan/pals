@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | **v2.62 PALS Context Diet — STATE & Hot-Path Compression** (created 2026-05-07; 0 of 3 phases complete; ready to plan Phase 265 PALS Hot-Path Context Audit + Diet Contract) | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
+| Current milestone | **v2.62 PALS Context Diet — STATE & Hot-Path Compression** (1 of 3 phases complete; Phase 265 closed via PR #180 `63365822` 2026-05-08T15:20:52Z; ready to plan Phase 266 Archive + Compact Hot Artifacts) | `.paul/ROADMAP.md` Current Milestone section; `.paul/STATE.md` Current Position |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
