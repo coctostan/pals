@@ -9,15 +9,15 @@ See: .paul/PROJECT.md (updated 2026-05-08 after Phase 265 closure; v2.62 PALS Co
 ## Current Position
 
 Milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Phase: 266 of 267 (Archive + Compact Hot Artifacts) — Apply
-Plan: 266-01 approved, executing
-Status: PLAN ✓, APPLY in progress
-Last activity: 2026-05-08 — `/paul:resume` restored context; user approved Phase 266; APPLY started on `feature/266-archive-compact-hot-artifacts` (Single-Write-per-artifact recipe; helper PASS after every Write; Path A reconciliation deferred to T3 ROADMAP compaction).
-Next action: Complete Tasks 1–3, run end-of-phase Pi (243/243 expected) + cross-harness (138/138 expected), then route to `/paul:unify .paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md`.
+Phase: 266 of 267 (Archive + Compact Hot Artifacts) — APPLY ✓ paused; awaiting UNIFY
+Plan: 266-01 APPLY complete; PR #181 OPEN; UNIFY pending user resume
+Status: PLAN ✓, APPLY ✓, UNIFY ○ (paused)
+Last activity: 2026-05-08 — Phase 266 APPLY complete on `feature/266-archive-compact-hot-artifacts` (commit `4a8b42a1`). All four hot artifacts under per-section budgets (STATE 18,127 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B / 60 lines); aggregate 62,699 B / ≤ 80 KB target; new archive files `STATE-HISTORY-v2.44-v2.60.md` and `PROJECT-HISTORY-v2.55-v2.60.md` plus updated `archive/INDEX.md`. Path A inherited regression flipped: Pi 243/243 PASS, cross-harness 138/138 PASS. PR #181 opened (OPEN; Socket Security IN_PROGRESS at apply time). User chose `[2] Pause here` instead of running `/paul:unify`.
+Next action: `/paul:unify .paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` to write `266-01-SUMMARY.md` (deviations recorded: PROJECT.md pre-emptive archive lift, MILESTONES.md corrective 5-line Edit on top of single Write to restore explicit Phase numbers required by closure-guardrail TAPs; module reports recorded; validation evidence Pi 243/243 + cross-harness 138/138; Phase 267 handoff).
 
 Progress:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [██████████] 100% (4 of 4 phases complete; PR #176 `423c467e` / PR #177 `19555747` / PR #178 `6f725276` / PR #179 `bc81fa84`)
-- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [███░░░░░░░] 33% (Phase 265 ✅ PR #180 `63365822`; Phase 266 in APPLY; Phase 267 not yet planned)
+- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████░░░░] 67% (Phase 265 ✅ PR #180 `63365822`; Phase 266 APPLY ✓ PR #181 OPEN, awaiting UNIFY; Phase 267 not yet planned)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -25,7 +25,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ◐        ○     [Plan 266-01 approved; APPLY in progress]
+  ✓        ✓        ○     [Plan 266-01 APPLY complete; UNIFY paused at user request]
 ```
 
 ## Accumulated Context
@@ -84,18 +84,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/266-archive-compact-hot-artifacts (created 2026-05-08 from `main` 0 ahead / 0 behind; Phase 266 APPLY in progress)
+Branch: feature/266-archive-compact-hot-artifacts (1 ahead / 0 behind origin/main; pushed; Phase 266 APPLY ✓)
+Last feature commit: 4a8b42a1 — feat(266): apply v2.62 PALS Context Diet — archive + compact hot artifacts
 Last main commit: 600e56d9 — feat(265): Phase 265 transition — v2.62 1/3 phases complete (PR #180 `63365822` squash-merged 2026-05-08T15:20:52Z; Socket Security ×2 SUCCESS; reviews skipped per pals.json `require_reviews=false`; rev.pr_review skipped per `rev.pr_review=false`)
-PR: none yet (Phase 266 postflight will create after task verification + `git diff --check` clean)
-CI: N/A
-Working tree: dirty (Phase 266 APPLY artifacts in progress: STATE.md / PROJECT.md / MILESTONES.md / ROADMAP.md compaction; new `.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md`; archived handoff). Pre-APPLY validation baseline: Pi 1..243 / 242 / 1 (inherited Path A `not ok 102`); cross-harness 1..138 / 137 / 1 (inherited `not ok 31`); artifact_consistency PASS. End-of-phase target: Pi 243/243; cross-harness 138/138; aggregate hot-path read total ≤ 80 KB.
+PR: #181 OPEN — https://github.com/coctostan/pals/pull/181 (Phase 266 APPLY)
+CI: Socket Security: Project Report IN_PROGRESS at apply time (UNIFY merge-gate will re-check)
+Working tree: clean (all Phase 266 changes committed on `feature/266-archive-compact-hot-artifacts`). End-of-APPLY validation: artifact_consistency PASS; Pi 243/243 PASS (Path A `not ok 102 → ok`); cross-harness 138/138 PASS (Path A `not ok 31 → ok`); `git diff --check` clean. Aggregate hot-path read total: 228,798 B → 62,699 B (−73%; ≤ 80 KB target). End-of-phase target met.
 Prior PRs: #180 / #179 / #178 / #177 / #176 (v2.62 Phase 265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-08 — `/paul:plan` produced Phase 266 PLAN 266-01; APPLY paused at user request before approval; `/paul:pause` wrote handoff `.paul/HANDOFF-2026-05-08-v2.62-phase-266-plan-ready-paused.md`.
-Stopped at: Phase 266 Task 1 in flight — STATE.md compaction Write being verified; Tasks 2 (PROJECT.md ≤ 25 KB) and 3 (MILESTONES.md ≤ 18 KB + ROADMAP.md ≤ 12 KB / ≤ 120 lines + Path A flip) pending.
-Next action: Continue Phase 266 APPLY: run helper PASS check on this STATE.md Write, then proceed to Task 2 (PROJECT.md compaction) and Task 3 (MILESTONES.md + ROADMAP.md warm compaction with Path A inline reconciliation), then end-of-phase Pi 243/243 + cross-harness 138/138, then `/paul:unify .paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md`.
+Last session: 2026-05-08 — `/paul:apply` executed Phase 266 (T1 STATE.md → 18,127 B; T2 PROJECT.md → 18,777 B with pre-emptive archive lift; T3 MILESTONES.md → 14,610 B + ROADMAP.md → 11,185 B / 60 lines + Path A flip); commit `4a8b42a1` pushed; PR #181 opened OPEN; user chose `[2] Pause here` instead of running `/paul:unify`.
+Stopped at: Phase 266 APPLY complete; UNIFY paused at user request. PR #181 OPEN with Socket Security IN_PROGRESS at apply time.
+Next action: `/paul:unify .paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` to write `266-01-SUMMARY.md` and run UNIFY merge-gate (PR #181 review + CI + merge per pals.json `auto_pr=true` / `merge_method=squash` / `delete_branch_on_merge=true`).
 Resume file: .paul/handoffs/archive/HANDOFF-2026-05-08-v2.62-phase-266-plan-ready-paused.md
 Resume context:
 - Authoritative contract: `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (Phase 265 baseline). Phase 266 cannot deviate without recording it in SUMMARY.md.
