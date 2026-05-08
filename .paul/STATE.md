@@ -2,22 +2,22 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-08 after Phase 265 closure; v2.62 PALS Context Diet — STATE & Hot-Path Compression active 1 of 3 phases complete; ready to apply Phase 266)
+See: .paul/PROJECT.md (updated 2026-05-08 after Phase 267 APPLY; v2.62 PALS Context Diet complete after Selective Artifact Loading + anti-regrowth guardrails; UNIFY pending for SUMMARY/PR/merge evidence)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.62 PALS Context Diet — STATE & Hot-Path Compression. Phase 265 (contract baseline) closed via PR #180; Phase 266 archives + compacts the four hot artifacts to per-section budgets per `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` and reconciles Path A inline; Phase 267 ratifies with anti-regrowth TAPs and v2.62 closure (7th application of the closure-guardrail recipe).
+**Current focus:** v2.62 PALS Context Diet — STATE & Hot-Path Compression complete after Phase 267 APPLY. Phase 265 shipped the contract; Phase 266 compacted hot artifacts and resolved Path A; Phase 267 shipped Selective Artifact Loading, anti-regrowth TAPs, and the 7th closure-guardrail recipe application.
 
 ## Current Position
 
 Milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Phase: 267 of 267 (Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure) — Planning
-Plan: 267-01 created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-05-08 — Created `.paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md` for selective artifact loading, anti-regrowth TAPs, and v2.62 closure.
-Next action: Review and approve plan, then run `/paul:apply .paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md`.
+Phase: 267 of 267 (Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure) — APPLY complete
+Plan: 267-01 executed; SUMMARY pending UNIFY
+Status: APPLY complete; ready for UNIFY
+Last activity: 2026-05-08 — Completed Phase 267 APPLY edits and verification: install PASS; artifact_consistency PASS; Pi 270/270 PASS; cross-harness 139/139 PASS; `git diff --check` clean.
+Next action: Run `/paul:unify .paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md`.
 
 Progress:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [██████████] 100% (4 of 4 phases complete; PR #176 `423c467e` / PR #177 `19555747` / PR #178 `6f725276` / PR #179 `bc81fa84`)
-- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [███████░░░] 67% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ready to plan)
+- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 APPLY ✅, UNIFY pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -25,7 +25,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ○     [APPLY complete; UNIFY pending]
 ```
 
 ## Accumulated Context
@@ -53,6 +53,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision 2026-05-08: Path A inline reconciliation locked in for Phase 266 | Phase 265 Plan 265-01 UNIFY | Pi `not ok 102` and cross-harness `not ok 31` (ROADMAP active-window line-budget violation) reconcile naturally during Phase 266 ROADMAP warm compaction — same root cause as the active-window compaction obligation in this contract. **No separate `/paul:fix` is required.** 7th application of the closure-guardrail recipe explicitly handed off to Phase 267 (Phase 245 / 248 / 252 / 256 / 260 / 264 / **267**). |
 | Decision 2026-05-08: Phase 266 plan 266-01 created and approved for APPLY | Phase 266 Plan 266-01 (`/paul:plan` → `/paul:apply`) | 3 tasks / 4 ACs / mode direct-requirements / collaboration medium. T1 archives cold STATE history + compacts STATE.md ≤ 20 KB (this APPLY); T2 compacts PROJECT.md ≤ 25 KB (warm-compact in place; archive lift only if budget misses); T3 warm-compacts MILESTONES.md ≤ 18 KB AND ROADMAP.md ≤ 12 KB / ≤ 120 lines (Path A inline reconciliation). |
 | Decision 2026-05-08: Phase 266 compacted hot lifecycle artifacts but did not alter PALS loading behavior; Phase 267 must add Selective Artifact Loading. | Phase 266 UNIFY + `266-02-SELECTIVE-ARTIFACT-LOADING-HANDOFF.md` | PALS workflows should locate relevant headings/markers/rows first and read bounded windows instead of whole hot artifacts by default. Phase 267 scope becomes Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure. |
+| Decision 2026-05-08: Phase 267 APPLY completed Selective Artifact Loading + anti-regrowth guardrails + v2.62 closure evidence. | Phase 267 Plan 267-01 APPLY | Eight hot workflows now default to heading/marker/phase-row/status-line lookup and bounded window reads, with full read preserved as explicit fallback. Pi validation added v2.62 byte/line/archive/selective-loading TAPs (270/270 PASS); cross-harness added the 7th closure-guardrail recipe TAP (139/139 PASS). v2.63 narrative deduplication remains recommended-not-approved. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -67,6 +68,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Skill audit Phase 265 UNIFY: same module set; SUMMARY (`265-01-SUMMARY.md`) records ACs, marker grep evidence, validation output, module dispatch reports, Path A handoff for Phase 266, Phase 267 handoff for anti-regrowth TAPs + v2.62 closure aggregation. PR #180 squash-merged at `63365822`. Post-merge state alignment commit `d9463937`; phase-transition commit `600e56d9`.
 - 2026-05-08 (Phase 266 APPLY): `/paul:resume` archived `HANDOFF-2026-05-08-v2.62-phase-266-plan-ready-paused.md` to `.paul/handoffs/archive/` and updated STATE.md `Resume file:` accordingly per the resume workflow's allowance for archived-handoff resume paths; helper PASS confirmed before APPLY started. Branch `feature/266-archive-compact-hot-artifacts` created from `main` (0 ahead / 0 behind).
 - Skill audit Phase 266 UNIFY: SUMMARY records ACs PASS, validation evidence (artifact_consistency PASS, Pi 243/243, cross-harness 138/138, diff-check clean), deviations, module reports, CODI-HISTORY `skipped-no-symbols`, QUALITY-HISTORY improvement row, and Phase 267 selective-loading handoff. No helper delegation; parent UNIFY owned reconciliation.
+- Skill audit Phase 267 APPLY: parent APPLY owned verification; no helper delegation. Tasks 1–3 PASS: selective-loading contracts in 8 workflows; anti-regrowth TAPs and Phase 267 shared invariant added; lifecycle artifacts record v2.62 complete after APPLY and v2.63 recommended-not-approved. Validation: install PASS; artifact_consistency PASS; Pi 270/270; cross-harness 139/139; `git diff --check` clean.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -87,19 +89,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/267-validation-guardrails-evidence-closure
-Last commit: `04aaf35c` — feat(266): Phase 266 transition — v2.62 2/3 phases complete
-PR: none active for current branch; PR #181 MERGED as `a780bb7f`
-CI: Socket Security checks PASS before PR #181 merge; end-of-Phase-266 validation artifact_consistency PASS, Pi 243/243 PASS, cross-harness 138/138 PASS, `git diff --check` clean
-Working tree: Phase 267 APPLY in progress on `feature/267-validation-guardrails-evidence-closure`; consumed handoff archived to `.paul/handoffs/archive/HANDOFF-2026-05-08-phase-267-plan-created.md`.
+Last commit: `5a24fc3c` — docs(267-01): record v2.62 closure evidence
+PR: none active for current branch; Phase 267 PR pending UNIFY
+CI: local APPLY validation PASS — install, artifact_consistency, Pi 270/270, cross-harness 139/139, diff-check clean
+Working tree: APPLY complete; untracked Phase 267 PLAN remains for UNIFY metadata commit.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-08 — APPLY started for Phase 267.
-Stopped at: Phase 267 APPLY running validation after tasks 1–3 edits.
-Next action: Complete APPLY verification, then run `/paul:unify .paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md`.
+Last session: 2026-05-08 — APPLY completed for Phase 267.
+Stopped at: APPLY verified; SUMMARY/PR/CI/merge evidence not yet reconciled.
+Next action: Run `/paul:unify .paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md`.
 Resume file: .paul/handoffs/archive/HANDOFF-2026-05-08-phase-267-plan-created.md
 Resume context:
 - Consumed handoff was archived to `.paul/handoffs/archive/HANDOFF-2026-05-08-phase-267-plan-created.md` when APPLY started.
 - Plan 267-01 covers selective artifact loading in eight kernel workflows, localized anti-regrowth TAPs, the 7th closure-guardrail recipe, and v2.62 lifecycle closure.
-- APPLY preserves parent-owned verification, full authoritative read fallback, and no runtime/dependency/CI/helper changes.
+- APPLY verification is green: install PASS; artifact_consistency PASS; Pi 270/270; cross-harness 139/139; diff-check clean.
