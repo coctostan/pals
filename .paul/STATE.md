@@ -89,9 +89,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/267-validation-guardrails-evidence-closure
-Last commit: `bc8ebc73` — docs(267-01): refresh apply git state
+Last commit: `26ccb072` — docs(267-01): record apply PR state
 PR: https://github.com/coctostan/pals/pull/182 (OPEN)
-CI: local APPLY validation PASS; PR check pending/queued (`Socket Security: Project Report`).
+CI: local APPLY validation PASS; PR checks passing (`Socket Security: Project Report`, `Socket Security: Pull Request Alerts`).
 Working tree: APPLY complete; clean after committing Phase 267 plan and APPLY artifacts.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
