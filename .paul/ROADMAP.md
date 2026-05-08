@@ -9,24 +9,24 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.62 PALS Context Diet — STATE & Hot-Path Compression**
-Status: 🚧 In Progress | Mode: direct-requirements (Phase 265+) | Phases: 1 of 3 complete | Created: 2026-05-07
+Status: 🚧 In Progress | Mode: direct-requirements (Phase 265+) | Phases: 2 of 3 complete | Created: 2026-05-07
 Theme: Apply the v2.43/v2.44 archive-and-compact recipe to STATE.md, PROJECT.md, MILESTONES.md, and ROADMAP.md (the four hot lifecycle artifacts). Bring aggregate hot-path resume read total ~228 KB → ≤ 80 KB (~65% reduction) without weakening lifecycle authority, helper compatibility, validation truth, Pi runtime expectations, CARL session-boundary expectations, or full authoritative read fallback. Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`, ROADMAP active-window line-budget) reconciled inline by Phase 266 active-window compaction (same root cause). Cross-file narrative deduplication explicitly **deferred** (architectural; would re-litigate v2.43/v2.44). Authoritative contract: `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (Phase 265). 4th application of v2.43's archive-and-compact recipe; 7th application of the closure-guardrail recipe in Phase 267 (Phase 245/248/252/256/260/264/267).
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
 | 265 | PALS Hot-Path Context Audit + Diet Contract | ✅ Complete (PR #180 `63365822`) | `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md` + `265-01-SUMMARY.md` |
-| 266 | Archive + Compact Hot Artifacts | 🚧 APPLY in progress | `.paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` |
-| 267 | Validation Guardrails + Evidence Closure | Not started | TBD |
+| 266 | Archive + Compact Hot Artifacts | ✅ Complete (PR #181 `a780bb7f`) | `.paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` + `266-01-SUMMARY.md` |
+| 267 | Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure | 🔵 Ready to plan | TBD |
 
 ### Phase 265: PALS Hot-Path Context Audit + Diet Contract — ✅ Complete
 Audit STATE/PROJECT/MILESTONES/ROADMAP for active-vs-cold split; identify cross-file duplication (record but don't fix — deferred); identify preservation invariants; measure baseline; produce `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (~39 KB / 395 lines: hot/warm/cold split, archive structure, per-section live-byte budgets, 14 preservation invariants, Phase 266/267 handoff). Docs-only. AC-1–AC-4 PASS. Pi 242/243 unchanged with inherited Path A `not ok 102`; cross-harness 137/138 unchanged with inherited `not ok 31`; artifact_consistency PASS; install surface unchanged; single-Write-per-artifact recipe ratified for context-diet contracts. PR #180 squash-merged 2026-05-08T15:20:52Z as `63365822`.
 
-### Phase 266: Archive + Compact Hot Artifacts — 🚧 APPLY in progress
-Archive cold STATE.md history → new `.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md` and compact STATE.md ≤ 20 KB (T1); compact PROJECT.md ≤ 25 KB warm-compact in place; archive lift only if budget misses (T2); warm-compact MILESTONES.md ≤ 18 KB AND ROADMAP.md ≤ 12 KB / ≤ 120 lines (T3 — Path A inline reconciliation flips Pi `not ok 102 → ok` and cross-harness `not ok 31 → ok`). Single-Write-per-artifact recipe; helper PASS after every Write; halt and revert on FAIL. `.paul/*` mutation only — no source/test/helper/workflow/skill/runtime/driver/module/dependency/CI changes; no cross-file narrative deduplication. End-of-phase target: aggregate hot-path resume read total ≤ 80 KB; Pi 243/243; cross-harness 138/138.
-Plans: `.paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` (286 lines; 3 tasks; 4 ACs; mode: direct-requirements; collaboration: medium).
+### Phase 266: Archive + Compact Hot Artifacts — ✅ Complete
+Archived cold STATE.md history to `.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md`, lifted PROJECT pre-v2.61 posture/decision detail to `.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md`, and compacted hot artifacts to STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B (60 lines), aggregate 63,415 B ≤ 80 KB. Path A resolved inline: Pi 243/243 PASS and cross-harness 138/138 PASS. Deviations recorded in SUMMARY: PROJECT archive lift, MILESTONES corrective 5-line Edit, and Phase 267 selective-loading handoff.
+Plans: `.paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` + `.paul/phases/266-archive-compact-hot-artifacts/266-01-SUMMARY.md`; PR #181 squash-merged 2026-05-08T16:56:53Z as `a780bb7f`.
 
-### Phase 267: Validation Guardrails + Evidence Closure — Not started
-Add Phase-191-style structural anti-regrowth checks to both validation suites (per-section line ceilings calibrated against ~80 bytes/line for STATE.md/PROJECT.md/MILESTONES.md/ROADMAP.md per-section budgets; archive-pointer presence assertions; bounded `tap_file_contains_all` blocks); apply the **7th** closure-guardrail-recipe application (Phase 245/248/252/256/260/264/267); aggregate v2.62 closure evidence in MILESTONES.md/PROJECT.md/ROADMAP.md per the established closure recipe; record v2.63 candidate (recommended-not-approved). One bounded TAP per suite + one shared-invariant closure block in `tests/cross-harness-validation.sh`. No workflow file changes; no source changes; no CARL/Pi/module behavior change.
+### Phase 267: Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure — 🔵 Ready to plan
+Add selective artifact loading contracts so PALS workflows locate relevant headings/markers/rows and read bounded windows instead of whole hot artifacts by default; ratify the achieved v2.62 budgets with Phase-191-style structural anti-regrowth checks; apply the **7th** closure-guardrail-recipe application (Phase 245/248/252/256/260/264/267); aggregate v2.62 closure evidence; record v2.63 candidate (recommended-not-approved). Scope input: `.paul/phases/266-archive-compact-hot-artifacts/266-02-SELECTIVE-ARTIFACT-LOADING-HANDOFF.md`.
 Plans: TBD (defined during /paul:plan).
 
 ### Latest completed milestone: v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction
@@ -57,4 +57,4 @@ Result: Phases 261–264 complete. v2.61 closed after Phase 264 PR #179 squash-m
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-08 — v2.62 Phase 266 (Archive + Compact Hot Artifacts) compacting STATE/PROJECT/MILESTONES/ROADMAP per `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`. Path A inherited regression reconciles inline as a side effect of this ROADMAP active-window compaction. v2.55/v2.56/v2.57/v2.58/v2.59/v2.60/v2.61 closed; v2.62 1 of 3 phases complete.*
+*Last updated: 2026-05-08 — v2.62 Phase 266 complete via PR #181 `a780bb7f`; hot artifacts compacted to 63,415 B aggregate and Path A validation failure resolved. v2.62 is 2 of 3 phases complete; Phase 267 ready to plan selective artifact loading + anti-regrowth guardrails + closure.*
