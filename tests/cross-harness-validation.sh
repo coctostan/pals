@@ -1427,6 +1427,29 @@ tap_file_contains_all \
   'pals-hooks.ts' \
   'v2.62'
 
+
+# ═════════════════════════════════════════════════════════════════
+# Phase 267 context diet closure (v2.62 Shared Invariant)
+# ═════════════════════════════════════════════════════════════════
+# Phase 267 closes v2.62 by combining selective artifact loading with
+# context-diet anti-regrowth guardrails and lifecycle closure evidence.
+# Closure guardrail: .paul/MILESTONES.md must continue to name the v2.62
+# milestone, all three phases, Selective Artifact Loading, the Phase 266
+# archive/compact and Path A PASS evidence, and the recommended-not-approved
+# v2.63 candidate so the shared invariant across docs/contract/lifecycle does
+# not regress.
+tap_file_contains_all \
+  "Phase 267 context diet closure (v2.62 Shared Invariant)" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.62 PALS Context Diet' \
+  'Phase 265' \
+  'Phase 266' \
+  'Phase 267' \
+  'Selective Artifact Loading' \
+  'archive/compact' \
+  'Path A' \
+  'v2.63'
+
 # ════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
