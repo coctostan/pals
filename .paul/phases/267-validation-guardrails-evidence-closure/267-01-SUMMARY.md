@@ -185,9 +185,9 @@ No TypeScript/JavaScript runtime source changed, so ESLint complexity was not ap
 |------|--------|----------|
 | Feature branch | PASS | `feature/267-validation-guardrails-evidence-closure`. |
 | PR exists | PASS | https://github.com/coctostan/pals/pull/182 |
-| CI/checks | PASS | Socket Security checks succeeded after latest APPLY push. |
+| CI/checks | PASS | Socket Security checks succeeded before merge. |
 | Reviews | SKIPPED | `pals.json` has `require_reviews: false`; REV PR review is disabled. |
-| Merge | Pending | UNIFY merge gate will commit this SUMMARY/state update, push, then merge PR #182 if checks remain green. |
+| Merge | PASS | PR #182 squash-merged 2026-05-08 as `068d7cb3`; local `main` synced with `origin/main`. |
 
 ## Workguard Scope Evidence
 
@@ -230,7 +230,7 @@ No TypeScript/JavaScript runtime source changed, so ESLint complexity was not ap
 ## Next Phase Readiness
 
 **Ready:**
-- v2.62 is complete once PR #182 is merged and local `main` is synced.
+- v2.62 is complete: PR #182 merged as `068d7cb3`, local `main` synced.
 - v2.63 candidate is recorded: cross-file narrative deduplication / single-source summary architecture.
 - Hot artifact budget and selective-loading guardrails are now executable validation.
 
@@ -239,7 +239,7 @@ No TypeScript/JavaScript runtime source changed, so ESLint complexity was not ap
 - v2.63 should avoid weakening artifact authority while deduplicating lifecycle narratives.
 
 **Blockers:**
-- None for v2.62 closure after merge gate completes.
+- None. Next action is milestone planning/decision for the recommended v2.63 candidate.
 
 ---
 *Phase: 267-validation-guardrails-evidence-closure, Plan: 01*
