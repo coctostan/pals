@@ -112,3 +112,5 @@ Types: —
 | 2026-05-07 | 260-evidence-closure-next-roadmap-decision-v2-60 | Pi 235/235, XH 137/137 | N/A (shell) | N/A | N/A | ↑ improving |
 | 2026-05-07 | 261-s8-extraction-contract-bounded-submodule-plan | Pi 234/235 (1 inherited Path A), XH 136/137 (1 inherited Path A) | N/A (shell) | N/A | N/A | → stable (Path A inherited) |
 | 2026-05-07 | 262-bounded-s8-submodule-extraction | Pi 239/240 (1 inherited Path A), XH 136/137 (1 inherited Path A) | N/A (shell) | N/A | N/A | ↑ improving (sibling-extraction recipe 7×; pals-hooks.ts -160 LOC) |
+
+| 266-01 | 2026-05-08 | Pi 243/243, XH 138/138 | N/A (shell) | N/A | N/A | ↑ improving (Path A resolved; ROADMAP line-budget regression flipped to PASS) |
