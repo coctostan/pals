@@ -114,3 +114,4 @@ Types: —
 | 2026-05-07 | 262-bounded-s8-submodule-extraction | Pi 239/240 (1 inherited Path A), XH 136/137 (1 inherited Path A) | N/A (shell) | N/A | N/A | ↑ improving (sibling-extraction recipe 7×; pals-hooks.ts -160 LOC) |
 
 | 266-01 | 2026-05-08 | Pi 243/243, XH 138/138 | N/A (shell) | N/A | N/A | ↑ improving (Path A resolved; ROADMAP line-budget regression flipped to PASS) |
+| 267-01 | 2026-05-08 | Pi 270/270, XH 139/139 | N/A (shell) | N/A | N/A | ↑ improving (v2.62 guardrails added; +27 Pi TAPs and +1 cross-harness TAP, all passing) |

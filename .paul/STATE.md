@@ -2,22 +2,22 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (updated 2026-05-08 after Phase 267 APPLY; v2.62 PALS Context Diet complete after Selective Artifact Loading + anti-regrowth guardrails; UNIFY pending for SUMMARY/PR/merge evidence)
+See: .paul/PROJECT.md (updated 2026-05-08 during Phase 267 UNIFY; v2.62 PALS Context Diet complete after Selective Artifact Loading + anti-regrowth guardrails; merge gate in progress)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
 **Current focus:** v2.62 PALS Context Diet — STATE & Hot-Path Compression complete after Phase 267 APPLY. Phase 265 shipped the contract; Phase 266 compacted hot artifacts and resolved Path A; Phase 267 shipped Selective Artifact Loading, anti-regrowth TAPs, and the 7th closure-guardrail recipe application.
 
 ## Current Position
 
 Milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Phase: 267 of 267 (Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure) — APPLY complete
-Plan: 267-01 executed; SUMMARY pending UNIFY
-Status: APPLY complete; ready for UNIFY
-Last activity: 2026-05-08 — Completed Phase 267 APPLY edits and verification: install PASS; artifact_consistency PASS; Pi 270/270 PASS; cross-harness 139/139 PASS; `git diff --check` clean.
-Next action: Run `/paul:unify .paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md`.
+Phase: 267 of 267 (Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure) — UNIFY in progress
+Plan: 267-01 SUMMARY created
+Status: UNIFY reconciliation complete; merge gate in progress
+Last activity: 2026-05-08 — Created `267-01-SUMMARY.md`, appended CODI and QUALITY history rows, and recorded module execution reports.
+Next action: Complete GitHub Flow merge gate for PR #182, then run phase transition/milestone closure routing.
 
 Progress:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: [██████████] 100% (4 of 4 phases complete; PR #176 `423c467e` / PR #177 `19555747` / PR #178 `6f725276` / PR #179 `bc81fa84`)
-- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 APPLY ✅, UNIFY pending)
+- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 UNIFY ✅, merge pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -25,7 +25,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete; UNIFY pending]
+  ✓        ✓        ✓     [Loop complete - merge gate in progress]
 ```
 
 ## Accumulated Context
@@ -69,6 +69,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - 2026-05-08 (Phase 266 APPLY): `/paul:resume` archived `HANDOFF-2026-05-08-v2.62-phase-266-plan-ready-paused.md` to `.paul/handoffs/archive/` and updated STATE.md `Resume file:` accordingly per the resume workflow's allowance for archived-handoff resume paths; helper PASS confirmed before APPLY started. Branch `feature/266-archive-compact-hot-artifacts` created from `main` (0 ahead / 0 behind).
 - Skill audit Phase 266 UNIFY: SUMMARY records ACs PASS, validation evidence (artifact_consistency PASS, Pi 243/243, cross-harness 138/138, diff-check clean), deviations, module reports, CODI-HISTORY `skipped-no-symbols`, QUALITY-HISTORY improvement row, and Phase 267 selective-loading handoff. No helper delegation; parent UNIFY owned reconciliation.
 - Skill audit Phase 267 APPLY: parent APPLY owned verification; no helper delegation. Tasks 1–3 PASS: selective-loading contracts in 8 workflows; anti-regrowth TAPs and Phase 267 shared invariant added; lifecycle artifacts record v2.62 complete after APPLY and v2.63 recommended-not-approved. Validation: install PASS; artifact_consistency PASS; Pi 270/270; cross-harness 139/139; `git diff --check` clean.
+- Skill audit Phase 267 UNIFY: SUMMARY created at `.paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md`; module reports preserved (pre-unify 0 registered, WALT quality history, CODI skipped-no-symbols row, SKIP decision/lesson capture, RUBY no refactor-blocking debt). GitHub Flow merge gate in progress for PR #182.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -89,19 +90,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/267-validation-guardrails-evidence-closure
-Last commit: `26ccb072` — docs(267-01): record apply PR state
+Last commit: `40a7928d` — docs(267-01): record passing PR checks
 PR: https://github.com/coctostan/pals/pull/182 (OPEN)
 CI: local APPLY validation PASS; PR checks passing (`Socket Security: Project Report`, `Socket Security: Pull Request Alerts`).
-Working tree: APPLY complete; clean after committing Phase 267 plan and APPLY artifacts.
+Working tree: UNIFY artifacts created; merge gate commit/push pending.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-08 — APPLY completed for Phase 267.
-Stopped at: APPLY verified; SUMMARY/PR/CI/merge evidence not yet reconciled.
-Next action: Run `/paul:unify .paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md`.
-Resume file: .paul/handoffs/archive/HANDOFF-2026-05-08-phase-267-plan-created.md
+Last session: 2026-05-08 — UNIFY reconciliation completed for Phase 267.
+Stopped at: SUMMARY and post-unify history rows created; GitHub Flow merge gate in progress.
+Next action: Commit/push UNIFY artifacts, verify PR #182 checks, merge PR, sync `main`, then run mandatory phase transition.
+Resume file: .paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md
 Resume context:
 - Consumed handoff was archived to `.paul/handoffs/archive/HANDOFF-2026-05-08-phase-267-plan-created.md` when APPLY started.
 - Plan 267-01 covers selective artifact loading in eight kernel workflows, localized anti-regrowth TAPs, the 7th closure-guardrail recipe, and v2.62 lifecycle closure.
-- APPLY verification is green: install PASS; artifact_consistency PASS; Pi 270/270; cross-harness 139/139; diff-check clean.
+- UNIFY verification source: install PASS; artifact_consistency PASS; Pi 270/270; cross-harness 139/139; diff-check clean; PR #182 checks passing before UNIFY commit.
