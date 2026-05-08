@@ -9,10 +9,10 @@ See: .paul/PROJECT.md (updated 2026-05-07 after v2.61 closure; v2.62 PALS Contex
 ## Current Position
 
 Milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Phase: 265 of 267 (PALS Hot-Path Context Audit + Diet Contract) — Not started
-Plan: Not started
-Status: Ready to plan Phase 265
-Last activity: 2026-05-07 — v2.62 milestone created via `/paul:milestone` after `/paul:discuss` shaped the scope (mode: exploratory; collaboration: high). Carried context from `.paul/MILESTONE-CONTEXT.md`: 6 features (cold archive split for STATE.md; archive top-up for PROJECT.md; active-window compaction across STATE/PROJECT/MILESTONES; diet contract; anti-regrowth guardrails; Path A reconciliation inline); 3 phases mirror v2.43 shape; review preference recorded as no-review (path 4) since substance was worked through during `/paul:discuss`. ROADMAP.md updated; phase directories `.paul/phases/265-.../266-.../267-...` created. Workflow files (kernel/skills) and runtime/source files (`drivers/pi/extensions/*.ts`, `tests/pi-end-to-end-validation.sh` except for bounded structural assertions in Phase 267, `tests/helpers/*`) explicitly out of scope. Cross-file narrative deduplication explicitly deferred to a future milestone.
+Phase: 265 of 267 (PALS Hot-Path Context Audit + Diet Contract) — Planning
+Plan: 265-01 created, awaiting approval
+Status: PLAN created, ready for APPLY
+Last activity: 2026-05-07 — Created `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md` via `/paul:plan` (mode: direct-requirements; collaboration: medium). 3 tasks: T1 measure baseline + audit active-vs-cold split per file; T2 inventory preservation invariants from helpers/validation/runtime/CARL; T3 define hot/warm/cold split rules, byte budgets, archive structure, and Phase 266/267 handoff. Single new artifact `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (mirrors `docs/PI-NATIVE-EXTENSION-MODULARIZATION-CONTRACT.md` shape). Docs-only; no `.paul/*` mutation in this phase. Awaiting APPLY approval.
 
 Progress:
 - v2.42 CODI v0.1 — Post-Unify Instrumentation Fix: [██████████] 100% (CODI v0.1 shipped as good enough; fresh quark validation intentionally skipped)
@@ -33,7 +33,7 @@ Progress:
 - v2.58 Pi Extension Submodule Extraction Wave — S3 Guided Workflow Detection: [██████████] 100% (4 of 4 phases complete; milestone closed; PR #167 merged)
 - v2.59 Pi Extension Submodule Extraction Wave — S7 PALS Context Injection: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-05; Phase 253 PR #168 `f326db54`, Phase 254 PR #169 `af1c1793`, Phase 255 PR #170 `0a607c43`, Phase 256 PR #171 `872aa4a7`)
 - v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction: [██████████] 100% (4 of 4 phases complete; milestone closed 2026-05-07; Phase 257 PR #172 `800552a1`, Phase 258 PR #173 `1531e47a`, Phase 259 PR #174 `b879b372`, Phase 260 PR #175 `9b3b609b`)
-- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [░░░░░░░░░░] 0% (0 of 3 phases complete; ready to plan Phase 265)
+- v2.62 PALS Context Diet — STATE & Hot-Path Compression: [░░░░░░░░░░] 0% (0 of 3 phases complete; Phase 265 PLAN created, awaiting APPLY)
 - Phase 230 Baseline Verbosity Audit: [██████████] 100% complete
 - Phase 231 Process / Workflow Verbosity Paring: [██████████] 100% complete
 - Phase 232 Skill Verbosity Pass: [██████████] 100% complete
@@ -68,7 +68,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN — Phase 265]
+  ✓        ○        ○     [Plan 265-01 created, awaiting approval]
 ```
 
 ## Accumulated Context
@@ -328,9 +328,9 @@ Prior PRs: #178 merged (Phase 263 Documentation + Validation Surfacing `6f725276
 ## Session Continuity
 
 Last session: 2026-05-07 — v2.61 closed via PR #179 `bc81fa84` (squash-merged 2026-05-07T20:47:10Z); `/paul:discuss` shaped v2.62 PALS Context Diet — STATE & Hot-Path Compression (mode: exploratory; collaboration: high; review: no-review); `/paul:milestone` created the 3-phase structure; `/paul:pause` wrote handoff `.paul/HANDOFF-2026-05-07-v2.62-ready-to-plan-phase-265.md` for clean session break.
-Stopped at: v2.62 milestone created and ready to plan Phase 265; clean break on branch `main` with working tree clean; Phase 265 not yet planned.
-Next action: Run `/paul:plan` for Phase 265 (PALS Hot-Path Context Audit + Diet Contract) — docs-only contract baseline that audits STATE/PROJECT for active-vs-cold split, identifies preservation invariants, measures baseline hot-path read total, and produces `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`.
-Resume file: .paul/HANDOFF-2026-05-07-v2.62-ready-to-plan-phase-265.md
+Stopped at: Plan 265-01 created at `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md`; awaiting APPLY approval.
+Next action: Review and approve plan, then run `/paul:apply .paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md`.
+Resume file: .paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md
 Resume context:
 - v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction: **closed 4 of 4 phases** (Phase 261 ✅ PR #176 `423c467e`; Phase 262 ✅ PR #177 `19555747`; Phase 263 ✅ PR #178 `6f725276`; Phase 264 ✅ PR #179 awaiting merge gate). Sixth application of the closure-guardrail recipe (Phase 245 / 248 / 252 / 256 / 260 / 264) — durable across six consecutive milestones.
 - Branch state: on `feature/264-evidence-closure-next-roadmap-decision-v2-61`, ahead of `main` by 1 commit (`a2a53797`); PR #179: https://github.com/coctostan/pals/pull/179.
