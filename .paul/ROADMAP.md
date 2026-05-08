@@ -34,7 +34,7 @@ Theme: Apply the v2.43/v2.44 Context Diet archive-and-compact recipe to STATE.md
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 265 | PALS Hot-Path Context Audit + Diet Contract | TBD | Planning | `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md` |
+| 265 | PALS Hot-Path Context Audit + Diet Contract | TBD | Loop complete (PR #180 awaiting merge) | `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md` + `265-01-SUMMARY.md` |
 | 266 | Archive + Compact Hot Artifacts | TBD | Not started | - |
 | 267 | Validation Guardrails + Evidence Closure | TBD | Not started | - |
 
