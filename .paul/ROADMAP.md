@@ -15,16 +15,16 @@ Theme: Interactively audit and rewrite the core PALS lifecycle workflow instruct
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
 | 268 | Resume Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 268-01 ✅ |
-| 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | Ready to plan | TBD |
-| 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
+| 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 269-01 ✅ |
+| 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | Ready to plan | TBD |
 | 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
 | 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
 
 ### Phase 268: Resume Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
 Rewrote `kernel/workflows/resume-project.md` so routine resume starts from bounded STATE windows, resolves handoff/resume context only when needed, avoids decorative report reads, and uses narrow handoff lifecycle cleanup. Added Pi and cross-harness semantic guardrails that fail on broad STATE reads, eager handoff-file reads, stale archived-handoff preference, or handoff routing before STATE. Summary: `.paul/phases/268-resume-workflow-instruction-audit/268-01-SUMMARY.md`.
 
-### Phase 269: Plan Workflow Instruction Audit + Context-Efficiency Rewrite
-Review `kernel/workflows/plan-phase.md` for planning-time context bloat, over-reading of lifecycle artifacts, excessive ceremony, unclear collaboration prompts, plan-review verbosity, and validation/acceptance criteria that can pass while behavior remains wrong.
+### Phase 269: Plan Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
+Rewrote `kernel/workflows/plan-phase.md` so routine planning starts from bounded STATE windows and current ROADMAP target-phase context, reads PROJECT/PRD/prior summaries only when needed, uses proportional collaboration prompts, keeps CODI seed preparation compact and bounded, and reports plan review/state updates concisely. Added Pi and cross-harness semantic guardrails that fail on broad/eager plan reads, mandatory prompt ceremony, missing bounded read order, or stale marker-only compliance. Summary: `.paul/phases/269-plan-workflow-instruction-audit/269-01-SUMMARY.md`.
 
 ### Phase 270: Apply Workflow Instruction Audit + Context-Efficiency Rewrite
 Review `kernel/workflows/apply-phase.md` for execution-time context efficiency, parent-owned APPLY boundaries, helper delegation limits, checkpoint payload size, verification load, lifecycle artifact reads/writes, and instructions that encourage broad artifact scans or brittle validation.
@@ -64,4 +64,4 @@ Result: Phases 265–267 complete. Phase 265 created the authoritative context-d
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-09 — Phase 268 complete; Phase 269 ready to plan.*
+*Last updated: 2026-05-09 — Phase 269 complete; Phase 270 ready to plan.*
