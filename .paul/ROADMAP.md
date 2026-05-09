@@ -9,15 +9,15 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite**
-Status: 🚧 In Progress | Mode: direct-requirements / interactive review | Phases: 1 of 5 complete | Current: Phase 269 planning | Created: 2026-05-08
+Status: 🚧 In Progress | Mode: direct-requirements / interactive review | Phases: 3 of 5 complete | Current: Phase 271 ready to plan | Created: 2026-05-08
 Theme: Interactively audit and rewrite the core PALS lifecycle workflow instructions so their actual procedural steps are context-efficient, semantically correct, and free of contradictory legacy behavior. Focus is not marker-prose compliance; each phase must read the workflow closely, identify instructions that cause over-reading, stale context use, unnecessary ceremony, artifact bloat, helper-boundary confusion, or validation false positives, then edit the workflow text to make the intended behavior operational.
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
 | 268 | Resume Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 268-01 ✅ |
 | 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 269-01 ✅ |
-| 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | Ready to plan | TBD |
-| 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
+| 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 270-01 ✅ |
+| 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | Planning | TBD |
 | 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
 
 ### Phase 268: Resume Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
@@ -26,8 +26,8 @@ Rewrote `kernel/workflows/resume-project.md` so routine resume starts from bound
 ### Phase 269: Plan Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
 Rewrote `kernel/workflows/plan-phase.md` so routine planning starts from bounded STATE windows and current ROADMAP target-phase context, reads PROJECT/PRD/prior summaries only when needed, uses proportional collaboration prompts, keeps CODI seed preparation compact and bounded, and reports plan review/state updates concisely. Added Pi and cross-harness semantic guardrails that fail on broad/eager plan reads, mandatory prompt ceremony, missing bounded read order, or stale marker-only compliance. Summary: `.paul/phases/269-plan-workflow-instruction-audit/269-01-SUMMARY.md`.
 
-### Phase 270: Apply Workflow Instruction Audit + Context-Efficiency Rewrite
-Review `kernel/workflows/apply-phase.md` for execution-time context efficiency, parent-owned APPLY boundaries, helper delegation limits, checkpoint payload size, verification load, lifecycle artifact reads/writes, and instructions that encourage broad artifact scans or brittle validation.
+### Phase 270: Apply Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
+Rewrote `kernel/workflows/apply-phase.md` so APPLY starts from bounded approval/STATE/PLAN loading, keeps helper delegation parent-owned with compact packet/report rules, blocks checkpoints with compact user-response gates, and uses targeted verification/failure handling instead of broad diff/revert ceremony. Added Pi and cross-harness semantic guardrails that reject broad/eager apply reads, helper-owned lifecycle authority, non-blocking checkpoints, and unbounded diff instructions. Summary: `.paul/phases/270-apply-workflow-instruction-audit/270-01-SUMMARY.md`.
 
 ### Phase 271: Unify Workflow Instruction Audit + Context-Efficiency Rewrite
 Review `kernel/workflows/unify-phase.md` for reconciliation and summary behavior that duplicates narrative across artifacts, over-expands module evidence, weakens source-of-truth boundaries, or lets closure pass with prose markers instead of semantic evidence.
@@ -64,4 +64,4 @@ Result: Phases 265–267 complete. Phase 265 created the authoritative context-d
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-09 — Phase 269 complete; Phase 270 ready to plan.*
+*Last updated: 2026-05-09 — Phase 270 complete; Phase 271 ready to plan.*

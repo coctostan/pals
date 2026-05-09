@@ -477,6 +477,43 @@ tap_plan_workflow_semantics() {
     'Read `.paul/PROJECT.md` first' \
     'Offer a per-run override:'
 }
+
+
+tap_apply_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label apply workflow uses bounded approval and PLAN loading semantics" \
+    "$file" \
+    '<step name="load_apply_state_bounded"' \
+    '<step name="load_plan_sections"' \
+    'approved PLAN sections only' \
+    'tasks, boundaries, files, acceptance criteria, and checkpoints'
+
+  tap_file_contains_all \
+    "$label apply workflow keeps compact parent-owned delegation semantics" \
+    "$file" \
+    'Parent APPLY owns verification, module gates, fallback, checkpoints, GitHub Flow, and lifecycle writes' \
+    'helper-owned .paul/* lifecycle writes are forbidden' \
+    'compact task packet'
+
+  tap_file_contains_all \
+    "$label apply workflow keeps checkpoints load-only-if and blocking" \
+    "$file" \
+    'Load checkpoint guidance only if' \
+    'compact checkpoint payload' \
+    'wait for user response' \
+    'do not proceed past unresolved checkpoints'
+
+  tap_file_contains_none \
+    "$label apply workflow removes broad/eager routine execution instructions" \
+    "$file" \
+    'Read STATE.md to verify' \
+    'Read the PLAN.md file' \
+    'cp -r .paul/' \
+    'full `git diff --name-only`'
+}
 # Phase 191 anti-regrowth budgets: active ROADMAP <=120 lines;
 # post-190 hot workflow/reference source set was 1901 lines, so 2100
 # catches broad regrowth without failing harmless small edits.
@@ -583,6 +620,11 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'subagent_type: "pals-implementer"' \
     'checkpoint:*' \
     'ambiguous, exploratory, cross-repo, checkpointed, or non-equivalent work stays inline'
+
+
+  tap_apply_workflow_semantics \
+    "$label" \
+    "$root/workflows/apply-phase.md"
 
   tap_file_contains_all \
     "$label apply workflow keeps Helper Delegation parent-acceptance markers" \

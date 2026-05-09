@@ -655,6 +655,43 @@ tap_plan_workflow_semantics() {
     'Offer a per-run override:'
 }
 
+
+tap_apply_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label apply workflow uses bounded approval and PLAN loading semantics" \
+    "$file" \
+    '<step name="load_apply_state_bounded"' \
+    '<step name="load_plan_sections"' \
+    'approved PLAN sections only' \
+    'tasks, boundaries, files, acceptance criteria, and checkpoints'
+
+  tap_file_contains_all \
+    "$label apply workflow keeps compact parent-owned delegation semantics" \
+    "$file" \
+    'Parent APPLY owns verification, module gates, fallback, checkpoints, GitHub Flow, and lifecycle writes' \
+    'helper-owned .paul/* lifecycle writes are forbidden' \
+    'compact task packet'
+
+  tap_file_contains_all \
+    "$label apply workflow keeps checkpoints load-only-if and blocking" \
+    "$file" \
+    'Load checkpoint guidance only if' \
+    'compact checkpoint payload' \
+    'wait for user response' \
+    'do not proceed past unresolved checkpoints'
+
+  tap_file_contains_none \
+    "$label apply workflow removes broad/eager routine execution instructions" \
+    "$file" \
+    'Read STATE.md to verify' \
+    'Read the PLAN.md file' \
+    'cp -r .paul/' \
+    'full `git diff --name-only`'
+}
+
 tap_file_line_ceiling \
   "Repo ROADMAP stays within active-window line budget" \
   "$REPO_ROADMAP" \
@@ -769,6 +806,11 @@ tap_file_contains_all \
   "$REPO_APPLY_WORKFLOW" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
 
+
+tap_apply_workflow_semantics \
+  "Repo" \
+  "$REPO_APPLY_WORKFLOW"
+
 tap_file_contains_all \
   "Repo unify workflow defaults to selective hot artifact loading" \
   "$REPO_UNIFY_WORKFLOW" \
@@ -818,6 +860,11 @@ tap_file_contains_all \
   "Installed apply workflow defaults to selective hot artifact loading" \
   "$PI_APPLY" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+
+tap_apply_workflow_semantics \
+  "Installed" \
+  "$PI_APPLY"
 
 tap_file_contains_all \
   "Installed unify workflow defaults to selective hot artifact loading" \

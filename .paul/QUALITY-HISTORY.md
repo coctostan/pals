@@ -117,3 +117,4 @@ Types: —
 | 267-01 | 2026-05-08 | Pi 270/270, XH 139/139 | N/A (shell) | N/A | N/A | ↑ improving (v2.62 guardrails added; +27 Pi TAPs and +1 cross-harness TAP, all passing) |
 | 268-01 | 2026-05-09 | Pi 276/276, XH 148/148 | N/A (shell) | N/A | N/A | ↑ improving (semantic resume guardrails added; +6 Pi TAPs and +9 cross-harness TAPs, all passing) |
 | 269-01 | 2026-05-09 | Pi 284/284, XH 160/160 | N/A (shell) | N/A | N/A | ↑ improving (semantic plan-workflow guardrails added; +8 Pi TAPs and +12 cross-harness TAPs, all passing) |
+| 270-01 | 2026-05-09 | Pi 292/292, XH 172/172 | N/A (shell) | N/A | N/A | ↑ improving (semantic apply-workflow guardrails added; +8 Pi TAPs and +12 cross-harness TAPs, all passing) |
