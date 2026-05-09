@@ -100,11 +100,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/271-unify-workflow-instruction-audit
-Last implementation commit: `3a23f9ec` — Phase 271 bounded UNIFY workflow rewrite and semantic guardrails.
-PR: pending merge gate for Phase 271.
-CI: pending merge gate for Phase 271.
-Working tree: Phase 271 UNIFY artifacts prepared; merge gate pending.
+Branch: main
+Last commit: `70c58c06` — Phase 271 complete and merged via PR #187.
+PR: https://github.com/coctostan/pals/pull/187 (MERGED)
+CI: passing — Socket Security checks passed before merge.
+Working tree: clean after Phase 271 merge; Phase 272 ready to plan.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
