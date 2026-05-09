@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** is in progress (3 of 5 phases complete; Phase 271 ready to plan). Phases 268–270 completed resume, plan, and apply workflow audits: `resume-project.md`, `plan-phase.md`, and `apply-phase.md` now use bounded operational loading, concise parent-owned lifecycle routing, and semantic Pi/cross-harness guardrails that reject broad/eager instructions or marker-only compliance. v2.63 continues with unify then pause workflow audits. Latest completed milestone: **v2.62 PALS Context Diet — STATE & Hot-Path Compression** (PR #182 `068d7cb3`).
+Active milestone: **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** is in progress (4 of 5 phases complete; Phase 272 ready to plan). Phases 268–271 completed resume, plan, apply, and unify workflow audits: `resume-project.md`, `plan-phase.md`, `apply-phase.md`, and `unify-phase.md` now use bounded operational loading, concise lifecycle routing, and semantic Pi/cross-harness guardrails that reject broad/eager instructions, optional dispatch, skipped gates, or marker-only compliance. v2.63 continues with the pause workflow audit. Latest completed milestone: **v2.62 PALS Context Diet — STATE & Hot-Path Compression** (PR #182 `068d7cb3`).
 
 Phase 234 (v2.55 baseline audit) found seven ranked weaknesses — marker/prose-heavy validation suites, supported Pi runtime gravity, lifecycle/index drift, ceremony not yet proportional to risk, dense first-run product story, weaker usefulness evidence than structural evidence, and high cold-history text volume — addressed across v2.55 phases 235–241.
 
@@ -51,11 +51,11 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 |-----------|--------|---------|
 | v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction | Complete (4 of 4 phases) — closed 2026-05-07 via Phase 264 closure (PRs #176 `423c467e` / #177 `19555747` / #178 `6f725276` / #179 `bc81fa84`) | Extracted S8 `command-routing` from `drivers/pi/extensions/pals-hooks.ts` into a sibling Pi extension module (`drivers/pi/extensions/command-routing.ts`, 230 LOC; twelve-entry `COMMANDS` array preserved byte-for-byte; four exported S8 functions; three closure factories; four command-routing constants exact-string single-defined; canonical `detectCommandSignal` regex literal; two exported types; loader-compat no-op default factory) while preserving S4 canonical reply delivery, the 12-iteration registration loop, and all 5 `Key.ctrlAlt("[nsrhm]")` invocations byte-for-byte in `pals-hooks.ts`. Patterns durable: sibling-surfacing recipe ratified a 6th time — durable across the full active S\* set (S5/S1/S2/S3/S7/S6/S8); sibling-extraction recipe ratified a 7th time (S5+S1+S2+S3+S7+S6+S8 — wave closed except S4); type-only back-import + TAP-assertion repoint + `inline → export` promotion patterns each ratified ×3; 4-symbol `inline → export` lockstep promotion (closures sharing a `let` must move together); first-ever closure-record-convention establishment on a contract that ships without a pre-baked status placeholder; closure-guardrail recipe ratified a 6th time (Phase 245/248/252/256/260/264). Final v2.61 validation: Pi 234→243 (+9), cross-harness 137→138 (+1 closure guardrail; 1 inherited Path A `not ok 31` carried), install 7→8. Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`, ROADMAP active-window line-budget) escalated to v2.62 per Phase 264 recorded decision. |
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | Complete (3 of 3 phases) — Phase 265 closed 2026-05-08 via PR #180 `63365822`; Phase 266 closed 2026-05-08 via PR #181 `a780bb7f`; Phase 267 closed 2026-05-08 via PR #182 `068d7cb3` | Applied the v2.43/v2.44 archive-and-compact recipe to STATE.md, PROJECT.md, MILESTONES.md, and ROADMAP.md, then changed PALS workflow behavior so hot artifacts are loaded as pertinent slices by default. Phase 265 produced `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`; Phase 266 archived/compacted hot artifacts to 63,415 B aggregate and resolved Path A (Pi 243/243, cross-harness 138/138); Phase 267 added Selective Artifact Loading, anti-regrowth TAPs (Phase 191 pattern), the 7th closure-guardrail recipe application, v2.62 closure aggregation, `267-01-SUMMARY.md`, and v2.63 recommended-not-approved candidate recording. |
-| v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | In progress (3 of 5 phases) — Phases 268–270 complete; Phase 271 ready to plan | Audits and rewrites lifecycle workflow instruction files one by one. Resume, plan, and apply workflows now use bounded operational loading, concise parent-owned routing, and semantic guardrails; remaining phases cover unify and pause. |
+| v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | In progress (4 of 5 phases) — Phases 268–271 complete; Phase 272 ready to plan | Audits and rewrites lifecycle workflow instruction files one by one. Resume, plan, apply, and unify workflows now use bounded operational loading, concise lifecycle routing, semantic guardrails, compact module evidence, and safe gate/transition semantics; remaining phase covers pause. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** in progress (3 of 5 phases complete; Phase 271 ready to plan).
+Current milestone pointer: **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** in progress (4 of 5 phases complete; Phase 272 ready to plan).
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-CRITICAL-REVIEW-NEXT-ROADMAP.md` for v2.55 source context, `.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md` for v2.44 phase detail, and `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for the v2.62 authoritative contract.
 
@@ -94,6 +94,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | 2026-05-08: Cross-file narrative duplication recorded as deferred debt (3 explicit duplications across STATE/PROJECT/MILESTONES/ROADMAP). | Phase 265 | Remediation requires architectural single-source-of-truth choice and would re-litigate v2.43/v2.44 separation-of-concerns; correctly deferred to v2.63+. v2.62 stays bounded to archive-and-compact. |
 | 2026-05-08: Phase 267 implemented Selective Artifact Loading and closed v2.62 while preserving full authoritative read fallback. | Phase 267 Plan 267-01 (`267-01-PLAN.md`, `267-01-SUMMARY.md`) | Workflows locate relevant headings/markers/rows first and read bounded windows instead of whole hot artifacts by default; full read remains an explicit fallback for rewrite, audit, repair, migration, lifecycle write, or whole-artifact validation. Anti-regrowth TAPs protect budgets and markers; v2.63 cross-file narrative deduplication / single-source summary architecture is recommended, not approved. |
 | 2026-05-09: Phase 268 made resume context-efficiency operational rather than marker-only. | Phase 268 Plan 268-01 (`268-01-PLAN.md`, `268-01-SUMMARY.md`) | Resume now derives lifecycle position from bounded STATE windows first, treats handoffs/resume files as conditional fallback context, removes broad/eager routine reads, and has semantic Pi/cross-harness guardrails that reject false-positive wording-only compliance. |
+| 2026-05-09: Phase 271 made UNIFY reconciliation bounded, SUMMARY-first, and semantically guarded. | Phase 271 Plan 271-01 (`271-01-PLAN.md`, `271-01-SUMMARY.md`) | UNIFY now loads bounded STATE/session/PLAN/execution evidence, keeps SUMMARY as the durable reconciliation artifact, records compact mandatory post-unify module reports, preserves ordered GitHub Flow gates, and requires last-plan transition routing. Pi/cross-harness validation rejects broad/eager UNIFY reads, duplicate narrative writes, optional dispatch, marker-only module evidence, unsafe merge ordering, or skipped transitions. |
 
 > Pre-v2.61 decisions archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (lifts pre-v2.61 row history). Pre-v2.55 historical decisions at .paul/archive/project/PROJECT-HISTORY.md.
 
@@ -106,7 +107,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-09 after Phase 268 completion. v2.63 is in progress with resume workflow audit complete; Phase 269 plan workflow audit is ready to plan.*
+*Last updated: 2026-05-09 after Phase 271 completion. v2.63 is in progress with resume, plan, apply, and unify workflow audits complete; Phase 272 pause workflow audit is ready to plan.*
 
 Quick Reference:
 
@@ -127,4 +128,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-09 after Phase 268 completion / transition to Phase 269.*
+*Last updated: 2026-05-09 after Phase 271 completion / transition to Phase 272.*
