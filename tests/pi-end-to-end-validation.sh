@@ -165,7 +165,7 @@ PI_SUMMARY_TEMPLATE="$SKILL_DIR/templates/SUMMARY.md"
 
 if [ -f "$PI_UNIFY" ] && [ -f "$PI_FIX" ] && [ -f "$PI_SUMMARY_TEMPLATE" ] \
   && grep -q 'finalize_summary' "$PI_UNIFY" \
-  && grep -q 'module_reports' "$PI_UNIFY" \
+  && grep -q 'compact module reports' "$PI_UNIFY" \
   && grep -q 'FIX-SUMMARY' "$PI_FIX" \
   && grep -q 'module_reports' "$PI_FIX" \
   && grep -q 'Module Execution Reports' "$PI_SUMMARY_TEMPLATE"; then
@@ -692,6 +692,47 @@ tap_apply_workflow_semantics() {
     'full `git diff --name-only`'
 }
 
+
+tap_unify_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label unify workflow uses bounded reconciliation loading semantics" \
+    "$file" \
+    '<step name="load_unify_state_bounded"' \
+    '<step name="load_plan_reconciliation_sections"' \
+    'bounded STATE loop/session fields' \
+    'targeted changed-file evidence'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps SUMMARY-first lifecycle boundaries" \
+    "$file" \
+    'SUMMARY is the detailed reconciliation artifact' \
+    'STATE/ROADMAP updates stay compact and routing-focused' \
+    'avoid duplicate narrative across hot lifecycle artifacts'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps compact mandatory module evidence" \
+    "$file" \
+    'post-unify dispatch is mandatory' \
+    'missing dispatch evidence warning must be recorded in SUMMARY' \
+    'compact module reports and side effects'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps ordered merge gate and transition routing" \
+    "$file" \
+    'Merge gate order: PR exists/create-if-allowed → CI passing → reviews approved → PR merged → base synced → branch cleaned' \
+    'transition routing is mandatory after the last plan'
+
+  tap_file_contains_none \
+    "$label unify workflow removes broad/eager routine reconciliation instructions" \
+    "$file" \
+    'Read STATE.md — look for' \
+    'Read PLAN.md to refresh' \
+    'git diff --stat {last_commit_from_STATE.md}..HEAD'
+}
+
 tap_file_line_ceiling \
   "Repo ROADMAP stays within active-window line budget" \
   "$REPO_ROADMAP" \
@@ -816,6 +857,11 @@ tap_file_contains_all \
   "$REPO_UNIFY_WORKFLOW" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
 
+
+tap_unify_workflow_semantics \
+  "Repo" \
+  "$REPO_UNIFY_WORKFLOW"
+
 tap_file_contains_all \
   "Repo pause workflow defaults to selective hot artifact loading" \
   "$REPO_PAUSE_WORKFLOW" \
@@ -870,6 +916,11 @@ tap_file_contains_all \
   "Installed unify workflow defaults to selective hot artifact loading" \
   "$PI_UNIFY" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+
+tap_unify_workflow_semantics \
+  "Installed" \
+  "$PI_UNIFY"
 
 tap_file_contains_all \
   "Installed pause workflow defaults to selective hot artifact loading" \
@@ -943,9 +994,9 @@ tap_file_contains_all \
   "$PI_UNIFY" \
   'post-unify' \
   'Module Execution Reports' \
-  'MERGE GATE' \
-  'gh pr checks' \
-  'gh pr merge' \
+  'Merge gate order' \
+  'CI failure is blocking in github-flow mode' \
+  'merge the PR with configured method' \
   'modules.yaml NOT FOUND'
 
 tap_file_contains_all \
