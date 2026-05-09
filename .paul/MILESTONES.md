@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** in progress (2 of 5 phases complete; Phase 270 ready to plan) | `.paul/ROADMAP.md` Current Milestone; `.paul/STATE.md` Current Position |
+| Current milestone | **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** in progress (3 of 5 phases complete; Phase 271 ready to plan) | `.paul/ROADMAP.md` Current Milestone; `.paul/STATE.md` Current Position |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -84,7 +84,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** is in progress (2 of 5 phases complete; Phase 270 ready to plan). Scope: interactively audit and rewrite `resume-project.md`, `plan-phase.md`, `apply-phase.md`, `unify-phase.md`, and `pause-work.md` so the actual procedural instructions are context-efficient, semantically correct, and free of contradictory legacy behavior.
+**Current milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** is in progress (3 of 5 phases complete; Phase 271 ready to plan). Scope: interactively audit and rewrite `resume-project.md`, `plan-phase.md`, `apply-phase.md`, `unify-phase.md`, and `pause-work.md` so the actual procedural instructions are context-efficient, semantically correct, and free of contradictory legacy behavior.
 
 **Latest completed milestone:** v2.62 PALS Context Diet — STATE & Hot-Path Compression is complete. Phase 265 delivered the context-diet contract; Phase 266 delivered archive/compact sizes (63,415 B aggregate) and Path A PASS; Phase 267 delivered Selective Artifact Loading wording, anti-regrowth TAPs, the 7th closure-guardrail recipe application, and `267-01-SUMMARY.md`; PR #182 merged as `068d7cb3`. This v2.63 milestone supersedes the prior v2.63 narrative-dedup recommendation after interactive review exposed the need to fix workflow instructions first.
 
