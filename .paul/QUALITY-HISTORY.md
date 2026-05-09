@@ -115,3 +115,4 @@ Types: —
 
 | 266-01 | 2026-05-08 | Pi 243/243, XH 138/138 | N/A (shell) | N/A | N/A | ↑ improving (Path A resolved; ROADMAP line-budget regression flipped to PASS) |
 | 267-01 | 2026-05-08 | Pi 270/270, XH 139/139 | N/A (shell) | N/A | N/A | ↑ improving (v2.62 guardrails added; +27 Pi TAPs and +1 cross-harness TAP, all passing) |
+| 268-01 | 2026-05-09 | Pi 276/276, XH 148/148 | N/A (shell) | N/A | N/A | ↑ improving (semantic resume guardrails added; +6 Pi TAPs and +9 cross-harness TAPs, all passing) |

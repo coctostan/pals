@@ -8,29 +8,35 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.62 PALS Context Diet — STATE & Hot-Path Compression**
-Status: ✅ Complete | Mode: direct-requirements (Phase 265+) | Phases: 3 of 3 complete | Created: 2026-05-07 | PRs: #180 `63365822`, #181 `a780bb7f`, #182 `068d7cb3`
-Theme: Apply the v2.43/v2.44 archive-and-compact recipe to STATE.md, PROJECT.md, MILESTONES.md, and ROADMAP.md (the four hot lifecycle artifacts). Bring aggregate hot-path resume read total ~228 KB → ≤ 80 KB (~65% reduction) without weakening lifecycle authority, helper compatibility, validation truth, Pi runtime expectations, CARL session-boundary expectations, or full authoritative read fallback. Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`, ROADMAP active-window line-budget) reconciled inline by Phase 266 active-window compaction (same root cause). Cross-file narrative deduplication explicitly **deferred** (architectural; would re-litigate v2.43/v2.44). Authoritative contract: `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (Phase 265). 4th application of v2.43's archive-and-compact recipe; 7th application of the closure-guardrail recipe in Phase 267 (Phase 245/248/252/256/260/264/267).
+**v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite**
+Status: 🚧 In Progress | Mode: direct-requirements / interactive review | Phases: 1 of 5 complete | Current: Phase 269 planning | Created: 2026-05-08
+Theme: Interactively audit and rewrite the core PALS lifecycle workflow instructions so their actual procedural steps are context-efficient, semantically correct, and free of contradictory legacy behavior. Focus is not marker-prose compliance; each phase must read the workflow closely, identify instructions that cause over-reading, stale context use, unnecessary ceremony, artifact bloat, helper-boundary confusion, or validation false positives, then edit the workflow text to make the intended behavior operational.
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
-| 265 | PALS Hot-Path Context Audit + Diet Contract | ✅ Complete (PR #180 `63365822`) | `.paul/phases/265-pals-hot-path-context-audit-diet-contract/265-01-PLAN.md` + `265-01-SUMMARY.md` |
-| 266 | Archive + Compact Hot Artifacts | ✅ Complete (PR #181 `a780bb7f`) | `.paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` + `266-01-SUMMARY.md` |
-| 267 | Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure | ✅ Complete (PR #182 `068d7cb3`) | `.paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md` + `267-01-SUMMARY.md` |
+| 268 | Resume Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 268-01 ✅ |
+| 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | Ready to plan | TBD |
+| 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
+| 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
+| 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | TBD |
 
-### Phase 265: PALS Hot-Path Context Audit + Diet Contract — ✅ Complete
-Audit STATE/PROJECT/MILESTONES/ROADMAP for active-vs-cold split; identify cross-file duplication (record but don't fix — deferred); identify preservation invariants; measure baseline; produce `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` (~39 KB / 395 lines: hot/warm/cold split, archive structure, per-section live-byte budgets, 14 preservation invariants, Phase 266/267 handoff). Docs-only. AC-1–AC-4 PASS. Pi 242/243 unchanged with inherited Path A `not ok 102`; cross-harness 137/138 unchanged with inherited `not ok 31`; artifact_consistency PASS; install surface unchanged; single-Write-per-artifact recipe ratified for context-diet contracts. PR #180 squash-merged 2026-05-08T15:20:52Z as `63365822`.
+### Phase 268: Resume Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
+Rewrote `kernel/workflows/resume-project.md` so routine resume starts from bounded STATE windows, resolves handoff/resume context only when needed, avoids decorative report reads, and uses narrow handoff lifecycle cleanup. Added Pi and cross-harness semantic guardrails that fail on broad STATE reads, eager handoff-file reads, stale archived-handoff preference, or handoff routing before STATE. Summary: `.paul/phases/268-resume-workflow-instruction-audit/268-01-SUMMARY.md`.
 
-### Phase 266: Archive + Compact Hot Artifacts — ✅ Complete
-Archived cold STATE.md history to `.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md`, lifted PROJECT pre-v2.61 posture/decision detail to `.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md`, and compacted hot artifacts to STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B (60 lines), aggregate 63,415 B ≤ 80 KB. Path A resolved inline: Pi 243/243 PASS and cross-harness 138/138 PASS. Deviations recorded in SUMMARY: PROJECT archive lift, MILESTONES corrective 5-line Edit, and Phase 267 selective-loading handoff.
-Plans: `.paul/phases/266-archive-compact-hot-artifacts/266-01-PLAN.md` + `.paul/phases/266-archive-compact-hot-artifacts/266-01-SUMMARY.md`; PR #181 squash-merged 2026-05-08T16:56:53Z as `a780bb7f`.
+### Phase 269: Plan Workflow Instruction Audit + Context-Efficiency Rewrite
+Review `kernel/workflows/plan-phase.md` for planning-time context bloat, over-reading of lifecycle artifacts, excessive ceremony, unclear collaboration prompts, plan-review verbosity, and validation/acceptance criteria that can pass while behavior remains wrong.
 
-### Phase 267: Selective Artifact Loading + Anti-Regrowth Guardrails + v2.62 Closure — ✅ Complete
-Added Selective Artifact Loading contracts so PALS workflows locate relevant headings/markers/phase rows/plan IDs/resume files/status lines first and read bounded windows instead of whole hot artifacts by default; full authoritative read fallback remains explicit for rewrite, audit, repair, migration, lifecycle write, and whole-artifact validation. Added Phase 267 anti-regrowth TAPs for v2.62 byte/line budgets, archive pointers, and selective-loading markers; added the **7th** closure-guardrail-recipe application (Phase 245/248/252/256/260/264/267); aggregated v2.62 closure evidence and recorded v2.63 cross-file narrative deduplication / single-source summary architecture as recommended-not-approved.
-Plans: `.paul/phases/267-validation-guardrails-evidence-closure/267-01-PLAN.md` + `.paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md`; PR #182 squash-merged 2026-05-08 as `068d7cb3`.
+### Phase 270: Apply Workflow Instruction Audit + Context-Efficiency Rewrite
+Review `kernel/workflows/apply-phase.md` for execution-time context efficiency, parent-owned APPLY boundaries, helper delegation limits, checkpoint payload size, verification load, lifecycle artifact reads/writes, and instructions that encourage broad artifact scans or brittle validation.
+
+### Phase 271: Unify Workflow Instruction Audit + Context-Efficiency Rewrite
+Review `kernel/workflows/unify-phase.md` for reconciliation and summary behavior that duplicates narrative across artifacts, over-expands module evidence, weakens source-of-truth boundaries, or lets closure pass with prose markers instead of semantic evidence.
+
+### Phase 272: Pause Workflow Instruction Audit + Context-Efficiency Rewrite
+Review `kernel/workflows/pause-work.md` for handoff creation, compact resume payloads, stale-context prevention, archive/delete lifecycle, and instructions that cause future sessions to load irrelevant or obsolete artifacts.
 
 ### Latest completed milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Result: Phases 265–267 complete. Phase 265 created the authoritative context-diet contract (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`); Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 delivered Selective Artifact Loading, anti-regrowth TAPs, the 7th closure-guardrail recipe application, and v2.62 closure evidence. PRs: #180 `63365822`, #181 `a780bb7f`, #182 `068d7cb3`. Recommended-not-approved next candidate: v2.63 cross-file narrative deduplication / single-source summary architecture.
+Result: Phases 265–267 complete. Phase 265 created the authoritative context-diet contract (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`); Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 delivered Selective Artifact Loading wording and anti-regrowth TAPs, but this session exposed that the actual workflow instructions still contain contradictory broad-read/stale-context behavior. v2.63 supersedes the prior narrative-dedup recommendation with a stricter interactive instruction audit.
 
 ## Completed Milestones
 
@@ -58,4 +64,4 @@ Result: Phases 265–267 complete. Phase 265 created the authoritative context-d
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-08 — v2.62 complete after Phase 267 UNIFY and PR #182 merge (`068d7cb3`). Next recommended-not-approved candidate: v2.63 cross-file narrative deduplication / single-source summary architecture.*
+*Last updated: 2026-05-09 — Phase 268 complete; Phase 269 ready to plan.*

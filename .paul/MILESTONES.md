@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | **v2.62 PALS Context Diet — STATE & Hot-Path Compression** complete (3 of 3 phases complete; Phase 265 PR #180 `63365822`; Phase 266 PR #181 `a780bb7f`; Phase 267 PR #182 `068d7cb3`) | `.paul/ROADMAP.md` Latest completed milestone; `.paul/STATE.md` Current Position |
+| Current milestone | **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** in progress (1 of 5 phases complete; Phase 269 ready to plan) | `.paul/ROADMAP.md` Current Milestone; `.paul/STATE.md` Current Position |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -84,9 +84,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Latest completed milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression** is complete. Phase 265 delivered the context-diet contract; Phase 266 delivered archive/compact sizes (63,415 B aggregate) and Path A PASS; Phase 267 delivered Selective Artifact Loading, anti-regrowth TAPs, the 7th closure-guardrail recipe application, and `267-01-SUMMARY.md`; PR #182 merged as `068d7cb3`.
+**Current milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite** is in progress. Scope: interactively audit and rewrite `resume-project.md`, `plan-phase.md`, `apply-phase.md`, `unify-phase.md`, and `pause-work.md` so the actual procedural instructions are context-efficient, semantically correct, and free of contradictory legacy behavior.
 
-**Next-roadmap recommendation (recorded, not approved):** v2.63 cross-file narrative deduplication / single-source summary architecture. It should reduce the three known narrative duplications across STATE/PROJECT/MILESTONES/ROADMAP without weakening artifact authority, archive pointers, full-read fallback, GitHub Flow safety, or module evidence. Higher-risk alternatives remain deferred: S4 canonical reply delivery extraction, full Claude Code / Agent SDK driver removal, local context-cost measurement, and demo project preset.
+**Latest completed milestone:** v2.62 PALS Context Diet — STATE & Hot-Path Compression is complete. Phase 265 delivered the context-diet contract; Phase 266 delivered archive/compact sizes (63,415 B aggregate) and Path A PASS; Phase 267 delivered Selective Artifact Loading wording, anti-regrowth TAPs, the 7th closure-guardrail recipe application, and `267-01-SUMMARY.md`; PR #182 merged as `068d7cb3`. This v2.63 milestone supersedes the prior v2.63 narrative-dedup recommendation after interactive review exposed the need to fix workflow instructions first.
 
 ## Archive
 

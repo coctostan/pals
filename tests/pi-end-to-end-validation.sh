@@ -567,6 +567,59 @@ PI_RESUME="$SKILL_DIR/workflows/resume-project.md"
 PI_PAUSE="$SKILL_DIR/workflows/pause-work.md"
 PI_TRANSITION="$SKILL_DIR/workflows/transition-phase.md"
 
+
+tap_file_order_before() {
+  local description="$1"
+  local file="$2"
+  local before="$3"
+  local after="$4"
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local before_line after_line
+  before_line=$(grep -nF -- "$before" "$file" 2>/dev/null | head -1 | cut -d: -f1)
+  after_line=$(grep -nF -- "$after" "$file" 2>/dev/null | head -1 | cut -d: -f1)
+
+  if [ -n "$before_line" ] && [ -n "$after_line" ] && [ "$before_line" -lt "$after_line" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Expected '$before' before '$after' in $file"
+  fi
+}
+
+tap_resume_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label resume workflow uses bounded STATE-first routing semantics" \
+    "$file" \
+    '<step name="load_state_bounded"' \
+    'Locate `## Current Position`; read' \
+    'normally ≤20 lines' \
+    'Locate `## Loop Position`; read' \
+    'normally ≤12 lines' \
+    'Locate `## Session Continuity`; read' \
+    'normally ≤18 lines' \
+    '<step name="resolve_optional_handoff_context"'
+
+  tap_file_order_before \
+    "$label resume workflow resolves handoffs only after bounded STATE loading" \
+    "$file" \
+    '<step name="load_state_bounded"' \
+    '<step name="resolve_optional_handoff_context"'
+
+  tap_file_contains_none \
+    "$label resume workflow removes broad/eager routine context instructions" \
+    "$file" \
+    'Read `.paul/STATE.md`' \
+    'Read handoff file content' \
+    'most recent archived handoff'
+}
+
 tap_file_line_ceiling \
   "Repo ROADMAP stays within active-window line budget" \
   "$REPO_ROADMAP" \
@@ -663,6 +716,9 @@ tap_file_contains_all \
   "$REPO_RESUME_WORKFLOW" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
 
+tap_resume_workflow_semantics \
+  "Repo" \
+  "$REPO_RESUME_WORKFLOW"
 tap_file_contains_all \
   "Repo plan workflow defaults to selective hot artifact loading" \
   "$REPO_PLAN_WORKFLOW" \
@@ -702,6 +758,11 @@ tap_file_contains_all \
   "Installed resume workflow defaults to selective hot artifact loading" \
   "$PI_RESUME" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+
+tap_resume_workflow_semantics \
+  "Installed" \
+  "$PI_RESUME"
 
 tap_file_contains_all \
   "Installed plan workflow defaults to selective hot artifact loading" \
