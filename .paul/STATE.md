@@ -96,11 +96,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/269-plan-workflow-instruction-audit
-Last implementation commit: `2d1a9bd8` — feat(268): complete resume workflow instruction audit (#183 squash merge); post-merge state alignment committed on main.
-PR: https://github.com/coctostan/pals/pull/183 (MERGED)
+Branch: main
+Last implementation commit: `8c2fe0d8` — docs(269-01): complete plan workflow instruction audit (#184 squash merge).
+PR: https://github.com/coctostan/pals/pull/184 (MERGED)
 CI: Socket Security Project Report and Pull Request Alerts passed before merge.
-Working tree: dirty with Phase 269 UNIFY/transition artifacts pending commit/PR.
+Working tree: clean after PR #184 merge; STATE post-merge alignment recorded.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
