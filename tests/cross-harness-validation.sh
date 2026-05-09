@@ -387,6 +387,61 @@ REPO_UNIFY_WORKFLOW="$REPO_ROOT/kernel/workflows/unify-phase.md"
 REPO_MODULE_DISPATCH="$REPO_ROOT/kernel/references/module-dispatch.md"
 REPO_GIT_STRATEGY="$REPO_ROOT/kernel/references/git-strategy.md"
 REPO_ROADMAP="$REPO_ROOT/.paul/ROADMAP.md"
+CC_RESUME_WORKFLOW="$CC_KERNEL_DIR/workflows/resume-project.md"
+PI_RESUME_WORKFLOW="$PI_KERNEL_DIR/workflows/resume-project.md"
+REPO_RESUME_WORKFLOW="$REPO_ROOT/kernel/workflows/resume-project.md"
+
+tap_file_order_before() {
+  local description="$1"
+  local file="$2"
+  local before="$3"
+  local after="$4"
+
+  if [ ! -f "$file" ]; then
+    tap_not_ok "$description" "File not found: $file"
+    return
+  fi
+
+  local before_line after_line
+  before_line=$(grep -nF -- "$before" "$file" 2>/dev/null | head -1 | cut -d: -f1)
+  after_line=$(grep -nF -- "$after" "$file" 2>/dev/null | head -1 | cut -d: -f1)
+
+  if [ -n "$before_line" ] && [ -n "$after_line" ] && [ "$before_line" -lt "$after_line" ]; then
+    tap_ok "$description"
+  else
+    tap_not_ok "$description" "Expected '$before' before '$after' in $file"
+  fi
+}
+
+tap_resume_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label resume workflow uses bounded STATE-first routing semantics" \
+    "$file" \
+    '<step name="load_state_bounded"' \
+    'Locate `## Current Position`; read' \
+    'normally ≤20 lines' \
+    'Locate `## Loop Position`; read' \
+    'normally ≤12 lines' \
+    'Locate `## Session Continuity`; read' \
+    'normally ≤18 lines' \
+    '<step name="resolve_optional_handoff_context"'
+
+  tap_file_order_before \
+    "$label resume workflow resolves handoffs only after bounded STATE loading" \
+    "$file" \
+    '<step name="load_state_bounded"' \
+    '<step name="resolve_optional_handoff_context"'
+
+  tap_file_contains_none \
+    "$label resume workflow removes broad/eager routine context instructions" \
+    "$file" \
+    'Read `.paul/STATE.md`' \
+    'Read handoff file content' \
+    'most recent archived handoff'
+}
 # Phase 191 anti-regrowth budgets: active ROADMAP <=120 lines;
 # post-190 hot workflow/reference source set was 1901 lines, so 2100
 # catches broad regrowth without failing harmless small edits.
@@ -527,6 +582,12 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'GIT_WORKFLOW' \
     'auto_pr' \
     'merge gate'
+done
+
+for resume_workflow_label in "Claude Code installed:$CC_RESUME_WORKFLOW" "Pi installed:$PI_RESUME_WORKFLOW" "Repo source:$REPO_RESUME_WORKFLOW"; do
+  label="${resume_workflow_label%%:*}"
+  file="${resume_workflow_label#*:}"
+  tap_resume_workflow_semantics "$label" "$file"
 done
 
 DELEGATED_APPLY_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md"
