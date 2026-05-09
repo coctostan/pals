@@ -514,6 +514,47 @@ tap_apply_workflow_semantics() {
     'cp -r .paul/' \
     'full `git diff --name-only`'
 }
+
+
+tap_unify_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label unify workflow uses bounded reconciliation loading semantics" \
+    "$file" \
+    '<step name="load_unify_state_bounded"' \
+    '<step name="load_plan_reconciliation_sections"' \
+    'bounded STATE loop/session fields' \
+    'targeted changed-file evidence'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps SUMMARY-first lifecycle boundaries" \
+    "$file" \
+    'SUMMARY is the detailed reconciliation artifact' \
+    'STATE/ROADMAP updates stay compact and routing-focused' \
+    'avoid duplicate narrative across hot lifecycle artifacts'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps compact mandatory module evidence" \
+    "$file" \
+    'post-unify dispatch is mandatory' \
+    'missing dispatch evidence warning must be recorded in SUMMARY' \
+    'compact module reports and side effects'
+
+  tap_file_contains_all \
+    "$label unify workflow keeps ordered merge gate and transition routing" \
+    "$file" \
+    'Merge gate order: PR exists/create-if-allowed → CI passing → reviews approved → PR merged → base synced → branch cleaned' \
+    'transition routing is mandatory after the last plan'
+
+  tap_file_contains_none \
+    "$label unify workflow removes broad/eager routine reconciliation instructions" \
+    "$file" \
+    'Read STATE.md — look for' \
+    'Read PLAN.md to refresh' \
+    'git diff --stat {last_commit_from_STATE.md}..HEAD'
+}
 # Phase 191 anti-regrowth budgets: active ROADMAP <=120 lines;
 # post-190 hot workflow/reference source set was 1901 lines, so 2100
 # catches broad regrowth without failing harmless small edits.
@@ -647,6 +688,11 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'gh pr checks' \
     'gh pr merge' \
     'modules.yaml NOT FOUND'
+
+
+  tap_unify_workflow_semantics \
+    "$label" \
+    "$root/workflows/unify-phase.md"
 
   tap_file_contains_all \
     "$label module-dispatch reference keeps shared evidence-contract guardrails" \
