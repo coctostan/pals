@@ -442,6 +442,41 @@ tap_resume_workflow_semantics() {
     'Read handoff file content' \
     'most recent archived handoff'
 }
+
+
+tap_plan_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label plan workflow uses bounded STATE/ROADMAP-first planning semantics" \
+    "$file" \
+    '<step name="load_plan_state_bounded"' \
+    'Locate `## Current Position`; read' \
+    'normally ≤20 lines' \
+    'Locate `## Loop Position`; read' \
+    'current milestone section plus the target phase detail' \
+    '<step name="load_context_selectively"'
+
+  tap_file_order_before \
+    "$label plan workflow loads lifecycle routing before optional context" \
+    "$file" \
+    '<step name="load_plan_state_bounded"' \
+    '<step name="load_context_selectively"'
+
+  tap_file_contains_all \
+    "$label plan workflow keeps collaboration prompts proportional" \
+    "$file" \
+    'Use carried CONTEXT metadata or `planning.default_collaboration` without prompting for routine direct-requirements phases' \
+    'Prompt only when the phase is ambiguous, exploratory, high-risk, checkpointed, or the user asks to override'
+
+  tap_file_contains_none \
+    "$label plan workflow removes broad/eager routine planning instructions" \
+    "$file" \
+    'Read STATE.md to confirm' \
+    'Read `.paul/PROJECT.md` first' \
+    'Offer a per-run override:'
+}
 # Phase 191 anti-regrowth budgets: active ROADMAP <=120 lines;
 # post-190 hot workflow/reference source set was 1901 lines, so 2100
 # catches broad regrowth without failing harmless small edits.
@@ -534,7 +569,12 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     "$root/workflows/plan-phase.md" \
     'target phase detail' \
     'planning.default_collaboration' \
-    'Would you like to see the plan?'
+    'Review: [1] Quick recap'
+
+
+  tap_plan_workflow_semantics \
+    "$label" \
+    "$root/workflows/plan-phase.md"
 
   tap_file_contains_all \
     "$label apply workflow keeps parent-owned APPLY and checkpoint guardrails" \
@@ -626,21 +666,17 @@ PI_CODI_REF="$PI_KERNEL_DIR/references/codi.md"
 if [ -f "$CC_PLAN_WORKFLOW" ] && [ -f "$PI_PLAN_WORKFLOW" ] \
   && grep -Fq 'codi_seed_candidates' "$CC_PLAN_WORKFLOW" \
   && grep -Fq 'codi_seed_candidates' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'upcoming plan context block' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'upcoming plan context block' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'source selectors' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'source selectors' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'source-file mention order' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'source-file mention order' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'declaration order within each file' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'declaration order within each file' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'stable extracted identifiers' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'stable extracted identifiers' "$PI_PLAN_WORKFLOW" \
-  && grep -Fq 'CODI may skip cleanly and planning continues' "$CC_PLAN_WORKFLOW" \
-  && grep -Fq 'CODI may skip cleanly and planning continues' "$PI_PLAN_WORKFLOW"; then
+  && grep -Fq 'explicit TS/JS selectors' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'explicit TS/JS selectors' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'bounded selectors' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'bounded selectors' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'stable top-level identifiers' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'stable top-level identifiers' "$PI_PLAN_WORKFLOW" \
+  && grep -Fq 'CODI skips cleanly' "$CC_PLAN_WORKFLOW" \
+  && grep -Fq 'CODI skips cleanly' "$PI_PLAN_WORKFLOW"; then
   tap_ok "Both installed shared plan workflows preserve CODI source-selector markers"
 else
-  tap_not_ok "Both installed shared plan workflows preserve CODI source-selector markers" "Expected codi_seed_candidates, upcoming plan context block, source-selector ordering, and safe-skip markers in both installed plan-phase.md files"
+  tap_not_ok "Both installed shared plan workflows preserve CODI source-selector markers" "Expected codi_seed_candidates, explicit TS/JS selectors, bounded-selector extraction, and safe-skip markers in both installed plan-phase.md files"
 fi
 
 if [ -f "$CC_INIT_WORKFLOW" ] && [ -f "$PI_INIT_WORKFLOW" ] \
@@ -698,8 +734,8 @@ else
 fi
 
 if grep -Fq 'codi_seed_candidates' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
-  && grep -Fq 'upcoming plan context block' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
-  && grep -Fq 'declaration order within each file' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
+  && grep -Fq 'explicit TS/JS selectors' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
+  && grep -Fq 'bounded selectors' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
   && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/module.yaml" \
   && grep -Fq 'top-level function declarations' "$REPO_ROOT/modules/codi/module.yaml" \
   && grep -Fq 'resolved-with-call-sites only' "$REPO_ROOT/modules/codi/module.yaml" \

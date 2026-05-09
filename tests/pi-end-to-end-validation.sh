@@ -508,7 +508,7 @@ tap_file_contains_all \
   "$PI_PLAN" \
   'target phase detail' \
   'planning.default_collaboration' \
-  'Would you like to see the plan?'
+  'Review: [1] Quick recap'
 
 tap_file_contains_all \
   "Installed shared discuss workflow keeps selected-phase posture markers after prose cleanup" \
@@ -620,6 +620,41 @@ tap_resume_workflow_semantics() {
     'most recent archived handoff'
 }
 
+
+tap_plan_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label plan workflow uses bounded STATE/ROADMAP-first planning semantics" \
+    "$file" \
+    '<step name="load_plan_state_bounded"' \
+    'Locate `## Current Position`; read' \
+    'normally ≤20 lines' \
+    'Locate `## Loop Position`; read' \
+    'current milestone section plus the target phase detail' \
+    '<step name="load_context_selectively"'
+
+  tap_file_order_before \
+    "$label plan workflow loads lifecycle routing before optional context" \
+    "$file" \
+    '<step name="load_plan_state_bounded"' \
+    '<step name="load_context_selectively"'
+
+  tap_file_contains_all \
+    "$label plan workflow keeps collaboration prompts proportional" \
+    "$file" \
+    'Use carried CONTEXT metadata or `planning.default_collaboration` without prompting for routine direct-requirements phases' \
+    'Prompt only when the phase is ambiguous, exploratory, high-risk, checkpointed, or the user asks to override'
+
+  tap_file_contains_none \
+    "$label plan workflow removes broad/eager routine planning instructions" \
+    "$file" \
+    'Read STATE.md to confirm' \
+    'Read `.paul/PROJECT.md` first' \
+    'Offer a per-run override:'
+}
+
 tap_file_line_ceiling \
   "Repo ROADMAP stays within active-window line budget" \
   "$REPO_ROADMAP" \
@@ -722,7 +757,12 @@ tap_resume_workflow_semantics \
 tap_file_contains_all \
   "Repo plan workflow defaults to selective hot artifact loading" \
   "$REPO_PLAN_WORKFLOW" \
-  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+  'bounded window' 'Full hot-artifact reads' 'fallback' 'heading' 'marker' 'phase row'
+
+
+tap_plan_workflow_semantics \
+  "Repo" \
+  "$REPO_PLAN_WORKFLOW"
 
 tap_file_contains_all \
   "Repo apply workflow defaults to selective hot artifact loading" \
@@ -767,7 +807,12 @@ tap_resume_workflow_semantics \
 tap_file_contains_all \
   "Installed plan workflow defaults to selective hot artifact loading" \
   "$PI_PLAN" \
-  'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+  'bounded window' 'Full hot-artifact reads' 'fallback' 'heading' 'marker' 'phase row'
+
+
+tap_plan_workflow_semantics \
+  "Installed" \
+  "$PI_PLAN"
 
 tap_file_contains_all \
   "Installed apply workflow defaults to selective hot artifact loading" \
@@ -836,7 +881,7 @@ tap_file_contains_all \
   "$PI_PLAN" \
   'target phase detail' \
   'planning.default_collaboration' \
-  'Would you like to see the plan?'
+  'Review: [1] Quick recap'
 
 tap_file_contains_all \
   "Installed apply workflow keeps parent-owned APPLY and checkpoint guardrails" \
@@ -890,12 +935,10 @@ tap_file_contains_all \
   "Installed shared plan workflow keeps CODI source-selector markers" \
   "$PI_PLAN_WORKFLOW" \
   'codi_seed_candidates' \
-  'upcoming plan context block' \
-  'source selectors' \
-  'source-file mention order' \
-  'declaration order within each file' \
-  'stable extracted identifiers' \
-  'CODI may skip cleanly and planning continues'
+  'explicit TS/JS selectors' \
+  'bounded selectors' \
+  'stable top-level identifiers' \
+  'CODI skips cleanly'
 
 tap_file_contains_all \
   "Installed shared init workflow exposes CODI default-on config guidance" \

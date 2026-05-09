@@ -15,17 +15,21 @@ Next phase: APPLY (after plan approval)
 </loop_context>
 
 <required_reading>
-.paul/STATE.md
-.paul/PROJECT.md
-.paul/ROADMAP.md (read the current milestone section first; expand only to the target phase detail or broader roadmap structure when the route genuinely needs it)
-.paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail are relevant)
-.paul/phases/{prior-phase}/{plan}-SUMMARY.md (if exists and relevant)
-modules.yaml (installed module registry — MUST read; drives pre-plan and post-plan hook dispatch)
+Routine bounded inputs:
+- `.paul/STATE.md` — `## Current Position`, `## Loop Position`, and `## Session Continuity` windows only.
+- `.paul/ROADMAP.md` — current milestone section, then target phase detail only.
+- `modules.yaml` — installed registry for pre-plan/post-plan dispatch.
+
+Conditional inputs:
+- `.paul/PROJECT.md` — smallest useful hot-brief window when STATE/ROADMAP lacks project value, constraints, metrics, or focus.
+- `.paul/PRD.md` — only when product framing, deferred scope, assumptions, questions, or dependencies affect execution.
+- Prior SUMMARY files — only for direct dependencies, decisions, or carried outputs.
 </required_reading>
 
 <hot_artifact_loading>
-When touching hot `.paul/*` lifecycle artifacts (`STATE.md`, `PROJECT.md`, `MILESTONES.md`, `ROADMAP.md`), locate the relevant heading, marker, phase row, plan ID, resume file, status line, or section label first and read the smallest useful bounded window.
-Escalate to a full read only as an explicit fallback when fields are missing or contradictory, or when the task requires whole-artifact rewrite, audit, repair, migration, lifecycle write, or whole-artifact validation.
+For hot `.paul/*` artifacts, locate the needed heading, marker, phase row, plan ID, status line, or section label first and read the smallest useful bounded window.
+
+Routine PLAN loading starts with bounded STATE slices plus the current ROADMAP milestone/target phase slice. Full hot-artifact reads are fallback only for missing/contradictory fields, repair, migration, lifecycle writes, audits, or whole-artifact validation.
 </hot_artifact_loading>
 
 <references>
@@ -39,17 +43,23 @@ templates/PLAN.md
 
 <process>
 
-<step name="validate_preconditions" priority="first">
-1. Read STATE.md to confirm:
-   - Loop position is ready for PLAN (prior UNIFY complete or first plan)
-   - No blockers preventing planning
-2. If STATE.md shows mid-loop (APPLY or UNIFY incomplete):
-   - Warn user: "Previous loop not closed. Complete UNIFY first or reset."
-   - Do not proceed until resolved
-3. **Read-only constraint:** Plan phase must not modify source files — only produce plan artifacts. (Inspired by OpenHands' read-only planning agent)
+<step name="load_plan_state_bounded" priority="first">
+1. Confirm PLAN readiness from bounded STATE windows:
+   - Locate `## Current Position`; read normally ≤20 lines for phase, status, blockers, and next action.
+   - Locate `## Loop Position`; read normally ≤12 lines for PLAN/APPLY/UNIFY markers.
+   - Locate `## Session Continuity` only when needed for plan path, carried context, or contradictions.
+2. If STATE shows APPLY/UNIFY still open, stop and route closure before planning.
+3. PLAN is read-only for source files; only plan/lifecycle artifacts may change.
 </step>
 
-<step name="check_config_version" priority="after-preconditions">
+<step name="identify_target_phase" priority="after-state">
+1. Read ROADMAP current milestone section plus the target phase detail only.
+2. If multiple phases are viable, ask the user to select one.
+3. Read completed-history archives only for a concrete dependency, regression, or decision record.
+4. If ROADMAP is bloated/malformed, read only enough to route repair through `roadmap-management.md`.
+</step>
+
+<step name="check_config_version" priority="after-target-phase">
 **Check if project pals.json needs migration.**
 
 1. Read `pals.json` in project root. If absent, skip this step.
@@ -65,54 +75,18 @@ templates/PLAN.md
 5. If versions match: proceed (no migration needed, zero overhead).
 </step>
 
-<step name="identify_phase">
-1. Read the current milestone section in ROADMAP.md to identify the first incomplete phase, its scope/goals, and any dependencies.
-2. Expand to the target phase detail only after the candidate phase is identified.
-3. If multiple phases are viable, ask the user which to plan and confirm the selection.
-4. Treat completed milestone history as cold context: do not read completed-history archives unless a concrete dependency, regression, or decision record materially affects the target phase.
-5. If ROADMAP.md is already bloated or malformed, identify only enough structure to find the active/current milestone, then route cleanup through `roadmap-management.md` repair guidance instead of loading all historical detail into the plan.
-</step>
-
 <step name="determine_planning_posture">
-**Set the planning posture before shaping the executable plan.**
-
-1. Check `.paul/phases/{NN}-{phase-name}/CONTEXT.md` for carried `Planning Mode`, `Collaboration Level`, and `Suggested Review Path`.
-2. If no collaboration metadata exists in CONTEXT.md, read `pals.json` and use `planning.default_collaboration`; fallback = `medium`.
-3. Offer a per-run override:
-   ```
-   Planning collaboration level: {default_collaboration} (project default)
-   [1] Keep {default_collaboration}
-   [2] low — minimal probing, move to executable structure quickly
-   [3] medium — clarify ambiguities, constraints, and success conditions
-   [4] high — deeper shaping, assumptions, alternatives, and risks
-   ```
-4. If planning mode was not already captured, ask whether this run is exploratory or direct-requirements.
-5. Apply collaboration semantics: low → only what is needed for an executable plan; medium → clarify ambiguities and open questions; high → also surface assumptions, alternatives, and edge cases that materially affect execution.
-6. Apply mode semantics: exploratory → allow limited shaping before locking the plan; direct-requirements → stay close to stated requirements and resolve only what execution needs.
-7. Store `collaboration_level`, `planning_mode`, and any carried `review_preference` for later review routing.
+1. Use carried CONTEXT metadata or `planning.default_collaboration` without prompting for routine direct-requirements phases.
+2. Prompt only when the phase is ambiguous, exploratory, high-risk, checkpointed, or the user asks to override.
+3. Apply levels: low = minimal probing; medium = resolve execution ambiguities; high = surface material assumptions, alternatives, and risks.
+4. Store `collaboration_level`, `planning_mode`, and any `review_preference`.
 </step>
 
 <step name="prepare_codi_seed_candidates" priority="before-pre-plan-advisory">
-**Prepare bounded CODI seeds for prose-heavy scopes before advisory dispatch.**
-1. Review the target phase detail plus any carried context already selected for this planning run.
-2. Assemble the repo-relative source-file set that will appear in the upcoming plan context block (`<context>`):
-   - Keep only explicitly named repo files from the phase detail or carried context.
-   - Keep only `.ts`, `.tsx`, `.js`, and `.jsx` files as CODI source selectors.
-   - Treat those paths as bounded source selectors, not final `impact` candidates.
-3. Build `codi_seed_candidates` deterministically:
-   - First keep extractor-friendly explicit symbol identifiers already named in the phase detail/objective.
-   - If the remaining scope is still prose-heavy, do a lightweight, read-only pass over only the selected source selectors for this upcoming plan context block.
-   - From each selected source file, extract only stable top-level declarations: top-level `function` declarations, top-level `class` declarations, exported named declarations, and exported `const` / arrow bindings.
-   - Ignore nested declarations, type-only constructs, re-export-only barrels, installed-runtime paths, and non-code files.
-4. Candidate rules:
-   - Every candidate must be directly observed in the phase detail/objective, carried context, or the bounded read over selected source selectors.
-   - Prefer explicit phase/objective identifiers first.
-   - Then source-derived declarations, preserving source-file mention order and declaration order within each file.
-   - Cap the final candidate set at 1-5 stable extracted identifiers.
-5. Guardrails:
-   - No semantic guessing, no invented abstractions, no codebase-wide fishing, and no reread of a previously written PLAN artifact.
-   - Markdown/config-only phases may record no seeds; CODI may skip cleanly and planning continues.
-6. Pass `codi_seed_candidates` forward to pre-plan advisory dispatch and later reuse them inside the existing objective/context/source-file structure. Do NOT add new PLAN template sections.
+1. Build `codi_seed_candidates` only from explicit TS/JS selectors already selected for the plan context.
+2. Extract at most 1–5 stable top-level identifiers from those bounded selectors; do not infer, search broadly, or read a written PLAN.
+3. Markdown/config/shell-only phases record no seeds and CODI skips cleanly.
+4. Pass any seeds to pre-plan advisory dispatch and reuse them only in existing PLAN objective/context/source-file text.
 </step>
 <step name="pre_plan_advisory_hooks" priority="before-scope-analysis">
 **Dispatch advisory pre-plan hooks via `references/module-dispatch.md`; advisory output informs the plan and never blocks.**
@@ -136,26 +110,17 @@ Call-site contract:
 </step>
 
 <step name="analyze_scope">
-1. Review the target phase detail in ROADMAP.md rather than re-reading unrelated milestone history.
-2. If `codi_seed_candidates` exist, keep them in working scope notes and reuse them inside the plan's existing objective/context/source-file text so CODI sees the same explicit names without any PLAN template change.
-3. Assess change size to scale planning depth: 1-2 files with clear scope → lighter plan; 3-5 files → standard plan; 5+ files or cross-cutting work → consider splitting.
-4. Target 2-3 tasks per plan; if the work needs more than 3, consider splitting into multiple plans.
-5. Identify files that will be modified and whether checkpoints are needed:
-   - Visual verification required? → checkpoint:human-verify
-   - Architecture decision needed? → checkpoint:decision
-   - Unavoidable manual action? → checkpoint:human-action
-6. Set `autonomous: true` if no checkpoints are needed; otherwise `false`.
-7. Default plan type is `execute`. If a pre-plan hook suggests a different type, present the suggestion to the user and let the user confirm or override it.
+1. Size from target phase + dispatch context: 1–2 clear files = light; 3–5 = standard; 5+ or cross-cutting = split candidate.
+2. Target 2–3 tasks.
+3. Set `files_modified`, checkpoint needs, `autonomous`, and plan type.
+4. Reuse `codi_seed_candidates` only in existing objective/context/source-file text.
 </step>
-<step name="load_context">
-1. Read `.paul/PROJECT.md` first as the hot-path brief for the core value, description, scope snapshot, top constraints, success metrics, and key decisions.
-2. Read the current milestone section plus the target phase detail in `.paul/ROADMAP.md`; do not pull unrelated milestone history unless this route genuinely needs it.
-3. If `.paul/PRD.md` exists, read only the sections that add deeper product framing, deferred items, assumptions, open questions, current-vs-desired-state detail, or dependency context.
-4. If a prior phase exists, read its SUMMARY.md for what was built, decisions made, and deferred issues.
-5. If `.paul/phases/{NN}-{phase-name}/CONTEXT.md` exists, read it as the discussion handoff and reuse any Planning Mode / Collaboration Level metadata it carries.
-6. Read only the source files relevant to this phase; do not reflexively chain unrelated prior artifacts.
-7. If completed-history archive links exist, prefer the archive index/summary label over full archive reads; open the full archive only for a specific dependency.
-8. If the live ROADMAP is bloated with completed history, note the repair candidate and keep the plan context bounded to the current milestone section plus target phase slice.
+
+<step name="load_context_selectively">
+1. PLAN context includes only selected STATE/ROADMAP slices, direct prior SUMMARY dependencies, and relevant source files.
+2. Read PROJECT/PRD only when needed for purpose, constraints, assumptions, or dependencies.
+3. Use archive labels/indexes unless concrete dependency requires detail.
+4. If ROADMAP has completed-history bloat, note repair without loading it.
 </step>
 
 <step name="check_specialized_flows">
@@ -187,61 +152,17 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 </step>
 
 <step name="create_plan">
-1. Create phase directory: `.paul/phases/{NN}-{phase-name}/`
-2. Generate PLAN.md following template structure:
-
-   **Frontmatter:**
-   - phase: NN-name
-   - plan: 01 (or next number if multiple plans in phase)
-   - type: execute (or other type suggested by pre-plan hooks and confirmed by user)
-     **If type is non-default:** Post-plan hooks from the suggesting module will modify the plan structure accordingly. The kernel writes the standard plan, then dispatches post-plan hooks which may restructure tasks.
-   - wave: 1 (adjust if dependencies exist)
-   - depends_on: [] (or prior plan IDs if genuine dependency)
-   - files_modified: [list all files]
-   - autonomous: true/false
-
-   **Sections:**
-   - <objective>: Goal, Purpose, Output
-   - <context>: references to project files and source
-   - <acceptance_criteria>: Given/When/Then for each criterion
-   - <tasks>: Task definitions with files, action, verify, done
-   - <boundaries>: DO NOT CHANGE, SCOPE LIMITS
-   - <verification>: Overall completion checks
-   - <success_criteria>: Measurable completion
-   - <output>: SUMMARY.md location
-
-3. Ensure every task has:
-   - Clear files list
-   - All file paths in <files> MUST be repo-relative (relative to the repo root)
-   - NEVER use absolute paths to installed/runtime copies outside the repo:
-     ✗ ~/.pi/agent/extensions/pals-hooks.ts
-     ✗ ~/.claude/hooks/carl-hook.py
-     ✗ ~/.carl/manifest
-     ✓ drivers/pi/extensions/pals-hooks.ts
-     ✓ modules/todd/references/tdd.md
-     ✓ modules/walt/references/quality-runner.md
-   - If the work affects an installed runtime file, the plan MUST:
-     (a) Target the repo source copy in <files>
-     (b) Include a deploy/install step (e.g., `bash drivers/pi/install.sh`) as a subsequent action
-   - Specific action (not vague)
-   - Verification command/check
-   - Done criteria linking to AC-N
+1. Create `.paul/phases/{NN}-{phase-name}/`.
+2. Write `{NN}-{plan}-PLAN.md` from the template with required frontmatter and sections.
+3. Every task needs repo-relative `<files>`, specific `<action>`, programmatic `<verify>`, and AC-linked `<done>`.
+4. For installed-runtime effects, edit repo source only and include install/deploy validation; never plan direct home-directory edits.
 </step>
 
 <step name="validate_plan">
-1. Check all sections present
-2. Verify acceptance criteria are testable
-3. Confirm tasks are specific enough (files + action + verify + done)
-   - `<verify>` = programmatic proof (command, check, test) — how to prove it worked
-   - `<done>` = human-reviewable outcome (links to AC-N) — what "complete" looks like
-   (Inspired by GPT Pilot's dual-goal task validation)
-4. **Clarity test:** Could someone with no project context execute this plan from the PLAN.md alone? If not, tasks are too vague. (Inspired by Superpowers' "junior engineer" test)
-5. Ensure boundaries protect completed work
-6. Validate checkpoint placement (if any):
-   - After automated work completes
-   - Before dependent decisions
-   - Not too frequent (avoid checkpoint fatigue)
-7. **Module dispatch validation:** If modules are enabled in `pals.json` and pre-plan dispatch ran, verify the plan records dispatch results (in `<module_dispatch>` section or inline). If no dispatch log was recorded, emit WARNING: "Pre-plan module dispatch produced no recorded output — verify modules.yaml was loaded."
+1. Check required frontmatter/sections.
+2. Ensure ACs are testable and tasks satisfy Files + Action + Verify + Done.
+3. Confirm boundaries and checkpoint placement.
+4. Ensure `<module_dispatch>` records pre-plan evidence, or warn that dispatch output is missing.
 </step>
 
 <step name="post_plan_hooks" priority="after-plan-creation">
@@ -255,83 +176,25 @@ Call-site contract:
 </step>
 
 <step name="review_plan">
-Apply contextual verbosity: default to a quick recap unless the user asks for detail, but keep the review choices explicit.
-
+Default to a compact recap unless detail is requested. Preserve explicit choices:
 ```
 Plan created: [plan-path]
 Goal: [one-line goal]
 Tasks: [N] ([short task names])
 Constraints: [major constraints]
 
-Would you like to see the plan?
-[1] Quick recap | [2] Detailed recap | [3] Full plan | [4] No review needed
+Review: [1] Quick recap | [2] Detailed recap | [3] Full plan | [4] No review needed
 ```
-
-- **Quick recap:** goal, main tasks, major constraints, and open questions/assumptions.
-- **Detailed recap:** acceptance criteria, task structure, files, constraints, deferred items, and open questions.
-- **Full plan:** full PLAN.md artifact.
-- **No review needed:** continue immediately.
-
-If the user requests changes after review, refine the plan before APPLY routing.
-Store the selected path as `review_preference`.
+If changes are requested, refine the plan before APPLY routing. Store `review_preference`.
 </step>
 
 <step name="update_state" priority="required">
-**This step is REQUIRED. Do not skip.**
-
-1. **Update STATE.md** with exact content:
-
-   ```markdown
-   ## Current Position
-
-   Milestone: v0.1 [Milestone Name]
-   Phase: [N] of [total] ([Phase Name]) — Planning
-   Plan: [NN-PP] created, awaiting approval
-   Status: PLAN created, ready for APPLY
-   Last activity: [timestamp] — Created [plan-path]
-
-   Progress:
-   - Milestone: [░░░░░░░░░░] X%
-   - Phase [N]: [░░░░░░░░░░] 0%
-
-   ## Loop Position
-
-   Current loop state:
-   ```
-   PLAN ──▶ APPLY ──▶ UNIFY
-     ✓        ○        ○     [Plan created, awaiting approval]
-   ```
-
-   ## Session Continuity
-
-   Last session: [timestamp]
-   Stopped at: Plan [NN-PP] created
-   Next action: Review and approve plan, then run /paul:apply [plan-path]
-   Resume file: [plan-path]
-   ```
-
-2. **Update ROADMAP.md** milestone status:
-   - If first plan of milestone: Change "Not started" → "In progress"
-   - Update phase status: "Not started" → "Planning"
-
-3. **Report with quick continuation prompt:**
-   Use contextual verbosity for routine success output: short status, key task summary, preserved review choices, and no repeated background unless requested.
-   ```
-   ════════════════════════════════════════
-   PLAN CREATED
-   ════════════════════════════════════════
-
-   Plan: [plan-path]
-   Phase: [N] — [Phase Name]
-
-   [plan summary - key tasks, checkpoints]
-
-   ---
-   Continue to APPLY?
-
-   [1] Approved, run APPLY | [2] Questions first | [3] Pause here
-   ```
-4. **Accept quick inputs:** "1", "approved", "yes", "go" → run `/paul:apply [plan-path]`
+**Required lifecycle write.**
+1. Update STATE Current Position with milestone, phase, plan, status, last activity, next action, and progress.
+2. Update Loop Position to `PLAN ✓ / APPLY ○ / UNIFY ○`.
+3. Update Session Continuity with last session, stopped-at, next action, resume file, and compact resume context.
+4. Update ROADMAP milestone/phase status: first plan starts the milestone if needed; target phase becomes Planning.
+5. Report concise success with plan path, phase, key tasks/checkpoints, and apply choices: `[1] Approved, run APPLY | [2] Questions first | [3] Pause here`.
 </step>
 
 </process>
@@ -343,15 +206,7 @@ Example: `.paul/phases/04-workflows-layer/04-01-PLAN.md`
 </output>
 
 <error_handling>
-**STATE.md missing:**
-- Offer to create from ROADMAP.md inference
-- Or ask user to run init-project first
-
-**ROADMAP.md missing:**
-- Cannot plan without roadmap
-- Ask user to create ROADMAP.md or run init-project
-
-**Phase dependencies not met:**
-- Warn user which prior phases must complete first
-- Do not create plan until dependencies satisfied
+**STATE.md missing:** infer only if safe from ROADMAP; otherwise ask user to repair/init.
+**ROADMAP.md missing:** stop; planning requires roadmap context.
+**Phase dependencies unmet:** name the unmet dependency and stop until resolved.
 </error_handling>

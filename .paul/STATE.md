@@ -9,15 +9,15 @@ See: .paul/PROJECT.md (updated 2026-05-09 after Phase 268 completion; v2.63 in p
 ## Current Position
 
 Milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite
-Phase: 269 of 272 (Plan Workflow Instruction Audit + Context-Efficiency Rewrite) — Ready to plan
+Phase: 270 of 272 (Apply Workflow Instruction Audit + Context-Efficiency Rewrite) — Ready to plan
 Plan: Not started
-Status: Phase 268 complete; ready to plan Phase 269
-Last activity: 2026-05-09 — Phase 268 completed and transitioned to Phase 269.
-Next action: Run `/paul:plan` for Phase 269.
+Status: Phase 269 complete; Phase 270 ready to plan
+Last activity: 2026-05-09 — Completed UNIFY for .paul/phases/269-plan-workflow-instruction-audit/269-01-PLAN.md
+Next action: Run `/paul:plan` for Phase 270.
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
-- v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██░░░░░░░░] 20% (1 of 5 phases complete; Phase 269 ready to plan)
+- v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [████░░░░░░] 40% (2 of 5 phases complete; Phase 270 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -25,7 +25,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 269 ready to plan]
+  ○        ○        ○     [Phase 270 ready to plan]
 ```
 
 ## Accumulated Context
@@ -56,6 +56,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision 2026-05-08: Phase 267 completed Selective Artifact Loading + anti-regrowth guardrails + v2.62 closure evidence. | Phase 267 Plan 267-01 APPLY/UNIFY; PR #182 `068d7cb3` | Eight hot workflows now default to heading/marker/phase-row/status-line lookup and bounded window reads, with full read preserved as explicit fallback. Pi validation added v2.62 byte/line/archive/selective-loading TAPs (270/270 PASS); cross-harness added the 7th closure-guardrail recipe TAP (139/139 PASS). v2.63 narrative deduplication remains recommended-not-approved. |
 | Decision 2026-05-09: Phase 268 APPLY checkpoint approved section-by-section collaborative rewrite protocol | Phase 268 Plan 268-01 APPLY checkpoint | Resume workflow rewrite proceeds one section at a time with current excerpt, concrete problem, proposed wording/focused diff, user approval, scoped edit, and section re-read before moving on. Parent APPLY remains authoritative; no bulk rewrite or helper delegation for the instruction-sensitive workflow rewrite. |
 | Decision 2026-05-09: Phase 268 shipped operational resume workflow rewrite | Phase 268 Plan 268-01 UNIFY | Resume now starts from bounded STATE windows (`load_state_bounded`), treats handoffs/resume files as conditional context, removes broad/eager routine reads, and has semantic Pi/cross-harness guardrails that reject marker-only compliance. |
+| Decision 2026-05-09: Phase 269 APPLY checkpoint approved section-by-section collaborative rewrite protocol | Phase 269 Plan 269-01 APPLY checkpoint | Plan workflow rewrite proceeded one section at a time with user approval, tightened wording on request, and preserved parent APPLY authority without helper delegation. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -74,6 +75,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Skill audit Phase 267 UNIFY: SUMMARY created at `.paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md`; module reports preserved (pre-unify 0 registered, WALT quality history, CODI skipped-no-symbols row, SKIP decision/lesson capture, RUBY no refactor-blocking debt). GitHub Flow merge gate PASS; PR #182 squash-merged as `068d7cb3`; local `main` synced.
 - Skill audit Phase 268 APPLY: parent APPLY owned verification; no helper delegation. Task 1 added resume semantic guardrails and intentionally produced RED failures (Pi 270/276, cross-harness 139/148) against old broad/eager workflow behavior. Task 2 rewrote `kernel/workflows/resume-project.md` section by section with user approval. Final validation passed: Pi 276/276, cross-harness 148/148, `git diff --check` clean.
 - Skill audit Phase 268 UNIFY: SUMMARY finalized with AC evidence, module reports, and validation results; WALT quality row and CODI skipped-no-symbols row recorded. Transitioned from Phase 268 to Phase 269 after 1/1 summaries matched 1/1 plans. No helper delegation; Workguard scope stayed within allowed paths.
+- Skill audit Phase 269 APPLY: parent APPLY owned verification; no helper delegation. Task 1 added plan-workflow semantic guardrails and intentionally produced RED failures (Pi 276/284, cross-harness pending) against broad/eager plan workflow behavior. Task 2 rewrote `kernel/workflows/plan-phase.md` section by section with user approval and tightened wording. Task 3 validation passed: Pi 284/284, cross-harness 160/160, `git diff --check` clean.
+- Skill audit Phase 269 UNIFY: SUMMARY finalized with AC evidence, module reports, validation results, and workflow lessons. WALT quality row and CODI skipped-no-symbols row recorded. Transitioned from Phase 269 to Phase 270 after 1/1 summaries matched 1/1 plans. No helper delegation; Workguard scope stayed within allowed paths.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -93,19 +96,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main
+Branch: feature/269-plan-workflow-instruction-audit
 Last implementation commit: `2d1a9bd8` — feat(268): complete resume workflow instruction audit (#183 squash merge); post-merge state alignment committed on main.
 PR: https://github.com/coctostan/pals/pull/183 (MERGED)
 CI: Socket Security Project Report and Pull Request Alerts passed before merge.
-Working tree: clean after PR #183 merge, local main fast-forward, and post-merge state alignment.
+Working tree: dirty with Phase 269 UNIFY/transition artifacts pending commit/PR.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-09 — Phase 268 completed and transitioned to Phase 269.
-Stopped at: Phase 269 ready to plan after Phase 268 UNIFY/transition.
-Next action: Run `/paul:plan` for Phase 269.
-Resume file: .paul/phases/268-resume-workflow-instruction-audit/268-01-SUMMARY.md
+Last session: 2026-05-09 — completed Phase 269 UNIFY and transitioned to Phase 270.
+Stopped at: Phase 270 ready to plan.
+Next action: Run `/paul:plan` for Phase 270.
+Resume file: .paul/phases/269-plan-workflow-instruction-audit/269-01-SUMMARY.md
 Resume context:
-- Phase 268 complete: resume workflow now operationalizes STATE-first bounded loading and conditional handoff/resume context.
-- Phase 269 scope: audit `kernel/workflows/plan-phase.md` for planning-time context bloat, over-reading, collaboration prompt verbosity, and marker-only validation risks.
+- Phase 269 completed the plan workflow audit: `plan-phase.md` now uses bounded STATE/ROADMAP-first loading, proportional planning prompts, compact CODI seed rules, selective context loading, and concise review/state-update instructions.
+- Final validation passed: Pi 284/284, cross-harness 160/160, `git diff --check` clean; Phase 270 should audit `kernel/workflows/apply-phase.md`.
