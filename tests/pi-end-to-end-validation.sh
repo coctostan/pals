@@ -165,7 +165,7 @@ PI_SUMMARY_TEMPLATE="$SKILL_DIR/templates/SUMMARY.md"
 
 if [ -f "$PI_UNIFY" ] && [ -f "$PI_FIX" ] && [ -f "$PI_SUMMARY_TEMPLATE" ] \
   && grep -q 'finalize_summary' "$PI_UNIFY" \
-  && grep -q 'module_reports' "$PI_UNIFY" \
+  && grep -q 'compact module reports' "$PI_UNIFY" \
   && grep -q 'FIX-SUMMARY' "$PI_FIX" \
   && grep -q 'module_reports' "$PI_FIX" \
   && grep -q 'Module Execution Reports' "$PI_SUMMARY_TEMPLATE"; then
@@ -994,9 +994,9 @@ tap_file_contains_all \
   "$PI_UNIFY" \
   'post-unify' \
   'Module Execution Reports' \
-  'MERGE GATE' \
-  'gh pr checks' \
-  'gh pr merge' \
+  'Merge gate order' \
+  'CI failure is blocking in github-flow mode' \
+  'merge the PR with configured method' \
   'modules.yaml NOT FOUND'
 
 tap_file_contains_all \

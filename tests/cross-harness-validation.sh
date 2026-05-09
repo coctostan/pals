@@ -274,7 +274,7 @@ section "DURABLE MODULE EVIDENCE PATH"
 
 if grep -q 'finalize_summary' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
   && grep -q 'Module Execution Reports' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
-  && grep -q 'module_reports' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
+  && grep -q 'compact module reports' "$REPO_ROOT/kernel/workflows/unify-phase.md" \
   && grep -q 'FIX-SUMMARY' "$REPO_ROOT/kernel/workflows/fix-loop.md" \
   && grep -q 'module_reports' "$REPO_ROOT/kernel/workflows/fix-loop.md"; then
   tap_ok "Shared workflows preserve a durable summary path for post-unify module evidence"
@@ -684,9 +684,9 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     "$root/workflows/unify-phase.md" \
     'post-unify' \
     'Module Execution Reports' \
-    'MERGE GATE' \
-    'gh pr checks' \
-    'gh pr merge' \
+    'Merge gate order' \
+    'CI failure is blocking in github-flow mode' \
+    'merge the PR with configured method' \
     'modules.yaml NOT FOUND'
 
 
