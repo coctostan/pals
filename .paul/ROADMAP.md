@@ -9,7 +9,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite**
-Status: 🚧 In Progress | Mode: direct-requirements / interactive review | Phases: 4 of 5 complete | Current: Phase 272 APPLY complete; UNIFY next | Created: 2026-05-08
+Status: ✅ Complete | Mode: direct-requirements / interactive review | Phases: 5 of 5 complete | Completed: 2026-05-10
 Theme: Interactively audit and rewrite the core PALS lifecycle workflow instructions so their actual procedural steps are context-efficient, semantically correct, and free of contradictory legacy behavior. Focus is not marker-prose compliance; each phase must read the workflow closely, identify instructions that cause over-reading, stale context use, unnecessary ceremony, artifact bloat, helper-boundary confusion, or validation false positives, then edit the workflow text to make the intended behavior operational.
 
 | Phase | Name | Status | Plans |
@@ -18,7 +18,7 @@ Theme: Interactively audit and rewrite the core PALS lifecycle workflow instruct
 | 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 269-01 ✅ |
 | 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 270-01 ✅ |
 | 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 271-01 ✅ |
-| 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | APPLY Complete | 272-01 ready for UNIFY |
+| 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-10) | 272-01 ✅ |
 
 ### Phase 268: Resume Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
 Rewrote `kernel/workflows/resume-project.md` so routine resume starts from bounded STATE windows, resolves handoff/resume context only when needed, avoids decorative report reads, and uses narrow handoff lifecycle cleanup. Added Pi and cross-harness semantic guardrails that fail on broad STATE reads, eager handoff-file reads, stale archived-handoff preference, or handoff routing before STATE. Summary: `.paul/phases/268-resume-workflow-instruction-audit/268-01-SUMMARY.md`.
@@ -32,8 +32,8 @@ Rewrote `kernel/workflows/apply-phase.md` so APPLY starts from bounded approval/
 ### Phase 271: Unify Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
 Rewrote `kernel/workflows/unify-phase.md` so routine UNIFY starts from bounded STATE/session/PLAN/execution-evidence slices, keeps SUMMARY as the detailed reconciliation artifact, records compact mandatory module dispatch evidence, preserves ordered GitHub Flow merge gates, and cannot skip last-plan transition routing. Added Pi and cross-harness semantic guardrails that reject broad/eager UNIFY reads, duplicate narrative writes, optional/missing post-unify dispatch, marker-only module evidence, unsafe merge ordering, or transition skipping. Summary: `.paul/phases/271-unify-workflow-instruction-audit/271-01-SUMMARY.md`.
 
-### Phase 272: Pause Workflow Instruction Audit + Context-Efficiency Rewrite — APPLY Complete
-Plan 272-01 added semantic PAUSE guardrails to Pi and cross-harness validation, then rewrote `kernel/workflows/pause-work.md` section by section for bounded STATE loading, compact agent-oriented handoff packets, stale active-handoff lifecycle, GitHub Flow WIP continuity, exact resume action semantics, and concise error/confirmation behavior. Validation passed: `git diff --check`, artifact consistency, Pi 312/312, and cross-harness 202/202. Plan: `.paul/phases/272-pause-workflow-instruction-audit/272-01-PLAN.md`; UNIFY next.
+### Phase 272: Pause Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
+Plan 272-01 added semantic PAUSE guardrails to Pi and cross-harness validation, then rewrote `kernel/workflows/pause-work.md` section by section for bounded STATE loading, compact agent-oriented handoff packets, stale active-handoff lifecycle, GitHub Flow WIP continuity, exact resume action semantics, and concise error/confirmation behavior. Validation passed: diff-check, artifact consistency, Pi 312/312, and cross-harness 202/202. Summary: `.paul/phases/272-pause-workflow-instruction-audit/272-01-SUMMARY.md`.
 
 ### Latest completed milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
 Result: Phases 265–267 complete. Phase 265 created the authoritative context-diet contract (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`); Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 delivered Selective Artifact Loading wording and anti-regrowth TAPs, but this session exposed that the actual workflow instructions still contain contradictory broad-read/stale-context behavior. v2.63 supersedes the prior narrative-dedup recommendation with a stricter interactive instruction audit.
@@ -61,7 +61,8 @@ Result: Phases 265–267 complete. Phase 265 created the authoritative context-d
 | v2.60 Pi Extension Submodule Extraction Wave — S6 Lifecycle UI Extraction | 2026-05-07 | 257-260 | `lifecycle-ui.ts` (7th sibling, 123 LOC); no-UI-only-lifecycle-decisions invariant verified shipped; Pi 235/235, cross-harness 137/137; install 7. |
 | v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction | 2026-05-07 | 261-264 | `command-routing.ts` (8th and final unclaimed sibling, 230 LOC); per-sibling S1–S8 wave closed except S4; first-ever closure-record-convention establishment via `## Status After Phase 262` on the S8 contract; closure-guardrail recipe ratified 6× (Phase 245/248/252/256/260/264); 4-symbol `inline → export` lockstep promotion durable rule; Pi 242/243 with inherited Path A `not ok 102`; cross-harness 137/138 with inherited `not ok 31`; install 8. PRs #176/#177/#178/#179. |
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | 2026-05-08 | 265-267 | Hot lifecycle artifacts archived/compacted to 63,415 B aggregate; Path A PASS; Selective Artifact Loading added across hot workflows; anti-regrowth TAPs and the 7th closure-guardrail recipe application ratified; v2.63 narrative deduplication / single-source summary architecture recommended-not-approved. PRs #180/#181/#182 (`068d7cb3`). |
+| v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | 2026-05-10 | 268-272 | Rewrote resume, plan, apply, unify, and pause workflow instructions for bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. Final validation: Pi 312/312, cross-harness 202/202. PR #188 (`df56ece1`). |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-09 — Phase 272 APPLY complete; ready for UNIFY.*
+*Last updated: 2026-05-10 — v2.63 complete; next milestone decision pending.*
