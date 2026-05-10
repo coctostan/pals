@@ -733,6 +733,57 @@ tap_unify_workflow_semantics() {
     'git diff --stat {last_commit_from_STATE.md}..HEAD'
 }
 
+
+tap_pause_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label pause workflow uses bounded state, latest-plan, and GitHub Flow pause semantics" \
+    "$file" \
+    '<step name="load_pause_state_bounded"' \
+    'Locate `## Current Position`; read' \
+    'Locate `## Loop Position`; read' \
+    'Locate `## Session Continuity`; read' \
+    'latest plan path' \
+    'shared pause/status recipe'
+
+  tap_file_contains_all \
+    "$label pause workflow keeps compact self-contained handoff semantics" \
+    "$file" \
+    'compact handoff payload' \
+    'current state' \
+    'changed files' \
+    'blockers' \
+    'decisions' \
+    'Git State when relevant' \
+    'exactly one resume action'
+
+  tap_file_contains_all \
+    "$label pause workflow handles stale active handoffs and source-of-truth priority" \
+    "$file" \
+    'prior active handoffs' \
+    'archive or supersede' \
+    'archived handoffs remain history' \
+    'STATE remains the resume source of truth'
+
+  tap_file_contains_all \
+    "$label pause workflow keeps GitHub Flow WIP continuity bounded" \
+    "$file" \
+    'GIT_WORKFLOW = "none"' \
+    'current feature branch only' \
+    'branch/PR/CI/ahead-behind'
+
+  tap_file_contains_none \
+    "$label pause workflow removes broad/eager routine handoff instructions" \
+    "$file" \
+    'Read `.paul/STATE.md` to get current phase/plan' \
+    'Read `.paul/PROJECT.md` first' \
+    'You have no prior context. This document tells you everything.' \
+    'Recent file modifications (`git status`)' \
+    'After that:'
+}
+
 tap_file_line_ceiling \
   "Repo ROADMAP stays within active-window line budget" \
   "$REPO_ROADMAP" \
@@ -867,6 +918,11 @@ tap_file_contains_all \
   "$REPO_PAUSE_WORKFLOW" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
 
+
+tap_pause_workflow_semantics \
+  "Repo" \
+  "$REPO_PAUSE_WORKFLOW"
+
 tap_file_contains_all \
   "Repo roadmap workflow defaults to selective hot artifact loading" \
   "$REPO_ROADMAP_WORKFLOW" \
@@ -926,6 +982,11 @@ tap_file_contains_all \
   "Installed pause workflow defaults to selective hot artifact loading" \
   "$PI_PAUSE" \
   'bounded window' 'full read' 'fallback' 'heading' 'marker' 'phase row'
+
+
+tap_pause_workflow_semantics \
+  "Installed" \
+  "$PI_PAUSE"
 
 tap_file_contains_all \
   "Installed roadmap workflow defaults to selective hot artifact loading" \

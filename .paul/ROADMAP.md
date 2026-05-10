@@ -9,7 +9,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite**
-Status: 🚧 In Progress | Mode: direct-requirements / interactive review | Phases: 4 of 5 complete | Current: Phase 272 ready to plan | Created: 2026-05-08
+Status: 🚧 In Progress | Mode: direct-requirements / interactive review | Phases: 4 of 5 complete | Current: Phase 272 APPLY complete; UNIFY next | Created: 2026-05-08
 Theme: Interactively audit and rewrite the core PALS lifecycle workflow instructions so their actual procedural steps are context-efficient, semantically correct, and free of contradictory legacy behavior. Focus is not marker-prose compliance; each phase must read the workflow closely, identify instructions that cause over-reading, stale context use, unnecessary ceremony, artifact bloat, helper-boundary confusion, or validation false positives, then edit the workflow text to make the intended behavior operational.
 
 | Phase | Name | Status | Plans |
@@ -18,7 +18,7 @@ Theme: Interactively audit and rewrite the core PALS lifecycle workflow instruct
 | 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 269-01 ✅ |
 | 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 270-01 ✅ |
 | 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 271-01 ✅ |
-| 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | Not started | Ready to plan |
+| 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | APPLY Complete | 272-01 ready for UNIFY |
 
 ### Phase 268: Resume Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
 Rewrote `kernel/workflows/resume-project.md` so routine resume starts from bounded STATE windows, resolves handoff/resume context only when needed, avoids decorative report reads, and uses narrow handoff lifecycle cleanup. Added Pi and cross-harness semantic guardrails that fail on broad STATE reads, eager handoff-file reads, stale archived-handoff preference, or handoff routing before STATE. Summary: `.paul/phases/268-resume-workflow-instruction-audit/268-01-SUMMARY.md`.
@@ -32,8 +32,8 @@ Rewrote `kernel/workflows/apply-phase.md` so APPLY starts from bounded approval/
 ### Phase 271: Unify Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
 Rewrote `kernel/workflows/unify-phase.md` so routine UNIFY starts from bounded STATE/session/PLAN/execution-evidence slices, keeps SUMMARY as the detailed reconciliation artifact, records compact mandatory module dispatch evidence, preserves ordered GitHub Flow merge gates, and cannot skip last-plan transition routing. Added Pi and cross-harness semantic guardrails that reject broad/eager UNIFY reads, duplicate narrative writes, optional/missing post-unify dispatch, marker-only module evidence, unsafe merge ordering, or transition skipping. Summary: `.paul/phases/271-unify-workflow-instruction-audit/271-01-SUMMARY.md`.
 
-### Phase 272: Pause Workflow Instruction Audit + Context-Efficiency Rewrite
-Review `kernel/workflows/pause-work.md` for handoff creation, compact resume payloads, stale-context prevention, archive/delete lifecycle, and instructions that cause future sessions to load irrelevant or obsolete artifacts.
+### Phase 272: Pause Workflow Instruction Audit + Context-Efficiency Rewrite — APPLY Complete
+Plan 272-01 added semantic PAUSE guardrails to Pi and cross-harness validation, then rewrote `kernel/workflows/pause-work.md` section by section for bounded STATE loading, compact agent-oriented handoff packets, stale active-handoff lifecycle, GitHub Flow WIP continuity, exact resume action semantics, and concise error/confirmation behavior. Validation passed: `git diff --check`, artifact consistency, Pi 312/312, and cross-harness 202/202. Plan: `.paul/phases/272-pause-workflow-instruction-audit/272-01-PLAN.md`; UNIFY next.
 
 ### Latest completed milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
 Result: Phases 265–267 complete. Phase 265 created the authoritative context-diet contract (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`); Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 delivered Selective Artifact Loading wording and anti-regrowth TAPs, but this session exposed that the actual workflow instructions still contain contradictory broad-read/stale-context behavior. v2.63 supersedes the prior narrative-dedup recommendation with a stricter interactive instruction audit.
@@ -64,4 +64,4 @@ Result: Phases 265–267 complete. Phase 265 created the authoritative context-d
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-09 — Phase 271 complete; Phase 272 ready to plan.*
+*Last updated: 2026-05-09 — Phase 272 APPLY complete; ready for UNIFY.*
