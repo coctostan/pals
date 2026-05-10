@@ -1,235 +1,199 @@
 <purpose>
-Create HANDOFF.md file and update STATE.md when pausing work mid-session. Enables seamless resumption in fresh session with full context restoration.
+Create a compact active handoff and update STATE.md Session Continuity when pausing work. Preserve enough context for a fresh `/paul:resume` without copying broad project history; STATE remains the resume source of truth.
 </purpose>
 
 <when_to_use>
 - Before ending a session (planned or context limit approaching)
-- Switching to different project
+- Switching to a different project
 - Context window at DEEP or CRITICAL bracket
 - User explicitly pauses work
 </when_to_use>
 
 <loop_context>
-Any position in PLAN/APPLY/UNIFY loop. Captures state regardless of where loop is.
+Any position in the PLAN/APPLY/UNIFY loop. PAUSE captures the current lifecycle position; it does not advance the loop.
 </loop_context>
 
 <required_reading>
-.paul/STATE.md
-.paul/PROJECT.md
+Routine bounded inputs:
+- `.paul/STATE.md` — Current Position, Loop Position, Session Continuity, and Git State only when present or needed.
+- `references/git-strategy.md` — only for workflow-mode, pause Git State, and WIP continuity rules.
+
+Conditional inputs:
+- Current PLAN path — only when STATE or the active loop position names one.
+- `.paul/PROJECT.md` — smallest useful project-name/core-value window only when needed and not already known.
 </required_reading>
 
 <hot_artifact_loading>
-When touching hot `.paul/*` lifecycle artifacts (`STATE.md`, `PROJECT.md`, `MILESTONES.md`, `ROADMAP.md`), locate the relevant heading, marker, phase row, plan ID, resume file, status line, or section label first and read the smallest useful bounded window.
-Escalate to a full read only as an explicit fallback when fields are missing or contradictory, or when the task requires whole-artifact rewrite, audit, repair, migration, lifecycle write, or whole-artifact validation.
+For hot `.paul/*` artifacts, locate the needed heading, marker, phase row, plan ID, status line, resume file, or section label first and read the smallest useful bounded window.
+
+Routine PAUSE starts with bounded STATE slices and does not full-read PROJECT, ROADMAP, MILESTONES, archived handoffs, or prior summaries. Use full read fallback only for missing/contradictory fields, repair, migration, audit, or whole-artifact validation.
 </hot_artifact_loading>
 
 <references>
-@references/context-management.md
-@templates/HANDOFF.md
+references/context-management.md
 references/git-strategy.md
 </references>
 
 <process>
 
-<step name="detect_position" priority="first">
-1. Read `.paul/STATE.md` to get current phase/plan, loop position, and last activity.
-2. Identify the latest plan path in the working tree.
-3. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `references/git-strategy.md`.
-4. If `GIT_WORKFLOW = "github-flow"`, collect `CURRENT_BRANCH`, `GIT_BASE_BRANCH`, PR URL/state, CI state, and ahead/behind data using the shared pause/status recipe from `references/git-strategy.md`.
+<step name="load_pause_state_bounded" priority="first">
+1. Verify `.paul/STATE.md` exists. If missing, stop with the missing-state error.
+2. Locate `## Current Position`; read the smallest useful window for phase, plan, status, blockers, and last activity.
+3. Locate `## Loop Position`; read the smallest useful window for PLAN/APPLY/UNIFY markers.
+4. Locate `## Session Continuity`; read the smallest useful window for existing resume file and next-action fields.
+5. Resolve the latest plan path from STATE first. If STATE lacks it, inspect only the active phase directory under `.paul/phases/` and prefer the current plan ID over a repo-wide search.
+6. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `references/git-strategy.md`.
+7. If `GIT_WORKFLOW = "github-flow"`, collect compact branch/PR/CI/ahead-behind state using the shared pause/status recipe from `references/git-strategy.md`.
+8. If `GIT_WORKFLOW != "github-flow"`, skip PR/CI/ahead-behind collection unless needed for an optional WIP commit decision.
 </step>
 
-<step name="gather_session_context">
-**Collect complete state for handoff:**
+<step name="build_compact_handoff_payload">
+Build a compact handoff payload from bounded evidence already loaded in this session. Infer first; ask the user only for missing blockers, decisions, or next-action ambiguity.
 
-Ask user (or infer from conversation):
-1. **Work completed this session** - What got done?
-2. **Work in progress** - What's partially done?
-3. **Decisions made** - Key choices and rationale
-4. **Blockers/issues** - Anything stuck?
-5. **Mental context** - The approach, what you were thinking
+Include only:
+- current state: phase, plan/status, and loop markers
+- completed work and in-progress work since the last durable lifecycle update
+- blockers and decisions that affect resume behavior
+- changed files relevant to the pause point, filtered to planned/lifecycle paths when possible
+- Git State when relevant: branch/PR/CI/ahead-behind summary from the bounded GitHub Flow step
+- exactly one resume action
 
-If user doesn't provide, summarize from:
-- Recent file modifications (`git status`)
-- Conversation history
-- STATE.md changes
+Do not include:
+- unrelated project history
+- large templates or copied background sections
+- archived handoff content except a short note that a prior active handoff was superseded
+- raw full `git status` output when a short changed-file summary is enough
 </step>
 
-<step name="create_handoff">
-Apply contextual verbosity: make the handoff self-contained but avoid repeated background; include only state, decisions, blockers, changed files, Git State when relevant, and the exact resume action.
-**Create HANDOFF file:**
+<step name="optional_wip_commit">
+Run this before `write_handoff_and_state` so the handoff can record the WIP result.
 
-```bash
-# Generate filename
-TIMESTAMP=$(date +%Y-%m-%d)
-HANDOFF_FILE=".paul/HANDOFF-${TIMESTAMP}.md"
-```
+1. Reuse `GIT_WORKFLOW` from `load_pause_state_bounded`; resolve it from `references/git-strategy.md` only if missing.
+2. If `GIT_WORKFLOW = "none"` or there are no uncommitted changes, set `wip_result: skipped` and continue.
+3. Ask the user whether to create a WIP commit.
 
-**Write content (NOT from template, populate directly):**
+If approved:
+- Use `git add -A`.
+- Commit with `wip({phase}): pause at [plan/task]`.
+- For `github-flow`, commit on the current feature branch only when it is non-base. Do not create branches, open PRs, merge, or rebase in PAUSE.
+- For `legacy`, follow the configured legacy WIP strategy.
+- Set `wip_result` to the commit hash.
+
+If declined or unsafe:
+- Set `wip_result` to the skipped reason, such as `declined`, `base-branch`, or `commit-failed`.
+
+`write_handoff_and_state` records `wip_result` in STATE Session Continuity and the handoff packet.
+</step>
+
+<step name="write_handoff_and_state">
+1. Identify prior active handoffs matching `.paul/HANDOFF*.md`.
+2. Before writing the new handoff, archive or supersede prior active handoffs:
+   - Move still-relevant active handoffs to `.paul/handoffs/archive/`.
+   - Delete obsolete active handoffs only when safe.
+   - Record the prior-active result in `handoff_lifecycle`.
+   - archived handoffs remain history; STATE remains the resume source of truth.
+
+3. Create `.paul/HANDOFF-{YYYY-MM-DD}-{context}.md` as a compact agent packet, not a narrative template:
 
 ```markdown
 # PAUL Handoff
 
-**Date:** [current timestamp]
-**Status:** [paused/blocked/context-limit]
+status: [paused | blocked | context-limit]
+created: [timestamp]
+phase: [N of M — phase name]
+plan: [plan-id/status]
+loop: PLAN [✓/○] / APPLY [✓/○] / UNIFY [✓/○]
+state_authority: .paul/STATE.md
+resume_action: [exactly one next action]
+wip_result: [skipped | commit hash | skipped reason]
 
----
+git_snapshot:
+  workflow: [github-flow | legacy | none]
+  branch: [branch or N/A]
+  base: [base or N/A]
+  pr: [none | url/state]
+  ci: [passing | failing | pending | N/A]
+  sync: [behind/ahead or N/A]
+  note: snapshot only; resume rechecks live git state when github-flow routing applies
 
-## READ THIS FIRST
+progress:
+  done:
+    - [compact completed item]
+  in_progress:
+    - [compact in-progress item]
+  blockers:
+    - [none or blocker]
+  decisions:
+    - [resume-relevant decision only]
 
-You have no prior context. This document tells you everything.
+files:
+  - path: [file]
+    reason: [why relevant]
 
-**Project:** [from PROJECT.md]
-**Core value:** [from PROJECT.md]
+handoff_lifecycle:
+  prior_active: [none | archived: path | superseded: path]
+  note: archived handoffs are history; STATE remains source of truth
 
----
-
-## Current State
-
-**Version:** [from STATE.md]
-**Phase:** [N] of [total] — [phase name]
-**Plan:** [plan-id] — [status]
-
-**Loop Position:**
-```
-PLAN ──▶ APPLY ──▶ UNIFY
-  [✓/○]    [✓/○]    [✓/○]
-```
-
-{If GIT_WORKFLOW = "github-flow":}
-## Git State
-
-| Field | Value |
-|-------|-------|
-| Branch | {CURRENT_BRANCH} |
-| Base | {GIT_BASE_BRANCH} |
-| PR | {PR_URL or "none"} ({PR_STATE or "N/A"}) |
-| CI | {CI_STATE or "N/A"} |
-| Behind base | {BEHIND_COUNT} commits (or "Up to date") |
-
-{End if}
-
----
-
-## What Was Done
-
-- [Accomplishment 1]
-- [Accomplishment 2]
-- [Accomplishment 3]
-
----
-
-## What's In Progress
-
-- [In-progress item with status]
-
----
-
-## What's Next
-
-**Immediate:** [specific next action]
-
-**After that:** [following action]
-
----
-
-## Key Files
-
-| File | Purpose |
-|------|---------|
-| `.paul/STATE.md` | Live project state |
-| `.paul/ROADMAP.md` | Phase overview |
-| [current plan path] | [plan purpose] |
-
----
-
-## Resume Instructions
-
-1. Read `.paul/STATE.md` for latest position
-2. Check loop position
-3. Run `/paul:resume` or `/paul:progress`
-
----
-
-*Handoff created: [timestamp]*
+resume:
+  command: /paul:resume
+  expected_next: [must exactly match resume_action]
 ```
 
-Be specific enough for a fresh Claude to understand immediately.
-</step>
+If `GIT_WORKFLOW = "none"` and git state does not affect the next action, collapse `git_snapshot` to `git_snapshot: workflow none`.
 
-<step name="update_state">
-**Update `.paul/STATE.md` Session Continuity section:**
+4. Update `.paul/STATE.md` `## Session Continuity` with:
+   - `Last session`
+   - `Stopped at`
+   - `Next action`
+   - `Resume file`
+   - `wip_result`
+   - 2–4 compact resume-context bullets
 
-```markdown
-## Session Continuity
-
-Last session: [timestamp]
-Stopped at: [what was happening]
-Next action: [clear directive]
-Resume file: .paul/HANDOFF-[date].md
-Resume context:
-- [bullet 1 - key context]
-- [bullet 2 - key context]
-- [bullet 3 - key context]
-```
-</step>
-
-<step name="optional_commit">
-**If git repo, offer WIP commit with explicit flow based on workflow mode.**
-Use `references/git-strategy.md` for shared workflow resolution and WIP continuity rules.
-
-1. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `references/git-strategy.md`.
-2. **If `GIT_WORKFLOW = "none"`:** skip the commit step entirely.
-3. Ask whether to create a WIP commit.
-4. If the user declines, skip to confirm.
-5. If the user accepts:
-   - use `git add -A`
-   - in `github-flow`, commit on the current feature branch only
-   - in `legacy`, offer the config-driven default between main and feature-branch WIP strategies
-   - if a legacy feature branch is created or chosen, record the branch strategy in STATE so transition-phase can reconcile it later
-6. Use the standard `wip({phase}): paused at {plan}` commit message format from `references/git-strategy.md`.
+5. Ensure STATE `Next action`, handoff `resume_action`, and handoff `resume.expected_next` match exactly.
 </step>
 
 <step name="confirm">
-Use contextual verbosity for routine pause confirmation: short artifact path, current loop position, and resume command; expand only for blockers, WIP commit failures, or user-requested detail.
-**Display confirmation:**
+Use contextual verbosity for routine pause confirmation: short handoff path, current loop position, `wip_result`, and exact resume action. Expand only for blockers, WIP commit failures, stale handoff cleanup, or user-requested detail.
 
-```
-════════════════════════════════════════
+Display:
+```text
 PAUL SESSION PAUSED
-════════════════════════════════════════
 
-Handoff created: .paul/HANDOFF-[date].md
+Handoff: .paul/HANDOFF-[date].md
+STATE updated: Session Continuity
+Loop: [PLAN/APPLY/UNIFY position]
+WIP: [wip_result]
 
-Current State:
-  Phase: [N] of [M]
-  Plan: [status]
-  Loop: [PLAN/APPLY/UNIFY position]
-
-To resume later:
+Resume:
   /paul:resume
-
-════════════════════════════════════════
+Expected next:
+  [exactly one resume action]
 ```
 </step>
 
 </process>
 
 <output>
-- HANDOFF-{date}.md created in .paul/
-- STATE.md updated with session continuity
-- Optional WIP commit with branch choice (main or feature/{phase})
-- Git strategy recorded in STATE.md for transition-phase
-- User knows how to resume
+- Compact active handoff created in `.paul/`
+- Prior active handoff archived/superseded when applicable
+- `.paul/STATE.md` Session Continuity updated
+- `wip_result` recorded when WIP handling ran
+- User sees `/paul:resume` plus exactly one expected next action
 </output>
 
 <error_handling>
-**No .paul/ directory:**
+**No `.paul/` directory:**
 - "No PAUL project found. Nothing to pause."
 
-**STATE.md missing or corrupted:**
-- Create minimal handoff from available context
-- Note the gap in handoff file
+**STATE.md missing:**
+- Stop without creating a normal handoff.
+- Report that STATE is required because it is the resume source of truth.
 
-**Git not available:**
-- Skip commit step, still create handoff
+**STATE.md corrupted or contradictory:**
+- Stop before writing a handoff unless the user explicitly requests an emergency handoff.
+- If emergency handoff is requested, mark `status: emergency`, include `state_authority: unavailable`, and keep the payload minimal.
+
+**Git not available or WIP commit failed:**
+- Set `wip_result` to the skipped/failed reason.
+- Still write handoff and STATE when STATE is valid.
 </error_handling>

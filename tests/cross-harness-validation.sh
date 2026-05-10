@@ -390,6 +390,9 @@ REPO_ROADMAP="$REPO_ROOT/.paul/ROADMAP.md"
 CC_RESUME_WORKFLOW="$CC_KERNEL_DIR/workflows/resume-project.md"
 PI_RESUME_WORKFLOW="$PI_KERNEL_DIR/workflows/resume-project.md"
 REPO_RESUME_WORKFLOW="$REPO_ROOT/kernel/workflows/resume-project.md"
+CC_PAUSE_WORKFLOW="$CC_KERNEL_DIR/workflows/pause-work.md"
+PI_PAUSE_WORKFLOW="$PI_KERNEL_DIR/workflows/pause-work.md"
+REPO_PAUSE_WORKFLOW="$REPO_ROOT/kernel/workflows/pause-work.md"
 
 tap_file_order_before() {
   local description="$1"
@@ -555,6 +558,57 @@ tap_unify_workflow_semantics() {
     'Read PLAN.md to refresh' \
     'git diff --stat {last_commit_from_STATE.md}..HEAD'
 }
+
+
+tap_pause_workflow_semantics() {
+  local label="$1"
+  local file="$2"
+
+  tap_file_contains_all \
+    "$label pause workflow uses bounded state, latest-plan, and GitHub Flow pause semantics" \
+    "$file" \
+    '<step name="load_pause_state_bounded"' \
+    'Locate `## Current Position`; read' \
+    'Locate `## Loop Position`; read' \
+    'Locate `## Session Continuity`; read' \
+    'latest plan path' \
+    'shared pause/status recipe'
+
+  tap_file_contains_all \
+    "$label pause workflow keeps compact self-contained handoff semantics" \
+    "$file" \
+    'compact handoff payload' \
+    'current state' \
+    'changed files' \
+    'blockers' \
+    'decisions' \
+    'Git State when relevant' \
+    'exactly one resume action'
+
+  tap_file_contains_all \
+    "$label pause workflow handles stale active handoffs and source-of-truth priority" \
+    "$file" \
+    'prior active handoffs' \
+    'archive or supersede' \
+    'archived handoffs remain history' \
+    'STATE remains the resume source of truth'
+
+  tap_file_contains_all \
+    "$label pause workflow keeps GitHub Flow WIP continuity bounded" \
+    "$file" \
+    'GIT_WORKFLOW = "none"' \
+    'current feature branch only' \
+    'branch/PR/CI/ahead-behind'
+
+  tap_file_contains_none \
+    "$label pause workflow removes broad/eager routine handoff instructions" \
+    "$file" \
+    'Read `.paul/STATE.md` to get current phase/plan' \
+    'Read `.paul/PROJECT.md` first' \
+    'You have no prior context. This document tells you everything.' \
+    'Recent file modifications (`git status`)' \
+    'After that:'
+}
 # Phase 191 anti-regrowth budgets: active ROADMAP <=120 lines;
 # post-190 hot workflow/reference source set was 1901 lines, so 2100
 # catches broad regrowth without failing harmless small edits.
@@ -716,6 +770,12 @@ for resume_workflow_label in "Claude Code installed:$CC_RESUME_WORKFLOW" "Pi ins
   label="${resume_workflow_label%%:*}"
   file="${resume_workflow_label#*:}"
   tap_resume_workflow_semantics "$label" "$file"
+done
+
+for pause_workflow_label in "Claude Code installed:$CC_PAUSE_WORKFLOW" "Pi installed:$PI_PAUSE_WORKFLOW" "Repo source:$REPO_PAUSE_WORKFLOW"; do
+  label="${pause_workflow_label%%:*}"
+  file="${pause_workflow_label#*:}"
+  tap_pause_workflow_semantics "$label" "$file"
 done
 
 DELEGATED_APPLY_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-DELEGATED-APPLY-PACKET-REPORT-CONTRACT.md"
