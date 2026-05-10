@@ -2,22 +2,22 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.63 in progress; Phase 272 APPLY complete)
+See: .paul/PROJECT.md (v2.63 in progress; Phase 272 UNIFY complete)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
 **Current focus:** v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite — Phase 272 Pause Workflow Instruction Audit + Context-Efficiency Rewrite.
 
 ## Current Position
 
 Milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite
-Phase: 272 of 272 (Pause Workflow Instruction Audit + Context-Efficiency Rewrite) — APPLY complete
-Plan: 272-01 executed; ready for UNIFY
-Status: APPLY complete; awaiting UNIFY
-Last activity: 2026-05-09 — Phase 272 APPLY complete; validations passed.
-Next action: Run `/paul:unify .paul/phases/272-pause-workflow-instruction-audit/272-01-PLAN.md`.
+Phase: 272 of 272 (Pause Workflow Instruction Audit + Context-Efficiency Rewrite) — UNIFY complete
+Plan: 272-01 complete
+Status: Loop complete; merge gate / transition next
+Last activity: 2026-05-10 — Phase 272 SUMMARY created; post-unify WALT/CODI evidence recorded.
+Next action: Complete GitHub Flow merge gate, then transition v2.63 milestone.
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
-- v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [█████████░] 90% (Phase 272 APPLY complete; UNIFY next)
+- v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 UNIFY complete; merge/transition next)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -25,7 +25,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [APPLY complete; ready for UNIFY]
+  ✓        ✓        ✓     [Loop complete - merge gate / transition next]
 ```
 
 ## Accumulated Context
@@ -73,14 +73,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - 2026-05-08 (Phase 266 APPLY): `/paul:resume` archived `HANDOFF-2026-05-08-v2.62-phase-266-plan-ready-paused.md` to `.paul/handoffs/archive/` and updated STATE.md `Resume file:` accordingly per the resume workflow's allowance for archived-handoff resume paths; helper PASS confirmed before APPLY started. Branch `feature/266-archive-compact-hot-artifacts` created from `main` (0 ahead / 0 behind).
 - Skill audit Phase 266 UNIFY: SUMMARY records ACs PASS, validation evidence (artifact_consistency PASS, Pi 243/243, cross-harness 138/138, diff-check clean), deviations, module reports, CODI-HISTORY `skipped-no-symbols`, QUALITY-HISTORY improvement row, and Phase 267 selective-loading handoff. No helper delegation; parent UNIFY owned reconciliation.
 - Skill audit Phase 267 APPLY: parent APPLY owned verification; no helper delegation. Tasks 1–3 PASS: selective-loading contracts in 8 workflows; anti-regrowth TAPs and Phase 267 shared invariant added; lifecycle artifacts record v2.62 complete after APPLY and v2.63 recommended-not-approved. Validation: install PASS; artifact_consistency PASS; Pi 270/270; cross-harness 139/139; `git diff --check` clean.
-- Skill audit Phase 267 UNIFY: SUMMARY created at `.paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md`; module reports preserved (pre-unify 0 registered, WALT quality history, CODI skipped-no-symbols row, SKIP decision/lesson capture, RUBY no refactor-blocking debt). GitHub Flow merge gate PASS; PR #182 squash-merged as `068d7cb3`; local `main` synced.
-- Skill audit Phase 268 APPLY: parent APPLY owned verification; no helper delegation. Task 1 added resume semantic guardrails and intentionally produced RED failures (Pi 270/276, cross-harness 139/148) against old broad/eager workflow behavior. Task 2 rewrote `kernel/workflows/resume-project.md` section by section with user approval. Final validation passed: Pi 276/276, cross-harness 148/148, `git diff --check` clean.
-- Skill audit Phase 268 UNIFY: SUMMARY finalized with AC evidence, module reports, and validation results; WALT quality row and CODI skipped-no-symbols row recorded. Transitioned from Phase 268 to Phase 269 after 1/1 summaries matched 1/1 plans. No helper delegation; Workguard scope stayed within allowed paths.
-- Skill audit Phase 269 APPLY: parent APPLY owned verification; no helper delegation. Task 1 added plan-workflow semantic guardrails and intentionally produced RED failures (Pi 276/284, cross-harness pending) against broad/eager plan workflow behavior. Task 2 rewrote `kernel/workflows/plan-phase.md` section by section with user approval and tightened wording. Task 3 validation passed: Pi 284/284, cross-harness 160/160, `git diff --check` clean.
-- Skill audit Phase 269 UNIFY: SUMMARY finalized with AC evidence, module reports, validation results, and workflow lessons. WALT quality row and CODI skipped-no-symbols row recorded. Transitioned from Phase 269 to Phase 270 after 1/1 summaries matched 1/1 plans. No helper delegation; Workguard scope stayed within allowed paths.
+- Skill audit Phase 267 UNIFY: SUMMARY/module evidence finalized; WALT/CODI rows recorded; PR #182 merged as `068d7cb3`; main synced.
+- Skill audit Phase 268 APPLY: parent-owned; added resume guardrails, RED→GREEN workflow rewrite; final Pi 276/276, cross 148/148, diff-check.
+- Skill audit Phase 268 UNIFY: SUMMARY/module evidence finalized; WALT/CODI rows recorded; transitioned to Phase 269.
+- Skill audit Phase 269 APPLY: parent-owned; added plan guardrails, RED→GREEN workflow rewrite; final Pi 284/284, cross 160/160, diff-check.
+- Skill audit Phase 269 UNIFY: SUMMARY/module evidence finalized; WALT/CODI rows recorded; transitioned to Phase 270.
 - Skill audit Phase 270 UNIFY: SUMMARY finalized with AC evidence, module reports, and validation results. WALT quality row and CODI skipped-no-symbols row recorded. Transitioned from Phase 270 to Phase 271 after 1/1 summaries matched 1/1 plans. No helper delegation; Workguard scope stayed within allowed paths.
 - Skill audit Phase 271 UNIFY: SUMMARY/AC/module/validation evidence finalized; WALT and CODI history rows recorded; 1/1 plan summarized; transitioned to Phase 272. No helper delegation.
 - Skill audit Phase 272 APPLY: parent-owned; no helper. Added PAUSE guardrails, rewrote `pause-work.md` via approved section loop, compact agent handoff packets, stale-handoff/WIP continuity. Validation PASS: artifact_consistency, Pi 312/312, cross 202/202, diff-check.
+- Skill audit Phase 272 UNIFY: SUMMARY finalized; all ACs PASS; WALT/CODI rows recorded; 1/1 plan summarized; v2.63 transition pending merge gate.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -101,19 +102,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/272-pause-workflow-instruction-audit
-Last commit: `82d28e50` — Phase 272 APPLY complete.
+Last commit: `1a974711` — Phase 272 APPLY postflight; UNIFY artifacts pending commit.
 PR: https://github.com/coctostan/pals/pull/188 (OPEN)
-CI: pending/unknown; UNIFY merge gate will recheck.
-Working tree: clean after APPLY postflight; branch pushed to origin.
+CI: passing at last check; merge gate will recheck before merge.
+Working tree: UNIFY artifacts pending commit/push.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-09 — Phase 272 APPLY completed.
-Stopped at: APPLY complete; UNIFY not yet run.
-Next action: Run `/paul:unify .paul/phases/272-pause-workflow-instruction-audit/272-01-PLAN.md`.
-Resume file: .paul/handoffs/archive/HANDOFF-2026-05-09-phase-272-plan-created.md
+Last session: 2026-05-10 — Phase 272 UNIFY completed.
+Stopped at: UNIFY complete; merge gate / transition pending.
+Next action: Complete GitHub Flow merge gate, then transition v2.63 milestone.
+Resume file: .paul/phases/272-pause-workflow-instruction-audit/272-01-SUMMARY.md
 Resume context:
-- Phase 272 APPLY is complete; PLAN ✓ / APPLY ✓ / UNIFY ○.
-- Changed planned files: `kernel/workflows/pause-work.md`, Pi/cross-harness validation scripts, plus PAUL lifecycle artifacts.
-- Validation passed: artifact_consistency, Pi 312/312, cross 202/202, diff-check.
+- Phase 272 PLAN/APPLY/UNIFY loop is complete; SUMMARY is the resume artifact.
+- Post-unify evidence recorded: WALT quality row and CODI skipped-no-symbols row.
+- GitHub Flow merge gate and v2.63 transition remain before final milestone closure.
