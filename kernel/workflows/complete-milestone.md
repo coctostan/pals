@@ -23,8 +23,8 @@ After completion, project is ready for /paul:discuss-milestone or /paul:mileston
 </required_reading>
 
 <references>
-@src/templates/MILESTONES.md (entry format)
-@src/templates/milestone-archive.md (archive format)
+kernel/templates/MILESTONES.md (entry format)
+kernel/templates/milestone-archive.md (archive format)
 </references>
 
 <process>

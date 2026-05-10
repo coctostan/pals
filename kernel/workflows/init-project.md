@@ -29,9 +29,9 @@ All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE
 </philosophy>
 
 <references>
-@src/templates/config.md
-@src/references/sonarqube-integration.md
-@src/references/brownfield-onboarding.md
+kernel/templates/config.md
+kernel/references/sonarqube-integration.md
+kernel/references/brownfield-onboarding.md
 </references>
 
 <process>
@@ -60,7 +60,7 @@ All three flows create the same artifacts: PROJECT.md, PRD.md, ROADMAP.md, STATE
    ```
    If pals.json does not exist: skip migration entirely (init will create it fresh).
 
-2. Read the canonical schema from `references/pals-json-schema.md` for the expected field list.
+2. Read the canonical schema from `kernel/references/pals-json-schema.md` for the expected field list.
 
 3. Read installed `modules.yaml` to discover all currently installed modules.
 

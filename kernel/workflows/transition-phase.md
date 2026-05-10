@@ -155,12 +155,12 @@ Update ROADMAP.md:
 </step>
 
 <step name="read_git_config" priority="before-commit">
-**Resolve transition git behavior via `references/git-strategy.md`.**
+**Resolve transition git behavior via `kernel/references/git-strategy.md`.**
 
-1. Use the shared 3-tier workflow resolution from `references/git-strategy.md`.
+1. Use the shared 3-tier workflow resolution from `kernel/references/git-strategy.md`.
 2. Read only the git fields needed here: `branching`, `remote`, `auto_push`, `auto_pr`, `ci_checks`, `base_branch`, `merge_method`, `delete_branch_on_merge`, `update_branch_when_behind`, `require_pr_before_next_phase`, `require_reviews`, and `worktree_isolation`.
 3. Resolve `CURRENT_BRANCH` and use it for all downstream operations — never assume a phase-derived branch name.
-4. In `github-flow`, UNIFY owns the feature-to-base merge; transition only stages and commits phase metadata on the current branch, then follows the shared post-commit automation contract from `references/git-strategy.md`.
+4. In `github-flow`, UNIFY owns the feature-to-base merge; transition only stages and commits phase metadata on the current branch, then follows the shared post-commit automation contract from `kernel/references/git-strategy.md`.
 5. If `pals.json` is absent or the git section is missing, default to safe/off behavior.
 </step>
 
@@ -336,7 +336,7 @@ Git commit created: {short-hash}
 
 <step name="post_commit_automation" priority="after-commit">
 **Conditional automation based on pals.json git config.**
-Use `references/git-strategy.md` for the exact push/CI/PR recipe.
+Use `kernel/references/git-strategy.md` for the exact push/CI/PR recipe.
 
 1. All remote operations require `GIT_REMOTE` to be set. If remote is null/empty, skip them silently.
 2. If `ci_checks=true`, push the relevant branch and surface CI status.

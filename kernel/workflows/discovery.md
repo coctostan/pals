@@ -82,13 +82,13 @@ For: Choosing between options, new integration.
    - Identify deal-breakers
 
 4. **Reference quality patterns:**
-   @src/references/research-quality-control.md
+   kernel/references/research-quality-control.md
    - Cross-verify findings
    - Check source currency
    - Assign confidence
 
 5. **Create DISCOVERY.md:**
-   Use template: @src/templates/DISCOVERY.md
+   Use template: kernel/templates/DISCOVERY.md
    - Summary with recommendation
    - Findings per option
    - Confidence level (should be MEDIUM-HIGH)

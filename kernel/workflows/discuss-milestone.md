@@ -24,7 +24,7 @@ After discussion, routes to /paul:milestone (create-milestone).
 </required_reading>
 
 <references>
-@src/templates/milestone-context.md (handoff format)
+kernel/templates/milestone-context.md (handoff format)
 </references>
 
 <process>

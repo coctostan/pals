@@ -28,8 +28,8 @@ Escalate to a full read only as an explicit fallback when fields are missing or 
 </hot_artifact_loading>
 
 <references>
-@references/context-management.md
-@references/loop-phases.md
+kernel/references/context-management.md
+kernel/references/loop-phases.md
 </references>
 
 <process>

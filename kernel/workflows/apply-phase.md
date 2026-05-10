@@ -25,11 +25,11 @@ Escalate to a full read only as an explicit fallback when fields are missing or 
 </hot_artifact_loading>
 
 <references>
-references/checkpoints.md — Load checkpoint guidance only if the approved PLAN contains any `checkpoint:*` task.
-references/loop-phases.md
-references/module-dispatch.md
-references/git-strategy.md
-references/subagent-criteria.md — load-only-if considering `pals-implementer` delegation.
+kernel/references/checkpoints.md — Load checkpoint guidance only if the approved PLAN contains any `checkpoint:*` task.
+kernel/references/loop-phases.md
+kernel/references/module-dispatch.md
+kernel/references/git-strategy.md
+kernel/references/subagent-criteria.md — load-only-if considering `pals-implementer` delegation.
 </references>
 
 <process>
@@ -42,7 +42,7 @@ references/subagent-criteria.md — load-only-if considering `pals-implementer` 
 
 <step name="github_flow_preflight" priority="after-approval">
 **Conditional: GitHub Flow branch validation before work begins.**
-Use `references/git-strategy.md` for exact commands.
+Use `kernel/references/git-strategy.md` for exact commands.
 
 1. Resolve `GIT_WORKFLOW`; if not `github-flow`, skip to `load_plan_sections`.
 2. Read only needed `pals.json` git fields: `base_branch`, `update_branch_when_behind`, `remote`.
@@ -53,7 +53,7 @@ Use `references/git-strategy.md` for exact commands.
 <step name="load_plan_sections">
 Load approved PLAN sections only: frontmatter/files, tasks, boundaries, files, acceptance criteria, and checkpoints.
 Extract the ordered task list, scope boundaries, required skills, verify/done criteria, and checkpoint presence.
-Defer `references/checkpoints.md` until the first checkpoint task.
+Defer `kernel/references/checkpoints.md` until the first checkpoint task.
 </step>
 
 <step name="verify_required_skills" priority="blocking">
@@ -66,7 +66,7 @@ If disabled, continue on the current branch. If setup fails, ask: continue witho
 </step>
 
 <step name="pre_apply_hooks" priority="before-tasks">
-Dispatch `pre-apply` via `references/module-dispatch.md`; record task order, validation baselines, blocking responses, and visible evidence (`[dispatch] pre-apply: ...` or registry warning).
+Dispatch `pre-apply` via `kernel/references/module-dispatch.md`; record task order, validation baselines, blocking responses, and visible evidence (`[dispatch] pre-apply: ...` or registry warning).
 </step>
 
 <step name="execute_tasks">
@@ -80,7 +80,7 @@ Route each task by type:
 <step name="execute_auto_task">
 1. Default to inline parent APPLY.
 
-2. Consider `pals-implementer` only after loading `references/subagent-criteria.md`.
+2. Consider `pals-implementer` only after loading `kernel/references/subagent-criteria.md`.
 
 3. Delegation gate: delegation may be used for a single eligible task or sequential task step only when all are true:
    - PLAN has `autonomous: true`
@@ -109,7 +109,7 @@ Route each task by type:
 
 13. Record PASS, PASS_WITH_CONCERNS, or BLOCKED.
 
-14. Dispatch `post-task` hooks via `references/module-dispatch.md`; record `[dispatch] post-task(Task N): ...`, `SKIPPED`, or registry warning.
+14. Dispatch `post-task` hooks via `kernel/references/module-dispatch.md`; record `[dispatch] post-task(Task N): ...`, `SKIPPED`, or registry warning.
 </step>
 
 <step name="handle_checkpoints">
@@ -129,11 +129,11 @@ After response:
 </step>
 
 <step name="advisory_module_dispatch" priority="after-tasks">
-Dispatch post-apply advisory modules via `references/module-dispatch.md` before enforcement; record annotations for UNIFY and evidence (`[dispatch] post-apply advisory: ...`, `SKIPPED`, or `modules.yaml NOT FOUND — WARNING`).
+Dispatch post-apply advisory modules via `kernel/references/module-dispatch.md` before enforcement; record annotations for UNIFY and evidence (`[dispatch] post-apply advisory: ...`, `SKIPPED`, or `modules.yaml NOT FOUND — WARNING`).
 </step>
 
 <step name="enforcement_module_dispatch" priority="after-advisory">
-Run blocking post-apply enforcement modules via `references/module-dispatch.md`; record baseline comparisons, PASS/BLOCK results, and evidence (`[dispatch] post-apply enforcement: ...`, `SKIPPED`, or `modules.yaml NOT FOUND — WARNING`). On BLOCK, offer fix/override/stop before finalize.
+Run blocking post-apply enforcement modules via `kernel/references/module-dispatch.md`; record baseline comparisons, PASS/BLOCK results, and evidence (`[dispatch] post-apply enforcement: ...`, `SKIPPED`, or `modules.yaml NOT FOUND — WARNING`). On BLOCK, offer fix/override/stop before finalize.
 </step>
 
 <step name="handle_failures">
@@ -150,7 +150,7 @@ If deviations invalidate the remaining plan, stop APPLY, record why, update STAT
 </step>
 
 <step name="github_flow_postflight" priority="after-hooks">
-After successful task execution and scope review, if `GIT_WORKFLOW=github-flow`, use `references/git-strategy.md` postflight: commit on `CURRENT_BRANCH`, push/create or reuse PR when configured, surface PR/CI status, and emit `GitHub Flow Postflight ✓`.
+After successful task execution and scope review, if `GIT_WORKFLOW=github-flow`, use `kernel/references/git-strategy.md` postflight: commit on `CURRENT_BRANCH`, push/create or reuse PR when configured, surface PR/CI status, and emit `GitHub Flow Postflight ✓`.
 If not github-flow, skip to finalize. CI is informational in APPLY; UNIFY owns merge readiness.
 </step>
 

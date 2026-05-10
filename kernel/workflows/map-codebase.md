@@ -19,13 +19,13 @@ Documents are reference material for Claude when planning/executing. Vague descr
 </philosophy>
 
 <references>
-@src/templates/codebase/stack.md
-@src/templates/codebase/architecture.md
-@src/templates/codebase/structure.md
-@src/templates/codebase/conventions.md
-@src/templates/codebase/testing.md
-@src/templates/codebase/integrations.md
-@src/templates/codebase/concerns.md
+kernel/templates/codebase/stack.md
+kernel/templates/codebase/architecture.md
+kernel/templates/codebase/structure.md
+kernel/templates/codebase/conventions.md
+kernel/templates/codebase/testing.md
+kernel/templates/codebase/integrations.md
+kernel/templates/codebase/concerns.md
 </references>
 
 <process>
