@@ -102,10 +102,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: main
-Last commit: `df56ece1` — PR #188 merged; v2.63 complete.
+Last commit: `3f38c0ba` — v2.63 transition complete on main.
 PR: #188 merged (https://github.com/coctostan/pals/pull/188)
 CI: passing before merge (Socket checks).
-Working tree: transition artifacts pending commit.
+Working tree: clean after transition postflight (state update pending commit if this line changed).
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
