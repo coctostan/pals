@@ -101,10 +101,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/272-pause-workflow-instruction-audit
-Last commit: `70c58c06` — Phase 271 complete and merged via PR #187.
-PR: none yet
-CI: N/A until PR
-Working tree: Phase 272 APPLY complete on feature branch; implementation/lifecycle artifacts uncommitted.
+Last commit: `82d28e50` — Phase 272 APPLY complete.
+PR: https://github.com/coctostan/pals/pull/188 (OPEN)
+CI: pending/unknown; UNIFY merge gate will recheck.
+Working tree: clean after APPLY postflight; branch pushed to origin.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
