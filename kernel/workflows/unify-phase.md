@@ -32,10 +32,10 @@ Use full read fallback only when bounded windows are missing, contradictory, or 
 </hot_artifact_loading>
 
 <references>
-references/loop-phases.md
-references/module-dispatch.md
-references/git-strategy.md
-templates/SUMMARY.md
+kernel/references/loop-phases.md
+kernel/references/module-dispatch.md
+kernel/references/git-strategy.md
+kernel/templates/SUMMARY.md
 workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
 <!-- Module references are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
@@ -80,7 +80,7 @@ workflows/transition-phase.md (always listed; executed only when check_phase_com
 </step>
 
 <step name="pre_unify_hooks" priority="before-reconciliation">
-Dispatch pre-unify hooks via `references/module-dispatch.md`.
+Dispatch pre-unify hooks via `kernel/references/module-dispatch.md`.
 
 Call-site contract:
 - Hook: `pre-unify`.
@@ -128,7 +128,7 @@ Produce `reconciliation_facts`:
 </step>
 
 <step name="post_unify_hooks" priority="after-state-update">
-Dispatch post-unify hooks via `references/module-dispatch.md`; post-unify dispatch is mandatory before loop closure.
+Dispatch post-unify hooks via `kernel/references/module-dispatch.md`; post-unify dispatch is mandatory before loop closure.
 
 Call-site contract:
 - Hook: `post-unify`.
@@ -145,12 +145,12 @@ Call-site contract:
 </step>
 
 <step name="github_flow_merge_gate" priority="after-summary-finalized">
-1. Resolve `GIT_WORKFLOW` using `references/git-strategy.md`.
+1. Resolve `GIT_WORKFLOW` using `kernel/references/git-strategy.md`.
 2. If not `github-flow`, display `Merge gate: skipped (not github-flow)` and continue to `check_phase_completion`.
 3. Resolve github-flow fields once: base_branch, remote, auto_pr, ci_checks, require_reviews, merge_method, delete_branch_on_merge, require_pr_before_next_phase, and current branch.
 4. If `require_pr_before_next_phase != true`, display `Merge gate: skipped (not required)` and continue to `check_phase_completion`.
 
-Use `references/git-strategy.md` for command recipes and keep this gate ordered:
+Use `kernel/references/git-strategy.md` for command recipes and keep this gate ordered:
 Merge gate order: PR exists/create-if-allowed → CI passing → reviews approved → PR merged → base synced → branch cleaned.
 
 5. Commit and push finalized UNIFY artifacts before checking PR state.

@@ -30,7 +30,7 @@ It can also be invoked standalone to create a TDD-type plan directly.
 
 **Action:**
 1. Read the phase scope from ROADMAP.md
-2. Apply detection heuristics from @references/tdd-detection.md:
+2. Apply detection heuristics from modules/todd/references/tdd-detection.md:
    - Classify work as STRONG / MODERATE / SKIP for TDD suitability
    - Check for positive signals (defined contract, behavioral spec, edge cases)
    - Check for negative signals (visual output, integration-heavy, trivial logic)
@@ -55,12 +55,12 @@ It can also be invoked standalone to create a TDD-type plan directly.
 **Action:**
 1. Check plan frontmatter: if `type: tdd`, apply TDD overlay
 2. If type is NOT tdd: no-op (return without modifications)
-3. If type IS tdd, restructure the plan per @references/tdd-plan-generation.md:
+3. If type IS tdd, restructure the plan per modules/todd/references/tdd-plan-generation.md:
    a. Replace standard acceptance criteria with TDD AC (AC-1: RED, AC-2: GREEN, AC-3: REFACTOR)
    b. Add `<feature>` section with behavior specification
    c. Restructure `<tasks>` into exactly 3 tasks: RED → GREEN → REFACTOR
    d. Add context budget note (40% target)
-   e. Add commit guidance from @references/tdd.md
+   e. Add commit guidance from modules/todd/references/tdd.md
 4. Return plan_modifications with the restructured sections
 
 **Does NOT block.** Modifications are applied to the plan file.
@@ -75,7 +75,7 @@ It can also be invoked standalone to create a TDD-type plan directly.
 1. Check plan frontmatter: if `type: tdd`, enforce TDD execution
 2. If type is NOT tdd: no-op
 3. If type IS tdd:
-   a. Detect test command per @references/tdd-execution.md (check package.json, Cargo.toml, etc.)
+   a. Detect test command per modules/todd/references/tdd-execution.md (check package.json, Cargo.toml, etc.)
    b. Store test_command for use in post-task hook
    c. Inject context: "This is a TDD plan. Execute tasks in strict RED → GREEN → REFACTOR order. Do not proceed to GREEN without verified RED (failing test committed)."
 4. Return context_inject:
@@ -146,8 +146,8 @@ It can also be invoked standalone to create a TDD-type plan directly.
 When invoked directly (not via hook dispatch):
 
 1. Read ROADMAP.md for current phase scope
-2. Run TDD detection from @references/tdd-detection.md
-3. If suitable: create TDD plan following @references/tdd-plan-generation.md
+2. Run TDD detection from modules/todd/references/tdd-detection.md
+3. If suitable: create TDD plan following modules/todd/references/tdd-plan-generation.md
 4. If not suitable: inform user and suggest `type: execute` instead
 
 This is equivalent to running pre-plan + post-plan hooks manually.

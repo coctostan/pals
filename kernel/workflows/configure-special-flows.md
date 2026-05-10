@@ -20,8 +20,8 @@ Can be run at any time without affecting PLAN/APPLY/UNIFY state.
 </required_reading>
 
 <references>
-@src/references/specialized-workflow-integration.md
-@src/templates/SPECIAL-FLOWS.md
+kernel/references/specialized-workflow-integration.md
+kernel/templates/SPECIAL-FLOWS.md
 </references>
 
 <process>

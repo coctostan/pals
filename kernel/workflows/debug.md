@@ -22,7 +22,7 @@ Ask about experience. Investigate the cause yourself.
 </philosophy>
 
 <template>
-@src/templates/DEBUG.md
+kernel/templates/DEBUG.md
 </template>
 
 <process>

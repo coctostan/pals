@@ -120,3 +120,4 @@ Types: —
 | 270-01 | 2026-05-09 | Pi 292/292, XH 172/172 | N/A (shell) | N/A | N/A | ↑ improving (semantic apply-workflow guardrails added; +8 Pi TAPs and +12 cross-harness TAPs, all passing) |
 | 271-01 | 2026-05-09 | Pi 302/302, XH 187/187 | N/A (shell) | N/A | N/A | ↑ improving (semantic unify-workflow guardrails added; +10 Pi TAPs and +15 cross-harness TAPs, all passing) |
 | 272-01 | 2026-05-10 | Pi 312/312, XH 202/202 | N/A (shell) | N/A | N/A | ↑ improving (semantic pause-workflow guardrails added; +10 Pi TAPs and +15 cross-harness TAPs, all passing) |
+| 272-02-FIX | 2026-05-10 | Pi 312/312, XH 202/202 | N/A (shell) | N/A | N/A | → stable (workflow reference paths normalized to kernel/modules logical paths; installed Pi runtime refreshed) |

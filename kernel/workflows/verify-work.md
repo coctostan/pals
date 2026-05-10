@@ -5,7 +5,7 @@ The USER performs all testing — Claude generates the checklist, guides the pro
 </purpose>
 
 <template>
-@src/templates/UAT-ISSUES.md
+kernel/templates/UAT-ISSUES.md
 </template>
 
 <process>
@@ -132,7 +132,7 @@ For each failed/partial test, gather:
 If any issues found:
 
 1. Create `.paul/phases/XX-name/{phase}-{plan}-UAT.md` if doesn't exist
-2. Use template from `@src/templates/UAT-ISSUES.md`
+2. Use template from `kernel/templates/UAT-ISSUES.md`
 3. Add each issue with UAT-NNN format:
 
 ```markdown

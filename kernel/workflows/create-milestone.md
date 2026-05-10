@@ -25,9 +25,9 @@ Escalate to a full read only as an explicit fallback when fields are missing or 
 </hot_artifact_loading>
 
 <references>
-@src/templates/ROADMAP.md (milestone section format)
-@src/templates/milestone-context.md (handoff structure)
-@references/context-management.md
+kernel/templates/ROADMAP.md (milestone section format)
+kernel/templates/milestone-context.md (handoff structure)
+kernel/references/context-management.md
 </references>
 
 <process>

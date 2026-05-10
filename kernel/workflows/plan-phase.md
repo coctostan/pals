@@ -33,11 +33,11 @@ Routine PLAN loading starts with bounded STATE slices plus the current ROADMAP m
 </hot_artifact_loading>
 
 <references>
-references/plan-format.md
-references/checkpoints.md (if plan will have checkpoints)
-references/module-dispatch.md
-references/context-management.md
-templates/PLAN.md
+kernel/references/plan-format.md
+kernel/references/checkpoints.md (if plan will have checkpoints)
+kernel/references/module-dispatch.md
+kernel/references/context-management.md
+kernel/templates/PLAN.md
 <!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
@@ -89,7 +89,7 @@ templates/PLAN.md
 4. Pass any seeds to pre-plan advisory dispatch and reuse them only in existing PLAN objective/context/source-file text.
 </step>
 <step name="pre_plan_advisory_hooks" priority="before-scope-analysis">
-**Dispatch advisory pre-plan hooks via `references/module-dispatch.md`; advisory output informs the plan and never blocks.**
+**Dispatch advisory pre-plan hooks via `kernel/references/module-dispatch.md`; advisory output informs the plan and never blocks.**
 
 Call-site contract:
 - Hook: `pre-plan` advisory modules whose hook description does NOT contain "block".
@@ -99,7 +99,7 @@ Call-site contract:
 - Display all findings and pass accumulated `context_inject` to scope analysis.
 </step>
 <step name="pre_plan_enforcement_hooks" priority="after-advisory-before-scope">
-**Dispatch blocking pre-plan hooks via `references/module-dispatch.md`; advisory context must already be visible.**
+**Dispatch blocking pre-plan hooks via `kernel/references/module-dispatch.md`; advisory context must already be visible.**
 
 Call-site contract:
 - Hook: `pre-plan` enforcement modules whose hook description contains "block".
@@ -166,7 +166,7 @@ Required skills will BLOCK apply-phase until confirmed loaded.
 </step>
 
 <step name="post_plan_hooks" priority="after-plan-creation">
-**Dispatch post-plan lifecycle hooks via `references/module-dispatch.md`.**
+**Dispatch post-plan lifecycle hooks via `kernel/references/module-dispatch.md`.**
 
 Call-site contract:
 - Hook: `post-plan`; current required module: TODD, which may restructure test-driven plans or suggest TDD conversion when existing tests cover the planned files.

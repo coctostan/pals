@@ -22,7 +22,7 @@ After discussion, routes to /paul:plan (plan-phase).
 </required_reading>
 
 <references>
-@src/templates/CONTEXT.md (handoff format)
+kernel/templates/CONTEXT.md (handoff format)
 </references>
 
 <process>

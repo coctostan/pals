@@ -82,6 +82,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Skill audit Phase 271 UNIFY: SUMMARY/AC/module/validation evidence finalized; WALT and CODI history rows recorded; 1/1 plan summarized; transitioned to Phase 272. No helper delegation.
 - Skill audit Phase 272 APPLY: parent-owned; no helper. Added PAUSE guardrails, rewrote `pause-work.md` via approved section loop, compact agent handoff packets, stale-handoff/WIP continuity. Validation PASS: artifact_consistency, Pi 312/312, cross 202/202, diff-check.
 - Skill audit Phase 272 UNIFY: SUMMARY finalized; WALT/CODI rows recorded; PR #188 merged as `df56ece1`; v2.63 transition complete.
+- Fix 272-02 (standard): normalized workflow reference paths from legacy `@references/` / `references/` / `@src/` forms to adapter-resolvable `kernel/...` and `modules/...` logical paths; refreshed installed Pi/Claude runtime copies via `./install.sh`; verification PASS: Pi 312/312, cross-harness 202/202, diff-check.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -101,20 +102,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main
-Last commit: `3f38c0ba` — v2.63 transition complete on main.
-PR: #188 merged (https://github.com/coctostan/pals/pull/188)
+Branch: fix/workflow-reference-resolution (from main)
+Last commit: `db188f78` — GitHub Flow branch base after v2.63 mainline.
+PR: https://github.com/coctostan/pals/pull/189 (fix/workflow-reference-resolution → main).
 CI: passing before merge (Socket checks).
-Working tree: clean after transition postflight (state update pending commit if this line changed).
+Working tree: standard fix 272-02 committed, pushed, and opened as PR #189.
 Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-10 — v2.63 completed and PR #188 merged.
-Stopped at: Milestone complete; next milestone decision pending.
-Next action: Run `/paul:milestone` to create the next milestone, or `/paul:pause` to stop here.
-Resume file: .paul/phases/272-pause-workflow-instruction-audit/272-01-SUMMARY.md
+Last session: 2026-05-10 — standard fix 272-02 normalized PAUL workflow reference paths and refreshed installed runtime copies.
+Stopped at: Fix complete; v2.63 milestone remains complete and next milestone decision pending.
+Next action: Review/merge PR #189, then return to `/paul:milestone` or `/paul:pause`.
+Resume file: .paul/phases/272-pause-workflow-instruction-audit/272-02-FIX-SUMMARY.md
 Resume context:
-- v2.63 is complete; Phase 272 SUMMARY is the latest resume artifact.
-- Main is synced at PR #188 merge commit `df56ece1`.
+- Fix 272-02 is complete; Phase 272 FIX-SUMMARY is the latest resume artifact.
+- Fix branch `fix/workflow-reference-resolution` created from main at `db188f78`; PR #189 opened.
 - Next decision: create/discuss next milestone or pause.

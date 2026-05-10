@@ -27,7 +27,7 @@ This workflow is loaded by kernel hook dispatch when WALT's hooks fire.
 
 **When:** Kernel dispatches pre-apply hooks before task execution begins.
 
-**Load:** @references/quality-detection.md, @references/quality-runner.md
+**Load:** modules/walt/references/quality-detection.md, modules/walt/references/quality-runner.md
 
 **Action:**
 1. Detect quality tools using heuristics from quality-detection.md:
@@ -74,7 +74,7 @@ This workflow is loaded by kernel hook dispatch when WALT's hooks fire.
 
 **When:** Kernel dispatches post-apply hooks after all tasks complete.
 
-**Load:** @references/quality-runner.md, @references/quality-lint.md
+**Load:** modules/walt/references/quality-runner.md, modules/walt/references/quality-lint.md
 
 **Action:**
 1. Check context_inject from pre-apply:
@@ -155,7 +155,7 @@ This workflow is loaded by kernel hook dispatch when WALT's hooks fire.
 
 **When:** Kernel dispatches post-unify hooks after state update while `SUMMARY.md` / `FIX-SUMMARY.md` is still open for finalization.
 
-**Load:** @references/quality-delta.md, @references/quality-history.md
+**Load:** modules/walt/references/quality-delta.md, modules/walt/references/quality-history.md
 **Action:**
 1. Check for WALT annotations from the apply phase:
    - Look for walt_test_report and walt_lint_report in apply annotations

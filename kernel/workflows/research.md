@@ -19,11 +19,11 @@ Research informs planning but doesn't gate it.
 </loop_context>
 
 <required_reading>
-@references/subagent-criteria.md
+kernel/references/subagent-criteria.md
 </required_reading>
 
 <references>
-@src/templates/RESEARCH.md (output format)
+kernel/templates/RESEARCH.md (output format)
 </references>
 
 <process>

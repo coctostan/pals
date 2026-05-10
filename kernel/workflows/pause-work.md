@@ -16,7 +16,7 @@ Any position in the PLAN/APPLY/UNIFY loop. PAUSE captures the current lifecycle 
 <required_reading>
 Routine bounded inputs:
 - `.paul/STATE.md` — Current Position, Loop Position, Session Continuity, and Git State only when present or needed.
-- `references/git-strategy.md` — only for workflow-mode, pause Git State, and WIP continuity rules.
+- `kernel/references/git-strategy.md` — only for workflow-mode, pause Git State, and WIP continuity rules.
 
 Conditional inputs:
 - Current PLAN path — only when STATE or the active loop position names one.
@@ -30,8 +30,8 @@ Routine PAUSE starts with bounded STATE slices and does not full-read PROJECT, R
 </hot_artifact_loading>
 
 <references>
-references/context-management.md
-references/git-strategy.md
+kernel/references/context-management.md
+kernel/references/git-strategy.md
 </references>
 
 <process>
@@ -42,8 +42,8 @@ references/git-strategy.md
 3. Locate `## Loop Position`; read the smallest useful window for PLAN/APPLY/UNIFY markers.
 4. Locate `## Session Continuity`; read the smallest useful window for existing resume file and next-action fields.
 5. Resolve the latest plan path from STATE first. If STATE lacks it, inspect only the active phase directory under `.paul/phases/` and prefer the current plan ID over a repo-wide search.
-6. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `references/git-strategy.md`.
-7. If `GIT_WORKFLOW = "github-flow"`, collect compact branch/PR/CI/ahead-behind state using the shared pause/status recipe from `references/git-strategy.md`.
+6. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `kernel/references/git-strategy.md`.
+7. If `GIT_WORKFLOW = "github-flow"`, collect compact branch/PR/CI/ahead-behind state using the shared pause/status recipe from `kernel/references/git-strategy.md`.
 8. If `GIT_WORKFLOW != "github-flow"`, skip PR/CI/ahead-behind collection unless needed for an optional WIP commit decision.
 </step>
 
@@ -68,7 +68,7 @@ Do not include:
 <step name="optional_wip_commit">
 Run this before `write_handoff_and_state` so the handoff can record the WIP result.
 
-1. Reuse `GIT_WORKFLOW` from `load_pause_state_bounded`; resolve it from `references/git-strategy.md` only if missing.
+1. Reuse `GIT_WORKFLOW` from `load_pause_state_bounded`; resolve it from `kernel/references/git-strategy.md` only if missing.
 2. If `GIT_WORKFLOW = "none"` or there are no uncommitted changes, set `wip_result: skipped` and continue.
 3. Ask the user whether to create a WIP commit.
 

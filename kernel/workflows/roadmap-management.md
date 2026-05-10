@@ -24,8 +24,8 @@ Escalate to a full read only as an explicit fallback when fields are missing or 
 </hot_artifact_loading>
 
 <references>
-@src/templates/ROADMAP.md (phase section format)
-references/git-strategy.md
+kernel/templates/ROADMAP.md (phase section format)
+kernel/references/git-strategy.md
 </references>
 
 ---
@@ -41,16 +41,16 @@ references/git-strategy.md
 
 <step name="check_git_state">
 **Surface git/PR state for github-flow projects.**
-Use `references/git-strategy.md` for the shared resolution and state-collection recipe.
+Use `kernel/references/git-strategy.md` for the shared resolution and state-collection recipe.
 
-1. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `references/git-strategy.md`.
+1. Resolve `GIT_WORKFLOW` with the shared 3-tier contract from `kernel/references/git-strategy.md`.
 2. **If `GIT_WORKFLOW = "github-flow"`:** collect `CURRENT_BRANCH`, `GIT_BASE_BRANCH`, ahead/behind counts, PR URL/state, and CI state using the shared status recipe.
 3. **If `GIT_WORKFLOW != "github-flow"`:** skip entirely (no git state surfacing).
 </step>
 
 <step name="determine_next_action">
 **Git-aware routing (github-flow only):**
-If `GIT_WORKFLOW = "github-flow"` and git state was collected, apply the shared routing priority from `references/git-strategy.md`:
+If `GIT_WORKFLOW = "github-flow"` and git state was collected, apply the shared routing priority from `kernel/references/git-strategy.md`:
 - behind base
 - PR open + CI failing
 - PR open + CI passing + reviews pending (if `require_reviews: true`)
