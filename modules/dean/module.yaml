@@ -14,38 +14,35 @@ hooks:
   pre-plan:
     priority: 50
     description: >-
-      MUST detect package manager: look for pnpm-lock.yaml, package-lock.json,
-      yarn.lock, go.mod, Cargo.toml, requirements.txt, Pipfile, Gemfile. MUST run
-      the matching audit command (e.g., `pnpm audit --json` for pnpm, `npm audit
-      --json` for npm). Parse JSON output to extract severity counts. Output:
-      '| Severity | Count |' table. THEN MUST check for baseline: `cat
-      .paul/dean-baseline.json 2>/dev/null`. If baseline exists AND is not stale
-      (created + staleness_days > now): compute delta — new_critical =
-      current.critical - baseline.critical, new_high = current.high -
-      baseline.high. If new_critical > 0 OR new_high > 0: BLOCK with 'DEAN BLOCK:
-      {N} NEW critical/high vulnerabilities since baseline. Packages: [list].' If
-      delta <= 0: PASS with 'DEAN: Baseline acknowledged ({N} critical, {M} high
-      pre-existing). No NEW vulnerabilities.' If baseline is stale: treat as no
-      baseline (full BLOCK on critical > 0). If no baseline exists: BLOCK plan
-      creation if critical > 0: 'DEAN BLOCK: {N} critical vulnerabilities found.
-      Packages: [list]. Fix or override to establish baseline.' Record counts as
-      BASELINE for post-apply comparison. Inject dep_warnings with severity
-      breakdown.
+      Detect audit scope from dependency manifests/lockfiles: pnpm-lock.yaml,
+      package-lock.json, yarn.lock, go.mod, Cargo.toml, requirements.txt,
+      Pipfile, Gemfile. Run the matching audit command from vulnerability-audit.md
+      only when the tool and registry access are available. Parse severity counts
+      and package/advisory IDs when provided. Treat `.paul/dean-baseline.json` as
+      DEAN vulnerability baseline evidence, not lifecycle truth. If a fresh baseline
+      exists, compute critical/high deltas: PASS when delta <= 0; BLOCK on new
+      critical/high with expected-vs-observed evidence. If no fresh baseline exists,
+      BLOCK on current critical vulnerabilities with package/advisory evidence;
+      otherwise carry current counts forward as APPLY comparison evidence. On stale
+      baseline, report staleness and use the no-fresh-baseline rule. If the audit
+      is unavailable or fails before producing parseable counts, emit compact
+      evidence with reason and install/auth/network hint; do not invent counts.
+      Recovery is owned by the workflow call site: fix, request/record an approved
+      baseline or override where permitted, or stop.
     refs:
       - references/vulnerability-audit.md
   post-apply:
     priority: 150
     description: >-
-      Re-run the same audit command used in pre-plan (e.g., pnpm audit --json).
-      Parse JSON output for current severity counts. Compare against pre-plan
-      baseline to compute DELTA: new_critical, new_high, new_moderate, new_low.
-      Output a comparison table: '| Severity | Before | After | New |' with
-      rows for each level. BLOCK if new_critical > 0 OR new_high > 0 — display:
-      'DEAN BLOCK: N new critical/high vulnerabilities introduced. Packages:
-      [names]. CVEs: [ids]. Fix before proceeding.' WARN (non-blocking) if
-      new_moderate > 0 — display: 'DEAN WARN: N new moderate vulnerabilities.
-      Consider fixing.' IGNORE new_low. If audit tool unavailable, display
-      install command from vulnerability-audit.md and skip gracefully.
+      Re-run the same audit command used in pre-plan when available. Compare
+      current severity counts against APPLY comparison evidence and report
+      '| Severity | Before | After | New |'. BLOCK only on new critical/high
+      vulnerabilities with package/advisory evidence and expected-vs-observed
+      counts. WARN on new moderate vulnerabilities; ignore new low vulnerabilities.
+      If the audit is unavailable or fails before producing parseable counts, emit
+      compact evidence with reason and do not invent counts. Recovery is owned by
+      the workflow call site: fix, request/record an approved override where
+      permitted, or stop.
     refs:
       - references/vulnerability-audit.md
 

@@ -13,32 +13,36 @@ hooks:
   pre-apply:
     priority: 100
     description: >-
-      MUST run test suite and record baseline counts (total/passing/failing/
-      test_command). Inject test_baseline into context. If no test command found:
-      'WALT: No test suite detected — baseline is zero.'
+      Resolve the applicable test command from quality-runner.md/quality-detection.md.
+      If available, run it before APPLY and record baseline evidence: command,
+      exit code, total/passing/failing/skipped counts, named failures when available,
+      and coverage if configured. Inject `test_baseline` as APPLY comparison evidence.
+      If no command applies, emit 'WALT: skipped — no test runner detected'; do not
+      treat skipped as zero passing/failing tests.
     refs:
       - references/quality-runner.md
       - references/quality-detection.md
   post-apply:
     priority: 100
     description: >-
-      MUST re-run tests + lint + typecheck. MUST compare against pre-apply
-      baseline. BLOCK if regressions detected: 'WALT BLOCK: Quality regression
-      — {N} tests now failing (was {M}). Fix before proceeding.'
+      Re-run applicable tests, lint, and typecheck after APPLY. Compare test results
+      against `test_baseline`; run lint/typecheck according to quality-lint.md.
+      BLOCK only on new strict-mode quality regressions with expected-vs-observed
+      evidence: 'WALT BLOCK: Quality regression — expected baseline or better;
+      observed {summary}.' Recovery is owned by the workflow call site: fix, use an
+      explicit deviation only where permitted, or stop. WARN or SKIP according to
+      referenced quality rules when tools are unavailable, advisory, or non-blocking.
     refs:
       - references/quality-runner.md
       - references/quality-lint.md
   post-unify:
     priority: 100
     description: >-
-      MUST compute quality delta (before vs after). MUST append entry to
-      .paul/quality-history.md with: date (YYYY-MM-DD), phase name, test counts
-      (total/passing/failing), lint result (clean or N warnings), typecheck result
-      (clean or N errors), coverage % (if available), trend direction (↑ improving
-      / → stable / ↓ declining). MUST create .paul/quality-history.md if it
-      doesn't exist, with header: '| Date | Phase | Tests | Lint | Typecheck |
-      Coverage | Trend |'. If no quality data: 'WALT: No quality data to record
-      for this phase.'
+      Compute quality delta from APPLY-captured WALT reports; do not re-run checks
+      in UNIFY. Append one row to `.paul/QUALITY-HISTORY.md` using quality-history.md,
+      creating the file with its header if missing. Return command/result/delta
+      evidence for SUMMARY. If no quality data exists, append a skipped quality row
+      and do not invent metrics.
     refs:
       - references/quality-delta.md
       - references/quality-history.md

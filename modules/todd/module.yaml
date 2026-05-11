@@ -38,25 +38,40 @@ hooks:
   pre-apply:
     priority: 50
     description: >-
-      MUST verify test files exist or are first in task order. MUST block if RED
-      phase would be skipped: 'TODD BLOCK: Test files must exist before
-      implementation. Create tests first.'
+      If the approved PLAN is `type: tdd` or a task explicitly declares RED/test-first
+      work, verify RED evidence before implementation: the first relevant task creates
+      a failing test or an existing test file plus failing RED result is recorded.
+      BLOCK only when implementation would start without required RED evidence:
+      'TODD BLOCK: RED evidence missing before implementation — expected test-first
+      task or failing RED result; observed none. Parent APPLY decides recovery: fix
+      task order, record an approved deviation if the workflow permits, or stop.'
+      For docs/reference-only or non-TDD scopes with no RED/test-first task, emit
+      'TODD: skipped — no TDD enforcement for this scope.'
     refs:
       - references/tdd-execution.md
   post-task:
     priority: 100
     description: >-
-      MUST run test suite after each task. MUST block if tests regress from
-      previous task's state: 'TODD BLOCK: Tests regressed after Task {N}.
-      {failing_count} tests now failing. Fix before proceeding.'
+      For TDD tasks with an available test command, run the relevant tests after each
+      RED/GREEN/REFACTOR or implementation task and compare against the prior task
+      or pre-apply baseline. BLOCK only on new regressions with observed evidence:
+      'TODD BLOCK: Tests regressed after Task {N} — expected no new failures;
+      observed {failing_count} new failing tests: {test_names_or_summary}. Parent
+      APPLY decides recovery: fix, retry within plan limits, record an approved
+      deviation if the workflow permits, or stop.' If no test command applies, emit
+      a compact skip with reason.
     refs:
       - references/tdd-execution.md
   post-apply:
     priority: 200
     description: >-
-      MUST run full test suite. If all green, MUST suggest REFACTOR candidates
-      from changed files. If tests fail: 'TODD BLOCK: {N} tests failing after
-      APPLY. Fix before proceeding to UNIFY.'
+      For TDD scopes with an available full-suite command, run the suite after APPLY
+      and compare failures against the baseline. PASS when no new failures remain,
+      and suggest REFACTOR candidates from changed files when useful. BLOCK only on
+      new or unresolved regressions: 'TODD BLOCK: {N} new/unresolved tests failing
+      after APPLY — expected baseline or better; observed {summary}. Parent APPLY
+      decides recovery: fix, record an approved deviation if the workflow permits,
+      or stop before UNIFY.' If no suite applies, emit a compact skip with reason.
     refs:
       - references/tdd.md
 

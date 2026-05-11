@@ -1,5 +1,5 @@
 <overview>
-WALT quality delta tracking for UNIFY. Collects before/after metrics from apply-phase WALT reports and documents in SUMMARY.md. Does not re-run checks — just records what apply captured.
+WALT quality delta tracking for UNIFY. It summarizes APPLY-captured WALT reports in SUMMARY.md; it does not re-run checks or invent missing metrics.
 </overview>
 
 <delta_collection>
@@ -73,12 +73,11 @@ WALT quality delta tracking for UNIFY. Collects before/after metrics from apply-
 
 ## Edge Cases
 
-- **No tools:** "Not tracked". Don't suggest installing.
-- **Partial tracking:** Verdict based on tracked metrics only.
-- **First plan:** Trajectory = "◆ baseline". Before = baseline capture, after = post-apply.
-- **All stable:** Show table with ● indicators. Fine — stable is acceptable.
-- **Pre-WALT plans:** "Not available (pre-WALT plan)". Don't retroactively run checks.
-- **No coverage tool:** Omit coverage row. Note "Coverage: not tracked" only if other metrics tracked.
-- **Tests deleted:** Note "(tests removed)". Mark "● stable (tests restructured)" if failures unchanged.
+- **No WALT APPLY evidence:** `Not tracked (no WALT APPLY evidence)`; do not invent metrics.
+- **No quality tools detected:** `Not tracked (no quality tools detected)`; do not suggest installing.
+- **Partial data:** Show available metrics, mark missing categories as `—`, and compute verdict only from tracked metrics.
+- **First plan:** Trajectory = `◆ baseline`; before/after come from APPLY baseline/result captures.
+- **All stable:** Show table with ● indicators.
+- **Pre-WALT plans:** `Not available (pre-WALT plan)`; do not retroactively run checks.
 
 </edge_cases>

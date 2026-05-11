@@ -123,3 +123,4 @@ Types: —
 | 272-02-FIX | 2026-05-10 | Pi 312/312, XH 202/202 | N/A (shell) | N/A | N/A | → stable (workflow reference paths normalized to kernel/modules logical paths; installed Pi runtime refreshed) |
 | 273-01 | 2026-05-11 | — | — | — | — | — skipped (docs-only contract; focused marker checks + git diff --check) |
 | 274-01 | 2026-05-11 | — | — | — | — | — skipped (docs/reference-only; focused read/grep + git diff --check; artifact consistency has pre-existing MILESTONES Phase 274 omission) |
+| 275-01 | 2026-05-11 | Pi 312/312, XH 202/202 | N/A (shell) | N/A | N/A | → stable (instruction-only module rewrite; validation unchanged and all passing) |

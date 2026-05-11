@@ -1,5 +1,5 @@
 <overview>
-WALT test runner for APPLY phase. Runs tests before and after task execution to detect regressions. Uses quality profile from quality-detection.md. No test runner detected = skip silently.
+WALT test runner for APPLY. It captures baseline and result evidence, then gates on new regressions by mode. No runner is a visible SKIP, not a zero baseline.
 </overview>
 
 <test_execution_protocol>
@@ -9,11 +9,11 @@ WALT test runner for APPLY phase. Runs tests before and after task execution to 
 **When:** Baseline capture (before first task) and result capture (after last task).
 
 **Steps:**
-1. Read quality profile for `tools.test`. No entry = log skip, return.
+1. Read quality profile for `tools.test`. No entry = emit `WALT: skipped — no test runner detected`, return `SKIP`.
 2. Execute test command (e.g., `npx vitest run`, `python -m pytest`).
-3. Capture: exit code, test counts (passed/failed/skipped), full output.
-4. If `coverage_command` in profile: run it, parse total coverage %.
-5. **Timeout:** 120s. Exceed = kill, warn, skip gate.
+3. Capture: command, exit code, parsed counts when available, named failures when available, and output summary.
+4. If `coverage_command` exists, run it and parse total coverage %.
+5. **Timeout:** 120s. Kill the process, emit timeout evidence, return `WARN`, and do not invent counts.
 
 ### Parsing Test Output
 
@@ -58,23 +58,23 @@ If counts unparseable: fall back to exit code only. If no `coverage_command`: om
 
 ## Gating Rules
 
-| Mode | On Regression | Default? |
-|------|--------------|----------|
-| `strict` | Block. Present fix/override/stop options. | Yes |
-| `lenient` | Warn, continue. | No |
-| `advisory` | Surface in report, never block. For research/prototyping phases. | No |
+| Mode | On New Regression | Default? |
+|------|-------------------|----------|
+| `strict` | BLOCK with expected-vs-observed evidence | Yes |
+| `lenient` | WARN and continue | No |
+| `advisory` | INFO only; never block | No |
 
 Config: `.paul/walt.yml` → `test_gate: strict|lenient|advisory`. Default: `strict`.
 
-**Small-change exemption:** If plan modifies ≤5 files and 0 test files, treat as `lenient` regardless of config.
+No automatic small-change exemption. WALT must not infer lenient/advisory mode from file count.
 
 | Gate Result | Meaning |
 |-------------|---------|
-| `PASS` | No regressions |
-| `BLOCK` | Regressions in strict mode |
-| `WARN` | Regressions in lenient mode |
-| `INFO` | Regressions in advisory mode (reported, not blocking) |
-| `SKIP` | No test runner or runner failed |
+| `PASS` | No new regressions |
+| `BLOCK` | New regression in strict mode |
+| `WARN` | Regression in lenient mode, runner timeout/failure, or unparseable counts with exit evidence |
+| `INFO` | Regression in advisory mode |
+| `SKIP` | No test runner or no tests found |
 
 </gating_rules>
 
@@ -93,7 +93,7 @@ Gate: {PASS|BLOCK|WARN|INFO|SKIP}
 ────────────────────────────────────
 ```
 
-If test names available, list regressions. No runner = "No test runner detected — skipped". Runner error = SKIP with error message.
+If test names are available, list regressions. No runner = `WALT: skipped — no test runner detected`. Runner timeout/failure = WARN with command/error evidence; do not invent counts.
 
 ### Failure Context (on BLOCK/WARN)
 
@@ -108,11 +108,12 @@ When gate is not PASS, include actionable context for the agent:
 
 ## Edge Cases
 
-- **No test runner:** Skip silently. Gate = SKIP. Don't suggest installing.
-- **Runner fails to execute:** Warn, Gate = SKIP. Don't retry/fix/block.
-- **No tests (0 total):** Gate = SKIP, "No tests found". Don't suggest writing tests.
-- **Baseline has failures:** Known failures aren't regressions. Only NEW failures above baseline count.
-- **Tests deleted:** Passed count decrease without new failures = not regression. Gate on new failures only.
-- **TDD plan:** TDD execution manages its own test runs. WALT still captures baseline before and result after for outer quality gate.
+- **No test runner:** Gate = SKIP. Emit visible skip; do not suggest installing.
+- **Runner timeout/failure:** Gate = WARN. Record command/error; do not invent counts.
+- **No tests (0 total):** Gate = SKIP, "No tests found"; do not suggest writing tests.
+- **Baseline has failures:** Known failures are not regressions. Only new failures above baseline count.
+- **No baseline available:** Report current result only; do not classify regressions without baseline evidence.
+- **Tests deleted:** Passed count decrease without new failures is not a regression. Gate on new failures only.
+- **TDD plan:** TDD execution manages phase gates. WALT still captures outer baseline/result evidence.
 
 </edge_cases>

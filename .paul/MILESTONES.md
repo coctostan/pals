@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.64 active — 2 of 6 phases complete; Phase 275 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.64 active — 3 of 6 phases complete; Phase 276 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
