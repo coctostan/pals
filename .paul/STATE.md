@@ -108,8 +108,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: feature/274-base-module-dispatch-instruction-rewrite
-Latest phase merge: `f8861d44` — Phase 273 module instruction audit contract merged via PR #190; Phase 274 APPLY changes are in progress on feature branch.
-PR: not yet opened for Phase 274; UNIFY/postflight will reconcile PR/merge readiness.
+Latest phase merge: `f8861d44` — Phase 273 module instruction audit contract merged via PR #190; Phase 274 APPLY committed `14b81631` on feature branch.
+PR: #191 — https://github.com/coctostan/pals/pull/191 (opened after Phase 274 APPLY postflight; CI/review/merge readiness pending UNIFY).
 Transition state: Phase 274 APPLY complete; UNIFY pending.
 Prior PRs: #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
