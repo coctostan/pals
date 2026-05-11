@@ -9,19 +9,20 @@ WALT lint/typecheck integration for APPLY phase. Runs linters, type checkers, an
 **When:** After tasks complete and after test runner (walt_post_apply). **Order:** format → lint → typecheck.
 
 **Step 1: Format Check + Auto-Fix**
-- Run format check (e.g., `npx prettier --check .`)
-- Issues found + auto-fix available → run fix → record "{N} format issues auto-fixed"
+- Run format check when a configured formatter exists.
+- Auto-fix changed files only. If scope is uncertain, do not auto-fix.
+- Re-run format check and record: "{N} issues, {M} auto-fixed, {R} remaining".
 
 **Step 2: Lint Check + Auto-Fix**
-- Run lint (e.g., `npx eslint . --max-warnings=0`)
-- Issues found + auto-fix available → run fix → re-run lint
-- Record: "{N} found, {M} auto-fixed, {R} remaining"
+- Run configured lint command, scoped to changed files when possible.
+- If auto-fix is available, fix changed files only, re-run lint, and record: "{N} found, {M} auto-fixed, {R} remaining".
+- If auto-fix increases remaining issues or touches files outside approved scope, undo only the auto-fix changes and report evidence.
 
 **Step 3: Type Check**
-- Run typecheck (e.g., `npx tsc --noEmit`)
-- Record: "{N} type errors". Never auto-fix type errors.
+- Run configured typecheck command.
+- Record type error count and representative file:line evidence. Never auto-fix type errors.
 
-**Timeout:** 60s per tool. Exceed = kill, warn, skip.
+**Timeout:** 60s per tool. Kill the process, emit timeout evidence, return WARN for that tool, and do not invent counts.
 
 </execution_protocol>
 
@@ -31,15 +32,15 @@ WALT lint/typecheck integration for APPLY phase. Runs linters, type checkers, an
 
 | Category | Auto-Fix? | Rationale |
 |----------|-----------|-----------|
-| Format violations | Always | Mechanical, deterministic |
-| Lint: auto-fixable | Yes | Simple rule-based transforms |
+| Format violations | Changed files in approved scope only | Mechanical, but scope must stay bounded |
+| Lint: auto-fixable | Changed files in approved scope only | Rule-based transforms within approved scope |
 | Lint: non-fixable | No | Requires judgment |
 | Type errors | Never | Requires code logic changes |
 
 **Safety:**
-- If auto-fix introduces NEW issues (re-check count > pre-fix count minus fixable): revert, warn
-- Never touch files outside project root
-- Never modify test files unless linter explicitly targets them
+- If auto-fix scope is uncertain, do not auto-fix.
+- If auto-fix increases remaining issues or touches files outside approved scope, undo only the auto-fix changes and report evidence.
+- Do not auto-fix unrelated files, even if the tool suggests them.
 
 </auto_fix_protocol>
 
@@ -47,27 +48,27 @@ WALT lint/typecheck integration for APPLY phase. Runs linters, type checkers, an
 
 ## Gating Rules
 
-| Category | Default Gate |
-|----------|-------------|
-| Format | No gate (always auto-fixed) |
+| Check | Default Gate |
+|-------|--------------|
+| Format | PASS if clean or auto-fixed; WARN if issues remain |
 | Lint | `lenient` (warn) |
 | Type errors | `strict` (block) |
 
 Config: `.paul/walt.yml` → `lint_gate: strict|lenient|advisory`, `type_gate: strict|lenient|advisory`.
 
-**Small-change exemption:** If plan modifies ≤5 files and 0 test files, treat lint/type gates as `lenient` regardless of config.
+No automatic small-change exemption. WALT must not infer lenient/advisory mode from file count.
 
-**Scoped validation:** When possible, scope lint/format checks to `files_modified` from the plan frontmatter rather than the entire project. Reduces noise from pre-existing issues.
+**Scoped validation:** Scope lint/format checks to changed files when possible.
 
 | Gate Result | Meaning |
 |-------------|---------|
-| `PASS` | No issues (or all auto-fixed) |
-| `BLOCK` | Type errors (strict) or lint (if strict) |
-| `WARN` | Lint issues in lenient mode |
-| `INFO` | Issues in advisory mode (reported, not blocking) |
-| `SKIP` | No tools or tool failed |
+| `PASS` | No issues or all allowed auto-fixes applied |
+| `BLOCK` | Strict-mode lint/type issue with evidence |
+| `WARN` | Lenient-mode issue, tool timeout/failure, or unparseable output with command evidence |
+| `INFO` | Advisory-mode issue |
+| `SKIP` | No applicable tool or no applicable files |
 
-**Combined gate (test + lint):** Most restrictive wins. BLOCK + anything = BLOCK. SKIP = use other's result. INFO = treat as PASS for gating, include in report.
+**Combined gate (test + lint):** Most restrictive wins. WARN/INFO remain visible. SKIP = use other available result.
 
 </gating_rules>
 
@@ -108,11 +109,12 @@ When gate is not PASS, include actionable context:
 
 ## Edge Cases
 
-- **No tools detected:** Skip silently. Don't suggest installing.
-- **Tool fails:** Warn, Gate = SKIP. Don't retry/fix/block.
-- **Auto-fix introduces issues:** Revert auto-fix, warn, report originals.
-- **Pre-existing lint:** No baseline comparison (unlike tests). Auto-fix handles easy cases; set `lint_gate: lenient` for noisy projects.
-- **Only format tools:** Run format + auto-fix. Gate = PASS.
-- **Format vs lint conflict:** Format runs first. If lint fix conflicts, re-run format after.
+- **No tools detected:** Gate = SKIP. Emit visible skip; do not suggest installing.
+- **Tool timeout/failure:** Gate = WARN. Record command/error; do not invent counts.
+- **Auto-fix introduces issues or touches files outside approved scope:** Undo only the auto-fix changes, re-run checks, and report evidence.
+- **Pre-existing lint:** No baseline comparison by default. Report current findings under configured gate.
+- **Only format tools:** Run format + scoped auto-fix. Gate = PASS if clean/auto-fixed, WARN if issues remain.
+- **Format vs lint conflict:** Format runs first. If lint fix conflicts, re-run format and report remaining issues.
+- **Typecheck unavailable:** Gate = SKIP for typecheck only; preserve lint/test results.
 
 </edge_cases>

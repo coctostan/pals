@@ -1,5 +1,5 @@
 <overview>
-Historical quality tracking. Appends per-plan quality snapshots to `.paul/QUALITY-HISTORY.md` during unify. Append-only — never edit history.
+Historical quality tracking. Appends one per-plan quality snapshot to `.paul/QUALITY-HISTORY.md` during UNIFY. Append-only module evidence; it does not update STATE, ROADMAP, or SUMMARY.
 </overview>
 
 <file_format>
@@ -45,7 +45,7 @@ Types: 0→0→0→0
 Append after `audit_quality_delta` step:
 
 1. **File missing?** Create with header, empty trajectory, table header.
-2. **Build entry** from WALT report "after" values (tests, coverage, lint, types, verdict).
+2. **Build entry** from WALT report "after" values (tests, coverage, lint, types, verdict). If a metric is missing or untracked, use `—`; do not invent metrics.
 3. **Append row** to Plan History table.
 4. **Update trajectory** — append new values. If >8 values, truncate with `...→` prefix.
 
@@ -78,8 +78,9 @@ Types: {types}
 ## Edge Cases
 
 - **First plan:** Create file, verdict = `◆ baseline`, single trajectory value.
-- **No WALT reports (SKIP):** Append with `—` for all, verdict = `— skipped`.
-- **Coverage not tracked:** `—` in Coverage, other metrics normal.
+- **No WALT APPLY evidence:** Append all `—`, verdict = `— skipped`; do not invent metrics.
+- **No quality tools detected:** Append all `—`, verdict = `— skipped`; do not suggest installing.
+- **Partial data:** Append available metrics and `—` for missing categories.
 - **All stable:** Still append — history is complete. Verdict = `● stable`.
 - **Pre-WALT plans:** Append all `—`. Create file if needed.
 - **Multiple plans per phase:** Each gets its own row. Trajectory grows per plan.

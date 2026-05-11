@@ -9,15 +9,15 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.64 Module Instruction Audit + Context-Efficiency Rewrite**
-Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 1 of 6 complete
+Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 2 of 6 complete
 Theme: Audit and rewrite PALS module instruction sources through guardrail-first, section-by-section collaboration so base and optional modules become context-efficient, semantically enforced, lifecycle-compatible, and free of stale ceremony, marker-only compliance, redundancy, confusion, or incorrect guidance. Each phase must look at the module surface holistically for anything redundant, confusing, or simply wrong before proposing targeted rewrites.
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
 | 273 | Module Instruction Audit Contract + Cohort Map | ✅ Complete — PR #190 `f8861d44` | 273-01 |
 | 274 | Base Module + Dispatch Instruction Rewrite | ✅ Complete — PR #191 `e18666ab` | 274-01 |
-| 275 | Core Enforcement Module Rewrite | Ready to plan | TBD |
-| 276 | Review, Knowledge, and Codegraph Module Rewrite | Not started | TBD |
+| 275 | Core Enforcement Module Rewrite | ✅ Complete — summary pending PR | 275-01 |
+| 276 | Review, Knowledge, and Codegraph Module Rewrite | Ready to plan | TBD |
 | 277 | Domain Optional Module Rewrite | Not started | TBD |
 | 278 | Module Guardrails + Closure | Not started | TBD |
 
@@ -31,11 +31,11 @@ Plans: 274-01 (`.paul/phases/274-base-module-dispatch-instruction-rewrite/274-01
 
 ### Phase 275: Core Enforcement Module Rewrite
 Focus: Collaboratively rewrite TODD, WALT, and other blocking/enforcement module instructions so they execute real checks, block with evidence, avoid stale ceremony, and cannot pass through marker prose or vague ritual. Work in small approved sections with holistic module review before edits.
-Plans: TBD (defined during /paul:plan)
+Plans: 275-01 (`.paul/phases/275-core-enforcement-module-rewrite/275-01-PLAN.md`; complete, summary `.paul/phases/275-core-enforcement-module-rewrite/275-01-SUMMARY.md`)
 
 ### Phase 276: Review, Knowledge, and Codegraph Module Rewrite
 Focus: Collaboratively rewrite IRIS, REV, SKIP, CODI, DOCS, and RUBY-style advisory module instructions for concise evidence, bounded source loading, non-blocking semantics, durable-but-compact persistence, and clear skip/no-scope behavior.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next action: /paul:plan)
 
 ### Phase 277: Domain Optional Module Rewrite
 Focus: Collaboratively rewrite ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, DEAN, OMAR, PETE, REED, VERA, and related domain module references/instructions by small file cohorts, preserving module-specific value while removing redundancy, confusion, stale assumptions, or incorrect guidance.
@@ -75,4 +75,4 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-11 — Phase 274 complete via PR #191 `e18666ab`; Phase 275 ready to plan.*
+*Last updated: 2026-05-11 — Phase 275 complete; Phase 276 ready to plan.*

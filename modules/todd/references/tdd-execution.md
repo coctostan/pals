@@ -18,73 +18,69 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 <step name="execute_red" gate="entry">
 **RED: Write failing test**
 
-**Test anti-patterns to avoid** (inspired by Superpowers anti-pattern injection):
-- No mock behavior assertions without verifying mock setup matches real interface
-- No test-only methods on production code just to make testing easier
-- No incomplete mocks that silently return undefined/null for untested paths
-- Mock complexity > 10 lines → consider integration test instead
+**Test anti-patterns to avoid**:
+- No mock behavior assertions unless mock setup matches the real interface
+- No test-only production methods
+- No incomplete mocks that silently return undefined/null
+- Mock setup >10 lines → consider integration test instead
 
-1. Read RED task and `<feature><behavior>` from plan
-2. Create test file (project conventions, descriptive names: "should [behavior] when [condition]")
-3. Run `test_command` and **classify failure reason** (inspired by SWE-agent/Superpowers "failing for the right reason" validation):
-   - **CORRECT FAILURE — missing module/function/method:** Impl doesn't exist yet. This is the expected RED state. Log: "RED verified — failing for the right reason (missing impl)."
-   - **WRONG FAILURE — syntax error in test:** STOP. Fix test syntax before proceeding. Do not count as valid RED.
-   - **WRONG FAILURE — import/config error for test framework:** STOP. Configure framework before proceeding.
-   - **WRONG FAILURE — unrelated test breaks:** STOP. Investigate coupling before proceeding.
-   - **Tests PASS (unexpected):** STOP. Do NOT proceed. Present options: fix test / feature exists / stop.
-4. Commit: `git commit -m "test({phase}-{plan}): add failing test for [feature]"`
-5. Store `red_commit_hash`. Unlock GREEN.
+1. Read RED task and `<feature><behavior>` from plan.
+2. Create the test using project conventions and descriptive names: "should [behavior] when [condition]".
+3. Run `test_command` and classify the result:
+   - **VALID RED:** the new/changed test fails for the expected behavior gap. Record command, exit status, and failure summary.
+   - **INVALID RED:** syntax, import, framework, config, or unrelated-test failure. BLOCK with expected vs observed evidence.
+   - **UNEXPECTED PASS:** BLOCK; the test did not prove missing behavior.
+4. On VALID RED, commit: `git commit -m "test({phase}-{plan}): add failing test for [feature]"`.
+5. Record `red_commit_hash`, command, and RED failure summary. Unlock GREEN.
 </step>
 
 <step name="execute_green" gate="red_complete">
 **GREEN: Implement to pass**
 
-**GATE:** `red_commit_hash` must exist. If not → STOP: "Cannot start GREEN without verified RED phase."
+**GATE:** `red_commit_hash` must exist. If missing, BLOCK: "Cannot start GREEN without verified RED evidence."
 
-**CONTRACT RULE:** Do NOT modify tests to make them pass. Tests define the contract. If tests seem wrong, go back to RED to fix them. (Inspired by Cline anti-pattern: agents that change tests to match broken implementation.)
+**CONTRACT RULE:** Do not weaken tests to make GREEN pass. If the test is wrong, return to RED and record why.
 
-1. Read GREEN task and `<feature><implementation>` from plan
-2. Write MINIMAL implementation — just make tests green, no cleverness
+1. Read GREEN task and `<feature><implementation>` from plan.
+2. Write the minimal implementation needed to satisfy the RED test.
 3. Run `test_command`:
-   - **ALL pass:** Log success.
-   - **New tests fail:** Read test output and use it for diagnosis (inspired by Aider's reflection loop). Iterate implementation (max 2 attempts, DO NOT change tests). Stalled → present options.
-   - **Existing tests break:** Fix without changing new test expectations.
-4. Commit: `git commit -m "feat({phase}-{plan}): implement [feature]"`
-5. Store `green_commit_hash`. Unlock REFACTOR.
+   - **PASS:** record command and result.
+   - **STILL FAILS:** retry implementation at most twice using test output. If still failing, BLOCK with expected vs observed evidence.
+   - **REGRESSION:** existing tests now fail. BLOCK; fix without weakening the new test or stop for parent APPLY decision.
+4. Commit: `git commit -m "feat({phase}-{plan}): implement [feature]"`.
+5. Record `green_commit_hash` and result summary. Unlock REFACTOR.
 </step>
 
 <step name="execute_refactor" gate="green_complete">
 **REFACTOR: Clean up**
 
-**GATE:** `green_commit_hash` must exist. If not → STOP: "Cannot start REFACTOR without verified GREEN phase."
+**GATE:** `green_commit_hash` must exist. If missing, BLOCK: "Cannot start REFACTOR without verified GREEN evidence."
 
-1. Review: extract constants, rename for clarity, remove duplication, simplify
-2. No improvements needed → log skip, proceed to results (no commit)
-3. If changes made → run `test_command`:
-   - **Pass:** Commit `refactor({phase}-{plan}): clean up [feature]`
-   - **Break:** Undo breaking change, re-verify, log partial application
-4. Store `refactor_commit_hash` if committed.
+1. Improve clarity, duplication, naming, or simplicity only.
+2. If no safe improvement is needed, record `refactor_skipped` with reason.
+3. If changes are made, run `test_command`:
+   - **PASS:** commit `refactor({phase}-{plan}): clean up [feature]`.
+   - **BREAK:** undo only the breaking refactor change, re-run tests, and record evidence.
+4. Record `refactor_commit_hash` if committed.
 </step>
 
 <step name="return_results">
-```
+Return compact evidence for parent APPLY and SUMMARY:
+
 TDD Execution Results:
-  RED:      ✓ verified (commit: {hash})
-  GREEN:    ✓ verified (commit: {hash})
-  REFACTOR: ✓ complete / skipped (commit: {hash} / none)
-  Total commits: 2-3
-  All tests passing: yes
-```
+  RED:      ✓ verified (commit: {hash}, failure: {summary})
+  GREEN:    ✓ verified (commit: {hash}, result: {summary})
+  REFACTOR: ✓ complete / skipped (commit: {hash} / reason)
+  Test command: {test_command}
+  All tests passing: yes/no
 </step>
 
-</process>
-
 <error_handling>
-- **Test command not found:** Ask user.
-- **RED passes unexpectedly:** Stop. Do NOT proceed — undermines TDD.
-- **GREEN fails after 3 iterations:** Stop. Rethink test expectations or approach.
-- **REFACTOR breaks tests:** Undo immediately. Never commit broken tests.
-- **Git commit fails:** Check init/hooks, report to user.
+- **Test command not found:** BLOCK for parent APPLY/user decision.
+- **RED invalid or passes unexpectedly:** BLOCK; do not proceed to GREEN.
+- **GREEN still fails after two retries:** BLOCK with expected vs observed evidence.
+- **REFACTOR breaks tests:** undo only the breaking refactor change and re-verify.
+- **Git commit fails:** report command/error; parent APPLY decides retry or stop.
 </error_handling>
 
 <anti_patterns>
