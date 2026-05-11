@@ -172,3 +172,157 @@ The protocol forbids:
 - weakening PLAN/APPLY/UNIFY authority to satisfy module-local prose.
 
 After each approved edit, the APPLY agent must re-read the changed section or file, verify the intended wording landed, and record a compact decision/evidence note for the phase SUMMARY. If a requested change would alter lifecycle authority or module behavior beyond the approved phase boundary, APPLY must stop and route back to planning or explicit user decision.
+
+
+## Module Cohort Map
+
+Phases 274-278 must use this cohort map unless a later approved PLAN narrows scope further.
+
+### Phase 274: Shared/base module surfaces
+
+Inclusion rules:
+
+- Module-facing docs: `docs/MODULE-SPEC.md` and `docs/MODULE-BUILDERS-GUIDE.md`.
+- Shared dispatch/evidence/context references: `kernel/references/module-dispatch.md`, `kernel/references/evidence-discipline.md`, `kernel/references/context-management.md`, and `kernel/references/specialized-workflow-integration.md`.
+- Kernel call-site wording where module dispatch semantics are described in `kernel/workflows/plan-phase.md`, `kernel/workflows/apply-phase.md`, and `kernel/workflows/unify-phase.md`.
+
+Primary outcome: base dispatch and module-authoring instructions agree on installed registry authority, hook-local refs, advisory/enforcement behavior, compact evidence, and lifecycle ownership.
+
+### Phase 275: Core enforcement modules
+
+Inclusion rules:
+
+- `todd` — TDD/test discipline and task-level blocking behavior.
+- `walt` — quality/test baseline, post-apply gates, and quality-history behavior.
+- `dean` — dependency/security audit behavior where dependency risk may block progression.
+- Any hook descriptions in the approved cohort that can block progression or enforce quality, security, dependency, or lifecycle behavior.
+
+Primary outcome: enforcement text blocks only with evidence, names recovery handling, and does not overreach into advisory or lifecycle-owned decisions.
+
+### Phase 276: Review, knowledge, and codegraph advisory modules
+
+Inclusion rules:
+
+- `iris` — review-quality and defect-pattern guidance.
+- `rev` — review workflows and review reports.
+- `skip` — knowledge/citation and source-persistence behavior.
+- `codi` — codegraph blast-radius extraction and history persistence.
+- `docs` — documentation-drift guidance.
+- `ruby` — technical-debt and refactor-suggestion guidance.
+- Compact-evidence and persistence rules for all listed modules.
+
+Primary outcome: advisory modules provide useful evidence and durable summaries without blocking, pretending to be lifecycle truth, or expanding context unnecessarily.
+
+### Phase 277: Domain optional modules
+
+Inclusion rules:
+
+- `arch` — architecture boundaries and drift checks.
+- `seth` — security patterns and secret/injection checks.
+- `gabe` — API compatibility and endpoint guidance.
+- `aria` — accessibility checks.
+- `luke` — UX/design consistency checks.
+- `dana` — data/migration/query guidance.
+- `dave` — deployment/CI/CD checks.
+- `omar` — observability/logging/health guidance.
+- `pete` — performance checks.
+- `reed` — resilience/retry/timeout checks.
+- `vera` — privacy/PII checks.
+- Any remaining domain-specific references not completed in earlier phases.
+
+Primary outcome: domain modules remain actionable and bounded while avoiding false positives, stale commands, cross-harness assumptions, and lifecycle-authority drift.
+
+### Phase 278: Validation guardrails and closure
+
+Inclusion rules:
+
+- Semantic validation guardrails for module dispatch behavior.
+- Registry/doc consistency checks across installed `modules.yaml`, source `modules/*/module.yaml`, and module docs.
+- Install/runtime verification where approved by the Phase 278 PLAN.
+- Evidence closure and milestone-completion preparation.
+- Validation suites such as `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` when approved for guardrail changes.
+
+Primary outcome: v2.64 closes with validation that detects marker-only module compliance and confirms dispatch semantics still match the contract.
+
+## Phase 274 Handoff
+
+Phase 274 must begin with a compact audit of shared/base surfaces and a proposed file/section order. It must include a blocking approval checkpoint before edits. Approved edits must proceed section by section, with scoped validation after each changed section and SUMMARY evidence describing decisions, changed semantics, and any deferred issues.
+
+Required Phase 274 focus:
+
+- Align module spec, builder guide, dispatch reference, evidence/context references, and workflow call-site language.
+- Confirm installed registry authority and source-file authority are not confused.
+- Confirm shared docs describe advisory vs enforcement semantics consistently.
+
+## Phase 275 Handoff
+
+Phase 275 must begin with a compact audit of TODD, WALT, DEAN, and blocking hook descriptions, then present the proposed file/section order. It must stop for approval before edits. Approved edits must preserve enforcement power only where concrete evidence and recovery handling exist.
+
+Required Phase 275 focus:
+
+- Tests, quality gates, and dependency/security blockers must report baseline, observed result, delta, and allowed recovery.
+- Enforcement modules must not claim authority over `.paul/*` lifecycle truth, merge gates, or user approval decisions.
+- SUMMARY evidence must identify any changed block/override/stop semantics.
+
+## Phase 276 Handoff
+
+Phase 276 must begin with a compact audit of IRIS, REV, SKIP, CODI, DOCS, RUBY, and persistence/evidence behavior, then present the proposed file/section order. It must stop for approval before edits. Approved edits must keep advisory modules advisory and compact.
+
+Required Phase 276 focus:
+
+- Advisory modules cannot block progression.
+- Persistent advisory artifacts must have clear destinations and schemas.
+- Codegraph, citation, review, docs, and debt instructions must be executable without broad or magical inference.
+
+## Phase 277 Handoff
+
+Phase 277 must begin with a compact audit of ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, OMAR, PETE, REED, VERA, and any remaining domain references, then present the proposed file/section order. It must stop for approval before edits. Approved edits must be scoped to the domain cohort.
+
+Required Phase 277 focus:
+
+- Domain checks must define applicable file types, skip conditions, warning/block criteria, and evidence format.
+- Stale shell commands or harness-specific instructions must be removed or narrowed when a Pi-native or platform-neutral instruction is available.
+- Domain modules must not introduce dependencies, CI behavior, runtime changes, or telemetry outside approved scope.
+
+## Phase 278 Guardrail Handoff
+
+Phase 278 must convert this contract into focused semantic validation and closure evidence. Guardrails must reject marker-only module compliance and verify at least:
+
+- advisory modules cannot block;
+- enforcement modules block only with concrete evidence and allowed recovery handling;
+- dispatch skip/pass/block evidence is visible;
+- hook refs remain bounded and hook-local;
+- module manifests and docs agree on module surfaces;
+- installed registry authority is distinct from source rewrite authority;
+- user-approved rewrite protocol was followed and recorded in phase summaries;
+- helper agents did not own lifecycle writes, module gates, or official verification.
+
+Phase 278 must also confirm whether README/skill-map or builder-facing docs need surfacing updates after the module rewrites, without adding unapproved runtime or dependency changes.
+
+## Verification Expectations
+
+Before APPLY or UNIFY claims this contract satisfied Phase 273, verification must include:
+
+- focused marker checks for all required sections in this document;
+- focused marker checks for all 20 installed module names;
+- focused marker checks for holistic review questions about redundancy, confusion, stale ceremony, marker-only compliance, contradiction, over/under-specification, and simply wrong guidance;
+- confirmation that the contract requires the v2.63 collaborative rewrite protocol for Phases 274-277;
+- changed-file scope review showing no module, kernel, test, runtime, dependency, CI, install, or home-directory source was changed by Phase 273;
+- `git diff --check`;
+- existing validation suites run, or a docs-only scoped skip recorded with alternate focused proof.
+
+Docs-only scoped skip rationale for Phase 273: this phase creates a planning contract only and does not modify executable code, module manifests, kernel workflows, tests, dependencies, or CI. Focused content checks plus `git diff --check` are acceptable APPLY evidence; UNIFY may decide whether to run broader validation for repository confidence.
+
+## Out of Scope
+
+Phase 273 explicitly excludes:
+
+- module source rewrites in `modules/**`;
+- kernel source rewrites in `kernel/**`;
+- test or semantic guardrail implementation in `tests/**`;
+- runtime driver, installer, package/dependency, or CI changes;
+- installed home-directory edits under `~/.pi/agent/skills/pals/*` or any other runtime installation surface;
+- telemetry changes;
+- weakening PLAN/APPLY/UNIFY authority;
+- removing module capabilities without a later approved rewrite-phase decision;
+- treating this contract as lifecycle truth.
