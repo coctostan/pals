@@ -8,35 +8,45 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite**
-Status: ✅ Complete | Mode: direct-requirements / interactive review | Phases: 5 of 5 complete | Completed: 2026-05-10
-Theme: Interactively audit and rewrite the core PALS lifecycle workflow instructions so their actual procedural steps are context-efficient, semantically correct, and free of contradictory legacy behavior. Focus is not marker-prose compliance; each phase must read the workflow closely, identify instructions that cause over-reading, stale context use, unnecessary ceremony, artifact bloat, helper-boundary confusion, or validation false positives, then edit the workflow text to make the intended behavior operational.
+**v2.64 Module Instruction Audit + Context-Efficiency Rewrite**
+Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 0 of 6 complete
+Theme: Audit and rewrite PALS module instruction sources through guardrail-first, section-by-section collaboration so base and optional modules become context-efficient, semantically enforced, lifecycle-compatible, and free of stale ceremony, marker-only compliance, redundancy, confusion, or incorrect guidance. Each phase must look at the module surface holistically for anything redundant, confusing, or simply wrong before proposing targeted rewrites.
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
-| 268 | Resume Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 268-01 ✅ |
-| 269 | Plan Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 269-01 ✅ |
-| 270 | Apply Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 270-01 ✅ |
-| 271 | Unify Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-09) | 271-01 ✅ |
-| 272 | Pause Workflow Instruction Audit + Context-Efficiency Rewrite | ✅ Complete (2026-05-10) | 272-01 ✅ |
+| 273 | Module Instruction Audit Contract + Cohort Map | UNIFY finalized; merge gate pending | 273-01 |
+| 274 | Base Module + Dispatch Instruction Rewrite | Not started | TBD |
+| 275 | Core Enforcement Module Rewrite | Not started | TBD |
+| 276 | Review, Knowledge, and Codegraph Module Rewrite | Not started | TBD |
+| 277 | Domain Optional Module Rewrite | Not started | TBD |
+| 278 | Module Guardrails + Closure | Not started | TBD |
 
-### Phase 268: Resume Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
-Rewrote `kernel/workflows/resume-project.md` so routine resume starts from bounded STATE windows, resolves handoff/resume context only when needed, avoids decorative report reads, and uses narrow handoff lifecycle cleanup. Added Pi and cross-harness semantic guardrails that fail on broad STATE reads, eager handoff-file reads, stale archived-handoff preference, or handoff routing before STATE. Summary: `.paul/phases/268-resume-workflow-instruction-audit/268-01-SUMMARY.md`.
+### Phase 273: Module Instruction Audit Contract + Cohort Map
+Focus: Inventory base and optional module instruction sources, define v2.64 rewrite criteria, classify module cohorts, and standardize the v2.63-style collaborative protocol: semantic guardrails first, compact audit + proposed file/section order, blocking approval checkpoint, no edits ahead of approval, section re-read after each change, and final validation. The audit must look at each module holistically for redundancy, confusion, stale ceremony, marker-only compliance, and simply wrong guidance.
+Plans: 273-01 (`.paul/phases/273-module-instruction-audit-contract-cohort-map/273-01-PLAN.md`; UNIFY finalized, PR #190 merge gate pending)
 
-### Phase 269: Plan Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
-Rewrote `kernel/workflows/plan-phase.md` so routine planning starts from bounded STATE windows and current ROADMAP target-phase context, reads PROJECT/PRD/prior summaries only when needed, uses proportional collaboration prompts, keeps CODI seed preparation compact and bounded, and reports plan review/state updates concisely. Added Pi and cross-harness semantic guardrails that fail on broad/eager plan reads, mandatory prompt ceremony, missing bounded read order, or stale marker-only compliance. Summary: `.paul/phases/269-plan-workflow-instruction-audit/269-01-SUMMARY.md`.
+### Phase 274: Base Module + Dispatch Instruction Rewrite
+Focus: Collaboratively rewrite kernel/module-dispatch/base-module instructions, including lifecycle boundaries, hook semantics, skip/block evidence, compact dispatch output, and PAUL/CARL separation. Work file-by-file and section-by-section with user-approved wording before mutation.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 270: Apply Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
-Rewrote `kernel/workflows/apply-phase.md` so APPLY starts from bounded approval/STATE/PLAN loading, keeps helper delegation parent-owned with compact packet/report rules, blocks checkpoints with compact user-response gates, and uses targeted verification/failure handling instead of broad diff/revert ceremony. Added Pi and cross-harness semantic guardrails that reject broad/eager apply reads, helper-owned lifecycle authority, non-blocking checkpoints, and unbounded diff instructions. Summary: `.paul/phases/270-apply-workflow-instruction-audit/270-01-SUMMARY.md`.
+### Phase 275: Core Enforcement Module Rewrite
+Focus: Collaboratively rewrite TODD, WALT, and other blocking/enforcement module instructions so they execute real checks, block with evidence, avoid stale ceremony, and cannot pass through marker prose or vague ritual. Work in small approved sections with holistic module review before edits.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 271: Unify Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
-Rewrote `kernel/workflows/unify-phase.md` so routine UNIFY starts from bounded STATE/session/PLAN/execution-evidence slices, keeps SUMMARY as the detailed reconciliation artifact, records compact mandatory module dispatch evidence, preserves ordered GitHub Flow merge gates, and cannot skip last-plan transition routing. Added Pi and cross-harness semantic guardrails that reject broad/eager UNIFY reads, duplicate narrative writes, optional/missing post-unify dispatch, marker-only module evidence, unsafe merge ordering, or transition skipping. Summary: `.paul/phases/271-unify-workflow-instruction-audit/271-01-SUMMARY.md`.
+### Phase 276: Review, Knowledge, and Codegraph Module Rewrite
+Focus: Collaboratively rewrite IRIS, REV, SKIP, CODI, DOCS, and RUBY-style advisory module instructions for concise evidence, bounded source loading, non-blocking semantics, durable-but-compact persistence, and clear skip/no-scope behavior.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 272: Pause Workflow Instruction Audit + Context-Efficiency Rewrite — Complete
-Plan 272-01 added semantic PAUSE guardrails to Pi and cross-harness validation, then rewrote `kernel/workflows/pause-work.md` section by section for bounded STATE loading, compact agent-oriented handoff packets, stale active-handoff lifecycle, GitHub Flow WIP continuity, exact resume action semantics, and concise error/confirmation behavior. Validation passed: diff-check, artifact consistency, Pi 312/312, and cross-harness 202/202. Summary: `.paul/phases/272-pause-workflow-instruction-audit/272-01-SUMMARY.md`.
+### Phase 277: Domain Optional Module Rewrite
+Focus: Collaboratively rewrite ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, DEAN, OMAR, PETE, REED, VERA, and related domain module references/instructions by small file cohorts, preserving module-specific value while removing redundancy, confusion, stale assumptions, or incorrect guidance.
+Plans: TBD (defined during /paul:plan)
 
-### Latest completed milestone: v2.62 PALS Context Diet — STATE & Hot-Path Compression
-Result: Phases 265–267 complete. Phase 265 created the authoritative context-diet contract (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`); Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 delivered Selective Artifact Loading wording and anti-regrowth TAPs, but this session exposed that the actual workflow instructions still contain contradictory broad-read/stale-context behavior. v2.63 supersedes the prior narrative-dedup recommendation with a stricter interactive instruction audit.
+### Phase 278: Module Guardrails + Closure
+Focus: Add or update semantic validation so module instruction compliance cannot pass through marker prose alone, verify registry/module docs and installed/runtime surfaces where applicable, record evidence, and close the milestone.
+Plans: TBD (defined during /paul:plan)
+
+### Latest completed milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite
+Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflow instructions now use bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. v2.64 extends the same collaborative instruction-audit pattern from lifecycle workflows into base and optional module sources.
 
 ## Completed Milestones
 
@@ -65,4 +75,4 @@ Result: Phases 265–267 complete. Phase 265 created the authoritative context-d
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-10 — v2.63 complete; next milestone decision pending.*
+*Last updated: 2026-05-11 — Phase 273 UNIFY finalized; GitHub Flow merge gate pending.*
