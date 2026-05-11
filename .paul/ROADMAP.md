@@ -9,13 +9,13 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.64 Module Instruction Audit + Context-Efficiency Rewrite**
-Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 0 of 6 complete
+Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 1 of 6 complete
 Theme: Audit and rewrite PALS module instruction sources through guardrail-first, section-by-section collaboration so base and optional modules become context-efficient, semantically enforced, lifecycle-compatible, and free of stale ceremony, marker-only compliance, redundancy, confusion, or incorrect guidance. Each phase must look at the module surface holistically for anything redundant, confusing, or simply wrong before proposing targeted rewrites.
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
-| 273 | Module Instruction Audit Contract + Cohort Map | UNIFY finalized; merge gate pending | 273-01 |
-| 274 | Base Module + Dispatch Instruction Rewrite | Not started | TBD |
+| 273 | Module Instruction Audit Contract + Cohort Map | ✅ Complete — PR #190 `f8861d44` | 273-01 |
+| 274 | Base Module + Dispatch Instruction Rewrite | 🔵 Ready to plan | TBD |
 | 275 | Core Enforcement Module Rewrite | Not started | TBD |
 | 276 | Review, Knowledge, and Codegraph Module Rewrite | Not started | TBD |
 | 277 | Domain Optional Module Rewrite | Not started | TBD |
@@ -23,7 +23,7 @@ Theme: Audit and rewrite PALS module instruction sources through guardrail-first
 
 ### Phase 273: Module Instruction Audit Contract + Cohort Map
 Focus: Inventory base and optional module instruction sources, define v2.64 rewrite criteria, classify module cohorts, and standardize the v2.63-style collaborative protocol: semantic guardrails first, compact audit + proposed file/section order, blocking approval checkpoint, no edits ahead of approval, section re-read after each change, and final validation. The audit must look at each module holistically for redundancy, confusion, stale ceremony, marker-only compliance, and simply wrong guidance.
-Plans: 273-01 (`.paul/phases/273-module-instruction-audit-contract-cohort-map/273-01-PLAN.md`; UNIFY finalized, PR #190 merge gate pending)
+Plans: 273-01 (`.paul/phases/273-module-instruction-audit-contract-cohort-map/273-01-PLAN.md`; complete via PR #190 `f8861d44`)
 
 ### Phase 274: Base Module + Dispatch Instruction Rewrite
 Focus: Collaboratively rewrite kernel/module-dispatch/base-module instructions, including lifecycle boundaries, hook semantics, skip/block evidence, compact dispatch output, and PAUL/CARL separation. Work file-by-file and section-by-section with user-approved wording before mutation.
@@ -75,4 +75,4 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-11 — Phase 273 UNIFY finalized; GitHub Flow merge gate pending.*
+*Last updated: 2026-05-11 — Phase 273 complete via PR #190; Phase 274 ready to plan.*

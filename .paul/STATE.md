@@ -4,21 +4,21 @@
 
 See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficiency rewrite)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.64 Module Instruction Audit + Context-Efficiency Rewrite — Phase 273 APPLY complete; UNIFY pending.
+**Current focus:** v2.64 Module Instruction Audit + Context-Efficiency Rewrite — Phase 274 ready to plan.
 
 ## Current Position
 
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
-Phase: 273 of 278 (Module Instruction Audit Contract + Cohort Map)
-Plan: 273-01
-Status: UNIFY finalized — GitHub Flow merge gate pending
-Last activity: 2026-05-11 — Phase 273 UNIFY summary finalized; PR #190 merge gate pending
-Next action: Recheck PR #190 CI/merge gate, then transition to Phase 274
+Phase: 274 of 278 (Base Module + Dispatch Instruction Rewrite)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-11 — Phase 273 complete via PR #190; transitioned to Phase 274
+Next action: Run PLAN for Phase 274
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
-- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [░░░░░░░░░░] 0% (Phase 273 UNIFY finalized; merge gate pending)
+- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██░░░░░░░░] 17% (Phase 273 ✅ PR #190 `f8861d44`; Phase 274 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 273 UNIFY finalized; GitHub Flow merge gate pending]
+  ○        ○        ○     [Ready to plan Phase 274]
 ```
 
 ## Accumulated Context
@@ -60,6 +60,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision 2026-05-09: Phase 271 shipped bounded UNIFY workflow rewrite | Phase 271 Plan 271-01 UNIFY | `kernel/workflows/unify-phase.md` now uses bounded state/plan/evidence loading, SUMMARY-first reconciliation, compact mandatory module persistence, ordered GitHub Flow merge gates, and required transition routing. Semantic Pi/cross-harness guardrails reject broad/eager UNIFY reads, duplicate narrative writes, optional dispatch, marker-only module evidence, unsafe merge ordering, or skipped transitions. |
 | Decision 2026-05-09: Phase 272 APPLY checkpoint approved section-by-section collaborative rewrite protocol | Phase 272 Plan 272-01 APPLY checkpoint | Pause workflow rewrite proceeds one section at a time with current excerpt, concrete problem, proposed wording/focused diff, user approval, scoped edit, and section re-read before moving on. Parent APPLY remains authoritative; no bulk rewrite or helper delegation for the instruction-sensitive workflow rewrite. |
 | Decision 2026-05-11: Create v2.64 Module Instruction Audit + Context-Efficiency Rewrite as the next milestone | v2.64 milestone creation (`/paul:milestone`) | Exploratory / high-collaboration milestone. Cohort-based structure across Phases 273–278: audit contract + cohort map, base/dispatch rewrite, core enforcement modules, review/knowledge/codegraph modules, domain optional modules, and guardrails/closure. Each rewrite phase inherits the v2.63 protocol: semantic guardrails first, compact audit + proposed file/section order, blocking approval checkpoint, no edits ahead of approval, section re-read after each change, and final validation. Audit scope explicitly includes holistic review for anything redundant, confusing, stale, marker-only, or simply wrong. |
+| Decision 2026-05-11: Phase 273 established the v2.64 module instruction audit contract and cohort map | Phase 273 Plan 273-01 UNIFY; PR #190 `f8861d44` | New `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md` inventories module instruction surfaces and all 20 installed module directories, defines the holistic audit rubric, preserves the v2.63 collaborative rewrite protocol, maps Phases 274-278 cohorts, and hands off semantic guardrail expectations for Phase 278. Phase 274 can start from the contract without rediscovering module roster or rewrite protocol. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -85,6 +86,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Skill audit Phase 272 APPLY: parent-owned; no helper. Added PAUSE guardrails, rewrote `pause-work.md` via approved section loop, compact agent handoff packets, stale-handoff/WIP continuity. Validation PASS: artifact_consistency, Pi 312/312, cross 202/202, diff-check.
 - Skill audit Phase 272 UNIFY: SUMMARY finalized; WALT/CODI rows recorded; PR #188 merged as `df56ece1`; v2.63 transition complete.
 - Fix 272-02 (standard): normalized workflow reference paths from legacy `@references/` / `references/` / `@src/` forms to adapter-resolvable `kernel/...` and `modules/...` logical paths; refreshed installed Pi/Claude runtime copies via `./install.sh`; verification PASS: Pi 312/312, cross-harness 202/202, diff-check.
+- Skill audit Phase 273 UNIFY: SUMMARY finalized with docs-only contract evidence; WALT quality row and CODI skipped-no-symbols row recorded; PR #190 merged as `f8861d44`; transitioned to Phase 274. No helper delegation.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -104,21 +106,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: fix/workflow-reference-resolution (from main)
-Last commit: `db188f78` — GitHub Flow branch base after v2.63 mainline.
-PR: https://github.com/coctostan/pals/pull/189 (fix/workflow-reference-resolution → main).
-CI: passing before merge (Socket checks).
-Working tree: standard fix 272-02 committed, pushed, and opened as PR #189.
-Prior PRs: #181 / #180 / #179 / #178 / #177 / #176 (v2.62 Phase 266+265 + v2.61 closure wave); earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: main
+Latest phase merge: `f8861d44` — Phase 273 module instruction audit contract merged via PR #190.
+PR: https://github.com/coctostan/pals/pull/190 (merged; Socket checks passing).
+Transition state: Phase 274 ready to plan; transition metadata committed after merge.
+Prior PRs: #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-11 — Phase 273 UNIFY finalized.
-Stopped at: GitHub Flow merge gate pending for PR #190.
-Next action: Recheck PR #190 CI/merge gate, then transition to Phase 274
-Resume file: .paul/phases/273-module-instruction-audit-contract-cohort-map/273-01-SUMMARY.md
+Last session: 2026-05-11 — Phase 273 complete and transitioned to Phase 274.
+Stopped at: Phase 274 ready to plan.
+Next action: /paul:plan for Phase 274
+Resume file: .paul/ROADMAP.md
 wip_result: skipped — no WIP commit requested during pause
 Resume context:
-- Phase 273 UNIFY summary finalized at `.paul/phases/273-module-instruction-audit-contract-cohort-map/273-01-SUMMARY.md`.
-- Product docs contract is committed and PR #190 is open for branch `phase-273-module-instruction-audit-contract`.
-- Merge gate remains pending because PR checks were not reported yet; after merge gate passes, transition to Phase 274.
+- Phase 273 shipped `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md` and closed via PR #190 (`f8861d44`).
+- Phase 274 scope: Base Module + Dispatch Instruction Rewrite using the Phase 273 contract and collaborative section-by-section protocol.
+- Start with `/paul:plan` for Phase 274.
