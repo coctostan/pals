@@ -9,16 +9,16 @@ See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficien
 ## Current Position
 
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
-Phase: 274 of 278 (Base Module + Dispatch Instruction Rewrite)
-Plan: 274-01 (`.paul/phases/274-base-module-dispatch-instruction-rewrite/274-01-PLAN.md`)
-Status: UNIFY complete — GitHub merge gate pending
-Last activity: 2026-05-11 — Phase 274 Plan 274-01 SUMMARY finalized
-Next action: Complete GitHub merge gate for PR #191, then transition to Phase 275
+Phase: 275 of 278 (Core Enforcement Module Rewrite)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-11 — Phase 274 complete via PR #191 `e18666ab`, transitioned to Phase 275
+Next action: Create Phase 275 plan
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
-- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [███░░░░░░░] 33% (Phase 274 UNIFY complete; PR #191 merge gate pending)
+- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [███░░░░░░░] 33% (Phases 273-274 complete; Phase 275 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 274 Plan 274-01 UNIFY complete; merge gate pending]
+  ○        ○        ○     [Phase 275 ready to plan]
 ```
 
 ## Accumulated Context
@@ -88,7 +88,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Fix 272-02 (standard): normalized workflow reference paths from legacy `@references/` / `references/` / `@src/` forms to adapter-resolvable `kernel/...` and `modules/...` logical paths; refreshed installed Pi/Claude runtime copies via `./install.sh`; verification PASS: Pi 312/312, cross-harness 202/202, diff-check.
 - Skill audit Phase 273 UNIFY: SUMMARY finalized with docs-only contract evidence; WALT quality row and CODI skipped-no-symbols row recorded; PR #190 merged as `f8861d44`; transitioned to Phase 274. No helper delegation.
 - Skill audit Phase 274 APPLY: parent-owned; no helper. User approved collaborative checkpoint, then redirected remaining docs/reference-only edits to direct execution. Updated `kernel/references/module-dispatch.md`, `docs/MODULE-SPEC.md`, and `docs/MODULE-BUILDERS-GUIDE.md` for installed registry authority, source manifest vs runtime dispatch boundaries, hook-local refs, advisory/enforcement semantics, compact `[dispatch]` evidence, and workflow-owned blocking. Archived consumed plan handoff to `.paul/handoffs/archive/HANDOFF-2026-05-11-phase-274-plan-created.md`. Validation: focused grep/read checks PASS; `git diff --check` clean; `tests/helpers/artifact_consistency.sh` still FAILS on pre-existing lifecycle artifact issue (`MILESTONES.md` lacks current Phase 274), already present before product-source edits; Pi/cross-harness suites skipped because this APPLY changed docs/reference semantics only, no executable workflow behavior.
-- Skill audit Phase 274 UNIFY: SUMMARY finalized with AC evidence, module reports, validation results, structured self-check, WALT quality row, and CODI skipped-no-symbols row. 1/1 plan summarized. Merge gate pending for PR #191; artifact consistency still fails on pre-existing `.paul/MILESTONES.md` Phase 274 omission.
+- Skill audit Phase 274 UNIFY: SUMMARY finalized with AC evidence, module reports, validation results, structured self-check, WALT quality row, and CODI skipped-no-symbols row. 1/1 plan summarized. PR #191 merged as `e18666ab`; transitioned to Phase 275. Artifact consistency repaired by updating `.paul/MILESTONES.md` current v2.64/Phase 274-275 state.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -108,20 +108,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/274-base-module-dispatch-instruction-rewrite
-Latest phase merge: `f8861d44` — Phase 273 module instruction audit contract merged via PR #190; Phase 274 UNIFY artifacts committed on feature branch pending merge.
-PR: #191 — https://github.com/coctostan/pals/pull/191 (UNIFY finalized; merge gate pending).
-Transition state: Phase 274 UNIFY complete; GitHub merge gate/transition pending.
+Branch: main
+Latest phase merge: `e18666ab` — Phase 274 base module + dispatch docs completed via PR #191; transitioned to Phase 275.
+PR: #191 — merged 2026-05-11 (squash) as `e18666ab`; checks passed before merge.
+Transition state: Phase 275 ready to plan.
 Prior PRs: #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-11 — Phase 274 Plan 274-01 UNIFY finalized.
-Stopped at: UNIFY complete, GitHub merge gate pending.
-Next action: Complete GitHub merge gate for PR #191, then transition to Phase 275.
-Resume file: .paul/phases/274-base-module-dispatch-instruction-rewrite/274-01-SUMMARY.md
+Last session: 2026-05-11 — Phase 274 complete and transitioned to Phase 275.
+Stopped at: Phase 275 ready to plan.
+Next action: /paul:plan for Phase 275 Core Enforcement Module Rewrite
+Resume file: .paul/ROADMAP.md
 wip_result: skipped — base branch; PAUSE does not WIP-commit on github-flow base branch
 Resume context:
-- SUMMARY finalized at `.paul/phases/274-base-module-dispatch-instruction-rewrite/274-01-SUMMARY.md`.
-- PR #191 is open for Phase 274; merge gate should verify PR/CI state, merge, sync base, then route to Phase 275 planning.
-- Remaining concern: `tests/helpers/artifact_consistency.sh` fails on pre-existing `.paul/MILESTONES.md` Phase 274 omission.
+- Phase 274 Plan 274-01 SUMMARY finalized and PR #191 merged as `e18666ab`.
+- Transition updated STATE/PROJECT/ROADMAP/MILESTONES to Phase 275 readiness.
+- Next phase should use `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md` plus Phase 274 base/dispatch docs as baselines for core enforcement module rewrite.
