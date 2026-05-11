@@ -15,7 +15,7 @@ Theme: Audit and rewrite PALS module instruction sources through guardrail-first
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
 | 273 | Module Instruction Audit Contract + Cohort Map | ✅ Complete — PR #190 `f8861d44` | 273-01 |
-| 274 | Base Module + Dispatch Instruction Rewrite | 🔵 Ready to plan | TBD |
+| 274 | Base Module + Dispatch Instruction Rewrite | UNIFY complete — PR #191 merge gate pending | 274-01 |
 | 275 | Core Enforcement Module Rewrite | Not started | TBD |
 | 276 | Review, Knowledge, and Codegraph Module Rewrite | Not started | TBD |
 | 277 | Domain Optional Module Rewrite | Not started | TBD |
@@ -27,7 +27,7 @@ Plans: 273-01 (`.paul/phases/273-module-instruction-audit-contract-cohort-map/27
 
 ### Phase 274: Base Module + Dispatch Instruction Rewrite
 Focus: Collaboratively rewrite kernel/module-dispatch/base-module instructions, including lifecycle boundaries, hook semantics, skip/block evidence, compact dispatch output, and PAUL/CARL separation. Work file-by-file and section-by-section with user-approved wording before mutation.
-Plans: TBD (defined during /paul:plan)
+Plans: 274-01 (`.paul/phases/274-base-module-dispatch-instruction-rewrite/274-01-PLAN.md`; UNIFY complete, PR #191 merge gate pending)
 
 ### Phase 275: Core Enforcement Module Rewrite
 Focus: Collaboratively rewrite TODD, WALT, and other blocking/enforcement module instructions so they execute real checks, block with evidence, avoid stale ceremony, and cannot pass through marker prose or vague ritual. Work in small approved sections with holistic module review before edits.
@@ -75,4 +75,4 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-11 — Phase 273 complete via PR #190; Phase 274 ready to plan.*
+*Last updated: 2026-05-11 — Phase 274 Plan 274-01 UNIFY complete; PR #191 merge gate pending.*

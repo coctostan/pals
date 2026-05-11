@@ -8,15 +8,17 @@
 
 ## Overview
 
-PALS v0.4 kernelizes the framework. The kernel (PAUL core) runs the plan/apply/unify loop and manages project state. Modules are optional pals — CARL, TODD, WALT, and future ones like DEAN, IRIS, SKIP — that extend the kernel through lifecycle hooks.
+PALS v0.4 kernelizes the framework. PAUL core runs the PLAN/APPLY/UNIFY loop and manages project state. Modules are optional pals — CARL, TODD, WALT, DEAN, IRIS, SKIP, and others — that extend the kernel through lifecycle hooks.
 
-Each module is self-contained. It declares a manifest (`module.yaml`) that tells the kernel what files it provides, which hooks it subscribes to, and what dependencies it requires. When a module is not installed, its hook points are no-ops. No errors, no warnings, no conditional logic in the kernel.
+Each module is self-contained. Its source manifest (`modules/{name}/module.yaml`) declares the files, hooks, refs, and dependencies used to build the installed module registry. Runtime dispatch reads installed `modules.yaml`; source manifests do not override installed dispatch state.
+
+When a module is not installed, its hook points are no-ops. No errors, no warnings, no workflow-local module checks.
 
 ---
 
 ## 1. Module Manifest Schema (`module.yaml`)
 
-Every module ships a `module.yaml` at its root. This is the single source of truth for what the module provides and how it integrates.
+Every module ships a source `module.yaml` at its root. It is the authoring truth for that module's provided files, hook metadata, refs, and dependencies. The installed `modules.yaml` registry remains the runtime dispatch authority.
 
 ```yaml
 # ── Identity ─────────────────────────────────────────────────────
@@ -38,18 +40,29 @@ hooks:
   pre-plan:
     priority: 100                # lower number = earlier execution
     description: Detect TDD candidates via heuristics
+    refs:
+      - references/tdd-detection.md
+      - references/tdd-plan-generation.md
   post-plan:
     priority: 100
     description: Structure plan as RED-GREEN-REFACTOR if TDD type
+    refs:
+      - references/tdd-plan-generation.md
   pre-apply:
     priority: 50
     description: Enforce RED phase — tests must be written first
+    refs:
+      - references/tdd-execution.md
   post-task:
     priority: 100
     description: Enforce GREEN phase — tests must pass after implementation
+    refs:
+      - references/tdd-execution.md
   post-apply:
     priority: 200
     description: Enforce REFACTOR phase — cleanup opportunity
+    refs:
+      - references/tdd.md
 
 # ── Files ────────────────────────────────────────────────────────
 files:
@@ -61,7 +74,7 @@ files:
   workflows:                     # workflow files (overlays or standalone)
     - workflows/plan-phase-tdd.md
   templates: []                  # template files the module provides
-  config: []                     # config files (installed to ~/.pals/carl/ etc.)
+  config: []                     # config files copied by adapters when required
   rules: []                      # shared rule files the module contributes
 
 # ── Commands ─────────────────────────────────────────────────────
@@ -88,23 +101,23 @@ platform:                        # optional platform-specific configuration
 | `version` | string | yes | Semver version of the module. |
 | `dependencies.kernel` | string | yes | Semver range for minimum kernel version. |
 | `dependencies.modules` | list[string] | no | Names of other modules this one requires. Installer checks these are present. |
-| `hooks` | map | no | Keys are hook point names; values define priority and description. |
+| `hooks` | map | no | Keys are hook point names; values define priority, description, and hook-local refs. |
 | `hooks.<point>.priority` | integer | yes (if hook declared) | Execution priority. Lower numbers run first. Range: 1-999. |
 | `hooks.<point>.description` | string | yes (if hook declared) | Actionable instruction for what the module does at this hook point. |
-| `hooks.<point>.refs` | list[string] | yes (if hook declared) | Reference files to load for this specific hook (not all module refs). |
-| `files.references` | list[string] | no | Reference documents installed to `~/.pals/references/`. |
-| `files.workflows` | list[string] | no | Workflow files installed to `~/.pals/workflows/`. |
-| `files.templates` | list[string] | no | Template files installed to `~/.pals/templates/`. |
-| `files.config` | list[string] | no | Config files installed to `~/.pals/<module-name>/`. |
-| `files.rules` | list[string] | no | Rule files installed to `~/.pals/rules/`. |
-| `commands` | list[object] | no | Slash commands installed to `~/.claude/commands/<module-name>/`. |
-| `platform` | map | no | Platform-specific configuration (Claude Code hooks, settings patches). |
+| `hooks.<point>.refs` | list[string] | yes (if hook declared) | Reference files to load for this hook only. Do not load all module refs by default. |
+| `files.references` | list[string] | no | Reference documents provided by the module and made available to installed dispatch. |
+| `files.workflows` | list[string] | no | Workflow overlays or standalone workflow files provided by the module. |
+| `files.templates` | list[string] | no | Template files provided by the module. |
+| `files.config` | list[string] | no | Module config files copied by adapters when the module requires runtime configuration. |
+| `files.rules` | list[string] | no | Shared rule files the module contributes. |
+| `commands` | list[object] | no | Slash commands the module provides. Install location is adapter-specific. |
+| `platform` | map | no | Platform-specific integration such as native hooks or settings patches. |
 
 ---
 
 ## 2. Lifecycle Hook Points
 
-The kernel fires hooks at eight points in the plan/apply/unify loop. Modules subscribe to the hooks they need; unsubscribed hooks are skipped with zero cost.
+The installed registry defines seven lifecycle hook points. Modules subscribe to the hooks they need; unsubscribed hooks are skipped with zero cost.
 
 ```
   pre-plan ──► PLAN ──► post-plan ──► [user approval]
@@ -114,7 +127,7 @@ The kernel fires hooks at eight points in the plan/apply/unify loop. Modules sub
        ▼
   ┌─────────────────────────────────┐
   │  for each task:                 │
-  │    pre-test ──► execute ──► post-task  │
+  │    execute ──► post-task        │
   └─────────────────────────────────┘
        │
        ▼
@@ -230,34 +243,8 @@ reason: "Pre-apply check failed: ..."
 
 ---
 
-### 2.4 `pre-test`
 
-**Trigger:** Fires before test execution within a task. This hook fires only when a task includes a verification step that runs tests. It does not fire for tasks that have no test phase.
-
-**Payload:**
-```yaml
-hook: pre-test
-phase_name: "04-auth-system"
-task_id: 1
-task_description: "Create auth service"
-test_command: "npm test"           # detected or configured test command
-files_changed:                     # files modified so far in this task
-  - "src/auth/service.ts"
-  - "src/auth/service.test.ts"
-```
-
-**Return contract:**
-```yaml
-action: continue                   # continue | block
-# If continue:
-test_command_override: null        # optionally override the test command
-# If block:
-reason: "Tests must be written before implementation (RED phase)"
-```
-
----
-
-### 2.5 `post-task`
+### 2.4 `post-task`
 
 **Trigger:** Fires after each individual task within an apply phase completes (whether it succeeded or failed). This is the per-task hook, not the per-apply hook.
 
@@ -292,7 +279,7 @@ reason: "Task failed quality gate: 2 test regressions detected"
 
 ---
 
-### 2.6 `post-apply`
+### 2.5 `post-apply`
 
 **Trigger:** Fires after all tasks in the apply phase have completed (or after the apply phase is halted due to a blocking hook). All task execution is finished.
 
@@ -332,7 +319,7 @@ remediation:                       # optional guidance for fixing
 
 ---
 
-### 2.7 `pre-unify`
+### 2.6 `pre-unify`
 
 **Trigger:** Fires when `/paul:unify` is invoked, before reconciliation begins. The kernel has loaded the plan and the apply results but has not yet compared them.
 
@@ -361,7 +348,7 @@ context_inject:                    # additional data to include in unify reconci
 
 ---
 
-### 2.8 `post-unify`
+### 2.7 `post-unify`
 
 **Trigger:** Fires after unify reconciliation is complete and the loop is about to close. STATE.md and ROADMAP.md may already be updated, but `SUMMARY.md` / `FIX-SUMMARY.md` is still open for finalization. This is the final hook before the loop iteration ends.
 **Payload:**
@@ -395,7 +382,7 @@ side_effects:                      # non-blocking follow-on actions the module p
 
 ## 3. Hook Composition
 
-When multiple modules subscribe to the same hook point, the kernel must resolve execution order, data flow, and failure handling.
+When multiple modules subscribe to the same hook point, dispatch resolves execution order, data flow, and failure handling from the installed registry.
 
 ### 3.1 Priority Ordering
 
@@ -410,12 +397,12 @@ If two modules declare the same priority on the same hook, execution order is al
 
 ### 3.2 Short-Circuit Behavior
 
-When a hook returns `action: block`:
+When an enforcement hook returns `action: block`:
 
-- **Blocking hooks** (`pre-plan`, `pre-apply`, `pre-test`, `post-task`, `post-apply`): Execution stops. Remaining modules on the same hook point **do not run**. The kernel surfaces the blocking module's `reason` to the user.
-- **Non-blocking hooks** (`post-plan`, `pre-unify`, `post-unify`): These hooks cannot return `block`. If a module attempts to, the kernel ignores the block and treats it as `continue`.
+- **Blocking-capable hooks** (`pre-plan`, `pre-apply`, `post-task`, `post-apply`): the current hook or cohort stops. Remaining modules in that hook or cohort do not run, and the workflow call site owns fix/override/stop handling.
+- **Advisory-only hooks** (`post-plan`, `pre-unify`, `post-unify`): these hooks cannot block. If a module attempts to, the workflow treats it as advisory output.
 
-Short-circuit order follows priority. If TODD (priority 50) blocks on `pre-apply`, WALT (priority 100) never runs on that invocation.
+Short-circuit order follows priority. If TODD (priority 50) blocks on `pre-apply`, WALT (priority 100) does not run on that invocation.
 
 ### 3.3 Data Passing Between Hooks
 
@@ -468,20 +455,17 @@ pre-plan
   └─ context_inject ──────────────► post-plan (as context_from_pre_plan)
 
 post-plan
-  └─ plan_modifications ──────────► kernel applies to plan
+  └─ plan_modifications ──────────► workflow applies to plan
 
 pre-apply
-  └─ context_inject ──────────────► pre-test, post-task, post-apply
+  └─ context_inject ──────────────► post-task, post-apply
                                       (as context_from_pre_apply)
 
-pre-test (per task)
-  └─ test_command_override ────────► kernel uses for test execution
-
 post-task (per task)
-  └─ annotations ──────────────────► accumulate across tasks
+  └─ annotations ─────────────────► accumulate across tasks
 
 post-apply
-  └─ annotations ──────────────────► pre-unify, post-unify, summary finalization
+  └─ annotations ─────────────────► pre-unify, post-unify, summary finalization
                                       (as annotations_from_apply)
 pre-unify
   └─ context_inject ──────────────► reconciliation + summary finalization
@@ -510,7 +494,7 @@ When a blocking hook fires, it affects not just the current hook point but all d
 
 **Within a hook point:** Priority ordering is deterministic (section 3.1). Lower priority numbers run first.
 
-**Across hook points:** Ordering follows the kernel loop: `pre-plan → post-plan → pre-apply → pre-test → post-task → post-apply → pre-unify → post-unify`. This is fixed and cannot be changed by modules.
+**Across hook points:** Ordering follows the lifecycle loop: `pre-plan → post-plan → pre-apply → post-task → post-apply → pre-unify → post-unify`. This is fixed and cannot be changed by modules.
 
 **Cross-module data availability:**
 - A module's `context_inject` at hook point N is available to **all modules** at hook point N+1 (via `context_from_*` payload fields)
@@ -546,13 +530,13 @@ Modules that detect project artifacts (TODD detecting test files, DEAN detecting
 
 ## 4. No-Op Behavior
 
-When a module is not installed, the kernel skips its hook points with zero overhead. There are no conditional checks, no fallback logic, no warnings, and no errors.
+When a module is absent from installed `modules.yaml`, its hook points are no-ops. There are no workflow-local module checks, fallback branches, warnings, or errors for that module.
 
-The kernel iterates over registered hooks at each hook point. If no modules are registered for a hook point, the kernel proceeds immediately. This means:
+At each hook point, dispatch reads the installed registry and keeps only modules registered for that hook. If none are registered, the workflow proceeds immediately. This means:
 
-- A kernel-only installation (no TODD, no WALT, no CARL) runs the plan/apply/unify loop with no hook overhead.
-- Installing a module is additive. Removing a module returns the kernel to its prior behavior.
-- The kernel never checks `if todd_installed` or `if walt_installed`. It checks `if hooks_registered_for("post-apply")`.
+- A kernel-only installation runs the PLAN/APPLY/UNIFY loop with no module overhead.
+- Installing a module is additive. Removing it from the installed registry returns the workflow to its prior behavior.
+- Workflows do not check `if todd_installed` or `if walt_installed`; they dispatch the current hook against installed `modules.yaml`.
 
 ---
 
@@ -610,36 +594,26 @@ pals/
 └── README.md
 ```
 
-### 5.2 Installed Layout (on the user's machine)
+### 5.2 Installed Runtime Layout
 
-After installation, files land in standard locations:
+Adapters install source module files into runtime locations for the current harness. Those paths are adapter-specific; workflows use logical paths such as `modules.yaml`, `references/...`, and `workflows/...` instead of hardcoded home-directory paths.
+
+A typical installed runtime contains:
 
 ```
-~/.pals/
-├── kernel.yaml                    # kernel version metadata
-├── modules.yaml                   # registry of installed modules + versions
-├── workflows/                     # kernel + module workflows (merged)
-├── references/                    # kernel + module references (merged)
-├── templates/                     # kernel + module templates (merged)
-├── rules/                         # kernel + module rules (merged)
-├── carl/                          # CARL-specific config (user-editable)
-│   ├── manifest
-│   ├── global
-│   ├── context
-│   └── commands
-
-~/.claude/
-├── commands/
-│   ├── paul/                      # kernel commands
-│   └── carl/                      # CARL module commands
-├── hooks/
-│   └── carl-hook.py               # CARL's platform-level hook
-└── settings.json                  # hook registration
+installed PALS runtime
+├── kernel metadata
+├── modules.yaml                   # installed module registry + hook metadata
+├── workflows/                     # kernel + module workflows made available to dispatch
+├── references/                    # kernel + module references made available to dispatch
+├── templates/                     # kernel + module templates
+├── rules/                         # kernel + module rules
+└── platform integrations           # harness-specific commands, hooks, settings, or extensions
 ```
 
 ### 5.3 `modules.yaml` (Installed Module Registry)
 
-The installer writes `~/.pals/modules.yaml` to track what is installed and to embed the hook metadata runtime dispatch needs without re-reading source manifests:
+The installer writes logical `modules.yaml` to track installed modules and embed the hook metadata runtime dispatch needs without re-reading source manifests:
 ```yaml
 kernel_version: "0.4.0"
 installed_modules:
@@ -764,18 +738,29 @@ hooks:
   pre-plan:
     priority: 100
     description: Detect TDD candidates via file heuristics and phase metadata
+    refs:
+      - references/tdd-detection.md
+      - references/tdd-plan-generation.md
   post-plan:
     priority: 100
     description: Restructure plan tasks as RED-GREEN-REFACTOR when TDD type detected
+    refs:
+      - references/tdd-plan-generation.md
   pre-apply:
     priority: 50
     description: Enforce RED phase — verify test files exist or will be created first
+    refs:
+      - references/tdd-execution.md
   post-task:
     priority: 100
     description: Enforce GREEN phase — verify tests pass after each implementation task
+    refs:
+      - references/tdd-execution.md
   post-apply:
     priority: 200
     description: Signal REFACTOR opportunity — suggest cleanup if all tests green
+    refs:
+      - references/tdd.md
 
 files:
   references:
@@ -812,12 +797,21 @@ hooks:
   pre-apply:
     priority: 100
     description: Capture test baseline — run tests and record counts before changes
+    refs:
+      - references/quality-runner.md
+      - references/quality-detection.md
   post-apply:
     priority: 100
     description: Run tests, lint, typecheck; compare against baseline; gate on regressions
+    refs:
+      - references/quality-runner.md
+      - references/quality-lint.md
   post-unify:
     priority: 100
     description: Record quality delta in quality-history.md and return a durable summary report for trend tracking
+    refs:
+      - references/quality-delta.md
+      - references/quality-history.md
 
 files:
   references:
@@ -842,22 +836,22 @@ platform: {}
 
 ## 7. Hook Implementation Notes
 
-### 7.1 How the Kernel Dispatches Hooks
+### 7.1 How Lifecycle Dispatch Works
 
-The kernel does not import module code. Hooks are dispatched by the kernel reading the installed `modules.yaml`, identifying which modules subscribe to the current hook point, sorting by priority, and then loading the module's relevant reference/workflow files as context for the current operation.
+Lifecycle workflows do not import module code. They dispatch hooks by reading installed `modules.yaml`, selecting modules registered for the current hook, sorting by priority, and loading only that hook's listed refs as context for the current operation.
 
-In PALS v0.4, modules are prompt-based, not code-based. A module's hook "firing" means: the kernel loads the module's declared files into context and follows the module's instructions at that point in the lifecycle. The payload schema and return contract above describe the logical data flow — not a programmatic API.
+In PALS v0.4, lifecycle modules are prompt-based, not code-based. A hook "firing" means the workflow loads declared instructions and applies the shared dispatch contract. Payload and return schemas above describe logical data flow, not a programmatic API.
 
-CARL is the exception: it has a real code hook (`carl-hook.py`) that runs through Claude Code's native `UserPromptSubmit` event. This is declared in `platform.claude_code.hooks` rather than in `hooks`.
+Platform integrations are separate from lifecycle hooks. For example, CARL may use native harness events through adapter-specific platform configuration rather than PLAN/APPLY/UNIFY hooks.
 
 ### 7.2 Priority Ranges (Convention)
 
 | Range | Intended Use |
 |-------|-------------|
 | 1-49 | Reserved for future kernel-internal hooks |
-| 50-99 | Enforcement modules (must run early to block if needed) |
-| 100-199 | Standard modules (default range) |
-| 200-299 | Advisory modules (run after enforcement, can observe but rarely block) |
+| 50-99 | Enforcement modules or cohorts that should run early |
+| 100-199 | Standard modules |
+| 200-299 | Advisory modules or cohorts |
 | 300-999 | User-defined modules |
 
 ### 7.3 Future: Code-Based Hooks

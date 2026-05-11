@@ -6,9 +6,9 @@ How to create a new PALS module from scratch. This guide walks through the pract
 
 ## What Is a Module?
 
-A module is a named pal that extends the PALS kernel through lifecycle hooks. Each module is self-contained: it declares a manifest (`module.yaml`), provides reference files, and optionally registers for hooks at specific points in the plan-apply-unify loop.
+A module is a named pal that extends PALS through lifecycle hooks. Each module is self-contained: it declares a source manifest (`modules/{name}/module.yaml`), provides reference files, and optionally registers for hooks in the PLAN/APPLY/UNIFY loop.
 
-When a module is not installed, the kernel skips its hook points with zero overhead. No errors, no warnings.
+Runtime dispatch uses installed `modules.yaml`, not source manifests directly. When a module is absent from the installed registry, its hook points are no-ops: no errors, no warnings, no workflow-local checks.
 
 ---
 
@@ -16,8 +16,8 @@ When a module is not installed, the kernel skips its hook points with zero overh
 
 Before building a module, you need:
 
-- A working PALS installation (`~/.pals/` exists)
-- Understanding of the plan-apply-unify loop (see [ARCHITECTURE.md](ARCHITECTURE.md))
+- A PALS source checkout with `modules/`, `kernel/`, and installer/adapters available
+- Understanding of the PLAN/APPLY/UNIFY loop (see [ARCHITECTURE.md](ARCHITECTURE.md))
 - A clear purpose for your module — what capability does it add?
 
 ---
@@ -86,13 +86,13 @@ files:
     - references/yourmod-detection.md
 ```
 
-These get installed to `~/.pals/references/` by the installer.
+The installer makes these refs available through the runtime's logical `references/...` paths.
 
-**Tip:** Keep references focused. One file per concern. The kernel loads only the refs declared per hook, not all module refs.
+**Tip:** Keep references focused. One file per concern. Dispatch loads only the refs declared for the current hook, not all module refs.
 
 ### 4. Register Lifecycle Hooks
 
-Hooks are the integration point between your module and the kernel. Register only the hooks you need.
+Hooks are the integration point between your module and PLAN/APPLY/UNIFY dispatch. Register only the hooks you need.
 
 **Available hook points:**
 
@@ -114,7 +114,7 @@ hooks:
     priority: 150
     description: >
       Actionable instruction for what your module does at this hook point.
-      This text guides the kernel on what to do when dispatching.
+      This text guides lifecycle dispatch on what to do for this hook.
     refs:
       - references/yourmod-detection.md
   post-apply:
@@ -126,24 +126,26 @@ hooks:
 ```
 
 **Key details:**
-- **priority:** Lower numbers run first. Use 50-99 for enforcement, 100-199 for standard, 200-299 for advisory, 300+ for user-defined.
+- **priority:** Lower numbers run first. Use 50-99 for early enforcement, 100-199 for standard hooks, 200-299 for advisory hooks, 300+ for user-defined modules.
 - **refs:** Only the files needed for *this specific hook*. Not all module refs.
-- **description:** Must be actionable — the kernel reads this to know what to do.
+- **description:** Must be actionable — dispatch reads this to know what to do.
 
-**Return contract:** Your hook should return one of:
+**Logical return contract:** Hook instructions should produce one of:
 
 ```yaml
-# Let the kernel proceed
+# Let the workflow proceed
 action: continue
 context_inject:
   your_key: value          # optional data for downstream hooks
 
-# Stop execution (blocking hooks only)
+# Request a block from an enforcement hook
 action: block
 reason: "Why execution should stop"
 ```
 
-### 5. Add a Kernel Command (Optional)
+Advisory hooks cannot block. Enforcement hooks may produce block evidence, but the workflow call site owns fix/override/stop handling.
+
+### 5. Add a PAUL Command (Optional)
 
 If your module needs a user-facing slash command (like `/paul:deps` or `/paul:review`):
 
@@ -162,25 +164,26 @@ If your module needs a user-facing slash command (like `/paul:deps` or `/paul:re
        description: What this command does
    ```
 
-The installer copies command files to `~/.claude/commands/paul/`.
+Adapters install command files in the appropriate harness-specific command location.
 
 **Note:** Most modules don't need their own command. Hooks handle integration automatically.
 
 ### 6. Wire Into the Installer
 
-The installer (`install.sh` → `drivers/claude-code/install.sh`) handles module installation automatically based on your manifest:
+The installer reads source `module.yaml` files and makes declared assets available to the installed runtime:
 
-- **References** → copied to `~/.pals/references/`
-- **Workflows** → copied to `~/.pals/workflows/`
-- **Config files** → copied to `~/.pals/{module-name}/` (preserves existing user config)
-- **Commands** → copied to `~/.claude/commands/`
-- **Platform hooks** → symlinked to `~/.claude/hooks/` and registered in `settings.json`
+- **References** → logical `references/...` paths
+- **Workflows** → logical `workflows/...` paths
+- **Config files** → adapter-managed runtime config locations
+- **Commands** → harness-specific command locations
+- **Platform hooks** → harness-specific hook/settings integrations
+- **Hook metadata** → installed `modules.yaml`, including hook priority, description, and refs
 
-**No changes to `install.sh` are needed** unless your module requires non-standard installation logic. The Python module installer reads `module.yaml` and handles everything.
+**No changes to `install.sh` are needed** unless your module requires non-standard installation logic. The module installer should derive runtime registry metadata from `module.yaml`.
 
-### 7. Add to pals.json Schema
+### 7. Add to pals.json Defaults
 
-Add your module to the default `pals.json` so users can enable/disable it:
+Add your module to the default `pals.json` so project configuration records the user's module preference:
 
 ```json
 {
@@ -193,7 +196,7 @@ Add your module to the default `pals.json` so users can enable/disable it:
 }
 ```
 
-The installer checks `pals.json` and skips modules with `"enabled": false`.
+`pals.json` is project configuration metadata. Runtime dispatch reads installed `modules.yaml`; do not rely on `pals.json` as runtime dispatch authority.
 
 ---
 
@@ -256,10 +259,10 @@ platform: {}
 ```
 
 **What happens at runtime:**
-1. User runs `/paul:plan` → kernel dispatches `pre-plan` hooks
-2. DEAN's `pre-plan` fires at priority 50 → loads `vulnerability-audit.md` → injects `dep_warnings` into plan context
-3. User runs `/paul:apply` → tasks execute → kernel dispatches `post-apply`
-4. DEAN's `post-apply` fires at priority 150 → re-audits → blocks if new critical vulnerabilities introduced
+1. User runs `/paul:plan` → lifecycle dispatch runs `pre-plan` hooks from installed `modules.yaml`.
+2. DEAN's `pre-plan` fires at priority 50 → loads `vulnerability-audit.md` → injects `dep_warnings` into plan context.
+3. User runs `/paul:apply` → tasks execute → lifecycle dispatch runs the approved post-apply cohort.
+4. DEAN's `post-apply` fires at priority 150 → re-audits → may return block evidence if new critical vulnerabilities were introduced; the workflow call site handles fix/override/stop.
 
 ---
 
@@ -267,13 +270,13 @@ platform: {}
 
 Before considering your module complete:
 
-- [ ] `module.yaml` parses correctly (all required fields present)
+- [ ] `module.yaml` parses correctly and includes all required fields
 - [ ] `name` field matches directory name
-- [ ] Every hook has `priority`, `description`, and `refs`
-- [ ] Reference files are each under 150 lines
-- [ ] Module is listed in `pals.json` with `enabled: true`
+- [ ] Every hook has `priority`, `description`, and hook-local `refs`
+- [ ] Reference files are focused and bounded
+- [ ] Module is listed in default `pals.json` metadata when appropriate
 - [ ] `./install.sh` completes without errors
-- [ ] Module appears in `~/.pals/modules.yaml` after install
-- [ ] Hook refs are installed to `~/.pals/references/`
-- [ ] If commands exist: they appear in `~/.claude/commands/`
-- [ ] Test: disable module in `pals.json`, reinstall — kernel runs without it
+- [ ] Installed `modules.yaml` includes the module and expected hook metadata
+- [ ] Hook refs are available through logical `references/...` paths
+- [ ] If commands exist: they appear in the adapter's command location
+- [ ] Runtime check: remove the module from installed `modules.yaml` generation and confirm workflows no-op cleanly
