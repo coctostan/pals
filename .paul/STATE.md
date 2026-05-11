@@ -79,21 +79,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/275-core-enforcement-module-rewrite
-Latest phase work: Phase 275 complete on feature branch; source edits limited to nine approved TODD/WALT/DEAN files plus routine PAUL lifecycle/history artifacts.
-PR: pending — UNIFY merge gate must commit, push, open/reuse PR, check CI, merge, and sync base.
-Transition state: Phase 276 ready to plan after GitHub Flow merge gate completes.
+Branch: main
+Latest phase work: Phase 275 merged via PR #192 (`44b795d5`); source edits limited to nine approved TODD/WALT/DEAN files plus routine PAUL lifecycle/history artifacts.
+PR: #192 merged — GitHub Flow merge gate passed; feature branch deleted and local main synced.
+Transition state: Phase 276 ready to plan.
 Prior PRs: #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-11 — Phase 275 UNIFY completed; GitHub Flow merge gate pending.
-Stopped at: Phase 276 ready to plan; pending commit/push/PR/merge gate for Phase 275 branch.
-Next action: Complete GitHub Flow merge gate, then /paul:plan for Phase 276.
+Last session: 2026-05-11 — Phase 275 complete and merged via PR #192.
+Stopped at: Phase 276 ready to plan.
+Next action: /paul:plan for Phase 276.
 Resume file: .paul/ROADMAP.md
-wip_result: uncommitted Phase 275 SUMMARY, lifecycle/history updates, and source edits remain in working tree pending GitHub Flow merge gate.
+wip_result: clean after PR #192 merge; no uncommitted Phase 275 source changes expected.
 Resume context:
 - Phase 275 Plan 275-01 closed with SUMMARY, WALT/CODI history rows, and lifecycle transition to Phase 276.
 - Validation green: `git diff --check`, artifact consistency, Pi end-to-end 312/312, cross-harness 202/202.
-- GitHub Flow merge gate still needs commit/push/PR/CI/merge/sync.
+- GitHub Flow merge gate passed: PR #192 checks passed and merged to main at `44b795d5`.
 - After merge gate, next lifecycle action is `/paul:plan` for Phase 276.
