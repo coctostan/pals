@@ -9,7 +9,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.64 Module Instruction Audit + Context-Efficiency Rewrite**
-Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 4 of 6 complete
+Status: 🚧 In Progress | Mode: exploratory / high collaboration | Phases: 5 of 6 complete
 Theme: Audit and rewrite PALS module instruction sources through guardrail-first, section-by-section collaboration so base and optional modules become context-efficient, semantically enforced, lifecycle-compatible, and free of stale ceremony, marker-only compliance, redundancy, confusion, or incorrect guidance. Each phase must look at the module surface holistically for anything redundant, confusing, or simply wrong before proposing targeted rewrites.
 
 | Phase | Name | Status | Plans |
@@ -18,8 +18,8 @@ Theme: Audit and rewrite PALS module instruction sources through guardrail-first
 | 274 | Base Module + Dispatch Instruction Rewrite | ✅ Complete — PR #191 `e18666ab` | 274-01 |
 | 275 | Core Enforcement Module Rewrite | ✅ Complete — PR #192 `44b795d5` | 275-01 |
 | 276 | Review, Knowledge, and Codegraph Module Rewrite | ✅ Complete — PR #194 `8c8dfb46` | 276-01 |
-| 277 | Domain Optional Module Rewrite | Planning — plan 277-01 created (ARCH/SETH/OMAR/PETE/REED/VERA) | 277-01 |
-| 278 | Module Guardrails + Closure | Not started | TBD |
+| 277 | Domain Optional Module Rewrite | ✅ Complete — PR #195 `aeff3f0a` | 277-01 |
+| 278 | Module Guardrails + Closure | Ready to plan | TBD |
 
 ### Phase 273: Module Instruction Audit Contract + Cohort Map
 Focus: Inventory base and optional module instruction sources, define v2.64 rewrite criteria, classify module cohorts, and standardize the v2.63-style collaborative protocol: semantic guardrails first, compact audit + proposed file/section order, blocking approval checkpoint, no edits ahead of approval, section re-read after each change, and final validation. The audit must look at each module holistically for redundancy, confusion, stale ceremony, marker-only compliance, and simply wrong guidance.
@@ -39,11 +39,11 @@ Plans: 276-01 (`.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/2
 
 ### Phase 277: Domain Optional Module Rewrite
 Focus: Collaboratively rewrite ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, DEAN, OMAR, PETE, REED, VERA, and related domain module references/instructions by small file cohorts, preserving module-specific value while removing redundancy, confusion, stale assumptions, or incorrect guidance.
-Plans: 277-01 (`.paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md`; UNIFY in progress, summary `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`, PR #195 — covers ARCH/SETH/OMAR/PETE/REED/VERA backend/runtime cross-cutting cohort; ARIA/LUKE/GABE/DANA/DAVE and DEAN deferred references reserved for a follow-up plan)
+Plans: 277-01 (`.paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md`; complete, summary `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`; PR #195 `aeff3f0a` — rewrote ARCH/SETH/OMAR/PETE/REED/VERA backend/runtime cross-cutting cohort; ARIA/LUKE/GABE/DANA/DAVE and DEAN deferred references reserved for follow-up)
 
 ### Phase 278: Module Guardrails + Closure
 Focus: Add or update semantic validation so module instruction compliance cannot pass through marker prose alone, verify registry/module docs and installed/runtime surfaces where applicable, record evidence, and close the milestone.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (next: define during /paul:plan)
 
 ### Latest completed milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite
 Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflow instructions now use bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. v2.64 extends the same collaborative instruction-audit pattern from lifecycle workflows into base and optional module sources.
@@ -75,4 +75,4 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-12 — Phase 277 Plan 277-01 UNIFY in progress; summary created and PR #195 open.*
+*Last updated: 2026-05-12 — Phase 277 complete via PR #195 `aeff3f0a`; Phase 278 ready to plan.*
