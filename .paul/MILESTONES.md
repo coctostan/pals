@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.64 active — 6 of 6 phases complete; ready for milestone-closure routing | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | Awaiting next milestone — v2.64 closed 2026-05-12 (PR #196 `340eee03`) | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -82,20 +82,21 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction | 2026-05-07 | same-day | 4 phases, 4 plans | Phase 261 contract + Phase 262 extraction (`command-routing.ts` extracted from `pals-hooks.ts`, 230 LOC; twelve-entry `COMMANDS` array preserved byte-for-byte; four exported S8 functions; three closure factories under Disposition A; four command-routing constants exact-string single-defined; canonical `detectCommandSignal` regex literal preserved byte-for-byte; loader-compat no-op default factory) + Phase 263 surfacing + Phase 264 closure; preserved S6 sibling `lifecycle-ui.ts` and S4 canonical reply delivery in `pals-hooks.ts` (832 → 672 LOC); per-sibling S1–S8 wave closed except S4; first-ever closure-record-convention establishment via `## Status After Phase 262`; sibling-surfacing recipe ratified 6×; sibling-extraction recipe ratified 7×; type-only back-import + TAP-assertion repoint + `inline → export` promotion patterns each ratified ×3; 4-symbol `inline → export` lockstep promotion durable rule; recommended v2.62 next. PRs #176 `423c467e` / #177 `19555747` / #178 `6f725276` / #179 `bc81fa84`; SUMMARYs `.paul/phases/261-...` / `.paul/phases/262-...` / `.paul/phases/263-...` / `.paul/phases/264-...`. Pi 242/243 (1 inherited Path A `not ok 102`); cross-harness 137/138 (1 inherited `not ok 31`); install 8. Path A inherited regression escalated to v2.62 per Phase 264 recorded decision. |
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | 2026-05-08 | same-day | 3 phases, 3 plans | Phase 265 produced `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`; Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 shipped Selective Artifact Loading across hot workflows, anti-regrowth TAPs, and the 7th closure-guardrail recipe application (Phase 245/248/252/256/260/264/267). PRs #180 `63365822` / #181 `a780bb7f` / #182 `068d7cb3`; SUMMARY `.paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md`; v2.63 recommended-not-approved candidate: cross-file narrative deduplication / single-source summary architecture. |
 | v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | 2026-05-10 | same-day | 5 phases, 5 plans | Phase 268 resume, Phase 269 plan, Phase 270 apply, Phase 271 unify, and Phase 272 pause rewrote lifecycle workflows for bounded operational loading and semantic guardrails. PR #183–#188; final validation Pi 312/312, cross-harness 202/202. |
-| v2.64 Module Instruction Audit + Context-Efficiency Rewrite | In progress | active | 6 phases, 6 complete | Phase 273 contract/cohort map PR #190; Phase 274 base module + dispatch docs PR #191 `e18666ab`; Phase 275 core enforcement PR #192 `44b795d5`; Phase 276 advisory cohort PR #194 `8c8dfb46`; Phase 277 domain optional cohort PR #195 `aeff3f0a`; Phase 278 Module Guardrails + Closure plan 278-01 PR #196 (semantic guardrails replace inherited CODI marker drift; cross-harness 195→202 PASS). v2.64 ready for milestone-closure routing. |
+| v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | ~2 days | 6 phases, 6 plans | Phase 273 contract/cohort map PR #190 `f8861d44`; Phase 274 base/dispatch rewrite PR #191 `e18666ab`; Phase 275 core enforcement PR #192 `44b795d5`; Phase 276 advisory cohort PR #194 `8c8dfb46`; Phase 277 domain optional cohort PR #195 `aeff3f0a`; Phase 278 Module Guardrails + Closure PR #196 `340eee03` (semantic guardrails replace inherited CODI marker drift; `tests/helpers/module_instruction_semantics.sh`; cross-harness 195→202 PASS; Pi e2e 5 baseline-inherited CODI marker drift recorded as v2.65 follow-up). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.64 Module Instruction Audit + Context-Efficiency Rewrite — 6 of 6 phases complete; v2.64 ready for milestone-closure routing.
+**Current milestone:** Awaiting next milestone — v2.64 closed 2026-05-12; run `/paul:discuss-milestone` or `/paul:milestone` to define the next scope.
 
-**Latest completed phase:** Phase 277 Domain Optional Module Rewrite completed 2026-05-12 via PR #195 `aeff3f0a`, rewriting the ARCH/SETH/OMAR/PETE/REED/VERA domain optional cohort with bounded advisory evidence, compact schemas, no-invent/no-coverage guardrails, and workflow-owned blocking response.
+**Latest completed phase:** Phase 278 Module Guardrails + Closure completed 2026-05-12 via PR #196 `340eee03`, replacing inherited Phase 276 CODI marker-drift cross-harness validation with grouped semantic guardrails (`tests/helpers/module_instruction_semantics.sh`); cross-harness 195→202 PASS. v2.64 milestone complete.
 
 ## Archive
 
 - Detailed history and Key Decisions: [.paul/archive/milestones/MILESTONES-v0-v2.42.md](archive/milestones/MILESTONES-v0-v2.42.md)
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
+- v2.64 roadmap archive: [.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; updated for v2.64 Phase 278 Plan 278-01 closure on 2026-05-12.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12.*

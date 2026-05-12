@@ -8,45 +8,25 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.64 Module Instruction Audit + Context-Efficiency Rewrite**
-Status: ✅ Complete (pending v2.64 milestone-closure routing) | Mode: exploratory / high collaboration | Phases: 6 of 6 complete
-Theme: Audit and rewrite PALS module instruction sources through guardrail-first, section-by-section collaboration so base and optional modules become context-efficient, semantically enforced, lifecycle-compatible, and free of stale ceremony, marker-only compliance, redundancy, confusion, or incorrect guidance. Each phase must look at the module surface holistically for anything redundant, confusing, or simply wrong before proposing targeted rewrites.
+**Awaiting next milestone**
+Status: Last milestone v2.64 closed 2026-05-12 — PR #196 `340eee03`; archive [archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md).
+Next: run /paul:discuss-milestone or /paul:milestone to define the next scope.
 
-| Phase | Name | Status | Plans |
-|-------|------|--------|-------|
-| 273 | Module Instruction Audit Contract + Cohort Map | ✅ Complete — PR #190 `f8861d44` | 273-01 |
-| 274 | Base Module + Dispatch Instruction Rewrite | ✅ Complete — PR #191 `e18666ab` | 274-01 |
-| 275 | Core Enforcement Module Rewrite | ✅ Complete — PR #192 `44b795d5` | 275-01 |
-| 276 | Review, Knowledge, and Codegraph Module Rewrite | ✅ Complete — PR #194 `8c8dfb46` | 276-01 |
-| 277 | Domain Optional Module Rewrite | ✅ Complete — PR #195 `aeff3f0a` | 277-01 |
-| 278 | Module Guardrails + Closure | ✅ Complete — plan 278-01 PR #196 | 278-01 |
+## Next Milestone
 
-### Phase 273: Module Instruction Audit Contract + Cohort Map
-Focus: Inventory base and optional module instruction sources, define v2.64 rewrite criteria, classify module cohorts, and standardize the v2.63-style collaborative protocol: semantic guardrails first, compact audit + proposed file/section order, blocking approval checkpoint, no edits ahead of approval, section re-read after each change, and final validation. The audit must look at each module holistically for redundancy, confusion, stale ceremony, marker-only compliance, and simply wrong guidance.
-Plans: 273-01 (`.paul/phases/273-module-instruction-audit-contract-cohort-map/273-01-PLAN.md`; complete via PR #190 `f8861d44`)
+Run `/paul:discuss-milestone` to explore scope, or `/paul:milestone` to create directly. Recommended scope candidate: clear the 5 baseline-inherited CODI marker-drift failures in `tests/pi-end-to-end-validation.sh` (checks 10, 185, 188, 190, 192) using the existing `tests/helpers/module_instruction_semantics.sh` helpers and decide on a v2.65 theme alongside.
 
-### Phase 274: Base Module + Dispatch Instruction Rewrite
-Focus: Collaboratively rewrite kernel/module-dispatch/base-module instructions, including lifecycle boundaries, hook semantics, skip/block evidence, compact dispatch output, and PAUL/CARL separation. Work file-by-file and section-by-section with user-approved wording before mutation.
-Plans: 274-01 (`.paul/phases/274-base-module-dispatch-instruction-rewrite/274-01-PLAN.md`; complete via PR #191 `e18666ab`)
+### Latest completed milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
+Result: Phases 273–278 complete. Module instructions across base/dispatch, core enforcement, advisory, and domain optional cohorts rewritten section-by-section for context efficiency, semantic enforcement, and lifecycle compatibility; semantic module-instruction validation guardrails added in `tests/helpers/module_instruction_semantics.sh`; inherited Phase 276 CODI marker drift cleared in `tests/cross-harness-validation.sh` (195→202 PASS). Archive: [archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md).
 
-### Phase 275: Core Enforcement Module Rewrite
-Focus: Collaboratively rewrite TODD, WALT, and other blocking/enforcement module instructions so they execute real checks, block with evidence, avoid stale ceremony, and cannot pass through marker prose or vague ritual. Work in small approved sections with holistic module review before edits.
-Plans: 275-01 (`.paul/phases/275-core-enforcement-module-rewrite/275-01-PLAN.md`; complete, summary `.paul/phases/275-core-enforcement-module-rewrite/275-01-SUMMARY.md`)
-
-### Phase 276: Review, Knowledge, and Codegraph Module Rewrite
-Focus: Collaboratively rewrite IRIS, REV, SKIP, CODI, DOCS, and RUBY-style advisory module instructions for concise evidence, bounded source loading, non-blocking semantics, durable-but-compact persistence, and clear skip/no-scope behavior.
-Plans: 276-01 (`.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/276-01-PLAN.md`; complete, summary `.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/276-01-SUMMARY.md`; PR #194 `8c8dfb46`)
-
-### Phase 277: Domain Optional Module Rewrite
-Focus: Collaboratively rewrite ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, DEAN, OMAR, PETE, REED, VERA, and related domain module references/instructions by small file cohorts, preserving module-specific value while removing redundancy, confusion, stale assumptions, or incorrect guidance.
-Plans: 277-01 (`.paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md`; complete, summary `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`; PR #195 `aeff3f0a` — rewrote ARCH/SETH/OMAR/PETE/REED/VERA backend/runtime cross-cutting cohort; ARIA/LUKE/GABE/DANA/DAVE and DEAN deferred references reserved for follow-up)
-
-### Phase 278: Module Guardrails + Closure
-Focus: Add or update semantic validation so module instruction compliance cannot pass through marker prose alone, verify registry/module docs and installed/runtime surfaces where applicable, record evidence, and close the milestone.
-Plans: 278-01 (`.paul/phases/278-module-guardrails-closure/278-01-PLAN.md`; complete, summary `.paul/phases/278-module-guardrails-closure/278-01-SUMMARY.md`; PR #196 — replaced inherited CODI marker-string validation drift with semantic module-instruction guardrails, added `tests/helpers/module_instruction_semantics.sh`, cross-harness 195→202 PASS; Pi e2e 5 baseline-inherited CODI marker-drift failures recorded for follow-up)
-
-### Latest completed milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite
-Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflow instructions now use bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. v2.64 extends the same collaborative instruction-audit pattern from lifecycle workflows into base and optional module sources.
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 273 | Module Instruction Audit Contract + Cohort Map | 1/1 | ✅ Complete | 2026-05-11 |
+| 274 | Base Module + Dispatch Instruction Rewrite | 1/1 | ✅ Complete | 2026-05-11 |
+| 275 | Core Enforcement Module Rewrite | 1/1 | ✅ Complete | 2026-05-11 |
+| 276 | Review, Knowledge, and Codegraph Module Rewrite | 1/1 | ✅ Complete | 2026-05-11 |
+| 277 | Domain Optional Module Rewrite | 1/1 | ✅ Complete | 2026-05-12 |
+| 278 | Module Guardrails + Closure | 1/1 | ✅ Complete | 2026-05-12 |
 
 ## Completed Milestones
 
@@ -72,7 +52,8 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 | v2.61 Pi Extension Submodule Extraction Wave — S8 Command Routing Extraction | 2026-05-07 | 261-264 | `command-routing.ts` (8th and final unclaimed sibling, 230 LOC); per-sibling S1–S8 wave closed except S4; first-ever closure-record-convention establishment via `## Status After Phase 262` on the S8 contract; closure-guardrail recipe ratified 6× (Phase 245/248/252/256/260/264); 4-symbol `inline → export` lockstep promotion durable rule; Pi 242/243 with inherited Path A `not ok 102`; cross-harness 137/138 with inherited `not ok 31`; install 8. PRs #176/#177/#178/#179. |
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | 2026-05-08 | 265-267 | Hot lifecycle artifacts archived/compacted to 63,415 B aggregate; Path A PASS; Selective Artifact Loading added across hot workflows; anti-regrowth TAPs and the 7th closure-guardrail recipe application ratified; v2.63 narrative deduplication / single-source summary architecture recommended-not-approved. PRs #180/#181/#182 (`068d7cb3`). |
 | v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | 2026-05-10 | 268-272 | Rewrote resume, plan, apply, unify, and pause workflow instructions for bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. Final validation: Pi 312/312, cross-harness 202/202. PR #188 (`df56ece1`). |
+| v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | 273-278 | Rewrote base/dispatch, core enforcement, advisory, and domain optional module instructions section-by-section; added semantic module-instruction validation guardrails (`tests/helpers/module_instruction_semantics.sh`); cleared inherited Phase 276 CODI marker drift in `tests/cross-harness-validation.sh` (195→202 PASS). Pi e2e 307/312 (5 baseline-inherited CODI marker drift recorded as v2.65 follow-up). PRs #190/#191/#192/#194/#195/#196 (`340eee03`). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-12 — Phase 278 Plan 278-01 APPLY/UNIFY complete; v2.64 ready for milestone-closure routing.*
+*Last updated: 2026-05-12 — v2.64 milestone complete and archived; awaiting next milestone.*

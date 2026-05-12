@@ -2,23 +2,23 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficiency rewrite)
+See: .paul/PROJECT.md (v2.64 complete; next milestone pending via /paul:milestone)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.64 Module Instruction Audit + Context-Efficiency Rewrite — Phase 278 ready to plan after Phase 277 completion.
+**Current focus:** Awaiting next milestone — v2.64 Module Instruction Audit + Context-Efficiency Rewrite closed 2026-05-12 via PR #196 (`340eee03`).
 
 ## Current Position
 
-Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
-Phase: 278 of 278 (Module Guardrails + Closure)
-Plan: .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
-Status: Phase 278 merged — v2.64 milestone-closure routing checkpoint open
-Last activity: 2026-05-12 — PR #196 merged as `340eee03`; v2.64 complete (Phases 273-278); awaiting user decision: start next milestone, review accomplishments, or pause
-Next action: /paul:milestone (complete v2.64) or user decision on next milestone scope
+Milestone: none active — v2.64 Module Instruction Audit + Context-Efficiency Rewrite complete; next milestone pending via /paul:milestone
+Phase: 278 of 278 (Module Guardrails + Closure) — Complete (v2.64 milestone closed)
+Plan: 278-01 complete (UNIFY done; PR #196 merged 2026-05-12 as `340eee03`)
+Status: v2.64 Module Instruction Audit + Context-Efficiency Rewrite complete — ready for next milestone
+Last activity: 2026-05-12 — v2.64 milestone completed; ROADMAP/MILESTONES/PROJECT/STATE evolved; v2.64 detail archived to `.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md`
+Next action: /paul:discuss-milestone or /paul:milestone to define the next milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
-- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phases 273–278 complete; Plan 278-01 PR #196 ready for merge gate)
+- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 278 Plan 278-01 loop closed; v2.64 ready for milestone-closure routing]
+  ○        ○        ○     [Milestone complete — ready for next]
 ```
 
 ## Accumulated Context
@@ -95,15 +95,13 @@ Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 /
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Phase 278 Plan 278-01 closed, PR #196 merged (`340eee03`), v2.64 milestone-closure routing checkpoint open.
-Stopped at: v2.64 (6 of 6 phases complete) at the milestone-completion checkpoint.
-Next action: /paul:milestone (complete v2.64) or user decision on next milestone scope.
-Resume file: .paul/phases/278-module-guardrails-closure/278-01-SUMMARY.md
-wip_result: v2.64 complete and merged; awaiting milestone-completion routing decision
+Last session: 2026-05-12 — v2.64 milestone complete; ROADMAP/MILESTONES/PROJECT/STATE evolved; v2.64 detail archived to `.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md`.
+Stopped at: Milestone v2.64 complete — awaiting next milestone.
+Next action: /paul:discuss-milestone or /paul:milestone to define the next milestone.
+Resume file: .paul/MILESTONES.md
+wip_result: v2.64 complete and archived; ready to discuss/plan next milestone
 Resume context:
-- Phase 278 Plan 278-01 loop closed: PLAN ✓ APPLY ✓ UNIFY ✓; v2.64 all six phases complete.
-- Phase 278 deliverables: `tests/helpers/module_instruction_semantics.sh` (TAP-free grouped semantic helpers), updated `tests/cross-harness-validation.sh` (semantic guardrails replace 7 inherited Phase 276 CODI marker-drift failures on checks 12, 21, 126, 127, 128, 131, 132), Phase 278 Closure section in `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`, `.paul/phases/278-module-guardrails-closure/278-01-SUMMARY.md`, CODI/WALT history rows for `278-01`.
-- Validation: `git diff --check` clean; `tests/helpers/artifact_consistency.sh` PASS; `tests/cross-harness-validation.sh` 202/202 PASS (was 195/202).
-- Deferred to v2.65 (or next-milestone follow-up): apply same semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` failing checks 10, 185, 188, 190, 192 (baseline-inherited CODI marker drift, identical pre/post APPLY).
-- PR #196 open against `main` from `feature/278-01-module-guardrails-closure`; awaiting merge gate (CI + merge per `pals.json` github-flow config).
-- v2.64 closure routing: after PR #196 merges, run milestone completion routing for v2.64 Module Instruction Audit + Context-Efficiency Rewrite.
+- v2.64 Module Instruction Audit + Context-Efficiency Rewrite closed 2026-05-12 via PR #196 `340eee03` (Phases 273-278); Phase 278 deliverables (`tests/helpers/module_instruction_semantics.sh`, updated `tests/cross-harness-validation.sh`, Phase 278 Closure section in `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`) merged to `main`.
+- Validation: cross-harness 202/202 PASS; `tests/helpers/artifact_consistency.sh` PASS; `git diff --check` clean.
+- Deferred to next milestone (v2.65 candidate): apply same semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` failing checks 10, 185, 188, 190, 192 (baseline-inherited CODI marker drift; identical pre/post APPLY in Phase 278).
+- Archive entry: `.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md`; ROADMAP active window cleared back to single "Awaiting next milestone" + completed-milestones table.
