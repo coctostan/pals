@@ -1,5 +1,5 @@
 <overview>
-Architecture pattern detection and classification. ARCH identifies the project's structural patterns from directory layout, import graphs, and naming conventions.
+Pattern catalog, boundary rules, and structural metrics applied to `files_modified` (pre-plan) and `files_changed` (post-apply), plus their parent directories.
 </overview>
 
 <layer_patterns>
@@ -16,10 +16,10 @@ Architecture pattern detection and classification. ARCH identifies the project's
 
 ### Detection Heuristic
 
-1. List top-level directories under `src/` (or project root)
-2. Match directory names against known patterns above
-3. If no match: check for feature-based (dirs with mixed file types) vs flat (all files at root)
-4. Report: "Detected pattern: {name} — {confidence}"
+1. Take the unique parent directories of the in-scope paths.
+2. Match them against the **Indicators** column above.
+3. If a row matches, set `arch_context.detected_pattern = {name}`.
+4. If no row matches, emit `ARCH: skipped — no recognized pattern in scope`.
 
 </layer_patterns>
 
@@ -41,11 +41,12 @@ Rules that define valid and invalid cross-layer dependencies:
 
 ### Boundary Detection
 
-For each import/require in changed files:
-1. Resolve source file's layer (e.g., `src/controllers/auth.ts` → controller layer)
-2. Resolve imported file's layer (e.g., `src/repositories/user.ts` → repository layer)
-3. Check against boundary rules table
-4. Flag violations: "Boundary violation: {source_layer} → {target_layer} in {file}:{line}"
+For each import resolved from `files_changed`, add one boundary-check row:
+
+1. Resolve source layer (e.g., `src/controllers/auth.ts` → Controller).
+2. Resolve imported layer (e.g., `src/repositories/user.ts` → Repository).
+3. Set row Status from the **Architectural Boundaries** table: `✓` → `PASS`, `✗` → `VIOLATION`, unlisted pair → `WARN`.
+4. Files with no resolved imports add no rows.
 
 </boundary_rules>
 
@@ -68,13 +69,14 @@ For each import/require in changed files:
 
 ## Structural Health Metrics
 
-| Metric | Healthy | Warning | Critical |
-|--------|---------|---------|----------|
-| Max directory depth | ≤4 levels | 5-6 levels | >6 levels |
-| Files per directory | ≤15 | 16-25 | >25 |
-| Circular dependencies | 0 | 1-2 | >2 |
-| Cross-boundary imports | 0 violations | 1-3 warnings | >3 violations |
-| Orphan files (no imports in/out) | <5% | 5-15% | >15% |
-| God files (>500 lines) | 0 | 1-2 | >2 |
+Use these as advisory WARN triggers only when in-scope evidence is available; do not extrapolate project-wide counts. Each WARN cites `{file}:{metric}={value}` or the boundary-check row that triggered it.
+
+| Metric | WARN trigger |
+|--------|--------------|
+| Max directory depth | In-scope path exceeds 6 levels |
+| Files per directory | In-scope parent directory has >25 files |
+| Circular dependencies | Resolved in-scope imports form a cycle |
+| Cross-boundary imports | Boundary-check row has Status `VIOLATION` |
+| God files | In-scope file exceeds 500 lines |
 
 </structural_metrics>

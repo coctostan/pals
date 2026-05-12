@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficiency rewrite)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.64 Module Instruction Audit + Context-Efficiency Rewrite — Phase 276 complete; Phase 277 ready to plan.
+**Current focus:** v2.64 Module Instruction Audit + Context-Efficiency Rewrite — Phase 277 Plan 277-01 created; APPLY next.
 
 ## Current Position
 
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
 Phase: 277 of 278 (Domain Optional Module Rewrite)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-11 — Completed Phase 276 UNIFY for IRIS/REV/SKIP/CODI/DOCS/RUBY advisory module rewrite; transitioned to Phase 277
-Next action: /paul:plan for Phase 277
+Plan: .paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md
+Status: UNIFY blocked — GitHub Flow merge gate waiting on PR #195 CI queued
+Last activity: 2026-05-12 — Pushed UNIFY artifacts; PR #195 merge gate waiting on queued CI
+Next action: Recheck PR #195 CI, then merge when checks pass
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 277 ready to plan]
+  ✓        ✓        ○     [Phase 277 Plan 277-01 SUMMARY created; merge gate next]
 ```
 
 ## Accumulated Context
@@ -46,7 +46,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | v2.61 extraction wave closed | Phases 261-264 | S8 command-routing extracted/surfaced, v2.61 closed via PRs #176-#179; Path A ROADMAP/context-budget regression escalated to v2.62. |
 | v2.62 context diet closed | Phases 265-267 | Context-diet contract, hot artifact compaction, selective-loading guardrails, and v2.62 closure shipped via PRs #180-#182. |
 | v2.63 workflow instruction audit closed | Phases 268-272 | Resume/plan/apply/unify/pause workflows rewritten collaboratively with semantic guardrails; v2.63 completed via PR #188. |
-| v2.64 module instruction audit active | Phases 273-278 | Phase 273 contract/cohort map, Phase 274 base/dispatch rewrite, Phase 275 TODD/WALT/DEAN enforcement cohort, and Phase 276 IRIS/REV/SKIP/CODI/DOCS/RUBY advisory rewrite are complete; Phase 277 (domain optional modules) is next. |
+| v2.64 module instruction audit active | Phases 273-278 | Phase 273 contract/cohort map, Phase 274 base/dispatch rewrite, Phase 275 TODD/WALT/DEAN enforcement cohort, and Phase 276 IRIS/REV/SKIP/CODI/DOCS/RUBY advisory rewrite are complete; Phase 277 Plan 277-01 created for ARCH/SETH/OMAR/PETE/REED/VERA backend/runtime domain cohort; APPLY next. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -63,6 +63,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 276 PLAN: Created and revised `276-01-PLAN.md` for the IRIS/REV/SKIP/CODI/DOCS/RUBY advisory module cohort: v2.63-style compact audit first, then file-by-file and section-by-section BEFORE/AFTER proposal packets before mutation, no helper delegation by default, and explicit non-blocking/persistence/bounded-source guardrails; consumed ready-to-plan handoff archived.
 - Phase 276 APPLY: Completed parent-owned collaborative section rewrite for CODI, SKIP, IRIS, REV, DOCS, and RUBY advisory/on-demand instruction surfaces; every mutated section used BEFORE/AFTER approval and re-read verification; source commits `3768048f` and `7a0ea261`; `artifact_consistency.sh` and `git diff --check` passed; cross-harness suite failed seven historical CODI marker checks after intentional tightening/removal of stale markers, deferred to Phase 278 validation reconciliation.
 - Phase 276 UNIFY: Created `276-01-SUMMARY.md`; appended CODI and WALT history rows for `276-01`; updated lifecycle artifacts and transitioned to Phase 277. Cross-harness CODI marker drift remains deferred to Phase 278.
+- Phase 277 PLAN: Created `277-01-PLAN.md` for the backend/runtime cross-cutting half of the domain optional cohort (ARCH, SETH, OMAR, PETE, REED, VERA — 14 files) using the v2.63/Phase 275/276 collaborative protocol: compact audit, file-by-file BEFORE/AFTER section loop, blocking checkpoint, no helper delegation, advisory/non-blocking guardrails, bounded source loading. UI/UX/data/deploy/DEAN-deferred half (ARIA/LUKE/GABE/DANA/DAVE) reserved for a follow-up Phase 277 plan.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -90,12 +91,20 @@ Prior PRs: #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 /
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Phase 276 UNIFY complete; PR #194 merged via squash; transitioned to Phase 277.
-Stopped at: Phase 276 Plan 276-01 SUMMARY written; lifecycle artifacts updated for Phase 277.
-Next action: /paul:plan for Phase 277
-Resume file: .paul/ROADMAP.md
-wip_result: applied — SUMMARY, history rows, STATE/ROADMAP/PROJECT all updated locally
+Last session: 2026-05-12 — Continued Phase 277 Plan 277-01 UNIFY; SUMMARY created and post-unify history rows appended.
+Stopped at: Phase 277 UNIFY GitHub Flow merge gate — PR #195 CI queued.
+Next action: Recheck PR #195 CI, then merge when checks pass
+Resume file: .paul/handoffs/archive/HANDOFF-2026-05-12-phase-277-apply-audit-ready.md
+wip_result: SUMMARY and post-unify history rows committed/pushed; merge gate pending CI
 Resume context:
-- Phase 276 closed with 18 approved source files changed (+341/−505), matching PLAN scope.
-- Verification: `git diff --check` PASS; `artifact_consistency.sh` PASS; `cross-harness-validation.sh` FAIL on 7 historical CODI marker checks (intentional, deferred to Phase 278).
-- Merge gate complete: PR #194 squash-merged as `8c8dfb46`; local `main` synced; feature branch deleted; ready for `/paul:plan` to start Phase 277.
+- APPLY Task 1 audit complete: cross-cohort issues identified (broad codebase reads, BLOCK wording without recovery owner, marker-only outputs, magical-inference thresholds).
+- Task 2 checkpoint approved with `approve-section-loop`; ARCH/SETH files edited section-by-section with BEFORE/AFTER approval and re-read verification.
+- Task 2 verification: focused checks found no stale BLOCK/critical severity, broad command recipes, or lifecycle-authority drift in edited ARCH/SETH files; `bash tests/helpers/artifact_consistency.sh` PASS.
+- Task 3 verification: focused checks found no stale BLOCK/critical severity, broad command recipes, invented coverage/metrics, or lifecycle-authority drift in edited OMAR/PETE/REED/VERA files; `git diff --check` PASS; `bash tests/helpers/artifact_consistency.sh` PASS.
+- Post-apply validation: docs/reference scoped changes; `bash tests/cross-harness-validation.sh` ran with 195/202 PASS and the inherited 7 CODI marker failures only (Phase 278-owned, no new regression).
+- Inherited Phase 278 work: 7 historical CODI marker failures in `tests/cross-harness-validation.sh` must not regress further during Phase 277 APPLY.
+- [dispatch] post-apply advisory: ARCH/SETH/OMAR/PETE/REED/VERA edited source surfaces parent-verified as advisory, bounded, evidence-grounded; other domain/UI/data/deploy modules skipped by scope.
+- [dispatch] post-apply enforcement: DEAN/TODD/WALT docs-reference validation PASS_WITH_CONCERNS — no dependency/runtime files changed; artifact consistency PASS; cross-harness unchanged inherited CODI failures remain deferred to Phase 278.
+- GitHub Flow Postflight ✓ branch `feature/277-01-domain-optional-module-rewrite` pushed; PR #195 opened: https://github.com/coctostan/pals/pull/195; CI currently in progress (`Socket Security: Project Report`).
+- UNIFY summary created at `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`; post-unify: WALT quality history row and CODI skipped-no-symbols row appended.
+- GitHub Flow merge gate blocked: PR #195 check `Socket Security: Project Report` is QUEUED; merge waits for CI success.

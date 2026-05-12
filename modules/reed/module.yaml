@@ -1,9 +1,9 @@
 name: reed
 display_name: REED
 description: >
-  Resilience & Error Engineering Defense. Validates retry patterns,
-  checks timeout coverage, detects missing error boundaries, ensures
-  graceful degradation, and flags cascading failure risks.
+  Resilience & Error Engineering Defense. Advisory evidence for in-scope
+  retry/backoff, timeout, error-boundary, shutdown/degradation, and
+  cascading-failure signals. PLAN/APPLY/UNIFY owns any blocking response.
 version: 1.0.0
 
 dependencies:
@@ -14,35 +14,34 @@ hooks:
   pre-plan:
     priority: 210
     description: >-
-      MUST run: `grep -rn 'timeout\|Timeout\|TIMEOUT' {files_modified}` to check
-      timeout config. MUST run: `grep -rn 'retry\|Retry\|backoff\|maxRetries'
-      {files_modified}` to check retry patterns. MUST check error boundaries:
-      `grep -rn 'ErrorBoundary\|componentDidCatch' {ui_files}`. MUST check
-      graceful shutdown: `grep -rn 'SIGTERM\|SIGINT\|gracefulShutdown\|
-      process\.on' {entry_files}`. Output: '| Check | Status |' table. Inject
-      resilience_context with: timeout_count, retry_patterns, has_error_boundary,
-      has_shutdown_handler. If no relevant files: 'REED: No resilience-relevant
-      files in scope — skipping.'
+      Inspect `files_modified` source/text paths for resilience evidence from
+      resilience-patterns.md: timeout markers, retry/backoff markers,
+      error-boundary markers, shutdown/degradation handlers, and
+      circuit-breaker/fallback markers. Emit a compact table —
+      `Check | Status | Evidence`, Status `PASS | WARN | SKIP`. Inject
+      `resilience_context` entries `{check, file, line, marker, evidence}`;
+      never invent counts or coverage claims. Treat markers as evidence, not
+      proof that timeouts, boundaries, or shutdown are covered. Output
+      `REED: skipped — no resilience-relevant files in scope` when scope is
+      empty, or `REED: no resilience concerns across {N} planned files` when in
+      scope with no findings.
     refs:
       - references/resilience-patterns.md
   post-apply:
     priority: 180
     description: >-
-      For EACH changed file: 1) Infinite retry detection: grep -n 'while.*true
-      \|for.*;;' {file} — if near retry/fetch/request logic, BLOCK: 'REED
-      BLOCK: {file}:{line} — potential infinite retry loop. Add max retries
-      and backoff.' 2) Timeout check: for files with fetch/axios/http calls
-      (grep 'fetch(\|axios\.\|http\.\|request('), check if timeout is
-      configured nearby. WARN if missing: 'REED WARN: {file}:{line} — external
-      call without timeout. Add timeout configuration.' 3) Error boundaries:
-      if React component file changed, check nearest ErrorBoundary exists.
-      WARN if top-level component has no boundary. 4) Empty catch blocks:
-      grep 'catch.*{[[:space:]]*}' — WARN per match: 'REED WARN: {file}:{line}
-      — empty catch. Handle error or propagate.' 5) Graceful shutdown: if
-      server entry file changed, check for SIGTERM handler. WARN if missing.
-      Output resilience review table: '| File | Check | Result |' with
-      PASS/WARN/BLOCK. If no concerns: 'REED: No resilience issues in {N}
-      changed files.'
+      Inspect `files_changed` source/text paths for loop/retry markers,
+      timeout evidence, error-boundary changes, catch/error handling,
+      shutdown/degradation handlers, and circuit-breaker/fallback markers from
+      resilience-patterns.md. Emit one compact table —
+      `File | Check | Status | Evidence | Recovery`, Status
+      `PASS | WARN | SKIP`. Report infinite retry, missing timeout, missing
+      boundary, or missing shutdown only with current diff evidence; do not
+      search unrelated component or entry files to prove absence. REED emits
+      advisory WARN findings only; PLAN/APPLY/UNIFY owns any blocking response.
+      Output `REED: skipped — no resilience-relevant files in scope` when scope
+      is empty, or `REED: no resilience concerns across {N} changed files` when
+      in scope with no findings.
     refs:
       - references/resilience-patterns.md
 

@@ -1,9 +1,9 @@
 name: omar
 display_name: OMAR
 description: >
-  Observability, Monitoring & Alert Review. Validates logging patterns,
-  checks health endpoint coverage, detects empty catch blocks, flags
-  sensitive data in logs, and ensures error tracking readiness.
+  Observability, Monitoring & Alert Review. Advisory evidence for in-scope
+  logging, health/readiness checks, error handling, sensitive log data, and
+  alert/error-tracking signals. PLAN/APPLY/UNIFY owns any blocking response.
 version: 1.0.0
 
 dependencies:
@@ -14,29 +14,32 @@ hooks:
   pre-plan:
     priority: 205
     description: >-
-      MUST run: `grep -rn 'console\.log\|console\.error' {files_modified}` to
-      count console usage. MUST run: `grep -rn 'logger\.\|winston\|pino\|bunyan\|
-      log4js' {files_modified}` to check for structured logger. MUST check health
-      endpoint: `grep -rn '/health\|/healthz\|/ready' {route_files}`. MUST check
-      error handlers: `grep -rn 'uncaughtException\|unhandledRejection'
-      {entry_files}`. Output: '| Check | Status |' table. Inject obs_context with:
-      console_log_count, has_logger, has_health, has_error_handler. If no relevant
-      files: 'OMAR: No observability-relevant files in scope — skipping.'
+      Inspect `files_modified` source/text paths for logging markers,
+      structured logging evidence, health/readiness evidence, and process
+      error-handler changes from observability-patterns.md. Emit a compact
+      table — `Check | Status | Evidence`, Status `PASS | WARN | SKIP`.
+      Inject `obs_context` entries `{check, file, line, marker, evidence}`;
+      never invent counts or readiness claims. Treat logger, health, and
+      handler markers as evidence, not coverage proof. Output `OMAR: skipped —
+      no observability-relevant files in scope` when scope is empty, or
+      `OMAR: no observability concerns across {N} planned files` when in scope
+      with no findings.
     refs:
       - references/observability-patterns.md
   post-apply:
     priority: 170
     description: >-
-      For EACH changed file: 1) Empty catch blocks: grep -n
-      'catch.*{[[:space:]]*}' {file} — WARN per match: 'OMAR WARN:
-      {file}:{line} — empty catch block. Log error or re-throw.' 2) New
-      console.log: grep -n 'console\.log' {file} — WARN: 'OMAR WARN:
-      {file}:{line} — console.log in production code. Use structured logger.'
-      3) Removed health endpoint: if route file changed, check /health still
-      exists — WARN if removed. 4) Error swallowing: grep for catch blocks
-      that don't log or re-throw — WARN. Output observability review table:
-      '| File | Check | Result |' with PASS/WARN. If no concerns:
-      'OMAR: No observability issues in {N} changed files.'
+      Inspect `files_changed` source/text paths for empty catch blocks, logging
+      changes, health/readiness changes, sensitive log data, and catch/error
+      handling changes from observability-patterns.md. Emit one compact table —
+      `File | Check | Status | Evidence | Recovery`, Status
+      `PASS | WARN | SKIP`. Report removed health/readiness checks, sensitive
+      logs, or swallowed errors only with current diff evidence; do not search
+      unrelated route or entry files to prove absence. OMAR emits advisory WARN
+      findings only; PLAN/APPLY/UNIFY owns any blocking response. Output
+      `OMAR: skipped — no observability-relevant files in scope` when scope is
+      empty, or `OMAR: no observability concerns across {N} changed files` when
+      in scope with no findings.
     refs:
       - references/observability-patterns.md
 

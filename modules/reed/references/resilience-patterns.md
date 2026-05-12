@@ -1,5 +1,5 @@
 <overview>
-Resilience pattern detection and error handling validation for REED. Covers retry patterns, circuit breakers, graceful degradation, timeout handling, and fault tolerance.
+Advisory resilience pattern reference for in-scope retry/backoff, timeout, error-boundary, shutdown/degradation, circuit-breaker/fallback, and cascading-failure signals. Findings are evidence, not proof of coverage or fault tolerance.
 </overview>
 
 <retry_patterns>
@@ -15,15 +15,18 @@ Resilience pattern detection and error handling validation for REED. Covers retr
 | Retry budget | Global retry rate limit | Each caller retries independently, multiplying load |
 | Selective retry | Only retry transient errors (5xx, timeout) | Retry 4xx errors (won't help) |
 
-### Detection
+### Evidence Checklist
 
-```bash
-# Find retry patterns
-grep -rn "retry\|Retry\|backoff\|maxRetries\|retryCount" --include="*.ts" --include="*.js" --include="*.py" src/
+Use retry patterns only for in-scope source/text paths; omit checks without changed-code evidence.
 
-# Find infinite loops that might be retry loops
-grep -rn "while.*true\|for.*;;)" --include="*.ts" --include="*.js" src/
-```
+| Check | Evidence |
+|-------|----------|
+| Retry/backoff marker | changed retry/backoff/max-retry path + `{file}:{line}` |
+| Infinite retry risk | changed loop/retry path lacks visible max attempts or break condition |
+| Immediate retry | changed retry path has no visible delay/backoff |
+| Retry amplification | changed per-request/per-item retry may multiply downstream calls |
+
+Report `WARN` only with cited code evidence and recovery owner; do not infer retry behavior from unrelated files.
 
 </retry_patterns>
 
@@ -37,12 +40,14 @@ grep -rn "while.*true\|for.*;;)" --include="*.ts" --include="*.js" src/
 | Open | Requests fail immediately (fast fail) | → Half-Open (after timeout period) |
 | Half-Open | Limited requests pass through to test | → Closed (success) or → Open (failure) |
 
-| Concern | Check |
-|---------|-------|
-| Missing circuit breaker | External service calls without failure isolation |
-| No timeout | HTTP/DB calls without timeout configuration |
-| Cascading failure risk | Service A → B → C, no isolation between |
-| Missing fallback | No degraded response when dependency fails |
+| Concern | Evidence |
+|---------|----------|
+| Circuit-breaker gap | changed external-service path lacks visible failure isolation |
+| Timeout gap | changed HTTP/DB/cache call lacks visible timeout/abort handling |
+| Cascading-failure risk | changed call chain adds dependency without visible isolation |
+| Fallback gap | changed dependency path lacks visible degraded response |
+
+Report `WARN` only with in-scope changed-code or provided-doc evidence and recovery owner; do not infer service topology from unrelated files.
 
 </circuit_breaker>
 
@@ -74,33 +79,37 @@ grep -rn "while.*true\|for.*;;)" --include="*.ts" --include="*.js" src/
 | Error propagation | Errors wrapped with context as they bubble up | Error swallowed, generic re-throw |
 | User-facing errors | Friendly messages, actionable guidance | Stack traces, technical jargon, "Something went wrong" |
 
-### Detection
+### Evidence Checklist
 
-```bash
-# Find throw statements (check for custom vs generic errors)
-grep -rn "throw new Error\|throw new " --include="*.ts" --include="*.js" src/
+Use error/resilience patterns only for in-scope source/text paths; omit checks without changed-code evidence.
 
-# Find catch blocks (check for proper handling)
-grep -rn "catch\s*(" --include="*.ts" --include="*.js" src/
+| Check | Evidence |
+|-------|----------|
+| Generic error | changed throw path loses useful context |
+| Swallowed error | changed catch path drops or hides error evidence |
+| Error boundary | changed UI boundary path lacks visible fallback/error boundary |
+| Global handler | changed process lifecycle path edits crash/shutdown handling |
+| Timeout gap | changed external-call path lacks visible timeout/abort handling |
+| User-facing error leak | changed response/UI path exposes stack/internal detail |
 
-# Find timeout configuration
-grep -rn "timeout\|Timeout\|TIMEOUT" --include="*.ts" --include="*.js" src/
-```
+Report `WARN` only with cited code evidence and recovery owner; do not infer missing boundaries, handlers, or timeouts from unrelated files.
 
 </error_handling_patterns>
 
 <resilience_metrics>
 
-## Resilience Health
+## Resilience Signals
 
-| Metric | Healthy | Warning | Critical |
-|--------|---------|---------|----------|
-| External calls without timeout | 0 | 1-2 | >2 |
-| Missing error boundaries (React) | 0 | 1 | >1 |
-| Empty catch blocks | 0 | 1-2 | >2 |
-| Infinite retry patterns | 0 | 0 | >0 |
-| No graceful shutdown handler | 0 | 0 | 1 (server app) |
-| Generic Error throws | <30% | 30-60% | >60% |
-| External calls without retry | OK (simple apps) | Warning (microservices) | Critical (distributed) |
+Use these as advisory WARN triggers only with in-scope evidence; do not score resilience health or infer coverage. Each WARN cites `{file}:{line}` or the triggering row.
+
+| Signal | WARN trigger |
+|--------|--------------|
+| Timeout gap | changed external call lacks visible timeout/abort handling |
+| Error-boundary gap | changed UI boundary path lacks visible fallback/error boundary |
+| Empty catch block | changed catch block has no visible handling |
+| Infinite retry risk | changed loop/retry path lacks visible max attempts or break condition |
+| Shutdown gap | changed process lifecycle path lacks visible shutdown/degradation handling |
+| Generic error | changed throw path loses useful context |
+| Retry gap | changed dependency call with provided retry requirement lacks visible retry/backoff |
 
 </resilience_metrics>

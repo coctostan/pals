@@ -1,9 +1,9 @@
 name: pete
 display_name: PETE
 description: >
-  Performance Evaluation & Tuning Expert. Detects N+1 queries, bundle
-  bloat, algorithmic anti-patterns, rendering performance issues, and
-  memory concerns across the plan-apply-unify loop.
+  Performance Evaluation & Tuning Expert. Advisory evidence for in-scope
+  query, import, algorithmic, rendering, I/O, and memory performance signals.
+  PLAN/APPLY/UNIFY owns any blocking response.
 version: 1.0.0
 
 dependencies:
@@ -14,34 +14,33 @@ hooks:
   pre-plan:
     priority: 225
     description: >-
-      MUST run: `grep -rn "import.*from 'lodash'\|import.*from 'moment'\|
-      require('lodash')" {files_modified}` for heavy imports — suggest
-      tree-shakeable alternatives. MUST check for database query files (ORM
-      models, repository files) in scope — flag for N+1 review. If package.json
-      modified: MUST check devDependencies properly separated. MUST check for
-      rendering files (React components, Vue SFCs) in scope — flag for re-render
-      review. Output: '| Category | Files in Scope | Risk |' table. Inject
-      perf_context with risk areas. If no concerns: 'PETE: No performance-sensitive
-      files in planned changes.'
+      Inspect `files_modified` source/text paths for performance-sensitive
+      evidence from performance-patterns.md: query/repository paths, heavy
+      imports, nested/async iteration, rendering paths, sync I/O, and
+      memory/cache markers. Emit a compact table —
+      `Category | Files | Status | Evidence`, Status `PASS | WARN | SKIP`.
+      Inject `perf_context` entries `{category, file, marker, evidence,
+      recovery}`; never invent counts, benchmarks, or risk areas. Treat
+      package/dependency metadata as evidence only when the plan changes it
+      directly. Output `PETE: skipped — no performance-relevant files in scope`
+      when scope is empty, or `PETE: no performance concerns across {N} planned
+      files` when in scope with no findings.
     refs:
       - references/performance-patterns.md
   post-apply:
     priority: 175
     description: >-
-      For EACH changed file, run performance checks: 1) N+1 detection: grep -n
-      'for.*await\|forEach.*await\|\.map.*await' {file} — WARN on any match:
-      'PETE WARN: Potential N+1 pattern in {file}:{line}. Consider batch query.'
-      2) Heavy imports: grep -n "import.*from 'lodash'\|require('moment')" {file}
-      — WARN: 'PETE WARN: Full library import in {file}:{line}. Use
-      lodash/{method} or date-fns instead.' 3) Unbounded queries: grep -n
-      'SELECT \*\|\.find()\|\.findAll()' {file} — WARN if no LIMIT/pagination
-      nearby. 4) Nested loops: grep -n 'for.*for\|forEach.*forEach' {file} —
-      WARN: 'O(n²) pattern in {file}:{line}.' 5) Sync I/O in async: grep -n
-      'readFileSync\|writeFileSync' {file} — BLOCK if in request handler or
-      async function: 'PETE BLOCK: Synchronous I/O in async path {file}:{line}.
-      Use async variant.' Output performance findings table: '| File | Pattern
-      | Severity | Detail |' with findings. If no issues: 'PETE: No performance
-      concerns in {N} changed files.'
+      Inspect `files_changed` source/text paths for query-loop patterns, heavy
+      imports, unbounded query evidence, nested/async iteration, sync I/O, and
+      memory/cache markers from performance-patterns.md. Emit one compact
+      table — `File | Pattern | Status | Evidence | Recovery`, Status
+      `PASS | WARN | SKIP`. Report sync I/O, unbounded queries, and
+      nested/async loop risks only with current diff evidence; do not infer
+      request-path or missing-pagination context from unrelated files. PETE
+      emits advisory WARN findings only; PLAN/APPLY/UNIFY owns any blocking
+      response. Output `PETE: skipped — no performance-relevant files in scope`
+      when scope is empty, or `PETE: no performance concerns across {N} changed
+      files` when in scope with no findings.
     refs:
       - references/performance-patterns.md
 

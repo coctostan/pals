@@ -18,7 +18,7 @@ Theme: Audit and rewrite PALS module instruction sources through guardrail-first
 | 274 | Base Module + Dispatch Instruction Rewrite | ✅ Complete — PR #191 `e18666ab` | 274-01 |
 | 275 | Core Enforcement Module Rewrite | ✅ Complete — PR #192 `44b795d5` | 275-01 |
 | 276 | Review, Knowledge, and Codegraph Module Rewrite | ✅ Complete — PR #194 `8c8dfb46` | 276-01 |
-| 277 | Domain Optional Module Rewrite | Not started | TBD |
+| 277 | Domain Optional Module Rewrite | Planning — plan 277-01 created (ARCH/SETH/OMAR/PETE/REED/VERA) | 277-01 |
 | 278 | Module Guardrails + Closure | Not started | TBD |
 
 ### Phase 273: Module Instruction Audit Contract + Cohort Map
@@ -39,7 +39,7 @@ Plans: 276-01 (`.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/2
 
 ### Phase 277: Domain Optional Module Rewrite
 Focus: Collaboratively rewrite ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, DEAN, OMAR, PETE, REED, VERA, and related domain module references/instructions by small file cohorts, preserving module-specific value while removing redundancy, confusion, stale assumptions, or incorrect guidance.
-Plans: TBD (defined during /paul:plan)
+Plans: 277-01 (`.paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md`; UNIFY in progress, summary `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`, PR #195 — covers ARCH/SETH/OMAR/PETE/REED/VERA backend/runtime cross-cutting cohort; ARIA/LUKE/GABE/DANA/DAVE and DEAN deferred references reserved for a follow-up plan)
 
 ### Phase 278: Module Guardrails + Closure
 Focus: Add or update semantic validation so module instruction compliance cannot pass through marker prose alone, verify registry/module docs and installed/runtime surfaces where applicable, record evidence, and close the milestone.
@@ -75,4 +75,4 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-11 — Phase 276 Plan 276-01 complete; transitioned to Phase 277.*
+*Last updated: 2026-05-12 — Phase 277 Plan 277-01 UNIFY in progress; summary created and PR #195 open.*
