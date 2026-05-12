@@ -1,5 +1,5 @@
 <overview>
-Observability pattern detection and logging health validation for OMAR. Covers structured logging, error tracking, health checks, monitoring patterns, and alerting readiness.
+Advisory observability pattern reference for in-scope logging, health/readiness, error handling, sensitive logs, and alert/error tracking. Findings are evidence, not proof of coverage or readiness.
 </overview>
 
 <logging_patterns>
@@ -15,18 +15,19 @@ Observability pattern detection and logging health validation for OMAR. Covers s
 | Error context | Error logged with stack trace, request context | `catch(e) { console.log(e) }` |
 | Performance logging | Request duration, DB query time logged | No timing data, blind to slow requests |
 
-### Detection
+### Evidence Checklist
 
-```bash
-# Find console.log usage (should use structured logger)
-grep -rn "console\.log\|console\.error\|console\.warn" --include="*.ts" --include="*.js" src/
+Use logging patterns only for in-scope source/text paths; omit checks without changed-code evidence.
 
-# Find logging without context
-grep -rn "logger\.\|log\.\|winston\|pino\|bunyan" --include="*.ts" --include="*.js" src/
+| Check | Evidence |
+|-------|----------|
+| Console logging | changed logging call + `{file}:{line}` |
+| Structured logging | visible logger marker plus request/error context |
+| Sensitive log data | changed log includes secret/PII/token-like data |
+| Error context | changed catch/error path logs or propagates context |
+| Performance logging | changed timing/latency marker |
 
-# Find potential sensitive data in logs
-grep -rn "console.*password\|log.*token\|log.*secret\|log.*apiKey" --include="*.ts" --include="*.js" src/
-```
+Report `WARN` only with cited code evidence and recovery owner.
 
 </logging_patterns>
 
@@ -41,12 +42,14 @@ grep -rn "console.*password\|log.*token\|log.*secret\|log.*apiKey" --include="*.
 | Startup | "Has it finished initializing?" | `GET /health/startup` → check initialization complete |
 | Deep | "Are all dependencies healthy?" | `GET /health/deep` → check each dependency with timeout |
 
-| Concern | Check |
-|---------|-------|
-| Missing health endpoint | No `/health` or `/healthz` route |
-| No dependency checks | Health returns 200 without checking DB/cache |
-| Timeout handling | Health check hangs if dependency is down |
-| Health check does work | Health endpoint triggers computation (should be cheap) |
+| Concern | Evidence |
+|---------|----------|
+| Missing health/readiness route | current diff changes or removes an in-scope health/readiness path |
+| Missing dependency check | changed readiness/deep success path lacks visible dependency check |
+| Missing timeout handling | changed health dependency call lacks visible timeout/abort handling |
+| Expensive health work | changed health path triggers expensive computation or external work |
+
+Report health concerns only from changed code or provided docs; omit rows without in-scope evidence.
 
 </health_checks>
 
@@ -63,33 +66,35 @@ grep -rn "console.*password\|log.*token\|log.*secret\|log.*apiKey" --include="*.
 | Circuit breaker | Failed dependencies circuit-broken | Retry forever, cascading failures |
 | Error response format | Consistent error shape, no stack traces in prod | Stack traces leaked to clients, inconsistent format |
 
-### Detection
+### Evidence Checklist
 
-```bash
-# Find unhandled error patterns
-grep -rn "catch.*{.*}" --include="*.ts" --include="*.js" src/ | grep -v "console\|log\|throw\|return"
+Use error patterns only for in-scope source/text paths; omit checks without changed-code evidence.
 
-# Find empty catch blocks
-grep -rn "catch.*{[[:space:]]*}" --include="*.ts" --include="*.js" src/
+| Check | Evidence |
+|-------|----------|
+| Empty catch | changed catch block has no visible handling |
+| Swallowed error | changed catch/error path drops error without visible handling |
+| Process handler | changed process lifecycle handler |
+| Error reporting | changed reporting sink or local-only handling |
+| Client error leak | changed response path exposes stack/internal details |
 
-# Find process crash handlers
-grep -rn "uncaughtException\|unhandledRejection\|process.on" --include="*.ts" --include="*.js" src/
-```
+Report `WARN` only with cited code evidence and recovery owner.
 
 </error_tracking>
 
 <monitoring_readiness>
 
-## Monitoring & Alerting Readiness
+## Monitoring & Alerting Signals
 
-| Metric | Healthy | Warning | Critical |
-|--------|---------|---------|----------|
-| console.log in production code | 0 | 1-5 | >5 |
-| Empty catch blocks | 0 | 1-2 | >2 |
-| Missing health endpoint | 0 | 0 | 1 (if server app) |
-| Sensitive data in logs | 0 | 0 | >0 |
-| No structured logger | N/A | 1 (small project) | 1 (any server app) |
-| Missing error boundary (React) | 0 | 1 | >1 |
-| No global error handler (server) | 0 | 0 | 1 |
+Use these as advisory WARN triggers only with in-scope evidence; each WARN cites `{file}:{line}` or the triggering row.
+
+| Signal | WARN trigger |
+|--------|--------------|
+| Console logging | changed production path adds console logging |
+| Empty catch blocks | changed catch block has no visible handling |
+| Health/readiness change | current diff changes or removes an in-scope health/readiness path |
+| Sensitive data in logs | changed log includes secret/PII/token-like data |
+| Structured logging gap | changed logging path lacks visible structure/context |
+| Process error handling | changed process lifecycle path lacks visible recovery/reporting |
 
 </monitoring_readiness>

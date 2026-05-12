@@ -1,9 +1,9 @@
 name: seth
 display_name: SETH
 description: >
-  Security Evaluation & Threat Hunting. Scans for OWASP Top 10 risks,
-  detects hardcoded secrets, validates authentication patterns, checks
-  input validation coverage, and surfaces code-level security concerns.
+  Security Evaluation & Threat Hunting. Advisory evidence for in-scope
+  secrets, auth/authz changes, input validation, injection risk, and
+  OWASP-aligned concerns. PLAN/APPLY/UNIFY owns any blocking response.
 version: 1.0.0
 
 dependencies:
@@ -14,36 +14,35 @@ hooks:
   pre-plan:
     priority: 80
     description: >-
-      MUST run: `grep -rn 'AKIA\|BEGIN.*PRIVATE KEY\|api[_-]\?key.*=\|
-      password.*=.*["'"'"']' --include='*.ts' --include='*.js' --include='*.py'
-      --include='*.env' {files_modified}` for secret detection. MUST check for
-      auth-related files in scope (middleware, guards, login endpoints). MUST
-      assess OWASP coverage: `grep -rn 'Zod\|Joi\|Pydantic\|rateLimit\|csrf'
-      {files_modified}`. Output: '| Category | Status |' table with rows for
-      secrets, auth, validation, injection risk. Inject sec_warnings with finding
-      counts. BLOCK plan creation if hardcoded secrets found: 'SETH BLOCK:
-      Hardcoded secret detected in {file}. Remove before planning.' If no
-      concerns: 'SETH: No security concerns in planned files.'
+      Inspect `files_modified` text/source paths for secret-like literals,
+      auth/authz changes, validation evidence, and injection-risk patterns
+      from security-patterns.md. Emit a compact table —
+      `Category | Status | Evidence`, Status `PASS | WARN | SKIP`. Secret-like
+      literals emit `WARN` with `{file}:{line}` and matched-pattern evidence;
+      PLAN/APPLY/UNIFY owns any blocking response. Inject `sec_warnings`
+      entries `{category, file, line, pattern, recovery}`; never invent counts.
+      Treat framework/library markers as evidence, not coverage proof. Output
+      `SETH: skipped — no in-scope source files` when scope is empty, or
+      `SETH: no security concerns across {N} planned files` when in scope with
+      no findings.
     refs:
       - references/security-patterns.md
   post-apply:
     priority: 130
     description: >-
-      For EACH changed file, run security checks: 1) Secret scan: grep -rn
-      'AKIA\|BEGIN.*PRIVATE KEY\|api[_-]\?key.*=\|password.*=['"'"'"]' {file} —
-      BLOCK on any match: 'SETH BLOCK: Hardcoded secret in {file}:{line}:
-      {matched_pattern}. Remove immediately.' 2) Injection scan: grep -n
-      'eval(\|exec(\|execSync(\|innerHTML\|dangerouslySetInnerHTML\|v-html'
-      {file} — BLOCK on eval/exec with dynamic input: 'SETH BLOCK: Dangerous
-      {function} in {file}:{line}. Use safe alternative.' WARN on innerHTML.
-      3) Auth pattern check: if auth-related files changed, verify middleware
-      is still wired (grep for auth middleware in route files). WARN if auth
-      middleware removed. 4) Input validation: if API endpoint files changed,
-      check for schema validation (grep for 'z\.\|Zod\|Joi\|validate\|
-      Pydantic\|class-validator'). WARN if endpoint has no validation. Output
-      security findings table: '| File | Check | Severity | Finding |' with
-      CRITICAL/HIGH/MEDIUM/LOW per finding. If no issues: 'SETH: No security
-      concerns in {N} changed files.'
+      Inspect `files_changed` source/text paths for secret-like literals,
+      dangerous execution/rendering sinks, auth/authz wiring changes, and
+      input-validation evidence from security-patterns.md. Emit one compact
+      table — `File | Check | Status | Finding | Recovery`, Status
+      `PASS | WARN | SKIP`. Secret-like literals and dangerous sinks emit
+      `WARN` with `{file}:{line}`, matched pattern, and recovery owner;
+      PLAN/APPLY/UNIFY owns any blocking response. Report dynamic input,
+      middleware removal, or missing validation only when current diff evidence
+      shows it; do not search unrelated route files to prove absence. Treat
+      framework/library markers as evidence, not coverage proof. Output
+      `SETH: skipped — no in-scope source files` when scope is empty, or
+      `SETH: no security concerns across {N} changed files` when in scope with
+      no findings.
     refs:
       - references/security-patterns.md
 

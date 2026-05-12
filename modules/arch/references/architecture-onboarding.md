@@ -1,28 +1,22 @@
 <overview>
-Architecture onboarding heuristics for ARCH. Helps new contributors (human or AI) quickly understand a project's structure, patterns, and conventions.
+Advisory onboarding heuristics for compact architecture briefs from in-scope paths, `arch_context`, and provided project docs.
 </overview>
 
 <onboarding_scan>
 
 ## Project Structure Scan
 
-Run these commands to build a structural picture:
+Build onboarding context only from in-scope sources:
 
-```bash
-# Directory tree (2 levels, dirs only)
-find . -maxdepth 2 -type d -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/.paul/*'
+| Source | Use |
+|--------|-----|
+| `arch_context.detected_pattern` | observed pattern |
+| `arch_context.layer_map` | layer names and expected paths |
+| `arch_context.structural_warnings` | bounded drift/size/fan-out warnings |
+| In-scope parent paths | where current work sits structurally |
+| Provided project docs | cited conventions from supplied text only |
 
-# File count per top-level directory
-for dir in $(ls -d src/*/  2>/dev/null || ls -d */ 2>/dev/null); do
-  echo "$dir: $(find "$dir" -type f | wc -l | tr -d ' ') files"
-done
-
-# Entry points
-ls -la src/index.* src/main.* src/app.* index.* main.* app.* 2>/dev/null
-
-# Package/dependency indicators
-ls package.json go.mod Cargo.toml requirements.txt pyproject.toml Gemfile pom.xml build.gradle 2>/dev/null
-```
+If no source is available, emit `ARCH onboarding: skipped — no in-scope structure evidence`.
 
 </onboarding_scan>
 
@@ -30,15 +24,15 @@ ls package.json go.mod Cargo.toml requirements.txt pyproject.toml Gemfile pom.xm
 
 ## Pattern Recognition Checklist
 
-| Check | Command | What It Tells You |
-|-------|---------|-------------------|
-| Layer structure | `ls src/` | MVC, clean arch, feature-based, or flat |
-| Test co-location | `find . -name '*.test.*' -o -name '*.spec.*' \| head -5` | Tests beside source or in separate `__tests__/` |
-| Config pattern | `ls *.config.* .env* tsconfig.json` | Build tools, env management |
-| API style | `grep -r 'app.get\|app.post\|@Get\|@Post\|def get\|func Handle' src/ \| head -5` | REST, GraphQL, RPC |
-| State management | `grep -r 'useState\|createStore\|useReducer\|Redux\|Vuex\|Pinia' src/ \| head -3` | Frontend state approach |
-| Data access | `grep -r 'prisma\|typeorm\|sequelize\|mongoose\|sqlx\|gorm\|ActiveRecord' src/ \| head -3` | ORM/data layer |
-| Auth pattern | `grep -r 'jwt\|passport\|auth\|session\|OAuth' src/ \| head -3` | Authentication approach |
+Omit rows without in-scope evidence; do not search broadly to fill them.
+
+| Check | Evidence | Use |
+|-------|----------|-----|
+| Layer structure | `arch_context.detected_pattern` + in-scope parent paths | observed pattern |
+| Test co-location | in-scope test/source sibling paths | local test convention |
+| API style | changed route/controller paths or provided docs | visible interface style |
+| Data access | changed repository/ORM call path | visible data boundary |
+| Auth boundary | changed auth/session path or provided docs | visible security boundary handoff |
 
 </pattern_recognition>
 
@@ -46,33 +40,30 @@ ls package.json go.mod Cargo.toml requirements.txt pyproject.toml Gemfile pom.xm
 
 ## Onboarding Report Format
 
-ARCH should produce a structural brief when encountering a new or unfamiliar project:
+Build the brief only from `<onboarding_scan>` sources; omit unknown fields and never invent facts.
 
 ```markdown
 ## Architecture Brief
 
-**Project type:** {web app | API | CLI | library | monorepo}
-**Language:** {primary language}
-**Pattern:** {MVC | Clean/Hexagonal | Feature-based | Flat | Custom}
-**Entry point:** {main file}
+**Scope:** {N} in-scope path(s)
+**Pattern:** {arch_context.detected_pattern}
 
 ### Layer Map
-| Layer | Directory | Purpose |
-|-------|-----------|---------|
-| {layer} | {dir} | {what it does} |
+| Layer | Directory | Evidence |
+|-------|-----------|----------|
+| {layer} | {dir} | {file_or_doc_reference} |
 
-### Key Conventions
-- Test location: {co-located | separate}
-- Config approach: {env files | config module | both}
-- Import style: {relative | aliases | barrel exports}
+### Advisory Boundaries
+- {boundary rule or boundary-check row with citation}
 
-### Boundaries to Enforce
-- {rule 1}
-- {rule 2}
+### Structural Warnings
+- {warning label}: {file}:{metric}={value}
 
-### Risks
-- {identified risk or smell}
+### Local Conventions
+- {provided doc convention or visible in-scope pattern}
 ```
+
+If no evidence is available, emit `ARCH onboarding: skipped — no in-scope structure evidence`.
 
 </onboarding_report>
 
@@ -80,12 +71,14 @@ ARCH should produce a structural brief when encountering a new or unfamiliar pro
 
 ## Brownfield Project Heuristics
 
-For existing projects without explicit architecture docs:
+Use weak advisory brownfield labels only when visible in scope:
 
-1. **Infer from structure:** Directory names and nesting reveal intent even without documentation
-2. **Infer from imports:** The most-imported files are the architectural core
-3. **Infer from age:** Oldest files often define the original pattern; newest files show current practice
-4. **Infer from size:** Largest files are often where architecture broke down
-5. **Infer from tests:** Test structure often mirrors the intended (not actual) architecture
+1. **Structure:** In-scope parent paths may suggest the active pattern; cite the path.
+2. **Imports:** Resolved in-scope imports may show local coupling; do not rank global fan-in.
+3. **Size/growth:** Current diff growth or file size may indicate responsibility creep; cite `{file}:{metric}={value}`.
+4. **Tests:** In-scope test/source sibling paths may show local test convention; do not infer intended architecture.
+5. **Docs:** Provided docs override heuristic labels when they conflict.
+
+Omit brownfield notes when these signals are absent.
 
 </brownfield_heuristics>

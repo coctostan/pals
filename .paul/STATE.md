@@ -11,9 +11,9 @@ See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficien
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
 Phase: 277 of 278 (Domain Optional Module Rewrite)
 Plan: .paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md
-Status: PLAN complete; awaiting APPLY
-Last activity: 2026-05-12 — Created Phase 277 Plan 277-01 for ARCH/SETH/OMAR/PETE/REED/VERA backend/runtime domain cohort
-Next action: /paul:apply .paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md
+Status: APPLY complete — source rewrites verified; GitHub Flow postflight pending
+Last activity: 2026-05-12 — Completed Phase 277 Plan 277-01 APPLY Tasks 2 and 3 section-by-section rewrites and verification
+Next action: Run GitHub Flow postflight, then continue to UNIFY
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Phase 277 Plan 277-01 created; APPLY next]
+  ✓        ✓        ○     [Phase 277 Plan 277-01 APPLY complete; UNIFY next]
 ```
 
 ## Accumulated Context
@@ -91,12 +91,17 @@ Prior PRs: #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 /
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Phase 277 Plan 277-01 created; awaiting APPLY.
-Stopped at: Phase 277 PLAN written; ready for parent-owned collaborative APPLY.
-Next action: /paul:apply .paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md
-Resume file: .paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md
-wip_result: applied — SUMMARY, history rows, STATE/ROADMAP/PROJECT all updated locally
+Last session: 2026-05-12 — Continued Phase 277 Plan 277-01 APPLY; Tasks 2 and 3 source rewrites complete and parent-verified.
+Stopped at: Phase 277 APPLY GitHub Flow postflight.
+Next action: Run GitHub Flow postflight, then continue to UNIFY
+Resume file: .paul/handoffs/archive/HANDOFF-2026-05-12-phase-277-apply-audit-ready.md
+wip_result: Task 2 PASS and Task 3 PASS — all fourteen planned source files edited with per-section approval and re-read evidence
 Resume context:
-- Phase 277 Plan 277-01 targets 14 source files across ARCH, SETH, OMAR, PETE, REED, and VERA; deferred sub-cohort (ARIA/LUKE/GABE/DANA/DAVE + DEAN deferred refs) and all `*-principles.md` files reserved for follow-up plans.
-- Plan keeps PAUL parent authority; pals-implementer delegation requires explicit narrow packet approval; APPLY must run audit + blocking checkpoint before any mutation.
+- APPLY Task 1 audit complete: cross-cohort issues identified (broad codebase reads, BLOCK wording without recovery owner, marker-only outputs, magical-inference thresholds).
+- Task 2 checkpoint approved with `approve-section-loop`; ARCH/SETH files edited section-by-section with BEFORE/AFTER approval and re-read verification.
+- Task 2 verification: focused checks found no stale BLOCK/critical severity, broad command recipes, or lifecycle-authority drift in edited ARCH/SETH files; `bash tests/helpers/artifact_consistency.sh` PASS.
+- Task 3 verification: focused checks found no stale BLOCK/critical severity, broad command recipes, invented coverage/metrics, or lifecycle-authority drift in edited OMAR/PETE/REED/VERA files; `git diff --check` PASS; `bash tests/helpers/artifact_consistency.sh` PASS.
+- Post-apply validation: docs/reference scoped changes; `bash tests/cross-harness-validation.sh` ran with 195/202 PASS and the inherited 7 CODI marker failures only (Phase 278-owned, no new regression).
 - Inherited Phase 278 work: 7 historical CODI marker failures in `tests/cross-harness-validation.sh` must not regress further during Phase 277 APPLY.
+- [dispatch] post-apply advisory: ARCH/SETH/OMAR/PETE/REED/VERA edited source surfaces parent-verified as advisory, bounded, evidence-grounded; other domain/UI/data/deploy modules skipped by scope.
+- [dispatch] post-apply enforcement: DEAN/TODD/WALT docs-reference validation PASS_WITH_CONCERNS — no dependency/runtime files changed; artifact consistency PASS; cross-harness unchanged inherited CODI failures remain deferred to Phase 278.

@@ -1,9 +1,9 @@
 name: vera
 display_name: VERA
 description: >
-  Verification & Regulatory Awareness. Detects PII handling patterns,
-  checks GDPR/CCPA compliance readiness, validates consent flows,
-  flags sensitive data exposure, and ensures data retention practices.
+  Verification & Regulatory Awareness. Advisory evidence for in-scope PII
+  handling, consent, deletion/retention, encryption, sensitive-data exposure,
+  and privacy-regulation signals. PLAN/APPLY/UNIFY owns any blocking response.
 version: 1.0.0
 
 dependencies:
@@ -14,35 +14,34 @@ hooks:
   pre-plan:
     priority: 215
     description: >-
-      MUST run: `grep -rn 'email\|phone\|ssn\|socialSecurity\|creditCard\|
-      dateOfBirth\|passport\|address' {schema_model_files}` to detect PII fields.
-      MUST run: `grep -rn 'consent\|gdpr\|optIn\|optOut\|privacy'
-      {files_modified}` for consent. MUST run: `grep -rn 'deleteUser\|removeUser\|
-      purge\|anonymize\|erasure' {files_modified}` for deletion capability. MUST
-      run: `grep -rn 'encrypt\|bcrypt\|argon\|crypto' {files_modified}` near PII
-      fields for encryption. Output: '| Check | Status |' table. Inject
-      privacy_context with: pii_field_count, has_consent, has_deletion,
-      has_encryption. If no relevant files: 'VERA: No privacy-relevant files in
-      scope — skipping.'
+      Inspect `files_modified` source/text paths for privacy evidence from
+      privacy-patterns.md: PII-like field names, consent/privacy markers,
+      deletion/erasure/anonymization paths, encryption/hash markers, and
+      sensitive-data exposure signals. Emit a compact table —
+      `Check | Status | Evidence`, Status `PASS | WARN | SKIP`. Inject
+      `privacy_context` entries `{check, file, line, marker, evidence}`;
+      never invent counts or compliance claims. Treat markers as evidence, not
+      proof that consent, deletion, or encryption coverage exists. Output
+      `VERA: skipped — no privacy-relevant files in scope` when scope is empty,
+      or `VERA: no privacy concerns across {N} planned files` when in scope
+      with no findings.
     refs:
       - references/privacy-patterns.md
   post-apply:
     priority: 185
     description: >-
-      For EACH changed file: 1) PII in logs: grep -n 'console.*email\|
-      log.*phone\|log.*ssn\|log.*address\|log.*creditCard\|console.*password'
-      {file} — BLOCK on match: 'VERA BLOCK: {file}:{line} — PII ({type}) in
-      log statement. Remove or mask with [REDACTED].' 2) New PII storage: if
-      schema/model file changed and new PII field added (grep diff for +email,
-      +phone, etc.), check for encryption — WARN if unencrypted: 'VERA WARN:
-      {file} — new PII field {name} without encryption. Consider encrypting at
-      rest.' 3) Consent check: if user-facing data collection added (new form
-      fields, new API endpoints accepting PII), check for consent mechanism.
-      WARN if missing. 4) Hardcoded PII in tests: grep test files for real
-      email/phone patterns — WARN: 'VERA WARN: {file}:{line} — hardcoded PII
-      in test. Use faker/generated data.' 5) Output privacy review table:
-      '| File | Check | Result |' with PASS/WARN/BLOCK. If no concerns:
-      'VERA: No privacy issues in {N} changed files.'
+      Inspect `files_changed` source/text paths for PII-like log exposure,
+      PII-like storage/collection paths, consent/privacy changes,
+      deletion/retention handling, encryption/hash evidence, and hardcoded
+      PII-like test data from privacy-patterns.md. Emit one compact table —
+      `File | Check | Status | Evidence | Recovery`, Status
+      `PASS | WARN | SKIP`. Report PII-like logs, missing consent, missing
+      encryption, or hardcoded test PII only with current diff evidence; do not
+      search unrelated forms, endpoints, schemas, or tests to prove absence.
+      VERA emits advisory WARN findings only; PLAN/APPLY/UNIFY owns any
+      blocking response. Output `VERA: skipped — no privacy-relevant files in
+      scope` when scope is empty, or `VERA: no privacy concerns across {N}
+      changed files` when in scope with no findings.
     refs:
       - references/privacy-patterns.md
 
