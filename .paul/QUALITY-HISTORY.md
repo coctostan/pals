@@ -127,3 +127,4 @@ Types: —
 | 276-01 | 2026-05-11 | — | — | — | — | — skipped (instruction-only advisory module rewrite; XH has 7 intentional historical CODI marker failures deferred to Phase 278; artifact_consistency PASS; git diff --check PASS) |
 | 277-01 | 2026-05-12 | XH 195/202 (7 inherited CODI marker failures), artifact_consistency PASS | N/A (docs/reference) | N/A | N/A | → stable (domain optional module instruction rewrite; no runtime code changed; git diff --check PASS) |
 | 278-01 | 2026-05-12 | XH 202/202, Pi 307/312 (5 inherited CODI marker failures — follow-up), artifact_consistency PASS | N/A (shell/docs) | N/A | N/A | ↑ improving (semantic guardrails replace 7 inherited CODI marker failures; cross-harness 195→202 PASS; git diff --check PASS) |
+| 279-01 | 2026-05-12 | — | — | — | — | — skipped (docs-only contract; git diff --check PASS; artifact_consistency PASS) |
