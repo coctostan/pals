@@ -2,7 +2,10 @@
 
 ## Documentation Drift Detection
 
-Drift occurs when code changes but related documentation does not. DOCS detects drift at post-apply time by comparing files changed during the plan against the doc catalog built at pre-plan.
+DOCS drift findings are advisory candidates. Use `CANDIDATE_DRIFT`, not
+confirmed drift, unless source evidence proves documentation is stale. Docs-only
+or module-instruction changes are `NOT_APPLICABLE` for drift unless they change
+documented public behavior.
 
 ### Drift Analysis
 

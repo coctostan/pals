@@ -14,26 +14,23 @@ hooks:
   pre-plan:
     priority: 200
     description: >-
-      MUST run: `find . -maxdepth 3 -name '*.md' -not -path './.paul/*'` to build
-      doc catalog. For each source file in files_modified, MUST find the nearest
-      related doc (e.g., src/verify.ts → docs/verify.md). Output: '| Source File |
-      Related Doc | Status |' table. Inject doc_warnings with: total docs found,
-      files_modified with no nearby doc, stale doc candidates. If all files have
-      nearby docs: 'DOCS: All planned files have related documentation.'
+      DOCS pre-plan is advisory. Catalog bounded markdown docs outside `.paul/*`.
+      For planned source files, report explicit or nearest related docs with
+      source evidence. For docs-only or module-instruction plans, emit
+      `DOCS: Documentation-only scope — drift check not applicable.` Output
+      `| Source File | Related Doc | Status |` and compact counts. Do not block
+      planning or label docs stale without source evidence.
     refs:
       - references/doc-detection.md
   post-apply:
     priority: 250
     description: >-
-      For EACH file in files_changed, MUST check doc drift: 1) MUST check
-      README.md — if any src/ file changed and README not in files_changed,
-      output: 'README.md: NOT UPDATED — DRIFT'. 2) MUST check CHANGELOG.md — if
-      functional file changed and CHANGELOG not updated, output: 'CHANGELOG.md:
-      NOT UPDATED — DRIFT'. 3) MUST check API.md/openapi.yaml if route/endpoint
-      files changed. 4) Proximity: if src/X.ts changed, check docs/X.md. Output:
-      '| File Changed | Related Doc | Status |' with UPDATED/DRIFT/NO DOC.
-      Summary: 'Files modified: N, Docs updated: M, Drift warnings: K'. If no
-      drift: 'DOCS: No doc drift in {N} changed files.'
+      DOCS post-apply is advisory. For changed source/API/config files, compare
+      only relevant README/CHANGELOG/API/proximity docs. Docs-only and
+      module-instruction changes are `NOT_APPLICABLE` for drift. Output
+      `| File Changed | Related Doc | Status |` with UPDATED, CANDIDATE_DRIFT,
+      NO_DOC, or NOT_APPLICABLE plus counts. Do not block APPLY or label drift
+      without source evidence.
     refs:
       - references/doc-drift.md
 

@@ -61,10 +61,11 @@ AFTER:  function processOrder(order) { validateOrder(order); const totals = calc
 | Shotgun surgery | Consolidate module |
 | Long parameter list | Parameter object |
 
-## Safe Transformation Principles
+## Safety Checklist
 
-1. One refactoring at a time. Verify tests pass, then consider next.
-2. Tests are your safety net. Run after every transform. Break = revert.
-3. Commit after each successful refactoring. Small commits = easy bisect/revert.
-4. Refactoring is reversible. Not clearly better = undo.
-5. Measure improvement. If metrics don't improve, reconsider.
+Before suggesting a refactor:
+1. Cite changed-source evidence.
+2. Use only measured metrics.
+3. Mark blast radius unknown unless bounded caller/import evidence was read.
+4. Prefer mechanical, behavior-preserving changes.
+5. Do not own commits, lifecycle state, or execution decisions.
