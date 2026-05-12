@@ -19,7 +19,7 @@ Theme: Audit and rewrite PALS module instruction sources through guardrail-first
 | 275 | Core Enforcement Module Rewrite | ✅ Complete — PR #192 `44b795d5` | 275-01 |
 | 276 | Review, Knowledge, and Codegraph Module Rewrite | ✅ Complete — PR #194 `8c8dfb46` | 276-01 |
 | 277 | Domain Optional Module Rewrite | ✅ Complete — PR #195 `aeff3f0a` | 277-01 |
-| 278 | Module Guardrails + Closure | Ready to plan | TBD |
+| 278 | Module Guardrails + Closure | Planning — plan 278-01 created | 278-01 |
 
 ### Phase 273: Module Instruction Audit Contract + Cohort Map
 Focus: Inventory base and optional module instruction sources, define v2.64 rewrite criteria, classify module cohorts, and standardize the v2.63-style collaborative protocol: semantic guardrails first, compact audit + proposed file/section order, blocking approval checkpoint, no edits ahead of approval, section re-read after each change, and final validation. The audit must look at each module holistically for redundancy, confusion, stale ceremony, marker-only compliance, and simply wrong guidance.
@@ -43,7 +43,7 @@ Plans: 277-01 (`.paul/phases/277-domain-optional-module-rewrite/277-01-PLAN.md`;
 
 ### Phase 278: Module Guardrails + Closure
 Focus: Add or update semantic validation so module instruction compliance cannot pass through marker prose alone, verify registry/module docs and installed/runtime surfaces where applicable, record evidence, and close the milestone.
-Plans: TBD (next: define during /paul:plan)
+Plans: 278-01 (`.paul/phases/278-module-guardrails-closure/278-01-PLAN.md`; plan created, APPLY next — replaces inherited CODI marker-string validation drift with semantic module-instruction guardrails and closure evidence)
 
 ### Latest completed milestone: v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite
 Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflow instructions now use bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. v2.64 extends the same collaborative instruction-audit pattern from lifecycle workflows into base and optional module sources.
@@ -75,4 +75,4 @@ Result: Phases 268–272 complete. Resume, plan, apply, unify, and pause workflo
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-12 — Phase 277 complete via PR #195 `aeff3f0a`; Phase 278 ready to plan.*
+*Last updated: 2026-05-12 — Phase 278 Plan 278-01 created; APPLY next.*

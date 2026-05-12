@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficien
 
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
 Phase: 278 of 278 (Module Guardrails + Closure)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-12 — Phase 277 complete via PR #195 `aeff3f0a`; transitioned to Phase 278
-Next action: /paul:plan for Phase 278 Module Guardrails + Closure
+Plan: .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
+Status: PLAN complete — 278-01 created; APPLY next
+Last activity: 2026-05-12 — Created Phase 278 Plan 278-01 for semantic module guardrails and closure
+Next action: /paul:apply .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 278 ready to plan]
+  ✓        ○        ○     [Phase 278 Plan 278-01 created; APPLY next]
 ```
 
 ## Accumulated Context
@@ -92,13 +92,13 @@ Prior PRs: #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 /
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Completed Phase 277 Plan 277-01 UNIFY, merged PR #195, and transitioned to Phase 278.
-Stopped at: Phase 278 ready to plan.
-Next action: /paul:plan for Phase 278 Module Guardrails + Closure
-Resume file: .paul/ROADMAP.md
-wip_result: Phase 277 complete; Phase 278 planning pending
+Last session: 2026-05-12 — Created Phase 278 Plan 278-01 for semantic module guardrails and closure.
+Stopped at: Phase 278 Plan 278-01 created; APPLY next.
+Next action: /paul:apply .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
+Resume file: .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
+wip_result: Phase 278 Plan 278-01 created; APPLY pending
 Resume context:
-- Phase 277 Plan 277-01 completed: summary `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`; PR #195 merged as `aeff3f0a`.
-- ARCH/SETH/OMAR/PETE/REED/VERA source surfaces now use bounded advisory evidence, compact schemas, skip/no-scope behavior, no-invented-facts/no-coverage wording, and workflow-owned blocking response.
-- Validation: `git diff --check` PASS; `bash tests/helpers/artifact_consistency.sh` PASS; cross-harness 195/202 with inherited 7 CODI marker failures deferred to Phase 278.
-- Phase 278 planning inputs: inherited CODI marker failures, semantic guardrails for module instruction rewrites, and any remaining/deferred Phase 277 domain sub-cohort decisions.
+- Phase 278 Plan 278-01 created at `.paul/phases/278-module-guardrails-closure/278-01-PLAN.md`.
+- Scope: replace inherited CODI marker-string validation drift with semantic guardrails in `tests/cross-harness-validation.sh`, add `tests/helpers/module_instruction_semantics.sh`, and optionally add a concise closure note to `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`.
+- Validation targets: `git diff --check`, `bash tests/helpers/artifact_consistency.sh`, `bash tests/cross-harness-validation.sh`, and `bash tests/pi-end-to-end-validation.sh`.
+- Boundaries: no module source rewrites, kernel workflow rewrites, runtime behavior changes, dependency/CI/install changes, or direct installed-copy edits.
