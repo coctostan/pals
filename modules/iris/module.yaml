@@ -14,24 +14,23 @@ hooks:
   pre-plan:
     priority: 150
     description: >-
-      MUST run: `grep -rn 'TODO\|FIXME\|HACK\|XXX' {files_modified}`
-      to detect anti-pattern signatures. Output: '| File | Pattern |
-      Count |' table with findings. Inject review_flags with pattern names and
-      counts. If no anti-patterns found: 'IRIS: No anti-patterns in planned files.'
+      IRIS pre-plan is advisory. For readable planned text files, count literal
+      `TODO`, `FIXME`, `HACK`, and `XXX` markers. Markers are review signals, not
+      defects. Output `| File | Marker | Count |` with source-backed counts. If
+      no readable files or no markers, emit `IRIS: No review markers in planned
+      files.` Do not block planning or treat examples/placeholders as findings.
     refs:
       - references/review-patterns.md
   post-apply:
     priority: 250
     description: >-
-      For EACH file in files_changed, MUST run: `npx eslint --no-eslintrc
-      --rule 'complexity: [warn, 10]' --rule 'no-unused-vars: warn'
-      --format json {file}` for TypeScript/JavaScript
-      projects. Parse ESLint JSON output: extract rule violations with file,
-      line, column, message. Report: code smells (complexity,
-      unused vars) with file:line references
-      and measured values. Share ESLint invocation with RUBY — run once, split
-      results by concern (IRIS takes code smells, RUBY takes complexity
-      metrics). If no issues: 'IRIS: No code review concerns in {N} changed files.'
+      IRIS post-apply is advisory. Inspect only changed readable source files.
+      For JS/TS, reuse an available lint result; do not require ESLint. Report
+      review concerns with file:line evidence: unused symbols, dead/commented
+      code, empty catches, broad catches, or review markers. Tool absence is a
+      warning, not a block. If no concerns, emit `IRIS: No code review concerns
+      in {N} changed files.` Do not scan unrelated files or treat
+      examples/placeholders as findings.
     refs:
       - references/review-patterns.md
       - references/inspection-checklists.md

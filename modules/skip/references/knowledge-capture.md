@@ -2,6 +2,9 @@
 
 Templates and guidelines for recording project knowledge with SKIP.
 
+SKIP emits only source-backed knowledge. Do not fill template gaps by guessing.
+If required evidence is missing, emit an incomplete-entry or skip note instead.
+
 ## Capture Templates
 
 ### Decision Record
@@ -96,28 +99,24 @@ Templates and guidelines for recording project knowledge with SKIP.
 
 ## Required Fields
 
-Every knowledge entry MUST have:
+Emit an entry only when source evidence supports every required field:
 
 | Field | Purpose |
 |-------|---------|
-| **Date** | When the knowledge was captured (YYYY-MM-DD) |
-| **Title** | Clear, searchable summary |
-| **Type** | One of: decision, rationale, trade-off, constraint, lesson |
-| **Phase** | Where in the project lifecycle this arose |
-| **Content** | The actual knowledge (varies by type) |
+| **Source** | Path plus section or line range |
+| **Date** | Capture date or source-event date |
+| **Title** | Source-grounded summary |
+| **Type** | decision, rationale, trade-off, constraint, or lesson |
+| **Phase/Plan** | Lifecycle scope |
+| **Context** | Why it mattered |
+| **Content** | The decision, rationale, trade-off, constraint, or lesson |
+| **Impact** | What it affects |
 
-Optional but recommended:
+Optional fields may use `—`; required fields may not.
 
-| Field | Purpose |
-|-------|---------|
-| **Related** | Links to files, PRs, issues |
-| **Impact** | What this affects going forward |
-| **Alternatives** | What else was considered (for decisions) |
+## Quality Guidelines
 
-## Capture Guidelines
-
-1. **Use the right template.** Match the knowledge type to the template — this makes searching easier later.
-2. **Be specific in titles.** "Chose flat workflow structure" beats "Workflow decision".
-3. **Include alternatives for decisions.** Future readers need to know what was rejected and why.
-4. **State impact explicitly.** "This means all new modules must..." helps people understand consequences.
-5. **Keep entries independent.** Each entry should be understandable without reading others.
+1. Cite source path/section.
+2. Keep claims source-grounded.
+3. Include alternatives only when sourced.
+4. State impact only when sourced.

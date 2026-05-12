@@ -19,9 +19,9 @@ hooks:
   on-demand:
     priority: 100
     description: >-
-      Triggered by /paul:review command. NOT a lifecycle hook —
-      does not fire automatically during PLAN/APPLY/UNIFY.
-      See review-prompt.md for the full review prompt template.
+      REV runs only on `/paul:review`. It is not a PLAN/APPLY/UNIFY lifecycle
+      hook and does not run automatically. Its findings are advisory unless the
+      user or workflow explicitly makes them blocking. See references/review-prompt.md.
     refs:
       - references/review-prompt.md
       - references/review-checklist.md

@@ -1,7 +1,9 @@
 <overview>
-Inspection checklists organized by change type. Select the primary checklist based on the detected change type, then always include the general checklist items.
-
-**Usage:** /paul:review detects the change type from git diff characteristics and presents the most relevant checklist. Multiple types may apply for mixed changes.
+IRIS checklists are advisory prompts for changed files only. Use explicit plan
+scope, changed-file diffs, and source excerpts already read for the review. Do
+not perform broad codebase searches unless the workflow supplies bounded
+selectors. Report only source-backed findings with file:line evidence; otherwise
+emit no concern.
 </overview>
 
 <feature_checklist>

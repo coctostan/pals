@@ -17,144 +17,65 @@ hooks:
   pre-plan:
     priority: 220
     description: >-
-      CODI injects structural blast-radius facts from the codegraph `impact` tool into PLAN.md so plans carry graph-derived truth
-      about affected call-sites. ADVISORY ONLY — MUST NEVER halt plan creation. Run the steps below in order.
+      CODI is advisory. It may inject codegraph blast-radius context into
+      PLAN.md, but it never blocks planning, owns lifecycle state, widens scope,
+      or invents symbols/call-sites.
 
-      STEP 1 — EXTRACT SYMBOLS. Scan three inputs in order: the current-phase detail section in `.paul/ROADMAP.md`, the
-      in-progress plan objective text, and the explicitly named repo-relative source files prepared for the upcoming plan
-      `<context>` list. Accept direct symbol seeds from prose via (a) backtick-quoted identifiers (e.g., `fooFn`, `Bar.baz`,
-      `snake_case`, `camelCase`) and (b) explicit phrases of the form "symbol X" or "the function X". Treat repo-relative
-      `.ts`, `.tsx`, `.js`, and `.jsx` paths in that upcoming `<context>` list as bounded source selectors, not direct `impact`
-      inputs. For each selector, do a read-only pass over that file and extract only the stable identifiers surfaced by top-level function declarations,
-      function declarations, top-level class declarations, exported named declarations, and exported const / arrow bindings.
-      Preserve source-file mention order and declaration order within each file. Reject nested declarations, type-only
-      constructs, re-export-only barrels, installed-runtime paths, English prose, shell-command backticks such as `ls`,
-      `git status`, `grep -n`, config literals such as `true`, `false`, quoted option values, tokens of 2 characters or fewer,
-      stopwords at minimum `yes`, `no`, `on`, `off`, `null`, `none`, codebase-wide search, and semantic guessing. State
-      plainly in operation: NO MAGIC INFERENCE — only explicit textual matches plus bounded selector reads. When in doubt
-      extract fewer symbols. If zero symbols extracted, skip directly to the "no extractable symbols" hook-level skip log in Step
-      7.
+      STEP 1 — Extract bounded seeds. Read only current phase detail, plan
+      objective text, and explicitly listed repo-relative `.ts`, `.tsx`, `.js`,
+      or `.jsx` context files. Accept only explicit prose seeds (`symbol X`,
+      `function X`, backtick identifiers) plus top-level/exported declarations
+      from those files. Reject nested/type-only/re-export-only declarations,
+      installed-runtime paths, shell/config literals, English prose, broad
+      search, semantic guessing, and tokens of 2 characters or fewer. If no
+      seeds remain, emit the no-symbols skip log.
 
-      STEP 2 — CALL `impact` PER SYMBOL. For EACH extracted symbol, invoke `impact({ symbols: [singleSymbol], changeType:
-      "behavior_change" })` as a separate call. DO NOT batch all symbols into a single call. Rationale: `impact` is
-      all-or-nothing on unresolved input — one unknown symbol in a batched call replaces the entire response with `Symbol
-      "..." not found` and destroys ALL resolved data. Per-symbol calls give per-symbol outcome isolation and enable the
-      partial-success invariant. Before the loop, if the `impact` tool itself is unavailable in the agent's tool namespace,
-      emit the "tool unavailable" skip log from Step 7 and exit without any call. Wrap each per-symbol call in try/catch.
-      Input-self-filter quirk: `impact` excludes input symbols from their own downstream output — document but do not
-      compensate. Categorize each per-symbol response into ONE of five outcomes:
-        (a) resolved-with-call-sites — response non-empty AND does NOT match the pattern `Symbol "..." not found`
-            → include the symbol in the Blast Radius with raw `impact` output preserved verbatim.
-        (b) resolved-but-empty — response is the empty string. Legitimate: the symbol is an entry point or has no callers.
-            NOT a failure. Include the symbol with a single `(no downstream call-sites)` annotation.
-        (c) unresolved — response matches the pattern `Symbol "..." not found`. Add to the unresolved list (contributes to U
-            in the success log).
-        (d) call-errored — the wrapped call threw. Add to the unresolved list annotated `(call errored)`.
-        (e) tool-unavailable — handled before the loop as a hook-level skip (see Step 7).
+      STEP 2 — Call `impact` per seed. If unavailable, emit the tool-unavailable
+      skip log. Otherwise call `impact({ symbols: [singleSymbol], changeType:
+      "behavior_change" })` once per seed, never batched. Classify each outcome
+      independently as resolved-with-call-sites, resolved-empty, unresolved, or
+      errored. Preserve partial success.
 
-      STEP 3 — FORMAT the per-symbol results into a markdown sub-section titled `### Blast Radius (CODI)`. For each
-      resolved-with-call-sites symbol: a `**{symbol}**` subheading followed by a fenced code region containing the raw
-      `impact` response verbatim (do NOT parse, reformat, or annotate individual call-site lines — codegraph's output
-      format is pi-codegraph's contract, not CODI's to stabilize). For each resolved-but-empty symbol: a `**{symbol}**`
-      subheading followed by `_(no downstream call-sites)_` on its own line. Finally a `**Unresolved:**` bulleted list if
-      any symbols failed resolution or errored, with `(call errored)` annotation where applicable. Omit any sub-section
-      that would be empty. If ALL outcomes were unresolved, STILL inject the sub-section (visible as unresolved-only) — only
-      hook-level skip conditions suppress injection entirely. See references/codi.md for a worked example.
+      STEP 3 — Inject evidence or skip. Return `context_inject.blast_radius`
+      with `### Blast Radius (CODI)`, resolved symbol subheadings, raw `impact`
+      output, resolved-empty annotations, and unresolved entries as applicable.
+      If all called symbols are unresolved, inject unresolved-only evidence.
+      Suppress injection only for hook-level skips.
 
-      STEP 4 — RETURN the formatted markdown as `context_inject.blast_radius`. The plan-phase workflow surfaces injected
-      content inline within the generated PLAN.md's `<module_dispatch>` section (no PLAN.md template changes in this
-      phase; v0.4 will formalize dedicated sections).
-
-      STEP 5 — PARTIAL-SUCCESS INVARIANT. The hook MUST inject resolved outcomes together with the unresolved list
-      whenever at least one per-symbol result was produced. Never all-or-nothing at the hook level. No error propagates
-      to the plan; no partial structural facts are silently dropped.
-
-      STEP 6 — EMIT EXACTLY ONE `[dispatch] CODI: ...` log line per dispatch, chosen from:
-        Success (any injection, even unresolved-only):
-        `R` means resolved-with-call-sites only. Resolved-but-empty outcomes still inject but do not increment `R`; Phase 173 `173-01-TRIAL-DATA.md` remains the authoritative mixed-outcome example.
-          `[dispatch] CODI: pre-plan advisory → impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius`
-        Hook-level skip — no extractable symbols:
-          `[dispatch] CODI: skipped — no extractable symbols in phase scope`
-        Hook-level skip — tool unavailable:
-          `[dispatch] CODI: skipped — codegraph tools unavailable`
-        Hook-level skip — catastrophic loop error (not per-symbol):
-          `[dispatch] CODI: skipped — impact loop errored: <short reason>`
-        Hook-level skip — all symbols resolved-but-empty AND none unresolved (pathological but possible):
-          `[dispatch] CODI: skipped — impact returned empty blast radius for all symbols`
-
-      STEP 7 — CLASSIFIER SAFETY. This description MUST NEVER contain the word "halt-keyword" (the literal
-      advisory-vs-enforcement token) in any casing; the shared dispatch classifier uses strict substring matching to
-      distinguish advisory from enforcement hooks, so CODI uses "halt", "skip", "stop", or "reject" instead.
-
-      See references/codi.md for the full extractor rules, `impact` response format reference, Blast Radius worked
-      example, and the complete call-time failure-handling contract.
+      STEP 4 — Emit exactly one `[dispatch] CODI: ...` line with success counts
+      (N/R/U/K) or a documented skip reason. See references/codi.md for full
+      extraction, impact, format, and classifier-safety rules.
     refs:
       - references/codi.md
   post-unify:
     priority: 220
     description: >-
-      CODI appends exactly one row per UNIFY to `.paul/CODI-HISTORY.md` capturing the dispatch-outcome
-      category, R/U/K counts, symbols probed, and whether a blast_radius was injected. ADVISORY ONLY —
-      this hook is read-only against PLAN.md and SUMMARY.md and MUST NEVER halt the UNIFY flow. Run the
-      steps below in order.
-      STEP 1 — ENTER HOOK + RESOLVE DATA SOURCE. Post-unify context provides `summary_path`. Derive
-      `plan_id` from `summary_path` first, then emit exactly one early trace line:
-      `[dispatch] CODI post-unify: hook body entered for {plan-id}`. After that trace, derive `plan_path`
-      by substituting `-SUMMARY.md` → `-PLAN.md` on `summary_path`. If that file does not exist, glob
-      `.paul/phases/*/[0-9]*-PLAN.md` and match on the plan id extracted from `summary_path`. If STILL
-      no PLAN.md exists (hotfix mode: `summary_path` ends in `-HOTFIX-SUMMARY.md`), record outcome =
-      `no-dispatch-found` and proceed to STEP 6 with `—` in R, U, K, Symbols and `n` in blast_radius.
-      STEP 2 — PRIMARY READ (PLAN.md `<module_dispatch>`). Read the resolved PLAN.md and locate its
-      `<module_dispatch>`…`</module_dispatch>` region. Search that region first for the success-log
-      template fragment `impact × N symbols → R resolved, U unresolved, K total call-sites, injected
-      blast_radius`, then for the four hook-level skip strings: `no extractable symbols in phase scope`,
-      `codegraph tools unavailable`, `impact loop errored:`, `impact returned empty blast radius for
-      all symbols`. If none of those five strings matches, check the same region for degraded injected
-      evidence: the heading `### Blast Radius (CODI)` plus at least one bold `**{symbol}**` subheading.
-      The primary source is PLAN.md because `post_unify_hooks` runs before `finalize_summary` —
-      SUMMARY.md's Module Execution Reports has not yet been populated with carry-forward CODI content
-      at hook-dispatch time.
-      STEP 3 — FALLBACK READ (SUMMARY.md Module Execution Reports). If STEP 2 found no recognized CODI
-      line and no degraded injected evidence, read `summary_path` and search its `## Module Execution
-      Reports` region for the same five strings, then for the same degraded-evidence pair: `### Blast
-      Radius (CODI)` plus at least one bold `**{symbol}**` subheading. This path serves historical /
-      out-of-order reads where the SUMMARY.md has already been finalized.
+      CODI post-unify is advisory. It appends one `.paul/CODI-HISTORY.md`
+      row per UNIFY and never blocks UNIFY, owns lifecycle state, or invents
+      outcomes, counts, symbols, or blast-radius evidence.
 
-      STEP 4 — CATEGORIZE OUTCOME. Map the matched evidence to exactly one of seven outcome tokens:
-      `injected` (success-log pattern), `injected-degraded` (Blast Radius heading + symbol headings but
-      no canonical success-log line), `skipped-no-symbols` (`no extractable symbols in phase scope`),
-      `skipped-tool-unavailable` (`codegraph tools unavailable`), `skipped-loop-error` (`impact loop
-      errored:`), `skipped-all-empty` (`impact returned empty blast radius for all symbols`), or
-      `no-dispatch-found` (neither STEP 2 nor STEP 3 matched a recognized line or degraded evidence).
-      STEP 5 — EXTRACT FIELDS. On `injected`: parse R, U, K from the success log (the three integers
-      before `resolved`, `unresolved`, `total call-sites`); parse the Symbols list from the Blast
-      Radius sub-section by extracting every bold `**{symbol}**` subheading line from whichever source
-      matched (PLAN.md primary, SUMMARY.md fallback); blast_radius = `y`. Preserve symbol order exactly
-      as it appears in source. On `injected-degraded`: parse the Symbols list from the same Blast Radius
-      sub-section, preserve symbol order exactly as it appears in source, set blast_radius = `y`, and
-      set R, U, K to `—` because the canonical success counts were not preserved. On any `skipped-*`
-      or `no-dispatch-found`: R, U, K, Symbols all `—`; blast_radius = `n`.
-      STEP 6 — APPEND ROW. If `.paul/CODI-HISTORY.md` does not exist, create it with the exact header
-      section:
-        `# CODI Dispatch History`
-        (blank line)
-        `One row per UNIFY. Source: modules/codi/module.yaml post-unify hook.`
-        `See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy, and data-source read order.`
-        (blank line)
-        `| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |`
-        `|------|------|---------|---|---|---|---------|--------------|`
-      Then append exactly one newline-terminated data row: `| {plan-id} | {YYYY-MM-DD} | {outcome} |
-      {R} | {U} | {K} | {symbols-comma-separated or —} | {y/n} |\n`. The file MUST end with a newline
-      after every append so no two rows share a line.
-      STEP 7 — EMIT FINAL DISPATCH LOG + CLASSIFIER SAFETY. Emit exactly ONE final
-      `[dispatch] CODI post-unify: appended {outcome} row for {plan-id}` log line (or
-      `[dispatch] CODI post-unify: skipped — no CODI dispatch line found` when `no-dispatch-found` was
-      recorded). This final line is in addition to the STEP 1 hook-entry trace. This description MUST
-      NOT contain the halt-keyword token (the literal advisory-vs-enforcement classifier token) in any
-      casing — the shared dispatch classifier uses strict substring matching; CODI uses `skip`, `stop`,
-      or `reject` instead.
-      See references/codi-instrumentation.md for the schema, outcome taxonomy, data-source read order,
-      plan-path resolution rules, hotfix behavior, and the degraded-evidence contract.
+      STEP 1 — Resolve source. From `summary_path`, derive `plan_id` and the
+      sibling PLAN path. Read only PLAN `<module_dispatch>` first, then SUMMARY
+      `## Module Execution Reports` only if PLAN has no CODI evidence. Missing
+      PLAN, hotfix, or no CODI evidence maps to `no-dispatch-found`.
+
+      STEP 2 — Classify evidence. Choose exactly one outcome:
+      `injected`, `injected-degraded`, `skipped-no-symbols`,
+      `skipped-tool-unavailable`, `skipped-loop-error`, `skipped-all-empty`, or
+      `no-dispatch-found`. Parse R/U/K only from the canonical success log.
+      Parse Symbols only from Blast Radius symbol headings. Use `—` for fields
+      absent from source evidence.
+
+      STEP 3 — Append row. Create `.paul/CODI-HISTORY.md` with the documented
+      header if missing. Append one newline-terminated data row with columns:
+      `Plan`, `Date`, `Outcome`, `R`, `U`, `K`, `Symbols`, `blast_radius`.
+      Preserve symbol order. Set `blast_radius=y` only for `injected` or
+      `injected-degraded`; otherwise `n`.
+
+      STEP 4 — Emit evidence. Emit one hook-entry trace and one final
+      `[dispatch] CODI post-unify: ...` line. See
+      references/codi-instrumentation.md for exact schema, taxonomy, read order,
+      hotfix handling, degraded evidence, and classifier-safety wording.
     refs:
       - references/codi-instrumentation.md
 

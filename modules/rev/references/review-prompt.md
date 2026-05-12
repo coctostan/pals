@@ -2,22 +2,24 @@
 
 ## Context Assembly
 
-The reviewer subagent receives a structured prompt built from multiple context layers:
+REV receives bounded review context.
 
-| Context Layer | Source | Always/Optional |
-|---------------|--------|-----------------|
-| **Diff** | `git diff {base}...HEAD` or `git diff --cached` | Always |
-| **Changed files (full)** | Read each file in the diff | Always |
-| **AGENTS.md** | Project root `AGENTS.md` (if exists) | Always |
-| **Relevant test files** | Test files for changed source files | Optional (include if they exist) |
-| **PLAN.md** | Current plan (if reviewing plan's output) | Optional (on-demand only) |
+| Context Layer | Source | Rule |
+|---------------|--------|------|
+| **Diff** | Requested-scope `git diff` | Always |
+| **Changed files** | Changed-file excerpts | Only lines needed to review the diff |
+| **Related tests** | Explicitly related tests | Optional; cite why included |
+| **PAUL context** | Current plan/summary/STATE excerpt | Optional; smallest section needed |
+
+Do not include unrelated files, broad `.paul/*` history, or guessed dependencies.
+Name the source path for every context item.
 
 ## Scope-to-Diff Command Mapping
 
 | Scope | Diff Command | When |
 |-------|-------------|------|
 | Current plan | `git diff {branch-base}...HEAD` | Default for `/paul:review` during active plan |
-| Specific files | `git diff HEAD -- {files}` + full file read | User specifies files |
+| Specific files | `git diff HEAD -- {files}` + bounded changed-file excerpts | User specifies files |
 | Full branch | `git diff {base_branch}...HEAD` | PR-level review |
 | Uncommitted | `git diff` + `git diff --cached` | Quick check before commit |
 
@@ -32,8 +34,8 @@ You are reviewing code changes in the project "{project_name}".
 ## Changes to Review
 {git diff output}
 
-## Full Changed Files
-{full content of each changed file}
+## Changed File Excerpts
+{bounded excerpts from changed files}
 
 ## Test Files (if any)
 {test files related to changed files}
@@ -50,13 +52,13 @@ Review these changes across 8 dimensions:
 8. Rollback safety — reversibility if broken
 
 For each finding, provide:
-- Severity: Critical / Important / Minor
+- Advisory severity: Critical advisory / Warning advisory / Suggestion
 - Location: file:line
-- Description: what's wrong
-- Suggestion: how to fix (for Critical/Important)
+- Description: source-backed concern
+- Suggested fix, only when source evidence supports one
 
-End with a verdict: READY / NOT READY / READY WITH CONCERNS.
-Be thorough but not pedantic. Flag real issues, not style preferences.
+End with recommendation: APPROVE / CHANGES_SUGGESTED / NEEDS_DISCUSSION.
+Flag source-backed issues, not style preferences.
 ```
 
 ## Output Format
@@ -71,41 +73,46 @@ The reviewer returns structured findings:
 
 ### Findings
 
-#### Critical
-- **[{file}:{line}] {title}** — {description}. Fix: {suggestion}.
+Group findings by advisory severity:
 
-#### Important
-- **[{file}:{line}] {title}** — {description}. Consider: {suggestion}.
+#### Critical advisory
+Potential correctness, data-loss, security, or rollback issue. Include
+file:line evidence and why the changed code creates the risk.
 
-#### Minor
-- **[{file}:{line}] {title}** — {description}.
+#### Warning advisory
+Maintainability, edge-case, test, performance, or clarity issue with file:line
+evidence.
 
-### Strengths
-- {what's done well — positive reinforcement}
+#### Suggestion
+Optional improvement. Do not present as required.
 
-### Verdict
-{READY / NOT READY (Critical issues) / READY WITH CONCERNS (Important issues only)}
+### Recommendation
+
+`APPROVE`, `CHANGES_SUGGESTED`, or `NEEDS_DISCUSSION`.
+
+Recommendations are advisory unless the user or workflow explicitly makes review
+findings blocking.
 ```
 
 ## Prompt Assembly Steps
 
 1. Determine scope → get diff command
 2. Run diff command → capture output
-3. Read changed files in full
+3. Read bounded changed-file excerpts needed to review the diff
 4. Read AGENTS.md if exists
 5. Find related test files (*.test.*, *.spec.* matching changed file names)
 6. Read this template
 7. Substitute placeholders: {project_name}, {diff}, {changed_files}, {test_files}, {agents_md}
 8. Invoke Agent() with assembled prompt
-9. Parse output → extract verdict
+9. Parse output → extract recommendation
 10. Present findings to user
 
 ## Error Handling
 
 | Error | Response |
 |-------|----------|
-| Agent tool not available | Offer degraded in-session mode or skip |
+| Agent tool not available | Offer bounded in-session review or skip |
 | Subagent timeout | Display partial output if available + "Review timed out — try with fewer files" |
-| Subagent crash (exit code ≠ 0) | Display stderr + "Review failed — check pi-subagents installation" |
+| Review agent crash / timeout | Report failure reason; do not invent findings |
 | Empty/unhelpful output | "Review produced no actionable findings — may need more context. Try reviewing specific files." |
 | Diff too large (>5000 lines) | "Diff is very large ({N} lines). Review specific files instead? [1] Proceed anyway [2] Pick files" |

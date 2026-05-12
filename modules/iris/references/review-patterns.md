@@ -1,5 +1,8 @@
 <overview>
-Review patterns by category. /paul:review selects applicable patterns based on file types and change characteristics.
+IRIS patterns are advisory signals, not findings.
+
+Report a finding only with file:line evidence from changed source. Do not treat
+pattern names, examples, comments, or placeholders as findings.
 </overview>
 
 <code_smells>
