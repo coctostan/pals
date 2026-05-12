@@ -82,15 +82,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/276-review-knowledge-and-codegraph-module-rewrite (UNIFY commit pending merge-gate)
-Latest phase work: Phase 276 UNIFY produced `276-01-SUMMARY.md`, appended CODI/WALT history rows, and updated STATE/ROADMAP/PROJECT for transition to Phase 277.
-PR: #194 open — https://github.com/coctostan/pals/pull/194; visible checks passing; awaits UNIFY merge-gate (CI → review → merge → base sync → branch cleanup).
-Transition state: Phase 276 complete; Phase 277 ready to plan after PR #194 merges.
-Prior PRs: #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: main (synced with origin/main; Phase 276 feature branch merged and deleted)
+Last commit: `8c8dfb46` (Phase 276 squash-merge of PR #194 — advisory module instruction cohort rewrite + UNIFY artifacts).
+PR #194 (Phase 276): MERGED 2026-05-12T02:47:11Z as `8c8dfb46`; CI passed; feature branch deleted; base synced.
+Transition state: Phase 276 complete and merged; Phase 277 ready to plan.
+Prior PRs: #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-11 — Phase 276 UNIFY complete; awaiting GitHub Flow merge gate for PR #194.
+Last session: 2026-05-12 — Phase 276 UNIFY complete; PR #194 merged via squash; transitioned to Phase 277.
 Stopped at: Phase 276 Plan 276-01 SUMMARY written; lifecycle artifacts updated for Phase 277.
 Next action: /paul:plan for Phase 277
 Resume file: .paul/ROADMAP.md
@@ -98,4 +98,4 @@ wip_result: applied — SUMMARY, history rows, STATE/ROADMAP/PROJECT all updated
 Resume context:
 - Phase 276 closed with 18 approved source files changed (+341/−505), matching PLAN scope.
 - Verification: `git diff --check` PASS; `artifact_consistency.sh` PASS; `cross-harness-validation.sh` FAIL on 7 historical CODI marker checks (intentional, deferred to Phase 278).
-- PR #194 awaits UNIFY merge-gate completion (CI/review/merge/base-sync/branch-cleanup) before Phase 277 PLAN begins.
+- Merge gate complete: PR #194 squash-merged as `8c8dfb46`; local `main` synced; feature branch deleted; ready for `/paul:plan` to start Phase 277.

@@ -17,7 +17,7 @@ Theme: Audit and rewrite PALS module instruction sources through guardrail-first
 | 273 | Module Instruction Audit Contract + Cohort Map | ✅ Complete — PR #190 `f8861d44` | 273-01 |
 | 274 | Base Module + Dispatch Instruction Rewrite | ✅ Complete — PR #191 `e18666ab` | 274-01 |
 | 275 | Core Enforcement Module Rewrite | ✅ Complete — PR #192 `44b795d5` | 275-01 |
-| 276 | Review, Knowledge, and Codegraph Module Rewrite | ✅ Complete — PR #194 pending merge-gate | 276-01 |
+| 276 | Review, Knowledge, and Codegraph Module Rewrite | ✅ Complete — PR #194 `8c8dfb46` | 276-01 |
 | 277 | Domain Optional Module Rewrite | Not started | TBD |
 | 278 | Module Guardrails + Closure | Not started | TBD |
 
@@ -35,7 +35,7 @@ Plans: 275-01 (`.paul/phases/275-core-enforcement-module-rewrite/275-01-PLAN.md`
 
 ### Phase 276: Review, Knowledge, and Codegraph Module Rewrite
 Focus: Collaboratively rewrite IRIS, REV, SKIP, CODI, DOCS, and RUBY-style advisory module instructions for concise evidence, bounded source loading, non-blocking semantics, durable-but-compact persistence, and clear skip/no-scope behavior.
-Plans: 276-01 (`.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/276-01-PLAN.md`; complete, summary `.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/276-01-SUMMARY.md`; PR #194 pending merge-gate)
+Plans: 276-01 (`.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/276-01-PLAN.md`; complete, summary `.paul/phases/276-review-knowledge-and-codegraph-module-rewrite/276-01-SUMMARY.md`; PR #194 `8c8dfb46`)
 
 ### Phase 277: Domain Optional Module Rewrite
 Focus: Collaboratively rewrite ARCH, SETH, GABE, ARIA, LUKE, DANA, DAVE, DEAN, OMAR, PETE, REED, VERA, and related domain module references/instructions by small file cohorts, preserving module-specific value while removing redundancy, confusion, stale assumptions, or incorrect guidance.

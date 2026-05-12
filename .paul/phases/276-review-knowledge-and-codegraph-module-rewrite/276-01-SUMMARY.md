@@ -149,7 +149,7 @@ Commands/results:
 - `bash tests/cross-harness-validation.sh` — FAIL: 195/202 PASS; 7 historical CODI marker checks failed (intentional, see Deviations).
 - `git diff --stat origin/main..HEAD` — 18 source files, +341 / −505. Matches PLAN `files_modified` exactly.
 - Commits: `3768048f` (CODI/SKIP/IRIS/REV); `7a0ea261` (DOCS/RUBY).
-- PR: #194 → main, open, MERGEABLE, visible checks passing (Socket Security Project Report + PR Alerts).
+- PR: #194 → main, MERGED 2026-05-12T02:47:11Z (squash; merge commit `8c8dfb46`); feature branch deleted; local main synced.
 
 Focused semantic checks:
 
