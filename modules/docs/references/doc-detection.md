@@ -2,7 +2,10 @@
 
 ## Documentation Detection
 
-Scan the project for documentation files using pattern matching. Detection runs at pre-plan time to build a doc catalog for the current project.
+DOCS detection is advisory. Catalog only bounded markdown documentation outside
+`.paul/*`; do not scan unrelated history. For docs-only or module-instruction
+plans, report documentation scope and skip drift assumptions. Proximity matches
+are candidates, not proof, and must cite the source/doc paths used.
 
 ### Standard Doc Patterns
 

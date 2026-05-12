@@ -124,3 +124,4 @@ Types: —
 | 273-01 | 2026-05-11 | — | — | — | — | — skipped (docs-only contract; focused marker checks + git diff --check) |
 | 274-01 | 2026-05-11 | — | — | — | — | — skipped (docs/reference-only; focused read/grep + git diff --check; artifact consistency has pre-existing MILESTONES Phase 274 omission) |
 | 275-01 | 2026-05-11 | Pi 312/312, XH 202/202 | N/A (shell) | N/A | N/A | → stable (instruction-only module rewrite; validation unchanged and all passing) |
+| 276-01 | 2026-05-11 | — | — | — | — | — skipped (instruction-only advisory module rewrite; XH has 7 intentional historical CODI marker failures deferred to Phase 278; artifact_consistency PASS; git diff --check PASS) |

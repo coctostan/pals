@@ -14,28 +14,36 @@ hooks:
   post-apply:
     priority: 300
     description: >-
-      MUST read STATE.md Decisions table: `grep '|' .paul/STATE.md` to find rows.
-      Parse each row's Decision column. For EACH decision found, MUST output a
-      COMPLETE Decision Record: '## [YYYY-MM-DD] [Decision title]' followed by
-      'Type: decision', 'Phase: [N]', 'Context: [why needed]', 'Decision: [what
-      was chosen]', 'Alternatives considered: [list with rejection reasons]',
-      'Rationale: [why this option]', 'Impact: [what this affects]'. NEVER output
-      just 'decision found' or 'decision extracted' — MUST always output the full
-      structured record.
+      SKIP post-apply is advisory. Inspect only the current APPLY task evidence
+      and plan notes provided to the hook. Do not scan all STATE rows,
+      historical summaries, or unrelated `.paul/*` files.
+
+      Return compact knowledge candidates only for explicit source-backed
+      decisions, rationales, trade-offs, constraints, or lessons. Each candidate
+      must include source path/section, phase/plan, type, title, context,
+      substantive content, and impact. Do not invent missing fields; emit a
+      skip or incomplete-entry note when source evidence is insufficient.
+
+      SKIP returns candidates for workflow-owned reporting. It does not own
+      lifecycle truth or `.paul/*` writes. See references/knowledge-capture.md.
     refs:
       - references/knowledge-capture.md
   post-unify:
     priority: 200
     description: >-
-      MUST read SUMMARY.md: `cat .paul/phases/*/SUMMARY.md` to find content. For
-      EACH decision, rationale, trade-off, or lesson, MUST produce the COMPLETE
-      knowledge entry using the matching template from knowledge-capture.md.
-      Decision Record: date, title, context, decision, alternatives, rationale,
-      impact. Rationale Note: date, title, explanation, key factors. Trade-off
-      Analysis: date, title, options matrix, chosen option, reasoning. Lesson
-      Learned: date, title, what happened, root cause, lesson, action items.
-      NEVER output just 'knowledge extracted' — MUST always output the full
-      structured entry with all required fields populated.
+      SKIP post-unify is advisory. Inspect only the current `summary_path` and
+      workflow-provided UNIFY evidence. Do not read every SUMMARY or unrelated
+      `.paul/*` history.
+
+      Return compact knowledge entries only when the current source explicitly
+      supports all required fields from references/knowledge-capture.md. Each
+      entry must include source path/section, phase/plan, type, title, context,
+      substantive content, and impact. Use `—` only for optional fields; do not
+      invent decisions, rationales, alternatives, lessons, or impacts.
+
+      If no complete source-backed entry exists, emit a no-knowledge skip line.
+      SKIP returns entries for workflow-owned reporting/persistence; it does not
+      own lifecycle truth or `.paul/*` lifecycle writes.
     refs:
       - references/knowledge-capture.md
       - references/knowledge-search.md

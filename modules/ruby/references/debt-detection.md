@@ -1,6 +1,8 @@
 # Debt Detection
 
-RUBY's catalog of tech debt indicators, detection heuristics, and prioritization framework.
+RUBY debt signals are advisory. Report only changed readable source evidence or
+measured tool output. Do not estimate metrics, score docs/module-instruction
+files as code debt, or treat severity as lifecycle authority.
 
 ## Code Smells Catalog
 
@@ -80,12 +82,12 @@ RUBY's catalog of tech debt indicators, detection heuristics, and prioritization
 
 ## Severity Classification
 
-| Level | Definition | Action |
-|-------|-----------|--------|
-| Critical | Actively causing bugs or blocking development | Fix immediately |
-| High | Slowing development, increasing bug risk | Fix in current milestone |
-| Medium | Reducing code clarity and maintainability | Fix when touching affected files |
-| Low | Style/convention issues, minor clarity improvements | Fix opportunistically |
+| Severity | Evidence | Advisory action |
+|----------|----------|-----------------|
+| Critical | Measured active bug risk or severe maintenance drag | Prompt review |
+| High | Measured development drag or bug-risk increase | Schedule |
+| Medium | Source-backed manageable debt | Consider |
+| Low | Minor clarity or convention issue | Optional |
 
 ## Prioritization Framework
 

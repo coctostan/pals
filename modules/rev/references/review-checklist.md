@@ -1,5 +1,9 @@
 # REV Review Checklist — 8 Dimensions
 
+Checklist items are advisory prompts, not blockers. Report only findings backed
+by reviewed diff/bounded-context file:line evidence. Severity ranks review
+priority; it does not grant lifecycle authority.
+
 ## 1. Correctness
 
 **What to check:** Does the code do what the diff claims? Logic errors, off-by-ones, wrong comparisons, null handling, incorrect return values, missing early returns.
