@@ -10,15 +10,15 @@ See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficien
 
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
 Phase: 278 of 278 (Module Guardrails + Closure)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-12 — Phase 277 complete via PR #195 `aeff3f0a`; transitioned to Phase 278
-Next action: /paul:plan for Phase 278 Module Guardrails + Closure
+Plan: .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
+Status: UNIFY complete — Phase 278 closed; v2.64 ready for milestone-closure routing
+Last activity: 2026-05-12 — Phase 278 Plan 278-01 UNIFY complete; SUMMARY + closure note + history rows written; PR #196 ready for merge gate
+Next action: complete merge gate on PR #196, then transition v2.64 milestone (route /paul:milestone or follow merge-gate output)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
-- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [████████░░] 83% (Phases 273-277 complete; Phase 278 ready to plan)
+- v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phases 273–278 complete; Plan 278-01 PR #196 ready for merge gate)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 278 ready to plan]
+  ✓        ✓        ✓     [Phase 278 Plan 278-01 loop closed; v2.64 ready for milestone-closure routing]
 ```
 
 ## Accumulated Context
@@ -46,7 +46,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | v2.61 extraction wave closed | Phases 261-264 | S8 command-routing extracted/surfaced, v2.61 closed via PRs #176-#179; Path A ROADMAP/context-budget regression escalated to v2.62. |
 | v2.62 context diet closed | Phases 265-267 | Context-diet contract, hot artifact compaction, selective-loading guardrails, and v2.62 closure shipped via PRs #180-#182. |
 | v2.63 workflow instruction audit closed | Phases 268-272 | Resume/plan/apply/unify/pause workflows rewritten collaboratively with semantic guardrails; v2.63 completed via PR #188. |
-| v2.64 module instruction audit active | Phases 273-278 | Phases 273-277 are complete through PR #195: contract/cohort map, base/dispatch rewrite, TODD/WALT/DEAN enforcement cohort, IRIS/REV/SKIP/CODI/DOCS/RUBY advisory cohort, and ARCH/SETH/OMAR/PETE/REED/VERA domain cohort; Phase 278 guardrails/closure ready to plan. |
+| v2.64 module instruction audit complete | Phases 273-278 | All six phases complete: contract/cohort map (PR #190), base/dispatch rewrite (PR #191), TODD/WALT/DEAN enforcement (PR #192), IRIS/REV/SKIP/CODI/DOCS/RUBY advisory (PR #194), ARCH/SETH/OMAR/PETE/REED/VERA domain cohort (PR #195), and Phase 278 semantic guardrails + closure (PR #196 — ready for merge gate; cross-harness 195→202 PASS). v2.64 ready for milestone-closure routing. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -65,11 +65,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 276 UNIFY: Created `276-01-SUMMARY.md`; appended CODI and WALT history rows for `276-01`; updated lifecycle artifacts and transitioned to Phase 277. Cross-harness CODI marker drift remains deferred to Phase 278.
 - Phase 277 PLAN: Created `277-01-PLAN.md` for the backend/runtime cross-cutting half of the domain optional cohort (ARCH, SETH, OMAR, PETE, REED, VERA — 14 files) using the v2.63/Phase 275/276 collaborative protocol: compact audit, file-by-file BEFORE/AFTER section loop, blocking checkpoint, no helper delegation, advisory/non-blocking guardrails, bounded source loading. UI/UX/data/deploy/DEAN-deferred half (ARIA/LUKE/GABE/DANA/DAVE) reserved for a follow-up Phase 277 plan.
 - Phase 277 APPLY/UNIFY: Rewrote ARCH/SETH/OMAR/PETE/REED/VERA manifests and primary references section-by-section; converted broad command recipes and module-owned BLOCK/critical drift into bounded advisory evidence with compact schemas; created `277-01-SUMMARY.md`, appended WALT/CODI rows, and merged PR #195 as `aeff3f0a`. ARIA/LUKE/GABE/DANA/DAVE and DEAN deferred references remain follow-up scope; inherited CODI marker failures remain Phase 278 work.
+- Phase 278 PLAN/APPLY/UNIFY: Replaced 7 inherited Phase 276 CODI marker-drift cross-harness failures with grouped semantic guardrails backed by reusable TAP-free helpers in `tests/helpers/module_instruction_semantics.sh`; added Phase 278 closure section to `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`; cross-harness 195→202 PASS, artifact_consistency PASS, `git diff --check` clean. `tests/pi-end-to-end-validation.sh` 307/312 (5 baseline-inherited CODI marker-drift failures unchanged pre/post via `git stash` comparison) recorded as Phase 278 follow-up scope. Plan 278-01 PR #196 ready for merge gate; parent-owned APPLY/UNIFY, no helper delegation.
+- Phase 278 UNIFY: Created `278-01-SUMMARY.md`, appended CODI and WALT history rows for `278-01`, updated lifecycle artifacts.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
 
+- v2.65 (or next major) follow-up: apply the Phase 278 semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` checks 10, 185, 188, 190, 192 (5 baseline-inherited CODI marker-drift failures; identical-family fix using existing `tests/helpers/module_instruction_semantics.sh`).
 - ci-generation.md and sonarqube-integration.md — future module candidates.
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
@@ -84,21 +87,23 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (synced with origin/main; Phase 277 feature branch merged and deleted)
-Last commit: `aeff3f0a` (Phase 277 squash-merge of PR #195 — domain optional module rewrite + UNIFY artifacts).
-PR #195 (Phase 277): MERGED 2026-05-12T21:09:38Z as `aeff3f0a`; CI passed; feature branch deleted; base synced.
-Transition state: Phase 277 complete and merged; Phase 278 ready to plan.
-Prior PRs: #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: feature/278-01-module-guardrails-closure (Phase 278 Plan 278-01 UNIFY complete; awaiting merge gate)
+Last commit: pending UNIFY commit (SUMMARY + closure note + history rows + lifecycle artifacts).
+PR #196 (Phase 278 Plan 278-01): OPEN against `main`; semantic-guardrail commit `f1e01cb9`; awaiting merge gate.
+Transition state: Phase 278 closed via UNIFY; v2.64 ready for milestone-closure routing after PR #196 merge.
+Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Completed Phase 277 Plan 277-01 UNIFY, merged PR #195, and transitioned to Phase 278.
-Stopped at: Phase 278 ready to plan.
-Next action: /paul:plan for Phase 278 Module Guardrails + Closure
-Resume file: .paul/ROADMAP.md
-wip_result: Phase 277 complete; Phase 278 planning pending
+Last session: 2026-05-12 — Phase 278 Plan 278-01 UNIFY complete; SUMMARY + closure note + history rows + lifecycle artifacts written; PR #196 ready for merge gate; v2.64 ready for milestone-closure routing.
+Stopped at: Phase 278 Plan 278-01 UNIFY complete; merge gate next.
+Next action: complete merge gate on PR #196, then transition v2.64 milestone (route /paul:milestone or follow merge-gate output).
+Resume file: .paul/phases/278-module-guardrails-closure/278-01-SUMMARY.md
+wip_result: Phase 278 Plan 278-01 closed; v2.64 ready for milestone-closure routing
 Resume context:
-- Phase 277 Plan 277-01 completed: summary `.paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md`; PR #195 merged as `aeff3f0a`.
-- ARCH/SETH/OMAR/PETE/REED/VERA source surfaces now use bounded advisory evidence, compact schemas, skip/no-scope behavior, no-invented-facts/no-coverage wording, and workflow-owned blocking response.
-- Validation: `git diff --check` PASS; `bash tests/helpers/artifact_consistency.sh` PASS; cross-harness 195/202 with inherited 7 CODI marker failures deferred to Phase 278.
-- Phase 278 planning inputs: inherited CODI marker failures, semantic guardrails for module instruction rewrites, and any remaining/deferred Phase 277 domain sub-cohort decisions.
+- Phase 278 Plan 278-01 loop closed: PLAN ✓ APPLY ✓ UNIFY ✓; v2.64 all six phases complete.
+- Phase 278 deliverables: `tests/helpers/module_instruction_semantics.sh` (TAP-free grouped semantic helpers), updated `tests/cross-harness-validation.sh` (semantic guardrails replace 7 inherited Phase 276 CODI marker-drift failures on checks 12, 21, 126, 127, 128, 131, 132), Phase 278 Closure section in `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`, `.paul/phases/278-module-guardrails-closure/278-01-SUMMARY.md`, CODI/WALT history rows for `278-01`.
+- Validation: `git diff --check` clean; `tests/helpers/artifact_consistency.sh` PASS; `tests/cross-harness-validation.sh` 202/202 PASS (was 195/202).
+- Deferred to v2.65 (or next-milestone follow-up): apply same semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` failing checks 10, 185, 188, 190, 192 (baseline-inherited CODI marker drift, identical pre/post APPLY).
+- PR #196 open against `main` from `feature/278-01-module-guardrails-closure`; awaiting merge gate (CI + merge per `pals.json` github-flow config).
+- v2.64 closure routing: after PR #196 merges, run milestone completion routing for v2.64 Module Instruction Audit + Context-Efficiency Rewrite.

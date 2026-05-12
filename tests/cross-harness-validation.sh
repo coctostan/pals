@@ -29,6 +29,13 @@ source "$REPO_ROOT/tests/helpers/tap.sh"
 # Helper is safe to source (defines functions only) and reports drift only.
 source "$REPO_ROOT/tests/helpers/artifact_consistency.sh"
 
+# Phase 278 semantic module-instruction guardrails:
+# docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md records that cross-harness
+# checks for module instruction contracts must verify grouped behavior signals,
+# not stale literal-marker prose. Helper is safe to source (defines functions
+# only) and returns shell success/failure; callers own TAP output.
+source "$REPO_ROOT/tests/helpers/module_instruction_semantics.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────
 
 TEMP_DIRS=()
@@ -158,24 +165,20 @@ if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ]; then
   fi
 fi
 
-if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ] \
-  && grep -Fq 'source selectors' "$CC_MODULES_YAML" \
-  && grep -Fq 'source selectors' "$PI_MODULES_YAML" \
-  && grep -Fq 'top-level function declarations' "$CC_MODULES_YAML" \
-  && grep -Fq 'top-level function declarations' "$PI_MODULES_YAML" \
-  && grep -Fq 'exported const / arrow bindings' "$CC_MODULES_YAML" \
-  && grep -Fq 'exported const / arrow bindings' "$PI_MODULES_YAML" \
-  && grep -Fq '.tsx' "$CC_MODULES_YAML" \
-  && grep -Fq '.tsx' "$PI_MODULES_YAML" \
-  && grep -Fq '.jsx' "$CC_MODULES_YAML" \
-  && grep -Fq '.jsx' "$PI_MODULES_YAML" \
-  && grep -Fq 'stable identifiers surfaced' "$CC_MODULES_YAML" \
-  && grep -Fq 'stable identifiers surfaced' "$PI_MODULES_YAML" \
-  && grep -Fq 'resolved-with-call-sites only' "$CC_MODULES_YAML" \
-  && grep -Fq 'resolved-with-call-sites only' "$PI_MODULES_YAML"; then
-  tap_ok "Both modules.yaml registries preserve CODI source-selector markers"
+# Phase 278 semantic guardrail (was check 12 marker drift):
+# Verify both installed CODI registry blocks carry source-selector semantics
+# (TS/JS extension breadth, bounded explicit-seed extraction, per-symbol impact
+# isolation, safe-skip semantics, and dispatch evidence emission) instead of
+# requiring stale Phase 174 marker phrases.
+if [ -f "$CC_MODULES_YAML" ] && [ -f "$PI_MODULES_YAML" ]; then
+  if mis_codi_source_selector_semantics_ok "$CC_MODULES_YAML" \
+    && mis_codi_source_selector_semantics_ok "$PI_MODULES_YAML"; then
+    tap_ok "Both modules.yaml registries carry CODI source-selector semantics (Phase 278 guardrail)"
+  else
+    tap_not_ok "Both modules.yaml registries carry CODI source-selector semantics (Phase 278 guardrail)" "$MIS_LAST_MISSING"
+  fi
 else
-  tap_not_ok "Both modules.yaml registries preserve CODI source-selector markers" "Expected source-selector extraction markers in both installed CODI descriptions"
+  tap_not_ok "Both modules.yaml registries carry CODI source-selector semantics (Phase 278 guardrail)" "Installed modules.yaml missing: CC=$CC_MODULES_YAML PI=$PI_MODULES_YAML"
 fi
   if grep -q '^  walt:' "$CC_MODULES_YAML" \
     && grep -q '^  skip:' "$CC_MODULES_YAML" \
@@ -291,11 +294,27 @@ else
   tap_not_ok "Shared template and specs describe one durable module reporting contract" "Expected Module Execution Reports / module_reports markers across template and specs"
 fi
 
-if grep -q 'module_report' "$REPO_ROOT/modules/walt/workflows/apply-phase-quality.md" \
-  && grep -q 'post-unify:' "$REPO_ROOT/modules/ruby/module.yaml" && grep -q 'json {changed_files}' "$REPO_ROOT/modules/ruby/module.yaml"; then
-  tap_ok "Post-unify module overlays align with the durable reporting model"
+# Phase 278 semantic guardrail (was check 21 marker drift):
+# Verify post-unify durable-reporting contract via grouped signals across WALT
+# (apply-phase quality module_report path) and RUBY (post-unify changed-files
+# analysis), instead of requiring a single literal `json {changed_files}` token.
+WALT_APPLY_QUALITY="$REPO_ROOT/modules/walt/workflows/apply-phase-quality.md"
+RUBY_MODULE_YAML="$REPO_ROOT/modules/ruby/module.yaml"
+if [ -f "$WALT_APPLY_QUALITY" ] && [ -f "$RUBY_MODULE_YAML" ]; then
+  if mis_file_has_all "$WALT_APPLY_QUALITY" -- \
+      "module_report" "Module Execution Reports" "quality" \
+    && mis_file_has_all "$RUBY_MODULE_YAML" -- \
+      "post-unify:" \
+    && mis_file_has_min_of "$RUBY_MODULE_YAML" 1 -- \
+      "changed readable source files" "changed files" \
+    && mis_file_has_min_of "$RUBY_MODULE_YAML" 2 -- \
+      "debt" "refactor" "advisory" "NOT_APPLICABLE" "references/refactor-patterns.md"; then
+    tap_ok "Post-unify module overlays satisfy durable reporting semantics (Phase 278 guardrail)"
+  else
+    tap_not_ok "Post-unify module overlays satisfy durable reporting semantics (Phase 278 guardrail)" "$MIS_LAST_MISSING"
+  fi
 else
-  tap_not_ok "Post-unify module overlays align with the durable reporting model" "Expected WALT module_report markers plus RUBY post-unify changed_files analysis markers"
+  tap_not_ok "Post-unify module overlays satisfy durable reporting semantics (Phase 278 guardrail)" "Source files missing: WALT=$WALT_APPLY_QUALITY RUBY=$RUBY_MODULE_YAML"
 fi
 
 # ════════════════════════════════════════════════════════════════════
@@ -847,77 +866,73 @@ else
   tap_not_ok "Both installed schema references document CODI config fields" "Expected CODI config-field and safe-default markers in both installed pals-json-schema.md files"
 fi
 
-if [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ] \
-  && grep -Fq 'When CODI helps' "$CC_CODI_REF" \
-  && grep -Fq 'When CODI helps' "$PI_CODI_REF" \
-  && grep -Fq 'TS/JS-touching indexed code' "$CC_CODI_REF" \
-  && grep -Fq 'TS/JS-touching indexed code' "$PI_CODI_REF" \
-  && grep -Fq 'boundary specificity' "$CC_CODI_REF" \
-  && grep -Fq 'boundary specificity' "$PI_CODI_REF" \
-  && grep -Fq 'resolved-with-call-sites only' "$CC_CODI_REF" \
-  && grep -Fq 'resolved-with-call-sites only' "$PI_CODI_REF" \
-  && grep -Fq 'source selectors' "$CC_CODI_REF" \
-  && grep -Fq 'source selectors' "$PI_CODI_REF" \
-  && grep -Fq 'top-level function declarations' "$CC_CODI_REF" \
-  && grep -Fq 'top-level function declarations' "$PI_CODI_REF" \
-  && grep -Fq 'exported const / arrow bindings' "$CC_CODI_REF" \
-  && grep -Fq 'exported const / arrow bindings' "$PI_CODI_REF" \
-  && grep -Fq 'source-file mention order' "$CC_CODI_REF" \
-  && grep -Fq 'source-file mention order' "$PI_CODI_REF" \
-  && grep -Fq 'declaration order within each file' "$CC_CODI_REF" \
-  && grep -Fq 'declaration order within each file' "$PI_CODI_REF" \
-  && grep -Fq 'stable identifiers surfaced' "$CC_CODI_REF" \
-  && grep -Fq 'stable identifiers surfaced' "$PI_CODI_REF" \
-  && grep -Fq 'pi-codegraph' "$CC_CODI_REF" \
-  && grep -Fq 'pi-codegraph' "$PI_CODI_REF" \
-  && grep -Fq '.codegraph/' "$CC_CODI_REF" \
-  && grep -Fq '.codegraph/' "$PI_CODI_REF" \
-  && grep -Fq 'CODI is enabled but no codegraph index detected' "$CC_CODI_REF" \
-  && grep -Fq 'CODI is enabled but no codegraph index detected' "$PI_CODI_REF" \
-  && grep -Fq 'planning continues cleanly' "$CC_CODI_REF" \
-  && grep -Fq 'planning continues cleanly' "$PI_CODI_REF"; then
-  tap_ok "Both installed CODI references preserve source-selector and safe-setup markers"
+# Phase 278 semantic guardrail (was check 126 marker drift):
+# Verify both installed codi.md references carry the source-selector and
+# safe-setup contract via grouped behaviour signals (fit signal, extraction
+# rules, per-symbol impact contract, safe-skip/no-codegraph posture, and
+# post-unify pointer) instead of requiring stale marker prose.
+if [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ]; then
+  if mis_codi_ref_semantics_ok "$CC_CODI_REF" \
+    && mis_codi_ref_semantics_ok "$PI_CODI_REF"; then
+    tap_ok "Both installed CODI references carry source-selector and safe-setup semantics (Phase 278 guardrail)"
+  else
+    tap_not_ok "Both installed CODI references carry source-selector and safe-setup semantics (Phase 278 guardrail)" "$MIS_LAST_MISSING"
+  fi
 else
-  tap_not_ok "Both installed CODI references preserve source-selector and safe-setup markers" "Expected source-selector and safe-setup markers in both installed codi.md refs"
+  tap_not_ok "Both installed CODI references carry source-selector and safe-setup semantics (Phase 278 guardrail)" "Installed codi.md missing: CC=$CC_CODI_REF PI=$PI_CODI_REF"
 fi
 
-if grep -Fq 'codi_seed_candidates' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
-  && grep -Fq 'explicit TS/JS selectors' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
-  && grep -Fq 'bounded selectors' "$REPO_ROOT/kernel/workflows/plan-phase.md" \
-  && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'top-level function declarations' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'resolved-with-call-sites only' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'source selectors' "$REPO_ROOT/modules/codi/references/codi.md" \
-  && grep -Fq 'stable extracted identifiers' "$REPO_ROOT/modules/codi/references/codi.md" \
-  && grep -Fq 'When CODI helps' "$REPO_ROOT/modules/codi/references/codi.md" \
-  && grep -Fq 'CODI is enabled but no codegraph index detected' "$REPO_ROOT/drivers/pi/install.sh" \
-  && grep -Fq '"codi": { "enabled": true, "description": "Codegraph-driven structural injection (safe skip when codegraph is unavailable)" }' "$REPO_ROOT/kernel/workflows/init-project.md" \
-  && grep -Fq '`modules.codi.enabled`' "$REPO_ROOT/kernel/references/pals-json-schema.md" \
-  && grep -Fq 'Setup & Safe-Skip Distribution' "$REPO_ROOT/modules/codi/references/codi.md" \
-  && grep -Fq '### CODI setup (optional)' "$REPO_ROOT/README.md" \
-  && grep -Fq 'TS/JS-touching indexed code' "$REPO_ROOT/README.md" \
-  && grep -Fq '"codi": {' "$REPO_ROOT/pals.json"; then
-  tap_ok "Repo source surfaces retain the CODI source-selector contract"
+# Phase 278 semantic guardrail (was check 127 marker drift):
+# Verify repo source surfaces preserve the CODI source-selector contract via
+# grouped signals across plan workflow, module manifest, module ref,
+# init workflow, schema ref, README, install script, and pals.json — without
+# requiring stale Phase 174 literal-marker prose.
+PLAN_WORKFLOW="$REPO_ROOT/kernel/workflows/plan-phase.md"
+CODI_MANIFEST="$REPO_ROOT/modules/codi/module.yaml"
+CODI_REF_SRC="$REPO_ROOT/modules/codi/references/codi.md"
+INIT_WORKFLOW="$REPO_ROOT/kernel/workflows/init-project.md"
+SCHEMA_REF="$REPO_ROOT/kernel/references/pals-json-schema.md"
+README="$REPO_ROOT/README.md"
+PI_INSTALL_SH="$REPO_ROOT/drivers/pi/install.sh"
+PALS_JSON="$REPO_ROOT/pals.json"
+if mis_file_has_all "$PLAN_WORKFLOW" -- \
+      "codi_seed_candidates" "explicit TS/JS selectors" \
+  && mis_codi_source_selector_semantics_ok "$CODI_MANIFEST" \
+  && mis_codi_ref_semantics_ok "$CODI_REF_SRC" \
+  && mis_file_has_all "$INIT_WORKFLOW" -- \
+      "\"codi\": { \"enabled\": true, \"description\": \"Codegraph-driven structural injection (safe skip when codegraph is unavailable)\" }" \
+  && mis_file_has_all "$SCHEMA_REF" -- "\`modules.codi.enabled\`" \
+  && mis_file_has_all "$README" -- "### CODI setup (optional)" \
+  && mis_file_has_min_of "$README" 1 -- \
+      "TS/JS" "indexed" "structural" \
+  && mis_file_has_all "$PI_INSTALL_SH" -- \
+      "CODI is enabled but no codegraph index detected" \
+  && mis_file_has_all "$PALS_JSON" -- "\"codi\": {"; then
+  tap_ok "Repo source surfaces preserve the CODI source-selector contract (Phase 278 guardrail)"
 else
-  tap_not_ok "Repo source surfaces retain the CODI source-selector contract" "Expected Phase 174 source-selector markers across repo plan workflow, module manifest, module ref, init workflow, schema ref, README, and pals.json"
+  tap_not_ok "Repo source surfaces preserve the CODI source-selector contract (Phase 278 guardrail)" "$MIS_LAST_MISSING"
 fi
 
 # Phase 176: CODI post-unify dispatch-outcome instrumentation — cross-harness
 CC_CODI_INSTRUMENTATION_REF="$CC_KERNEL_DIR/references/codi-instrumentation.md"
 PI_CODI_INSTRUMENTATION_REF="$PI_KERNEL_DIR/references/codi-instrumentation.md"
 
-if [ -f "$CC_KERNEL_DIR/modules.yaml" ] && [ -f "$PI_KERNEL_DIR/modules.yaml" ] \
-  && grep -Fq 'CODI-HISTORY.md' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'CODI-HISTORY.md' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'references/codi-instrumentation.md' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'references/codi-instrumentation.md' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'no-dispatch-found' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'no-dispatch-found' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'finalize_summary' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'finalize_summary' "$PI_KERNEL_DIR/modules.yaml"; then
-  tap_ok "Both installed modules.yaml registries carry the CODI post-unify dispatch-outcome hook"
+# Phase 278 semantic guardrail (was check 128 marker drift):
+# Verify both installed modules.yaml registries carry CODI post-unify
+# dispatch-outcome behaviour: post-unify hook present, CODI-HISTORY.md
+# destination, codi-instrumentation.md ref, no-dispatch-found outcome token,
+# PLAN-primary/SUMMARY-fallback read order signal, and append-row schema
+# signals. The workflow-owned `finalize_summary` token is intentionally not
+# expected inside module manifest descriptions.
+if [ -f "$CC_KERNEL_DIR/modules.yaml" ] && [ -f "$PI_KERNEL_DIR/modules.yaml" ]; then
+  if mis_codi_post_unify_manifest_ok "$CC_KERNEL_DIR/modules.yaml" \
+    && mis_codi_post_unify_manifest_ok "$PI_KERNEL_DIR/modules.yaml"; then
+    tap_ok "Both installed modules.yaml registries carry CODI post-unify dispatch-outcome semantics (Phase 278 guardrail)"
+  else
+    tap_not_ok "Both installed modules.yaml registries carry CODI post-unify dispatch-outcome semantics (Phase 278 guardrail)" "$MIS_LAST_MISSING"
+  fi
 else
-  tap_not_ok "Both installed modules.yaml registries carry the CODI post-unify dispatch-outcome hook" "Expected Phase 176 post-unify hook markers (CODI-HISTORY.md, codi-instrumentation.md, no-dispatch-found, finalize_summary) in both installed modules.yaml files"
+  tap_not_ok "Both installed modules.yaml registries carry CODI post-unify dispatch-outcome semantics (Phase 278 guardrail)" "Installed modules.yaml missing: CC=$CC_KERNEL_DIR/modules.yaml PI=$PI_KERNEL_DIR/modules.yaml"
 fi
 
 if [ -f "$CC_CODI_INSTRUMENTATION_REF" ] && [ -f "$PI_CODI_INSTRUMENTATION_REF" ]; then
@@ -940,39 +955,55 @@ else
   tap_not_ok "Both installed CODI instrumentation references document schema, taxonomy, and history path" "Expected Outcome taxonomy, no-dispatch-found, CODI-HISTORY.md path, and canonical header row in both installed codi-instrumentation.md refs"
 fi
 
-# Drift guard: 5 pre-plan skip-log strings must be verbatim in both installed CODI manifests
+# Phase 278 semantic guardrail (was check 131 marker drift):
+# Verify both installed CODI surfaces preserve the active pre-plan skip/success
+# taxonomy without requiring deprecated literal log strings. The manifest
+# description carries the STEP-level skip taxonomy and success/evidence-emission
+# signal, while the canonical literal dispatch log strings live in
+# references/codi.md (which is the documented home for them per
+# modules/codi/module.yaml STEP 4). The deprecated
+# 'impact returned empty blast radius for all symbols' line is intentionally
+# not required because Phase 276 retired `skipped-all-empty` as a legacy-only
+# token (see modules/codi/references/codi-instrumentation.md).
 if [ -f "$CC_KERNEL_DIR/modules.yaml" ] && [ -f "$PI_KERNEL_DIR/modules.yaml" ] \
-  && grep -Fq 'no extractable symbols in phase scope' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'no extractable symbols in phase scope' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'codegraph tools unavailable' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'codegraph tools unavailable' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'impact loop errored:' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'impact loop errored:' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'impact returned empty blast radius for all symbols' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'impact returned empty blast radius for all symbols' "$PI_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius' "$CC_KERNEL_DIR/modules.yaml" \
-  && grep -Fq 'impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius' "$PI_KERNEL_DIR/modules.yaml"; then
-  tap_ok "Both installed CODI manifests preserve all 5 pre-plan skip-log strings (drift guard)"
+  && [ -f "$CC_CODI_REF" ] && [ -f "$PI_CODI_REF" ]; then
+  if mis_codi_pre_plan_taxonomy_manifest_ok "$CC_KERNEL_DIR/modules.yaml" \
+    && mis_codi_pre_plan_taxonomy_manifest_ok "$PI_KERNEL_DIR/modules.yaml" \
+    && mis_codi_canonical_log_strings_ok "$CC_CODI_REF" \
+    && mis_codi_canonical_log_strings_ok "$PI_CODI_REF"; then
+    tap_ok "Both installed CODI surfaces preserve the active pre-plan skip/success taxonomy (Phase 278 guardrail)"
+  else
+    tap_not_ok "Both installed CODI surfaces preserve the active pre-plan skip/success taxonomy (Phase 278 guardrail)" "$MIS_LAST_MISSING"
+  fi
 else
-  tap_not_ok "Both installed CODI manifests preserve all 5 pre-plan skip-log strings (drift guard)" "Expected all 5 pre-plan skip-log strings + success-log template in both installed CODI manifests"
+  tap_not_ok "Both installed CODI surfaces preserve the active pre-plan skip/success taxonomy (Phase 278 guardrail)" "Installed CODI surfaces missing: CC_manifest=$CC_KERNEL_DIR/modules.yaml PI_manifest=$PI_KERNEL_DIR/modules.yaml CC_ref=$CC_CODI_REF PI_ref=$PI_CODI_REF"
 fi
 
-# Phase 176 repo-source contract: manifest, new ref, seed history, and cross-reference pointer live in the repo
-if [ -f "$REPO_ROOT/modules/codi/module.yaml" ] \
-  && grep -Fq 'post-unify:' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'CODI-HISTORY.md' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'references/codi-instrumentation.md' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'no-dispatch-found' "$REPO_ROOT/modules/codi/module.yaml" \
-  && grep -Fq 'finalize_summary' "$REPO_ROOT/modules/codi/module.yaml" \
-  && [ -f "$REPO_ROOT/modules/codi/references/codi-instrumentation.md" ] \
-  && grep -Fq '## Outcome taxonomy' "$REPO_ROOT/modules/codi/references/codi-instrumentation.md" \
-  && grep -Fq '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |' "$REPO_ROOT/modules/codi/references/codi-instrumentation.md" \
-  && grep -Fq 'codi-instrumentation.md' "$REPO_ROOT/modules/codi/references/codi.md" \
+# Phase 278 semantic guardrail (was check 132 marker drift):
+# Verify repo source surfaces carry the CODI post-unify instrumentation
+# contract via grouped signals: manifest carries post-unify hook +
+# CODI-HISTORY.md destination + instrumentation ref + no-dispatch-found +
+# append-row semantics; instrumentation ref documents Outcome taxonomy +
+# canonical header schema + read-order; codi.md cross-references the
+# instrumentation ref; .paul/CODI-HISTORY.md is seeded with the 175-01 row.
+# Workflow-owned `finalize_summary` is intentionally not expected inside
+# module manifest descriptions.
+CODI_INSTRUMENTATION_SRC="$REPO_ROOT/modules/codi/references/codi-instrumentation.md"
+if mis_codi_post_unify_manifest_ok "$REPO_ROOT/modules/codi/module.yaml" \
+  && [ -f "$CODI_INSTRUMENTATION_SRC" ] \
+  && mis_file_has_all "$CODI_INSTRUMENTATION_SRC" -- \
+      "## Outcome taxonomy" \
+      "| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |" \
+  && mis_file_has_min_of "$CODI_INSTRUMENTATION_SRC" 1 -- \
+      "Data-source read order" "PLAN.md" "SUMMARY.md" \
+  && mis_file_has_all "$REPO_ROOT/modules/codi/references/codi.md" -- \
+      "codi-instrumentation.md" \
   && [ -f "$REPO_ROOT/.paul/CODI-HISTORY.md" ] \
-  && grep -Fq '| 175-01 | 2026-04-17 | injected | 4 | 0 | 10 | renderCompactLoopSummary, renderLifecycleStatus, syncLifecycleUi, renderLoopBadge | y |' "$REPO_ROOT/.paul/CODI-HISTORY.md"; then
-  tap_ok "Repo source surfaces carry the CODI post-unify instrumentation contract (manifest hook, instrumentation ref, codi.md pointer, seeded CODI-HISTORY.md)"
+  && mis_file_has_all "$REPO_ROOT/.paul/CODI-HISTORY.md" -- \
+      "| 175-01 | 2026-04-17 | injected | 4 | 0 | 10 | renderCompactLoopSummary, renderLifecycleStatus, syncLifecycleUi, renderLoopBadge | y |"; then
+  tap_ok "Repo source surfaces carry CODI post-unify instrumentation semantics (Phase 278 guardrail)"
 else
-  tap_not_ok "Repo source surfaces carry the CODI post-unify instrumentation contract" "Expected post-unify hook + CODI-HISTORY markers in modules/codi/module.yaml, codi-instrumentation.md ref with taxonomy + header row, pointer line in codi.md, and seeded 175-01 row in .paul/CODI-HISTORY.md"
+  tap_not_ok "Repo source surfaces carry CODI post-unify instrumentation semantics (Phase 278 guardrail)" "$MIS_LAST_MISSING"
 fi
 
 # ════════════════════════════════════════════════════════════════════

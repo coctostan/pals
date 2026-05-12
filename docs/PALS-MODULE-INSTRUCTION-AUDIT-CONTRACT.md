@@ -326,3 +326,45 @@ Phase 273 explicitly excludes:
 - weakening PLAN/APPLY/UNIFY authority;
 - removing module capabilities without a later approved rewrite-phase decision;
 - treating this contract as lifecycle truth.
+
+## Phase 278 Closure: Semantic Validation Guardrails
+
+Phase 278 Plan 278-01 closes the v2.64 module instruction audit milestone by
+replacing inherited marker-only validation drift with grouped semantic
+guardrails. The pattern is durable for future module-instruction audits and
+applies to any check that previously expected a stale literal-marker phrase.
+
+**Pattern.** Each cross-harness check for a module-instruction contract must
+verify a behaviour group, not a single literal phrase:
+
+- TS/JS source-selector breadth (`.ts` / `.tsx` / `.js` / `.jsx`);
+- bounded explicit-seed extraction (top-level, exported, explicit, bounded);
+- per-symbol impact contract (`impact` plus one of {per seed, once per,
+  singleSymbol, never batched});
+- safe-skip / advisory posture (skip, advisory, never block, codegraph index
+  unavailable);
+- visible dispatch evidence (`[dispatch] CODI` plus one of {success counts,
+  N/R/U/K, skip reason, skip log});
+- post-unify instrumentation (`CODI-HISTORY.md`, `codi-instrumentation.md`,
+  `no-dispatch-found`, append-row schema, PLAN-primary/SUMMARY-fallback read
+  order);
+- durable module-report semantics (e.g. WALT `module_report` +
+  `Module Execution Reports`, RUBY post-unify `changed files` + refactor/debt
+  signals).
+
+**Failure mode rejected.** A check that passes when a single magic phrase is
+present (and would still pass after the rest of the module instruction is
+deleted or weakened) is not acceptable. Every guardrail requires multiple
+independent contract signals; helpers in `tests/helpers/module_instruction_semantics.sh`
+encode these groups and return shell success/failure only so callers retain
+TAP ownership.
+
+**Authority.** Semantic guardrails verify contracts; they are not lifecycle
+truth. PLAN/APPLY/UNIFY remain authoritative for module rewrites, and helper
+edits to validation surfaces must stay inside the validation/helper/contract
+file set approved by their PLAN.
+
+**Follow-up scope.** Plan 278-01 covered `tests/cross-harness-validation.sh`.
+The same semantic pattern should be applied to `tests/pi-end-to-end-validation.sh`
+in a follow-up plan (checks 10, 185, 188, 190, 192 carry the same inherited
+CODI marker drift).
