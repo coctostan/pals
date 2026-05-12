@@ -95,21 +95,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/279-functional-first-guidance-contract (tracks origin/feature/279-functional-first-guidance-contract; base main)
-Last commit: UNIFY metadata commit on current feature-branch HEAD (`docs(279-01): complete functional-first guidance contract`).
-PR #197: OPEN — https://github.com/coctostan/pals/pull/197; initial `gh pr checks 197 --watch=false` reported no checks.
-Transition state: Phase 279 UNIFY metadata committed; Phase 280 ready to plan after merge gate.
+Branch: main (synced with origin/main; Phase 279 feature branch merged and deleted)
+Last lifecycle state: Phase 279 merge gate recorded on synced `main` after PR #197.
+PR #197: MERGED 2026-05-12T22:50:42Z as `64225c06`; Socket checks passed; feature branch deleted.
+Transition state: Phase 279 complete and merged; Phase 280 ready to plan.
 Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Phase 279 UNIFY complete locally.
-Stopped at: Phase 279 complete, ready to plan Phase 280 after GitHub Flow merge gate finishes.
-Next action: complete merge gate for PR #197, then /paul:plan for Phase 280.
+Last session: 2026-05-12 — Phase 279 complete and merged via PR #197.
+Stopped at: Phase 279 complete, merged, and ready to plan Phase 280.
+Next action: /paul:plan for Phase 280.
 Resume file: .paul/ROADMAP.md
-wip_result: unify-complete-pending-merge-gate
+wip_result: phase-complete-merged
 Resume context:
 - Phase 279 created and unified `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`; it is authoritative over the research note after Phase 279 UNIFY.
 - `279-01-SUMMARY.md` records AC results, validation, module reports, and next-phase readiness.
 - Phase 280 scope from contract: add compact Engineering Principles to AGENTS/init convention surfaces while preserving project-specific convention authority.
-- GitHub Flow: docs commit `8493c957` and the UNIFY metadata commit exist on the feature branch; PR #197 open; no checks reported initially.
+- GitHub Flow: PR #197 merged as `64225c06`; Socket checks passed; local main synced with origin/main.
