@@ -11,9 +11,9 @@ See: .paul/PROJECT.md (v2.64 active; module instruction audit + context-efficien
 Milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
 Phase: 278 of 278 (Module Guardrails + Closure)
 Plan: .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
-Status: PLAN complete — 278-01 created; APPLY next
-Last activity: 2026-05-12 — Created Phase 278 Plan 278-01 for semantic module guardrails and closure
-Next action: /paul:apply .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
+Status: APPLY complete (PASS_WITH_CONCERNS) — semantic guardrails replace inherited CODI marker drift; UNIFY next
+Last activity: 2026-05-12 — Phase 278 Plan 278-01 APPLY complete; cross-harness 195→202/202; PR #196 open
+Next action: /paul:unify .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Phase 278 Plan 278-01 created; APPLY next]
+  ✓        ✓        ○     [Phase 278 Plan 278-01 APPLY complete (PASS_WITH_CONCERNS); UNIFY next]
 ```
 
 ## Accumulated Context
@@ -92,13 +92,14 @@ Prior PRs: #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 /
 
 ## Session Continuity
 
-Last session: 2026-05-12 — Created Phase 278 Plan 278-01 for semantic module guardrails and closure.
-Stopped at: Phase 278 Plan 278-01 created; APPLY next.
-Next action: /paul:apply .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
+Last session: 2026-05-12 — Phase 278 Plan 278-01 APPLY complete; semantic guardrails replace inherited CODI marker drift; PR #196 open; UNIFY pending.
+Stopped at: Phase 278 Plan 278-01 APPLY PASS_WITH_CONCERNS; UNIFY next.
+Next action: /paul:unify .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
 Resume file: .paul/phases/278-module-guardrails-closure/278-01-PLAN.md
-wip_result: Phase 278 Plan 278-01 created; APPLY pending
+wip_result: Phase 278 Plan 278-01 APPLY PASS_WITH_CONCERNS; PR #196 open; UNIFY pending
 Resume context:
-- Phase 278 Plan 278-01 created at `.paul/phases/278-module-guardrails-closure/278-01-PLAN.md`.
-- Scope: replace inherited CODI marker-string validation drift with semantic guardrails in `tests/cross-harness-validation.sh`, add `tests/helpers/module_instruction_semantics.sh`, and optionally add a concise closure note to `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`.
-- Validation targets: `git diff --check`, `bash tests/helpers/artifact_consistency.sh`, `bash tests/cross-harness-validation.sh`, and `bash tests/pi-end-to-end-validation.sh`.
-- Boundaries: no module source rewrites, kernel workflow rewrites, runtime behavior changes, dependency/CI/install changes, or direct installed-copy edits.
+- Phase 278 Plan 278-01 APPLY committed as `f1e01cb9` on `feature/278-01-module-guardrails-closure`; PR #196 open against `main`.
+- Added `tests/helpers/module_instruction_semantics.sh` (TAP-free grouped semantic helpers) and updated `tests/cross-harness-validation.sh` to replace inherited Phase 276 CODI marker-drift on checks 12, 21, 126, 127, 128, 131, 132.
+- Validation: `git diff --check` clean; `tests/helpers/artifact_consistency.sh` PASS; `tests/cross-harness-validation.sh` 202/202 PASS (was 195/202); `tests/pi-end-to-end-validation.sh` 307/312 (5 baseline-inherited CODI marker-drift failures unchanged pre/post — recorded as Phase 278 follow-up, not Plan 278-01 scope).
+- PLAN-approved `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md` slot remains reserved for UNIFY closure note.
+- Boundaries held: no module source rewrites, kernel workflow rewrites, runtime behavior changes, dependency/CI/install changes, or direct installed-copy edits.
