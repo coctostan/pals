@@ -11,9 +11,9 @@ See: .paul/PROJECT.md (v2.65 closed 2026-05-13; awaiting next milestone)
 Milestone: v2.65 Functional-First Agent Guidance (closed 2026-05-13)
 Phase: 283 of 283 (ARCH Advisory + Closure)
 Plan: .paul/phases/283-arch-advisory-closure/283-01-PLAN.md
-Status: UNIFY complete — Phase 283 closed; v2.65 ready for milestone-closure routing (PR #201 merge gate pending)
-Last activity: 2026-05-13 — Phase 283 Plan 283-01 UNIFY complete; SUMMARY + history rows written; PR #201 awaiting merge gate
-Next action: complete merge gate on PR #201, then transition v2.65 milestone (route /paul:milestone or follow merge-gate output)
+Status: UNIFY complete — Phase 283 closed; v2.65 milestone closed (PR #201 merged via squash `752184e0`)
+Last activity: 2026-05-13 — Phase 283 UNIFY complete; PR #201 merged via squash (`752184e0`); branch deleted; v2.65 closed
+Next action: /paul:milestone to open the next milestone (or `/paul:status` for a recap)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -103,9 +103,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: phase-283-arch-advisory-closure (PR #201 open against `main`)
+Branch: main (PR #201 merged via squash `752184e0`; feature branch deleted; base synced)
 Last lifecycle state: Phase 283 UNIFY complete; task/feature commit `4ea90e2c`; SUMMARY `.paul/phases/283-arch-advisory-closure/283-01-SUMMARY.md`.
-PR #201: open — https://github.com/coctostan/pals/pull/201; awaiting GitHub Flow merge gate (CI + merge + sync + cleanup).
+PR #201: merged — https://github.com/coctostan/pals/pull/201 (squash; branch deleted; CI PASS).
 Transition state: v2.65 milestone closed across Phases 279–283; awaiting next milestone.
 Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -113,7 +113,7 @@ Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 /
 
 Last session: 2026-05-13 — Phase 283 UNIFY complete; v2.65 milestone closed.
 Stopped at: v2.65 closed; awaiting next milestone.
-Next action: /paul:milestone to open the next milestone (or `/paul:status` for a recap). GitHub Flow merge gate for PR #201 remains the final mechanical step before the next planning cycle.
+Next action: /paul:milestone to open the next milestone (or `/paul:status` for a recap).
 Resume file: .paul/ROADMAP.md
 wip_result: not-applicable — UNIFY commit covers Phase 283 lifecycle artifacts; no separate WIP commit needed
 Resume context:
