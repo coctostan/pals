@@ -92,6 +92,12 @@ CC_AGENTS_TEMPLATE="$CC_KERNEL_DIR/templates/AGENTS.md"
 PI_AGENTS_TEMPLATE="$PI_KERNEL_DIR/templates/AGENTS.md"
 CC_INIT_WORKFLOW="$CC_KERNEL_DIR/workflows/init-project.md"
 PI_INIT_WORKFLOW="$PI_KERNEL_DIR/workflows/init-project.md"
+CC_MAP_CODEBASE_WORKFLOW="$CC_KERNEL_DIR/workflows/map-codebase.md"
+PI_MAP_CODEBASE_WORKFLOW="$PI_KERNEL_DIR/workflows/map-codebase.md"
+CC_ARCHITECTURE_TEMPLATE="$CC_KERNEL_DIR/templates/codebase/architecture.md"
+PI_ARCHITECTURE_TEMPLATE="$PI_KERNEL_DIR/templates/codebase/architecture.md"
+CC_CONVENTIONS_TEMPLATE="$CC_KERNEL_DIR/templates/codebase/conventions.md"
+PI_CONVENTIONS_TEMPLATE="$PI_KERNEL_DIR/templates/codebase/conventions.md"
 
 tap_file_contains_all \
   "Claude Code installed AGENTS template includes functional-first Engineering Principles" \
@@ -124,6 +130,64 @@ tap_file_contains_all \
   'Functional-first, not functional-only' \
   'Project Conventions remain authoritative' \
   'Keep side effects explicit and near boundaries'
+
+tap_file_contains_all \
+  "Claude Code installed map-codebase workflow preserves brownfield functional signal detection" \
+  "$CC_MAP_CODEBASE_WORKFLOW" \
+  'Brownfield functional-first signals' \
+  'mutation-heavy vs immutable style' \
+  'pure helper' \
+  'side effects' \
+  'preserve local idioms'
+
+tap_file_contains_all \
+  "Pi installed map-codebase workflow preserves brownfield functional signal detection" \
+  "$PI_MAP_CODEBASE_WORKFLOW" \
+  'Brownfield functional-first signals' \
+  'mutation-heavy vs immutable style' \
+  'pure helper' \
+  'side effects' \
+  'preserve local idioms'
+
+tap_file_contains_all \
+  "Claude Code installed architecture template preserves brownfield functional/effect boundary markers" \
+  "$CC_ARCHITECTURE_TEMPLATE" \
+  '## Brownfield Functional/Effect Boundaries' \
+  'Local idioms to preserve' \
+  'mutation-heavy style' \
+  'pure helper' \
+  'side effects' \
+  'do not require converting the repo to a functional architecture'
+
+tap_file_contains_all \
+  "Pi installed architecture template preserves brownfield functional/effect boundary markers" \
+  "$PI_ARCHITECTURE_TEMPLATE" \
+  '## Brownfield Functional/Effect Boundaries' \
+  'Local idioms to preserve' \
+  'mutation-heavy style' \
+  'pure helper' \
+  'side effects' \
+  'do not require converting the repo to a functional architecture'
+
+tap_file_contains_all \
+  "Claude Code installed conventions template preserves brownfield functional style markers" \
+  "$CC_CONVENTIONS_TEMPLATE" \
+  '## Brownfield Functional Style Signals' \
+  'Local idioms to preserve' \
+  'mutation-heavy style' \
+  'pure helper' \
+  'side effects placement' \
+  'Preserve local idioms'
+
+tap_file_contains_all \
+  "Pi installed conventions template preserves brownfield functional style markers" \
+  "$PI_CONVENTIONS_TEMPLATE" \
+  '## Brownfield Functional Style Signals' \
+  'Local idioms to preserve' \
+  'mutation-heavy style' \
+  'pure helper' \
+  'side effects placement' \
+  'Preserve local idioms'
 
 CC_KERNEL_COUNT=$(count_kernel_files "$CC_KERNEL_DIR")
 PI_KERNEL_COUNT=$(count_kernel_files "$PI_KERNEL_DIR")

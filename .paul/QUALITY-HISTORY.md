@@ -129,3 +129,4 @@ Types: —
 | 278-01 | 2026-05-12 | XH 202/202, Pi 307/312 (5 inherited CODI marker failures — follow-up), artifact_consistency PASS | N/A (shell/docs) | N/A | N/A | ↑ improving (semantic guardrails replace 7 inherited CODI marker failures; cross-harness 195→202 PASS; git diff --check PASS) |
 | 279-01 | 2026-05-12 | — | — | — | — | — skipped (docs-only contract; git diff --check PASS; artifact_consistency PASS) |
 | 280-01 | 2026-05-13 | Pi 308/314 (new marker checks PASS; 6 inherited CODI/artifact-consistency failures), XH 205/206 (new marker checks PASS; 1 inherited artifact-consistency failure) | N/A (shell/docs) | N/A | N/A | → stable with baseline concerns |
+| 281-01 | 2026-05-13 | Pi 310/317 (Phase 281 marker checks PASS; 7 inherited CODI/PROJECT/artifact-consistency failures), XH 211/212 (Phase 281 marker checks PASS; 1 inherited artifact-consistency failure) | N/A (shell/docs) | N/A | N/A | → stable with baseline concerns |

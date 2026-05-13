@@ -96,6 +96,9 @@ done
 
 AGENTS_TEMPLATE="$SKILL_DIR/templates/AGENTS.md"
 PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
+PI_MAP_CODEBASE_WORKFLOW="$SKILL_DIR/workflows/map-codebase.md"
+PI_ARCHITECTURE_TEMPLATE="$SKILL_DIR/templates/codebase/architecture.md"
+PI_CONVENTIONS_TEMPLATE="$SKILL_DIR/templates/codebase/conventions.md"
 
 tap_file_contains_all \
   "Installed AGENTS template includes functional-first Engineering Principles" \
@@ -113,6 +116,34 @@ tap_file_contains_all \
   'Project Conventions remain authoritative' \
   'Keep side effects explicit and near boundaries'
 
+tap_file_contains_all \
+  "Installed map-codebase workflow preserves brownfield functional signal detection" \
+  "$PI_MAP_CODEBASE_WORKFLOW" \
+  'Brownfield functional-first signals' \
+  'mutation-heavy vs immutable style' \
+  'pure helper' \
+  'side effects' \
+  'preserve local idioms'
+
+tap_file_contains_all \
+  "Installed architecture template preserves brownfield functional/effect boundary markers" \
+  "$PI_ARCHITECTURE_TEMPLATE" \
+  '## Brownfield Functional/Effect Boundaries' \
+  'Local idioms to preserve' \
+  'mutation-heavy style' \
+  'pure helper' \
+  'side effects' \
+  'do not require converting the repo to a functional architecture'
+
+tap_file_contains_all \
+  "Installed conventions template preserves brownfield functional style markers" \
+  "$PI_CONVENTIONS_TEMPLATE" \
+  '## Brownfield Functional Style Signals' \
+  'Local idioms to preserve' \
+  'mutation-heavy style' \
+  'pure helper' \
+  'side effects placement' \
+  'Preserve local idioms'
 # Check all 11 skill directories exist with SKILL.md
 SKILL_COUNT=0
 for skill in "${EXPECTED_SKILLS[@]}"; do

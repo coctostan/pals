@@ -159,16 +159,19 @@ Search for:
 - Recurring code patterns (base classes, interfaces, common abstractions)
 
 Output findings for populating these sections:
-- ARCHITECTURE.md: Pattern, Layers, Data Flow, Abstractions, Entry Points
+- ARCHITECTURE.md: Pattern, Layers, Data Flow, Abstractions, Entry Points, Brownfield Functional/Effect Boundaries
 - STRUCTURE.md: Directory layout, Organization, Key locations
 
-**Brownfield context (important for existing projects):**
-Also identify "Patterns to Preserve" — existing architectural decisions that should be respected in future work:
-- Established layer boundaries (e.g., "services never import from routes")
-- Dependency injection patterns, factory patterns, or other structural conventions
-- Configuration approaches (env vars vs config files vs constants)
-- Error handling patterns (custom error classes, error middleware)
-Output these as a "Brownfield Quick Start" subsection for ARCHITECTURE.md.
+**Brownfield functional-first signals (descriptive, source-backed):**
+Also identify local idioms to preserve for future work. Do not recommend functional rewrites or require adopting pure functions; describe what the repository already does and cite file paths.
+- mutation-heavy vs immutable style: where code mutates shared objects/arrays/state, and where it creates new values instead
+- pure helper and data transformation patterns: deterministic helpers, mappers, reducers, serializers, validators, or pipeline-style code
+- Side effects and effect boundaries: where I/O, network, database, logging, filesystem, process/env access, and framework callbacks live
+- Service/repository/controller layering and module boundaries, including whether side effects stay near boundaries or appear in core helpers
+- Error handling style: thrown exceptions, Result-like returns, error middleware, custom error classes, guard clauses, or fail-fast validation
+- Dependency/state passing style: dependency injection, factory patterns, context objects, globals/singletons, or direct imports
+- Architecture preference: classes, functions, modules, hooks, framework-specific patterns, or mixed style
+Output these as a "Brownfield Functional/Effect Boundaries" subsection for ARCHITECTURE.md, including local idioms to preserve.
 
 For each finding, include the file path. Examples:
 - "CLI entry point: `bin/install.js`"
@@ -211,17 +214,22 @@ Search for:
 - README or CONTRIBUTING docs
 
 Output findings for populating these sections:
-- CONVENTIONS.md: Code Style, Naming, Patterns, Documentation
+- CONVENTIONS.md: Code Style, Naming Conventions, Common Patterns, Documentation Style, Brownfield Functional Style Signals
 - TESTING.md: Framework, Structure, Coverage, Tools
 
-**Brownfield context (important for existing projects):**
-Also extract "Style Rules" — conventions that Claude should follow when writing new code in this project:
+**Local idioms to preserve (brownfield functional/style signals):**
+Also extract style rules Claude should follow when writing new code in this project. Do not prescribe a new architecture; preserve local idioms with source-backed examples.
 - Naming conventions: file naming (kebab-case, PascalCase), variable naming (camelCase, snake_case)
 - Import ordering conventions (stdlib first, then external, then internal)
 - Export patterns (named vs default, barrel files)
 - Comment style (JSDoc, docstrings, inline)
 - Test naming patterns (describe/it, test blocks, file naming)
-Output these as a "Brownfield Quick Start" subsection for CONVENTIONS.md.
+- Mutation-heavy vs immutable style in everyday code; note when mutation is conventional and when immutable updates are preferred
+- Pure helper and data transformation patterns, including mapper/reducer/validator/serializer helpers
+- Side effects placement: whether I/O/logging/network/database access stays in handlers/services/adapters or appears in utility code
+- Error/dependency/state-passing style: thrown errors vs returned results, dependency injection vs direct imports, context/options objects vs globals
+- Preferred implementation shape: classes, functions, modules, hooks, or framework-specific patterns
+Output these as a "Brownfield Functional Style Signals" subsection for CONVENTIONS.md, including preserve local idioms guidance.
 
 For each finding, include file paths. Examples:
 - "Prettier config: `.prettierrc`"
@@ -353,11 +361,11 @@ From Agent 1 output, extract:
 - INTEGRATIONS.md sections: External APIs, Services, Authentication, Webhooks
 
 From Agent 2 output, extract:
-- ARCHITECTURE.md sections: Pattern Overview, Layers, Data Flow, Key Abstractions, Entry Points
+- ARCHITECTURE.md sections: Pattern Overview, Layers, Data Flow, Key Abstractions, Entry Points, Brownfield Functional/Effect Boundaries
 - STRUCTURE.md sections: Directory Layout, Key Locations, Organization
 
 From Agent 3 output, extract:
-- CONVENTIONS.md sections: Code Style, Naming Conventions, Common Patterns, Documentation Style
+- CONVENTIONS.md sections: Code Style, Naming Conventions, Common Patterns, Documentation Style, Brownfield Functional Style Signals
 - TESTING.md sections: Framework, Structure, Coverage, Tools
 
 From Agent 4 output, extract:
@@ -581,12 +589,12 @@ End workflow.
 <success_criteria>
 - .paul/codebase/ directory created
 - 5 parallel Explore agents spawned with run_in_background=true
-- Agent prompts are specific and actionable (including brownfield context for Agents 2+3)
+- Agent prompts are specific and actionable (including Brownfield functional-first signals and local idioms to preserve for Agents 2+3)
 - TaskOutput used to collect all agent results
 - All 8 codebase documents written (7 template-based + GRAPH.md)
 - GRAPH.md contains hub files, entry points, reference edges, clusters
 - Documents follow template structure with actual findings
-- Brownfield Quick Start subsections in ARCHITECTURE.md and CONVENTIONS.md
+- Brownfield Functional/Effect Boundaries and Brownfield Functional Style Signals subsections in ARCHITECTURE.md and CONVENTIONS.md preserve local idioms
 - Clear completion summary with line counts and top hub files
 - Post-map routing: /paul:init if no .paul/, planning context if .paul/ exists
 </success_criteria>

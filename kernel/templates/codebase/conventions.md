@@ -101,6 +101,28 @@ Template for `.paul/codebase/CONVENTIONS.md` - captures coding style and pattern
 - [Pattern: e.g., "// TODO(username): description"]
 - [Tracking: e.g., "link to issue number if available"]
 
+## Brownfield Functional Style Signals
+
+**Local idioms to preserve:**
+- [Source-backed style idioms to follow when adding code]
+- [Preserve local idioms; do not require converting the repo to a functional architecture]
+
+**Mutation vs immutability:**
+- [Where mutation-heavy style is normal]
+- [Where immutable updates/new values are preferred]
+
+**Pure helper and data transformation patterns:**
+- [Mapper/reducer/validator/serializer helpers and deterministic utility patterns]
+
+**Side effects placement:**
+- [Where I/O, logging, network, database, filesystem, process/env, and framework side effects belong]
+
+**Error/dependency/state-passing style:**
+- [Thrown errors vs returned results]
+- [Dependency injection, direct imports, context/options objects, globals/singletons]
+
+**Preferred implementation shape:**
+- [Classes, functions, modules, hooks, or framework-specific patterns]
 ## Function Design
 
 **Size:**
@@ -234,6 +256,30 @@ Template for `.paul/codebase/CONVENTIONS.md` - captures coding style and pattern
 - Format: // TODO: description (no username, using git blame)
 - Link to issue if exists: // TODO: Fix race condition (issue #123)
 
+## Brownfield Functional Style Signals
+
+**Local idioms to preserve:**
+- New code should follow the existing module-function service style (`src/services/*.ts`) and avoid introducing class hierarchies unless the surrounding code already uses one.
+- Preserve local idioms; do not require converting the repo to a functional architecture.
+
+**Mutation vs immutability:**
+- CLI setup mutates Commander command objects during registration.
+- Service and utility code generally constructs new config/path/result objects before writing.
+
+**Pure helper and data transformation patterns:**
+- Normalization, path resolution, and template substitution helpers are deterministic where possible.
+- Validators return or throw before side-effecting work begins.
+
+**Side effects placement:**
+- Filesystem writes and shell/process calls live in command/service boundary functions.
+- Utility helpers avoid logging and direct I/O unless their filename/surrounding module is explicitly an adapter.
+
+**Error/dependency/state-passing style:**
+- Expected failures throw Error subclasses or descriptive Error instances; command handlers convert them to user-facing messages.
+- Dependencies are imported modules and options/context objects rather than constructor-injected classes.
+
+**Preferred implementation shape:**
+- Prefer named exported functions and cohesive modules; use framework-specific command objects at CLI boundaries.
 ## Function Design
 
 **Size:**
@@ -281,6 +327,7 @@ Template for `.paul/codebase/CONVENTIONS.md` - captures coding style and pattern
 - Logging approach
 - Comment conventions
 - Function and module design patterns
+- Brownfield functional style signals: mutation-heavy vs immutable style, pure helper/data transformation patterns, side effects placement, error/dependency/state-passing style, and preferred class/function/module/framework idioms
 
 **What does NOT belong here:**
 - Architecture decisions (that's ARCHITECTURE.md)
@@ -294,6 +341,8 @@ Template for `.paul/codebase/CONVENTIONS.md` - captures coding style and pattern
 - Look for consistency: if 80%+ follows a pattern, document it
 - Be prescriptive: "Use X" not "Sometimes Y is used"
 - Note deviations: "Legacy code uses Y, new code should use X"
+- Preserve local idioms with source-backed examples; do not require converting the repo to a functional architecture
+- Describe whether the codebase prefers mutation, immutable updates, pure helpers, classes, functions, modules, hooks, or framework-specific patterns
 - Keep under ~150 lines total
 
 **Useful for phase planning when:**
