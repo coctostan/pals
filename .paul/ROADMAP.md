@@ -8,27 +8,24 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.65 Functional-First Agent Guidance**
-Status: ✅ Complete (pending v2.65 milestone-closure routing) | Mode: exploratory / high collaboration | Phases: 5 of 5 complete
-Theme: Add practical, project-convention-aware “functional-first, not functional-only” agent coding guidance across PALS without turning it into a functional-programming framework or overriding local idioms.
-
-| Phase | Name | Status | Plans |
-|-------|------|--------|-------|
-| 279 | Functional-First Guidance Contract | ✅ Complete — PR #197 | 279-01 |
-| 280 | AGENTS/Init Engineering Principles + Marker Checks | ✅ Complete — PR #198 | 280-01 |
-| 281 | Brownfield Convention Detection | ✅ Complete — PR #199 | 281-01 |
-| 282 | TODD + RUBY Functional-First Guidance | ✅ Complete — PR #200 `998c3771` | 282-01 |
-| 283 | ARCH Advisory + Closure | ✅ Complete — plan 283-01 PR #201 `4ea90e2c` | 283-01 |
+**Awaiting next milestone**
+Status: Last milestone v2.65 closed 2026-05-13 — PR #201 `752184e0`; archive [archive/roadmap/v2.65-functional-first-agent-guidance.md](archive/roadmap/v2.65-functional-first-agent-guidance.md).
+Next: run /paul:discuss-milestone or /paul:milestone to define the next scope.
 
 ## Next Milestone
 
-TBD after v2.65. Deferred candidate remains the 5 baseline-inherited CODI marker-drift failures in `tests/pi-end-to-end-validation.sh` (checks 10, 185, 188, 190, 192) using `tests/helpers/module_instruction_semantics.sh`.
+Run `/paul:discuss-milestone` to explore scope, or `/paul:milestone` to create directly. Recommended scope candidate: clear the 6 baseline-inherited Pi end-to-end failures (5 CODI marker-drift checks + 1 PROJECT byte-budget) using the existing `tests/helpers/module_instruction_semantics.sh` helpers and decide on a v2.66 theme alongside.
 
 ### Latest completed milestone: v2.65 Functional-First Agent Guidance
-Result: Phases 279–283 complete (PRs #197 / #198 / #199 / #200 / #201). Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract (`docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`); Phase 280 generated AGENTS/init Engineering Principles + installed-resource marker checks; Phase 281 brownfield map-codebase signal detection for local idioms and effect boundaries; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post and recorded as next-milestone follow-up). No new modules, hooks, dependencies, or default blocking functional-style gates were introduced.
+Result: Phases 279–283 complete. Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract; Phase 280 AGENTS/init Engineering Principles + installed-resource marker checks; Phase 281 brownfield map-codebase signal detection for local idioms and effect boundaries; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Archive: [archive/roadmap/v2.65-functional-first-agent-guidance.md](archive/roadmap/v2.65-functional-first-agent-guidance.md).
 
-### Previous completed milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
-Result: Phases 273–278 complete. Module instructions across base/dispatch, core enforcement, advisory, and domain optional cohorts rewritten section-by-section for context efficiency, semantic enforcement, and lifecycle compatibility; semantic module-instruction validation guardrails added in `tests/helpers/module_instruction_semantics.sh`; inherited Phase 276 CODI marker drift cleared in `tests/cross-harness-validation.sh` (195→202 PASS). Archive: [archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md).
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 279 | Functional-First Guidance Contract | 1/1 | ✅ Complete | 2026-05-12 |
+| 280 | AGENTS/Init Engineering Principles + Marker Checks | 1/1 | ✅ Complete | 2026-05-13 |
+| 281 | Brownfield Convention Detection | 1/1 | ✅ Complete | 2026-05-13 |
+| 282 | TODD + RUBY Functional-First Guidance | 1/1 | ✅ Complete | 2026-05-13 |
+| 283 | ARCH Advisory + Closure | 1/1 | ✅ Complete | 2026-05-13 |
 
 ## Completed Milestones
 
@@ -55,7 +52,7 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | 2026-05-08 | 265-267 | Hot lifecycle artifacts archived/compacted to 63,415 B aggregate; Path A PASS; Selective Artifact Loading added across hot workflows; anti-regrowth TAPs and the 7th closure-guardrail recipe application ratified; v2.63 narrative deduplication / single-source summary architecture recommended-not-approved. PRs #180/#181/#182 (`068d7cb3`). |
 | v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | 2026-05-10 | 268-272 | Rewrote resume, plan, apply, unify, and pause workflow instructions for bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. Final validation: Pi 312/312, cross-harness 202/202. PR #188 (`df56ece1`). |
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | 273-278 | Rewrote base/dispatch, core enforcement, advisory, and domain optional module instructions section-by-section; added semantic module-instruction validation guardrails (`tests/helpers/module_instruction_semantics.sh`); cleared inherited Phase 276 CODI marker drift in `tests/cross-harness-validation.sh` (195→202 PASS). Pi e2e 307/312 (5 baseline-inherited CODI marker drift recorded as future follow-up). PRs #190/#191/#192/#194/#195/#196 (`340eee03`). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
-| v2.65 Functional-First Agent Guidance | 2026-05-13 | 279-283 | Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract; Phase 280 generated AGENTS/init Engineering Principles + marker checks; Phase 281 brownfield map-codebase signal detection; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). PRs #197/#198/#199/#200/#201. |
+| v2.65 Functional-First Agent Guidance | 2026-05-13 | 279-283 | Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: agent conventions, brownfield mapping, TDD, refactoring, and advisory ARCH side-effect-boundary surfaces. Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). PRs #197/#198/#199/#200/#201. [archive](archive/roadmap/v2.65-functional-first-agent-guidance.md) |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---

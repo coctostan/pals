@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.65 closed 2026-05-13; awaiting next milestone)
+See: .paul/PROJECT.md (v2.65 complete; next milestone pending via /paul:milestone)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** _Awaiting next milestone._ v2.65 Functional-First Agent Guidance shipped functional-first, not functional-only coding guidance across agent conventions, brownfield mapping, TODD, RUBY, and advisory ARCH side-effect-boundary surfaces; no new blocking gates introduced.
+**Current focus:** Awaiting next milestone — v2.65 Functional-First Agent Guidance closed 2026-05-13 via PR #201 (`752184e0`); archive [v2.65](archive/roadmap/v2.65-functional-first-agent-guidance.md).
 
 ## Current Position
 
-Milestone: v2.65 Functional-First Agent Guidance (closed 2026-05-13)
-Phase: 283 of 283 (ARCH Advisory + Closure)
-Plan: .paul/phases/283-arch-advisory-closure/283-01-PLAN.md
-Status: UNIFY complete — Phase 283 closed; v2.65 milestone closed (PR #201 merged via squash `752184e0`)
-Last activity: 2026-05-13 — Phase 283 UNIFY complete; PR #201 merged via squash (`752184e0`); branch deleted; v2.65 closed
-Next action: /paul:milestone to open the next milestone (or `/paul:status` for a recap)
+Milestone: none active — v2.65 Functional-First Agent Guidance complete; next milestone pending via /paul:milestone
+Phase: 283 of 283 (ARCH Advisory + Closure) — Complete (v2.65 milestone closed)
+Plan: 283-01 complete (UNIFY done; PR #201 merged 2026-05-13 as `752184e0`)
+Status: v2.65 Functional-First Agent Guidance complete — ready for next milestone
+Last activity: 2026-05-13 — v2.65 milestone completed; ROADMAP/MILESTONES/PROJECT/STATE evolved; v2.65 detail archived to `.paul/archive/roadmap/v2.65-functional-first-agent-guidance.md`
+Next action: /paul:discuss-milestone or /paul:milestone to define the next milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
