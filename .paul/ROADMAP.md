@@ -77,4 +77,4 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-13 — Phase 280 complete; Phase 281 ready to plan after merge gate.*
+*Last updated: 2026-05-13 — Phase 280 complete and merged; Phase 281 ready to plan.*

@@ -9,7 +9,7 @@ See: .paul/PROJECT.md (v2.65 active; functional-first agent guidance milestone c
 ## Current Position
 
 Milestone: v2.65 Functional-First Agent Guidance
-Phase: 281 of 283 (Brownfield Convention Detection) — Ready to plan after Phase 280 merge gate
+Phase: 281 of 283 (Brownfield Convention Detection) — Ready to plan
 Plan: Not started
 Status: Ready to plan
 Last activity: 2026-05-13 — Phase 280 UNIFY complete; transition prepared to Phase 281
@@ -19,7 +19,7 @@ Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
-- v2.65 Functional-First Agent Guidance: [████░░░░░░] 40% (Phases 279–280 complete; Phase 281 ready to plan after merge gate)
+- v2.65 Functional-First Agent Guidance: [████░░░░░░] 40% (Phases 279–280 complete; Phase 281 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -97,19 +97,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/280-agent-convention-surface (tracking origin/feature/280-agent-convention-surface; UNIFY metadata pending push/merge)
-Last lifecycle state: Phase 280 UNIFY complete locally; PR #198 open for merge gate.
-PR #198: OPEN https://github.com/coctostan/pals/pull/198; implementation commit `0ccc722f`; metadata commit pending.
-Transition state: Phase 280 complete locally; Phase 281 ready to plan after merge gate.
+Branch: main (synced with origin/main; Phase 280 feature branch merged and deleted)
+Last lifecycle state: Phase 280 merge gate recorded on synced `main` after PR #198.
+PR #198: MERGED 2026-05-13T00:09:18Z as `dd55bf12`; Socket checks passed; feature branch deleted.
+Transition state: Phase 280 complete and merged; Phase 281 ready to plan.
 Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-13 — completed Phase 280 UNIFY and prepared transition.
-Stopped at: Phase 280 complete locally; merge gate pending for PR #198.
-Next action: complete GitHub Flow merge gate for PR #198, then /paul:plan for Phase 281
+Last session: 2026-05-13 — completed Phase 280 UNIFY and merge gate.
+Stopped at: Phase 280 complete and merged; Phase 281 ready to plan.
+Next action: /paul:plan for Phase 281
 Resume file: .paul/ROADMAP.md
-wip_result: SUMMARY created, lifecycle artifacts updated, metadata commit/merge gate pending
+wip_result: Phase 280 closed via PR #198; main synced at `dd55bf12`
 Resume context:
 - Phase 280 shipped generated AGENTS/init Engineering Principles and installed-resource marker checks.
 - Summary: `.paul/phases/280-agent-convention-surface/280-01-SUMMARY.md`.
