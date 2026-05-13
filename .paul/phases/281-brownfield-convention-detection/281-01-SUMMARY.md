@@ -104,7 +104,7 @@ Map-codebase now detects functional-first-relevant brownfield conventions and th
 | Task 2: Add brownfield signal sections to codebase templates | `1637c652` | feat | Added architecture and conventions template sections plus good-example guidance. |
 | Task 3: Add installed-resource validation markers and run verification | `1637c652` | feat/test | Added Pi and cross-harness marker assertions and ran syntax/focused validation suites. |
 
-Plan metadata: pending UNIFY commit.
+Plan metadata: `ca46008b` (squash merge for Phase 281 completion).
 
 ## Files Created/Modified
 
@@ -159,7 +159,7 @@ None.
 |-------|------------|
 | Full Pi validation retained inherited failures unrelated to Phase 281. | Documented as baseline concerns: CODI marker guardrails, PROJECT byte budget, and artifact consistency drift; Phase 281 marker checks all passed. |
 | Cross-harness validation retained inherited artifact-consistency failure. | Documented as baseline concern; all new Phase 281 cross-harness checks passed. |
-| GitHub Flow CI has no checks reported on PR #199. | Recorded for merge-gate visibility; no repository CI checks are currently reported for the feature branch. |
+| GitHub Flow CI had no checks reported on PR #199. | Merge gate completed via squash merge; no repository CI checks were reported for the feature branch. |
 
 ## Verification Evidence
 
@@ -179,10 +179,10 @@ None.
 
 **Concerns:**
 - Inherited validation baseline failures remain: Pi CODI marker/PROJECT/artifact-consistency checks and cross-harness artifact-consistency check.
-- PR #199 reports no CI checks; merge readiness depends on current repository GitHub settings.
+- PR #199 reported no CI checks before merge; inherited validation baseline failures remain documented for future cleanup.
 
 **Blockers:**
-- None for Phase 282 planning after merge-gate completion.
+- None for Phase 282 planning.
 
 ---
 *Phase: 281-brownfield-convention-detection, Plan: 01*

@@ -99,20 +99,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/281-brownfield-convention-detection (PR #199 open; merge gate pending)
-Last lifecycle state: Phase 281 UNIFY artifacts prepared on feature branch after task commit `1637c652`.
-PR #199: open; no CI checks reported on feature branch at UNIFY time.
-Transition state: Phase 281 complete locally; Phase 282 ready to plan after merge gate.
+Branch: main (synced after PR #199 squash merge)
+Last lifecycle state: Phase 281 merged via PR #199 (`ca46008b`); feature branch deleted by merge gate.
+PR #199: merged 2026-05-13; no CI checks were reported before merge.
+Transition state: Phase 281 complete and merged; Phase 282 ready to plan.
 Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
 Last session: 2026-05-13 — completed Phase 281 UNIFY and transitioned to Phase 282.
-Stopped at: Phase 282 ready to plan after Phase 281 merge gate.
+Stopped at: Phase 282 ready to plan after Phase 281 merge.
 Next action: /paul:plan
 Resume file: .paul/ROADMAP.md
-wip_result: UNIFY artifacts prepared on `feature/281-brownfield-convention-detection`; PR #199 open
+wip_result: PR #199 merged to `main` as `ca46008b`; feature branch deleted
 Resume context:
 - Phase 281 SUMMARY: `.paul/phases/281-brownfield-convention-detection/281-01-SUMMARY.md`.
-- Phase 281 task commit: `1637c652`; UNIFY metadata commit pending or current branch HEAD after commit.
+- Phase 281 task commit: `1637c652`; PR #199 squash merge: `ca46008b`.
 - Phase 282 focus: TODD + RUBY guidance using Phase 279 contract and Phase 281 brownfield local-idiom preservation signals.
