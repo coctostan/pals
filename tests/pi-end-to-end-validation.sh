@@ -209,6 +209,61 @@ else
   tap_not_ok "Installed Pi modules.yaml preserves post-unify metadata for durable evidence modules" "modules.yaml missing from installed Pi skill dir"
 fi
 
+PI_TODD_TDD_REF="$SKILL_DIR/references/tdd.md"
+PI_TODD_PLAN_REF="$SKILL_DIR/references/tdd-plan-generation.md"
+PI_TODD_EXEC_REF="$SKILL_DIR/references/tdd-execution.md"
+PI_RUBY_PATTERNS_REF="$SKILL_DIR/references/refactor-patterns.md"
+PI_RUBY_PRINCIPLES_REF="$SKILL_DIR/references/refactor-principles.md"
+
+tap_file_contains_all \
+  "Installed TODD resources preserve Phase 282 pure-logic TDD markers" \
+  "$PI_TODD_TDD_REF" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'test the pure core directly' \
+  'project conventions remain authoritative'
+
+tap_file_contains_all \
+  "Installed TODD plan/execution resources preserve pure-core guidance" \
+  "$PI_TODD_PLAN_REF" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'side effects near boundaries'
+
+tap_file_contains_all \
+  "Installed TODD execution resource preserves pure-core test guidance" \
+  "$PI_TODD_EXEC_REF" \
+  'pure core' \
+  'explicit inputs' \
+  'side effects' \
+  'project conventions'
+
+tap_file_contains_all \
+  "Installed RUBY resources preserve Phase 282 Extract Pure Core markers" \
+  "$PI_RUBY_PATTERNS_REF" \
+  'Extract Pure Core' \
+  'Pure Core, Explicit Effects' \
+  'behavior-preserving' \
+  'test-backed' \
+  'side effects'
+
+tap_file_contains_all \
+  "Installed RUBY principles preserve pure-core safety markers" \
+  "$PI_RUBY_PRINCIPLES_REF" \
+  'Pure Core, Explicit Effects' \
+  'local project idioms' \
+  'characterization' \
+  'clever functional chains'
+
+tap_file_contains_all \
+  "Installed modules.yaml preserves Phase 282 TODD/RUBY hook metadata" \
+  "$SKILL_DIR/modules.yaml" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'Extract Pure Core' \
+  'behavior-preserving' \
+  'test-backed'
+
 PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
 PI_FIX="$SKILL_DIR/workflows/fix-loop.md"
 PI_SUMMARY_TEMPLATE="$SKILL_DIR/templates/SUMMARY.md"

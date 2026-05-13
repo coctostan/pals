@@ -98,6 +98,16 @@ CC_ARCHITECTURE_TEMPLATE="$CC_KERNEL_DIR/templates/codebase/architecture.md"
 PI_ARCHITECTURE_TEMPLATE="$PI_KERNEL_DIR/templates/codebase/architecture.md"
 CC_CONVENTIONS_TEMPLATE="$CC_KERNEL_DIR/templates/codebase/conventions.md"
 PI_CONVENTIONS_TEMPLATE="$PI_KERNEL_DIR/templates/codebase/conventions.md"
+CC_TODD_TDD_REF="$CC_KERNEL_DIR/references/tdd.md"
+PI_TODD_TDD_REF="$PI_KERNEL_DIR/references/tdd.md"
+CC_TODD_PLAN_REF="$CC_KERNEL_DIR/references/tdd-plan-generation.md"
+PI_TODD_PLAN_REF="$PI_KERNEL_DIR/references/tdd-plan-generation.md"
+CC_TODD_EXEC_REF="$CC_KERNEL_DIR/references/tdd-execution.md"
+PI_TODD_EXEC_REF="$PI_KERNEL_DIR/references/tdd-execution.md"
+CC_RUBY_PATTERNS_REF="$CC_KERNEL_DIR/references/refactor-patterns.md"
+PI_RUBY_PATTERNS_REF="$PI_KERNEL_DIR/references/refactor-patterns.md"
+CC_RUBY_PRINCIPLES_REF="$CC_KERNEL_DIR/references/refactor-principles.md"
+PI_RUBY_PRINCIPLES_REF="$PI_KERNEL_DIR/references/refactor-principles.md"
 
 tap_file_contains_all \
   "Claude Code installed AGENTS template includes functional-first Engineering Principles" \
@@ -297,6 +307,104 @@ fi
   else
     tap_not_ok "Both modules.yaml registries preserve post-unify metadata for durable evidence modules" "Expected WALT/SKIP/RUBY post-unify refs in both installed registries"
   fi
+
+tap_file_contains_all \
+  "Claude Code installed TODD resources preserve Phase 282 pure-logic TDD markers" \
+  "$CC_TODD_TDD_REF" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'test the pure core directly' \
+  'project conventions remain authoritative'
+
+tap_file_contains_all \
+  "Pi installed TODD resources preserve Phase 282 pure-logic TDD markers" \
+  "$PI_TODD_TDD_REF" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'test the pure core directly' \
+  'project conventions remain authoritative'
+
+tap_file_contains_all \
+  "Claude Code installed TODD plan/execution resources preserve pure-core guidance" \
+  "$CC_TODD_PLAN_REF" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'side effects near boundaries'
+
+tap_file_contains_all \
+  "Pi installed TODD plan/execution resources preserve pure-core guidance" \
+  "$PI_TODD_PLAN_REF" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'side effects near boundaries'
+
+tap_file_contains_all \
+  "Claude Code installed TODD execution resource preserves pure-core test guidance" \
+  "$CC_TODD_EXEC_REF" \
+  'pure core' \
+  'explicit inputs' \
+  'side effects' \
+  'project conventions'
+
+tap_file_contains_all \
+  "Pi installed TODD execution resource preserves pure-core test guidance" \
+  "$PI_TODD_EXEC_REF" \
+  'pure core' \
+  'explicit inputs' \
+  'side effects' \
+  'project conventions'
+
+tap_file_contains_all \
+  "Claude Code installed RUBY resources preserve Phase 282 Extract Pure Core markers" \
+  "$CC_RUBY_PATTERNS_REF" \
+  'Extract Pure Core' \
+  'Pure Core, Explicit Effects' \
+  'behavior-preserving' \
+  'test-backed' \
+  'side effects'
+
+tap_file_contains_all \
+  "Pi installed RUBY resources preserve Phase 282 Extract Pure Core markers" \
+  "$PI_RUBY_PATTERNS_REF" \
+  'Extract Pure Core' \
+  'Pure Core, Explicit Effects' \
+  'behavior-preserving' \
+  'test-backed' \
+  'side effects'
+
+tap_file_contains_all \
+  "Claude Code installed RUBY principles preserve pure-core safety markers" \
+  "$CC_RUBY_PRINCIPLES_REF" \
+  'Pure Core, Explicit Effects' \
+  'local project idioms' \
+  'characterization' \
+  'clever functional chains'
+
+tap_file_contains_all \
+  "Pi installed RUBY principles preserve pure-core safety markers" \
+  "$PI_RUBY_PRINCIPLES_REF" \
+  'Pure Core, Explicit Effects' \
+  'local project idioms' \
+  'characterization' \
+  'clever functional chains'
+
+tap_file_contains_all \
+  "Claude Code modules.yaml preserves Phase 282 TODD/RUBY hook metadata" \
+  "$CC_MODULES_YAML" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'Extract Pure Core' \
+  'behavior-preserving' \
+  'test-backed'
+
+tap_file_contains_all \
+  "Pi modules.yaml preserves Phase 282 TODD/RUBY hook metadata" \
+  "$PI_MODULES_YAML" \
+  'pure input-to-output' \
+  'Pure Core, Explicit Effects' \
+  'Extract Pure Core' \
+  'behavior-preserving' \
+  'test-backed'
 fi
 
 # ════════════════════════════════════════════════════════════════════

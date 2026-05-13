@@ -8,9 +8,13 @@ TDD is about design quality, not coverage metrics. Red-green-refactor forces beh
 
 **TDD candidates (`type: tdd`):** Business logic with defined I/O, API endpoints, data transformations, validation rules, algorithms, state machines, utility functions.
 
+**Pure input-to-output logic:** High-value TDD scope includes business logic, validation, data transformations, state transitions, algorithms, and decision-making that can be expressed as explicit inputs → outputs.
+
+**Pure Core, Explicit Effects:** When project conventions remain authoritative and the local style supports it, test the pure core directly and keep side effects (I/O, framework calls, database, filesystem, logging, process/env, time/random) in a thin shell or boundary.
+
 **Skip TDD (`type: execute`):** UI/styling, config changes, glue code, scripts/migrations, simple CRUD, exploratory prototyping.
 
-**Heuristic:** Can you write `expect(fn(input)).toBe(output)` before writing `fn`? Yes → TDD. No → standard plan.
+**Heuristic:** Can you write `expect(fn(input)).toBe(output)` before writing `fn`? Yes → TDD. No → standard plan. If the behavior requires heavy side-effect mocking, consider whether a pure core can be tested directly without changing architecture.
 
 </when_to_use_tdd>
 
@@ -46,6 +50,7 @@ refactor(08-02): extract regex to constant (optional)
 ## Good Tests
 
 - **Test behavior, not implementation:** "returns formatted date" not "calls formatDate helper"
+- **Prefer pure behavior checks:** For pure input-to-output logic, assert returned values/state transitions directly instead of asserting framework calls or mock internals.
 - **One concept per test:** Separate tests for valid, empty, malformed input
 - **Descriptive names:** "should reject empty email", not "test1"
 - **No implementation details:** Test public API, not private methods

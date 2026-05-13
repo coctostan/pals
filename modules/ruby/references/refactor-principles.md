@@ -8,6 +8,7 @@ RUBY's foundational guidelines for when, why, and how to refactor code safely.
 - **Always test-backed:** Only refactor code that has test coverage. If tests don't exist, write them first (characterization tests), then refactor.
 - **Behavior-preserving:** Refactoring changes structure, not behavior. If behavior changes, it's not a refactoring — it's a rewrite.
 - **Incremental over big-bang:** Prefer many small improvements over large rewrites. Extract-and-replace beats rewrite-in-place.
+- **Pure Core, Explicit Effects when useful:** Extract deterministic decisions, validation, and data transformations into a pure core only when it reduces coupling, improves testability, and preserves local project idioms.
 
 ## When to Refactor
 
@@ -42,11 +43,13 @@ Before refactoring, evaluate three dimensions:
 - Does the code under change have tests?
 - Do the tests cover edge cases or just happy path?
 - Low coverage → write characterization tests first
+- Pure-core extraction requires characterization or direct pure-core tests before and after the extraction.
 
 ### Complexity Delta
 - Will the refactoring actually reduce complexity?
 - Measure: fewer lines, lower cyclomatic complexity, clearer naming
 - If complexity stays the same or increases → reconsider
+- Do not extract a pure core if it replaces readable local code with clever functional chains or extra abstraction without measurable clarity/testability gain.
 
 ## The Boy Scout Rule
 

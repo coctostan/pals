@@ -10,7 +10,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.65 Functional-First Agent Guidance**
 Status: 🚧 In Progress
-Phases: 3 of 5 complete
+Phases: 4 of 5 complete
 Theme: Add lightweight “functional-first, not functional-only” coding guidance across PALS agent conventions, brownfield mapping, TODD, RUBY, and optional ARCH advisory surfaces without overriding project-specific idioms.
 Source brief: [docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md](../docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md)
 
@@ -19,8 +19,8 @@ Source brief: [docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md](../docs/FUNCTIO
 | 279 | Functional-First Guidance Contract | 1/1 | ✅ Complete | 2026-05-12 |
 | 280 | Agent Convention Surface | 1/1 | ✅ Complete | 2026-05-13 |
 | 281 | Brownfield Convention Detection | 1/1 | ✅ Complete | 2026-05-13 |
-| 282 | TODD + RUBY Guidance | TBD | Ready to plan | - |
-| 283 | ARCH Advisory + Closure | TBD | Not started | - |
+| 282 | TODD + RUBY Guidance | 1/1 | ✅ Complete | 2026-05-13 |
+| 283 | ARCH Advisory + Closure | TBD | Ready to plan | - |
 
 ### Phase 279: Functional-First Guidance Contract
 Focus: Convert the research note into a bounded implementation contract covering doctrine, non-goals, affected surfaces, and validation expectations.
@@ -36,11 +36,11 @@ Plans: 281-01 Brownfield convention signal detection (complete; summary: `.paul/
 
 ### Phase 282: TODD + RUBY Guidance
 Focus: Add pure-logic TDD guidance and Extract Pure Core refactoring guidance using existing TODD/RUBY surfaces.
-Plans: TBD (defined during /paul:plan)
+Plans: 282-01 TODD/RUBY functional-first guidance (complete; summary: `.paul/phases/282-todd-ruby-guidance/282-01-SUMMARY.md`; task commit: `938618d0`; PR #200)
 
 ### Phase 283: ARCH Advisory + Closure
 Focus: Decide and, if approved, add lightweight ARCH side-effect-boundary advisory language; close the milestone with validation and reconciliation.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (defined during /paul:plan; ready after Phase 282 merge gate)
 
 ## Next Milestone
 
@@ -77,4 +77,4 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-13 — Phase 281 complete; Phase 282 ready to plan.*
+*Last updated: 2026-05-13 — Phase 282 complete; Phase 283 ready to plan after PR #200 merge gate.*

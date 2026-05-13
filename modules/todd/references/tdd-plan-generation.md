@@ -1,5 +1,5 @@
 <purpose>
-TDD plan generation spec. Creates PLAN.md with RED/GREEN/REFACTOR task structure and 40% context budget.
+TDD plan generation spec. Creates PLAN.md with RED/GREEN/REFACTOR task structure, Pure Core, Explicit Effects guidance for pure input-to-output behavior, and 40% context budget.
 Referenced by plan-phase.md when plan type is "tdd".
 </purpose>
 
@@ -19,9 +19,10 @@ references/tdd-detection.md
 From user or ROADMAP.md scope, gather:
 1. **Feature name**
 2. **Behavior:** Happy path, edge cases, error cases (input → output)
-3. **Files:** Source and test files to create/modify
+3. **Pure core shape:** for pure input-to-output logic, name the explicit inputs, outputs, state/dependencies/config/time/random values to pass in, and side effects to keep at the boundary when practical
+4. **Files:** Source and test files to create/modify
 
-If inferrable from ROADMAP.md, confirm rather than ask.
+If inferrable from ROADMAP.md, confirm rather than ask. Project conventions remain authoritative; do not force a pure-core shape where local idioms or framework requirements make it awkward.
 </step>
 
 <step name="generate_tdd_plan">
@@ -38,7 +39,7 @@ autonomous: true
 ---
 ```
 
-**Objective:** Goal, purpose (why TDD helps here), output files. **Context budget: 40%.**
+**Objective:** Goal, purpose (why TDD helps here, especially when behavior is pure input-to-output), output files. **Context budget: 40%.**
 
 **Context:** .paul/PROJECT.md, .paul/ROADMAP.md, .paul/STATE.md, relevant source files.
 
@@ -58,14 +59,17 @@ autonomous: true
     - [edge case] → [handling]
     - [error case] → [error]
   </behavior>
+  <pure-core>
+    [If applicable: deterministic logic to test directly, explicit inputs/dependencies/state, and side effects kept in shell/boundary]
+  </pure-core>
   <implementation>[Approach, not code]</implementation>
 </feature>
 ```
 
 **Tasks (always RED → GREEN → REFACTOR):**
-- RED: Write failing tests covering behavior cases. DO NOT write implementation. Verify tests FAIL for right reason.
-- GREEN: Write MINIMAL code to pass. No cleverness. Verify ALL tests pass.
-- REFACTOR: Review for improvements (constants, naming, duplication). Skip if unnecessary. Verify tests still pass.
+- RED: Write failing tests covering behavior cases. Prefer direct pure-core tests for pure input-to-output behavior. DO NOT write implementation. Verify tests FAIL for right reason.
+- GREEN: Write MINIMAL code to pass. Keep side effects near boundaries and explicit when practical. No cleverness. Verify ALL tests pass.
+- REFACTOR: Review for improvements (constants, naming, duplication, extracting pure core only if behavior-preserving and test-backed). Skip if unnecessary. Verify tests still pass.
 
 **Boundaries:** One feature only. No behavior beyond tests. No "while I'm here" changes.
 

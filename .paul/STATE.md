@@ -9,17 +9,17 @@ See: .paul/PROJECT.md (v2.65 active; functional-first agent guidance milestone c
 ## Current Position
 
 Milestone: v2.65 Functional-First Agent Guidance
-Phase: 282 of 283 (TODD + RUBY Guidance) — Ready to plan
+Phase: 283 of 283 (ARCH Advisory + Closure) — Ready to plan
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-05-13 — Phase 281 complete; transitioned to Phase 282
-Next action: /paul:plan
+Last activity: 2026-05-13 — Phase 282 complete; transitioned to Phase 283
+Next action: /paul:plan for Phase 283
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
-- v2.65 Functional-First Agent Guidance: [██████░░░░] 60% (Phases 279–281 complete; Phase 282 ready to plan)
+- v2.65 Functional-First Agent Guidance: [██████████] 90% (Phases 279–282 complete; Phase 283 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -27,7 +27,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready to PLAN Phase 282]
+  ○        ○        ○     [Phase 283 ready to plan]
 ```
 
 ## Accumulated Context
@@ -36,7 +36,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 - PLAN/APPLY/UNIFY remains authoritative; `.paul/*` artifacts are lifecycle truth; archives under `.paul/archive/*` hold history.
 - v2.64 completed the module instruction audit/context-efficiency rewrite and is archived.
-- v2.65 is active and will add practical “functional-first, not functional-only” agent coding guidance without turning PALS into a functional-programming framework or overriding project conventions; Phases 279–281 are complete and Phase 282 is ready to plan TODD/RUBY guidance.
+- v2.65 is active and will add practical “functional-first, not functional-only” agent coding guidance without turning PALS into a functional-programming framework or overriding project conventions; Phases 279–282 are complete and Phase 283 ARCH Advisory + Closure is ready to plan.
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -54,6 +54,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Phase 279 contract authority established | 279-01-SUMMARY.md | `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md` is the authoritative v2.65 implementation boundary after Phase 279 UNIFY; the research note remains provenance/background and loses conflicts. |
 | Phase 280 convention surface established | 280-01-SUMMARY.md / PR #198 | Generated `AGENTS.md` and init workflow now include compact functional-first Engineering Principles while keeping Project Conventions authoritative; Pi and cross-harness validations guard installed convention-surface markers. |
 | Phase 281 brownfield convention detection established | 281-01-SUMMARY.md / PR #199 | Map-codebase now asks for source-backed local functional/style signals and templates preserve brownfield functional/effect-boundary idioms without requiring functional architecture conversion. |
+| Phase 282 TODD/RUBY functional-first guidance established | 282-01-SUMMARY.md / PR #200 | TODD now highlights pure input-to-output logic as high-value TDD scope and RUBY now documents Extract Pure Core as advisory, behavior-preserving, test-backed guidance; Pi and cross-harness installed-resource marker checks guard both surfaces. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -79,6 +80,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 279 UNIFY: Created `279-01-SUMMARY.md`, appended CODI and WALT history rows for `279-01`, marked Phase 279 complete, and transitioned to Phase 280. Contract authority hierarchy is now active for v2.65 planning.
 - Phase 280 UNIFY: Created `280-01-SUMMARY.md`, appended CODI and WALT history rows for `280-01`, marked Phase 280 complete, and prepared transition to Phase 281. New marker checks passed; existing CODI/artifact-consistency validation baseline failures remain unrelated follow-up scope.
 - Phase 281 UNIFY: Created `281-01-SUMMARY.md`, appended CODI and WALT history rows for `281-01`, marked Phase 281 complete, and prepared transition to Phase 282. New brownfield marker checks passed; inherited CODI/PROJECT/artifact-consistency validation failures remain unrelated follow-up scope.
+- Phase 282 UNIFY: Created `282-01-SUMMARY.md`, appended CODI and WALT history rows for `282-01`, marked Phase 282 complete, and prepared transition to Phase 283. TODD/RUBY marker checks passed; inherited Pi CODI marker failures remain unrelated follow-up scope.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -99,20 +101,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (synced after PR #199 squash merge)
-Last lifecycle state: Phase 281 merged via PR #199 (`ca46008b`); feature branch deleted by merge gate.
-PR #199: merged 2026-05-13; no CI checks were reported before merge.
-Transition state: Phase 281 complete and merged; Phase 282 ready to plan.
+Branch: feature/282-todd-ruby-guidance (PR #200 pending merge gate)
+Last lifecycle state: Phase 282 UNIFY completed; task commit `938618d0`; SUMMARY `.paul/phases/282-todd-ruby-guidance/282-01-SUMMARY.md`.
+PR #200: open — https://github.com/coctostan/pals/pull/200; Socket Security checks passing before UNIFY metadata commit.
+Transition state: Phase 282 complete; Phase 283 ready to plan after PR #200 merge gate.
 Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-13 — completed Phase 281 UNIFY and transitioned to Phase 282.
-Stopped at: Phase 282 ready to plan after Phase 281 merge.
-Next action: /paul:plan
+Last session: 2026-05-13 — Phase 282 UNIFY complete; Phase 283 ready to plan after merge gate.
+Stopped at: Phase 282 complete; transitioned to Phase 283.
+Next action: /paul:plan for Phase 283
 Resume file: .paul/ROADMAP.md
-wip_result: PR #199 merged to `main` as `ca46008b`; feature branch deleted
+wip_result: none — UNIFY lifecycle artifacts completed for merge gate
 Resume context:
-- Phase 281 SUMMARY: `.paul/phases/281-brownfield-convention-detection/281-01-SUMMARY.md`.
-- Phase 281 task commit: `1637c652`; PR #199 squash merge: `ca46008b`.
-- Phase 282 focus: TODD + RUBY guidance using Phase 279 contract and Phase 281 brownfield local-idiom preservation signals.
+- Phase 282 added TODD/RUBY functional-first guidance and installed-resource marker checks.
+- Verification: `git diff --check` PASS; `bash -n` PASS; artifact consistency PASS; cross-harness PASS 224/224; Pi Phase 282 markers PASS with 5 inherited CODI failures remaining.
+- Next lifecycle step should plan Phase 283 ARCH Advisory + Closure after PR #200 merge completes.
