@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Awaiting next milestone — v2.64 closed 2026-05-12 (PR #196 `340eee03`) | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | Awaiting next milestone — v2.65 closed 2026-05-13 (PR #201) | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -83,12 +83,13 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | 2026-05-08 | same-day | 3 phases, 3 plans | Phase 265 produced `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`; Phase 266 archive/compact reduced hot artifacts to 63,415 B aggregate (STATE 18,843 B / PROJECT 18,777 B / MILESTONES 14,610 B / ROADMAP 11,185 B) and resolved Path A to Pi 243/243 + cross-harness 138/138 PASS; Phase 267 shipped Selective Artifact Loading across hot workflows, anti-regrowth TAPs, and the 7th closure-guardrail recipe application (Phase 245/248/252/256/260/264/267). PRs #180 `63365822` / #181 `a780bb7f` / #182 `068d7cb3`; SUMMARY `.paul/phases/267-validation-guardrails-evidence-closure/267-01-SUMMARY.md`; v2.63 recommended-not-approved candidate: cross-file narrative deduplication / single-source summary architecture. |
 | v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | 2026-05-10 | same-day | 5 phases, 5 plans | Phase 268 resume, Phase 269 plan, Phase 270 apply, Phase 271 unify, and Phase 272 pause rewrote lifecycle workflows for bounded operational loading and semantic guardrails. PR #183–#188; final validation Pi 312/312, cross-harness 202/202. |
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | ~2 days | 6 phases, 6 plans | Phase 273 contract/cohort map PR #190 `f8861d44`; Phase 274 base/dispatch rewrite PR #191 `e18666ab`; Phase 275 core enforcement PR #192 `44b795d5`; Phase 276 advisory cohort PR #194 `8c8dfb46`; Phase 277 domain optional cohort PR #195 `aeff3f0a`; Phase 278 Module Guardrails + Closure PR #196 `340eee03` (semantic guardrails replace inherited CODI marker drift; `tests/helpers/module_instruction_semantics.sh`; cross-harness 195→202 PASS; Pi e2e 5 baseline-inherited CODI marker drift recorded as v2.65 follow-up). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
+| v2.65 Functional-First Agent Guidance | 2026-05-13 | ~2 days | 5 phases, 5 plans | Phase 279 authoritative contract `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md` PR #197; Phase 280 AGENTS/init Engineering Principles + installed-resource marker checks PR #198; Phase 281 brownfield map-codebase signal detection PR #199; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks PR #200 (`998c3771`); Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions) PR #201 (`4ea90e2c`). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). No new modules, hooks, dependencies, or default blocking functional-style gates. |
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.65 Functional-First Agent Guidance — Phases 279–282 complete; Phase 283 ARCH Advisory + Closure ready to plan after PR #200 merge.
+**Current milestone:** _Awaiting next milestone._ v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283 (PRs #197 / #198 / #199 / #200 / #201).
 
-**Latest completed phase:** Phase 282 TODD + RUBY Guidance completed 2026-05-13 via PR #200 (`998c3771`); current active phase is Phase 283 ARCH Advisory + Closure.
+**Latest completed phase:** Phase 283 ARCH Advisory + Closure completed 2026-05-13 via PR #201 (`4ea90e2c`), closing v2.65.
 
 ## Archive
 
@@ -99,4 +100,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 pointer updated 2026-05-13.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13.*

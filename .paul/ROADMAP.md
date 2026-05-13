@@ -9,44 +9,25 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.65 Functional-First Agent Guidance**
-Status: 🚧 In Progress
-Phases: 4 of 5 complete
-Theme: Add lightweight “functional-first, not functional-only” coding guidance across PALS agent conventions, brownfield mapping, TODD, RUBY, and optional ARCH advisory surfaces without overriding project-specific idioms.
-Source brief: [docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md](../docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md)
+Status: ✅ Complete (pending v2.65 milestone-closure routing) | Mode: exploratory / high collaboration | Phases: 5 of 5 complete
+Theme: Add practical, project-convention-aware “functional-first, not functional-only” agent coding guidance across PALS without turning it into a functional-programming framework or overriding local idioms.
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 279 | Functional-First Guidance Contract | 1/1 | ✅ Complete | 2026-05-12 |
-| 280 | Agent Convention Surface | 1/1 | ✅ Complete | 2026-05-13 |
-| 281 | Brownfield Convention Detection | 1/1 | ✅ Complete | 2026-05-13 |
-| 282 | TODD + RUBY Guidance | 1/1 | ✅ Complete | 2026-05-13 |
-| 283 | ARCH Advisory + Closure | TBD | Ready to plan | - |
-
-### Phase 279: Functional-First Guidance Contract
-Focus: Convert the research note into a bounded implementation contract covering doctrine, non-goals, affected surfaces, and validation expectations.
-Plans: 279-01 Functional-first guidance contract (complete; summary: `.paul/phases/279-functional-first-guidance-contract/279-01-SUMMARY.md`)
-
-### Phase 280: Agent Convention Surface
-Focus: Add compact Engineering Principles to generated `AGENTS.md` and init workflow while preserving project-specific convention authority.
-Plans: 280-01 Agent convention engineering principles (complete; summary: `.paul/phases/280-agent-convention-surface/280-01-SUMMARY.md`)
-
-### Phase 281: Brownfield Convention Detection
-Focus: Teach map-codebase to detect functional/side-effect/style signals and record local idioms without imposing a new architecture style.
-Plans: 281-01 Brownfield convention signal detection (complete; summary: `.paul/phases/281-brownfield-convention-detection/281-01-SUMMARY.md`; PR #199)
-
-### Phase 282: TODD + RUBY Guidance
-Focus: Add pure-logic TDD guidance and Extract Pure Core refactoring guidance using existing TODD/RUBY surfaces.
-Plans: 282-01 TODD/RUBY functional-first guidance (complete; summary: `.paul/phases/282-todd-ruby-guidance/282-01-SUMMARY.md`; task commit: `938618d0`; PR #200)
-
-### Phase 283: ARCH Advisory + Closure
-Focus: Decide and, if approved, add lightweight ARCH side-effect-boundary advisory language; close the milestone with validation and reconciliation.
-Plans: TBD (defined during /paul:plan; ready now that Phase 282 is merged)
+| Phase | Name | Status | Plans |
+|-------|------|--------|-------|
+| 279 | Functional-First Guidance Contract | ✅ Complete — PR #197 | 279-01 |
+| 280 | AGENTS/Init Engineering Principles + Marker Checks | ✅ Complete — PR #198 | 280-01 |
+| 281 | Brownfield Convention Detection | ✅ Complete — PR #199 | 281-01 |
+| 282 | TODD + RUBY Functional-First Guidance | ✅ Complete — PR #200 `998c3771` | 282-01 |
+| 283 | ARCH Advisory + Closure | ✅ Complete — plan 283-01 PR #201 `4ea90e2c` | 283-01 |
 
 ## Next Milestone
 
 TBD after v2.65. Deferred candidate remains the 5 baseline-inherited CODI marker-drift failures in `tests/pi-end-to-end-validation.sh` (checks 10, 185, 188, 190, 192) using `tests/helpers/module_instruction_semantics.sh`.
 
-### Latest completed milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
+### Latest completed milestone: v2.65 Functional-First Agent Guidance
+Result: Phases 279–283 complete (PRs #197 / #198 / #199 / #200 / #201). Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract (`docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`); Phase 280 generated AGENTS/init Engineering Principles + installed-resource marker checks; Phase 281 brownfield map-codebase signal detection for local idioms and effect boundaries; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post and recorded as next-milestone follow-up). No new modules, hooks, dependencies, or default blocking functional-style gates were introduced.
+
+### Previous completed milestone: v2.64 Module Instruction Audit + Context-Efficiency Rewrite
 Result: Phases 273–278 complete. Module instructions across base/dispatch, core enforcement, advisory, and domain optional cohorts rewritten section-by-section for context efficiency, semantic enforcement, and lifecycle compatibility; semantic module-instruction validation guardrails added in `tests/helpers/module_instruction_semantics.sh`; inherited Phase 276 CODI marker drift cleared in `tests/cross-harness-validation.sh` (195→202 PASS). Archive: [archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md).
 
 ## Completed Milestones
@@ -74,7 +55,8 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 | v2.62 PALS Context Diet — STATE & Hot-Path Compression | 2026-05-08 | 265-267 | Hot lifecycle artifacts archived/compacted to 63,415 B aggregate; Path A PASS; Selective Artifact Loading added across hot workflows; anti-regrowth TAPs and the 7th closure-guardrail recipe application ratified; v2.63 narrative deduplication / single-source summary architecture recommended-not-approved. PRs #180/#181/#182 (`068d7cb3`). |
 | v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | 2026-05-10 | 268-272 | Rewrote resume, plan, apply, unify, and pause workflow instructions for bounded operational loading, concise lifecycle routing, parent-owned execution, SUMMARY-first reconciliation, compact agent-oriented handoffs, semantic guardrails, GitHub Flow safety, and required transition routing. Final validation: Pi 312/312, cross-harness 202/202. PR #188 (`df56ece1`). |
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | 273-278 | Rewrote base/dispatch, core enforcement, advisory, and domain optional module instructions section-by-section; added semantic module-instruction validation guardrails (`tests/helpers/module_instruction_semantics.sh`); cleared inherited Phase 276 CODI marker drift in `tests/cross-harness-validation.sh` (195→202 PASS). Pi e2e 307/312 (5 baseline-inherited CODI marker drift recorded as future follow-up). PRs #190/#191/#192/#194/#195/#196 (`340eee03`). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
+| v2.65 Functional-First Agent Guidance | 2026-05-13 | 279-283 | Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract; Phase 280 generated AGENTS/init Engineering Principles + marker checks; Phase 281 brownfield map-codebase signal detection; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). PRs #197/#198/#199/#200/#201. |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-13 — Phase 282 complete and merged; Phase 283 ready to plan.*
+*Last updated: 2026-05-13 — v2.65 milestone complete; awaiting next milestone.*
