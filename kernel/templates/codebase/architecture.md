@@ -84,6 +84,28 @@ Template for `.paul/codebase/ARCHITECTURE.md` - captures conceptual code organiz
 - [Pattern: e.g., "try/catch at controller level"]
 - [Pattern: e.g., "Error codes returned to user"]
 
+## Brownfield Functional/Effect Boundaries
+
+**Local idioms to preserve:**
+- [Source-backed idioms: e.g., "services use module functions, not classes" — `src/services/user.ts`]
+- [Do not require converting the repo to a functional architecture; match the local style]
+
+**Mutation vs immutability:**
+- [Where mutation-heavy style is conventional, with file paths]
+- [Where immutable updates/new values are preferred, with file paths]
+
+**Pure helper and data transformation patterns:**
+- [Helpers/mappers/reducers/serializers/validators that are deterministic or mostly pure]
+
+**Side effects and boundaries:**
+- [Where I/O, network, database, filesystem, logging, env, and framework callbacks live]
+- [Whether side effects stay in controllers/services/adapters or appear in core helpers]
+
+**Error/dependency/state-passing style:**
+- [Thrown errors vs returned results; dependency injection vs direct imports; context/options objects vs globals]
+
+**Preferred implementation shape:**
+- [Classes, functions, modules, hooks, framework-specific patterns, or mixed style]
 ## Cross-Cutting Concerns
 
 [Aspects that affect multiple layers]
@@ -200,6 +222,28 @@ Template for `.paul/codebase/ARCHITECTURE.md` - captures conceptual code organiz
 - Command handlers catch, log error to stderr, exit(1)
 - Validation errors shown before execution (fail fast)
 
+## Brownfield Functional/Effect Boundaries
+
+**Local idioms to preserve:**
+- Command handlers stay thin and delegate to module-style services (`src/commands/new-project.ts`, `src/services/project.ts`).
+- Preserve the existing module-function/service style; do not require converting the repo to a functional architecture.
+
+**Mutation vs immutability:**
+- Command parsing mutates Commander state during setup, but service logic prefers building new config/path values before writes.
+
+**Pure helper and data transformation patterns:**
+- Utility functions format paths, normalize template variables, and validate config without direct filesystem effects (`src/utils/*.ts`).
+
+**Side effects and boundaries:**
+- Filesystem and process side effects sit near command/service boundaries (`src/services/file.ts`, `src/commands/*.ts`).
+- Logging stays in command entry/handler paths; utility helpers avoid console output.
+
+**Error/dependency/state-passing style:**
+- Services throw descriptive errors; command handlers catch, log to stderr, and exit non-zero.
+- Dependencies are imported modules rather than constructor-injected classes.
+
+**Preferred implementation shape:**
+- Module functions and Commander command objects are preferred over class hierarchies.
 ## Cross-Cutting Concerns
 
 **Logging:**
@@ -251,6 +295,8 @@ Include file paths as concrete examples of abstractions. Use backtick formatting
 - Trace a typical request/command execution
 - Note recurring patterns (services, controllers, repositories)
 - Keep descriptions conceptual, not mechanical
+- Preserve local idioms: document mutation-heavy vs immutable style, pure helper/data transformation patterns, side-effect boundary placement, error/dependency/state-passing style, and class/function/module/framework preferences with file paths
+- Keep brownfield functional/effect-boundary findings descriptive; do not require converting the repo to a functional architecture
 
 **Useful for phase planning when:**
 - Adding new features (where does it fit in the layers?)
