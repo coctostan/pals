@@ -26,11 +26,13 @@ hooks:
     description: >-
       RUBY post-unify is advisory. Inspect only changed readable source files.
       Use existing lint/complexity output when available; otherwise report only
-      measured file size and explicit patterns from references/refactor-patterns.md.
-      Docs-only and module-instruction changes are `NOT_APPLICABLE` for code debt.
-      Metrics must be measured, not estimated. Tool absence is a warning, not a
-      block. If no debt is found, emit `RUBY: No technical debt concerns in
-      changed files.`
+      measured file size and explicit patterns from references/refactor-patterns.md,
+      including Extract Pure Core when decisions/data transformations are mixed
+      with side effects and the change can stay behavior-preserving, test-backed,
+      and local-idiom aware. Docs-only and module-instruction changes are
+      `NOT_APPLICABLE` for code debt. Metrics must be measured, not estimated.
+      Tool absence is a warning, not a block. If no debt is found, emit `RUBY: No
+      technical debt concerns in changed files.`
     refs:
       - references/refactor-patterns.md
 

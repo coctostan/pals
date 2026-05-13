@@ -18,9 +18,11 @@ hooks:
       '__tests__' -type d 2>/dev/null | head -20` to detect test files. MUST run:
       `grep -rn 'jest\|vitest\|mocha\|pytest\|go test' package.json Makefile
       Cargo.toml 2>/dev/null` to detect test frameworks. Output: '| Framework |
-      Test Files | Status |' table. Inject tdd_candidates and tdd_type into plan
-      context. If no test files: 'TODD: No test infrastructure detected —
-      consider adding tests.'
+      Test Files | Status |' table. Treat pure input-to-output business logic,
+      validation, data transformations, state transitions, algorithms, and decision-making
+      as high-value TDD candidates when project conventions remain authoritative. Inject
+      tdd_candidates and tdd_type into plan context. If no test files: 'TODD: No test
+      infrastructure detected — consider adding tests.'
     refs:
       - references/tdd-detection.md
       - references/tdd-plan-generation.md
@@ -28,11 +30,13 @@ hooks:
     priority: 100
     description: >-
       If plan type is tdd, MUST restructure tasks into RED-GREEN-REFACTOR sequence
-      with phase gates. If plan type is execute BUT pre-plan detected tdd_candidates
-      covering the planned files, MUST suggest to the user: 'Test coverage exists
-      for the planned changes (tdd_candidates: {files}). Consider changing plan type
-      to tdd for RED-GREEN-REFACTOR enforcement.' Let the user decide — do NOT
-      auto-change the type.
+      with phase gates and Pure Core, Explicit Effects guidance: test the pure core
+      directly for pure input-to-output behavior when practical, while keeping side
+      effects near boundaries. If plan type is execute BUT pre-plan detected
+      tdd_candidates covering the planned files, MUST suggest to the user: 'Test
+      coverage exists for the planned changes (tdd_candidates: {files}). Consider
+      changing plan type to tdd for RED-GREEN-REFACTOR enforcement.' Let the user
+      decide — do NOT auto-change the type.
     refs:
       - references/tdd-plan-generation.md
   pre-apply:
@@ -54,12 +58,14 @@ hooks:
     description: >-
       For TDD tasks with an available test command, run the relevant tests after each
       RED/GREEN/REFACTOR or implementation task and compare against the prior task
-      or pre-apply baseline. BLOCK only on new regressions with observed evidence:
-      'TODD BLOCK: Tests regressed after Task {N} — expected no new failures;
-      observed {failing_count} new failing tests: {test_names_or_summary}. Parent
-      APPLY decides recovery: fix, retry within plan limits, record an approved
-      deviation if the workflow permits, or stop.' If no test command applies, emit
-      a compact skip with reason.
+      or pre-apply baseline. For pure input-to-output logic, prefer direct pure-core
+      tests over mock-heavy side-effect assertions when an extracted or existing pure
+      core is available. BLOCK only on new regressions with observed evidence: 'TODD
+      BLOCK: Tests regressed after Task {N} — expected no new failures; observed
+      {failing_count} new failing tests: {test_names_or_summary}. Parent APPLY
+      decides recovery: fix, retry within plan limits, record an approved deviation
+      if the workflow permits, or stop.' If no test command applies, emit a compact
+      skip with reason.
     refs:
       - references/tdd-execution.md
   post-apply:

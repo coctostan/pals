@@ -12,6 +12,16 @@ BEFORE: function processOrder(order) { /* validate */ ... /* calculate */ ... /*
 AFTER:  function processOrder(order) { validateOrder(order); const totals = calculateTotals(order); db.save({...order, ...totals}); }
 ```
 
+### Extract Pure Core (Pure Core, Explicit Effects)
+**Smell:** Business rules, validation, decisions, or data transformations are mixed with side effects such as I/O, persistence, network calls, filesystem/process/env access, logging, timers, randomness, or framework callbacks.
+**When:** A behavior can be described as pure input-to-output logic and separating it would reduce coupling or make tests clearer while preserving local project idioms.
+**How:** Characterize existing behavior first, extract deterministic logic into a named helper/module/function, pass dependencies/state/time/random/config as explicit inputs where practical, leave side effects in the shell/boundary, and rerun tests after each step.
+**Safety:** This is advisory, behavior-preserving, and test-backed. Do not force functional programming, rewrite class/OOP designs, broaden scope, or replace readable imperative code with clever functional chains.
+```
+BEFORE: async function handle(req) { const user = await db.get(req.id); const status = user.age >= 18 ? 'adult' : 'minor'; logger.info(status); return status; }
+AFTER:  function classifyUser(user) { return user.age >= 18 ? 'adult' : 'minor'; } // shell handles db/logging
+```
+
 ### Extract Variable
 **Smell:** Complex expressions, magic numbers, unclear conditionals
 **When:** Expression is hard to read or used multiple times. Name reveals intent.
@@ -48,11 +58,11 @@ AFTER:  function processOrder(order) { validateOrder(order); const totals = calc
 
 | Smell | Pattern |
 |-------|---------|
-| Long function | Extract function |
+| Long function | Extract function, Extract Pure Core when decisions are mixed with effects |
 | Deep nesting | Guard clauses |
 | Magic numbers/strings | Constants |
 | Copy-paste code | Consolidate duplicates |
-| Complex conditional | Decompose conditional, extract variable |
+| Complex conditional | Decompose conditional, extract variable, Extract Pure Core for pure decision logic |
 | Type switch chains | Polymorphism |
 | Feature envy | Move function |
 | God object | Extract function → extract class/module |
@@ -68,4 +78,5 @@ Before suggesting a refactor:
 2. Use only measured metrics.
 3. Mark blast radius unknown unless bounded caller/import evidence was read.
 4. Prefer mechanical, behavior-preserving changes.
-5. Do not own commits, lifecycle state, or execution decisions.
+5. For Extract Pure Core, require test-backed evidence or characterization coverage before and after the extraction.
+6. Do not own commits, lifecycle state, or execution decisions.

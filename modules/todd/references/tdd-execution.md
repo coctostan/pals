@@ -23,9 +23,12 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 - No test-only production methods
 - No incomplete mocks that silently return undefined/null
 - Mock setup >10 lines → consider integration test instead
+- For pure input-to-output behavior, prefer direct pure-core assertions over mock-heavy side-effect assertions
 
 1. Read RED task and `<feature><behavior>` from plan.
 2. Create the test using project conventions and descriptive names: "should [behavior] when [condition]".
+   - If an extracted or existing pure core is available, test the pure core directly with explicit inputs and expected outputs.
+   - If behavior currently lives behind side effects, keep RED focused on observable behavior; do not require architecture conversion before RED.
 3. Run `test_command` and classify the result:
    - **VALID RED:** the new/changed test fails for the expected behavior gap. Record command, exit status, and failure summary.
    - **INVALID RED:** syntax, import, framework, config, or unrelated-test failure. BLOCK with expected vs observed evidence.
@@ -43,6 +46,8 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 
 1. Read GREEN task and `<feature><implementation>` from plan.
 2. Write the minimal implementation needed to satisfy the RED test.
+   - When practical and consistent with project conventions, keep deterministic decisions/data transformations in a pure core and leave I/O/framework/database/filesystem/logging in the shell or boundary.
+   - Do not add a pure-core extraction if it broadens scope or makes readable local code more complex.
 3. Run `test_command`:
    - **PASS:** record command and result.
    - **STILL FAILS:** retry implementation at most twice using test output. If still failing, BLOCK with expected vs observed evidence.
@@ -56,7 +61,7 @@ No runner found → ask user. Store as `test_command`. Optionally store `test_co
 
 **GATE:** `green_commit_hash` must exist. If missing, BLOCK: "Cannot start REFACTOR without verified GREEN evidence."
 
-1. Improve clarity, duplication, naming, or simplicity only.
+1. Improve clarity, duplication, naming, simplicity, or Extract Pure Core boundaries only when behavior-preserving and test-backed.
 2. If no safe improvement is needed, record `refactor_skipped` with reason.
 3. If changes are made, run `test_command`:
    - **PASS:** commit `refactor({phase}-{plan}): clean up [feature]`.
