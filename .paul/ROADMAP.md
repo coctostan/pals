@@ -40,7 +40,7 @@ Plans: 282-01 TODD/RUBY functional-first guidance (complete; summary: `.paul/pha
 
 ### Phase 283: ARCH Advisory + Closure
 Focus: Decide and, if approved, add lightweight ARCH side-effect-boundary advisory language; close the milestone with validation and reconciliation.
-Plans: TBD (defined during /paul:plan; ready after Phase 282 merge gate)
+Plans: TBD (defined during /paul:plan; ready now that Phase 282 is merged)
 
 ## Next Milestone
 
@@ -77,4 +77,4 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-13 — Phase 282 complete; Phase 283 ready to plan after PR #200 merge gate.*
+*Last updated: 2026-05-13 — Phase 282 complete and merged; Phase 283 ready to plan.*

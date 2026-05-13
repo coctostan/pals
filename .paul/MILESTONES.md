@@ -86,9 +86,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.65 Functional-First Agent Guidance — Phases 279–282 complete; Phase 283 ARCH Advisory + Closure ready to plan after PR #200 merge gate.
+**Current milestone:** v2.65 Functional-First Agent Guidance — Phases 279–282 complete; Phase 283 ARCH Advisory + Closure ready to plan after PR #200 merge.
 
-**Latest completed phase:** Phase 282 TODD + RUBY Guidance completed 2026-05-13 via PR #200 (merge gate pending); current active phase is Phase 283 ARCH Advisory + Closure.
+**Latest completed phase:** Phase 282 TODD + RUBY Guidance completed 2026-05-13 via PR #200 (`998c3771`); current active phase is Phase 283 ARCH Advisory + Closure.
 
 ## Archive
 
