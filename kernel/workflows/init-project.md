@@ -584,7 +584,7 @@ This file follows the AGENTS.md convention — focused on what models can't infe
 
 2. Use standard Boundaries section (same for all PALS projects — always/ask/never rules).
 
-3. Leave Project Conventions as a placeholder with guidance comments.
+3. Add default Engineering Principles before Project Conventions, and leave Project Conventions as user-owned guidance that remains authoritative.
 
 4. Write to project root:
    ```markdown
@@ -616,6 +616,18 @@ This file follows the AGENTS.md convention — focused on what models can't infe
    - Commit secrets, API keys, or credentials
    - Skip the UNIFY phase after APPLY
    - Modify `.paul/` files directly — use `/paul:*` commands
+
+   ## Engineering Principles
+
+   <!-- Default guidance for AI agents. Project-specific conventions below remain authoritative. -->
+
+   - Functional-first, not functional-only: use functional patterns where they make code clearer, but keep local idioms and framework conventions.
+   - Prefer boring, readable, testable code over clever abstractions.
+   - Project Conventions remain authoritative; follow existing project style before introducing new patterns.
+   - Prefer pure functions for business logic, data transformation, validation, and decision-making.
+   - Keep side effects explicit and near boundaries: I/O, database, network, filesystem, logging, time, randomness, and process/env access.
+   - Prefer immutable data and explicit state/dependency passing where practical.
+   - Keep changes minimal and local; avoid unapproved dependencies or architecture changes.
 
    ## Project Conventions
 

@@ -94,6 +94,25 @@ for subdir in workflows references templates rules; do
   fi
 done
 
+AGENTS_TEMPLATE="$SKILL_DIR/templates/AGENTS.md"
+PI_INIT_WORKFLOW="$SKILL_DIR/workflows/init-project.md"
+
+tap_file_contains_all \
+  "Installed AGENTS template includes functional-first Engineering Principles" \
+  "$AGENTS_TEMPLATE" \
+  '## Engineering Principles' \
+  'Functional-first, not functional-only' \
+  'Project Conventions remain authoritative' \
+  'Keep side effects explicit and near boundaries'
+
+tap_file_contains_all \
+  "Installed init workflow generates functional-first Engineering Principles" \
+  "$PI_INIT_WORKFLOW" \
+  '## Engineering Principles' \
+  'Functional-first, not functional-only' \
+  'Project Conventions remain authoritative' \
+  'Keep side effects explicit and near boundaries'
+
 # Check all 11 skill directories exist with SKILL.md
 SKILL_COUNT=0
 for skill in "${EXPECTED_SKILLS[@]}"; do

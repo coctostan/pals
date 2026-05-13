@@ -39,6 +39,18 @@ This project uses [PALS](https://github.com/coctostan/pals) — a project automa
 - Skip the UNIFY phase after APPLY
 - Modify `.paul/` files directly — use `/paul:*` commands
 
+## Engineering Principles
+
+<!-- Default guidance for AI agents. Project-specific conventions below remain authoritative. -->
+
+- Functional-first, not functional-only: use functional patterns where they make code clearer, but keep local idioms and framework conventions.
+- Prefer boring, readable, testable code over clever abstractions.
+- Project Conventions remain authoritative; follow existing project style before introducing new patterns.
+- Prefer pure functions for business logic, data transformation, validation, and decision-making.
+- Keep side effects explicit and near boundaries: I/O, database, network, filesystem, logging, time, randomness, and process/env access.
+- Prefer immutable data and explicit state/dependency passing where practical.
+- Keep changes minimal and local; avoid unapproved dependencies or architecture changes.
+
 ## Project Conventions
 
 <!-- Add project-specific conventions that AI agents should follow. -->
