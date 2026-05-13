@@ -88,6 +88,43 @@ count_kernel_files() {
 CC_KERNEL_DIR="$TEMP_CC/.pals"
 PI_KERNEL_DIR="$TEMP_PI/.pi/agent/skills/pals"
 
+CC_AGENTS_TEMPLATE="$CC_KERNEL_DIR/templates/AGENTS.md"
+PI_AGENTS_TEMPLATE="$PI_KERNEL_DIR/templates/AGENTS.md"
+CC_INIT_WORKFLOW="$CC_KERNEL_DIR/workflows/init-project.md"
+PI_INIT_WORKFLOW="$PI_KERNEL_DIR/workflows/init-project.md"
+
+tap_file_contains_all \
+  "Claude Code installed AGENTS template includes functional-first Engineering Principles" \
+  "$CC_AGENTS_TEMPLATE" \
+  '## Engineering Principles' \
+  'Functional-first, not functional-only' \
+  'Project Conventions remain authoritative' \
+  'Keep side effects explicit and near boundaries'
+
+tap_file_contains_all \
+  "Pi installed AGENTS template includes functional-first Engineering Principles" \
+  "$PI_AGENTS_TEMPLATE" \
+  '## Engineering Principles' \
+  'Functional-first, not functional-only' \
+  'Project Conventions remain authoritative' \
+  'Keep side effects explicit and near boundaries'
+
+tap_file_contains_all \
+  "Claude Code installed init workflow generates functional-first Engineering Principles" \
+  "$CC_INIT_WORKFLOW" \
+  '## Engineering Principles' \
+  'Functional-first, not functional-only' \
+  'Project Conventions remain authoritative' \
+  'Keep side effects explicit and near boundaries'
+
+tap_file_contains_all \
+  "Pi installed init workflow generates functional-first Engineering Principles" \
+  "$PI_INIT_WORKFLOW" \
+  '## Engineering Principles' \
+  'Functional-first, not functional-only' \
+  'Project Conventions remain authoritative' \
+  'Keep side effects explicit and near boundaries'
+
 CC_KERNEL_COUNT=$(count_kernel_files "$CC_KERNEL_DIR")
 PI_KERNEL_COUNT=$(count_kernel_files "$PI_KERNEL_DIR")
 
