@@ -9,17 +9,17 @@ See: .paul/PROJECT.md (v2.65 active; functional-first agent guidance milestone c
 ## Current Position
 
 Milestone: v2.65 Functional-First Agent Guidance
-Phase: 281 of 283 (Brownfield Convention Detection) — Ready to plan
+Phase: 282 of 283 (TODD + RUBY Guidance) — Ready to plan
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-05-13 — Phase 280 UNIFY complete; transition prepared to Phase 281
-Next action: /paul:plan for Phase 281
+Last activity: 2026-05-13 — Phase 281 complete; transitioned to Phase 282
+Next action: /paul:plan
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
-- v2.65 Functional-First Agent Guidance: [████░░░░░░] 40% (Phases 279–280 complete; Phase 281 ready to plan)
+- v2.65 Functional-First Agent Guidance: [██████░░░░] 60% (Phases 279–281 complete; Phase 282 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -27,7 +27,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for next PLAN]
+  ○        ○        ○     [Ready to PLAN Phase 282]
 ```
 
 ## Accumulated Context
@@ -36,7 +36,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 - PLAN/APPLY/UNIFY remains authoritative; `.paul/*` artifacts are lifecycle truth; archives under `.paul/archive/*` hold history.
 - v2.64 completed the module instruction audit/context-efficiency rewrite and is archived.
-- v2.65 is active and will add practical “functional-first, not functional-only” agent coding guidance without turning PALS into a functional-programming framework or overriding project conventions; Phase 279 established the authoritative contract, Phase 280 added generated AGENTS/init convention guidance, and Phase 281 is ready to plan.
+- v2.65 is active and will add practical “functional-first, not functional-only” agent coding guidance without turning PALS into a functional-programming framework or overriding project conventions; Phases 279–281 are complete and Phase 282 is ready to plan TODD/RUBY guidance.
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -53,6 +53,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Phase 279 APPLY complete | Plan 279-01 / PR #197 | Created `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`, preserved the research note as provenance, committed docs as `8493c957`, and opened PR #197. |
 | Phase 279 contract authority established | 279-01-SUMMARY.md | `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md` is the authoritative v2.65 implementation boundary after Phase 279 UNIFY; the research note remains provenance/background and loses conflicts. |
 | Phase 280 convention surface established | 280-01-SUMMARY.md / PR #198 | Generated `AGENTS.md` and init workflow now include compact functional-first Engineering Principles while keeping Project Conventions authoritative; Pi and cross-harness validations guard installed convention-surface markers. |
+| Phase 281 brownfield convention detection established | 281-01-SUMMARY.md / PR #199 | Map-codebase now asks for source-backed local functional/style signals and templates preserve brownfield functional/effect-boundary idioms without requiring functional architecture conversion. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -77,6 +78,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 279 APPLY: Created `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`; preserved `docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md` as in-scope provenance; validation `git diff --check` and `bash tests/helpers/artifact_consistency.sh` passed; post-apply modules skipped/warned as docs-only/no runner; docs commit `8493c957`; PR #197 opened with no checks reported initially.
 - Phase 279 UNIFY: Created `279-01-SUMMARY.md`, appended CODI and WALT history rows for `279-01`, marked Phase 279 complete, and transitioned to Phase 280. Contract authority hierarchy is now active for v2.65 planning.
 - Phase 280 UNIFY: Created `280-01-SUMMARY.md`, appended CODI and WALT history rows for `280-01`, marked Phase 280 complete, and prepared transition to Phase 281. New marker checks passed; existing CODI/artifact-consistency validation baseline failures remain unrelated follow-up scope.
+- Phase 281 UNIFY: Created `281-01-SUMMARY.md`, appended CODI and WALT history rows for `281-01`, marked Phase 281 complete, and prepared transition to Phase 282. New brownfield marker checks passed; inherited CODI/PROJECT/artifact-consistency validation failures remain unrelated follow-up scope.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -97,21 +99,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (synced with origin/main; Phase 280 feature branch merged and deleted)
-Last lifecycle state: Phase 280 merge gate recorded on synced `main` after PR #198.
-PR #198: MERGED 2026-05-13T00:09:18Z as `dd55bf12`; Socket checks passed; feature branch deleted.
-Transition state: Phase 280 complete and merged; Phase 281 ready to plan.
+Branch: feature/281-brownfield-convention-detection (PR #199 open; merge gate pending)
+Last lifecycle state: Phase 281 UNIFY artifacts prepared on feature branch after task commit `1637c652`.
+PR #199: open; no CI checks reported on feature branch at UNIFY time.
+Transition state: Phase 281 complete locally; Phase 282 ready to plan after merge gate.
 Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-13 — completed Phase 280 UNIFY and merge gate.
-Stopped at: Phase 280 complete and merged; Phase 281 ready to plan.
-Next action: /paul:plan for Phase 281
+Last session: 2026-05-13 — completed Phase 281 UNIFY and transitioned to Phase 282.
+Stopped at: Phase 282 ready to plan after Phase 281 merge gate.
+Next action: /paul:plan
 Resume file: .paul/ROADMAP.md
-wip_result: Phase 280 closed via PR #198; main synced at `dd55bf12`
+wip_result: UNIFY artifacts prepared on `feature/281-brownfield-convention-detection`; PR #199 open
 Resume context:
-- Phase 280 shipped generated AGENTS/init Engineering Principles and installed-resource marker checks.
-- Summary: `.paul/phases/280-agent-convention-surface/280-01-SUMMARY.md`.
-- Validation: new marker checks PASS; inherited CODI/artifact-consistency validation failures remain unrelated baseline concerns.
-- Next phase: 281 Brownfield Convention Detection.
+- Phase 281 SUMMARY: `.paul/phases/281-brownfield-convention-detection/281-01-SUMMARY.md`.
+- Phase 281 task commit: `1637c652`; UNIFY metadata commit pending or current branch HEAD after commit.
+- Phase 282 focus: TODD + RUBY guidance using Phase 279 contract and Phase 281 brownfield local-idiom preservation signals.

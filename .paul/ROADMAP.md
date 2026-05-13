@@ -10,7 +10,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.65 Functional-First Agent Guidance**
 Status: 🚧 In Progress
-Phases: 1 of 5 complete
+Phases: 3 of 5 complete
 Theme: Add lightweight “functional-first, not functional-only” coding guidance across PALS agent conventions, brownfield mapping, TODD, RUBY, and optional ARCH advisory surfaces without overriding project-specific idioms.
 Source brief: [docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md](../docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md)
 
@@ -18,8 +18,8 @@ Source brief: [docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md](../docs/FUNCTIO
 |-------|------|-------|--------|-----------|
 | 279 | Functional-First Guidance Contract | 1/1 | ✅ Complete | 2026-05-12 |
 | 280 | Agent Convention Surface | 1/1 | ✅ Complete | 2026-05-13 |
-| 281 | Brownfield Convention Detection | TBD | Ready to plan | - |
-| 282 | TODD + RUBY Guidance | TBD | Not started | - |
+| 281 | Brownfield Convention Detection | 1/1 | ✅ Complete | 2026-05-13 |
+| 282 | TODD + RUBY Guidance | TBD | Ready to plan | - |
 | 283 | ARCH Advisory + Closure | TBD | Not started | - |
 
 ### Phase 279: Functional-First Guidance Contract
@@ -32,7 +32,7 @@ Plans: 280-01 Agent convention engineering principles (complete; summary: `.paul
 
 ### Phase 281: Brownfield Convention Detection
 Focus: Teach map-codebase to detect functional/side-effect/style signals and record local idioms without imposing a new architecture style.
-Plans: TBD (defined during /paul:plan)
+Plans: 281-01 Brownfield convention signal detection (complete; summary: `.paul/phases/281-brownfield-convention-detection/281-01-SUMMARY.md`; PR #199)
 
 ### Phase 282: TODD + RUBY Guidance
 Focus: Add pure-logic TDD guidance and Extract Pure Core refactoring guidance using existing TODD/RUBY surfaces.
@@ -77,4 +77,4 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-13 — Phase 280 complete and merged; Phase 281 ready to plan.*
+*Last updated: 2026-05-13 — Phase 281 complete; Phase 282 ready to plan.*
