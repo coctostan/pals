@@ -17,8 +17,8 @@ Source brief: [docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md](../docs/FUNCTIO
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 279 | Functional-First Guidance Contract | 1/1 | ✅ Complete | 2026-05-12 |
-| 280 | Agent Convention Surface | TBD | Ready to plan | - |
-| 281 | Brownfield Convention Detection | TBD | Not started | - |
+| 280 | Agent Convention Surface | 1/1 | ✅ Complete | 2026-05-13 |
+| 281 | Brownfield Convention Detection | TBD | Ready to plan | - |
 | 282 | TODD + RUBY Guidance | TBD | Not started | - |
 | 283 | ARCH Advisory + Closure | TBD | Not started | - |
 
@@ -28,7 +28,7 @@ Plans: 279-01 Functional-first guidance contract (complete; summary: `.paul/phas
 
 ### Phase 280: Agent Convention Surface
 Focus: Add compact Engineering Principles to generated `AGENTS.md` and init workflow while preserving project-specific convention authority.
-Plans: TBD (next: /paul:plan)
+Plans: 280-01 Agent convention engineering principles (complete; summary: `.paul/phases/280-agent-convention-surface/280-01-SUMMARY.md`)
 
 ### Phase 281: Brownfield Convention Detection
 Focus: Teach map-codebase to detect functional/side-effect/style signals and record local idioms without imposing a new architecture style.
@@ -77,4 +77,4 @@ Result: Phases 273–278 complete. Module instructions across base/dispatch, cor
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-12 — Phase 279 complete; Phase 280 ready to plan after merge gate.*
+*Last updated: 2026-05-13 — Phase 280 complete; Phase 281 ready to plan after merge gate.*
