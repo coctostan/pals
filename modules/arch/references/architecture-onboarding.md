@@ -33,6 +33,8 @@ Omit rows without in-scope evidence; do not search broadly to fill them.
 | API style | changed route/controller paths or provided docs | visible interface style |
 | Data access | changed repository/ORM call path | visible data boundary |
 | Auth boundary | changed auth/session path or provided docs | visible security boundary handoff |
+| Side-effect placement | changed paths or provided docs show where env/clock/filesystem/network/process dependencies live | local effect boundary (Pure Core, Explicit Effects); advisory only |
+| Local idioms | provided project docs or in-scope conventions name a local style (e.g., function-first, class-based, framework idiom) | preserved as authoritative; ARCH does not force a functional architecture |
 
 </pattern_recognition>
 

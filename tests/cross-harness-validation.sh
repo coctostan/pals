@@ -405,6 +405,95 @@ tap_file_contains_all \
   'Extract Pure Core' \
   'behavior-preserving' \
   'test-backed'
+
+CC_ARCH_PRINCIPLES_REF="$CC_KERNEL_DIR/references/architecture-principles.md"
+PI_ARCH_PRINCIPLES_REF="$PI_KERNEL_DIR/references/architecture-principles.md"
+CC_ARCH_PATTERNS_REF="$CC_KERNEL_DIR/references/architecture-patterns.md"
+PI_ARCH_PATTERNS_REF="$PI_KERNEL_DIR/references/architecture-patterns.md"
+CC_ARCH_DRIFT_REF="$CC_KERNEL_DIR/references/architecture-drift.md"
+PI_ARCH_DRIFT_REF="$PI_KERNEL_DIR/references/architecture-drift.md"
+CC_ARCH_ONBOARDING_REF="$CC_KERNEL_DIR/references/architecture-onboarding.md"
+PI_ARCH_ONBOARDING_REF="$PI_KERNEL_DIR/references/architecture-onboarding.md"
+
+tap_file_contains_all \
+  "Claude Code installed ARCH principles preserve Phase 283 side-effect-boundary advisory markers" \
+  "$CC_ARCH_PRINCIPLES_REF" \
+  'side-effect boundary' \
+  'Pure Core, Explicit Effects' \
+  'functional-first, not functional-only' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Pi installed ARCH principles preserve Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_PRINCIPLES_REF" \
+  'side-effect boundary' \
+  'Pure Core, Explicit Effects' \
+  'functional-first, not functional-only' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Claude Code installed ARCH patterns preserve Phase 283 side-effect-boundary advisory markers" \
+  "$CC_ARCH_PATTERNS_REF" \
+  'Side-Effect Boundaries' \
+  'Pure Core, Explicit Effects' \
+  'functional-first' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Pi installed ARCH patterns preserve Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_PATTERNS_REF" \
+  'Side-Effect Boundaries' \
+  'Pure Core, Explicit Effects' \
+  'functional-first' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Claude Code installed ARCH drift preserves Phase 283 side-effect-boundary advisory markers" \
+  "$CC_ARCH_DRIFT_REF" \
+  'Side-effect boundary drift' \
+  'Pure Core, Explicit Effects' \
+  'Leaking Effect' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Pi installed ARCH drift preserves Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_DRIFT_REF" \
+  'Side-effect boundary drift' \
+  'Pure Core, Explicit Effects' \
+  'Leaking Effect' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Claude Code installed ARCH onboarding preserves Phase 283 side-effect-boundary advisory markers" \
+  "$CC_ARCH_ONBOARDING_REF" \
+  'Side-effect placement' \
+  'Pure Core, Explicit Effects' \
+  'local effect boundary' \
+  'Local idioms'
+
+tap_file_contains_all \
+  "Pi installed ARCH onboarding preserves Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_ONBOARDING_REF" \
+  'Side-effect placement' \
+  'Pure Core, Explicit Effects' \
+  'local effect boundary' \
+  'Local idioms'
+
+tap_file_contains_all \
+  "Claude Code modules.yaml preserves Phase 283 ARCH side-effect-boundary advisory hook metadata" \
+  "$CC_MODULES_YAML" \
+  'side-effect boundary' \
+  'Pure Core, Explicit Effects' \
+  'functional-first' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Pi modules.yaml preserves Phase 283 ARCH side-effect-boundary advisory hook metadata" \
+  "$PI_MODULES_YAML" \
+  'side-effect boundary' \
+  'Pure Core, Explicit Effects' \
+  'functional-first' \
+  'local idioms'
 fi
 
 # ════════════════════════════════════════════════════════════════════

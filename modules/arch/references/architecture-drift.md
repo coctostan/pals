@@ -15,6 +15,7 @@ Report drift only from `files_changed`, resolved imports, `arch_context`, or the
 | Responsibility creep | File exceeds a size/growth WARN trigger | line count or diff growth for that file |
 | Coupling increase | Current diff adds an in-scope module dependency | added resolved import |
 | Convention drift | Changed name/path misses a documented naming or location rule | `files_changed` path + rule |
+| Side-effect boundary drift | Domain or pure-logic code reads env/clock/filesystem/network/process state directly, or transport/controller code mixes orchestration, persistence, and business rules inline (advisory; Pure Core, Explicit Effects) | `files_changed` path + cited evidence; preserves project conventions and local idioms |
 
 </drift_categories>
 
@@ -57,5 +58,6 @@ Report these labels only when `files_changed`, resolved imports, `arch_context`,
 - **The Wrong Layer:** Changed path misses `arch_context.layer_map`.
 - **The Leaky Abstraction:** Changed code exposes infrastructure details across a documented boundary.
 - **The Abandoned Pattern:** Multiple changed paths miss the same detected pattern.
+- **The Leaking Effect:** Changed domain or pure-logic code takes a direct env/clock/filesystem/network/process dependency, or a transport/controller change mixes orchestration, persistence, and business rules inline. Surfaced as advisory only (Pure Core, Explicit Effects); project conventions and local idioms remain authoritative and ARCH does not force a functional architecture.
 
 </common_drift_patterns>

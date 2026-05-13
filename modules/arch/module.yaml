@@ -3,8 +3,12 @@ display_name: ARCH
 description: >
   Architecture & Design advisor. Surfaces detected structural patterns,
   flags candidate boundary drift between layers with concrete evidence,
-  and provides onboarding-aware context. Advisory by default; PLAN/APPLY/UNIFY
-  owns any blocking response.
+  and provides onboarding-aware context. Functional-first advisory only
+  (functional-first, not functional-only):
+  may note side-effect boundary drift (Pure Core, Explicit Effects) when
+  in-scope evidence is available, while preserving project conventions
+  and local idioms. Advisory by default; PLAN/APPLY/UNIFY owns any
+  blocking response.
 version: 1.0.0
 
 dependencies:
@@ -27,7 +31,14 @@ hooks:
       only when triggered by a `files_modified` entry, citing
       `{file}:{metric}={value}`. Circular dependencies between planned files
       emit advisory WARN with `{file_a} → {file_b}` evidence;
-      PLAN/APPLY/UNIFY owns any blocking response. Inject `arch_context`
+      PLAN/APPLY/UNIFY owns any blocking response. Functional-first,
+      not functional-only (functional-first),
+      advisory: may note side-effect boundary drift (Pure Core, Explicit
+      Effects) when in-scope evidence shows domain logic reading env/
+      clock/filesystem/network/process state directly, or controllers
+      mixing orchestration, persistence, and business rules inline;
+      preserves project conventions and local idioms and never forces a
+      functional architecture. Inject `arch_context`
       with `detected_pattern`, `layer_map`, and `structural_warnings` (each
       entry carries `{file, metric, value}`; never invent entries). Output
       `ARCH: skipped — no in-scope source files` when scope is empty, or
@@ -49,7 +60,14 @@ hooks:
       God-file (>500 lines) and responsibility-creep (file grew by >100
       lines vs. prior revision) emit advisory WARN rows only when
       triggered by a `files_changed` entry, citing
-      `{file}:{metric}={value}`. PLAN/APPLY/UNIFY owns any blocking
+      `{file}:{metric}={value}`. Functional-first, not functional-only (functional-first),
+      advisory: may emit a
+      side-effect boundary drift WARN (Pure Core, Explicit Effects) when
+      `files_changed` evidence shows domain logic taking direct env/clock/
+      filesystem/network/process dependencies, or transport/controller
+      code mixing orchestration, persistence, and business rules inline;
+      preserves project conventions and local idioms and never forces a
+      functional architecture. PLAN/APPLY/UNIFY owns any blocking
       response to table findings. Output `ARCH: skipped — no in-scope
       source files` when scope is empty, or `ARCH: no boundary or drift
       findings across {N} changed files` when in scope with no findings.

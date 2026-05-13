@@ -65,6 +65,23 @@ For each import resolved from `files_changed`, add one boundary-check row:
 
 </component_patterns>
 
+<side_effect_boundaries>
+
+## Side-Effect Boundaries (Functional-First Advisory)
+
+When `files_modified` or `files_changed` shows evidence of side-effect boundary drift, ARCH may surface it as advisory (Pure Core, Explicit Effects) under a functional-first, not functional-only posture, without forcing a functional architecture. Project conventions and local idioms remain authoritative.
+
+| Smell | Example evidence |
+|-------|------------------|
+| Domain reads env/clock directly | Pure domain file imports `process.env`, `Date.now()`, `os`, or system clock APIs |
+| Domain touches filesystem/network/process | Pure domain file imports `fs`, `http`/`fetch`, `child_process`, or DB clients directly |
+| Controller mixes concerns | Route/controller file inlines orchestration, persistence, and business rules without delegation |
+| Hidden dependencies | Function reaches globals, singletons, or module-level mutable state instead of accepting explicit inputs |
+
+Report these only when in-scope evidence is available; cite `{file}:{evidence}`. Never extrapolate project-wide. Advisory only — PLAN/APPLY/UNIFY owns any blocking response, and ARCH does not require rewriting to a functional architecture.
+
+</side_effect_boundaries>
+
 <structural_metrics>
 
 ## Structural Health Metrics
