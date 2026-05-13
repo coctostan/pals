@@ -264,6 +264,51 @@ tap_file_contains_all \
   'behavior-preserving' \
   'test-backed'
 
+PI_ARCH_PRINCIPLES_REF="$SKILL_DIR/references/architecture-principles.md"
+PI_ARCH_PATTERNS_REF="$SKILL_DIR/references/architecture-patterns.md"
+PI_ARCH_DRIFT_REF="$SKILL_DIR/references/architecture-drift.md"
+PI_ARCH_ONBOARDING_REF="$SKILL_DIR/references/architecture-onboarding.md"
+
+tap_file_contains_all \
+  "Installed ARCH principles preserve Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_PRINCIPLES_REF" \
+  'side-effect boundary' \
+  'Pure Core, Explicit Effects' \
+  'functional-first, not functional-only' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Installed ARCH patterns preserve Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_PATTERNS_REF" \
+  'Side-Effect Boundaries' \
+  'Pure Core, Explicit Effects' \
+  'functional-first' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Installed ARCH drift preserves Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_DRIFT_REF" \
+  'Side-effect boundary drift' \
+  'Pure Core, Explicit Effects' \
+  'Leaking Effect' \
+  'local idioms'
+
+tap_file_contains_all \
+  "Installed ARCH onboarding preserves Phase 283 side-effect-boundary advisory markers" \
+  "$PI_ARCH_ONBOARDING_REF" \
+  'Side-effect placement' \
+  'Pure Core, Explicit Effects' \
+  'local effect boundary' \
+  'Local idioms'
+
+tap_file_contains_all \
+  "Installed modules.yaml preserves Phase 283 ARCH side-effect-boundary advisory hook metadata" \
+  "$SKILL_DIR/modules.yaml" \
+  'side-effect boundary' \
+  'Pure Core, Explicit Effects' \
+  'functional-first' \
+  'local idioms'
+
 PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
 PI_FIX="$SKILL_DIR/workflows/fix-loop.md"
 PI_SUMMARY_TEMPLATE="$SKILL_DIR/templates/SUMMARY.md"

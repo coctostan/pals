@@ -18,3 +18,7 @@ Core principles guiding ARCH module behavior.
 
 - **Advisory (pre-plan):** Pattern detection, onboarding assessment, drift warnings — inform but never block
 - **Blocking (post-apply):** Boundary violations (critical/high severity only) — these are architectural foundations worth protecting
+
+## Functional-First Advisory
+
+ARCH may surface side-effect boundary drift (Pure Core, Explicit Effects) when in-scope evidence shows it — for example, domain logic reading env/clock/filesystem/network/process state directly, or controllers mixing orchestration, persistence, and business rules inline. This guidance is advisory-only: it is functional-first, not functional-only. Project conventions and local idioms remain authoritative, and ARCH never forces a functional architecture, broad rewrite, or default blocking gate on functional style.

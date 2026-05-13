@@ -2,24 +2,24 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.65 active; functional-first agent guidance milestone created)
+See: .paul/PROJECT.md (v2.65 closed 2026-05-13; awaiting next milestone)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.65 Functional-First Agent Guidance — lightweight “functional-first, not functional-only” coding guidance across agent conventions, brownfield mapping, TODD, RUBY, and optional ARCH advisory surfaces.
+**Current focus:** _Awaiting next milestone._ v2.65 Functional-First Agent Guidance shipped functional-first, not functional-only coding guidance across agent conventions, brownfield mapping, TODD, RUBY, and advisory ARCH side-effect-boundary surfaces; no new blocking gates introduced.
 
 ## Current Position
 
-Milestone: v2.65 Functional-First Agent Guidance
-Phase: 283 of 283 (ARCH Advisory + Closure) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-13 — Phase 282 complete; transitioned to Phase 283
-Next action: /paul:plan for Phase 283
+Milestone: v2.65 Functional-First Agent Guidance (closed 2026-05-13)
+Phase: 283 of 283 (ARCH Advisory + Closure)
+Plan: .paul/phases/283-arch-advisory-closure/283-01-PLAN.md
+Status: UNIFY complete — Phase 283 closed; v2.65 ready for milestone-closure routing (PR #201 merge gate pending)
+Last activity: 2026-05-13 — Phase 283 Plan 283-01 UNIFY complete; SUMMARY + history rows written; PR #201 awaiting merge gate
+Next action: complete merge gate on PR #201, then transition v2.65 milestone (route /paul:milestone or follow merge-gate output)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
-- v2.65 Functional-First Agent Guidance: [██████████] 90% (Phases 279–282 complete; Phase 283 ready to plan)
+- v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -27,7 +27,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 283 ready to plan]
+  ✓        ✓        ✓     [v2.65 closed; ready to plan next milestone]
 ```
 
 ## Accumulated Context
@@ -36,7 +36,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 - PLAN/APPLY/UNIFY remains authoritative; `.paul/*` artifacts are lifecycle truth; archives under `.paul/archive/*` hold history.
 - v2.64 completed the module instruction audit/context-efficiency rewrite and is archived.
-- v2.65 is active and will add practical “functional-first, not functional-only” agent coding guidance without turning PALS into a functional-programming framework or overriding project conventions; Phases 279–282 are complete and Phase 283 ARCH Advisory + Closure is ready to plan.
+- v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283: authoritative contract, AGENTS/init Engineering Principles + brownfield map-codebase signals, TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance, and advisory ARCH side-effect-boundary guidance — all with project conventions and local idioms preserved as authoritative and no new default blocking functional-style gates.
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -55,6 +55,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Phase 280 convention surface established | 280-01-SUMMARY.md / PR #198 | Generated `AGENTS.md` and init workflow now include compact functional-first Engineering Principles while keeping Project Conventions authoritative; Pi and cross-harness validations guard installed convention-surface markers. |
 | Phase 281 brownfield convention detection established | 281-01-SUMMARY.md / PR #199 | Map-codebase now asks for source-backed local functional/style signals and templates preserve brownfield functional/effect-boundary idioms without requiring functional architecture conversion. |
 | Phase 282 TODD/RUBY functional-first guidance established | 282-01-SUMMARY.md / PR #200 | TODD now highlights pure input-to-output logic as high-value TDD scope and RUBY now documents Extract Pure Core as advisory, behavior-preserving, test-backed guidance; Pi and cross-harness installed-resource marker checks guard both surfaces. |
+| Phase 283 ARCH advisory + v2.65 closure | 283-01-SUMMARY.md / PR #201 | ARCH module metadata, principles, patterns, drift, and onboarding references surface side-effect boundary drift (Pure Core, Explicit Effects) as advisory only; `The Leaking Effect` common-drift label added; Pi + cross-harness installed-resource marker checks (5 + 10 assertions) guard ARCH Phase 283 markers; v2.65 milestone closed. |
 
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
@@ -81,12 +82,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 280 UNIFY: Created `280-01-SUMMARY.md`, appended CODI and WALT history rows for `280-01`, marked Phase 280 complete, and prepared transition to Phase 281. New marker checks passed; existing CODI/artifact-consistency validation baseline failures remain unrelated follow-up scope.
 - Phase 281 UNIFY: Created `281-01-SUMMARY.md`, appended CODI and WALT history rows for `281-01`, marked Phase 281 complete, and prepared transition to Phase 282. New brownfield marker checks passed; inherited CODI/PROJECT/artifact-consistency validation failures remain unrelated follow-up scope.
 - Phase 282 UNIFY: Created `282-01-SUMMARY.md`, appended CODI and WALT history rows for `282-01`, marked Phase 282 complete, and prepared transition to Phase 283. TODD/RUBY marker checks passed; inherited Pi CODI marker failures remain unrelated follow-up scope.
+- Phase 283 PLAN/APPLY/UNIFY: Added advisory ARCH side-effect-boundary guidance and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Verification: `git diff --check` clean, both validation scripts pass `bash -n`, `artifact_consistency` PASS, cross-harness 234/234 PASS, Pi 322/328 with 6 baseline-inherited CODI/PROJECT-budget failures identical pre/post via `git stash`. Created `283-01-SUMMARY.md`, appended CODI and WALT history rows for `283-01`, marked Phase 283 complete, closed v2.65 milestone. Parent-owned APPLY/UNIFY, no helper delegation; one minor in-loop fix (lowercased `functional-first` in two ARCH hook descriptions so rendered modules.yaml carries the asserted marker).
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
 
-- Future follow-up: apply the Phase 278 semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` checks 10, 185, 188, 190, 192 (5 baseline-inherited CODI marker-drift failures; identical-family fix using existing `tests/helpers/module_instruction_semantics.sh`).
+- Future follow-up: apply the Phase 278 semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` baseline-inherited CODI marker-drift failures (5 in the v2.65 closure run) plus the inherited PROJECT byte-budget concern surfaced alongside them; identical-family fix using existing `tests/helpers/module_instruction_semantics.sh`.
 - ci-generation.md and sonarqube-integration.md — future module candidates.
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
@@ -101,20 +103,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #200 merged)
-Last lifecycle state: Phase 282 UNIFY completed and merged via PR #200; merge commit `998c3771`; task commit `938618d0`; SUMMARY `.paul/phases/282-todd-ruby-guidance/282-01-SUMMARY.md`.
-PR #200: merged — https://github.com/coctostan/pals/pull/200; Socket Security checks passed.
-Transition state: Phase 282 complete; Phase 283 ready to plan.
-Prior PRs: #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: phase-283-arch-advisory-closure (PR #201 open against `main`)
+Last lifecycle state: Phase 283 UNIFY complete; task/feature commit `4ea90e2c`; SUMMARY `.paul/phases/283-arch-advisory-closure/283-01-SUMMARY.md`.
+PR #201: open — https://github.com/coctostan/pals/pull/201; awaiting GitHub Flow merge gate (CI + merge + sync + cleanup).
+Transition state: v2.65 milestone closed across Phases 279–283; awaiting next milestone.
+Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-13 — Phase 282 UNIFY complete and PR #200 merged; Phase 283 ready to plan.
-Stopped at: Phase 282 complete; transitioned to Phase 283.
-Next action: /paul:plan for Phase 283
+Last session: 2026-05-13 — Phase 283 UNIFY complete; v2.65 milestone closed.
+Stopped at: v2.65 closed; awaiting next milestone.
+Next action: /paul:milestone to open the next milestone (or `/paul:status` for a recap). GitHub Flow merge gate for PR #201 remains the final mechanical step before the next planning cycle.
 Resume file: .paul/ROADMAP.md
-wip_result: none — UNIFY lifecycle artifacts merged via PR #200
+wip_result: not-applicable — UNIFY commit covers Phase 283 lifecycle artifacts; no separate WIP commit needed
 Resume context:
-- Phase 282 added TODD/RUBY functional-first guidance and installed-resource marker checks.
-- Verification: `git diff --check` PASS; `bash -n` PASS; artifact consistency PASS; cross-harness PASS 224/224; Pi Phase 282 markers PASS with 5 inherited CODI failures remaining.
-- Next lifecycle step should plan Phase 283 ARCH Advisory + Closure.
+- v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283 (PRs #197 / #198 / #199 / #200 / #201).
+- Deferred follow-up: 6 baseline-inherited Pi end-to-end failures (5 CODI marker-drift checks + 1 PROJECT byte-budget) carry forward as next-milestone candidate per ROADMAP `Next Milestone`.
