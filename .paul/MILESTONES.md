@@ -86,9 +86,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** Awaiting next milestone — v2.64 closed 2026-05-12; run `/paul:discuss-milestone` or `/paul:milestone` to define the next scope.
+**Current milestone:** v2.65 Functional-First Agent Guidance — Phases 279–282 complete; Phase 283 ARCH Advisory + Closure ready to plan after PR #200 merge gate.
 
-**Latest completed phase:** Phase 278 Module Guardrails + Closure completed 2026-05-12 via PR #196 `340eee03`, replacing inherited Phase 276 CODI marker-drift cross-harness validation with grouped semantic guardrails (`tests/helpers/module_instruction_semantics.sh`); cross-harness 195→202 PASS. v2.64 milestone complete.
+**Latest completed phase:** Phase 282 TODD + RUBY Guidance completed 2026-05-13 via PR #200 (merge gate pending); current active phase is Phase 283 ARCH Advisory + Closure.
 
 ## Archive
 
@@ -99,4 +99,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 pointer updated 2026-05-13.*
