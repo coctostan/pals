@@ -107,11 +107,11 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/286-plan-review-workflow-integration (PR #204 open; merge gate pending/continuing)
-Last lifecycle state: Phase 286 UNIFY complete; transition prepared to Phase 287 plan routing.
-PR #204: open — https://github.com/coctostan/pals/pull/204 (Socket checks PASS). Prior PR #203 merged via squash; PR #202 merged via squash `3ef037ca`.
-Transition state: Phase 286 complete; Phase 287 ready to plan after merge gate/base sync.
-Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: main (PR #204 merged via squash; base synced)
+Last lifecycle state: Phase 286 UNIFY complete; Phase 287 ready to plan.
+PR #204: merged — https://github.com/coctostan/pals/pull/204 (Socket checks PASS). Prior PR #203 merged via squash; PR #202 merged via squash `3ef037ca`.
+Transition state: Phase 286 complete; Phase 287 ready to plan.
+Prior PRs: #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
