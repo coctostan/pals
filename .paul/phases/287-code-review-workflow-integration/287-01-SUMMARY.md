@@ -33,12 +33,24 @@
 - `[dispatch] post-apply enforcement: WALT PASS_WITH_CONCERNS — required validation commands run; cross-harness passed; Pi end-to-end new Phase 287 checks passed with inherited unrelated failures classified separately.`
 - `[dispatch] post-apply enforcement: TODD skipped — non-TDD scope; no new test regression evidence.`
 - `[dispatch] post-apply enforcement: DEAN PASS — no dependency manifests or lockfiles changed.`
+- `[dispatch] pre-unify: 0 modules registered for this hook.`
+- `[dispatch] post-unify: WALT appended `.paul/QUALITY-HISTORY.md` row for `287-01` with cross-harness PASS and Pi inherited-failure baseline concerns.`
+- `[dispatch] post-unify: SKIP no complete source-backed knowledge entries beyond PROJECT.md decision update; no separate knowledge artifact created.`
+- `[dispatch] post-unify: CODI appended `.paul/CODI-HISTORY.md` row for `287-01` as `skipped-no-symbols` from PLAN evidence.`
+- `[dispatch] post-unify: RUBY NOT_APPLICABLE — docs/workflow-marker scope, no code-debt candidate.
 
 ## Acceptance Criteria
 
 - AC-1 PASS — APPLY workflow now offers opt-in Plannotator code review while keeping PAUL lifecycle authority.
 - AC-2 PASS — UNIFY reads and records `CODE-REVIEW-NOTES.md` only as advisory evidence without overriding REV, GitHub Flow, CI/reviews, merge gates, or lifecycle truth.
 - AC-3 PASS — Pi and cross-harness validation scripts protect the APPLY/UNIFY code-review workflow markers.
+
+## UNIFY Result
+
+- Plan vs actual reconciled: all planned files changed, code-review surfaces remain optional/advisory, no Plannotator runtime/browser requirement was added, and no out-of-scope bridge/default changes were introduced.
+- Phase status: Phase 287 complete, 1/1 plan unified.
+- Milestone status: v2.66 complete, 4/4 phases unified.
+- GitHub Flow: PR #205 opened and Socket checks passed; merge gate continues through PR merge/base sync.
 
 ## Handoff Notes for UNIFY
 
