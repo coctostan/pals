@@ -4,23 +4,23 @@
 
 See: .paul/PROJECT.md (v2.66 Plannotator Integration — Rich UI Review Surfaces active)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.66 Plannotator Integration — Rich UI Review Surfaces (Phase 287 of 287 — Code Review Workflow Integration, ready to PLAN). Phases 284–286 complete; Phase 287 remains before milestone close.
+**Current focus:** v2.66 Plannotator Integration — Rich UI Review Surfaces (Phase 287 of 287 — Code Review Workflow Integration, APPLY complete; ready to UNIFY 287-01). Phases 284–286 complete; Phase 287 remains before milestone close.
 
 ## Current Position
 
 Milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
-Phase: 287 of 287 (Code Review Workflow Integration) — Not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-14 — Unified Phase 286 plan 286-01, marked Plan Review Workflow Integration complete, and transitioned to Phase 287 Code Review Workflow Integration.
-Next action: /paul:plan for Phase 287 Code Review Workflow Integration
+Phase: 287 of 287 (Code Review Workflow Integration) — APPLY complete
+Plan: 287-01 `.paul/phases/287-code-review-workflow-integration/287-01-PLAN.md`
+Status: Ready to unify
+Last activity: 2026-05-14 — Applied Phase 287 plan 287-01: added opt-in Plannotator code-review workflow semantics for APPLY/UNIFY, advisory CODE-REVIEW-NOTES loading, validation markers, and SUMMARY evidence.
+Next action: /paul:unify .paul/phases/287-code-review-workflow-integration/287-01-PLAN.md
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
-- v2.66 Plannotator Integration — Rich UI Review Surfaces: [████████░░] 75% (Phases 284–286 complete; Phase 287 remains)
+- v2.66 Plannotator Integration — Rich UI Review Surfaces: [█████████░] 90% (Phases 284–286 complete; Phase 287 APPLY complete / ready to UNIFY)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -28,7 +28,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ·        ·     [Phase 287 ready to PLAN]
+  ✓        ✓        ○     [Phase 287 plan 287-01 ready to UNIFY]
 ```
 
 ## Accumulated Context
@@ -115,12 +115,12 @@ Prior PRs: #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 /
 
 ## Session Continuity
 
-Last session: 2026-05-14 — Completed Phase 286 UNIFY and transition routing to Phase 287.
-Stopped at: Phase 287 ready to plan.
-Next action: /paul:plan for Phase 287 Code Review Workflow Integration
-Resume file: .paul/ROADMAP.md
-wip_result: n/a — lifecycle state committed on feature branch for PR #204.
+Last session: 2026-05-14 — Applied Phase 287 plan 287-01; UNIFY not started.
+Stopped at: Phase 287 APPLY complete; UNIFY not started.
+Next action: /paul:unify .paul/phases/287-code-review-workflow-integration/287-01-PLAN.md
+Resume file: .paul/phases/287-code-review-workflow-integration/287-01-PLAN.md
+wip_result: committed on feature branch for PR creation.
 Resume context:
-- Phase 286 closed plan-review workflow integration with advisory-only Plannotator sidecars and validation markers.
-- Phase 287 should add opt-in code-review workflow integration for APPLY/UNIFY without transferring lifecycle authority to Plannotator.
-- Before planning Phase 287, recheck PR #204 merge/base state if not already merged.
+- Phase 287 APPLY added optional per-invocation Plannotator code-review prompts to APPLY/UNIFY, `requestCodeReview` usage, advisory `CODE-REVIEW-NOTES.md`, no auto `/paul:fix`, and marker validation.
+- Cross-harness validation passed 246/246; Pi e2e new Phase 287 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately.
+- Ready to UNIFY and close v2.66 milestone after GitHub Flow merge gate.

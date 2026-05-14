@@ -682,6 +682,34 @@ tap_file_contains_all \
   'PLAN.md' \
   '.paul/STATE.md' \
   'never overrides'
+
+
+tap_file_contains_all \
+  "Installed shared apply workflow preserves optional Plannotator code-review markers" \
+  "$PI_APPLY" \
+  'Run Plannotator code review? [y/n]' \
+  'zero overhead' \
+  'requestCodeReview' \
+  'diffType: "uncommitted"' \
+  'CODE-REVIEW-NOTES.md' \
+  'Ignore `agentSwitch`' \
+  '/paul:fix' \
+  'advisory-only statement' \
+  'GitHub Flow'
+
+tap_file_contains_all \
+  "Installed shared unify workflow preserves optional Plannotator code-review markers" \
+  "$PI_UNIFY" \
+  'CODE-REVIEW-NOTES.md' \
+  'advisory context only' \
+  'Run Plannotator code review? [y/n]' \
+  'requestCodeReview' \
+  'PR URL' \
+  'diffType: "phase-range"' \
+  'diffType: "staged"' \
+  'REV' \
+  'merge gate' \
+  'never overrides'
 tap_file_contains_all \
   "Installed shared discuss workflow keeps selected-phase posture markers after prose cleanup" \
   "$PI_DISCUSS" \

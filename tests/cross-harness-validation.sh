@@ -1061,6 +1061,20 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     '.paul/STATE.md' \
     'never overrides'
 
+
+  tap_file_contains_all \
+    "$label apply workflow preserves optional Plannotator code-review markers" \
+    "$root/workflows/apply-phase.md" \
+    'Run Plannotator code review? [y/n]' \
+    'zero overhead' \
+    'requestCodeReview' \
+    'diffType: "uncommitted"' \
+    'CODE-REVIEW-NOTES.md' \
+    'Ignore `agentSwitch`' \
+    '/paul:fix' \
+    'advisory-only statement' \
+    'GitHub Flow'
+
   tap_file_contains_all \
     "$label apply workflow keeps Helper Delegation parent-acceptance markers" \
     "$root/workflows/apply-phase.md" \
@@ -1104,6 +1118,21 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'GIT_WORKFLOW' \
     'auto_pr' \
     'merge gate'
+
+
+  tap_file_contains_all \
+    "$label unify workflow preserves optional Plannotator code-review markers" \
+    "$root/workflows/unify-phase.md" \
+    'CODE-REVIEW-NOTES.md' \
+    'advisory context only' \
+    'Run Plannotator code review? [y/n]' \
+    'requestCodeReview' \
+    'PR URL' \
+    'diffType: "phase-range"' \
+    'diffType: "staged"' \
+    'REV' \
+    'merge gate' \
+    'never overrides'
 done
 
 for resume_workflow_label in "Claude Code installed:$CC_RESUME_WORKFLOW" "Pi installed:$PI_RESUME_WORKFLOW" "Repo source:$REPO_RESUME_WORKFLOW"; do
