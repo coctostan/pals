@@ -15,14 +15,14 @@ Theme: Enhance human plan/code review with rich browser UI annotations via the e
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 284 | Plannotator Integration Contract | 284-01 | APPLY complete | - |
+| 284 | Plannotator Integration Contract | 284-01 | UNIFY complete; PR #202 merge gate pending | - |
 | 285 | PAUL ↔ Plannotator Bridge | TBD | Not started | - |
 | 286 | Plan Review Workflow Integration | TBD | Not started | - |
 | 287 | Code Review Workflow Integration | TBD | Not started | - |
 
 ### Phase 284: Plannotator Integration Contract
 Focus: Produce authoritative `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`. Investigate Plannotator source for event delivery mechanism, async result race recovery (`review-status` query pattern), extension-presence probe, result schema, `savedPath` semantics, multi-iteration behavior, and UI-abandoned timeout handling. Define advisory sidecar artifact contracts (`PLAN-REVIEW-NOTES.md`, `PLAN-FEEDBACK-{iteration}.md`, `CODE-REVIEW-NOTES.md`). Document non-adoption surface (`--plan` mode, `plannotator_submit_plan`, phase machine, `plannotator.json`, `agentSwitch`/`permissionMode`). Opt-in via `pals.json` `integrations.plannotator.enabled`. Validation classification: helper delegation + Pi-supported runtime; Pi-only. No code.
-Plans: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md`) — APPLY ✓, ready for UNIFY
+Plans: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md`) — UNIFY ✓; PR #202 merge gate pending
 
 ### Phase 285: PAUL ↔ Plannotator Bridge
 Focus: New sibling Pi extension `drivers/pi/extensions/plannotator-bridge.ts` following the S1–S8 extraction recipe (9th application of the loader-compat invariant). Helper functions `requestPlanReview(planPath)`, `requestCodeReview(diffType)`, `awaitReviewResult(reviewId, timeoutMs)`. Extension-presence detection with graceful fallback. Pi installed-resource marker checks per v2.65 pattern. No workflow instruction changes yet.
