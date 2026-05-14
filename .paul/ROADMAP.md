@@ -17,8 +17,8 @@ Theme: Enhance human plan/code review with rich browser UI annotations via the e
 |-------|------|-------|--------|-----------|
 | 284 | Plannotator Integration Contract | 1/1 | ✅ Complete | 2026-05-14 |
 | 285 | PAUL ↔ Plannotator Bridge | 1/1 | ✅ Complete | 2026-05-14 |
-| 286 | Plan Review Workflow Integration | 0/1 | 🟡 Planned | - |
-| 287 | Code Review Workflow Integration | TBD | Not started | - |
+| 286 | Plan Review Workflow Integration | 1/1 | ✅ Complete | 2026-05-14 |
+| 287 | Code Review Workflow Integration | TBD | 🔵 Ready to plan | - |
 
 ### Phase 284: Plannotator Integration Contract
 Focus: Produce authoritative `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`. Investigate Plannotator source for event delivery mechanism, async result race recovery (`review-status` query pattern), extension-presence probe, result schema, `savedPath` semantics, multi-iteration behavior, and UI-abandoned timeout handling. Define advisory sidecar artifact contracts (`PLAN-REVIEW-NOTES.md`, `PLAN-FEEDBACK-{iteration}.md`, `CODE-REVIEW-NOTES.md`). Document non-adoption surface (`--plan` mode, `plannotator_submit_plan`, phase machine, `plannotator.json`, `agentSwitch`/`permissionMode`). Opt-in via `pals.json` `integrations.plannotator.enabled`. Validation classification: helper delegation + Pi-supported runtime; Pi-only. No code.
@@ -30,10 +30,10 @@ Plans: 285-01 (`.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md`) — CO
 
 ### Phase 286: Plan Review Workflow Integration
 Focus: Edit `/paul:plan` workflow instructions for an end-of-PLAN per-invocation prompt. On approve: optional `PLAN-REVIEW-NOTES.md` sidecar; continue. On deny: write `PLAN-FEEDBACK-{iteration}.md`, re-enter PLAN with feedback as required reading; PAUL regenerates PLAN.md (never adopts Plannotator `savedPath` directly). Add one-line required-reading note to `/paul:apply` for `PLAN-REVIEW-NOTES.md`. Section-by-section workflow rewrite pattern (v2.63 lineage).
-Plans: 286-01 (`.paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md`) — READY TO APPLY
+Plans: 286-01 (`.paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md`) — COMPLETE ✓ (`286-01-SUMMARY.md`)
 
 ### Phase 287: Code Review Workflow Integration
-Focus: Edit `/paul:apply` end-of-APPLY and `/paul:unify` for the same per-invocation prompt with `diffType` appropriate to the phase (uncommitted / staged / phase-range). Annotation feedback written to `.paul/phases/N/CODE-REVIEW-NOTES.md`. Advisory only — no automatic route to `/paul:fix`. Add one-line required-reading note to `/paul:unify` for `CODE-REVIEW-NOTES.md`. Both APPLY and UNIFY code-review hooks share the bridge — one phase, not two.
+Focus: Edit `/paul:apply` end-of-APPLY and `/paul:unify` for the same per-invocation prompt with `diffType` appropriate to the phase (uncommitted / staged / phase-range). Annotation feedback written to `.paul/phases/N/CODE-REVIEW-NOTES.md`. Advisory only — no automatic route to `/paul:fix`. Add one-line required-reading note to `/paul:unify` for `CODE-REVIEW-NOTES.md`. Both APPLY and UNIFY code-review hooks share the bridge — one phase, not two. Ready to plan after Phase 286 closure.
 Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone

@@ -4,23 +4,23 @@
 
 See: .paul/PROJECT.md (v2.66 Plannotator Integration — Rich UI Review Surfaces active)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.66 Plannotator Integration — Rich UI Review Surfaces (Phase 286 of 287 — Plan Review Workflow Integration, APPLY complete; ready to UNIFY 286-01). Phases 284–285 closed via PRs #202/#203; archive pending at milestone close.
+**Current focus:** v2.66 Plannotator Integration — Rich UI Review Surfaces (Phase 287 of 287 — Code Review Workflow Integration, ready to PLAN). Phases 284–286 complete; Phase 287 remains before milestone close.
 
 ## Current Position
 
 Milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
-Phase: 286 of 287 (Plan Review Workflow Integration) — APPLY complete
-Plan: 286-01 `.paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md`
-Status: Ready to unify
-Last activity: 2026-05-14 — Applied Phase 286 plan 286-01: added opt-in Plannotator plan-review workflow semantics, APPLY advisory-note loading, validation markers, and SUMMARY evidence.
-Next action: /paul:unify .paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md
+Phase: 287 of 287 (Code Review Workflow Integration) — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-14 — Unified Phase 286 plan 286-01, marked Plan Review Workflow Integration complete, and transitioned to Phase 287 Code Review Workflow Integration.
+Next action: /paul:plan for Phase 287 Code Review Workflow Integration
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
-- v2.66 Plannotator Integration — Rich UI Review Surfaces: [███████░░░] 70% (Phases 284–285 complete; Phase 286 APPLY complete / ready to UNIFY; Phase 287 remains)
+- v2.66 Plannotator Integration — Rich UI Review Surfaces: [████████░░] 75% (Phases 284–286 complete; Phase 287 remains)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -28,7 +28,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 286 plan 286-01 ready to UNIFY]
+  ○        ·        ·     [Phase 287 ready to PLAN]
 ```
 
 ## Accumulated Context
@@ -86,6 +86,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 283 PLAN/APPLY/UNIFY: Added advisory ARCH side-effect-boundary guidance and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Verification: `git diff --check` clean, both validation scripts pass `bash -n`, `artifact_consistency` PASS, cross-harness 234/234 PASS, Pi 322/328 with 6 baseline-inherited CODI/PROJECT-budget failures identical pre/post via `git stash`. Created `283-01-SUMMARY.md`, appended CODI and WALT history rows for `283-01`, marked Phase 283 complete, closed v2.65 milestone. Parent-owned APPLY/UNIFY, no helper delegation; one minor in-loop fix (lowercased `functional-first` in two ARCH hook descriptions so rendered modules.yaml carries the asserted marker).
 - Phase 285 APPLY: Added `drivers/pi/extensions/plannotator-bridge.ts` with optional/advisory Plannotator event helpers (`requestPlanReview`, `requestCodeReview`, `awaitReviewResult`), surfaced the bridge in Pi docs/skill map, added Pi marker checks, archived the consumed Phase 285 handoff, and refreshed MILESTONES current-phase pointers. Verification: `git diff --check` clean, `bash -n` validation scripts PASS, artifact_consistency PASS, cross-harness 234/234 PASS, Pi 324/331 with seven inherited CODI/PROJECT/ROADMAP-budget failures unrelated to Phase 285 markers.
 - Phase 285 UNIFY: Created `285-01-SUMMARY.md`, appended CODI and WALT history rows for `285-01`, marked Phase 285 complete, merged PR #203 after Socket checks passed, and transitioned to Phase 286. Phase 286 should wire the new bridge into `/paul:plan` with opt-in prompt and plan-review sidecars.
+- Phase 286 PLAN/APPLY/UNIFY: Added opt-in Plannotator plan-review workflow semantics to `/paul:plan`, advisory `PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` sidecar rules, APPLY advisory-note loading, and Pi/cross-harness marker validation. Cross-harness passed 240/240; Pi Phase 286 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately. PR #204 opened; Socket checks passed.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -106,21 +107,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #203 merged via squash; base synced)
-Last lifecycle state: Phase 286 PLAN complete; plan `.paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md` ready for APPLY.
-PR #203: merged — https://github.com/coctostan/pals/pull/203 (Socket checks PASS). Prior PR #202 merged via squash `3ef037ca`.
-Transition state: Phase 286 PLAN complete; 286-01 ready to apply.
+Branch: feature/286-plan-review-workflow-integration (PR #204 open; merge gate pending/continuing)
+Last lifecycle state: Phase 286 UNIFY complete; transition prepared to Phase 287 plan routing.
+PR #204: open — https://github.com/coctostan/pals/pull/204 (Socket checks PASS). Prior PR #203 merged via squash; PR #202 merged via squash `3ef037ca`.
+Transition state: Phase 286 complete; Phase 287 ready to plan after merge gate/base sync.
 Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-14 — Paused after creating Phase 286 plan 286-01; APPLY not started.
-Stopped at: Phase 286 PLAN complete; APPLY not started.
-Next action: /paul:apply .paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md
-Resume file: .paul/HANDOFF-2026-05-14-phase-286-ready-to-apply.md
-wip_result: skipped (github-flow base branch; plan/lifecycle artifacts uncommitted on main)
+Last session: 2026-05-14 — Completed Phase 286 UNIFY and transition routing to Phase 287.
+Stopped at: Phase 287 ready to plan.
+Next action: /paul:plan for Phase 287 Code Review Workflow Integration
+Resume file: .paul/ROADMAP.md
+wip_result: n/a — lifecycle state committed on feature branch for PR #204.
 Resume context:
-- Plan 286-01 scopes `kernel/workflows/plan-phase.md`, `kernel/workflows/apply-phase.md`, `tests/pi-end-to-end-validation.sh`, and `tests/cross-harness-validation.sh`.
-- APPLY must add the opt-in `/paul:plan` Plannotator review step, `PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` advisory sidecar rules, PAUL regeneration on denial, and APPLY advisory-note required reading.
-- Preserve Phase 284/285 contract authority: Plannotator output is advisory, `savedPath` is never adopted directly, `agentSwitch`/`permissionMode` are ignored, `.paul/*` lifecycle truth remains PAUL-owned, and Phase 287 owns code-review workflow integration.
-- Active handoff: `.paul/HANDOFF-2026-05-14-phase-286-ready-to-apply.md`; resume should recheck GitHub Flow state before APPLY.
+- Phase 286 closed plan-review workflow integration with advisory-only Plannotator sidecars and validation markers.
+- Phase 287 should add opt-in code-review workflow integration for APPLY/UNIFY without transferring lifecycle authority to Plannotator.
+- Before planning Phase 287, recheck PR #204 merge/base state if not already merged.
