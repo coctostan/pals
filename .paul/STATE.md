@@ -107,7 +107,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 Branch: feature/285-paul-plannotator-bridge (created from synced `origin/main`)
 Last lifecycle state: Phase 285 APPLY complete; plan `.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md` ready for UNIFY.
-PR: pending creation for `feature/285-paul-plannotator-bridge`; prior PR #202 merged via squash `3ef037ca`.
+PR #203: open — https://github.com/coctostan/pals/pull/203 (CI/status pending after APPLY postflight). Prior PR #202 merged via squash `3ef037ca`.
 Transition state: Phase 285 APPLY complete; 285-01 ready to unify.
 Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -117,7 +117,7 @@ Last session: 2026-05-14 — Completed Phase 285 APPLY for plan 285-01.
 Stopped at: Phase 285 APPLY complete; UNIFY not started.
 Next action: /paul:unify .paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md
 Resume file: .paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md
-wip_result: feature branch commit/PR pending postflight
+wip_result: committed `b06553b1` and opened PR #203 for APPLY branch
 Resume context:
 - APPLY implemented the Plannotator bridge sibling, docs/skill-map surfacing, and Pi marker validation from plan 285-01.
 - Validation evidence: `git diff --check` PASS; `bash -n tests/pi-end-to-end-validation.sh` PASS; `bash -n tests/cross-harness-validation.sh` PASS; `bash tests/helpers/artifact_consistency.sh` PASS; `bash tests/cross-harness-validation.sh` 234/234 PASS; `bash tests/pi-end-to-end-validation.sh` 324/331 with seven inherited CODI/PROJECT/ROADMAP-budget failures unrelated to new Phase 285 markers.
