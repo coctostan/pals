@@ -10,23 +10,23 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.66 Plannotator Integration — Rich UI Review Surfaces**
 Status: 🚧 In Progress
-Phases: 0 of 4 complete
+Phases: 1 of 4 complete
 Theme: Enhance human plan/code review with rich browser UI annotations via the existing `@plannotator/pi-extension`, while keeping PAUL's `.paul/*` lifecycle authority intact and Plannotator integration optional per-invocation.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 284 | Plannotator Integration Contract | 284-01 | UNIFY complete; PR #202 merge gate pending | - |
-| 285 | PAUL ↔ Plannotator Bridge | TBD | Not started | - |
+| 284 | Plannotator Integration Contract | 1/1 | ✅ Complete | 2026-05-14 |
+| 285 | PAUL ↔ Plannotator Bridge | TBD | 🔵 Ready to plan | - |
 | 286 | Plan Review Workflow Integration | TBD | Not started | - |
 | 287 | Code Review Workflow Integration | TBD | Not started | - |
 
 ### Phase 284: Plannotator Integration Contract
 Focus: Produce authoritative `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`. Investigate Plannotator source for event delivery mechanism, async result race recovery (`review-status` query pattern), extension-presence probe, result schema, `savedPath` semantics, multi-iteration behavior, and UI-abandoned timeout handling. Define advisory sidecar artifact contracts (`PLAN-REVIEW-NOTES.md`, `PLAN-FEEDBACK-{iteration}.md`, `CODE-REVIEW-NOTES.md`). Document non-adoption surface (`--plan` mode, `plannotator_submit_plan`, phase machine, `plannotator.json`, `agentSwitch`/`permissionMode`). Opt-in via `pals.json` `integrations.plannotator.enabled`. Validation classification: helper delegation + Pi-supported runtime; Pi-only. No code.
-Plans: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md`) — UNIFY ✓; PR #202 merge gate pending
+Plans: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md`) — COMPLETE ✓ (`284-01-SUMMARY.md`)
 
 ### Phase 285: PAUL ↔ Plannotator Bridge
 Focus: New sibling Pi extension `drivers/pi/extensions/plannotator-bridge.ts` following the S1–S8 extraction recipe (9th application of the loader-compat invariant). Helper functions `requestPlanReview(planPath)`, `requestCodeReview(diffType)`, `awaitReviewResult(reviewId, timeoutMs)`. Extension-presence detection with graceful fallback. Pi installed-resource marker checks per v2.65 pattern. No workflow instruction changes yet.
-Plans: TBD (defined during /paul:plan)
+Plans: TBD (defined during /paul:plan) — NEXT
 
 ### Phase 286: Plan Review Workflow Integration
 Focus: Edit `/paul:plan` workflow instructions for an end-of-PLAN per-invocation prompt. On approve: optional `PLAN-REVIEW-NOTES.md` sidecar; continue. On deny: write `PLAN-FEEDBACK-{iteration}.md`, re-enter PLAN with feedback as required reading; PAUL regenerates PLAN.md (never adopts Plannotator `savedPath` directly). Add one-line required-reading note to `/paul:apply` for `PLAN-REVIEW-NOTES.md`. Section-by-section workflow rewrite pattern (v2.63 lineage).
