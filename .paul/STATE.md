@@ -9,18 +9,18 @@ See: .paul/PROJECT.md (v2.66 Plannotator Integration — Rich UI Review Surfaces
 ## Current Position
 
 Milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
-Phase: 285 of 287 (PAUL ↔ Plannotator Bridge) — APPLY complete
-Plan: 285-01 `.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md`
-Status: Ready to unify
-Last activity: 2026-05-14 — Completed APPLY for plan 285-01: added Plannotator bridge sibling, surfaced docs/skill-map markers, added Pi marker validation, archived consumed handoff, and verified cross-harness green with Pi validation retaining inherited CODI/context-budget failures.
-Next action: /paul:unify .paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md
+Phase: 286 of 287 (Plan Review Workflow Integration) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-14 — Completed Phase 285 UNIFY: created 285-01 summary, appended WALT/CODI history rows, passed cross-harness/artifact checks, merged PR #203, and transitioned to Phase 286.
+Next action: /paul:plan for Phase 286
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
-- v2.66 Plannotator Integration — Rich UI Review Surfaces: [████░░░░░░] 40% (Phase 284 complete; Phase 285 APPLY complete / ready to UNIFY; Phases 286–287 remain)
+- v2.66 Plannotator Integration — Rich UI Review Surfaces: [█████░░░░░] 50% (Phases 284–285 complete; Phase 286 ready to plan; Phase 287 remains)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -28,7 +28,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 285 plan 285-01 ready to UNIFY]
+  ○        ○        ○     [Phase 286 ready to PLAN]
 ```
 
 ## Accumulated Context
@@ -85,6 +85,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 282 UNIFY: Created `282-01-SUMMARY.md`, appended CODI and WALT history rows for `282-01`, marked Phase 282 complete, and prepared transition to Phase 283. TODD/RUBY marker checks passed; inherited Pi CODI marker failures remain unrelated follow-up scope.
 - Phase 283 PLAN/APPLY/UNIFY: Added advisory ARCH side-effect-boundary guidance and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Verification: `git diff --check` clean, both validation scripts pass `bash -n`, `artifact_consistency` PASS, cross-harness 234/234 PASS, Pi 322/328 with 6 baseline-inherited CODI/PROJECT-budget failures identical pre/post via `git stash`. Created `283-01-SUMMARY.md`, appended CODI and WALT history rows for `283-01`, marked Phase 283 complete, closed v2.65 milestone. Parent-owned APPLY/UNIFY, no helper delegation; one minor in-loop fix (lowercased `functional-first` in two ARCH hook descriptions so rendered modules.yaml carries the asserted marker).
 - Phase 285 APPLY: Added `drivers/pi/extensions/plannotator-bridge.ts` with optional/advisory Plannotator event helpers (`requestPlanReview`, `requestCodeReview`, `awaitReviewResult`), surfaced the bridge in Pi docs/skill map, added Pi marker checks, archived the consumed Phase 285 handoff, and refreshed MILESTONES current-phase pointers. Verification: `git diff --check` clean, `bash -n` validation scripts PASS, artifact_consistency PASS, cross-harness 234/234 PASS, Pi 324/331 with seven inherited CODI/PROJECT/ROADMAP-budget failures unrelated to Phase 285 markers.
+- Phase 285 UNIFY: Created `285-01-SUMMARY.md`, appended CODI and WALT history rows for `285-01`, marked Phase 285 complete, merged PR #203 after Socket checks passed, and transitioned to Phase 286. Phase 286 should wire the new bridge into `/paul:plan` with opt-in prompt and plan-review sidecars.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -105,21 +106,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/285-paul-plannotator-bridge (created from synced `origin/main`)
-Last lifecycle state: Phase 285 APPLY complete; plan `.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md` ready for UNIFY.
-PR #203: open — https://github.com/coctostan/pals/pull/203 (CI/status pending after APPLY postflight). Prior PR #202 merged via squash `3ef037ca`.
-Transition state: Phase 285 APPLY complete; 285-01 ready to unify.
+Branch: main (PR #203 merged via squash; base synced)
+Last lifecycle state: Phase 285 complete; SUMMARY `.paul/phases/285-paul-plannotator-bridge/285-01-SUMMARY.md`; Phase 286 ready to plan.
+PR #203: merged — https://github.com/coctostan/pals/pull/203 (Socket checks PASS). Prior PR #202 merged via squash `3ef037ca`.
+Transition state: Phase 285 complete; Phase 286 ready to plan.
 Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-14 — Completed Phase 285 APPLY for plan 285-01.
-Stopped at: Phase 285 APPLY complete; UNIFY not started.
-Next action: /paul:unify .paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md
-Resume file: .paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md
-wip_result: committed `b06553b1` and opened PR #203 for APPLY branch
+Last session: 2026-05-14 — Completed Phase 285 UNIFY and transitioned to Phase 286.
+Stopped at: Phase 286 ready to plan.
+Next action: /paul:plan for Phase 286
+Resume file: .paul/ROADMAP.md
+wip_result: PR #203 merged; feature branch cleanup handled by GitHub Flow
 Resume context:
-- APPLY implemented the Plannotator bridge sibling, docs/skill-map surfacing, and Pi marker validation from plan 285-01.
-- Validation evidence: `git diff --check` PASS; `bash -n tests/pi-end-to-end-validation.sh` PASS; `bash -n tests/cross-harness-validation.sh` PASS; `bash tests/helpers/artifact_consistency.sh` PASS; `bash tests/cross-harness-validation.sh` 234/234 PASS; `bash tests/pi-end-to-end-validation.sh` 324/331 with seven inherited CODI/PROJECT/ROADMAP-budget failures unrelated to new Phase 285 markers.
-- Module notes: TODD/WALT no test runner detected beyond validation scripts; DEAN no dependency manifests; advisory modules found no blocking data/API/UI/deploy/security/privacy concerns for the bounded Pi extension/docs/test scope.
-- UNIFY should create `285-01-SUMMARY.md`, append module/history rows as applicable, and handle GitHub Flow PR/merge gate.
+- Phase 285 produced the optional/advisory `plannotator-bridge.ts` helper surface and marker validation; workflow integration remains deferred.
+- Phase 286 focus from ROADMAP: edit `/paul:plan` workflow instructions for an end-of-PLAN per-invocation prompt, write `PLAN-REVIEW-NOTES.md` on approval-with-feedback, write `PLAN-FEEDBACK-{iteration}.md` on denial, re-enter PLAN through PAUL rules, and add APPLY required-reading note for plan-review notes.
+- Preserve Phase 284 contract authority: Plannotator output is advisory, `savedPath` is never adopted directly, and `.paul/*` lifecycle truth remains PAUL-owned.

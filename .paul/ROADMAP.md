@@ -16,8 +16,8 @@ Theme: Enhance human plan/code review with rich browser UI annotations via the e
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 284 | Plannotator Integration Contract | 1/1 | ✅ Complete | 2026-05-14 |
-| 285 | PAUL ↔ Plannotator Bridge | 0/1 | 🟠 Apply complete | - |
-| 286 | Plan Review Workflow Integration | TBD | Not started | - |
+| 285 | PAUL ↔ Plannotator Bridge | 1/1 | ✅ Complete | 2026-05-14 |
+| 286 | Plan Review Workflow Integration | TBD | 🔵 Ready to plan | - |
 | 287 | Code Review Workflow Integration | TBD | Not started | - |
 
 ### Phase 284: Plannotator Integration Contract
@@ -26,7 +26,7 @@ Plans: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md
 
 ### Phase 285: PAUL ↔ Plannotator Bridge
 Focus: New sibling Pi extension `drivers/pi/extensions/plannotator-bridge.ts` following the S1–S8 extraction recipe (9th application of the loader-compat invariant). Helper functions `requestPlanReview(planPath)`, `requestCodeReview(diffType)`, `awaitReviewResult(reviewId, timeoutMs)`. Extension-presence detection with graceful fallback. Pi installed-resource marker checks per v2.65 pattern. No workflow instruction changes yet.
-Plans: 285-01 (`.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md`) — APPLY COMPLETE; READY TO UNIFY
+Plans: 285-01 (`.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md`) — COMPLETE ✓ (`285-01-SUMMARY.md`)
 
 ### Phase 286: Plan Review Workflow Integration
 Focus: Edit `/paul:plan` workflow instructions for an end-of-PLAN per-invocation prompt. On approve: optional `PLAN-REVIEW-NOTES.md` sidecar; continue. On deny: write `PLAN-FEEDBACK-{iteration}.md`, re-enter PLAN with feedback as required reading; PAUL regenerates PLAN.md (never adopts Plannotator `savedPath` directly). Add one-line required-reading note to `/paul:apply` for `PLAN-REVIEW-NOTES.md`. Section-by-section workflow rewrite pattern (v2.63 lineage).
