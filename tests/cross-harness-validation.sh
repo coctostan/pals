@@ -1026,6 +1026,20 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     "$root/workflows/plan-phase.md"
 
   tap_file_contains_all \
+    "$label plan workflow preserves optional Plannotator plan-review markers" \
+    "$root/workflows/plan-phase.md" \
+    'Run Plannotator review? [y/n]' \
+    'zero overhead' \
+    'requestPlanReview' \
+    'awaitReviewResult' \
+    'PLAN-REVIEW-NOTES.md' \
+    'PLAN-FEEDBACK-{iteration}.md' \
+    'Never copy/adopt `savedPath` as PLAN.md' \
+    'Ignore `agentSwitch` and `permissionMode`' \
+    'advisory evidence only' \
+    're-enter PAUL planning'
+
+  tap_file_contains_all \
     "$label apply workflow keeps parent-owned APPLY and checkpoint guardrails" \
     "$root/workflows/apply-phase.md" \
     'parent owns verification, module gates, fallback, and state/report writes' \
@@ -1037,6 +1051,15 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
   tap_apply_workflow_semantics \
     "$label" \
     "$root/workflows/apply-phase.md"
+
+  tap_file_contains_all \
+    "$label apply workflow preserves Plannotator notes as advisory-only context" \
+    "$root/workflows/apply-phase.md" \
+    'PLAN-REVIEW-NOTES.md' \
+    'advisory context only' \
+    'PLAN.md' \
+    '.paul/STATE.md' \
+    'never overrides'
 
   tap_file_contains_all \
     "$label apply workflow keeps Helper Delegation parent-acceptance markers" \

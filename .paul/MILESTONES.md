@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.66 Plannotator Integration — Rich UI Review Surfaces; Phase 285 complete; Phase 286 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.66 Plannotator Integration — Rich UI Review Surfaces; Phase 286 complete; Phase 287 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -87,9 +87,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.66 Plannotator Integration — Rich UI Review Surfaces. Current phase: Phase 286 Plan Review Workflow Integration, ready to plan.
+**Current milestone:** v2.66 Plannotator Integration — Rich UI Review Surfaces. Current phase: Phase 287 Code Review Workflow Integration, ready to plan.
 
-**Latest completed phase:** Phase 285 PAUL ↔ Plannotator Bridge completed 2026-05-14 via PR #203; Phase 286 plan-review workflow integration is next.
+**Latest completed phase:** Phase 286 Plan Review Workflow Integration completed 2026-05-14 via PR #204; Phase 287 code-review workflow integration is next.
 
 ## Archive
 
