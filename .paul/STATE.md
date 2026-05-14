@@ -2,24 +2,25 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.65 complete; next milestone pending via /paul:milestone)
+See: .paul/PROJECT.md (v2.66 Plannotator Integration — Rich UI Review Surfaces active)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Awaiting next milestone — v2.65 Functional-First Agent Guidance closed 2026-05-13 via PR #201 (`752184e0`); archive [v2.65](archive/roadmap/v2.65-functional-first-agent-guidance.md).
+**Current focus:** v2.66 Plannotator Integration — Rich UI Review Surfaces (Phase 284 of 287 — UNIFY complete; GitHub Flow merge gate pending for PR #202). v2.65 closed 2026-05-13 via PR #201 (`752184e0`); archive [v2.65](archive/roadmap/v2.65-functional-first-agent-guidance.md).
 
 ## Current Position
 
-Milestone: none active — v2.65 Functional-First Agent Guidance complete; next milestone pending via /paul:milestone
-Phase: 283 of 283 (ARCH Advisory + Closure) — Complete (v2.65 milestone closed)
-Plan: 283-01 complete (UNIFY done; PR #201 merged 2026-05-13 as `752184e0`)
-Status: v2.65 Functional-First Agent Guidance complete — ready for next milestone
-Last activity: 2026-05-13 — v2.65 milestone completed; ROADMAP/MILESTONES/PROJECT/STATE evolved; v2.65 detail archived to `.paul/archive/roadmap/v2.65-functional-first-agent-guidance.md`
-Next action: /paul:discuss-milestone or /paul:milestone to define the next milestone
+Milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
+Phase: 284 of 287 (Plannotator Integration Contract) — UNIFY complete; merge gate pending
+Plan: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md`)
+Status: UNIFY ✓ — PR #202 merge gate pending
+Last activity: 2026-05-14 — Phase 284 Plan 284-01 UNIFY complete. SUMMARY created; CODI/QUALITY history rows updated; PR #202 open for GitHub Flow merge gate.
+Next action: complete GitHub Flow merge gate for PR #202, then transition to Phase 285.
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
 - v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% (Phase 272 ✅ PR #188 `df56ece1`; milestone complete)
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
+- v2.66 Plannotator Integration — Rich UI Review Surfaces: [██░░░░░░░░] 25% (Phase 284 UNIFY complete; PR #202 merge gate pending; Phases 285–287 remain)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -27,7 +28,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [v2.65 closed; ready to plan next milestone]
+  ✓        ✓        ✓     [Plan 284-01 UNIFY complete; PR #202 merge gate pending]
 ```
 
 ## Accumulated Context
@@ -103,19 +104,24 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #201 merged via squash `752184e0`; feature branch deleted; base synced)
-Last lifecycle state: Phase 283 UNIFY complete; task/feature commit `4ea90e2c`; SUMMARY `.paul/phases/283-arch-advisory-closure/283-01-SUMMARY.md`.
-PR #201: merged — https://github.com/coctostan/pals/pull/201 (squash; branch deleted; CI PASS).
-Transition state: v2.65 milestone closed across Phases 279–283; awaiting next milestone.
+Branch: feature/284-plannotator-integration-contract (PR #202 open against main; merge gate pending)
+Last lifecycle state: Phase 284 UNIFY complete; APPLY commit `a0dbdf65`; SUMMARY `.paul/phases/284-plannotator-integration-contract/284-01-SUMMARY.md`.
+PR #202: open — https://github.com/coctostan/pals/pull/202 (CI/merge gate pending). Prior PR #201 merged via squash `752184e0`.
+Transition state: Phase 284 ready for required transition after PR #202 merge gate completes.
 Prior PRs: #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-13 — Phase 283 UNIFY complete; v2.65 milestone closed.
-Stopped at: v2.65 closed; awaiting next milestone.
-Next action: /paul:milestone to open the next milestone (or `/paul:status` for a recap).
-Resume file: .paul/ROADMAP.md
-wip_result: not-applicable — UNIFY commit covers Phase 283 lifecycle artifacts; no separate WIP commit needed
+Last session: 2026-05-14 — Phase 284 Plan 284-01 UNIFY complete. Created `284-01-SUMMARY.md`, appended CODI/QUALITY history rows, and prepared PR #202 for GitHub Flow merge gate.
+Stopped at: UNIFY ✓ for Phase 284 Plan 284-01; GitHub Flow merge gate pending.
+Next action: complete GitHub Flow merge gate for PR #202, then transition to Phase 285.
+Resume file: none (prior handoff consumed and archived at `.paul/handoffs/archive/HANDOFF-2026-05-14-after-phase-284-plan.md`)
+unify_result: complete (SUMMARY written; post-unify module rows recorded; PR #202 merge gate pending)
 Resume context:
-- v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283 (PRs #197 / #198 / #199 / #200 / #201).
-- Deferred follow-up: 6 baseline-inherited Pi end-to-end failures (5 CODI marker-drift checks + 1 PROJECT byte-budget) carry forward as next-milestone candidate per ROADMAP `Next Milestone`.
+- v2.66 Plannotator Integration — Rich UI Review Surfaces created 2026-05-14 with 4 phases (284 Plannotator Integration Contract → 285 PAUL ↔ Plannotator Bridge → 286 Plan Review Workflow Integration → 287 Code Review Workflow Integration).
+- Authority hierarchy: `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md` (authored Phase 284) is authoritative for what PALS does and does not consume from `@plannotator/pi-extension`; `.paul/*` remains authoritative for lifecycle state; Plannotator README/source are provenance/background; `*-REVIEW-NOTES.md` and `PLAN-FEEDBACK-{iteration}.md` are advisory sidecars only.
+- Non-adoption commitments: Plannotator's `--plan` mode, `plannotator_submit_plan` tool, phase machine (`idle → planning → executing`), `plannotator.json` per-phase config, and `agentSwitch`/`permissionMode` result fields are explicitly NOT adopted. PAUL owns PLAN.md regeneration after feedback (Plannotator `savedPath` is advisory input only).
+- Per-invocation opt-in posture: each PAUL workflow with a review surface asks the user "Run Plannotator review? [y/n]" — not auto-launched, not config-driven default-on; declining costs zero overhead; missing extension is a graceful skip.
+- Pi-only milestone (cross-harness retired). Pi >= 0.53 requirement satisfied (project on 0.74). New optional external dependency (`@plannotator/pi-extension`); PALS does not bundle, install, or pin it.
+- Architectural lineage: Phase 285 reuses sibling Pi-extension extraction recipe (v2.56–v2.61, 9th application of loader-compat invariant); Phases 286–287 reuse v2.63 section-by-section workflow rewrite pattern; Phase 285 marker checks reuse v2.65 installed-resource marker pattern; Phase 284 reuses v2.65 contract-over-research authority hierarchy.
+- Alternatives rejected during discussion: Stage CLI (diff-only data model, not viable for plan review), S4 Canonical Reply Delivery (parked indefinitely), Hot-Artifact Narrative Deduplication (parked), Validation Hygiene (deferred to v2.67 candidate; recorded as Next Milestone pointer).

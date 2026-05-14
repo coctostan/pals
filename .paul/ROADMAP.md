@@ -8,13 +8,37 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**Awaiting next milestone**
-Status: Last milestone v2.65 closed 2026-05-13 — PR #201 `752184e0`; archive [archive/roadmap/v2.65-functional-first-agent-guidance.md](archive/roadmap/v2.65-functional-first-agent-guidance.md).
-Next: run /paul:discuss-milestone or /paul:milestone to define the next scope.
+**v2.66 Plannotator Integration — Rich UI Review Surfaces**
+Status: 🚧 In Progress
+Phases: 0 of 4 complete
+Theme: Enhance human plan/code review with rich browser UI annotations via the existing `@plannotator/pi-extension`, while keeping PAUL's `.paul/*` lifecycle authority intact and Plannotator integration optional per-invocation.
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 284 | Plannotator Integration Contract | 284-01 | UNIFY complete; PR #202 merge gate pending | - |
+| 285 | PAUL ↔ Plannotator Bridge | TBD | Not started | - |
+| 286 | Plan Review Workflow Integration | TBD | Not started | - |
+| 287 | Code Review Workflow Integration | TBD | Not started | - |
+
+### Phase 284: Plannotator Integration Contract
+Focus: Produce authoritative `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`. Investigate Plannotator source for event delivery mechanism, async result race recovery (`review-status` query pattern), extension-presence probe, result schema, `savedPath` semantics, multi-iteration behavior, and UI-abandoned timeout handling. Define advisory sidecar artifact contracts (`PLAN-REVIEW-NOTES.md`, `PLAN-FEEDBACK-{iteration}.md`, `CODE-REVIEW-NOTES.md`). Document non-adoption surface (`--plan` mode, `plannotator_submit_plan`, phase machine, `plannotator.json`, `agentSwitch`/`permissionMode`). Opt-in via `pals.json` `integrations.plannotator.enabled`. Validation classification: helper delegation + Pi-supported runtime; Pi-only. No code.
+Plans: 284-01 (`.paul/phases/284-plannotator-integration-contract/284-01-PLAN.md`) — UNIFY ✓; PR #202 merge gate pending
+
+### Phase 285: PAUL ↔ Plannotator Bridge
+Focus: New sibling Pi extension `drivers/pi/extensions/plannotator-bridge.ts` following the S1–S8 extraction recipe (9th application of the loader-compat invariant). Helper functions `requestPlanReview(planPath)`, `requestCodeReview(diffType)`, `awaitReviewResult(reviewId, timeoutMs)`. Extension-presence detection with graceful fallback. Pi installed-resource marker checks per v2.65 pattern. No workflow instruction changes yet.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 286: Plan Review Workflow Integration
+Focus: Edit `/paul:plan` workflow instructions for an end-of-PLAN per-invocation prompt. On approve: optional `PLAN-REVIEW-NOTES.md` sidecar; continue. On deny: write `PLAN-FEEDBACK-{iteration}.md`, re-enter PLAN with feedback as required reading; PAUL regenerates PLAN.md (never adopts Plannotator `savedPath` directly). Add one-line required-reading note to `/paul:apply` for `PLAN-REVIEW-NOTES.md`. Section-by-section workflow rewrite pattern (v2.63 lineage).
+Plans: TBD (defined during /paul:plan)
+
+### Phase 287: Code Review Workflow Integration
+Focus: Edit `/paul:apply` end-of-APPLY and `/paul:unify` for the same per-invocation prompt with `diffType` appropriate to the phase (uncommitted / staged / phase-range). Annotation feedback written to `.paul/phases/N/CODE-REVIEW-NOTES.md`. Advisory only — no automatic route to `/paul:fix`. Add one-line required-reading note to `/paul:unify` for `CODE-REVIEW-NOTES.md`. Both APPLY and UNIFY code-review hooks share the bridge — one phase, not two.
+Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone
 
-Run `/paul:discuss-milestone` to explore scope, or `/paul:milestone` to create directly. Recommended scope candidate: clear the 6 baseline-inherited Pi end-to-end failures (5 CODI marker-drift checks + 1 PROJECT byte-budget) using the existing `tests/helpers/module_instruction_semantics.sh` helpers and decide on a v2.66 theme alongside.
+v2.67 candidate: Validation Hygiene — clear the 6 baseline-inherited Pi e2e failures (5 CODI marker-drift checks + 1 PROJECT byte-budget) via the existing `tests/helpers/module_instruction_semantics.sh` helpers. Deferred from v2.66 per the v2.66 discussion (visual review UX prioritized over hygiene bookkeeping).
 
 ### Latest completed milestone: v2.65 Functional-First Agent Guidance
 Result: Phases 279–283 complete. Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract; Phase 280 AGENTS/init Engineering Principles + installed-resource marker checks; Phase 281 brownfield map-codebase signal detection for local idioms and effect boundaries; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Archive: [archive/roadmap/v2.65-functional-first-agent-guidance.md](archive/roadmap/v2.65-functional-first-agent-guidance.md).
