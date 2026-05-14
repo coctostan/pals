@@ -10,14 +10,14 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.66 Plannotator Integration — Rich UI Review Surfaces**
 Status: 🚧 In Progress
-Phases: 1 of 4 complete
+Phases: 2 of 4 complete
 Theme: Enhance human plan/code review with rich browser UI annotations via the existing `@plannotator/pi-extension`, while keeping PAUL's `.paul/*` lifecycle authority intact and Plannotator integration optional per-invocation.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 284 | Plannotator Integration Contract | 1/1 | ✅ Complete | 2026-05-14 |
 | 285 | PAUL ↔ Plannotator Bridge | 1/1 | ✅ Complete | 2026-05-14 |
-| 286 | Plan Review Workflow Integration | TBD | 🔵 Ready to plan | - |
+| 286 | Plan Review Workflow Integration | 0/1 | 🟡 Planned | - |
 | 287 | Code Review Workflow Integration | TBD | Not started | - |
 
 ### Phase 284: Plannotator Integration Contract
@@ -30,7 +30,7 @@ Plans: 285-01 (`.paul/phases/285-paul-plannotator-bridge/285-01-PLAN.md`) — CO
 
 ### Phase 286: Plan Review Workflow Integration
 Focus: Edit `/paul:plan` workflow instructions for an end-of-PLAN per-invocation prompt. On approve: optional `PLAN-REVIEW-NOTES.md` sidecar; continue. On deny: write `PLAN-FEEDBACK-{iteration}.md`, re-enter PLAN with feedback as required reading; PAUL regenerates PLAN.md (never adopts Plannotator `savedPath` directly). Add one-line required-reading note to `/paul:apply` for `PLAN-REVIEW-NOTES.md`. Section-by-section workflow rewrite pattern (v2.63 lineage).
-Plans: TBD (defined during /paul:plan)
+Plans: 286-01 (`.paul/phases/286-plan-review-workflow-integration/286-01-PLAN.md`) — READY TO APPLY
 
 ### Phase 287: Code Review Workflow Integration
 Focus: Edit `/paul:apply` end-of-APPLY and `/paul:unify` for the same per-invocation prompt with `diffType` appropriate to the phase (uncommitted / staged / phase-range). Annotation feedback written to `.paul/phases/N/CODE-REVIEW-NOTES.md`. Advisory only — no automatic route to `/paul:fix`. Add one-line required-reading note to `/paul:unify` for `CODE-REVIEW-NOTES.md`. Both APPLY and UNIFY code-review hooks share the bridge — one phase, not two.

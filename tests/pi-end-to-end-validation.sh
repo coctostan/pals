@@ -661,6 +661,28 @@ tap_file_contains_all \
   'Review: [1] Quick recap'
 
 tap_file_contains_all \
+  "Installed shared plan workflow preserves optional Plannotator plan-review markers" \
+  "$PI_PLAN" \
+  'Run Plannotator review? [y/n]' \
+  'zero overhead' \
+  'requestPlanReview' \
+  'awaitReviewResult' \
+  'PLAN-REVIEW-NOTES.md' \
+  'PLAN-FEEDBACK-{iteration}.md' \
+  'Never copy/adopt `savedPath` as PLAN.md' \
+  'Ignore `agentSwitch` and `permissionMode`' \
+  'advisory evidence only' \
+  're-enter PAUL planning'
+
+tap_file_contains_all \
+  "Installed shared apply workflow preserves Plannotator notes as advisory-only context" \
+  "$PI_APPLY" \
+  'PLAN-REVIEW-NOTES.md' \
+  'advisory context only' \
+  'PLAN.md' \
+  '.paul/STATE.md' \
+  'never overrides'
+tap_file_contains_all \
   "Installed shared discuss workflow keeps selected-phase posture markers after prose cleanup" \
   "$PI_DISCUSS" \
   'selected phase detail' \

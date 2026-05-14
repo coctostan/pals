@@ -16,6 +16,7 @@ Next phase: UNIFY after execution
 <required_reading>
 - Bounded `.paul/STATE.md` fields for current position, loop position, blockers, and approved plan.
 - Approved PLAN sections only: frontmatter/files, tasks, boundaries, files, acceptance criteria, and checkpoints.
+- If `.paul/phases/{phase-slug}/PLAN-REVIEW-NOTES.md` exists beside the approved plan, read it as advisory context only; PLAN.md and `.paul/STATE.md` remain authoritative, it never overrides tasks, acceptance criteria, boundaries, module gates, GitHub Flow, or checkpoints, and approval-with-notes is not extra user approval for changes outside the plan.
 - Installed `modules.yaml` registry for pre-apply, post-task, and post-apply hook dispatch.
 </required_reading>
 
