@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.66 Plannotator Integration — Rich UI Review Surfaces complete)
+See: .paul/PROJECT.md (v2.67 Validation Hygiene active)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.66 Plannotator Integration — Rich UI Review Surfaces complete. Ready for next milestone decision; v2.67 Validation Hygiene is the named candidate.
+**Current focus:** v2.67 Validation Hygiene (Phase 288 of 290 — CODI Validation Marker Hygiene, ready to PLAN). v2.66 is complete; v2.67 targets inherited Pi e2e CODI marker drift and PROJECT/ROADMAP byte-budget concerns.
 
 ## Current Position
 
-Milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces — complete
-Phase: 287 of 287 (Code Review Workflow Integration) — complete
-Plan: 287-01 complete (`.paul/phases/287-code-review-workflow-integration/287-01-SUMMARY.md`)
-Status: Milestone complete; ready for next milestone decision
-Last activity: 2026-05-14 — Unified Phase 287 plan 287-01, marked v2.66 complete, and prepared next milestone routing.
-Next action: /paul:milestone to start the next milestone (candidate: v2.67 Validation Hygiene).
+Milestone: v2.67 Validation Hygiene
+Phase: 288 of 290 (CODI Validation Marker Hygiene) — Not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-14 — Created v2.67 Validation Hygiene milestone with phases 288–290.
+Next action: /paul:plan for Phase 288 CODI Validation Marker Hygiene
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -21,6 +21,7 @@ Progress:
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
+- v2.67 Validation Hygiene: [░░░░░░░░░░] 0% (Phases 288–290 created; Phase 288 ready to PLAN)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -28,7 +29,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [v2.66 complete]
+  ○        ·        ·     [Phase 288 ready to PLAN]
 ```
 
 ## Accumulated Context
@@ -88,12 +89,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 285 UNIFY: Created `285-01-SUMMARY.md`, appended CODI and WALT history rows for `285-01`, marked Phase 285 complete, merged PR #203 after Socket checks passed, and transitioned to Phase 286. Phase 286 should wire the new bridge into `/paul:plan` with opt-in prompt and plan-review sidecars.
 - Phase 286 PLAN/APPLY/UNIFY: Added opt-in Plannotator plan-review workflow semantics to `/paul:plan`, advisory `PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` sidecar rules, APPLY advisory-note loading, and Pi/cross-harness marker validation. Cross-harness passed 240/240; Pi Phase 286 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately. PR #204 opened; Socket checks passed.
 - Phase 287 PLAN/APPLY/UNIFY: Added opt-in Plannotator code-review workflow semantics to `/paul:apply` and `/paul:unify`, advisory `CODE-REVIEW-NOTES.md`, no auto `/paul:fix`, REV/GitHub Flow non-override guardrails, and Pi/cross-harness marker validation. Cross-harness passed 246/246; Pi Phase 287 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately. PR #205 opened; Socket checks passed.
+- v2.67 milestone created: Validation Hygiene targets inherited Pi e2e CODI marker-drift failures and PROJECT/ROADMAP byte-budget concerns with semantic-helper and hot-artifact hygiene phases before closure validation.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
 
-- v2.67 candidate: apply the Phase 278 semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` baseline-inherited CODI marker-drift failures plus inherited PROJECT/ROADMAP byte-budget concerns; identical-family fix using existing `tests/helpers/module_instruction_semantics.sh`.
+- v2.67 active scope: apply the Phase 278 semantic-guardrail pattern to `tests/pi-end-to-end-validation.sh` baseline-inherited CODI marker-drift failures plus inherited PROJECT/ROADMAP byte-budget concerns; identical-family fix using existing `tests/helpers/module_instruction_semantics.sh`.
 - ci-generation.md and sonarqube-integration.md — future module candidates.
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
@@ -109,19 +111,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: main (PR #205 merged via squash; base synced)
-Last lifecycle state: Phase 287 UNIFY complete; v2.66 milestone complete.
+Last lifecycle state: v2.67 milestone created; Phase 288 ready to plan.
 PR #205: merged — https://github.com/coctostan/pals/pull/205 (Socket checks PASS). Prior PR #204 merged via squash; PR #203 merged via squash; PR #202 merged via squash `3ef037ca`.
-Transition state: v2.66 complete; next milestone decision pending.
+Transition state: v2.67 active; Phase 288 ready to plan.
 Prior PRs: #204 / #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-14 — Unified Phase 287 plan 287-01 and completed v2.66.
-Stopped at: v2.66 complete; next milestone decision pending.
-Next action: /paul:milestone for v2.67 Validation Hygiene or another selected milestone.
+Last session: 2026-05-14 — Created v2.67 Validation Hygiene milestone.
+Stopped at: v2.67 milestone created; Phase 288 ready to plan.
+Next action: /paul:plan for Phase 288 CODI Validation Marker Hygiene
 Resume file: .paul/ROADMAP.md
-wip_result: n/a — lifecycle state committed on main after PR #205 merge.
+wip_result: uncommitted milestone lifecycle update on main.
 Resume context:
-- v2.66 completed optional/advisory Plannotator plan-review and code-review surfaces with no `.paul/*` authority transfer.
-- PR #205 merged with Socket checks passing; base is synced.
-- Next milestone candidate: v2.67 Validation Hygiene for inherited CODI marker drift and PROJECT/ROADMAP byte-budget checks.
+- v2.67 Validation Hygiene phases: 288 CODI marker hygiene, 289 hot artifact budget hygiene, 290 validation closure.
+- Phase 288 should start with Pi e2e CODI marker-drift failures and existing `tests/helpers/module_instruction_semantics.sh` patterns.
+- Preserve artifact-first truth; validation hygiene should not change product/runtime behavior.

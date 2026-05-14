@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.66 Plannotator Integration — Rich UI Review Surfaces complete; next milestone decision pending (v2.67 candidate: Validation Hygiene) | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.67 Validation Hygiene active; Phase 288 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -88,9 +88,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.66 Plannotator Integration — Rich UI Review Surfaces is complete. Next milestone decision pending; v2.67 Validation Hygiene is the named candidate.
+**Current milestone:** v2.67 Validation Hygiene. Current phase: Phase 288 CODI Validation Marker Hygiene, ready to plan.
 
-**Latest completed phase:** Phase 287 Code Review Workflow Integration completed 2026-05-14 via PR #205; v2.66 is complete.
+**Latest completed phase:** Phase 287 Code Review Workflow Integration completed 2026-05-14 via PR #205; v2.66 is complete. Next phase: Phase 288 CODI Validation Marker Hygiene.
 
 ## Archive
 
@@ -101,4 +101,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened 2026-05-14.*
