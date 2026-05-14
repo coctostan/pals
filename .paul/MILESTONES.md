@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | Awaiting next milestone — v2.65 closed 2026-05-13 (PR #201) | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.66 Plannotator Integration — Rich UI Review Surfaces; Phase 285 complete; Phase 286 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -87,9 +87,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** _Awaiting next milestone._ v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283 (PRs #197 / #198 / #199 / #200 / #201).
+**Current milestone:** v2.66 Plannotator Integration — Rich UI Review Surfaces. Current phase: Phase 286 Plan Review Workflow Integration, ready to plan.
 
-**Latest completed phase:** Phase 283 ARCH Advisory + Closure completed 2026-05-13 via PR #201 (`4ea90e2c`), closing v2.65.
+**Latest completed phase:** Phase 285 PAUL ↔ Plannotator Bridge completed 2026-05-14 via PR #203; Phase 286 plan-review workflow integration is next.
 
 ## Archive
 
@@ -100,4 +100,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened 2026-05-14.*
