@@ -108,9 +108,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/287-code-review-workflow-integration (PR #205 open; merge gate pending/continuing)
+Branch: main (PR #205 merged via squash; base synced)
 Last lifecycle state: Phase 287 UNIFY complete; v2.66 milestone complete.
-PR #205: open — https://github.com/coctostan/pals/pull/205 (Socket checks PASS). Prior PR #204 merged via squash; PR #203 merged via squash; PR #202 merged via squash `3ef037ca`.
+PR #205: merged — https://github.com/coctostan/pals/pull/205 (Socket checks PASS). Prior PR #204 merged via squash; PR #203 merged via squash; PR #202 merged via squash `3ef037ca`.
 Transition state: v2.66 complete; next milestone decision pending.
 Prior PRs: #204 / #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -120,8 +120,8 @@ Last session: 2026-05-14 — Unified Phase 287 plan 287-01 and completed v2.66.
 Stopped at: v2.66 complete; next milestone decision pending.
 Next action: /paul:milestone for v2.67 Validation Hygiene or another selected milestone.
 Resume file: .paul/ROADMAP.md
-wip_result: n/a — lifecycle state committed on feature branch for PR #205.
+wip_result: n/a — lifecycle state committed on main after PR #205 merge.
 Resume context:
 - v2.66 completed optional/advisory Plannotator plan-review and code-review surfaces with no `.paul/*` authority transfer.
-- PR #205 is open with Socket checks passing; merge gate/base sync remains before final main-state update.
+- PR #205 merged with Socket checks passing; base is synced.
 - Next milestone candidate: v2.67 Validation Hygiene for inherited CODI marker drift and PROJECT/ROADMAP byte-budget checks.
