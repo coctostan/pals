@@ -20,6 +20,7 @@ Routine bounded inputs:
 - `.paul/STATE.md` — Current Position, Loop Position, Session Continuity, and Git State / last commit only when needed.
 - `.paul/phases/{phase}/{plan}-PLAN.md` — frontmatter/files_modified, acceptance criteria, tasks, verification, boundaries, module_dispatch, and output target.
 - `modules.yaml` — installed registry for pre-unify/post-unify dispatch.
+- If `.paul/phases/{phase-slug}/CODE-REVIEW-NOTES.md` exists beside the approved plan, read it as advisory context only; it never overrides SUMMARY reconciliation, tasks, acceptance criteria, module gates, GitHub Flow, REV, CI, reviews, merge gate decisions, or `.paul/*` lifecycle truth.
 
 Conditional inputs:
 - Changed-file evidence — targeted changed-file evidence from PLAN paths and the working tree when reconciling results.
@@ -142,6 +143,16 @@ Call-site contract:
 2. Write compact module reports and side effects under `## Module Execution Reports`.
 3. If post-unify dispatch evidence is missing, add a warning: `missing dispatch evidence warning must be recorded in SUMMARY`.
 4. Save SUMMARY.md before `check_phase_completion`.
+</step>
+
+<step name="optional_plannotator_unify_code_review" priority="before-github-flow-merge-gate">
+When project-level Plannotator code review is available, prompt once per invocation: `Run Plannotator code review? [y/n]`.
+1. If declined, do zero overhead: no bridge call, no event emitted, no sidecar written; continue normal UNIFY routing.
+2. If accepted, call the Phase 285 bridge surface by name (`requestCodeReview`) without importing Plannotator internals or adding installed-runtime writes.
+3. Select UNIFY review context explicitly: prefer PR URL when available; otherwise use phase-range/staged review context such as `diffType: "phase-range"` or `diffType: "staged"` according to the current Git state.
+4. On unavailable/error/timeout/abandoned, record compact advisory evidence and continue through PAUL-owned routing unless the user explicitly made the review blocking.
+5. On approved-with-feedback or changes-requested feedback, write or append `.paul/phases/{phase-slug}/CODE-REVIEW-NOTES.md` with phase/plan, review surface `unify`, ISO timestamp, approval state, feedback, requested diff context, optional opaque annotation count/reference, and an advisory-only statement.
+6. Ignore `agentSwitch`; do not auto-route to `/paul:fix`; Plannotator feedback does not block merge by itself, does not replace REV, and never overrides GitHub Flow CI/review/merge gate decisions or `.paul/*` lifecycle truth. User-requested blocking review must be an explicit PAUL decision/deviation.
 </step>
 
 <step name="github_flow_merge_gate" priority="after-summary-finalized">

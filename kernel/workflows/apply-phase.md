@@ -137,6 +137,17 @@ Dispatch post-apply advisory modules via `kernel/references/module-dispatch.md` 
 Run blocking post-apply enforcement modules via `kernel/references/module-dispatch.md`; record baseline comparisons, PASS/BLOCK results, and evidence (`[dispatch] post-apply enforcement: ...`, `SKIPPED`, or `modules.yaml NOT FOUND — WARNING`). On BLOCK, offer fix/override/stop before finalize.
 </step>
 
+<step name="optional_plannotator_apply_code_review" priority="after-post-apply-gates">
+When project-level Plannotator code review is available, prompt once per invocation: `Run Plannotator code review? [y/n]`.
+1. If declined, do zero overhead: no bridge call, no event emitted, no sidecar written; continue normal PAUL APPLY routing.
+2. If accepted, call the Phase 285 bridge surface by name (`requestCodeReview`) without importing Plannotator internals or adding installed-runtime writes.
+3. Use APPLY review context before GitHub Flow postflight commit/push: `diffType: "uncommitted"`; include `cwd` and GitHub Flow PR URL only when already available.
+4. On unavailable/error/timeout/abandoned, record compact advisory evidence and continue through PAUL-owned routing unless the user explicitly made the review blocking.
+5. On approved-with-feedback or changes-requested feedback, write or append `.paul/phases/{phase-slug}/CODE-REVIEW-NOTES.md` with phase/plan, review surface `apply`, ISO timestamp, approval state, feedback, requested `diffType`, optional opaque annotation count/reference, and an advisory-only statement.
+6. Ignore `agentSwitch`; do not auto-route to `/paul:fix`; do not let Plannotator approve, block, widen, or change PLAN tasks, acceptance criteria, boundaries, module gates, GitHub Flow, REV, checkpoints, `.paul/STATE.md`, or SUMMARY.
+7. Preserve existing module dispatch evidence, GitHub Flow postflight, and APPLY finalize semantics.
+</step>
+
 <step name="handle_failures">
 On task verification failure:
 1. Stop before the next task; report failed task, failed check, expected vs actual, and changed-file scope.
