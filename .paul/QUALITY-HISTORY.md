@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: ...→Pi 334/335 (1 inherited PROJECT-budget), XH 246/246→Pi 335/335, XH 246/246
+Tests: ...→Pi 334/335 (1 PROJECT-budget)→Pi 335/335, XH 246/246→Pi 335/335, XH 246/246
 Coverage: —
 Lint: —
 Types: —
@@ -138,3 +138,4 @@ Types: —
 | 287-01 | 2026-05-14 | XH 246/246, Pi 328/335 (Phase 287 marker checks PASS; 7 inherited CODI/PROJECT/ROADMAP-budget failures) | N/A (shell) | N/A | N/A | → stable with baseline concerns |
 | 288-01 | 2026-05-19 | Pi 334/335 (CODI marker drift cleared; 1 PROJECT-budget failure remains), XH 246/246 | N/A (shell) | N/A | N/A | ↑ improving (five inherited Pi CODI marker failures resolved with semantic helpers; cross-harness unchanged green) |
 | 289-01 | 2026-05-19 | Pi 335/335, XH 246/246 | N/A (shell/lifecycle artifacts) | N/A | N/A | ↑ improving (inherited PROJECT byte-budget failure cleared; PROJECT 24,347 bytes, ROADMAP 11,360 bytes; artifact_consistency PASS) |
+| 290-01 | 2026-05-19 | Pi 335/335, XH 246/246 | N/A (shell/lifecycle artifacts) | N/A | N/A | → stable (final v2.67 validation closure green after archive/hot-artifact updates; artifact_consistency PASS) |

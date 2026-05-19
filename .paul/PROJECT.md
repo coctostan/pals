@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.67 Validation Hygiene**. v2.66 Plannotator Integration completed Phases 284–287; v2.67 has cleared inherited Pi e2e CODI marker drift in Phase 288 and PROJECT/ROADMAP byte-budget drift in Phase 289. Phase 290 now owns final validation closure without product/runtime behavior changes.
+Latest milestone: **v2.67 Validation Hygiene** complete. v2.67 cleared inherited Pi e2e CODI marker drift in Phase 288, PROJECT/ROADMAP byte-budget drift in Phase 289, and final validation closure in Phase 290 without product/runtime behavior changes.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -56,11 +56,11 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | Complete (6 of 6 phases) — closed 2026-05-12 via PR #196 | Rewrote module instructions and added semantic module-instruction guardrails in `tests/helpers/module_instruction_semantics.sh`; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md` and `.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md`. |
 | v2.65 Functional-First Agent Guidance | Complete (5 of 5 phases) — closed 2026-05-13 via PRs #197–#201 | Added “functional-first, not functional-only” guidance while preserving project conventions; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md` and `.paul/archive/roadmap/v2.65-functional-first-agent-guidance.md`. |
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | Complete (4 of 4 phases) — closed 2026-05-14 via PRs #202–#205 | Added optional/advisory Plannotator plan/code review surfaces and bridge helpers; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`. |
-| v2.67 Validation Hygiene | Active (2 of 3 phases complete) — Phase 290 ready to plan | Clears inherited Pi e2e baseline failures carried through v2.66: Phase 288 replaced CODI installed marker drift with semantic-helper validation; Phase 289 archived completed-milestone PROJECT detail and cleared hot-artifact budget drift; Phase 290 owns final validation closure. Preserves product/runtime behavior and lifecycle authority. |
+| v2.67 Validation Hygiene | Complete (3 of 3 phases) — closed 2026-05-19 | Cleared inherited Pi e2e baseline failures carried through v2.66: CODI marker drift, PROJECT/ROADMAP hot-artifact budget drift, and final validation closure. Evidence: `.paul/archive/roadmap/v2.67-validation-hygiene.md`. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Latest closed milestone pointer: **v2.66 Plannotator Integration — Rich UI Review Surfaces** — closed 2026-05-14 via PRs #202–#205. Source of truth for v2.66 scope is `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`; upstream Plannotator source remains provenance/background.
+Latest closed milestone pointer: **v2.67 Validation Hygiene** — closed 2026-05-19 with Pi e2e 335/335 and cross-harness 246/246. Closure evidence: `.paul/archive/roadmap/v2.67-validation-hygiene.md`.
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -126,7 +126,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-19 after Phase 289 UNIFY; Phase 290 ready to plan.*
+*Last updated: 2026-05-19 after Phase 290 UNIFY; v2.67 Validation Hygiene complete.*
 
 Quick Reference:
 
@@ -139,6 +139,8 @@ Quick Reference:
 
 - Project history (pre-v2.55): [.paul/archive/project/PROJECT-HISTORY.md](archive/project/PROJECT-HISTORY.md)
 - Project history (v2.55–v2.60): [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
+- Project history (v2.61–v2.66): [.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md](archive/project/PROJECT-HISTORY-v2.61-v2.66.md)
+- Roadmap closure (v2.67): [.paul/archive/roadmap/v2.67-validation-hygiene.md](archive/roadmap/v2.67-validation-hygiene.md)
 - Milestone index: [.paul/MILESTONES.md](MILESTONES.md)
 - Active roadmap: [.paul/ROADMAP.md](ROADMAP.md)
 - Current state: [.paul/STATE.md](STATE.md)
@@ -147,4 +149,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-19 after Phase 289 UNIFY; Phase 290 ready to plan.*
+*Last updated: 2026-05-19 after Phase 290 UNIFY; v2.67 Validation Hygiene complete.*

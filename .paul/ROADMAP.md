@@ -9,35 +9,36 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.67 Validation Hygiene**
-Status: 🚧 In Progress
-Phases: 2 of 3 complete (Phase 290 ready to plan)
+Status: ✅ Complete
+Phases: 3 of 3 complete
 Theme: Clear baseline-inherited Pi e2e failures and hot-artifact budget drift using semantic guardrails and compact lifecycle artifact hygiene, without changing product behavior.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 288 | CODI Validation Marker Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
 | 289 | Hot Artifact Budget Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
-| 290 | Validation Closure | TBD | Not started | - |
+| 290 | Validation Closure | 1/1 | ✅ Complete | 2026-05-19 |
 
 ### Phase 288: CODI Validation Marker Hygiene
-Focus: Replace or repair inherited Pi e2e CODI installed-resource marker-drift checks with the existing semantic-helper pattern (`tests/helpers/module_instruction_semantics.sh`) so validation proves behavior instead of brittle literal strings. Preserve CODI advisory/non-authority semantics and cross-harness parity.
+Focus: Replace inherited Pi e2e CODI marker-drift checks with semantic helpers so validation proves behavior instead of brittle literals.
 Plans: 1/1 — `.paul/phases/288-codi-validation-marker-hygiene/288-01-PLAN.md`; summary `.paul/phases/288-codi-validation-marker-hygiene/288-01-SUMMARY.md`
-Result: Pi e2e CODI installed-resource marker drift cleared via shared semantic helper assertions; Pi validation now has only the PROJECT byte-budget failure reserved for Phase 289, and cross-harness validation remains passing.
+Result: Pi e2e CODI marker drift cleared via shared semantic helper assertions; cross-harness remained passing.
 
 ### Phase 289: Hot Artifact Budget Hygiene
-Focus: Bring `.paul/PROJECT.md` and `.paul/ROADMAP.md` back under v2.62 byte-budget expectations through archive/deduplication hygiene while preserving authoritative current routing and archive links.
+Focus: Bring PROJECT/ROADMAP back under v2.62 byte budgets through archive/dedup hygiene while preserving routing and archive links.
 Plans: 1/1 — `.paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md`; summary `.paul/phases/289-hot-artifact-budget-hygiene/289-01-SUMMARY.md`
-Result: PROJECT hot-artifact budget drift cleared by archiving v2.61–v2.66 completed-milestone detail to `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`; PROJECT 24,347 bytes, ROADMAP 11,360 bytes / 79 lines; Pi e2e 335/335 and cross-harness 246/246.
+Result: PROJECT budget drift cleared; v2.61–v2.66 PROJECT detail archived at `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`; Pi e2e 335/335; cross-harness 246/246.
 
 ### Phase 290: Validation Closure
-Focus: Run final v2.67 validation closure now that Phase 288 cleared CODI marker drift and Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift; reconcile remaining baseline state, update durable histories, and close v2.67 only with evidence.
-Plans: TBD (defined during /paul:plan)
+Focus: Record final v2.67 validation closure after Phase 288 CODI marker hygiene and Phase 289 hot-artifact budget hygiene.
+Plans: 1/1 — `.paul/phases/290-validation-closure/290-01-PLAN.md`; results `.paul/phases/290-validation-closure/VALIDATION-RESULTS.md`; archive `.paul/archive/roadmap/v2.67-validation-hygiene.md`
+Result: Final v2.67 closure green: Pi e2e 335/335, cross-harness 246/246; summary `.paul/phases/290-validation-closure/290-01-SUMMARY.md`.
 
 ### Latest completed milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
-Result: Phases 284–287 complete. Added optional/advisory Plannotator plan-review and code-review surfaces while preserving `.paul/*` lifecycle authority: contract + sidecar policy, Pi bridge helper, `/paul:plan` review workflow, and APPLY/UNIFY code-review workflow. PRs #202–#205.
+Result: Phases 284–287 complete. Added optional/advisory Plannotator plan/code review surfaces while preserving `.paul/*` lifecycle authority. PRs #202–#205.
 
 ### Latest completed milestone: v2.65 Functional-First Agent Guidance
-Result: Phases 279–283 complete. Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: Phase 279 authoritative contract; Phase 280 AGENTS/init Engineering Principles + installed-resource marker checks; Phase 281 brownfield map-codebase signal detection for local idioms and effect boundaries; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks; Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Archive: [archive/roadmap/v2.65-functional-first-agent-guidance.md](archive/roadmap/v2.65-functional-first-agent-guidance.md).
+Result: Phases 279–283 complete. Added “functional-first, not functional-only” guidance without overriding project conventions. Archive: [v2.65](archive/roadmap/v2.65-functional-first-agent-guidance.md).
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -74,7 +75,8 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | 273-278 | Rewrote base/dispatch, core enforcement, advisory, and domain optional module instructions section-by-section; added semantic module-instruction validation guardrails (`tests/helpers/module_instruction_semantics.sh`); cleared inherited Phase 276 CODI marker drift in `tests/cross-harness-validation.sh` (195→202 PASS). Pi e2e 307/312 (5 baseline-inherited CODI marker drift recorded as future follow-up). PRs #190/#191/#192/#194/#195/#196 (`340eee03`). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
 | v2.65 Functional-First Agent Guidance | 2026-05-13 | 279-283 | Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: agent conventions, brownfield mapping, TDD, refactoring, and advisory ARCH side-effect-boundary surfaces. Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). PRs #197/#198/#199/#200/#201. [archive](archive/roadmap/v2.65-functional-first-agent-guidance.md) |
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | 2026-05-14 | 284-287 | Added optional/advisory Plannotator plan-review and code-review surfaces while preserving `.paul/*` lifecycle authority. Final validation: cross-harness 246/246 PASS; Pi 328/335 with inherited CODI/PROJECT/ROADMAP-budget failures carried into v2.67. PRs #202/#203/#204/#205. |
+| v2.67 Validation Hygiene | 2026-05-19 | 288-290 | Cleared inherited Pi e2e CODI marker drift and hot-artifact budget drift; final validation Pi 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-19 — Phase 289 complete; Phase 290 ready to plan for v2.67 validation closure.*
+*Last updated: 2026-05-19 — v2.67 Validation Hygiene complete; next milestone decision pending.*
