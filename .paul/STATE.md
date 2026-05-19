@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.67 Validation Hygiene active)
 ## Current Position
 
 Milestone: v2.67 Validation Hygiene
-Phase: 290 of 290 (Validation Closure) — Ready to plan
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-19 — Phase 289 complete; SUMMARY created; PROJECT byte-budget failure cleared with Pi 335/335 and cross-harness 246/246.
-Next action: /paul:plan for Phase 290
+Phase: 290 of 290 (Validation Closure) — Complete
+Plan: .paul/phases/290-validation-closure/290-01-PLAN.md (SUMMARY complete)
+Status: v2.67 complete; ready for next milestone planning
+Last activity: 2026-05-19 — Phase 290 UNIFY complete; v2.67 validation hygiene closed with Pi e2e 335/335 and cross-harness 246/246.
+Next action: /paul:milestone to start the next milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -21,7 +21,7 @@ Progress:
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
-- v2.67 Validation Hygiene: [██████░░░░] 67% (Phases 288–289 ✅; Phase 290 ready to PLAN)
+- v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -29,7 +29,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 290 ready to PLAN]
+  ✓        ✓        ✓     [v2.67 complete; next milestone decision]
 ```
 
 ## Accumulated Context
@@ -92,12 +92,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.67 milestone created: Validation Hygiene targets inherited Pi e2e CODI marker-drift failures and PROJECT/ROADMAP byte-budget concerns with semantic-helper and hot-artifact hygiene phases before closure validation.
 - Phase 288 UNIFY: Pi e2e CODI installed-resource marker checks now use shared semantic helpers; Pi validation is `334/335` with only PROJECT byte-budget drift remaining for Phase 289, and cross-harness remains `246/246`.
 - Phase 289 UNIFY: Created `289-01-SUMMARY.md`, archived v2.61–v2.66 PROJECT detail to `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`, kept PROJECT 24,347 bytes and ROADMAP 11,360 bytes, cleared Pi e2e to `335/335`, and kept cross-harness `246/246`. Phase 290 owns final v2.67 validation closure.
+- Phase 290 UNIFY: Created `290-01-SUMMARY.md`, appended CODI/WALT history rows, recorded final v2.67 validation closure evidence, and marked v2.67 ready for GitHub Flow merge gate and milestone completion.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
 
-- Phase 290 active scope: run final v2.67 validation closure now that Phase 288 cleared CODI marker drift and Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift.
+- Next milestone not yet defined; use `/paul:milestone` after Phase 290 merge gate to start the next milestone.
 - ci-generation.md and sonarqube-integration.md — future module candidates.
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
@@ -120,11 +121,11 @@ Prior PRs: #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 /
 
 ## Session Continuity
 
-Last session: 2026-05-19 — Phase 289 UNIFY complete; transitioned to Phase 290.
-Stopped at: Phase 290 ready to PLAN.
-Next action: /paul:plan for Phase 290
-Resume file: .paul/ROADMAP.md
+Last session: 2026-05-19 — Phase 290 UNIFY complete.
+Stopped at: v2.67 Validation Hygiene complete; ready for GitHub Flow merge gate and then next milestone decision.
+Next action: Complete GitHub Flow merge gate for Phase 290, then `/paul:milestone`
+Resume file: .paul/phases/290-validation-closure/290-01-SUMMARY.md
 Resume context:
-- Phase 288 cleared inherited CODI marker-drift checks with semantic helpers.
-- Phase 289 cleared hot-artifact budget drift: PROJECT 24,347 bytes; ROADMAP 11,360 bytes; Pi e2e 335/335; cross-harness 246/246.
-- Phase 290 must perform final v2.67 validation closure without changing product/runtime behavior or CODI authority semantics.
+- UNIFY evidence: `290-01-SUMMARY.md` created; WALT/CODI history rows appended; final validation remains Pi e2e 335/335 and cross-harness 246/246.
+- v2.67 closure evidence lives in `.paul/archive/roadmap/v2.67-validation-hygiene.md` and phase summaries/results.
+- Finish GitHub Flow merge gate for branch `feature/290-validation-closure`, then route to next milestone decision.

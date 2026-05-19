@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.67 Validation Hygiene active; Phase 290 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.67 Validation Hygiene complete; next milestone pending | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/archive/roadmap/v2.67-validation-hygiene.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -85,20 +85,22 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | 2026-05-12 | ~2 days | 6 phases, 6 plans | Phase 273 contract/cohort map PR #190 `f8861d44`; Phase 274 base/dispatch rewrite PR #191 `e18666ab`; Phase 275 core enforcement PR #192 `44b795d5`; Phase 276 advisory cohort PR #194 `8c8dfb46`; Phase 277 domain optional cohort PR #195 `aeff3f0a`; Phase 278 Module Guardrails + Closure PR #196 `340eee03` (semantic guardrails replace inherited CODI marker drift; `tests/helpers/module_instruction_semantics.sh`; cross-harness 195→202 PASS; Pi e2e 5 baseline-inherited CODI marker drift recorded as v2.65 follow-up). [archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) |
 | v2.65 Functional-First Agent Guidance | 2026-05-13 | ~2 days | 5 phases, 5 plans | Phase 279 authoritative contract `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md` PR #197; Phase 280 AGENTS/init Engineering Principles + installed-resource marker checks PR #198; Phase 281 brownfield map-codebase signal detection PR #199; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks PR #200 (`998c3771`); Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions) PR #201 (`4ea90e2c`). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). No new modules, hooks, dependencies, or default blocking functional-style gates. |
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | 2026-05-14 | same-day | 4 phases, 4 plans | Phase 284 authoritative contract + sidecar/non-adoption policy PR #202; Phase 285 optional/advisory Pi bridge helper surface `plannotator-bridge.ts` PR #203; Phase 286 opt-in `/paul:plan` review semantics + advisory plan sidecars PR #204; Phase 287 opt-in APPLY/UNIFY code-review semantics + advisory `CODE-REVIEW-NOTES.md` PR #205. Final validation: cross-harness 246/246 PASS; Pi 328/335 with 7 inherited CODI/PROJECT/ROADMAP-budget failures unchanged/pre-classified. No lifecycle authority transfer, no auto Plannotator review, no `/paul:annotate`, no new dependencies or module hooks. |
+| v2.67 Validation Hygiene | 2026-05-19 | same-day | 3 phases, 3 plans | Phase 288 cleared inherited CODI marker drift via semantic helper assertions; Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift; Phase 290 closed final validation with Pi e2e 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.67 Validation Hygiene. Current phase: Phase 290 Validation Closure, ready to plan.
+**Current milestone:** none active; v2.67 Validation Hygiene complete and next milestone pending.
 
-**Latest completed phase:** Phase 289 Hot Artifact Budget Hygiene completed 2026-05-19; next phase: Phase 290 Validation Closure.
+**Latest completed phase:** Phase 290 Validation Closure completed 2026-05-19; v2.67 final validation green.
 
 ## Archive
 
 - Detailed history and Key Decisions: [.paul/archive/milestones/MILESTONES-v0-v2.42.md](archive/milestones/MILESTONES-v0-v2.42.md)
 - v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)
 - v2.64 roadmap archive: [.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md)
+- v2.67 roadmap archive: [.paul/archive/roadmap/v2.67-validation-hygiene.md](archive/roadmap/v2.67-validation-hygiene.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened 2026-05-14; Phases 288–289 completed 2026-05-19.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19.*
