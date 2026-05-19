@@ -29,6 +29,10 @@ source "$REPO_ROOT/tests/helpers/tap.sh"
 # Helper is safe to source (defines functions only) and reports drift only.
 source "$REPO_ROOT/tests/helpers/artifact_consistency.sh"
 
+# Phase 288 CODI validation hygiene helper:
+# Verify behavior groups instead of inherited stale literal-marker prose.
+source "$REPO_ROOT/tests/helpers/module_instruction_semantics.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────
 
 TEMP_DIRS=()
@@ -177,16 +181,11 @@ if [ -f "$SKILL_DIR/modules.yaml" ]; then
   fi
 fi
 
-tap_file_contains_all \
-  "Installed modules.yaml preserves CODI source-selector and success-log markers" \
-  "$SKILL_DIR/modules.yaml" \
-  'source selectors' \
-  'top-level function declarations' \
-  'exported const / arrow bindings' \
-  '.tsx' \
-  '.jsx' \
-  'stable identifiers surfaced' \
-  'resolved-with-call-sites only'
+if mis_codi_source_selector_semantics_ok "$SKILL_DIR/modules.yaml"; then
+  tap_ok "Installed modules.yaml preserves CODI source-selector and success-log semantics"
+else
+  tap_not_ok "Installed modules.yaml preserves CODI source-selector and success-log semantics" "$MIS_LAST_MISSING"
+fi
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 1B: MODULE EXECUTION EVIDENCE
@@ -1312,23 +1311,11 @@ tap_file_contains_all \
   '`modules.codi.description`' \
   'CODI is safe to leave enabled by default'
 
-tap_file_contains_all \
-  "Installed CODI reference keeps source-selector, value-envelope, and safe-setup markers" \
-  "$PI_CODI_REF" \
-  'When CODI helps' \
-  'TS/JS-touching indexed code' \
-  'boundary specificity' \
-  'resolved-with-call-sites only' \
-  'source selectors' \
-  'top-level function declarations' \
-  'exported const / arrow bindings' \
-  'source-file mention order' \
-  'declaration order within each file' \
-  'stable identifiers surfaced' \
-  'pi-codegraph' \
-  '.codegraph/' \
-  'CODI is enabled but no codegraph index detected' \
-  'planning continues cleanly'
+if mis_codi_ref_semantics_ok "$PI_CODI_REF"; then
+  tap_ok "Installed CODI reference keeps source-selector, value-envelope, and safe-setup semantics"
+else
+  tap_not_ok "Installed CODI reference keeps source-selector, value-envelope, and safe-setup semantics" "$MIS_LAST_MISSING"
+fi
 
 tap_file_contains_all \
   "README keeps the CODI user-facing setup contract" \
@@ -1351,14 +1338,11 @@ tap_file_contains_all \
 # Phase 176: CODI post-unify dispatch-outcome instrumentation
 PI_CODI_INSTRUMENTATION_REF="$SKILL_DIR/references/codi-instrumentation.md"
 
-tap_file_contains_all \
-  "Installed modules.yaml carries CODI post-unify dispatch-outcome instrumentation hook" \
-  "$SKILL_DIR/modules.yaml" \
-  'CODI-HISTORY.md' \
-  'references/codi-instrumentation.md' \
-  'no-dispatch-found' \
-  'post_unify_hooks' \
-  'finalize_summary'
+if mis_codi_post_unify_manifest_ok "$SKILL_DIR/modules.yaml"; then
+  tap_ok "Installed modules.yaml carries CODI post-unify dispatch-outcome instrumentation semantics"
+else
+  tap_not_ok "Installed modules.yaml carries CODI post-unify dispatch-outcome instrumentation semantics" "$MIS_LAST_MISSING"
+fi
 
 if [ -f "$PI_CODI_INSTRUMENTATION_REF" ]; then
   tap_ok "Installed CODI instrumentation reference exists at $PI_CODI_INSTRUMENTATION_REF"
@@ -1366,16 +1350,19 @@ else
   tap_not_ok "Installed CODI instrumentation reference exists" "File not found: $PI_CODI_INSTRUMENTATION_REF"
 fi
 
-tap_file_contains_all \
-  "Installed CODI instrumentation reference documents schema, taxonomy, and read order" \
-  "$PI_CODI_INSTRUMENTATION_REF" \
+if mis_file_has_all "$PI_CODI_INSTRUMENTATION_REF" -- \
   '## Outcome taxonomy' \
   '## Data-source read order' \
   '## Plan-path resolution' \
-  '## Hotfix behavior' \
   'no-dispatch-found' \
   'CODI-HISTORY.md' \
-  '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |'
+  '| Plan | Date | Outcome | R | U | K | Symbols | blast_radius |' \
+  && mis_file_has_min_of "$PI_CODI_INSTRUMENTATION_REF" 1 -- \
+    'Hotfix summaries' 'Hotfix behavior' 'legacy token only'; then
+  tap_ok "Installed CODI instrumentation reference documents schema, taxonomy, read order, and hotfix handling"
+else
+  tap_not_ok "Installed CODI instrumentation reference documents schema, taxonomy, read order, and hotfix handling" "$MIS_LAST_MISSING"
+fi
 
 tap_file_contains_all \
   "CODI-HISTORY.md literal appears in both installed manifest and instrumentation ref" \
@@ -1383,17 +1370,14 @@ tap_file_contains_all \
   '.paul/CODI-HISTORY.md' \
   'modules/codi/module.yaml post-unify hook'
 
-# Phase 176 drift guard: all 5 pre-plan skip-log strings + success-log template
-# must remain verbatim in the installed CODI manifest so the post-unify parser
-# never silently falls through to no-dispatch-found on a renamed token.
-tap_file_contains_all \
-  "Installed CODI manifest preserves all pre-plan skip-log strings (drift guard)" \
-  "$SKILL_DIR/modules.yaml" \
-  'no extractable symbols in phase scope' \
-  'codegraph tools unavailable' \
-  'impact loop errored:' \
-  'impact returned empty blast radius for all symbols' \
-  'impact × N symbols → R resolved, U unresolved, K total call-sites, injected blast_radius'
+# Phase 288 drift guard: the installed manifest describes pre-plan skip/success
+# taxonomy semantically; canonical literal log strings live in references/codi.md.
+if mis_codi_pre_plan_taxonomy_manifest_ok "$SKILL_DIR/modules.yaml" \
+  && mis_codi_canonical_log_strings_ok "$PI_CODI_REF"; then
+  tap_ok "Installed CODI manifest/reference preserve pre-plan skip and success taxonomy"
+else
+  tap_not_ok "Installed CODI manifest/reference preserve pre-plan skip and success taxonomy" "$MIS_LAST_MISSING"
+fi
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 3: EXTENSION STRUCTURAL VALIDITY
 # ════════════════════════════════════════════════════════════════════
