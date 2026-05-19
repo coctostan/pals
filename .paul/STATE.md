@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.67 Validation Hygiene active)
 ## Current Position
 
 Milestone: v2.67 Validation Hygiene
-Phase: 289 of 290 (Hot Artifact Budget Hygiene) — Planning complete
+Phase: 289 of 290 (Hot Artifact Budget Hygiene) — APPLY complete
 Plan: .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
-Status: Ready to apply
-Last activity: 2026-05-19 — Created Phase 289 Hot Artifact Budget Hygiene plan.
-Next action: /paul:apply .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
+Status: Ready to unify
+Last activity: 2026-05-19 — Applied Phase 289 Hot Artifact Budget Hygiene plan; PROJECT byte-budget failure cleared and Pi/cross-harness validation pass.
+Next action: /paul:unify .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -21,7 +21,7 @@ Progress:
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
-- v2.67 Validation Hygiene: [███░░░░░░░] 33% (Phase 288 ✅; Phase 289 plan created; ready to APPLY)
+- v2.67 Validation Hygiene: [███░░░░░░░] 33% (Phase 288 ✅; Phase 289 APPLY complete; ready to UNIFY)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -29,7 +29,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ·     [Phase 289 PLAN created; ready to APPLY]
+  ✓        ✓        ○     [Phase 289 APPLY complete; ready to UNIFY]
 ```
 
 ## Accumulated Context
@@ -119,13 +119,13 @@ Prior PRs: #204 / #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 /
 
 ## Session Continuity
 
-Last session: 2026-05-19 — Created Phase 289 Hot Artifact Budget Hygiene plan.
-Stopped at: Phase 289 PLAN complete; ready to APPLY.
-Next action: /paul:apply .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
+Last session: 2026-05-19 — Applied Phase 289 Hot Artifact Budget Hygiene plan.
+Stopped at: Phase 289 APPLY complete; ready to UNIFY.
+Next action: /paul:unify .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
 Resume file: .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
 wip_result: skipped — base branch; pause artifacts are uncommitted
 Resume context:
 - Phase 288 cleared inherited Pi e2e CODI marker-drift checks by reusing semantic helper assertions.
-- Remaining Pi e2e failure is PROJECT byte-budget drift, now Phase 289 scope.
+- Phase 289 APPLY cleared PROJECT byte-budget drift: PROJECT 24,347 bytes; ROADMAP 11,360 bytes; Pi e2e 335/335; cross-harness 246/246.
 - Preserve artifact-first truth; validation hygiene must not change product/runtime behavior or CODI authority semantics.
 - Apply plan: `.paul/phases/288-codi-validation-marker-hygiene/288-01-PLAN.md`.
