@@ -10,13 +10,13 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.67 Validation Hygiene**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete (Phase 289 ready to plan)
+Phases: 1 of 3 complete (Phase 289 planned)
 Theme: Clear baseline-inherited Pi e2e failures and hot-artifact budget drift using semantic guardrails and compact lifecycle artifact hygiene, without changing product behavior.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 288 | CODI Validation Marker Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
-| 289 | Hot Artifact Budget Hygiene | TBD | Ready to plan | - |
+| 289 | Hot Artifact Budget Hygiene | 1 | Planning | - |
 | 290 | Validation Closure | TBD | Not started | - |
 
 ### Phase 288: CODI Validation Marker Hygiene
@@ -26,7 +26,7 @@ Result: Pi e2e CODI installed-resource marker drift cleared via shared semantic 
 
 ### Phase 289: Hot Artifact Budget Hygiene
 Focus: Bring `.paul/PROJECT.md` and `.paul/ROADMAP.md` back under v2.62 byte-budget expectations through archive/deduplication hygiene while preserving authoritative current routing and archive links.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 — `.paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md`
 
 ### Phase 290: Validation Closure
 Focus: Run full Pi and cross-harness validation, reconcile remaining baseline failures, update durable histories, and close v2.67 only when inherited validation hygiene is resolved or explicitly reclassified with evidence.
