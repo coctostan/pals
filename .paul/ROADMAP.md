@@ -10,13 +10,13 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.67 Validation Hygiene**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete (Phase 289 ready to plan)
+Phases: 2 of 3 complete (Phase 290 ready to plan)
 Theme: Clear baseline-inherited Pi e2e failures and hot-artifact budget drift using semantic guardrails and compact lifecycle artifact hygiene, without changing product behavior.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 288 | CODI Validation Marker Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
-| 289 | Hot Artifact Budget Hygiene | TBD | Ready to plan | - |
+| 289 | Hot Artifact Budget Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
 | 290 | Validation Closure | TBD | Not started | - |
 
 ### Phase 288: CODI Validation Marker Hygiene
@@ -26,10 +26,11 @@ Result: Pi e2e CODI installed-resource marker drift cleared via shared semantic 
 
 ### Phase 289: Hot Artifact Budget Hygiene
 Focus: Bring `.paul/PROJECT.md` and `.paul/ROADMAP.md` back under v2.62 byte-budget expectations through archive/deduplication hygiene while preserving authoritative current routing and archive links.
-Plans: TBD (defined during /paul:plan)
+Plans: 1/1 — `.paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md`; summary `.paul/phases/289-hot-artifact-budget-hygiene/289-01-SUMMARY.md`
+Result: PROJECT hot-artifact budget drift cleared by archiving v2.61–v2.66 completed-milestone detail to `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`; PROJECT 24,347 bytes, ROADMAP 11,360 bytes / 79 lines; Pi e2e 335/335 and cross-harness 246/246.
 
 ### Phase 290: Validation Closure
-Focus: Run full Pi and cross-harness validation, reconcile remaining baseline failures, update durable histories, and close v2.67 only when inherited validation hygiene is resolved or explicitly reclassified with evidence.
+Focus: Run final v2.67 validation closure now that Phase 288 cleared CODI marker drift and Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift; reconcile remaining baseline state, update durable histories, and close v2.67 only with evidence.
 Plans: TBD (defined during /paul:plan)
 
 ### Latest completed milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
@@ -76,4 +77,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-14 — Phase 288 plan created; v2.67 validation hygiene in progress.*
+*Last updated: 2026-05-19 — Phase 289 complete; Phase 290 ready to plan for v2.67 validation closure.*
