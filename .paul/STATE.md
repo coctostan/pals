@@ -111,10 +111,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/288-codi-validation-marker-hygiene (Phase 288 UNIFY in progress; PR #206 open — https://github.com/coctostan/pals/pull/206)
+Branch: main (PR #206 merged via squash `41513282`; base synced)
 Last lifecycle state: Phase 288 unified; transitioned to Phase 289 ready to plan.
-PR #206: open — https://github.com/coctostan/pals/pull/206. PR #205 merged via squash; prior PR #204/#203/#202 merged.
-Transition state: Phase 289 ready to plan; PR #206 merge gate pending.
+PR #206: merged — https://github.com/coctostan/pals/pull/206 (Socket checks PASS). PR #205 merged via squash; prior PR #204/#203/#202 merged.
+Transition state: Phase 289 ready to plan after Phase 288 merge gate completed.
 Prior PRs: #204 / #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188 / #181 / #180 / #179 / #178 / #177 / #176; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
