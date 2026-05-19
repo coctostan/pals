@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (v2.67 Validation Hygiene active)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.67 Validation Hygiene (Phase 288 of 290 — CODI Validation Marker Hygiene, ready to PLAN). v2.66 is complete; v2.67 targets inherited Pi e2e CODI marker drift and PROJECT/ROADMAP byte-budget concerns.
+**Current focus:** v2.67 Validation Hygiene (Phase 290 of 290 — Validation Closure, ready to PLAN). Phase 288 cleared inherited CODI marker drift; Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift; Phase 290 owns final validation closure.
 
 ## Current Position
 
 Milestone: v2.67 Validation Hygiene
-Phase: 289 of 290 (Hot Artifact Budget Hygiene) — APPLY complete
-Plan: .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
-Status: Ready to unify
-Last activity: 2026-05-19 — Applied Phase 289 Hot Artifact Budget Hygiene plan; PROJECT byte-budget failure cleared and Pi/cross-harness validation pass.
-Next action: /paul:unify .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
+Phase: 290 of 290 (Validation Closure) — Ready to plan
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-19 — Phase 289 complete; SUMMARY created; PROJECT byte-budget failure cleared with Pi 335/335 and cross-harness 246/246.
+Next action: /paul:plan for Phase 290
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -21,7 +21,7 @@ Progress:
 - v2.64 Module Instruction Audit + Context-Efficiency Rewrite: [██████████] 100% ✓ (Phases 273–278 complete; closed 2026-05-12 via PR #196 `340eee03`; archive [v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md))
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
-- v2.67 Validation Hygiene: [███░░░░░░░] 33% (Phase 288 ✅; Phase 289 APPLY complete; ready to UNIFY)
+- v2.67 Validation Hygiene: [██████░░░░] 67% (Phases 288–289 ✅; Phase 290 ready to PLAN)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -29,7 +29,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 289 APPLY complete; ready to UNIFY]
+  ○        ○        ○     [Phase 290 ready to PLAN]
 ```
 
 ## Accumulated Context
@@ -91,12 +91,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 287 PLAN/APPLY/UNIFY: Added opt-in Plannotator code-review workflow semantics to `/paul:apply` and `/paul:unify`, advisory `CODE-REVIEW-NOTES.md`, no auto `/paul:fix`, REV/GitHub Flow non-override guardrails, and Pi/cross-harness marker validation. Cross-harness passed 246/246; Pi Phase 287 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately. PR #205 opened; Socket checks passed.
 - v2.67 milestone created: Validation Hygiene targets inherited Pi e2e CODI marker-drift failures and PROJECT/ROADMAP byte-budget concerns with semantic-helper and hot-artifact hygiene phases before closure validation.
 - Phase 288 UNIFY: Pi e2e CODI installed-resource marker checks now use shared semantic helpers; Pi validation is `334/335` with only PROJECT byte-budget drift remaining for Phase 289, and cross-harness remains `246/246`.
+- Phase 289 UNIFY: Created `289-01-SUMMARY.md`, archived v2.61–v2.66 PROJECT detail to `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`, kept PROJECT 24,347 bytes and ROADMAP 11,360 bytes, cleared Pi e2e to `335/335`, and kept cross-harness `246/246`. Phase 290 owns final v2.67 validation closure.
 
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
 
-- Phase 289 active scope: resolve inherited PROJECT/ROADMAP hot-artifact byte-budget drift now that Phase 288 cleared CODI marker-drift failures.
+- Phase 290 active scope: run final v2.67 validation closure now that Phase 288 cleared CODI marker drift and Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift.
 - ci-generation.md and sonarqube-integration.md — future module candidates.
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
@@ -119,13 +120,11 @@ Prior PRs: #204 / #203 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 /
 
 ## Session Continuity
 
-Last session: 2026-05-19 — Applied Phase 289 Hot Artifact Budget Hygiene plan.
-Stopped at: Phase 289 APPLY complete; ready to UNIFY.
-Next action: /paul:unify .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
-Resume file: .paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md
-wip_result: skipped — base branch; pause artifacts are uncommitted
+Last session: 2026-05-19 — Phase 289 UNIFY complete; transitioned to Phase 290.
+Stopped at: Phase 290 ready to PLAN.
+Next action: /paul:plan for Phase 290
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 288 cleared inherited Pi e2e CODI marker-drift checks by reusing semantic helper assertions.
-- Phase 289 APPLY cleared PROJECT byte-budget drift: PROJECT 24,347 bytes; ROADMAP 11,360 bytes; Pi e2e 335/335; cross-harness 246/246.
-- Preserve artifact-first truth; validation hygiene must not change product/runtime behavior or CODI authority semantics.
-- Apply plan: `.paul/phases/288-codi-validation-marker-hygiene/288-01-PLAN.md`.
+- Phase 288 cleared inherited CODI marker-drift checks with semantic helpers.
+- Phase 289 cleared hot-artifact budget drift: PROJECT 24,347 bytes; ROADMAP 11,360 bytes; Pi e2e 335/335; cross-harness 246/246.
+- Phase 290 must perform final v2.67 validation closure without changing product/runtime behavior or CODI authority semantics.

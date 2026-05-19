@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.67 Validation Hygiene active; Phase 289 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.67 Validation Hygiene active; Phase 290 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -88,9 +88,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.67 Validation Hygiene. Current phase: Phase 289 Hot Artifact Budget Hygiene, ready to plan.
+**Current milestone:** v2.67 Validation Hygiene. Current phase: Phase 290 Validation Closure, ready to plan.
 
-**Latest completed phase:** Phase 288 CODI Validation Marker Hygiene completed 2026-05-19 via PR #206; next phase: Phase 289 Hot Artifact Budget Hygiene.
+**Latest completed phase:** Phase 289 Hot Artifact Budget Hygiene completed 2026-05-19; next phase: Phase 290 Validation Closure.
 
 ## Archive
 
@@ -101,4 +101,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened 2026-05-14; Phase 288 completed 2026-05-19.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened 2026-05-14; Phases 288–289 completed 2026-05-19.*

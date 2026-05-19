@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.67 Validation Hygiene**. v2.66 Plannotator Integration completed Phases 284–287; v2.67 has cleared inherited Pi e2e CODI marker drift in Phase 288 and now targets PROJECT/ROADMAP byte-budget concerns without product/runtime behavior changes.
+Active milestone: **v2.67 Validation Hygiene**. v2.66 Plannotator Integration completed Phases 284–287; v2.67 has cleared inherited Pi e2e CODI marker drift in Phase 288 and PROJECT/ROADMAP byte-budget drift in Phase 289. Phase 290 now owns final validation closure without product/runtime behavior changes.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -55,8 +55,8 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.63 Workflow Instruction Audit + Context-Efficiency Rewrite | Complete (5 of 5 phases) — closed 2026-05-10 via PR #188 | Rewrote lifecycle workflow instructions for bounded loading, concise routing, module evidence, GitHub Flow safety, and transition semantics; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`. |
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | Complete (6 of 6 phases) — closed 2026-05-12 via PR #196 | Rewrote module instructions and added semantic module-instruction guardrails in `tests/helpers/module_instruction_semantics.sh`; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md` and `.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md`. |
 | v2.65 Functional-First Agent Guidance | Complete (5 of 5 phases) — closed 2026-05-13 via PRs #197–#201 | Added “functional-first, not functional-only” guidance while preserving project conventions; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md` and `.paul/archive/roadmap/v2.65-functional-first-agent-guidance.md`. |
-| v2.66 Plannotator Integration — Rich UI Review Surfaces | Complete (4 of 4 phases) — closed 2026-05-14 via PRs #202–#205 | Added optional/advisory Plannotator plan/code review surfaces and bridge helpers; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`.
-| v2.67 Validation Hygiene | Active (1 of 3 phases complete) — Phase 289 ready to plan | Clears inherited Pi e2e baseline failures carried through v2.66: Phase 288 replaced CODI installed marker drift with semantic-helper validation; Phase 289 now owns PROJECT/ROADMAP hot-artifact byte-budget concerns. Preserves product/runtime behavior and lifecycle authority. |
+| v2.66 Plannotator Integration — Rich UI Review Surfaces | Complete (4 of 4 phases) — closed 2026-05-14 via PRs #202–#205 | Added optional/advisory Plannotator plan/code review surfaces and bridge helpers; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`. |
+| v2.67 Validation Hygiene | Active (2 of 3 phases complete) — Phase 290 ready to plan | Clears inherited Pi e2e baseline failures carried through v2.66: Phase 288 replaced CODI installed marker drift with semantic-helper validation; Phase 289 archived completed-milestone PROJECT detail and cleared hot-artifact budget drift; Phase 290 owns final validation closure. Preserves product/runtime behavior and lifecycle authority. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
@@ -126,7 +126,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-19 during Phase 289 hot-artifact budget hygiene.*
+*Last updated: 2026-05-19 after Phase 289 UNIFY; Phase 290 ready to plan.*
 
 Quick Reference:
 
@@ -147,4 +147,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-19 during Phase 289 hot-artifact budget hygiene.*
+*Last updated: 2026-05-19 after Phase 289 UNIFY; Phase 290 ready to plan.*
