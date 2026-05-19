@@ -10,18 +10,19 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.67 Validation Hygiene**
 Status: 🚧 In Progress
-Phases: 0 of 3 complete
+Phases: 1 of 3 complete (Phase 289 ready to plan)
 Theme: Clear baseline-inherited Pi e2e failures and hot-artifact budget drift using semantic guardrails and compact lifecycle artifact hygiene, without changing product behavior.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 288 | CODI Validation Marker Hygiene | TBD | Not started | - |
-| 289 | Hot Artifact Budget Hygiene | TBD | Not started | - |
+| 288 | CODI Validation Marker Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
+| 289 | Hot Artifact Budget Hygiene | TBD | Ready to plan | - |
 | 290 | Validation Closure | TBD | Not started | - |
 
 ### Phase 288: CODI Validation Marker Hygiene
 Focus: Replace or repair inherited Pi e2e CODI installed-resource marker-drift checks with the existing semantic-helper pattern (`tests/helpers/module_instruction_semantics.sh`) so validation proves behavior instead of brittle literal strings. Preserve CODI advisory/non-authority semantics and cross-harness parity.
-Plans: TBD (defined during /paul:plan)
+Plans: 1/1 — `.paul/phases/288-codi-validation-marker-hygiene/288-01-PLAN.md`; summary `.paul/phases/288-codi-validation-marker-hygiene/288-01-SUMMARY.md`
+Result: Pi e2e CODI installed-resource marker drift cleared via shared semantic helper assertions; Pi validation now has only the PROJECT byte-budget failure reserved for Phase 289, and cross-harness validation remains passing.
 
 ### Phase 289: Hot Artifact Budget Hygiene
 Focus: Bring `.paul/PROJECT.md` and `.paul/ROADMAP.md` back under v2.62 byte-budget expectations through archive/deduplication hygiene while preserving authoritative current routing and archive links.
@@ -75,4 +76,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-13 — v2.65 milestone complete; awaiting next milestone.*
+*Last updated: 2026-05-14 — Phase 288 plan created; v2.67 validation hygiene in progress.*

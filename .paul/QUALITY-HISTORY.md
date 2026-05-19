@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: ...→Pi 326/333 (7 inherited), XH 240/240→Pi 328/335 (7 inherited), XH 246/246
+Tests: ...→Pi 328/335 (7 inherited), XH 246/246→Pi 334/335 (1 inherited PROJECT-budget), XH 246/246
 Coverage: —
 Lint: —
 Types: —
@@ -136,3 +136,4 @@ Types: —
 | 285-01 | 2026-05-14 | XH 234/234, Pi 324/331 (Phase 285 bridge marker checks PASS; 7 inherited CODI/PROJECT/ROADMAP-budget failures) | N/A (shell) | N/A | N/A | → stable with baseline concerns |
 | 286-01 | 2026-05-14 | XH 240/240, Pi 326/333 (Phase 286 marker checks PASS; 7 inherited CODI/PROJECT/ROADMAP-budget failures) | N/A (shell) | N/A | N/A | → stable with baseline concerns |
 | 287-01 | 2026-05-14 | XH 246/246, Pi 328/335 (Phase 287 marker checks PASS; 7 inherited CODI/PROJECT/ROADMAP-budget failures) | N/A (shell) | N/A | N/A | → stable with baseline concerns |
+| 288-01 | 2026-05-19 | Pi 334/335 (CODI marker drift cleared; 1 PROJECT-budget failure remains), XH 246/246 | N/A (shell) | N/A | N/A | ↑ improving (five inherited Pi CODI marker failures resolved with semantic helpers; cross-harness unchanged green) |

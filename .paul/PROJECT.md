@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.67 Validation Hygiene**. v2.66 Plannotator Integration completed Phases 284–287; v2.67 now targets inherited Pi e2e CODI marker drift and PROJECT/ROADMAP byte-budget concerns without product/runtime behavior changes.
+Active milestone: **v2.67 Validation Hygiene**. v2.66 Plannotator Integration completed Phases 284–287; v2.67 has cleared inherited Pi e2e CODI marker drift in Phase 288 and now targets PROJECT/ROADMAP byte-budget concerns without product/runtime behavior changes.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -56,7 +56,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.64 Module Instruction Audit + Context-Efficiency Rewrite | Complete (6 of 6 phases) — closed 2026-05-12 via PR #196 `340eee03` (Phase 273 PR #190 `f8861d44`; Phase 274 PR #191 `e18666ab`; Phase 275 PR #192 `44b795d5`; Phase 276 PR #194 `8c8dfb46`; Phase 277 PR #195 `aeff3f0a`; Phase 278 PR #196 `340eee03`) | Extended the v2.63 section-by-section workflow rewrite pattern into module manifests, module references, module workflow overlays, and shared module-dispatch/base-module documentation. Phase 277 aligned the ARCH/SETH/OMAR/PETE/REED/VERA domain optional cohort. Phase 278 added semantic module-instruction guardrails: reusable TAP-free `tests/helpers/module_instruction_semantics.sh`, replaced 7 inherited Phase 276 CODI marker-drift cross-harness failures with grouped behaviour signals (195→202 PASS), and recorded the closure pattern in `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`. Detail: [archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md). |
 | v2.65 Functional-First Agent Guidance | Complete (5 of 5 phases) — closed 2026-05-13 across Phases 279–283 (PRs #197 / #198 / #199 / #200 / #201) | Added practical “functional-first, not functional-only” agent coding guidance without turning PALS into an FP framework or overriding project conventions. Phase 279 created the authoritative implementation contract (`docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`); Phase 280 added generated AGENTS/init Engineering Principles plus installed-resource marker checks; Phase 281 added brownfield map-codebase/template signal detection for local idioms and effect boundaries; Phase 282 added TODD/RUBY pure-logic TDD and Extract Pure Core guidance plus installed marker checks; Phase 283 added advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation, closing the milestone without a new default blocking gate.
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | Complete (4 of 4 phases) — closed 2026-05-14 via PRs #202/#203/#204/#205 | Integrates PALS with `@plannotator/pi-extension` for opt-in rich UI review while preserving `.paul/*` lifecycle authority. Phase 284 created the authoritative contract for consumed event/result fields, advisory sidecars, non-adoption, opt-in, failure modes, and validation classification. Phase 285 added the optional/advisory `drivers/pi/extensions/plannotator-bridge.ts` helper surface plus docs/skill-map surfacing and Pi marker validation. Phase 286 added opt-in `/paul:plan` review semantics, advisory plan-review sidecars, APPLY advisory-note loading, and workflow marker validation. Phase 287 added opt-in APPLY/UNIFY code-review semantics, advisory `CODE-REVIEW-NOTES.md`, no auto `/paul:fix`, and REV/GitHub Flow non-override markers. |
-| v2.67 Validation Hygiene | Active (0 of 3 phases complete) — Phase 288 ready to plan | Clears inherited Pi e2e baseline failures carried through v2.66: CODI installed marker drift and PROJECT/ROADMAP hot-artifact byte-budget concerns. Uses semantic-helper validation patterns and archive/deduplication hygiene while preserving product/runtime behavior and lifecycle authority. |
+| v2.67 Validation Hygiene | Active (1 of 3 phases complete) — Phase 289 ready to plan | Clears inherited Pi e2e baseline failures carried through v2.66: Phase 288 replaced CODI installed marker drift with semantic-helper validation; Phase 289 now owns PROJECT/ROADMAP hot-artifact byte-budget concerns. Preserves product/runtime behavior and lifecycle authority. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
@@ -126,7 +126,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-14 after v2.67 milestone creation.*
+*Last updated: 2026-05-19 after Phase 288 completion.*
 
 Quick Reference:
 
@@ -147,4 +147,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-14 after v2.67 milestone creation.*
+*Last updated: 2026-05-19 after Phase 288 completion.*
