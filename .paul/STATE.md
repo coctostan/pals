@@ -113,19 +113,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #207 merged via squash `81ed17e2`; base synced)
-Last lifecycle state: Phase 289 unified; transitioned to Phase 290 ready to plan.
-PR #207: merged — https://github.com/coctostan/pals/pull/207 (Socket checks PASS). PR #206 merged via squash; prior PR #205/#204/#203/#202 merged.
-Transition state: Phase 290 ready to plan after Phase 289 merge gate completed.
-Prior PRs: #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: main (PR #208 merged via squash `4143598b`; base synced)
+Last lifecycle state: v2.67 Validation Hygiene complete; next milestone decision pending.
+PR #208: merged — https://github.com/coctostan/pals/pull/208 (Socket checks PASS). PR #207/#206/#205/#204/#203/#202 merged.
+Transition state: v2.67 complete after Phase 290 merge gate; ready for next milestone decision.
+Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
 Last session: 2026-05-19 — Phase 290 UNIFY complete.
-Stopped at: v2.67 Validation Hygiene complete; ready for GitHub Flow merge gate and then next milestone decision.
-Next action: Complete GitHub Flow merge gate for Phase 290, then `/paul:milestone`
+Stopped at: v2.67 Validation Hygiene complete; GitHub Flow merge gate complete; ready for next milestone decision.
+Next action: /paul:milestone
 Resume file: .paul/phases/290-validation-closure/290-01-SUMMARY.md
 Resume context:
-- UNIFY evidence: `290-01-SUMMARY.md` created; WALT/CODI history rows appended; final validation remains Pi e2e 335/335 and cross-harness 246/246.
+- PR #208 merged and Socket checks passed; main is synced at squash commit `4143598b`.
 - v2.67 closure evidence lives in `.paul/archive/roadmap/v2.67-validation-hygiene.md` and phase summaries/results.
-- Finish GitHub Flow merge gate for branch `feature/290-validation-closure`, then route to next milestone decision.
+- Next lifecycle action: `/paul:milestone` to start the next milestone.
