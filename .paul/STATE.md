@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.68 Plannotator Retraction active)
 ## Current Position
 
 Milestone: v2.68 Plannotator Retraction
-Phase: 291 of 292 (Plannotator Live-Surface Removal) — PLAN complete
+Phase: 291 of 292 (Plannotator Live-Surface Removal) — UNIFY complete
 Plan: .paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md
-Status: Ready to APPLY
-Last activity: 2026-05-19 — Phase 291 PLAN written (3 tasks, AC-1/2/3); harness totals reconciled in-phase.
-Next action: /paul:apply .paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md
+Status: Awaiting merge gate (PR #209)
+Last activity: 2026-05-19 — Phase 291 UNIFY complete; SUMMARY written; awaiting PR #209 CI/merge gate before Phase 292 PLAN.
+Next action: Merge PR #209 once CI passes; then /paul:plan for Phase 292.
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -22,7 +22,7 @@ Progress:
 - v2.65 Functional-First Agent Guidance: [██████████] 100% ✓ (Phases 279–283 complete; closed 2026-05-13 via PRs #197 / #198 / #199 / #200 / #201)
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
-- v2.68 Plannotator Retraction: [░░░░░░░░░░] 0% (Phases 291–292 not started)
+- v2.68 Plannotator Retraction: [█████░░░░░] 50% (Phase 291 complete; Phase 292 next)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -30,7 +30,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Phase 291 PLAN complete; ready for APPLY]
+  ✓        ✓        ✓     [Phase 291 complete; merge gate on PR #209 → Phase 292 PLAN]
 ```
 
 ## Accumulated Context
@@ -115,16 +115,16 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: main (PR #208 merged via squash `4143598b`; base synced)
-Last lifecycle state: v2.68 Plannotator Retraction — Phase 291 PLAN complete; ready to APPLY.
+Last lifecycle state: v2.68 Plannotator Retraction — Phase 291 UNIFY complete; SUMMARY written; PR #209 awaiting CI/merge.
 PR #208: merged — https://github.com/coctostan/pals/pull/208 (Socket checks PASS). PR #207/#206/#205/#204/#203/#202 merged.
 Transition state: v2.67 closed at squash `4143598b`; v2.68 opened on 2026-05-19; no v2.68 PR yet.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-19 — Phase 291 PLAN written for v2.68 Plannotator Retraction.
-Stopped at: Phase 291 PLAN complete; ready to APPLY (8 files modified: 1 deletion + 7 edits across drivers/pi/extensions, kernel/workflows, tests/).
-Next action: /paul:apply .paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md
+Last session: 2026-05-19 — Phase 291 UNIFY complete; SUMMARY at .paul/phases/291-plannotator-live-surface-removal/291-01-SUMMARY.md.
+Stopped at: UNIFY complete for Phase 291; awaiting PR #209 CI + merge; Phase 292 PLAN follows (contract delete + retraction decision row + v2.68 closure).
+Next action: Merge PR #209 (CI gate), then /paul:plan for Phase 292.
 Resume file: .paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md
 Resume context:
 - v2.68 scope: remove live Plannotator surfaces (bridge code, workflow language, contract doc, validation assertions, hot-artifact decision rows).

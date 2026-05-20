@@ -10,17 +10,18 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.68 Plannotator Retraction**
 Status: 🚧 In Progress
-Phases: 0 of 2 complete
+Phases: 1 of 2 complete (Phase 291 ✓; Phase 292 next)
 Theme: Remove the v2.66 Plannotator integration cleanly while preserving v2.66 archive authority and keeping validation green at new assertion totals.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 291 | Plannotator Live-Surface Removal | 1 | Planning ✓ | - |
+| 291 | Plannotator Live-Surface Removal | 1 | Complete ✓ | 2026-05-19 |
 | 292 | Plannotator Contract Removal + v2.68 Closure | TBD | Not started | - |
 
 ### Phase 291: Plannotator Live-Surface Removal
 Focus: Delete `drivers/pi/extensions/plannotator-bridge.ts`, strip Plannotator opt-in/sidecar language from `kernel/workflows/plan-phase.md` / `apply-phase.md` / `unify-phase.md`, remove Plannotator assertions from `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` with updated totals in-phase, and remove Plannotator mentions from `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`.
-Plans: `.paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md` (3 tasks, AC-1/2/3)
+Plans: `.paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md` (complete; SUMMARY `291-01-SUMMARY.md`; PR #209)
+Result: Pi e2e 328/328, cross-harness 234/234; bridge deleted, workflow language stripped, harness totals reconciled in-phase.
 
 ### Phase 292: Plannotator Contract Removal + v2.68 Closure
 Focus: Delete `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`; replace v2.66 Plannotator decisions in `.paul/PROJECT.md` and `.paul/STATE.md` with a single retraction row pointing at the v2.68 closure SUMMARY; refresh MILESTONES live status / ROADMAP; final v2.68 validation closure (Pi + cross-harness green at new totals); GitHub Flow merge gate.
@@ -71,4 +72,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-19 — Phase 291 PLAN written; ready to APPLY.*
+*Last updated: 2026-05-19 — Phase 291 UNIFY complete; PR #209 open; Phase 292 next.*
