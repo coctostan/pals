@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.69 Pi Runtime Context Offload — S4 First; Phase 293 of 295 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/293-s4-offload-contract/` |
+| Current milestone | v2.69 Pi Runtime Context Offload — S4 First; Phase 294 of 295 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/294-s4-canonical-reply-delivery-extraction/` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 

@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload active; Phase 293 ready 
 ## Current Position
 
 Milestone: v2.69 Pi Runtime Context Offload — S4 First
-Phase: 293 of 295 (S4 Offload Contract)
-Plan: .paul/phases/293-s4-offload-contract/293-01-PLAN.md
-Status: UNIFY complete; PR merge gate in progress
-Last activity: 2026-05-20 — UNIFY summary created for Plan 293-01; post-unify history rows recorded; merge gate pending.
-Next action: merge PR #212, sync main, then /paul:plan for Phase 294
+Phase: 294 of 295 (S4 Canonical Reply Delivery Extraction)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-20 — Phase 293 complete and PR #212 squash-merged to main (`17578fb0`); transitioned to Phase 294.
+Next action: /paul:plan for Phase 294
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -23,7 +23,7 @@ Progress:
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
-- v2.69 Pi Runtime Context Offload — S4 First: [███░░░░░░░] 33% (Phase 293 UNIFY complete; PR #212 merge pending)
+- v2.69 Pi Runtime Context Offload — S4 First: [███░░░░░░░] 33% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -31,7 +31,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [UNIFY complete; merge gate pending]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -122,12 +122,12 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-05-20 — UNIFY completed for Phase 293 Plan 293-01.
-Stopped at: SUMMARY created and post-unify reports recorded; PR #212 merge gate pending.
-Next action: merge PR #212, sync main, then /paul:plan for Phase 294
-Resume file: .paul/phases/293-s4-offload-contract/293-01-SUMMARY.md
-wip_result: Phase 293 UNIFY branch `feature/293-s4-offload-contract`; PR https://github.com/coctostan/pals/pull/212 open; Socket Security checks successful.
+Last session: 2026-05-20 — Phase 293 complete; transitioned to Phase 294.
+Stopped at: Phase 294 ready to plan.
+Next action: /paul:plan for Phase 294
+Resume file: .paul/ROADMAP.md
+wip_result: PR #212 squash-merged to main as `17578fb0`; feature branch deleted remotely; local main synced.
 Resume context:
-- SUMMARY created at `.paul/phases/293-s4-offload-contract/293-01-SUMMARY.md` with validation evidence and Phase 294 readiness.
-- Post-unify WALT/CODI rows recorded in `.paul/QUALITY-HISTORY.md` and `.paul/CODI-HISTORY.md`.
-- Merge PR #212, sync main, then route to `/paul:plan` for Phase 294.
+- Phase 293 created the S4 canonical reply delivery extraction contract and modularization outcome pointer.
+- Phase 294 should plan the bounded source extraction using `docs/PI-NATIVE-GUIDED-WORKFLOW-CANONICAL-REPLY-DELIVERY-EXTRACTION-CONTRACT.md`.
+- Next lifecycle action is `/paul:plan for Phase 294`.

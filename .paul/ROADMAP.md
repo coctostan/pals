@@ -10,13 +10,13 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.69 Pi Runtime Context Offload — S4 First**
 Status: 🚧 In Progress
-Phases: 0 of 3 complete
+Phases: 1 of 3 complete
 Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, proving the extraction pattern still holds while preserving lifecycle authority and ending with an evidence-backed ranking of next context-bloat reduction targets.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 293 | S4 Offload Contract | 1 | Complete | 2026-05-20 |
-| 294 | S4 Canonical Reply Delivery Extraction | TBD | Not started | - |
+| 294 | S4 Canonical Reply Delivery Extraction | TBD | Ready to plan | - |
 | 295 | Context-Offload Measurement + Next Target Ranking | TBD | Not started | - |
 
 ### Phase 293: S4 Offload Contract
@@ -79,4 +79,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-20 — Phase 293 UNIFY complete for S4 offload contract; PR #212 merge gate pending.*
+*Last updated: 2026-05-20 — Phase 293 complete via PR #212; Phase 294 ready to plan.*
