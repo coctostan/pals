@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Latest milestone: **v2.67 Validation Hygiene** complete. Active milestone: **v2.68 Plannotator Retraction** — Phase 291 (live-surface removal) complete; Phase 292 (contract removal + closure) next. v2.67 cleared inherited Pi e2e CODI marker drift in Phase 288, PROJECT/ROADMAP byte-budget drift in Phase 289, and final validation closure in Phase 290 without product/runtime behavior changes.
+Latest milestone: **v2.68 Plannotator Retraction** complete (Phases 291–292 closed). v2.67 cleared inherited Pi e2e CODI marker drift in Phase 288, PROJECT/ROADMAP byte-budget drift in Phase 289, and final validation closure in Phase 290 without product/runtime behavior changes.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -60,7 +60,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Latest closed milestone pointer: **v2.67 Validation Hygiene** — closed 2026-05-19 with Pi e2e 335/335 and cross-harness 246/246. Closure evidence: `.paul/archive/roadmap/v2.67-validation-hygiene.md`.
+Latest closed milestone pointer: **v2.68 Plannotator Retraction** — closed 2026-05-20 with Pi e2e 328/328 and cross-harness 234/234. Closure evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -98,9 +98,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | 2026-05-13: Generated agent convention defaults stay advisory, editable, and subordinate to project conventions. | Phase 280 Plan 280-01 (`280-01-SUMMARY.md`) | `kernel/templates/AGENTS.md` and `kernel/workflows/init-project.md` now place compact Engineering Principles before Project Conventions; validation scripts guard the installed markers without adding a dependency, module, or blocking functional-style gate. |
 | 2026-05-13: TODD/RUBY functional-first guidance stays advisory, behavior-preserving, and validation-guarded. | Phase 282 Plan 282-01 (`282-01-SUMMARY.md`) | TODD now treats pure input-to-output business logic as high-value TDD scope and RUBY now documents Extract Pure Core as optional behavior-preserving/test-backed refactoring guidance; Pi and cross-harness installed-resource marker checks guard both without adding a default functional-style blocking gate. |
 | 2026-05-13: ARCH side-effect-boundary guidance stays advisory and project-convention-aware; v2.65 closes without a default functional-style blocking gate. | Phase 283 Plan 283-01 (`283-01-SUMMARY.md`; PR #201) | ARCH module metadata, principles, patterns, drift, and onboarding references now surface side-effect boundary drift (Pure Core, Explicit Effects) as advisory evidence only, preserving project conventions and local idioms; Pi and cross-harness installed-resource marker checks (5 + 10 assertions) guard the new ARCH Phase 283 markers across both harnesses. |
-| 2026-05-14: Plannotator integration uses a PALS-owned contract and advisory sidecars; upstream UI/source remains provenance. | Phase 284 Plan 284-01 (`284-01-SUMMARY.md`; PR #202) | `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md` is authoritative for v2.66 consumed event/result fields, non-adoption, opt-in, sidecar contracts, and failure modes. Ambiguous upstream details (`savedPath` format, extension-presence probe, abandoned UI behavior) are deferred to Phase 285 empirical probes rather than inferred. |
-| 2026-05-14: Plan-review workflow integration remains PAUL-owned and advisory-only. | Phase 286 Plan 286-01 (`286-01-SUMMARY.md`; PR #204) | `/paul:plan` prompts per invocation (`Run Plannotator review? [y/n]`), decline is zero-overhead, approval/denial feedback is written only to advisory sidecars, `savedPath` is never adopted as PLAN.md, and APPLY reads `PLAN-REVIEW-NOTES.md` only as non-overriding context. |
-| 2026-05-14: Code-review workflow integration remains PAUL-owned and advisory-only. | Phase 287 Plan 287-01 (`287-01-SUMMARY.md`; PR #205) | APPLY/UNIFY prompt per invocation (`Run Plannotator code review? [y/n]`), decline is zero-overhead, feedback is written only to `CODE-REVIEW-NOTES.md`, Plannotator does not auto-route to `/paul:fix`, replace REV, or override GitHub Flow/module/lifecycle gates. |
+| 2026-05-19: v2.66 Plannotator integration retracted in v2.68; no live PALS surface remains. | Phase 291 Plan 291-01 (`291-01-SUMMARY.md`; PR #209) + Phase 292 Plan 292-01 (`292-01-SUMMARY.md`) | Bridge code (`plannotator-bridge.ts`), kernel workflow opt-in steps, sidecar references (`PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` / `CODE-REVIEW-NOTES.md`), Plannotator marker assertions across Pi e2e + cross-harness suites (Pi 335→328; cross-harness 246→234), and `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md` are all removed. v2.66 archive evidence (Phases 284–287 plans/summaries, MILESTONES.md v2.66 row, `PROJECT-HISTORY-v2.61-v2.66.md`) remains authoritative historical truth. |
 | 2026-05-07: Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`, ROADMAP active-window line-budget) escalated to v2.62 per Phase 264 recorded decision; reconciled inline by Phase 266 ROADMAP warm compaction (no separate `/paul:fix` required). | Phase 264 / Phase 265 | Closure scope bounded to evidence + 1 guardrail; in-flight trim would expand scope beyond closure-recipe precedent. Phase 266 ROADMAP active-window compaction is the same root cause. |
 | 2026-05-08: Single-Write-per-artifact recipe ratified for context-diet contracts and large lifecycle-artifact compaction. | Phase 265 / Phase 266 | One `Write` per file overwrite (computed offline) replaces many sequential `Edit`s for large markdown artifacts; Edit gets brittle on hash-drift. Used Phase 265 for the 39 KB / 395-line contract and Phase 266 for STATE/PROJECT/MILESTONES/ROADMAP. |
 | 2026-05-08: Hot/warm/cold split rules and per-section byte budgets are the v2.62 authoritative contract. | Phase 265 (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`) | STATE.md ≤ 20 KB / PROJECT.md ≤ 25 KB / MILESTONES.md ≤ 18 KB / ROADMAP.md ≤ 12 KB AND ≤ 120 lines / aggregate ≤ 80 KB. v2.61 (just-closed) and v2.62 (active) rows stay hot; pre-v2.61 lifts to archive. Phase 266 cannot deviate without recording it in SUMMARY.md; Phase 267 ratifies with anti-regrowth TAPs (Phase 191 pattern; line-ceiling validation calibrated against ~80 bytes/line). |
@@ -126,7 +124,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-19 after Phase 291 UNIFY; v2.68 Plannotator Retraction — 1 of 2 phases complete.*
+*Last updated: 2026-05-19 after Phase 292 UNIFY; v2.68 Plannotator Retraction complete.*
 
 Quick Reference:
 
@@ -149,4 +147,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-19 after Phase 291 UNIFY; v2.68 Plannotator Retraction — 1 of 2 phases complete.*
+*Last updated: 2026-05-19 after Phase 292 UNIFY; v2.68 Plannotator Retraction complete.*
