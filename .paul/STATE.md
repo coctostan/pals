@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.68 Plannotator Retraction complete; next milestone pending)
+See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload active; Phase 293 ready to plan)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.68 Plannotator Retraction complete (Phases 291–292 closed); next milestone decision pending. v2.66 added optional/advisory Plannotator surfaces; v2.68 removed the live integration while preserving v2.66 archive authority.
+**Current focus:** v2.69 Pi Runtime Context Offload — S4 First active. Safe TypeScript runtime offload should reduce agent contextual workload without moving lifecycle authority out of `.paul/*`, PLAN/APPLY/UNIFY, command output, GitHub Flow evidence, or transcript-visible canonical replies.
 
 ## Current Position
 
-Milestone: v2.68 Plannotator Retraction
-Phase: 292 of 292 (Plannotator Contract Removal + v2.68 Closure) — UNIFY complete
-Plan: .paul/phases/292-plannotator-contract-removal-v268-closure/292-01-PLAN.md
-Status: v2.68 closed
-Last activity: 2026-05-20 — Phase 292 UNIFY completed: SUMMARY finalized, module histories updated, PR #210 merged at squash `7c38f42e`, v2.68 closed.
-Next action: /paul:milestone to start the next milestone
+Milestone: v2.69 Pi Runtime Context Offload — S4 First
+Phase: 293 of 295 (S4 Offload Contract)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-20 — v2.69 milestone created from discussion context; Phase 293 ready to plan.
+Next action: /paul:plan for Phase 293
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -23,6 +23,7 @@ Progress:
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
+- v2.69 Pi Runtime Context Offload — S4 First: [░░░░░░░░░░] 0% (Phases 293–295 planned; Phase 293 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -30,7 +31,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [v2.68 complete; next milestone decision]
+  ○        ○        ○     [Ready for first PLAN]
 ```
 
 ## Accumulated Context
@@ -99,13 +100,12 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Deferred Issues
 
-- Next milestone not yet defined; use `/paul:milestone` after Phase 290 merge gate to start the next milestone.
 - ci-generation.md and sonarqube-integration.md — future module candidates.
 - Agent SDK hook dispatch shelved — not an active milestone driver.
 - Tree-sitter repo map deferred.
 - Multi-model routing exists via `pals.json` `agents`, `agent-dispatch.md`, and apply-phase dispatch logic.
-- Pi extension submodule extraction completed v2.56–v2.61 wave (every active S* extracted); only S4 canonical reply delivery remains explicitly deferred as the integration point.
-- Cross-file narrative duplication (3 explicit duplications across STATE/PROJECT/MILESTONES/ROADMAP) recorded as deferred debt per Phase 265 contract; remediation deferred to v2.63+.
+- S4 canonical reply delivery promoted from deferred integration point to active v2.69 scope.
+- Cross-file narrative duplication (3 explicit duplications across STATE/PROJECT/MILESTONES/ROADMAP) recorded as deferred debt per Phase 265 contract; remediation remains deferred.
 
 ### Blockers/Concerns
 
@@ -114,20 +114,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #210 merged; feature branch deleted)
-Last lifecycle state: v2.68 Plannotator Retraction — Phase 292 UNIFY complete; next milestone pending.
+Branch: milestone-v269-pi-runtime-context-offload (milestone creation branch)
+Last lifecycle state: v2.69 Pi Runtime Context Offload — milestone created; Phase 293 ready to plan.
 PR #208: merged — https://github.com/coctostan/pals/pull/208 (Socket checks PASS). PR #207/#206/#205/#204/#203/#202 merged.
 Transition state: v2.67 closed at squash `4143598b`; v2.68 Phase 291 closed at squash `e9226a98`; Phase 292 closed via PR #210 squash `7c38f42e`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-20 — Phase 292 UNIFY completed for v2.68 closure.
-Stopped at: v2.68 Plannotator Retraction closed; next milestone decision pending.
-Next action: /paul:milestone to start the next milestone
-Resume file: .paul/handoffs/archive/HANDOFF-2026-05-19-phase-292-ready-to-apply.md
-wip_result: Phase 292 UNIFY artifacts finalized; PR #210 merged at squash `7c38f42e`; v2.68 closed.
+Last session: 2026-05-20 — v2.69 milestone created from discussion context.
+Stopped at: v2.69 milestone created; Phase 293 S4 Offload Contract ready to plan.
+Next action: /paul:plan for Phase 293
+Resume file: .paul/ROADMAP.md
+wip_result: v2.69 milestone structure created; context handoff consumed.
 Resume context:
-- Phase 291 closed (PR #209 squash `e9226a98`); harness baselines reconciled to Pi 328/328, cross 234/234.
-- Phase 292 closed live contract/docs + hot lifecycle reconciliation: contract doc deleted, PROJECT.md retraction row written, STATE/MILESTONES/ROADMAP reconciled, v2.66 archive evidence preserved.
-- Next lifecycle action is `/paul:milestone` to decide/start the next milestone.
+- v2.69 goal: safe Pi runtime context offload via S4 canonical reply delivery extraction first, then evidence-backed next-target ranking.
+- Phase 293 starts with S4 Offload Contract; Phase 294 extracts delivery logic; Phase 295 measures/ranks next context-offload target without implementing it.
+- Next lifecycle action is `/paul:plan` for Phase 293.
