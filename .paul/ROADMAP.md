@@ -15,7 +15,7 @@ Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, prov
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 293 | S4 Offload Contract | 1 | Applying | - |
+| 293 | S4 Offload Contract | 1 | Complete | 2026-05-20 |
 | 294 | S4 Canonical Reply Delivery Extraction | TBD | Not started | - |
 | 295 | Context-Offload Measurement + Next Target Ranking | TBD | Not started | - |
 
@@ -79,4 +79,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-20 — Phase 293 APPLY complete for S4 offload contract; UNIFY pending.*
+*Last updated: 2026-05-20 — Phase 293 UNIFY complete for S4 offload contract; PR #212 merge gate pending.*
