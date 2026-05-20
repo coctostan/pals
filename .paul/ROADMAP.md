@@ -8,31 +8,23 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.67 Validation Hygiene**
-Status: ✅ Complete
-Phases: 3 of 3 complete
-Theme: Clear baseline-inherited Pi e2e failures and hot-artifact budget drift using semantic guardrails and compact lifecycle artifact hygiene, without changing product behavior.
+**v2.68 Plannotator Retraction**
+Status: 🚧 In Progress
+Phases: 0 of 2 complete
+Theme: Remove the v2.66 Plannotator integration cleanly while preserving v2.66 archive authority and keeping validation green at new assertion totals.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 288 | CODI Validation Marker Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
-| 289 | Hot Artifact Budget Hygiene | 1/1 | ✅ Complete | 2026-05-19 |
-| 290 | Validation Closure | 1/1 | ✅ Complete | 2026-05-19 |
+| 291 | Plannotator Live-Surface Removal | 1 | Planning ✓ | - |
+| 292 | Plannotator Contract Removal + v2.68 Closure | TBD | Not started | - |
 
-### Phase 288: CODI Validation Marker Hygiene
-Focus: Replace inherited Pi e2e CODI marker-drift checks with semantic helpers so validation proves behavior instead of brittle literals.
-Plans: 1/1 — `.paul/phases/288-codi-validation-marker-hygiene/288-01-PLAN.md`; summary `.paul/phases/288-codi-validation-marker-hygiene/288-01-SUMMARY.md`
-Result: Pi e2e CODI marker drift cleared via shared semantic helper assertions; cross-harness remained passing.
+### Phase 291: Plannotator Live-Surface Removal
+Focus: Delete `drivers/pi/extensions/plannotator-bridge.ts`, strip Plannotator opt-in/sidecar language from `kernel/workflows/plan-phase.md` / `apply-phase.md` / `unify-phase.md`, remove Plannotator assertions from `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` with updated totals in-phase, and remove Plannotator mentions from `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`.
+Plans: `.paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md` (3 tasks, AC-1/2/3)
 
-### Phase 289: Hot Artifact Budget Hygiene
-Focus: Bring PROJECT/ROADMAP back under v2.62 byte budgets through archive/dedup hygiene while preserving routing and archive links.
-Plans: 1/1 — `.paul/phases/289-hot-artifact-budget-hygiene/289-01-PLAN.md`; summary `.paul/phases/289-hot-artifact-budget-hygiene/289-01-SUMMARY.md`
-Result: PROJECT budget drift cleared; v2.61–v2.66 PROJECT detail archived at `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`; Pi e2e 335/335; cross-harness 246/246.
-
-### Phase 290: Validation Closure
-Focus: Record final v2.67 validation closure after Phase 288 CODI marker hygiene and Phase 289 hot-artifact budget hygiene.
-Plans: 1/1 — `.paul/phases/290-validation-closure/290-01-PLAN.md`; results `.paul/phases/290-validation-closure/VALIDATION-RESULTS.md`; archive `.paul/archive/roadmap/v2.67-validation-hygiene.md`
-Result: Final v2.67 closure green: Pi e2e 335/335, cross-harness 246/246; summary `.paul/phases/290-validation-closure/290-01-SUMMARY.md`.
+### Phase 292: Plannotator Contract Removal + v2.68 Closure
+Focus: Delete `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`; replace v2.66 Plannotator decisions in `.paul/PROJECT.md` and `.paul/STATE.md` with a single retraction row pointing at the v2.68 closure SUMMARY; refresh MILESTONES live status / ROADMAP; final v2.68 validation closure (Pi + cross-harness green at new totals); GitHub Flow merge gate.
+Plans: TBD (defined during /paul:plan)
 
 ### Latest completed milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
 Result: Phases 284–287 complete. Added optional/advisory Plannotator plan/code review surfaces while preserving `.paul/*` lifecycle authority. PRs #202–#205.
@@ -79,4 +71,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-19 — v2.67 Validation Hygiene complete; next milestone decision pending.*
+*Last updated: 2026-05-19 — Phase 291 PLAN written; ready to APPLY.*

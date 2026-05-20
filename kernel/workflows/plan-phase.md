@@ -188,16 +188,6 @@ Review: [1] Quick recap | [2] Detailed recap | [3] Full plan | [4] No review nee
 If changes are requested, refine the plan before APPLY routing. Store `review_preference`.
 </step>
 
-<step name="optional_plannotator_plan_review" priority="after-plan-review">
-When project-level Plannotator plan review is available, prompt once per invocation: `Run Plannotator review? [y/n]`.
-1. If declined, do zero overhead: no bridge call, no event emitted, no sidecar written; continue normal PAUL review/APPLY routing.
-2. If accepted, call the Phase 285 bridge surface by name (`requestPlanReview`, then `awaitReviewResult`) without importing Plannotator internals or adding installed-runtime writes.
-3. On unavailable/error/timeout/abandoned, record compact advisory evidence and continue through PAUL-owned routing unless the user explicitly made the review blocking.
-4. On `approved: true` with feedback, write `.paul/phases/{phase-slug}/PLAN-REVIEW-NOTES.md` with phase/plan, `reviewId`, ISO timestamp, approval state, feedback, optional advisory `savedPath`, and an advisory-only statement.
-5. On `approved: false`, write `.paul/phases/{phase-slug}/PLAN-FEEDBACK-{iteration}.md` with phase/plan, iteration, `reviewId`, ISO timestamp, feedback, optional advisory `savedPath`, a bounded savedPath-read note if applicable, and an advisory-input statement; then re-enter PAUL planning with that feedback as required reading instead of proceeding to APPLY.
-6. Never copy/adopt `savedPath` as PLAN.md. Ignore `agentSwitch` and `permissionMode`; never let Plannotator select agents, skills, permission mode, or lifecycle state. `.paul/STATE.md` and PLAN.md remain authoritative.
-7. Preserve the existing 4-option plan review menu semantics and existing module dispatch evidence. Sidecars are advisory evidence only under `.paul/phases/{phase-slug}/`.
-</step>
 
 <step name="update_state" priority="required">
 **Required lifecycle write.**
