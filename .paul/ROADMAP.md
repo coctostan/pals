@@ -9,14 +9,14 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.68 Plannotator Retraction**
-Status: 🚧 In Progress
-Phases: 1 of 2 complete (Phase 291 ✓; Phase 292 next)
+Status: ✅ APPLY Complete; UNIFY merge gate pending
+Phases: 2 of 2 APPLY-complete (Phase 291 ✓; Phase 292 ✓; UNIFY pending)
 Theme: Remove the v2.66 Plannotator integration cleanly while preserving v2.66 archive authority and keeping validation green at new assertion totals.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 291 | Plannotator Live-Surface Removal | 1 | Complete ✓ | 2026-05-19 |
-| 292 | Plannotator Contract Removal + v2.68 Closure | TBD | Not started | - |
+| 292 | Plannotator Contract Removal + v2.68 Closure | 1 | Apply Complete ✓ | 2026-05-20 |
 
 ### Phase 291: Plannotator Live-Surface Removal
 Focus: Delete `drivers/pi/extensions/plannotator-bridge.ts`, strip Plannotator opt-in/sidecar language from `kernel/workflows/plan-phase.md` / `apply-phase.md` / `unify-phase.md`, remove Plannotator assertions from `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` with updated totals in-phase, and remove Plannotator mentions from `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`.
@@ -25,8 +25,11 @@ Result: Pi e2e 328/328, cross-harness 234/234; bridge deleted, workflow language
 
 ### Phase 292: Plannotator Contract Removal + v2.68 Closure
 Focus: Delete `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`; replace v2.66 Plannotator decisions in `.paul/PROJECT.md` and `.paul/STATE.md` with a single retraction row pointing at the v2.68 closure SUMMARY; refresh MILESTONES live status / ROADMAP; final v2.68 validation closure (Pi + cross-harness green at new totals); GitHub Flow merge gate.
-Plans: TBD (defined during /paul:plan)
+Plans: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-PLAN.md` (complete; SUMMARY `292-01-SUMMARY.md`; PR #210)
+Result: Pi e2e 328/328, cross-harness 234/234; contract doc deleted; PROJECT.md retraction row written; lifecycle artifacts reconciled; PR #210 open; UNIFY merge gate pending.
 
+### Latest completed milestone: v2.68 Plannotator Retraction
+Result: Phases 291–292 APPLY-complete. Removed the live Plannotator integration surface, deleted the contract document, retracted current decision rows, preserved v2.66 archive evidence, and kept validation green at Pi 328/328 + cross-harness 234/234. PR #210 open; final merge evidence pending UNIFY.
 ### Latest completed milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
 Result: Phases 284–287 complete. Added optional/advisory Plannotator plan/code review surfaces while preserving `.paul/*` lifecycle authority. PRs #202–#205.
 
@@ -69,7 +72,8 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 | v2.65 Functional-First Agent Guidance | 2026-05-13 | 279-283 | Added “functional-first, not functional-only” agent coding guidance across PALS without overriding project conventions: agent conventions, brownfield mapping, TDD, refactoring, and advisory ARCH side-effect-boundary surfaces. Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). PRs #197/#198/#199/#200/#201. [archive](archive/roadmap/v2.65-functional-first-agent-guidance.md) |
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | 2026-05-14 | 284-287 | Added optional/advisory Plannotator plan-review and code-review surfaces while preserving `.paul/*` lifecycle authority. Final validation: cross-harness 246/246 PASS; Pi 328/335 with inherited CODI/PROJECT/ROADMAP-budget failures carried into v2.67. PRs #202/#203/#204/#205. |
 | v2.67 Validation Hygiene | 2026-05-19 | 288-290 | Cleared inherited Pi e2e CODI marker drift and hot-artifact budget drift; final validation Pi 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
+| v2.68 Plannotator Retraction | 2026-05-20 | 291-292 | Removed live Plannotator surfaces and contract document while preserving v2.66 archive evidence. Final APPLY validation: Pi 328/328, cross-harness 234/234. PR #210 open; merge evidence pending UNIFY. |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-19 — Phase 291 UNIFY complete; PR #209 open; Phase 292 next.*
+*Last updated: 2026-05-20 — v2.68 Plannotator Retraction APPLY complete; UNIFY merge gate pending.*
