@@ -15,13 +15,13 @@ Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, prov
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 293 | S4 Offload Contract | TBD | Not started | - |
+| 293 | S4 Offload Contract | 1 | Applying | - |
 | 294 | S4 Canonical Reply Delivery Extraction | TBD | Not started | - |
 | 295 | Context-Offload Measurement + Next Target Ranking | TBD | Not started | - |
 
 ### Phase 293: S4 Offload Contract
 Focus: Define the S4 boundary, allowed/forbidden file scope, context-bloat success framing, validation expectations, and authority guardrails.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`.paul/phases/293-s4-offload-contract/293-01-PLAN.md`)
 
 ### Phase 294: S4 Canonical Reply Delivery Extraction
 Focus: Create a dedicated sibling such as `drivers/pi/extensions/guided-workflow-delivery.ts`; move `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, and `shouldAutoPresent` out of `pals-hooks.ts`; update docs/validation while preserving behavior exactly.
@@ -79,4 +79,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-20 — v2.69 Pi Runtime Context Offload milestone created; Phase 293 ready to plan.*
+*Last updated: 2026-05-20 — Phase 293 APPLY complete for S4 offload contract; UNIFY pending.*
