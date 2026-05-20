@@ -60,7 +60,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Latest closed milestone pointer: **v2.68 Plannotator Retraction** — closed 2026-05-20 with Pi e2e 328/328 and cross-harness 234/234. Closure evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
+Current milestone pointer: **v2.69 Pi Runtime Context Offload — S4 First** — active 2026-05-20; Phase 293 ready to plan. Latest closed milestone: **v2.68 Plannotator Retraction** — evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -124,7 +124,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-19 after Phase 292 UNIFY; v2.68 Plannotator Retraction complete.*
+*Last updated: 2026-05-20 after v2.69 milestone creation; Phase 293 ready to plan.*
 
 Quick Reference:
 
@@ -147,4 +147,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-19 after Phase 292 UNIFY; v2.68 Plannotator Retraction complete.*
+*Last updated: 2026-05-20 after v2.69 milestone creation; Phase 293 ready to plan.*

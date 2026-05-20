@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.68 Plannotator Retraction complete; next milestone pending | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md` |
+| Current milestone | v2.69 Pi Runtime Context Offload — S4 First; Phase 293 of 295 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/293-s4-offload-contract/` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -90,7 +90,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.68 Plannotator Retraction complete; next milestone pending.
+**Current milestone:** v2.69 Pi Runtime Context Offload — S4 First; Phase 293 of 295 ready to plan.
 
 **Latest completed phase:** Phase 292 Plannotator Contract Removal + v2.68 Closure completed 2026-05-20 via PR #210 squash `7c38f42e`.
 
@@ -104,4 +104,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 completed 2026-05-20; next milestone pending.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 completed 2026-05-20; v2.69 opened 2026-05-20.*

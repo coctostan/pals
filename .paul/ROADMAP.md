@@ -8,25 +8,28 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.68 Plannotator Retraction**
-Status: ✅ Complete
-Phases: 2 of 2 complete (Phase 291 ✓; Phase 292 ✓)
-Theme: Remove the v2.66 Plannotator integration cleanly while preserving v2.66 archive authority and keeping validation green at new assertion totals.
+**v2.69 Pi Runtime Context Offload — S4 First**
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
+Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, proving the extraction pattern still holds while preserving lifecycle authority and ending with an evidence-backed ranking of next context-bloat reduction targets.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 291 | Plannotator Live-Surface Removal | 1 | Complete ✓ | 2026-05-19 |
-| 292 | Plannotator Contract Removal + v2.68 Closure | 1 | Complete ✓ | 2026-05-20 |
+| 293 | S4 Offload Contract | TBD | Not started | - |
+| 294 | S4 Canonical Reply Delivery Extraction | TBD | Not started | - |
+| 295 | Context-Offload Measurement + Next Target Ranking | TBD | Not started | - |
 
-### Phase 291: Plannotator Live-Surface Removal
-Focus: Delete `drivers/pi/extensions/plannotator-bridge.ts`, strip Plannotator opt-in/sidecar language from `kernel/workflows/plan-phase.md` / `apply-phase.md` / `unify-phase.md`, remove Plannotator assertions from `tests/pi-end-to-end-validation.sh` and `tests/cross-harness-validation.sh` with updated totals in-phase, and remove Plannotator mentions from `drivers/pi/extensions/README.md` + `drivers/pi/skill-map.md`.
-Plans: `.paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md` (complete; SUMMARY `291-01-SUMMARY.md`; PR #209)
-Result: Pi e2e 328/328, cross-harness 234/234; bridge deleted, workflow language stripped, harness totals reconciled in-phase.
+### Phase 293: S4 Offload Contract
+Focus: Define the S4 boundary, allowed/forbidden file scope, context-bloat success framing, validation expectations, and authority guardrails.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 292: Plannotator Contract Removal + v2.68 Closure
-Focus: Delete `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`; replace v2.66 Plannotator decisions in `.paul/PROJECT.md` and `.paul/STATE.md` with a single retraction row pointing at the v2.68 closure SUMMARY; refresh MILESTONES live status / ROADMAP; final v2.68 validation closure (Pi + cross-harness green at new totals); GitHub Flow merge gate.
-Plans: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-PLAN.md` (complete; SUMMARY `292-01-SUMMARY.md`; PR #210)
-Result: Pi e2e 328/328, cross-harness 234/234; contract doc deleted; PROJECT.md retraction row written; lifecycle artifacts reconciled; PR #210 merged at squash `7c38f42e`.
+### Phase 294: S4 Canonical Reply Delivery Extraction
+Focus: Create a dedicated sibling such as `drivers/pi/extensions/guided-workflow-delivery.ts`; move `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, and `shouldAutoPresent` out of `pals-hooks.ts`; update docs/validation while preserving behavior exactly.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 295: Context-Offload Measurement + Next Target Ranking
+Focus: Review remaining agent-context burden after S4 and rank next safe TypeScript offload candidates such as workflow/resource capsule runtime loading, context injection targeting/dedupe, module activity summarization, and guided workflow routing ergonomics. Recommendation only; no second target implementation.
+Plans: TBD (defined during /paul:plan)
 
 ### Latest completed milestone: v2.68 Plannotator Retraction
 Result: Phases 291–292 complete. Removed the live Plannotator integration surface, deleted the contract document, retracted current decision rows, preserved v2.66 archive evidence, and kept validation green at Pi 328/328 + cross-harness 234/234. PR #210 merged at squash `7c38f42e`.
@@ -76,4 +79,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-20 — v2.68 Plannotator Retraction complete; next milestone pending.*
+*Last updated: 2026-05-20 — v2.69 Pi Runtime Context Offload milestone created; Phase 293 ready to plan.*
