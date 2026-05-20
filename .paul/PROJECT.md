@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Latest milestone: **v2.67 Validation Hygiene** complete. v2.67 cleared inherited Pi e2e CODI marker drift in Phase 288, PROJECT/ROADMAP byte-budget drift in Phase 289, and final validation closure in Phase 290 without product/runtime behavior changes.
+Latest milestone: **v2.67 Validation Hygiene** complete. Active milestone: **v2.68 Plannotator Retraction** — Phase 291 (live-surface removal) complete; Phase 292 (contract removal + closure) next. v2.67 cleared inherited Pi e2e CODI marker drift in Phase 288, PROJECT/ROADMAP byte-budget drift in Phase 289, and final validation closure in Phase 290 without product/runtime behavior changes.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -126,7 +126,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-19 after Phase 290 UNIFY; v2.67 Validation Hygiene complete.*
+*Last updated: 2026-05-19 after Phase 291 UNIFY; v2.68 Plannotator Retraction — 1 of 2 phases complete.*
 
 Quick Reference:
 
@@ -149,4 +149,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-19 after Phase 290 UNIFY; v2.67 Validation Hygiene complete.*
+*Last updated: 2026-05-19 after Phase 291 UNIFY; v2.68 Plannotator Retraction — 1 of 2 phases complete.*
