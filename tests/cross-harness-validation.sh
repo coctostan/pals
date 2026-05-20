@@ -1025,19 +1025,6 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     "$label" \
     "$root/workflows/plan-phase.md"
 
-  tap_file_contains_all \
-    "$label plan workflow preserves optional Plannotator plan-review markers" \
-    "$root/workflows/plan-phase.md" \
-    'Run Plannotator review? [y/n]' \
-    'zero overhead' \
-    'requestPlanReview' \
-    'awaitReviewResult' \
-    'PLAN-REVIEW-NOTES.md' \
-    'PLAN-FEEDBACK-{iteration}.md' \
-    'Never copy/adopt `savedPath` as PLAN.md' \
-    'Ignore `agentSwitch` and `permissionMode`' \
-    'advisory evidence only' \
-    're-enter PAUL planning'
 
   tap_file_contains_all \
     "$label apply workflow keeps parent-owned APPLY and checkpoint guardrails" \
@@ -1052,28 +1039,8 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     "$label" \
     "$root/workflows/apply-phase.md"
 
-  tap_file_contains_all \
-    "$label apply workflow preserves Plannotator notes as advisory-only context" \
-    "$root/workflows/apply-phase.md" \
-    'PLAN-REVIEW-NOTES.md' \
-    'advisory context only' \
-    'PLAN.md' \
-    '.paul/STATE.md' \
-    'never overrides'
 
 
-  tap_file_contains_all \
-    "$label apply workflow preserves optional Plannotator code-review markers" \
-    "$root/workflows/apply-phase.md" \
-    'Run Plannotator code review? [y/n]' \
-    'zero overhead' \
-    'requestCodeReview' \
-    'diffType: "uncommitted"' \
-    'CODE-REVIEW-NOTES.md' \
-    'Ignore `agentSwitch`' \
-    '/paul:fix' \
-    'advisory-only statement' \
-    'GitHub Flow'
 
   tap_file_contains_all \
     "$label apply workflow keeps Helper Delegation parent-acceptance markers" \
@@ -1120,19 +1087,6 @@ for workflow_dir_label in "Claude Code installed:$CC_KERNEL_DIR" "Pi installed:$
     'merge gate'
 
 
-  tap_file_contains_all \
-    "$label unify workflow preserves optional Plannotator code-review markers" \
-    "$root/workflows/unify-phase.md" \
-    'CODE-REVIEW-NOTES.md' \
-    'advisory context only' \
-    'Run Plannotator code review? [y/n]' \
-    'requestCodeReview' \
-    'PR URL' \
-    'diffType: "phase-range"' \
-    'diffType: "staged"' \
-    'REV' \
-    'merge gate' \
-    'never overrides'
 done
 
 for resume_workflow_label in "Claude Code installed:$CC_RESUME_WORKFLOW" "Pi installed:$PI_RESUME_WORKFLOW" "Repo source:$REPO_RESUME_WORKFLOW"; do

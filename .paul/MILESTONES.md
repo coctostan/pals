@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.67 Validation Hygiene complete; next milestone pending | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/archive/roadmap/v2.67-validation-hygiene.md` |
+| Current milestone | v2.68 Plannotator Retraction — Phase 291 of 292 (Plannotator Live-Surface Removal) in flight | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 

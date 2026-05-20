@@ -659,56 +659,7 @@ tap_file_contains_all \
   'planning.default_collaboration' \
   'Review: [1] Quick recap'
 
-tap_file_contains_all \
-  "Installed shared plan workflow preserves optional Plannotator plan-review markers" \
-  "$PI_PLAN" \
-  'Run Plannotator review? [y/n]' \
-  'zero overhead' \
-  'requestPlanReview' \
-  'awaitReviewResult' \
-  'PLAN-REVIEW-NOTES.md' \
-  'PLAN-FEEDBACK-{iteration}.md' \
-  'Never copy/adopt `savedPath` as PLAN.md' \
-  'Ignore `agentSwitch` and `permissionMode`' \
-  'advisory evidence only' \
-  're-enter PAUL planning'
 
-tap_file_contains_all \
-  "Installed shared apply workflow preserves Plannotator notes as advisory-only context" \
-  "$PI_APPLY" \
-  'PLAN-REVIEW-NOTES.md' \
-  'advisory context only' \
-  'PLAN.md' \
-  '.paul/STATE.md' \
-  'never overrides'
-
-
-tap_file_contains_all \
-  "Installed shared apply workflow preserves optional Plannotator code-review markers" \
-  "$PI_APPLY" \
-  'Run Plannotator code review? [y/n]' \
-  'zero overhead' \
-  'requestCodeReview' \
-  'diffType: "uncommitted"' \
-  'CODE-REVIEW-NOTES.md' \
-  'Ignore `agentSwitch`' \
-  '/paul:fix' \
-  'advisory-only statement' \
-  'GitHub Flow'
-
-tap_file_contains_all \
-  "Installed shared unify workflow preserves optional Plannotator code-review markers" \
-  "$PI_UNIFY" \
-  'CODE-REVIEW-NOTES.md' \
-  'advisory context only' \
-  'Run Plannotator code review? [y/n]' \
-  'requestCodeReview' \
-  'PR URL' \
-  'diffType: "phase-range"' \
-  'diffType: "staged"' \
-  'REV' \
-  'merge gate' \
-  'never overrides'
 tap_file_contains_all \
   "Installed shared discuss workflow keeps selected-phase posture markers after prose cleanup" \
   "$PI_DISCUSS" \
@@ -1391,7 +1342,6 @@ EXT_GUIDED_WORKFLOW_DETECTION="$REPO_ROOT/drivers/pi/extensions/guided-workflow-
 EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
 EXT_LIFECYCLE_UI="$REPO_ROOT/drivers/pi/extensions/lifecycle-ui.ts"
 EXT_COMMAND_ROUTING="$REPO_ROOT/drivers/pi/extensions/command-routing.ts"
-EXT_PLANNOTATOR_BRIDGE="$REPO_ROOT/drivers/pi/extensions/plannotator-bridge.ts"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -1524,46 +1474,6 @@ else
   else
     tap_not_ok "Extension keeps one bounded automatic injection path and a support-only context hook" "Expected 0 messages.push, exactly one pals-context injection definition, and context normalization support"
 fi
-
-  # Phase 285: optional/advisory Plannotator bridge contract markers. This is marker-only; validation must not require Plannotator to be installed or launch browser/UI flows.
-  tap_file_contains_all \
-    "Extension exposes optional Plannotator bridge helper/event surface" \
-    "$EXT_PLANNOTATOR_BRIDGE" \
-    'requestPlanReview' \
-    'requestCodeReview' \
-    'awaitReviewResult' \
-    'plannotator:request' \
-    'plannotator:review-result' \
-    'review-status' \
-    'unavailable' \
-    'error' \
-    'timeout' \
-    'abandoned' \
-    'savedPath' \
-    'agentSwitch' \
-    'permissionMode' \
-    '.paul/*' \
-    'No-op Pi extension factory'
-
-  tap_file_contains_all \
-    "Extension docs and skill map surface Plannotator bridge non-authority boundary" \
-    "$REPO_ROOT/drivers/pi/extensions/README.md" \
-    'plannotator-bridge.ts' \
-    'savedPath' \
-    'agentSwitch' \
-    'permissionMode' \
-    'advisory' \
-    '.paul/* lifecycle truth'
-
-  tap_file_contains_all \
-    "Skill map surfaces Plannotator bridge as advisory adapter helper" \
-    "$REPO_ROOT/drivers/pi/skill-map.md" \
-    'plannotator-bridge.ts' \
-    'savedPath' \
-    'agentSwitch' \
-    'permissionMode' \
-    'advisory' \
-    '.paul/* lifecycle truth'
 
   # Artifact-slice runtime-lens contract: activation-gated, source-cited, fresh, bounded, schema-shaped, and fallback-safe.
   # Phase 243: S1 artifact-slice markers were extracted into drivers/pi/extensions/artifact-slice-rendering.ts; assertions follow the new sibling.
