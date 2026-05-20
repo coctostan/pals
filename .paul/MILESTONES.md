@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.68 Plannotator Retraction — Phase 292 of 292 APPLY complete; PR #210 open; UNIFY merge gate pending | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-PLAN.md`; `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md` |
+| Current milestone | v2.68 Plannotator Retraction complete; next milestone pending | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -86,13 +86,13 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.65 Functional-First Agent Guidance | 2026-05-13 | ~2 days | 5 phases, 5 plans | Phase 279 authoritative contract `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md` PR #197; Phase 280 AGENTS/init Engineering Principles + installed-resource marker checks PR #198; Phase 281 brownfield map-codebase signal detection PR #199; Phase 282 TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance + marker checks PR #200 (`998c3771`); Phase 283 advisory ARCH side-effect-boundary guidance (Pure Core, Explicit Effects), `The Leaking Effect` drift label, and Pi+cross-harness installed-resource marker validation (5 + 10 assertions) PR #201 (`4ea90e2c`). Final validation: cross-harness 234/234 PASS; Pi 322/328 (6 baseline-inherited CODI/PROJECT-budget failures unchanged pre/post). No new modules, hooks, dependencies, or default blocking functional-style gates. |
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | 2026-05-14 | same-day | 4 phases, 4 plans | Phase 284 authoritative contract + sidecar/non-adoption policy PR #202; Phase 285 optional/advisory Pi bridge helper surface `plannotator-bridge.ts` PR #203; Phase 286 opt-in `/paul:plan` review semantics + advisory plan sidecars PR #204; Phase 287 opt-in APPLY/UNIFY code-review semantics + advisory `CODE-REVIEW-NOTES.md` PR #205. Final validation: cross-harness 246/246 PASS; Pi 328/335 with 7 inherited CODI/PROJECT/ROADMAP-budget failures unchanged/pre-classified. No lifecycle authority transfer, no auto Plannotator review, no `/paul:annotate`, no new dependencies or module hooks. |
 | v2.67 Validation Hygiene | 2026-05-19 | same-day | 3 phases, 3 plans | Phase 288 cleared inherited CODI marker drift via semantic helper assertions; Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift; Phase 290 closed final validation with Pi e2e 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
-| v2.68 Plannotator Retraction | 2026-05-20 | same-day | 2 phases, 2 plans | Phase 291 deleted `plannotator-bridge.ts`, stripped Plannotator opt-in language from kernel workflows, and purged Plannotator marker assertions from Pi e2e/cross-harness suites (PR #209). Phase 292 deleted `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`, retracted three Plannotator current-decision rows in PROJECT.md to a single row, reconciled STATE/MILESTONES/ROADMAP, and opened GitHub Flow PR #210 for the UNIFY merge gate. Final APPLY validation: Pi e2e 328/328 PASS; cross-harness 234/234 PASS. v2.66 archive evidence preserved untouched. |
+| v2.68 Plannotator Retraction | 2026-05-20 | same-day | 2 phases, 2 plans | Phase 291 deleted `plannotator-bridge.ts`, stripped Plannotator opt-in language from kernel workflows, and purged Plannotator marker assertions from Pi e2e/cross-harness suites (PR #209). Phase 292 deleted `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`, retracted three Plannotator current-decision rows in PROJECT.md to a single row, reconciled STATE/MILESTONES/ROADMAP, and passed GitHub Flow PR #210 checks. Final validation: Pi e2e 328/328 PASS; cross-harness 234/234 PASS. v2.66 archive evidence preserved untouched. |
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.68 Plannotator Retraction Phase 292 APPLY complete; PR #210 open; UNIFY merge gate pending.
+**Current milestone:** v2.68 Plannotator Retraction complete; next milestone pending.
 
-**Latest completed phase:** Phase 292 Plannotator Contract Removal + v2.68 Closure APPLY completed 2026-05-20; final UNIFY merge gate pending.
+**Latest completed phase:** Phase 292 Plannotator Contract Removal + v2.68 Closure completed 2026-05-20; final GitHub squash merge hash pending PR #210 merge completion.
 
 ## Archive
 
@@ -104,4 +104,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 APPLY completed 2026-05-20 with UNIFY merge gate pending.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 completed 2026-05-20; next milestone pending.*
