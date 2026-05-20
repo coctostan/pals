@@ -319,6 +319,15 @@ Phase 262 extracted S8 `command-routing` to `drivers/pi/extensions/command-routi
 - **Validation evidence:** install reports `[ok] Pi extensions installed: 8 files` (7 → 8); Pi validation passed `239/240` (234/235 → 239/240; +5 with the bounded `EXT_COMMAND_ROUTING` TAP block + 4 paul-review per-skill iterations + 2 in-place predicate adjustments + 8 in-flight repointed pre-existing assertions; 1 inherited Path A `not ok 102` unchanged — was `not ok 98`, renumbered by `EXPECTED_SKILLS` expansion); cross-harness `136/137` unchanged with the inherited `not ok 31`; artifact_consistency PASS; `git diff --check` clean. PR #177 squash-merged 2026-05-07 as `19555747`.
 - **Still-deferred surface:** S4 canonical reply delivery (the integration point; never an extraction candidate while siblings are being shipped through the per-sibling wave).
 
+## Phase 293 Outcome
+
+Phase 293 promotes S4 `guided-workflow-canonical-reply` from the final deferred S* integration point to a bounded Phase 294 contract target without modifying runtime, source, tests, install, dependencies, CI, or lifecycle authority. The S1–S8 inventory, classification table, and Phase 239/243/246/249/250/253/254/257/258/261/262 outcomes above remain authoritative verbatim; this section surfaces the Phase 293 addition only.
+
+- **S4 contract created:** `docs/PI-NATIVE-GUIDED-WORKFLOW-CANONICAL-REPLY-DELIVERY-EXTRACTION-CONTRACT.md` defines the S4 delivery/config surface (`sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, `GuidedWorkflowAutoPresent`, `GuidedWorkflowConfig`, `GUIDED_WORKFLOW_DEFAULTS`), the allowed Phase 294 sibling shape (`drivers/pi/extensions/guided-workflow-delivery.ts`), the shared-helper/type disposition, the loader-compat no-op factory requirement, and the Phase 294 validation/install handoff.
+- **S4 promoted to bounded Phase 294 extraction target:** the per-sibling wave is closed except S4, and S4 is now the next approved target after S5/S1/S2/S3/S7/S6/S8 proved the sibling-module pattern. Phase 294 will be the first source-changing S4 extraction step.
+- **Guided workflow safety guardrails preserved:** the contract keeps canonical replies transcript-visible and explicit-user-choice driven, and forbids auto-approval, auto-continue, skipped checkpoints, UI-only lifecycle decisions, inferred merge intent, hidden state, telemetry, alternate lifecycle truth, and `.paul/*` runtime writes.
+- **Docs-only phase:** Phase 293 does not change `drivers/pi/extensions/*.ts`, validation suites, installer/uninstaller, dependency manifests, CI, kernel workflows, module registry files, Claude Code driver, Agent SDK driver, or installed runtime copies. Validation counts remain command-output truth and must not be reported as changed unless APPLY/UNIFY copies fresh command output.
+
 ## Phase 239 Handoff
 
 Phase 239 must plan inside the following bounds. Anything outside these bounds requires a separately approved later plan.
