@@ -11,9 +11,9 @@ See: .paul/PROJECT.md (v2.68 Plannotator Retraction active)
 Milestone: v2.68 Plannotator Retraction
 Phase: 291 of 292 (Plannotator Live-Surface Removal) — UNIFY complete
 Plan: .paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md
-Status: Awaiting merge gate (PR #209)
+Status: Phase 291 closed (PR #209 squash-merged `e9226a98`); ready for Phase 292 PLAN
 Last activity: 2026-05-19 — Phase 291 UNIFY complete; SUMMARY written; awaiting PR #209 CI/merge gate before Phase 292 PLAN.
-Next action: Merge PR #209 once CI passes; then /paul:plan for Phase 292.
+Next action: /paul:plan for Phase 292 (Plannotator Contract Removal + v2.68 Closure)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -114,7 +114,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #208 merged via squash `4143598b`; base synced)
+Branch: main (PR #209 merged via squash `e9226a98`; base synced; phase-291 branch deleted)
 Last lifecycle state: v2.68 Plannotator Retraction — Phase 291 UNIFY complete; SUMMARY written; PR #209 awaiting CI/merge.
 PR #208: merged — https://github.com/coctostan/pals/pull/208 (Socket checks PASS). PR #207/#206/#205/#204/#203/#202 merged.
 Transition state: v2.67 closed at squash `4143598b`; v2.68 opened on 2026-05-19; no v2.68 PR yet.
@@ -123,8 +123,8 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 ## Session Continuity
 
 Last session: 2026-05-19 — Phase 291 UNIFY complete; SUMMARY at .paul/phases/291-plannotator-live-surface-removal/291-01-SUMMARY.md.
-Stopped at: UNIFY complete for Phase 291; awaiting PR #209 CI + merge; Phase 292 PLAN follows (contract delete + retraction decision row + v2.68 closure).
-Next action: Merge PR #209 (CI gate), then /paul:plan for Phase 292.
+Stopped at: Phase 291 closed (PR #209 squash-merged `e9226a98`, branch deleted); Phase 292 PLAN follows (contract delete + retraction decision row + v2.68 closure).
+Next action: /paul:plan for Phase 292
 Resume file: .paul/phases/291-plannotator-live-surface-removal/291-01-PLAN.md
 Resume context:
 - v2.68 scope: remove live Plannotator surfaces (bridge code, workflow language, contract doc, validation assertions, hot-artifact decision rows).
