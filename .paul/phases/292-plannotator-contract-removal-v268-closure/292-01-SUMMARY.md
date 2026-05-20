@@ -83,10 +83,10 @@ Lifecycle artifacts:
 - Base: `main`
 - PR: [#210](https://github.com/coctostan/pals/pull/210) — Phase 292: Plannotator contract removal and v2.68 closure
 - CI: Socket Security project report PASS; Socket Security pull request alerts PASS.
-- Merge hash: pending final GitHub squash result after PR merge.
+- Merge hash: `7c38f42e` (PR #210 squash merge).
 
 ---
 
 ## Next Action
 
-v2.68 is closed after PR #210 merge. Next lifecycle action: `/paul:milestone` to decide/start the next milestone.
+v2.68 is closed via PR #210 squash `7c38f42e`. Next lifecycle action: `/paul:milestone` to decide/start the next milestone.

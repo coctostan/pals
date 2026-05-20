@@ -12,7 +12,7 @@ Milestone: v2.68 Plannotator Retraction
 Phase: 292 of 292 (Plannotator Contract Removal + v2.68 Closure) — UNIFY complete
 Plan: .paul/phases/292-plannotator-contract-removal-v268-closure/292-01-PLAN.md
 Status: v2.68 closed
-Last activity: 2026-05-20 — Phase 292 UNIFY completed: SUMMARY finalized, module histories updated, PR #210 checks passed, v2.68 closure ready for merge completion.
+Last activity: 2026-05-20 — Phase 292 UNIFY completed: SUMMARY finalized, module histories updated, PR #210 merged at squash `7c38f42e`, v2.68 closed.
 Next action: /paul:milestone to start the next milestone
 
 Progress:
@@ -114,10 +114,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: phase-292-plannotator-contract-removal-v268-closure (Phase 292 UNIFY branch; PR #210 merge gate passed)
+Branch: main (PR #210 merged; feature branch deleted)
 Last lifecycle state: v2.68 Plannotator Retraction — Phase 292 UNIFY complete; next milestone pending.
 PR #208: merged — https://github.com/coctostan/pals/pull/208 (Socket checks PASS). PR #207/#206/#205/#204/#203/#202 merged.
-Transition state: v2.67 closed at squash `4143598b`; v2.68 Phase 291 closed at squash `e9226a98`; Phase 292 PR #210 checks passed, merge hash pending final GitHub squash result.
+Transition state: v2.67 closed at squash `4143598b`; v2.68 Phase 291 closed at squash `e9226a98`; Phase 292 closed via PR #210 squash `7c38f42e`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
@@ -126,8 +126,8 @@ Last session: 2026-05-20 — Phase 292 UNIFY completed for v2.68 closure.
 Stopped at: v2.68 Plannotator Retraction closed; next milestone decision pending.
 Next action: /paul:milestone to start the next milestone
 Resume file: .paul/handoffs/archive/HANDOFF-2026-05-19-phase-292-ready-to-apply.md
-wip_result: Phase 292 UNIFY artifacts finalized on `phase-292-plannotator-contract-removal-v268-closure`; PR #210 merge gate passed.
+wip_result: Phase 292 UNIFY artifacts finalized; PR #210 merged at squash `7c38f42e`; v2.68 closed.
 Resume context:
 - Phase 291 closed (PR #209 squash `e9226a98`); harness baselines reconciled to Pi 328/328, cross 234/234.
 - Phase 292 closed live contract/docs + hot lifecycle reconciliation: contract doc deleted, PROJECT.md retraction row written, STATE/MILESTONES/ROADMAP reconciled, v2.66 archive evidence preserved.
-- Next lifecycle action is `/paul:milestone` to decide/start the next milestone after PR #210 merge completion.
+- Next lifecycle action is `/paul:milestone` to decide/start the next milestone.
