@@ -10,14 +10,14 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.69 Pi Runtime Context Offload — S4 First**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, proving the extraction pattern still holds while preserving lifecycle authority and ending with an evidence-backed ranking of next context-bloat reduction targets.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 293 | S4 Offload Contract | 1 | Complete | 2026-05-20 |
-| 294 | S4 Canonical Reply Delivery Extraction | TBD | Ready to plan | - |
-| 295 | Context-Offload Measurement + Next Target Ranking | TBD | Not started | - |
+| 294 | S4 Canonical Reply Delivery Extraction | 1/1 | ✅ Complete | 2026-05-20 |
+| 295 | Context-Offload Measurement + Next Target Ranking | TBD | Ready to plan | - |
 
 ### Phase 293: S4 Offload Contract
 Focus: Define the S4 boundary, allowed/forbidden file scope, context-bloat success framing, validation expectations, and authority guardrails.
@@ -25,7 +25,7 @@ Plans: 1 (`.paul/phases/293-s4-offload-contract/293-01-PLAN.md`)
 
 ### Phase 294: S4 Canonical Reply Delivery Extraction
 Focus: Create a dedicated sibling such as `drivers/pi/extensions/guided-workflow-delivery.ts`; move `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, and `shouldAutoPresent` out of `pals-hooks.ts`; update docs/validation while preserving behavior exactly.
-Plans: TBD (defined during /paul:plan)
+Plans: 1 (`.paul/phases/294-s4-canonical-reply-delivery-extraction/294-01-PLAN.md`)
 
 ### Phase 295: Context-Offload Measurement + Next Target Ranking
 Focus: Review remaining agent-context burden after S4 and rank next safe TypeScript offload candidates such as workflow/resource capsule runtime loading, context injection targeting/dedupe, module activity summarization, and guided workflow routing ergonomics. Recommendation only; no second target implementation.
@@ -79,4 +79,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-20 — Phase 293 complete via PR #212; Phase 294 ready to plan.*
+*Last updated: 2026-05-20 — Phase 294 complete; Phase 295 ready to plan for context-offload measurement and next-target ranking.*

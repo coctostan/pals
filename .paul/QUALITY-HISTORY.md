@@ -141,3 +141,4 @@ Types: —
 | 290-01 | 2026-05-19 | Pi 335/335, XH 246/246 | N/A (shell/lifecycle artifacts) | N/A | N/A | → stable (final v2.67 validation closure green after archive/hot-artifact updates; artifact_consistency PASS) |
 | 292-01 | 2026-05-20 | Pi 328/328, XH 234/234 | N/A (shell/lifecycle artifacts) | N/A | N/A | → stable (v2.68 Plannotator contract removal + hot-artifact closure; artifact_consistency PASS; totals reduced intentionally by Phase 291 Plannotator assertion removal) |
 | 293-01 | 2026-05-20 | Pi 328/328, XH 234/234 | N/A (docs-only contract) | N/A | N/A | → stable (S4 offload contract docs-only; artifact_consistency PASS; git diff --check PASS) |
+| 294-01 | 2026-05-20 | Pi 329/329, XH 234/234 | N/A (shell/runtime extraction) | N/A | N/A | ↑ improving (S4 delivery extraction added one Pi guardrail; artifact_consistency PASS; git diff --check PASS) |
