@@ -12,7 +12,7 @@ Milestone: v2.69 Pi Runtime Context Offload — S4 First
 Phase: 295 of 295 (Context-Offload Measurement + Next Target Ranking)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-05-20 — Phase 294 UNIFY completed; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`, PR #213 checks passed, transition prepared Phase 295 for planning.
+Last activity: 2026-05-20 — Phase 294 UNIFY completed and PR #213 merged; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`; Phase 295 ready to plan.
 Next action: /paul:plan
 
 Progress:
@@ -23,7 +23,7 @@ Progress:
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
-- v2.69 Pi Runtime Context Offload — S4 First: [█████████░] 90% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ✅ PR #213 ready/merge-gate; Phase 295 ready to plan)
+- v2.69 Pi Runtime Context Offload — S4 First: [█████████░] 90% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ✅ PR #213 merged; Phase 295 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -116,21 +116,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/294-s4-canonical-reply-delivery-extraction (PR #213 open; Socket Security checks passed; UNIFY metadata ready for commit/merge gate)
-Last lifecycle state: Phase 294 UNIFY complete; implementation commit `8bbda2bd`; metadata commit pending.
-PR #213: open — https://github.com/coctostan/pals/pull/213 (Socket Security checks passed at APPLY postflight). PR #212 merged (`17578fb0`) closed Phase 293.
+Branch: main (PR #213 merged 2026-05-21T01:01:04Z; local main synced with origin/main)
+Last lifecycle state: Phase 294 complete; PR #213 squash merge commit `683054fe`; Phase 295 ready to plan.
+PR #213: merged — https://github.com/coctostan/pals/pull/213. PR #212 merged (`17578fb0`) closed Phase 293.
 Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
 Last session: 2026-05-20 — Phase 294 UNIFY completed.
-Stopped at: Phase 294 complete; Phase 295 ready to plan after PR #213 merge gate.
+Stopped at: Phase 294 complete; Phase 295 ready to plan.
 Next action: /paul:plan
 Resume file: .paul/ROADMAP.md
-unify_result: Phase 294 complete; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`; validation PASS; CODI/WALT history rows appended; PR #213 checks passed.
+unify_result: Phase 294 complete; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`; validation PASS; CODI/WALT history rows appended; PR #213 merged.
 Resume context:
 - Phase 294 summary: `.paul/phases/294-s4-canonical-reply-delivery-extraction/294-01-SUMMARY.md`.
-- PR: https://github.com/coctostan/pals/pull/213 (Socket Security checks passed).
+- PR: https://github.com/coctostan/pals/pull/213 (merged; Socket Security checks passed).
 - Phase 295 focus: measure context offload and rank next safe TypeScript offload target; recommendation only.
-- Next lifecycle action after merge gate is `/paul:plan` for Phase 295.
+- Next lifecycle action is `/paul:plan` for Phase 295.
