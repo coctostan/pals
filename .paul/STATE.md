@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload active; Phase 293 ready 
 ## Current Position
 
 Milestone: v2.69 Pi Runtime Context Offload — S4 First
-Phase: 294 of 295 (S4 Canonical Reply Delivery Extraction)
+Phase: 295 of 295 (Context-Offload Measurement + Next Target Ranking)
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-05-20 — Phase 293 complete and PR #212 squash-merged to main (`17578fb0`); transitioned to Phase 294.
-Next action: /paul:plan for Phase 294
+Last activity: 2026-05-20 — Phase 294 UNIFY completed; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`, PR #213 checks passed, transition prepared Phase 295 for planning.
+Next action: /paul:plan
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -23,7 +23,7 @@ Progress:
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
-- v2.69 Pi Runtime Context Offload — S4 First: [███░░░░░░░] 33% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ready to plan)
+- v2.69 Pi Runtime Context Offload — S4 First: [█████████░] 90% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ✅ PR #213 ready/merge-gate; Phase 295 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -31,7 +31,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for first PLAN]
+  ○        ○        ○     [Phase 295 ready to plan]
 ```
 
 ## Accumulated Context
@@ -61,6 +61,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Phase 282 TODD/RUBY functional-first guidance established | 282-01-SUMMARY.md / PR #200 | TODD now highlights pure input-to-output logic as high-value TDD scope and RUBY now documents Extract Pure Core as advisory, behavior-preserving, test-backed guidance; Pi and cross-harness installed-resource marker checks guard both surfaces. |
 | Phase 283 ARCH advisory + v2.65 closure | 283-01-SUMMARY.md / PR #201 | ARCH module metadata, principles, patterns, drift, and onboarding references surface side-effect boundary drift (Pure Core, Explicit Effects) as advisory only; `The Leaking Effect` common-drift label added; Pi + cross-harness installed-resource marker checks (5 + 10 assertions) guard ARCH Phase 283 markers; v2.65 milestone closed. |
 
+| 2026-05-20: Phase 294 S4 delivery extraction completed | 294-01-SUMMARY.md / PR #213 | `guided-workflow-delivery.ts` owns canonical guided-workflow reply delivery/config while `pals-hooks.ts` remains orchestration; validation passed install 9 extensions, Pi 329/329, cross-harness 234/234. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -96,6 +97,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 289 UNIFY: Created `289-01-SUMMARY.md`, archived v2.61–v2.66 PROJECT detail to `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`, kept PROJECT 24,347 bytes and ROADMAP 11,360 bytes, cleared Pi e2e to `335/335`, and kept cross-harness `246/246`. Phase 290 owns final v2.67 validation closure.
 - Phase 290 UNIFY: Created `290-01-SUMMARY.md`, appended CODI/WALT history rows, recorded final v2.67 validation closure evidence, and marked v2.67 ready for GitHub Flow merge gate and milestone completion.
 
+- Phase 294 PLAN/APPLY/UNIFY: Extracted S4 canonical guided-workflow reply delivery/config into `drivers/pi/extensions/guided-workflow-delivery.ts`, repointed Pi validation/docs, appended CODI/WALT history rows, and transitioned to Phase 295. Validation: install 9 extensions, `git diff --check`, artifact_consistency PASS, Pi 329/329, cross-harness 234/234; PR #213 checks passed.
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
@@ -114,20 +116,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (v2.69 milestone creation PR #211 merged; worktree clean)
-Last lifecycle state: v2.69 Pi Runtime Context Offload — milestone created via PR #211 squash `e5ab4459`; Phase 293 ready to plan.
-PR #208: merged — https://github.com/coctostan/pals/pull/208 (Socket checks PASS). PR #207/#206/#205/#204/#203/#202 merged.
+Branch: feature/294-s4-canonical-reply-delivery-extraction (PR #213 open; Socket Security checks passed; UNIFY metadata ready for commit/merge gate)
+Last lifecycle state: Phase 294 UNIFY complete; implementation commit `8bbda2bd`; metadata commit pending.
+PR #213: open — https://github.com/coctostan/pals/pull/213 (Socket Security checks passed at APPLY postflight). PR #212 merged (`17578fb0`) closed Phase 293.
 Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-20 — Phase 293 complete; transitioned to Phase 294.
-Stopped at: Phase 294 ready to plan.
-Next action: /paul:plan for Phase 294
+Last session: 2026-05-20 — Phase 294 UNIFY completed.
+Stopped at: Phase 294 complete; Phase 295 ready to plan after PR #213 merge gate.
+Next action: /paul:plan
 Resume file: .paul/ROADMAP.md
-wip_result: PR #212 squash-merged to main as `17578fb0`; feature branch deleted remotely; local main synced.
+unify_result: Phase 294 complete; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`; validation PASS; CODI/WALT history rows appended; PR #213 checks passed.
 Resume context:
-- Phase 293 created the S4 canonical reply delivery extraction contract and modularization outcome pointer.
-- Phase 294 should plan the bounded source extraction using `docs/PI-NATIVE-GUIDED-WORKFLOW-CANONICAL-REPLY-DELIVERY-EXTRACTION-CONTRACT.md`.
-- Next lifecycle action is `/paul:plan for Phase 294`.
+- Phase 294 summary: `.paul/phases/294-s4-canonical-reply-delivery-extraction/294-01-SUMMARY.md`.
+- PR: https://github.com/coctostan/pals/pull/213 (Socket Security checks passed).
+- Phase 295 focus: measure context offload and rank next safe TypeScript offload target; recommendation only.
+- Next lifecycle action after merge gate is `/paul:plan` for Phase 295.

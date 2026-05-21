@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Latest milestone: **v2.68 Plannotator Retraction** complete (Phases 291–292 closed). v2.67 cleared inherited Pi e2e CODI marker drift in Phase 288, PROJECT/ROADMAP byte-budget drift in Phase 289, and final validation closure in Phase 290 without product/runtime behavior changes.
+Latest milestone: **v2.68 Plannotator Retraction** complete (Phases 291–292 closed). Current milestone **v2.69 Pi Runtime Context Offload — S4 First** has Phase 294 complete and Phase 295 ready to plan for measurement/next-target ranking.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -42,7 +42,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
 - v2.43/v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
 - v2.45 established Pi-native runtime assistance as the primary architecture direction: artifact-slice loading, workflow/resource capsules, guided workflow evidence, delegated APPLY packets, and Pi-Native validation classification all shipped while keeping `.paul/*` artifacts authoritative.
-- v2.56–v2.61 extracted every active S* sibling Pi extension (S5/S1/S2/S3/S7/S6/S8); only S4 canonical reply delivery is explicitly deferred as the integration point.
+- v2.56–v2.61 extracted the active S* sibling Pi extensions (S5/S1/S2/S3/S7/S6/S8); v2.69 Phase 294 extracted S4 canonical reply delivery into `guided-workflow-delivery.ts`, leaving `pals-hooks.ts` as runtime orchestration.
 - v2.62 compacted the four hot lifecycle artifacts to per-section byte budgets and added Selective Artifact Loading + anti-regrowth TAPs, without weakening lifecycle authority, helper compatibility, validation truth, or full authoritative read fallback.
 - v2.64 rewrote module instruction sources for context efficiency and semantic enforcement, adding `tests/helpers/module_instruction_semantics.sh`; PLAN/APPLY/UNIFY remain authoritative for module rewrites.
 
@@ -60,7 +60,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.69 Pi Runtime Context Offload — S4 First** — active 2026-05-20; Phase 294 ready to plan after Phase 293 S4 contract completion. Latest closed milestone: **v2.68 Plannotator Retraction** — evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
+Current milestone pointer: **v2.69 Pi Runtime Context Offload — S4 First** — active 2026-05-20; Phase 294 complete, Phase 295 ready to plan. Latest closed milestone: **v2.68 Plannotator Retraction** — evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -99,6 +99,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | 2026-05-13: TODD/RUBY functional-first guidance stays advisory, behavior-preserving, and validation-guarded. | Phase 282 Plan 282-01 (`282-01-SUMMARY.md`) | TODD now treats pure input-to-output business logic as high-value TDD scope and RUBY now documents Extract Pure Core as optional behavior-preserving/test-backed refactoring guidance; Pi and cross-harness installed-resource marker checks guard both without adding a default functional-style blocking gate. |
 | 2026-05-13: ARCH side-effect-boundary guidance stays advisory and project-convention-aware; v2.65 closes without a default functional-style blocking gate. | Phase 283 Plan 283-01 (`283-01-SUMMARY.md`; PR #201) | ARCH module metadata, principles, patterns, drift, and onboarding references now surface side-effect boundary drift (Pure Core, Explicit Effects) as advisory evidence only, preserving project conventions and local idioms; Pi and cross-harness installed-resource marker checks (5 + 10 assertions) guard the new ARCH Phase 283 markers across both harnesses. |
 | 2026-05-19: v2.66 Plannotator integration retracted in v2.68; no live PALS surface remains. | Phase 291 Plan 291-01 (`291-01-SUMMARY.md`; PR #209) + Phase 292 Plan 292-01 (`292-01-SUMMARY.md`) | Bridge code (`plannotator-bridge.ts`), kernel workflow opt-in steps, sidecar references (`PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` / `CODE-REVIEW-NOTES.md`), Plannotator marker assertions across Pi e2e + cross-harness suites (Pi 335→328; cross-harness 246→234), and `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md` are all removed. v2.66 archive evidence (Phases 284–287 plans/summaries, MILESTONES.md v2.66 row, `PROJECT-HISTORY-v2.61-v2.66.md`) remains authoritative historical truth. |
+| 2026-05-20: S4 canonical reply delivery extracted into a dedicated Pi extension sibling. | Phase 294 Plan 294-01 (`294-01-SUMMARY.md`; PR #213) | `drivers/pi/extensions/guided-workflow-delivery.ts` now owns `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, `GuidedWorkflowAutoPresent`, `GuidedWorkflowConfig`, and `GUIDED_WORKFLOW_DEFAULTS`; `pals-hooks.ts` remains runtime orchestration and imports S4 delivery/config. Validation: install 9 extensions, Pi 329/329, cross-harness 234/234. |
 | 2026-05-07: Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`, ROADMAP active-window line-budget) escalated to v2.62 per Phase 264 recorded decision; reconciled inline by Phase 266 ROADMAP warm compaction (no separate `/paul:fix` required). | Phase 264 / Phase 265 | Closure scope bounded to evidence + 1 guardrail; in-flight trim would expand scope beyond closure-recipe precedent. Phase 266 ROADMAP active-window compaction is the same root cause. |
 | 2026-05-08: Single-Write-per-artifact recipe ratified for context-diet contracts and large lifecycle-artifact compaction. | Phase 265 / Phase 266 | One `Write` per file overwrite (computed offline) replaces many sequential `Edit`s for large markdown artifacts; Edit gets brittle on hash-drift. Used Phase 265 for the 39 KB / 395-line contract and Phase 266 for STATE/PROJECT/MILESTONES/ROADMAP. |
 | 2026-05-08: Hot/warm/cold split rules and per-section byte budgets are the v2.62 authoritative contract. | Phase 265 (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`) | STATE.md ≤ 20 KB / PROJECT.md ≤ 25 KB / MILESTONES.md ≤ 18 KB / ROADMAP.md ≤ 12 KB AND ≤ 120 lines / aggregate ≤ 80 KB. v2.61 (just-closed) and v2.62 (active) rows stay hot; pre-v2.61 lifts to archive. Phase 266 cannot deviate without recording it in SUMMARY.md; Phase 267 ratifies with anti-regrowth TAPs (Phase 191 pattern; line-ceiling validation calibrated against ~80 bytes/line). |
@@ -124,7 +125,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-20 after v2.69 milestone creation; Phase 293 ready to plan.*
+*Last updated: 2026-05-20 after Phase 294 S4 canonical reply delivery extraction; Phase 295 ready to plan.*
 
 Quick Reference:
 
@@ -147,4 +148,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-20 after v2.69 milestone creation; Phase 293 ready to plan.*
+*Last updated: 2026-05-20 after Phase 294 S4 canonical reply delivery extraction; Phase 295 ready to plan.*

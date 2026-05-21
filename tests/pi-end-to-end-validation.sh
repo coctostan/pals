@@ -1339,6 +1339,7 @@ section "EXTENSION STRUCTURAL VALIDITY"
 EXT_SRC="$REPO_ROOT/drivers/pi/extensions/pals-hooks.ts"
 EXT_ARTIFACT_SLICE="$REPO_ROOT/drivers/pi/extensions/artifact-slice-rendering.ts"
 EXT_GUIDED_WORKFLOW_DETECTION="$REPO_ROOT/drivers/pi/extensions/guided-workflow-detection.ts"
+EXT_GUIDED_WORKFLOW_DELIVERY="$REPO_ROOT/drivers/pi/extensions/guided-workflow-delivery.ts"
 EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
 EXT_LIFECYCLE_UI="$REPO_ROOT/drivers/pi/extensions/lifecycle-ui.ts"
 EXT_COMMAND_ROUTING="$REPO_ROOT/drivers/pi/extensions/command-routing.ts"
@@ -1495,9 +1496,9 @@ fi
     '.paul/STATE.md' \
     '.paul/ROADMAP.md'
 
-  # shouldInjectPalsContext is unrelated to S1 and remains in pals-hooks.ts after the Phase 243 extraction.
+  # Phase 254 (S7): shouldInjectPalsContext moved to pals-context-injection.ts and pals-hooks.ts imports it.
   tap_file_contains_all \
-    "Extension keeps shouldInjectPalsContext gating in pals-hooks.ts" \
+    "Extension keeps shouldInjectPalsContext gating imported into pals-hooks.ts" \
     "$EXT_SRC" \
     'shouldInjectPalsContext'
 
@@ -1650,7 +1651,7 @@ fi
     'parent-owned APPLY'
 
   # Guided workflow contract: detect canonical workflow markers from shared prompts.
-  # Phase 250: S3 detection markers live in guided-workflow-detection.ts; S4 delivery remains in pals-hooks.ts.
+  # Phase 294: S3 detection markers live in guided-workflow-detection.ts; S4 delivery lives in guided-workflow-delivery.ts.
   if grep -q 'Continue to APPLY' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null && grep -q 'Continue to UNIFY' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null && grep -q 'CHECKPOINT:' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null && grep -q '▶ NEXT:' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null; then
     tap_ok "Extension detects canonical workflow markers for guided UX"
   else
@@ -1658,12 +1659,12 @@ fi
   fi
 
   # Guided workflow contract: explicit Pi UI drives canonical continuation replies
-  # Phase 262 (S8) repoint: confirm/select + sendUserMessage stay inline in pals-hooks.ts (S4 canonical reply path);
-  # the 'approved' literal lives in ./command-routing COMMANDS["paul-apply"] description and in ./guided-workflow-detection canonicalResponse.
-  if grep -Eq 'ctx\.ui\.(confirm|select)' "$EXT_SRC" 2>/dev/null && grep -q 'sendUserMessage' "$EXT_SRC" 2>/dev/null && (grep -q 'approved' "$EXT_COMMAND_ROUTING" 2>/dev/null || grep -q 'approved' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null); then
+  # Phase 294 repoint: confirm/select + sendUserMessage live in guided-workflow-delivery.ts (S4 canonical reply path);
+  # the 'approved' literal lives in ./command-routing COMMANDS[\"paul-apply\"] description and in ./guided-workflow-detection canonicalResponse.
+  if grep -Eq 'ctx\.ui\.(confirm|select)' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null && grep -q 'sendUserMessage' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null && (grep -q 'approved' "$EXT_COMMAND_ROUTING" 2>/dev/null || grep -q 'approved' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null); then
     tap_ok "Extension routes guided workflow responses through explicit UI and canonical user messages"
   else
-    tap_not_ok "Extension routes guided workflow responses through explicit UI and canonical user messages" "Expected confirm/select UI plus canonical sendUserMessage routing in extension source"
+    tap_not_ok "Extension routes guided workflow responses through explicit UI and canonical user messages" "Expected confirm/select UI plus canonical sendUserMessage routing in guided-workflow-delivery.ts"
   fi
 
   # Guardrail: guided workflow state remains derived-only and non-persistent
@@ -1674,27 +1675,43 @@ fi
   fi
 
   # Guided UI Safety / Pi-Supported Runtime: Phase 207 hardening markers stay command-verifiable.
-  # Phase 250 keeps S4 canonical reply delivery in pals-hooks.ts and S3 detection/no-inferred-merge markers in guided-workflow-detection.ts.
+  # Phase 294 keeps S3 detection/no-inferred-merge markers in guided-workflow-detection.ts and S4 canonical reply delivery in guided-workflow-delivery.ts.
   if grep -q 'merge-gate-routing' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
     && grep -q 'no inferred merge intent' "$EXT_GUIDED_WORKFLOW_DETECTION" 2>/dev/null \
-    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'pi.sendUserMessage' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'ctx.ui.confirm' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'ctx.ui.select' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'notify-only mode never sends a canonical reply' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'no auto-approval' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'no auto-continue' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'no skipped checkpoints' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'no UI-only lifecycle decisions' "$EXT_SRC" 2>/dev/null; then
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'pi.sendUserMessage' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'ctx.ui.confirm' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'ctx.ui.select' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'notify-only mode never sends a canonical reply' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'no auto-approval' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'no auto-continue' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'no skipped checkpoints' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'no UI-only lifecycle decisions' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null; then
     tap_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries"
   else
-    tap_not_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries" "Expected S3 detection/no-inferred-merge markers in guided-workflow-detection.ts plus S4 canonical reply/no-auto markers in pals-hooks.ts"
+    tap_not_ok "Guided UI Safety markers protect canonical replies and no-auto boundaries" "Expected S3 detection/no-inferred-merge markers in guided-workflow-detection.ts plus S4 canonical reply/no-auto markers in guided-workflow-delivery.ts"
+  fi
+
+  # Phase 294 (S4): guided-workflow-delivery sibling extraction guardrail.
+  if [[ -f "$EXT_GUIDED_WORKFLOW_DELIVERY" ]] \
+    && grep -q '^export function sendCanonicalWorkflowResponse' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q '^export async function presentGuidedWorkflowMoment' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q '^export function loadGuidedWorkflowConfig' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q '^export function shouldAutoPresent' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q '^export const GUIDED_WORKFLOW_DEFAULTS' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'No-op Pi extension factory' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'from "./guided-workflow-delivery"' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^export function (sendCanonicalWorkflowResponse|presentGuidedWorkflowMoment|loadGuidedWorkflowConfig|shouldAutoPresent)' "$EXT_SRC" 2>/dev/null \
+    && ! grep -qE '^export const GUIDED_WORKFLOW_DEFAULTS' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "S4 guided workflow delivery extracted to sibling with pals-hooks.ts delegation intact"
+  else
+    tap_not_ok "S4 guided workflow delivery extracted to sibling with pals-hooks.ts delegation intact" "Expected S4 delivery/config exports and No-op Pi extension factory in guided-workflow-delivery.ts; pals-hooks.ts importing from ./guided-workflow-delivery with no inline S4 declarations"
   fi
 
   # Phase 254 (S7): pals-context-injection sibling extraction guardrail.
   # Asserts the new sibling holds the six S7 constants exactly, the six S7 functions, the literal authority/activation byte sequences,
   # and the loader-compat marker; that pals-hooks.ts imports from ./pals-context-injection and no longer declares them inline; and
-  # that S4 canonical-reply identifiers and shared helpers remain in pals-hooks.ts.
+  # that S4 canonical-reply identifiers now live in guided-workflow-delivery.ts while shared helpers remain in pals-hooks.ts.
   if [[ -f "$EXT_PALS_CONTEXT_INJECTION" ]] \
     && grep -q 'PRIMARY_INJECTION_EVENT = "before_agent_start"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
     && grep -q 'SUPPORTING_CONTEXT_EVENT = "context"' "$EXT_PALS_CONTEXT_INJECTION" 2>/dev/null \
@@ -1712,22 +1729,22 @@ fi
     && grep -q 'from "./pals-context-injection"' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^const (PRIMARY_INJECTION_EVENT|SUPPORTING_CONTEXT_EVENT|PALS_CONTEXT_CUSTOM_TYPE|LEGACY_PALS_CONTEXT_HEADER|STATE_AUTHORITY_TAG|ACTIVATION_SIGNAL_TAG)' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^function (shouldInjectPalsContext|buildPalsContextPayload|isLegacyPalsContextMessage|isPalsContextMessage|keepOnlyLatestPalsContextMessage|messagesChanged)' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'presentGuidedWorkflowMoment' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'loadGuidedWorkflowConfig' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'shouldAutoPresent' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
     && grep -q 'function extractTextContent' "$EXT_SRC" 2>/dev/null \
     && grep -q 'function collectRecentAssistantTexts' "$EXT_SRC" 2>/dev/null; then
     tap_ok "S7 PALS context injection extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
   else
-    tap_not_ok "S7 PALS context injection extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected six S7 constants/functions + literal authority/activation byte sequences + No-op Pi extension factory in pals-context-injection.ts; pals-hooks.ts importing from ./pals-context-injection with no inline S7 declarations; S4 canonical-reply identifiers and shared helpers retained in pals-hooks.ts"
+    tap_not_ok "S7 PALS context injection extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected six S7 constants/functions + literal authority/activation byte sequences + No-op Pi extension factory in pals-context-injection.ts; pals-hooks.ts importing from ./pals-context-injection with no inline S7 declarations; S4 canonical-reply identifiers in guided-workflow-delivery.ts; shared helpers retained in pals-hooks.ts"
   fi
 
   # Phase 258: Pi-supported-runtime — S6 lifecycle-ui extracted to sibling module.
   # Asserts the new sibling holds both S6 constants exactly with their right-hand-side string literals,
-  # all eight S6 functions, the literal No-op Pi extension factory marker, and the type-only back-imports;
+  # the eight S6 functions, the literal No-op Pi extension factory marker, and the type-only back-imports;
   # that pals-hooks.ts imports from ./lifecycle-ui and no longer declares them inline; and
-  # that S4 canonical-reply identifiers and shared helpers (extractTextContent, collectRecentAssistantTexts) remain in pals-hooks.ts.
+  # that guided-workflow-delivery.ts now owns S4 canonical-reply identifiers and shared helpers (extractTextContent, collectRecentAssistantTexts) remain in pals-hooks.ts.
   if [[ -f "$EXT_LIFECYCLE_UI" ]] \
     && grep -q 'PALS_STATUS_ID = "pals-lifecycle"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
     && grep -q 'PALS_WIDGET_ID = "pals-lifecycle"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
@@ -1745,15 +1762,15 @@ fi
     && grep -q 'from "./lifecycle-ui"' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^const (PALS_STATUS_ID|PALS_WIDGET_ID)' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^function (renderLoopBadge|renderCompactLoopSummary|renderLifecycleActionLabel|renderModuleActivity|renderModuleActivityDetails|renderLifecycleStatus|renderLifecycleWidget|syncLifecycleUi)' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'presentGuidedWorkflowMoment' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'loadGuidedWorkflowConfig' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'shouldAutoPresent' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
     && grep -q 'function extractTextContent' "$EXT_SRC" 2>/dev/null \
     && grep -q 'function collectRecentAssistantTexts' "$EXT_SRC" 2>/dev/null; then
     tap_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
   else
-    tap_not_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected two S6 constants exact-string + eight S6 functions + No-op Pi extension factory + type-only back-imports for PalsStateSnapshot/RecentModuleActivity in lifecycle-ui.ts; pals-hooks.ts importing from ./lifecycle-ui with no inline S6 declarations; S4 canonical-reply identifiers and shared helpers (extractTextContent, collectRecentAssistantTexts) retained in pals-hooks.ts"
+    tap_not_ok "S6 lifecycle UI extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected two S6 constants exact-string + eight S6 functions + No-op Pi extension factory + type-only back-imports for PalsStateSnapshot/RecentModuleActivity in lifecycle-ui.ts; pals-hooks.ts importing from ./lifecycle-ui with no inline S6 declarations; S4 canonical-reply identifiers in guided-workflow-delivery.ts; shared helpers (extractTextContent, collectRecentAssistantTexts) retained in pals-hooks.ts"
   fi
 
   # Phase 262: Pi-supported-runtime — S8 command-routing extracted to sibling module.
@@ -1761,7 +1778,7 @@ fi
   # the four command-routing constants exact-string, the four cited S8 functions and (under Disposition A)
   # three closure factories, the literal No-op Pi extension factory marker, and the type-only back-imports;
   # that pals-hooks.ts imports from ./command-routing and no longer declares them inline;
-  # that S4 canonical-reply identifiers remain in pals-hooks.ts; and that the registration loop and the
+  # that guided-workflow-delivery.ts now owns S4 canonical-reply identifiers; and that the registration loop and the
   # five Key.ctrlAlt(...) invocation sites are still inline in pals-hooks.ts.
   if [[ -f "$EXT_COMMAND_ROUTING" ]] \
     && grep -q 'name: "paul-init"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
@@ -1800,15 +1817,15 @@ fi
     && grep -q '^export function markActivation' "$EXT_SRC" 2>/dev/null \
     && grep -q '^export function getActiveActivation' "$EXT_SRC" 2>/dev/null \
     && grep -q '^export function consumeActivationTurn' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
-    && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'sendCanonicalWorkflowResponse' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'presentGuidedWorkflowMoment' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'loadGuidedWorkflowConfig' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+    && grep -q 'shouldAutoPresent' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
     && grep -q 'for (const cmd of COMMANDS)' "$EXT_SRC" 2>/dev/null \
     && [ "$(grep -o 'Key.ctrlAlt("[nsrhm]")' "$EXT_SRC" 2>/dev/null | sort -u | wc -l | tr -d ' ')" -eq 5 ]; then
     tap_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
   else
-    tap_not_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected COMMANDS array with twelve entries verbatim + four command-routing constants exact-string + four cited S8 functions + three closure factories + two types + No-op Pi extension factory + type-only back-imports for ActivationState/PalsStateSnapshot in command-routing.ts; pals-hooks.ts importing from ./command-routing with no inline S8 declarations; markActivation/getActiveActivation/consumeActivationTurn promoted to top-level exports; S4 canonical-reply identifiers retained; registration loop and five Key.ctrlAlt(...) invocations preserved in pals-hooks.ts"
+    tap_not_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected COMMANDS array with twelve entries verbatim + four command-routing constants exact-string + four cited S8 functions + three closure factories + two types + No-op Pi extension factory + type-only back-imports for ActivationState/PalsStateSnapshot in command-routing.ts; pals-hooks.ts importing from ./command-routing with no inline S8 declarations; markActivation/getActiveActivation/consumeActivationTurn promoted to top-level exports; S4 canonical-reply identifiers in guided-workflow-delivery.ts; registration loop and five Key.ctrlAlt(...) invocations preserved in pals-hooks.ts"
   fi
   tap_file_contains_all \
     "Pi-Supported Runtime docs surface guided workflow reply evidence" \
@@ -1816,7 +1833,7 @@ fi
     'merge-gate-routing' \
     'sendCanonicalWorkflowResponse' \
     'explicit confirm/select user action' \
-    'Notify-only mode never sends a canonical reply' \
+    'notify-only mode never sends a canonical reply' \
     'never auto-approves' \
     'never auto-continues' \
     'never skips human verification or human-action checkpoints' \
@@ -2464,15 +2481,15 @@ if [ -f "$EXT_GUIDED_WORKFLOW_DETECTION" ] \
   && grep -Eq 'from "\./guided-workflow-detection"' "$EXT_SRC" 2>/dev/null \
   && ! grep -Eq '^const GUIDED_WORKFLOW_(LOOKBACK|SIGNATURE_BYTES)' "$EXT_SRC" 2>/dev/null \
   && ! grep -Eq '^function (summarizeWorkflowPrompt|extractNextActionSummary|isValidOptionId|parseGuidedWorkflowOptions|detectExplicitCanonicalResponse|isMergeGateRoutingPrompt|extractMergeGateRoutingSummary|makeGuidedWorkflowSignature|detectGuidedWorkflowMoment)\b' "$EXT_SRC" 2>/dev/null \
-  && grep -q 'sendCanonicalWorkflowResponse' "$EXT_SRC" 2>/dev/null \
-  && grep -q 'presentGuidedWorkflowMoment' "$EXT_SRC" 2>/dev/null \
-  && grep -q 'loadGuidedWorkflowConfig' "$EXT_SRC" 2>/dev/null \
-  && grep -q 'shouldAutoPresent' "$EXT_SRC" 2>/dev/null \
-  && grep -q 'pi.sendUserMessage' "$EXT_SRC" 2>/dev/null \
-  && grep -q 'notify-only mode never sends a canonical reply' "$EXT_SRC" 2>/dev/null; then
+  && grep -q 'sendCanonicalWorkflowResponse' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+  && grep -q 'presentGuidedWorkflowMoment' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+  && grep -q 'loadGuidedWorkflowConfig' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+  && grep -q 'shouldAutoPresent' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+  && grep -q 'pi.sendUserMessage' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null \
+  && grep -q 'notify-only mode never sends a canonical reply' "$EXT_GUIDED_WORKFLOW_DELIVERY" 2>/dev/null; then
   tap_ok "Phase 250 sibling extraction (guided-workflow-detection): S3 detection extracted with S4 delivery boundary preserved"
 else
-  tap_not_ok "Phase 250 sibling extraction (guided-workflow-detection): S3 detection extracted with S4 delivery boundary preserved" "Expected guided-workflow-detection.ts to export S3 constants/functions plus no-op factory, pals-hooks.ts to import from ./guided-workflow-detection and no longer define moved S3 symbols inline, while S4 canonical reply markers remain in pals-hooks.ts"
+  tap_not_ok "Phase 250 sibling extraction (guided-workflow-detection): S3 detection extracted with S4 delivery boundary preserved" "Expected guided-workflow-detection.ts to export S3 constants/functions plus no-op factory, pals-hooks.ts to import from ./guided-workflow-detection and no longer define moved S3 symbols inline, while S4 canonical reply markers remain in guided-workflow-delivery.ts"
 fi
 
 # ════════════════════════════════════════════════════════════════════
