@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload active; Phase 293 ready 
 
 Milestone: v2.69 Pi Runtime Context Offload — S4 First
 Phase: 295 of 295 (Context-Offload Measurement + Next Target Ranking)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-20 — Phase 294 UNIFY completed and PR #213 merged; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`; Phase 295 ready to plan.
-Next action: /paul:plan
+Plan: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
+Status: APPLY complete; awaiting UNIFY
+Last activity: 2026-05-21 — Phase 295 APPLY completed: report/docs/validation guardrails implemented; validation passed (git diff --check clean, artifact_consistency PASS, Pi 331/331, cross-harness 235/235).
+Next action: /paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -23,7 +23,7 @@ Progress:
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
-- v2.69 Pi Runtime Context Offload — S4 First: [█████████░] 90% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ✅ PR #213 merged; Phase 295 ready to plan)
+- v2.69 Pi Runtime Context Offload — S4 First: [██████████] 97% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ✅ PR #213 merged; Phase 295 APPLY ✅, UNIFY pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -31,7 +31,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 295 ready to plan]
+  ✓        ✓        ○     [Phase 295 APPLY complete; ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -124,13 +124,13 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-05-20 — Phase 294 UNIFY completed.
-Stopped at: Phase 294 complete; Phase 295 ready to plan.
-Next action: /paul:plan
-Resume file: .paul/ROADMAP.md
-unify_result: Phase 294 complete; S4 canonical reply delivery extracted to `guided-workflow-delivery.ts`; validation PASS; CODI/WALT history rows appended; PR #213 merged.
+Last session: 2026-05-21 — Phase 295 APPLY completed.
+Stopped at: APPLY complete; UNIFY not started.
+Next action: /paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
+Resume file: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
+wip_result: not needed — APPLY task commits created on feature branch; lifecycle metadata remains pending UNIFY
 Resume context:
-- Phase 294 summary: `.paul/phases/294-s4-canonical-reply-delivery-extraction/294-01-SUMMARY.md`.
-- PR: https://github.com/coctostan/pals/pull/213 (merged; Socket Security checks passed).
-- Phase 295 focus: measure context offload and rank next safe TypeScript offload target; recommendation only.
-- Next lifecycle action is `/paul:plan` for Phase 295.
+- APPLY branch: `feature/295-context-offload-measurement-next-target-ranking`.
+- Task commits: `082dd32b` report, `893a4270` Pi docs surfacing, `d7c20033` validation guardrails.
+- Validation: `git diff --check` exit 0; `bash tests/helpers/artifact_consistency.sh` PASS; `bash tests/pi-end-to-end-validation.sh` PASS 331/331; `bash tests/cross-harness-validation.sh` PASS 235/235.
+- Next lifecycle action is `/paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md`.
