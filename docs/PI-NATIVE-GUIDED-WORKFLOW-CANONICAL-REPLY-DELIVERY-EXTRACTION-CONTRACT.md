@@ -1,6 +1,6 @@
 # PI-NATIVE-GUIDED-WORKFLOW-CANONICAL-REPLY-DELIVERY-EXTRACTION-CONTRACT
 
-**Status:** v2.69 Phase 293 — docs-only extraction contract for the S4 `guided-workflow-canonical-reply` Pi extension subsystem. Phase 294 will execute the bounded source extraction. Phase 293 itself does not modify runtime, source, test, install, dependency, CI, kernel workflow, or installed runtime copies.
+**Status:** v2.69 Phase 294 — S4 `guided-workflow-canonical-reply` Pi extension subsystem extracted to `drivers/pi/extensions/guided-workflow-delivery.ts` with bounded validation/docs repointed. Phase 293 produced the docs-only extraction contract; Phase 294 executed the source extraction without moving lifecycle authority, validation truth, GitHub Flow truth, module evidence, or `.paul/*` artifact authority.
 
 **Authority:** Derived aid only. This artifact catalogues the existing S4 surface in `drivers/pi/extensions/pals-hooks.ts` so Phase 294 can preserve transcript-visible guided-workflow reply delivery exactly. It does not change runtime behavior, lifecycle authority, validation truth, GitHub Flow truth, module evidence, or `.paul/*` artifact authority. The `.paul/*` artifacts and parent APPLY remain authoritative for lifecycle decisions; Pi UI and canonical reply delivery remain derived aids that route explicit user choices into normal user-message flow.
 
@@ -18,7 +18,7 @@ S4 is runtime-coupled because it invokes `pi.sendUserMessage` and uses `ctx.ui.c
 - `docs/PI-NATIVE-PALS-CONTEXT-INJECTION-EXTRACTION-CONTRACT.md` — S7 contract precedent for exact marker preservation, loader-compat no-op factory, and source-shape handoff.
 - `docs/PI-NATIVE-LIFECYCLE-UI-EXTRACTION-CONTRACT.md` — S6 runtime-coupled extraction precedent for UI mutation while preserving no-UI-only-lifecycle-decisions.
 - `docs/PI-NATIVE-COMMAND-ROUTING-EXTRACTION-CONTRACT.md` — S8 runtime-coupled extraction precedent for command-delivered `pi.sendUserMessage` while preserving S4 separation.
-- `drivers/pi/extensions/pals-hooks.ts` — current S4 owner. Phase 293 observes the existing S4 functions and call sites but does not change them.
+- `drivers/pi/extensions/pals-hooks.ts` — runtime registration/orchestration entry point. Phase 294 moved the S4 delivery/config surface out of this file and left existing call sites delegated to `guided-workflow-delivery.ts`.
 - `drivers/pi/extensions/guided-workflow-detection.ts` — current S3 sibling that produces `GuidedWorkflowMoment`; Phase 294 must keep detection separate from delivery.
 - `tests/pi-end-to-end-validation.sh` — existing guardrails already assert S4 identifiers, confirm/select delivery, no-auto markers, and S3/S4 separation.
 
@@ -140,6 +140,13 @@ All TAP counts and install file counts in the Phase 294 SUMMARY must be copied f
 - [ ] Install, Pi e2e, cross-harness, artifact-consistency, and `git diff --check` evidence is copied from fresh command output.
 - [ ] PR/CI status is recorded under GitHub Flow after APPLY.
 
+## Status After Phase 294
+
+Phase 294 implemented the contract: `drivers/pi/extensions/guided-workflow-delivery.ts` now owns `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, `GuidedWorkflowAutoPresent`, `GuidedWorkflowConfig`, and `GUIDED_WORKFLOW_DEFAULTS`. The sibling imports only `compactWhitespace` / `readFileOr` from `./pals-hooks`, `join` from `path`, and `GuidedWorkflowMoment` as a type from `./guided-workflow-detection`, then ends with the loader-compatible `No-op Pi extension factory` marker.
+
+`drivers/pi/extensions/pals-hooks.ts` remains the runtime orchestration entry point and imports S4 delivery/config from `./guided-workflow-delivery`. S3 detection remains in `guided-workflow-detection.ts`; S5/S1/S2/S7/S6/S8 siblings remain separate; no command routing, lifecycle UI, context injection, CARL, artifact slicing, workflow capsules, module parsing, `.paul/*` lifecycle authority, telemetry, hidden state, auto-approval, auto-continue, skipped checkpoints, UI-only lifecycle decisions, or inferred merge intent moved into S4.
+
+Validation and docs were repointed to the new S4 owner: Pi e2e guardrails assert `guided-workflow-delivery.ts` exports the moved S4 surface, contains the canonical reply/no-auto markers, keeps follow-up delivery and confirm/select explicit-choice behavior visible, and verifies `pals-hooks.ts` imports from the sibling without inline S4 definitions. `drivers/pi/extensions/README.md` and `drivers/pi/skill-map.md` now list `guided-workflow-delivery.ts` as the Phase 294 S4 owner and part of the Pi extension source set.
 ## Status After Phase 293
 
-This contract is final for Phase 293. It does not authorize source changes by itself; it defines the boundary Phase 294 will execute against after Phase 293 UNIFY closes and Phase 294 receives its own approved PLAN.
+This contract was final for Phase 293. It authorized no source changes by itself; it defined the boundary Phase 294 executed after Phase 293 UNIFY closed and Phase 294 received its own approved PLAN.
