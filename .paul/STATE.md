@@ -128,9 +128,10 @@ Last session: 2026-05-21 — Phase 295 APPLY completed.
 Stopped at: APPLY complete; UNIFY not started.
 Next action: /paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
 Resume file: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
-wip_result: not needed — APPLY task commits created on feature branch; lifecycle metadata remains pending UNIFY
+wip_result: not needed — APPLY task commits and lifecycle metadata committed on feature branch; PR #214 open
 Resume context:
 - APPLY branch: `feature/295-context-offload-measurement-next-target-ranking`.
-- Task commits: `082dd32b` report, `893a4270` Pi docs surfacing, `d7c20033` validation guardrails.
+- Task commits: `082dd32b` report, `893a4270` Pi docs surfacing, `d7c20033` validation guardrails, `0823712c` APPLY lifecycle metadata.
 - Validation: `git diff --check` exit 0; `bash tests/helpers/artifact_consistency.sh` PASS; `bash tests/pi-end-to-end-validation.sh` PASS 331/331; `bash tests/cross-harness-validation.sh` PASS 235/235.
+- GitHub Flow: pushed branch and opened PR #214 https://github.com/coctostan/pals/pull/214; PR state OPEN/MERGEABLE; Socket Security check observed IN_PROGRESS at APPLY postflight.
 - Next lifecycle action is `/paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md`.
