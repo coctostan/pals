@@ -100,16 +100,17 @@ TAP count reconciliation:
 
 ## Git / PR Evidence
 
-- Branch: `feature/295-context-offload-measurement-next-target-ranking`.
-- APPLY commits:
+- Branch: `feature/295-context-offload-measurement-next-target-ranking` during APPLY/UNIFY; merged to `main` by GitHub Flow merge gate.
+- APPLY/UNIFY commits:
   - `082dd32b` — report artifact.
   - `893a4270` — Pi docs surfacing.
   - `d7c20033` — validation guardrails.
   - `0823712c` — APPLY lifecycle metadata.
   - `7ce71ebf` — PR postflight evidence.
+  - `d6566174` — UNIFY summary/history/milestone metadata.
 - PR URL: https://github.com/coctostan/pals/pull/214
-- PR state before merge gate: OPEN / MERGEABLE.
-- CI/check state before merge gate: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS.
+- PR state: MERGED via squash `08b0e891` on 2026-05-22.
+- CI/check state: Socket Security Project Report SUCCESS; Socket Security Pull Request Alerts SUCCESS.
 
 ## Module Execution Reports
 
@@ -125,4 +126,4 @@ TAP count reconciliation:
 
 ## Next Phase Note
 
-Phase 295 closes v2.69 after GitHub Flow merge-gate and transition complete. Recommended next milestone should be contract-first shared filesystem/state helper extraction, with CARL/session-boundary extraction as runner-up only after helper import boundaries are clarified.
+Phase 295 closed v2.69 after GitHub Flow merge gate. Recommended next milestone should be contract-first shared filesystem/state helper extraction, with CARL/session-boundary extraction as runner-up only after helper import boundaries are clarified.

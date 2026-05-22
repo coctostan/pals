@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.69 Pi Runtime Context Offload — S4 First complete; PR #214 merge gate pending; next milestone not yet defined | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/295-context-offload-measurement-next-target-ranking/` |
+| Current milestone | v2.69 Pi Runtime Context Offload — S4 First complete; next milestone not yet defined | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/295-context-offload-measurement-next-target-ranking/` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -87,13 +87,13 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | 2026-05-14 | same-day | 4 phases, 4 plans | Phase 284 authoritative contract + sidecar/non-adoption policy PR #202; Phase 285 optional/advisory Pi bridge helper surface `plannotator-bridge.ts` PR #203; Phase 286 opt-in `/paul:plan` review semantics + advisory plan sidecars PR #204; Phase 287 opt-in APPLY/UNIFY code-review semantics + advisory `CODE-REVIEW-NOTES.md` PR #205. Final validation: cross-harness 246/246 PASS; Pi 328/335 with 7 inherited CODI/PROJECT/ROADMAP-budget failures unchanged/pre-classified. No lifecycle authority transfer, no auto Plannotator review, no `/paul:annotate`, no new dependencies or module hooks. |
 | v2.67 Validation Hygiene | 2026-05-19 | same-day | 3 phases, 3 plans | Phase 288 cleared inherited CODI marker drift via semantic helper assertions; Phase 289 cleared PROJECT/ROADMAP hot-artifact budget drift; Phase 290 closed final validation with Pi e2e 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
 | v2.68 Plannotator Retraction | 2026-05-20 | same-day | 2 phases, 2 plans | Phase 291 deleted `plannotator-bridge.ts`, stripped Plannotator opt-in language from kernel workflows, and purged Plannotator marker assertions from Pi e2e/cross-harness suites (PR #209). Phase 292 deleted `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`, retracted three Plannotator current-decision rows in PROJECT.md to a single row, reconciled STATE/MILESTONES/ROADMAP, and merged GitHub Flow PR #210 at squash `7c38f42e`. Final validation: Pi e2e 328/328 PASS; cross-harness 234/234 PASS. v2.66 archive evidence preserved untouched. |
-| v2.69 Pi Runtime Context Offload — S4 First | 2026-05-21 | ~1 day | 3 phases, 3 plans | Phase 293 created the S4 canonical reply delivery extraction contract (PR #212 `17578fb0`), Phase 294 extracted `guided-workflow-delivery.ts` and repointed docs/validation (PR #213 `683054fe`), and Phase 295 measured S4 context offload plus ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 pending merge gate). Final validation: Pi 331/331, cross-harness 235/235. |
+| v2.69 Pi Runtime Context Offload — S4 First | 2026-05-22 | ~1 day | 3 phases, 3 plans | Phase 293 created the S4 canonical reply delivery extraction contract (PR #212 `17578fb0`), Phase 294 extracted `guided-workflow-delivery.ts` and repointed docs/validation (PR #213 `683054fe`), and Phase 295 measured S4 context offload plus ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 squash `08b0e891`). Final validation: Pi 331/331, cross-harness 235/235. |
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.69 Pi Runtime Context Offload — S4 First complete; PR #214 merge gate pending; next milestone not yet defined.
+**Current milestone:** v2.69 Pi Runtime Context Offload — S4 First complete; next milestone not yet defined.
 
-**Latest completed phase:** Phase 295 Context-Offload Measurement + Next Target Ranking completed 2026-05-21; PR #214 merge gate pending.
+**Latest completed phase:** Phase 295 Context-Offload Measurement + Next Target Ranking completed 2026-05-22 via PR #214 squash `08b0e891`.
 
 ## Archive
 
@@ -105,4 +105,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 completed 2026-05-20; v2.69 completed 2026-05-21 pending PR #214 merge gate.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 completed 2026-05-20; v2.69 completed 2026-05-22 via PR #214 squash `08b0e891`.*
