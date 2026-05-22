@@ -9,15 +9,15 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.69 Pi Runtime Context Offload — S4 First**
-Status: 🚧 In Progress
-Phases: 2 of 3 complete; Phase 295 APPLY complete, UNIFY pending
+Status: ✅ Complete (merge gate pending)
+Phases: 3 of 3 complete; Phase 295 UNIFY complete, PR #214 merge gate pending
 Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, proving the extraction pattern still holds while preserving lifecycle authority and ending with an evidence-backed ranking of next context-bloat reduction targets.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 293 | S4 Offload Contract | 1 | Complete | 2026-05-20 |
 | 294 | S4 Canonical Reply Delivery Extraction | 1/1 | ✅ Complete | 2026-05-20 |
-| 295 | Context-Offload Measurement + Next Target Ranking | 1 | APPLY Complete | - |
+| 295 | Context-Offload Measurement + Next Target Ranking | 1/1 | ✅ Complete | 2026-05-21 |
 
 ### Phase 293: S4 Offload Contract
 Focus: Define the S4 boundary, allowed/forbidden file scope, context-bloat success framing, validation expectations, and authority guardrails.
@@ -76,7 +76,8 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | 2026-05-14 | 284-287 | Added optional/advisory Plannotator plan-review and code-review surfaces while preserving `.paul/*` lifecycle authority. Final validation: cross-harness 246/246 PASS; Pi 328/335 with inherited CODI/PROJECT/ROADMAP-budget failures carried into v2.67. PRs #202/#203/#204/#205. |
 | v2.67 Validation Hygiene | 2026-05-19 | 288-290 | Cleared inherited Pi e2e CODI marker drift and hot-artifact budget drift; final validation Pi 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
 | v2.68 Plannotator Retraction | 2026-05-20 | 291-292 | Removed live Plannotator surfaces and contract document while preserving v2.66 archive evidence. Final validation: Pi 328/328, cross-harness 234/234. PR #210 merged at squash `7c38f42e`. |
+| v2.69 Pi Runtime Context Offload — S4 First | 2026-05-21 | 293-295 | Created S4 canonical reply delivery contract (PR #212), extracted S4 delivery to `drivers/pi/extensions/guided-workflow-delivery.ts` (PR #213), then measured the context offload and ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 pending merge gate). Final validation: Pi 331/331, cross-harness 235/235. |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-21 — Phase 295 APPLY completed for context-offload measurement and next-target ranking; UNIFY pending.*
+*Last updated: 2026-05-21 — Phase 295 UNIFY completed for context-offload measurement and next-target ranking; PR #214 merge gate pending.*

@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload active; Phase 293 ready to plan)
+See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload complete; next milestone ready to define)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.69 Pi Runtime Context Offload — S4 First active. Safe TypeScript runtime offload should reduce agent contextual workload without moving lifecycle authority out of `.paul/*`, PLAN/APPLY/UNIFY, command output, GitHub Flow evidence, or transcript-visible canonical replies.
+**Current focus:** v2.69 Pi Runtime Context Offload — S4 First complete. Next milestone should be defined from the Phase 295 recommendation: contract-first shared filesystem/state helper extraction, unless user redirects.
 
 ## Current Position
 
 Milestone: v2.69 Pi Runtime Context Offload — S4 First
 Phase: 295 of 295 (Context-Offload Measurement + Next Target Ranking)
-Plan: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
-Status: APPLY complete; awaiting UNIFY
-Last activity: 2026-05-21 — Phase 295 APPLY completed: report/docs/validation guardrails implemented; validation passed (git diff --check clean, artifact_consistency PASS, Pi 331/331, cross-harness 235/235).
-Next action: /paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
+Plan: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-SUMMARY.md
+Status: UNIFY complete; milestone closure pending GitHub Flow merge gate
+Last activity: 2026-05-21 — Phase 295 UNIFY created SUMMARY, appended CODI/QUALITY history, and prepared milestone closure metadata; PR #214 CI passed.
+Next action: complete GitHub Flow merge gate for PR #214, then start next milestone planning
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -23,7 +23,7 @@ Progress:
 - v2.66 Plannotator Integration — Rich UI Review Surfaces: [██████████] 100% ✓ (Phases 284–287 complete; PRs #202–#205)
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
-- v2.69 Pi Runtime Context Offload — S4 First: [██████████] 97% (Phase 293 ✅ PR #212 `17578fb0`; Phase 294 ✅ PR #213 merged; Phase 295 APPLY ✅, UNIFY pending)
+- v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 pending merge gate)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -31,7 +31,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 295 APPLY complete; ready for UNIFY]
+  ✓        ✓        ✓     [Phase 295 UNIFY complete; GitHub Flow merge gate pending]
 ```
 
 ## Accumulated Context
@@ -62,6 +62,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Phase 283 ARCH advisory + v2.65 closure | 283-01-SUMMARY.md / PR #201 | ARCH module metadata, principles, patterns, drift, and onboarding references surface side-effect boundary drift (Pure Core, Explicit Effects) as advisory only; `The Leaking Effect` common-drift label added; Pi + cross-harness installed-resource marker checks (5 + 10 assertions) guard ARCH Phase 283 markers; v2.65 milestone closed. |
 
 | 2026-05-20: Phase 294 S4 delivery extraction completed | 294-01-SUMMARY.md / PR #213 | `guided-workflow-delivery.ts` owns canonical guided-workflow reply delivery/config while `pals-hooks.ts` remains orchestration; validation passed install 9 extensions, Pi 329/329, cross-harness 234/234. |
+| 2026-05-21: Phase 295 context-offload ranking completed | 295-01-SUMMARY.md / PR #214 | Measured S4 offload (`pals-hooks.ts` 671→546 lines; S4 sibling 148 lines), ranked shared filesystem/state helper extraction as the next contract-first recommendation, and added Pi/cross-harness guardrails; validation Pi 331/331, cross-harness 235/235.
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -98,6 +99,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 290 UNIFY: Created `290-01-SUMMARY.md`, appended CODI/WALT history rows, recorded final v2.67 validation closure evidence, and marked v2.67 ready for GitHub Flow merge gate and milestone completion.
 
 - Phase 294 PLAN/APPLY/UNIFY: Extracted S4 canonical guided-workflow reply delivery/config into `drivers/pi/extensions/guided-workflow-delivery.ts`, repointed Pi validation/docs, appended CODI/WALT history rows, and transitioned to Phase 295. Validation: install 9 extensions, `git diff --check`, artifact_consistency PASS, Pi 329/329, cross-harness 234/234; PR #213 checks passed.
+- Phase 295 PLAN/APPLY/UNIFY: Created source-backed context-offload measurement and next-target ranking report, surfaced it in Pi docs, added recommendation-only validation guardrails, appended CODI/WALT history rows, and closed v2.69 pending GitHub Flow merge gate. Validation: `git diff --check`, artifact_consistency PASS, Pi 331/331, cross-harness 235/235; PR #214 checks passed.
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
@@ -116,22 +118,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #213 merged 2026-05-21T01:01:04Z; local main synced with origin/main)
-Last lifecycle state: Phase 294 complete; PR #213 squash merge commit `683054fe`; Phase 295 ready to plan.
-PR #213: merged — https://github.com/coctostan/pals/pull/213. PR #212 merged (`17578fb0`) closed Phase 293.
+Branch: feature/295-context-offload-measurement-next-target-ranking (PR #214 open/mergeable; CI checks passed; merge gate pending)
+Last lifecycle state: Phase 295 UNIFY complete; v2.69 milestone closure metadata prepared.
+PR #214: open — https://github.com/coctostan/pals/pull/214. PR #213 merged (`683054fe`); PR #212 merged (`17578fb0`).
 Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-21 — Phase 295 APPLY completed.
-Stopped at: APPLY complete; UNIFY not started.
-Next action: /paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
-Resume file: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md
-wip_result: not needed — APPLY task commits and lifecycle metadata committed on feature branch; PR #214 open
+Last session: 2026-05-21 — Phase 295 UNIFY completed.
+Stopped at: GitHub Flow merge gate pending for PR #214.
+Next action: complete GitHub Flow merge gate for PR #214, then start next milestone planning
+Resume file: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-SUMMARY.md
+wip_result: UNIFY artifacts and milestone metadata prepared; commit/push/merge gate pending
 Resume context:
-- APPLY branch: `feature/295-context-offload-measurement-next-target-ranking`.
-- Task commits: `082dd32b` report, `893a4270` Pi docs surfacing, `d7c20033` validation guardrails, `0823712c` APPLY lifecycle metadata.
-- Validation: `git diff --check` exit 0; `bash tests/helpers/artifact_consistency.sh` PASS; `bash tests/pi-end-to-end-validation.sh` PASS 331/331; `bash tests/cross-harness-validation.sh` PASS 235/235.
-- GitHub Flow: pushed branch and opened PR #214 https://github.com/coctostan/pals/pull/214; PR state OPEN/MERGEABLE; Socket Security check observed IN_PROGRESS at APPLY postflight.
-- Next lifecycle action is `/paul:unify .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md`.
+- UNIFY summary: `.paul/phases/295-context-offload-measurement-next-target-ranking/295-01-SUMMARY.md`.
+- Module histories updated: `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`.
+- Validation: `git diff --check` exit 0; artifact_consistency PASS; Pi 331/331; cross-harness 235/235.
+- GitHub Flow: PR #214 https://github.com/coctostan/pals/pull/214 is open/mergeable with Socket Security checks SUCCESS; merge gate pending.

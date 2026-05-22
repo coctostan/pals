@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Latest milestone: **v2.68 Plannotator Retraction** complete (Phases 291–292 closed). Current milestone **v2.69 Pi Runtime Context Offload — S4 First** has Phase 294 complete and Phase 295 ready to plan for measurement/next-target ranking.
+Latest milestone: **v2.69 Pi Runtime Context Offload — S4 First** complete pending PR #214 merge gate. Phase 293 created the S4 contract, Phase 294 extracted S4 canonical reply delivery, and Phase 295 measured context offload plus ranked the next target.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -42,7 +42,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - CODI v0.1 is an advisory, TS/JS-touching codegraph helper with bounded source-selector extraction and post-unify instrumentation history.
 - v2.43/v2.44 context optimization preserves archive links, historical authority, module evidence, GitHub Flow safety, and parent-owned APPLY while protecting reduced recurring read cost with anti-regrowth validation.
 - v2.45 established Pi-native runtime assistance as the primary architecture direction: artifact-slice loading, workflow/resource capsules, guided workflow evidence, delegated APPLY packets, and Pi-Native validation classification all shipped while keeping `.paul/*` artifacts authoritative.
-- v2.56–v2.61 extracted the active S* sibling Pi extensions (S5/S1/S2/S3/S7/S6/S8); v2.69 Phase 294 extracted S4 canonical reply delivery into `guided-workflow-delivery.ts`, leaving `pals-hooks.ts` as runtime orchestration.
+- v2.56–v2.61 extracted the active S* sibling Pi extensions (S5/S1/S2/S3/S7/S6/S8); v2.69 extracted S4 canonical reply delivery into `guided-workflow-delivery.ts`, measured `pals-hooks.ts` context offload, and ranked shared filesystem/state helper extraction as the next contract-first recommendation.
 - v2.62 compacted the four hot lifecycle artifacts to per-section byte budgets and added Selective Artifact Loading + anti-regrowth TAPs, without weakening lifecycle authority, helper compatibility, validation truth, or full authoritative read fallback.
 - v2.64 rewrote module instruction sources for context efficiency and semantic enforcement, adding `tests/helpers/module_instruction_semantics.sh`; PLAN/APPLY/UNIFY remain authoritative for module rewrites.
 
@@ -57,10 +57,11 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.65 Functional-First Agent Guidance | Complete (5 of 5 phases) — closed 2026-05-13 via PRs #197–#201 | Added “functional-first, not functional-only” guidance while preserving project conventions; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md` and `.paul/archive/roadmap/v2.65-functional-first-agent-guidance.md`. |
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | Complete (4 of 4 phases) — closed 2026-05-14 via PRs #202–#205 | Added optional/advisory Plannotator plan/code review surfaces and bridge helpers; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`. |
 | v2.67 Validation Hygiene | Complete (3 of 3 phases) — closed 2026-05-19 | Cleared inherited Pi e2e baseline failures carried through v2.66: CODI marker drift, PROJECT/ROADMAP hot-artifact budget drift, and final validation closure. Evidence: `.paul/archive/roadmap/v2.67-validation-hygiene.md`. |
+| v2.69 Pi Runtime Context Offload — S4 First | Complete (3 of 3 phases) — PR #214 merge gate pending | Phase 293 created the S4 offload contract, Phase 294 extracted `guided-workflow-delivery.ts`, and Phase 295 measured context offload (`pals-hooks.ts` 671→546 lines) while ranking shared filesystem/state helper extraction as the next recommendation. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.69 Pi Runtime Context Offload — S4 First** — active 2026-05-20; Phase 294 complete, Phase 295 ready to plan. Latest closed milestone: **v2.68 Plannotator Retraction** — evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
+Current milestone pointer: **v2.69 Pi Runtime Context Offload — S4 First** — complete pending PR #214 merge gate. Latest closed milestone: **v2.68 Plannotator Retraction** — evidence: `.paul/phases/292-plannotator-contract-removal-v268-closure/292-01-SUMMARY.md`.
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -125,7 +126,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-05-20 after Phase 294 S4 canonical reply delivery extraction; Phase 295 ready to plan.*
+*Last updated: 2026-05-21 after Phase 295 context-offload measurement and next-target ranking; v2.69 complete pending PR #214 merge gate.*
 
 Quick Reference:
 
@@ -148,4 +149,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-05-20 after Phase 294 S4 canonical reply delivery extraction; Phase 295 ready to plan.*
+*Last updated: 2026-05-21 after Phase 295 context-offload measurement and next-target ranking; v2.69 complete pending PR #214 merge gate.*

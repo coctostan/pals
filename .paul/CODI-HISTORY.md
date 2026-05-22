@@ -117,3 +117,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 292-01 | 2026-05-20 | skipped-no-symbols | — | — | — | — | n |
 | 293-01 | 2026-05-20 | skipped-no-symbols | — | — | — | — | n |
 | 294-01 | 2026-05-20 | skipped-no-symbols | — | — | — | — | n |
+| 295-01 | 2026-05-21 | skipped-no-symbols | — | — | — | — | n |
