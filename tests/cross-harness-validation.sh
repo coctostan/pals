@@ -1401,6 +1401,7 @@ ARTIFACT_SLICE_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-ARTIFACT-SLICE-CONTRACT.md"
 PI_VALIDATION_SUITE="$REPO_ROOT/tests/pi-end-to-end-validation.sh"
 CROSS_VALIDATION_SUITE="$REPO_ROOT/tests/cross-harness-validation.sh"
 GUIDED_WORKFLOW_CONTRACT="$REPO_ROOT/docs/PI-NATIVE-GUIDED-WORKFLOW-EVIDENCE-CONTRACT.md"
+PHASE_295_REPORT="$REPO_ROOT/docs/PI-NATIVE-CONTEXT-OFFLOAD-MEASUREMENT-NEXT-TARGET-RANKING.md"
 
 tap_file_contains_all \
   "Artifact-slice contract preserves command-output evidence reconciliation markers" \
@@ -1427,6 +1428,20 @@ tap_file_contains_all \
   'new count' \
   'validation class affected' \
   'shared-invariant preservation rationale'
+
+tap_file_contains_all \
+  "Phase 295 context-offload ranking report preserves recommendation-only shared invariant boundaries" \
+  "$PHASE_295_REPORT" \
+  'recommendation-only' \
+  'S4' \
+  'guided-workflow-delivery.ts' \
+  'pals-hooks.ts' \
+  'Ranked Candidates' \
+  'Validation Impact' \
+  'No implementation in Phase 295' \
+  'not authorize another runtime extraction' \
+  'Shared `.paul/*` artifacts, PLAN/APPLY/UNIFY' \
+  'No TypeScript runtime behavior change'
 
 tap_file_contains_all \
   "Repo Pi docs preserve artifact-slice full-read and authority boundaries" \

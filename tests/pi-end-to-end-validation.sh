@@ -1343,6 +1343,9 @@ EXT_GUIDED_WORKFLOW_DELIVERY="$REPO_ROOT/drivers/pi/extensions/guided-workflow-d
 EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
 EXT_LIFECYCLE_UI="$REPO_ROOT/drivers/pi/extensions/lifecycle-ui.ts"
 EXT_COMMAND_ROUTING="$REPO_ROOT/drivers/pi/extensions/command-routing.ts"
+PHASE_295_REPORT="$REPO_ROOT/docs/PI-NATIVE-CONTEXT-OFFLOAD-MEASUREMENT-NEXT-TARGET-RANKING.md"
+PI_EXTENSIONS_README="$REPO_ROOT/drivers/pi/extensions/README.md"
+PI_SKILL_MAP="$REPO_ROOT/drivers/pi/skill-map.md"
 
 if [ ! -f "$EXT_SRC" ]; then
   tap_not_ok "Extension source exists" "pals-hooks.ts not found in repo"
@@ -1706,6 +1709,28 @@ fi
     tap_ok "S4 guided workflow delivery extracted to sibling with pals-hooks.ts delegation intact"
   else
     tap_not_ok "S4 guided workflow delivery extracted to sibling with pals-hooks.ts delegation intact" "Expected S4 delivery/config exports and No-op Pi extension factory in guided-workflow-delivery.ts; pals-hooks.ts importing from ./guided-workflow-delivery with no inline S4 declarations"
+  fi
+
+  # Phase 295: recommendation-only context-offload measurement and ranking report guardrail.
+  if [[ -f "$PHASE_295_REPORT" ]] \
+    && grep -q 'recommendation-only' "$PHASE_295_REPORT" 2>/dev/null \
+    && grep -q 'S4' "$PHASE_295_REPORT" 2>/dev/null \
+    && grep -q 'guided-workflow-delivery.ts' "$PHASE_295_REPORT" 2>/dev/null \
+    && grep -q 'pals-hooks.ts' "$PHASE_295_REPORT" 2>/dev/null \
+    && grep -q 'Ranked Candidates' "$PHASE_295_REPORT" 2>/dev/null \
+    && grep -q 'No implementation in Phase 295' "$PHASE_295_REPORT" 2>/dev/null; then
+    tap_ok "Phase 295 context-offload measurement report preserves recommendation-only S4 ranking evidence"
+  else
+    tap_not_ok "Phase 295 context-offload measurement report preserves recommendation-only S4 ranking evidence" "Expected report with recommendation-only, S4, guided-workflow-delivery.ts, pals-hooks.ts, Ranked Candidates, and No implementation in Phase 295 markers"
+  fi
+
+  if grep -q 'PI-NATIVE-CONTEXT-OFFLOAD-MEASUREMENT-NEXT-TARGET-RANKING.md' "$PI_EXTENSIONS_README" 2>/dev/null \
+    && grep -q 'recommendation-only' "$PI_EXTENSIONS_README" 2>/dev/null \
+    && grep -q 'PI-NATIVE-CONTEXT-OFFLOAD-MEASUREMENT-NEXT-TARGET-RANKING.md' "$PI_SKILL_MAP" 2>/dev/null \
+    && grep -q 'recommendation-only' "$PI_SKILL_MAP" 2>/dev/null; then
+    tap_ok "Pi docs surface Phase 295 recommendation-only context-offload ranking report"
+  else
+    tap_not_ok "Pi docs surface Phase 295 recommendation-only context-offload ranking report" "Expected Pi extension README and skill-map to reference the Phase 295 report and recommendation-only boundary"
   fi
 
   # Phase 254 (S7): pals-context-injection sibling extraction guardrail.
