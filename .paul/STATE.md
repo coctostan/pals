@@ -109,8 +109,8 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 Last session: 2026-06-01 — Phase 296 complete and merged (PR #215 squash `ef8af629`); transitioned to Phase 297.
 Stopped at: Phase 296 complete, ready to plan Phase 297.
 Next action: /paul:plan for Phase 297
-Resume file: .paul/ROADMAP.md
-wip_result: merged to main via PR #215 squash `ef8af629`; feature branch deleted; working tree clean.
+Resume file: .paul/HANDOFF-2026-06-01-phase297-ready-to-plan.md
+wip_result: skipped — clean tree (Phase 296 merged via PR #215 squash `ef8af629`; on main, synced; nothing uncommitted).
 Resume context:
 - Phase 296 shipped `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` (five lenses, capability-detection, four-part output, non-authoritative/optional/main-session stance) + `kernel/templates/STRATEGIC-ASSESSMENT.md`. SUMMARY at `.paul/phases/296-strategic-assessment-contract-template/296-01-SUMMARY.md`. All 4 ACs PASS.
 - Phase 297 (Discuss Workflow Integration): wire the optional, non-blocking strategic-assessment checkpoint into `kernel/workflows/discuss-milestone.md` against the Phase 296 contract — main-session collaborative only (no subagents, no Pi UI), instantiating `.paul/assessments/{date}-{slug}.md` from the template. Phase 298 owns validation.
