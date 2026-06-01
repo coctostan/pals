@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.69 Pi Runtime Context Offload complete; next milestone ready to define)
+See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment in progress; Phase 296 ready to plan)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.69 Pi Runtime Context Offload - S4 First complete. Next milestone should be defined from the Phase 295 recommendation: contract-first shared filesystem/state helper extraction, unless user redirects.
+**Current focus:** v2.70 Strategic Milestone Assessment — add an optional, collaborative strategic-assessment checkpoint to `/paul:discuss` (five evidence lenses; Findings → Options → Ranked recommendation → Actionable points; non-authoritative; capability-detecting; main-session only). Phase 296 (contract + template) ready to plan.
 
 ## Current Position
 
-Milestone: v2.69 Pi Runtime Context Offload — S4 First
-Phase: 295 of 295 (Context-Offload Measurement + Next Target Ranking)
-Plan: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-SUMMARY.md
-Status: Milestone complete; ready to define next milestone
-Last activity: 2026-05-22 — PR #214 merged (`08b0e891`), closing Phase 295 and v2.69.
-Next action: /paul:milestone to define the next milestone
+Milestone: v2.70 Strategic Milestone Assessment
+Phase: 296 of 298 (Strategic Assessment Contract + Template)
+Plan: 296-01 (UNIFY complete — phase complete)
+Status: Phase 296 complete — all ACs PASS; merge gate next, then Phase 297
+Last activity: 2026-06-01 — Phase 296 UNIFY 296-01 complete (SUMMARY written; contract + template shipped, docs-only; Pi e2e 331/331, cross-harness 235/235).
+Next action: merge PR #215 (UNIFY merge gate), then /paul:plan for Phase 297
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -24,6 +24,7 @@ Progress:
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
+- v2.70 Strategic Milestone Assessment: [███░░░░░░░] ~33% (Phase 296 ✅ complete — contract + template shipped, PR #215; Phases 297–298 not started)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -31,7 +32,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 295 UNIFY complete; v2.69 milestone complete]
+  ✓        ✓        ✓     [Phase 296 complete — 296-01 UNIFY done; merge gate → Phase 297]
 ```
 
 ## Accumulated Context
@@ -70,36 +71,15 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.61 Phases 261-264: parent-owned APPLY/UNIFY, no helper delegation; S8 extraction/surfacing completed; inherited Path A validation regression carried to v2.62.
 - v2.62 Phases 265-267: parent-owned APPLY/UNIFY; hot artifact compaction/selective-loading guardrails completed; validation green by Phase 267.
 - v2.63 Phases 268-272: parent-owned collaborative section loops for all lifecycle workflow rewrites; final validation green (Pi 312/312, cross 202/202); PR #188 merged.
-- Phase 273 UNIFY: module audit contract/cohort map finalized; WALT/CODI rows recorded; PR #190 merged; no helper delegation.
-- Phase 274 APPLY/UNIFY: base module/dispatch docs rewritten; artifact consistency repaired in UNIFY; PR #191 merged as `e18666ab`; transitioned to Phase 275.
-- Phase 275 PLAN: Created `275-01-PLAN.md` for nine TODD/WALT/DEAN enforcement surfaces with compact audit/checkpoint, per-section approval loop, no helper delegation, and Phase 274 authority baseline.
-- Phase 275 APPLY: Completed parent-owned collaborative rewrite of nine TODD/WALT/DEAN enforcement instruction surfaces; every section followed excerpt/problem/proposal/approval/edit/re-read; validation green after compacting STATE back under budget.
-- Phase 275 UNIFY: Created `275-01-SUMMARY.md`, appended WALT/CODI history rows, updated lifecycle artifacts, and transitioned to Phase 276.
-- Phase 276 PLAN: Created and revised `276-01-PLAN.md` for the IRIS/REV/SKIP/CODI/DOCS/RUBY advisory module cohort: v2.63-style compact audit first, then file-by-file and section-by-section BEFORE/AFTER proposal packets before mutation, no helper delegation by default, and explicit non-blocking/persistence/bounded-source guardrails; consumed ready-to-plan handoff archived.
-- Phase 276 APPLY: Completed parent-owned collaborative section rewrite for CODI, SKIP, IRIS, REV, DOCS, and RUBY advisory/on-demand instruction surfaces; every mutated section used BEFORE/AFTER approval and re-read verification; source commits `3768048f` and `7a0ea261`; `artifact_consistency.sh` and `git diff --check` passed; cross-harness suite failed seven historical CODI marker checks after intentional tightening/removal of stale markers, deferred to Phase 278 validation reconciliation.
-- Phase 276 UNIFY: Created `276-01-SUMMARY.md`; appended CODI and WALT history rows for `276-01`; updated lifecycle artifacts and transitioned to Phase 277. Cross-harness CODI marker drift remains deferred to Phase 278.
-- Phase 277 PLAN: Created `277-01-PLAN.md` for the backend/runtime cross-cutting half of the domain optional cohort (ARCH, SETH, OMAR, PETE, REED, VERA — 14 files) using the v2.63/Phase 275/276 collaborative protocol: compact audit, file-by-file BEFORE/AFTER section loop, blocking checkpoint, no helper delegation, advisory/non-blocking guardrails, bounded source loading. UI/UX/data/deploy/DEAN-deferred half (ARIA/LUKE/GABE/DANA/DAVE) reserved for a follow-up Phase 277 plan.
-- Phase 277 APPLY/UNIFY: Rewrote ARCH/SETH/OMAR/PETE/REED/VERA manifests and primary references section-by-section; converted broad command recipes and module-owned BLOCK/critical drift into bounded advisory evidence with compact schemas; created `277-01-SUMMARY.md`, appended WALT/CODI rows, and merged PR #195 as `aeff3f0a`. ARIA/LUKE/GABE/DANA/DAVE and DEAN deferred references remain follow-up scope; inherited CODI marker failures remain Phase 278 work.
-- Phase 278 PLAN/APPLY/UNIFY: Replaced 7 inherited Phase 276 CODI marker-drift cross-harness failures with grouped semantic guardrails backed by reusable TAP-free helpers in `tests/helpers/module_instruction_semantics.sh`; added Phase 278 closure section to `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`; cross-harness 195→202 PASS, artifact_consistency PASS, `git diff --check` clean. `tests/pi-end-to-end-validation.sh` 307/312 (5 baseline-inherited CODI marker-drift failures unchanged pre/post via `git stash` comparison) recorded as Phase 278 follow-up scope. Plan 278-01 PR #196 ready for merge gate; parent-owned APPLY/UNIFY, no helper delegation.
-- Phase 278 UNIFY: Created `278-01-SUMMARY.md`, appended CODI and WALT history rows for `278-01`, updated lifecycle artifacts.
-- Phase 279 PLAN: Created `279-01-PLAN.md` for a docs-only contract phase. Scope is one new contract document; AGENTS/init, map-codebase, TODD, RUBY, ARCH, validation scripts, dependencies, and new modules are out of scope for APPLY.
-- Phase 279 APPLY: Created `docs/PALS-FUNCTIONAL-FIRST-AGENT-GUIDANCE-CONTRACT.md`; preserved `docs/FUNCTIONAL-FIRST-AGENT-GUIDANCE-RESEARCH.md` as in-scope provenance; validation `git diff --check` and `bash tests/helpers/artifact_consistency.sh` passed; post-apply modules skipped/warned as docs-only/no runner; docs commit `8493c957`; PR #197 opened with no checks reported initially.
-- Phase 279 UNIFY: Created `279-01-SUMMARY.md`, appended CODI and WALT history rows for `279-01`, marked Phase 279 complete, and transitioned to Phase 280. Contract authority hierarchy is now active for v2.65 planning.
-- Phase 280 UNIFY: Created `280-01-SUMMARY.md`, appended CODI and WALT history rows for `280-01`, marked Phase 280 complete, and prepared transition to Phase 281. New marker checks passed; existing CODI/artifact-consistency validation baseline failures remain unrelated follow-up scope.
-- Phase 281 UNIFY: Created `281-01-SUMMARY.md`, appended CODI and WALT history rows for `281-01`, marked Phase 281 complete, and prepared transition to Phase 282. New brownfield marker checks passed; inherited CODI/PROJECT/artifact-consistency validation failures remain unrelated follow-up scope.
-- Phase 282 UNIFY: Created `282-01-SUMMARY.md`, appended CODI and WALT history rows for `282-01`, marked Phase 282 complete, and prepared transition to Phase 283. TODD/RUBY marker checks passed; inherited Pi CODI marker failures remain unrelated follow-up scope.
-- Phase 283 PLAN/APPLY/UNIFY: Added advisory ARCH side-effect-boundary guidance and Pi+cross-harness installed-resource marker validation (5 + 10 assertions). Verification: `git diff --check` clean, both validation scripts pass `bash -n`, `artifact_consistency` PASS, cross-harness 234/234 PASS, Pi 322/328 with 6 baseline-inherited CODI/PROJECT-budget failures identical pre/post via `git stash`. Created `283-01-SUMMARY.md`, appended CODI and WALT history rows for `283-01`, marked Phase 283 complete, closed v2.65 milestone. Parent-owned APPLY/UNIFY, no helper delegation; one minor in-loop fix (lowercased `functional-first` in two ARCH hook descriptions so rendered modules.yaml carries the asserted marker).
-- Phase 285 APPLY: Added `drivers/pi/extensions/plannotator-bridge.ts` with optional/advisory Plannotator event helpers (`requestPlanReview`, `requestCodeReview`, `awaitReviewResult`), surfaced the bridge in Pi docs/skill map, added Pi marker checks, archived the consumed Phase 285 handoff, and refreshed MILESTONES current-phase pointers. Verification: `git diff --check` clean, `bash -n` validation scripts PASS, artifact_consistency PASS, cross-harness 234/234 PASS, Pi 324/331 with seven inherited CODI/PROJECT/ROADMAP-budget failures unrelated to Phase 285 markers.
-- Phase 285 UNIFY: Created `285-01-SUMMARY.md`, appended CODI and WALT history rows for `285-01`, marked Phase 285 complete, merged PR #203 after Socket checks passed, and transitioned to Phase 286. Phase 286 should wire the new bridge into `/paul:plan` with opt-in prompt and plan-review sidecars.
-- Phase 286 PLAN/APPLY/UNIFY: Added opt-in Plannotator plan-review workflow semantics to `/paul:plan`, advisory `PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` sidecar rules, APPLY advisory-note loading, and Pi/cross-harness marker validation. Cross-harness passed 240/240; Pi Phase 286 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately. PR #204 opened; Socket checks passed.
-- Phase 287 PLAN/APPLY/UNIFY: Added opt-in Plannotator code-review workflow semantics to `/paul:apply` and `/paul:unify`, advisory `CODE-REVIEW-NOTES.md`, no auto `/paul:fix`, REV/GitHub Flow non-override guardrails, and Pi/cross-harness marker validation. Cross-harness passed 246/246; Pi Phase 287 markers passed with inherited CODI/PROJECT/ROADMAP-budget failures classified separately. PR #205 opened; Socket checks passed.
-- v2.67 milestone created: Validation Hygiene targets inherited Pi e2e CODI marker-drift failures and PROJECT/ROADMAP byte-budget concerns with semantic-helper and hot-artifact hygiene phases before closure validation.
-- Phase 288 UNIFY: Pi e2e CODI installed-resource marker checks now use shared semantic helpers; Pi validation is `334/335` with only PROJECT byte-budget drift remaining for Phase 289, and cross-harness remains `246/246`.
-- Phase 289 UNIFY: Created `289-01-SUMMARY.md`, archived v2.61–v2.66 PROJECT detail to `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`, kept PROJECT 24,347 bytes and ROADMAP 11,360 bytes, cleared Pi e2e to `335/335`, and kept cross-harness `246/246`. Phase 290 owns final v2.67 validation closure.
-- Phase 290 UNIFY: Created `290-01-SUMMARY.md`, appended CODI/WALT history rows, recorded final v2.67 validation closure evidence, and marked v2.67 ready for GitHub Flow merge gate and milestone completion.
+- v2.64 Phases 273-278: parent-owned module-instruction audit/rewrite (base/dispatch, TODD/WALT/DEAN, advisory, domain cohorts) + semantic guardrails in `tests/helpers/module_instruction_semantics.sh`; cross-harness 195→202 PASS; PRs #190/#191/#192/#194/#195/#196. Detail archived ([v2.64](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md)).
+- v2.65 Phases 279-283: parent-owned functional-first guidance (contract, AGENTS/init, brownfield map-codebase, TODD/RUBY, advisory ARCH side-effect boundaries) with installed-resource marker checks; no new default blocking gates; cross-harness 234/234; PRs #197-#201. Detail archived ([v2.65](archive/roadmap/v2.65-functional-first-agent-guidance.md)).
+- v2.66 Phases 284-287: parent-owned optional/advisory Plannotator plan/code-review surfaces; cross-harness 246/246; PRs #202-#205. Later retracted in v2.68.
+- v2.67 Phases 288-290: cleared inherited CODI marker drift and hot-artifact budget drift; final Pi 335/335, cross-harness 246/246. Detail archived ([v2.67](archive/roadmap/v2.67-validation-hygiene.md)).
+- v2.68 Phases 291-292: parent-owned Plannotator retraction (deleted `plannotator-bridge.ts` + contract, purged markers); Pi 328/328, cross-harness 234/234; PR #210 `7c38f42e`.
 
 - Phase 294 PLAN/APPLY/UNIFY: Extracted S4 canonical guided-workflow reply delivery/config into `drivers/pi/extensions/guided-workflow-delivery.ts`, repointed Pi validation/docs, appended CODI/WALT history rows, and transitioned to Phase 295. Validation: install 9 extensions, `git diff --check`, artifact_consistency PASS, Pi 329/329, cross-harness 234/234; PR #213 checks passed.
 - Phase 295 PLAN/APPLY/UNIFY: Created source-backed context-offload measurement and next-target ranking report, surfaced it in Pi docs, added recommendation-only validation guardrails, appended CODI/WALT history rows, passed merge gate, and closed v2.69. Validation: `git diff --check`, artifact_consistency PASS, Pi 331/331, cross-harness 235/235; PR #214 merged `08b0e891`.
+- Fix (ff, 2026-06-01): Cleared inherited PROJECT.md byte-budget overage (25,331 → 23,763 B; ceil 25,000) carried in from v2.69 finalize commit `c5dd4255`, by collapsing five duplicated v2.64 per-phase decision rows (Phases 273-277) into one archive-pointing row; no history lost (detail in `PROJECT-HISTORY-v2.61-v2.66.md` + v2.64 roadmap archive). Validation: Pi 331/331, cross-harness 235/235, artifact_consistency PASS.
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
@@ -118,21 +98,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (PR #214 merged via squash `08b0e891`; feature branch deleted by GitHub Flow merge gate)
-Last lifecycle state: Phase 295 UNIFY complete; v2.69 milestone complete.
+Branch: feature/296-strategic-assessment-contract-template (from main; 2 task commits `6e21cfbc`, `564ab2bc`; pushed). PR #215 OPEN — https://github.com/coctostan/pals/pull/215 (base main, CI passing, mergeable). UNIFY owns the merge gate.
+Last lifecycle state: Phase 296 APPLY 296-01 complete; ready for UNIFY. Uncommitted milestone-open + budget-fix changes ride along on this branch.
 PR #214: merged — https://github.com/coctostan/pals/pull/214 (`08b0e891`). PR #213 merged (`683054fe`); PR #212 merged (`17578fb0`).
 Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459` and closed via PR #214 squash `08b0e891`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-05-22 — Phase 295 and v2.69 completed.
-Stopped at: v2.69 milestone complete; next milestone not yet defined.
-Next action: /paul:milestone to define the next milestone
-Resume file: .paul/phases/295-context-offload-measurement-next-target-ranking/295-01-SUMMARY.md
-wip_result: none — milestone closed on main via PR #214
+Last session: 2026-06-01 — Phase 296 UNIFY 296-01 complete (phase complete).
+Stopped at: Phase 296 complete; PR #215 open and ready to merge (merge gate), then Phase 297.
+Next action: merge PR #215, then /paul:plan for Phase 297
+Resume file: .paul/handoffs/archive/HANDOFF-2026-06-01-phase296-apply.md
+wip_result: committed + pushed on feature/296-strategic-assessment-contract-template (task commits `6e21cfbc`, `564ab2bc` + UNIFY metadata); PR #215
 Resume context:
-- UNIFY summary: `.paul/phases/295-context-offload-measurement-next-target-ranking/295-01-SUMMARY.md`.
-- Module histories updated: `.paul/CODI-HISTORY.md` and `.paul/QUALITY-HISTORY.md`.
-- Validation: `git diff --check` exit 0; artifact_consistency PASS; Pi 331/331; cross-harness 235/235.
-- GitHub Flow: PR #214 https://github.com/coctostan/pals/pull/214 merged via squash `08b0e891`; Socket Security checks SUCCESS.
+- Phase 296 complete: shipped `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` (five lenses, capability-detection, four-part output, non-authoritative/optional/main-session stance) + `kernel/templates/STRATEGIC-ASSESSMENT.md`. SUMMARY at `.paul/phases/296-strategic-assessment-contract-template/296-01-SUMMARY.md`. All 4 ACs PASS.
+- Validation: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; git diff --check clean. Post-unify CODI skipped-no-symbols, RUBY/DOCS N/A, SKIP knowledge recorded, WALT quality row appended.
+- Next: merge gate on PR #215 (github-flow, ci passing, no reviews required), then transition to Phase 297 (Discuss Workflow Integration — wire the checkpoint into discuss-milestone.md against the contract). Milestone-open + budget-fix changes rode along on PR #215.
