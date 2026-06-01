@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.69 Pi Runtime Context Offload — S4 First complete; next milestone not yet defined | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/295-context-offload-measurement-next-target-ranking/` |
+| Current milestone | v2.70 Strategic Milestone Assessment in progress — Phase 296 ready to plan (v2.69 complete) | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/296-strategic-assessment-contract-template/` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 

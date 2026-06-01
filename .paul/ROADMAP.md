@@ -8,44 +8,31 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.69 Pi Runtime Context Offload — S4 First**
-Status: ✅ Complete
-Phases: 3 of 3 complete; v2.69 closed by PR #214 squash `08b0e891`
-Theme: Use S4 canonical reply delivery as the next safe Pi runtime offload, proving the extraction pattern still holds while preserving lifecycle authority and ending with an evidence-backed ranking of next context-bloat reduction targets.
+**v2.70 Strategic Milestone Assessment**
+Status: 🚧 In Progress
+Phases: 1 of 3 complete
+Theme: Insert a repeatable, collaborative strategic-assessment checkpoint into `/paul:discuss` that takes stock of project reality across five evidence lenses before defining the next milestone — producing a durable assessment document plus ranked, actionable handoff points.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 293 | S4 Offload Contract | 1 | Complete | 2026-05-20 |
-| 294 | S4 Canonical Reply Delivery Extraction | 1/1 | ✅ Complete | 2026-05-20 |
-| 295 | Context-Offload Measurement + Next Target Ranking | 1/1 | ✅ Complete | 2026-05-21 |
+| 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 |
+| 297 | Discuss Workflow Integration | TBD | Not started | - |
+| 298 | Validation + Closure | TBD | Not started | - |
 
-### Phase 293: S4 Offload Contract
-Focus: Define the S4 boundary, allowed/forbidden file scope, context-bloat success framing, validation expectations, and authority guardrails.
-Plans: 1 (`.paul/phases/293-s4-offload-contract/293-01-PLAN.md`)
+### Phase 296: Strategic Assessment Contract + Template
+Focus: Author `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` defining the five evidence lenses (vision alignment, trajectory, codebase reality, buildable/runnable reality, data & outputs), capability-detection rules, output format (Findings → Strategic options → Ranked recommendation → Actionable points), and the non-authoritative authority stance; add the assessment artifact template and `.paul/assessments/` location. No workflow wiring yet.
+Plans: 296-01 (Complete 2026-06-01 — contract + template authored, docs-only; PR #215)
 
-### Phase 294: S4 Canonical Reply Delivery Extraction
-Focus: Create a dedicated sibling such as `drivers/pi/extensions/guided-workflow-delivery.ts`; move `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, and `shouldAutoPresent` out of `pals-hooks.ts`; update docs/validation while preserving behavior exactly.
-Plans: 1 (`.paul/phases/294-s4-canonical-reply-delivery-extraction/294-01-PLAN.md`)
+### Phase 297: Discuss Workflow Integration
+Focus: Wire the optional strategic-assessment branch into `discuss-milestone.md` after "prior accomplishments," before "what do you want to build next?"; main-session collaborative evidence gathering per the five lenses; write the assessment doc; hand actionable points into `explore_features` / `synthesize_scope`. Capability-detecting and non-blocking.
+Plans: TBD (defined during /paul:plan)
 
-### Phase 295: Context-Offload Measurement + Next Target Ranking
-Focus: Review remaining agent-context burden after S4 and rank next safe TypeScript offload candidates such as workflow/resource capsule runtime loading, context injection targeting/dedupe, module activity summarization, and guided workflow routing ergonomics. Recommendation only; no second target implementation.
-Plans: 1 (`.paul/phases/295-context-offload-measurement-next-target-ranking/295-01-PLAN.md`)
+### Phase 298: Validation + Closure
+Focus: Add Pi e2e + cross-harness installed-resource marker checks for the new contract/template/workflow surface; closure validation; milestone close.
+Plans: TBD (defined during /paul:plan)
 
-### Latest completed milestone: v2.68 Plannotator Retraction
-Result: Phases 291–292 complete. Removed the live Plannotator integration surface, deleted the contract document, retracted current decision rows, preserved v2.66 archive evidence, and kept validation green at Pi 328/328 + cross-harness 234/234. PR #210 merged at squash `7c38f42e`.
-### Latest completed milestone: v2.66 Plannotator Integration — Rich UI Review Surfaces
-Result: Phases 284–287 complete. Added optional/advisory Plannotator plan/code review surfaces while preserving `.paul/*` lifecycle authority. PRs #202–#205.
-
-### Latest completed milestone: v2.65 Functional-First Agent Guidance
-Result: Phases 279–283 complete. Added “functional-first, not functional-only” guidance without overriding project conventions. Archive: [v2.65](archive/roadmap/v2.65-functional-first-agent-guidance.md).
-
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 279 | Functional-First Guidance Contract | 1/1 | ✅ Complete | 2026-05-12 |
-| 280 | AGENTS/Init Engineering Principles + Marker Checks | 1/1 | ✅ Complete | 2026-05-13 |
-| 281 | Brownfield Convention Detection | 1/1 | ✅ Complete | 2026-05-13 |
-| 282 | TODD + RUBY Functional-First Guidance | 1/1 | ✅ Complete | 2026-05-13 |
-| 283 | ARCH Advisory + Closure | 1/1 | ✅ Complete | 2026-05-13 |
+### Latest completed milestone: v2.69 Pi Runtime Context Offload — S4 First
+Result: Phases 293–295 complete. Created the S4 canonical reply delivery contract (PR #212), extracted `guided-workflow-delivery.ts` (PR #213), then measured context offload (`pals-hooks.ts` 671→546 lines) and ranked shared filesystem/state helper extraction as the next contract-first recommendation. Final validation: Pi 331/331, cross-harness 235/235. PR #214 squash `08b0e891`.
 
 ## Completed Milestones
 
@@ -80,4 +67,4 @@ Result: Phases 279–283 complete. Added “functional-first, not functional-onl
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-05-22 — Phase 295 UNIFY and v2.69 milestone closure completed via PR #214 squash `08b0e891`.*
+*Last updated: 2026-06-01 — Phase 296 complete (strategic-assessment contract + template, PR #215); v2.70 in progress (Phases 297–298 next).*
