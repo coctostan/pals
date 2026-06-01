@@ -98,10 +98,10 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: feature/296-strategic-assessment-contract-template (from main; 2 task commits `6e21cfbc`, `564ab2bc`; pushed). PR #215 OPEN — https://github.com/coctostan/pals/pull/215 (base main, CI passing, mergeable). UNIFY owns the merge gate.
-Last lifecycle state: Phase 296 APPLY 296-01 complete; ready for UNIFY. Uncommitted milestone-open + budget-fix changes ride along on this branch.
-PR #214: merged — https://github.com/coctostan/pals/pull/214 (`08b0e891`). PR #213 merged (`683054fe`); PR #212 merged (`17578fb0`).
-Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459` and closed via PR #214 squash `08b0e891`.
+Branch: main (synced). Phase 296 merged via PR #215 squash `ef8af629`; feature branch deleted. Working tree clean.
+Last lifecycle state: Phase 296 complete (296-01 UNIFY done, merged). Ready to plan Phase 297.
+PR #215: merged — https://github.com/coctostan/pals/pull/215 (`ef8af629`, squash). PR #214 merged (`08b0e891`); PR #213 merged (`683054fe`); PR #212 merged (`17578fb0`).
+Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459` and closed via PR #214 squash `08b0e891`; v2.70 opened, Phase 296 closed via PR #215 squash `ef8af629`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
