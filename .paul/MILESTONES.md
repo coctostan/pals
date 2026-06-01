@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.70 Strategic Milestone Assessment in progress — Phase 296 ready to plan (v2.69 complete) | `.paul/ROADMAP.md`; `.paul/STATE.md`; `.paul/phases/296-strategic-assessment-contract-template/` |
+| Current milestone | v2.70 Strategic Milestone Assessment in progress (1 of 3) — Phase 296 complete; Phase 297 next | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -91,9 +91,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.69 Pi Runtime Context Offload — S4 First complete; next milestone not yet defined.
+**Current milestone:** v2.70 Strategic Milestone Assessment in progress — Phase 296 complete (strategic-assessment contract + template); Phases 297 (discuss-workflow wiring) and 298 (validation) remain.
 
-**Latest completed phase:** Phase 295 Context-Offload Measurement + Next Target Ranking completed 2026-05-22 via PR #214 squash `08b0e891`.
+**Latest completed phase:** Phase 296 Strategic Assessment Contract + Template (2026-06-01, PR #215).
 
 ## Archive
 

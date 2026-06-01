@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment in progress; Phase 2
 ## Current Position
 
 Milestone: v2.70 Strategic Milestone Assessment
-Phase: 296 of 298 (Strategic Assessment Contract + Template)
-Plan: 296-01 (UNIFY complete — phase complete)
-Status: Phase 296 complete — all ACs PASS; merge gate next, then Phase 297
-Last activity: 2026-06-01 — Phase 296 UNIFY 296-01 complete (SUMMARY written; contract + template shipped, docs-only; Pi e2e 331/331, cross-harness 235/235).
-Next action: merge PR #215 (UNIFY merge gate), then /paul:plan for Phase 297
+Phase: 297 of 298 (Discuss Workflow Integration)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-06-01 — Phase 296 complete (contract + template shipped, PR #215 `ef8af629`), transitioned to Phase 297.
+Next action: /paul:plan for Phase 297
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -32,7 +32,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 296 complete — 296-01 UNIFY done; merge gate → Phase 297]
+  ○        ○        ○     [Phase 297 ready to plan — PLAN next]
 ```
 
 ## Accumulated Context
@@ -106,12 +106,12 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-01 — Phase 296 UNIFY 296-01 complete (phase complete).
-Stopped at: Phase 296 complete; PR #215 open and ready to merge (merge gate), then Phase 297.
-Next action: merge PR #215, then /paul:plan for Phase 297
-Resume file: .paul/handoffs/archive/HANDOFF-2026-06-01-phase296-apply.md
-wip_result: committed + pushed on feature/296-strategic-assessment-contract-template (task commits `6e21cfbc`, `564ab2bc` + UNIFY metadata); PR #215
+Last session: 2026-06-01 — Phase 296 complete and merged (PR #215 squash `ef8af629`); transitioned to Phase 297.
+Stopped at: Phase 296 complete, ready to plan Phase 297.
+Next action: /paul:plan for Phase 297
+Resume file: .paul/ROADMAP.md
+wip_result: merged to main via PR #215 squash `ef8af629`; feature branch deleted; working tree clean.
 Resume context:
-- Phase 296 complete: shipped `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` (five lenses, capability-detection, four-part output, non-authoritative/optional/main-session stance) + `kernel/templates/STRATEGIC-ASSESSMENT.md`. SUMMARY at `.paul/phases/296-strategic-assessment-contract-template/296-01-SUMMARY.md`. All 4 ACs PASS.
-- Validation: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; git diff --check clean. Post-unify CODI skipped-no-symbols, RUBY/DOCS N/A, SKIP knowledge recorded, WALT quality row appended.
-- Next: merge gate on PR #215 (github-flow, ci passing, no reviews required), then transition to Phase 297 (Discuss Workflow Integration — wire the checkpoint into discuss-milestone.md against the contract). Milestone-open + budget-fix changes rode along on PR #215.
+- Phase 296 shipped `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` (five lenses, capability-detection, four-part output, non-authoritative/optional/main-session stance) + `kernel/templates/STRATEGIC-ASSESSMENT.md`. SUMMARY at `.paul/phases/296-strategic-assessment-contract-template/296-01-SUMMARY.md`. All 4 ACs PASS.
+- Phase 297 (Discuss Workflow Integration): wire the optional, non-blocking strategic-assessment checkpoint into `kernel/workflows/discuss-milestone.md` against the Phase 296 contract — main-session collaborative only (no subagents, no Pi UI), instantiating `.paul/assessments/{date}-{slug}.md` from the template. Phase 298 owns validation.
+- Validation baseline on main: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; byte budgets within ceilings (STATE/PROJECT/MILESTONES/ROADMAP).
