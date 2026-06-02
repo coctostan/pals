@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment in progress; Phase 297 complete — ready to plan Phase 298)
+See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment complete — Phases 296–298 shipped; ready for milestone completion)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.70 Strategic Milestone Assessment — add an optional, collaborative strategic-assessment checkpoint to `/paul:discuss` (five evidence lenses; Findings → Options → Ranked recommendation → Actionable points; non-authoritative; capability-detecting; main-session only). Phase 296 (contract + template) and Phase 297 (discuss workflow integration) shipped; Phase 298 (validation + closure) next.
+**Current focus:** v2.70 Strategic Milestone Assessment complete — the optional, collaborative, capability-detecting strategic-assessment checkpoint (five lenses; Findings → Options → Ranked recommendation → Actionable points; non-authoritative; main-session only) is wired into `/paul:discuss` and pinned by both validation suites. Phases 296–298 shipped (PRs #215/#216/#217). Ready for milestone completion.
 
 ## Current Position
 
 Milestone: v2.70 Strategic Milestone Assessment
 Phase: 298 of 298 (Validation + Closure)
 Plan: 298-01 (.paul/phases/298-validation-closure/298-01-PLAN.md)
-Status: UNIFY complete — Phase 298 done; v2.70 ready for milestone completion (pending PR #217 merge)
+Status: UNIFY complete — Phase 298 done; PR #217 merged (squash `9c5cdda8`); v2.70 ready for milestone completion
 Last activity: 2026-06-02 — UNIFY 298-01 complete: 298-01-SUMMARY written; Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS. Final phase of v2.70 — next is milestone completion.
-Next action: merge PR #217, then complete the v2.70 milestone (/paul:milestone)
+Next action: complete the v2.70 milestone (/paul:milestone)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -98,19 +98,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (synced). Phase 297 merged via PR #216 squash `00c7d6c1`; feature branch deleted. Working tree clean.
-Last lifecycle state: Phase 297 complete (297-01 UNIFY done, merged). Ready to plan Phase 298.
-PR #216: merged — https://github.com/coctostan/pals/pull/216 (`00c7d6c1`, squash). PR #215 merged (`ef8af629`); PR #214 merged (`08b0e891`); PR #213 merged (`683054fe`).
-Transition state: v2.68 closed via PR #210 squash `7c38f42e`; v2.69 closed via PR #214 squash `08b0e891`; v2.70 opened, Phase 296 closed via PR #215 squash `ef8af629`, Phase 297 closed via PR #216 squash `00c7d6c1`.
+Branch: main (synced). Phase 298 merged via PR #217 squash `9c5cdda8`; feature branch deleted. Working tree clean.
+Last lifecycle state: Phase 298 complete (298-01 UNIFY done, merged). v2.70 ready for milestone completion.
+PR #217: merged — https://github.com/coctostan/pals/pull/217 (`9c5cdda8`, squash). PR #216 merged (`00c7d6c1`); PR #215 merged (`ef8af629`); PR #214 merged (`08b0e891`).
+Transition state: v2.69 closed via PR #214 squash `08b0e891`; v2.70 opened — Phase 296 PR #215 `ef8af629`, Phase 297 PR #216 `00c7d6c1`, Phase 298 PR #217 `9c5cdda8`; v2.70 ready for milestone completion.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-02 — APPLY 298-01 complete; both task commits on feature/298-validation-closure; PR #217 open.
-Stopped at: Phase 298 APPLY done; PLAN ✓ / APPLY ✓ / UNIFY ○ — ready to unify 298-01.
-Next action: /paul:unify .paul/phases/298-validation-closure/298-01-PLAN.md
-Resume file: .paul/phases/298-validation-closure/298-01-PLAN.md
+Last session: 2026-06-02 — Phase 298 fully closed (PLAN/APPLY/UNIFY); PR #217 squash-merged to main (`9c5cdda8`); v2.70 ready for milestone completion.
+Stopped at: Phase 298 done, loop closed; final phase of v2.70.
+Next action: /paul:milestone (complete v2.70 Strategic Milestone Assessment)
+Resume file: .paul/ROADMAP.md
 Resume context:
-- v2.70 is 2 of 3 phases done. Phase 296 shipped the contract + template; Phase 297 wired the optional, non-blocking strategic-assessment checkpoint into `discuss-milestone.md` (five lenses, four-part output to `.paul/assessments/{date}-{slug}.md`, main-session only) and granted Bash/Glob/Grep on `/paul:discuss-milestone` and `/paul:discuss`.
-- APPLY results: Task 1 commit `67229f93` (Pi e2e 331→336, checks 118–122); Task 2 commit `e512c0ba` (cross-harness 235→241, checks 236–241). Both green; artifact_consistency PASS; `git diff --check` clean; no regression.
-- UNIFY pending: write 298-01-SUMMARY, then milestone-completion for v2.70 (final phase). PR #217 awaits merge; CI Socket Security reports pass/pending (no test-suite CI workflow — validation is local).
+- v2.70 complete (3/3): Phase 296 contract+template (PR #215 `ef8af629`), Phase 297 discuss-workflow wiring (PR #216 `00c7d6c1`), Phase 298 validation surface pinned (PR #217 `9c5cdda8`).
+- Final validation: Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS, `git diff --check` clean; PROJECT.md 24695B (under 25000 ceiling).
+- Next: run /paul:milestone to log v2.70 in MILESTONES.md and decide the next milestone.

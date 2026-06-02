@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.70 Strategic Milestone Assessment** (in progress, 2 of 3). Phase 296 authored the contract + output template; Phase 297 wired the optional checkpoint into `discuss-milestone.md` (PR #216 `00c7d6c1`); Phase 298 (validation + closure) remains. Prior milestone **v2.69 Pi Runtime Context Offload — S4 First** complete (PR #214 `08b0e891`).
+Active milestone: **v2.70 Strategic Milestone Assessment** complete (3 of 3). Phase 296 authored the contract + output template (PR #215 `ef8af629`); Phase 297 wired the optional checkpoint into `discuss-milestone.md` (PR #216 `00c7d6c1`); Phase 298 pinned the surface with Pi e2e + cross-harness marker checks (PR #217). Ready for milestone completion. Prior milestone **v2.69 Pi Runtime Context Offload — S4 First** complete (PR #214 `08b0e891`).
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -102,8 +102,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | 2026-05-19: v2.66 Plannotator integration retracted in v2.68; no live PALS surface remains. | Phase 291 Plan 291-01 (`291-01-SUMMARY.md`; PR #209) + Phase 292 Plan 292-01 (`292-01-SUMMARY.md`) | Bridge code (`plannotator-bridge.ts`), kernel workflow opt-in steps, sidecar references (`PLAN-REVIEW-NOTES.md` / `PLAN-FEEDBACK-{iteration}.md` / `CODE-REVIEW-NOTES.md`), Plannotator marker assertions across Pi e2e + cross-harness suites (Pi 335→328; cross-harness 246→234), and `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md` are all removed. v2.66 archive evidence (Phases 284–287 plans/summaries, MILESTONES.md v2.66 row, `PROJECT-HISTORY-v2.61-v2.66.md`) remains authoritative historical truth. |
 | 2026-05-20: S4 canonical reply delivery extracted into a dedicated Pi extension sibling. | Phase 294 Plan 294-01 (`294-01-SUMMARY.md`; PR #213) | `drivers/pi/extensions/guided-workflow-delivery.ts` now owns `sendCanonicalWorkflowResponse`, `presentGuidedWorkflowMoment`, `loadGuidedWorkflowConfig`, `shouldAutoPresent`, `GuidedWorkflowAutoPresent`, `GuidedWorkflowConfig`, and `GUIDED_WORKFLOW_DEFAULTS`; `pals-hooks.ts` remains runtime orchestration and imports S4 delivery/config. Validation: install 9 extensions, Pi 329/329, cross-harness 234/234. |
 | 2026-05-22: v2.69 context-offload closure recommends shared filesystem/state helper extraction next. | Phase 295 Plan 295-01 (`295-01-SUMMARY.md`; PR #214 squash `08b0e891`) | S4 offload measured `pals-hooks.ts` 671→546 lines and S4 sibling 148 lines; next milestone should start contract-first on shared helper extraction unless user redirects. Recommendation remains non-authoritative until a future approved PLAN.
-| 2026-06-01: v2.70 strategic-assessment uses a contract-first authority hierarchy; the milestone-discussion checkpoint is optional, non-blocking, and main-session only. | Phase 296 Plan 296-01 (`296-01-SUMMARY.md`; PR #215 squash `ef8af629`) | `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` is authoritative for the five evidence lenses, capability-detection, four-part output, and non-authoritative stance; `kernel/templates/STRATEGIC-ASSESSMENT.md` is the output-artifact shape. Assessments are durable posterity under `.paul/assessments/`, exempt from hot-artifact byte budgets. No subagents, no Pi UI. Phase 297 wires it into `discuss-milestone.md`; Phase 298 validates.
-| 2026-06-01: v2.70 strategic-assessment checkpoint wired into `/paul:discuss` (milestone mode), optional and non-blocking. | Phase 297 Plan 297-01 (`297-01-SUMMARY.md`; PR #216 `00c7d6c1`) | `discuss-milestone.md` gains a `strategic_assessment` step between recap and feature exploration (five lenses, output to `.paul/assessments/{date}-{slug}.md`, main-session only); `/paul:discuss-milestone` and `/paul:discuss` `allowed-tools` add Bash/Glob/Grep. Phase 298 validates.
+| 2026-06-02: v2.70 Strategic Milestone Assessment complete — optional, non-blocking, contract-first, main-session-only strategic-assessment checkpoint shipped in `/paul:discuss` (milestone mode). | Phases 296–298 (`296/297/298-01-SUMMARY.md`; PRs #215 `ef8af629`, #216 `00c7d6c1`, #217) | `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` is authoritative (five lenses, capability detection, four-part non-authoritative output); `kernel/templates/STRATEGIC-ASSESSMENT.md` is the artifact shape (durable under `.paul/assessments/`, budget-exempt). `discuss-milestone.md` gains the `strategic_assessment` step between recap and feature exploration; both discuss command surfaces add Bash/Glob/Grep. Pinned by Pi e2e 331→336 + cross-harness 235→241 marker checks. No subagents, no Pi UI.
 | 2026-05-07: Path A inherited regression (Pi `not ok 102` / cross-harness `not ok 31`, ROADMAP active-window line-budget) escalated to v2.62 per Phase 264 recorded decision; reconciled inline by Phase 266 ROADMAP warm compaction (no separate `/paul:fix` required). | Phase 264 / Phase 265 | Closure scope bounded to evidence + 1 guardrail; in-flight trim would expand scope beyond closure-recipe precedent. Phase 266 ROADMAP active-window compaction is the same root cause. |
 | 2026-05-08: Single-Write-per-artifact recipe ratified for context-diet contracts and large lifecycle-artifact compaction. | Phase 265 / Phase 266 | One `Write` per file overwrite (computed offline) replaces many sequential `Edit`s for large markdown artifacts; Edit gets brittle on hash-drift. Used Phase 265 for the 39 KB / 395-line contract and Phase 266 for STATE/PROJECT/MILESTONES/ROADMAP. |
 | 2026-05-08: Hot/warm/cold split rules and per-section byte budgets are the v2.62 authoritative contract. | Phase 265 (`docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md`) | STATE.md ≤ 20 KB / PROJECT.md ≤ 25 KB / MILESTONES.md ≤ 18 KB / ROADMAP.md ≤ 12 KB AND ≤ 120 lines / aggregate ≤ 80 KB. v2.61 (just-closed) and v2.62 (active) rows stay hot; pre-v2.61 lifts to archive. Phase 266 cannot deviate without recording it in SUMMARY.md; Phase 267 ratifies with anti-regrowth TAPs (Phase 191 pattern; line-ceiling validation calibrated against ~80 bytes/line). |
@@ -125,7 +124,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-06-01 after Phase 297 (PR #216 `00c7d6c1`).*
+*Last updated: 2026-06-02 after Phase 298 (PR #217); v2.70 complete.*
 
 Quick Reference:
 
@@ -148,4 +147,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-06-01 after Phase 297 (PR #216 `00c7d6c1`).*
+*Last updated: 2026-06-02 after Phase 298 (PR #217); v2.70 complete.*
