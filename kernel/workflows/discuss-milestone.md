@@ -21,10 +21,14 @@ After discussion, routes to /paul:milestone (create-milestone).
 .paul/PROJECT.md (hot-path requirements and progress brief)
 .paul/PRD.md (selectively, if present and deeper product framing, deferred scope, assumptions, open questions, or dependency detail help shape the milestone)
 .paul/MILESTONES.md (previous milestone accomplishments, if exists)
+docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md (only when the user opts into the optional strategic assessment — authoritative lens/capability-detection/output/authority spec)
+kernel/templates/STRATEGIC-ASSESSMENT.md (only when the user opts into the optional strategic assessment — output-artifact shape)
 </required_reading>
 
 <references>
 kernel/templates/milestone-context.md (handoff format)
+kernel/templates/STRATEGIC-ASSESSMENT.md (strategic-assessment output format, for the optional checkpoint)
+docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md (five lenses, capability detection, four-part output, non-authoritative stance)
 </references>
 
 <process>
@@ -112,7 +116,43 @@ This gives user context for the discussion.
 8. Store `collaboration_level` and `planning_mode` for the milestone handoff file.
 </step>
 
+<step name="strategic_assessment">
+**Optional: take stock before exploring features.**
+
+This checkpoint implements `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` (authoritative; the contract wins on any conflict). It sits between the prior-accomplishments recap and feature exploration.
+
+**It is OPTIONAL and NON-BLOCKING. It is main-session collaborative only: NO subagents, NO Pi UI surfaces, NO background automation. It never writes STATE/PROJECT/ROADMAP/MILESTONES lifecycle state.**
+
+1. Offer it; default to skip:
+   ```
+   Before features — run a quick strategic assessment to take stock of where the project actually is?
+
+   [1] Yes — gather lightweight evidence across five lenses and rank the next target
+   [2] Skip — go straight to "what do you want to build next?"
+   ```
+   On `[2]` / skip / decline: proceed directly to explore_features with no penalty. Do nothing else here.
+
+2. On `[1]`, gather evidence across the five lenses IN CONTRACT ORDER. For each lens: probe for the capability first, run a lightweight inspection when present, and SKIP an absent capability with an explicit `skipped: not applicable — {reason}` (use `partial: {what was available}` for partial availability). Never fail the checkpoint; never fabricate counts or trends. Let `collaboration_level` modulate depth (low = headline signals only; high = deeper dives where the conversation warrants).
+   1. **Vision alignment** — Core Value + Success Criteria (PROJECT.md or equivalent) vs. the themes of the last N milestones (ROADMAP.md / MILESTONES.md). Note drift. If no vision statement, infer lightly from README/top-level docs and mark `partial`; if neither exists, skip not-applicable.
+   2. **Trajectory** — convergence vs. sprawl: milestone-theme drift over time, deferred-debt accumulation, decision-log churn / re-litigation. Skip not-applicable when history is insufficient.
+   3. **Codebase reality** — lightweight signals: repo size/growth, largest files, TODO/FIXME/HACK density (grep), test presence, obvious duplication/dead code. Skip optional analyzers (complexity/duplication tools) gracefully when absent; docs-only repos are `partial`.
+   4. **Buildable/runnable reality** — detect build/test/validation tooling (package scripts, Makefile, test runners, validation harnesses); run what exists and report results. For each absent capability, skip with `not applicable — no {build|test|validation} tooling detected`. Never invent pass/fail counts.
+   5. **Data & outputs** — detect output locations (results dirs, benchmark/validation logs, history files); summarize present outputs and their trend (improving/flat/regressing). Skip not-applicable when no inspectable outputs exist; never fabricate trends.
+
+3. Produce the fixed four-part output IN ORDER:
+   - **Findings** — evidence-backed observations by lens (in lens order), not-applicable lenses noted explicitly.
+   - **Strategic options** — candidate next directions, each with tradeoffs (cost, risk, value, dependencies).
+   - **Ranked recommendation** — a single recommended next target, explicitly tagged **non-authoritative**, with the reasoning that ranks it first.
+   - **Actionable points** — concrete handoff items that feed the feature discussion.
+
+4. Instantiate `kernel/templates/STRATEGIC-ASSESSMENT.md` and write it to `.paul/assessments/{date}-{slug}.md` (date = today; slug from the milestone-boundary/theme). Create the `.paul/assessments/` directory on demand. This artifact is **durable posterity**, NOT a hot-path lifecycle artifact, and is **exempt from STATE/PROJECT/ROADMAP/MILESTONES byte budgets**.
+
+5. Store the produced actionable points as `assessment_actionables` and the artifact path as `assessment_path` for handoff to explore_features / synthesize_scope. Confirm with the user, then continue to explore_features.
+</step>
+
 <step name="explore_features">
+**If the optional strategic assessment ran**, briefly surface its `assessment_actionables` as candidate seeds for this question (non-authoritative — do not override the user's own answer): "From the assessment, possible next targets are: {assessment_actionables}. Use any of these as a starting point, or tell me what you'd rather build."
+
 **The core question — features first:**
 
 ```
@@ -154,6 +194,7 @@ From the features discussed, derive:
 4. **Theme (one sentence):**
    - Synthesize: "So the focus is: {theme}. Sound right?"
 
+When the optional strategic assessment ran, let its ranked recommendation and `assessment_actionables` inform the name, phase grouping, and theme — explicitly non-authoritative; the user decides. Cite `assessment_path` if the user wants the full reasoning.
 Confirm with user before proceeding.
 </step>
 
@@ -264,6 +305,7 @@ Type "yes" to proceed, or continue discussing.
 
 <success_criteria>
 - [ ] Prior accomplishments presented (if any)
+- [ ] Optional strategic assessment offered (skippable, non-blocking); if run, assessment written to `.paul/assessments/{date}-{slug}.md` and actionable points fed into feature discussion
 - [ ] Features explored (user-driven)
 - [ ] Scope synthesized from features
 - [ ] Phase mapping suggested
@@ -287,6 +329,22 @@ DO: Confirm the synthesis makes sense before writing.
 **Not persisting context:**
 DON'T: End discussion without writing MILESTONE-CONTEXT.md
 DO: Always write the file so /clear doesn't lose progress.
+
+**Making the strategic assessment blocking or mandatory:**
+DON'T: Gate feature discussion on running the assessment.
+DO: Keep it optional and skippable; declining proceeds with no penalty.
+
+**Spawning a subagent or Pi UI for the assessment:**
+DON'T: Dispatch a subagent or open a Pi UI surface to run it.
+DO: Run it inline in the main session as a conversation.
+
+**Fabricating evidence for absent capabilities:**
+DON'T: Invent counts, pass/fail numbers, or trends when a capability is missing.
+DO: Skip with an explicit `not applicable — {reason}` note.
+
+**Treating the ranked recommendation as authoritative:**
+DON'T: Let the assessment decide the milestone.
+DO: Keep it non-authoritative; the user decides, and only a future approved PLAN authorizes work.
 </anti_patterns>
 
 <error_handling>
