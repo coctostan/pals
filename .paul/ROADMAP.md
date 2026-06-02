@@ -16,7 +16,7 @@ Theme: Insert a repeatable, collaborative strategic-assessment checkpoint into `
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 |
-| 297 | Discuss Workflow Integration | TBD | Not started | - |
+| 297 | Discuss Workflow Integration | 297-01 | Planning | - |
 | 298 | Validation + Closure | TBD | Not started | - |
 
 ### Phase 296: Strategic Assessment Contract + Template
@@ -25,7 +25,7 @@ Plans: 296-01 (Complete 2026-06-01 — contract + template authored, docs-only; 
 
 ### Phase 297: Discuss Workflow Integration
 Focus: Wire the optional strategic-assessment branch into `discuss-milestone.md` after "prior accomplishments," before "what do you want to build next?"; main-session collaborative evidence gathering per the five lenses; write the assessment doc; hand actionable points into `explore_features` / `synthesize_scope`. Capability-detecting and non-blocking.
-Plans: TBD (defined during /paul:plan)
+Plans: 297-01 (Planning 2026-06-01 — wire optional strategic-assessment checkpoint into discuss-milestone.md + grant discuss command surfaces capability-detection tools)
 
 ### Phase 298: Validation + Closure
 Focus: Add Pi e2e + cross-harness installed-resource marker checks for the new contract/template/workflow surface; closure validation; milestone close.
@@ -67,4 +67,4 @@ Result: Phases 293–295 complete. Created the S4 canonical reply delivery contr
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-01 — Phase 296 complete (strategic-assessment contract + template, PR #215); v2.70 in progress (Phases 297–298 next).*
+*Last updated: 2026-06-01 — Phase 297 PLAN created (297-01, discuss workflow integration); v2.70 in progress (Phase 297 Planning, Phase 298 next).*
