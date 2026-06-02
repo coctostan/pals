@@ -2,7 +2,7 @@
 name: pals:discuss-milestone
 description: Explore and articulate next milestone vision
 argument-hint: ""
-allowed-tools: [Read, Write, AskUserQuestion]
+allowed-tools: [Read, Write, Bash, Glob, Grep, AskUserQuestion]
 ---
 
 <objective>
@@ -21,6 +21,8 @@ kernel/workflows/discuss-milestone.md
 .paul/STATE.md
 .paul/ROADMAP.md
 .paul/MILESTONES.md
+docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md (only when the user opts into the optional strategic assessment)
+kernel/templates/STRATEGIC-ASSESSMENT.md (only when the user opts into the optional strategic assessment)
 </context>
 
 <process>

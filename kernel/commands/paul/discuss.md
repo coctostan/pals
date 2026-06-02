@@ -2,7 +2,7 @@
 name: pals:discuss
 description: Explore and articulate phase vision before planning
 argument-hint: "<phase-number>"
-allowed-tools: [Read, Write, AskUserQuestion]
+allowed-tools: [Read, Write, Bash, Glob, Grep, AskUserQuestion]
 ---
 
 <objective>
@@ -23,6 +23,8 @@ Phase number: $ARGUMENTS (required for phase discussion)
 .paul/PRD.md (selectively, if present and deeper framing / deferred scope / assumptions / open questions matter)
 .paul/STATE.md
 .paul/ROADMAP.md
+docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md (only when the user opts into the optional strategic assessment in milestone mode)
+kernel/templates/STRATEGIC-ASSESSMENT.md (only when the user opts into the optional strategic assessment in milestone mode)
 </context>
 
 <process>
