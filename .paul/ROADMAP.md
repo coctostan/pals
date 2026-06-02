@@ -10,14 +10,14 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.70 Strategic Milestone Assessment**
 Status: 🚧 In Progress
-Phases: 2 of 3 complete
+Phases: 3 of 3 complete
 Theme: Insert a repeatable, collaborative strategic-assessment checkpoint into `/paul:discuss` that takes stock of project reality across five evidence lenses before defining the next milestone — producing a durable assessment document plus ranked, actionable handoff points.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 |
 | 297 | Discuss Workflow Integration | 297-01 | Complete | PR #216 |
-| 298 | Validation + Closure | TBD | Not started | - |
+| 298 | Validation + Closure | 298-01 | Complete | PR #217 |
 
 ### Phase 296: Strategic Assessment Contract + Template
 Focus: Author `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` defining the five evidence lenses (vision alignment, trajectory, codebase reality, buildable/runnable reality, data & outputs), capability-detection rules, output format (Findings → Strategic options → Ranked recommendation → Actionable points), and the non-authoritative authority stance; add the assessment artifact template and `.paul/assessments/` location. No workflow wiring yet.
@@ -29,7 +29,7 @@ Plans: 297-01 (Complete 2026-06-01 — optional strategic-assessment checkpoint 
 
 ### Phase 298: Validation + Closure
 Focus: Add Pi e2e + cross-harness installed-resource marker checks for the new contract/template/workflow surface; closure validation; milestone close.
-Plans: TBD (defined during /paul:plan)
+Plans: 298-01 (Complete 2026-06-02 — Pi e2e 331→336 + cross-harness 235→241 marker checks pin the strategic-assessment surface; artifact_consistency PASS; PR #217)
 
 ### Latest completed milestone: v2.69 Pi Runtime Context Offload — S4 First
 Result: Phases 293–295 complete. Created the S4 canonical reply delivery contract (PR #212), extracted `guided-workflow-delivery.ts` (PR #213), then measured context offload (`pals-hooks.ts` 671→546 lines) and ranked shared filesystem/state helper extraction as the next contract-first recommendation. Final validation: Pi 331/331, cross-harness 235/235. PR #214 squash `08b0e891`.

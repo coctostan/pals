@@ -145,3 +145,4 @@ Types: —
 | 295-01 | 2026-05-21 | Pi 331/331, XH 235/235 | N/A (shell/docs validation) | N/A | N/A | ↑ improving (Phase 295 report/docs guardrails added; artifact_consistency PASS; git diff --check PASS) |
 | 296-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (docs-only contract + template) | N/A | N/A | ● stable (Phase 296 contract+template docs-only; artifact_consistency PASS; git diff --check PASS) |
 | 297-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (workflow/command wiring) | N/A | N/A | ● stable (Phase 297 discuss-workflow wiring; artifact_consistency PASS; git diff --check PASS) |
+| 298-01 | 2026-06-02 | Pi 336/336, XH 241/241 | N/A (shell-test marker checks) | N/A | N/A | ↑ improving (Phase 298 pinned the strategic-assessment surface: +5 Pi, +6 XH; artifact_consistency PASS; git diff --check PASS) |

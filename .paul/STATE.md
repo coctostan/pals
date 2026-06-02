@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment in progress; Phase 2
 
 Milestone: v2.70 Strategic Milestone Assessment
 Phase: 298 of 298 (Validation + Closure)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-06-01 — Phase 297 complete and merged (PR #216 squash `00c7d6c1`); transitioned to Phase 298.
-Next action: /paul:plan for Phase 298
+Plan: 298-01 (.paul/phases/298-validation-closure/298-01-PLAN.md)
+Status: UNIFY complete — Phase 298 done; v2.70 ready for milestone completion (pending PR #217 merge)
+Last activity: 2026-06-02 — UNIFY 298-01 complete: 298-01-SUMMARY written; Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS. Final phase of v2.70 — next is milestone completion.
+Next action: merge PR #217, then complete the v2.70 milestone (/paul:milestone)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -24,7 +24,7 @@ Progress:
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
-- v2.70 Strategic Milestone Assessment: [███████░░░] ~67% (Phase 296 ✅ PR #215; Phase 297 ✅ PR #216 squash `00c7d6c1`; Phase 298 not started)
+- v2.70 Strategic Milestone Assessment: [██████████] 100% (Phase 296 ✅ PR #215; Phase 297 ✅ PR #216 `00c7d6c1`; Phase 298 ✅ — 298-01 unified, PR #217; ready for milestone completion)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -32,7 +32,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 297 complete — Phase 298 ready to plan]
+  ✓        ✓        ✓     [Phase 298 complete — loop closed; v2.70 ready for milestone completion]
 ```
 
 ## Accumulated Context
@@ -106,12 +106,11 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-01 — Phase 297 complete and merged (PR #216 squash `00c7d6c1`); transitioned to Phase 298. Session paused at Phase 298 ready-to-plan.
-Stopped at: Phase 297 complete; ready to plan Phase 298 (final phase of v2.70).
-Next action: /paul:plan for Phase 298
-Resume file: .paul/HANDOFF-2026-06-01-phase298-ready-to-plan.md
+Last session: 2026-06-02 — APPLY 298-01 complete; both task commits on feature/298-validation-closure; PR #217 open.
+Stopped at: Phase 298 APPLY done; PLAN ✓ / APPLY ✓ / UNIFY ○ — ready to unify 298-01.
+Next action: /paul:unify .paul/phases/298-validation-closure/298-01-PLAN.md
+Resume file: .paul/phases/298-validation-closure/298-01-PLAN.md
 Resume context:
 - v2.70 is 2 of 3 phases done. Phase 296 shipped the contract + template; Phase 297 wired the optional, non-blocking strategic-assessment checkpoint into `discuss-milestone.md` (five lenses, four-part output to `.paul/assessments/{date}-{slug}.md`, main-session only) and granted Bash/Glob/Grep on `/paul:discuss-milestone` and `/paul:discuss`.
-- Phase 298 (Validation + Closure): add Pi e2e + cross-harness installed-resource marker checks for the new `strategic_assessment` workflow step + the contract/template/command references; closure validation; milestone close.
-- Phase 297 SUMMARY flags untested surface for Phase 298: that the step exists, is optional/non-blocking, references contract+template, and both command surfaces grant Bash/Glob/Grep.
-- Baseline at pause: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; `git diff --check` clean; main synced (0/0 vs origin); clean tree, no WIP commit needed.
+- APPLY results: Task 1 commit `67229f93` (Pi e2e 331→336, checks 118–122); Task 2 commit `e512c0ba` (cross-harness 235→241, checks 236–241). Both green; artifact_consistency PASS; `git diff --check` clean; no regression.
+- UNIFY pending: write 298-01-SUMMARY, then milestone-completion for v2.70 (final phase). PR #217 awaits merge; CI Socket Security reports pass/pending (no test-suite CI workflow — validation is local).
