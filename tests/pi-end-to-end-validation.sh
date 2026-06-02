@@ -634,6 +634,8 @@ PI_ROADMAP="$SKILL_DIR/workflows/roadmap-management.md"
 PI_PLAN="$SKILL_DIR/workflows/plan-phase.md"
 PI_DISCUSS="$SKILL_DIR/workflows/discuss-phase.md"
 PI_MILESTONE="$SKILL_DIR/workflows/create-milestone.md"
+PI_DISCUSS_MILESTONE="$SKILL_DIR/workflows/discuss-milestone.md"
+PI_ASSESSMENT_TEMPLATE="$SKILL_DIR/templates/STRATEGIC-ASSESSMENT.md"
 PI_APPLY="$SKILL_DIR/workflows/apply-phase.md"
 PI_UNIFY="$SKILL_DIR/workflows/unify-phase.md"
 PI_MODULE_DISPATCH="$SKILL_DIR/references/module-dispatch.md"
@@ -679,6 +681,54 @@ tap_file_contains_all \
   'one question at a time' \
   'planning.default_collaboration' \
   'Would you like to see the plan before I update ROADMAP.md?' 
+
+# ── v2.70 strategic-assessment surface (Phase 298 marker checks) ──────
+# Phase 297 wired the optional strategic_assessment step into discuss-milestone.md
+# and granted Bash/Glob/Grep on the discuss command surfaces. These checks pin
+# that installed surface so the v2.70 behavior is regression-safe.
+
+tap_file_contains_all \
+  "Installed Pi discuss-milestone workflow wires the optional strategic-assessment step" \
+  "$PI_DISCUSS_MILESTONE" \
+  '<step name="strategic_assessment">' \
+  'OPTIONAL' \
+  'NON-BLOCKING' \
+  'non-authoritative' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md' \
+  '.paul/assessments/' \
+  'NO subagents'
+
+tap_file_contains_all \
+  "Installed Pi discuss-milestone workflow keeps the fixed four-part assessment output" \
+  "$PI_DISCUSS_MILESTONE" \
+  'Findings' \
+  'Strategic options' \
+  'Ranked recommendation' \
+  'Actionable points'
+
+tap_file_contains_all \
+  "Shared discuss-milestone command surface grants capability-detection tools (Bash/Glob/Grep)" \
+  "$REPO_ROOT/kernel/commands/paul/discuss-milestone.md" \
+  'allowed-tools: [Read, Write, Bash, Glob, Grep, AskUserQuestion]' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md'
+
+tap_file_contains_all \
+  "Shared discuss command surface grants capability-detection tools (Bash/Glob/Grep)" \
+  "$REPO_ROOT/kernel/commands/paul/discuss.md" \
+  'allowed-tools: [Read, Write, Bash, Glob, Grep, AskUserQuestion]' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md'
+
+tap_file_contains_all \
+  "Installed Pi strategic-assessment template carries the four-part non-authoritative output shape" \
+  "$PI_ASSESSMENT_TEMPLATE" \
+  '## Findings' \
+  '## Strategic Options' \
+  '## Ranked Recommendation' \
+  '## Actionable Points' \
+  'Non-authoritative'
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2C: CONTEXT-DIET REGRESSION GUARDRAILS

@@ -2046,6 +2046,73 @@ tap_file_contains_all \
   'v2.63'
 
 # ════════════════════════════════════════════════════════════════
+# CATEGORY: v2.70 STRATEGIC-ASSESSMENT SURFACE PARITY (Phase 298)
+# ════════════════════════════════════════════════════════════════
+# Phase 296/297 added the strategic-assessment contract+template and wired the
+# optional strategic_assessment step into discuss-milestone.md with Bash/Glob/Grep
+# granted on the discuss command surfaces. These checks pin CC↔Pi parity of the
+# installed workflow + template, plus the shared source command surfaces.
+
+section "v2.70 STRATEGIC-ASSESSMENT SURFACE PARITY"
+
+CC_DISCUSS_MILESTONE="$CC_KERNEL_DIR/workflows/discuss-milestone.md"
+PI_DISCUSS_MILESTONE="$PI_KERNEL_DIR/workflows/discuss-milestone.md"
+CC_ASSESSMENT_TEMPLATE="$CC_KERNEL_DIR/templates/STRATEGIC-ASSESSMENT.md"
+PI_ASSESSMENT_TEMPLATE="$PI_KERNEL_DIR/templates/STRATEGIC-ASSESSMENT.md"
+
+tap_file_contains_all \
+  "Claude Code installed discuss-milestone workflow wires the optional strategic-assessment step" \
+  "$CC_DISCUSS_MILESTONE" \
+  '<step name="strategic_assessment">' \
+  'OPTIONAL' \
+  'NON-BLOCKING' \
+  'non-authoritative' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md'
+
+tap_file_contains_all \
+  "Pi installed discuss-milestone workflow wires the optional strategic-assessment step" \
+  "$PI_DISCUSS_MILESTONE" \
+  '<step name="strategic_assessment">' \
+  'OPTIONAL' \
+  'NON-BLOCKING' \
+  'non-authoritative' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md'
+
+tap_file_contains_all \
+  "Claude Code installed strategic-assessment template carries the four-part output shape" \
+  "$CC_ASSESSMENT_TEMPLATE" \
+  '## Findings' \
+  '## Strategic Options' \
+  '## Ranked Recommendation' \
+  '## Actionable Points' \
+  'Non-authoritative'
+
+tap_file_contains_all \
+  "Pi installed strategic-assessment template carries the four-part output shape" \
+  "$PI_ASSESSMENT_TEMPLATE" \
+  '## Findings' \
+  '## Strategic Options' \
+  '## Ranked Recommendation' \
+  '## Actionable Points' \
+  'Non-authoritative'
+
+tap_file_contains_all \
+  "Shared discuss-milestone command surface grants Bash/Glob/Grep across harnesses" \
+  "$REPO_ROOT/kernel/commands/paul/discuss-milestone.md" \
+  'allowed-tools: [Read, Write, Bash, Glob, Grep, AskUserQuestion]' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md'
+
+tap_file_contains_all \
+  "Shared discuss command surface grants Bash/Glob/Grep across harnesses" \
+  "$REPO_ROOT/kernel/commands/paul/discuss.md" \
+  'allowed-tools: [Read, Write, Bash, Glob, Grep, AskUserQuestion]' \
+  'docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md' \
+  'kernel/templates/STRATEGIC-ASSESSMENT.md'
+
+# ════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 
