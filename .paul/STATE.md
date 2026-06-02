@@ -106,12 +106,12 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-01 — Phase 297 complete and merged (297-01: strategic-assessment checkpoint wired into discuss-milestone.md; discuss command surfaces granted Bash/Glob/Grep). PR #216 squash `00c7d6c1`; transitioned to Phase 298.
+Last session: 2026-06-01 — Phase 297 complete and merged (PR #216 squash `00c7d6c1`); transitioned to Phase 298. Session paused at Phase 298 ready-to-plan.
 Stopped at: Phase 297 complete; ready to plan Phase 298 (final phase of v2.70).
 Next action: /paul:plan for Phase 298
-Resume file: .paul/ROADMAP.md
+Resume file: .paul/HANDOFF-2026-06-01-phase298-ready-to-plan.md
 Resume context:
 - v2.70 is 2 of 3 phases done. Phase 296 shipped the contract + template; Phase 297 wired the optional, non-blocking strategic-assessment checkpoint into `discuss-milestone.md` (five lenses, four-part output to `.paul/assessments/{date}-{slug}.md`, main-session only) and granted Bash/Glob/Grep on `/paul:discuss-milestone` and `/paul:discuss`.
 - Phase 298 (Validation + Closure): add Pi e2e + cross-harness installed-resource marker checks for the new `strategic_assessment` workflow step + the contract/template/command references; closure validation; milestone close.
 - Phase 297 SUMMARY flags untested surface for Phase 298: that the step exists, is optional/non-blocking, references contract+template, and both command surfaces grant Bash/Glob/Grep.
-- Baseline at Phase 297 close: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; `git diff --check` clean; main synced (0/0 vs origin).
+- Baseline at pause: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; `git diff --check` clean; main synced (0/0 vs origin); clean tree, no WIP commit needed.
