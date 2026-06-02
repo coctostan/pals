@@ -10,13 +10,13 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.70 Strategic Milestone Assessment**
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 Theme: Insert a repeatable, collaborative strategic-assessment checkpoint into `/paul:discuss` that takes stock of project reality across five evidence lenses before defining the next milestone — producing a durable assessment document plus ranked, actionable handoff points.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 |
-| 297 | Discuss Workflow Integration | 297-01 | Planning | - |
+| 297 | Discuss Workflow Integration | 297-01 | Complete | PR #216 |
 | 298 | Validation + Closure | TBD | Not started | - |
 
 ### Phase 296: Strategic Assessment Contract + Template
@@ -25,7 +25,7 @@ Plans: 296-01 (Complete 2026-06-01 — contract + template authored, docs-only; 
 
 ### Phase 297: Discuss Workflow Integration
 Focus: Wire the optional strategic-assessment branch into `discuss-milestone.md` after "prior accomplishments," before "what do you want to build next?"; main-session collaborative evidence gathering per the five lenses; write the assessment doc; hand actionable points into `explore_features` / `synthesize_scope`. Capability-detecting and non-blocking.
-Plans: 297-01 (Planning 2026-06-01 — wire optional strategic-assessment checkpoint into discuss-milestone.md + grant discuss command surfaces capability-detection tools)
+Plans: 297-01 (Complete 2026-06-01 — optional strategic-assessment checkpoint wired into discuss-milestone.md; discuss command surfaces granted Bash/Glob/Grep; PR #216 squash `00c7d6c1`)
 
 ### Phase 298: Validation + Closure
 Focus: Add Pi e2e + cross-harness installed-resource marker checks for the new contract/template/workflow surface; closure validation; milestone close.
@@ -67,4 +67,4 @@ Result: Phases 293–295 complete. Created the S4 canonical reply delivery contr
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-01 — Phase 297 PLAN created (297-01, discuss workflow integration); v2.70 in progress (Phase 297 Planning, Phase 298 next).*
+*Last updated: 2026-06-01 — Phase 297 complete and merged (PR #216 squash `00c7d6c1`); v2.70 is 2 of 3 phases (Phase 298 next).*

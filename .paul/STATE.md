@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment in progress; Phase 297 PLAN complete — APPLY next)
+See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment in progress; Phase 297 complete — ready to plan Phase 298)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.70 Strategic Milestone Assessment — add an optional, collaborative strategic-assessment checkpoint to `/paul:discuss` (five evidence lenses; Findings → Options → Ranked recommendation → Actionable points; non-authoritative; capability-detecting; main-session only). Phase 296 (contract + template) shipped; Phase 297 (discuss workflow integration) PLAN complete.
+**Current focus:** v2.70 Strategic Milestone Assessment — add an optional, collaborative strategic-assessment checkpoint to `/paul:discuss` (five evidence lenses; Findings → Options → Ranked recommendation → Actionable points; non-authoritative; capability-detecting; main-session only). Phase 296 (contract + template) and Phase 297 (discuss workflow integration) shipped; Phase 298 (validation + closure) next.
 
 ## Current Position
 
 Milestone: v2.70 Strategic Milestone Assessment
-Phase: 297 of 298 (Discuss Workflow Integration)
-Plan: 297-01 (Discuss Workflow Integration)
-Status: APPLY complete — ready for UNIFY
-Last activity: 2026-06-01 — Phase 297 APPLY complete (297-01: strategic-assessment checkpoint wired into discuss-milestone.md; discuss command surfaces granted Bash/Glob/Grep). Pi e2e 331/331, cross-harness 235/235, artifact_consistency PASS. PR #216 OPEN.
-Next action: /paul:unify for Phase 297 (Plan 297-01)
+Phase: 298 of 298 (Validation + Closure)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-06-01 — Phase 297 complete and merged (PR #216 squash `00c7d6c1`); transitioned to Phase 298.
+Next action: /paul:plan for Phase 298
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -24,7 +24,7 @@ Progress:
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
-- v2.70 Strategic Milestone Assessment: [██████░░░░] ~50% (Phase 296 ✅ PR #215; Phase 297 APPLY complete — PR #216 OPEN, UNIFY next; Phase 298 not started)
+- v2.70 Strategic Milestone Assessment: [███████░░░] ~67% (Phase 296 ✅ PR #215; Phase 297 ✅ PR #216 squash `00c7d6c1`; Phase 298 not started)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -32,7 +32,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 297 APPLY complete — UNIFY next]
+  ○        ○        ○     [Phase 297 complete — Phase 298 ready to plan]
 ```
 
 ## Accumulated Context
@@ -98,20 +98,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (synced). Phase 296 merged via PR #215 squash `ef8af629`; feature branch deleted. Working tree clean.
-Last lifecycle state: Phase 296 complete (296-01 UNIFY done, merged). Ready to plan Phase 297.
-PR #215: merged — https://github.com/coctostan/pals/pull/215 (`ef8af629`, squash). PR #214 merged (`08b0e891`); PR #213 merged (`683054fe`); PR #212 merged (`17578fb0`).
-Transition state: v2.67 closed at squash `4143598b`; v2.68 closed via PR #210 squash `7c38f42e`; v2.69 opened via PR #211 squash `e5ab4459` and closed via PR #214 squash `08b0e891`; v2.70 opened, Phase 296 closed via PR #215 squash `ef8af629`.
+Branch: main (synced). Phase 297 merged via PR #216 squash `00c7d6c1`; feature branch deleted. Working tree clean.
+Last lifecycle state: Phase 297 complete (297-01 UNIFY done, merged). Ready to plan Phase 298.
+PR #216: merged — https://github.com/coctostan/pals/pull/216 (`00c7d6c1`, squash). PR #215 merged (`ef8af629`); PR #214 merged (`08b0e891`); PR #213 merged (`683054fe`).
+Transition state: v2.68 closed via PR #210 squash `7c38f42e`; v2.69 closed via PR #214 squash `08b0e891`; v2.70 opened, Phase 296 closed via PR #215 squash `ef8af629`, Phase 297 closed via PR #216 squash `00c7d6c1`.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-01 — Phase 297 APPLY complete (297-01: strategic-assessment checkpoint wired into discuss-milestone.md; discuss command surfaces granted Bash/Glob/Grep; consumed handoff archived). Tasks committed `f06f662a`, `7933a5b6` on feature/297-discuss-workflow-integration; PR #216 OPEN.
-Stopped at: Phase 297 APPLY complete; ready for UNIFY.
-Next action: /paul:unify for Phase 297 (Plan 297-01)
-Resume file: .paul/handoffs/archive/HANDOFF-2026-06-01-phase297-ready-to-plan.md
-wip_result: not needed — task work committed atomically; only `.paul/*` lifecycle artifacts (STATE/ROADMAP/plan dir/archived handoff) pending the UNIFY metadata commit.
+Last session: 2026-06-01 — Phase 297 complete and merged (297-01: strategic-assessment checkpoint wired into discuss-milestone.md; discuss command surfaces granted Bash/Glob/Grep). PR #216 squash `00c7d6c1`; transitioned to Phase 298.
+Stopped at: Phase 297 complete; ready to plan Phase 298 (final phase of v2.70).
+Next action: /paul:plan for Phase 298
+Resume file: .paul/ROADMAP.md
 Resume context:
-- Phase 296 shipped `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` (five lenses, capability-detection, four-part output, non-authoritative/optional/main-session stance) + `kernel/templates/STRATEGIC-ASSESSMENT.md`. SUMMARY at `.paul/phases/296-strategic-assessment-contract-template/296-01-SUMMARY.md`. All 4 ACs PASS.
-- Phase 297 (Discuss Workflow Integration): wire the optional, non-blocking strategic-assessment checkpoint into `kernel/workflows/discuss-milestone.md` against the Phase 296 contract — main-session collaborative only (no subagents, no Pi UI), instantiating `.paul/assessments/{date}-{slug}.md` from the template. Phase 298 owns validation.
-- Validation after APPLY (branch feature/297-discuss-workflow-integration): Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; `git diff --check` clean. PR #216 OPEN, MERGEABLE, CI passing.
+- v2.70 is 2 of 3 phases done. Phase 296 shipped the contract + template; Phase 297 wired the optional, non-blocking strategic-assessment checkpoint into `discuss-milestone.md` (five lenses, four-part output to `.paul/assessments/{date}-{slug}.md`, main-session only) and granted Bash/Glob/Grep on `/paul:discuss-milestone` and `/paul:discuss`.
+- Phase 298 (Validation + Closure): add Pi e2e + cross-harness installed-resource marker checks for the new `strategic_assessment` workflow step + the contract/template/command references; closure validation; milestone close.
+- Phase 297 SUMMARY flags untested surface for Phase 298: that the step exists, is optional/non-blocking, references contract+template, and both command surfaces grant Bash/Glob/Grep.
+- Baseline at Phase 297 close: Pi e2e 331/331; cross-harness 235/235; artifact_consistency PASS; `git diff --check` clean; main synced (0/0 vs origin).
