@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment complete — Phases 296–298 shipped; ready for milestone completion)
+See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment complete and closed; awaiting next milestone)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.70 Strategic Milestone Assessment complete — the optional, collaborative, capability-detecting strategic-assessment checkpoint (five lenses; Findings → Options → Ranked recommendation → Actionable points; non-authoritative; main-session only) is wired into `/paul:discuss` and pinned by both validation suites. Phases 296–298 shipped (PRs #215/#216/#217). Ready for milestone completion.
+**Current focus:** None active — v2.70 Strategic Milestone Assessment complete and closed (2026-06-02, tag `v2.70`). The optional, capability-detecting strategic-assessment checkpoint is wired into `/paul:discuss` and pinned by both validation suites. Run /paul:discuss-milestone or /paul:milestone to define the next milestone.
 
 ## Current Position
 
-Milestone: v2.70 Strategic Milestone Assessment
-Phase: 298 of 298 (Validation + Closure)
-Plan: 298-01 (.paul/phases/298-validation-closure/298-01-PLAN.md)
-Status: UNIFY complete — Phase 298 done; PR #217 merged (squash `9c5cdda8`); v2.70 ready for milestone completion
-Last activity: 2026-06-02 — UNIFY 298-01 complete: 298-01-SUMMARY written; Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS. Final phase of v2.70 — next is milestone completion.
-Next action: complete the v2.70 milestone (/paul:milestone)
+Milestone: v2.70 Strategic Milestone Assessment (complete — awaiting next milestone)
+Phase: 298 of 298 (Validation + Closure) — complete; milestone closed
+Plan: 298-01 (complete)
+Status: Milestone v2.70 Strategic Milestone Assessment complete — ready for next
+Last activity: 2026-06-02 — v2.70 closed: MILESTONES entry + roadmap archive written, PROJECT/ROADMAP/STATE reorganized, tag `v2.70`.
+Next action: /paul:discuss-milestone or /paul:milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -24,7 +24,7 @@ Progress:
 - v2.67 Validation Hygiene: [██████████] 100% ✓ (Phases 288–290 complete; final validation Pi 335/335, cross-harness 246/246; archive [v2.67](archive/roadmap/v2.67-validation-hygiene.md))
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
-- v2.70 Strategic Milestone Assessment: [██████████] 100% (Phase 296 ✅ PR #215; Phase 297 ✅ PR #216 `00c7d6c1`; Phase 298 ✅ — 298-01 unified, PR #217; ready for milestone completion)
+- v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -32,7 +32,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 298 complete — loop closed; v2.70 ready for milestone completion]
+  ✓        ✓        ✓     [Phase 298 complete — v2.70 closed; ready for next milestone]
 ```
 
 ## Accumulated Context
@@ -106,11 +106,11 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-02 — Phase 298 fully closed (PLAN/APPLY/UNIFY); PR #217 squash-merged to main (`9c5cdda8`); v2.70 ready for milestone completion.
-Stopped at: Phase 298 done, loop closed; final phase of v2.70.
-Next action: /paul:milestone (complete v2.70 Strategic Milestone Assessment)
-Resume file: .paul/ROADMAP.md
+Last session: 2026-06-02 — v2.70 Strategic Milestone Assessment closed: MILESTONES entry + roadmap archive created, PROJECT/ROADMAP/STATE reorganized for post-milestone, tag `v2.70`.
+Stopped at: Milestone v2.70 complete; no active phase.
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 Resume context:
-- v2.70 complete (3/3): Phase 296 contract+template (PR #215 `ef8af629`), Phase 297 discuss-workflow wiring (PR #216 `00c7d6c1`), Phase 298 validation surface pinned (PR #217 `9c5cdda8`).
-- Final validation: Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS, `git diff --check` clean; PROJECT.md 24695B (under 25000 ceiling).
-- Next: run /paul:milestone to log v2.70 in MILESTONES.md and decide the next milestone.
+- v2.70 shipped the optional strategic-assessment checkpoint in `/paul:discuss` (Phases 296–298; PRs #215/#216/#217 `9c5cdda8`). Final validation: Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS.
+- Archive: `.paul/archive/roadmap/v2.70-strategic-milestone-assessment.md`. Hot-artifact budgets all under ceiling (STATE<20000, PROJECT 24695<25000, MILESTONES 17872<18000).
+- Next: define the next milestone (no carried scope decided yet).

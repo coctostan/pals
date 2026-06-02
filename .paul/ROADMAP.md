@@ -8,31 +8,20 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.70 Strategic Milestone Assessment**
-Status: 🚧 In Progress
-Phases: 3 of 3 complete
-Theme: Insert a repeatable, collaborative strategic-assessment checkpoint into `/paul:discuss` that takes stock of project reality across five evidence lenses before defining the next milestone — producing a durable assessment document plus ranked, actionable handoff points.
+**v2.70 Strategic Milestone Assessment** (v2.70)
+Status: ✅ Complete
+Completed: 2026-06-02
+Archive: [archive/roadmap/v2.70-strategic-milestone-assessment.md](archive/roadmap/v2.70-strategic-milestone-assessment.md)
+Result: Shipped an optional, non-blocking, contract-first strategic-assessment checkpoint in `/paul:discuss` (milestone mode) — five evidence lenses, four-part non-authoritative output to `.paul/assessments/{date}-{slug}.md`, pinned by Pi e2e 331→336 + cross-harness 235→241 marker checks.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 |
-| 297 | Discuss Workflow Integration | 297-01 | Complete | PR #216 |
-| 298 | Validation + Closure | 298-01 | Complete | PR #217 |
+| 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 `ef8af629` |
+| 297 | Discuss Workflow Integration | 297-01 | Complete | PR #216 `00c7d6c1` |
+| 298 | Validation + Closure | 298-01 | Complete | PR #217 `9c5cdda8` |
 
-### Phase 296: Strategic Assessment Contract + Template
-Focus: Author `docs/PALS-STRATEGIC-ASSESSMENT-CONTRACT.md` defining the five evidence lenses (vision alignment, trajectory, codebase reality, buildable/runnable reality, data & outputs), capability-detection rules, output format (Findings → Strategic options → Ranked recommendation → Actionable points), and the non-authoritative authority stance; add the assessment artifact template and `.paul/assessments/` location. No workflow wiring yet.
-Plans: 296-01 (Complete 2026-06-01 — contract + template authored, docs-only; PR #215)
-
-### Phase 297: Discuss Workflow Integration
-Focus: Wire the optional strategic-assessment branch into `discuss-milestone.md` after "prior accomplishments," before "what do you want to build next?"; main-session collaborative evidence gathering per the five lenses; write the assessment doc; hand actionable points into `explore_features` / `synthesize_scope`. Capability-detecting and non-blocking.
-Plans: 297-01 (Complete 2026-06-01 — optional strategic-assessment checkpoint wired into discuss-milestone.md; discuss command surfaces granted Bash/Glob/Grep; PR #216 squash `00c7d6c1`)
-
-### Phase 298: Validation + Closure
-Focus: Add Pi e2e + cross-harness installed-resource marker checks for the new contract/template/workflow surface; closure validation; milestone close.
-Plans: 298-01 (Complete 2026-06-02 — Pi e2e 331→336 + cross-harness 235→241 marker checks pin the strategic-assessment surface; artifact_consistency PASS; PR #217)
-
-### Latest completed milestone: v2.69 Pi Runtime Context Offload — S4 First
-Result: Phases 293–295 complete. Created the S4 canonical reply delivery contract (PR #212), extracted `guided-workflow-delivery.ts` (PR #213), then measured context offload (`pals-hooks.ts` 671→546 lines) and ranked shared filesystem/state helper extraction as the next contract-first recommendation. Final validation: Pi 331/331, cross-harness 235/235. PR #214 squash `08b0e891`.
+## Next Milestone
+Run /paul:discuss-milestone or /paul:milestone to define.
 
 ## Completed Milestones
 
@@ -67,4 +56,4 @@ Result: Phases 293–295 complete. Created the S4 canonical reply delivery contr
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-01 — Phase 297 complete and merged (PR #216 squash `00c7d6c1`); v2.70 is 2 of 3 phases (Phase 298 next).*
+*Last updated: 2026-06-02 — v2.70 Strategic Milestone Assessment complete (Phases 296–298; PR #217 squash `9c5cdda8`); awaiting next milestone.*

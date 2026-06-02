@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.70 Strategic Milestone Assessment** complete (3 of 3). Phase 296 authored the contract + output template (PR #215 `ef8af629`); Phase 297 wired the optional checkpoint into `discuss-milestone.md` (PR #216 `00c7d6c1`); Phase 298 pinned the surface with Pi e2e + cross-harness marker checks (PR #217). Ready for milestone completion. Prior milestone **v2.69 Pi Runtime Context Offload — S4 First** complete (PR #214 `08b0e891`).
+Active milestone: **none** — v2.70 Strategic Milestone Assessment complete and closed (2026-06-02, tag `v2.70`). v2.70 shipped the optional, non-blocking, contract-first strategic-assessment checkpoint in `/paul:discuss` (Phases 296–298; PRs #215/#216/#217 `9c5cdda8`). Run /paul:discuss-milestone or /paul:milestone to define the next milestone.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -58,10 +58,11 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.66 Plannotator Integration — Rich UI Review Surfaces | Complete (4 of 4 phases) — closed 2026-05-14 via PRs #202–#205 | Added optional/advisory Plannotator plan/code review surfaces and bridge helpers; detail archived in `.paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md`. |
 | v2.67 Validation Hygiene | Complete (3 of 3 phases) — closed 2026-05-19 | Cleared inherited Pi e2e baseline failures carried through v2.66: CODI marker drift, PROJECT/ROADMAP hot-artifact budget drift, and final validation closure. Evidence: `.paul/archive/roadmap/v2.67-validation-hygiene.md`. |
 | v2.69 Pi Runtime Context Offload — S4 First | Complete (3 of 3 phases) — closed 2026-05-22 via PR #214 | Phase 293 created the S4 offload contract, Phase 294 extracted `guided-workflow-delivery.ts`, and Phase 295 measured context offload (`pals-hooks.ts` 671→546 lines) while ranking shared filesystem/state helper extraction as the next recommendation. |
+| v2.70 Strategic Milestone Assessment | Complete (3 of 3 phases) — closed 2026-06-02 via PR #217 `9c5cdda8` (tag `v2.70`) | Shipped an optional, non-blocking, contract-first strategic-assessment checkpoint in `/paul:discuss`: five evidence lenses, four-part non-authoritative output to `.paul/assessments/{date}-{slug}.md`, pinned by Pi e2e 331→336 + cross-harness 235→241 marker checks. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.69 Pi Runtime Context Offload — S4 First** — complete; next milestone not yet defined. Latest closed milestone: **v2.69** via PR #214 squash `08b0e891`.
+Current milestone pointer: **none active** — next milestone not yet defined. Latest closed milestone: **v2.70 Strategic Milestone Assessment** via PR #217 squash `9c5cdda8` (tag `v2.70`).
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
