@@ -144,3 +144,4 @@ Types: —
 | 294-01 | 2026-05-20 | Pi 329/329, XH 234/234 | N/A (shell/runtime extraction) | N/A | N/A | ↑ improving (S4 delivery extraction added one Pi guardrail; artifact_consistency PASS; git diff --check PASS) |
 | 295-01 | 2026-05-21 | Pi 331/331, XH 235/235 | N/A (shell/docs validation) | N/A | N/A | ↑ improving (Phase 295 report/docs guardrails added; artifact_consistency PASS; git diff --check PASS) |
 | 296-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (docs-only contract + template) | N/A | N/A | ● stable (Phase 296 contract+template docs-only; artifact_consistency PASS; git diff --check PASS) |
+| 297-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (workflow/command wiring) | N/A | N/A | ● stable (Phase 297 discuss-workflow wiring; artifact_consistency PASS; git diff --check PASS) |
