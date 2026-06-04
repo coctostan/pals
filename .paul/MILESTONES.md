@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.71 HTML Presentation Packets — Human Review Briefs active; Phase 300 of 302 ready to plan after Phase 299 complete | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.71 HTML Presentation Packets — Human Review Briefs active; Phase 301 of 302 ready to plan after Phases 299–300 complete | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -92,7 +92,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.71 HTML Presentation Packets — Human Review Briefs active — Phase 299 of 302 ready to plan.
+**Current milestone:** v2.71 HTML Presentation Packets — Human Review Briefs active — Phase 301 of 302 ready to plan; Phases 299–300 complete (PRs #218, #219).
 
 **Latest completed milestone:** v2.70 Strategic Milestone Assessment (2026-06-02, PR #217 squash `9c5cdda8`).
 
@@ -106,4 +106,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.70 completed 2026-06-02 via PR #217 squash `9c5cdda8`; v2.71 opened 2026-06-04 with Phase 299 ready to plan.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.70 completed 2026-06-02 via PR #217 squash `9c5cdda8`; v2.71 opened 2026-06-04, Phases 299–300 complete (PRs #218, #219).*

@@ -129,7 +129,7 @@ Plan metadata / UNIFY commit: pending at SUMMARY creation time.
 |------|-------|--------|
 | Auto-fixed | 0 | None. |
 | Scope additions | 0 | None. |
-| Deferred | 1 | Pre-existing PROJECT.md byte-budget overage routed to a separate /paul:fix. |
+| Deferred | 0 | Pre-existing PROJECT.md byte-budget overage resolved inline during the Phase 300→301 transition. |
 
 **Total impact:** Plan executed as approved; the only open item is inherited base-branch debt outside this phase's scope.
 
@@ -139,7 +139,7 @@ None.
 
 ### Deferred Items
 
-- Pre-existing PROJECT.md byte-budget overage: Pi e2e `not ok 126 — Repo PROJECT stays within v2.62 byte budget` (`.paul/PROJECT.md` 25129 bytes vs 25000 ceiling). PROJECT.md is byte-identical at `origin/main` and `HEAD` and is untouched by Phase 300 (whose boundaries forbid editing PROJECT.md hot-artifact content). Route a separate `/paul:fix` to trim PROJECT.md back under budget.
+- None outstanding. The pre-existing PROJECT.md byte-budget overage (`.paul/PROJECT.md` 25129 vs 25000) was resolved inline during the Phase 300→301 transition by removing a stray duplicate footer (now 24966 bytes); Pi e2e returned to 336/336.
 
 ## Issues Encountered
 
