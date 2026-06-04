@@ -38,6 +38,8 @@ kernel/references/checkpoints.md (if plan will have checkpoints)
 kernel/references/module-dispatch.md
 kernel/references/context-management.md
 kernel/templates/PLAN.md
+kernel/templates/HTML-PRESENTATION-PACKET.md (PLAN presentation packet output format, for the optional render in review_plan)
+docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md (authoritative packet authority, storage, packet types, audience modes, citation/escaping rules, and non-goals)
 <!-- Module references (e.g., plan type overlays) are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
@@ -186,6 +188,22 @@ Constraints: [major constraints]
 Review: [1] Quick recap | [2] Detailed recap | [3] Full plan | [4] No review needed
 ```
 If changes are requested, refine the plan before APPLY routing. Store `review_preference`.
+
+**Optional PLAN presentation packet (non-blocking; does NOT gate APPLY routing):**
+This offer implements `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` (authoritative; the contract wins on any conflict) and instantiates `kernel/templates/HTML-PRESENTATION-PACKET.md`. It is optional and skippable; skipping leaves the review menu above and the APPLY routing in `update_state` unchanged and reachable.
+
+1. After the review menu and any refine loop, offer it; default to skip:
+   ```
+   Also render an optional PLAN review brief (static HTML) for human review?
+
+   [1] Yes — generate a cited PLAN packet
+   [2] Skip (default)
+   ```
+2. On Yes, read bounded authoritative slices and cite each one: the approved PLAN frontmatter/objective/acceptance-criteria/tasks/boundaries/verification/module-dispatch sections, `.paul/STATE.md` current-plan and loop-position facts, and `.paul/ROADMAP.md` target-phase detail; include PLAN-named source/context files and direct-dependency SUMMARYs only when relevant. Mark absent optional inputs as `not available — <reason>`.
+3. Instantiate `kernel/templates/HTML-PRESENTATION-PACKET.md` with `{{PACKET_TYPE}} = PLAN` and an audience mode (default `reviewer brief`), filling metadata, summary, review focus, source map, acceptance-criteria/task evidence, risks/constraints, and validation-plan fields with escaped, source-cited content.
+4. Write the packet to `.paul/presentation-packets/{NN}-{phase}/{NN}-{plan}-plan.html` (matching the phase directory and plan id), creating the directory on demand.
+5. Honor the static-HTML and citation rules: escape all artifact/command content, inline CSS only, no JavaScript, no network assets, and cite every material claim. The packet is derived, non-authoritative, regenerable/discardable, excluded from hot-artifact byte budgets, and cannot approve APPLY or change lifecycle state.
+6. Surface the written path as a review aid only; proceed to `update_state` whether or not a packet was rendered.
 </step>
 
 
