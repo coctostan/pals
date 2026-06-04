@@ -10,7 +10,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.71 HTML Presentation Packets — Human Review Briefs** (v2.71)
 Status: 🚧 In Progress
-Phases: 3 of 4 complete
+Phases: 4 of 4 complete
 Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNIFY moments while preserving `.paul/*` and PLAN/APPLY/UNIFY authority.
 
 | Phase | Name | Plans | Status | Completed |
@@ -18,7 +18,7 @@ Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNI
 | 299 | Presentation Contract + Template Model | 299-01 | ✅ Complete | 2026-06-04 |
 | 300 | Milestone + PLAN Presentation | 300-01 | ✅ Complete | 2026-06-04 |
 | 301 | APPLY + UNIFY Delivery Presentation | 301-01 | ✅ Complete | 2026-06-04 |
-| 302 | Surfacing + Validation Closure | TBD | 🔵 Ready to plan | - |
+| 302 | Surfacing + Validation Closure | 302-01 | ✅ Complete | 2026-06-04 |
 
 ### Phase 299: Presentation Contract + Template Model
 Focus: Define presentation packet authority boundary, storage path, packet types, audience modes, static HTML template rules, source inputs, and non-goals.
@@ -34,7 +34,7 @@ Plans: 301-01 (`.paul/phases/301-apply-unify-delivery-presentation/301-01-PLAN.m
 
 ### Phase 302: Surfacing + Validation Closure
 Focus: Wire workflow guidance, docs, and validation guardrails; prove packets remain derived, static, non-authoritative, and no external UI dependency is introduced.
-Plans: TBD (defined during /paul:plan)
+Plans: 302-01 (`.paul/phases/302-surfacing-validation-closure/302-01-PLAN.md`) — complete; surfaced packets in README + closed the contract Status, and added cross-harness/Pi-e2e guardrails pinning the four packet surfaces (optional/non-blocking/non-authoritative) plus derived/static/no-external-UI invariants, reconciled in `302-01-SUMMARY.md`. Final validation: cross-harness 253/253, Pi e2e 342/342.
 
 ## Completed Milestones
 
@@ -70,4 +70,4 @@ Plans: TBD (defined during /paul:plan)
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-04 — Phase 301 complete and merged (PR #221 `259489d0`); transitioned to Phase 302 (Surfacing + Validation Closure), ready to plan.*
+*Last updated: 2026-06-04 — Phase 302 plan 302-01 UNIFY complete; all 4 v2.71 phases complete, milestone completion pending via /paul:milestone.*
