@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (v2.71 HTML Presentation Packets active; Phase 299 ready t
 
 Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
 Phase: 302 of 302 (Surfacing + Validation Closure)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-06-04 — Phase 301 complete and merged (PR #221 `259489d0`); transitioned to Phase 302.
-Next action: /paul:plan for Phase 302
+Plan: 302-01 (`.paul/phases/302-surfacing-validation-closure/302-01-PLAN.md`)
+Status: UNIFY complete — phase transition pending (last plan of Phase 302)
+Last activity: 2026-06-04 — Phase 302 plan 302-01 UNIFY complete (302-01-SUMMARY.md); awaiting merge gate + transition; cross-harness 253/253, Pi e2e 342/342.
+Next action: merge PR #222, then /paul:milestone to complete v2.71
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -25,7 +25,7 @@ Progress:
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
-- v2.71 HTML Presentation Packets — Human Review Briefs: [████████░░] 75% (Phases 299–301 complete; Phase 301 merged via PR #221 `259489d0`; Phase 302 ready to plan)
+- v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% (Phases 299–302 complete; Phase 302 UNIFY done, PR #222 open; milestone completion pending via /paul:milestone)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -33,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 301 complete & merged; ready for first PLAN of Phase 302]
+  ✓        ✓        ✓     [Phase 302 plan 302-01 UNIFY complete; last plan — transition + milestone completion next]
 ```
 
 ## Accumulated Context
@@ -108,10 +108,10 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-04 — Phase 301 complete and merged (PR #221 `259489d0`); transitioned to Phase 302.
-Stopped at: Phase 301 complete; ready to plan Phase 302 (Surfacing + Validation Closure).
-Next action: /paul:plan for Phase 302
-Resume file: .paul/ROADMAP.md
+Last session: 2026-06-04 — Phase 302 plan 302-01 created (surfacing docs + packet-surface validation guardrails); ready for APPLY.
+Stopped at: Phase 302 PLAN complete; awaiting APPLY for plan 302-01.
+Next action: /paul:apply for Phase 302 plan 302-01
+Resume file: .paul/handoffs/archive/HANDOFF-2026-06-04-phase-302-ready-to-plan.md
 wip_result: Phase 301 fully merged to main via PR #221 (squash `259489d0`, branch deleted); main synced 0/0 with origin/main.
 Resume context:
 - v2.71 packet-type coverage complete: Phase 300 wired milestone + PLAN packets (`create-milestone.md` `render_milestone_packet`, `plan-phase.md` `review_plan`); Phase 301 wired APPLY + UNIFY packets (`apply-phase.md` finalize, `unify-phase.md` `render_unify_packet`), all per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`.
