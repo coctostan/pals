@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.71 HTML Presentation Packets — Human Review Briefs** — Phase 301 of 302 ready to plan; Phases 299–300 shipped the static packet contract/template and wired optional milestone + PLAN brief generation. Focus: extend static, PALS-owned HTML review briefs to APPLY/UNIFY moments while preserving `.paul/*` lifecycle authority.
+Active milestone: **v2.71 HTML Presentation Packets — Human Review Briefs** — all 4 phases complete (299–302); milestone completion pending via `/paul:milestone`. Shipped the static packet contract/template and wired optional milestone/PLAN/APPLY/UNIFY brief generation, then surfaced packets and added validation guardrails. Focus held: static, PALS-owned HTML review briefs while preserving `.paul/*` lifecycle authority.
 
 ## Hot-path reading model
 
@@ -60,7 +60,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.71 HTML Presentation Packets** active — Phase 302 of 302 (Surfacing + Validation Closure) ready to plan; Phases 299–301 shipped the contract/template plus optional milestone/PLAN/APPLY/UNIFY brief wiring (PRs #218/#219/#221), completing all four packet types. Latest closed milestone: **v2.70 Strategic Milestone Assessment** (PR #217, tag `v2.70`).
+Current milestone pointer: **v2.71 HTML Presentation Packets** all 4 phases complete (299–302) via PRs #218/#219/#221/#222; milestone completion pending via `/paul:milestone`. Phases shipped the contract/template, optional milestone/PLAN/APPLY/UNIFY brief wiring, README/contract surfacing, and CC↔Pi packet-surface validation guardrails. Latest closed milestone: **v2.70 Strategic Milestone Assessment** (PR #217, tag `v2.70`).
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -144,4 +144,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-06-04 after Phase 301; Phase 302 ready to plan.*
+*Last updated: 2026-06-04 after Phase 302; all v2.71 phases complete, milestone completion pending.*
