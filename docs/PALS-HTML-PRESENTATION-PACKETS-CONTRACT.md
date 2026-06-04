@@ -227,4 +227,7 @@ v2.71 does not introduce:
 
 ## Status
 
-Phase 299: contract + template model authored; generation/surfacing pending Phases 300-302.
+- Phase 299: contract + template model authored.
+- Phase 300: milestone + PLAN packet generation wired (`create-milestone.md` `render_milestone_packet`, `plan-phase.md` `review_plan`).
+- Phase 301: APPLY + UNIFY packet generation wired (`apply-phase.md` `finalize`, `unify-phase.md` `render_unify_packet`).
+- Phase 302: surfacing docs + validation guardrails added; the v2.71 HTML presentation packets boundary is closed. All four packet surfaces (milestone, PLAN, APPLY, UNIFY) are wired as optional, non-blocking, derived, source-cited, and non-authoritative; packets never decide lifecycle state.
