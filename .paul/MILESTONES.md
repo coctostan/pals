@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | None active — v2.70 complete; awaiting next milestone | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.71 HTML Presentation Packets — Human Review Briefs active; Phase 300 of 302 ready to plan after Phase 299 complete | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -92,7 +92,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** None active — v2.70 Strategic Milestone Assessment complete (2026-06-02). Run /paul:discuss-milestone or /paul:milestone to define the next milestone.
+**Current milestone:** v2.71 HTML Presentation Packets — Human Review Briefs active — Phase 299 of 302 ready to plan.
 
 **Latest completed milestone:** v2.70 Strategic Milestone Assessment (2026-06-02, PR #217 squash `9c5cdda8`).
 
@@ -106,4 +106,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.64 milestone closure on 2026-05-12; v2.65 milestone closure on 2026-05-13; v2.66 opened and closed 2026-05-14; v2.67 opened and closed 2026-05-19; v2.68 completed 2026-05-20; v2.69 completed 2026-05-22 via PR #214 squash `08b0e891`.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; compacted under v2.62 Phase 266 on 2026-05-08; v2.70 completed 2026-06-02 via PR #217 squash `9c5cdda8`; v2.71 opened 2026-06-04 with Phase 299 ready to plan.*

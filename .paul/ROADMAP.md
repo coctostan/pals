@@ -8,20 +8,33 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.70 Strategic Milestone Assessment** (v2.70)
-Status: ✅ Complete
-Completed: 2026-06-02
-Archive: [archive/roadmap/v2.70-strategic-milestone-assessment.md](archive/roadmap/v2.70-strategic-milestone-assessment.md)
-Result: Shipped an optional, non-blocking, contract-first strategic-assessment checkpoint in `/paul:discuss` (milestone mode) — five evidence lenses, four-part non-authoritative output to `.paul/assessments/{date}-{slug}.md`, pinned by Pi e2e 331→336 + cross-harness 235→241 marker checks.
+**v2.71 HTML Presentation Packets — Human Review Briefs** (v2.71)
+Status: 🚧 In Progress
+Phases: 1 of 4 complete
+Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNIFY moments while preserving `.paul/*` and PLAN/APPLY/UNIFY authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 296 | Strategic Assessment Contract + Template | 296-01 | Complete | PR #215 `ef8af629` |
-| 297 | Discuss Workflow Integration | 297-01 | Complete | PR #216 `00c7d6c1` |
-| 298 | Validation + Closure | 298-01 | Complete | PR #217 `9c5cdda8` |
+| 299 | Presentation Contract + Template Model | 299-01 | ✅ Complete | 2026-06-04 |
+| 300 | Milestone + PLAN Presentation | TBD | Ready to plan | - |
+| 301 | APPLY + UNIFY Delivery Presentation | TBD | Not started | - |
+| 302 | Surfacing + Validation Closure | TBD | Not started | - |
 
-## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define.
+### Phase 299: Presentation Contract + Template Model
+Focus: Define presentation packet authority boundary, storage path, packet types, audience modes, static HTML template rules, source inputs, and non-goals.
+Plans: 299-01 (`.paul/phases/299-presentation-contract-template-model/299-01-PLAN.md`) — complete; contract and static HTML template model authored and reconciled in `299-01-SUMMARY.md`.
+
+### Phase 300: Milestone + PLAN Presentation
+Focus: Generate/surface HTML briefs for milestone context and PLAN review: scope, options, phase map, risks, constraints, acceptance criteria, and validation plan.
+Plans: TBD (next action: /paul:plan for Phase 300)
+
+### Phase 301: APPLY + UNIFY Delivery Presentation
+Focus: Generate/surface HTML briefs for code changes and closure: changed files, decisions, validation evidence, deviations, delivered value, lessons, and next recommendations.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 302: Surfacing + Validation Closure
+Focus: Wire workflow guidance, docs, and validation guardrails; prove packets remain derived, static, non-authoritative, and no external UI dependency is introduced.
+Plans: TBD (defined during /paul:plan)
 
 ## Completed Milestones
 
@@ -53,7 +66,8 @@ Run /paul:discuss-milestone or /paul:milestone to define.
 | v2.67 Validation Hygiene | 2026-05-19 | 288-290 | Cleared inherited Pi e2e CODI marker drift and hot-artifact budget drift; final validation Pi 335/335 and cross-harness 246/246. [archive](archive/roadmap/v2.67-validation-hygiene.md) |
 | v2.68 Plannotator Retraction | 2026-05-20 | 291-292 | Removed live Plannotator surfaces and contract document while preserving v2.66 archive evidence. Final validation: Pi 328/328, cross-harness 234/234. PR #210 merged at squash `7c38f42e`. |
 | v2.69 Pi Runtime Context Offload — S4 First | 2026-05-22 | 293-295 | Created S4 canonical reply delivery contract (PR #212), extracted S4 delivery to `drivers/pi/extensions/guided-workflow-delivery.ts` (PR #213), then measured the context offload and ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 squash `08b0e891`). Final validation: Pi 331/331, cross-harness 235/235. |
+| v2.70 Strategic Milestone Assessment | 2026-06-02 | 296-298 | Shipped an optional, non-blocking strategic-assessment checkpoint in `/paul:discuss` with five evidence lenses and non-authoritative assessment artifacts. Final validation: Pi 336/336, cross-harness 241/241. [archive](archive/roadmap/v2.70-strategic-milestone-assessment.md) |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-02 — v2.70 Strategic Milestone Assessment complete (Phases 296–298; PR #217 squash `9c5cdda8`); awaiting next milestone.*
+*Last updated: 2026-06-04 — Phase 299 complete; Phase 300 ready to plan milestone + PLAN presentation packets.*
