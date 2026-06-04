@@ -17,6 +17,8 @@ After create-milestone, project is ready for first phase PLAN.
 .paul/STATE.md
 .paul/MILESTONE-CONTEXT.md (if exists)
 .paul/ROADMAP.md (consult only the slice needed to insert the new milestone and derive the next available phase number)
+docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md (only when the user opts into the optional milestone presentation packet — authoritative packet behavior/boundary spec)
+kernel/templates/HTML-PRESENTATION-PACKET.md (only when the user opts into the optional milestone presentation packet — static HTML template-model shape)
 </required_reading>
 
 <hot_artifact_loading>
@@ -28,6 +30,8 @@ Escalate to a full read only as an explicit fallback when fields are missing or 
 kernel/templates/ROADMAP.md (milestone section format)
 kernel/templates/milestone-context.md (handoff structure)
 kernel/references/context-management.md
+kernel/templates/HTML-PRESENTATION-PACKET.md (milestone presentation packet output format, for the optional render step)
+docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md (authoritative packet authority, storage, packet types, audience modes, citation/escaping rules, and non-goals)
 </references>
 
 <process>
@@ -193,6 +197,38 @@ Update STATE.md:
    ```
 </step>
 
+<step name="render_milestone_packet" priority="after-update-state">
+**Optional: render a static HTML milestone review brief.**
+
+This step implements `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` (authoritative; the contract wins on any conflict) and instantiates `kernel/templates/HTML-PRESENTATION-PACKET.md`. It runs after the milestone structure is finalized in ROADMAP/STATE and before `cleanup_context`.
+
+**It is OPTIONAL and NON-BLOCKING. It is main-session only: NO subagents, NO Pi UI surfaces, NO background automation. It never writes STATE/PROJECT/ROADMAP/MILESTONES lifecycle state.**
+
+1. Offer it; default to skip:
+   ```
+   Render an optional milestone review brief (static HTML) to help a reviewer carry context into planning?
+
+   [1] Yes — generate a cited milestone packet
+   [2] Skip (default)
+   ```
+   Declining proceeds to `cleanup_context` with no penalty and no lifecycle-state change.
+
+2. On Yes, read bounded authoritative slices and cite each one:
+   - `.paul/STATE.md` current-position and loop-position facts
+   - `.paul/ROADMAP.md` current milestone section and phase table
+   - `.paul/PROJECT.md` current focus, constraints, and current decisions when relevant
+   - `.paul/MILESTONES.md` index when relevant
+   Mark absent optional inputs as `not available — <reason>`.
+
+3. Instantiate `kernel/templates/HTML-PRESENTATION-PACKET.md` with `{{PACKET_TYPE}} = milestone` and an audience mode (default `reviewer brief`). Fill the metadata, summary, review focus, source map, key decisions, risks/constraints, and next-lifecycle-action fields with escaped, source-cited content.
+
+4. Write the packet to `.paul/presentation-packets/{milestone-slug}/milestone-brief.html`, creating `.paul/presentation-packets/{milestone-slug}/` on demand. `{milestone-slug}` is the lowercase hyphenated milestone/version slug.
+
+5. Honor the static-HTML and citation rules: escape all artifact/command content, inline CSS only, no JavaScript, no network assets, and cite every material claim. The packet is a durable derived review artifact, NOT hot-path lifecycle truth, excluded from STATE/PROJECT/ROADMAP/MILESTONES byte budgets, and regenerable/discardable without lifecycle-state change. It cannot approve, block, merge, or rewrite lifecycle state.
+
+6. Surface the written path as a review aid only, then continue to `cleanup_context` and `offer_next` with the single next action unchanged.
+</step>
+
 <step name="cleanup_context">
 **If MILESTONE-CONTEXT.md existed:**
 
@@ -257,6 +293,7 @@ Type "yes" to proceed, or ask questions first.
 - [ ] STATE.md reflects new milestone position
 - [ ] MILESTONE-CONTEXT.md cleaned up
 - [ ] Single next action offered
+- [ ] Optional milestone packet offered (skippable, non-blocking); if run, written to `.paul/presentation-packets/{milestone-slug}/milestone-brief.html` as a derived, source-cited, non-authoritative artifact
 </success_criteria>
 
 <error_handling>
