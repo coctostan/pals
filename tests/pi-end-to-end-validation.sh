@@ -2709,6 +2709,85 @@ tap_file_contains_all \
   'command-routing.ts' \
   'pals-hooks.ts' \
   'Derived aid only'
+
+# ═══════════════════════════════════════════════════════════════
+# v2.71 presentation-packet surface (Phase 302 marker checks)
+# ═══════════════════════════════════════════════════════════════
+# Phases 299-301 wired optional, non-blocking, non-authoritative HTML presentation
+# packet generation at the milestone, PLAN, APPLY, and UNIFY moments. These checks
+# pin the installed Pi surfaces so the v2.71 behavior is regression-safe.
+PI_CREATE_MILESTONE="$SKILL_DIR/workflows/create-milestone.md"
+PI_PACKET_TEMPLATE="$SKILL_DIR/templates/HTML-PRESENTATION-PACKET.md"
+PI_PACKET_CONTRACT="$REPO_ROOT/docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md"
+
+tap_file_contains_all \
+  "Installed Pi create-milestone workflow wires the optional milestone presentation packet" \
+  "$PI_CREATE_MILESTONE" \
+  '<step name="render_milestone_packet"' \
+  'OPTIONAL' \
+  'NON-BLOCKING' \
+  'non-authoritative' \
+  'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+  'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+  '.paul/presentation-packets/'
+
+tap_file_contains_all \
+  "Installed Pi plan-phase workflow wires the optional PLAN presentation packet" \
+  "$PI_PLAN" \
+  'Optional PLAN presentation packet' \
+  'non-blocking' \
+  'non-authoritative' \
+  'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+  'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+  '.paul/presentation-packets/'
+
+tap_file_contains_all \
+  "Installed Pi apply-phase workflow wires the optional APPLY presentation packet" \
+  "$PI_APPLY" \
+  'Optional APPLY presentation packet' \
+  'OPTIONAL' \
+  'NON-BLOCKING' \
+  'default-skip' \
+  'non-authoritative' \
+  'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+  'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+  '.paul/presentation-packets/'
+
+tap_file_contains_all \
+  "Installed Pi unify-phase workflow wires the optional UNIFY presentation packet" \
+  "$PI_UNIFY" \
+  '<step name="render_unify_packet"' \
+  'OPTIONAL' \
+  'NON-BLOCKING' \
+  'review aid only' \
+  'rewrite lifecycle state' \
+  'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+  'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+  '.paul/presentation-packets/'
+
+tap_file_contains_all \
+  "Installed Pi HTML presentation packet template carries the static-HTML invariants" \
+  "$PI_PACKET_TEMPLATE" \
+  'Static Rendering Rules' \
+  'Inline CSS only.' \
+  'Do not include scripts' \
+  'Escape all user, artifact, command, diff, and source content' \
+  'Never fabricate' \
+  '.paul/presentation-packets/'
+
+tap_file_contains_all \
+  "HTML presentation packets contract carries static-HTML rules, v2.71 non-goals, and derived-only doctrine" \
+  "$PI_PACKET_CONTRACT" \
+  'Derived briefs, authoritative artifacts.' \
+  'Static HTML Rules' \
+  'No JavaScript.' \
+  'No network assets.' \
+  'Non-Goals for v2.71' \
+  'live Plannotator-style UI' \
+  'Pi extension presentation panels' \
+  'external presentation/rendering dependencies' \
+  'JavaScript-driven review surfaces' \
+  'packet-driven lifecycle decisions'
 # ════════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════

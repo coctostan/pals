@@ -2113,6 +2113,119 @@ tap_file_contains_all \
   'kernel/templates/STRATEGIC-ASSESSMENT.md'
 
 # ════════════════════════════════════════════════════════════════
+# CATEGORY: v2.71 PRESENTATION-PACKET SURFACE PARITY (Phase 302)
+# ════════════════════════════════════════════════════════════════
+# Phases 299-301 authored the contract/template and wired optional, non-blocking,
+# non-authoritative HTML presentation packet generation at the milestone, PLAN,
+# APPLY, and UNIFY moments (create-milestone render_milestone_packet, plan-phase
+# review_plan, apply-phase finalize, unify-phase render_unify_packet). These checks
+# pin CC<->Pi parity of those four installed workflow surfaces, assert the installed
+# template + contract carry the static-HTML invariants and v2.71 non-goals, and
+# guard that packets stay derived (no committed .html instances).
+# Authority: derived briefs only; .paul/* and PLAN/APPLY/UNIFY remain authoritative.
+
+section "v2.71 PRESENTATION-PACKET SURFACE PARITY"
+
+PACKET_CONTRACT="$REPO_ROOT/docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md"
+
+for harness_label in "Claude Code" "Pi"; do
+  if [ "$harness_label" = "Claude Code" ]; then
+    PK_KERNEL="$CC_KERNEL_DIR"
+  else
+    PK_KERNEL="$PI_KERNEL_DIR"
+  fi
+
+  tap_file_contains_all \
+    "$harness_label installed create-milestone workflow wires the optional milestone presentation packet" \
+    "$PK_KERNEL/workflows/create-milestone.md" \
+    '<step name="render_milestone_packet"' \
+    'OPTIONAL' \
+    'NON-BLOCKING' \
+    'non-authoritative' \
+    'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+    'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+    '.paul/presentation-packets/' \
+    'no JavaScript' \
+    'no network assets' \
+    'inline CSS only'
+
+  tap_file_contains_all \
+    "$harness_label installed plan-phase workflow wires the optional PLAN presentation packet" \
+    "$PK_KERNEL/workflows/plan-phase.md" \
+    'Optional PLAN presentation packet' \
+    'non-blocking' \
+    'non-authoritative' \
+    'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+    'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+    '.paul/presentation-packets/' \
+    'no JavaScript' \
+    'no network assets' \
+    'inline CSS only'
+
+  tap_file_contains_all \
+    "$harness_label installed apply-phase workflow wires the optional APPLY presentation packet" \
+    "$PK_KERNEL/workflows/apply-phase.md" \
+    'Optional APPLY presentation packet' \
+    'OPTIONAL' \
+    'NON-BLOCKING' \
+    'default-skip' \
+    'non-authoritative' \
+    'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+    'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+    '.paul/presentation-packets/' \
+    'no JavaScript' \
+    'no network assets' \
+    'inline CSS only'
+
+  tap_file_contains_all \
+    "$harness_label installed unify-phase workflow wires the optional UNIFY presentation packet" \
+    "$PK_KERNEL/workflows/unify-phase.md" \
+    '<step name="render_unify_packet"' \
+    'OPTIONAL' \
+    'NON-BLOCKING' \
+    'review aid only' \
+    'rewrite lifecycle state' \
+    'docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md' \
+    'kernel/templates/HTML-PRESENTATION-PACKET.md' \
+    '.paul/presentation-packets/' \
+    'no JavaScript' \
+    'no network assets' \
+    'inline CSS only'
+
+  tap_file_contains_all \
+    "$harness_label installed HTML presentation packet template carries the static-HTML invariants" \
+    "$PK_KERNEL/templates/HTML-PRESENTATION-PACKET.md" \
+    'Static Rendering Rules' \
+    'Inline CSS only.' \
+    'Do not include scripts' \
+    'Escape all user, artifact, command, diff, and source content' \
+    'Never fabricate' \
+    '.paul/presentation-packets/'
+done
+
+tap_file_contains_all \
+  "Shared HTML presentation packets contract carries the static-HTML rules, v2.71 non-goals, and derived-only doctrine" \
+  "$PACKET_CONTRACT" \
+  'Derived briefs, authoritative artifacts.' \
+  'Static HTML Rules' \
+  'No JavaScript.' \
+  'No network assets.' \
+  'Non-Goals for v2.71' \
+  'live Plannotator-style UI' \
+  'Pi extension presentation panels' \
+  'external presentation/rendering dependencies' \
+  'JavaScript-driven review surfaces' \
+  'packet-driven lifecycle decisions'
+
+# Derived/static guardrail: packets are regenerable review aids, never committed hot-path
+# truth. Fail if any .html packet instance is tracked under .paul/presentation-packets/.
+PACKET_HTML_TRACKED="$(git -C "$REPO_ROOT" ls-files '.paul/presentation-packets/*.html' '.paul/presentation-packets/**/*.html' 2>/dev/null)"
+if [ -z "$PACKET_HTML_TRACKED" ]; then
+  tap_ok "No committed .html presentation packet instances under .paul/presentation-packets/ (packets stay derived)"
+else
+  tap_not_ok "No committed .html presentation packet instances under .paul/presentation-packets/ (packets stay derived)" "Tracked packet HTML found: $PACKET_HTML_TRACKED"
+fi
+# ════════════════════════════════════════════════════════════════
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 
