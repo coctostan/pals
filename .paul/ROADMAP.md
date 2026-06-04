@@ -16,7 +16,7 @@ Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNI
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 299 | Presentation Contract + Template Model | 299-01 | ✅ Complete | 2026-06-04 |
-| 300 | Milestone + PLAN Presentation | TBD | Ready to plan | - |
+| 300 | Milestone + PLAN Presentation | 300-01 | ✅ Complete | 2026-06-04 |
 | 301 | APPLY + UNIFY Delivery Presentation | TBD | Not started | - |
 | 302 | Surfacing + Validation Closure | TBD | Not started | - |
 
@@ -26,7 +26,7 @@ Plans: 299-01 (`.paul/phases/299-presentation-contract-template-model/299-01-PLA
 
 ### Phase 300: Milestone + PLAN Presentation
 Focus: Generate/surface HTML briefs for milestone context and PLAN review: scope, options, phase map, risks, constraints, acceptance criteria, and validation plan.
-Plans: TBD (next action: /paul:plan for Phase 300)
+Plans: 300-01 (`.paul/phases/300-milestone-plan-presentation/300-01-PLAN.md`) — complete; wired optional milestone + PLAN HTML presentation packets into `create-milestone.md` and `plan-phase.md`, reconciled in `300-01-SUMMARY.md`.
 
 ### Phase 301: APPLY + UNIFY Delivery Presentation
 Focus: Generate/surface HTML briefs for code changes and closure: changed files, decisions, validation evidence, deviations, delivered value, lessons, and next recommendations.
@@ -70,4 +70,4 @@ Plans: TBD (defined during /paul:plan)
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-04 — Phase 299 complete; Phase 300 ready to plan milestone + PLAN presentation packets.*
+*Last updated: 2026-06-04 — Phase 300 complete (300-01); milestone + PLAN presentation packet wiring shipped, PR #219 merge gate pending.*

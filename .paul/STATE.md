@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (v2.71 HTML Presentation Packets active; Phase 299 ready t
 
 Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
 Phase: 300 of 302 (Milestone + PLAN Presentation)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-06-04 — Phase 299 UNIFY completed; transitioned to Phase 300 ready to plan after contract/template foundation.
-Next action: /paul:plan for Phase 300
+Plan: 300-01 (.paul/phases/300-milestone-plan-presentation/300-01-PLAN.md)
+Status: UNIFY complete — Phase 300 closed; merge gate pending
+Last activity: 2026-06-04 — Phase 300 UNIFY: reconciled 300-01, created SUMMARY; both packet wirings PASS; PR #219 merge gate pending.
+Next action: complete Phase 300 merge gate (PR #219), then transition to Phase 301
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -25,7 +25,7 @@ Progress:
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
-- v2.71 HTML Presentation Packets — Human Review Briefs: [███░░░░░░░] 25% (Phase 299 complete; Phase 300 ready to plan; Phases 301–302 not started)
+- v2.71 HTML Presentation Packets — Human Review Briefs: [█████░░░░░] 50% (Phases 299–300 complete; Phase 300 closed via UNIFY 300-01, PR #219 merge gate pending; Phases 301–302 not started)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -33,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Ready for PLAN — Phase 300]
+  ✓        ✓        ✓     [UNIFY complete — Phase 300 closed, transition pending]
 ```
 
 ## Accumulated Context
@@ -108,13 +108,14 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-04 — Phase 299 closed; Phase 300 ready to plan.
-Stopped at: Phase 299 complete, ready to plan Phase 300.
-Next action: /paul:plan for Phase 300
-Resume file: .paul/ROADMAP.md
-wip_result: PR #218 (https://github.com/coctostan/pals/pull/218) contains Phase 299 implementation + lifecycle artifacts; merge gate handled during UNIFY.
+Last session: 2026-06-04 — completed Phase 300 APPLY for Plan 300-01.
+Stopped at: Phase 300 APPLY complete; ready for UNIFY.
+Next action: /paul:unify for Phase 300 Plan 300-01
+Resume file: .paul/phases/300-milestone-plan-presentation/300-01-PLAN.md
+wip_result: task commits 66c1be6f + ccdf0d3f pushed on `feature/300-milestone-plan-presentation`; PLAN + lifecycle artifacts await the plan-completion metadata commit in UNIFY.
 Resume context:
-- Phase 299 created `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` and `kernel/templates/HTML-PRESENTATION-PACKET.md`.
-- Phase 299 validation passed: artifact_consistency PASS, Pi e2e 336/336 PASS, cross-harness 241/241 PASS; `git diff --check` exit 0.
-- Phase 300 focus: generate/surface HTML briefs for milestone context and PLAN review using the Phase 299 contract/template.
+- Branch `feature/300-milestone-plan-presentation`; PR #219 open and MERGEABLE targeting `main`; CI pending (Socket Security checks) — UNIFY owns the merge gate.
+- Phase 300 wired optional, non-blocking milestone + PLAN HTML presentation packets into `kernel/workflows/create-milestone.md` (`render_milestone_packet`, commit 66c1be6f) and `kernel/workflows/plan-phase.md` (`review_plan` PLAN-packet offer, commit ccdf0d3f), per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`.
+- Validation: artifact_consistency PASS, cross-harness 241/241 PASS, Pi e2e 335/336 — the single failure (`PROJECT stays within v2.62 byte budget`, PROJECT.md 25129 vs 25000) is pre-existing base-branch debt (byte-identical at origin/main and HEAD; untouched by Phase 300), to be handled via a separate /paul:fix.
+- Packets stay derived, source-cited, escaped, non-authoritative, stored under `.paul/presentation-packets/`; no APPLY/UNIFY wiring (Phase 301), no committed `.html` instances, no tests/drivers changes (Phase 302).
 - Follow-on milestone candidate remains shared runtime helper extraction / Pi context offload continuation.
