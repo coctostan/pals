@@ -10,15 +10,15 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.71 HTML Presentation Packets — Human Review Briefs** (v2.71)
 Status: 🚧 In Progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNIFY moments while preserving `.paul/*` and PLAN/APPLY/UNIFY authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 299 | Presentation Contract + Template Model | 299-01 | ✅ Complete | 2026-06-04 |
 | 300 | Milestone + PLAN Presentation | 300-01 | ✅ Complete | 2026-06-04 |
-| 301 | APPLY + UNIFY Delivery Presentation | 301-01 | 🔵 Applied — merge gate pending | - |
-| 302 | Surfacing + Validation Closure | TBD | Not started | - |
+| 301 | APPLY + UNIFY Delivery Presentation | 301-01 | ✅ Complete | 2026-06-04 |
+| 302 | Surfacing + Validation Closure | TBD | 🔵 Ready to plan | - |
 
 ### Phase 299: Presentation Contract + Template Model
 Focus: Define presentation packet authority boundary, storage path, packet types, audience modes, static HTML template rules, source inputs, and non-goals.
@@ -30,7 +30,7 @@ Plans: 300-01 (`.paul/phases/300-milestone-plan-presentation/300-01-PLAN.md`) �
 
 ### Phase 301: APPLY + UNIFY Delivery Presentation
 Focus: Generate/surface HTML briefs for code changes and closure: changed files, decisions, validation evidence, deviations, delivered value, lessons, and next recommendations.
-Plans: 301-01 (`.paul/phases/301-apply-unify-delivery-presentation/301-01-PLAN.md`) — complete; wired optional, non-blocking APPLY + UNIFY HTML presentation packet generation into `apply-phase.md` (finalize) and `unify-phase.md` (`render_unify_packet`), reconciled in `301-01-SUMMARY.md`. PR #221 merge gate pending.
+Plans: 301-01 (`.paul/phases/301-apply-unify-delivery-presentation/301-01-PLAN.md`) — complete; wired optional, non-blocking APPLY + UNIFY HTML presentation packet generation into `apply-phase.md` (finalize) and `unify-phase.md` (`render_unify_packet`), reconciled in `301-01-SUMMARY.md`. Closed via PR #221 squash `259489d0`.
 
 ### Phase 302: Surfacing + Validation Closure
 Focus: Wire workflow guidance, docs, and validation guardrails; prove packets remain derived, static, non-authoritative, and no external UI dependency is introduced.
@@ -70,4 +70,4 @@ Plans: TBD (defined during /paul:plan)
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-04 — Phase 301 plan 301-01 complete (optional APPLY + UNIFY delivery presentation packet wiring); PR #221 merge gate pending, then transition to Phase 302.*
+*Last updated: 2026-06-04 — Phase 301 complete and merged (PR #221 `259489d0`); transitioned to Phase 302 (Surfacing + Validation Closure), ready to plan.*

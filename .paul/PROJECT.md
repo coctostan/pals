@@ -60,7 +60,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.71 HTML Presentation Packets — Human Review Briefs** active — Phase 301 of 302 ready to plan; Phases 299–300 shipped the packet contract/template and optional milestone + PLAN brief wiring (PRs #218, #219). Latest closed milestone: **v2.70 Strategic Milestone Assessment** via PR #217 squash `9c5cdda8` (tag `v2.70`).
+Current milestone pointer: **v2.71 HTML Presentation Packets** active — Phase 302 of 302 (Surfacing + Validation Closure) ready to plan; Phases 299–301 shipped the contract/template plus optional milestone/PLAN/APPLY/UNIFY brief wiring (PRs #218/#219/#221), completing all four packet types. Latest closed milestone: **v2.70 Strategic Milestone Assessment** (PR #217, tag `v2.70`).
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -144,4 +144,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-06-04 after Phase 300; Phase 301 ready to plan.*
+*Last updated: 2026-06-04 after Phase 301; Phase 302 ready to plan.*

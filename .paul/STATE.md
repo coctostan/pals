@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.71 HTML Presentation Packets active; Phase 299 ready t
 ## Current Position
 
 Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
-Phase: 301 of 302 (APPLY + UNIFY Delivery Presentation)
-Plan: 301-01 (`.paul/phases/301-apply-unify-delivery-presentation/301-01-PLAN.md`)
-Status: UNIFY complete — reconciled in 301-01-SUMMARY.md; merge gate pending
-Last activity: 2026-06-04 — Phase 301 plan 301-01 UNIFY complete; SUMMARY written; PR #221 merge gate pending.
-Next action: Complete PR #221 merge gate, then transition Phase 301 → 302
+Phase: 302 of 302 (Surfacing + Validation Closure)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-06-04 — Phase 301 complete and merged (PR #221 `259489d0`); transitioned to Phase 302.
+Next action: /paul:plan for Phase 302
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -25,7 +25,7 @@ Progress:
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
-- v2.71 HTML Presentation Packets — Human Review Briefs: [█████░░░░░] 50% (Phases 299–300 complete; Phase 300 merged via PR #219 `a2b2a2fa`; Phases 301–302 not started)
+- v2.71 HTML Presentation Packets — Human Review Briefs: [████████░░] 75% (Phases 299–301 complete; Phase 301 merged via PR #221 `259489d0`; Phase 302 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -33,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 301 plan 301-01 complete; PR #221 merge gate → transition to Phase 302]
+  ○        ○        ○     [Phase 301 complete & merged; ready for first PLAN of Phase 302]
 ```
 
 ## Accumulated Context
@@ -100,21 +100,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main; synced 0/0 with origin/main after the Phase 300 merge.
-Last lifecycle state: v2.71 Phase 300 complete; ready to transition to Phase 301.
-PR #219: merged — https://github.com/coctostan/pals/pull/219 (`a2b2a2fa`, squash, branch deleted). PR #218 merged (`b825140d`); PR #217 merged (`9c5cdda8`, squash); PR #214 merged (`08b0e891`).
-Transition state: Phase 299 closed via PR #218 `b825140d`; Phase 300 closed via PR #219 squash `a2b2a2fa`; Phase 301 ready for PLAN.
+Branch: main; synced 0/0 with origin/main after the Phase 301 merge (feature branch deleted).
+Last lifecycle state: v2.71 Phase 301 plan 301-01 complete and merged; ready to transition to Phase 302.
+PR #221: merged — https://github.com/coctostan/pals/pull/221 (`259489d0`, squash, branch deleted). PR #219 merged (`a2b2a2fa`, squash); PR #218 merged (`b825140d`); PR #217 merged (`9c5cdda8`, squash); PR #214 merged (`08b0e891`).
+Transition state: Phase 300 closed via PR #219 squash `a2b2a2fa`; Phase 301 closed via PR #221 squash `259489d0`; ready to transition to Phase 302.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-04 — Phase 301 plan 301-01 UNIFY complete; 301-01-SUMMARY.md written.
-Stopped at: Phase 301 UNIFY complete; PR #221 merge gate pending (last plan → transition to Phase 302 after merge).
-Next action: Complete PR #221 merge gate, then transition Phase 301 → 302
-Resume file: .paul/phases/301-apply-unify-delivery-presentation/301-01-SUMMARY.md
-wip_result: tasks committed on feature/301-apply-unify-delivery-presentation (2 task commits); plan/lifecycle/SUMMARY metadata commit at merge gate; PR #221 open.
+Last session: 2026-06-04 — Phase 301 complete and merged (PR #221 `259489d0`); transitioned to Phase 302.
+Stopped at: Phase 301 complete; ready to plan Phase 302 (Surfacing + Validation Closure).
+Next action: /paul:plan for Phase 302
+Resume file: .paul/ROADMAP.md
+wip_result: Phase 301 fully merged to main via PR #221 (squash `259489d0`, branch deleted); main synced 0/0 with origin/main.
 Resume context:
-- Phase 300 wired optional, non-blocking milestone + PLAN HTML presentation packets into `kernel/workflows/create-milestone.md` (`render_milestone_packet`) and `kernel/workflows/plan-phase.md` (`review_plan` PLAN-packet offer), per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`; reconciled in `300-01-SUMMARY.md`.
-- Validation: cross-harness 241/241 PASS, artifact_consistency PASS. The earlier Pi e2e PROJECT.md byte-budget failure (25129 vs 25000) was resolved inline during the Phase 300→301 transition by trimming a stray duplicate footer in `.paul/PROJECT.md` (now 24965 bytes); Pi e2e expected back to 336/336.
-- Phase 301 plan 301-01 complete: optional, non-blocking APPLY-packet offer in `apply-phase.md` finalize and an optional `render_unify_packet` step in `unify-phase.md` after `finalize_summary`; all 4 ACs PASS; generation-wiring only (no committed `.html`, no tests/drivers changes — Phase 302 owns validation). Validation: artifact_consistency PASS, cross-harness 241/241, Pi e2e 336/336. v2.71 packet-type coverage now complete (milestone/PLAN/APPLY/UNIFY).
+- v2.71 packet-type coverage complete: Phase 300 wired milestone + PLAN packets (`create-milestone.md` `render_milestone_packet`, `plan-phase.md` `review_plan`); Phase 301 wired APPLY + UNIFY packets (`apply-phase.md` finalize, `unify-phase.md` `render_unify_packet`), all per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`.
+- Phase 302 (Surfacing + Validation Closure) is the final v2.71 phase: add workflow surfacing guidance/docs and validation guardrails proving packets stay derived, static, non-authoritative, and free of external UI deps. Generation wiring is done (no committed `.html`); validation baseline full green (artifact_consistency PASS, cross-harness 241/241, Pi e2e 336/336).
 - Follow-on milestone candidate remains shared runtime helper extraction / Pi context offload continuation.
