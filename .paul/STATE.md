@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.71 HTML Presentation Packets active; Phase 299 ready t
 ## Current Position
 
 Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
-Phase: 300 of 302 (Milestone + PLAN Presentation)
-Plan: 300-01 (.paul/phases/300-milestone-plan-presentation/300-01-PLAN.md)
-Status: Phase 300 complete — merged to main; ready to transition to Phase 301
-Last activity: 2026-06-04 — Phase 300 UNIFY closed and PR #219 merged (squash `a2b2a2fa`); milestone + PLAN packet wiring shipped.
-Next action: transition to Phase 301 (APPLY + UNIFY Delivery Presentation)
+Phase: 301 of 302 (APPLY + UNIFY Delivery Presentation)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-06-04 — Phase 300 complete and merged (PR #219 `a2b2a2fa`); transitioned to Phase 301.
+Next action: /paul:plan for Phase 301
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -108,13 +108,13 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-04 — completed Phase 300 UNIFY for Plan 300-01 and merged PR #219.
-Stopped at: Phase 300 complete and merged; ready to transition to Phase 301.
-Next action: transition to Phase 301 (APPLY + UNIFY Delivery Presentation)
+Last session: 2026-06-04 — completed Phase 300, merged PR #219, transitioned to Phase 301.
+Stopped at: Phase 300 complete and merged; Phase 301 ready to plan.
+Next action: /paul:plan for Phase 301 (APPLY + UNIFY Delivery Presentation)
 Resume file: .paul/ROADMAP.md
 wip_result: Phase 300 task commits 66c1be6f + ccdf0d3f and plan-completion commit af5dc91c merged to main via PR #219 squash `a2b2a2fa`; working tree clean except this post-merge STATE update.
 Resume context:
 - Phase 300 wired optional, non-blocking milestone + PLAN HTML presentation packets into `kernel/workflows/create-milestone.md` (`render_milestone_packet`) and `kernel/workflows/plan-phase.md` (`review_plan` PLAN-packet offer), per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`; reconciled in `300-01-SUMMARY.md`.
-- Validation at close: artifact_consistency PASS, cross-harness 241/241 PASS, Pi e2e 335/336. The single failure (`PROJECT stays within v2.62 byte budget`, PROJECT.md 25129 vs 25000) is pre-existing base-branch debt untouched by Phase 300 — OPEN, route a separate /paul:fix to trim PROJECT.md (note: a prior similar overage was fixed 2026-06-01; this is a recurrence).
+- Validation: cross-harness 241/241 PASS, artifact_consistency PASS. The earlier Pi e2e PROJECT.md byte-budget failure (25129 vs 25000) was resolved inline during the Phase 300→301 transition by trimming a stray duplicate footer in `.paul/PROJECT.md` (now 24965 bytes); Pi e2e expected back to 336/336.
 - Phase 301 (APPLY + UNIFY Delivery Presentation) can reuse the established optional/non-blocking/contract-anchored packet-wiring pattern.
 - Follow-on milestone candidate remains shared runtime helper extraction / Pi context offload continuation.

@@ -10,14 +10,14 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.71 HTML Presentation Packets — Human Review Briefs** (v2.71)
 Status: 🚧 In Progress
-Phases: 1 of 4 complete
+Phases: 2 of 4 complete
 Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNIFY moments while preserving `.paul/*` and PLAN/APPLY/UNIFY authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 299 | Presentation Contract + Template Model | 299-01 | ✅ Complete | 2026-06-04 |
 | 300 | Milestone + PLAN Presentation | 300-01 | ✅ Complete | 2026-06-04 |
-| 301 | APPLY + UNIFY Delivery Presentation | TBD | Not started | - |
+| 301 | APPLY + UNIFY Delivery Presentation | TBD | 🔵 Ready to plan | - |
 | 302 | Surfacing + Validation Closure | TBD | Not started | - |
 
 ### Phase 299: Presentation Contract + Template Model
