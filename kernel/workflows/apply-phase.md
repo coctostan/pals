@@ -17,6 +17,7 @@ Next phase: UNIFY after execution
 - Bounded `.paul/STATE.md` fields for current position, loop position, blockers, and approved plan.
 - Approved PLAN sections only: frontmatter/files, tasks, boundaries, files, acceptance criteria, and checkpoints.
 - Installed `modules.yaml` registry for pre-apply, post-task, and post-apply hook dispatch.
+- `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` and `kernel/templates/HTML-PRESENTATION-PACKET.md` — only when the user opts into the optional APPLY presentation packet in `finalize`.
 </required_reading>
 
 <hot_artifact_loading>
@@ -30,6 +31,8 @@ kernel/references/loop-phases.md
 kernel/references/module-dispatch.md
 kernel/references/git-strategy.md
 kernel/references/subagent-criteria.md — load-only-if considering `pals-implementer` delegation.
+kernel/templates/HTML-PRESENTATION-PACKET.md (APPLY presentation packet output format, for the optional render in finalize)
+docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md (authoritative packet authority, storage, packet types, audience modes, citation/escaping rules, and non-goals)
 </references>
 
 <process>
@@ -160,7 +163,24 @@ Finalize only when all tasks are PASS/PASS_WITH_CONCERNS, or when the user expli
 1. Summarize tasks, failures/deviations, PR/CI status, and module annotations.
 2. If both advisory and enforcement dispatches are absent or `SKIPPED`, warn that Module Execution Reports may be empty.
 3. If APPLY completed, update STATE: PLAN ✓ → APPLY ✓ → UNIFY ○, last activity, resume file, and next action.
-4. Prompt: `Continue to UNIFY?` Accept `1`, `yes`, `continue`, or `go` to run `/paul:unify [plan-path]`.
+
+4. **Optional APPLY presentation packet (non-blocking; does NOT gate UNIFY routing):**
+   This offer implements `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` (authoritative; the contract wins on any conflict) and instantiates `kernel/templates/HTML-PRESENTATION-PACKET.md`. It is OPTIONAL, NON-BLOCKING, default-skip, and main-session only: NO subagents, NO Pi UI surfaces, NO background automation. It never writes lifecycle state. It runs after the STATE update above and before the `Continue to UNIFY?` prompt; skipping leaves that prompt unchanged and reachable.
+   1. Offer it; default to skip:
+      ```
+      Render an optional APPLY review brief (static HTML) summarizing what changed and what passed?
+
+      [1] Yes — generate a cited APPLY packet
+      [2] Skip (default)
+      ```
+      Declining proceeds to the `Continue to UNIFY?` prompt with no penalty and no lifecycle-state change.
+   2. On Yes, read bounded authoritative slices and cite each one: approved PLAN tasks and verification commands; the changed-file list and relevant git diff summary; parent-run task verification results; post-task and post-apply module evidence when available; `.paul/STATE.md` current APPLY status. Cite optional inputs (`pals-implementer` helper reports when delegation was used; retained command logs/quality baselines) only when relevant; mark absent optional inputs as `not available — <reason>` and skipped checks as `skipped — <reason>`.
+   3. Instantiate `kernel/templates/HTML-PRESENTATION-PACKET.md` with `{{PACKET_TYPE}} = APPLY` and an audience mode (default `reviewer brief`), filling metadata, summary, review focus, source map, task evidence (task results / files changed / verification), risks/concerns, module reports, and UNIFY-readiness fields with escaped, source-cited content.
+   4. Write the packet to `.paul/presentation-packets/{NN}-{phase}/{NN}-{plan}-apply.html` (matching the phase directory and plan id), creating the directory on demand.
+   5. Honor the static-HTML and citation rules: escape all artifact/command/diff content, inline CSS only, no JavaScript, no network assets, and cite every material claim. The packet is derived, non-authoritative, regenerable/discardable, excluded from hot-artifact byte budgets, and cannot approve, block, merge, or rewrite lifecycle state.
+   6. Surface the written path as a review aid only; proceed to the `Continue to UNIFY?` prompt whether or not a packet was rendered.
+
+5. Prompt: `Continue to UNIFY?` Accept `1`, `yes`, `continue`, or `go` to run `/paul:unify [plan-path]`.
 </step>
 </process>
 

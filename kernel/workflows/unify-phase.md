@@ -24,6 +24,7 @@ Routine bounded inputs:
 Conditional inputs:
 - Changed-file evidence — targeted changed-file evidence from PLAN paths and the working tree when reconciling results.
 - `workflows/transition-phase.md` — only when `check_phase_completion` finds this is the last plan.
+- `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` and `kernel/templates/HTML-PRESENTATION-PACKET.md` — only when the user opts into the optional UNIFY presentation packet in `render_unify_packet`.
 </required_reading>
 
 <hot_artifact_loading>
@@ -37,6 +38,8 @@ kernel/references/module-dispatch.md
 kernel/references/git-strategy.md
 kernel/templates/SUMMARY.md
 workflows/transition-phase.md (always listed; executed only when check_phase_completion finds this is the last plan)
+kernel/templates/HTML-PRESENTATION-PACKET.md (UNIFY presentation packet output format, for the optional render_unify_packet step)
+docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md (authoritative packet authority, storage, packet types, audience modes, citation/escaping rules, and non-goals)
 <!-- Module references are loaded dynamically via hook dispatch from the installed registry resolved as modules.yaml -->
 </references>
 
@@ -144,7 +147,38 @@ Call-site contract:
 4. Save SUMMARY.md before `check_phase_completion`.
 </step>
 
+<step name="render_unify_packet" priority="after-finalize-summary">
+**Optional: render a static HTML UNIFY review brief.**
 
+This step implements `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` (authoritative; the contract wins on any conflict) and instantiates `kernel/templates/HTML-PRESENTATION-PACKET.md`. It runs after `finalize_summary` (SUMMARY finalized with `## Module Execution Reports` written) and before `github_flow_merge_gate`.
+
+**It is OPTIONAL and NON-BLOCKING. It is main-session only: NO subagents, NO Pi UI surfaces, NO background automation. It never writes STATE/ROADMAP lifecycle state, never gates the merge gate, `check_phase_completion`, or transition routing, and never merges or closes a PR.**
+
+1. Offer it; default to skip:
+   ```
+   Render an optional UNIFY review brief (static HTML) summarizing plan-vs-actual reconciliation and closure readiness?
+
+   [1] Yes — generate a cited UNIFY packet
+   [2] Skip (default)
+   ```
+   Declining proceeds to `github_flow_merge_gate` with no penalty and no lifecycle-state change.
+
+2. On Yes, read bounded authoritative slices and cite each one:
+   - the approved PLAN
+   - the resulting SUMMARY
+   - APPLY verification and module reports
+   - `.paul/STATE.md` loop-position facts
+   - `.paul/ROADMAP.md` phase/milestone status facts
+   Cite optional inputs (quality history rows; CODI/RUBY/SKIP history rows; git/PR/CI evidence in github-flow projects) only when relevant. Mark absent optional inputs as `not available — <reason>` and skipped checks as `skipped — <reason>`.
+
+3. Instantiate `kernel/templates/HTML-PRESENTATION-PACKET.md` with `{{PACKET_TYPE}} = UNIFY` and an audience mode (default `reviewer brief`). Fill the metadata, summary, review focus, source map, acceptance-criteria/reconciliation evidence, decisions, risks/constraints, validation, module-execution notes, lifecycle-update, and next-action fields with escaped, source-cited content.
+
+4. Write the packet to `.paul/presentation-packets/{NN}-{phase}/{NN}-{plan}-unify.html`, creating `.paul/presentation-packets/{NN}-{phase}/` on demand.
+
+5. Honor the static-HTML and citation rules: escape all artifact/command content, inline CSS only, no JavaScript, no network assets, and cite every material claim. The packet is a durable derived review artifact, NOT hot-path lifecycle truth, excluded from STATE/PROJECT/ROADMAP/MILESTONES byte budgets, and regenerable/discardable without lifecycle-state change. It cannot approve, block, merge, or rewrite lifecycle state.
+
+6. Surface the written path as a review aid only, then continue to `github_flow_merge_gate` with routing unchanged.
+</step>
 <step name="github_flow_merge_gate" priority="after-summary-finalized">
 1. Resolve `GIT_WORKFLOW` using `kernel/references/git-strategy.md`.
 2. If not `github-flow`, display `Merge gate: skipped (not github-flow)` and continue to `check_phase_completion`.
