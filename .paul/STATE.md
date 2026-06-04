@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.70 Strategic Milestone Assessment complete and closed; awaiting next milestone)
+See: .paul/PROJECT.md (v2.71 HTML Presentation Packets active; Phase 299 ready to plan)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** None active — v2.70 Strategic Milestone Assessment complete and closed (2026-06-02, tag `v2.70`). The optional, capability-detecting strategic-assessment checkpoint is wired into `/paul:discuss` and pinned by both validation suites. Run /paul:discuss-milestone or /paul:milestone to define the next milestone.
+**Current focus:** v2.71 HTML Presentation Packets — Human Review Briefs active. Phase 299 starts the contract/template model for static, PALS-owned HTML review briefs while preserving `.paul/*` and PLAN/APPLY/UNIFY authority.
 
 ## Current Position
 
-Milestone: v2.70 Strategic Milestone Assessment (complete — awaiting next milestone)
-Phase: 298 of 298 (Validation + Closure) — complete; milestone closed
-Plan: 298-01 (complete)
-Status: Milestone v2.70 Strategic Milestone Assessment complete — ready for next
-Last activity: 2026-06-02 — v2.70 closed: MILESTONES entry + roadmap archive written, PROJECT/ROADMAP/STATE reorganized, tag `v2.70`.
-Next action: /paul:discuss-milestone or /paul:milestone
+Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
+Phase: 300 of 302 (Milestone + PLAN Presentation)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-06-04 — Phase 299 UNIFY completed; transitioned to Phase 300 ready to plan after contract/template foundation.
+Next action: /paul:plan for Phase 300
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -25,6 +25,7 @@ Progress:
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
+- v2.71 HTML Presentation Packets — Human Review Briefs: [███░░░░░░░] 25% (Phase 299 complete; Phase 300 ready to plan; Phases 301–302 not started)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -32,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 298 complete — v2.70 closed; ready for next milestone]
+  ○        ○        ○     [Ready for PLAN — Phase 300]
 ```
 
 ## Accumulated Context
@@ -64,6 +65,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 | 2026-05-20: Phase 294 S4 delivery extraction completed | 294-01-SUMMARY.md / PR #213 | `guided-workflow-delivery.ts` owns canonical guided-workflow reply delivery/config while `pals-hooks.ts` remains orchestration; validation passed install 9 extensions, Pi 329/329, cross-harness 234/234. |
 | 2026-05-21: Phase 295 context-offload ranking completed | 295-01-SUMMARY.md / PR #214 | Measured S4 offload (`pals-hooks.ts` 671→546 lines; S4 sibling 148 lines), ranked shared filesystem/state helper extraction as the next contract-first recommendation, and added Pi/cross-harness guardrails; validation Pi 331/331, cross-harness 235/235. |
+| 2026-06-04: v2.71 milestone created | /paul:milestone + MILESTONE-CONTEXT | Opened HTML Presentation Packets milestone (Phases 299–302) for static, artifact-derived HTML review briefs; shared runtime helper extraction remains the intended next milestone candidate. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -98,19 +100,21 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main (synced). Phase 298 merged via PR #217 squash `9c5cdda8`; feature branch deleted. Working tree clean.
-Last lifecycle state: Phase 298 complete (298-01 UNIFY done, merged). v2.70 ready for milestone completion.
+Branch: main; v2.71 milestone creation edits prepared in working tree; no v2.71 PR yet.
+Last lifecycle state: v2.71 milestone created; Phase 299 ready to plan.
 PR #217: merged — https://github.com/coctostan/pals/pull/217 (`9c5cdda8`, squash). PR #216 merged (`00c7d6c1`); PR #215 merged (`ef8af629`); PR #214 merged (`08b0e891`).
-Transition state: v2.69 closed via PR #214 squash `08b0e891`; v2.70 opened — Phase 296 PR #215 `ef8af629`, Phase 297 PR #216 `00c7d6c1`, Phase 298 PR #217 `9c5cdda8`; v2.70 ready for milestone completion.
+Transition state: v2.70 closed via PR #217 squash `9c5cdda8`; v2.71 opened from discussion context; Phase 299 ready for PLAN.
 Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-02 — v2.70 Strategic Milestone Assessment closed: MILESTONES entry + roadmap archive created, PROJECT/ROADMAP/STATE reorganized for post-milestone, tag `v2.70`.
-Stopped at: Milestone v2.70 complete; no active phase.
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-06-04 — Phase 299 closed; Phase 300 ready to plan.
+Stopped at: Phase 299 complete, ready to plan Phase 300.
+Next action: /paul:plan for Phase 300
+Resume file: .paul/ROADMAP.md
+wip_result: PR #218 (https://github.com/coctostan/pals/pull/218) contains Phase 299 implementation + lifecycle artifacts; merge gate handled during UNIFY.
 Resume context:
-- v2.70 shipped the optional strategic-assessment checkpoint in `/paul:discuss` (Phases 296–298; PRs #215/#216/#217 `9c5cdda8`). Final validation: Pi e2e 336/336, cross-harness 241/241, artifact_consistency PASS.
-- Archive: `.paul/archive/roadmap/v2.70-strategic-milestone-assessment.md`. Hot-artifact budgets all under ceiling (STATE<20000, PROJECT 24695<25000, MILESTONES 17872<18000).
-- Next: define the next milestone (no carried scope decided yet).
+- Phase 299 created `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` and `kernel/templates/HTML-PRESENTATION-PACKET.md`.
+- Phase 299 validation passed: artifact_consistency PASS, Pi e2e 336/336 PASS, cross-harness 241/241 PASS; `git diff --check` exit 0.
+- Phase 300 focus: generate/surface HTML briefs for milestone context and PLAN review using the Phase 299 contract/template.
+- Follow-on milestone candidate remains shared runtime helper extraction / Pi context offload continuation.

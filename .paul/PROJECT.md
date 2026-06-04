@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **none** — v2.70 Strategic Milestone Assessment complete and closed (2026-06-02, tag `v2.70`). v2.70 shipped the optional, non-blocking, contract-first strategic-assessment checkpoint in `/paul:discuss` (Phases 296–298; PRs #215/#216/#217 `9c5cdda8`). Run /paul:discuss-milestone or /paul:milestone to define the next milestone.
+Active milestone: **v2.71 HTML Presentation Packets — Human Review Briefs** — Phase 300 of 302 ready to plan after Phase 299 established the static packet contract/template foundation. Focus: generate and surface static, PALS-owned HTML review briefs for milestone and PLAN moments while preserving `.paul/*` lifecycle authority.
 
 Phase 234 (v2.55 baseline audit) findings were addressed across v2.55 phases 235–241; detail lives in archive history.
 
@@ -62,7 +62,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **none active** — next milestone not yet defined. Latest closed milestone: **v2.70 Strategic Milestone Assessment** via PR #217 squash `9c5cdda8` (tag `v2.70`).
+Current milestone pointer: **v2.71 HTML Presentation Packets — Human Review Briefs** active — Phase 300 of 302 ready to plan; Phase 299 completed the presentation packet contract/template foundation. Latest closed milestone: **v2.70 Strategic Milestone Assessment** via PR #217 squash `9c5cdda8` (tag `v2.70`).
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -125,7 +125,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 
 ## Specialized Flows
 
-*Last updated: 2026-06-02 after Phase 298 (PR #217); v2.70 complete.*
+*Last updated: 2026-06-04 after v2.71 milestone creation; Phase 299 ready to plan.*
 
 Quick Reference:
 
@@ -148,4 +148,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-06-02 after Phase 298 (PR #217); v2.70 complete.*
+*Last updated: 2026-06-04 after v2.71 milestone creation; Phase 299 ready to plan.*

@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: ...→Pi 334/335 (1 PROJECT-budget)→Pi 335/335, XH 246/246→Pi 328/328, XH 234/234→Pi 328/328, XH 234/234
+Tests: ...→Pi 335/335, XH 246/246→Pi 328/328, XH 234/234→Pi 328/328, XH 234/234→Pi 336/336, XH 241/241
 Coverage: —
 Lint: —
 Types: —
@@ -146,3 +146,4 @@ Types: —
 | 296-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (docs-only contract + template) | N/A | N/A | ● stable (Phase 296 contract+template docs-only; artifact_consistency PASS; git diff --check PASS) |
 | 297-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (workflow/command wiring) | N/A | N/A | ● stable (Phase 297 discuss-workflow wiring; artifact_consistency PASS; git diff --check PASS) |
 | 298-01 | 2026-06-02 | Pi 336/336, XH 241/241 | N/A (shell-test marker checks) | N/A | N/A | ↑ improving (Phase 298 pinned the strategic-assessment surface: +5 Pi, +6 XH; artifact_consistency PASS; git diff --check PASS) |
+| 299-01 | 2026-06-04 | Pi 336/336, XH 241/241 | N/A (docs-only contract + HTML template) | N/A | N/A | ● stable (Phase 299 contract+template docs-only; artifact_consistency PASS; git diff --check PASS) |
