@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (v2.71 HTML Presentation Packets active; Phase 299 ready t
 
 Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
 Phase: 301 of 302 (APPLY + UNIFY Delivery Presentation)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-06-04 — Phase 300 complete and merged (PR #219 `a2b2a2fa`); transitioned to Phase 301.
-Next action: /paul:plan for Phase 301
+Plan: 301-01 (`.paul/phases/301-apply-unify-delivery-presentation/301-01-PLAN.md`)
+Status: UNIFY complete — reconciled in 301-01-SUMMARY.md; merge gate pending
+Last activity: 2026-06-04 — Phase 301 plan 301-01 UNIFY complete; SUMMARY written; PR #221 merge gate pending.
+Next action: Complete PR #221 merge gate, then transition Phase 301 → 302
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -33,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [UNIFY complete — Phase 300 closed, transition pending]
+  ✓        ✓        ✓     [Phase 301 plan 301-01 complete; PR #221 merge gate → transition to Phase 302]
 ```
 
 ## Accumulated Context
@@ -108,13 +108,13 @@ Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 /
 
 ## Session Continuity
 
-Last session: 2026-06-04 — completed Phase 300, merged PR #219, transitioned to Phase 301.
-Stopped at: Phase 300 complete and merged; Phase 301 ready to plan.
-Next action: /paul:plan for Phase 301 (APPLY + UNIFY Delivery Presentation)
-Resume file: .paul/ROADMAP.md
-wip_result: Phase 300 task commits 66c1be6f + ccdf0d3f and plan-completion commit af5dc91c merged to main via PR #219 squash `a2b2a2fa`; working tree clean except this post-merge STATE update.
+Last session: 2026-06-04 — Phase 301 plan 301-01 UNIFY complete; 301-01-SUMMARY.md written.
+Stopped at: Phase 301 UNIFY complete; PR #221 merge gate pending (last plan → transition to Phase 302 after merge).
+Next action: Complete PR #221 merge gate, then transition Phase 301 → 302
+Resume file: .paul/phases/301-apply-unify-delivery-presentation/301-01-SUMMARY.md
+wip_result: tasks committed on feature/301-apply-unify-delivery-presentation (2 task commits); plan/lifecycle/SUMMARY metadata commit at merge gate; PR #221 open.
 Resume context:
 - Phase 300 wired optional, non-blocking milestone + PLAN HTML presentation packets into `kernel/workflows/create-milestone.md` (`render_milestone_packet`) and `kernel/workflows/plan-phase.md` (`review_plan` PLAN-packet offer), per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`; reconciled in `300-01-SUMMARY.md`.
 - Validation: cross-harness 241/241 PASS, artifact_consistency PASS. The earlier Pi e2e PROJECT.md byte-budget failure (25129 vs 25000) was resolved inline during the Phase 300→301 transition by trimming a stray duplicate footer in `.paul/PROJECT.md` (now 24965 bytes); Pi e2e expected back to 336/336.
-- Phase 301 (APPLY + UNIFY Delivery Presentation) can reuse the established optional/non-blocking/contract-anchored packet-wiring pattern.
+- Phase 301 plan 301-01 complete: optional, non-blocking APPLY-packet offer in `apply-phase.md` finalize and an optional `render_unify_packet` step in `unify-phase.md` after `finalize_summary`; all 4 ACs PASS; generation-wiring only (no committed `.html`, no tests/drivers changes — Phase 302 owns validation). Validation: artifact_consistency PASS, cross-harness 241/241, Pi e2e 336/336. v2.71 packet-type coverage now complete (milestone/PLAN/APPLY/UNIFY).
 - Follow-on milestone candidate remains shared runtime helper extraction / Pi context offload continuation.
