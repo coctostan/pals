@@ -147,3 +147,4 @@ Types: —
 | 297-01 | 2026-06-01 | Pi 331/331, XH 235/235 | N/A (workflow/command wiring) | N/A | N/A | ● stable (Phase 297 discuss-workflow wiring; artifact_consistency PASS; git diff --check PASS) |
 | 298-01 | 2026-06-02 | Pi 336/336, XH 241/241 | N/A (shell-test marker checks) | N/A | N/A | ↑ improving (Phase 298 pinned the strategic-assessment surface: +5 Pi, +6 XH; artifact_consistency PASS; git diff --check PASS) |
 | 299-01 | 2026-06-04 | Pi 336/336, XH 241/241 | N/A (docs-only contract + HTML template) | N/A | N/A | ● stable (Phase 299 contract+template docs-only; artifact_consistency PASS; git diff --check PASS) |
+| 300-01 | 2026-06-04 | Pi 335/336, XH 241/241 | N/A (workflow wiring) | N/A | N/A | ● stable (Phase 300 milestone+PLAN packet wiring; XH 241/241 PASS, artifact_consistency PASS, git diff --check PASS; lone Pi failure is pre-existing PROJECT.md byte-budget debt unchanged by this phase) |
