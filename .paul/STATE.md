@@ -11,9 +11,9 @@ See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; creat
 Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
 Phase: 303 of 305 (Shared Runtime Helpers Contract) — planned, ready for APPLY
 Plan: 303-01 (approved-pending) — .paul/phases/303-shared-runtime-helpers-contract/303-01-PLAN.md
-Status: Phase 303 planned — ready for APPLY
-Last activity: 2026-06-04 — Phase 303 PLAN created (303-01): author docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md, docs-only, 2 tasks, 3 ACs.
-Next action: /paul:apply for Phase 303 Plan 303-01
+Status: Phase 303 APPLY complete — ready for UNIFY
+Last activity: 2026-06-05 — Phase 303 APPLY complete (303-01): authored docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md (docs-only, 2 tasks PASS, AC-1/2/3 PASS); committed a9c99eb7; PR #223 open.
+Next action: /paul:unify for Phase 303 Plan 303-01
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Phase 303 planned — ready for APPLY]
+  ✓        ✓        ○     [Phase 303 APPLY complete — ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -109,11 +109,11 @@ Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 /
 
 ## Session Continuity
 
-Last session: 2026-06-04 — Ran /paul:discuss-milestone + /paul:milestone (v2.72) + /paul:plan (Phase 303), then /paul:pause.
-Stopped at: Phase 303 PLAN created (303-01); paused at apply-decision; ready for APPLY.
-Next action: /paul:apply for Phase 303 Plan 303-01
-Resume file: .paul/HANDOFF-2026-06-04-phase-303-ready-for-apply.md
-wip_result: base-branch (on `main`; GitHub Flow forbids WIP commit on base branch)
+Last session: 2026-06-05 — /paul:resume → /paul:apply for Phase 303 (303-01): authored the shared-runtime-helpers contract, committed, pushed, opened PR #223.
+Stopped at: Phase 303 APPLY complete (303-01); ready for UNIFY.
+Next action: /paul:unify for Phase 303 Plan 303-01
+Resume file: none (handoff consumed and archived)
+git: branch `phase-303-shared-runtime-helpers-contract`, commit a9c99eb7, PR #223 open (CI pending; informational in APPLY).
 Resume context:
 - v2.72 extracts pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stay out. Phase 303 = contract, 304 = extract+repoint (9 files, 12 import sites), 305 = validate+close.
 - Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Baseline to preserve: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
