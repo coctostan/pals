@@ -8,21 +8,31 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.71 HTML Presentation Packets — Human Review Briefs** (v2.71)
-Status: ✅ Complete
-Completed: 2026-06-04
-Archive: [archive/roadmap/v2.71-html-presentation-packets.md](archive/roadmap/v2.71-html-presentation-packets.md)
-Result: Static, PALS-owned, artifact-derived HTML review briefs (optional/non-blocking/derived/non-authoritative) for milestone/PLAN/APPLY/UNIFY moments; README/contract surfacing + CC↔Pi parity guardrails. Final validation: cross-harness 253/253, Pi e2e 342/342.
+**v2.72 Shared Runtime Helper Extraction** (v2.72)
+Status: 🚧 In Progress
+Phases: 1 of 3 complete
+Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 299 | Presentation Contract + Template Model | 299-01 | Complete | PR #218 |
-| 300 | Milestone + PLAN Presentation | 300-01 | Complete | PR #219 |
-| 301 | APPLY + UNIFY Delivery Presentation | 301-01 | Complete | PR #221 `259489d0` |
-| 302 | Surfacing + Validation Closure | 302-01 | Complete | PR #222 `96a556bc` |
+| 303 | Shared Runtime Helpers Contract | 303-01 | ✅ Complete | 2026-06-05 |
+| 304 | Extraction + Import Repoint | TBD | Not started | - |
+| 305 | Validation + Closure | TBD | Not started | - |
+
+### Phase 303: Shared Runtime Helpers Contract
+Focus: Author `docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md` — inventory exact helper symbols, current importers (9 files, 12 import sites), allowed helper responsibilities, authority boundaries, and leaf/cycle-avoidance rules. No code changes.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 304: Extraction + Import Repoint
+Focus: Create `drivers/pi/extensions/shared-runtime-helpers.ts` leaf; move the pure/derived helper set; repoint all 9 importing files; remove duplicate definitions; no new authority markers, no import cycles, no net behavior change.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 305: Validation + Closure
+Focus: Fresh Pi e2e + cross-harness + artifact consistency + `git diff --check`; +1 closure guardrail; milestone close, archive, tag `v2.72`.
+Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: shared filesystem/state helper extraction / Pi runtime context offload continuation (v2.69 Phase 295 recommendation).
+Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: validation-suite decomposition — `tests/pi-end-to-end-validation.sh` (2,812 lines) and `tests/cross-harness-validation.sh` (2,249 lines) are the largest, fastest-growing files (post-v2.71 assessment, rising alternative).
 
 ## Completed Milestones
 
@@ -55,7 +65,8 @@ Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: sh
 | v2.68 Plannotator Retraction | 2026-05-20 | 291-292 | Removed live Plannotator surfaces and contract document while preserving v2.66 archive evidence. Final validation: Pi 328/328, cross-harness 234/234. PR #210 merged at squash `7c38f42e`. |
 | v2.69 Pi Runtime Context Offload — S4 First | 2026-05-22 | 293-295 | Created S4 canonical reply delivery contract (PR #212), extracted S4 delivery to `drivers/pi/extensions/guided-workflow-delivery.ts` (PR #213), then measured the context offload and ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 squash `08b0e891`). Final validation: Pi 331/331, cross-harness 235/235. |
 | v2.70 Strategic Milestone Assessment | 2026-06-02 | 296-298 | Shipped an optional, non-blocking strategic-assessment checkpoint in `/paul:discuss` with five evidence lenses and non-authoritative assessment artifacts. Final validation: Pi 336/336, cross-harness 241/241. [archive](archive/roadmap/v2.70-strategic-milestone-assessment.md) |
+| v2.71 HTML Presentation Packets — Human Review Briefs | 2026-06-04 | 299-302 | Static, PALS-owned, artifact-derived HTML review briefs (optional/non-blocking/derived/non-authoritative) for milestone/PLAN/APPLY/UNIFY moments; README/contract surfacing + CC↔Pi parity/invariant/no-committed-`.html` guardrails. Final: cross-harness 253/253, Pi e2e 342/342. [archive](archive/roadmap/v2.71-html-presentation-packets.md) |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-04 — v2.71 HTML Presentation Packets milestone complete; no milestone active.*
+*Last updated: 2026-06-05 — Phase 303 complete (contract authored, PR #223); ready to plan Phase 304.*

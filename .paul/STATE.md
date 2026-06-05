@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.71 HTML Presentation Packets complete 2026-06-04; no milestone active)
+See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; created 2026-06-04)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** None active — v2.71 HTML Presentation Packets — Human Review Briefs completed 2026-06-04 (Phases 299–302; tag `v2.71`). Run /paul:discuss-milestone or /paul:milestone to define the next milestone. Standing candidate: shared filesystem/state helper extraction / Pi runtime context offload continuation.
+**Current focus:** v2.72 Shared Runtime Helper Extraction (Phases 303–305) — extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint importers, fix the inverted helper-hub dependency; no lifecycle-authority change. Executes the twice-deferred v2.69 Phase 295 ranking, re-confirmed #1 by `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md`. Ready to plan Phase 303.
 
 ## Current Position
 
-Milestone: v2.71 HTML Presentation Packets — Human Review Briefs (complete — awaiting next milestone)
-Phase: 302 of 302 (Surfacing + Validation Closure) — complete; milestone closed
-Plan: 302-01 (complete)
-Status: Milestone v2.71 HTML Presentation Packets complete — ready for next
-Last activity: 2026-06-04 — v2.71 closed: MILESTONES entry + roadmap archive written, PROJECT/ROADMAP/STATE reorganized, tag `v2.71`.
-Next action: /paul:discuss-milestone or /paul:milestone
+Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
+Phase: 303 of 305 (Shared Runtime Helpers Contract) — complete; next Phase 304
+Plan: 303-01 (complete) — .paul/phases/303-shared-runtime-helpers-contract/303-01-SUMMARY.md
+Status: Phase 303 UNIFY complete — loop closed; ready to plan Phase 304
+Last activity: 2026-06-05 — Phase 303 UNIFY complete (303-01): SUMMARY written; AC-1/2/3 PASS; docs-only contract authored. PR #223 open (merge gate next).
+Next action: merge PR #223, then /paul:plan for Phase 304
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,6 +26,7 @@ Progress:
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
+- v2.72 Shared Runtime Helper Extraction: [███░░░░░░░] 33% (Phases 303–305; Phase 303 ✅ complete 2026-06-05, PR #223; Phases 304–305 pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -33,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone complete - ready for next]
+  ✓        ✓        ✓     [Phase 303 complete — ready to plan Phase 304]
 ```
 
 ## Accumulated Context
@@ -101,17 +102,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: main; synced 0/0 with origin/main after the Phase 302 merge (feature branch deleted).
-Last lifecycle state: v2.71 milestone complete (Phases 299–302); tag `v2.71`; no milestone active.
+Last lifecycle state: v2.72 Shared Runtime Helper Extraction milestone created (Phases 303–305) on top of merged v2.71 (tag `v2.71`); v2.72 lifecycle-artifact updates not yet committed.
 PR #222: merged — https://github.com/coctostan/pals/pull/222 (`96a556bc`, squash, branch deleted). PR #221 merged (`259489d0`, squash); PR #219 merged (`a2b2a2fa`, squash); PR #218 merged (`b825140d`); PR #217 merged (`9c5cdda8`, squash).
 Transition state: All v2.71 phases complete; milestone closed via /paul:milestone (archive + MILESTONES/ROADMAP/PROJECT/STATE reconciled; tag `v2.71`).
 Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-04 — Completed v2.71 milestone (HTML Presentation Packets, Phases 299–302). Created roadmap archive, updated MILESTONES/ROADMAP/PROJECT/STATE, and tagged `v2.71`.
-Stopped at: v2.71 milestone complete; no milestone active.
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
+Last session: 2026-06-05 — /paul:resume → /paul:apply for Phase 303 (303-01): authored the shared-runtime-helpers contract, committed, pushed, opened PR #223.
+Stopped at: Phase 303 APPLY complete (303-01); ready for UNIFY.
+Next action: /paul:unify for Phase 303 Plan 303-01
+Resume file: none (handoff consumed and archived)
+git: branch `phase-303-shared-runtime-helpers-contract`, commit a9c99eb7, PR #223 open (CI pending; informational in APPLY).
 Resume context:
-- v2.71 HTML Presentation Packets shipped static, artifact-derived, optional/non-blocking/non-authoritative HTML review briefs for milestone/PLAN/APPLY/UNIFY moments, surfaced them (README + contract Status), and guarded them (CC↔Pi surface parity, template/contract invariants, no-committed-`.html`). Final validation: cross-harness 253/253, Pi e2e 342/342.
-- Standing next-milestone candidate: shared filesystem/state helper extraction / Pi runtime context offload continuation (v2.69 Phase 295 recommendation).
+- v2.72 extracts pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stay out. Phase 303 = contract, 304 = extract+repoint (9 files, 12 import sites), 305 = validate+close.
+- Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Baseline to preserve: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
+- Rising alternative for next milestone: validation-suite decomposition (`tests/pi-end-to-end-validation.sh` 2,812 lines + `tests/cross-harness-validation.sh` 2,249 lines).

@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | None active — v2.71 HTML Presentation Packets complete (2026-06-04); awaiting next milestone | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.72 Shared Runtime Helper Extraction — in progress (created 2026-06-04; Phases 303-305) | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -93,7 +93,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** None active — v2.71 HTML Presentation Packets completed 2026-06-04. Run /paul:discuss-milestone or /paul:milestone to define the next milestone.
+**Current milestone:** v2.72 Shared Runtime Helper Extraction — in progress (created 2026-06-04; Phases 303-305, ready to plan Phase 303).
 
 **Latest completed milestone:** v2.71 HTML Presentation Packets — Human Review Briefs (2026-06-04, PR #222 squash `96a556bc`, tag `v2.71`).
 
