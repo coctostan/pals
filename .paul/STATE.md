@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; creat
 ## Current Position
 
 Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
-Phase: 303 of 305 (Shared Runtime Helpers Contract) — planned, ready for APPLY
-Plan: 303-01 (approved-pending) — .paul/phases/303-shared-runtime-helpers-contract/303-01-PLAN.md
-Status: Phase 303 APPLY complete — ready for UNIFY
-Last activity: 2026-06-05 — Phase 303 APPLY complete (303-01): authored docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md (docs-only, 2 tasks PASS, AC-1/2/3 PASS); committed a9c99eb7; PR #223 open.
-Next action: /paul:unify for Phase 303 Plan 303-01
+Phase: 303 of 305 (Shared Runtime Helpers Contract) — complete; next Phase 304
+Plan: 303-01 (complete) — .paul/phases/303-shared-runtime-helpers-contract/303-01-SUMMARY.md
+Status: Phase 303 UNIFY complete — loop closed; ready to plan Phase 304
+Last activity: 2026-06-05 — Phase 303 UNIFY complete (303-01): SUMMARY written; AC-1/2/3 PASS; docs-only contract authored. PR #223 open (merge gate next).
+Next action: merge PR #223, then /paul:plan for Phase 304
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
-- v2.72 Shared Runtime Helper Extraction: [░░░░░░░░░░] 0% (Phases 303–305; Phase 303 planned 2026-06-04, ready for APPLY)
+- v2.72 Shared Runtime Helper Extraction: [███░░░░░░░] 33% (Phases 303–305; Phase 303 ✅ complete 2026-06-05, PR #223; Phases 304–305 pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 303 APPLY complete — ready for UNIFY]
+  ✓        ✓        ✓     [Phase 303 complete — ready to plan Phase 304]
 ```
 
 ## Accumulated Context

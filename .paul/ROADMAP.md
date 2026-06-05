@@ -10,12 +10,12 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.72 Shared Runtime Helper Extraction** (v2.72)
 Status: 🚧 In Progress
-Phases: 0 of 3 complete
+Phases: 1 of 3 complete
 Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 303 | Shared Runtime Helpers Contract | 303-01 | Planning | - |
+| 303 | Shared Runtime Helpers Contract | 303-01 | ✅ Complete | 2026-06-05 |
 | 304 | Extraction + Import Repoint | TBD | Not started | - |
 | 305 | Validation + Closure | TBD | Not started | - |
 
@@ -69,4 +69,4 @@ Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: va
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-04 — v2.72 Shared Runtime Helper Extraction milestone created (Phases 303-305); ready to plan Phase 303.*
+*Last updated: 2026-06-05 — Phase 303 complete (contract authored, PR #223); ready to plan Phase 304.*
