@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; created 2026-06-04)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.72 Shared Runtime Helper Extraction (Phases 303–305) — extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint importers, fix the inverted helper-hub dependency; no lifecycle-authority change. Executes the twice-deferred v2.69 Phase 295 ranking, re-confirmed #1 by `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md`. Ready to plan Phase 303.
+**Current focus:** v2.72 Shared Runtime Helper Extraction (Phases 303–305) — extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint importers, fix the inverted helper-hub dependency; no lifecycle-authority change. Executes the twice-deferred v2.69 Phase 295 ranking, re-confirmed #1 by `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md`. Phase 303 complete (contract authored); ready to plan Phase 304.
 
 ## Current Position
 
 Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
-Phase: 303 of 305 (Shared Runtime Helpers Contract) — complete; next Phase 304
-Plan: 303-01 (complete) — .paul/phases/303-shared-runtime-helpers-contract/303-01-SUMMARY.md
-Status: Phase 303 UNIFY complete — loop closed; ready to plan Phase 304
-Last activity: 2026-06-05 — Phase 303 UNIFY complete (303-01): SUMMARY written; AC-1/2/3 PASS; docs-only contract authored. PR #223 open (merge gate next).
-Next action: merge PR #223, then /paul:plan for Phase 304
+Phase: 304 of 305 (Extraction + Import Repoint) — not started
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-06-05 — Phase 303 complete + merged (PR #223 squash `ee5a9010`); transitioned to Phase 304.
+Next action: /paul:plan for Phase 304
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 303 complete — ready to plan Phase 304]
+  ○        ○        ○     [Phase 304 not started — ready to plan]
 ```
 
 ## Accumulated Context
@@ -101,19 +101,19 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main; synced 0/0 with origin/main after the Phase 302 merge (feature branch deleted).
-Last lifecycle state: v2.72 Shared Runtime Helper Extraction milestone created (Phases 303–305) on top of merged v2.71 (tag `v2.71`); v2.72 lifecycle-artifact updates not yet committed.
-PR #222: merged — https://github.com/coctostan/pals/pull/222 (`96a556bc`, squash, branch deleted). PR #221 merged (`259489d0`, squash); PR #219 merged (`a2b2a2fa`, squash); PR #218 merged (`b825140d`); PR #217 merged (`9c5cdda8`, squash).
-Transition state: All v2.71 phases complete; milestone closed via /paul:milestone (archive + MILESTONES/ROADMAP/PROJECT/STATE reconciled; tag `v2.71`).
+Branch: main; synced with origin/main after the Phase 303 merge (feature branch `phase-303-shared-runtime-helpers-contract` deleted).
+Last lifecycle state: v2.72 Phase 303 complete — shared-runtime-helpers contract authored and merged; Phase 304 ready to plan.
+PR #223: merged — https://github.com/coctostan/pals/pull/223 (`ee5a9010`, squash, branch deleted). PR #222 merged (`96a556bc`, squash); PR #221 merged (`259489d0`, squash); PR #219 merged (`a2b2a2fa`, squash); PR #218 merged (`b825140d`).
+Transition state: v2.72 in progress — Phase 303 of 305 complete (1 of 3); Phase 304 (Extraction + Import Repoint) ready to plan.
 Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-05 — /paul:resume → /paul:apply for Phase 303 (303-01): authored the shared-runtime-helpers contract, committed, pushed, opened PR #223.
-Stopped at: Phase 303 APPLY complete (303-01); ready for UNIFY.
-Next action: /paul:unify for Phase 303 Plan 303-01
-Resume file: none (handoff consumed and archived)
-git: branch `phase-303-shared-runtime-helpers-contract`, commit a9c99eb7, PR #223 open (CI pending; informational in APPLY).
+Last session: 2026-06-05 — /paul:resume → /paul:apply → /paul:unify for Phase 303 (303-01): authored the shared-runtime-helpers contract, merged PR #223, closed the loop, and transitioned to Phase 304.
+Stopped at: Phase 303 complete + merged; ready to plan Phase 304.
+Next action: /paul:plan for Phase 304
+Resume file: .paul/ROADMAP.md
+git: branch `main`, synced after PR #223 squash `ee5a9010`.
 Resume context:
 - v2.72 extracts pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stay out. Phase 303 = contract, 304 = extract+repoint (9 files, 12 import sites), 305 = validate+close.
 - Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Baseline to preserve: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
