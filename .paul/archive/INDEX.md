@@ -14,6 +14,7 @@ Archive files are durable project truth moved out of hot lifecycle artifacts to 
 | [state/STATE-HISTORY-v2.44-v2.60.md](state/STATE-HISTORY-v2.44-v2.60.md) | `.paul/STATE.md` | 2026-05-08 | Historical accumulated context for v2.44–v2.60: closed-milestone progress bullets, phase narratives, decisions, fixes, deviations, and skill audits lifted out of compact live state during Phase 266 Plan 266-01 (v2.62 PALS Context Diet — STATE & Hot-Path Compression). | Yes — historical state record. | [Live state](../STATE.md) |
 | [project/PROJECT-HISTORY-v2.55-v2.60.md](project/PROJECT-HISTORY-v2.55-v2.60.md) | `.paul/PROJECT.md` | 2026-05-08 | Historical milestone-posture rows (v2.41–v2.60) and pre-v2.61 key-decision rows lifted out of compact live project brief during Phase 266 Plan 266-01 (v2.62 PALS Context Diet — STATE & Hot-Path Compression). | Yes — historical project/product record. | [Live project brief](../PROJECT.md) |
 | [roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md) | `.paul/ROADMAP.md` | 2026-05-12 | Completed v2.64 milestone phase detail for Phases 273–278 (Module Instruction Audit + Context-Efficiency Rewrite). | Yes — v2.64 milestone roadmap record. | [Live roadmap](../ROADMAP.md) |
+| [roadmap/v2.71-html-presentation-packets.md](roadmap/v2.71-html-presentation-packets.md) | `.paul/ROADMAP.md` | 2026-06-04 | Completed v2.71 milestone phase detail for Phases 299–302 (HTML Presentation Packets — Human Review Briefs). | Yes — v2.71 milestone roadmap record. | [Live roadmap](../ROADMAP.md) |
 
 ## Link Style for Hot Artifacts
 
@@ -27,5 +28,6 @@ Use short archive links in hot artifacts instead of re-embedding archived histor
 - `v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)`
 - `v2.44 roadmap archive: [.paul/archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)`
 - `v2.64 roadmap archive: [.paul/archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md)`
+- `v2.71 roadmap archive: [.paul/archive/roadmap/v2.71-html-presentation-packets.md](archive/roadmap/v2.71-html-presentation-packets.md)`
 
 Keep archive links explicit, repo-relative, and close to the compact summary they expand. Do not duplicate full archive content in the index or in hot artifacts.

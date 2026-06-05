@@ -9,32 +9,20 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.71 HTML Presentation Packets — Human Review Briefs** (v2.71)
-Status: 🚧 In Progress
-Phases: 4 of 4 complete
-Focus: Static, PALS-owned HTML review briefs for milestone, PLAN, APPLY, and UNIFY moments while preserving `.paul/*` and PLAN/APPLY/UNIFY authority.
+Status: ✅ Complete
+Completed: 2026-06-04
+Archive: [archive/roadmap/v2.71-html-presentation-packets.md](archive/roadmap/v2.71-html-presentation-packets.md)
+Result: Static, PALS-owned, artifact-derived HTML review briefs (optional/non-blocking/derived/non-authoritative) for milestone/PLAN/APPLY/UNIFY moments; README/contract surfacing + CC↔Pi parity guardrails. Final validation: cross-harness 253/253, Pi e2e 342/342.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 299 | Presentation Contract + Template Model | 299-01 | ✅ Complete | 2026-06-04 |
-| 300 | Milestone + PLAN Presentation | 300-01 | ✅ Complete | 2026-06-04 |
-| 301 | APPLY + UNIFY Delivery Presentation | 301-01 | ✅ Complete | 2026-06-04 |
-| 302 | Surfacing + Validation Closure | 302-01 | ✅ Complete | 2026-06-04 |
+| 299 | Presentation Contract + Template Model | 299-01 | Complete | PR #218 |
+| 300 | Milestone + PLAN Presentation | 300-01 | Complete | PR #219 |
+| 301 | APPLY + UNIFY Delivery Presentation | 301-01 | Complete | PR #221 `259489d0` |
+| 302 | Surfacing + Validation Closure | 302-01 | Complete | PR #222 `96a556bc` |
 
-### Phase 299: Presentation Contract + Template Model
-Focus: Define presentation packet authority boundary, storage path, packet types, audience modes, static HTML template rules, source inputs, and non-goals.
-Plans: 299-01 (`.paul/phases/299-presentation-contract-template-model/299-01-PLAN.md`) — complete; contract and static HTML template model authored and reconciled in `299-01-SUMMARY.md`.
-
-### Phase 300: Milestone + PLAN Presentation
-Focus: Generate/surface HTML briefs for milestone context and PLAN review: scope, options, phase map, risks, constraints, acceptance criteria, and validation plan.
-Plans: 300-01 (`.paul/phases/300-milestone-plan-presentation/300-01-PLAN.md`) — complete; wired optional milestone + PLAN HTML presentation packets into `create-milestone.md` and `plan-phase.md`, reconciled in `300-01-SUMMARY.md`.
-
-### Phase 301: APPLY + UNIFY Delivery Presentation
-Focus: Generate/surface HTML briefs for code changes and closure: changed files, decisions, validation evidence, deviations, delivered value, lessons, and next recommendations.
-Plans: 301-01 (`.paul/phases/301-apply-unify-delivery-presentation/301-01-PLAN.md`) — complete; wired optional, non-blocking APPLY + UNIFY HTML presentation packet generation into `apply-phase.md` (finalize) and `unify-phase.md` (`render_unify_packet`), reconciled in `301-01-SUMMARY.md`. Closed via PR #221 squash `259489d0`.
-
-### Phase 302: Surfacing + Validation Closure
-Focus: Wire workflow guidance, docs, and validation guardrails; prove packets remain derived, static, non-authoritative, and no external UI dependency is introduced.
-Plans: 302-01 (`.paul/phases/302-surfacing-validation-closure/302-01-PLAN.md`) — complete; surfaced packets in README + closed the contract Status, and added cross-harness/Pi-e2e guardrails pinning the four packet surfaces (optional/non-blocking/non-authoritative) plus derived/static/no-external-UI invariants, reconciled in `302-01-SUMMARY.md`. Final validation: cross-harness 253/253, Pi e2e 342/342.
+## Next Milestone
+Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: shared filesystem/state helper extraction / Pi runtime context offload continuation (v2.69 Phase 295 recommendation).
 
 ## Completed Milestones
 
@@ -70,4 +58,4 @@ Plans: 302-01 (`.paul/phases/302-surfacing-validation-closure/302-01-PLAN.md`) �
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-04 — Phase 302 plan 302-01 UNIFY complete; all 4 v2.71 phases complete, milestone completion pending via /paul:milestone.*
+*Last updated: 2026-06-04 — v2.71 HTML Presentation Packets milestone complete; no milestone active.*

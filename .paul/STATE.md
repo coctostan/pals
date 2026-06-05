@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.71 HTML Presentation Packets — all 4 phases complete; milestone completion pending)
+See: .paul/PROJECT.md (v2.71 HTML Presentation Packets complete 2026-06-04; no milestone active)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.71 HTML Presentation Packets — Human Review Briefs: all 4 phases complete (299–302); contract/template, optional milestone/PLAN/APPLY/UNIFY brief wiring, surfacing, and validation guardrails shipped while preserving `.paul/*` and PLAN/APPLY/UNIFY authority. Milestone completion pending via /paul:milestone.
+**Current focus:** None active — v2.71 HTML Presentation Packets — Human Review Briefs completed 2026-06-04 (Phases 299–302; tag `v2.71`). Run /paul:discuss-milestone or /paul:milestone to define the next milestone. Standing candidate: shared filesystem/state helper extraction / Pi runtime context offload continuation.
 
 ## Current Position
 
-Milestone: v2.71 HTML Presentation Packets — Human Review Briefs
-Phase: 302 of 302 (Surfacing + Validation Closure)
-Plan: 302-01 (`.paul/phases/302-surfacing-validation-closure/302-01-PLAN.md`)
-Status: Phase 302 complete & merged — v2.71 milestone completion pending (all 4 phases done)
-Last activity: 2026-06-04 — Phase 302 plan 302-01 complete and merged (PR #222 squash `96a556bc`); phase transition done; cross-harness 253/253, Pi e2e 342/342.
-Next action: /paul:milestone to complete v2.71
+Milestone: v2.71 HTML Presentation Packets — Human Review Briefs (complete — awaiting next milestone)
+Phase: 302 of 302 (Surfacing + Validation Closure) — complete; milestone closed
+Plan: 302-01 (complete)
+Status: Milestone v2.71 HTML Presentation Packets complete — ready for next
+Last activity: 2026-06-04 — v2.71 closed: MILESTONES entry + roadmap archive written, PROJECT/ROADMAP/STATE reorganized, tag `v2.71`.
+Next action: /paul:discuss-milestone or /paul:milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -25,7 +25,7 @@ Progress:
 - v2.68 Plannotator Retraction: [██████████] 100% ✓ (Phases 291–292 complete; PRs #209/#210)
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
-- v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% (Phases 299–302 complete & merged; Phase 302 closed via PR #222 squash `96a556bc`; milestone completion pending via /paul:milestone)
+- v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -33,7 +33,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 302 plan 302-01 UNIFY complete; last plan — transition + milestone completion next]
+  ○        ○        ○     [Milestone complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -65,7 +65,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 | 2026-05-20: Phase 294 S4 delivery extraction completed | 294-01-SUMMARY.md / PR #213 | `guided-workflow-delivery.ts` owns canonical guided-workflow reply delivery/config while `pals-hooks.ts` remains orchestration; validation passed install 9 extensions, Pi 329/329, cross-harness 234/234. |
 | 2026-05-21: Phase 295 context-offload ranking completed | 295-01-SUMMARY.md / PR #214 | Measured S4 offload (`pals-hooks.ts` 671→546 lines; S4 sibling 148 lines), ranked shared filesystem/state helper extraction as the next contract-first recommendation, and added Pi/cross-harness guardrails; validation Pi 331/331, cross-harness 235/235. |
-| 2026-06-04: v2.71 milestone created | /paul:milestone + MILESTONE-CONTEXT | Opened HTML Presentation Packets milestone (Phases 299–302) for static, artifact-derived HTML review briefs; shared runtime helper extraction remains the intended next milestone candidate. |
+| 2026-06-04: v2.71 milestone complete | /paul:milestone | HTML Presentation Packets (Phases 299–302) shipped static, artifact-derived, optional/non-blocking/non-authoritative HTML review briefs for milestone/PLAN/APPLY/UNIFY + README/contract surfacing + CC↔Pi parity guardrails; closed via PR #222 `96a556bc`, tag `v2.71`; cross-harness 253/253, Pi e2e 342/342. Detail archived ([v2.71](archive/roadmap/v2.71-html-presentation-packets.md)). Next candidate: shared runtime helper extraction. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -101,19 +101,17 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: main; synced 0/0 with origin/main after the Phase 302 merge (feature branch deleted).
-Last lifecycle state: v2.71 Phase 302 plan 302-01 complete and merged; all 4 phases done; v2.71 milestone completion pending via /paul:milestone.
+Last lifecycle state: v2.71 milestone complete (Phases 299–302); tag `v2.71`; no milestone active.
 PR #222: merged — https://github.com/coctostan/pals/pull/222 (`96a556bc`, squash, branch deleted). PR #221 merged (`259489d0`, squash); PR #219 merged (`a2b2a2fa`, squash); PR #218 merged (`b825140d`); PR #217 merged (`9c5cdda8`, squash).
-Transition state: Phase 301 closed via PR #221 squash `259489d0`; Phase 302 closed via PR #222 squash `96a556bc`; all v2.71 phases complete — milestone completion pending.
-Prior PRs: #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Transition state: All v2.71 phases complete; milestone closed via /paul:milestone (archive + MILESTONES/ROADMAP/PROJECT/STATE reconciled; tag `v2.71`).
+Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-04 — Phase 302 plan 302-01 completed PLAN → APPLY → UNIFY and merged via PR #222 (squash `96a556bc`); all 4 v2.71 phases complete.
-Stopped at: Phase 302 UNIFY complete and merged; v2.71 milestone completion pending.
-Next action: /paul:milestone to complete v2.71
-Resume file: .paul/handoffs/archive/HANDOFF-2026-06-04-phase-302-ready-to-plan.md
-wip_result: Phase 302 fully merged to main via PR #222 (squash `96a556bc`, branch deleted); main synced 0/0 with origin/main; working tree has STATE/ROADMAP/MILESTONES lifecycle updates pending the next commit.
+Last session: 2026-06-04 — Completed v2.71 milestone (HTML Presentation Packets, Phases 299–302). Created roadmap archive, updated MILESTONES/ROADMAP/PROJECT/STATE, and tagged `v2.71`.
+Stopped at: v2.71 milestone complete; no milestone active.
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
 Resume context:
-- v2.71 packet-type coverage complete: Phase 300 wired milestone + PLAN packets (`create-milestone.md` `render_milestone_packet`, `plan-phase.md` `review_plan`); Phase 301 wired APPLY + UNIFY packets (`apply-phase.md` finalize, `unify-phase.md` `render_unify_packet`), all per `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md`.
-- Phase 302 (Surfacing + Validation Closure) is complete and merged (PR #222): README + contract Status surface packets and mark the v2.71 boundary closed; cross-harness/Pi-e2e guardrails pin the four packet surfaces (optional/non-blocking/non-authoritative) and prove packets stay derived, static, and free of external UI deps. No committed `.html`; validation full green (artifact_consistency PASS, cross-harness 253/253, Pi e2e 342/342).
-- Follow-on milestone candidate remains shared runtime helper extraction / Pi context offload continuation.
+- v2.71 HTML Presentation Packets shipped static, artifact-derived, optional/non-blocking/non-authoritative HTML review briefs for milestone/PLAN/APPLY/UNIFY moments, surfaced them (README + contract Status), and guarded them (CC↔Pi surface parity, template/contract invariants, no-committed-`.html`). Final validation: cross-harness 253/253, Pi e2e 342/342.
+- Standing next-milestone candidate: shared filesystem/state helper extraction / Pi runtime context offload continuation (v2.69 Phase 295 recommendation).
