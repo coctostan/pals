@@ -23,7 +23,8 @@
 
 import { renderArtifactSlices } from "./artifact-slice-rendering";
 import { renderWorkflowResourceCapsules } from "./workflow-resource-capsule-rendering";
-import type { PalsStateSnapshot, ActivationState } from "./pals-hooks";
+import type { ActivationState } from "./pals-hooks";
+import type { PalsStateSnapshot } from "./shared-runtime-helpers";
 
 export const PRIMARY_INJECTION_EVENT = "before_agent_start";
 export const SUPPORTING_CONTEXT_EVENT = "context";

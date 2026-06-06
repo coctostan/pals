@@ -20,13 +20,12 @@
  * UI unchanged.
  */
 
-import type { PalsStateSnapshot } from "./pals-hooks";
+import type { PalsStateSnapshot } from "./shared-runtime-helpers";
+import { compactWhitespace, parsePalsState } from "./shared-runtime-helpers";
 import {
-  compactWhitespace,
   MAX_WIDGET_MODULE_DETAILS,
   MAX_VISIBLE_MODULES,
   RECENT_MODULE_ACTIVITY_LOOKBACK,
-  parsePalsState,
   collectRecentAssistantTexts,
 } from "./pals-hooks";
 import type { RecentModuleActivity } from "./module-activity-parsing";

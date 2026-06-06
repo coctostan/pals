@@ -11,7 +11,8 @@
  * exact strings and live single-defined in this module.
  */
 
-import { compactWhitespace, MAX_WIDGET_MODULE_DETAILS } from "./pals-hooks";
+import { compactWhitespace } from "./shared-runtime-helpers";
+import { MAX_WIDGET_MODULE_DETAILS } from "./pals-hooks";
 
 export const DISPATCH_MARKER = "[dispatch]";
 export const MODULE_REPORTS_HEADER = "Module Execution Reports";

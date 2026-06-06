@@ -29,8 +29,8 @@ import {
   getFileFreshness,
   selectBoundedLines,
   escapeRegExp,
-} from "./pals-hooks";
-import type { PalsStateSnapshot } from "./pals-hooks";
+} from "./shared-runtime-helpers";
+import type { PalsStateSnapshot } from "./shared-runtime-helpers";
 
 export const MAX_ARTIFACT_SLICE_CHARS = 3_000;
 export const MAX_ARTIFACT_SLICE_LINES = 8;
