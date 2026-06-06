@@ -93,7 +93,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.72 Shared Runtime Helper Extraction — in progress (created 2026-06-04; Phases 303-305, ready to plan Phase 303).
+**Current milestone:** v2.72 Shared Runtime Helper Extraction — in progress (created 2026-06-04; Phases 303-305; Phase 303 complete, ready to plan Phase 304).
 
 **Latest completed milestone:** v2.71 HTML Presentation Packets — Human Review Briefs (2026-06-04, PR #222 squash `96a556bc`, tag `v2.71`).
 
