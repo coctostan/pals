@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; creat
 ## Current Position
 
 Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
-Phase: 304 of 305 (Extraction + Import Repoint) — not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-06-05 — Phase 303 complete + merged (PR #223 squash `ee5a9010`); transitioned to Phase 304.
-Next action: /paul:plan for Phase 304
+Phase: 304 of 305 (Extraction + Import Repoint) — UNIFY complete (loop closed)
+Plan: 304-01 (complete) — .paul/phases/304-extraction-import-repoint/304-01-SUMMARY.md
+Status: Phase 304 complete — last plan; ready for phase transition to 305
+Last activity: 2026-06-06 — Phase 304 UNIFY complete (304-01): SUMMARY written, all 3 ACs PASS. Pi e2e 343/343, cross-harness 253/253, artifact consistency PASS. PR #224 CI green (mergeable).
+Next action: merge gate → phase transition to Phase 305 (Validation Closure)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
-- v2.72 Shared Runtime Helper Extraction: [███░░░░░░░] 33% (Phases 303–305; Phase 303 ✅ complete 2026-06-05, PR #223; Phases 304–305 pending)
+- v2.72 Shared Runtime Helper Extraction: [██████░░░░] 67% (Phases 303–305; Phase 303 ✅ PR #223; Phase 304 ✅ complete 2026-06-06, PR #224; Phase 305 pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 304 not started — ready to plan]
+  ✓        ✓        ✓     [Phase 304 complete — loop closed; transition to 305]
 ```
 
 ## Accumulated Context
@@ -109,11 +109,11 @@ Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 /
 
 ## Session Continuity
 
-Last session: 2026-06-05 — /paul:resume → /paul:apply → /paul:unify for Phase 303 (303-01): authored the shared-runtime-helpers contract, merged PR #223, closed the loop, and transitioned to Phase 304.
-Stopped at: Phase 303 complete + merged; ready to plan Phase 304.
-Next action: /paul:plan for Phase 304
-Resume file: .paul/ROADMAP.md
-git: branch `main`, synced after PR #223 squash `ee5a9010`.
+Last session: 2026-06-05 — Phase 303 closed + merged (PR #223); repaired lifecycle hygiene (be02493b); created Phase 304 PLAN (304-01), then paused before APPLY.
+Stopped at: Phase 304 PLAN created (304-01), approved-pending; paused at apply-decision prompt.
+Next action: /paul:apply for Phase 304 Plan 304-01
+Resume file: .paul/HANDOFF-2026-06-05-phase-304-ready-for-apply.md
+git: branch `main`, synced after PR #223 `ee5a9010` + hygiene `be02493b`; APPLY will create the Phase 304 feature branch. wip_result: base-branch (no WIP commit on base). Baseline green: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
 Resume context:
 - v2.72 extracts pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stay out. Phase 303 = contract, 304 = extract+repoint (9 files, 12 import sites), 305 = validate+close.
 - Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Baseline to preserve: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
