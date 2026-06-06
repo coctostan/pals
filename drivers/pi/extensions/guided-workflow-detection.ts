@@ -14,8 +14,8 @@
  * lifecycle state, no inferred merge intent, or writes `.paul/*` artifacts.
  */
 
-import { compactWhitespace, extractLoopSignature } from "./pals-hooks";
-import type { PalsStateSnapshot } from "./pals-hooks";
+import { compactWhitespace, extractLoopSignature } from "./shared-runtime-helpers";
+import type { PalsStateSnapshot } from "./shared-runtime-helpers";
 
 export const GUIDED_WORKFLOW_LOOKBACK = 5;
 export const GUIDED_WORKFLOW_SIGNATURE_BYTES = 240;

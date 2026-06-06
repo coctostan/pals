@@ -11,7 +11,7 @@
  */
 
 import { join } from "path";
-import { compactWhitespace, readFileOr } from "./pals-hooks";
+import { compactWhitespace, readFileOr } from "./shared-runtime-helpers";
 import type { GuidedWorkflowMoment } from "./guided-workflow-detection";
 
 export type GuidedWorkflowAutoPresent = {

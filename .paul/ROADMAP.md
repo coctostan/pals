@@ -16,7 +16,7 @@ Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` in
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 303 | Shared Runtime Helpers Contract | 303-01 | ✅ Complete | 2026-06-05 |
-| 304 | Extraction + Import Repoint | TBD | Not started | - |
+| 304 | Extraction + Import Repoint | 304-01 | ✅ Complete | 2026-06-06 |
 | 305 | Validation + Closure | TBD | Not started | - |
 
 ### Phase 303: Shared Runtime Helpers Contract
@@ -69,4 +69,4 @@ Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: va
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-05 — Phase 303 complete (contract authored, PR #223); ready to plan Phase 304.*
+*Last updated: 2026-06-06 — Phase 304 complete (304-01: shared-runtime-helpers leaf, 9 importers repointed; Pi e2e 343/343, cross-harness 253/253); PR #224 mergeable. Next: transition to Phase 305.*

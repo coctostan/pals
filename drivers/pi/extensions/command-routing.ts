@@ -27,8 +27,9 @@
  * surface unchanged.
  */
 
-import type { ActivationState, PalsStateSnapshot } from "./pals-hooks";
-import { compactWhitespace } from "./pals-hooks";
+import type { ActivationState } from "./pals-hooks";
+import type { PalsStateSnapshot } from "./shared-runtime-helpers";
+import { compactWhitespace } from "./shared-runtime-helpers";
 
 export type CommandDef = {
   name: string;

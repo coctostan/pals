@@ -36,7 +36,7 @@ import {
   readFileOr,
   getFileFreshness,
   selectBoundedLines,
-} from "./pals-hooks";
+} from "./shared-runtime-helpers";
 
 export const MAX_WORKFLOW_RESOURCE_CAPSULE_CHARS = 6_000;
 export const MAX_WORKFLOW_RESOURCE_CAPSULE_LINES = 5;
