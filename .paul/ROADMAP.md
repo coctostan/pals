@@ -10,7 +10,7 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.72 Shared Runtime Helper Extraction** (v2.72)
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
 
 | Phase | Name | Plans | Status | Completed |
