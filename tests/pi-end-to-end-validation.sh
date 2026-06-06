@@ -1393,6 +1393,7 @@ EXT_GUIDED_WORKFLOW_DELIVERY="$REPO_ROOT/drivers/pi/extensions/guided-workflow-d
 EXT_PALS_CONTEXT_INJECTION="$REPO_ROOT/drivers/pi/extensions/pals-context-injection.ts"
 EXT_LIFECYCLE_UI="$REPO_ROOT/drivers/pi/extensions/lifecycle-ui.ts"
 EXT_COMMAND_ROUTING="$REPO_ROOT/drivers/pi/extensions/command-routing.ts"
+EXT_SHARED_RUNTIME_HELPERS="$REPO_ROOT/drivers/pi/extensions/shared-runtime-helpers.ts"
 PHASE_295_REPORT="$REPO_ROOT/docs/PI-NATIVE-CONTEXT-OFFLOAD-MEASUREMENT-NEXT-TARGET-RANKING.md"
 PI_EXTENSIONS_README="$REPO_ROOT/drivers/pi/extensions/README.md"
 PI_SKILL_MAP="$REPO_ROOT/drivers/pi/skill-map.md"
@@ -1832,7 +1833,7 @@ fi
     && grep -q 'function renderLifecycleWidget' "$EXT_LIFECYCLE_UI" 2>/dev/null \
     && grep -q 'function syncLifecycleUi' "$EXT_LIFECYCLE_UI" 2>/dev/null \
     && grep -q 'No-op Pi extension factory' "$EXT_LIFECYCLE_UI" 2>/dev/null \
-    && grep -q 'import type { PalsStateSnapshot } from "./pals-hooks"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
+    && grep -q 'import type { PalsStateSnapshot } from "./shared-runtime-helpers"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
     && grep -q 'import type { RecentModuleActivity } from "./module-activity-parsing"' "$EXT_LIFECYCLE_UI" 2>/dev/null \
     && grep -q 'from "./lifecycle-ui"' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^const (PALS_STATUS_ID|PALS_WIDGET_ID)' "$EXT_SRC" 2>/dev/null \
@@ -1882,8 +1883,8 @@ fi
     && grep -q '^export type CommandDef' "$EXT_COMMAND_ROUTING" 2>/dev/null \
     && grep -q '^export type QuickActionDef' "$EXT_COMMAND_ROUTING" 2>/dev/null \
     && grep -q 'No-op Pi extension factory' "$EXT_COMMAND_ROUTING" 2>/dev/null \
-    && grep -q 'import type { ActivationState' "$EXT_COMMAND_ROUTING" 2>/dev/null \
-    && grep -q 'import type { ActivationState, PalsStateSnapshot } from "./pals-hooks"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'import type { ActivationState } from "./pals-hooks"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
+    && grep -q 'import type { PalsStateSnapshot } from "./shared-runtime-helpers"' "$EXT_COMMAND_ROUTING" 2>/dev/null \
     && grep -q 'from "./command-routing"' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^const COMMANDS' "$EXT_SRC" 2>/dev/null \
     && ! grep -qE '^function (getCommand|toWrapperCommand|detectCommandSignal|getQuickActions)' "$EXT_SRC" 2>/dev/null \
@@ -1901,6 +1902,32 @@ fi
     tap_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact"
   else
     tap_not_ok "S8 command routing extracted to sibling with single-defined markers and pals-hooks.ts delegation intact" "Expected COMMANDS array with twelve entries verbatim + four command-routing constants exact-string + four cited S8 functions + three closure factories + two types + No-op Pi extension factory + type-only back-imports for ActivationState/PalsStateSnapshot in command-routing.ts; pals-hooks.ts importing from ./command-routing with no inline S8 declarations; markActivation/getActiveActivation/consumeActivationTurn promoted to top-level exports; S4 canonical-reply identifiers in guided-workflow-delivery.ts; registration loop and five Key.ctrlAlt(...) invocations preserved in pals-hooks.ts"
+  fi
+
+  # Phase 304 (v2.72): shared-runtime-helpers leaf extraction.
+  # Asserts the new dependency-leaf sibling holds the seven pure/derived helper
+  # functions + the PalsStateSnapshot type (single-defined), imports only Node
+  # fs/path (never ./pals-hooks or any sibling), carries the No-op Pi extension
+  # factory marker, and that pals-hooks.ts no longer declares the eight symbols
+  # inline and imports the ones it still uses from ./shared-runtime-helpers.
+  if [[ -f "$EXT_SHARED_RUNTIME_HELPERS" ]] \
+    && grep -q '^export type PalsStateSnapshot' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function readFileOr' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function compactWhitespace' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function parsePalsState' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function getFileFreshness' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function selectBoundedLines' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function escapeRegExp' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q '^export function extractLoopSignature' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -q 'No-op Pi extension factory' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -qE 'from "fs"' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && grep -qE 'from "path"' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && ! grep -q 'from "./pals-hooks"' "$EXT_SHARED_RUNTIME_HELPERS" 2>/dev/null \
+    && ! grep -qE '^export (function|type) (compactWhitespace|escapeRegExp|selectBoundedLines|readFileOr|getFileFreshness|parsePalsState|extractLoopSignature|PalsStateSnapshot)' "$EXT_SRC" 2>/dev/null \
+    && grep -q 'from "./shared-runtime-helpers"' "$EXT_SRC" 2>/dev/null; then
+    tap_ok "shared-runtime-helpers leaf holds eight single-defined helpers, Node-only imports, no cycle, and pals-hooks.ts delegates"
+  else
+    tap_not_ok "shared-runtime-helpers leaf holds eight single-defined helpers, Node-only imports, no cycle, and pals-hooks.ts delegates" "Expected shared-runtime-helpers.ts to export PalsStateSnapshot + the seven pure/derived helpers (single-defined), import only Node fs/path (never ./pals-hooks), carry the No-op Pi extension factory marker, and pals-hooks.ts to declare none of the eight inline while importing from ./shared-runtime-helpers"
   fi
   tap_file_contains_all \
     "Pi-Supported Runtime docs surface guided workflow reply evidence" \
