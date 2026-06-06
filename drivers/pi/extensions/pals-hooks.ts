@@ -9,8 +9,13 @@
  * Requires: Pi coding agent with extension support
  */
 
-import { readFileSync, existsSync, statSync } from "fs";
 import { join } from "path";
+import {
+  readFileOr,
+  parsePalsState,
+  extractLoopSignature,
+} from "./shared-runtime-helpers";
+import type { PalsStateSnapshot } from "./shared-runtime-helpers";
 import { Key } from "@mariozechner/pi-tui";
 import {
   RecentModuleActivity,
@@ -78,14 +83,6 @@ const CARL_DEFAULT_CONTINUE_THRESHOLD = 0.4;
 const CARL_DEFAULT_SAFETY_CEILING = 0.8;
 const CARL_DEFAULT_STRATEGY: CarlConfig["session_strategy"] = "phase-boundary";
 
-export type PalsStateSnapshot = {
-  detected: boolean;
-  milestone?: string;
-  phase?: string;
-  loop?: string;
-  nextAction?: string;
-};
-
 
 export type ActivationState = {
   source: "command" | "prompt";
@@ -143,63 +140,6 @@ type CarlState = {
   previousLoopSignature: string | undefined;
   pauseAtNextBoundary: boolean;
 };
-
-export function readFileOr(path: string, fallback: string): string {
-  try {
-    return existsSync(path) ? readFileSync(path, "utf-8") : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-export function compactWhitespace(value?: string): string | undefined {
-  return value?.replace(/\s+/g, " ").trim() || undefined;
-}
-
-export function parsePalsState(cwd: string): PalsStateSnapshot {
-  const statePath = join(cwd, ".paul", "STATE.md");
-  const content = readFileOr(statePath, "");
-  if (!content) return { detected: false };
-
-  const milestoneMatch = content.match(/Milestone:\s*(.+)/);
-  const phaseMatch = content.match(/Phase:\s*(.+)/);
-  const loopHeaderMatch = content.match(/PLAN\s+──▶\s+APPLY\s+──▶\s+UNIFY/);
-  const loopStateMatch = content.match(/PLAN\s+──▶\s+APPLY\s+──▶\s+UNIFY\s*\n\s*([^\n]+)/);
-  const nextMatch = content.match(/Next action:\s*(.+)/);
-
-  return {
-    detected: true,
-    milestone: compactWhitespace(milestoneMatch?.[1]),
-    phase: compactWhitespace(phaseMatch?.[1]),
-    loop: loopHeaderMatch
-      ? compactWhitespace(`PLAN ──▶ APPLY ──▶ UNIFY ${loopStateMatch?.[1] ?? ""}`)
-      : undefined,
-    nextAction: compactWhitespace(nextMatch?.[1]),
-  };
-}
-
-export function getFileFreshness(path: string): string {
-  try {
-    return existsSync(path) ? statSync(path).mtime.toISOString() : "unavailable";
-  } catch {
-    return "unavailable";
-  }
-}
-
-export function selectBoundedLines(content: string, patterns: RegExp[], maxLines: number): string[] {
-  const selected: string[] = [];
-  for (const line of content.split(/\r?\n/)) {
-    const compact = compactWhitespace(line);
-    if (!compact) continue;
-    if (patterns.some((pattern) => pattern.test(compact))) selected.push(compact);
-    if (selected.length >= maxLines) break;
-  }
-  return selected;
-}
-
-export function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
 
 function buildSessionOrientationSummary(state: PalsStateSnapshot): string {
   return [
@@ -298,13 +238,6 @@ function loadCarlConfig(cwd: string): CarlConfig {
 function formatCarlContextPressure(tokens: number, ratio: number): string {
   return `${tokens.toLocaleString()} tokens (${Math.round(ratio * 100)}%)`;
 }
-
-export function extractLoopSignature(state: PalsStateSnapshot): string | undefined {
-  if (!state.loop) return undefined;
-  const marks = [...state.loop.matchAll(/[✓○]/g)].map((m) => m[0]);
-  return marks.length >= 3 ? marks.join("") : undefined;
-}
-
 function buildCarlBootstrapPrompt(state: PalsStateSnapshot, reason: string): string {
   return [
     "## PALS Session Bootstrap",
