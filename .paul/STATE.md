@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; creat
 ## Current Position
 
 Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
-Phase: 305 of 305 (Validation + Closure) — planned, ready for APPLY
-Plan: 305-01 (planned, approved-pending) — .paul/phases/305-validation-closure/305-01-PLAN.md
-Status: Phase 305 planned — ready for APPLY (2 tasks: contract closure record + cross-harness closure guardrail)
-Last activity: 2026-06-06 — Created Phase 305 PLAN (305-01): validation gate + contract `## Status After Phase 305` closure record + 8th closure-guardrail recipe application (cross-harness 253→254). Loop → PLAN ✓.
-Next action: /paul:apply for Phase 305 Plan 305-01
+Phase: 305 of 305 (Validation + Closure) — APPLY complete, ready for UNIFY
+Plan: 305-01 (applied) — .paul/phases/305-validation-closure/305-01-PLAN.md
+Status: Phase 305 APPLY complete — contract closure record + 8th cross-harness closure guardrail landed; PR #225 open, CI green. Ready for UNIFY.
+Last activity: 2026-06-07 — APPLY Phase 305 Plan 305-01: recorded `## Status After Phase 305` contract closure + appended v2.72 cross-harness closure guardrail (253→254). Validation: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean. Committed `8130ceb9`, pushed, PR #225 created (CI green, MERGEABLE/CLEAN). Loop → APPLY ✓.
+Next action: /paul:unify for Phase 305 Plan 305-01
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
-- v2.72 Shared Runtime Helper Extraction: [██████░░░░] 67% (Phases 303–305; Phase 303 ✅ PR #223; Phase 304 ✅ complete 2026-06-06, PR #224; Phase 305 pending)
+- v2.72 Shared Runtime Helper Extraction: [████████░░] 83% (Phases 303–305; Phase 303 ✅ PR #223; Phase 304 ✅ complete 2026-06-06, PR #224; Phase 305 APPLY complete 2026-06-07, PR #225 open — UNIFY pending)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Phase 305 planned — ready for APPLY]
+  ✓        ✓        ○     [Phase 305 APPLY complete — ready for UNIFY]
 ```
 
 ## Accumulated Context
@@ -109,11 +109,11 @@ Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 /
 
 ## Session Continuity
 
-Last session: 2026-06-06 — Phase 304 completed + merged (PR #224 `11c8112f`); created Phase 305 PLAN (305-01).
-Stopped at: Phase 305 planned (305-01 approved-pending), ready for APPLY.
-Next action: /paul:apply for Phase 305 Plan 305-01
+Last session: 2026-06-07 — APPLY Phase 305 Plan 305-01 complete (PR #225 open, CI green).
+Stopped at: Phase 305 APPLY complete, ready for UNIFY.
+Next action: /paul:unify for Phase 305 Plan 305-01
 Resume file: .paul/phases/305-validation-closure/305-01-PLAN.md
-git: branch `main`, synced after PR #224 `11c8112f` (Phase 304 squash; feature branch deleted). Baseline green: Pi e2e 343/343, cross-harness 253/253, artifact consistency PASS.
+git: branch `feature/305-validation-closure`, commit `8130ceb9` pushed; PR #225 open (base `main`, CI green, MERGEABLE/CLEAN). Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
 Resume context:
 - v2.72 extracted pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into the leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stayed out. Phase 303 = contract ✅, 304 = extract+repoint ✅ (9 files), 305 = validate+close (next).
 - Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Baseline to preserve: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
