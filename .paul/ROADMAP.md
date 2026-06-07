@@ -17,7 +17,7 @@ Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` in
 |-------|------|-------|--------|-----------|
 | 303 | Shared Runtime Helpers Contract | 303-01 | ✅ Complete | 2026-06-05 |
 | 304 | Extraction + Import Repoint | 304-01 | ✅ Complete | 2026-06-06 |
-| 305 | Validation + Closure | TBD | Not started | - |
+| 305 | Validation + Closure | 305-01 | 🔵 Planning | - |
 
 ### Phase 303: Shared Runtime Helpers Contract
 Focus: Author `docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md` — inventory exact helper symbols, current importers (9 files, 12 import sites), allowed helper responsibilities, authority boundaries, and leaf/cycle-avoidance rules. No code changes.
