@@ -4,7 +4,7 @@
 
 See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; created 2026-06-04)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.72 Shared Runtime Helper Extraction (Phases 303–305) — extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint importers, fix the inverted helper-hub dependency; no lifecycle-authority change. Executes the twice-deferred v2.69 Phase 295 ranking, re-confirmed #1 by `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md`. Phase 303 complete (contract authored); ready to plan Phase 304.
+**Current focus:** v2.72 Shared Runtime Helper Extraction (Phases 303–305) — extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint importers, fix the inverted helper-hub dependency; no lifecycle-authority change. Executes the twice-deferred v2.69 Phase 295 ranking, re-confirmed #1 by `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md`. All three phases complete (303 contract, 304 extract+repoint, 305 validate+close); milestone close pending via /paul:milestone.
 
 ## Current Position
 
@@ -101,20 +101,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main; synced with origin/main after the Phase 304 merge (feature branch `feature/304-extraction-import-repoint` deleted local + remote).
-Last lifecycle state: v2.72 Phase 304 complete — shared-runtime-helpers leaf extracted + 9 importers repointed; merged. Ready for transition to Phase 305.
-PR #224: merged — https://github.com/coctostan/pals/pull/224 (`11c8112f`, squash, branch deleted). PR #223 merged (`ee5a9010`, squash); PR #222 merged (`96a556bc`, squash); PR #221 merged (`259489d0`, squash); PR #219 merged (`a2b2a2fa`, squash).
-Transition state: v2.72 in progress — Phase 304 of 305 complete (2 of 3); Phase 305 (Validation + Closure) ready to plan.
+Branch: main; synced with origin/main after the Phase 305 merge (feature branch `feature/305-validation-closure` deleted local + remote).
+Last lifecycle state: v2.72 Phase 305 complete (UNIFY) — contract closure record + 8th cross-harness closure guardrail; merged. v2.72 functionally complete; milestone close/tag pending via /paul:milestone.
+PR #225: merged — https://github.com/coctostan/pals/pull/225 (`ad9ea9dd`, squash, branch deleted). PR #224 merged (`11c8112f`, squash); PR #223 merged (`ee5a9010`, squash); PR #222 merged (`96a556bc`, squash); PR #221 merged (`259489d0`, squash).
+Transition state: v2.72 complete — all 3 phases (303/304/305) done; ready for milestone close via /paul:milestone.
 Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ## Session Continuity
 
-Last session: 2026-06-07 — APPLY Phase 305 Plan 305-01 complete (PR #225 open, CI green).
-Stopped at: Phase 305 APPLY complete, ready for UNIFY.
-Next action: /paul:unify for Phase 305 Plan 305-01
-Resume file: .paul/phases/305-validation-closure/305-01-PLAN.md
-git: branch `feature/305-validation-closure`, commit `8130ceb9` pushed; PR #225 open (base `main`, CI green, MERGEABLE/CLEAN). Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
+Last session: 2026-06-07 — UNIFY Phase 305 Plan 305-01 complete; PR #225 merged (`ad9ea9dd`). v2.72 functionally complete.
+Stopped at: Phase 305 UNIFY complete; loop closed; v2.72 ready for milestone close.
+Next action: /paul:milestone to close v2.72
+Resume file: .paul/ROADMAP.md
+git: branch `main`, synced with origin/main after PR #225 squash `ad9ea9dd` (feature branch deleted). Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
 Resume context:
-- v2.72 extracted pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into the leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stayed out. Phase 303 = contract ✅, 304 = extract+repoint ✅ (9 files), 305 = validate+close (next).
-- Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Baseline to preserve: Pi e2e 342/342, cross-harness 253/253, artifact consistency PASS.
+- v2.72 extracted pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into the leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stayed out. Phase 303 = contract ✅, 304 = extract+repoint ✅ (9 files), 305 = validate+close ✅ (contract closure record + 8th cross-harness closure guardrail; 254/254).
+- Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Post-closure baseline: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS.
 - Rising alternative for next milestone: validation-suite decomposition (`tests/pi-end-to-end-validation.sh` 2,812 lines + `tests/cross-harness-validation.sh` 2,249 lines).
