@@ -113,7 +113,7 @@ Last session: 2026-06-07 — Milestone v2.72 Shared Runtime Helper Extraction co
 Stopped at: Milestone v2.72 complete — no active milestone.
 Next action: /paul:discuss-milestone or /paul:milestone
 Resume file: .paul/MILESTONES.md
-git: branch `main`, synced with origin/main; v2.72 merged via PR #225 squash `ad9ea9dd`; tag `v2.72` pending push. Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
+git: branch `main`, synced with origin/main; v2.72 merged via PR #225 squash `ad9ea9dd`; tag `v2.72` pushed. Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
 Resume context:
 - v2.72 extracted pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into the leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stayed out. Phase 303 = contract ✅, 304 = extract+repoint ✅ (9 files), 305 = validate+close ✅ (contract closure record + 8th cross-harness closure guardrail; 254/254).
 - Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Post-closure baseline: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS.
