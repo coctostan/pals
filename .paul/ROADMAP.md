@@ -9,9 +9,11 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 ## Current Milestone
 
 **v2.72 Shared Runtime Helper Extraction** (v2.72)
-Status: 🚧 In Progress
-Phases: 3 of 3 complete (milestone close/tag pending via /paul:milestone)
-Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
+Status: ✅ Complete
+Phases: 3 of 3 complete
+Completed: 2026-06-07 (PR #225 squash `ad9ea9dd`, tag `v2.72`)
+Archive: [archive/roadmap/v2.72-shared-runtime-helper-extraction.md](archive/roadmap/v2.72-shared-runtime-helper-extraction.md)
+Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a Node-only leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -19,17 +21,7 @@ Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` in
 | 304 | Extraction + Import Repoint | 304-01 | ✅ Complete | 2026-06-06 |
 | 305 | Validation + Closure | 305-01 | ✅ Complete | 2026-06-07 |
 
-### Phase 303: Shared Runtime Helpers Contract
-Focus: Author `docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md` — inventory exact helper symbols, current importers (9 files, 12 import sites), allowed helper responsibilities, authority boundaries, and leaf/cycle-avoidance rules. No code changes.
-Plans: TBD (defined during /paul:plan)
-
-### Phase 304: Extraction + Import Repoint
-Focus: Create `drivers/pi/extensions/shared-runtime-helpers.ts` leaf; move the pure/derived helper set; repoint all 9 importing files; remove duplicate definitions; no new authority markers, no import cycles, no net behavior change.
-Plans: TBD (defined during /paul:plan)
-
-### Phase 305: Validation + Closure
-Focus: Fresh Pi e2e + cross-harness + artifact consistency + `git diff --check`; +1 closure guardrail; milestone close, archive, tag `v2.72`.
-Plans: TBD (defined during /paul:plan)
+**Milestone complete — no further phases.** Run `/paul:discuss-milestone` or `/paul:milestone` to define the next milestone. Full phase detail in the [v2.72 archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md).
 
 ## Next Milestone
 Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: validation-suite decomposition — `tests/pi-end-to-end-validation.sh` (2,812 lines) and `tests/cross-harness-validation.sh` (2,249 lines) are the largest, fastest-growing files (post-v2.71 assessment, rising alternative).
@@ -66,7 +58,8 @@ Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: va
 | v2.69 Pi Runtime Context Offload — S4 First | 2026-05-22 | 293-295 | Created S4 canonical reply delivery contract (PR #212), extracted S4 delivery to `drivers/pi/extensions/guided-workflow-delivery.ts` (PR #213), then measured the context offload and ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 squash `08b0e891`). Final validation: Pi 331/331, cross-harness 235/235. |
 | v2.70 Strategic Milestone Assessment | 2026-06-02 | 296-298 | Shipped an optional, non-blocking strategic-assessment checkpoint in `/paul:discuss` with five evidence lenses and non-authoritative assessment artifacts. Final validation: Pi 336/336, cross-harness 241/241. [archive](archive/roadmap/v2.70-strategic-milestone-assessment.md) |
 | v2.71 HTML Presentation Packets — Human Review Briefs | 2026-06-04 | 299-302 | Static, PALS-owned, artifact-derived HTML review briefs (optional/non-blocking/derived/non-authoritative) for milestone/PLAN/APPLY/UNIFY moments; README/contract surfacing + CC↔Pi parity/invariant/no-committed-`.html` guardrails. Final: cross-harness 253/253, Pi e2e 342/342. [archive](archive/roadmap/v2.71-html-presentation-packets.md) |
+| v2.72 Shared Runtime Helper Extraction | 2026-06-07 | 303-305 | Extracted 7 pure/derived filesystem + state helpers + `PalsStateSnapshot` out of `pals-hooks.ts` into a Node-only dependency leaf `shared-runtime-helpers.ts`, repointed all 9 importers, removed the inverted helper-hub edge for an acyclic one-way graph; recorded the contract closure + 8th cross-harness closure-guardrail. Final: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS. [archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md) |
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-07 — Phase 305 complete (305-01: contract `## Status After Phase 305` closure record + 8th cross-harness closure guardrail; Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS); PR #225 open, CI green. v2.72 functionally complete (Phases 303–305). Next: /paul:milestone to close v2.72.*
+*Last updated: 2026-06-07 — v2.72 Shared Runtime Helper Extraction complete (Phases 303–305); closed via PR #225 squash `ad9ea9dd`, tag `v2.72`. Final: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS. No active milestone — run /paul:discuss-milestone or /paul:milestone.*

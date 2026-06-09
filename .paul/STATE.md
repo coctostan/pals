@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; created 2026-06-04)
+See: .paul/PROJECT.md (no active milestone; v2.72 Shared Runtime Helper Extraction completed 2026-06-07)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** v2.72 Shared Runtime Helper Extraction (Phases 303–305) — extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint importers, fix the inverted helper-hub dependency; no lifecycle-authority change. Executes the twice-deferred v2.69 Phase 295 ranking, re-confirmed #1 by `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md`. All three phases complete (303 contract, 304 extract+repoint, 305 validate+close); milestone close pending via /paul:milestone.
+**Current focus:** No active milestone. Latest completed: v2.72 Shared Runtime Helper Extraction (Phases 303–305; closed 2026-06-07, tag `v2.72`) — extracted 7 pure/derived filesystem + state helpers + `PalsStateSnapshot` out of `pals-hooks.ts` into a Node-only leaf `shared-runtime-helpers.ts`, repointed all 9 importers, removed the inverted helper-hub edge (acyclic one-way graph, zero behavior change). Run /paul:discuss-milestone or /paul:milestone to define the next milestone (standing candidate: validation-suite decomposition).
 
 ## Current Position
 
-Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
-Phase: 305 of 305 (Validation + Closure) — UNIFY complete; v2.72 ready for milestone close
-Plan: 305-01 (applied) — .paul/phases/305-validation-closure/305-01-PLAN.md
-Status: Phase 305 UNIFY complete — SUMMARY written; loop closed. Last phase of v2.72; milestone close/tag pending via /paul:milestone.
-Last activity: 2026-06-07 — UNIFY Phase 305 Plan 305-01: wrote 305-01-SUMMARY.md (all 3 ACs Pass; AC-3 with planned marker-narrowing fallback). Loop → UNIFY ✓. v2.72 functionally complete (Phases 303–305 done).
-Next action: /paul:milestone to close v2.72 (write completed-milestone row, archive roadmap, tag v2.72)
+Milestone: None active — v2.72 Shared Runtime Helper Extraction complete (2026-06-07, tag `v2.72`)
+Phase: 305 of 305 (Validation + Closure) — ✅ complete (milestone v2.72 closed; no further phases)
+Plan: None
+Status: Milestone v2.72 complete — ready for next milestone
+Last activity: 2026-06-07 — Milestone v2.72 completed: MILESTONES.md entry + roadmap archive + PROJECT.md evolved + ROADMAP/STATE reorganized + tag `v2.72`.
+Next action: /paul:discuss-milestone or /paul:milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
-- v2.72 Shared Runtime Helper Extraction: [██████████] 100% (Phases 303–305 complete; Phase 303 ✅ PR #223; Phase 304 ✅ PR #224; Phase 305 ✅ UNIFY 2026-06-07, PR #225 — milestone close pending via /paul:milestone)
+- v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 305 UNIFY complete — loop closed; last phase of v2.72]
+  ○        ○        ○     [Milestone v2.72 complete — ready for next]
 ```
 
 ## Accumulated Context
@@ -109,11 +109,11 @@ Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 /
 
 ## Session Continuity
 
-Last session: 2026-06-07 — UNIFY Phase 305 Plan 305-01 complete; PR #225 merged (`ad9ea9dd`). v2.72 functionally complete.
-Stopped at: Phase 305 UNIFY complete; loop closed; v2.72 ready for milestone close.
-Next action: /paul:milestone to close v2.72
-Resume file: .paul/ROADMAP.md
-git: branch `main`, synced with origin/main after PR #225 squash `ad9ea9dd` (feature branch deleted). Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
+Last session: 2026-06-07 — Milestone v2.72 Shared Runtime Helper Extraction completed (MILESTONES.md entry, roadmap archive, PROJECT.md evolved, tag `v2.72`).
+Stopped at: Milestone v2.72 complete — no active milestone.
+Next action: /paul:discuss-milestone or /paul:milestone
+Resume file: .paul/MILESTONES.md
+git: branch `main`, synced with origin/main; v2.72 merged via PR #225 squash `ad9ea9dd`; tag `v2.72` pending push. Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
 Resume context:
 - v2.72 extracted pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into the leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stayed out. Phase 303 = contract ✅, 304 = extract+repoint ✅ (9 files), 305 = validate+close ✅ (contract closure record + 8th cross-harness closure guardrail; 254/254).
 - Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Post-closure baseline: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS.
