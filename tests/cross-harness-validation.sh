@@ -2045,6 +2045,27 @@ tap_file_contains_all \
   'Path A' \
   'v2.63'
 
+
+# ═════════════════════════════════════════════════════════════════
+# Phase 305 shared runtime helper extraction closure (v2.72 Shared Invariant)
+# ═════════════════════════════════════════════════════════════════
+# Phase 305 closes v2.72 by validating the extracted state against the written
+# contract and recording the contract closure (docs/PALS-SHARED-RUNTIME-HELPERS-
+# CONTRACT.md ## Status After Phase 305). This guardrail pins the v2.72 milestone
+# and its phase range in .paul/MILESTONES.md so the shared invariant across
+# docs/contract/lifecycle does not regress. Per-phase rows, the leaf basename
+# (shared-runtime-helpers.ts), the orchestrator (pals-hooks.ts), and the
+# next-milestone candidate are written into MILESTONES.md later by
+# /paul:milestone; this block asserts only the markers guaranteed present at
+# closure time (the Current/Future Milestone Pointer region naming the v2.72
+# milestone and its Phases 303-305 range, including Phase 305).
+tap_file_contains_all \
+  "Phase 305 shared runtime helper extraction closure (v2.72 Shared Invariant)" \
+  "$REPO_ROOT/.paul/MILESTONES.md" \
+  'v2.72 Shared Runtime Helper Extraction' \
+  'Phases 303-305' \
+  'Phase 305'
+
 # ════════════════════════════════════════════════════════════════
 # CATEGORY: v2.70 STRATEGIC-ASSESSMENT SURFACE PARITY (Phase 298)
 # ════════════════════════════════════════════════════════════════

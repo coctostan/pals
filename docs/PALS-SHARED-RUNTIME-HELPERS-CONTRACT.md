@@ -196,8 +196,40 @@ revising this contract):
   not part of v2.72.
 - Any change to lifecycle authority, module dispatch, or GitHub Flow behavior.
 
-## Status
+## Status After Phase 305
 
-Phase 303: contract authored. Extraction + importer repointing pending
-**Phase 304**; build/typecheck + Pi e2e + cross-harness + artifact-consistency
-validation pending **Phase 305**.
+**This contract is closed for v2.72.** All three phases are complete and the
+extracted state is validated against this written spec.
+
+- **Phase 303 (contract, PR #223 squash `ee5a9010`)** authored this document —
+  the authoritative helper set, importer map, allowed responsibilities,
+  authority boundaries, and leaf/cycle rules.
+- **Phase 304 (extraction + importer repoint, PR #224 squash `11c8112f`)**
+  extracted the seven pure/derived helpers — `compactWhitespace`,
+  `escapeRegExp`, `selectBoundedLines`, `readFileOr`, `getFileFreshness`,
+  `parsePalsState`, `extractLoopSignature` — plus the `PalsStateSnapshot` type
+  into the dependency-leaf module
+  `drivers/pi/extensions/shared-runtime-helpers.ts`, with the function bodies
+  relocated byte-for-byte identical (zero behavior change).
+- **All 9 importers repointed** to `./shared-runtime-helpers` for the moved
+  symbols (`pals-hooks.ts` as internal consumer + the 8 sibling extensions:
+  `guided-workflow-detection.ts`, `command-routing.ts`, `lifecycle-ui.ts`,
+  `workflow-resource-capsule-rendering.ts`, `module-activity-parsing.ts`,
+  `guided-workflow-delivery.ts`, `artifact-slice-rendering.ts`,
+  `pals-context-injection.ts`). The stay-put symbols (`ActivationState`,
+  `MAX_WIDGET_MODULE_DETAILS`, `MAX_VISIBLE_MODULES`,
+  `RECENT_MODULE_ACTIVITY_LOOKBACK`, `collectRecentAssistantTexts`) remain
+  imported from `./pals-hooks`.
+- **Acyclic one-way result:** orchestrator/siblings → `shared-runtime-helpers.ts`
+  → Node (`fs`/`path`) only. The leaf needed **no** type-only back-import —
+  unlike S6/S7/S8, `PalsStateSnapshot` moved *with* the helpers, so there is no
+  residual edge back to `pals-hooks.ts`. The inverted helper-hub edge is removed
+  and the module graph among these extensions remains acyclic.
+- **Validation (Phase 305, fresh against the extracted state):** Pi e2e
+  343/343 (including the bounded Phase 304 leaf-extraction TAP block),
+  cross-harness 254/254 (prior 253 + the one net-new v2.72 closure-guardrail
+  assertion added in this phase), artifact consistency PASS, `git diff --check`
+  clean.
+- **Milestone close, archive, and the `v2.72` tag** run via `/paul:milestone`
+  after this phase's UNIFY (v2.71 Phase 302 precedent) — they are intentionally
+  not part of Phase 305.
