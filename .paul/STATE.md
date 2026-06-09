@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (v2.72 Shared Runtime Helper Extraction in progress; creat
 ## Current Position
 
 Milestone: v2.72 Shared Runtime Helper Extraction (in progress)
-Phase: 305 of 305 (Validation + Closure) — APPLY complete, ready for UNIFY
+Phase: 305 of 305 (Validation + Closure) — UNIFY complete; v2.72 ready for milestone close
 Plan: 305-01 (applied) — .paul/phases/305-validation-closure/305-01-PLAN.md
-Status: Phase 305 APPLY complete — contract closure record + 8th cross-harness closure guardrail landed; PR #225 open, CI green. Ready for UNIFY.
-Last activity: 2026-06-07 — APPLY Phase 305 Plan 305-01: recorded `## Status After Phase 305` contract closure + appended v2.72 cross-harness closure guardrail (253→254). Validation: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean. Committed `8130ceb9`, pushed, PR #225 created (CI green, MERGEABLE/CLEAN). Loop → APPLY ✓.
-Next action: /paul:unify for Phase 305 Plan 305-01
+Status: Phase 305 UNIFY complete — SUMMARY written; loop closed. Last phase of v2.72; milestone close/tag pending via /paul:milestone.
+Last activity: 2026-06-07 — UNIFY Phase 305 Plan 305-01: wrote 305-01-SUMMARY.md (all 3 ACs Pass; AC-3 with planned marker-narrowing fallback). Loop → UNIFY ✓. v2.72 functionally complete (Phases 303–305 done).
+Next action: /paul:milestone to close v2.72 (write completed-milestone row, archive roadmap, tag v2.72)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -26,7 +26,7 @@ Progress:
 - v2.69 Pi Runtime Context Offload — S4 First: [██████████] 100% ✓ (Phase 293 ✅ PR #212; Phase 294 ✅ PR #213; Phase 295 ✅ PR #214 merged `08b0e891`)
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
-- v2.72 Shared Runtime Helper Extraction: [████████░░] 83% (Phases 303–305; Phase 303 ✅ PR #223; Phase 304 ✅ complete 2026-06-06, PR #224; Phase 305 APPLY complete 2026-06-07, PR #225 open — UNIFY pending)
+- v2.72 Shared Runtime Helper Extraction: [██████████] 100% (Phases 303–305 complete; Phase 303 ✅ PR #223; Phase 304 ✅ PR #224; Phase 305 ✅ UNIFY 2026-06-07, PR #225 — milestone close pending via /paul:milestone)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -34,7 +34,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Phase 305 APPLY complete — ready for UNIFY]
+  ✓        ✓        ✓     [Phase 305 UNIFY complete — loop closed; last phase of v2.72]
 ```
 
 ## Accumulated Context

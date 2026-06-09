@@ -10,14 +10,14 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.72 Shared Runtime Helper Extraction** (v2.72)
 Status: 🚧 In Progress
-Phases: 2 of 3 complete
+Phases: 3 of 3 complete (milestone close/tag pending via /paul:milestone)
 Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 303 | Shared Runtime Helpers Contract | 303-01 | ✅ Complete | 2026-06-05 |
 | 304 | Extraction + Import Repoint | 304-01 | ✅ Complete | 2026-06-06 |
-| 305 | Validation + Closure | 305-01 | 🔵 Planning | - |
+| 305 | Validation + Closure | 305-01 | ✅ Complete | 2026-06-07 |
 
 ### Phase 303: Shared Runtime Helpers Contract
 Focus: Author `docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md` — inventory exact helper symbols, current importers (9 files, 12 import sites), allowed helper responsibilities, authority boundaries, and leaf/cycle-avoidance rules. No code changes.
@@ -69,4 +69,4 @@ Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: va
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-06 — Phase 304 complete (304-01: shared-runtime-helpers leaf, 9 importers repointed; Pi e2e 343/343, cross-harness 253/253); PR #224 mergeable. Next: transition to Phase 305.*
+*Last updated: 2026-06-07 — Phase 305 complete (305-01: contract `## Status After Phase 305` closure record + 8th cross-harness closure guardrail; Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS); PR #225 open, CI green. v2.72 functionally complete (Phases 303–305). Next: /paul:milestone to close v2.72.*
