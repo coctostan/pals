@@ -22,3 +22,4 @@ Manage PALS module configuration, integrations, and preferences.
 - Toggling a missing module adds it to `pals.json` first, then applies the requested state.
 - Per-project module enable/disable is informational until runtime disable is implemented.
 - Supported surfaces: module toggles, SonarQube integration, preferences, raw config view.
+- When `.paul/MODULE-LEDGER.md` exists, surface per-module `dispatches | findings | actioned`; demotion candidates are advisory, WALT/DEAN/TODD/SETH are enforcement-exempt where ever scoped, and any `pals.json` change requires explicit human approval.

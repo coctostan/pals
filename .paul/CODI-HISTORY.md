@@ -123,3 +123,4 @@ See modules/codi/references/codi-instrumentation.md for schema, outcome taxonomy
 | 298-01 | 2026-06-02 | no-dispatch-found | — | — | — | — | n |
 | 299-01 | 2026-06-04 | no-dispatch-found | — | — | — | — | n |
 | 300-01 | 2026-06-04 | no-dispatch-found | — | — | — | — | n |
+| 306-01 | 2026-07-10 | skipped-no-symbols | — | — | — | — | n |

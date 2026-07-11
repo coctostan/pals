@@ -363,6 +363,59 @@ tap_file_contains_all \
   'non-equivalent outcomes as reasons to stop and return control' \
   'Return control to the parent immediately when:'
 
+section "MODULE EFFICACY LEDGER"
+
+LEDGER_CONTRACT="$REPO_ROOT/docs/PALS-MODULE-EFFICACY-LEDGER-CONTRACT.md"
+INSTALLED_LEDGER_TEMPLATE="$SKILL_DIR/templates/MODULE-LEDGER.md"
+INSTALLED_UNIFY_WORKFLOW="$SKILL_DIR/workflows/unify-phase.md"
+CONFIG_COMMAND="$REPO_ROOT/kernel/commands/paul/config.md"
+INSTALLED_CONFIG_SKILL="$SKILL_DIR/paul-config/SKILL.md"
+
+tap_file_contains_all \
+  "Module efficacy ledger contract preserves authority, action, and exemption markers" \
+  "$LEDGER_CONTRACT" \
+  'Phase | Module | Status | Finding? | Actioned?' \
+  'Derived aid' \
+  'warm artifact' \
+  'WALT, DEAN, TODD, and SETH' \
+  'explicitly human-approved'
+
+if [ -f "$INSTALLED_LEDGER_TEMPLATE" ]; then
+  tap_ok "Pi installer deploys kernel/templates/MODULE-LEDGER.md"
+else
+  tap_not_ok "Pi installer deploys kernel/templates/MODULE-LEDGER.md" "File not found: $INSTALLED_LEDGER_TEMPLATE"
+fi
+
+tap_file_contains_all \
+  "Installed module ledger template preserves normalized row markers" \
+  "$INSTALLED_LEDGER_TEMPLATE" \
+  'Derived aid' \
+  '| Phase | Module | Status | Finding? | Actioned? |'
+
+tap_file_contains_all \
+  "Installed UNIFY workflow preserves non-blocking module ledger append markers" \
+  "$INSTALLED_UNIFY_WORKFLOW" \
+  '<step name="append_module_ledger" priority="after-finalize-summary">' \
+  'kernel/templates/MODULE-LEDGER.md' \
+  'NON-BLOCKING' \
+  'never gates `render_unify_packet`, `github_flow_merge_gate`, `check_phase_completion`, or transition routing'
+
+tap_file_contains_all \
+  "Config command preserves human-gated efficacy markers" \
+  "$CONFIG_COMMAND" \
+  'Module efficacy (from ledger)' \
+  'dispatches | findings | actioned' \
+  'explicit human approval' \
+  'WALT, DEAN, TODD, or SETH' \
+  'preserve current config behavior unchanged'
+
+tap_file_contains_all \
+  "Installed paul-config skill surfaces bounded ledger efficacy guidance" \
+  "$INSTALLED_CONFIG_SKILL" \
+  'dispatches | findings | actioned' \
+  'explicit human approval' \
+  'enforcement-exempt'
+
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2: SKILL STRUCTURAL VALIDITY
 # ════════════════════════════════════════════════════════════════════

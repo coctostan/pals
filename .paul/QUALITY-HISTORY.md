@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: ...→Pi 335/335, XH 246/246→Pi 328/328, XH 234/234→Pi 328/328, XH 234/234→Pi 336/336, XH 241/241
+Tests: ...→Pi 335/335, XH 246/246→Pi 328/328, XH 234/234→Pi 336/336, XH 241/241→Pi 347/349
 Coverage: —
 Lint: —
 Types: —
@@ -148,3 +148,4 @@ Types: —
 | 298-01 | 2026-06-02 | Pi 336/336, XH 241/241 | N/A (shell-test marker checks) | N/A | N/A | ↑ improving (Phase 298 pinned the strategic-assessment surface: +5 Pi, +6 XH; artifact_consistency PASS; git diff --check PASS) |
 | 299-01 | 2026-06-04 | Pi 336/336, XH 241/241 | N/A (docs-only contract + HTML template) | N/A | N/A | ● stable (Phase 299 contract+template docs-only; artifact_consistency PASS; git diff --check PASS) |
 | 300-01 | 2026-06-04 | Pi 335/336, XH 241/241 | N/A (workflow wiring) | N/A | N/A | ● stable (Phase 300 milestone+PLAN packet wiring; XH 241/241 PASS, artifact_consistency PASS, git diff --check PASS; lone Pi failure is pre-existing PROJECT.md byte-budget debt unchanged by this phase) |
+| 306-01 | 2026-07-10 | Pi 347/349 (six new ledger checks PASS; same 2 inherited lifecycle failures as 341/343 baseline) | N/A (shell/docs/workflow) | N/A | N/A | ▲ improved with baseline concerns |
