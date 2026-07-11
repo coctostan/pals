@@ -8,23 +8,31 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 ## Current Milestone
 
-**v2.72 Shared Runtime Helper Extraction** (v2.72)
-Status: ✅ Complete
-Phases: 3 of 3 complete
-Completed: 2026-06-07 (PR #225 squash `ad9ea9dd`, tag `v2.72`)
-Archive: [archive/roadmap/v2.72-shared-runtime-helper-extraction.md](archive/roadmap/v2.72-shared-runtime-helper-extraction.md)
-Focus: Extract pure/derived filesystem + state helpers out of `pals-hooks.ts` into a Node-only leaf `shared-runtime-helpers` sibling, repoint all importers, and fix the inverted helper-hub dependency — without touching lifecycle authority.
+**v2.73 Module Efficacy Ledger + Field Harvest** (v2.73)
+Status: 🚧 In Progress
+Phases: 0 of 3 complete
+Focus: Close the evidence loop — PALS reads its own module dispatch paperwork, per-project and across field deployments, and turns it into human-gated improvement proposals. Ledger/harvest outputs are derived aids; `.paul/*` PLAN/APPLY/UNIFY remain lifecycle truth; harvest is explicit/pull-based (no telemetry); enforcement modules (WALT/DEAN/TODD/SETH) never auto-demote where they have ever had scope; ledger is a warm artifact exempt from hot-path budgets.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 303 | Shared Runtime Helpers Contract | 303-01 | ✅ Complete | 2026-06-05 |
-| 304 | Extraction + Import Repoint | 304-01 | ✅ Complete | 2026-06-06 |
-| 305 | Validation + Closure | 305-01 | ✅ Complete | 2026-06-07 |
+| 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | UNIFY / PR #226 | - |
+| 307 | Retroactive Field Harvest | TBD | Not started | - |
+| 308 | Proposal Batch + Validation/Closure | TBD | Not started | - |
 
-**Milestone complete — no further phases.** Run `/paul:discuss-milestone` or `/paul:milestone` to define the next milestone. Full phase detail in the [v2.72 archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md).
+### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing
+Focus: Ledger format/authority contract (derived aid; workflow-owned writes); `unify-phase.md` append step emitting `Phase | Module | Status | Finding? | Actioned?` rows to `.paul/MODULE-LEDGER.md`; MODULE-LEDGER template; `/paul:config` per-module efficacy read-out with human-approved changes only and enforcement-module demotion exemption. Ships a complete, immediately usable feature: the forward-looking ledger accrues on every project from this phase onward.
+Plans: [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-PLAN.md) — UNIFY reconciled; merge pending.
+
+### Phase 307: Retroactive Field Harvest
+Focus: Extraction pass over existing SUMMARY dispatch tables in field deployments (quark ~127 phases, hybrid-energy-reasoner ~59 phases, pals ~297 phases) to seed ledgers. Known risk: at least three dispatch-table dialects exist (quark lowercase per-module rows, HER uppercase combined skip lines, pre-table early phases) — plan must define normalization rules plus explicit `unparseable-phase` handling; split the phase if dialect coverage proves larger than planned.
+Plans: TBD (defined during /paul:plan)
+
+### Phase 308: Proposal Batch + Validation/Closure
+Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/` (first: REV finding-class escalation rule from quark Phase 127 — same-class findings recurring at REV round 2+ escalate to a routed phase instead of continued instance-by-instance fix passes); guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes.
+Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: validation-suite decomposition — `tests/pi-end-to-end-validation.sh` (2,812 lines) and `tests/cross-harness-validation.sh` (2,249 lines) are the largest, fastest-growing files (post-v2.71 assessment, rising alternative).
+Run /paul:discuss-milestone or /paul:milestone after v2.73. Deferred standing candidate: validation-suite decomposition — `tests/pi-end-to-end-validation.sh` (2,812 lines) and `tests/cross-harness-validation.sh` (2,249 lines) remain the largest, fastest-growing files (deferred 2026-07-10: field-evidence harvesting judged higher value than further self-maintenance). Follow-on candidates informed by v2.73 ledger data: project profiles at init, per-project `module_params`, carried-findings memory, `/paul:harvest` command, config-only in-loop adaptation.
 
 ## Completed Milestones
 
@@ -62,4 +70,4 @@ Run /paul:discuss-milestone or /paul:milestone to define. Standing candidate: va
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-06-07 — v2.72 Shared Runtime Helper Extraction complete (Phases 303–305); closed via PR #225 squash `ad9ea9dd`, tag `v2.72`. Final: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS. No active milestone — run /paul:discuss-milestone or /paul:milestone.*
+*Last updated: 2026-07-10 — Phase 306 Plan 01 reconciled; PR #226 merge gate pending.*

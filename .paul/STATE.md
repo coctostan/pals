@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: .paul/PROJECT.md (no active milestone; v2.72 Shared Runtime Helper Extraction completed 2026-06-07)
+See: .paul/PROJECT.md (active milestone: v2.73 Module Efficacy Ledger + Field Harvest, created 2026-07-10)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** No active milestone. Latest completed: v2.72 Shared Runtime Helper Extraction (Phases 303–305; closed 2026-06-07, tag `v2.72`) — extracted 7 pure/derived filesystem + state helpers + `PalsStateSnapshot` out of `pals-hooks.ts` into a Node-only leaf `shared-runtime-helpers.ts`, repointed all 9 importers, removed the inverted helper-hub edge (acyclic one-way graph, zero behavior change). Run /paul:discuss-milestone or /paul:milestone to define the next milestone (standing candidate: validation-suite decomposition).
+**Current focus:** v2.73 Module Efficacy Ledger + Field Harvest (Phases 306–308) — close the evidence loop: UNIFY appends module dispatch rows (`Phase | Module | Status | Finding? | Actioned?`) to a warm `.paul/MODULE-LEDGER.md`; `/paul:config` surfaces per-module efficacy (human-approved changes only; enforcement modules WALT/DEAN/TODD/SETH never auto-demote where they ever had scope); retroactive pull-based harvest over field deployments (quark ~127 phases, hybrid-energy-reasoner ~59, pals ~297; three dispatch-table dialects known); lessons pass → `.paul/proposals/` batch (first: REV finding-class escalation rule from quark Phase 127). No telemetry; derived aids only; `.paul/*` PLAN/APPLY/UNIFY remain lifecycle truth.
 
 ## Current Position
 
-Milestone: None active — v2.72 Shared Runtime Helper Extraction complete (2026-06-07, tag `v2.72`)
-Phase: 305 of 305 (Validation + Closure) — ✅ complete (milestone v2.72 closed; no further phases)
-Plan: None
-Status: Milestone v2.72 complete — ready for next milestone
-Last activity: 2026-06-07 — Milestone v2.72 completed: MILESTONES.md entry + roadmap archive + PROJECT.md evolved + ROADMAP/STATE reorganized + tag `v2.72`.
-Next action: /paul:discuss-milestone or /paul:milestone
+Milestone: v2.73 Module Efficacy Ledger + Field Harvest
+Phase: 306 of 308 (Ledger Contract + UNIFY Integration + Config Surfacing)
+Plan: 306-01 (UNIFY reconciled; merge gate pending)
+Status: UNIFY summary finalized — optional packet / merge gate pending
+Last activity: 2026-07-10 — Plan 306-01 SUMMARY finalized; WALT/SKIP/CODI/RUBY reports recorded; QUALITY/CODI histories and 19-row derived module ledger updated.
+Next action: Complete UNIFY optional packet decision, then GitHub Flow merge gate for PR #226
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -27,6 +27,7 @@ Progress:
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
+- v2.73 Module Efficacy Ledger + Field Harvest: [░░░░░░░░░░] 0% (Phases 306–308; created 2026-07-10)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -34,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone v2.72 complete — ready for next]
+  ✓        ✓        ○     [UNIFY reconciled — optional packet / PR #226 merge gate pending]
 ```
 
 ## Accumulated Context
@@ -44,6 +45,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - PLAN/APPLY/UNIFY remains authoritative; `.paul/*` artifacts are lifecycle truth; archives under `.paul/archive/*` hold history.
 - v2.64 completed the module instruction audit/context-efficiency rewrite and is archived.
 - v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283: authoritative contract, AGENTS/init Engineering Principles + brownfield map-codebase signals, TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance, and advisory ARCH side-effect-boundary guidance — all with project conventions and local idioms preserved as authoritative and no new default blocking functional-style gates.
+- Phase 306 APPLY shipped the forward-looking Module Efficacy Ledger contract/template, non-blocking UNIFY append, human-gated config efficacy view, and six Pi validation markers; PR #226 is open.
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -83,6 +85,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 294 PLAN/APPLY/UNIFY: Extracted S4 canonical guided-workflow reply delivery/config into `drivers/pi/extensions/guided-workflow-delivery.ts`, repointed Pi validation/docs, appended CODI/WALT history rows, and transitioned to Phase 295. Validation: install 9 extensions, `git diff --check`, artifact_consistency PASS, Pi 329/329, cross-harness 234/234; PR #213 checks passed.
 - Phase 295 PLAN/APPLY/UNIFY: Created source-backed context-offload measurement and next-target ranking report, surfaced it in Pi docs, added recommendation-only validation guardrails, appended CODI/WALT history rows, passed merge gate, and closed v2.69. Validation: `git diff --check`, artifact_consistency PASS, Pi 331/331, cross-harness 235/235; PR #214 merged `08b0e891`.
 - Fix (ff, 2026-06-01): Cleared inherited PROJECT.md byte-budget overage (25,331 → 23,763 B; ceil 25,000) carried in from v2.69 finalize commit `c5dd4255`, by collapsing five duplicated v2.64 per-phase decision rows (Phases 273-277) into one archive-pointing row; no history lost (detail in `PROJECT-HISTORY-v2.61-v2.66.md` + v2.64 roadmap archive). Validation: Pi 331/331, cross-harness 235/235, artifact_consistency PASS.
+- Phase 306 APPLY: parent-owned inline execution; T1 commit was retried after a stale command context and landed after T2/T3 without content deviation. Pi suite 347/349 vs baseline 341/343; inherited ROADMAP byte-budget and artifact-consistency failures unchanged.
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
@@ -101,20 +104,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: main; synced with origin/main after the Phase 305 merge (feature branch `feature/305-validation-closure` deleted local + remote).
-Last lifecycle state: v2.72 Phase 305 complete (UNIFY) — contract closure record + 8th cross-harness closure guardrail; merged. v2.72 functionally complete; milestone close/tag pending via /paul:milestone.
-PR #225: merged — https://github.com/coctostan/pals/pull/225 (`ad9ea9dd`, squash, branch deleted). PR #224 merged (`11c8112f`, squash); PR #223 merged (`ee5a9010`, squash); PR #222 merged (`96a556bc`, squash); PR #221 merged (`259489d0`, squash).
-Transition state: v2.72 complete — all 3 phases (303/304/305) done; ready for milestone close via /paul:milestone.
-Prior PRs: #221 / #219 / #218 / #217 / #207 / #206 / #205 / #204 / #203 / #202 / #201 / #200 / #199 / #198 / #197 / #196 / #195 / #194 / #192 / #191 / #190 / #189 / #188; earlier PR history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
+Branch: `feature/306-ledger-contract-unify-integration-config-surfacing`; synced with origin branch.
+PR: #226 open — https://github.com/coctostan/pals/pull/226
+CI: Socket Security checks passing; UNIFY owns the blocking merge gate.
+Transition state: Phase 306 APPLY complete; UNIFY owns reconciliation and merge readiness.
 
 ## Session Continuity
 
-Last session: 2026-06-07 — Milestone v2.72 Shared Runtime Helper Extraction completed (MILESTONES.md entry, roadmap archive, PROJECT.md evolved, tag `v2.72`).
-Stopped at: Milestone v2.72 complete — no active milestone.
-Next action: /paul:discuss-milestone or /paul:milestone
-Resume file: .paul/MILESTONES.md
-git: branch `main`, synced with origin/main; v2.72 merged via PR #225 squash `ad9ea9dd`; tag `v2.72` pushed. Validation green: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS, diff-check clean.
+Last session: 2026-07-10 — Plan 306-01 UNIFY reconciliation completed; merge gate not yet run.
+Stopped at: SUMMARY and mandatory post-unify evidence finalized; optional UNIFY packet / merge gate pending.
+Next action: Decide optional UNIFY packet, then run the PR #226 merge gate.
+Resume file: .paul/phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md
+unify_result: IN_PROGRESS — reconciliation finalized; 4 ACs pass (AC-4 with inherited lifecycle concerns); merge gate pending.
+git: github-flow; branch `feature/306-ledger-contract-unify-integration-config-surfacing`, PR #226 open, Socket Security passing.
 Resume context:
-- v2.72 extracted pure/derived filesystem + state helpers (`compactWhitespace`, `selectBoundedLines`, `escapeRegExp`, `extractLoopSignature`, `readFileOr`, `getFileFreshness`, `parsePalsState` + `PalsStateSnapshot`) out of `pals-hooks.ts` into the leaf `shared-runtime-helpers` sibling; ctx/event helpers + CARL/routing stayed out. Phase 303 = contract ✅, 304 = extract+repoint ✅ (9 files), 305 = validate+close ✅ (contract closure record + 8th cross-harness closure guardrail; 254/254).
-- Decision basis: post-v2.71 strategic assessment `.paul/assessments/2026-06-04-post-v2-71-next-milestone.md` re-confirmed shared runtime helper extraction as #1 (twice-deferred v2.69 Phase 295 ranking). Post-closure baseline: Pi e2e 343/343, cross-harness 254/254, artifact consistency PASS.
-- Rising alternative for next milestone: validation-suite decomposition (`tests/pi-end-to-end-validation.sh` 2,812 lines + `tests/cross-harness-validation.sh` 2,249 lines).
+- SUMMARY reconciles 3 task commits, 7 planned files, 4 ACs, and two execution-process deviations without product-scope expansion.
+- Pi validation is 347/349 versus baseline 341/343; all six new checks pass and the same two lifecycle checks fail.
+- WALT/SKIP/CODI/RUBY reports are finalized; QUALITY/CODI histories and the derived MODULE-LEDGER bootstrap are written.
