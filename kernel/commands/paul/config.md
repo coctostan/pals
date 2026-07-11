@@ -47,6 +47,24 @@ Preferences:
 [5] Done
 ```
 
+**Module efficacy (from ledger):**
+
+When `.paul/MODULE-LEDGER.md` exists, read its normalized table and append a per-module efficacy view to the dashboard:
+
+```
+Module efficacy (from ledger):
+  Module  dispatches | findings | actioned  Review
+  ARIA            12 |        0 |        0  demotion candidate
+  WALT            12 |        0 |        0  enforcement-exempt
+```
+
+- Count every valid module row as a dispatch, including `SKIP` and no-scope rows.
+- Count `Finding? = yes` and `Actioned? = yes` independently; do not infer either value from status alone.
+- Mark zero-finding advisory modules as `demotion candidate` for human review only.
+- Never suggest demotion for WALT, DEAN, TODD, or SETH when the ledger shows that module ever had scope; display `enforcement-exempt` instead.
+- Any enable/disable or demotion response requires explicit human approval before changing `pals.json`. Never auto-demote, auto-disable, or write config from efficacy output.
+- If the ledger is absent, malformed, or contains no valid rows, omit this view and preserve current config behavior unchanged; a malformed ledger may produce a compact warning but must not block normal config use.
+
 **Step 2: Handle user choice**
 
 **[1] Toggle a module:**
@@ -104,6 +122,7 @@ After any modification:
 2. Update the changed field
 3. Write pals.json with `json.dumps(config, indent=2)`
 4. Show confirmation of what changed
+5. For efficacy-driven changes, confirm the user explicitly approved the exact module toggle; displaying a demotion candidate is not approval.
 
 **Step 4: Completion**
 
@@ -123,4 +142,5 @@ Note: Run install.sh to apply module changes to your installation.
 - pals.json updated with user's changes
 - Dashboard display of current configuration
 - Clear indication of what changed
+- Optional per-module `dispatches | findings | actioned` read-out from `.paul/MODULE-LEDGER.md` when available
 </output>
