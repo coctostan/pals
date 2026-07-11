@@ -77,6 +77,7 @@ completed: YYYY-MM-DDTHH:MM:SSZ  # ISO timestamp when apply finished
 <!-- REQUIRED. If no module evidence survives finalization, this section MUST still be present. -->
 <!-- State WHY no modules fired: registry not loaded, no hooks registered for this phase, or modules read but produced no output. -->
 <!-- Do NOT omit this section. -->
+<!-- UNIFY harvests normalized rows from this section into the warm derived aid `.paul/MODULE-LEDGER.md`. -->
 
 <!-- Example subsection (from a test enforcement module):
 ### Test Execution
@@ -234,6 +235,7 @@ The one-liner should tell someone what actually shipped.
 **Contains:** Module-specific subsections with carried-forward annotations, reconciliation context, post-unify reports, and any recorded side effects worth preserving in the summary.
 **When included:** ALWAYS. This section is REQUIRED. If no modules fired, state why (registry not loaded, no hooks registered, etc.).
 **Update:** Drafted during UNIFY reconciliation and finalized after post-unify hooks, before the summary is closed.
+**Ledger:** UNIFY harvests this finalized section into `.paul/MODULE-LEDGER.md`; the SUMMARY remains the source evidence.
 
 ### Deviations Section
 **Purpose:** Document unplanned work and its handling.

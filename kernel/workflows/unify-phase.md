@@ -147,10 +147,20 @@ Call-site contract:
 4. Save SUMMARY.md before `check_phase_completion`.
 </step>
 
-<step name="render_unify_packet" priority="after-finalize-summary">
+<step name="append_module_ledger" priority="after-finalize-summary">
+**NON-BLOCKING derived-aid append.** Follow `docs/PALS-MODULE-EFFICACY-LEDGER-CONTRACT.md` as authoritative for row format and interpretation.
+
+1. Read only the finalized SUMMARY `## Module Execution Reports` section and derive the phase/plan identifier from the SUMMARY path.
+2. Normalize one `Phase | Module | Status | Finding? | Actioned?` row per module subsection or explicit module skip line, including `SKIP` and no-scope evidence. Use only `PASS`, `PASS_WITH_CONCERNS`, `WARN`, `BLOCK`, `SKIP`, or `NOTE`; never invent a finding or action trace absent from the SUMMARY evidence.
+3. If `.paul/MODULE-LEDGER.md` is absent, create it from `kernel/templates/MODULE-LEDGER.md`, then append the normalized rows without rewriting prior history.
+4. On missing, malformed, unreadable, or unwritable input, emit `[ledger] WARNING: module efficacy append skipped — {reason}` and continue. Append failure never gates `render_unify_packet`, `github_flow_merge_gate`, `check_phase_completion`, or transition routing.
+5. Never write ledger data to STATE/ROADMAP or let modules, helpers, adapters, or packet rendering own the append.
+</step>
+
+<step name="render_unify_packet" priority="after-module-ledger">
 **Optional: render a static HTML UNIFY review brief.**
 
-This step implements `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` (authoritative; the contract wins on any conflict) and instantiates `kernel/templates/HTML-PRESENTATION-PACKET.md`. It runs after `finalize_summary` (SUMMARY finalized with `## Module Execution Reports` written) and before `github_flow_merge_gate`.
+This step implements `docs/PALS-HTML-PRESENTATION-PACKETS-CONTRACT.md` (authoritative; the contract wins on any conflict) and instantiates `kernel/templates/HTML-PRESENTATION-PACKET.md`. It runs after `append_module_ledger` (SUMMARY finalized with `## Module Execution Reports` written) and before `github_flow_merge_gate`.
 
 **It is OPTIONAL and NON-BLOCKING. It is main-session only: NO subagents, NO Pi UI surfaces, NO background automation. It never writes STATE/ROADMAP lifecycle state, never gates the merge gate, `check_phase_completion`, or transition routing, and never merges or closes a PR.**
 
