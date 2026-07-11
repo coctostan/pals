@@ -9,11 +9,11 @@ See: .paul/PROJECT.md (active milestone: v2.73 Module Efficacy Ledger + Field Ha
 ## Current Position
 
 Milestone: v2.73 Module Efficacy Ledger + Field Harvest
-Phase: 306 of 308 (Ledger Contract + UNIFY Integration + Config Surfacing)
-Plan: 306-01 (UNIFY reconciled; merge gate pending)
-Status: UNIFY summary finalized — optional packet / merge gate pending
-Last activity: 2026-07-10 — Plan 306-01 SUMMARY finalized; WALT/SKIP/CODI/RUBY reports recorded; QUALITY/CODI histories and 19-row derived module ledger updated.
-Next action: Complete UNIFY optional packet decision, then GitHub Flow merge gate for PR #226
+Phase: 307 of 308 (Retroactive Field Harvest)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-07-10 — Phase 306 complete via merged PR #226 (`096f6ab6`); transitioned to Phase 307.
+Next action: /paul:plan for Phase 307
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -27,7 +27,7 @@ Progress:
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
-- v2.73 Module Efficacy Ledger + Field Harvest: [░░░░░░░░░░] 0% (Phases 306–308; created 2026-07-10)
+- v2.73 Module Efficacy Ledger + Field Harvest: [███░░░░░░░] 33% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 ready to plan)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [UNIFY reconciled — optional packet / PR #226 merge gate pending]
+  ○        ○        ○     [Phase 307 ready to plan]
 ```
 
 ## Accumulated Context
@@ -45,7 +45,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - PLAN/APPLY/UNIFY remains authoritative; `.paul/*` artifacts are lifecycle truth; archives under `.paul/archive/*` hold history.
 - v2.64 completed the module instruction audit/context-efficiency rewrite and is archived.
 - v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283: authoritative contract, AGENTS/init Engineering Principles + brownfield map-codebase signals, TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance, and advisory ARCH side-effect-boundary guidance — all with project conventions and local idioms preserved as authoritative and no new default blocking functional-style gates.
-- Phase 306 APPLY shipped the forward-looking Module Efficacy Ledger contract/template, non-blocking UNIFY append, human-gated config efficacy view, and six Pi validation markers; PR #226 is open.
+- Phase 306 completed via PR #226: forward-looking ledger contract/template, non-blocking UNIFY append, human-gated config efficacy, six Pi checks, and a 19-row bootstrap ledger.
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -69,6 +69,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-05-20: Phase 294 S4 delivery extraction completed | 294-01-SUMMARY.md / PR #213 | `guided-workflow-delivery.ts` owns canonical guided-workflow reply delivery/config while `pals-hooks.ts` remains orchestration; validation passed install 9 extensions, Pi 329/329, cross-harness 234/234. |
 | 2026-05-21: Phase 295 context-offload ranking completed | 295-01-SUMMARY.md / PR #214 | Measured S4 offload (`pals-hooks.ts` 671→546 lines; S4 sibling 148 lines), ranked shared filesystem/state helper extraction as the next contract-first recommendation, and added Pi/cross-harness guardrails; validation Pi 331/331, cross-harness 235/235. |
 | 2026-06-04: v2.71 milestone complete | /paul:milestone | HTML Presentation Packets (Phases 299–302) shipped static, artifact-derived, optional/non-blocking/non-authoritative HTML review briefs for milestone/PLAN/APPLY/UNIFY + README/contract surfacing + CC↔Pi parity guardrails; closed via PR #222 `96a556bc`, tag `v2.71`; cross-harness 253/253, Pi e2e 342/342. Detail archived ([v2.71](archive/roadmap/v2.71-html-presentation-packets.md)). Next candidate: shared runtime helper extraction. |
+| 2026-07-10: Module efficacy ledger is derived and workflow-owned | Phase 306 / PR #226 | SUMMARY reports remain source evidence; ledger writes never gate lifecycle flow. |
+| 2026-07-10: Config efficacy stays human-gated | Phase 306 / PR #226 | Advisory zero-finding modules may be reviewed; WALT/DEAN/TODD/SETH remain demotion-exempt wherever scoped. |
+| 2026-07-10: Actioned counts require trace evidence | Phase 306 / PR #226 | Only a later fix, PLAN task, or logged debt entry supports `Actioned? = yes`. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -104,20 +107,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: `feature/306-ledger-contract-unify-integration-config-surfacing`; synced with origin branch.
-PR: #226 open — https://github.com/coctostan/pals/pull/226
-CI: Socket Security checks passing; UNIFY owns the blocking merge gate.
-Transition state: Phase 306 APPLY complete; UNIFY owns reconciliation and merge readiness.
+Branch: `main`; synced with `origin/main`.
+PR: #226 merged — https://github.com/coctostan/pals/pull/226
+CI: Socket Security checks passed before merge.
+Last merge: `096f6ab6` (Phase 306 Module Efficacy Ledger).
 
 ## Session Continuity
 
-Last session: 2026-07-10 — Plan 306-01 UNIFY reconciliation completed; merge gate not yet run.
-Stopped at: SUMMARY and mandatory post-unify evidence finalized; optional UNIFY packet / merge gate pending.
-Next action: Decide optional UNIFY packet, then run the PR #226 merge gate.
-Resume file: .paul/phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md
-unify_result: IN_PROGRESS — reconciliation finalized; 4 ACs pass (AC-4 with inherited lifecycle concerns); merge gate pending.
-git: github-flow; branch `feature/306-ledger-contract-unify-integration-config-surfacing`, PR #226 open, Socket Security passing.
+Last session: 2026-07-10 — Phase 306 completed and transitioned to Phase 307.
+Stopped at: Phase 307 ready to plan.
+Next action: /paul:plan for Phase 307
+Resume file: .paul/ROADMAP.md
+transition_result: PASS — Phase 306 PLAN/SUMMARY 1/1, PR #226 merged, base synchronized.
+git: github-flow; `main` synchronized with `origin/main`; PR #226 merged as `096f6ab6`.
 Resume context:
-- SUMMARY reconciles 3 task commits, 7 planned files, 4 ACs, and two execution-process deviations without product-scope expansion.
-- Pi validation is 347/349 versus baseline 341/343; all six new checks pass and the same two lifecycle checks fail.
-- WALT/SKIP/CODI/RUBY reports are finalized; QUALITY/CODI histories and the derived MODULE-LEDGER bootstrap are written.
+- Phase 307 owns explicit retroactive harvest across known SUMMARY dialects into the fixed ledger schema.
+- Preserve pull-based discovery, no telemetry, no auto-config, and source-SUMMARY traceability.
+- Inherited lifecycle validation debt was repaired during transition by compacting completed Phase 306 ROADMAP detail, refreshing MILESTONES, and archiving the consumed handoff.

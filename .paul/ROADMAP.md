@@ -10,21 +10,20 @@ Closed-milestone detail archived (see `## Completed Milestones` table below; pre
 
 **v2.73 Module Efficacy Ledger + Field Harvest** (v2.73)
 Status: 🚧 In Progress
-Phases: 0 of 3 complete
-Focus: Close the evidence loop — PALS reads its own module dispatch paperwork, per-project and across field deployments, and turns it into human-gated improvement proposals. Ledger/harvest outputs are derived aids; `.paul/*` PLAN/APPLY/UNIFY remain lifecycle truth; harvest is explicit/pull-based (no telemetry); enforcement modules (WALT/DEAN/TODD/SETH) never auto-demote where they have ever had scope; ledger is a warm artifact exempt from hot-path budgets.
+Phases: 1 of 3 complete
+Focus: Aggregate dispatch evidence into human-gated improvements. Ledgers remain derived, warm, pull-based, and non-authoritative; no telemetry or auto-config; WALT/DEAN/TODD/SETH stay demotion-exempt where scoped.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
-| 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | UNIFY / PR #226 | - |
-| 307 | Retroactive Field Harvest | TBD | Not started | - |
+| 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | ✅ Complete | 2026-07-10 |
+| 307 | Retroactive Field Harvest | TBD | 🔵 Ready to plan | - |
 | 308 | Proposal Batch + Validation/Closure | TBD | Not started | - |
 
-### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing
-Focus: Ledger format/authority contract (derived aid; workflow-owned writes); `unify-phase.md` append step emitting `Phase | Module | Status | Finding? | Actioned?` rows to `.paul/MODULE-LEDGER.md`; MODULE-LEDGER template; `/paul:config` per-module efficacy read-out with human-approved changes only and enforcement-module demotion exemption. Ships a complete, immediately usable feature: the forward-looking ledger accrues on every project from this phase onward.
-Plans: [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-PLAN.md) — UNIFY reconciled; merge pending.
+### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing — Complete
+Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the derived ledger contract/template, non-blocking UNIFY append, human-gated config efficacy view, and six validation checks via PR #226.
 
 ### Phase 307: Retroactive Field Harvest
-Focus: Extraction pass over existing SUMMARY dispatch tables in field deployments (quark ~127 phases, hybrid-energy-reasoner ~59 phases, pals ~297 phases) to seed ledgers. Known risk: at least three dispatch-table dialects exist (quark lowercase per-module rows, HER uppercase combined skip lines, pre-table early phases) — plan must define normalization rules plus explicit `unparseable-phase` handling; split the phase if dialect coverage proves larger than planned.
+Focus: Explicitly harvest existing field SUMMARY dispatch evidence into normalized ledgers. Cover three known dialects (lowercase module rows, uppercase combined skips, pre-table phases), define `unparseable-phase`, and split scope if dialect coverage expands.
 Plans: TBD (defined during /paul:plan)
 
 ### Phase 308: Proposal Batch + Validation/Closure
@@ -32,7 +31,7 @@ Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement pr
 Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone
-Run /paul:discuss-milestone or /paul:milestone after v2.73. Deferred standing candidate: validation-suite decomposition — `tests/pi-end-to-end-validation.sh` (2,812 lines) and `tests/cross-harness-validation.sh` (2,249 lines) remain the largest, fastest-growing files (deferred 2026-07-10: field-evidence harvesting judged higher value than further self-maintenance). Follow-on candidates informed by v2.73 ledger data: project profiles at init, per-project `module_params`, carried-findings memory, `/paul:harvest` command, config-only in-loop adaptation.
+Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candidate: validation-suite decomposition; additional candidates should be promoted only when v2.73 harvested evidence justifies them.
 
 ## Completed Milestones
 
@@ -70,4 +69,4 @@ Run /paul:discuss-milestone or /paul:milestone after v2.73. Deferred standing ca
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-07-10 — Phase 306 Plan 01 reconciled; PR #226 merge gate pending.*
+*Last updated: 2026-07-10 — Phase 306 complete via PR #226; Phase 307 ready to plan.*
