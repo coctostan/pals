@@ -4,7 +4,7 @@
 PALS — the Linux of Harness Engineering. Minimal kernel, modular pals, universal drivers. PAUL (project lifecycle) is the kernel. CARL (context rules), TODD (TDD enforcement), and WALT (quality gating) are first-party modules. Drivers make it run on any agentic coding platform.
 
 ## Milestones
-Closed-milestone detail archived (see `## Completed Milestones` table below; pre-v2.44 detail in [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md); v2.44 detail in [archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md)).
+Closed-milestone detail archived: see `## Completed Milestones` below, [pre-v2.44](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md), and [v2.44](archive/roadmap/v2.44-pals-context-optimization-process-artifacts.md).
 
 ## Current Milestone
 
@@ -16,15 +16,15 @@ Focus: Aggregate dispatch evidence into human-gated improvements. Ledgers remain
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | ✅ Complete | 2026-07-10 |
-| 307 | Retroactive Field Harvest | TBD | 🔵 Ready to plan | - |
+| 307 | Retroactive Field Harvest | 307-01, 307-02 | 🟡 Planning | - |
 | 308 | Proposal Batch + Validation/Closure | TBD | Not started | - |
 
 ### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing — Complete
-Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the derived ledger contract/template, non-blocking UNIFY append, human-gated config efficacy view, and six validation checks via PR #226.
+Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the ledger contract/template, non-blocking UNIFY append, human-gated config efficacy, and six checks via PR #226.
 
 ### Phase 307: Retroactive Field Harvest
-Focus: Explicitly harvest existing field SUMMARY dispatch evidence into normalized ledgers. Cover three known dialects (lowercase module rows, uppercase combined skips, pre-table phases), define `unparseable-phase`, and split scope if dialect coverage expands.
-Plans: TBD (defined during /paul:plan)
+Focus: Harvest existing field SUMMARY dispatch evidence into normalized ledgers. Recon found 5+ dialects plus a nested foreign-evidence exclusion class, so the split trigger fired.
+Plans: [307-01](phases/307-retroactive-field-harvest/307-01-PLAN.md) contract + fixture-tested read-only harvester + pals self-harvest (ready to apply); 307-02 quark/hybrid execution + roll-up (not started).
 
 ### Phase 308: Proposal Batch + Validation/Closure
 Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/` (first: REV finding-class escalation rule from quark Phase 127 — same-class findings recurring at REV round 2+ escalate to a routed phase instead of continued instance-by-instance fix passes); guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes.
@@ -69,4 +69,4 @@ Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candida
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-07-10 — Phase 306 complete via PR #226; Phase 307 ready to plan.*
+*Last updated: 2026-07-10 — Phase 307 split into 307-01/307-02; Plan 307-01 ready to apply.*

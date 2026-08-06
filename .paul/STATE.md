@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (active milestone: v2.73 Module Efficacy Ledger + Field Ha
 
 Milestone: v2.73 Module Efficacy Ledger + Field Harvest
 Phase: 307 of 308 (Retroactive Field Harvest)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-07-10 — Phase 306 complete via merged PR #226 (`096f6ab6`); transitioned to Phase 307.
-Next action: /paul:plan for Phase 307
+Plan: [307-01](phases/307-retroactive-field-harvest/307-01-PLAN.md) — created, ready to apply
+Status: Ready to apply
+Last activity: 2026-07-10 — Plan 307-01 created (field-harvest normalization contract + fixture-tested harvester + pals self-harvest).
+Next action: /paul:apply for Plan 307-01
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -27,7 +27,7 @@ Progress:
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
-- v2.73 Module Efficacy Ledger + Field Harvest: [███░░░░░░░] 33% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 ready to plan)
+- v2.73 Module Efficacy Ledger + Field Harvest: [███░░░░░░░] 33% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 planning — Plan 307-01 ready to apply, 307-02 scoped for external-deployment harvest)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 307 ready to plan]
+  ✓        ○        ○     [Plan 307-01 created]
 ```
 
 ## Accumulated Context
@@ -114,13 +114,14 @@ Last merge: `096f6ab6` (Phase 306 Module Efficacy Ledger).
 
 ## Session Continuity
 
-Last session: 2026-07-10 — Phase 306 completed and transitioned to Phase 307.
-Stopped at: Phase 307 ready to plan.
-Next action: /paul:plan for Phase 307
-Resume file: .paul/ROADMAP.md
+Last session: 2026-07-10 — Phase 307 planned; Plan 307-01 created.
+Stopped at: Plan 307-01 created, awaiting APPLY.
+Next action: /paul:apply for Plan 307-01
+Resume file: .paul/phases/307-retroactive-field-harvest/307-01-PLAN.md
 transition_result: PASS — Phase 306 PLAN/SUMMARY 1/1, PR #226 merged, base synchronized.
 git: github-flow; `main` synchronized with `origin/main`; PR #226 merged as `096f6ab6`.
 Resume context:
-- Phase 307 owns explicit retroactive harvest across known SUMMARY dialects into the fixed ledger schema.
-- Preserve pull-based discovery, no telemetry, no auto-config, and source-SUMMARY traceability.
-- Inherited lifecycle validation debt was repaired during transition by compacting completed Phase 306 ROADMAP detail, refreshing MILESTONES, and archiving the consumed handoff.
+- Field recon found 5+ SUMMARY dialects (not the 3 the roadmap assumed) plus a foreign-evidence exclusion class, so Phase 307 was split: 307-01 = contract + harvester + pals self-harvest; 307-02 = quark/hybrid execution + roll-up.
+- Approved decisions: `tools/harvest-module-ledger.sh` outside kernel surface; deployment-namespaced Phase cell (`quark/127-01`); output in `.paul/field-harvest/`; retroactive harvest never emits `Actioned? = yes`.
+- Preserve pull-based discovery, no telemetry, no auto-config, read-only field deployments, and source-SUMMARY traceability.
+- Baseline is clean: artifact_consistency PASS, ROADMAP 11,983 B under the 12,000 ceiling; the Phase 306 lifecycle debt is repaired and out of scope.
