@@ -104,6 +104,52 @@ Source: `quark/.paul/phases/85-kernel-correctness/85-01-SUMMARY.md:45-50`
 
 The parenthesized hook and any trailing parenthesized detail on the result are stripped before mapping.
 
+### Dialect F — count-based outcomes
+
+Markdown table, structurally identical to A or D, whose outcome cell reports a **finding count** instead of a status token.
+
+Anchor: an outcome cell matching `^[0-9]+ <noun>`.
+
+Source: `.paul/phases/132-smart-question-gating/132-01-SUMMARY.md:57-63` and `.paul/phases/133-greenfield-fast-path/133-01-SUMMARY.md:65-70`
+
+```text
+| Module | Hook | Result |
+| IRIS | post-apply | 0 concerns (net size reduction: 914→854) |
+| DOCS | post-apply | 0 drift (internal workflow change) |
+| RUBY | post-apply | 0 debt (reduced) |
+| SKIP | post-apply | 1 decision captured |
+```
+
+These record that a module ran and what it found, without using status vocabulary. Mapping is defined in §4.
+
+### Module cell normalization
+
+Across all table dialects, a module cell may carry a hook suffix in either form:
+
+```text
+WALT (post-apply)     parenthesized
+WALT post-unify       space-separated
+```
+
+The **leading word** identifies the module. Trailing hook and qualifier words are discarded. A leading word that does not resolve against the canonical registry is `unknown-module` (§7); it is never guessed from the remaining words.
+
+### Dispatch table qualification
+
+A `Module` first column is **not** sufficient to make a table dispatch evidence. Phase SUMMARYs also contain module *design grade* tables and *dependency upgrade* tables with the same first column:
+
+```text
+| Module | Domain | Criteria | Grade |     <- design grades, NOT dispatch
+| Module | Before | After | Upgraded In |   <- dependency upgrades, NOT dispatch
+```
+
+A table qualifies as dispatch evidence only when its header also contains one of these outcome columns, which is then read as the status cell in this preference order:
+
+```text
+Status  >  Result  >  Outcome  >  Report  >  Evidence
+```
+
+`Hook` is a qualifier, never the status column. There is **no positional fallback**: a table with no recognized outcome column is not dispatch evidence and contributes no rows and no manifest entries. Guessing a column would fabricate dispatch records out of unrelated tables, which is worse than harvesting nothing.
+
 ### Dialect E — explicit status line (current)
 
 The shape emitted by the current UNIFY workflow: an `### MODULE` heading followed by an inline status triple.
@@ -144,6 +190,18 @@ Rationale: E carries explicit `Finding?`/`Actioned?` tokens and loses the least 
 
 The mapping is a **total function over observed tokens**. Comparison is case-insensitive after trimming whitespace, backticks, bold markers, and trailing parenthesized detail.
 
+### Outcome cell suffix
+
+An outcome cell frequently carries an explanation after an em-dash or a spaced hyphen:
+
+```text
+Skip — no TS/JS source files changed
+SKIP/PASS — no dependency manifest changed
+PASS - appended quality history row
+```
+
+Only the **leading token** before the first ` — `, ` – `, or ` - ` separator is the status. The remainder is explanatory prose and is discarded. This is lexical truncation, not interpretation: the leading token is still subject to the mapping table below, and still becomes `unmapped-status` if absent from it.
+
 | Source token | Normalized |
 |---|---|
 | `PASS`, `pass` | `PASS` |
@@ -158,6 +216,22 @@ The mapping is a **total function over observed tokens**. Comparison is case-ins
 | `skipped-no-symbols` | `SKIP` |
 | `NOT_APPLICABLE`, `n/a` | `SKIP` |
 | `NOTE`, `captured in SUMMARY` | `NOTE` |
+
+### Count-based outcomes (dialect F)
+
+An outcome cell of the form `N <noun>` reports a finding count rather than a status. The count and the noun together determine the row:
+
+| Outcome cell | Normalized | `Finding?` |
+|---|---|---|
+| `0 <noun>` for any recognized noun | `PASS` | `no` |
+| `N <noun>` where N ≥ 1 and noun ∈ {`concern(s)`, `drift`, `debt`, `flag(s)`, `issue(s)`} | `PASS_WITH_CONCERNS` | `yes` |
+| `N decision(s) captured` for any N | `NOTE` | `no` |
+
+Recognized nouns are exactly: `concern`, `concerns`, `drift`, `debt`, `flag`, `flags`, `issue`, `issues`, `decision`, `decisions`.
+
+A count paired with an unrecognized noun is `unmapped-status`. The no-silent-coercion rule below applies unchanged — the count form is a mapping entry, not a licence to interpret arbitrary prose.
+
+Captured decisions are `NOTE` with `Finding? = no` because a recorded decision is knowledge capture, not a defect the module found.
 
 ### Combined alternates
 

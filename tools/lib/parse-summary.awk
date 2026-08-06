@@ -16,7 +16,24 @@ function trim(s) {
 function clean_token(s) {
   gsub(/[`*]/, "", s)
   sub(/[[:space:]]*\([^()]*\)[[:space:]]*$/, "", s)
+  # Outcome cells carry explanatory prose after an em/en dash or spaced hyphen.
+  # Keep only the leading token (contract §4 "Outcome cell suffix").
+  sub(/[[:space:]]+(—|–|-)[[:space:]].*$/, "", s)
+  sub(/[[:space:]]*\([^()]*\)[[:space:]]*$/, "", s)
   return trim(s)
+}
+
+# Count-based outcomes: `0 drift`, `2 debt items flagged`, `1 decision captured`
+# (contract §4 "Count-based outcomes"). Returns "" when not a count form.
+function map_count(tok,   t, n, noun) {
+  t = tolower(clean_token(tok))
+  if (t !~ /^[0-9]+[[:space:]]+[a-z]/) return ""
+  n = t; sub(/[[:space:]].*$/, "", n)
+  noun = t; sub(/^[0-9]+[[:space:]]+/, "", noun); sub(/[[:space:]].*$/, "", noun)
+
+  if (noun ~ /^decisions?$/) return "NOTE"
+  if (noun !~ /^(concerns?|drift|debt|flags?|issues?)$/) return ""
+  return (n + 0 == 0) ? "PASS" : "PASS_WITH_CONCERNS"
 }
 
 # ── Status mapping (contract §4) ─────────────────────────────────────────────
@@ -42,6 +59,10 @@ function map_status(tok,   t, n, parts, i, best, cur) {
     }
     return best
   }
+
+  cur = map_count(tok)
+  if (cur != "") return cur
+
   return ""
 }
 
@@ -86,10 +107,26 @@ function is_separator(arr, n,   i) {
   return 1
 }
 
-function is_table_header(line,   c, n) {
+# Returns the status column index for a dispatch-table header, or 0 if this is
+# not a dispatch table. A `Module` column alone is NOT sufficient: module design
+# grade tables and dependency upgrade tables also have one (contract §3
+# "Dispatch table qualification"). Preference order avoids Hook, which is a
+# qualifier rather than an outcome.
+function dispatch_status_col(line,   c, n, j, h, best, rank) {
   if (line !~ /^[[:space:]]*\|/) return 0
   n = split_cells(line, c)
-  return (tolower(trim(c[1])) == "module")
+  if (tolower(trim(c[1])) != "module") return 0
+
+  best = 0; rank = 99
+  for (j = 2; j <= n; j++) {
+    h = tolower(trim(c[j]))
+    if (h == "status"   && rank > 1) { best = j; rank = 1 }
+    if (h == "result"   && rank > 2) { best = j; rank = 2 }
+    if (h == "outcome"  && rank > 3) { best = j; rank = 3 }
+    if (h == "report"   && rank > 4) { best = j; rank = 4 }
+    if (h == "evidence" && rank > 5) { best = j; rank = 5 }
+  }
+  return best
 }
 
 # ── Prose status search, longest token first ─────────────────────────────────
@@ -150,7 +187,7 @@ END {
   has_e = 0; has_table = 0; has_dispatch = 0
   for (i = 1; i <= NR; i++) {
     if (L[i] ~ /Status:[^|]*\|[[:space:]]*Finding\?:/) has_e = 1
-    if (is_table_header(L[i]))                          has_table = 1
+    if (dispatch_status_col(L[i]) > 0)                  has_table = 1
     if (L[i] ~ /\[dispatch\]/)                          has_dispatch = 1
   }
 
@@ -200,9 +237,9 @@ function parse_e(   i, line, cur, s, f, a, st) {
 }
 
 # ── Dialects A / B / D ───────────────────────────────────────────────────────
-function parse_tables(   i, line, c, n, j, h, first, in_table, status_col,
+function parse_tables(   i, line, c, n, first, in_table, status_col,
                          modcell, mm, lm, k, parts, q, p, w, fw, ambiguous) {
-  in_table = 0; status_col = 2
+  in_table = 0; status_col = 0
   for (i = 1; i <= NR; i++) {
     line = L[i]
     if (line !~ /^[[:space:]]*\|/) { in_table = 0; continue }
@@ -212,12 +249,10 @@ function parse_tables(   i, line, c, n, j, h, first, in_table, status_col,
 
     first = tolower(trim(c[1]))
     if (first == "module") {
-      in_table = 1
-      status_col = 2
-      for (j = 2; j <= n; j++) {
-        h = tolower(trim(c[j]))
-        if (h == "outcome" || h == "result" || h == "status") { status_col = j; break }
-      }
+      # A non-dispatch module table (grades, upgrades) closes any open table
+      # and contributes nothing.
+      status_col = dispatch_status_col(line)
+      in_table = (status_col > 0)
       continue
     }
     if (!in_table) continue
@@ -247,7 +282,10 @@ function parse_tables(   i, line, c, n, j, h, first, in_table, status_col,
       continue
     }
 
-    lm = tolower(mm)
+    # The leading word identifies the module; trailing hook/qualifier words
+    # are discarded (contract §3 "Module cell normalization").
+    split(mm, w, /[[:space:]]+/)
+    lm = tolower(w[1])
     if (!(lm in REG)) { emit_manifest("unknown-module", mm); continue }
     emit_mapped(lm, c[status_col])
   }

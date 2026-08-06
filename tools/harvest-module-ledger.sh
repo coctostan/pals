@@ -67,17 +67,26 @@ PHASES_DIR="$ROOT_ABS/.paul/phases"
 [ -d "$PHASES_DIR" ] || die "no .paul/phases directory under --root: $ROOT_ABS"
 
 # ── Write-boundary enforcement ───────────────────────────────────────────────
-# Two distinct guarantees, in priority order:
-#   1. HARD: output never lands inside the harvested deployment. This is the
-#      contract-critical read-only guarantee and has no exceptions.
-#   2. Output otherwise stays inside the PALS repo, or a process temp dir so
+# Three guarantees, in priority order:
+#   1. HARD: output never lands inside ANY deployment's source evidence tree
+#      (.paul/phases). This is the contract-critical read-only guarantee.
+#   2. When harvesting an EXTERNAL deployment, output never lands anywhere
+#      inside it. Self-harvest is exempt: this repo's own .paul/field-harvest
+#      is the contract-designated destination (contract §8).
+#   3. Output otherwise stays inside the PALS repo, or a process temp dir so
 #      fixtures can be harvested without touching the working tree.
 mkdir -p -- "$OUT_DIR"
 OUT_ABS="$(cd -- "$OUT_DIR" && pwd -P)"
 
 case "$OUT_ABS/" in
-  "$ROOT_ABS"/*) die "refusing to write inside the harvested deployment: $OUT_ABS (root: $ROOT_ABS)" ;;
+  "$PHASES_DIR"/*) die "refusing to write inside source evidence: $OUT_ABS (phases: $PHASES_DIR)" ;;
 esac
+
+if [ "$ROOT_ABS" != "$REPO_ROOT" ]; then
+  case "$OUT_ABS/" in
+    "$ROOT_ABS"/*) die "refusing to write inside the harvested deployment: $OUT_ABS (root: $ROOT_ABS)" ;;
+  esac
+fi
 
 TMP_ROOT="$(cd -- "${TMPDIR:-/tmp}" && pwd -P)"
 case "$OUT_ABS/" in

@@ -30,3 +30,12 @@ fixture/07	WALT	PASS	no	n/a
 fixture/08-01	WALT	PASS	no	n/a
 fixture/09-01	IRIS	PASS	no	n/a
 fixture/09-01	WALT	PASS	no	n/a
+fixture/10-01	DEAN	SKIP	no	n/a
+fixture/10-01	DOCS	PASS	no	n/a
+fixture/10-01	IRIS	PASS	no	n/a
+fixture/10-01	RUBY	PASS_WITH_CONCERNS	yes	no
+fixture/10-01	SKIP	NOTE	no	n/a
+fixture/10-01	TODD	SKIP	no	n/a
+fixture/10-01	WALT	PASS	no	n/a
+fixture/11-01	CODI	SKIP	no	n/a
+fixture/11-01	WALT	PASS	no	n/a
