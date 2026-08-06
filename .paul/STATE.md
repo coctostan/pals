@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (active milestone: v2.73 Module Efficacy Ledger + Field Ha
 
 Milestone: v2.73 Module Efficacy Ledger + Field Harvest
 Phase: 307 of 308 (Retroactive Field Harvest)
-Plan: [307-01](phases/307-retroactive-field-harvest/307-01-PLAN.md) — created, ready to apply
-Status: Ready to apply
-Last activity: 2026-07-10 — Plan 307-01 created (field-harvest normalization contract + fixture-tested harvester + pals self-harvest).
-Next action: /paul:apply for Plan 307-01
+Plan: [307-01](phases/307-retroactive-field-harvest/307-01-PLAN.md) — APPLY complete, PR #227 open
+Status: Ready to unify
+Last activity: 2026-07-10 — Plan 307-01 APPLY complete: contract, harvester, 11 fixtures, pals self-harvest (207 rows / 270 manifest entries); Pi 355/355, cross-harness 257/257.
+Next action: /paul:unify for Plan 307-01
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan 307-01 created]
+  ✓        ✓        ○     [Plan 307-01 APPLY complete; PR #227 open]
 ```
 
 ## Accumulated Context
@@ -114,14 +114,15 @@ Last merge: `096f6ab6` (Phase 306 Module Efficacy Ledger).
 
 ## Session Continuity
 
-Last session: 2026-07-10 — Phase 307 planned; Plan 307-01 created.
-Stopped at: Plan 307-01 created, awaiting APPLY.
-Next action: /paul:apply for Plan 307-01
+Last session: 2026-07-10 — Plan 307-01 APPLY complete; PR #227 opened.
+Stopped at: APPLY complete, awaiting UNIFY.
+Next action: /paul:unify for Plan 307-01
 Resume file: .paul/phases/307-retroactive-field-harvest/307-01-PLAN.md
 transition_result: PASS — Phase 306 PLAN/SUMMARY 1/1, PR #226 merged, base synchronized.
-git: github-flow; `main` synchronized with `origin/main`; PR #226 merged as `096f6ab6`.
+git: github-flow; branch `feature/307-retroactive-field-harvest`; PR #227 OPEN and MERGEABLE, Socket Security checks passed.
 Resume context:
-- Field recon found 5+ SUMMARY dialects (not the 3 the roadmap assumed) plus a foreign-evidence exclusion class, so Phase 307 was split: 307-01 = contract + harvester + pals self-harvest; 307-02 = quark/hybrid execution + roll-up.
-- Approved decisions: `tools/harvest-module-ledger.sh` outside kernel surface; deployment-namespaced Phase cell (`quark/127-01`); output in `.paul/field-harvest/`; retroactive harvest never emits `Actioned? = yes`.
-- Preserve pull-based discovery, no telemetry, no auto-config, read-only field deployments, and source-SUMMARY traceability.
-- Baseline is clean: artifact_consistency PASS, ROADMAP 11,983 B under the 12,000 ceiling; the Phase 306 lifecycle debt is repaired and out of scope.
+- Phase 307 split into 307-01 (contract + harvester + pals self-harvest, done) and 307-02 (quark/hybrid execution + roll-up, not started).
+- APPLY found dialect coverage is six, not three: added dialect F (count-based outcomes), em-dash prose suffix stripping, space-separated hook suffixes, and dispatch-table qualification so grade/upgrade tables cannot fabricate rows.
+- Cross-check: harvested `pals/306-01` reproduces all 19 forward UNIFY rows in `.paul/MODULE-LEDGER.md` exactly.
+- Self-harvest yielded 207 rows and 270 manifest entries (151 no-dispatch-evidence, 111 unmapped-status long-tail prose, 6 excluded-foreign-evidence, 2 unknown-module). The unmapped tail is deliberately un-coerced and is Phase 308 input.
+- Validation: Pi 355/355, cross-harness 257/257, artifact_consistency PASS, `.paul/MODULE-LEDGER.md` byte-identical.
