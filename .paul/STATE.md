@@ -114,12 +114,13 @@ Last merge: `096f6ab6` (Phase 306 Module Efficacy Ledger).
 
 ## Session Continuity
 
-Last session: 2026-07-10 — Plan 307-01 APPLY complete; PR #227 opened.
+Last session: 2026-08-06 — Plan 307-01 APPLY completed and PR #227 opened; session paused before UNIFY.
 Stopped at: APPLY complete, awaiting UNIFY.
 Next action: /paul:unify for Plan 307-01
-Resume file: .paul/phases/307-retroactive-field-harvest/307-01-PLAN.md
+Resume file: .paul/HANDOFF-2026-08-06-307-01-unify-pending.md
+wip_result: skipped — only untracked item is `.paul/presentation-packets/`, a derived regenerable packet; all 5 phase commits are pushed.
 transition_result: PASS — Phase 306 PLAN/SUMMARY 1/1, PR #226 merged, base synchronized.
-git: github-flow; branch `feature/307-retroactive-field-harvest`; PR #227 OPEN and MERGEABLE, Socket Security checks passed.
+git: github-flow; branch `feature/307-retroactive-field-harvest` (5 ahead of main, level with its remote); PR #227 OPEN and MERGEABLE, Socket Security checks passed.
 Resume context:
 - Phase 307 split into 307-01 (contract + harvester + pals self-harvest, done) and 307-02 (quark/hybrid execution + roll-up, not started).
 - APPLY found dialect coverage is six, not three: added dialect F (count-based outcomes), em-dash prose suffix stripping, space-separated hook suffixes, and dispatch-table qualification so grade/upgrade tables cannot fabricate rows.
