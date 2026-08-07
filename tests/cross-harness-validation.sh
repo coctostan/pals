@@ -2304,6 +2304,13 @@ if fh_check_forward_ledger_unpolluted "$REPO_ROOT/.paul/MODULE-LEDGER.md"; then
 else
   tap_not_ok "UNIFY-owned .paul/MODULE-LEDGER.md contains no namespaced harvest rows" "$FH_LAST_MISSING"
 fi
+
+# Phase 308 proposal-batch completeness and non-authority guardrails.
+fh_tap() { local n="$1"; shift; if "$@"; then tap_ok "$n"; else tap_not_ok "$n" "$FH_LAST_MISSING"; fi; }
+fh_tap "Proposal batch accounts for all 17 source-cited unactioned finding keys" \
+  fh_check_proposal_evidence_completeness "$REPO_ROOT"
+fh_tap "Proposal batch preserves proposed-only human routing and efficacy boundaries" \
+  fh_check_proposal_routing_posture "$REPO_ROOT"
 echo ""
 echo "# ════════════════════════════════════════"
 echo "# SUMMARY"
