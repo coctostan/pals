@@ -28,7 +28,7 @@ Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ cont
 
 ### Phase 308: Proposal Batch + Validation/Closure — Complete
 Focus: Source-audited 17/17 unactioned findings into three proposed-only human routes and regression-locked completeness/non-authority posture.
-Plan [308-01](phases/308-proposal-batch-validation-closure/308-01-SUMMARY.md) ✅ — three human-routed proposals + four TAP guardrails; final Pi 364/364, cross-harness 261/261; PR #229 merged implementation.
+Plan [308-01](phases/308-proposal-batch-validation-closure/308-01-SUMMARY.md) ✅ — three proposals + four TAP guardrails; final Pi 364/364, XH 261/261; PR #229 implementation + #230 closure merged.
 
 ## Next Milestone
 Run `/paul:milestone` to archive/index/tag v2.73. Standing candidate: validation-suite decomposition; other proposals remain human-routed candidates, not approved roadmap commitments.

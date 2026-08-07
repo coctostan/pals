@@ -129,6 +129,7 @@ completed: 2026-08-07T15:37:00Z
 | Proposal batch and three routes | `28c5897f` | 4 files, 231 insertions |
 | Proposal evidence/routing guardrails | `d7b932cb` | 3 files, 125 insertions |
 | GitHub squash merge | `31ce90f6` / PR #229 | Both implementation commits merged to `main`; Socket checks passed |
+| GitHub lifecycle closure | `34633c26` / PR #230 | SUMMARY, histories, lifecycle transition, and handoff archive merged with passing checks |
 
 ## Files Created/Modified
 
@@ -151,14 +152,14 @@ No planned implementation file was omitted and no unplanned implementation file 
 | Keep every proposal proposed-only and human-routed | Efficacy evidence is warm and non-authoritative; aggregate counts cannot approve framework changes | Future adoption requires a normal approved PLAN; no config/kernel/module behavior changed in Phase 308 |
 | Treat quark 120-01 RUBY `BLOCK` as normalized overstatement | Authoritative source wording says no new refactor block | Prevents a parser label from manufacturing proposal weight |
 | Preserve APPLY's PROJECT-budget failure as baseline evidence, then compact during UNIFY | It existed before implementation, so it was not a Phase 308 regression; transition still required a green hot-artifact state | WALT history retains exact APPLY evidence while final closure reaches Pi 364/364 |
-| Reconcile PR #229 as an early-merge deviation | Implementation was squash-merged before SUMMARY/lifecycle finalization | UNIFY lifecycle artifacts require a follow-up closure commit/PR rather than pretending they were in #229 |
+| Reconcile PR #229 as an early-merge deviation | Implementation was squash-merged before SUMMARY/lifecycle finalization | Follow-up PR #230 isolated and merged lifecycle closure rather than pretending metadata was in #229 |
 
 ## Deviations from Plan
 
 | Type | Count | Impact |
 |------|-------|--------|
 | Validation baseline concern, resolved | 1 | Pi's inherited PROJECT-budget failure remained through APPLY, then UNIFY compacted PROJECT below 25,000 bytes and final Pi passed 364/364 |
-| GitHub Flow ordering | 1 | PR #229 merged before UNIFY; implementation is present on `main`, while lifecycle closure must follow separately |
+| GitHub Flow ordering, reconciled | 1 | PR #229 merged implementation before UNIFY; follow-up PR #230 merged lifecycle closure with passing checks (`34633c26`) |
 | Scope additions | 0 | None |
 
 The implementation scope matched the approved seven files exactly. All new guardrails passed; the inherited PROJECT-budget concern was resolved during normal lifecycle compaction.
@@ -168,7 +169,7 @@ The implementation scope matched the approved seven files exactly. All new guard
 | Issue | Resolution |
 |-------|------------|
 | Pi fresh baseline already failed the PROJECT hot-artifact byte budget | Preserved exact APPLY comparison evidence, compacted PROJECT during transition, then reran Pi green at 364/364 |
-| PR #229 merged before UNIFY metadata existed | Recorded the ordering deviation and routed finalized lifecycle metadata through a follow-up GitHub Flow closure change |
+| PR #229 merged before UNIFY metadata existed | Recorded the ordering deviation; follow-up closure PR #230 passed checks and merged as `34633c26` |
 
 ## Lessons Learned
 

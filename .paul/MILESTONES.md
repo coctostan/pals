@@ -94,7 +94,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.73 Module Efficacy Ledger + Field Harvest — Phase 308 complete (3/3); awaiting `/paul:milestone` archive/index/tag closure.
+**Current milestone:** v2.73 Module Efficacy Ledger + Field Harvest — Phase 308 complete (3/3) via closure PR #230; awaiting `/paul:milestone` archive/index/tag closure.
 
 **Latest completed milestone:** v2.72 Shared Runtime Helper Extraction (2026-06-07, PR #225 `ad9ea9dd`, tag `v2.72`); v2.73 remains active.
 

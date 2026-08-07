@@ -12,7 +12,7 @@ Milestone: v2.73 Module Efficacy Ledger + Field Harvest
 Phase: 308 of 308 (Proposal Batch + Validation/Closure)
 Plan: .paul/phases/308-proposal-batch-validation-closure/308-01-PLAN.md
 Status: Phase 308 complete; v2.73 phase work complete and awaiting milestone closure
-Last activity: 2026-08-07 — Unified Plan 308-01 and completed Phase 308: 17/17 source-audited dispositions, three proposed-only human routes, four TAP guardrails, final Pi 364/364 and cross-harness 261/261; implementation merged via PR #229.
+Last activity: 2026-08-07 — Unified Plan 308-01, completed Phase 308, and merged lifecycle closure PR #230 (`34633c26`); final Pi 364/364, cross-harness 261/261.
 Next action: /paul:milestone
 
 Progress:
@@ -80,7 +80,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-08-07: Absence of evidence and unreadable evidence are distinct findings | Plan 307-02 / PR #228 | 60 units claimed `no-dispatch-evidence` while carrying an unparsed `Module Execution Reports` section; they now emit `unrecognized-dispatch-shape`. Collapsing the two would let thin parser coverage read as low module usage in Phase 308. |
 | 2026-08-07: Read-only guarantees must be path-tested, not checksum-tested | Plan 307-02 / PR #228 | A rejected harvest still created an empty directory inside both real deployments; file hashes could not see it. Boundary tests compare path sets, and `mkdir` never precedes a boundary check. |
 | 2026-08-07: Roll-ups derive only from committed normalized artifacts | Plan 307-02 / PR #228 | One normalization path prevents aggregate output from disagreeing with the ledgers; absent deployment/module observations render as `—`, never measured zero. |
-| 2026-08-07: Phase 308 proposals remain proposed-only | 308-01-SUMMARY.md / PR #229 | Harvest aggregates are discovery aids; source SUMMARYs and human decision authority win. Quark 120-01's normalized `BLOCK` is an overstatement, and no proposal authorizes implementation. |
+| 2026-08-07: Phase 308 proposals remain proposed-only | 308-01-SUMMARY.md / PRs #229–#230 | Harvest aggregates are discovery aids; source SUMMARYs and human decision authority win. Quark 120-01's normalized `BLOCK` is an overstatement, and no proposal authorizes implementation. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -96,7 +96,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 - Phase 294 PLAN/APPLY/UNIFY: Extracted S4 canonical guided-workflow reply delivery/config into `drivers/pi/extensions/guided-workflow-delivery.ts`, repointed Pi validation/docs, appended CODI/WALT history rows, and transitioned to Phase 295. Validation: install 9 extensions, `git diff --check`, artifact_consistency PASS, Pi 329/329, cross-harness 234/234; PR #213 checks passed.
 - Phase 295 PLAN/APPLY/UNIFY: Created source-backed context-offload measurement and next-target ranking report, surfaced it in Pi docs, added recommendation-only validation guardrails, appended CODI/WALT history rows, passed merge gate, and closed v2.69. Validation: `git diff --check`, artifact_consistency PASS, Pi 331/331, cross-harness 235/235; PR #214 merged `08b0e891`.
-- Phase 308 PLAN/APPLY/UNIFY: Source-audited 17/17 unactioned findings, authored three proposed-only human routes, added four TAP guardrails, reconciled early PR #229 merge, compacted PROJECT below budget, and closed validation at Pi 364/364 / cross-harness 261/261.
+- Phase 308 PLAN/APPLY/UNIFY: Source-audited 17/17 findings, authored three proposed-only human routes, added four TAP guardrails, compacted PROJECT below budget, and closed validation at Pi 364/364 / cross-harness 261/261. PR #229 merged implementation early; PR #230 merged lifecycle closure (`34633c26`).
 - Fix (ff, 2026-06-01): Cleared inherited PROJECT.md byte-budget overage (25,331 → 23,763 B; ceil 25,000) carried in from v2.69 finalize commit `c5dd4255`, by collapsing five duplicated v2.64 per-phase decision rows (Phases 273-277) into one archive-pointing row; no history lost (detail in `PROJECT-HISTORY-v2.61-v2.66.md` + v2.64 roadmap archive). Validation: Pi 331/331, cross-harness 235/235, artifact_consistency PASS.
 - Phase 306 APPLY: parent-owned inline execution; T1 commit was retried after a stale command context and landed after T2/T3 without content deviation. Pi suite 347/349 vs baseline 341/343; inherited ROADMAP byte-budget and artifact-consistency failures unchanged.
 - Plan 307-01 APPLY/UNIFY: parent-owned inline execution, no helper delegation; skills /paul, TODD, WALT all invoked (/carl n/a — no session boundary inside APPLY). Deviations: contract amended twice mid-APPLY (dialect F + three normalization gaps, in-mandate per Task 3), unplanned parser split to `tools/lib/parse-summary.awk`, 11 fixtures vs 9 planned, Task 2 write-boundary redesigned in Task 3. Validation Pi 349→355, cross-harness 254→257, zero failures both sides; 0 boundary violations.
@@ -119,18 +119,18 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: `feature/308-proposal-batch-validation-closure`; PR #229 implementation squash-merged to `origin/main`; follow-up lifecycle closure pending.
-PR: #229 MERGED — https://github.com/coctostan/pals/pull/229 (implementation merge `31ce90f6`); UNIFY metadata will use a follow-up closure PR.
+Branch: `main`; base: `main`; synced 0 behind / 0 ahead after closure merge.
+PR: #229 implementation MERGED (`31ce90f6`); #230 lifecycle closure MERGED (`34633c26`) — https://github.com/coctostan/pals/pull/230
 CI: passing — both reported Socket checks succeeded; final local Pi 364/364, cross-harness 261/261, artifact consistency PASS.
-Last implementation commit: `31ce90f6` on `origin/main`; lifecycle closure commit pending.
+Last commit: `34633c26` on `origin/main` (Phase 308 UNIFY/lifecycle closure).
 
 ## Session Continuity
 
-Last session: 2026-08-07 — Unified Phase 308 after reconciling the early PR #229 implementation merge.
+Last session: 2026-08-07 — Unified Phase 308 and passed the follow-up GitHub Flow closure gate via PR #230.
 Stopped at: PLAN ✓ / APPLY ✓ / UNIFY ✓; Phase 308 complete; v2.73 milestone closure pending.
 Next action: /paul:milestone
 Resume file: .paul/phases/308-proposal-batch-validation-closure/308-01-SUMMARY.md
-merge_result: PR #229 merged implementation early; follow-up lifecycle closure required for SUMMARY/state/transition metadata.
+merge_result: PR #229 merged implementation early; follow-up PR #230 merged SUMMARY/state/transition metadata with passing checks.
 transition_result: Phase 308 complete (1 PLAN / 1 SUMMARY); route v2.73 to `/paul:milestone`.
 Resume context:
 - Phase 308 delivered 17/17 dispositions, three human-routed proposals, and four passing TAP guardrails; proposal status remains `proposed`.
