@@ -459,6 +459,12 @@ fh_tap "Roll-up leaves its read-only fixture tree unmodified" \
 fh_tap "Rejected out-of-bounds harvest creates nothing inside the deployment" \
   fh_check_write_boundary_creates_nothing "$REPO_ROOT" "$FH_WORK_B"
 
+# Phase 308 proposal-batch completeness and non-authority guardrails.
+fh_tap "Proposal batch accounts for all 17 source-cited unactioned finding keys" \
+  fh_check_proposal_evidence_completeness "$REPO_ROOT"
+fh_tap "Proposal batch preserves proposed-only human routing and efficacy boundaries" \
+  fh_check_proposal_routing_posture "$REPO_ROOT"
+
 rm -rf "$FH_WORK_A" "$FH_WORK_B"
 
 # ════════════════════════════════════════════════════════════════════

@@ -317,3 +317,115 @@ fh_check_rollup_fixtures_unmodified() {
   fi
   return 0
 }
+
+# ── Proposal-batch guardrails (Phase 308) ───────────────────────────────────
+
+fh__require_markers() {
+  local file="$1"; shift
+  local marker
+  if [ ! -f "$file" ]; then FH_LAST_MISSING="Required proposal artifact not found: $file"; return 1; fi
+  for marker in "$@"; do
+    if ! grep -Fq -- "$marker" "$file"; then
+      FH_LAST_MISSING="Missing proposal marker in $file: $marker"
+      return 1
+    fi
+  done
+  return 0
+}
+
+fh__unactioned_keys() {
+  local repo_root="$1" ledger
+  for ledger in \
+    "$repo_root/.paul/field-harvest/hybrid-energy-reasoner-MODULE-LEDGER.md" \
+    "$repo_root/.paul/field-harvest/pals-MODULE-LEDGER.md" \
+    "$repo_root/.paul/field-harvest/quark-MODULE-LEDGER.md"; do
+    awk -F '|' '
+      function trim(value) { gsub(/^[[:space:]]+|[[:space:]]+$/, "", value); return value }
+      {
+        phase = trim($2); module = trim($3)
+        finding = trim($5); actioned = trim($6)
+        if (finding == "yes" && actioned == "no") print phase "\t" module
+      }
+    ' "$ledger"
+  done | LC_ALL=C sort
+}
+
+# The batch must represent every harvested unactioned key exactly once and cite
+# source SUMMARY evidence for every disposition.
+fh_check_proposal_evidence_completeness() {
+  local repo_root="$1"
+  local batch="$repo_root/.paul/proposals/v2.73-field-harvest-proposal-batch.md"
+  local ledger keys total unique phase module marker count row
+  FH_LAST_MISSING=""
+
+  for ledger in \
+    "$repo_root/.paul/field-harvest/hybrid-energy-reasoner-MODULE-LEDGER.md" \
+    "$repo_root/.paul/field-harvest/pals-MODULE-LEDGER.md" \
+    "$repo_root/.paul/field-harvest/quark-MODULE-LEDGER.md"; do
+    if [ ! -f "$ledger" ]; then FH_LAST_MISSING="Harvest ledger not found: $ledger"; return 1; fi
+  done
+  if [ ! -f "$batch" ]; then FH_LAST_MISSING="Proposal batch not found: $batch"; return 1; fi
+
+  keys="$(fh__unactioned_keys "$repo_root")"
+  total="$(printf '%s\n' "$keys" | sed '/^$/d' | wc -l | tr -d ' ')"
+  unique="$(printf '%s\n' "$keys" | sed '/^$/d' | LC_ALL=C sort -u | wc -l | tr -d ' ')"
+  if [ "$total" -ne 17 ] || [ "$unique" -ne 17 ]; then
+    FH_LAST_MISSING="Expected 17 unique unactioned finding keys; found $total rows / $unique unique"
+    return 1
+  fi
+
+  while IFS=$'\t' read -r phase module; do
+    [ -n "$phase" ] || continue
+    marker="| $phase | $module |"
+    count="$(grep -F -c -- "$marker" "$batch" 2>/dev/null || true)"
+    if [ "$count" -ne 1 ]; then
+      FH_LAST_MISSING="Expected one batch row for $phase / $module; found $count"
+      return 1
+    fi
+    row="$(grep -F -- "$marker" "$batch")"
+    case "$row" in
+      *SUMMARY.md*) ;;
+      *) FH_LAST_MISSING="Batch row lacks source SUMMARY citation: $phase / $module"; return 1 ;;
+    esac
+  done <<< "$keys"
+
+  return 0
+}
+
+# Proposal artifacts must stay proposed, human-routed, source-authoritative, and
+# explicit about coverage and no-automatic-application boundaries.
+fh_check_proposal_routing_posture() {
+  local repo_root="$1"
+  local batch="$repo_root/.paul/proposals/v2.73-field-harvest-proposal-batch.md"
+  local rel file
+  FH_LAST_MISSING=""
+
+  for rel in \
+    .paul/proposals/v2.73-recurring-advisory-finding-lineage.md \
+    .paul/proposals/v2.73-review-finding-class-escalation.md \
+    .paul/proposals/v2.73-validation-suite-decomposition.md; do
+    file="$repo_root/$rel"
+    fh__require_markers "$batch" "$rel" || return 1
+    fh__require_markers "$file" \
+      "type: framework-improvement-proposal" \
+      "source_milestone: v2.73" \
+      "status: proposed" \
+      "decision_authority: human" \
+      "## Evidence" "## Problem" "## Proposed Change" "## Non-Goals" \
+      "## Risks" "## Validation Shape" "## Human Route" || return 1
+  done
+
+  for file in "$batch" \
+    "$repo_root/.paul/proposals/v2.73-recurring-advisory-finding-lineage.md" \
+    "$repo_root/.paul/proposals/v2.73-review-finding-class-escalation.md" \
+    "$repo_root/.paul/proposals/v2.73-validation-suite-decomposition.md"; do
+    fh__require_markers "$file" \
+      "Source authority: source SUMMARYs" \
+      "375 normalized rows / 408 unparseable units / 52% unparseable share" \
+      "Human route:" "Status remains proposed" "No auto-config" \
+      "No automatic demotion or application" \
+      "WALT/DEAN/TODD/SETH remain enforcement-exempt wherever scoped" || return 1
+  done
+
+  return 0
+}
