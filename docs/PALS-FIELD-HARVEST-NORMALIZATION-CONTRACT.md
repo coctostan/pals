@@ -176,6 +176,41 @@ Source: `.paul/phases/129-adversarial-testing-setup/{sonnet,kimi}-evidence/14-01
 
 These are **excluded**, not parsed. Harvesting them would attribute foreign module behavior to the host deployment.
 
+### Unrecognized dispatch shape (not a dialect)
+
+A SUMMARY may carry a `Module Execution Reports` section whose contents match **none** of the dialects above. Two shapes are attested in the field:
+
+Source: `quark/.paul/phases/100-daemon-commands-and-guard/100-01-SUMMARY.md`
+
+```text
+## Module Execution Reports
+
+### APPLY Phase Modules
+- **ARCH(125):** No boundary violations. All new files in src/daemon/commands/ + drivers.ts.
+- **WALT(100):** 843 tests (baseline 833, +10), 0 regressions, tsc clean.
+```
+
+Source: `quark/.paul/phases/01-minimum-viable-kernel/01-03-SUMMARY.md`
+
+```text
+## Module Execution Reports
+
+### TDD Execution (TODD)
+
+| Phase | Status |
+|-------|--------|
+| RED | Tests fail as expected (missing module) |
+| GREEN | All 12 tests pass |
+```
+
+In both, module identity is recoverable but the outcome exists only as free prose or as a non-status metric table. Deriving `PASS` from `No boundary violations.` or from `All 12 tests pass` is **interpretation**, which §4's no-silent-coercion rule forbids. These shapes therefore emit **no rows**.
+
+They are nonetheless **not** the same as an absence of evidence, and must not be recorded as one. They emit `unrecognized-dispatch-shape` (§7).
+
+The distinction is load-bearing for Phase 308: a phase that never dispatched a module and a phase that dispatched modules and recorded them unparseably support opposite conclusions about module reach. Collapsing them would let thin parser coverage read as low module usage.
+
+Detection is anchored on the section heading only — a markdown heading whose text contains `Module Execution Reports`. A bare `| Module |` table does not qualify, because design-grade and dependency-upgrade tables share that column (see *Dispatch table qualification*), and an incidental prose mention of the phrase is not a section.
+
 ### Precedence
 
 A single SUMMARY may match several dialects. Resolve in this order and stop at the first match:
@@ -201,6 +236,21 @@ PASS - appended quality history row
 ```
 
 Only the **leading token** before the first ` — `, ` – `, or ` - ` separator is the status. The remainder is explanatory prose and is discarded. This is lexical truncation, not interpretation: the leading token is still subject to the mapping table below, and still becomes `unmapped-status` if absent from it.
+
+### Colon-delimited outcome prefix
+
+The same truncation applies when the explanation follows a colon:
+
+```text
+PASS: no provider/auth/credential surface added; public artifacts exclude secrets
+PASS: CI smoke coverage includes her-ebm-readiness --help; workflow gates passed
+```
+
+Source: `hybrid-energy-reasoner/.paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md`.
+
+Only the segment before the **first** colon is considered, and it must map on its own. This is the identical lexical rule as the dash suffix, not a widening of it: `PASS-no-block / skipped audit counts: no dependencies added` still fails to map, because its prefix segment is not a mapped token, and it remains `unmapped-status`.
+
+A leading status word followed by prose **without** a separator is not truncated. `PASS on all 3 tasks` stays unmapped: once arbitrary trailing words are permitted, `BLOCK overridden` and `PASS unless` become indistinguishable from their opposites.
 
 | Source token | Normalized |
 |---|---|
@@ -285,7 +335,8 @@ A harvest unit is `unparseable-phase` when it cannot be normalized without inven
 
 | Reason code | Meaning |
 |---|---|
-| `no-dispatch-evidence` | No `## Module Execution Reports` section, no module table, and no `[dispatch]` line. The phase predates dispatch recording. |
+| `no-dispatch-evidence` | No `Module Execution Reports` heading, no module table, and no `[dispatch]` line. The phase predates dispatch recording. |
+| `unrecognized-dispatch-shape` | A `Module Execution Reports` heading exists, but its contents match no dialect in §3 — outcomes are free prose or non-status metric tables. Evidence exists; it is not normalizable without interpretation. |
 | `no-phase-id` | Phase number not derivable from the path or frontmatter. A missing *plan* number is not this (see §2). |
 | `unknown-module` | Module name does not resolve against the canonical registry. |
 | `unmapped-status` | Status token outside the §4 mapping table. |
@@ -294,7 +345,11 @@ A harvest unit is `unparseable-phase` when it cannot be normalized without inven
 
 Canonical registry (matched case-insensitively): `arch`, `aria`, `codi`, `dana`, `dave`, `dean`, `docs`, `gabe`, `iris`, `luke`, `omar`, `pete`, `reed`, `rev`, `ruby`, `seth`, `skip`, `todd`, `vera`, `walt`.
 
-`unknown-module`, `unmapped-status`, and `ambiguous-module-set` are **row-scoped**: the rest of the SUMMARY still harvests normally. `no-dispatch-evidence`, `no-phase-id`, and `excluded-foreign-evidence` are **unit-scoped**.
+`unknown-module`, `unmapped-status`, and `ambiguous-module-set` are **row-scoped**: the rest of the SUMMARY still harvests normally. `no-dispatch-evidence`, `unrecognized-dispatch-shape`, `no-phase-id`, and `excluded-foreign-evidence` are **unit-scoped**.
+
+`no-dispatch-evidence` and `unrecognized-dispatch-shape` must never be merged or reported as one bucket. The first says a phase recorded no module dispatch; the second says it recorded some in a shape this contract cannot yet read. Only the second is evidence that the contract is behind the corpus.
+
+**Detail must never be empty.** When the value that triggered the entry cleans to an empty string — as `| (others SKIP — no UI, data, CI, API surfaces) |` does under *Module cell normalization* — record the original unmodified cell text. An entry no one can trace back to a line of source cannot be dispositioned, and an undispositionable entry is indistinguishable from a suppressed one.
 
 **Never fabricate a ledger row to avoid a manifest entry.** The manifest is the honest record of what could not be normalized, and it is a first-class output — a large or lopsided manifest is a finding about this contract, not noise to be suppressed.
 
@@ -326,3 +381,80 @@ Output is deterministically ordered by phase then module so that re-running harv
 - No coercion of unmapped status tokens (§4).
 - No replacement of source SUMMARY evidence or lifecycle authority.
 - No claim that harvested counts measure module value; they measure recorded dispatch evidence, which is a different and weaker thing.
+
+## 10. Cross-Deployment Roll-Up
+
+The roll-up is the single aggregate view across every harvested deployment. Phase 308 reads it as the entry point to the corpus.
+
+### Inputs
+
+The roll-up derives **only** from committed harvest output:
+
+- every `.paul/field-harvest/{deployment}-MODULE-LEDGER.md`;
+- `.paul/field-harvest/UNPARSEABLE.md`.
+
+It never re-reads source SUMMARYs. There is exactly one normalization path (§3–§6) and the roll-up sits downstream of it, so the roll-up can never disagree with the ledgers it summarizes. A roll-up that contradicts its inputs is wrong by construction, which makes the reconciliation check in §10 *Verification* meaningful rather than decorative.
+
+A malformed or unreadable input is a hard error. Emitting an empty-but-successful roll-up would report "no evidence" for a deployment whose ledger merely failed to parse.
+
+### Aggregation rules
+
+1. **Deployment totals** — row count and manifest count per deployment, plus a corpus total.
+2. **Per-module totals** — for each module, the row count per deployment and across the corpus.
+3. **Status distribution** — per module, the count of each of the six enum values summed across deployments.
+4. **Absence rendering** — in *Module Reach*, a module with no rows in a deployment renders as `—`, never `0`. `0` asserts a measurement was taken and found nothing; `—` states no evidence exists either way. A module absent from a deployment is usually absent from its harvestable history, not proven unused. In *Status Distribution* the row exists only because that module has rows, so an unobserved status there renders `0`: the measurement was genuinely taken.
+5. **Ordering** — deployments alphabetically, modules alphabetically, statuses in enum order (`PASS`, `PASS_WITH_CONCERNS`, `WARN`, `BLOCK`, `SKIP`, `NOTE`), and manifest reasons alphabetically within each deployment. Deterministic ordering under a stable `LC_ALL` is what makes the artifact diff-reviewable.
+6. **Totals and rounding** — *Coverage* ends with a bold `**Total**` row summing every deployment. `Unparseable Share` is an integer percent rounded half up, computed from the deployment's own counts (the total row from corpus totals, not from an average of shares).
+
+### Table shapes
+
+Exact shapes, so output is diff-stable and testable:
+
+```text
+## Coverage
+
+| Deployment | Rows | Unparseable | Unparseable Share |
+|---|---:|---:|---:|
+
+## Module Reach
+
+| Module | {deployment-1} | {deployment-2} | ... | Total |
+|---|---:|---:|---:|
+
+## Status Distribution
+
+| Module | PASS | PASS_WITH_CONCERNS | WARN | BLOCK | SKIP | NOTE |
+|---|---:|---:|---:|---:|---:|---:|
+
+## Unparseable Reasons
+
+| Deployment | Reason | Count |
+|---|---|---:|
+```
+
+`Unparseable Share` is `unparseable / (rows + unparseable)`, rendered as an integer percent.
+
+### Coverage reporting
+
+Every row count is presented alongside the unparseable volume for the same deployment. The two are never separated, because a row count read alone invites the reading that it is the whole story.
+
+**`rows harvested` is not `dispatches that occurred`.** A deployment whose corpus is 69% `no-dispatch-evidence` has thin coverage no matter how many rows it contributes. `unrecognized-dispatch-shape` volume is a further caution: those units *did* record dispatch that this contract cannot yet read (§3), so they are evidence of parser gaps, not of module inactivity. Both classes must be visible next to the counts they qualify.
+
+### Interpretation limits
+
+§9 applies with full force at the aggregate level, where the temptation to rank is strongest:
+
+- These counts measure **recorded dispatch evidence**. They do not measure module value, correctness, or impact.
+- The roll-up does not rank modules, and a low total is not a finding. It is at least as likely to reflect a deployment's surface mix, its age, or a parser gap.
+- No aggregate total is sufficient grounds to demote, disable, or reconfigure a module.
+- Phase 308 proposals must cite source SUMMARYs. A roll-up total may motivate a question; only source evidence can answer it.
+
+### Regeneration and verification
+
+```bash
+tools/rollup-field-harvest.sh --in-dir .paul/field-harvest --out .paul/field-harvest/HARVEST-ROLLUP.md
+```
+
+`.paul/field-harvest/HARVEST-ROLLUP.md` is **warm, derived, regenerable, byte-budget-exempt, and never hand-edited** — the same posture as the ledgers (§8). Hand-editing it would break the one property that makes it trustworthy: that it is a pure function of the committed ledgers.
+
+The generator must be reproducible across runs and must reconcile exactly: per-deployment row totals equal the committed ledger row counts, and per-deployment manifest totals equal the committed manifest counts.

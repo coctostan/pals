@@ -20,6 +20,8 @@
 FH_FIXTURE_ROOT="${FH_FIXTURE_ROOT:-tests/fixtures/field-harvest}"
 FH_HARVESTER="${FH_HARVESTER:-tools/harvest-module-ledger.sh}"
 FH_DEPLOYMENT="fixture"
+FH_ROLLUP_FIXTURE_ROOT="${FH_ROLLUP_FIXTURE_ROOT:-tests/fixtures/rollup}"
+FH_ROLLUP="${FH_ROLLUP:-tools/rollup-field-harvest.sh}"
 
 # Internal: strip the markdown table wrapper back to TSV for exact comparison.
 # Skips the header row and the |---| separator.
@@ -176,6 +178,141 @@ fh_check_forward_ledger_unpolluted() {
   [ -f "$forward_ledger" ] || return 0
   if grep -qE '^\| [a-z0-9-]+/' "$forward_ledger" 2>/dev/null; then
     FH_LAST_MISSING="Namespaced field-harvest rows leaked into $forward_ledger"
+    return 1
+  fi
+  return 0
+}
+
+# Rejecting an out-of-bounds --out-dir must leave the harvested deployment
+# byte-identical AND path-identical: a refusal that still created a directory
+# inside the source tree has already broken the read-only guarantee (contract
+# §1). Verified against a disposable sandbox that stands in for an external
+# deployment root, so the real field deployments are never used as test targets.
+fh_check_write_boundary_creates_nothing() {
+  local repo_root="$1" sandbox="$2"
+  FH_LAST_MISSING=""
+
+  mkdir -p "$sandbox/.paul/phases/01-boundary"
+  printf '# Boundary sandbox summary\n' > "$sandbox/.paul/phases/01-boundary/01-01-SUMMARY.md"
+
+  local before after
+  before="$( cd "$sandbox" && find . | LC_ALL=C sort )"
+
+  if ( cd "$repo_root" && bash "$FH_HARVESTER" \
+         --root "$sandbox" \
+         --deployment "$FH_DEPLOYMENT" \
+         --out-dir "$sandbox/.paul/field-harvest" ) >/dev/null 2>&1; then
+    FH_LAST_MISSING="Harvester accepted an --out-dir inside the harvested deployment"
+    return 1
+  fi
+
+  after="$( cd "$sandbox" && find . | LC_ALL=C sort )"
+  if [ "$before" != "$after" ]; then
+    FH_LAST_MISSING="Rejected run still created paths inside the harvested deployment"
+    return 1
+  fi
+  return 0
+}
+
+# ── Roll-up guardrails (contract §10) ────────────────────────────────────────
+
+# Generate a roll-up from the committed fixture harvest tree into DEST.
+fh_run_rollup() {
+  local repo_root="$1" dest="$2"
+  FH_LAST_MISSING=""
+
+  if [ ! -f "$repo_root/$FH_ROLLUP" ]; then
+    FH_LAST_MISSING="Roll-up generator not found: $repo_root/$FH_ROLLUP"
+    return 1
+  fi
+  if ! ( cd "$repo_root" && bash "$FH_ROLLUP" \
+           --in-dir "$FH_ROLLUP_FIXTURE_ROOT" \
+           --out "$dest/rollup.md" ) >/dev/null 2>&1; then
+    FH_LAST_MISSING="Roll-up generator exited non-zero against the fixture tree"
+    return 1
+  fi
+  return 0
+}
+
+# The golden is the specification, hand-written from §10. If they disagree,
+# that is a contract question — never a file to regenerate from the tool.
+fh_check_rollup_golden() {
+  local repo_root="$1" dest="$2"
+  local golden="$repo_root/$FH_ROLLUP_FIXTURE_ROOT/expected-rollup.md"
+  FH_LAST_MISSING=""
+
+  if [ ! -f "$golden" ]; then FH_LAST_MISSING="Golden not found: $golden"; return 1; fi
+  if [ ! -f "$dest/rollup.md" ]; then FH_LAST_MISSING="Roll-up not produced: $dest/rollup.md"; return 1; fi
+
+  if ! diff -q "$golden" "$dest/rollup.md" >/dev/null 2>&1; then
+    FH_LAST_MISSING="Roll-up differs from golden: $(diff "$golden" "$dest/rollup.md" | head -6 | tr '\n' ' ')"
+    return 1
+  fi
+  return 0
+}
+
+fh_check_rollup_determinism() {
+  local repo_root="$1" a="$2" b="$3"
+  FH_LAST_MISSING=""
+
+  if ! fh_run_rollup "$repo_root" "$b"; then return 1; fi
+  if ! diff -q "$a/rollup.md" "$b/rollup.md" >/dev/null 2>&1; then
+    FH_LAST_MISSING="Non-deterministic roll-up across runs"
+    return 1
+  fi
+  return 0
+}
+
+# Absence must render as an em dash, never as a measured zero: `0` claims a
+# measurement was taken, `—` states no evidence exists either way (§10 rule 4).
+fh_check_rollup_absence_rendering() {
+  local dest="$1"
+  FH_LAST_MISSING=""
+  if [ ! -f "$dest/rollup.md" ]; then FH_LAST_MISSING="Roll-up not produced"; return 1; fi
+
+  local reach
+  reach="$( awk '/^## Module Reach$/{on=1; next} /^## /{on=0} on' "$dest/rollup.md" )"
+
+  if ! printf '%s' "$reach" | grep -q '| — |'; then
+    FH_LAST_MISSING="Module Reach renders no em-dash cell; absence is being reported as a count"
+    return 1
+  fi
+  if printf '%s' "$reach" | grep -q '| 0 '; then
+    FH_LAST_MISSING="Module Reach renders a measured 0 where the contract requires —"
+    return 1
+  fi
+  return 0
+}
+
+# A malformed input must fail loudly. An empty-but-successful roll-up would
+# report "no evidence" for a deployment whose ledger merely failed to parse.
+fh_check_rollup_rejects_malformed() {
+  local repo_root="$1" sandbox="$2"
+  FH_LAST_MISSING=""
+
+  printf '# Broken ledger\n\n| Phase | Module |\n|---|---|\n| a/01-01 | WALT |\n' \
+    > "$sandbox/broken-MODULE-LEDGER.md"
+
+  if ( cd "$repo_root" && bash "$FH_ROLLUP" \
+         --in-dir "$sandbox" --out "$sandbox/out.md" ) >/dev/null 2>&1; then
+    FH_LAST_MISSING="Roll-up accepted a malformed ledger instead of failing"
+    return 1
+  fi
+  return 0
+}
+
+fh_snapshot_rollup_fixtures() {
+  local repo_root="$1"
+  ( cd "$repo_root" && find "$FH_ROLLUP_FIXTURE_ROOT" -type f -exec cksum {} \; | LC_ALL=C sort )
+}
+
+fh_check_rollup_fixtures_unmodified() {
+  local repo_root="$1" before="$2"
+  FH_LAST_MISSING=""
+  local after
+  after="$( fh_snapshot_rollup_fixtures "$repo_root" )"
+  if [ "$before" != "$after" ]; then
+    FH_LAST_MISSING="Roll-up generator modified its read-only fixture tree"
     return 1
   fi
   return 0

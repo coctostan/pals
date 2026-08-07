@@ -4,6 +4,23 @@
 
 | Deployment | Path | Reason | Detail |
 |---|---|---|---|
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | PASS/advisory: docs and extension keep secrets, headers, prompts, full transcripts, and provider metadata out of generated JSON artifacts. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | PASS/advisory: extension stayed under .pi/extensions/; no src/her/ changes or HER provider plumbing were introduced. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | PASS/advisory: new user-facing Pi generation surface is documented in docs/pi-candidate-generation.md, candidate-pool docs, generated-output README, and README pointer. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | Quality/test gates passed with no regressions. Baseline before APPLY was 156 tests passing; final full suite was 160 tests passing, reflecting the new static contract coverage. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | [dispatch] CODI post-unify: skipped-no-symbols; PLAN pre-plan CODI evidence reported no stable existing TS/JS source symbols for the new extension scope. Appended .paul/CODI-HISTORY.md row for 19-01. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | [dispatch] RUBY post-unify: no blocking debt finding; changed code is a single project-local extension with focused helpers and no new dependency or HER runtime coupling. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | [dispatch] SKIP post-unify: no separate knowledge file persisted; the source-backed boundary decision is recorded in this SUMMARY and PROJECT.md. |
+| hybrid-energy-reasoner | .paul/phases/19-pi-candidate-generation-extension/19-01-SUMMARY.md | unmapped-status | [dispatch] post-unify: appended .paul/QUALITY-HISTORY.md row for 19-01; quality improved from 156 to 160 passing tests and lint/format/typecheck remained passing. |
+| hybrid-energy-reasoner | .paul/phases/42-broader-strategy-trace-manifest/42-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| hybrid-energy-reasoner | .paul/phases/43-scorer-ebm-readiness-evidence-report/43-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| hybrid-energy-reasoner | .paul/phases/47-expanded-enumerated-decorrelated-corpus/47-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| hybrid-energy-reasoner | .paul/phases/51-non-neural-scorer-probe-and-final-decision/51-01-SUMMARY.md | unmapped-status | PASS after skeptical review reconciliation; no unresolved P0/P1 code/artifact blockers. |
+| hybrid-energy-reasoner | .paul/phases/51-non-neural-scorer-probe-and-final-decision/51-01-SUMMARY.md | unmapped-status | PASS-no-block / skipped audit counts: no dependencies added; pip-audit unavailable, no counts invented. |
+| hybrid-energy-reasoner | .paul/phases/51-non-neural-scorer-probe-and-final-decision/51-01-SUMMARY.md | unmapped-status | Skipped or no-scope for UI/API/data/service/privacy/performance surfaces beyond tiny deterministic corpus evaluation. |
+| hybrid-energy-reasoner | .paul/phases/51-non-neural-scorer-probe-and-final-decision/51-01-SUMMARY.md | unmapped-status | WARN accepted: vertical slice across tasks/CLI/tests/docs/artifacts; focused scorer module avoided expanding Phase 50 hard-contrast module. |
+| hybrid-energy-reasoner | .paul/phases/52-research-note-loop-safety-contract-config-freeze-manifest-design/52-01-SUMMARY.md | ambiguous-module-set | ARCH/DOCS/IRIS/SETH and other advisory modules |
+| hybrid-energy-reasoner | .paul/phases/52-research-note-loop-safety-contract-config-freeze-manifest-design/52-01-SUMMARY.md | unmapped-status | PASS / stable |
 | pals | .paul/phases/01-architecture-design/01-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/01-architecture-design/01-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/02-fork-restructure/02-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
@@ -22,9 +39,9 @@
 | pals | .paul/phases/10-architecture-module-interface/10-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/107-tool-integration/107-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/108-quality-tracking-retest/108-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/109-docs-skip-upgrade/109-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/109-docs-skip-upgrade/109-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/11-kernel-extraction/11-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/11-kernel-extraction/11-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/11-kernel-extraction/11-02-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/110-dean-adversarial-hardening/110-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/111-dave-adversarial-hardening/111-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/112-full-roster-retest/112-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
@@ -33,15 +50,15 @@
 | pals | .paul/phases/115-pete-module/115-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/116-gabe-module/116-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/117-luke-module/117-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/12-module-manager/12-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/12-module-manager/12-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/12-module-manager/12-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/12-module-manager/12-02-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/120-omar-module/120-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/128-install-config-init-audit/128-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/128-install-config-init-audit/128-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/128-install-config-init-audit/128-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/128-install-config-init-audit/128-02-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/129-adversarial-testing-setup/kimi-evidence/14-01-SUMMARY.md | excluded-foreign-evidence | nested below phase directory |
 | pals | .paul/phases/129-adversarial-testing-setup/sonnet-evidence/14-01-SUMMARY.md | excluded-foreign-evidence | nested below phase directory |
-| pals | .paul/phases/13-driver-architecture/13-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/13-driver-architecture/13-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/13-driver-architecture/13-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/13-driver-architecture/13-02-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/130-real-user-feature-dev/gpt54-evidence/15-01-SUMMARY.md | excluded-foreign-evidence | nested below phase directory |
 | pals | .paul/phases/130-real-user-feature-dev/gpt54-evidence/16-01-SUMMARY.md | excluded-foreign-evidence | nested below phase directory |
 | pals | .paul/phases/131-greenfield-project/gpt54-greenfield/01-01-SUMMARY.md | excluded-foreign-evidence | nested below phase directory |
@@ -49,27 +66,27 @@
 | pals | .paul/phases/132-smart-question-gating/132-01-SUMMARY.md | unmapped-status | 1 flag: init-project.md 913 lines |
 | pals | .paul/phases/132-smart-question-gating/132-01-SUMMARY.md | unmapped-status | 1 flag: monitor for growth |
 | pals | .paul/phases/134-quick-mode-validation/134-01-SUMMARY.md | unmapped-status | 0 new decisions |
-| pals | .paul/phases/135-module-instruction-wording/135-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/136-post-apply-unify-enforcement/136-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/137-merge-gate-simplification/137-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/138-dean-baseline-mechanism/138-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/139-protocol-design-report-template/139-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/135-module-instruction-wording/135-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/136-post-apply-unify-enforcement/136-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/137-merge-gate-simplification/137-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/138-dean-baseline-mechanism/138-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/139-protocol-design-report-template/139-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/14-todd-integration/14-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/140-protocol-validation-greenfield-e2e/140-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/141-guided-workflow-auto-approve-control/141-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/142-menu-parser-hardening/142-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/143-label-accuracy-polish/143-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/144-readme-documentation-update/144-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/140-protocol-validation-greenfield-e2e/140-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/141-guided-workflow-auto-approve-control/141-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/142-menu-parser-hardening/142-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/143-label-accuracy-polish/143-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/144-readme-documentation-update/144-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/145-upstream-inventory/145-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/146-comparative-analysis/146-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/147-adoption-decisions/147-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/15-walt-integration/15-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/150-agents-md-integration/150-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/151-research-and-design/151-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/16-module-system-validation/16-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/150-agents-md-integration/150-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/151-research-and-design/151-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/16-module-system-validation/16-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/17-carl-auto-detection/17-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/18-todd-coverage-dashboard/18-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/180-re-trial-gating-decision/180-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/180-re-trial-gating-decision/180-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/185-artifact-archival-hot-path-compaction/185-01-SUMMARY.md | unmapped-status | PASS with note |
 | pals | .paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md | unmapped-status | Knowledge candidate |
 | pals | .paul/phases/185-artifact-archival-hot-path-compaction/185-02-SUMMARY.md | unmapped-status | PASS with note |
@@ -155,13 +172,13 @@
 | pals | .paul/phases/22-skip-module/22-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/23-dave-module/23-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/24-ruby-module/24-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/244-documentation-validation-surfacing/244-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/242-extension-extraction-target-baseline/242-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/244-documentation-validation-surfacing/244-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/246-s2-workflow-resource-capsule-rendering-extraction/246-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/25-lifecycle-hooks/25-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/255-documentation-validation-surfacing-v2-59/255-01-SUMMARY.md | unmapped-status | SKIP-cleanly |
-| pals | .paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/256-evidence-closure-next-roadmap-decision-v2-59/256-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/257-s6-extraction-contract-bounded-submodule-plan/257-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/259-documentation-validation-surfacing/259-01-SUMMARY.md | unknown-module | config-version |
 | pals | .paul/phases/259-documentation-validation-surfacing/259-01-SUMMARY.md | unmapped-status | Baseline captured: install 7 files, Pi 232/232, cross-harness 136/136, artifact_consistency PASS (after STATE.md Resume file: repath repair), git diff --check clean. PASS |
 | pals | .paul/phases/259-documentation-validation-surfacing/259-01-SUMMARY.md | unmapped-status | Bounded TAP guardrails active in tests/pi-end-to-end-validation.sh; advisory-only for docs/surfacing phase. PASS |
@@ -189,8 +206,8 @@
 | pals | .paul/phases/259-documentation-validation-surfacing/259-01-SUMMARY.md | unmapped-status | docs/surfacing phase; no .test. / .spec. files; bounded TAP surfacing assertions in tests/pi-end-to-end-validation.sh carry source-shape coverage. No TDD conversion required. PASS |
 | pals | .paul/phases/259-documentation-validation-surfacing/259-01-SUMMARY.md | unmapped-status | install 7 → 7 ✓; Pi 232 → 235 (+3 planned) ✓; cross-harness 136 → 136 ✓; artifact_consistency PASS → PASS ✓; git diff --check clean → clean ✓. PASS |
 | pals | .paul/phases/26-module-config-init/26-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/260-evidence-closure-next-roadmap-decision-v2-60/260-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/261-s8-extraction-contract-bounded-submodule-plan/261-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/27-readme/27-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md | unknown-module | MEM |
 | pals | .paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md | unmapped-status | Post-unify outcome skipped-no-symbols: markdown/YAML instruction-only plan, no executable TS/JS symbols for blast-radius evidence. |
@@ -198,8 +215,8 @@
 | pals | .paul/phases/277-domain-optional-module-rewrite/277-01-SUMMARY.md | unmapped-status | Skipped substantive complexity analysis: no runtime source files changed; instruction/reference docs only. |
 | pals | .paul/phases/28-context-audit/28-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/29-module-observability/29-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/304-extraction-import-repoint/304-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/305-validation-closure/305-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/304-extraction-import-repoint/304-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| pals | .paul/phases/305-validation-closure/305-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/31-seamless-git-gh/31-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/31-seamless-git-gh/31-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/32-pals-documentation/32-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
@@ -243,7 +260,7 @@
 | pals | .paul/phases/67-onboarding-prd-depth/67-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/67-onboarding-prd-depth/67-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/68-execution-audit/68-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
-| pals | .paul/phases/69-gap-fixes/69-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| pals | .paul/phases/69-gap-fixes/69-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
 | pals | .paul/phases/71-recommendations/71-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/72-todd-report-clarity/72-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/73-walt-report-clarity/73-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
@@ -274,3 +291,124 @@
 | pals | .paul/phases/97-second-loop-and-lifecycle/97-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/98-fix-loop-and-gh-flow/98-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
 | pals | .paul/phases/99-gap-report/99-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/01-kernel-core/01-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/01-kernel-core/01-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/01-minimum-viable-kernel/01-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/01-minimum-viable-kernel/01-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/01-minimum-viable-kernel/01-03-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/01-minimum-viable-kernel/01-04-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/01-minimum-viable-kernel/01-05-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/02-state-management/02-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/02-state-management/02-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/03-process-model/03-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/04-context-assembly/04-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/05-scheduler/05-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/06-shell/06-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/07-kernel-bug-fixes/07-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/08-cli-hardening/08-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/09-observability/09-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/10-kernel-syscalls/10-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/100-daemon-commands-and-guard/100-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/101-shared-client-and-praesctl/101-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/105-demo-ui-redesign/105-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/106-praesos-control-center/106-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/109-capabilities-re-architecture/109-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/109-capabilities-re-architecture/109-02-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/11-process-syscalls/11-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/110-security-hardening/110-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/111-kernel-closeout/111-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/12-vfs-layer/12-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/127-resource-confinement-enforcement-and-audit/127-04-FIX-SUMMARY.md | unknown-module | (others SKIP — no UI, data, CI, API surfaces) |
+| quark | .paul/phases/127-resource-confinement-enforcement-and-audit/127-05-FIX-SUMMARY.md | unknown-module | (others SKIP — no UI, data, CI, API surfaces) |
+| quark | .paul/phases/13-transition-evaluator/13-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/14-driver-registry/14-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/15-driver-routing/15-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/16-second-driver/16-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/16-second-driver/16-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/17-signal-dispatch/17-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/18-process-coordination/18-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/19-message-passing/19-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/20-port-abstraction/20-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/21-port-syscalls/21-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/22-mcp-port-driver/22-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/23-integration-and-cli/23-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/24-waitpid-output/24-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/25-scheduler-blocking/25-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/26-oracle-output-fix/26-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/27-invocation-scoping/27-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/28-seed-descriptor/28-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/29-continuation-framework/29-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/30-run-extraction/30-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/33-qsh-interactive-shell/SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/34-qinetd-dispatcher/SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/35-integration/SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/36-driver-bug-report-baseline/36-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/37-instruction-contract-hardening/37-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/38-completion-guardrails/38-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/39-coprocessor-interface/39-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/40-evaluation-and-tuning/40-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/41-doc-gap-audit/41-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/42-targeted-fixes/42-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/43-verification-and-stress-checks/43-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/44-dc03-clean-completion/44-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/44-dc03-clean-completion/44-02-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/44-dc03-clean-completion/44-03-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/45-completion-semantics-investigation/45-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/46-dc04-clean-shutdown/46-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/47-dc02-secondary-write-reliability/47-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/48-stress-verification/48-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/49-provenance-audit-and-evidence-model/49-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/50-exact-once-completion-productization/50-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/51-handoff-mailbox-provenance-hardening/51-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/52-durability-verification-and-test-backfill/52-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/53-resident-scheduler-and-wake-model/53-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/54-timer-and-external-event-primitives/54-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/55-kernel-rehydration-semantics/55-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/56-limits-and-supporting-kernel-hardening/56-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/57-durable-event-log/57-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/58-filesystem-primitives/58-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/59-resource-accounting/59-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/60-capability-based-security/60-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/61-pid-namespace-isolation/61-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/62-security-stress-testing/62-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/63-context-page-cache/63-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/64-preemptive-scheduling/64-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/65-full-stress-testing-and-validation/65-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/66-debt-audit-and-closure-plan/66-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/67-kernel-product-debt-resolution/67-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/68-reliability-residuals-and-validation-debt/68-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/69-baseline-validation-and-closeout/69-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/70-dc01-child-handoff-recovery/70-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/71-dc02-secondary-write-recovery/71-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/72-dc04-clean-shutdown-recovery/72-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/73-reliability-revalidation-and-closeout/73-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/74-diagnose-and-baseline/74-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/75-repair-and-hardening/75-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/76-revalidation-and-closeout/76-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/77-dc02-qsh-fidelity-convergence/77-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/78-dc03-qcc-exact-once-convergence/78-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/79-reliability-revalidation-and-closeout/79-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/80-exploration-and-fix-design/80-01-SUMMARY.md | no-dispatch-evidence | no module table or [dispatch] line |
+| quark | .paul/phases/81-implementation-and-validation/81-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/82-descriptor-audit-and-simplification/82-01-SUMMARY.md | unmapped-status | 0 code review concerns |
+| quark | .paul/phases/82-descriptor-audit-and-simplification/82-01-SUMMARY.md | unmapped-status | 3 high vulns → BLOCK overridden, baseline recorded |
+| quark | .paul/phases/82-descriptor-audit-and-simplification/82-01-SUMMARY.md | unmapped-status | All files <300 lines |
+| quark | .paul/phases/82-descriptor-audit-and-simplification/82-01-SUMMARY.md | unmapped-status | No paired docs for descriptor files |
+| quark | .paul/phases/82-descriptor-audit-and-simplification/82-01-SUMMARY.md | unmapped-status | PASS on all 3 tasks |
+| quark | .paul/phases/83-dependency-housekeeping/83-01-SUMMARY.md | unmapped-status | 506 passed, 0 failed |
+| quark | .paul/phases/83-dependency-housekeeping/83-01-SUMMARY.md | unmapped-status | 506→506, stable |
+| quark | .paul/phases/84-revalidation-and-closeout/84-01-SUMMARY.md | unmapped-status | 506 passed, 0 failed |
+| quark | .paul/phases/84-revalidation-and-closeout/84-01-SUMMARY.md | unmapped-status | 506→506, stable |
+| quark | .paul/phases/85-kernel-correctness/85-01-SUMMARY.md | unmapped-status | 506→517, improved |
+| quark | .paul/phases/86-driver-robustness/86-01-SUMMARY.md | unmapped-status | 517→531, improved |
+| quark | .paul/phases/87-port-cleanup-and-closeout/87-01-SUMMARY.md | unmapped-status | 531→534, improved |
+| quark | .paul/phases/88-security-audit-and-planning/88-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/89-capability-manifests-and-enforcement/89-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/89-capability-manifests-and-enforcement/89-02-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/90-process-run-hardening/90-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/91-ipc-trust-hierarchy/91-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/92-docs-and-closeout/92-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/93-kernel-port-registry/93-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/94-schema-and-semantic-indexes/94-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/95-integration-and-closeout/95-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |
+| quark | .paul/phases/99-daemon-core-and-protocol/99-01-SUMMARY.md | unrecognized-dispatch-shape | Module Execution Reports section in an unsupported shape |

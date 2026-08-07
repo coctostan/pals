@@ -3,3 +3,7 @@ fixture	.paul/phases/06-no-evidence/06-01-SUMMARY.md	no-dispatch-evidence	no mod
 fixture	.paul/phases/08-unmapped-status/08-01-SUMMARY.md	unknown-module	zeke
 fixture	.paul/phases/08-unmapped-status/08-01-SUMMARY.md	unmapped-status	MOSTLY_FINE
 fixture	.paul/phases/09-foreign-evidence/vendor-evidence/14-01-SUMMARY.md	excluded-foreign-evidence	nested below phase directory
+fixture	.paul/phases/12-unrecognized-shape/12-01-SUMMARY.md	unrecognized-dispatch-shape	Module Execution Reports section in an unsupported shape
+fixture	.paul/phases/13-colon-outcome/13-01-SUMMARY.md	unmapped-status	PASS on all 3 tasks
+fixture	.paul/phases/13-colon-outcome/13-01-SUMMARY.md	unmapped-status	PASS-no-block / skipped audit counts: no dependencies added, pip-audit unavailable
+fixture	.paul/phases/14-empty-module-cell/14-01-SUMMARY.md	unknown-module	(others SKIP — no UI, data, CI, API surfaces)

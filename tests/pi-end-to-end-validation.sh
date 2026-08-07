@@ -429,6 +429,7 @@ tap_file_contains_all \
 
 FH_WORK_A="$(mktemp -d)"; FH_WORK_B="$(mktemp -d)"
 FH_SRC_SNAPSHOT="$(fh_snapshot_sources "$REPO_ROOT")"
+FH_ROLLUP_SNAPSHOT="$(fh_snapshot_rollup_fixtures "$REPO_ROOT")"
 fh_tap() { local n="$1"; shift; if "$@"; then tap_ok "$n"; else tap_not_ok "$n" "$FH_LAST_MISSING"; fi; }
 
 fh_tap "Field harvester runs against the fixture corpus" \
@@ -443,6 +444,20 @@ fh_tap "Field harvest leaves its read-only source corpus unmodified" \
   fh_check_sources_unmodified "$REPO_ROOT" "$FH_SRC_SNAPSHOT"
 fh_tap "Field harvest never infers Actioned? = yes" \
   fh_check_no_inferred_actioned "$REPO_ROOT" "$FH_WORK_A/fixture-MODULE-LEDGER.md"
+fh_tap "Roll-up generator runs against the committed fixture harvest tree" \
+  fh_run_rollup "$REPO_ROOT" "$FH_WORK_A"
+fh_tap "Roll-up matches the hand-written expected-rollup.md golden exactly" \
+  fh_check_rollup_golden "$REPO_ROOT" "$FH_WORK_A"
+fh_tap "Roll-up is deterministic across repeated runs" \
+  fh_check_rollup_determinism "$REPO_ROOT" "$FH_WORK_A" "$FH_WORK_B"
+fh_tap "Roll-up renders module absence as em dash, never as a measured zero" \
+  fh_check_rollup_absence_rendering "$FH_WORK_A"
+fh_tap "Roll-up rejects malformed input instead of emitting an empty roll-up" \
+  fh_check_rollup_rejects_malformed "$REPO_ROOT" "$FH_WORK_B"
+fh_tap "Roll-up leaves its read-only fixture tree unmodified" \
+  fh_check_rollup_fixtures_unmodified "$REPO_ROOT" "$FH_ROLLUP_SNAPSHOT"
+fh_tap "Rejected out-of-bounds harvest creates nothing inside the deployment" \
+  fh_check_write_boundary_creates_nothing "$REPO_ROOT" "$FH_WORK_B"
 
 rm -rf "$FH_WORK_A" "$FH_WORK_B"
 

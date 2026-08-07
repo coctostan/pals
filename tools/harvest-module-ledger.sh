@@ -36,6 +36,31 @@ DRY_RUN=0
 
 die() { printf 'harvest: %s\n' "$1" >&2; exit 1; }
 
+# Absolute-path resolution that NEVER creates a directory. The write-boundary
+# checks below must run before anything exists on disk: a refusal that already
+# created `<deployment>/.paul/field-harvest` has broken the read-only guarantee
+# even though no file was written. Resolves the deepest existing ancestor with
+# `pwd -P` and re-appends the not-yet-existing remainder.
+resolve_abs_path() {
+  local path="$1" suffix="" parent
+  case "$path" in
+    /*) : ;;
+    *)  path="$PWD/$path" ;;
+  esac
+  while [ ! -d "$path" ]; do
+    suffix="$(basename -- "$path")${suffix:+/$suffix}"
+    parent="$(dirname -- "$path")"
+    [ "$parent" != "$path" ] || break
+    path="$parent"
+  done
+  path="$(cd -- "$path" && pwd -P)"
+  if [ -n "$suffix" ]; then
+    printf '%s/%s\n' "$path" "$suffix"
+  else
+    printf '%s\n' "$path"
+  fi
+}
+
 usage() {
   sed -n '2,21p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
   exit "${1:-0}"
@@ -75,8 +100,7 @@ PHASES_DIR="$ROOT_ABS/.paul/phases"
 #      is the contract-designated destination (contract §8).
 #   3. Output otherwise stays inside the PALS repo, or a process temp dir so
 #      fixtures can be harvested without touching the working tree.
-mkdir -p -- "$OUT_DIR"
-OUT_ABS="$(cd -- "$OUT_DIR" && pwd -P)"
+OUT_ABS="$(resolve_abs_path "$OUT_DIR")"
 
 case "$OUT_ABS/" in
   "$PHASES_DIR"/*) die "refusing to write inside source evidence: $OUT_ABS (phases: $PHASES_DIR)" ;;
@@ -95,6 +119,9 @@ case "$OUT_ABS/" in
   /tmp/*)         : ;;
   *) die "refusing to write outside the PALS repo or a temp dir: $OUT_ABS (repo: $REPO_ROOT)" ;;
 esac
+
+# Boundaries cleared — only now is it safe to materialize the destination.
+mkdir -p -- "$OUT_ABS"
 
 LEDGER="$OUT_ABS/${DEPLOYMENT}-MODULE-LEDGER.md"
 [ -n "$MANIFEST" ] || MANIFEST="$OUT_ABS/UNPARSEABLE.md"

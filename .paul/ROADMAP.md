@@ -20,14 +20,14 @@ Focus: Aggregate dispatch evidence into human-gated improvements. Ledgers remain
 | 308 | Proposal Batch + Validation/Closure | TBD | Not started | - |
 
 ### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing — Complete
-Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the ledger contract/template, non-blocking UNIFY append, human-gated config efficacy, and six checks via PR #226.
+Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the ledger contract/template, non-blocking UNIFY append, and human-gated config efficacy via PR #226.
 
 ### Phase 307: Retroactive Field Harvest
-Focus: Harvest field SUMMARY dispatch evidence into normalized ledgers. Recon assumed 5+ dialects; self-harvest proved six (A–F) plus a foreign-evidence exclusion class.
-Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ contract + fixture-tested read-only harvester + pals self-harvest (207 rows / 270 manifest; forward-ledger cross-check 19/19) via PR #227; 307-02 quark/hybrid execution + roll-up.
+Focus: Harvest field SUMMARY dispatch evidence into normalized ledgers. Recon assumed 5+ dialects; self-harvest proved six (A–F) plus a foreign-evidence exclusion.
+Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ contract + read-only harvester + pals self-harvest (207 rows / 270 manifest; cross-check 19/19) via PR #227; [307-02](phases/307-retroactive-field-harvest/307-02-PLAN.md) 📝 planned — quark/hybrid harvest, manifest audit, §10 roll-up.
 
 ### Phase 308: Proposal Batch + Validation/Closure
-Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/` (first: REV finding-class escalation rule from quark Phase 127 — same-class findings recurring at REV round 2+ escalate to a routed phase instead of continued instance-by-instance fix passes); guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes.
+Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/`; guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes. Seed candidate retained in STATE (REV finding-class escalation, quark Phase 127).
 Plans: TBD (defined during /paul:plan)
 
 ## Next Milestone
@@ -69,4 +69,4 @@ Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candida
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-08-07 — Plan 307-01 complete via PR #227; 307-02 ready to plan.*
+*Last updated: 2026-08-07 — Plan 307-02 planned; awaiting apply approval.*
