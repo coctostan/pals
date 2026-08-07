@@ -1,7 +1,7 @@
 # Quality History
 
 ## Cumulative Trajectory
-Tests: ...→Pi 328/328, XH 234/234→Pi 336/336, XH 241/241→Pi 347/349→Pi 355/355, XH 257/257
+Tests: ...→Pi 328/328, XH 234/234→Pi 336/336, XH 241/241→Pi 347/349→Pi 355/355, XH 257/257→Pi 362/362, XH 259/259
 Coverage: —
 Lint: —
 Types: —
@@ -150,3 +150,4 @@ Types: —
 | 300-01 | 2026-06-04 | Pi 335/336, XH 241/241 | N/A (workflow wiring) | N/A | N/A | ● stable (Phase 300 milestone+PLAN packet wiring; XH 241/241 PASS, artifact_consistency PASS, git diff --check PASS; lone Pi failure is pre-existing PROJECT.md byte-budget debt unchanged by this phase) |
 | 306-01 | 2026-07-10 | Pi 347/349 (six new ledger checks PASS; same 2 inherited lifecycle failures as 341/343 baseline) | N/A (shell/docs/workflow) | N/A | N/A | ▲ improved with baseline concerns |
 | 307-01 | 2026-08-07 | Pi 355/355, XH 257/257 (baseline 349/349, 254/254; +6 Pi, +3 XH, zero failures before and after) | N/A (shell/awk/docs) | N/A | N/A | ▲ improved |
+| 307-02 | 2026-08-07 | Pi 362/362, XH 259/259 (baseline 355/355, 257/257; +7 Pi, +2 XH, zero failures before and after) | N/A (shell/awk/docs) | N/A | N/A | ▲ improved |

@@ -10,21 +10,21 @@ Closed-milestone detail archived: see `## Completed Milestones` below, [pre-v2.4
 
 **v2.73 Module Efficacy Ledger + Field Harvest** (v2.73)
 Status: 🚧 In Progress
-Phases: 1 of 3 complete
+Phases: 2 of 3 complete
 Focus: Aggregate dispatch evidence into human-gated improvements. Ledgers remain derived, warm, pull-based, and non-authoritative; no telemetry or auto-config; WALT/DEAN/TODD/SETH stay demotion-exempt where scoped.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | ✅ Complete | 2026-07-10 |
-| 307 | Retroactive Field Harvest | 307-01, 307-02 | 🔵 In Progress | - |
-| 308 | Proposal Batch + Validation/Closure | TBD | Not started | - |
+| 307 | Retroactive Field Harvest | 307-01, 307-02 | ✅ Complete | 2026-08-07 |
+| 308 | Proposal Batch + Validation/Closure | TBD | 🔵 Ready to plan | - |
 
 ### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing — Complete
 Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the ledger contract/template, non-blocking UNIFY append, and human-gated config efficacy via PR #226.
 
-### Phase 307: Retroactive Field Harvest
-Focus: Harvest field SUMMARY dispatch evidence into normalized ledgers. Recon assumed 5+ dialects; self-harvest proved six (A–F) plus a foreign-evidence exclusion.
-Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ contract + read-only harvester + pals self-harvest (207 rows / 270 manifest; cross-check 19/19) via PR #227; [307-02](phases/307-retroactive-field-harvest/307-02-PLAN.md) 📝 planned — quark/hybrid harvest, manifest audit, §10 roll-up.
+### Phase 307: Retroactive Field Harvest — Complete
+Focus: Pull-based normalization across pals, quark, and hybrid-energy-reasoner; no telemetry or inferred value.
+Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ contract + self-harvest; [307-02](phases/307-retroactive-field-harvest/307-02-SUMMARY.md) ✅ external harvest + audited §10 roll-up (375 rows / 408 unparseable) via PR #228.
 
 ### Phase 308: Proposal Batch + Validation/Closure
 Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/`; guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes. Seed candidate retained in STATE (REV finding-class escalation, quark Phase 127).
@@ -69,4 +69,4 @@ Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candida
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-08-07 — Plan 307-02 planned; awaiting apply approval.*
+*Last updated: 2026-08-07 — Phase 307 complete; Phase 308 ready to plan.*
