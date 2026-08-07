@@ -16,15 +16,15 @@ Focus: Aggregate dispatch evidence into human-gated improvements. Ledgers remain
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | ✅ Complete | 2026-07-10 |
-| 307 | Retroactive Field Harvest | 307-01, 307-02 | 🟡 Planning | - |
+| 307 | Retroactive Field Harvest | 307-01, 307-02 | 🔵 In Progress | - |
 | 308 | Proposal Batch + Validation/Closure | TBD | Not started | - |
 
 ### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing — Complete
 Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the ledger contract/template, non-blocking UNIFY append, human-gated config efficacy, and six checks via PR #226.
 
 ### Phase 307: Retroactive Field Harvest
-Focus: Harvest existing field SUMMARY dispatch evidence into normalized ledgers. Recon found 5+ dialects plus a nested foreign-evidence exclusion class, so the split trigger fired.
-Plans: [307-01](phases/307-retroactive-field-harvest/307-01-PLAN.md) contract + fixture-tested read-only harvester + pals self-harvest (ready to apply); 307-02 quark/hybrid execution + roll-up (not started).
+Focus: Harvest field SUMMARY dispatch evidence into normalized ledgers. Recon assumed 5+ dialects; self-harvest proved six (A–F) plus a foreign-evidence exclusion class.
+Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ contract + fixture-tested read-only harvester + pals self-harvest (207 rows / 270 manifest; forward-ledger cross-check 19/19) via PR #227; 307-02 quark/hybrid execution + roll-up.
 
 ### Phase 308: Proposal Batch + Validation/Closure
 Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/` (first: REV finding-class escalation rule from quark Phase 127 — same-class findings recurring at REV round 2+ escalate to a routed phase instead of continued instance-by-instance fix passes); guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes.
@@ -69,4 +69,4 @@ Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candida
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-07-10 — Phase 307 split into 307-01/307-02; Plan 307-01 ready to apply.*
+*Last updated: 2026-08-07 — Plan 307-01 complete via PR #227; 307-02 ready to plan.*
