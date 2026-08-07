@@ -120,15 +120,15 @@ Last merge: `ec14b2b7` (Plan 307-01 Retroactive Field Harvest normalization laye
 
 ## Session Continuity
 
-Last session: 2026-08-07 — Plan 307-01 unified and merged (PR #227); Plan 307-02 planned; session paused before APPLY.
-Stopped at: Plan 307-02 created, awaiting apply approval.
-Next action: /paul:apply for Plan 307-02
-Resume file: .paul/HANDOFF-2026-08-07-307-02-apply-pending.md
-wip_result: skipped — base-branch (on `main`; PLAN artifacts uncommitted by design, APPLY creates the feature branch)
-transition_result: n/a — 307-02 remains in Phase 307; no phase transition.
+Last session: 2026-08-07 — Plan 307-02 applied and merged (PR #228); UNIFY not yet run.
+Stopped at: Plan 307-02 APPLY complete, PR #228 merged, awaiting UNIFY.
+Next action: /paul:unify for Plan 307-02
+Resume file: .paul/phases/307-retroactive-field-harvest/307-02-PLAN.md
+wip_result: n/a — all APPLY work committed and merged.
+transition_result: pending — Phase 307 closes at UNIFY of 307-02.
 Resume context:
-- Plan 307-02 is the last plan of Phase 307: external harvest + foreign-manifest audit + contract §10 roll-up spec/generator. `type: tdd` — goldens before the generator.
-- PLAN recon (dry-run, no writes): quark 73 rows / 121 manifest (107 `no-dispatch-evidence` — 69% of its corpus); hybrid 72 rows / 21 manifest (17 `unmapped-status`). quark holds the corpus's only `BLOCK` row.
-- Roll-up format does not exist yet — §10 must be written before the generator. Roll-up derives from committed ledgers, never re-parsed from source SUMMARYs.
-- `.paul/ROADMAP.md` has ~15 bytes of headroom under its 12,000-byte ceiling; Phase 307 closure writes must trim in the same change if needed.
-- Task 3 closes the DOCS advisory carried unactioned from 307-01 (`tools/` unreferenced from README.md).
+- UNIFY owes `.paul/phases/307-retroactive-field-harvest/307-02-SUMMARY.md`, the Phase 307 completion writes, and the merge gate (already satisfied: PR #228 merged `190012be`).
+- Deviations to reconcile: `tools/harvest-module-ledger.sh` edited outside `files_modified` (required by Task 1's own verify clause); `tests/helpers/field_harvest.sh` touched in Task 1 rather than Task 2; `.paul/ROADMAP.md` trimmed 112 B to make room for closure writes.
+- Audit dispositions for the SUMMARY: 60 units reclassified `no-dispatch-evidence` → `unrecognized-dispatch-shape` (quark 26, pals 32, hybrid 2); genuine absence quark 81 / pals 119 / hybrid 1; 25 tokens remain deliberately unmapped as metric prose.
+- Phase 308 inputs: `.paul/field-harvest/HARVEST-ROLLUP.md` (375 rows, 408 unparseable, 52% corpus unparseable share) plus the three committed ledgers.
+- `.paul/ROADMAP.md` headroom is 127 B under the 12,000-byte ceiling.
