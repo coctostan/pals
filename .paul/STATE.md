@@ -112,9 +112,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Git State
 
 Branch: `main`; synced with `origin/main`.
-PR: #226 merged — https://github.com/coctostan/pals/pull/226
+PR: #227 merged — https://github.com/coctostan/pals/pull/227
 CI: Socket Security checks passed before merge.
-Last merge: `096f6ab6` (Phase 306 Module Efficacy Ledger).
+Last merge: `ec14b2b7` (Plan 307-01 Retroactive Field Harvest normalization layer).
 
 ## Session Continuity
 
