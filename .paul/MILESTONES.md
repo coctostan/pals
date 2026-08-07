@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.73 Module Efficacy Ledger + Field Harvest — Phases 306–307 complete, Phase 308 ready to plan | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | v2.73 Module Efficacy Ledger + Field Harvest — Phases 306–308 complete; awaiting archive/index/tag closure | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -94,7 +94,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.73 Module Efficacy Ledger + Field Harvest — Phases 306–307 complete; Phase 308 ready to plan.
+**Current milestone:** v2.73 Module Efficacy Ledger + Field Harvest — Phase 308 complete (3/3); awaiting `/paul:milestone` archive/index/tag closure.
 
 **Latest completed milestone:** v2.72 Shared Runtime Helper Extraction (2026-06-07, PR #225 `ad9ea9dd`, tag `v2.72`); v2.73 remains active.
 
@@ -110,4 +110,4 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; v2.62 compaction: 2026-05-08; v2.72 completed: 2026-06-07; v2.73 Phases 306–307 complete: 2026-08-07.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; v2.62 compaction: 2026-05-08; v2.72 completed: 2026-06-07; v2.73 phase work completed: 2026-08-07.*

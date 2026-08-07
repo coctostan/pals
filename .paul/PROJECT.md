@@ -10,7 +10,7 @@ The Linux of Harness Engineering — minimal kernel, modular pals, universal dri
 
 ## Current focus
 
-Active milestone: **v2.73 Module Efficacy Ledger + Field Harvest** (Phases 306–308). Phases 306–307 shipped the derived ledger plus pull-based three-deployment harvest; Phase 308 owns human-routed proposals and closure validation.
+Active milestone: **v2.73 Module Efficacy Ledger + Field Harvest** (Phases 306–308). All three phases are functionally complete; milestone archive/index/tag closure remains routed through `/paul:milestone`.
 
 ## Hot-path reading model
 
@@ -45,7 +45,7 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 - v2.64 rewrote module instruction sources for context efficiency + semantic enforcement (`tests/helpers/module_instruction_semantics.sh`); PLAN/APPLY/UNIFY stay authoritative for module rewrites.
 - v2.71 added optional, non-blocking, derived/static HTML presentation packets (review briefs) for milestone/PLAN/APPLY/UNIFY under `.paul/presentation-packets/`; packets are source-cited, budget-exempt, and never approve/block/merge/rewrite lifecycle state.
 - v2.72 extracted 7 shared pure/derived filesystem + state helpers + `PalsStateSnapshot` out of `pals-hooks.ts` into a Node-only dependency-leaf sibling `shared-runtime-helpers.ts`, repointed all 9 importers, and removed the inverted helper-hub edge — an acyclic one-way Pi extension graph (orchestrator/siblings → leaf → Node) with zero behavior change; contract-first (303), executed (304), validated + closed (305).
-- v2.73 Phases 306–307 established the warm workflow-owned efficacy ledger and pull-based field harvest across pals, quark, and hybrid-energy-reasoner; 375 normalized rows / 408 unparseable feed Phase 308 without telemetry, auto-config, or module-value claims.
+- v2.73 established an efficacy ledger, field harvest (375 normalized / 408 unparseable), 17/17 source-audited dispositions, three proposed-only human routes, and four TAP guardrails; no telemetry, auto-config, demotion, or value inference.
 
 ## Current milestone posture
 
@@ -57,11 +57,11 @@ PALS is a portable, markdown-first lifecycle framework with these active/current
 | v2.70 Strategic Milestone Assessment | Complete (3 of 3 phases) — closed 2026-06-02 via PR #217 `9c5cdda8` (tag `v2.70`) | Optional, non-blocking, contract-first strategic-assessment checkpoint in `/paul:discuss`: five evidence lenses, four-part non-authoritative output to `.paul/assessments/`, pinned by Pi 331→336 + XH 235→241 marker checks. |
 | v2.71 HTML Presentation Packets — Human Review Briefs | Complete (4 of 4 phases) — closed 2026-06-04 via PR #222 `96a556bc` (tag `v2.71`) | Static packet contract + template; optional/non-blocking milestone/PLAN/APPLY/UNIFY brief generation across the four lifecycle workflows; packet surfacing + CC↔Pi parity/invariant/no-committed-`.html` guardrails. All packets derived/non-authoritative. Detail: [v2.71 archive](archive/roadmap/v2.71-html-presentation-packets.md). |
 | v2.72 Shared Runtime Helper Extraction | Complete (3 of 3 phases) — closed 2026-06-07 via PR #225 `ad9ea9dd`, tag `v2.72` | Extracted shared helpers into an acyclic Node-only leaf with zero behavior change; contract and validation closure recorded. [Detail](archive/roadmap/v2.72-shared-runtime-helper-extraction.md). |
-| v2.73 Module Efficacy Ledger + Field Harvest | In progress (2 of 3 phases) — Phases 306–307 complete via PRs #226–#228 | Derived ledger and three-deployment harvest shipped; Phase 308 produces human-routed proposals plus closure validation. |
+| v2.73 Module Efficacy Ledger + Field Harvest | Phase complete (3/3); awaiting milestone closure — PRs #226–#229 | Derived ledger/harvest, 17/17 source-audited dispositions, three proposed-only human routes; final Pi 364/364, XH 261/261. |
 
 > Pre-v2.61 milestone posture archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (covers v2.41–v2.60). v2.61–v2.66 detail archived at .paul/archive/project/PROJECT-HISTORY-v2.61-v2.66.md. Pre-v2.55 detail at .paul/archive/project/PROJECT-HISTORY.md.
 
-Current milestone pointer: **v2.73 Module Efficacy Ledger + Field Harvest** active; Phases 306–307 complete, Phase 308 ready to plan.
+Current milestone pointer: **v2.73** phase work complete; run `/paul:milestone` for archive/index/tag closure.
 
 See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compact milestone index, `docs/PALS-STATE-CONTEXT-DIET-CONTRACT.md` for hot-artifact budget authority, and `tests/helpers/module_instruction_semantics.sh` for the semantic-helper validation pattern relevant to v2.67.
 
@@ -114,8 +114,7 @@ See `.paul/ROADMAP.md` for current routing, `.paul/MILESTONES.md` for the compac
 | 2026-05-11/12: v2.64 module-instruction audit aligned every cohort to installed-registry authority (Phases 273-277). | PRs #190/#191/#194/#195 | Module rewrites start from `docs/PALS-MODULE-INSTRUCTION-AUDIT-CONTRACT.md`; source `modules/*/module.yaml` authoring truth stays distinct from installed `modules.yaml` dispatch truth; blocking authority stays with PLAN/APPLY/UNIFY. [v2.64 archive](archive/roadmap/v2.64-module-instruction-audit-context-efficiency-rewrite.md). |
 | 2026-06-04: v2.71 HTML Presentation Packets complete — static, derived, non-authoritative review briefs for all four lifecycle moments. | Phases 299–302 (PRs #218/#219/#221/#222, tag `v2.71`) | Packet contract + template authoritative; optional/non-blocking generation across milestone/plan/apply/unify; packets static, source-cited, budget-exempt, never change lifecycle state. Detail: [v2.71 archive](archive/roadmap/v2.71-html-presentation-packets.md). |
 | 2026-06-05/07: v2.72 Shared Runtime Helper Extraction complete (Phases 303–305). | PRs #223/#224/#225 (`ad9ea9dd`, tag `v2.72`) | `docs/PALS-SHARED-RUNTIME-HELPERS-CONTRACT.md` authoritative and closed (`## Status After Phase 305`). Moved 7 pure/derived helpers + `PalsStateSnapshot` from `pals-hooks.ts` into a Node-only leaf `shared-runtime-helpers.ts`, repointed all 9 importers, removed the inverted helper-hub edge — acyclic one-way graph, zero behavior change; validated (Pi e2e 343/343, XH 254/254) + 8th XH closure-guardrail. Detail: [v2.72 archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md). |
-| 2026-07-10: Module efficacy aggregation is warm, derived, and workflow-owned; config changes are human-gated. | Phase 306 Plan 306-01 / PR #226 | Finalized SUMMARY reports are source evidence; `.paul/MODULE-LEDGER.md` never owns lifecycle state or gating. WALT/DEAN/TODD/SETH remain demotion-exempt wherever ever scoped. Phase 307 uses the fixed row schema for explicit field harvest. |
-| 2026-08-07: Field harvest separates absent from unreadable evidence and aggregates only committed normalized output. | Phase 307 Plans 307-01/02; PRs #227/#228 | Three-deployment evidence totals 375 rows / 408 unparseable; path-set checks enforce read-only boundaries, aggregate absence renders `—`, and Phase 308 must cite source SUMMARYs rather than infer module value from totals. |
+| 2026-07-10/08-07: v2.73 efficacy evidence stays derived, source-audited, and human-gated. | Phases 306–308; PRs #226–#229 | SUMMARY reports remain authoritative; ledger/harvest aggregates are warm discovery aids, not module value. Phase 308 dispositioned 17/17 unactioned keys and routed three proposed-only improvements; quark 120-01 normalized `BLOCK` yields to source wording; WALT/DEAN/TODD/SETH remain demotion-exempt. |
 
 > Pre-v2.61 decisions archived at .paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md (lifts pre-v2.61 row history). Pre-v2.55 historical decisions at .paul/archive/project/PROJECT-HISTORY.md.
 
@@ -151,4 +150,4 @@ Quick Reference:
 ---
 
 *Created: 2026-03-11*
-*Last updated: 2026-08-07 after Phase 307 completion (PR #228); v2.73 active, Phase 308 ready to plan.*
+*Last updated: 2026-08-07 after Phase 308 UNIFY; v2.73 phase work complete, awaiting `/paul:milestone`.*

@@ -9,15 +9,15 @@ Closed-milestone detail archived: see `## Completed Milestones` below, [pre-v2.4
 ## Current Milestone
 
 **v2.73 Module Efficacy Ledger + Field Harvest** (v2.73)
-Status: 🚧 In Progress
-Phases: 2 of 3 complete
+Status: ✅ Phase work complete — awaiting `/paul:milestone` archive/index/tag closure
+Phases: 3 of 3 complete
 Focus: Aggregate dispatch evidence into human-gated improvements. Ledgers remain derived, warm, pull-based, and non-authoritative; no telemetry or auto-config; WALT/DEAN/TODD/SETH stay demotion-exempt where scoped.
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 306 | Ledger Contract + UNIFY Integration + Config Surfacing | 306-01 | ✅ Complete | 2026-07-10 |
 | 307 | Retroactive Field Harvest | 307-01, 307-02 | ✅ Complete | 2026-08-07 |
-| 308 | Proposal Batch + Validation/Closure | TBD | 🔵 Ready to plan | - |
+| 308 | Proposal Batch + Validation/Closure | 308-01 | ✅ Complete | 2026-08-07 |
 
 ### Phase 306: Ledger Contract + UNIFY Integration + Config Surfacing — Complete
 Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-01-SUMMARY.md) shipped the ledger contract/template, non-blocking UNIFY append, and human-gated config efficacy via PR #226.
@@ -26,12 +26,12 @@ Plan [306-01](phases/306-ledger-contract-unify-integration-config-surfacing/306-
 Focus: Pull-based normalization across pals, quark, and hybrid-energy-reasoner; no telemetry or inferred value.
 Plans: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) ✅ contract + self-harvest; [307-02](phases/307-retroactive-field-harvest/307-02-SUMMARY.md) ✅ external harvest + audited §10 roll-up (375 rows / 408 unparseable) via PR #228.
 
-### Phase 308: Proposal Batch + Validation/Closure
-Focus: Lessons-learned pass over harvested SUMMARYs → framework-improvement proposal batch under `.paul/proposals/`; guardrail TAPs; milestone closure. Proposals route through the normal loop; no auto-applied kernel changes. Seed candidate retained in STATE (REV finding-class escalation, quark Phase 127).
-Plans: TBD (defined during /paul:plan)
+### Phase 308: Proposal Batch + Validation/Closure — Complete
+Focus: Source-audited 17/17 unactioned findings into three proposed-only human routes and regression-locked completeness/non-authority posture.
+Plan [308-01](phases/308-proposal-batch-validation-closure/308-01-SUMMARY.md) ✅ — three human-routed proposals + four TAP guardrails; final Pi 364/364, cross-harness 261/261; PR #229 merged implementation.
 
 ## Next Milestone
-Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candidate: validation-suite decomposition; additional candidates should be promoted only when v2.73 harvested evidence justifies them.
+Run `/paul:milestone` to archive/index/tag v2.73. Standing candidate: validation-suite decomposition; other proposals remain human-routed candidates, not approved roadmap commitments.
 
 ## Completed Milestones
 
@@ -69,4 +69,4 @@ Run `/paul:discuss-milestone` or `/paul:milestone` after v2.73. Standing candida
 
 Detailed completed milestone history through v2.43 is archived. See [.paul/archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md](archive/roadmap/ROADMAP-HISTORY-v0-v2.43.md) for the full per-milestone `<details>` blocks; the compact list of completed milestones lives in [`.paul/MILESTONES.md`](MILESTONES.md).
 ---
-*Last updated: 2026-08-07 — Phase 307 complete; Phase 308 ready to plan.*
+*Last updated: 2026-08-07 — Phase 308 complete; v2.73 phase work complete and awaiting `/paul:milestone`.*
