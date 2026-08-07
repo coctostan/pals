@@ -306,6 +306,17 @@ With no `PALS_DRIVER` set, `./uninstall.sh` mirrors the install posture: it pref
 - [Pi](https://github.com/nicholasgasior/pi-coding-agent) — supported runtime. Claude Code and Agent SDK surfaces are unsupported/frozen historical references.
 - `gh` CLI (optional — required only for GitHub Flow enforcement)
 
+## Tools
+
+Out-of-band analysis scripts in `tools/`. They are not installed, not dispatched, and never write lifecycle state.
+
+| Script | Purpose |
+|---|---|
+| `harvest-module-ledger.sh` | Normalizes historical SUMMARY dispatch evidence from a deployment into a field-harvest ledger. `--root` is strictly read-only and enforced. |
+| `rollup-field-harvest.sh` | Aggregates committed harvest ledgers into a cross-deployment roll-up. Derives only from committed output, never from source SUMMARYs. |
+
+Both are governed by `docs/PALS-FIELD-HARVEST-NORMALIZATION-CONTRACT.md` (parsing, mapping, exclusions, roll-up) and `docs/PALS-MODULE-EFFICACY-LEDGER-CONTRACT.md` (row schema). Their output is warm, derived, and regenerable; the contracts win on any disagreement.
+
 ## Documentation
 
 See `docs/` for detailed specifications:

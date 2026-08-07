@@ -2270,10 +2270,33 @@ else
   tap_not_ok "Field harvest contract defines dialects, reason codes, and the Actioned prohibition" "$MIS_LAST_MISSING"
 fi
 
-if fh_check_status_enum "$REPO_ROOT/.paul/field-harvest/pals-MODULE-LEDGER.md"; then
-  tap_ok "Committed pals harvest ledger uses only the six-value status enum"
+if mis_file_has_all "$FH_CONTRACT" -- \
+  "10. Cross-Deployment Roll-Up" "unrecognized-dispatch-shape" \
+  "Colon-delimited outcome prefix" "recorded dispatch evidence" \
+  "never hand-edited" "rows harvested"; then
+  tap_ok "Field harvest contract specifies the roll-up, its limits, and the shape reason code"
 else
-  tap_not_ok "Committed pals harvest ledger uses only the six-value status enum" "$FH_LAST_MISSING"
+  tap_not_ok "Field harvest contract specifies the roll-up, its limits, and the shape reason code" "$MIS_LAST_MISSING"
+fi
+
+# 307-01 checked only the pals ledger; every committed deployment is in scope now.
+FH_ENUM_BAD=""
+for fh_ledger in "$REPO_ROOT"/.paul/field-harvest/*-MODULE-LEDGER.md; do
+  [ -e "$fh_ledger" ] || continue
+  fh_check_status_enum "$fh_ledger" || FH_ENUM_BAD="$FH_ENUM_BAD $(basename "$fh_ledger"): $FH_LAST_MISSING"
+done
+if [ -z "$FH_ENUM_BAD" ]; then
+  tap_ok "Every committed harvest ledger uses only the six-value status enum"
+else
+  tap_not_ok "Every committed harvest ledger uses only the six-value status enum" "$FH_ENUM_BAD"
+fi
+
+if mis_file_has_all "$REPO_ROOT/.paul/field-harvest/HARVEST-ROLLUP.md" -- \
+  "## Coverage" "## Module Reach" "## Status Distribution" "## Unparseable Reasons" \
+  "Unparseable Share" "do not rank modules"; then
+  tap_ok "Committed roll-up carries all four aggregate tables and its interpretation limits"
+else
+  tap_not_ok "Committed roll-up carries all four aggregate tables and its interpretation limits" "$MIS_LAST_MISSING"
 fi
 
 if fh_check_forward_ledger_unpolluted "$REPO_ROOT/.paul/MODULE-LEDGER.md"; then
