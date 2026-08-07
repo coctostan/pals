@@ -180,3 +180,34 @@ fh_check_forward_ledger_unpolluted() {
   fi
   return 0
 }
+
+# Rejecting an out-of-bounds --out-dir must leave the harvested deployment
+# byte-identical AND path-identical: a refusal that still created a directory
+# inside the source tree has already broken the read-only guarantee (contract
+# §1). Verified against a disposable sandbox that stands in for an external
+# deployment root, so the real field deployments are never used as test targets.
+fh_check_write_boundary_creates_nothing() {
+  local repo_root="$1" sandbox="$2"
+  FH_LAST_MISSING=""
+
+  mkdir -p "$sandbox/.paul/phases/01-boundary"
+  printf '# Boundary sandbox summary\n' > "$sandbox/.paul/phases/01-boundary/01-01-SUMMARY.md"
+
+  local before after
+  before="$( cd "$sandbox" && find . | LC_ALL=C sort )"
+
+  if ( cd "$repo_root" && bash "$FH_HARVESTER" \
+         --root "$sandbox" \
+         --deployment "$FH_DEPLOYMENT" \
+         --out-dir "$sandbox/.paul/field-harvest" ) >/dev/null 2>&1; then
+    FH_LAST_MISSING="Harvester accepted an --out-dir inside the harvested deployment"
+    return 1
+  fi
+
+  after="$( cd "$sandbox" && find . | LC_ALL=C sort )"
+  if [ "$before" != "$after" ]; then
+    FH_LAST_MISSING="Rejected run still created paths inside the harvested deployment"
+    return 1
+  fi
+  return 0
+}

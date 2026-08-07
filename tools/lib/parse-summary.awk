@@ -43,10 +43,19 @@ function map_single(tok,   t) {
   return ""
 }
 
-function map_status(tok,   t, n, parts, i, best, cur) {
+function map_status(tok,   t, n, parts, i, best, cur, pre) {
   t = tolower(clean_token(tok))
   if (t in SMAP) return SMAP[t]
 
+  # Colon-delimited outcome prefix: the segment before the first colon is the
+  # outcome when it is itself a mapped token; the remainder is prose
+  # (contract §4).
+  if (t ~ /:/) {
+    pre = t
+    sub(/:.*$/, "", pre)
+    pre = trim(pre)
+    if (pre in SMAP) return SMAP[pre]
+  }
   # Combined alternates resolve to the weaker claim so harvest never
   # overstates efficacy (contract §4).
   if (t ~ /\//) {
@@ -83,10 +92,19 @@ function emit_manifest(reason, detail) {
   printf "%s\t%s\t%s\t%s\n", deployment, relpath, reason, detail >> manifest_out
 }
 
+# A manifest entry no one can trace back to a line of source cannot be
+# dispositioned (contract §7). When normalization empties the triggering value,
+# fall back to the raw cell, then to an explicit marker.
+function traceable(cleaned, raw,   r) {
+  if (cleaned != "") return cleaned
+  r = trim(raw)
+  return (r != "") ? r : "(empty cell)"
+}
+
 function emit_mapped(mod, status_tok,   st, f) {
   st = map_status(status_tok)
   if (st == "") {
-    emit_manifest("unmapped-status", clean_token(status_tok))
+    emit_manifest("unmapped-status", traceable(clean_token(status_tok), status_tok))
     return
   }
   f = derive_finding(st)
@@ -184,17 +202,26 @@ BEGIN {
 { L[NR] = $0 }
 
 END {
-  has_e = 0; has_table = 0; has_dispatch = 0
+  has_e = 0; has_table = 0; has_dispatch = 0; has_mer = 0
   for (i = 1; i <= NR; i++) {
     if (L[i] ~ /Status:[^|]*\|[[:space:]]*Finding\?:/) has_e = 1
     if (dispatch_status_col(L[i]) > 0)                  has_table = 1
     if (L[i] ~ /\[dispatch\]/)                          has_dispatch = 1
+    if (L[i] ~ /^[[:space:]]*#+[[:space:]].*Module Execution Reports/) has_mer = 1
   }
 
   # Precedence: E > A/B/D > C (contract §3).
   if (has_e)          { parse_e();        exit }
   if (has_table)      { parse_tables();   exit }
   if (has_dispatch)   { parse_dispatch(); exit }
+
+  # A dispatch section in a shape no dialect covers is evidence that the
+  # contract is behind the corpus — not evidence that nothing dispatched
+  # (contract §3, §7).
+  if (has_mer) {
+    emit_manifest("unrecognized-dispatch-shape", "Module Execution Reports section in an unsupported shape")
+    exit
+  }
 
   emit_manifest("no-dispatch-evidence", "no module table or [dispatch] line")
 }
@@ -286,7 +313,7 @@ function parse_tables(   i, line, c, n, first, in_table, status_col,
     # are discarded (contract §3 "Module cell normalization").
     split(mm, w, /[[:space:]]+/)
     lm = tolower(w[1])
-    if (!(lm in REG)) { emit_manifest("unknown-module", mm); continue }
+    if (!(lm in REG)) { emit_manifest("unknown-module", traceable(mm, modcell)); continue }
     emit_mapped(lm, c[status_col])
   }
 }
