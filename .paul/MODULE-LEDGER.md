@@ -64,3 +64,9 @@
 | 307-02 | TODD | PASS | no | n/a |
 | 307-02 | VERA | SKIP | no | n/a |
 | 307-02 | WALT | PASS | no | n/a |
+| 308-01 | CODI | SKIP | no | n/a |
+| 308-01 | DEAN | PASS | no | n/a |
+| 308-01 | RUBY | NOTE | no | n/a |
+| 308-01 | SKIP | NOTE | no | n/a |
+| 308-01 | TODD | PASS | no | n/a |
+| 308-01 | WALT | PASS_WITH_CONCERNS | yes | yes |
