@@ -6,7 +6,7 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 
 | Track | Status | Pointer |
 |-------|--------|---------|
-| Current milestone | v2.73 Module Efficacy Ledger + Field Harvest — Phases 306–308 complete; awaiting archive/index/tag closure | `.paul/ROADMAP.md`; `.paul/STATE.md` |
+| Current milestone | Awaiting next milestone — v2.73 complete | `.paul/ROADMAP.md`; `.paul/STATE.md` |
 | Archived completed history | v0.1 through v2.42 | `.paul/archive/milestones/MILESTONES-v0-v2.42.md` |
 | Phase artifacts | Per-phase plans/summaries | `.paul/phases/` |
 
@@ -89,14 +89,15 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.68 Plannotator Retraction | 2026-05-20 | same-day | 2 phases, 2 plans | Phase 291 deleted `plannotator-bridge.ts`, stripped Plannotator opt-in language from kernel workflows, and purged Plannotator marker assertions from Pi e2e/cross-harness suites (PR #209). Phase 292 deleted `docs/PALS-PLANNOTATOR-UI-INTEGRATION-CONTRACT.md`, retracted three Plannotator current-decision rows in PROJECT.md to a single row, reconciled STATE/MILESTONES/ROADMAP, and merged GitHub Flow PR #210 at squash `7c38f42e`. Final validation: Pi e2e 328/328 PASS; cross-harness 234/234 PASS. v2.66 archive evidence preserved untouched. |
 | v2.69 Pi Runtime Context Offload — S4 First | 2026-05-22 | ~1 day | 3 phases, 3 plans | Phase 293 created the S4 canonical reply delivery extraction contract (PR #212 `17578fb0`), Phase 294 extracted `guided-workflow-delivery.ts` and repointed docs/validation (PR #213 `683054fe`), and Phase 295 measured S4 context offload plus ranked shared filesystem/state helper extraction as the next contract-first recommendation (PR #214 squash `08b0e891`). Final validation: Pi 331/331, cross-harness 235/235. |
 | v2.70 Strategic Milestone Assessment | 2026-06-02 | ~1 day | 3 phases, 3 plans | Optional, non-blocking, contract-first, main-session-only strategic-assessment checkpoint in `/paul:discuss` (milestone mode). Phase 296 contract + template (PR #215 `ef8af629`); Phase 297 wired the `strategic_assessment` step into `discuss-milestone.md` (PR #216 `00c7d6c1`); Phase 298 marker-check closure (PR #217 `9c5cdda8`). Final: Pi 336/336, XH 241/241. [archive](archive/roadmap/v2.70-strategic-milestone-assessment.md) |
-| v2.71 HTML Presentation Packets — Human Review Briefs | 2026-06-04 | same-day | 4 phases, 4 plans | Static, PALS-owned, artifact-derived HTML review briefs for milestone/PLAN/APPLY/UNIFY moments. Phase 299 contract + template (PR #218); Phase 300 milestone + PLAN packet wiring (PR #219); Phase 301 APPLY + UNIFY packet wiring (PR #221 `259489d0`); Phase 302 README/contract surfacing + CC↔Pi parity/invariant/no-committed-`.html` guardrails (PR #222 `96a556bc`). All packets optional/non-blocking/derived/non-authoritative; no `.html` committed. Final: cross-harness 253/253, Pi e2e 342/342. [archive](archive/roadmap/v2.71-html-presentation-packets.md) |
-| v2.72 Shared Runtime Helper Extraction | 2026-06-07 | ~2 days | Phases 303-305 (3 plans) | Phase 303 contract; Phase 304 extracted 7 pure/derived filesystem + state helpers + `PalsStateSnapshot` out of `pals-hooks.ts` into a Node-only dependency leaf `shared-runtime-helpers.ts`, repointed all 9 importers, removed the inverted helper-hub edge (acyclic one-way graph, zero behavior change); Phase 305 validation + contract closure + 8th XH closure-guardrail (253→254). PRs #223/#224/#225 (`ad9ea9dd`, tag `v2.72`). Final: Pi e2e 343/343, XH 254/254. [archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md) |
+| v2.71 HTML Presentation Packets — Human Review Briefs | 2026-06-04 | same-day | 4 phases, 4 plans | Static, derived milestone/PLAN/APPLY/UNIFY review briefs; optional, non-blocking, non-authoritative, and never committed. PRs #218/#219/#221/#222; Pi 342/342, XH 253/253. [archive](archive/roadmap/v2.71-html-presentation-packets.md) |
+| v2.72 Shared Runtime Helper Extraction | 2026-06-07 | ~2 days | Phases 303-305 (3 plans) | Phase 305 closure: moved 7 helpers + `PalsStateSnapshot` from `pals-hooks.ts` to acyclic Node-only `shared-runtime-helpers.ts`; repointed 9 importers; no behavior change. PRs #223–#225; Pi 343/343, XH 254/254. [archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md) |
+| v2.73 Module Efficacy Ledger + Field Harvest | 2026-08-07 | 28 days | 3 phases, 4 plans, 25 key-file surfaces | Derived ledger/config; read-only three-deployment harvest (375 normalized / 408 unparseable); 17/17 dispositions; three proposed-only routes; Pi 364/364, XH 261/261. PRs #226–#232. [archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md) |
 
 ## Current / Future Milestone Pointer
 
-**Current milestone:** v2.73 Module Efficacy Ledger + Field Harvest — Phase 308 complete (3/3) via closure PR #230; awaiting `/paul:milestone` archive/index/tag closure.
+**Current milestone:** Awaiting next milestone — v2.73 Module Efficacy Ledger + Field Harvest completed 2026-08-07; [archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md).
 
-**Latest completed milestone:** v2.72 Shared Runtime Helper Extraction (2026-06-07, PR #225 `ad9ea9dd`, tag `v2.72`); v2.73 remains active.
+**Latest completed milestone:** v2.73 Module Efficacy Ledger + Field Harvest (Phase 308 complete; 2026-08-07; PRs #226–#232; tag `v2.73`). Next action: `/paul:discuss-milestone`.
 
 ## Archive
 
@@ -106,8 +107,9 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 - v2.67 roadmap archive: [.paul/archive/roadmap/v2.67-validation-hygiene.md](archive/roadmap/v2.67-validation-hygiene.md)
 - v2.71 roadmap archive: [.paul/archive/roadmap/v2.71-html-presentation-packets.md](archive/roadmap/v2.71-html-presentation-packets.md)
 - v2.72 roadmap archive: [.paul/archive/roadmap/v2.72-shared-runtime-helper-extraction.md](archive/roadmap/v2.72-shared-runtime-helper-extraction.md)
+- v2.73 roadmap archive: [.paul/archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md)
 - Archive entry point: [.paul/archive/INDEX.md](archive/INDEX.md)
 - v2.55–v2.60 project archive: [.paul/archive/project/PROJECT-HISTORY-v2.55-v2.60.md](archive/project/PROJECT-HISTORY-v2.55-v2.60.md)
 - v2.44–v2.60 state archive: [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md)
 
-*Milestones log created: 2026-03-12; compacted: 2026-04-26; v2.62 compaction: 2026-05-08; v2.72 completed: 2026-06-07; v2.73 phase work completed: 2026-08-07.*
+*Milestones log created: 2026-03-12; compacted: 2026-04-26; v2.62 compaction: 2026-05-08; v2.72 completed: 2026-06-07; v2.73 completed: 2026-08-07.*
