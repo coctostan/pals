@@ -12,7 +12,7 @@ Milestone: v2.73 Module Efficacy Ledger + Field Harvest
 Phase: 307 of 308 (Retroactive Field Harvest)
 Plan: [307-02](phases/307-retroactive-field-harvest/307-02-PLAN.md) — APPLY complete, awaiting UNIFY
 Status: Ready to unify 307-02
-Last activity: 2026-08-07 — Plan 307-02 APPLY complete (PR #228): external harvest (quark 73/121, hybrid 76/17), write-boundary defect fixed, 60 mislabeled units reclassified via three audited contract amendments, §10 roll-up spec + generator, HARVEST-ROLLUP.md (375 rows / 408 unparseable).
+Last activity: 2026-08-07 — Plan 307-02 APPLY complete and merged (PR #228 `190012be`): external harvest (quark 73/121, hybrid 76/17), write-boundary defect fixed, 60 mislabeled units reclassified via three audited contract amendments, §10 roll-up spec + generator, HARVEST-ROLLUP.md (375 rows / 408 unparseable).
 Next action: /paul:unify for Plan 307-02
 
 Progress:
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ○     [Plan 307-02 applied; PR #228 open, CI green]
+  ✓        ✓        ○     [Plan 307-02 applied and merged; PR #228 `190012be`]
 ```
 
 ## Accumulated Context
@@ -120,11 +120,11 @@ Last merge: `ec14b2b7` (Plan 307-01 Retroactive Field Harvest normalization laye
 
 ## Session Continuity
 
-Last session: 2026-08-07 — Plan 307-02 applied and merged (PR #228); UNIFY not yet run.
-Stopped at: Plan 307-02 APPLY complete, PR #228 merged, awaiting UNIFY.
+Last session: 2026-08-07 — Plan 307-02 applied and merged (PR #228); paused before UNIFY.
+Stopped at: Plan 307-02 APPLY complete, PR #228 merged, UNIFY not started.
 Next action: /paul:unify for Plan 307-02
-Resume file: .paul/phases/307-retroactive-field-harvest/307-02-PLAN.md
-wip_result: n/a — all APPLY work committed and merged.
+Resume file: .paul/HANDOFF-2026-08-07-307-02-unify-pending.md
+wip_result: skipped — no uncommitted lifecycle changes; only untracked derived HTML packets, which must never be committed.
 transition_result: pending — Phase 307 closes at UNIFY of 307-02.
 Resume context:
 - UNIFY owes `.paul/phases/307-retroactive-field-harvest/307-02-SUMMARY.md`, the Phase 307 completion writes, and the merge gate (already satisfied: PR #228 merged `190012be`).
