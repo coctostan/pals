@@ -381,3 +381,80 @@ Output is deterministically ordered by phase then module so that re-running harv
 - No coercion of unmapped status tokens (§4).
 - No replacement of source SUMMARY evidence or lifecycle authority.
 - No claim that harvested counts measure module value; they measure recorded dispatch evidence, which is a different and weaker thing.
+
+## 10. Cross-Deployment Roll-Up
+
+The roll-up is the single aggregate view across every harvested deployment. Phase 308 reads it as the entry point to the corpus.
+
+### Inputs
+
+The roll-up derives **only** from committed harvest output:
+
+- every `.paul/field-harvest/{deployment}-MODULE-LEDGER.md`;
+- `.paul/field-harvest/UNPARSEABLE.md`.
+
+It never re-reads source SUMMARYs. There is exactly one normalization path (§3–§6) and the roll-up sits downstream of it, so the roll-up can never disagree with the ledgers it summarizes. A roll-up that contradicts its inputs is wrong by construction, which makes the reconciliation check in §10 *Verification* meaningful rather than decorative.
+
+A malformed or unreadable input is a hard error. Emitting an empty-but-successful roll-up would report "no evidence" for a deployment whose ledger merely failed to parse.
+
+### Aggregation rules
+
+1. **Deployment totals** — row count and manifest count per deployment, plus a corpus total.
+2. **Per-module totals** — for each module, the row count per deployment and across the corpus.
+3. **Status distribution** — per module, the count of each of the six enum values summed across deployments.
+4. **Absence rendering** — in *Module Reach*, a module with no rows in a deployment renders as `—`, never `0`. `0` asserts a measurement was taken and found nothing; `—` states no evidence exists either way. A module absent from a deployment is usually absent from its harvestable history, not proven unused. In *Status Distribution* the row exists only because that module has rows, so an unobserved status there renders `0`: the measurement was genuinely taken.
+5. **Ordering** — deployments alphabetically, modules alphabetically, statuses in enum order (`PASS`, `PASS_WITH_CONCERNS`, `WARN`, `BLOCK`, `SKIP`, `NOTE`), and manifest reasons alphabetically within each deployment. Deterministic ordering under a stable `LC_ALL` is what makes the artifact diff-reviewable.
+6. **Totals and rounding** — *Coverage* ends with a bold `**Total**` row summing every deployment. `Unparseable Share` is an integer percent rounded half up, computed from the deployment's own counts (the total row from corpus totals, not from an average of shares).
+
+### Table shapes
+
+Exact shapes, so output is diff-stable and testable:
+
+```text
+## Coverage
+
+| Deployment | Rows | Unparseable | Unparseable Share |
+|---|---:|---:|---:|
+
+## Module Reach
+
+| Module | {deployment-1} | {deployment-2} | ... | Total |
+|---|---:|---:|---:|
+
+## Status Distribution
+
+| Module | PASS | PASS_WITH_CONCERNS | WARN | BLOCK | SKIP | NOTE |
+|---|---:|---:|---:|---:|---:|---:|
+
+## Unparseable Reasons
+
+| Deployment | Reason | Count |
+|---|---|---:|
+```
+
+`Unparseable Share` is `unparseable / (rows + unparseable)`, rendered as an integer percent.
+
+### Coverage reporting
+
+Every row count is presented alongside the unparseable volume for the same deployment. The two are never separated, because a row count read alone invites the reading that it is the whole story.
+
+**`rows harvested` is not `dispatches that occurred`.** A deployment whose corpus is 69% `no-dispatch-evidence` has thin coverage no matter how many rows it contributes. `unrecognized-dispatch-shape` volume is a further caution: those units *did* record dispatch that this contract cannot yet read (§3), so they are evidence of parser gaps, not of module inactivity. Both classes must be visible next to the counts they qualify.
+
+### Interpretation limits
+
+§9 applies with full force at the aggregate level, where the temptation to rank is strongest:
+
+- These counts measure **recorded dispatch evidence**. They do not measure module value, correctness, or impact.
+- The roll-up does not rank modules, and a low total is not a finding. It is at least as likely to reflect a deployment's surface mix, its age, or a parser gap.
+- No aggregate total is sufficient grounds to demote, disable, or reconfigure a module.
+- Phase 308 proposals must cite source SUMMARYs. A roll-up total may motivate a question; only source evidence can answer it.
+
+### Regeneration and verification
+
+```bash
+tools/rollup-field-harvest.sh --in-dir .paul/field-harvest --out .paul/field-harvest/HARVEST-ROLLUP.md
+```
+
+`.paul/field-harvest/HARVEST-ROLLUP.md` is **warm, derived, regenerable, byte-budget-exempt, and never hand-edited** — the same posture as the ledgers (§8). Hand-editing it would break the one property that makes it trustworthy: that it is a pure function of the committed ledgers.
+
+The generator must be reproducible across runs and must reconcile exactly: per-deployment row totals equal the committed ledger row counts, and per-deployment manifest totals equal the committed manifest counts.
