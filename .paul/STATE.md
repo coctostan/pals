@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (active milestone: v2.73 Module Efficacy Ledger + Field Ha
 
 Milestone: v2.73 Module Efficacy Ledger + Field Harvest
 Phase: 307 of 308 (Retroactive Field Harvest)
-Plan: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) — complete
-Status: Ready to plan 307-02
-Last activity: 2026-08-07 — Plan 307-01 UNIFY complete: normalization contract, harvester, 11 fixtures, pals self-harvest (207 rows / 270 manifest); forward-ledger cross-check 19/19 exact; Pi 355/355, cross-harness 257/257.
-Next action: /paul:plan for Plan 307-02 (quark/hybrid harvest + roll-up)
+Plan: [307-02](phases/307-retroactive-field-harvest/307-02-PLAN.md) — APPLY complete, awaiting UNIFY
+Status: Ready to unify 307-02
+Last activity: 2026-08-07 — Plan 307-02 APPLY complete (PR #228): external harvest (quark 73/121, hybrid 76/17), write-boundary defect fixed, 60 mislabeled units reclassified via three audited contract amendments, §10 roll-up spec + generator, HARVEST-ROLLUP.md (375 rows / 408 unparseable).
+Next action: /paul:unify for Plan 307-02
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -27,7 +27,7 @@ Progress:
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
-- v2.73 Module Efficacy Ledger + Field Harvest: [█████░░░░░] 50% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 in progress — Plan 307-01 ✅ PR #227, 307-02 external-deployment harvest next)
+- v2.73 Module Efficacy Ledger + Field Harvest: [█████░░░░░] 50% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 in progress — Plan 307-01 ✅ PR #227, 307-02 applied PR #228 awaiting UNIFY)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Plan 307-01 closed; 307-02 not started]
+  ✓        ✓        ○     [Plan 307-02 applied; PR #228 open, CI green]
 ```
 
 ## Accumulated Context
@@ -75,6 +75,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-07-10: Actioned counts require trace evidence | Phase 306 / PR #226 | Only a later fix, PLAN task, or logged debt entry supports `Actioned? = yes`. |
 | 2026-08-07: Retroactive harvest never coerces or infers | Plan 307-01 / PR #227 | Unmapped status tokens and unknown modules go to `UNPARSEABLE.md`, never to a guessed row; `Actioned? = yes` is never emitted retroactively, so harvested actioned counts are a floor. |
 | 2026-08-07: Overlap-diff is the acceptance test for retroactive extraction | Plan 307-01 / PR #227 | Harvesting a phase the forward path already wrote (306-01, 19/19 exact) validates contract and parser against evidence neither produced; Plan 307-02 inherits this technique. |
+| 2026-08-07: Absence of evidence and unreadable evidence are distinct findings | Plan 307-02 / PR #228 | 60 units claimed `no-dispatch-evidence` while carrying an unparsed `Module Execution Reports` section; they now emit `unrecognized-dispatch-shape`. Collapsing the two would let thin parser coverage read as low module usage in Phase 308. |
+| 2026-08-07: Read-only guarantees must be path-tested, not checksum-tested | Plan 307-02 / PR #228 | A rejected harvest still created an empty directory inside both real deployments; file hashes could not see it. Boundary tests compare path sets, and `mkdir` never precedes a boundary check. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -118,13 +120,15 @@ Last merge: `ec14b2b7` (Plan 307-01 Retroactive Field Harvest normalization laye
 
 ## Session Continuity
 
-Last session: 2026-08-07 — Plan 307-01 UNIFY completed; SUMMARY written, ledger appended, merge gate run.
-Stopped at: Plan 307-01 closed.
-Next action: /paul:plan for Plan 307-02
-Resume file: .paul/phases/307-retroactive-field-harvest/307-01-SUMMARY.md
+Last session: 2026-08-07 — Plan 307-01 unified and merged (PR #227); Plan 307-02 planned; session paused before APPLY.
+Stopped at: Plan 307-02 created, awaiting apply approval.
+Next action: /paul:apply for Plan 307-02
+Resume file: .paul/HANDOFF-2026-08-07-307-02-apply-pending.md
+wip_result: skipped — base-branch (on `main`; PLAN artifacts uncommitted by design, APPLY creates the feature branch)
 transition_result: n/a — 307-02 remains in Phase 307; no phase transition.
 Resume context:
-- Plan 307-02 scope: run the harvester over quark (154 SUMMARYs) and hybrid-energy-reasoner (62), then produce the aggregate roll-up. Contract and tooling are complete; no further specification work is needed.
-- Expect dialect surprises in foreign corpora — 307-01 amended its contract twice on a corpus it authored.
-- Phase 308 inputs now evidence-backed: 151 no-dispatch-evidence phases, 111 un-coerced unmapped-status tokens, unresolved validation-suite god-file (2,922 lines).
-- Open DOCS advisory: `tools/` is not referenced from README.md or docs/ARCHITECTURE.md.
+- Plan 307-02 is the last plan of Phase 307: external harvest + foreign-manifest audit + contract §10 roll-up spec/generator. `type: tdd` — goldens before the generator.
+- PLAN recon (dry-run, no writes): quark 73 rows / 121 manifest (107 `no-dispatch-evidence` — 69% of its corpus); hybrid 72 rows / 21 manifest (17 `unmapped-status`). quark holds the corpus's only `BLOCK` row.
+- Roll-up format does not exist yet — §10 must be written before the generator. Roll-up derives from committed ledgers, never re-parsed from source SUMMARYs.
+- `.paul/ROADMAP.md` has ~15 bytes of headroom under its 12,000-byte ceiling; Phase 307 closure writes must trim in the same change if needed.
+- Task 3 closes the DOCS advisory carried unactioned from 307-01 (`tools/` unreferenced from README.md).
