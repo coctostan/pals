@@ -4,16 +4,16 @@
 
 See: .paul/PROJECT.md (latest completed milestone: v2.73 Module Efficacy Ledger + Field Harvest, completed 2026-08-07)
 **Core value:** The Linux of Harness Engineering — minimal kernel, modular pals, universal drivers
-**Current focus:** Finalize v2.73 archive/index/tag closure, then discuss the next milestone; validation-suite decomposition remains a candidate, not an approved commitment.
+**Current focus:** Awaiting next-milestone discussion; validation-suite decomposition remains a candidate, not an approved commitment.
 
 ## Current Position
 
-Milestone: v2.73 Module Efficacy Ledger + Field Harvest — closure in progress
+Milestone: Awaiting next milestone — v2.73 Module Efficacy Ledger + Field Harvest complete
 Phase: 308 of 308 (Proposal Batch + Validation/Closure) — complete
 Plan: None active
-Status: All 3 phases and 4 plans complete; milestone archive/index prepared; closure PR and tag pending
-Last activity: 2026-08-07 — Created v2.73 roadmap archive and evolved MILESTONES/PROJECT/ROADMAP for milestone closure.
-Next action: Complete the milestone closure PR and create tag `v2.73`
+Status: Milestone v2.73 complete, archived, and tagged — ready for next-milestone discussion
+Last activity: 2026-08-07 — Closed v2.73 via PR #232 and created annotated tag `v2.73`.
+Next action: /paul:discuss-milestone
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -27,7 +27,7 @@ Progress:
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
-- v2.73 Module Efficacy Ledger + Field Harvest: [██████████] 100% ✓ (Phases 306–308 complete; PRs #226–#231; archive/index closure prepared; tag `v2.73` pending)
+- v2.73 Module Efficacy Ledger + Field Harvest: [██████████] 100% ✓ (Phases 306–308 complete; closed via PR #232; tag `v2.73`; [archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md))
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Milestone v2.73 phase work complete; archive/tag closure in progress]
+  ○        ○        ○     [Milestone v2.73 complete - ready for next]
 ```
 
 ## Accumulated Context
@@ -48,7 +48,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 306 completed via PR #226: forward-looking ledger contract/template, non-blocking UNIFY append, human-gated config efficacy, six Pi checks, and a 19-row bootstrap ledger.
 - Plan 307-01 completed via PR #227: field-harvest normalization contract (dialects A–F + exclusion X), read-only fixture-tested harvester, and a pals self-harvest of 207 rows / 270 manifest entries validated by an exact 19/19 reproduction of the forward 306-01 ledger rows.
 - Phase 307 completed via PRs #227/#228: deterministic three-deployment harvest + audited manifest + §10 roll-up; final evidence is 375 normalized rows / 408 unparseable with a 52% corpus caveat.
-- v2.73 phase work completed across Phases 306–308: derived efficacy ledger, deterministic three-deployment harvest (375 normalized / 408 unparseable), 17/17 source-audited dispositions, three proposed-only human routes, four TAP guardrails, final Pi 364/364 and cross-harness 261/261. Milestone archive/index closure is prepared.
+- v2.73 completed via PRs #226–#232 and tag `v2.73`: derived efficacy ledger, deterministic three-deployment harvest (375 normalized / 408 unparseable), 17/17 source-audited dispositions, three proposed-only human routes, four TAP guardrails, final Pi 364/364 and cross-harness 261/261. [Archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md).
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -119,20 +119,20 @@ PLAN ──▶ APPLY ──▶ UNIFY
 
 ### Git State
 
-Branch: `docs/v2.73-milestone-closure`; base: `main`; started synced 0 behind / 0 ahead.
-PR: milestone closure PR pending.
-CI: pending closure PR; inherited final phase validation Pi 364/364, cross-harness 261/261, artifact consistency PASS.
-Last commit: `e7fe6d9a` on `origin/main` before milestone closure work.
+Branch: `main`; synced with `origin/main` after milestone closure.
+PR: #232 merged — v2.73 archive/index/lifecycle closure.
+CI: PASS — Socket checks; local Pi 364/364, cross-harness 261/261, artifact consistency PASS.
+Release: annotated tag `v2.73` pushed to origin.
 
 ## Session Continuity
 
-Last session: 2026-08-07 — Began v2.73 milestone archive/index/tag closure after all phase work passed.
-Stopped at: Milestone closure artifacts prepared on `docs/v2.73-milestone-closure`; PR/tag pending.
-Next action: Complete the milestone closure PR and create tag `v2.73`
+Last session: 2026-08-07 — Completed v2.73 milestone archive/index/tag closure.
+Stopped at: Milestone v2.73 complete; no active milestone.
+Next action: /paul:discuss-milestone
 Resume file: .paul/MILESTONES.md
-closure_result: pending PR merge and tag.
-transition_result: Phase 308 complete (1 PLAN / 1 SUMMARY); v2.73 has 3 phases / 4 plans complete.
+closure_result: PR #232 merged; annotated tag `v2.73` pushed.
+transition_result: v2.73 complete with 3 phases / 4 plans; final Pi 364/364, cross-harness 261/261.
 Resume context:
-- Permanent roadmap archive created at `.paul/archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md`; live MILESTONES/PROJECT/ROADMAP evolved.
-- Final phase validation remains Pi 364/364, cross-harness 261/261, artifact consistency PASS, diff hygiene clean, and all hot-artifact budgets green.
-- After merge/tag, route exactly to `/paul:discuss-milestone`.
+- Authoritative completed-milestone detail: `.paul/archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md`.
+- Live MILESTONES/PROJECT/ROADMAP are evolved and compact; all hot-artifact budgets pass.
+- Validation-suite decomposition is the standing next candidate only; route to `/paul:discuss-milestone` for a human-scoped decision.

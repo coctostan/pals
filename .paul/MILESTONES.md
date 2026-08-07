@@ -91,13 +91,13 @@ Compact live milestone index for PALS. Detailed completed milestone history thro
 | v2.70 Strategic Milestone Assessment | 2026-06-02 | ~1 day | 3 phases, 3 plans | Optional, non-blocking, contract-first, main-session-only strategic-assessment checkpoint in `/paul:discuss` (milestone mode). Phase 296 contract + template (PR #215 `ef8af629`); Phase 297 wired the `strategic_assessment` step into `discuss-milestone.md` (PR #216 `00c7d6c1`); Phase 298 marker-check closure (PR #217 `9c5cdda8`). Final: Pi 336/336, XH 241/241. [archive](archive/roadmap/v2.70-strategic-milestone-assessment.md) |
 | v2.71 HTML Presentation Packets — Human Review Briefs | 2026-06-04 | same-day | 4 phases, 4 plans | Static, derived milestone/PLAN/APPLY/UNIFY review briefs; optional, non-blocking, non-authoritative, and never committed. PRs #218/#219/#221/#222; Pi 342/342, XH 253/253. [archive](archive/roadmap/v2.71-html-presentation-packets.md) |
 | v2.72 Shared Runtime Helper Extraction | 2026-06-07 | ~2 days | Phases 303-305 (3 plans) | Phase 305 closure: moved 7 helpers + `PalsStateSnapshot` from `pals-hooks.ts` to acyclic Node-only `shared-runtime-helpers.ts`; repointed 9 importers; no behavior change. PRs #223–#225; Pi 343/343, XH 254/254. [archive](archive/roadmap/v2.72-shared-runtime-helper-extraction.md) |
-| v2.73 Module Efficacy Ledger + Field Harvest | 2026-08-07 | 28 days | 3 phases, 4 plans, 25 key-file surfaces | Derived ledger/config; read-only three-deployment harvest (375 normalized / 408 unparseable); 17/17 dispositions; three proposed-only routes; Pi 364/364, XH 261/261. PRs #226–#231. [archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md) |
+| v2.73 Module Efficacy Ledger + Field Harvest | 2026-08-07 | 28 days | 3 phases, 4 plans, 25 key-file surfaces | Derived ledger/config; read-only three-deployment harvest (375 normalized / 408 unparseable); 17/17 dispositions; three proposed-only routes; Pi 364/364, XH 261/261. PRs #226–#232. [archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md) |
 
 ## Current / Future Milestone Pointer
 
 **Current milestone:** Awaiting next milestone — v2.73 Module Efficacy Ledger + Field Harvest completed 2026-08-07; [archive](archive/roadmap/v2.73-module-efficacy-ledger-field-harvest.md).
 
-**Latest completed milestone:** v2.73 Module Efficacy Ledger + Field Harvest (Phase 308 complete; 2026-08-07; PRs #226–#231; tag `v2.73`). Next action: `/paul:discuss-milestone`.
+**Latest completed milestone:** v2.73 Module Efficacy Ledger + Field Harvest (Phase 308 complete; 2026-08-07; PRs #226–#232; tag `v2.73`). Next action: `/paul:discuss-milestone`.
 
 ## Archive
 
