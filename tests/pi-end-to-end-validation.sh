@@ -33,6 +33,10 @@ source "$REPO_ROOT/tests/helpers/artifact_consistency.sh"
 # Verify behavior groups instead of inherited stale literal-marker prose.
 source "$REPO_ROOT/tests/helpers/module_instruction_semantics.sh"
 
+# Phase 307 field-harvest behavioral guardrails:
+# Run the harvester against committed fixtures and compare to hand-written goldens.
+source "$REPO_ROOT/tests/helpers/field_harvest.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────
 
 TEMP_DIRS=()
@@ -415,6 +419,32 @@ tap_file_contains_all \
   'dispatches | findings | actioned' \
   'explicit human approval' \
   'enforcement-exempt'
+
+# ════════════════════════════════════════════════════════════════════
+# FIELD HARVEST NORMALIZATION (Phase 307)
+# ════════════════════════════════════════════════════════════════════
+# Behavioral, not marker-only: the harvester runs against the committed fixture
+# corpus and must reproduce hand-written goldens. Logic lives in the helper so
+# this suite does not grow (ARCH/RUBY god-file advisory).
+
+FH_WORK_A="$(mktemp -d)"; FH_WORK_B="$(mktemp -d)"
+FH_SRC_SNAPSHOT="$(fh_snapshot_sources "$REPO_ROOT")"
+fh_tap() { local n="$1"; shift; if "$@"; then tap_ok "$n"; else tap_not_ok "$n" "$FH_LAST_MISSING"; fi; }
+
+fh_tap "Field harvester runs against the fixture corpus" \
+  fh_run_harvest "$REPO_ROOT" "$FH_WORK_A"
+fh_tap "Harvested rows match expected-rows.tsv golden exactly" \
+  fh_check_golden_rows "$REPO_ROOT" "$FH_WORK_A"
+fh_tap "Unparseable manifest matches expected-unparseable.tsv golden exactly" \
+  fh_check_golden_manifest "$REPO_ROOT" "$FH_WORK_A"
+fh_tap "Field harvest is deterministic across repeated runs" \
+  fh_check_determinism "$REPO_ROOT" "$FH_WORK_A" "$FH_WORK_B"
+fh_tap "Field harvest leaves its read-only source corpus unmodified" \
+  fh_check_sources_unmodified "$REPO_ROOT" "$FH_SRC_SNAPSHOT"
+fh_tap "Field harvest never infers Actioned? = yes" \
+  fh_check_no_inferred_actioned "$REPO_ROOT" "$FH_WORK_A/fixture-MODULE-LEDGER.md"
+
+rm -rf "$FH_WORK_A" "$FH_WORK_B"
 
 # ════════════════════════════════════════════════════════════════════
 # CATEGORY 2: SKILL STRUCTURAL VALIDITY

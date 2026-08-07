@@ -1,0 +1,5 @@
+fixture	.paul/phases/02-dialect-b/02-01-SUMMARY.md	ambiguous-module-set	ARCH/DOCS/IRIS/SETH and other advisory modules
+fixture	.paul/phases/06-no-evidence/06-01-SUMMARY.md	no-dispatch-evidence	no module table or [dispatch] line
+fixture	.paul/phases/08-unmapped-status/08-01-SUMMARY.md	unknown-module	zeke
+fixture	.paul/phases/08-unmapped-status/08-01-SUMMARY.md	unmapped-status	MOSTLY_FINE
+fixture	.paul/phases/09-foreign-evidence/vendor-evidence/14-01-SUMMARY.md	excluded-foreign-evidence	nested below phase directory

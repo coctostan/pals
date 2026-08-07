@@ -10,10 +10,10 @@ See: .paul/PROJECT.md (active milestone: v2.73 Module Efficacy Ledger + Field Ha
 
 Milestone: v2.73 Module Efficacy Ledger + Field Harvest
 Phase: 307 of 308 (Retroactive Field Harvest)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-07-10 — Phase 306 complete via merged PR #226 (`096f6ab6`); transitioned to Phase 307.
-Next action: /paul:plan for Phase 307
+Plan: [307-01](phases/307-retroactive-field-harvest/307-01-SUMMARY.md) — complete
+Status: Ready to plan 307-02
+Last activity: 2026-08-07 — Plan 307-01 UNIFY complete: normalization contract, harvester, 11 fixtures, pals self-harvest (207 rows / 270 manifest); forward-ledger cross-check 19/19 exact; Pi 355/355, cross-harness 257/257.
+Next action: /paul:plan for Plan 307-02 (quark/hybrid harvest + roll-up)
 
 Progress:
 - v2.62 PALS Context Diet — STATE & Hot-Path Compression: [██████████] 100% (Phase 265 ✅ PR #180 `63365822`; Phase 266 ✅ PR #181 `a780bb7f`; Phase 267 ✅ PR #182 `068d7cb3`)
@@ -27,7 +27,7 @@ Progress:
 - v2.70 Strategic Milestone Assessment: [██████████] 100% ✓ (Phases 296–298 complete; closed 2026-06-02 via PR #217 `9c5cdda8`, tag `v2.70`; archive [v2.70](archive/roadmap/v2.70-strategic-milestone-assessment.md))
 - v2.71 HTML Presentation Packets — Human Review Briefs: [██████████] 100% ✓ (Phases 299–302 complete; closed 2026-06-04 via PR #222 squash `96a556bc`, tag `v2.71`; archive [v2.71](archive/roadmap/v2.71-html-presentation-packets.md))
 - v2.72 Shared Runtime Helper Extraction: [██████████] 100% ✓ (Phases 303–305 complete; closed 2026-06-07 via PR #225 squash `ad9ea9dd`, tag `v2.72`; archive [v2.72](archive/roadmap/v2.72-shared-runtime-helper-extraction.md))
-- v2.73 Module Efficacy Ledger + Field Harvest: [███░░░░░░░] 33% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 ready to plan)
+- v2.73 Module Efficacy Ledger + Field Harvest: [█████░░░░░] 50% (Phase 306 ✅ PR #226 `096f6ab6`; Phase 307 in progress — Plan 307-01 ✅ PR #227, 307-02 external-deployment harvest next)
 - Pre-v2.61 milestone progress lifted to [.paul/archive/state/STATE-HISTORY-v2.44-v2.60.md](archive/state/STATE-HISTORY-v2.44-v2.60.md).
 
 ## Loop Position
@@ -35,7 +35,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 307 ready to plan]
+  ✓        ✓        ✓     [Plan 307-01 closed; 307-02 not started]
 ```
 
 ## Accumulated Context
@@ -46,6 +46,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - v2.64 completed the module instruction audit/context-efficiency rewrite and is archived.
 - v2.65 Functional-First Agent Guidance closed 2026-05-13 across Phases 279–283: authoritative contract, AGENTS/init Engineering Principles + brownfield map-codebase signals, TODD pure-logic TDD + RUBY Extract Pure Core advisory guidance, and advisory ARCH side-effect-boundary guidance — all with project conventions and local idioms preserved as authoritative and no new default blocking functional-style gates.
 - Phase 306 completed via PR #226: forward-looking ledger contract/template, non-blocking UNIFY append, human-gated config efficacy, six Pi checks, and a 19-row bootstrap ledger.
+- Plan 307-01 completed via PR #227: field-harvest normalization contract (dialects A–F + exclusion X), read-only fixture-tested harvester, and a pals self-harvest of 207 rows / 270 manifest entries validated by an exact 19/19 reproduction of the forward 306-01 ledger rows.
 
 > Pre-v2.61 history archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
@@ -72,6 +73,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 2026-07-10: Module efficacy ledger is derived and workflow-owned | Phase 306 / PR #226 | SUMMARY reports remain source evidence; ledger writes never gate lifecycle flow. |
 | 2026-07-10: Config efficacy stays human-gated | Phase 306 / PR #226 | Advisory zero-finding modules may be reviewed; WALT/DEAN/TODD/SETH remain demotion-exempt wherever scoped. |
 | 2026-07-10: Actioned counts require trace evidence | Phase 306 / PR #226 | Only a later fix, PLAN task, or logged debt entry supports `Actioned? = yes`. |
+| 2026-08-07: Retroactive harvest never coerces or infers | Plan 307-01 / PR #227 | Unmapped status tokens and unknown modules go to `UNPARSEABLE.md`, never to a guessed row; `Actioned? = yes` is never emitted retroactively, so harvested actioned counts are a floor. |
+| 2026-08-07: Overlap-diff is the acceptance test for retroactive extraction | Plan 307-01 / PR #227 | Harvesting a phase the forward path already wrote (306-01, 19/19 exact) validates contract and parser against evidence neither produced; Plan 307-02 inherits this technique. |
 > Pre-v2.61 decisions archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md. Earlier historical decisions through Phase 185 Plan 185-01 archived at .paul/archive/state/STATE-HISTORY-v0-v2.43.md.
 
 ### Fixes / Deviations / Skill Audits
@@ -89,6 +92,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - Phase 295 PLAN/APPLY/UNIFY: Created source-backed context-offload measurement and next-target ranking report, surfaced it in Pi docs, added recommendation-only validation guardrails, appended CODI/WALT history rows, passed merge gate, and closed v2.69. Validation: `git diff --check`, artifact_consistency PASS, Pi 331/331, cross-harness 235/235; PR #214 merged `08b0e891`.
 - Fix (ff, 2026-06-01): Cleared inherited PROJECT.md byte-budget overage (25,331 → 23,763 B; ceil 25,000) carried in from v2.69 finalize commit `c5dd4255`, by collapsing five duplicated v2.64 per-phase decision rows (Phases 273-277) into one archive-pointing row; no history lost (detail in `PROJECT-HISTORY-v2.61-v2.66.md` + v2.64 roadmap archive). Validation: Pi 331/331, cross-harness 235/235, artifact_consistency PASS.
 - Phase 306 APPLY: parent-owned inline execution; T1 commit was retried after a stale command context and landed after T2/T3 without content deviation. Pi suite 347/349 vs baseline 341/343; inherited ROADMAP byte-budget and artifact-consistency failures unchanged.
+- Plan 307-01 APPLY/UNIFY: parent-owned inline execution, no helper delegation; skills /paul, TODD, WALT all invoked (/carl n/a — no session boundary inside APPLY). Deviations: contract amended twice mid-APPLY (dialect F + three normalization gaps, in-mandate per Task 3), unplanned parser split to `tools/lib/parse-summary.awk`, 11 fixtures vs 9 planned, Task 2 write-boundary redesigned in Task 3. Validation Pi 349→355, cross-harness 254→257, zero failures both sides; 0 boundary violations.
 > Pre-v2.61 fixes/deviations/skill audits archived at .paul/archive/state/STATE-HISTORY-v2.44-v2.60.md.
 
 ### Deferred Issues
@@ -114,13 +118,13 @@ Last merge: `096f6ab6` (Phase 306 Module Efficacy Ledger).
 
 ## Session Continuity
 
-Last session: 2026-07-10 — Phase 306 completed and transitioned to Phase 307.
-Stopped at: Phase 307 ready to plan.
-Next action: /paul:plan for Phase 307
-Resume file: .paul/ROADMAP.md
-transition_result: PASS — Phase 306 PLAN/SUMMARY 1/1, PR #226 merged, base synchronized.
-git: github-flow; `main` synchronized with `origin/main`; PR #226 merged as `096f6ab6`.
+Last session: 2026-08-07 — Plan 307-01 UNIFY completed; SUMMARY written, ledger appended, merge gate run.
+Stopped at: Plan 307-01 closed.
+Next action: /paul:plan for Plan 307-02
+Resume file: .paul/phases/307-retroactive-field-harvest/307-01-SUMMARY.md
+transition_result: n/a — 307-02 remains in Phase 307; no phase transition.
 Resume context:
-- Phase 307 owns explicit retroactive harvest across known SUMMARY dialects into the fixed ledger schema.
-- Preserve pull-based discovery, no telemetry, no auto-config, and source-SUMMARY traceability.
-- Inherited lifecycle validation debt was repaired during transition by compacting completed Phase 306 ROADMAP detail, refreshing MILESTONES, and archiving the consumed handoff.
+- Plan 307-02 scope: run the harvester over quark (154 SUMMARYs) and hybrid-energy-reasoner (62), then produce the aggregate roll-up. Contract and tooling are complete; no further specification work is needed.
+- Expect dialect surprises in foreign corpora — 307-01 amended its contract twice on a corpus it authored.
+- Phase 308 inputs now evidence-backed: 151 no-dispatch-evidence phases, 111 un-coerced unmapped-status tokens, unresolved validation-suite god-file (2,922 lines).
+- Open DOCS advisory: `tools/` is not referenced from README.md or docs/ARCHITECTURE.md.

@@ -36,6 +36,9 @@ source "$REPO_ROOT/tests/helpers/artifact_consistency.sh"
 # only) and returns shell success/failure; callers own TAP output.
 source "$REPO_ROOT/tests/helpers/module_instruction_semantics.sh"
 
+# Phase 307 field-harvest contract/artifact guardrails (harness-neutral).
+source "$REPO_ROOT/tests/helpers/field_harvest.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────
 
 TEMP_DIRS=()
@@ -2250,6 +2253,34 @@ fi
 # SUMMARY
 # ════════════════════════════════════════════════════════════════════
 
+echo ""
+echo "# ════════════════════════════════════════"
+echo "# FIELD HARVEST NORMALIZATION (Phase 307)"
+echo "# ════════════════════════════════════════"
+
+# Harness-neutral only: contract authority, committed artifact shape, and the
+# invariant that harvest never pollutes the UNIFY-owned forward ledger.
+FH_CONTRACT="$REPO_ROOT/docs/PALS-FIELD-HARVEST-NORMALIZATION-CONTRACT.md"
+
+if mis_file_has_all "$FH_CONTRACT" -- \
+  "unparseable-phase" "unmapped-status" "excluded-foreign-evidence" \
+  "ambiguous-module-set" "MUST NOT infer" "Dispatch table qualification"; then
+  tap_ok "Field harvest contract defines dialects, reason codes, and the Actioned prohibition"
+else
+  tap_not_ok "Field harvest contract defines dialects, reason codes, and the Actioned prohibition" "$MIS_LAST_MISSING"
+fi
+
+if fh_check_status_enum "$REPO_ROOT/.paul/field-harvest/pals-MODULE-LEDGER.md"; then
+  tap_ok "Committed pals harvest ledger uses only the six-value status enum"
+else
+  tap_not_ok "Committed pals harvest ledger uses only the six-value status enum" "$FH_LAST_MISSING"
+fi
+
+if fh_check_forward_ledger_unpolluted "$REPO_ROOT/.paul/MODULE-LEDGER.md"; then
+  tap_ok "UNIFY-owned .paul/MODULE-LEDGER.md contains no namespaced harvest rows"
+else
+  tap_not_ok "UNIFY-owned .paul/MODULE-LEDGER.md contains no namespaced harvest rows" "$FH_LAST_MISSING"
+fi
 echo ""
 echo "# ════════════════════════════════════════"
 echo "# SUMMARY"
